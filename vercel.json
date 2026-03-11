@@ -23,8 +23,8 @@
       }
     },
     {
-      "src": "/sitemap-(?P<type>[^/]+)\\.xml",
-      "dest": "/sitemap-$type.xml",
+      "src": "/sitemap-([^/]+)\\.xml",
+      "dest": "/sitemap-$1.xml",
       "headers": {
         "Content-Type": "application/xml",
         "Cache-Control": "public, max-age=86400"
