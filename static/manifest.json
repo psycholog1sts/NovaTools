@@ -1,0 +1,92 @@
+{
+  "name": "ZeroTools - Privacy First Utilities",
+  "short_name": "ZeroTools",
+  "description": "Zero-server online tools. Your data never leaves your browser.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#ffffff",
+  "theme_color": "#2563eb",
+  "categories": ["finance", "utilities", "productivity", "developer"],
+  "lang": "tr",
+  "dir": "ltr",
+  
+  "icons": [
+    { "src": "/icons/icon-72x72.png", "sizes": "72x72", "type": "image/png" },
+    { "src": "/icons/icon-96x96.png", "sizes": "96x96", "type": "image/png" },
+    { "src": "/icons/icon-128x128.png", "sizes": "128x128", "type": "image/png" },
+    { "src": "/icons/icon-144x144.png", "sizes": "144x144", "type": "image/png" },
+    { "src": "/icons/icon-152x152.png", "sizes": "152x152", "type": "image/png" },
+    { "src": "/icons/icon-192x192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/icons/icon-384x384.png", "sizes": "384x384", "type": "image/png" },
+    { "src": "/icons/icon-512x512.png", "sizes": "512x512", "type": "image/png" }
+  ],
+  
+  "shortcuts": [
+    {
+      "name": "PDF Birleştirme",
+      "short_name": "PDF Merge",
+      "description": "PDF dosyalarını birleştir",
+      "url": "/src/tools/pdf/merge/",
+      "icons": [{ "src": "/icons/pdf-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Konut Kredisi",
+      "short_name": "Mortgage",
+      "description": "Konut kredisi hesapla",
+      "url": "/src/tools/finance/mortgage-tr/",
+      "icons": [{ "src": "/icons/finance-192.png", "sizes": "192x192" }]
+    }
+  ],
+  
+  "share_target": {
+    "action": "/src/tools/pdf/merge/?share-target=true",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {
+      "title": "name",
+      "text": "description",
+      "url": "link",
+      "files": [
+        {
+          "name": "pdfFiles",
+          "accept": ["application/pdf", "image/*"]
+        }
+      ]
+    }
+  },
+  
+  "file_handlers": [
+    {
+      "action": "/src/tools/pdf/merge/?file-handler=true",
+      "accept": {
+        "application/pdf": [".pdf"]
+      }
+    },
+    {
+      "action": "/src/tools/image/compress/?file-handler=true",
+      "accept": {
+        "image/*": [".png", ".jpg", ".jpeg", ".webp"]
+      }
+    }
+  ],
+  
+  "protocol_handlers": [
+    {
+      "protocol": "web+pdfmerge",
+      "url": "/src/tools/pdf/merge/?source=%s"
+    },
+    {
+      "protocol": "web+pdfcompress",
+      "url": "/src/tools/pdf/compress/?source=%s"
+    },
+    {
+      "protocol": "web+mortgage",
+      "url": "/src/tools/finance/mortgage-tr/?source=%s"
+    }
+  ],
+  
+  "scope_extensions": [
+    { "origin": "*.zerotools.dev" }
+  ]
+}

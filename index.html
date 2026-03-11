@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- Critical CSS inline -->
+  <link rel="stylesheet" href="/src/styles/critical.css">
+  
+  <!-- Preload main font -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/icons/icon-180x180.png">
+  
+  <!-- Meta -->
+  <title>ZeroTools - Gizlilik Öncelikli Ücretsiz Online Araçlar</title>
+  <meta name="description" content="Verileriniz tarayıcınızda kalır. PDF birleştirme, konut kredi hesaplama, görsel sıkıştırma ve daha fazlası. Ücretsiz, reklam destekli, GDPR uyumlu.">
+  <meta name="keywords" content="pdf birleştirme, konut kredisi hesaplama, online araçlar, ücretsiz, gizlilik">
+  <meta name="author" content="ZeroTools Platform">
+  <meta name="theme-color" content="#2563eb">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="ZeroTools - Gizlilik Öncelikli Ücretsiz Online Araçlar">
+  <meta property="og:description" content="Verileriniz asla sunucularımıza gitmez. Tamamen tarayıcınızda çalışan araçlar.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://zerotools.dev">
+  <meta property="og:image" content="https://zerotools.dev/og-image.png">
+  <meta property="og:locale" content="tr_TR">
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ZeroTools - Gizlilik Öncelikli Araçlar">
+  <meta name="twitter:description" content="Verileriniz tarayıcınızda kalır. Ücretsiz PDF, finans ve geliştirici araçları.">
+  
+  <!-- Canonical -->
+  <link rel="canonical" href="https://zerotools.dev/">
+  
+  <!-- Hreflang for Internationalization -->
+  <link rel="alternate" hreflang="tr-TR" href="https://zerotools.dev/">
+  <link rel="alternate" hreflang="en-US" href="https://zerotools.dev/en/">
+  <link rel="alternate" hreflang="x-default" href="https://zerotools.dev/">
+  
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="/manifest.json">
+  
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "ZeroTools",
+    "url": "https://zerotools.dev",
+    "description": "Privacy-first online tools platform",
+    "publisher": {
+      "@type": "Organization",
+      "name": "ZeroTools Platform",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://zerotools.dev/logo.svg"
+      }
+    },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://zerotools.dev/search?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+  
+  <!-- Umami Analytics (privacy-focused, self-hosted) -->
+  <script async defer data-website-id="zerotools" src="https://analytics.zerotools.dev/script.js" data-domains="zerotools.dev"></script>
+</head>
+<body class="bg-secondary-50">
+  <div id="app">
+    <!-- Header -->
+    <header class="main-header">
+      <div class="container">
+        <div class="flex items-center justify-between py-4">
+          <!-- Logo -->
+          <a href="/" class="flex items-center gap-2 text-2xl font-bold text-primary-600" aria-label="ZeroTools Ana Sayfa">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect width="32" height="32" rx="8" fill="#2563eb"/>
+              <path d="M8 16L14 22L24 10" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>ZeroTools</span>
+          </a>
+          
+          <!-- Nav -->
+          <nav aria-label="Ana menü">
+            <ul class="hidden md:flex items-center gap-6">
+              <li><a href="#finance" class="text-secondary-600 hover:text-primary-600 font-medium transition-colors">Finans</a></li>
+              <li><a href="#pdf" class="text-secondary-600 hover:text-primary-600 font-medium transition-colors">PDF</a></li>
+              <li><a href="#image" class="text-secondary-600 hover:text-primary-600 font-medium transition-colors">Görsel</a></li>
+              <li><a href="#dev" class="text-secondary-600 hover:text-primary-600 font-medium transition-colors">Geliştirici</a></li>
+            </ul>
+          </nav>
+          
+          <!-- Privacy Badge -->
+          <div class="hidden sm:flex privacy-badge" title="Verileriniz asla sunucularımıza gönderilmez">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+              <path d="M8 0L1 3v5c0 5.25 3.67 10.17 7 11 3.33-.83 7-5.75 7-11V3L8 0z"/>
+            </svg>
+            <span>Zero Server</span>
+          </div>
+          
+          <!-- Mobile Menu Button -->
+          <button type="button" id="mobileMenuBtn" class="md:hidden p-2" aria-label="Menüyü aç" aria-expanded="false" aria-controls="mobileMenu">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <line x1="3" y1="6" x2="21" y2="6"/>
+              <line x1="3" y1="12" x2="21" y2="12"/>
+              <line x1="3" y1="18" x2="21" y2="18"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+      
+      <!-- Mobile Menu -->
+      <div id="mobileMenu" class="hidden md:hidden border-t border-gray-200" hidden>
+        <nav class="container py-4" aria-label="Mobil menü">
+          <ul class="space-y-3">
+            <li><a href="#finance" class="block py-2 text-secondary-600 hover:text-primary-600 font-medium">Finans Araçları</a></li>
+            <li><a href="#pdf" class="block py-2 text-secondary-600 hover:text-primary-600 font-medium">PDF Araçları</a></li>
+            <li><a href="#image" class="block py-2 text-secondary-600 hover:text-primary-600 font-medium">Görsel Araçları</a></li>
+            <li><a href="#dev" class="block py-2 text-secondary-600 hover:text-primary-600 font-medium">Geliştirici Araçları</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Hero Section -->
+      <section class="bg-white border-b">
+        <div class="container py-16 md:py-24">
+          <div class="max-w-3xl mx-auto text-center">
+            <h1 class="text-3xl md:text-5xl font-bold text-gray-900 mb-6">
+              Verileriniz <span class="text-primary-600">Tarayıcınızda</span> Kalır
+            </h1>
+            <p class="text-lg md:text-xl text-secondary-500 mb-8 max-w-2xl mx-auto">
+              Ücretsiz PDF birleştirme, konut kredi hesaplama, görsel sıkıştırma ve daha fazlası. 
+              Sunucularımıza hiçbir veri gönderilmez.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+              <a href="#pdf" class="btn btn-primary text-base px-8 py-3">
+                PDF Araçları
+              </a>
+              <a href="#finance" class="btn btn-secondary text-base px-8 py-3">
+                Finans Araçları
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Tool Categories -->
+      <div class="container py-12">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <!-- Main Tool Grid -->
+          <div class="lg:col-span-2 space-y-12">
+            
+            <!-- PDF Tools -->
+            <section id="pdf" class="scroll-mt-24">
+              <div class="flex items-center gap-3 mb-6">
+                <span class="text-3xl" aria-hidden="true">📄</span>
+                <div>
+                  <h2 class="text-xl font-bold text-gray-900">PDF Araçları</h2>
+                  <p class="text-sm text-secondary-500">Tarayıcınızda PDF düzenleme</p>
+                </div>
+              </div>
+              
+              <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <a href="/src/tools/pdf/merge/" class="card card-body hover:shadow-card-hover transition-shadow group">
+                  <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                    <span class="text-2xl">🔄</span>
+                  </div>
+                  <h3 class="font-semibold text-gray-900 mb-1">PDF Birleştirme</h3>
+                  <p class="text-sm text-secondary-500">Birden fazla PDF'i tek dosyada birleştirin</p>
+                  <span class="inline-flex items-center text-sm text-primary-600 font-medium mt-3">
+                    Kullan →
+                  </span>
+                </a>
+                
+                <a href="/src/tools/pdf/compress/" class="card card-body hover:shadow-card-hover transition-shadow group">
+                  <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                    <span class="text-2xl">🗜️</span>
+                  </div>
+                  <h3 class="font-semibold text-gray-900 mb-1">PDF Sıkıştırma</h3>
+                  <p class="text-sm text-secondary-500">PDF dosya boyutunu küçültün</p>
+                  <span class="inline-flex items-center text-sm text-primary-600 font-medium mt-3">
+                    Kullan →
+                  </span>
+                </a>
+                
+                <a href="/src/tools/pdf/split/" class="card card-body hover:shadow-card-hover transition-shadow group">
+                  <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                    <span class="text-2xl">✂️</span>
+                  </div>
+                  <h3 class="font-semibold text-gray-900 mb-1">PDF Bölme</h3>
+                  <p class="text-sm text-secondary-500">PDF'i sayfalara ayırın</p>
+                  <span class="inline-flex items-center text-sm text-primary-600 font-medium mt-3">
+                    Kullan →
+                  </span>
+                </a>
+              </div>
+            </section>
+            
+            <!-- Finance Tools -->
+            <section id="finance" class="scroll-mt-24">
+              <div class="flex items-center gap-3 mb-6">
+                <span class="text-3xl" aria-hidden="true">💰</span>
+                <div>
+                  <h2 class="text-xl font-bold text-gray-900">Finans Araçları</h2>
+                  <p class="text-sm text-secondary-500">Türkiye'ye özel hesaplamalar</p>
+                </div>
+              </div>
+              
+              <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <a href="/src/tools/finance/mortgage-tr/" class="card card-body hover:shadow-card-hover transition-shadow group">
+                  <div class="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                    <span class="text-2xl">🏠</span>
+                  </div>
+                  <h3 class="font-semibold text-gray-900 mb-1">Konut Kredisi</h3>
+                  <p class="text-sm text-secondary-500">KKDF & BSMV dahil hesaplama</p>
+                  <span class="inline-flex items-center text-sm text-primary-600 font-medium mt-3">
+                    Kullan →
+                  </span>
+                </a>
+                
+                <a href="/src/tools/finance/compound-interest/" class="card card-body hover:shadow-card-hover transition-shadow group">
+                  <div class="w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                    <span class="text-2xl">📈</span>
+                  </div>
+                  <h3 class="font-semibold text-gray-900 mb-1">Bileşik Faiz</h3>
+                  <p class="text-sm text-secondary-500">Yatırım getirisi hesaplama</p>
+                  <span class="inline-flex items-center text-sm text-primary-600 font-medium mt-3">
+                    Kullan →
+                  </span>
+                </a>
+                
+                <a href="/src/tools/finance/cloud-cost/" class="card card-body hover:shadow-card-hover transition-shadow group">
+                  <div class="w-12 h-12 bg-sky-100 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                    <span class="text-2xl">☁️</span>
+                  </div>
+                  <h3 class="font-semibold text-gray-900 mb-1">Bulut Maliyet</h3>
+                  <p class="text-sm text-secondary-500">AWS/GCP/Azure maliyet kıyaslama</p>
+                  <span class="inline-flex items-center text-sm text-primary-600 font-medium mt-3">
+                    Kullan →
+                  </span>
+                </a>
+              </div>
+            </section>
+            
+            <!-- Image Tools -->
+            <section id="image" class="scroll-mt-24">
+              <div class="flex items-center gap-3 mb-6">
+                <span class="text-3xl" aria-hidden="true">🖼️</span>
+                <div>
+                  <h2 class="text-xl font-bold text-gray-900">Görsel Araçları</h2>
+                  <p class="text-sm text-secondary-500">Client-side görsel işleme</p>
+                </div>
+              </div>
+              
+              <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <a href="/src/tools/image/compress/" class="card card-body hover:shadow-card-hover transition-shadow group">
+                  <div class="w-12 h-12 bg-rose-100 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                    <span class="text-2xl">🗜️</span>
+                  </div>
+                  <h3 class="font-semibold text-gray-900 mb-1">Görsel Sıkıştırma</h3>
+                  <p class="text-sm text-secondary-500">WebP/AVIF formatında optimize et</p>
+                  <span class="inline-flex items-center text-sm text-primary-600 font-medium mt-3">
+                    Kullan →
+                  </span>
+                </a>
+                
+                <a href="/src/tools/image/convert/" class="card card-body hover:shadow-card-hover transition-shadow group">
+                  <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                    <span class="text-2xl">🔄</span>
+                  </div>
+                  <h3 class="font-semibold text-gray-900 mb-1">Format Dönüştürme</h3>
+                  <p class="text-sm text-secondary-500">JPEG, PNG, WebP, AVIF arası</p>
+                  <span class="inline-flex items-center text-sm text-primary-600 font-medium mt-3">
+                    Kullan →
+                  </span>
+                </a>
+              </div>
+            </section>
+            
+            <!-- Developer Tools -->
+            <section id="dev" class="scroll-mt-24">
+              <div class="flex items-center gap-3 mb-6">
+                <span class="text-3xl" aria-hidden="true">💻</span>
+                <div>
+                  <h2 class="text-xl font-bold text-gray-900">Geliştirici Araçları</h2>
+                  <p class="text-sm text-secondary-500">Günlük geliştirme yardımcıları</p>
+                </div>
+              </div>
+              
+              <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <a href="/src/tools/dev/json-formatter/" class="card card-body hover:shadow-card-hover transition-shadow group">
+                  <div class="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                    <span class="text-2xl">{ }</span>
+                  </div>
+                  <h3 class="font-semibold text-gray-900 mb-1">JSON Formatter</h3>
+                  <p class="text-sm text-secondary-500">JSON formatlama ve doğrulama</p>
+                  <span class="inline-flex items-center text-sm text-primary-600 font-medium mt-3">
+                    Kullan →
+                  </span>
+                </a>
+                
+                <a href="/src/tools/dev/regex-tester/" class="card card-body hover:shadow-card-hover transition-shadow group">
+                  <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                    <span class="text-2xl">.*</span>
+                  </div>
+                  <h3 class="font-semibold text-gray-900 mb-1">Regex Tester</h3>
+                  <p class="text-sm text-secondary-500">Regex test ve debug aracı</p>
+                  <span class="inline-flex items-center text-sm text-primary-600 font-medium mt-3">
+                    Kullan →
+                  </span>
+                </a>
+              </div>
+            </section>
+          </div>
+          
+          <!-- Sidebar -->
+          <aside class="lg:col-span-1">
+            <div class="sticky top-24 space-y-6">
+              <!-- Privacy Card -->
+              <div class="card card-body bg-gradient-to-br from-green-50 to-emerald-50 border-green-200">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class="text-2xl">🔒</span>
+                  <h3 class="font-bold text-gray-900">Gizlilik Garantisi</h3>
+                </div>
+                <p class="text-sm text-secondary-600 mb-4">
+                  Tüm araçlar tarayıcınızda çalışır. Verileriniz hiçbir zaman sunucularımıza gönderilmez.
+                </p>
+                <ul class="text-sm space-y-2">
+                  <li class="flex items-center gap-2">
+                    <span class="text-green-500">✓</span>
+                    <span>Zero server processing</span>
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="text-green-500">✓</span>
+                    <span>GDPR & KVKK uyumlu</span>
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="text-green-500">✓</span>
+                    <span>Açık kaynak kodlu</span>
+                  </li>
+                </ul>
+              </div>
+              
+              <!-- Desktop Sidebar Ad -->
+              <div class="ad-placeholder ad-sidebar" style="aspect-ratio: 336/280;">
+                <span>Reklam Alanı (336x280)</span>
+              </div>
+              
+              <!-- Stats -->
+              <div class="card card-body">
+                <h3 class="font-semibold text-gray-900 mb-4">Platform İstatistikleri</h3>
+                <dl class="space-y-3">
+                  <div class="flex justify-between">
+                    <dt class="text-sm text-secondary-500">Araç Sayısı</dt>
+                    <dd class="font-medium text-gray-900">8+</dd>
+                  </div>
+                  <div class="flex justify-between">
+                    <dt class="text-sm text-secondary-500">Veri İşlenme</dt>
+                    <dd class="font-medium text-green-600">0%</dd>
+                  </div>
+                  <div class="flex justify-between">
+                    <dt class="text-sm text-secondary-500">Uptime</dt>
+                    <dd class="font-medium text-gray-900">99.9%</dd>
+                  </div>
+                </dl>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-white border-t mt-12">
+      <div class="container py-12">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div class="col-span-2 md:col-span-1">
+            <a href="/" class="flex items-center gap-2 text-xl font-bold text-primary-600 mb-4">
+              <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="32" height="32" rx="8" fill="#2563eb"/>
+                <path d="M8 16L14 22L24 10" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span>ZeroTools</span>
+            </a>
+            <p class="text-sm text-secondary-500">
+              Gizlilik öncelikli, ücretsiz online araçlar platformu.
+            </p>
+          </div>
+          
+          <div>
+            <h4 class="font-semibold text-gray-900 mb-3">Araçlar</h4>
+            <ul class="space-y-2 text-sm">
+              <li><a href="/src/tools/pdf/merge/" class="text-secondary-500 hover:text-primary-600">PDF Birleştirme</a></li>
+              <li><a href="/src/tools/finance/mortgage-tr/" class="text-secondary-500 hover:text-primary-600">Konut Kredisi</a></li>
+              <li><a href="/src/tools/image/compress/" class="text-secondary-500 hover:text-primary-600">Görsel Sıkıştırma</a></li>
+            </ul>
+          </div>
+          
+          <div>
+            <h4 class="font-semibold text-gray-900 mb-3">Yasal</h4>
+            <ul class="space-y-2 text-sm">
+              <li><a href="/privacy" class="text-secondary-500 hover:text-primary-600">Gizlilik Politikası</a></li>
+              <li><a href="/terms" class="text-secondary-500 hover:text-primary-600">Kullanım Koşulları</a></li>
+              <li><a href="/disclaimer" class="text-secondary-500 hover:text-primary-600">Sorumluluk Reddi</a></li>
+            </ul>
+          </div>
+          
+          <div>
+            <h4 class="font-semibold text-gray-900 mb-3">İletişim</h4>
+            <ul class="space-y-2 text-sm">
+              <li><a href="https://github.com/zero-tools" class="text-secondary-500 hover:text-primary-600">GitHub</a></li>
+              <li><a href="/feedback" class="text-secondary-500 hover:text-primary-600">Geri Bildirim</a></li>
+              <li><a href="mailto:hello@zerotools.dev" class="text-secondary-500 hover:text-primary-600">E-posta</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="border-t mt-8 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p class="text-sm text-secondary-500">
+            © 2024 ZeroTools. Tüm hakları saklıdır.
+          </p>
+          <p class="text-sm text-secondary-500">
+            Verileriniz tarayıcınızda kalır. 🔒
+          </p>
+        </div>
+      </div>
+    </footer>
+    
+    <!-- Mobile Anchor Ad -->
+    <div class="ad-anchor" role="complementary" aria-label="Reklam">
+      <div class="h-full flex items-center justify-center">
+        <span class="text-xs text-secondary-400">Reklam (320x50)</span>
+      </div>
+    </div>
+    
+    <!-- Mobile padding for anchor ad -->
+    <div class="h-14 md:hidden" aria-hidden="true"></div>
+  </div>
+  
+  <!-- Main JavaScript - deferred -->
+  <script type="module" src="/src/main.mjs"></script>
+</body>
+</html>

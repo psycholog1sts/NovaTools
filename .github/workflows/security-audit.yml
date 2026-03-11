@@ -1,0 +1,68 @@
+name: Security Audit
+
+on:
+  schedule:
+    # Run every Sunday at 00:00 UTC
+    - cron: '0 0 * * 0'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  security-audit:
+    name: NPM Security Audit
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Run npm audit
+        run: |
+          echo "Running security audit..."
+          npm audit --audit-level=moderate --production
+        continue-on-error: false
+      
+      - name: Check for high severity vulnerabilities
+        run: |
+          OUTPUT=$(npm audit --json --production 2>/dev/null || echo '{"metadata":{"vulnerabilities":{"high":0,"critical":0}}}')
+          HIGH=$(echo $OUTPUT | jq '.metadata.vulnerabilities.high // 0')
+          CRITICAL=$(echo $OUTPUT | jq '.metadata.vulnerabilities.critical // 0')
+          
+          echo "High severity: $HIGH"
+          echo "Critical severity: $CRITICAL"
+          
+          if [ "$HIGH" -gt 0 ] || [ "$CRITICAL" -gt 0 ]; then
+            echo "::error::Found $HIGH high and $CRITICAL critical vulnerabilities"
+            exit 1
+          fi
+          
+          echo "✅ No high or critical vulnerabilities found"
+      
+      - name: Create issue if vulnerabilities found
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issue = {
+              title: '🚨 Security Audit Failed',
+              body: `Security audit detected high or critical vulnerabilities.
+              
+              Run: \`npm audit --production\` locally to see details.
+              
+              Timestamp: ${new Date().toISOString()}`,
+              labels: ['security', 'automated', 'priority-high']
+            };
+            
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ...issue
+            });

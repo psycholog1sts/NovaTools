@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Araç Öner | Yeni Özellik İste | ZeroTools</title>
+  <meta name="description" content="ZeroTools için yeni araç önerin. Form gönderimi ile fikirlerinizi paylaşın. Backend gerektirmez.">
+  <link rel="stylesheet" href="/src/styles/critical.css">
+  <link rel="stylesheet" href="/src/styles/main.css">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="canonical" href="https://zerotools.dev/src/tools/request/">
+</head>
+<body class="bg-secondary-50">
+  <header class="main-header">
+    <div class="container">
+      <div class="flex items-center justify-between py-4">
+        <a href="/" class="flex items-center gap-2 text-xl font-bold text-primary-600">
+          <svg width="28" height="28" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="8" fill="#2563eb"/><path d="M8 16L14 22L24 10" stroke="white" stroke-width="3"/></svg>
+          <span>ZeroTools</span>
+        </a>
+        <div class="privacy-badge">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0L1 3v5c0 5.25 3.67 10.17 7 11 3.33-.83 7-5.75 7-11V3L8 0z"/></svg>
+          <span>Zero Server</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container py-12">
+    <div class="max-w-2xl mx-auto">
+      <article class="card card-body">
+        <header class="mb-8 text-center">
+          <h1 class="text-3xl font-bold text-gray-900 mb-3">Yeni Araç Öner</h1>
+          <p class="text-secondary-500">Kullanmak istediğiniz bir araç mı var? Fikrinizi paylaşın.</p>
+        </header>
+
+        <!-- Formspree Form - Zero Backend -->
+        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="space-y-6" id="toolRequestForm">
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="sr-only">
+          <input type="hidden" name="_subject" value="Yeni Araç Önerisi - ZeroTools">
+          <input type="hidden" name="_next" value="https://zerotools.dev/src/tools/request/thanks.html">
+
+          <div>
+            <label for="email" class="label">E-posta (İsteğe bağlı)</label>
+            <input type="email" id="email" name="email" class="input" placeholder="ornek@email.com">
+          </div>
+
+          <div>
+            <label for="toolName" class="label">Araç Adı <span class="text-red-500">*</span></label>
+            <input type="text" id="toolName" name="tool_name" class="input" placeholder="Örn: Excel'den PDF'e" required minlength="3">
+          </div>
+
+          <div>
+            <label for="category" class="label">Kategori</label>
+            <select id="category" name="category" class="input">
+              <option value="">Seçin...</option>
+              <option value="pdf">PDF Araçları</option>
+              <option value="image">Görsel Araçları</option>
+              <option value="finance">Finans Araçları</option>
+              <option value="dev">Geliştirici Araçları</option>
+              <option value="other">Diğer</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="description" class="label">Açıklama <span class="text-red-500">*</span></label>
+            <textarea id="description" name="description" class="input min-h-[120px]" placeholder="Aracın ne işe yaradığını açıklayın..." required minlength="20" rows="4"></textarea>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <input type="checkbox" id="privacy" name="privacy" class="mt-1 rounded" required>
+            <label for="privacy" class="text-sm text-gray-600">
+              <span class="text-red-500">*</span> Kabul ediyorum
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn-primary w-full py-3">Gönder</button>
+          <p class="text-xs text-gray-500 text-center">Bu form Formspree kullanmaktadır.</p>
+        </form>
+      </article>
+    </div>
+  </main>
+
+  <footer class="bg-white border-t mt-12">
+    <div class="container py-8 text-center">
+      <p class="text-sm text-gray-500">© 2024 ZeroTools</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('toolRequestForm').addEventListener('submit', function(e) {
+      const btn = this.querySelector('button[type="submit"]');
+      btn.disabled = true;
+      btn.textContent = 'Gönderiliyor...';
+    });
+  </script>
+</body>
+</html>

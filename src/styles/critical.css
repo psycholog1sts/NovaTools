@@ -1,0 +1,100 @@
+/**
+ * Critical CSS - Above-fold styles only
+ * Target: < 10KB minified
+ * Loaded inline in <head> to prevent FOUC
+ */
+
+/* Base reset - ultra minimal */
+*,*::before,*::after{box-sizing:border-box;margin:0}
+html{-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4}
+body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+img,picture,video,canvas,svg{display:block;max-width:100%}
+input,button,textarea,select{font:inherit}
+
+/* Critical layout */
+.app{min-height:100vh;display:flex;flex-direction:column}
+.main-header{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid #e5e7eb;box-shadow:0 1px 3px rgba(0,0,0,0.1)}
+.main-content{flex:1}
+
+/* Critical utilities */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.visually-hidden{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden}
+
+/* Loading states */
+.skeleton{background:linear-gradient(90deg,#f0f0f0 25%,#e0e0e0 50%,#f0f0f0 75%);background-size:200% 100%;animation:shimmer 1.5s infinite}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+
+/* Critical components */
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:.5rem 1rem;border-radius:.5rem;font-weight:500;cursor:pointer;transition:all .15s ease;border:1px solid transparent}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.btn-primary{background:#2563eb;color:#fff}
+.btn-primary:hover:not(:disabled){background:#1d4ed8}
+.btn-secondary{background:#fff;color:#374151;border-color:#d1d5db}
+.btn-secondary:hover:not(:disabled){background:#f9fafb}
+
+/* Form basics */
+.input{width:100%;padding:.5rem .75rem;border:1px solid #d1d5db;border-radius:.5rem;outline:none;transition:border-color .15s}
+.input:focus{border-color:#2563eb;box-shadow:0 0 0 3px rgba(37,99,235,0.1)}
+.label{display:block;font-size:.875rem;font-weight:500;color:#374151;margin-bottom:.25rem}
+
+/* Privacy badge */
+.privacy-badge{display:inline-flex;align-items:center;gap:.375rem;font-size:.875rem;color:#059669;background:#d1fae5;padding:.25rem .75rem;border-radius:9999px}
+
+/* Ad placeholders - critical for CLS prevention */
+.ad-placeholder{background:#f3f4f6;display:flex;align-items:center;justify-content:center;font-size:.75rem;color:#9ca3af}
+.ad-sidebar{min-height:280px;width:336px;max-width:100%}
+.ad-anchor{position:fixed;bottom:0;left:0;right:0;height:50px;background:#fff;border-top:1px solid #e5e7eb;z-index:40}
+@media(min-width:1024px){.ad-anchor{display:none}}
+
+/* Container */
+.container{width:100%;max-width:1280px;margin:0 auto;padding:0 1rem}
+@media(min-width:640px){.container{padding:0 1.5rem}}
+@media(min-width:1024px){.container{padding:0 2rem}}
+
+/* Grid basics */
+.grid{display:grid;gap:1rem}
+@media(min-width:768px){.grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(min-width:1024px){.grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+/* Card */
+.card{background:#fff;border-radius:.75rem;box-shadow:0 1px 3px rgba(0,0,0,0.1);border:1px solid #e5e7eb}
+.card-body{padding:1.5rem}
+
+/* Typography */
+.text-2xl{font-size:1.5rem;line-height:2rem;font-weight:700}
+.text-xl{font-size:1.25rem;line-height:1.75rem;font-weight:600}
+.text-lg{font-size:1.125rem;line-height:1.75rem;font-weight:600}
+.text-base{font-size:1rem;line-height:1.5rem}
+.text-sm{font-size:.875rem;line-height:1.25rem}
+.text-xs{font-size:.75rem;line-height:1rem}
+
+/* Colors */
+.text-primary-600{color:#2563eb}
+.text-secondary-600{color:#475569}
+.text-secondary-500{color:#64748b}
+.bg-secondary-50{background:#f8fafc}
+
+/* Spacing */
+.mb-1{margin-bottom:.25rem}
+.mb-2{margin-bottom:.5rem}
+.mb-4{margin-bottom:1rem}
+.mb-6{margin-bottom:1.5rem}
+.mt-4{margin-top:1rem}
+.p-4{padding:1rem}
+.p-6{padding:1.5rem}
+.gap-4{gap:1rem}
+.gap-6{gap:1.5rem}
+
+/* Display */
+.flex{display:flex}
+.hidden{display:none}
+.items-center{align-items:center}
+.justify-between{justify-content:space-between}
+.flex-1{flex:1}
+.gap-2{gap:.5rem}
+
+/* Focus visible for accessibility */
+:focus-visible{outline:2px solid #2563eb;outline-offset:2px}
+
+/* Reduced motion */
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}

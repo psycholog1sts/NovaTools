@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  
+  <!-- Preconnect for Performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://analytics.zerotools.dev">
+  
+  <!-- Critical CSS Inline -->
+  <link rel="stylesheet" href="/src/styles/critical.css">
+  <link rel="stylesheet" href="/src/styles/main.css">
+  
+  <!-- Fonts -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/icons/icon-180x180.png">
+  
+  <!-- SEO Meta -->
+  <title>PDF Birleştirme | Birden Fazla PDF'i Tek Dosyada Birleştir | ZeroTools</title>
+  <meta name="description" content="Ücretsiz PDF birleştirme aracı. 20 dosyaya kadar, 50MB limit. Dosyalarınız tarayıcınızda işlenir, hiçbir sunucuya yüklenmez. Hemen birleştirin.">
+  <meta name="keywords" content="pdf birleştirme, pdf merge, combine pdf, pdf birleştir, online pdf tools, ücretsiz pdf">
+  <meta name="author" content="ZeroTools Platform">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+  <meta name="theme-color" content="#2563eb">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="PDF Birleştirme | ZeroTools">
+  <meta property="og:description" content="Birden fazla PDF dosyasını tek bir dosyada birleştirin. 20 dosya, 50MB limit. Zero Server - verileriniz asla dışarı çıkmaz.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://zerotools.dev/src/tools/pdf/merge/">
+  <meta property="og:image" content="https://zerotools.dev/og-pdf-merge.png">
+  <meta property="og:locale" content="tr_TR">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="PDF Birleştirme | ZeroTools">
+  <meta name="twitter:description" content="PDF dosyalarınızı güvenle birleştirin. Tarayıcınızda işlenir, sunucuya yüklenmez.">
+  
+  <!-- Canonical -->
+  <link rel="canonical" href="https://zerotools.dev/src/tools/pdf/merge/">
+  
+  <!-- PWA -->
+  <link rel="manifest" href="/manifest.json">
+  
+  <!-- Schema.org - Injected by JS, but base structure for noscript -->
+  <script type="application/ld+json" id="base-schema">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "PDF Birleştirme",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Any",
+    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "TRY"}
+  }
+  </script>
+</head>
+<body class="bg-secondary-50">
+  <!-- Skip to main content for accessibility -->
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-primary-600 focus:text-white focus:px-4 focus:py-2 focus:rounded">
+    Ana içeriğe atla
+  </a>
+
+  <!-- Header -->
+  <header class="main-header" role="banner">
+    <div class="container">
+      <div class="flex items-center justify-between py-4">
+        <!-- Logo -->
+        <a href="/" class="flex items-center gap-2 text-xl font-bold text-primary-600" aria-label="ZeroTools Ana Sayfa">
+          <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="32" height="32" rx="8" fill="#2563eb"/>
+            <path d="M8 16L14 22L24 10" stroke="white" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+          <span>ZeroTools</span>
+        </a>
+        
+        <!-- Privacy Badge -->
+        <div class="privacy-badge" role="status" aria-label="Güvenlik durumu">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 0L1 3v5c0 5.25 3.67 10.17 7 11 3.33-.83 7-5.75 7-11V3L8 0z"/>
+          </svg>
+          <span>Zero Server</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Breadcrumb -->
+  <nav aria-label="Breadcrumb" class="container py-4">
+    <ol class="flex items-center gap-2 text-sm flex-wrap" itemscope itemtype="https://schema.org/BreadcrumbList">
+      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a href="/" class="text-secondary-500 hover:text-primary-600" itemprop="item">
+          <span itemprop="name">Ana Sayfa</span>
+        </a>
+        <meta itemprop="position" content="1">
+      </li>
+      <li class="text-secondary-400" aria-hidden="true">/</li>
+      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a href="/#pdf" class="text-secondary-500 hover:text-primary-600" itemprop="item">
+          <span itemprop="name">PDF Araçları</span>
+        </a>
+        <meta itemprop="position" content="2">
+      </li>
+      <li class="text-secondary-400" aria-hidden="true">/</li>
+      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <span class="text-gray-900 font-medium" itemprop="name">PDF Birleştirme</span>
+        <meta itemprop="position" content="3">
+      </li>
+    </ol>
+  </nav>
+
+  <!-- Main Content -->
+  <main id="main-content" class="container pb-12" role="main">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      
+      <!-- Tool Interface -->
+      <div class="lg:col-span-2 space-y-6">
+        
+        <!-- Tool Card -->
+        <article class="card card-body" aria-labelledby="tool-title">
+          <header class="mb-6">
+            <h1 id="tool-title" class="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
+              PDF Birleştirme
+            </h1>
+            <p class="text-secondary-500 text-lg">
+              Birden fazla PDF dosyasını tek bir dosyada birleştirin. 
+              <span class="inline-flex items-center gap-1 text-green-600 font-medium">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                  <path d="M8 0L1 3v5c0 5.25 3.67 10.17 7 11 3.33-.83 7-5.75 7-11V3L8 0z"/>
+                </svg>
+                Güvenli ve Gizli
+              </span>
+            </p>
+          </header>
+          
+          <!-- Safe & Private Badge -->
+          <div class="flex items-center gap-3 p-4 bg-green-50 border border-green-200 rounded-lg mb-6" role="region" aria-label="Gizlilik bilgisi">
+            <div class="flex-shrink-0 w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+              <svg width="20" height="20" viewBox="0 0 16 16" fill="#059669" aria-hidden="true">
+                <path d="M8 0L1 3v5c0 5.25 3.67 10.17 7 11 3.33-.83 7-5.75 7-11V3L8 0z"/>
+              </svg>
+            </div>
+            <div>
+              <p class="font-semibold text-green-900">Safe & Private</p>
+              <p class="text-sm text-green-700">Dosyalarınız asla sunucularımıza gönderilmez. Tüm işlemler tarayıcınızda gerçekleşir.</p>
+            </div>
+          </div>
+
+          <!-- File Upload Area -->
+          <section aria-labelledby="upload-heading">
+            <h2 id="upload-heading" class="sr-only">Dosya yükleme</h2>
+            
+            <div 
+              id="dropzone" 
+              class="border-2 border-dashed border-gray-300 rounded-xl p-8 text-center transition-all hover:border-primary-400 hover:bg-blue-50/50 focus-within:border-primary-500 focus-within:ring-2 focus-within:ring-primary-200"
+              role="region" 
+              aria-label="Dosya yükleme alanı"
+            >
+              <input 
+                type="file" 
+                id="fileInput" 
+                accept=".pdf,application/pdf" 
+                multiple 
+                class="sr-only"
+                aria-describedby="file-help file-limits"
+              >
+              
+              <div class="pointer-events-none" aria-hidden="true">
+                <svg class="mx-auto h-16 w-16 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48">
+                  <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              
+              <label 
+                for="fileInput" 
+                class="mt-4 inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 cursor-pointer transition-colors"
+                role="button"
+                tabindex="0"
+              >
+                PDF Dosyaları Seç
+              </label>
+              
+              <p class="mt-2 text-sm text-gray-500">veya dosyaları buraya sürükleyin</p>
+              
+              <div id="file-help" class="mt-4 flex items-center justify-center gap-4 text-xs text-gray-400">
+                <span id="file-limits">En fazla 20 dosya</span>
+                <span>•</span>
+                <span>Toplam 50 MB</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- File List -->
+          <section id="fileListSection" class="hidden mt-6" aria-labelledby="filelist-heading">
+            <h2 id="filelist-heading" class="text-lg font-semibold text-gray-900 mb-3">
+              Yüklenen Dosyalar <span id="fileCount" class="text-sm font-normal text-gray-500">(0)</span>
+            </h2>
+            
+            <div 
+              id="fileList" 
+              class="space-y-2 max-h-64 overflow-y-auto custom-scrollbar"
+              role="list"
+              aria-label="Yüklenen PDF dosyaları"
+            >
+              <!-- Files will be inserted here -->
+            </div>
+            
+            <!-- Sort Options -->
+            <div class="mt-4 flex items-center gap-4">
+              <label for="sortOrder" class="text-sm font-medium text-gray-700">Sıralama:</label>
+              <select 
+                id="sortOrder" 
+                class="input text-sm py-1.5"
+                aria-label="Dosya sıralama düzeni"
+              >
+                <option value="upload">Yüklenme Sırası</option>
+                <option value="name">Dosya Adı (A-Z)</option>
+                <option value="size">Boyut (Büyükten Küçüğe)</option>
+                <option value="manual">Manuel Sıralama</option>
+              </select>
+            </div>
+          </section>
+
+          <!-- Output Settings -->
+          <section class="mt-6" aria-labelledby="output-heading">
+            <h2 id="output-heading" class="text-lg font-semibold text-gray-900 mb-3">Çıktı Ayarları</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label for="outputName" class="label">Dosya Adı</label>
+                <input 
+                  type="text" 
+                  id="outputName" 
+                  class="input" 
+                  placeholder="birlesik-pdf"
+                  value="birlesik-pdf"
+                  maxlength="100"
+                  aria-describedby="outputName-help"
+                >
+                <p id="outputName-help" class="mt-1 text-xs text-gray-500">.pdf uzantısı otomatik eklenir</p>
+              </div>
+              
+              <div>
+                <label class="label">Optimizasyon</label>
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input 
+                    type="checkbox" 
+                    id="optimizeOutput" 
+                    class="rounded border-gray-300 text-primary-600 focus:ring-primary-500"
+                    checked
+                  >
+                  <span class="text-sm text-gray-700">Çıktıyı optimize et (daha küçük dosya)</span>
+                </label>
+              </div>
+            </div>
+          </section>
+
+          <!-- Action Buttons -->
+          <div class="mt-6 flex flex-col sm:flex-row gap-3">
+            <button 
+              id="mergeBtn" 
+              class="btn btn-primary flex-1 py-3 text-base disabled:opacity-50 disabled:cursor-not-allowed"
+              disabled
+              aria-live="polite"
+            >
+              <span id="mergeBtnText">PDF'leri Birleştir</span>
+              <span id="mergeBtnLoading" class="hidden flex items-center justify-center gap-2">
+                <svg class="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                İşleniyor...
+              </span>
+            </button>
+            
+            <button 
+              id="clearBtn" 
+              class="btn btn-secondary py-3 px-6"
+              type="button"
+            >
+              Temizle
+            </button>
+          </div>
+
+          <!-- Progress Section -->
+          <section id="progressSection" class="hidden mt-6" aria-labelledby="progress-heading" aria-live="polite">
+            <h2 id="progress-heading" class="sr-only">İşlem durumu</h2>
+            
+            <div class="flex justify-between text-sm mb-2">
+              <span id="progressText">Hazırlanıyor...</span>
+              <span id="progressPercent" class="font-medium">0%</span>
+            </div>
+            
+            <div 
+              class="w-full bg-gray-200 rounded-full h-2.5 overflow-hidden"
+              role="progressbar"
+              aria-valuenow="0"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              aria-label="Birleştirme ilerlemesi"
+            >
+              <div 
+                id="progressBar" 
+                class="bg-primary-600 h-2.5 rounded-full transition-all duration-300 ease-out"
+                style="width: 0%"
+              ></div>
+            </div>
+            
+            <p id="progressDetail" class="mt-2 text-xs text-gray-500"></p>
+          </section>
+
+          <!-- Download Section -->
+          <section id="downloadSection" class="hidden mt-6 p-4 bg-green-50 border border-green-200 rounded-lg" aria-labelledby="download-heading">
+            <h2 id="download-heading" class="sr-only">İndirme</h2>
+            
+            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+              <div class="flex items-center gap-3 flex-1">
+                <div class="flex-shrink-0 w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2" aria-hidden="true">
+                    <path d="M5 13l4 4L19 7"/>
+                  </svg>
+                </div>
+                <div>
+                  <p class="font-semibold text-green-900">Birleştirme tamamlandı!</p>
+                  <p id="resultInfo" class="text-sm text-green-700">Dosyanız indirilmeye hazır</p>
+                </div>
+              </div>
+              
+              <a 
+                id="downloadLink" 
+                href="#" 
+                download 
+                class="btn btn-primary w-full sm:w-auto flex items-center justify-center gap-2"
+              >
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                </svg>
+                PDF İndir
+              </a>
+            </div>
+          </section>
+
+          <!-- Error Section -->
+          <section id="errorSection" class="hidden mt-6 p-4 bg-red-50 border border-red-200 rounded-lg" role="alert" aria-labelledby="error-heading">
+            <h2 id="error-heading" class="sr-only">Hata</h2>
+            <div class="flex items-start gap-3">
+              <svg class="flex-shrink-0 w-5 h-5 text-red-500 mt-0.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
+              </svg>
+              <div>
+                <p class="font-medium text-red-900">Bir hata oluştu</p>
+                <p id="errorMessage" class="text-sm text-red-700 mt-1"></p>
+              </div>
+            </div>
+          </section>
+        </article>
+
+        <!-- Content Scaffolding for SEO (noscript fallback) -->
+        <noscript>
+          <article class="card card-body mt-6">
+            <h2>PDF Birleştirme Hakkında</h2>
+            <p>
+              <strong>PDF birleştirme</strong> aracımız ile birden fazla PDF dosyasını hızlı ve güvenli bir şekilde 
+              tek bir dosyada birleştirebilirsiniz. Sürükle-bırak özelliği sayesinde kolayca dosya yükleyin, 
+              sıralamayı ayarlayın ve saniyeler içinde birleştirilmiş PDF'inizi indirin.
+            </p>
+            
+            <h3>PDF Birleştirme Nasıl Çalışır?</h3>
+            <p>
+              PDF (Portable Document Format), Adobe tarafından geliştirilmiş ve günümüzde ISO 32000 standardı ile 
+              yönetilen bir dosya formatıdır. Birden fazla PDF dosyasını birleştirmek, teknik olarak sayfaların 
+              ardışık olarak yeni bir PDF belgesine eklenmesi işlemidir.
+            </p>
+            
+            <h3>Birleştirme Süreci</h3>
+            <ol>
+              <li><strong>Dosya Yükleme:</strong> PDF dosyalarınızı tarayıcıya yükleyin (en fazla 20 dosya, toplam 50MB)</li>
+              <li><strong>Sıralama:</strong> Dosyaları istediğiniz sırada düzenleyin (sürükle-bırak ile)</li>
+              <li><strong>Birleştirme:</strong> "PDF'leri Birleştir" butonuna tıklayın</li>
+              <li><strong>İndirme:</strong> Birleştirilmiş dosyayı anında indirin</li>
+            </ol>
+
+            <h3>Sıkça Sorulan Sorular</h3>
+            
+            <h4>PDF birleştirme güvenli mi?</h4>
+            <p>
+              Evet, tamamen güvenli. Tüm işlemler tarayıcınızda (istemci tarafında) gerçekleşir. 
+              Dosyalarınız hiçbir zaman sunucularımıza yüklenmez veya kaydedilmez. 
+              İşlem tamamlandıktan sonra dosyalar otomatik olarak bellekten silinir.
+            </p>
+
+            <h4>En fazla kaç PDF birleştirebilirim?</h4>
+            <p>
+              Tek seferde en fazla 20 PDF dosyasını birleştirebilirsiniz. Toplam dosya boyutu 50MB'ı geçemez.
+            </p>
+
+            <h4>Form içeren PDF'leri birleştirebilir miyim?</h4>
+            <p>
+              Evet, form alanları ve etkileşimli içerikler korunarak birleştirilir.
+            </p>
+
+            <footer>
+              <p>
+                <strong>Gizlilik Notu:</strong> Bu araç tamamen tarayıcınızda çalışır. 
+                Dosyalarınız hiçbir sunucuya yüklenmez ve işlenmez.
+              </p>
+            </footer>
+          </article>
+        </noscript>
+
+        <!-- FAQ Schema Section -->
+        <article class="card card-body" aria-labelledby="faq-heading">
+          <h2 id="faq-heading" class="text-xl font-bold text-gray-900 mb-4">Sıkça Sorulan Sorular</h2>
+          
+          <div class="space-y-4" itemscope itemtype="https://schema.org/FAQPage">
+            
+            <details class="group" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+              <summary class="flex justify-between items-center cursor-pointer list-none font-medium text-gray-900 hover:text-primary-600" itemprop="name">
+                PDF birleştirme güvenli mi?
+                <span class="transition group-open:rotate-180">
+                  <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+                </span>
+              </summary>
+              <div class="text-gray-600 mt-3 group-open:animate-fadeIn" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                <p itemprop="text">Evet, tamamen güvenli. Tüm işlemler tarayıcınızda gerçekleşir. Dosyalarınız hiçbir zaman sunucularımıza yüklenmez veya kaydedilmez. İşlem tamamlandıktan sonra dosyalar otomatik olarak bellekten silinir. Banka düzeyinde güvenlik için SSL/TLS şifreleme kullanıyoruz.</p>
+              </div>
+            </details>
+
+            <details class="group" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+              <summary class="flex justify-between items-center cursor-pointer list-none font-medium text-gray-900 hover:text-primary-600" itemprop="name">
+                En fazla kaç PDF birleştirebilirim?
+                <span class="transition group-open:rotate-180">
+                  <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+                </span>
+              </summary>
+              <div class="text-gray-600 mt-3 group-open:animate-fadeIn" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                <p itemprop="text">Tek seferde en fazla 20 PDF dosyasını birleştirebilirsiniz. Toplam dosya boyutu 50MB'ı geçemez. Daha fazla dosya için işlemi gruplar halinde yapabilir veya PDF Sıkıştırma aracımızı kullanarak dosya boyutlarını küçültebilirsiniz.</p>
+              </div>
+            </details>
+
+            <details class="group" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+              <summary class="flex justify-between items-center cursor-pointer list-none font-medium text-gray-900 hover:text-primary-600" itemprop="name">
+                Form içeren PDF'leri birleştirebilir miyim?
+                <span class="transition group-open:rotate-180">
+                  <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+                </span>
+              </summary>
+              <div class="text-gray-600 mt-3 group-open:animate-fadeIn" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                <p itemprop="text">Evet, form alanları ve etkileşimli içerikler korunarak birleştirilir. Ancak aynı isimli form alanları çakışabilir, bu durumda son eklenen dosyanın değerleri geçerli olur. Önemli formları birleştirmeden önce yedeklemenizi öneririz.</p>
+              </div>
+            </details>
+
+            <details class="group" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+              <summary class="flex justify-between items-center cursor-pointer list-none font-medium text-gray-900 hover:text-primary-600" itemprop="name">
+                Parola korumalı PDF'leri birleştirebilir miyim?
+                <span class="transition group-open:rotate-180">
+                  <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+                </span>
+              </summary>
+              <div class="text-gray-600 mt-3 group-open:animate-fadeIn" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                <p itemprop="text">Parola korumalı PDF'leri birleştirmek için önce şifreyi kaldırmanız gerekir. Aracımız şifre korumalı dosyaları açamaz. Şifreyi kaldırdıktan sonra birleştirme işlemini yapabilirsiniz.</p>
+              </div>
+            </details>
+
+          </div>
+        </article>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="lg:col-span-1" role="complementary" aria-label="Yan panel">
+        <div class="sticky top-24 space-y-6">
+          
+          <!-- Medium Rectangle Ad Skeleton - Prevents CLS -->
+          <div 
+            class="ad-container w-full bg-gray-100 rounded-lg flex flex-col items-center justify-center min-h-[280px] relative overflow-hidden"
+            style="aspect-ratio: 336/280;"
+            role="region"
+            aria-label="Reklam alanı"
+          >
+            <!-- Skeleton Loader -->
+            <div class="absolute inset-0 skeleton animate-pulse" aria-hidden="true"></div>
+            <div class="relative z-10 text-center p-4">
+              <p class="text-sm text-gray-400 font-medium">Reklam Alanı</p>
+              <p class="text-xs text-gray-300 mt-1">336 × 280</p>
+            </div>
+            <!-- Ad will be injected here -->
+            <div id="ad-sidebar" class="absolute inset-0 flex items-center justify-center"></div>
+          </div>
+
+          <!-- Tool Stats -->
+          <article class="card card-body">
+            <h3 class="font-semibold text-gray-900 mb-4">Araç Özellikleri</h3>
+            <dl class="space-y-3">
+              <div class="flex justify-between">
+                <dt class="text-sm text-gray-500">Maks. Dosya</dt>
+                <dd class="text-sm font-medium text-gray-900">20 PDF</dd>
+              </div>
+              <div class="flex justify-between">
+                <dt class="text-sm text-gray-500">Maks. Boyut</dt>
+                <dd class="text-sm font-medium text-gray-900">50 MB</dd>
+              </div>
+              <div class="flex justify-between">
+                <dt class="text-sm text-gray-500">İşlem Yeri</dt>
+                <dd class="text-sm font-medium text-green-600">Tarayıcı</dd>
+              </div>
+              <div class="flex justify-between">
+                <dt class="text-sm text-gray-500">Veri Saklama</dt>
+                <dd class="text-sm font-medium text-green-600">Yok</dd>
+              </div>
+            </dl>
+          </article>
+
+          <!-- Related Tools -->
+          <nav aria-label="İlgili araçlar">
+            <article class="card card-body">
+              <h3 class="font-semibold text-gray-900 mb-4">İlgili Araçlar</h3>
+              <ul class="space-y-3">
+                <li>
+                  <a 
+                    href="/src/tools/pdf/compress/" 
+                    class="flex items-center gap-3 p-2 -mx-2 rounded-lg hover:bg-gray-50 transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500"
+                  >
+                    <span class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center text-xl" aria-hidden="true">🗜️</span>
+                    <div>
+                      <p class="font-medium text-gray-900">PDF Sıkıştırma</p>
+                      <p class="text-sm text-gray-500">Dosya boyutunu küçült</p>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a 
+                    href="/src/tools/pdf/split/" 
+                    class="flex items-center gap-3 p-2 -mx-2 rounded-lg hover:bg-gray-50 transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500"
+                  >
+                    <span class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center text-xl" aria-hidden="true">✂️</span>
+                    <div>
+                      <p class="font-medium text-gray-900">PDF Bölme</p>
+                      <p class="text-sm text-gray-500">Sayfaları ayır</p>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </article>
+          </nav>
+
+          <!-- Privacy Info Card -->
+          <article class="card card-body bg-gradient-to-br from-green-50 to-emerald-50 border-green-200">
+            <div class="flex items-center gap-2 mb-3">
+              <svg class="w-5 h-5 text-green-600" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                <path d="M8 0L1 3v5c0 5.25 3.67 10.17 7 11 3.33-.83 7-5.75 7-11V3L8 0z"/>
+              </svg>
+              <h3 class="font-bold text-gray-900">Gizlilik Garantisi</h3>
+            </div>
+            <p class="text-sm text-gray-600 mb-3">
+              Tüm işlemler tarayıcınızda gerçekleşir. Dosyalarınız asla sunucularımıza gönderilmez.
+            </p>
+            <ul class="text-sm space-y-1">
+              <li class="flex items-center gap-2">
+                <span class="text-green-500">✓</span>
+                <span>Zero server processing</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-green-500">✓</span>
+                <span>GDPR & KVKK uyumlu</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-green-500">✓</span>
+                <span>Anlık bellek temizliği</span>
+              </li>
+            </ul>
+          </article>
+
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- Mobile Anchor Ad - Fixed Bottom -->
+  <div 
+    id="ad-anchor"
+    class="fixed bottom-0 left-0 right-0 bg-gray-100 border-t border-gray-200 h-[50px] flex items-center justify-center z-40 lg:hidden"
+    role="complementary"
+    aria-label="Mobil reklam"
+  >
+    <!-- Skeleton for CLS prevention -->
+    <div class="absolute inset-0 skeleton animate-pulse" aria-hidden="true"></div>
+    <span class="relative z-10 text-xs text-gray-400">Reklam (320×50)</span>
+  </div>
+  
+  <!-- Spacer for mobile anchor ad -->
+  <div class="h-[50px] lg:hidden" aria-hidden="true"></div>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t mt-12" role="contentinfo">
+    <div class="container py-8">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-sm text-gray-500">
+          © 2024 ZeroTools. Tüm hakları saklıdır.
+        </p>
+        <p class="text-sm text-gray-500">
+          Verileriniz tarayıcınızda kalır. 🔒
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Main Logic -->
+  <script type="module" src="./logic.mjs"></script>
+</body>
+</html>

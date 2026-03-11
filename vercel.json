@@ -1,0 +1,358 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "version": 2,
+  "name": "zero-tools-platform",
+  "regions": ["iad1", "fra1"],
+  
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"
+      }
+    }
+  ],
+
+  "routes": [
+    {
+      "src": "/sitemap-index.xml",
+      "dest": "/sitemap-index.xml",
+      "headers": {
+        "Content-Type": "application/xml",
+        "Cache-Control": "public, max-age=86400"
+      }
+    },
+    {
+      "src": "/sitemap-(?P<type>[^/]+)\\.xml",
+      "dest": "/sitemap-$type.xml",
+      "headers": {
+        "Content-Type": "application/xml",
+        "Cache-Control": "public, max-age=86400"
+      }
+    },
+    {
+      "src": "/robots.txt",
+      "dest": "/robots.txt",
+      "headers": {
+        "Content-Type": "text/plain",
+        "Cache-Control": "public, max-age=86400"
+      }
+    },
+    {
+      "src": "/manifest.json",
+      "dest": "/manifest.json",
+      "headers": {
+        "Content-Type": "application/json",
+        "Cache-Control": "public, max-age=86400"
+      }
+    },
+
+    {
+      "src": "/wp-admin/(.*)",
+      "status": 410
+    },
+    {
+      "src": "/wp-content/(.*)",
+      "status": 410
+    },
+    {
+      "src": "/wp-includes/(.*)",
+      "status": 410
+    },
+    {
+      "src": "/xmlrpc.php",
+      "status": 410
+    },
+    {
+      "src": "/\\.env",
+      "status": 410
+    },
+    {
+      "src": "/config\\.php",
+      "status": 410
+    },
+
+    {
+      "src": "/blog/konut-kredisi-nasil-hesaplanir",
+      "dest": "/src/tools/finance/mortgage-tr/?ref=legacy_blog_konut_kredisi",
+      "status": 301
+    },
+    {
+      "src": "/blog/faiz-hesaplama-yontemleri",
+      "dest": "/src/tools/finance/compound-interest/?ref=legacy_blog_faiz",
+      "status": 301
+    },
+    {
+      "src": "/blog/aws-gcp-azure-fiyat-karsilastirma",
+      "dest": "/src/tools/finance/cloud-cost/?ref=legacy_blog_cloud",
+      "status": 301
+    },
+    {
+      "src": "/blog/pdf-dosyalari-birlestirme",
+      "dest": "/src/tools/pdf/merge/?ref=legacy_blog_pdf_merge",
+      "status": 301
+    },
+    {
+      "src": "/blog/pdf-sikistirma-araclari",
+      "dest": "/src/tools/pdf/compress/?ref=legacy_blog_pdf_compress",
+      "status": 301
+    },
+    {
+      "src": "/blog/pdf-sayfa-ayirma",
+      "dest": "/src/tools/pdf/split/?ref=legacy_blog_pdf_split",
+      "status": 301
+    },
+    {
+      "src": "/blog/resim-sikistirma",
+      "dest": "/src/tools/image/compress/?ref=legacy_blog_image_compress",
+      "status": 301
+    },
+    {
+      "src": "/blog/webp-png-jpeg-donusturme",
+      "dest": "/src/tools/image/convert/?ref=legacy_blog_image_convert",
+      "status": 301
+    },
+    {
+      "src": "/blog/json-formatlama-ve-dogrulama",
+      "dest": "/src/tools/dev/json-formatter/?ref=legacy_blog_json",
+      "status": 301
+    },
+    {
+      "src": "/blog/regex-kullanimi",
+      "dest": "/src/tools/dev/regex-tester/?ref=legacy_blog_regex",
+      "status": 301
+    },
+
+    {
+      "src": "/hesap-makinesi/kredi",
+      "dest": "/src/tools/finance/mortgage-tr/?ref=legacy_hesap_kredi",
+      "status": 301
+    },
+    {
+      "src": "/hesap-makinesi/faiz",
+      "dest": "/src/tools/finance/compound-interest/?ref=legacy_hesap_faiz",
+      "status": 301
+    },
+    {
+      "src": "/araclar/pdf-birlestir",
+      "dest": "/src/tools/pdf/merge/?ref=legacy_arac_pdf_birlestir",
+      "status": 301
+    },
+    {
+      "src": "/araclar/pdf-sikistir",
+      "dest": "/src/tools/pdf/compress/?ref=legacy_arac_pdf_sikistir",
+      "status": 301
+    },
+    {
+      "src": "/araclar/resim-optimize",
+      "dest": "/src/tools/image/compress/?ref=legacy_arac_resim",
+      "status": 301
+    },
+
+    {
+      "src": "/tools/mortgage-calculator",
+      "dest": "/src/tools/finance/mortgage-tr/?ref=legacy_en_tool",
+      "status": 301
+    },
+    {
+      "src": "/en/tools/pdf-merge",
+      "dest": "/src/tools/pdf/merge/?ref=legacy_en_tool",
+      "status": 301
+    },
+    {
+      "src": "/en/tools/(.*)",
+      "dest": "/src/tools/$1?ref=legacy_en_tool",
+      "status": 301
+    },
+
+    {
+      "src": "/tag/kredi-hesaplama",
+      "dest": "/src/tools/finance/mortgage-tr/?ref=legacy_tag",
+      "status": 301
+    },
+    {
+      "src": "/tag/pdf-araclari",
+      "dest": "/?ref=legacy_tag#pdf",
+      "status": 301
+    },
+    {
+      "src": "/tag/gorsel-optimizasyon",
+      "dest": "/?ref=legacy_tag#image",
+      "status": 301
+    },
+    {
+      "src": "/tag/(.*)",
+      "dest": "/?ref=legacy_tag",
+      "status": 301
+    },
+
+    {
+      "src": "/category/finans",
+      "dest": "/?ref=legacy_category#finance",
+      "status": 301
+    },
+    {
+      "src": "/category/pdf",
+      "dest": "/?ref=legacy_category#pdf",
+      "status": 301
+    },
+    {
+      "src": "/category/gelistirici-araclari",
+      "dest": "/?ref=legacy_category#dev",
+      "status": 301
+    },
+    {
+      "src": "/category/(.*)",
+      "dest": "/?ref=legacy_category",
+      "status": 301
+    },
+
+    {
+      "src": "/page/(.*)",
+      "dest": "/?ref=legacy_pagination",
+      "status": 301
+    },
+    {
+      "src": "/author/(.*)",
+      "dest": "/?ref=legacy_author",
+      "status": 301
+    },
+    {
+      "src": "/20[0-9]{2}/(.*)",
+      "dest": "/?ref=legacy_date",
+      "status": 301
+    },
+
+    {
+      "src": "/feed",
+      "dest": "/?ref=legacy_feed",
+      "status": 301
+    },
+    {
+      "src": "/feed.xml",
+      "dest": "/?ref=legacy_feed",
+      "status": 301
+    },
+    {
+      "src": "/rss",
+      "dest": "/?ref=legacy_feed",
+      "status": 301
+    },
+    {
+      "src": "/rss.xml",
+      "dest": "/?ref=legacy_feed",
+      "status": 301
+    },
+
+    {
+      "src": "/search",
+      "dest": "/?ref=legacy_search",
+      "status": 301
+    },
+
+    {
+      "src": "/sitemap.xml",
+      "dest": "/sitemap-index.xml",
+      "status": 301
+    },
+
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html",
+      "status": 200
+    }
+  ],
+
+  "headers": [
+    {
+      "source": "/src/styles/critical.css",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/vendor/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/wasm/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/wasm"
+        }
+      ]
+    },
+    {
+      "source": "/icons/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=604800"
+        }
+      ]
+    },
+    {
+      "source": "/(.*).js",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=()"
+        }
+      ]
+    }
+  ],
+
+  "trailingSlash": false,
+  "cleanUrls": true,
+
+  "github": {
+    "silent": true
+  }
+}
