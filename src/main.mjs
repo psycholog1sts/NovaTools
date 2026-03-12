@@ -1,6 +1,6 @@
 /**
  * ZeroTools Platform - Main Entry
- * Phase 6: Elite Performance & Experience Layer
+ * Refactored: Modular architecture with DRY principles
  */
 
 import { initAnalytics } from './core/analytics.mjs';
@@ -8,145 +8,196 @@ import { registerSW } from './core/pwa.mjs';
 import { initAdSense } from './core/ads/index.mjs';
 import { injectHreflangTags } from './i18n/config.mjs';
 import { initCommonUI } from './components/layout/index.mjs';
-
-// Phase 6: Native OS Integration
-import { registerAsFileHandler, isFileSystemAccessSupported } from './core/native/file-system-api.mjs';
-import { initWebShareTarget } from './core/native/web-share-target.mjs';
-import { initOfflineQueue, isBackgroundSyncSupported } from './core/native/background-sync.mjs';
-import { registerProtocolHandlers, handleProtocolUrl, isProtocolHandlerSupported } from './core/native/protocol-handlers.mjs';
-
-// Phase 6: AI Intelligence
 import { trackToolUsage } from './core/ai/recommendation-engine.mjs';
 
-// Global error handlers
-window.onerror = (message, source, lineno, colno, error) => {
-  console.error('Global error:', { message, source, lineno, colno, error });
-  return false;
+// Native features
+import { 
+  registerAsFileHandler, 
+  isFileSystemAccessSupported 
+} from './core/native/file-system-api.mjs';
+import { initWebShareTarget } from './core/native/web-share-target.mjs';
+import { 
+  initOfflineQueue, 
+  isBackgroundSyncSupported 
+} from './core/native/background-sync.mjs';
+import { 
+  registerProtocolHandlers, 
+  handleProtocolUrl, 
+  isProtocolHandlerSupported 
+} from './core/native/protocol-handlers.mjs';
+
+// Configuration
+const LEGACY_REDIRECTS = {
+  '/pdf-birlestirme': '/src/tools/pdf/merge/',
+  '/kredi-hesaplama': '/src/tools/finance/mortgage-tr/',
+  '/mortgage-calculator': '/src/tools/finance/mortgage-tr/'
 };
 
-window.onunhandledrejection = (event) => {
-  console.error('Unhandled rejection:', event.reason);
-  event.preventDefault();
+const PDF_TOOL_THRESHOLDS = {
+  COMPRESS: 5 * 1024 * 1024 // 5MB
 };
 
-/**
- * Initialize the application
- */
-async function init() {
-  // Core services
-  if ('serviceWorker' in navigator) {
-    registerSW();
-  }
-  
-  initAnalytics();
-  initAdSense();
-  injectHreflangTags(window.location.pathname);
-  
-  // Phase 6: Initialize native features
-  initNativeFeatures();
-  
-  // UI
-  initCommonUI();
-  initMobileMenu();
-  initToolPreviews();
-  handleLegacyRedirects();
-  
-  // Track for AI recommendations
-  trackCurrentTool();
+// Global error handling
+function setupErrorHandlers() {
+  window.onerror = (message, source, lineno, colno, error) => {
+    console.error('Global error:', { message, source, lineno, colno, error });
+    return false;
+  };
+
+  window.onunhandledrejection = (event) => {
+    console.error('Unhandled rejection:', event.reason);
+    event.preventDefault();
+  };
 }
 
 /**
- * Initialize Phase 6 native OS features
+ * Detect best PDF tool based on file characteristics
+ * @param {File} file - PDF file
+ * @returns {string} Tool path
  */
-async function initNativeFeatures() {
-  // File System Access API
-  if (isFileSystemAccessSupported()) {
-    registerAsFileHandler();
-    console.log('[Phase 6] File System Access API ready');
-  }
-  
-  // Web Share Target
-  initWebShareTarget();
-  
-  // Background Sync
-  if (isBackgroundSyncSupported()) {
-    await initOfflineQueue();
-    console.log('[Phase 6] Background Sync ready');
-  }
-  
-  // Protocol Handlers
-  if (isProtocolHandlerSupported()) {
-    registerProtocolHandlers();
-    handleProtocolUrl();
-    console.log('[Phase 6] Protocol Handlers registered');
-  }
-  
-  // Listen for file system open events
-  window.addEventListener('file-system-open', handleFileSystemOpen);
-  window.addEventListener('web-share-received', handleWebShareReceived);
-}
-
-function handleFileSystemOpen(event) {
-  const { file, type } = event.detail;
-  console.log('[File System] Opened:', file.name, type);
-  
-  // Route to appropriate tool based on file type
-  if (type === 'application/pdf') {
-    // Auto-route to PDF tools
-    const tool = detectBestPDFTool(file);
-    console.log('[AI] Suggested tool:', tool);
-  }
-}
-
-function handleWebShareReceived(event) {
-  const { file, type } = event.detail;
-  console.log('[Web Share] Received:', file.name);
-  
-  // Store in session for tool to pick up
-  sessionStorage.setItem('shared-file', JSON.stringify({
-    name: file.name,
-    type: file.type,
-    size: file.size
-  }));
-}
-
-function detectBestPDFTool(file) {
-  // Simple heuristic based on file size
-  if (file.size > 5 * 1024 * 1024) {
-    return 'pdf/compress'; // Large file, suggest compression
+export function detectBestPDFTool(file) {
+  if (file?.size > PDF_TOOL_THRESHOLDS.COMPRESS) {
+    return 'pdf/compress';
   }
   return 'pdf/merge';
 }
 
+/**
+ * Extract tool ID from current path
+ * @returns {string|null}
+ */
+export function getCurrentToolId() {
+  const match = window.location.pathname.match(/\/src\/tools\/(.+)\//);
+  return match?.[1] || null;
+}
+
+/**
+ * Track current tool usage for AI recommendations
+ */
 function trackCurrentTool() {
-  const path = window.location.pathname;
-  const toolMatch = path.match(/\/src\/tools\/(.+)\//);
-  if (toolMatch) {
-    trackToolUsage(toolMatch[1]);
+  const toolId = getCurrentToolId();
+  if (toolId) {
+    trackToolUsage(toolId);
   }
 }
 
+/**
+ * Handle legacy URL redirects
+ */
+function handleLegacyRedirects() {
+  const redirect = LEGACY_REDIRECTS[window.location.pathname];
+  if (redirect) {
+    window.location.replace(redirect);
+    return true;
+  }
+  return false;
+}
+
+/**
+ * File system event handlers
+ */
+const fileSystemHandlers = {
+  open(event) {
+    const { file, type } = event.detail;
+    console.log('[File System] Opened:', file?.name, type);
+    
+    if (type === 'application/pdf') {
+      const tool = detectBestPDFTool(file);
+      console.log('[AI] Suggested tool:', tool);
+    }
+  },
+
+  shareReceived(event) {
+    const { file } = event.detail;
+    console.log('[Web Share] Received:', file?.name);
+    
+    sessionStorage.setItem('shared-file', JSON.stringify({
+      name: file?.name,
+      type: file?.type,
+      size: file?.size
+    }));
+  }
+};
+
+/**
+ * Initialize native OS features
+ */
+async function initNativeFeatures() {
+  const features = [
+    { 
+      name: 'File System Access', 
+      supported: isFileSystemAccessSupported(), 
+      init: registerAsFileHandler 
+    },
+    { 
+      name: 'Web Share Target', 
+      supported: true, 
+      init: initWebShareTarget 
+    },
+    { 
+      name: 'Background Sync', 
+      supported: isBackgroundSyncSupported(), 
+      init: initOfflineQueue 
+    },
+    { 
+      name: 'Protocol Handlers', 
+      supported: isProtocolHandlerSupported(), 
+      init: () => {
+        registerProtocolHandlers();
+        handleProtocolUrl();
+      }
+    }
+  ];
+
+  for (const feature of features) {
+    if (feature.supported) {
+      try {
+        await feature.init();
+        console.log(`[Native] ${feature.name} ready`);
+      } catch (err) {
+        console.warn(`[Native] ${feature.name} failed:`, err);
+      }
+    }
+  }
+
+  // Event listeners
+  window.addEventListener('file-system-open', fileSystemHandlers.open);
+  window.addEventListener('web-share-received', fileSystemHandlers.shareReceived);
+}
+
+/**
+ * Mobile menu toggle functionality
+ */
 function initMobileMenu() {
   const btn = document.getElementById('mobileMenuBtn');
   const menu = document.getElementById('mobileMenu');
   
   if (!btn || !menu) return;
-  
-  btn.addEventListener('click', () => {
+
+  const toggle = () => {
     const isExpanded = btn.getAttribute('aria-expanded') === 'true';
-    btn.setAttribute('aria-expanded', !isExpanded);
+    btn.setAttribute('aria-expanded', String(!isExpanded));
     menu.hidden = isExpanded;
     menu.classList.toggle('hidden', isExpanded);
-  });
-  
-  document.addEventListener('keydown', (e) => {
+  };
+
+  const closeOnEscape = (e) => {
     if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') {
-      btn.click();
+      toggle();
     }
-  });
+  };
+
+  btn.addEventListener('click', toggle);
+  document.addEventListener('keydown', closeOnEscape);
 }
 
+/**
+ * Lazy load tool previews
+ */
 function initToolPreviews() {
+  const cards = document.querySelectorAll('[data-tool]');
+  if (cards.length === 0) return;
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -155,50 +206,75 @@ function initToolPreviews() {
       }
     });
   }, { rootMargin: '100px' });
-  
-  document.querySelectorAll('[data-tool]').forEach(card => observer.observe(card));
+
+  cards.forEach(card => observer.observe(card));
 }
 
+/**
+ * Load preview data for a tool card
+ * @param {HTMLElement} card 
+ */
 async function loadToolPreview(card) {
   const toolId = card.dataset.tool;
   if (!toolId) return;
-  
+
   try {
     const response = await fetch(`/meta/${toolId}.json`);
     if (!response.ok) return;
-    
+
     const meta = await response.json();
     const descEl = card.querySelector('.tool-description');
     if (descEl && meta.description?.tr) {
       descEl.textContent = meta.description.tr;
     }
-  } catch {}
-}
-
-function handleLegacyRedirects() {
-  const redirects = {
-    '/pdf-birlestirme': '/src/tools/pdf/merge/',
-    '/kredi-hesaplama': '/src/tools/finance/mortgage-tr/',
-    '/mortgage-calculator': '/src/tools/finance/mortgage-tr/'
-  };
-  
-  const redirect = redirects[window.location.pathname];
-  if (redirect) {
-    window.location.replace(redirect);
+  } catch {
+    // Silently fail - preview is non-critical
   }
 }
 
-// Initialize
+/**
+ * Main initialization
+ */
+async function init() {
+  setupErrorHandlers();
+  
+  // Handle redirects first
+  if (handleLegacyRedirects()) return;
+
+  // Core services
+  if ('serviceWorker' in navigator) {
+    registerSW();
+  }
+
+  // Initialize features in parallel
+  await Promise.all([
+    initAnalytics(),
+    initAdSense(),
+    initNativeFeatures()
+  ]);
+
+  injectHreflangTags(window.location.pathname);
+  initCommonUI();
+  initMobileMenu();
+  initToolPreviews();
+  trackCurrentTool();
+}
+
+// Initialize on DOM ready
 document.readyState === 'loading' 
   ? document.addEventListener('DOMContentLoaded', init)
   : init();
 
-// Expose API for tools
+// Public API
 window.ZeroTools = {
-  version: __APP_VERSION__,
+  version: typeof __APP_VERSION__ !== 'undefined' ? __APP_VERSION__ : '1.0.0',
   native: {
     fileSystemSupported: isFileSystemAccessSupported(),
     backgroundSyncSupported: isBackgroundSyncSupported(),
     protocolHandlerSupported: isProtocolHandlerSupported()
+  },
+  utils: {
+    detectBestPDFTool,
+    getCurrentToolId
   }
 };
