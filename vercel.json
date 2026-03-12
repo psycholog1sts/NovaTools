@@ -1,24 +1,26 @@
 {
   "version": 2,
   "name": "novatools-mc",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
   "cleanUrls": true,
   
   "rewrites": [
-    { "source": "/tools/finance/mortgage-refinance", "destination": "/src/tools/finance/mortgage-refinance/index.html" },
-    { "source": "/tools/finance/compound-interest", "destination": "/src/tools/finance/compound-interest/index.html" },
-    { "source": "/tools/finance/cloud-cost", "destination": "/src/tools/finance/cloud-cost/index.html" },
-    { "source": "/tools/finance/crypto-tax", "destination": "/src/tools/finance/crypto-tax/index.html" },
-    { "source": "/tools/finance/life-insurance", "destination": "/src/tools/finance/life-insurance/index.html" },
-    { "source": "/tools/finance/student-loan", "destination": "/src/tools/finance/student-loan/index.html" },
-    { "source": "/tools/finance/retirement", "destination": "/src/tools/finance/retirement/index.html" },
-    { "source": "/tools/finance/tax", "destination": "/src/tools/finance/tax/index.html" },
-    { "source": "/tools/pdf/merge", "destination": "/src/tools/pdf/merge/index.html" },
-    { "source": "/tools/pdf/compress", "destination": "/src/tools/pdf/compress/index.html" },
-    { "source": "/tools/pdf/split", "destination": "/src/tools/pdf/split/index.html" },
-    { "source": "/tools/image/compress", "destination": "/src/tools/image/compress/index.html" },
-    { "source": "/tools/image/convert", "destination": "/src/tools/image/convert/index.html" },
-    { "source": "/tools/religious/islamic-calendar", "destination": "/src/tools/religious/islamic-calendar/index.html" },
-    { "source": "/tools/news/summarizer", "destination": "/src/tools/news/summarizer/index.html" }
+    { "source": "/tools/finance/mortgage-refinance", "destination": "/src/tools/finance/mortgage-refinance" },
+    { "source": "/tools/finance/compound-interest", "destination": "/src/tools/finance/compound-interest" },
+    { "source": "/tools/finance/cloud-cost", "destination": "/src/tools/finance/cloud-cost" },
+    { "source": "/tools/finance/crypto-tax", "destination": "/src/tools/finance/crypto-tax" },
+    { "source": "/tools/finance/life-insurance", "destination": "/src/tools/finance/life-insurance" },
+    { "source": "/tools/finance/student-loan", "destination": "/src/tools/finance/student-loan" },
+    { "source": "/tools/finance/retirement", "destination": "/src/tools/finance/retirement" },
+    { "source": "/tools/finance/tax", "destination": "/src/tools/finance/tax" },
+    { "source": "/tools/pdf/merge", "destination": "/src/tools/pdf/merge" },
+    { "source": "/tools/pdf/compress", "destination": "/src/tools/pdf/compress" },
+    { "source": "/tools/pdf/split", "destination": "/src/tools/pdf/split" },
+    { "source": "/tools/image/compress", "destination": "/src/tools/image/compress" },
+    { "source": "/tools/image/convert", "destination": "/src/tools/image/convert" },
+    { "source": "/tools/religious/islamic-calendar", "destination": "/src/tools/religious/islamic-calendar" },
+    { "source": "/tools/news/summarizer", "destination": "/src/tools/news/summarizer" }
   ],
 
   "headers": [
@@ -34,12 +36,6 @@
       "headers": [
         { "key": "Content-Type", "value": "text/css; charset=utf-8" },
         { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
-      ]
-    },
-    {
-      "source": "/(.*\\.xml)$",
-      "headers": [
-        { "key": "Content-Type", "value": "application/xml; charset=utf-8" }
       ]
     },
     {
