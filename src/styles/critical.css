@@ -861,6 +861,156 @@ ul, ol {
 }
 
 /* ============================================
+   BLOG ARTICLES
+   ============================================ */
+.blog-article {
+  padding: 3rem 0 6rem;
+}
+
+.article-header {
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  text-align: center;
+}
+
+.article-meta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.9375rem;
+  color: var(--text-tertiary);
+}
+
+.article-title {
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+}
+
+.article-excerpt {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.article-content {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+}
+
+.article-content h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 3rem 0 1.25rem;
+  letter-spacing: -0.01em;
+}
+
+.article-content h3 {
+  font-size: 1.375rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 2.5rem 0 1rem;
+}
+
+.article-content p {
+  margin-bottom: 1.5rem;
+}
+
+.article-content ul,
+.article-content ol {
+  margin: 1.5rem 0;
+  padding-left: 1.5rem;
+}
+
+.article-content li {
+  margin-bottom: 0.75rem;
+}
+
+.article-content strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.article-content .note {
+  background: var(--surface-default);
+  border-left: 3px solid var(--accent-primary);
+  padding: 1rem 1.5rem;
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  margin: 2rem 0;
+  font-size: 0.9375rem;
+}
+
+/* CTA Box */
+.cta-box {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.05));
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  margin: 2.5rem 0;
+  text-align: center;
+}
+
+.cta-box h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+  margin-top: 0;
+}
+
+.cta-box p {
+  color: var(--text-secondary);
+  margin-bottom: 1.25rem;
+}
+
+.cta-box--large {
+  padding: 3rem 2rem;
+  margin: 4rem 0;
+}
+
+/* FAQ Section */
+.faq-section {
+  max-width: 800px;
+  margin: 4rem auto 0;
+  padding-top: 3rem;
+  border-top: 1px solid var(--border-default);
+}
+
+.faq-section h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 2rem;
+}
+
+.faq-item {
+  margin-bottom: 2rem;
+}
+
+.faq-item h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+}
+
+.faq-item p {
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* ============================================
    FOOTER
    ============================================ */
 .footer {
