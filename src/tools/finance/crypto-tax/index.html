@@ -3,15 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Favicon - Required by Google Search -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="/src/styles/critical.css">
   <link rel="stylesheet" href="/src/styles/main.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <title>Crypto Tax Calculator 2026 | Calculate Capital Gains | NovaTools MC</title>
-  <meta name="description" content="Free cryptocurrency tax calculator for 2026. Calculate capital gains, losses, and tax liability for Bitcoin, Ethereum, and altcoins. US & Global support.">
+  
+  <title>Crypto Tax Calculator - Calculate Bitcoin & Crypto Taxes | NovaTools MC</title>
+  <meta name="description" content="Free cryptocurrency tax calculator. Calculate capital gains on Bitcoin, Ethereum, and altcoins. Support for FIFO and LIFO accounting methods.">
   <meta name="theme-color" content="#0A0A0C">
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [{
+      "@type": "WebApplication",
+      "name": "Crypto Tax Calculator",
+      "description": "Free cryptocurrency tax calculator. Calculate capital gains on Bitcoin, Ethereum, and altcoins. Support for FIFO and LIFO accounting methods.",
+      "url": "https://novatools.mc/tools/finance/crypto-tax/",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Any",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+    }]
+  }
+  </script>
+  
   <style>
     .calculator-form { background: var(--surface-default); border: 1px solid var(--border-default); border-radius: var(--radius-lg); padding: 2rem; margin: 2rem 0; }
     .form-group { margin-bottom: 1.5rem; }
@@ -170,6 +194,39 @@
           </div>
         </div>
       </div>
+      
+      <!-- SEO Content Section -->
+      <section class="seo-content" style="max-width: 800px; margin: 3rem auto; padding: 0 1rem;">
+        <h2 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-primary);">About This Tool</h2>
+        
+        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem;">
+          Our Crypto Tax Calculator helps cryptocurrency investors estimate their capital gains tax liability for Bitcoin, Ethereum, and other digital assets. As tax authorities worldwide increase scrutiny on cryptocurrency transactions, accurate reporting has become essential. This calculator supports both FIFO (First In, First Out) and LIFO (Last In, Last Out) accounting methods, allowing you to choose the approach that minimizes your tax burden based on your trading history. Whether you're trading daily, holding long-term, or mining cryptocurrency, understanding your tax obligations helps you avoid penalties and plan your selling strategy. The calculator computes your cost basis, proceeds, net gains or losses, and estimated tax liability based on your specified tax rate.
+        </p>
+        
+        <h3 style="font-size: 1.25rem; margin: 2rem 0 1rem; color: var(--text-primary);">How to Use</h3>
+        <ol style="color: var(--text-secondary); line-height: 1.8; padding-left: 1.5rem;">
+          <li>Select your preferred accounting method: FIFO (sells oldest coins first) or LIFO (sells newest coins first).</li>
+          <li>Enter your applicable tax rate based on your income bracket and holding period (short-term vs long-term capital gains).</li>
+          <li>Input your purchase details: the price per coin when you bought and the quantity acquired.</li>
+          <li>Enter your sale details: the selling price per coin and quantity sold, then calculate your tax liability.</li>
+        </ol>
+        
+        <h3 style="font-size: 1.25rem; margin: 2rem 0 1rem; color: var(--text-primary);">Frequently Asked Questions</h3>
+        <div class="faq-section" style="margin-top: 1rem;">
+          <details style="margin-bottom: 1rem; border: 1px solid var(--border-default); border-radius: var(--radius-md); padding: 1rem;">
+            <summary style="font-weight: 600; color: var(--text-primary); cursor: pointer;">What is the difference between FIFO and LIFO for crypto taxes?</summary>
+            <p style="margin-top: 0.5rem; color: var(--text-secondary); line-height: 1.6;">FIFO (First In, First Out) assumes you sell your oldest cryptocurrency first, while LIFO (Last In, Last Out) assumes you sell your most recently acquired coins first. FIFO is the default method in many jurisdictions and often results in higher taxable gains during bull markets (since older coins typically have lower cost bases). LIFO can sometimes reduce current tax liability but may result in higher taxes later. You must be consistent with your chosen method and should consult a tax professional about what's allowed in your jurisdiction.</p>
+          </details>
+          <details style="margin-bottom: 1rem; border: 1px solid var(--border-default); border-radius: var(--radius-md); padding: 1rem;">
+            <summary style="font-weight: 600; color: var(--text-primary); cursor: pointer;">How are cryptocurrency gains taxed?</summary>
+            <p style="margin-top: 0.5rem; color: var(--text-secondary); line-height: 1.6;">In most countries, cryptocurrency is treated as property for tax purposes. Short-term capital gains (held less than one year in the US) are typically taxed as ordinary income at your marginal tax rate. Long-term capital gains (held more than one year) usually receive preferential tax rates, often 0%, 15%, or 20% depending on your income level. Mining, staking rewards, and airdrops are generally taxed as ordinary income at their fair market value when received.</p>
+          </details>
+          <details style="margin-bottom: 1rem; border: 1px solid var(--border-default); border-radius: var(--radius-md); padding: 1rem;">
+            <summary style="font-weight: 600; color: var(--text-primary); cursor: pointer;">What records should I keep for cryptocurrency taxes?</summary>
+            <p style="margin-top: 0.5rem; color: var(--text-secondary); line-height: 1.6;">You should maintain detailed records of all transactions including: date of acquisition, purchase price including fees, date of sale or disposition, sale proceeds, type of cryptocurrency, quantity, and the fair market value in your local currency at the time of each transaction. Most exchanges provide transaction history exports, but it's wise to keep your own backups. Consider using specialized crypto tax software for high-volume traders, and always report all taxable events even if you didn't receive a tax form from your exchange.</p>
+          </details>
+        </div>
+      </section>
     </main>
 
     <footer class="footer">

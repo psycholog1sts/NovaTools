@@ -4,16 +4,37 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
+  <!-- Favicon - Required by Google Search -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="/src/styles/critical.css">
   <link rel="stylesheet" href="/src/styles/main.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   
-  <title>Mortgage Refinance Calculator | NovaTools MC</title>
-  <meta name="description" content="Calculate mortgage refinance savings. Compare current vs new rates, find break-even point, and save thousands on your home loan.">
+  <title>Mortgage Refinance Calculator - Calculate Savings & Break-Even | NovaTools MC</title>
+  <meta name="description" content="Free mortgage refinance calculator. Compare your current rate vs new rate, calculate monthly savings, break-even point, and total interest savings.">
   <meta name="theme-color" content="#0A0A0C">
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [{
+      "@type": "WebApplication",
+      "name": "Mortgage Refinance Calculator",
+      "description": "Free mortgage refinance calculator. Compare your current rate vs new rate, calculate monthly savings, break-even point, and total interest savings.",
+      "url": "https://novatools.mc/tools/finance/mortgage-refinance/",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Any",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+    }]
+  }
+  </script>
   
   <style>
     .calculator-form {
@@ -268,6 +289,39 @@
           </div>
         </div>
       </div>
+      
+      <!-- SEO Content Section -->
+      <section class="seo-content" style="max-width: 800px; margin: 3rem auto; padding: 0 1rem;">
+        <h2 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-primary);">About This Tool</h2>
+        
+        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem;">
+          Our Mortgage Refinance Calculator helps homeowners determine whether refinancing their home loan is financially beneficial. By comparing your current mortgage terms with potential new rates, you can quickly calculate your monthly savings, total interest savings over the life of the loan, and most importantly, your break-even point—the time it takes for the savings to offset the closing costs. Whether you're looking to lower your monthly payments, shorten your loan term, or tap into home equity, this calculator provides the insights you need to make an informed decision. Many homeowners save thousands of dollars by refinancing when rates drop, but timing and costs matter significantly.
+        </p>
+        
+        <h3 style="font-size: 1.25rem; margin: 2rem 0 1rem; color: var(--text-primary);">How to Use</h3>
+        <ol style="color: var(--text-secondary); line-height: 1.8; padding-left: 1.5rem;">
+          <li>Enter your current loan balance, interest rate, and years remaining on your mortgage.</li>
+          <li>Input the new interest rate you're considering and your desired loan term.</li>
+          <li>Add estimated closing costs, which typically range from 2% to 5% of the loan amount.</li>
+          <li>Click "Calculate Savings" to see your monthly savings, break-even point, and total interest savings.</li>
+        </ol>
+        
+        <h3 style="font-size: 1.25rem; margin: 2rem 0 1rem; color: var(--text-primary);">Frequently Asked Questions</h3>
+        <div class="faq-section" style="margin-top: 1rem;">
+          <details style="margin-bottom: 1rem; border: 1px solid var(--border-default); border-radius: var(--radius-md); padding: 1rem;">
+            <summary style="font-weight: 600; color: var(--text-primary); cursor: pointer;">What is a mortgage break-even point?</summary>
+            <p style="margin-top: 0.5rem; color: var(--text-secondary); line-height: 1.6;">The break-even point is the time it takes for your monthly savings from refinancing to equal the closing costs you paid. For example, if refinancing saves you $200 per month and costs $4,000 in closing costs, your break-even point is 20 months. If you plan to stay in your home longer than this period, refinancing makes financial sense.</p>
+          </details>
+          <details style="margin-bottom: 1rem; border: 1px solid var(--border-default); border-radius: var(--radius-md); padding: 1rem;">
+            <summary style="font-weight: 600; color: var(--text-primary); cursor: pointer;">How much can I save by refinancing my mortgage?</summary>
+            <p style="margin-top: 0.5rem; color: var(--text-secondary); line-height: 1.6;">Savings depend on your current rate, new rate, loan balance, and closing costs. A typical rule of thumb is that refinancing makes sense if you can reduce your interest rate by at least 0.5% to 1%. On a $300,000 loan, dropping from 6.5% to 5.5% could save you around $200 per month and over $70,000 in total interest over 30 years.</p>
+          </details>
+          <details style="margin-bottom: 1rem; border: 1px solid var(--border-default); border-radius: var(--radius-md); padding: 1rem;">
+            <summary style="font-weight: 600; color: var(--text-primary); cursor: pointer;">When is the best time to refinance?</summary>
+            <p style="margin-top: 0.5rem; color: var(--text-secondary); line-height: 1.6;">The best time to refinance is when interest rates are significantly lower than your current rate (typically 0.5% or more), you have good credit to qualify for the best rates, and you plan to stay in your home long enough to reach the break-even point. Also consider refinancing if you want to switch from an ARM to a fixed-rate mortgage or eliminate PMI.</p>
+          </details>
+        </div>
+      </section>
     </main>
 
     <footer class="footer">

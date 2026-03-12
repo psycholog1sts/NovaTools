@@ -8,10 +8,29 @@
   <link rel="stylesheet" href="/src/styles/critical.css">
   <link rel="stylesheet" href="/src/styles/main.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Favicon - Required by Google Search -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <title>Image Compressor | JPEG PNG WebP | NovaTools MC</title>
-  <meta name="description" content="Compress images to reduce file size without losing quality. Convert to WebP, JPEG, or PNG. 100% private - all processing in your browser.">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <title>Compress Images Online - Reduce Image File Size | NovaTools MC</title>
+  <meta name="description" content="Free online image compressor. Reduce JPG, PNG, WebP file sizes without losing quality. Optimize images for websites, social media, and email.">
   <meta name="theme-color" content="#0A0A0C">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [{
+      "@type": "WebApplication",
+      "name": "Compress Images Online",
+      "description": "Free online image compressor tool. Reduce JPG, PNG, WebP file sizes without losing quality. Optimize images for websites, social media, and email.",
+      "url": "https://novatools.mc/tools/image/compress/",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "Any",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+    }]
+  }
+  </script>
   <style>
     .tool-container { max-width: 900px; margin: 0 auto; padding: 2rem 1rem; }
     .tool-header { text-align: center; margin-bottom: 2rem; }
@@ -29,6 +48,16 @@
     .result-section { margin-top: 1.5rem; padding: 2rem; background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(34, 197, 94, 0.05)); border: 1px solid rgba(34, 197, 94, 0.3); border-radius: var(--radius-lg); text-align: center; display: none; }
     .result-section.visible { display: block; }
     .download-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; background: linear-gradient(135deg, #22C55E, #16A34A); color: white; font-weight: 600; border-radius: var(--radius-md); text-decoration: none; }
+    .seo-content { margin-top: 3rem; padding: 2rem; background: rgba(255, 255, 255, 0.02); border-radius: var(--radius-lg); border: 1px solid rgba(255, 255, 255, 0.05); }
+    .seo-content h2 { font-size: 1.5rem; margin-bottom: 1rem; }
+    .seo-content h3 { font-size: 1.125rem; margin-top: 1.5rem; margin-bottom: 0.75rem; }
+    .seo-content p { line-height: 1.7; margin-bottom: 1rem; color: var(--text-secondary); }
+    .seo-content ol { padding-left: 1.5rem; margin-bottom: 1rem; }
+    .seo-content li { margin-bottom: 0.5rem; color: var(--text-secondary); }
+    .faq-item { margin-bottom: 0.75rem; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: var(--radius-md); overflow: hidden; }
+    .faq-item summary { padding: 1rem; background: rgba(255, 255, 255, 0.03); cursor: pointer; font-weight: 500; }
+    .faq-item summary:hover { background: rgba(255, 255, 255, 0.06); }
+    .faq-item p { padding: 1rem; margin: 0; border-top: 1px solid rgba(255, 255, 255, 0.1); }
   </style>
 </head>
 <body>
@@ -105,6 +134,35 @@
             <p id="savingsText" style="color: var(--text-secondary); margin-bottom: 1.5rem;"></p>
             <a id="downloadLink" href="#" class="download-btn" download>Download Compressed Image</a>
           </div>
+        </div>
+
+        <div class="seo-content">
+          <h2>Free Online Image Compressor Tool</h2>
+          <p>Welcome to our free online image compressor - the fastest way to <strong>compress images</strong> and <strong>reduce image size</strong> without sacrificing visual quality. Whether you need to <strong>optimize images for web</strong> performance or simply free up storage space on your device, our powerful <strong>jpg compressor</strong> and image optimization tool delivers professional results instantly.</p>
+          <p>Large image files can significantly slow down your website's loading speed, negatively impact SEO rankings, and consume unnecessary bandwidth. Our browser-based compression technology processes your images locally, ensuring complete privacy while achieving file size reductions of up to 80%. Support for JPEG, PNG, and WebP formats means you can optimize any image for your specific needs.</p>
+          
+          <h3>How to Use Our Image Compressor</h3>
+          <ol>
+            <li><strong>Upload your image</strong> - Drag and drop your JPG, PNG, or WebP file into the upload area, or click to browse your device's files. We support images up to 10MB in size.</li>
+            <li><strong>Adjust quality settings</strong> - Use the quality slider to find the perfect balance between file size and image clarity. A setting of 70-80% typically provides excellent results.</li>
+            <li><strong>Choose output format</strong> - Select your preferred format (JPEG for photos, PNG for transparency, or WebP for maximum compression).</li>
+            <li><strong>Preview and compare</strong> - View side-by-side comparisons of the original and compressed versions before downloading.</li>
+            <li><strong>Download your optimized image</strong> - Click the download button to save your compressed image instantly. All processing happens in your browser for complete privacy.</li>
+          </ol>
+          
+          <h3>Frequently Asked Questions</h3>
+          <details class="faq-item">
+            <summary>Will compressing images reduce their quality?</summary>
+            <p>Our smart compression algorithm minimizes quality loss while dramatically reducing file size. At 80% quality, most images retain visual clarity indistinguishable from the original to the human eye. You can adjust the quality slider to find your preferred balance between size and quality.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Is my data safe when using this tool?</summary>
+            <p>Absolutely! All image processing happens entirely within your browser using client-side JavaScript. Your images are never uploaded to any server, ensuring complete privacy and security. Once you close the page, all data is automatically cleared from your browser.</p>
+          </details>
+          <details class="faq-item">
+            <summary>What image formats are supported?</summary>
+            <p>Our compressor supports JPG/JPEG, PNG, and WebP formats for both input and output. WebP typically offers the best compression ratios, while PNG preserves transparency. JPEG is ideal for photographs and general use where transparency isn't needed.</p>
+          </details>
         </div>
       </div>
     </main>

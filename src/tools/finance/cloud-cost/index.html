@@ -3,15 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Favicon - Required by Google Search -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="/src/styles/critical.css">
   <link rel="stylesheet" href="/src/styles/main.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <title>Cloud Cost Estimator | AWS vs Azure vs GCP | NovaTools MC</title>
-  <meta name="description" content="Compare cloud costs across AWS, Azure, and Google Cloud. Estimate your monthly infrastructure expenses with our free calculator.">
+  
+  <title>Cloud Cost Calculator - AWS vs Azure vs GCP Pricing | NovaTools MC</title>
+  <meta name="description" content="Free cloud cost estimator. Compare AWS, Azure, and Google Cloud pricing. Calculate monthly and yearly costs for your infrastructure needs.">
   <meta name="theme-color" content="#0A0A0C">
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [{
+      "@type": "WebApplication",
+      "name": "Cloud Cost Calculator",
+      "description": "Free cloud cost estimator. Compare AWS, Azure, and Google Cloud pricing. Calculate monthly and yearly costs for your infrastructure needs.",
+      "url": "https://novatools.mc/tools/finance/cloud-cost/",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Any",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+    }]
+  }
+  </script>
+  
   <style>
     .calculator-form { background: var(--surface-default); border: 1px solid var(--border-default); border-radius: var(--radius-lg); padding: 2rem; margin: 2rem 0; }
     .form-group { margin-bottom: 1.5rem; }
@@ -136,6 +160,39 @@
           </div>
         </div>
       </div>
+      
+      <!-- SEO Content Section -->
+      <section class="seo-content" style="max-width: 800px; margin: 3rem auto; padding: 0 1rem;">
+        <h2 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-primary);">About This Tool</h2>
+        
+        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem;">
+          Our Cloud Cost Estimator helps businesses and developers quickly estimate infrastructure expenses across the three major cloud providers: Amazon Web Services (AWS), Microsoft Azure, and Google Cloud Platform (GCP). Cloud computing costs can be complex and unpredictable, with pricing varying significantly based on compute power, memory, storage, data transfer, and usage patterns. This calculator provides a quick baseline comparison to help you budget for your cloud infrastructure and make informed decisions about which provider offers the best value for your specific workload requirements. Whether you're running a small web application or managing enterprise-scale infrastructure, understanding your potential cloud costs is essential for financial planning.
+        </p>
+        
+        <h3 style="font-size: 1.25rem; margin: 2rem 0 1rem; color: var(--text-primary);">How to Use</h3>
+        <ol style="color: var(--text-secondary); line-height: 1.8; padding-left: 1.5rem;">
+          <li>Select your preferred cloud provider from AWS, Azure, or Google Cloud Platform.</li>
+          <li>Enter your server requirements: number of vCPUs, memory in GB, and storage capacity.</li>
+          <li>Specify how many hours per month your servers will run (730 hours = full month).</li>
+          <li>Click "Estimate Cloud Costs" to see your projected monthly and yearly expenses.</li>
+        </ol>
+        
+        <h3 style="font-size: 1.25rem; margin: 2rem 0 1rem; color: var(--text-primary);">Frequently Asked Questions</h3>
+        <div class="faq-section" style="margin-top: 1rem;">
+          <details style="margin-bottom: 1rem; border: 1px solid var(--border-default); border-radius: var(--radius-md); padding: 1rem;">
+            <summary style="font-weight: 600; color: var(--text-primary); cursor: pointer;">Which cloud provider is the cheapest: AWS, Azure, or GCP?</summary>
+            <p style="margin-top: 0.5rem; color: var(--text-secondary); line-height: 1.6;">Pricing varies by service type and usage patterns. AWS generally has the broadest service catalog and can be competitive with reserved instances. Azure often offers better pricing for Windows workloads and enterprise agreements. GCP typically provides sustained use discounts automatically and can be cost-effective for compute-intensive tasks. The best choice depends on your specific workload, commitment level, and any existing enterprise agreements you may have.</p>
+          </details>
+          <details style="margin-bottom: 1rem; border: 1px solid var(--border-default); border-radius: var(--radius-md); padding: 1rem;">
+            <summary style="font-weight: 600; color: var(--text-primary); cursor: pointer;">What factors affect cloud computing costs the most?</summary>
+            <p style="margin-top: 0.5rem; color: var(--text-secondary); line-height: 1.6;">The biggest cost drivers are compute resources (vCPUs and memory), storage type and capacity, data transfer/egress fees, and usage duration. Additional factors include load balancing, databases, monitoring tools, and premium support plans. Many organizations overspend by over-provisioning resources or leaving unused instances running. Using reserved instances, spot instances, or committed use discounts can reduce costs by 30-70%.</p>
+          </details>
+          <details style="margin-bottom: 1rem; border: 1px solid var(--border-default); border-radius: var(--radius-md); padding: 1rem;">
+            <summary style="font-weight: 600; color: var(--text-primary); cursor: pointer;">How can I reduce my cloud infrastructure costs?</summary>
+            <p style="margin-top: 0.5rem; color: var(--text-secondary); line-height: 1.6;">Start by right-sizing your instances to match actual workload requirements. Use auto-scaling to match capacity with demand. Consider reserved instances or savings plans for predictable workloads. Leverage spot/preemptible instances for non-critical tasks. Monitor and eliminate unused resources, optimize storage classes, and use CDN caching to reduce data transfer costs. Regular cost reviews and tagging strategies help identify waste and allocate expenses accurately.</p>
+          </details>
+        </div>
+      </section>
     </main>
 
     <footer class="footer">

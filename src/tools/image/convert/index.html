@@ -8,10 +8,29 @@
   <link rel="stylesheet" href="/src/styles/critical.css">
   <link rel="stylesheet" href="/src/styles/main.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Favicon - Required by Google Search -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <title>Image Converter | JPEG PNG WebP GIF | NovaTools MC</title>
-  <meta name="description" content="Convert images between different formats. Supports JPEG, PNG, WebP, and GIF. 100% private - all processing in your browser.">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <title>Convert Images Online - JPG to PNG, WebP Converter | NovaTools MC</title>
+  <meta name="description" content="Free image converter. Convert between JPG, PNG, WebP, and GIF formats. Change image format without losing quality. Fast client-side conversion.">
   <meta name="theme-color" content="#0A0A0C">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [{
+      "@type": "WebApplication",
+      "name": "Convert Images Online",
+      "description": "Free online image converter tool. Convert between JPG, PNG, WebP, and GIF formats. Change image format without losing quality with fast client-side conversion.",
+      "url": "https://novatools.mc/tools/image/convert/",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "Any",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+    }]
+  }
+  </script>
   <style>
     .tool-container { max-width: 900px; margin: 0 auto; padding: 2rem 1rem; }
     .tool-header { text-align: center; margin-bottom: 2rem; }
@@ -28,6 +47,16 @@
     .result-section.visible { display: block; }
     .download-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; background: linear-gradient(135deg, #6366F1, #4F46E5); color: white; font-weight: 600; border-radius: var(--radius-md); text-decoration: none; }
     .quality-slider { width: 100%; margin: 1rem 0; }
+    .seo-content { margin-top: 3rem; padding: 2rem; background: rgba(255, 255, 255, 0.02); border-radius: var(--radius-lg); border: 1px solid rgba(255, 255, 255, 0.05); }
+    .seo-content h2 { font-size: 1.5rem; margin-bottom: 1rem; }
+    .seo-content h3 { font-size: 1.125rem; margin-top: 1.5rem; margin-bottom: 0.75rem; }
+    .seo-content p { line-height: 1.7; margin-bottom: 1rem; color: var(--text-secondary); }
+    .seo-content ol { padding-left: 1.5rem; margin-bottom: 1rem; }
+    .seo-content li { margin-bottom: 0.5rem; color: var(--text-secondary); }
+    .faq-item { margin-bottom: 0.75rem; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: var(--radius-md); overflow: hidden; }
+    .faq-item summary { padding: 1rem; background: rgba(255, 255, 255, 0.03); cursor: pointer; font-weight: 500; }
+    .faq-item summary:hover { background: rgba(255, 255, 255, 0.06); }
+    .faq-item p { padding: 1rem; margin: 0; border-top: 1px solid rgba(255, 255, 255, 0.1); }
   </style>
 </head>
 <body>
@@ -100,6 +129,35 @@
             <p id="resultText" style="color: var(--text-secondary); margin-bottom: 1.5rem;"></p>
             <a id="downloadLink" href="#" class="download-btn" download>Download Converted Image</a>
           </div>
+        </div>
+
+        <div class="seo-content">
+          <h2>Free Online Image Format Converter</h2>
+          <p>Welcome to our free online <strong>image format converter</strong> - the ultimate tool to <strong>convert image to PNG</strong>, JPEG, WebP, or GIF formats instantly. Whether you need to <strong>convert JPG to WebP</strong> for better web performance or switch to PNG for transparent backgrounds, our powerful converter delivers high-quality results without any software installation.</p>
+          <p>Different image formats serve different purposes. PNG provides lossless quality and transparency support, making it perfect for logos and graphics. JPEG offers excellent compression for photographs. WebP delivers superior compression while maintaining quality, ideal for modern websites. GIF supports simple animations and transparency. Our converter makes it easy to switch between formats while preserving the best possible quality for your specific use case.</p>
+          
+          <h3>How to Use Our Image Converter</h3>
+          <ol>
+            <li><strong>Upload your image</strong> - Drag and drop any image file into the upload area, or click to browse your device. We support all major formats including JPG, PNG, WebP, GIF, BMP, and TIFF up to 20MB.</li>
+            <li><strong>Select output format</strong> - Choose your desired output format from the dropdown menu. Options include PNG (for transparency), JPEG (for photos), WebP (for web optimization), and GIF (for simple animations).</li>
+            <li><strong>Adjust quality settings</strong> - For lossy formats like JPEG and WebP, use the quality slider to control the balance between file size and image quality.</li>
+            <li><strong>Preview your image</strong> - View a live preview of how your converted image will look before downloading.</li>
+            <li><strong>Download converted image</strong> - Click the convert button and download your newly formatted image instantly. All conversions happen locally in your browser for complete privacy.</li>
+          </ol>
+          
+          <h3>Frequently Asked Questions</h3>
+          <details class="faq-item">
+            <summary>Will converting images affect their quality?</summary>
+            <p>Converting between lossless formats (PNG to WebP) maintains perfect quality. Converting to lossy formats (JPEG) involves some compression, but our tool lets you control the quality setting. Converting from a lossy format to another lossy format is generally not recommended as quality loss compounds.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Which image format should I choose?</summary>
+            <p>Choose PNG for graphics with transparency, JPEG for photographs where small file size matters, WebP for modern websites needing optimal compression with quality, and GIF for simple animations. For most web use today, WebP offers the best balance of quality and file size.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Is there a file size limit for conversion?</summary>
+            <p>Yes, our converter supports images up to 20MB in size. This limit ensures fast, reliable conversion while handling most common image files. All processing occurs in your browser, meaning your images never leave your device, ensuring complete privacy and security.</p>
+          </details>
         </div>
       </div>
     </main>

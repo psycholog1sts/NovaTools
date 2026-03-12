@@ -1,7 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "version": 2,
-  "name": "zero-tools-platform",
+  "name": "novatools-mc",
   
   "builds": [
     {
@@ -13,38 +13,149 @@
     }
   ],
 
-  "rewrites": [
+  "routes": [
     {
-      "source": "/sitemap.xml",
-      "destination": "/sitemap.xml"
+      "src": "/favicon.ico",
+      "dest": "/favicon.ico",
+      "headers": {
+        "Cache-Control": "public, max-age=604800"
+      }
     },
     {
-      "source": "/sitemap-index.xml",
-      "destination": "/sitemap-index.xml"
+      "src": "/favicon-16.png",
+      "dest": "/favicon-16.png",
+      "headers": {
+        "Cache-Control": "public, max-age=604800"
+      }
     },
     {
-      "source": "/sitemap-:name.xml",
-      "destination": "/sitemap-:name.xml"
+      "src": "/favicon-32.png",
+      "dest": "/favicon-32.png",
+      "headers": {
+        "Cache-Control": "public, max-age=604800"
+      }
     },
     {
-      "source": "/robots.txt",
-      "destination": "/robots.txt"
+      "src": "/apple-touch-icon.png",
+      "dest": "/apple-touch-icon.png",
+      "headers": {
+        "Cache-Control": "public, max-age=604800"
+      }
     },
     {
-      "source": "/manifest.json",
-      "destination": "/manifest.json"
+      "src": "/favicon.svg",
+      "dest": "/favicon.svg",
+      "headers": {
+        "Cache-Control": "public, max-age=604800",
+        "Content-Type": "image/svg+xml"
+      }
     },
     {
-      "source": "/tools/:path*",
-      "destination": "/src/tools/:path*"
+      "src": "/sitemap.xml",
+      "dest": "/sitemap.xml"
     },
     {
-      "source": "/blog/:path*",
-      "destination": "/src/blog/:path*"
+      "src": "/sitemap-index.xml",
+      "dest": "/sitemap-index.xml"
     },
     {
-      "source": "/((?!assets|vendor|js|css|wasm|icons|images|fonts|meta|src|blog).*)",
-      "destination": "/index.html"
+      "src": "/sitemap-:name.xml",
+      "dest": "/sitemap-:name.xml"
+    },
+    {
+      "src": "/robots.txt",
+      "dest": "/robots.txt"
+    },
+    {
+      "src": "/manifest.json",
+      "dest": "/manifest.json"
+    },
+    {
+      "src": "/manifest.webmanifest",
+      "dest": "/manifest.webmanifest"
+    },
+    {
+      "src": "/ads.txt",
+      "dest": "/ads.txt"
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/tools/finance/mortgage-refinance",
+      "dest": "/src/tools/finance/mortgage-refinance/index.html"
+    },
+    {
+      "src": "/tools/finance/compound-interest",
+      "dest": "/src/tools/finance/compound-interest/index.html"
+    },
+    {
+      "src": "/tools/finance/cloud-cost",
+      "dest": "/src/tools/finance/cloud-cost/index.html"
+    },
+    {
+      "src": "/tools/finance/crypto-tax",
+      "dest": "/src/tools/finance/crypto-tax/index.html"
+    },
+    {
+      "src": "/tools/finance/life-insurance",
+      "dest": "/src/tools/finance/life-insurance/index.html"
+    },
+    {
+      "src": "/tools/finance/student-loan",
+      "dest": "/src/tools/finance/student-loan/index.html"
+    },
+    {
+      "src": "/tools/finance/retirement",
+      "dest": "/src/tools/finance/retirement/index.html"
+    },
+    {
+      "src": "/tools/finance/tax",
+      "dest": "/src/tools/finance/tax/index.html"
+    },
+    {
+      "src": "/tools/pdf/merge",
+      "dest": "/src/tools/pdf/merge/index.html"
+    },
+    {
+      "src": "/tools/pdf/compress",
+      "dest": "/src/tools/pdf/compress/index.html"
+    },
+    {
+      "src": "/tools/pdf/split",
+      "dest": "/src/tools/pdf/split/index.html"
+    },
+    {
+      "src": "/tools/image/compress",
+      "dest": "/src/tools/image/compress/index.html"
+    },
+    {
+      "src": "/tools/image/convert",
+      "dest": "/src/tools/image/convert/index.html"
+    },
+    {
+      "src": "/tools/religious/islamic-calendar",
+      "dest": "/src/tools/religious/islamic-calendar/index.html"
+    },
+    {
+      "src": "/tools/news/summarizer",
+      "dest": "/src/tools/news/summarizer/index.html"
+    },
+    {
+      "src": "/tools/(.*)",
+      "dest": "/src/tools/$1"
+    },
+    {
+      "src": "/blog/(.*)",
+      "dest": "/src/blog/$1"
+    },
+    {
+      "src": "/admin/(.*)",
+      "dest": "/admin/$1"
+    },
+    {
+      "src": "/((?!assets|vendor|js|css|wasm|icons|images|fonts|meta|src|blog|admin|public).*)",
+      "dest": "/index.html"
     }
   ],
 
@@ -130,6 +241,15 @@
     },
     {
       "source": "/icons/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=604800"
+        }
+      ]
+    },
+    {
+      "source": "/public/(.*)",
       "headers": [
         {
           "key": "Cache-Control",

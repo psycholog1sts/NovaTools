@@ -19,7 +19,7 @@ const toolEntries = globSync('src/tools/**/index.html', {
 
 export default defineConfig({
   root: '.',
-  publicDir: 'static',
+  publicDir: 'public',
   
   build: {
     target: 'es2020',

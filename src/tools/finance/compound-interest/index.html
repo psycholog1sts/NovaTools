@@ -3,15 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Favicon - Required by Google Search -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="/src/styles/critical.css">
   <link rel="stylesheet" href="/src/styles/main.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <title>Compound Interest Calculator | Investment Growth | NovaTools MC</title>
-  <meta name="description" content="Calculate compound interest and see how your investments grow over time. Plan your financial future with our free calculator.">
+  
+  <title>Compound Interest Calculator - Investment Growth Calculator | NovaTools MC</title>
+  <meta name="description" content="Free compound interest calculator. Calculate investment growth with regular contributions. See how much your money can grow with the power of compounding.">
   <meta name="theme-color" content="#0A0A0C">
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [{
+      "@type": "WebApplication",
+      "name": "Compound Interest Calculator",
+      "description": "Free compound interest calculator. Calculate investment growth with regular contributions. See how much your money can grow with the power of compounding.",
+      "url": "https://novatools.mc/tools/finance/compound-interest/",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Any",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+    }]
+  }
+  </script>
+  
   <style>
     .calculator-form { background: var(--surface-default); border: 1px solid var(--border-default); border-radius: var(--radius-lg); padding: 2rem; margin: 2rem 0; }
     .form-group { margin-bottom: 1.5rem; }
@@ -143,6 +167,39 @@
           </div>
         </div>
       </div>
+      
+      <!-- SEO Content Section -->
+      <section class="seo-content" style="max-width: 800px; margin: 3rem auto; padding: 0 1rem;">
+        <h2 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-primary);">About This Tool</h2>
+        
+        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem;">
+          The Compound Interest Calculator demonstrates the remarkable power of compound interest—often called the eighth wonder of the world. Unlike simple interest, which only earns returns on your principal, compound interest generates earnings on both your initial investment and the accumulated interest from previous periods. This creates exponential growth over time, making it one of the most powerful tools for building wealth. Whether you're planning for retirement, saving for a down payment, or investing in the stock market, understanding how compound interest works can significantly impact your financial decisions. Our calculator shows you exactly how much your money can grow with regular contributions.
+        </p>
+        
+        <h3 style="font-size: 1.25rem; margin: 2rem 0 1rem; color: var(--text-primary);">How to Use</h3>
+        <ol style="color: var(--text-secondary); line-height: 1.8; padding-left: 1.5rem;">
+          <li>Enter your initial investment amount—the starting principal you plan to invest.</li>
+          <li>Set your monthly contribution to see how regular additions accelerate your growth.</li>
+          <li>Input your expected annual interest rate based on your investment type (stocks, bonds, savings).</li>
+          <li>Choose your time horizon and compound frequency, then click Calculate to see your projected wealth.</li>
+        </ol>
+        
+        <h3 style="font-size: 1.25rem; margin: 2rem 0 1rem; color: var(--text-primary);">Frequently Asked Questions</h3>
+        <div class="faq-section" style="margin-top: 1rem;">
+          <details style="margin-bottom: 1rem; border: 1px solid var(--border-default); border-radius: var(--radius-md); padding: 1rem;">
+            <summary style="font-weight: 600; color: var(--text-primary); cursor: pointer;">What is the difference between simple and compound interest?</summary>
+            <p style="margin-top: 0.5rem; color: var(--text-secondary); line-height: 1.6;">Simple interest is calculated only on the principal amount, while compound interest is calculated on the principal plus any interest that has accumulated. With compound interest, your money grows exponentially because you earn interest on your interest. Over long periods, this difference becomes dramatic—for example, $10,000 at 7% grows to about $38,700 in 20 years with annual compounding, versus just $24,000 with simple interest.</p>
+          </details>
+          <details style="margin-bottom: 1rem; border: 1px solid var(--border-default); border-radius: var(--radius-md); padding: 1rem;">
+            <summary style="font-weight: 600; color: var(--text-primary); cursor: pointer;">How often should interest compound for maximum growth?</summary>
+            <p style="margin-top: 0.5rem; color: var(--text-secondary); line-height: 1.6;">The more frequently interest compounds, the faster your money grows. Daily compounding yields slightly more than monthly, which yields more than quarterly or annually. However, the difference between monthly and daily compounding is relatively small over most time periods. For practical purposes, monthly compounding is common for many investments and savings accounts.</p>
+          </details>
+          <details style="margin-bottom: 1rem; border: 1px solid var(--border-default); border-radius: var(--radius-md); padding: 1rem;">
+            <summary style="font-weight: 600; color: var(--text-primary); cursor: pointer;">What is a realistic interest rate for long-term investing?</summary>
+            <p style="margin-top: 0.5rem; color: var(--text-secondary); line-height: 1.6;">Historical average annual returns vary by investment type: the S&P 500 has returned approximately 10% annually before inflation (7% real return), high-yield savings accounts currently offer 4-5%, bonds typically return 3-5%, and certificates of deposit (CDs) range from 3-6% depending on term length. Remember that higher returns usually come with higher risk and volatility.</p>
+          </details>
+        </div>
+      </section>
     </main>
 
     <footer class="footer">
