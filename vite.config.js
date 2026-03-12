@@ -9,10 +9,16 @@ import cssnano from 'cssnano';
 import postcssImport from 'postcss-import';
 
 // Discover all tool entry points (exclude demo and experimental)
+// Use path structure (tools/finance/tax) for proper nested output in dist
 const toolEntries = globSync('src/tools/**/index.html', {
   ignore: ['**/demo-*/**', '**/experimental/**', '**/test/**']
 }).reduce((acc, file) => {
-  const name = file.replace('src/tools/', '').replace('/index.html', '').replace(/\\/g, '-');
+  // Convert 'src/tools/finance/tax/index.html' -> 'tools/finance/tax'
+  // Handle both Windows (\) and Unix (/) path separators
+  const name = file
+    .replace(/^src[/\\]/, '')  // Remove src/ or src\
+    .replace(/[/\\]index\.html$/, '')  // Remove /index.html or \index.html
+    .replace(/\\/g, '/');  // Normalize to forward slashes
   acc[name] = resolve(__dirname, file);
   return acc;
 }, {});
@@ -67,9 +73,8 @@ export default defineConfig({
         
         entryFileNames: (chunkInfo) => {
           const name = chunkInfo.name;
-          if (name.includes('tools-')) {
-            return '[name]-[hash].js';
-          }
+          // All JS files go to js/ folder
+          // Name already contains full path like 'tools/finance/tax'
           return 'js/[name]-[hash].js';
         },
         
