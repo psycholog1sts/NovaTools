@@ -1,191 +1,240 @@
 /**
- * Main Stylesheet - Matrix Theme
- * Imported after critical.css, contains full Tailwind utilities
- * This file is processed by PostCSS/Tailwind
+ * Main Stylesheet - Premium Dark Mode
+ * Imported after critical.css
+ * Clean, professional, Linear.app inspired design
  */
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Custom utilities */
+/* ============================================
+   CUSTOM UTILITIES
+   ============================================ */
 @layer utilities {
-  /* Ad container base - Matrix */
-  .ad-container {
-    @apply bg-matrix-darker rounded-lg flex items-center justify-center text-matrix-gray border border-matrix-green/20;
+  /* Text gradient utility */
+  .text-gradient-primary {
+    background: linear-gradient(135deg, #6366F1, #8B5CF6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
   
-  /* Privacy badge - Matrix */
-  .privacy-badge {
-    @apply inline-flex items-center gap-2 text-sm text-matrix-green bg-matrix-green/10 px-3 py-1 rounded-full border border-matrix-green/30 font-mono;
+  /* Glass effect */
+  .glass {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
   }
   
-  /* Tool card hover effect - Matrix */
-  .tool-card {
-    @apply transition-all duration-200 ease-out bg-matrix-darker border border-matrix-green/20;
+  .glass-hover:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.12);
   }
   
-  .tool-card:hover {
-    @apply -translate-y-1 shadow-glow-green border-matrix-green;
+  /* Glow effects */
+  .glow-accent {
+    box-shadow: 0 0 40px rgba(99, 102, 241, 0.15);
   }
   
-  /* Focus visible for accessibility - Matrix */
-  .focus-ring {
-    @apply focus:outline-none focus:ring-2 focus:ring-matrix-green focus:ring-offset-2 focus:ring-offset-matrix-dark;
+  .glow-accent-sm {
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.1);
   }
   
-  /* Skeleton loading - Matrix */
-  .skeleton-pulse {
-    @apply animate-pulse bg-matrix-darker rounded border border-matrix-green/10;
+  /* Animation utilities */
+  .animate-float {
+    animation: float 8s ease-in-out infinite;
   }
   
-  /* Gradient backgrounds - Matrix */
-  .gradient-primary {
-    @apply bg-gradient-to-r from-matrix-green to-matrix-cyan;
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out;
   }
   
-  .gradient-success {
-    @apply bg-gradient-to-r from-matrix-green to-matrix-cyan;
+  .animate-slide-up {
+    animation: slideUp 0.5s ease-out;
   }
   
-  /* Scrollbar styling - Matrix */
-  .custom-scrollbar {
-    scrollbar-width: thin;
-    scrollbar-color: #00FF41 #111;
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
   }
   
-  .custom-scrollbar::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
   }
   
-  .custom-scrollbar::-webkit-scrollbar-track {
-    @apply bg-matrix-darker;
+  @keyframes slideUp {
+    from { 
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to { 
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
   
-  .custom-scrollbar::-webkit-scrollbar-thumb {
-    @apply bg-matrix-green/30 rounded-full;
+  /* Hide scrollbar but keep functionality */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
   
-  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    @apply bg-matrix-green/50;
-  }
-  
-  /* Matrix Glow Effects */
-  .shadow-glow-green {
-    box-shadow: 0 0 15px rgba(0, 255, 65, 0.4), 0 0 30px rgba(0, 255, 65, 0.2);
-  }
-  
-  .shadow-glow-cyan {
-    box-shadow: 0 0 15px rgba(0, 243, 255, 0.4), 0 0 30px rgba(0, 243, 255, 0.2);
-  }
-  
-  .shadow-glow-blue {
-    box-shadow: 0 0 15px rgba(0, 128, 255, 0.4), 0 0 30px rgba(0, 128, 255, 0.2);
-  }
-  
-  .shadow-glow-purple {
-    box-shadow: 0 0 15px rgba(189, 0, 255, 0.4), 0 0 30px rgba(189, 0, 255, 0.2);
-  }
-  
-  /* Text Glow */
-  .text-glow-green {
-    text-shadow: 0 0 10px rgba(0, 255, 65, 0.5), 0 0 20px rgba(0, 255, 65, 0.3);
-  }
-  
-  .text-glow-cyan {
-    text-shadow: 0 0 10px rgba(0, 243, 255, 0.5), 0 0 20px rgba(0, 243, 255, 0.3);
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
   }
 }
 
-/* Component layer */
+/* ============================================
+   COMPONENTS
+   ============================================ */
 @layer components {
-  /* Button variants - Matrix */
+  /* Button sizes */
   .btn-sm {
-    @apply px-3 py-1.5 text-sm font-mono;
+    @apply px-4 py-2 text-sm;
   }
   
   .btn-lg {
-    @apply px-6 py-3 text-lg font-mono;
+    @apply px-8 py-4 text-base;
   }
   
-  /* Card variants - Matrix */
+  /* Card variants */
   .card-compact {
-    @apply p-4 bg-matrix-darker border border-matrix-green/20;
+    @apply p-4;
   }
   
-  /* Input variants - Matrix */
+  .card-large {
+    @apply p-8;
+  }
+  
+  /* Input styles */
+  .input-field {
+    @apply w-full h-12 px-4 bg-[#0F0F12] text-white border border-white/10 rounded-lg 
+           placeholder:text-gray-500
+           hover:border-white/20
+           focus:border-[#6366F1] focus:ring-2 focus:ring-[#6366F1]/20
+           focus:outline-none
+           transition-all duration-200;
+  }
+  
   .input-error {
-    @apply border-matrix-red focus:border-matrix-red focus:ring-matrix-red;
+    @apply border-red-500 focus:border-red-500 focus:ring-red-500/20;
   }
   
   .input-success {
-    @apply border-matrix-green focus:border-matrix-green focus:ring-matrix-green;
+    @apply border-green-500 focus:border-green-500 focus:ring-green-500/20;
   }
   
-  /* Alert components - Matrix */
+  /* Alert components */
   .alert {
-    @apply p-4 rounded-lg border font-mono;
+    @apply p-4 rounded-lg border;
   }
   
   .alert-info {
-    @apply bg-matrix-blue/10 border-matrix-blue/30 text-matrix-blue;
+    @apply bg-blue-500/10 border-blue-500/30 text-blue-400;
   }
   
   .alert-success {
-    @apply bg-matrix-green/10 border-matrix-green/30 text-matrix-green;
+    @apply bg-green-500/10 border-green-500/30 text-green-400;
   }
   
   .alert-warning {
-    @apply bg-matrix-yellow/10 border-matrix-yellow/30 text-matrix-yellow;
+    @apply bg-amber-500/10 border-amber-500/30 text-amber-400;
   }
   
   .alert-error {
-    @apply bg-matrix-red/10 border-matrix-red/30 text-matrix-red;
+    @apply bg-red-500/10 border-red-500/30 text-red-400;
   }
   
-  /* Matrix Terminal */
-  .terminal {
-    @apply bg-matrix-darker border border-matrix-green/30 rounded-lg font-mono text-sm;
+  /* Ad container refinements */
+  .ad-container-refined {
+    @apply bg-[#141416] border border-white/[0.06] rounded-xl;
   }
   
-  .terminal-header {
-    @apply bg-matrix-dark border-b border-matrix-green/20 px-4 py-2 flex items-center gap-2;
+  /* Feature card with icon */
+  .feature-card {
+    @apply p-6 rounded-xl bg-white/[0.03] border border-white/[0.06]
+           hover:bg-white/[0.06] hover:border-white/[0.12]
+           transition-all duration-300;
   }
   
-  .terminal-body {
-    @apply p-4 text-matrix-green;
+  .feature-card-icon {
+    @apply w-12 h-12 rounded-lg bg-gradient-to-br from-[#6366F1]/20 to-[#8B5CF6]/20
+           border border-[#6366F1]/20 flex items-center justify-center text-xl
+           mb-4;
   }
   
-  /* Code Block */
-  .code-block {
-    @apply bg-matrix-darker border border-matrix-green/20 rounded-lg p-4 font-mono text-sm text-matrix-gray overflow-x-auto;
+  /* Stat card */
+  .stat-card {
+    @apply p-6 rounded-xl bg-white/[0.03] border border-white/[0.06]
+           text-center transition-all duration-300;
   }
   
-  /* Ad Slots */
-  .ad-slot {
-    @apply bg-matrix-darker border border-matrix-green/10 rounded flex items-center justify-center text-matrix-gray/50 font-mono text-xs;
+  .stat-card:hover {
+    @apply bg-white/[0.06] border-white/[0.12];
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  }
+  
+  .stat-card-value {
+    @apply text-3xl font-bold text-white mb-1;
+  }
+  
+  .stat-card-label {
+    @apply text-sm text-gray-500;
+  }
+  
+  /* Section divider */
+  .section-divider {
+    @apply h-px bg-gradient-to-r from-transparent via-white/10 to-transparent;
+  }
+  
+  /* Tag/Badge */
+  .tag {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
+           bg-white/[0.06] text-gray-400 border border-white/[0.08];
+  }
+  
+  .tag-accent {
+    @apply bg-[#6366F1]/10 text-[#818CF8] border-[#6366F1]/30;
   }
 }
 
-/* Base layer overrides */
+/* ============================================
+   BASE OVERRIDES
+   ============================================ */
 @layer base {
   html {
     scroll-behavior: smooth;
   }
   
   body {
-    @apply antialiased text-gray-100 bg-matrix-dark font-mono;
+    @apply antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
   
-  /* Selection styling - Matrix */
+  /* Selection styling */
   ::selection {
-    @apply bg-matrix-green/30 text-white;
+    background: rgba(99, 102, 241, 0.3);
+    color: white;
   }
   
-  /* Focus visible for keyboard navigation - Matrix */
+  /* Focus visible for keyboard navigation */
   :focus-visible {
-    @apply outline-none ring-2 ring-matrix-green ring-offset-2 ring-offset-matrix-dark;
+    outline: 2px solid #6366F1;
+    outline-offset: 2px;
+  }
+  
+  /* Links */
+  a {
+    @apply transition-colors duration-200;
+  }
+  
+  /* Headings */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
   }
   
   /* Reduced motion preference */
@@ -201,21 +250,27 @@
   }
 }
 
-/* Print styles */
+/* ============================================
+   PRINT STYLES
+   ============================================ */
 @media print {
   .ad-container,
-  .ad-anchor,
-  .ad-anchor-matrix,
-  .ad-slot,
-  .ad-slot-sidebar,
-  .ad-slot-banner,
-  .ad-slot-medium-rectangle,
-  .privacy-badge {
+  .ad-mobile-anchor,
+  .ad-banner,
+  .ad-sidebar,
+  .privacy-badge,
+  .bg-ambient,
+  .noise-overlay {
     display: none !important;
   }
   
   body {
     background: white !important;
     color: black !important;
+  }
+  
+  .card {
+    border: 1px solid #ddd !important;
+    box-shadow: none !important;
   }
 }
