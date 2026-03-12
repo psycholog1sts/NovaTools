@@ -362,10 +362,10 @@ function injectToolSchemas(meta) {
     description: 'Birden fazla PDF dosyasını tek bir dosyada birleştirme rehberi',
     totalTime: 'PT5M',
     steps: [
-      { name: 'Dosyaları Yükleyin', text: 'PDF dosyalarınızı yükleyin', url: 'https://zerotools.dev/src/tools/pdf/merge/#step1' },
-      { name: 'Sıralamayı Ayarlayın', text: 'Dosyaları istediğiniz sırada düzenleyin', url: 'https://zerotools.dev/src/tools/pdf/merge/#step2' },
-      { name: 'Birleştirin', text: 'PDF\'leri birleştirin', url: 'https://zerotools.dev/src/tools/pdf/merge/#step3' },
-      { name: 'İndirin', text: 'Birleştirilmiş dosyayı indirin', url: 'https://zerotools.dev/src/tools/pdf/merge/#step4' }
+      { name: 'Dosyaları Yükleyin', text: 'PDF dosyalarınızı yükleyin', url: 'https://novatools.dev/src/tools/pdf/merge/#step1' },
+      { name: 'Sıralamayı Ayarlayın', text: 'Dosyaları istediğiniz sırada düzenleyin', url: 'https://novatools.dev/src/tools/pdf/merge/#step2' },
+      { name: 'Birleştirin', text: 'PDF\'leri birleştirin', url: 'https://novatools.dev/src/tools/pdf/merge/#step3' },
+      { name: 'İndirin', text: 'Birleştirilmiş dosyayı indirin', url: 'https://novatools.dev/src/tools/pdf/merge/#step4' }
     ]
   });
   

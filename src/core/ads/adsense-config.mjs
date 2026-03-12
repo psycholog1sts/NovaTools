@@ -51,7 +51,7 @@ function shouldBlockAds() {
   if (navigator.doNotTrack === '1') return true;
   if (navigator.globalPrivacyControl) return true;
   try {
-    if (localStorage.getItem('zerotools_no_ads') === 'true') return true;
+    if (localStorage.getItem('novatools_no_ads') === 'true') return true;
   } catch (e) {}
   return false;
 }
@@ -167,7 +167,7 @@ export function refreshAds() {
 
 export function disableAds() {
   try {
-    localStorage.setItem('zerotools_no_ads', 'true');
+    localStorage.setItem('novatools_no_ads', 'true');
     document.querySelectorAll('.adsbygoogle').forEach(el => el.style.display = 'none');
   } catch (e) {}
 }

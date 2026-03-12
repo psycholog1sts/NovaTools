@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemaps
-Sitemap: https://zerotools.dev/sitemap-index.xml
+Sitemap: https://novatools.mc/sitemap-index.xml
 
 # Crawl-delay
 Crawl-delay: 1

@@ -12,12 +12,12 @@ export function createHeader() {
   header.innerHTML = `
     <div class="container">
       <div class="flex items-center justify-between py-4">
-        <a href="/" class="flex items-center gap-2 text-xl font-bold text-primary-600" aria-label="ZeroTools Ana Sayfa">
+        <a href="/" class="flex items-center gap-2 text-xl font-bold text-primary-600" aria-label="NovaTools Ana Sayfa">
           <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true">
             <rect width="32" height="32" rx="8" fill="#2563eb"/>
             <path d="M8 16L14 22L24 10" stroke="white" stroke-width="3" stroke-linecap="round"/>
           </svg>
-          <span>ZeroTools</span>
+          <span>NovaTools</span>
         </a>
         <div class="privacy-badge" role="status" aria-label="Güvenlik durumu">
           <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
@@ -86,7 +86,7 @@ export function createFooter() {
   footer.innerHTML = `
     <div class="container py-8">
       <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-        <p class="text-sm text-gray-500">© ${new Date().getFullYear()} ZeroTools. Tüm hakları saklıdır.</p>
+        <p class="text-sm text-gray-500">© ${new Date().getFullYear()} NovaTools. Tüm hakları saklıdır.</p>
         <p class="text-sm text-gray-500">Verileriniz tarayıcınızda kalır. 🔒</p>
       </div>
     </div>

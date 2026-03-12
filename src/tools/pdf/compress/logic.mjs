@@ -188,8 +188,8 @@ async function compressPDF(level) {
     pdfDoc.setAuthor('');
     pdfDoc.setSubject('');
     pdfDoc.setKeywords([]);
-    pdfDoc.setProducer('ZeroTools PDF Compressor');
-    pdfDoc.setCreator('ZeroTools');
+    pdfDoc.setProducer('NovaTools PDF Compressor');
+    pdfDoc.setCreator('NovaTools');
   }
   
   const bytes = await pdfDoc.save({ useObjectStreams: true });

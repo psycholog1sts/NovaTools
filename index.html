@@ -861,8 +861,11 @@
     <div style="height: 50px;" class="lg:hidden" aria-hidden="true"></div>
   </div>
   
-  <!-- Main JavaScript - deferred -->
-  <script type="module" src="/src/main.mjs"></script>
+  <!-- Main JavaScript - Modular Architecture -->
+  <script type="module" src="/src/app.mjs"></script>
+  
+  <!-- pdf-lib for PDF processing -->
+  <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
   
   <!-- Mobile Menu Toggle -->
   <script>
@@ -883,12 +886,25 @@
   
   <!-- Live Ticker Data & Holiday Countdown -->
   <script type="module">
-    import { getSpecialDayContent, getIslamicHolidays, getGlobalHolidays } from '/src/core/automation/calendar.mjs';
-    import { updateFooterTicker, fetchIslamicDate } from '/src/core/api/live-data.mjs';
-    
+    import { calendarService } from '/src/services/calendar-service.mjs';
+    import { cryptoService } from '/src/services/crypto-service.mjs';
+    import { exchangeRateService } from '/src/services/exchange-rate-service.mjs';
+
     // Special Day Banner
     function updateSpecialDayBanner() {
-      const content = getSpecialDayContent();
+      const today = new Date();
+      const month = today.getMonth();
+      const date = today.getDate();
+      
+      const specialDays = {
+        '0-1': { banner: '🎉 Happy New Year! Start fresh with your finances.' },
+        '1-14': { banner: '💝 Valentine\'s Day - Special offers for couples!' },
+        '11-25': { banner: '🎄 Merry Christmas from NovaTools!' }
+      };
+      
+      const key = `${month}-${date}`;
+      const content = specialDays[key];
+      
       const banner = document.getElementById('specialDayBanner');
       const text = document.getElementById('specialDayText');
       
@@ -898,50 +914,47 @@
       }
     }
     
-    // Update Hijri Date Display
-    async function updateHijriDate() {
-      const hijri = await fetchIslamicDate();
-      if (hijri) {
-        const display = document.getElementById('currentHijriDate');
-        if (display) display.textContent = hijri.formatted;
-      }
+    // Update live ticker data
+    async function updateTicker() {
+      try {
+        const crypto = await cryptoService.getBitcoinPrice();
+        const btcEl = document.getElementById('btcprice');
+        if (btcEl && crypto.price) {
+          btcEl.textContent = `$${crypto.price.toLocaleString()}`;
+          btcEl.className = `value ${crypto.change24h >= 0 ? 'positive' : 'negative'}`;
+        }
+      } catch (e) { console.warn('BTC fetch failed'); }
+
+      try {
+        const rates = await exchangeRateService.getRates();
+        const eurEl = document.getElementById('usdeur');
+        const jpyEl = document.getElementById('usdjpy');
+        if (eurEl) eurEl.textContent = rates.rates.EUR?.toFixed(4) || '--';
+        if (jpyEl) jpyEl.textContent = rates.rates.JPY?.toFixed(2) || '--';
+      } catch (e) { console.warn('Rates fetch failed'); }
     }
     
     // Holiday Countdown
     function updateHolidayCountdown() {
-      const now = new Date();
-      const currentYear = now.getFullYear();
+      const holidays = calendarService.getUpcomingEvents();
+      const nextEvent = holidays[0];
       
-      const islamic = Object.values(getIslamicHolidays(currentYear));
-      const global = Object.values(getGlobalHolidays(currentYear));
-      const allHolidays = [...islamic, ...global].sort((a, b) => {
-        return new Date(a.date) - new Date(b.date);
-      });
-      
-      const upcoming = allHolidays.find(h => {
-        const holidayDate = new Date(h.date);
-        return holidayDate > now;
-      });
-      
-      if (upcoming) {
-        const holidayDate = new Date(upcoming.date);
-        const daysLeft = Math.ceil((holidayDate - now) / (1000 * 60 * 60 * 24));
+      if (nextEvent) {
         const text = document.getElementById('holidayText');
         if (text) {
-          text.textContent = `${upcoming.name} in ${daysLeft} days`;
+          text.textContent = `${nextEvent.name} in ${nextEvent.daysUntil} days`;
         }
       }
     }
     
     // Initialize
     updateSpecialDayBanner();
-    updateFooterTicker();
+    updateTicker();
     updateHolidayCountdown();
-    updateHijriDate();
     
     // Refresh every 5 minutes
     setInterval(() => {
-      updateFooterTicker();
+      updateTicker();
       updateHolidayCountdown();
     }, 300000);
   </script>

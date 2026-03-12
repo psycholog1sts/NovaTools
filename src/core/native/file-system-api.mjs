@@ -121,14 +121,14 @@ export async function saveWorkspaceState(workspaceName, data) {
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `${workspaceName}.zerotools.json`;
+    a.download = `${workspaceName}.novatools.json`;
     a.click();
     URL.revokeObjectURL(url);
     return;
   }
 
   const fileHandle = await state.currentDirectory.getFileHandle(
-    `${workspaceName}.zerotools.json`,
+    `${workspaceName}.novatools.json`,
     { create: true }
   );
   const writable = await fileHandle.createWritable();

@@ -8,8 +8,10 @@ import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
 import postcssImport from 'postcss-import';
 
-// Discover all tool entry points
-const toolEntries = globSync('src/tools/**/index.html').reduce((acc, file) => {
+// Discover all tool entry points (exclude demo and experimental)
+const toolEntries = globSync('src/tools/**/index.html', {
+  ignore: ['**/demo-*/**', '**/experimental/**', '**/test/**']
+}).reduce((acc, file) => {
   const name = file.replace('src/tools/', '').replace('/index.html', '').replace(/\\/g, '-');
   acc[name] = resolve(__dirname, file);
   return acc;
@@ -160,11 +162,11 @@ export default defineConfig({
       },
       
       manifest: {
-        name: 'ZeroTools - Privacy First Utilities',
-        short_name: 'ZeroTools',
-        description: 'Zero-server online tools. Your data never leaves your browser.',
-        theme_color: '#2563eb',
-        background_color: '#ffffff',
+        name: 'NovaTools MC - Professional Financial Tools',
+        short_name: 'NovaTools',
+        description: 'Professional-grade financial calculators and privacy-first utilities. Your data never leaves your browser.',
+        theme_color: '#0A0A0C',
+        background_color: '#0A0A0C',
         display: 'standalone',
         orientation: 'portrait',
         scope: '/',
@@ -180,7 +182,7 @@ export default defineConfig({
           { src: '/icons/icon-512x512.png', sizes: '512x512', type: 'image/png' }
         ],
         categories: ['finance', 'utilities', 'productivity'],
-        lang: 'tr',
+        lang: 'en',
         dir: 'ltr'
       }
     })

@@ -1,231 +1,334 @@
 /**
- * Router and Tool Loader
- * Dynamic tool discovery and vendor preloading
+ * Router Module
+ * Client-side routing with history API support
  */
 
-// Tool metadata cache
-const metaCache = new Map();
+import { stateManager } from './state-manager.mjs';
 
-// Vendor chunk preloading state
-const preloadState = {
-  'pdf-vendor': false,
-  'finance-vendor': false,
-  'image-vendor': false,
-  'ui-vendor': false
-};
-
-/**
- * Load tool metadata from meta.json
- * @param {string} toolId - Tool identifier (e.g., 'pdf/merge')
- * @returns {Promise<Object|null>}
- */
-export async function loadToolMeta(toolId) {
-  // Check cache first
-  if (metaCache.has(toolId)) {
-    return metaCache.get(toolId);
-  }
-  
-  try {
-    const response = await fetch(`/meta/${toolId}.json`);
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+class Router {
+  constructor(options = {}) {
+    this.routes = new Map();
+    this.middleware = [];
+    this.currentRoute = null;
+    this.basePath = options.basePath || '';
+    this.mode = options.mode || 'history'; // 'history' or 'hash'
     
-    const meta = await response.json();
-    metaCache.set(toolId, meta);
-    return meta;
-  } catch (error) {
-    console.warn(`Failed to load metadata for ${toolId}:`, error);
+    this.init();
+  }
+
+  /**
+   * Initialize router
+   */
+  init() {
+    // Handle browser back/forward
+    window.addEventListener('popstate', (e) => {
+      this.handleRouteChange(window.location.pathname, e.state);
+    });
+
+    // Handle link clicks
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('a[href]');
+      if (!link) return;
+
+      // Skip external links
+      if (link.hostname !== window.location.hostname) return;
+      
+      // Skip anchor links
+      if (link.getAttribute('href').startsWith('#')) return;
+
+      // Skip links with data-external attribute
+      if (link.dataset.external) return;
+
+      e.preventDefault();
+      this.navigate(link.pathname);
+    });
+
+    // Handle initial route
+    this.handleRouteChange(window.location.pathname);
+  }
+
+  /**
+   * Register a route
+   * @param {string} path - Route path
+   * @param {Function} handler - Route handler
+   * @param {Object} options - Route options
+   */
+  register(path, handler, options = {}) {
+    // Convert path to regex for parameter matching
+    const paramNames = [];
+    const regexPath = path.replace(/:([^/]+)/g, (match, name) => {
+      paramNames.push(name);
+      return '([^/]+)';
+    });
+
+    this.routes.set(path, {
+      pattern: new RegExp(`^${regexPath}$`),
+      handler,
+      paramNames,
+      options: {
+        title: options.title || '',
+        requiresAuth: options.requiresAuth || false,
+        ...options
+      }
+    });
+
+    return this;
+  }
+
+  /**
+   * Register middleware
+   * @param {Function} middleware - Middleware function
+   */
+  use(middleware) {
+    this.middleware.push(middleware);
+    return this;
+  }
+
+  /**
+   * Navigate to a route
+   * @param {string} path - Route path
+   * @param {Object} state - State to pass
+   * @param {boolean} replace - Replace current history entry
+   */
+  navigate(path, state = {}, replace = false) {
+    const fullPath = this.basePath + path;
+
+    if (this.mode === 'history') {
+      if (replace) {
+        window.history.replaceState(state, '', fullPath);
+      } else {
+        window.history.pushState(state, '', fullPath);
+      }
+    } else {
+      window.location.hash = path;
+    }
+
+    this.handleRouteChange(path, state);
+    return this;
+  }
+
+  /**
+   * Handle route change
+   * @param {string} path - Current path
+   * @param {Object} state - History state
+   */
+  async handleRouteChange(path, state = {}) {
+    // Find matching route
+    const route = this.findRoute(path);
+
+    if (!route) {
+      this.handleNotFound(path);
+      return;
+    }
+
+    // Check authentication
+    if (route.options.requiresAuth && !this.isAuthenticated()) {
+      this.navigate('/login');
+      return;
+    }
+
+    // Run middleware
+    for (const middleware of this.middleware) {
+      const result = await middleware(route, this.currentRoute);
+      if (result === false) return; // Cancel navigation
+    }
+
+    // Update state
+    const previousRoute = this.currentRoute;
+    this.currentRoute = {
+      path,
+      params: route.params,
+      query: this.parseQueryString(),
+      state
+    };
+
+    stateManager.set('ui.currentRoute', this.currentRoute);
+
+    // Update page title
+    if (route.options.title) {
+      document.title = route.options.title;
+    }
+
+    // Execute route handler
+    try {
+      await route.handler({
+        params: route.params,
+        query: this.currentRoute.query,
+        state,
+        previousRoute
+      });
+    } catch (error) {
+      console.error('Route handler error:', error);
+      this.handleError(error);
+    }
+
+    // Dispatch route change event
+    window.dispatchEvent(new CustomEvent('routechange', {
+      detail: { route: this.currentRoute, previousRoute }
+    }));
+  }
+
+  /**
+   * Find matching route
+   * @param {string} path - Current path
+   * @returns {Object|null} Matched route
+   */
+  findRoute(path) {
+    for (const [routePath, route] of this.routes) {
+      const match = path.match(route.pattern);
+      if (match) {
+        // Extract parameters
+        const params = {};
+        route.paramNames.forEach((name, index) => {
+          params[name] = match[index + 1];
+        });
+
+        return { ...route, params, path: routePath };
+      }
+    }
     return null;
   }
-}
 
-/**
- * Preload vendor chunk
- * @param {string} vendor - Vendor name (pdf-vendor, finance-vendor, etc.)
- */
-export function preloadVendor(vendor) {
-  if (preloadState[vendor]) return;
-  
-  const chunkUrl = `/assets/vendor/${vendor}.js`;
-  
-  // Create link rel=preload
-  const link = document.createElement('link');
-  link.rel = 'preload';
-  link.as = 'script';
-  link.href = chunkUrl;
-  link.crossOrigin = 'anonymous';
-  
-  document.head.appendChild(link);
-  preloadState[vendor] = true;
-  
-  // Also prefetch next navigation
-  const prefetch = document.createElement('link');
-  prefetch.rel = 'prefetch';
-  prefetch.href = chunkUrl;
-  document.head.appendChild(prefetch);
-}
+  /**
+   * Parse query string
+   * @returns {Object} Query parameters
+   */
+  parseQueryString() {
+    const params = {};
+    const searchParams = new URLSearchParams(window.location.search);
+    
+    for (const [key, value] of searchParams) {
+      params[key] = value;
+    }
+    
+    return params;
+  }
 
-/**
- * Get vendor for tool category
- * @param {string} category - Tool category
- * @returns {string|null}
- */
-export function getVendorForCategory(category) {
-  const vendorMap = {
-    'pdf': 'pdf-vendor',
-    'finance': 'finance-vendor',
-    'image': 'image-vendor'
-  };
-  return vendorMap[category] || null;
-}
-
-/**
- * Initialize tool page
- * Loads metadata, sets up SEO, preloads required vendors
- * @param {string} toolId 
- */
-export async function initToolPage(toolId) {
-  const [category, name] = toolId.split('/');
-  
-  // Load metadata
-  const meta = await loadToolMeta(toolId);
-  if (meta) {
-    updatePageSEO(meta);
-  }
-  
-  // Preload vendor for this category
-  const vendor = getVendorForCategory(category);
-  if (vendor) {
-    preloadVendor(vendor);
-  }
-  
-  // Track page view (privacy-friendly)
-  if (window.umami) {
-    window.umami.track('tool-page-view', { tool: toolId });
-  }
-  
-  return meta;
-}
-
-/**
- * Update page SEO metadata from tool meta
- * @param {Object} meta 
- */
-function updatePageSEO(meta) {
-  if (!meta) return;
-  
-  const lang = document.documentElement.lang || 'tr';
-  const suffix = lang === 'tr' ? '' : 'En';
-  
-  // Update title
-  const name = meta[`name${suffix}`] || meta.name;
-  if (name) {
-    document.title = `${name} | ZeroTools`;
-  }
-  
-  // Update description
-  const description = meta[`description${suffix}`] || meta.description;
-  if (description) {
-    const metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc) {
-      metaDesc.content = description;
+  /**
+   * Handle 404
+   * @param {string} path - Requested path
+   */
+  handleNotFound(path) {
+    console.warn(`Route not found: ${path}`);
+    
+    const notFoundRoute = this.routes.get('/404');
+    if (notFoundRoute) {
+      notFoundRoute.handler({ path });
+    } else {
+      // Default 404 behavior
+      document.body.innerHTML = `
+        <div style="text-align: center; padding: 4rem;">
+          <h1>404 - Page Not Found</h1>
+          <p>The page "${path}" does not exist.</p>
+          <a href="/">Go Home</a>
+        </div>
+      `;
     }
   }
-  
-  // Update keywords
-  const keywords = meta[`keywords${suffix}`] || meta.keywords;
-  if (keywords && Array.isArray(keywords)) {
-    const metaKeywords = document.querySelector('meta[name="keywords"]');
-    if (metaKeywords) {
-      metaKeywords.content = keywords.join(', ');
+
+  /**
+   * Handle route error
+   * @param {Error} error - Error object
+   */
+  handleError(error) {
+    const errorRoute = this.routes.get('/error');
+    if (errorRoute) {
+      errorRoute.handler({ error });
     }
   }
-  
-  // Inject Schema.org JSON-LD
-  if (meta.schema) {
-    injectSchemaLD(meta.schema, meta);
+
+  /**
+   * Check if user is authenticated
+   * @returns {boolean} Authentication status
+   */
+  isAuthenticated() {
+    // Check session storage for admin
+    return sessionStorage.getItem('adminLoggedIn') === 'true';
+  }
+
+  /**
+   * Get current route
+   * @returns {Object} Current route
+   */
+  getCurrentRoute() {
+    return this.currentRoute;
+  }
+
+  /**
+   * Generate URL for route
+   * @param {string} path - Route path
+   * @param {Object} params - Route parameters
+   * @returns {string} Generated URL
+   */
+  url(path, params = {}) {
+    let url = this.basePath + path;
+    
+    // Replace parameters
+    Object.entries(params).forEach(([key, value]) => {
+      url = url.replace(`:${key}`, encodeURIComponent(value));
+    });
+    
+    return url;
+  }
+
+  /**
+   * Go back in history
+   */
+  back() {
+    window.history.back();
+  }
+
+  /**
+   * Go forward in history
+   */
+  forward() {
+    window.history.forward();
   }
 }
 
-/**
- * Inject Schema.org structured data
- * @param {Object} schema 
- * @param {Object} meta 
- */
-function injectSchemaLD(schema, meta) {
-  // Remove existing
-  const existing = document.getElementById('tool-schema');
-  if (existing) existing.remove();
-  
-  const schemaData = {
-    '@context': 'https://schema.org',
-    '@type': schema['@type'] || 'WebApplication',
-    name: meta.name,
-    description: meta.description?.tr || meta.description,
-    applicationCategory: schema.applicationCategory || 'DeveloperApplication',
-    operatingSystem: 'Any',
-    browserRequirements: 'Requires JavaScript. Requires HTML5.',
-    featureList: meta.keywords?.tr?.slice(0, 5).join(', ') || '',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'TRY'
-    },
-    author: {
-      '@type': 'Organization',
-      name: 'ZeroTools Platform'
-    },
-    inLanguage: 'tr',
-    isAccessibleForFree: true,
-    ...schema
-  };
-  
-  const script = document.createElement('script');
-  script.id = 'tool-schema';
-  script.type = 'application/ld+json';
-  script.textContent = JSON.stringify(schemaData);
-  document.head.appendChild(script);
+// Singleton instance
+export const router = new Router();
+
+// Route definitions
+export function initRoutes() {
+  // Home
+  router.register('/', () => {
+    // Home page is static
+  }, { title: 'NovaTools MC - Professional Financial Tools' });
+
+  // Tools
+  router.register('/tools/:category/:tool', (ctx) => {
+    const { category, tool } = ctx.params;
+    loadTool(category, tool);
+  }, { title: 'Tool - NovaTools MC' });
+
+  // Admin
+  router.register('/admin', () => {
+    // Admin dashboard
+  }, { title: 'Admin Dashboard', requiresAuth: true });
+
+  router.register('/admin/:section', (ctx) => {
+    // Admin section
+  }, { title: 'Admin - NovaTools MC', requiresAuth: true });
+
+  // Blog
+  router.register('/blog', () => {
+    // Blog list
+  }, { title: 'Blog - NovaTools MC' });
+
+  router.register('/blog/:slug', (ctx) => {
+    // Blog post
+  }, { title: 'Blog Post - NovaTools MC' });
+
+  // 404
+  router.register('/404', () => {
+    // Not found page
+  }, { title: 'Page Not Found' });
 }
 
-/**
- * Discover all available tools
- * @returns {Promise<Array>}
- */
-export async function discoverTools() {
-  try {
-    const response = await fetch('/tools-manifest.json');
-    if (!response.ok) throw new Error('Failed to load tools manifest');
-    return await response.json();
-  } catch (error) {
-    console.warn('Tool discovery failed:', error);
-    return [];
-  }
+function loadTool(category, tool) {
+  // Tool loading logic
+  console.log(`Loading tool: ${category}/${tool}`);
 }
 
-/**
- * Generate breadcrumb for tool page
- * @param {string} category 
- * @param {string} toolName 
- */
-export function generateBreadcrumb(category, toolName) {
-  const categories = {
-    'pdf': 'PDF Araçları',
-    'finance': 'Finans Araçları',
-    'image': 'Görsel Araçları',
-    'dev': 'Geliştirici Araçları'
-  };
-  
-  const container = document.getElementById('breadcrumb');
-  if (!container) return;
-  
-  container.innerHTML = `
-    <nav aria-label="Breadcrumb">
-      <ol class="flex items-center gap-2 text-sm">
-        <li><a href="/" class="text-secondary-500 hover:text-primary-600">Ana Sayfa</a></li>
-        <li aria-hidden="true" class="text-secondary-400">/</li>
-        <li><a href="/#${category}" class="text-secondary-500 hover:text-primary-600">${categories[category] || category}</a></li>
-        <li aria-hidden="true" class="text-secondary-400">/</li>
-        <li aria-current="page" class="text-gray-900 font-medium">${toolName}</li>
-      </ol>
-    </nav>
-  `;
-}
+export default router;

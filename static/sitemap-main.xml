@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://zerotools.dev/</loc>
+    <loc>https://novatools.mc/</loc>
     <lastmod>2024-01-15T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -9,25 +9,25 @@
   
   <!-- Category Anchor Pages -->
   <url>
-    <loc>https://zerotools.dev/#finance</loc>
+    <loc>https://novatools.mc/#finance</loc>
     <lastmod>2024-01-15T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://zerotools.dev/#pdf</loc>
+    <loc>https://novatools.mc/#pdf</loc>
     <lastmod>2024-01-15T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://zerotools.dev/#image</loc>
+    <loc>https://novatools.mc/#image</loc>
     <lastmod>2024-01-15T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://zerotools.dev/#dev</loc>
+    <loc>https://novatools.mc/#dev</loc>
     <lastmod>2024-01-15T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -35,19 +35,19 @@
   
   <!-- Legal Pages -->
   <url>
-    <loc>https://zerotools.dev/privacy</loc>
+    <loc>https://novatools.mc/privacy</loc>
     <lastmod>2024-01-15T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://zerotools.dev/terms</loc>
+    <loc>https://novatools.mc/terms</loc>
     <lastmod>2024-01-15T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://zerotools.dev/disclaimer</loc>
+    <loc>https://novatools.mc/disclaimer</loc>
     <lastmod>2024-01-15T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>

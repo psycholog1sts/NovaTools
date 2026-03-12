@@ -24,21 +24,21 @@ export function registerProtocolHandlers() {
     navigator.registerProtocolHandler(
       PROTOCOLS.PDF_MERGE,
       '/src/tools/pdf/merge/?source=%s',
-      'ZeroTools PDF Merge'
+      'NovaTools PDF Merge'
     );
 
     // Register PDF compress handler
     navigator.registerProtocolHandler(
       PROTOCOLS.PDF_COMPRESS,
       '/src/tools/pdf/compress/?source=%s',
-      'ZeroTools PDF Compress'
+      'NovaTools PDF Compress'
     );
 
     // Register mortgage calculator handler
     navigator.registerProtocolHandler(
       PROTOCOLS.MORTGAGE_CALC,
       '/src/tools/finance/mortgage-tr/?source=%s',
-      'ZeroTools Mortgage Calculator'
+      'NovaTools Mortgage Calculator'
     );
 
     console.log('Protocol handlers registered');

@@ -3,8 +3,8 @@
  * Queue operations for offline execution
  */
 
-const SYNC_TAG = 'zerotools-offline-queue';
-const DB_NAME = 'ZeroToolsOfflineQueue';
+const SYNC_TAG = 'novatools-offline-queue';
+const DB_NAME = 'NovaToolsOfflineQueue';
 const DB_VERSION = 1;
 const STORE_NAME = 'operations';
 
@@ -160,7 +160,7 @@ export function deserializeData(data) {
  */
 function showQueuedNotification(tool) {
   if ('Notification' in window && Notification.permission === 'granted') {
-    new Notification('ZeroTools', {
+    new Notification('NovaTools', {
       body: `${tool} işlemi çevrimdışı kuyruğa eklendi. İnternet bağlantısı sağlandığında otomatik çalıştırılacak.`,
       icon: '/icons/icon-192x192.png',
       tag: 'offline-queued'

@@ -3,8 +3,8 @@
  * Self-hosted Umami - no cookies, no PII
  */
 
-const ANALYTICS_ENDPOINT = 'https://analytics.zerotools.dev/api/send';
-const WEBSITE_ID = 'zerotools';
+const ANALYTICS_ENDPOINT = 'https://analytics.novatools.dev/api/send';
+const WEBSITE_ID = 'novatools';
 
 // Queue for offline tracking
 let eventQueue = [];

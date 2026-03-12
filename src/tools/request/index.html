@@ -1,97 +1,113 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Araç Öner | Yeni Özellik İste | ZeroTools</title>
-  <meta name="description" content="ZeroTools için yeni araç önerin. Form gönderimi ile fikirlerinizi paylaşın. Backend gerektirmez.">
+  <title>Request a Tool | NovaTools MC</title>
+  <meta name="description" content="Suggest a new tool for NovaTools MC. Share your ideas and help us build better utilities.">
   <link rel="stylesheet" href="/src/styles/critical.css">
   <link rel="stylesheet" href="/src/styles/main.css">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="canonical" href="https://zerotools.dev/src/tools/request/">
+  <link rel="canonical" href="https://novatools.mc/src/tools/request/">
 </head>
-<body class="bg-secondary-50">
+<body>
+  <div class="bg-ambient" aria-hidden="true"></div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+  
   <header class="main-header">
     <div class="container">
-      <div class="flex items-center justify-between py-4">
-        <a href="/" class="flex items-center gap-2 text-xl font-bold text-primary-600">
-          <svg width="28" height="28" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="8" fill="#2563eb"/><path d="M8 16L14 22L24 10" stroke="white" stroke-width="3"/></svg>
-          <span>ZeroTools</span>
+      <div class="header-inner">
+        <a href="/" class="logo" aria-label="NovaTools MC Home">
+          <div class="logo-icon neon-logo">
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs><linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#00F5D4"/><stop offset="50%" style="stop-color:#00D9FF"/><stop offset="100%" style="stop-color:#00FF88"/></linearGradient></defs>
+              <path d="M50 75 L35 55 L25 40 L35 45 L45 50" stroke="url(#logoGrad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              <path d="M50 75 L65 55 L75 40 L65 45 L55 50" stroke="url(#logoGrad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              <path d="M50 75 L50 55 L45 45 L50 50 L55 45 L50 55" stroke="url(#logoGrad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              <path d="M50 75 L45 85 L50 80 L55 85 L50 75" stroke="url(#logoGrad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </svg>
+          </div>
+          <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
         </a>
         <div class="privacy-badge">
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0L1 3v5c0 5.25 3.67 10.17 7 11 3.33-.83 7-5.75 7-11V3L8 0z"/></svg>
-          <span>Zero Server</span>
+          <span class="privacy-badge-dot"></span>
+          <span>Privacy First</span>
         </div>
       </div>
     </div>
   </header>
 
-  <main class="container py-12">
-    <div class="max-w-2xl mx-auto">
-      <article class="card card-body">
-        <header class="mb-8 text-center">
-          <h1 class="text-3xl font-bold text-gray-900 mb-3">Yeni Araç Öner</h1>
-          <p class="text-secondary-500">Kullanmak istediğiniz bir araç mı var? Fikrinizi paylaşın.</p>
-        </header>
+  <main class="main-content">
+    <div class="container" style="padding: 4rem 1rem;">
+      <div style="max-width: 600px; margin: 0 auto;">
+        <article class="card">
+          <div class="card-body" style="padding: 2rem;">
+            <header style="margin-bottom: 2rem; text-align: center;">
+              <h1 style="font-size: 1.875rem; font-weight: 700; margin-bottom: 0.5rem;">Request a Tool</h1>
+              <p style="color: var(--text-secondary);">Have an idea for a new tool? We'd love to hear it.</p>
+            </header>
 
-        <!-- Formspree Form - Zero Backend -->
-        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="space-y-6" id="toolRequestForm">
-          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="sr-only">
-          <input type="hidden" name="_subject" value="Yeni Araç Önerisi - ZeroTools">
-          <input type="hidden" name="_next" value="https://zerotools.dev/src/tools/request/thanks.html">
+            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="space-y-6" id="toolRequestForm">
+              <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display:none">
+              <input type="hidden" name="_subject" value="New Tool Request - NovaTools MC">
+              <input type="hidden" name="_next" value="https://novatools.mc/src/tools/request/thanks.html">
 
-          <div>
-            <label for="email" class="label">E-posta (İsteğe bağlı)</label>
-            <input type="email" id="email" name="email" class="input" placeholder="ornek@email.com">
+              <div class="form-group">
+                <label for="email" class="form-label">Email (Optional)</label>
+                <input type="email" id="email" name="email" class="form-input" placeholder="you@example.com">
+              </div>
+
+              <div class="form-group">
+                <label for="toolName" class="form-label">Tool Name <span style="color: var(--error)">*</span></label>
+                <input type="text" id="toolName" name="tool_name" class="form-input" placeholder="e.g., CSV to JSON Converter" required minlength="3">
+              </div>
+
+              <div class="form-group">
+                <label for="category" class="form-label">Category</label>
+                <select id="category" name="category" class="form-input">
+                  <option value="">Select a category...</option>
+                  <option value="pdf">PDF Tools</option>
+                  <option value="image">Image Tools</option>
+                  <option value="finance">Finance Tools</option>
+                  <option value="dev">Developer Tools</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="description" class="form-label">Description <span style="color: var(--error)">*</span></label>
+                <textarea id="description" name="description" class="form-input" style="min-height: 120px;" placeholder="Describe what the tool should do and how it would help you..." required minlength="20" rows="4"></textarea>
+              </div>
+
+              <div class="form-group" style="display: flex; align-items: flex-start; gap: 0.75rem;">
+                <input type="checkbox" id="privacy" name="privacy" style="margin-top: 0.25rem;" required>
+                <label for="privacy" style="font-size: 0.875rem; color: var(--text-secondary);">
+                  I understand this form uses Formspree for submission.
+                </label>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Request</button>
+            </form>
           </div>
-
-          <div>
-            <label for="toolName" class="label">Araç Adı <span class="text-red-500">*</span></label>
-            <input type="text" id="toolName" name="tool_name" class="input" placeholder="Örn: Excel'den PDF'e" required minlength="3">
-          </div>
-
-          <div>
-            <label for="category" class="label">Kategori</label>
-            <select id="category" name="category" class="input">
-              <option value="">Seçin...</option>
-              <option value="pdf">PDF Araçları</option>
-              <option value="image">Görsel Araçları</option>
-              <option value="finance">Finans Araçları</option>
-              <option value="dev">Geliştirici Araçları</option>
-              <option value="other">Diğer</option>
-            </select>
-          </div>
-
-          <div>
-            <label for="description" class="label">Açıklama <span class="text-red-500">*</span></label>
-            <textarea id="description" name="description" class="input min-h-[120px]" placeholder="Aracın ne işe yaradığını açıklayın..." required minlength="20" rows="4"></textarea>
-          </div>
-
-          <div class="flex items-start gap-3">
-            <input type="checkbox" id="privacy" name="privacy" class="mt-1 rounded" required>
-            <label for="privacy" class="text-sm text-gray-600">
-              <span class="text-red-500">*</span> Kabul ediyorum
-            </label>
-          </div>
-
-          <button type="submit" class="btn btn-primary w-full py-3">Gönder</button>
-          <p class="text-xs text-gray-500 text-center">Bu form Formspree kullanmaktadır.</p>
-        </form>
-      </article>
+        </article>
+      </div>
     </div>
   </main>
 
-  <footer class="bg-white border-t mt-12">
-    <div class="container py-8 text-center">
-      <p class="text-sm text-gray-500">© 2024 ZeroTools</p>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p class="footer-copyright">© 2026 Psychological Counselor Metehan ÇETİN. All rights reserved.</p>
+      </div>
     </div>
   </footer>
 
+  <script type="module" src="/src/main.mjs"></script>
   <script>
     document.getElementById('toolRequestForm').addEventListener('submit', function(e) {
       const btn = this.querySelector('button[type="submit"]');
       btn.disabled = true;
-      btn.textContent = 'Gönderiliyor...';
+      btn.textContent = 'Sending...';
     });
   </script>
 </body>

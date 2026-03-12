@@ -3,7 +3,7 @@
  * Dynamic schema generation for SEO optimization
  */
 
-const BASE_URL = 'https://zerotools.dev';
+const BASE_URL = 'https://novatools.dev';
 
 /**
  * Generate SoftwareApplication schema for tools
@@ -41,7 +41,7 @@ export function generateSoftwareApplicationSchema(toolMeta) {
       : [],
     author: {
       '@type': 'Organization',
-      name: 'ZeroTools Platform',
+      name: 'NovaTools Platform',
       url: BASE_URL
     },
     inLanguage: toolMeta.locale || 'tr',
@@ -140,13 +140,13 @@ export function generateWebSiteSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'ZeroTools',
+    name: 'NovaTools',
     url: BASE_URL,
     description: 'Privacy-first online tools platform. Zero server, zero data transmission.',
     inLanguage: ['tr', 'en'],
     publisher: {
       '@type': 'Organization',
-      name: 'ZeroTools Platform',
+      name: 'NovaTools Platform',
       logo: {
         '@type': 'ImageObject',
         url: `${BASE_URL}/logo.svg`,
@@ -174,7 +174,7 @@ export function generateOrganizationSchema() {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'ZeroTools Platform',
-    alternateName: 'ZeroTools',
+    alternateName: 'NovaTools',
     url: BASE_URL,
     logo: {
       '@type': 'ImageObject',
@@ -183,11 +183,11 @@ export function generateOrganizationSchema() {
       height: 512
     },
     sameAs: [
-      'https://github.com/zero-tools'
+      'https://github.com/nova-tools'
     ],
     contactPoint: {
       '@type': 'ContactPoint',
-      email: 'hello@zerotools.dev',
+      email: 'hello@novatools.dev',
       contactType: 'customer support',
       availableLanguage: ['Turkish', 'English']
     }

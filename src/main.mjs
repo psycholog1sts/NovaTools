@@ -1,8 +1,9 @@
 /**
- * ZeroTools Platform - Main Entry
- * Refactored: Modular architecture with DRY principles
+ * NovaTools MC - Main Entry Point
+ * Production-grade modular architecture with Vercel Speed Insights
  */
 
+import { injectSpeedInsights } from '@vercel/speed-insights';
 import { initAnalytics } from './core/analytics.mjs';
 import { registerSW } from './core/pwa.mjs';
 import { initAdSense } from './core/ads/index.mjs';
@@ -26,13 +27,10 @@ import {
   isProtocolHandlerSupported 
 } from './core/native/protocol-handlers.mjs';
 
-// Configuration
-const LEGACY_REDIRECTS = {
-  '/pdf-birlestirme': '/src/tools/pdf/merge/',
-  '/kredi-hesaplama': '/src/tools/finance/mortgage-tr/',
-  '/mortgage-calculator': '/src/tools/finance/mortgage-tr/'
-};
+// Initialize Vercel Speed Insights immediately
+injectSpeedInsights();
 
+// Configuration
 const PDF_TOOL_THRESHOLDS = {
   COMPRESS: 5 * 1024 * 1024 // 5MB
 };
@@ -40,12 +38,12 @@ const PDF_TOOL_THRESHOLDS = {
 // Global error handling
 function setupErrorHandlers() {
   window.onerror = (message, source, lineno, colno, error) => {
-    console.error('Global error:', { message, source, lineno, colno, error });
+    console.error('[NovaTools] Global error:', { message, source, lineno, colno, error });
     return false;
   };
 
   window.onunhandledrejection = (event) => {
-    console.error('Unhandled rejection:', event.reason);
+    console.error('[NovaTools] Unhandled rejection:', event.reason);
     event.preventDefault();
   };
 }
@@ -79,18 +77,6 @@ function trackCurrentTool() {
   if (toolId) {
     trackToolUsage(toolId);
   }
-}
-
-/**
- * Handle legacy URL redirects
- */
-function handleLegacyRedirects() {
-  const redirect = LEGACY_REDIRECTS[window.location.pathname];
-  if (redirect) {
-    window.location.replace(redirect);
-    return true;
-  }
-  return false;
 }
 
 /**
@@ -224,8 +210,8 @@ async function loadToolPreview(card) {
 
     const meta = await response.json();
     const descEl = card.querySelector('.tool-description');
-    if (descEl && meta.description?.tr) {
-      descEl.textContent = meta.description.tr;
+    if (descEl && meta.description?.en) {
+      descEl.textContent = meta.description.en;
     }
   } catch {
     // Silently fail - preview is non-critical
@@ -238,9 +224,6 @@ async function loadToolPreview(card) {
 async function init() {
   setupErrorHandlers();
   
-  // Handle redirects first
-  if (handleLegacyRedirects()) return;
-
   // Core services
   if ('serviceWorker' in navigator) {
     registerSW();
@@ -258,6 +241,8 @@ async function init() {
   initMobileMenu();
   initToolPreviews();
   trackCurrentTool();
+  
+  console.log('[NovaTools] Initialization complete');
 }
 
 // Initialize on DOM ready
@@ -266,8 +251,8 @@ document.readyState === 'loading'
   : init();
 
 // Public API
-window.ZeroTools = {
-  version: typeof __APP_VERSION__ !== 'undefined' ? __APP_VERSION__ : '1.0.0',
+window.NovaTools = {
+  version: typeof __APP_VERSION__ !== 'undefined' ? __APP_VERSION__ : '2.0.0',
   native: {
     fileSystemSupported: isFileSystemAccessSupported(),
     backgroundSyncSupported: isBackgroundSyncSupported(),

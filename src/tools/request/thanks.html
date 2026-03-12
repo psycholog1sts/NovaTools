@@ -1,24 +1,29 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Teşekkürler | ZeroTools</title>
+  <title>Thank You | NovaTools MC</title>
   <link rel="stylesheet" href="/src/styles/critical.css">
   <link rel="stylesheet" href="/src/styles/main.css">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <meta http-equiv="refresh" content="5;url=/">
 </head>
-<body class="bg-secondary-50">
-  <main class="container py-24 text-center">
-    <div class="max-w-md mx-auto">
-      <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="3">
+<body>
+  <div class="bg-ambient" aria-hidden="true"></div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+  
+  <main class="main-content" style="display: flex; align-items: center; justify-content: center; min-height: 100vh;">
+    <div class="container" style="text-align: center; max-width: 480px;">
+      <div style="width: 80px; height: 80px; background: rgba(34, 197, 94, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="3">
           <path d="M5 13l4 4L19 7"/>
         </svg>
       </div>
-      <h1 class="text-3xl font-bold text-gray-900 mb-4">Teşekkürler!</h1>
-      <p class="text-lg text-gray-600 mb-6">Öneriniz alındı. 5 saniye içinde yönlendirileceksiniz...</p>
-      <a href="/" class="btn btn-primary inline-flex">Ana Sayfaya Dön</a>
+      <h1 style="font-size: 1.875rem; font-weight: 700; margin-bottom: 0.75rem;">Thank You!</h1>
+      <p style="color: var(--text-secondary); font-size: 1.125rem; margin-bottom: 1.5rem;">Your request has been received. We'll review it soon.</p>
+      <p style="color: var(--text-tertiary); font-size: 0.875rem; margin-bottom: 2rem;">Redirecting in 5 seconds...</p>
+      <a href="/" class="btn btn-primary">Back to Home</a>
     </div>
   </main>
 </body>

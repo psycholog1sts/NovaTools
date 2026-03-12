@@ -47,7 +47,7 @@ export function detectLocale() {
   
   // Check localStorage (explicit user choice)
   try {
-    const stored = localStorage.getItem('zerotools_locale');
+    const stored = localStorage.getItem('novatools_locale');
     if (stored && I18N_CONFIG.locales.includes(stored)) {
       return stored;
     }
@@ -69,7 +69,7 @@ export function setLocale(locale) {
   if (!I18N_CONFIG.locales.includes(locale)) return false;
   
   try {
-    localStorage.setItem('zerotools_locale', locale);
+    localStorage.setItem('novatools_locale', locale);
     return true;
   } catch (e) {
     return false;
@@ -88,7 +88,7 @@ export function t(key, locale = detectLocale()) {
  * Generate hreflang tags for SEO
  */
 export function generateHreflangTags(currentPath) {
-  const baseUrl = 'https://zerotools.dev';
+  const baseUrl = 'https://novatools.dev';
   const tags = [];
   
   // x-default
@@ -184,7 +184,7 @@ const TRANSLATIONS = {
     'request.submit': 'Öneriyi Gönder',
     
     // SEO
-    'seo.homeTitle': 'ZeroTools - Gizlilik Öncelikli Ücretsiz Online Araçlar',
+    'seo.homeTitle': 'NovaTools - Gizlilik Öncelikli Ücretsiz Online Araçlar',
     'seo.homeDesc': 'Verileriniz tarayıcınızda kalır. PDF birleştirme, konut kredi hesaplama ve daha fazlası.'
   },
   
@@ -245,7 +245,7 @@ const TRANSLATIONS = {
     'request.submit': 'Submit Request',
     
     // SEO
-    'seo.homeTitle': 'ZeroTools - Privacy-First Free Online Tools',
+    'seo.homeTitle': 'NovaTools - Privacy-First Free Online Tools',
     'seo.homeDesc': 'Your data stays in your browser. PDF merge, mortgage calculator, and more.'
   }
 };

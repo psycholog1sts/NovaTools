@@ -53,7 +53,7 @@ function handleSharedFiles(files) {
 /**
  * Share file back to native apps
  */
-export async function shareFile(file, title = 'Shared from ZeroTools') {
+export async function shareFile(file, title = 'Shared from NovaTools') {
   if (!navigator.share) {
     console.warn('Web Share API not supported');
     return false;
