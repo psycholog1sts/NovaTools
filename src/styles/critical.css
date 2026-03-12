@@ -815,8 +815,224 @@ ul, ol {
 }
 
 /* ============================================
-   AD SLOTS
+   PROFESSIONAL AD SLOTS - Stage 2
    ============================================ */
+
+/* Top Header Ad (728x90) - Sticky */
+.ad-header-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(10, 10, 12, 0.98);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 0.5rem 1rem;
+  text-align: center;
+  display: none; /* Hidden by default, shown via JS */
+}
+
+.ad-header-top .ad-label {
+  font-size: 0.625rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 0.25rem;
+}
+
+.ad-header-top .ad-container-banner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 90px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 0.5rem;
+}
+
+/* Show on desktop */
+@media (min-width: 1024px) {
+  .ad-header-top {
+    display: block;
+  }
+  
+  .main-header {
+    top: 110px; /* Offset for sticky ad */
+  }
+  
+  .main-content {
+    padding-top: 110px;
+  }
+}
+
+/* Sub-Header Rectangle Ad (300x250) */
+.ad-subheader {
+  margin: 1.5rem auto;
+  text-align: center;
+  max-width: 100%;
+}
+
+.ad-subheader .ad-label {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.ad-subheader .ad-container-rectangle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 0.75rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.ad-subheader .ad-container-rectangle::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+}
+
+/* Sidebar Ads (300x600) */
+.ad-sidebar-left,
+.ad-sidebar-right {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 40;
+  display: none;
+  width: 300px;
+}
+
+.ad-sidebar-left {
+  left: 1rem;
+}
+
+.ad-sidebar-right {
+  right: 1rem;
+}
+
+.ad-sidebar-left .ad-label,
+.ad-sidebar-right .ad-label {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.ad-sidebar-left .ad-container-skyscraper,
+.ad-sidebar-right .ad-container-skyscraper {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 600px;
+  position: relative;
+  overflow: hidden;
+}
+
+.ad-sidebar-left .ad-container-skyscraper::before,
+.ad-sidebar-right .ad-container-skyscraper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+}
+
+/* Show sidebars on extra large screens */
+@media (min-width: 1400px) {
+  .ad-sidebar-left,
+  .ad-sidebar-right {
+    display: block;
+  }
+  
+  .container {
+    max-width: 1100px; /* Narrower to make room for ads */
+  }
+}
+
+/* In-Content Ad (300x250) */
+.ad-in-content {
+  margin: 2rem auto;
+  text-align: center;
+  max-width: 100%;
+}
+
+.ad-in-content .ad-label {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.ad-in-content .ad-container-rectangle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 0.75rem;
+  position: relative;
+}
+
+/* Mobile Anchor Ad (320x50) */
+.ad-mobile-anchor {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(10, 10, 12, 0.98);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 0.5rem;
+  text-align: center;
+  display: none; /* Shown on mobile via media query */
+}
+
+.ad-mobile-anchor .ad-container-mobile {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+}
+
+@media (max-width: 768px) {
+  .ad-mobile-anchor {
+    display: block;
+  }
+  
+  body {
+    padding-bottom: 70px; /* Space for anchor ad */
+  }
+}
+
+/* Legacy Ad Containers (for backward compatibility) */
 .ad-container {
   background: var(--bg-tertiary);
   border: 1px solid var(--border-default);
