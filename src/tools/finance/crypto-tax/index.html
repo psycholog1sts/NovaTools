@@ -68,70 +68,51 @@
             <p style="color: var(--text-secondary);">Calculate your cryptocurrency capital gains and estimated tax liability. Supports Bitcoin, Ethereum, and all major cryptocurrencies.</p>
           </div>
           
-          <div class="calculator-form">
+          <form class="calculator-form" data-tool="crypto-tax" data-result=".results-panel">
             <div class="form-row">
               <div class="form-group">
-                <label for="country">Tax Country</label>
-                <select id="country">
-                  <option value="us">United States</option>
-                  <option value="uk">United Kingdom</option>
-                  <option value="eu">European Union</option>
-                  <option value="ca">Canada</option>
-                  <option value="au">Australia</option>
+                <label for="method">Accounting Method</label>
+                <select id="method" name="method" required>
+                  <option value="FIFO" selected>FIFO (First In, First Out)</option>
+                  <option value="LIFO">LIFO (Last In, First Out)</option>
                 </select>
               </div>
               <div class="form-group">
-                <label for="income">Annual Income (USD)</label>
-                <input type="number" id="income" placeholder="75000" min="0">
+                <label for="taxRate">Tax Rate (%)</label>
+                <input type="number" id="taxRate" name="taxRate" placeholder="20" min="0" max="100" step="0.1" value="20" required>
               </div>
             </div>
             
-            <h3 style="font-size: 1.125rem; font-weight: 600; margin: 2rem 0 1rem; color: var(--text-primary);">🪙 Transaction Details</h3>
+            <h3 style="font-size: 1.125rem; font-weight: 600; margin: 2rem 0 1rem; color: var(--text-primary);">🪙 Purchase Details</h3>
             
             <div class="form-row">
               <div class="form-group">
-                <label for="cryptoType">Cryptocurrency</label>
-                <select id="cryptoType">
-                  <option value="btc">Bitcoin (BTC)</option>
-                  <option value="eth">Ethereum (ETH)</option>
-                  <option value="sol">Solana (SOL)</option>
-                  <option value="other">Other Altcoin</option>
-                </select>
+                <label for="purchasePrice">Purchase Price per Coin ($)</label>
+                <input type="number" id="purchasePrice" name="purchasePrice" placeholder="30000" min="0" step="0.01" required>
               </div>
               <div class="form-group">
-                <label for="holdingPeriod">Holding Period</label>
-                <select id="holdingPeriod">
-                  <option value="short">Less than 1 year (Short-term)</option>
-                  <option value="long">More than 1 year (Long-term)</option>
-                </select>
+                <label for="purchaseQuantity">Quantity Purchased</label>
+                <input type="number" id="purchaseQuantity" name="purchaseQuantity" placeholder="1.5" min="0" step="0.000001" required>
               </div>
             </div>
+            
+            <h3 style="font-size: 1.125rem; font-weight: 600; margin: 2rem 0 1rem; color: var(--text-primary);">💰 Sale Details</h3>
             
             <div class="form-row">
               <div class="form-group">
-                <label for="buyPrice">Purchase Price per Coin ($)</label>
-                <input type="number" id="buyPrice" placeholder="30000" min="0" step="0.01">
+                <label for="salePrice">Sale Price per Coin ($)</label>
+                <input type="number" id="salePrice" name="salePrice" placeholder="45000" min="0" step="0.01" required>
               </div>
               <div class="form-group">
-                <label for="sellPrice">Sale Price per Coin ($)</label>
-                <input type="number" id="sellPrice" placeholder="45000" min="0" step="0.01">
+                <label for="saleQuantity">Quantity Sold</label>
+                <input type="number" id="saleQuantity" name="saleQuantity" placeholder="1.5" min="0" step="0.000001" required>
               </div>
             </div>
             
-            <div class="form-group">
-              <label for="quantity">Quantity of Coins</label>
-              <input type="number" id="quantity" placeholder="1.5" min="0" step="0.000001">
-            </div>
-            
-            <div class="form-group">
-              <label for="fees">Transaction Fees ($)</label>
-              <input type="number" id="fees" placeholder="50" min="0" step="0.01">
-            </div>
-            
-            <button type="button" id="calculateBtn" class="btn btn-primary" style="width: 100%; margin-top: 1rem; height: 52px; font-size: 1rem;">
+            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem; height: 52px; font-size: 1rem;">
               Calculate Crypto Tax
             </button>
-          </div>
+          </form>
           
           <!-- In-Tool Ad -->
           <div class="ad-in-tool" role="complementary" aria-label="Advertisement" style="margin: 2rem auto; text-align: center;">
@@ -141,49 +122,50 @@
             </div>
           </div>
           
-          <div id="resultsPanel" class="results-panel">
+          <div class="results-panel">
             <h2 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; text-align: center;">💰 Tax Calculation Results</h2>
             
             <div class="result-grid">
               <div class="result-item" id="gainLossItem">
-                <div id="capitalGain" class="result-value">$0</div>
-                <div class="result-label">Capital Gain/Loss</div>
+                <div data-output="netGain" class="result-value">$0</div>
+                <div class="result-label">Net Gain/Loss</div>
               </div>
               <div class="result-item">
-                <div id="taxAmount" class="result-value">$0</div>
+                <div data-output="estimatedTax" class="result-value">$0</div>
                 <div class="result-label">Estimated Tax</div>
               </div>
               <div class="result-item">
-                <div id="netProfit" class="result-value">$0</div>
-                <div class="result-label">Net Profit After Tax</div>
+                <div data-output="totalGains" class="result-value">$0</div>
+                <div class="result-label">Total Gains</div>
               </div>
               <div class="result-item">
-                <div id="taxRate" class="result-value">0%</div>
-                <div class="result-label">Applicable Tax Rate</div>
+                <div data-output="totalLosses" class="result-value">$0</div>
+                <div class="result-label">Total Losses</div>
               </div>
             </div>
             
             <div class="tax-bracket-info">
-              <h4 style="font-size: 1rem; font-weight: 600; margin-bottom: 1rem;">📊 Tax Breakdown</h4>
+              <h4 style="font-size: 1rem; font-weight: 600; margin-bottom: 1rem;">📊 Tax Summary</h4>
               <div class="bracket-item">
                 <span>Proceeds from Sale</span>
-                <span id="proceeds">$0</span>
+                <span data-output="proceeds">$0</span>
               </div>
               <div class="bracket-item">
-                <span>Cost Basis (Purchase + Fees)</span>
-                <span id="costBasis">$0</span>
+                <span>Cost Basis</span>
+                <span data-output="costBasis">$0</span>
               </div>
               <div class="bracket-item">
                 <span>Taxable Gain</span>
-                <span id="taxableGain">$0</span>
+                <span data-output="taxableGain">$0</span>
               </div>
               <div class="bracket-item" style="font-weight: 600;">
                 <span>Tax Liability</span>
-                <span id="taxLiability" style="color: var(--accent-hover);">$0</span>
+                <span data-output="taxLiability" style="color: var(--accent-hover);">$0</span>
               </div>
             </div>
             
-            <div id="taxTip" style="margin-top: 1.5rem; padding: 1rem; background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.2); border-radius: var(--radius-md); font-size: 0.9375rem; color: var(--text-secondary);">
+            <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.2); border-radius: var(--radius-md); font-size: 0.9375rem; color: var(--text-secondary);">
+              💡 <strong>Tip:</strong> Consider consulting with a tax professional for complex cryptocurrency transactions. Keep detailed records of all your trades for accurate tax reporting.
             </div>
           </div>
         </div>
@@ -198,88 +180,5 @@
       </div>
     </footer>
   </div>
-
-  <script>
-    const taxBrackets = {
-      us: {
-        short: [0, 11000, 44725, 95375, 182100, 231250, 578125, Infinity],
-        long: [0, 44625, 492300, Infinity],
-        shortRates: [0.10, 0.12, 0.22, 0.24, 0.32, 0.35, 0.37],
-        longRates: [0.00, 0.15, 0.20]
-      }
-    };
-
-    document.getElementById('calculateBtn').addEventListener('click', function() {
-      const income = parseFloat(document.getElementById('income').value) || 0;
-      const buyPrice = parseFloat(document.getElementById('buyPrice').value) || 0;
-      const sellPrice = parseFloat(document.getElementById('sellPrice').value) || 0;
-      const quantity = parseFloat(document.getElementById('quantity').value) || 0;
-      const fees = parseFloat(document.getElementById('fees').value) || 0;
-      const holdingPeriod = document.getElementById('holdingPeriod').value;
-      
-      if (!buyPrice || !sellPrice || !quantity) {
-        alert('Please fill in all transaction details.');
-        return;
-      }
-      
-      // Calculate gains
-      const proceeds = sellPrice * quantity;
-      const costBasis = (buyPrice * quantity) + fees;
-      const capitalGain = proceeds - costBasis;
-      const isProfit = capitalGain >= 0;
-      
-      // Calculate tax (simplified US calculation)
-      let taxRate, taxAmount;
-      if (holdingPeriod === 'long') {
-        // Long-term capital gains
-        if (income <= 44625) {
-          taxRate = 0;
-        } else if (income <= 492300) {
-          taxRate = 0.15;
-        } else {
-          taxRate = 0.20;
-        }
-      } else {
-        // Short-term (ordinary income rates) - simplified
-        if (income <= 44725) taxRate = 0.12;
-        else if (income <= 95375) taxRate = 0.22;
-        else if (income <= 182100) taxRate = 0.24;
-        else if (income <= 231250) taxRate = 0.32;
-        else if (income <= 578125) taxRate = 0.35;
-        else taxRate = 0.37;
-      }
-      
-      taxAmount = Math.max(0, capitalGain * taxRate);
-      const netProfit = capitalGain - taxAmount;
-      
-      const formatCurrency = (num) => '$' + Math.abs(num).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-      const sign = num => num >= 0 ? '+' : '-';
-      
-      // Update results
-      document.getElementById('capitalGain').textContent = sign(capitalGain) + formatCurrency(capitalGain);
-      document.getElementById('capitalGain').style.color = isProfit ? '#22C55E' : '#ef4444';
-      document.getElementById('gainLossItem').className = 'result-item ' + (isProfit ? 'profit' : 'loss');
-      
-      document.getElementById('taxAmount').textContent = formatCurrency(taxAmount);
-      document.getElementById('netProfit').textContent = formatCurrency(netProfit);
-      document.getElementById('taxRate').textContent = (taxRate * 100).toFixed(0) + '%';
-      
-      document.getElementById('proceeds').textContent = formatCurrency(proceeds);
-      document.getElementById('costBasis').textContent = formatCurrency(costBasis);
-      document.getElementById('taxableGain').textContent = formatCurrency(capitalGain);
-      document.getElementById('taxLiability').textContent = formatCurrency(taxAmount);
-      
-      // Tax tip
-      const tipEl = document.getElementById('taxTip');
-      if (holdingPeriod === 'long') {
-        tipEl.innerHTML = '✅ <strong>Good news!</strong> Long-term capital gains have lower tax rates (0%, 15%, or 20%) compared to short-term gains taxed as ordinary income.';
-      } else {
-        tipEl.innerHTML = '💡 <strong>Tip:</strong> Consider holding your crypto for more than 1 year to qualify for lower long-term capital gains tax rates.';
-      }
-      
-      document.getElementById('resultsPanel').classList.add('visible');
-      document.getElementById('resultsPanel').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    });
-  </script>
 </body>
 </html>

@@ -9,8 +9,8 @@
   <link rel="stylesheet" href="/src/styles/main.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <title>Image Compressor | JPEG PNG WebP | NovaTools MC</title>
-  <meta name="description" content="Compress images to reduce file size without losing quality. Convert to WebP, JPEG, or PNG. 100% private - all processing in your browser.">
+  <title>Image Converter | JPEG PNG WebP GIF | NovaTools MC</title>
+  <meta name="description" content="Convert images between different formats. Supports JPEG, PNG, WebP, and GIF. 100% private - all processing in your browser.">
   <meta name="theme-color" content="#0A0A0C">
   <style>
     .tool-container { max-width: 900px; margin: 0 auto; padding: 2rem 1rem; }
@@ -21,14 +21,13 @@
     .dropzone.drag-active { border-color: #6366F1; background: rgba(99, 102, 241, 0.1); transform: scale(1.02); }
     .controls { margin-top: 1.5rem; padding: 1.5rem; background: var(--surface-default); border: 1px solid var(--border-default); border-radius: var(--radius-lg); display: none; }
     .controls.visible { display: block; }
-    .quality-slider { width: 100%; margin: 1rem 0; }
-    .preview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
-    @media (max-width: 640px) { .preview-grid { grid-template-columns: 1fr; } }
-    .preview-box { padding: 1rem; background: rgba(255, 255, 255, 0.05); border-radius: var(--radius-md); text-align: center; }
+    .form-select { width: 100%; height: 48px; margin-top: 0.5rem; padding: 0 1rem; background: var(--bg-tertiary); border: 1px solid var(--border-default); border-radius: var(--radius-md); color: var(--text-primary); }
+    .preview-box { padding: 1rem; background: rgba(255, 255, 255, 0.05); border-radius: var(--radius-md); text-align: center; margin: 1.5rem 0; }
     .preview-box img { max-width: 100%; max-height: 200px; border-radius: var(--radius-md); }
-    .result-section { margin-top: 1.5rem; padding: 2rem; background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(34, 197, 94, 0.05)); border: 1px solid rgba(34, 197, 94, 0.3); border-radius: var(--radius-lg); text-align: center; display: none; }
+    .result-section { margin-top: 1.5rem; padding: 2rem; background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(99, 102, 241, 0.05)); border: 1px solid rgba(99, 102, 241, 0.3); border-radius: var(--radius-lg); text-align: center; display: none; }
     .result-section.visible { display: block; }
-    .download-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; background: linear-gradient(135deg, #22C55E, #16A34A); color: white; font-weight: 600; border-radius: var(--radius-md); text-decoration: none; }
+    .download-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; background: linear-gradient(135deg, #6366F1, #4F46E5); color: white; font-weight: 600; border-radius: var(--radius-md); text-decoration: none; }
+    .quality-slider { width: 100%; margin: 1rem 0; }
   </style>
 </head>
 <body>
@@ -58,52 +57,48 @@
     <main class="main-content">
       <div class="tool-container">
         <div class="tool-header">
-          <h1>🖼️ Image Compressor</h1>
-          <p>Reduce image file size without losing quality. Supports JPEG, PNG, and WebP.</p>
+          <h1>🔄 Image Converter</h1>
+          <p>Convert images between different formats. Supports JPEG, PNG, WebP, and GIF.</p>
         </div>
         
-        <form data-tool="image-compress" data-result=".results-panel">
+        <form data-tool="image-convert" data-result=".results-panel">
           <div id="dropzone" class="dropzone">
-            <div style="font-size: 3rem; margin-bottom: 1rem;">🖼️</div>
+            <div style="font-size: 3rem; margin-bottom: 1rem;">🔄</div>
             <div style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem;">Drop image here or click to browse</div>
-            <div style="font-size: 0.875rem; color: var(--text-muted);">Supports JPG, PNG, WebP • Max 10MB</div>
+            <div style="font-size: 0.875rem; color: var(--text-muted);">Supports all image formats • Max 20MB</div>
             <input type="file" name="file" id="fileInput" accept="image/*" style="display: none;">
           </div>
           
           <div id="controls" class="controls">
-            <label style="font-weight: 600;">Quality: <span id="qualityValue">80</span>%</label>
-            <input type="range" name="quality" id="qualitySlider" class="quality-slider" min="1" max="100" value="80">
-            
-            <label style="font-weight: 600; margin-top: 1rem; display: block;">Output Format</label>
-            <select name="format" id="formatSelect" style="width: 100%; height: 48px; margin-top: 0.5rem; padding: 0 1rem; background: var(--bg-tertiary); border: 1px solid var(--border-default); border-radius: var(--radius-md); color: var(--text-primary);">
-              <option value="image/jpeg">JPEG</option>
-              <option value="image/png">PNG</option>
-              <option value="image/webp">WebP</option>
+            <label style="font-weight: 600; display: block; margin-bottom: 0.5rem;">Output Format</label>
+            <select name="format" id="formatSelect" class="form-select">
+              <option value="png">PNG</option>
+              <option value="jpeg">JPEG</option>
+              <option value="webp">WebP</option>
+              <option value="gif">GIF</option>
             </select>
             
-            <div class="preview-grid">
-              <div class="preview-box">
-                <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 0.5rem;">Original</p>
-                <img id="originalPreview" src="" alt="Original">
-                <p id="originalSize" style="font-size: 0.875rem; margin-top: 0.5rem;"></p>
-              </div>
-              <div class="preview-box">
-                <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 0.5rem;">Compressed</p>
-                <img id="compressedPreview" src="" alt="Compressed">
-                <p id="compressedSize" style="font-size: 0.875rem; margin-top: 0.5rem;"></p>
-              </div>
+            <div id="qualityContainer" style="margin-top: 1rem;">
+              <label style="font-weight: 600;">Quality: <span id="qualityValue">90</span>%</label>
+              <input type="range" name="quality" id="qualitySlider" class="quality-slider" min="1" max="100" value="90">
             </div>
             
-            <button type="submit" id="compressBtn" class="btn btn-primary" style="width: 100%; height: 52px;">Compress Image</button>
+            <div class="preview-box">
+              <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 0.5rem;">Preview</p>
+              <img id="previewImage" src="" alt="Preview">
+              <p id="fileInfo" style="font-size: 0.875rem; margin-top: 0.5rem; color: var(--text-muted);"></p>
+            </div>
+            
+            <button type="submit" id="convertBtn" class="btn btn-primary" style="width: 100%; height: 52px;">Convert Image</button>
           </div>
         </form>
         
         <div class="results-panel">
           <div id="resultSection" class="result-section">
             <div style="font-size: 3rem; margin-bottom: 1rem;">✅</div>
-            <h3 style="margin-bottom: 0.5rem;">Image Compressed!</h3>
-            <p id="savingsText" style="color: var(--text-secondary); margin-bottom: 1.5rem;"></p>
-            <a id="downloadLink" href="#" class="download-btn" download>Download Compressed Image</a>
+            <h3 style="margin-bottom: 0.5rem;">Image Converted!</h3>
+            <p id="resultText" style="color: var(--text-secondary); margin-bottom: 1.5rem;"></p>
+            <a id="downloadLink" href="#" class="download-btn" download>Download Converted Image</a>
           </div>
         </div>
       </div>

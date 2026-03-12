@@ -16,8 +16,8 @@
     .calculator-form { background: var(--surface-default); border: 1px solid var(--border-default); border-radius: var(--radius-lg); padding: 2rem; margin: 2rem 0; }
     .form-group { margin-bottom: 1.5rem; }
     .form-group label { display: block; font-size: 0.9375rem; font-weight: 500; color: var(--text-secondary); margin-bottom: 0.5rem; }
-    .form-group input { width: 100%; height: 48px; padding: 0 1rem; background: var(--bg-tertiary); border: 1px solid var(--border-default); border-radius: var(--radius-md); color: var(--text-primary); font-size: 1rem; }
-    .form-group input:focus { outline: none; border-color: var(--accent-primary); box-shadow: 0 0 0 3px var(--accent-glow); }
+    .form-group input, .form-group select { width: 100%; height: 48px; padding: 0 1rem; background: var(--bg-tertiary); border: 1px solid var(--border-default); border-radius: var(--radius-md); color: var(--text-primary); font-size: 1rem; }
+    .form-group input:focus, .form-group select:focus { outline: none; border-color: var(--accent-primary); box-shadow: 0 0 0 3px var(--accent-glow); }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
     @media (max-width: 640px) { .form-row { grid-template-columns: 1fr; } }
     .results-panel { background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.05)); border: 1px solid rgba(99, 102, 241, 0.2); border-radius: var(--radius-lg); padding: 2rem; margin-top: 2rem; display: none; }
@@ -65,59 +65,69 @@
             <p style="color: var(--text-secondary);">See how your investments grow over time with the power of compound interest. Plan your financial future.</p>
           </div>
           
-          <div class="calculator-form">
+          <form class="calculator-form" data-tool="compound-interest" data-result=".results-panel">
             <div class="form-row">
               <div class="form-group">
                 <label for="principal">Initial Investment ($)</label>
-                <input type="number" id="principal" placeholder="10000" min="0" value="10000">
+                <input type="number" id="principal" name="principal" placeholder="10000" min="0" value="10000" required>
               </div>
               <div class="form-group">
                 <label for="monthlyContribution">Monthly Contribution ($)</label>
-                <input type="number" id="monthlyContribution" placeholder="500" min="0" value="500">
+                <input type="number" id="monthlyContribution" name="monthlyContribution" placeholder="500" min="0" value="500">
               </div>
             </div>
             
             <div class="form-row">
               <div class="form-group">
                 <label for="rate">Annual Interest Rate (%)</label>
-                <input type="number" id="rate" placeholder="7" min="0" max="100" step="0.1" value="7">
+                <input type="number" id="rate" name="rate" placeholder="7" min="0" max="100" step="0.1" value="7" required>
               </div>
               <div class="form-group">
                 <label for="years">Time Period (years)</label>
-                <input type="number" id="years" placeholder="20" min="1" max="50" value="20">
+                <input type="number" id="years" name="years" placeholder="20" min="1" max="100" value="20" required>
               </div>
             </div>
             
-            <button type="button" id="calculateBtn" class="btn btn-primary" style="width: 100%; margin-top: 1rem; height: 52px; font-size: 1rem;">
+            <div class="form-group">
+              <label for="compoundFrequency">Compound Frequency</label>
+              <select id="compoundFrequency" name="compoundFrequency" required>
+                <option value="daily">Daily</option>
+                <option value="monthly" selected>Monthly</option>
+                <option value="quarterly">Quarterly</option>
+                <option value="annually">Annually</option>
+              </select>
+            </div>
+            
+            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem; height: 52px; font-size: 1rem;">
               Calculate Growth
             </button>
-          </div>
+          </form>
           
-          <div id="resultsPanel" class="results-panel">
+          <div class="results-panel">
             <h2 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; text-align: center;">Projected Growth</h2>
             
             <div class="result-grid">
               <div class="result-item">
-                <div id="finalAmount" class="result-value">$0</div>
+                <div data-output="finalAmount" class="result-value">$0</div>
                 <div class="result-label">Final Amount</div>
               </div>
               <div class="result-item">
-                <div id="totalContributed" class="result-value">$0</div>
+                <div data-output="totalContributions" class="result-value">$0</div>
                 <div class="result-label">Total Contributed</div>
               </div>
               <div class="result-item highlight">
-                <div id="totalInterest" class="result-value">$0</div>
+                <div data-output="totalInterest" class="result-value">$0</div>
                 <div class="result-label">Interest Earned</div>
               </div>
               <div class="result-item">
-                <div id="growthMultiplier" class="result-value">0x</div>
+                <div data-output="growthMultiplier" class="result-value">0x</div>
                 <div class="result-label">Growth Multiplier</div>
               </div>
             </div>
             
             <div class="chart-container">
               <h4 style="margin-bottom: 1rem; color: var(--text-primary);">Year by Year Breakdown</h4>
-              <div id="yearlyBreakdown" style="max-height: 300px; overflow-y: auto;">
+              <div data-output="yearlyBreakdown" style="max-height: 300px; overflow-y: auto;">
                 <table style="width: 100%; font-size: 0.9375rem;">
                   <thead>
                     <tr style="border-bottom: 1px solid var(--border-default);">
@@ -126,7 +136,7 @@
                       <th style="text-align: right; padding: 0.5rem;">Interest</th>
                     </tr>
                   </thead>
-                  <tbody id="breakdownBody"></tbody>
+                  <tbody></tbody>
                 </table>
               </div>
             </div>
@@ -143,56 +153,5 @@
       </div>
     </footer>
   </div>
-
-  <script>
-    document.getElementById('calculateBtn').addEventListener('click', function() {
-      const principal = parseFloat(document.getElementById('principal').value) || 0;
-      const monthlyContribution = parseFloat(document.getElementById('monthlyContribution').value) || 0;
-      const rate = parseFloat(document.getElementById('rate').value) || 0;
-      const years = parseInt(document.getElementById('years').value) || 0;
-      
-      const monthlyRate = rate / 100 / 12;
-      const months = years * 12;
-      
-      // Compound interest formula with monthly contributions
-      let balance = principal;
-      let totalContributed = principal;
-      const yearlyData = [];
-      
-      for (let month = 1; month <= months; month++) {
-        balance = balance * (1 + monthlyRate) + monthlyContribution;
-        totalContributed += monthlyContribution;
-        
-        if (month % 12 === 0) {
-          const year = month / 12;
-          const yearlyInterest = balance - totalContributed;
-          yearlyData.push({ year, balance, interest: yearlyInterest });
-        }
-      }
-      
-      const totalInterest = balance - totalContributed;
-      const multiplier = balance / principal;
-      
-      const formatCurrency = (num) => '$' + num.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-      
-      document.getElementById('finalAmount').textContent = formatCurrency(balance);
-      document.getElementById('totalContributed').textContent = formatCurrency(totalContributed);
-      document.getElementById('totalInterest').textContent = formatCurrency(totalInterest);
-      document.getElementById('growthMultiplier').textContent = multiplier.toFixed(1) + 'x';
-      
-      // Render breakdown
-      const tbody = document.getElementById('breakdownBody');
-      tbody.innerHTML = yearlyData.map(d => `
-        <tr style="border-bottom: 1px solid var(--border-default);">
-          <td style="padding: 0.5rem;">Year ${d.year}</td>
-          <td style="text-align: right; padding: 0.5rem; font-weight: 500;">${formatCurrency(d.balance)}</td>
-          <td style="text-align: right; padding: 0.5rem; color: #22C55E;">${formatCurrency(d.interest)}</td>
-        </tr>
-      `).join('');
-      
-      document.getElementById('resultsPanel').classList.add('visible');
-      document.getElementById('resultsPanel').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    });
-  </script>
 </body>
 </html>

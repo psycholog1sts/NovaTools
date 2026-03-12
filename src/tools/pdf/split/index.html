@@ -64,49 +64,53 @@
           <p>Extract specific pages from your PDF files instantly in your browser.</p>
         </div>
         
-        <div id="dropzone" class="dropzone">
-          <div style="font-size: 3rem; margin-bottom: 1rem;">📄</div>
-          <div style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem;">Drop PDF file here or click to browse</div>
-          <div style="font-size: 0.875rem; color: var(--text-muted);">Max 50MB • PDF format only</div>
-          <input type="file" id="fileInput" accept=".pdf,application/pdf" style="display: none;">
-        </div>
-        
-        <div id="fileInfoCard" class="file-info-card">
-          <div style="display: flex; align-items: center; gap: 1rem;">
-            <span style="font-size: 2.5rem;">📄</span>
-            <div style="flex: 1;">
-              <div id="fileName" style="font-weight: 600; font-size: 1.125rem;"></div>
-              <div id="fileSize" style="color: var(--text-muted);"></div>
+        <form data-tool="pdf-split" data-result=".results-panel">
+          <div id="dropzone" class="dropzone">
+            <div style="font-size: 3rem; margin-bottom: 1rem;">📄</div>
+            <div style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem;">Drop PDF file here or click to browse</div>
+            <div style="font-size: 0.875rem; color: var(--text-muted);">Max 50MB • PDF format only</div>
+            <input type="file" name="file" id="fileInput" accept=".pdf,application/pdf" style="display: none;">
+          </div>
+          
+          <div id="fileInfoCard" class="file-info-card">
+            <div style="display: flex; align-items: center; gap: 1rem;">
+              <span style="font-size: 2.5rem;">📄</span>
+              <div style="flex: 1;">
+                <div id="fileName" style="font-weight: 600; font-size: 1.125rem;"></div>
+                <div id="fileSize" style="color: var(--text-muted);"></div>
+              </div>
             </div>
           </div>
-        </div>
-        
-        <div id="pageSelector" class="page-selector">
-          <label style="font-weight: 600; margin-bottom: 0.5rem; display: block;">Select Pages to Extract</label>
-          <div class="form-group" style="margin-top: 1rem;">
-            <label>Page Range (e.g., "1-5" or "1,3,5")</label>
-            <input type="text" id="pageRange" placeholder="1-3" style="width: 100%; height: 48px; padding: 0 1rem; background: var(--bg-tertiary); border: 1px solid var(--border-default); border-radius: var(--radius-md); color: var(--text-primary);">
-          </div>
-          <p style="font-size: 0.875rem; color: var(--text-muted); margin-top: 0.5rem;">Leave empty to split all pages individually</p>
           
-          <button id="splitBtn" class="btn btn-primary">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 0.5rem;">
-              <path d="M4 12h16M12 4v16"/>
-            </svg>
-            Split PDF
-          </button>
-        </div>
+          <div id="pageSelector" class="page-selector">
+            <label style="font-weight: 600; margin-bottom: 0.5rem; display: block;">Select Pages to Extract</label>
+            <div class="form-group" style="margin-top: 1rem;">
+              <label>Page Range (e.g., "1-5" or "1,3,5")</label>
+              <input type="text" name="pageRange" id="pageRange" placeholder="1-3" style="width: 100%; height: 48px; padding: 0 1rem; background: var(--bg-tertiary); border: 1px solid var(--border-default); border-radius: var(--radius-md); color: var(--text-primary);">
+            </div>
+            <p style="font-size: 0.875rem; color: var(--text-muted); margin-top: 0.5rem;">Leave empty to split all pages individually</p>
+            
+            <button type="submit" id="splitBtn" class="btn btn-primary">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 0.5rem;">
+                <path d="M4 12h16M12 4v16"/>
+              </svg>
+              Split PDF
+            </button>
+          </div>
+        </form>
         
-        <div id="resultSection" class="result-section">
-          <div style="font-size: 3rem; margin-bottom: 1rem;">✅</div>
-          <h3 style="margin-bottom: 0.5rem;">PDF Split Successfully!</h3>
-          <p id="resultInfo" style="color: var(--text-secondary); margin-bottom: 1.5rem;"></p>
-          <a id="downloadLink" href="#" class="download-btn" download>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
-            </svg>
-            Download Split PDF
-          </a>
+        <div class="results-panel">
+          <div id="resultSection" class="result-section">
+            <div style="font-size: 3rem; margin-bottom: 1rem;">✅</div>
+            <h3 style="margin-bottom: 0.5rem;">PDF Split Successfully!</h3>
+            <p id="resultInfo" style="color: var(--text-secondary); margin-bottom: 1.5rem;"></p>
+            <a id="downloadLink" href="#" class="download-btn" download>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+              </svg>
+              Download Split PDF
+            </a>
+          </div>
         </div>
       </div>
     </main>
@@ -119,129 +123,5 @@
       </div>
     </footer>
   </div>
-
-  <script type="module">
-    import { PDFDocument } from 'https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/+esm';
-    
-    const MAX_FILE_SIZE = 50 * 1024 * 1024;
-    let currentFile = null;
-    
-    const dropzone = document.getElementById('dropzone');
-    const fileInput = document.getElementById('fileInput');
-    const fileInfoCard = document.getElementById('fileInfoCard');
-    const pageSelector = document.getElementById('pageSelector');
-    const splitBtn = document.getElementById('splitBtn');
-    const resultSection = document.getElementById('resultSection');
-    
-    dropzone.addEventListener('click', () => fileInput.click());
-    
-    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(e => {
-      dropzone.addEventListener(e, (ev) => {
-        ev.preventDefault();
-        ev.stopPropagation();
-      });
-    });
-    
-    ['dragenter', 'dragover'].forEach(e => {
-      dropzone.addEventListener(e, () => dropzone.classList.add('drag-active'));
-    });
-    
-    ['dragleave', 'drop'].forEach(e => {
-      dropzone.addEventListener(e, () => dropzone.classList.remove('drag-active'));
-    });
-    
-    dropzone.addEventListener('drop', (e) => {
-      const files = e.dataTransfer.files;
-      if (files.length > 0) handleFile(files[0]);
-    });
-    
-    fileInput.addEventListener('change', (e) => {
-      if (e.target.files.length > 0) handleFile(e.target.files[0]);
-    });
-    
-    function handleFile(file) {
-      if (!file.name.toLowerCase().endsWith('.pdf')) {
-        alert('Please select a PDF file.');
-        return;
-      }
-      
-      if (file.size > MAX_FILE_SIZE) {
-        alert(`File size exceeds ${(MAX_FILE_SIZE / 1024 / 1024).toFixed(0)}MB.`);
-        return;
-      }
-      
-      currentFile = file;
-      document.getElementById('fileName').textContent = file.name;
-      document.getElementById('fileSize').textContent = (file.size / 1024 / 1024).toFixed(2) + ' MB';
-      
-      fileInfoCard.classList.add('visible');
-      pageSelector.classList.add('visible');
-    }
-    
-    splitBtn.addEventListener('click', async () => {
-      if (!currentFile) return;
-      
-      splitBtn.disabled = true;
-      splitBtn.textContent = 'Processing...';
-      
-      try {
-        const arrayBuffer = await currentFile.arrayBuffer();
-        const pdfDoc = await PDFDocument.load(arrayBuffer);
-        const pageCount = pdfDoc.getPageCount();
-        
-        const pageRange = document.getElementById('pageRange').value.trim();
-        let pagesToExtract = [];
-        
-        if (pageRange) {
-          // Parse range like "1-3" or "1,3,5"
-          const parts = pageRange.split(',');
-          for (const part of parts) {
-            if (part.includes('-')) {
-              const [start, end] = part.split('-').map(n => parseInt(n.trim()) - 1);
-              for (let i = start; i <= end && i < pageCount; i++) {
-                pagesToExtract.push(i);
-              }
-            } else {
-              const page = parseInt(part.trim()) - 1;
-              if (page >= 0 && page < pageCount) pagesToExtract.push(page);
-            }
-          }
-        } else {
-          // Extract all pages individually
-          pagesToExtract = [0]; // For simplicity, extract first page if no range specified
-        }
-        
-        if (pagesToExtract.length === 0) pagesToExtract = [0];
-        
-        // Create new PDF with selected pages
-        const newPdf = await PDFDocument.create();
-        const pages = await newPdf.copyPages(pdfDoc, pagesToExtract);
-        pages.forEach(page => newPdf.addPage(page));
-        
-        const bytes = await newPdf.save();
-        const blob = new Blob([bytes], { type: 'application/pdf' });
-        const url = URL.createObjectURL(blob);
-        
-        const baseName = currentFile.name.replace('.pdf', '');
-        document.getElementById('downloadLink').href = url;
-        document.getElementById('downloadLink').download = `${baseName}-split.pdf`;
-        document.getElementById('resultInfo').textContent = `Extracted ${pagesToExtract.length} page(s) from ${pageCount} total pages`;
-        
-        resultSection.classList.add('visible');
-        resultSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        
-      } catch (error) {
-        alert('Error splitting PDF: ' + error.message);
-      } finally {
-        splitBtn.disabled = false;
-        splitBtn.innerHTML = `
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 0.5rem;">
-            <path d="M4 12h16M12 4v16"/>
-          </svg>
-          Split PDF
-        `;
-      }
-    });
-  </script>
 </body>
 </html>

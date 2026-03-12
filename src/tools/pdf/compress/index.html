@@ -215,87 +215,92 @@
           <p>Reduce PDF file size without losing quality. Your files never leave your browser.</p>
         </div>
         
-        <div id="dropzone" class="dropzone">
-          <div class="dropzone-icon">📄</div>
-          <div class="dropzone-title">Drop PDF file here or click to browse</div>
-          <div class="dropzone-hint">Max 50MB • PDF format only</div>
-          <input type="file" id="fileInput" accept=".pdf,application/pdf" style="display: none;">
-        </div>
-        
-        <div id="fileInfoCard" class="file-info-card">
-          <div class="file-details">
-            <span class="file-icon-large">📄</span>
-            <div class="file-meta">
-              <div id="fileName" class="file-name-large"></div>
-              <div id="fileSize" class="file-size-large"></div>
-            </div>
+        <form data-tool="pdf-compress" data-result=".results-panel">
+          <div id="dropzone" class="dropzone">
+            <div class="dropzone-icon">📄</div>
+            <div class="dropzone-title">Drop PDF file here or click to browse</div>
+            <div class="dropzone-hint">Max 50MB • PDF format only</div>
+            <input type="file" name="file" id="fileInput" accept=".pdf,application/pdf" style="display: none;">
           </div>
-        </div>
-        
-        <div id="qualitySelector" class="quality-selector">
-          <label style="font-weight: 600; margin-bottom: 0.5rem; display: block;">Select Compression Level</label>
-          <div class="quality-options">
-            <div class="quality-option" data-quality="high">
-              <div class="icon">🏆</div>
-              <div class="label">High Quality</div>
-              <div class="desc">Best quality • 10-20% smaller</div>
-            </div>
-            <div class="quality-option selected" data-quality="balanced">
-              <div class="icon">⚖️</div>
-              <div class="label">Balanced</div>
-              <div class="desc">Good quality • 30-50% smaller</div>
-            </div>
-            <div class="quality-option" data-quality="maximum">
-              <div class="icon">🚀</div>
-              <div class="label">Maximum</div>
-              <div class="desc">Smaller size • 50-80% smaller</div>
+          
+          <div id="fileInfoCard" class="file-info-card">
+            <div class="file-details">
+              <span class="file-icon-large">📄</span>
+              <div class="file-meta">
+                <div id="fileName" class="file-name-large"></div>
+                <div id="fileSize" class="file-size-large"></div>
+              </div>
             </div>
           </div>
           
-          <button id="compressBtn" class="btn btn-primary">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
-            </svg>
-            Compress PDF
-          </button>
-        </div>
-        
-        <div id="progressSection" class="progress-section">
-          <div class="progress-text" id="progressText">Analyzing PDF...</div>
-          <div class="progress-bar">
-            <div id="progressFill" class="progress-fill" style="width: 0%"></div>
+          <div id="qualitySelector" class="quality-selector">
+            <label style="font-weight: 600; margin-bottom: 0.5rem; display: block;">Select Compression Level</label>
+            <div class="quality-options">
+              <div class="quality-option" data-quality="high">
+                <div class="icon">🏆</div>
+                <div class="label">High Quality</div>
+                <div class="desc">Best quality • 10-20% smaller</div>
+              </div>
+              <div class="quality-option selected" data-quality="balanced">
+                <div class="icon">⚖️</div>
+                <div class="label">Balanced</div>
+                <div class="desc">Good quality • 30-50% smaller</div>
+              </div>
+              <div class="quality-option" data-quality="maximum">
+                <div class="icon">🚀</div>
+                <div class="label">Maximum</div>
+                <div class="desc">Smaller size • 50-80% smaller</div>
+              </div>
+            </div>
+            <input type="hidden" name="quality" id="qualityInput" value="balanced">
+            
+            <button type="submit" id="compressBtn" class="btn btn-primary">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+              </svg>
+              Compress PDF
+            </button>
           </div>
-        </div>
+        </form>
         
-        <div id="resultSection" class="result-section">
-          <div style="font-size: 3rem; margin-bottom: 1rem;">✅</div>
-          <h3 style="margin-bottom: 0.5rem;">Compression Complete!</h3>
-          
-          <div class="compression-stats">
-            <div class="stat-box">
-              <div id="originalSize" class="stat-value"></div>
-              <div class="stat-label">Original</div>
-            </div>
-            <div class="stat-box">
-              <div id="compressedSize" class="stat-value"></div>
-              <div class="stat-label">Compressed</div>
-            </div>
-            <div class="stat-box">
-              <div id="savingsPercent" class="stat-value savings"></div>
-              <div class="stat-label">Saved</div>
+        <div class="results-panel">
+          <div id="progressSection" class="progress-section">
+            <div class="progress-text" id="progressText">Analyzing PDF...</div>
+            <div class="progress-bar">
+              <div id="progressFill" class="progress-fill" style="width: 0%"></div>
             </div>
           </div>
           
-          <a id="downloadLink" href="#" class="download-btn" download>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
-            </svg>
-            Download Compressed PDF
-          </a>
-          
-          <button id="compressAnother" class="btn btn-secondary" style="margin-top: 1rem;">
-            Compress Another File
-          </button>
+          <div id="resultSection" class="result-section">
+            <div style="font-size: 3rem; margin-bottom: 1rem;">✅</div>
+            <h3 style="margin-bottom: 0.5rem;">Compression Complete!</h3>
+            
+            <div class="compression-stats">
+              <div class="stat-box">
+                <div id="originalSize" class="stat-value"></div>
+                <div class="stat-label">Original</div>
+              </div>
+              <div class="stat-box">
+                <div id="compressedSize" class="stat-value"></div>
+                <div class="stat-label">Compressed</div>
+              </div>
+              <div class="stat-box">
+                <div id="savingsPercent" class="stat-value savings"></div>
+                <div class="stat-label">Saved</div>
+              </div>
+            </div>
+            
+            <a id="downloadLink" href="#" class="download-btn" download>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+              </svg>
+              Download Compressed PDF
+            </a>
+            
+            <button type="button" id="compressAnother" class="btn btn-secondary" style="margin-top: 1rem;">
+              Compress Another File
+            </button>
+          </div>
         </div>
         
         <div id="errorSection" class="error-message"></div>
@@ -318,171 +323,5 @@
       </div>
     </footer>
   </div>
-
-  <script type="module">
-    import { PDFDocument } from 'https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/+esm';
-    import * as PDFJS from 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/+esm';
-    
-    // Set PDF.js worker
-    PDFJS.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js';
-    
-    const MAX_FILE_SIZE = 50 * 1024 * 1024;
-    let currentFile = null;
-    let compressionLevel = 'balanced';
-    
-    const dropzone = document.getElementById('dropzone');
-    const fileInput = document.getElementById('fileInput');
-    const fileInfoCard = document.getElementById('fileInfoCard');
-    const qualitySelector = document.getElementById('qualitySelector');
-    const compressBtn = document.getElementById('compressBtn');
-    const progressSection = document.getElementById('progressSection');
-    const resultSection = document.getElementById('resultSection');
-    const errorSection = document.getElementById('errorSection');
-    
-    // Quality selection
-    document.querySelectorAll('.quality-option').forEach(option => {
-      option.addEventListener('click', () => {
-        document.querySelectorAll('.quality-option').forEach(o => o.classList.remove('selected'));
-        option.classList.add('selected');
-        compressionLevel = option.dataset.quality;
-      });
-    });
-    
-    // Drag & Drop
-    dropzone.addEventListener('click', () => fileInput.click());
-    
-    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(e => {
-      dropzone.addEventListener(e, (ev) => {
-        ev.preventDefault();
-        ev.stopPropagation();
-      });
-    });
-    
-    ['dragenter', 'dragover'].forEach(e => {
-      dropzone.addEventListener(e, () => dropzone.classList.add('drag-active'));
-    });
-    
-    ['dragleave', 'drop'].forEach(e => {
-      dropzone.addEventListener(e, () => dropzone.classList.remove('drag-active'));
-    });
-    
-    dropzone.addEventListener('drop', (e) => {
-      const files = e.dataTransfer.files;
-      if (files.length > 0) handleFile(files[0]);
-    });
-    
-    fileInput.addEventListener('change', (e) => {
-      if (e.target.files.length > 0) handleFile(e.target.files[0]);
-    });
-    
-    function handleFile(file) {
-      hideError();
-      
-      if (!file.name.toLowerCase().endsWith('.pdf')) {
-        showError('Please select a PDF file.');
-        return;
-      }
-      
-      if (file.size > MAX_FILE_SIZE) {
-        showError(`File size exceeds ${formatBytes(MAX_FILE_SIZE)}.`);
-        return;
-      }
-      
-      currentFile = file;
-      document.getElementById('fileName').textContent = file.name;
-      document.getElementById('fileSize').textContent = formatBytes(file.size);
-      
-      fileInfoCard.classList.add('visible');
-      qualitySelector.classList.add('visible');
-    }
-    
-    compressBtn.addEventListener('click', async () => {
-      if (!currentFile) return;
-      
-      compressBtn.disabled = true;
-      progressSection.classList.add('visible');
-      resultSection.classList.remove('visible');
-      
-      try {
-        updateProgress(20, 'Reading PDF...');
-        
-        const arrayBuffer = await currentFile.arrayBuffer();
-        const pdfDoc = await PDFDocument.load(arrayBuffer);
-        
-        updateProgress(50, 'Compressing...');
-        
-        // Compression settings based on level
-        const settings = {
-          high: { useObjectStreams: true },
-          balanced: { useObjectStreams: true },
-          maximum: { useObjectStreams: true }
-        };
-        
-        await new Promise(resolve => setTimeout(resolve, 500)); // Visual feedback
-        
-        updateProgress(80, 'Finalizing...');
-        
-        const compressedBytes = await pdfDoc.save(settings[compressionLevel]);
-        
-        updateProgress(100, 'Complete!');
-        
-        const originalSize = currentFile.size;
-        const compressedSize = compressedBytes.length;
-        const savings = originalSize - compressedSize;
-        const savingsPercent = Math.round((savings / originalSize) * 100);
-        
-        // Display results
-        document.getElementById('originalSize').textContent = formatBytes(originalSize);
-        document.getElementById('compressedSize').textContent = formatBytes(compressedSize);
-        document.getElementById('savingsPercent').textContent = `-${savingsPercent}%`;
-        
-        const blob = new Blob([compressedBytes], { type: 'application/pdf' });
-        const url = URL.createObjectURL(blob);
-        
-        const baseName = currentFile.name.replace('.pdf', '');
-        document.getElementById('downloadLink').href = url;
-        document.getElementById('downloadLink').download = `${baseName}-compressed.pdf`;
-        
-        resultSection.classList.add('visible');
-        resultSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        
-      } catch (error) {
-        showError(`Error compressing PDF: ${error.message}`);
-      } finally {
-        compressBtn.disabled = false;
-      }
-    });
-    
-    document.getElementById('compressAnother').addEventListener('click', () => {
-      currentFile = null;
-      fileInfoCard.classList.remove('visible');
-      qualitySelector.classList.remove('visible');
-      progressSection.classList.remove('visible');
-      resultSection.classList.remove('visible');
-      fileInput.value = '';
-    });
-    
-    function updateProgress(percent, text) {
-      document.getElementById('progressFill').style.width = `${percent}%`;
-      document.getElementById('progressText').textContent = text;
-    }
-    
-    function showError(message) {
-      errorSection.textContent = message;
-      errorSection.classList.add('visible');
-    }
-    
-    function hideError() {
-      errorSection.classList.remove('visible');
-    }
-    
-    function formatBytes(bytes) {
-      if (bytes === 0) return '0 B';
-      const k = 1024;
-      const sizes = ['B', 'KB', 'MB', 'GB'];
-      const i = Math.floor(Math.log(bytes) / Math.log(k));
-      return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
-    }
-  </script>
 </body>
 </html>

@@ -65,76 +65,69 @@
             <p style="color: var(--text-secondary);">Compare costs across AWS, Azure, and Google Cloud Platform. Estimate your monthly infrastructure expenses.</p>
           </div>
           
-          <div class="calculator-form">
+          <form class="calculator-form" data-tool="cloud-cost" data-result=".results-panel">
             <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 1.5rem;">Server Configuration</h3>
             
             <div class="form-row">
               <div class="form-group">
-                <label for="instances">Number of Instances</label>
-                <input type="number" id="instances" placeholder="5" min="1" value="1">
+                <label for="provider">Cloud Provider</label>
+                <select id="provider" name="provider" required>
+                  <option value="aws" selected>AWS (Amazon Web Services)</option>
+                  <option value="azure">Azure (Microsoft)</option>
+                  <option value="gcp">GCP (Google Cloud Platform)</option>
+                </select>
               </div>
               <div class="form-group">
-                <label for="instanceType">Instance Type</label>
-                <select id="instanceType">
-                  <option value="small">Small (2 vCPU, 4 GB RAM)</option>
-                  <option value="medium" selected>Medium (4 vCPU, 8 GB RAM)</option>
-                  <option value="large">Large (8 vCPU, 16 GB RAM)</option>
-                  <option value="xlarge">X-Large (16 vCPU, 32 GB RAM)</option>
-                </select>
+                <label for="vcpus">vCPUs</label>
+                <input type="number" id="vcpus" name="vcpus" placeholder="4" min="1" max="128" value="4" required>
               </div>
             </div>
             
             <div class="form-row">
+              <div class="form-group">
+                <label for="memory">Memory (GB)</label>
+                <input type="number" id="memory" name="memory" placeholder="16" min="1" max="1024" value="16" required>
+              </div>
               <div class="form-group">
                 <label for="storage">Storage (GB)</label>
-                <input type="number" id="storage" placeholder="500" min="0" value="100">
-              </div>
-              <div class="form-group">
-                <label for="bandwidth">Bandwidth (GB/month)</label>
-                <input type="number" id="bandwidth" placeholder="1000" min="0" value="500">
+                <input type="number" id="storage" name="storage" placeholder="100" min="10" max="10000" value="100" required>
               </div>
             </div>
             
-            <div class="form-row">
-              <div class="form-group">
-                <label for="hours">Hours Running per Day</label>
-                <input type="number" id="hours" placeholder="24" min="1" max="24" value="24">
-              </div>
-              <div class="form-group">
-                <label for="region">Region</label>
-                <select id="region">
-                  <option value="us">US East</option>
-                  <option value="eu">Europe</option>
-                  <option value="asia">Asia Pacific</option>
-                </select>
-              </div>
+            <div class="form-group">
+              <label for="hoursPerMonth">Hours per Month</label>
+              <input type="number" id="hoursPerMonth" name="hoursPerMonth" placeholder="730" min="1" max="730" value="730" required>
             </div>
             
-            <button type="button" id="calculateBtn" class="btn btn-primary" style="width: 100%; margin-top: 1rem; height: 52px; font-size: 1rem;">
-              Compare Cloud Costs
+            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem; height: 52px; font-size: 1rem;">
+              Estimate Cloud Costs
             </button>
-          </div>
+          </form>
           
-          <div id="resultsPanel" class="results-panel">
-            <h2 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; text-align: center;">Monthly Cost Comparison</h2>
+          <div class="results-panel">
+            <h2 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; text-align: center;">Monthly Cost Estimate</h2>
             <p style="text-align: center; color: var(--text-secondary); margin-bottom: 1.5rem;">Estimated costs based on your configuration</p>
             
             <div class="provider-grid">
-              <div class="provider-card" id="awsCard">
-                <div class="provider-name">☁️ AWS</div>
-                <div id="awsCost" class="provider-cost">$0</div>
-                <p style="font-size: 0.875rem; color: var(--text-muted); margin-top: 0.5rem;">Amazon Web Services</p>
+              <div class="result-item" style="text-align: center; padding: 1.5rem;">
+                <div class="provider-name" style="font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">☁️ Compute</div>
+                <div data-output="computeCost" class="provider-cost" style="font-size: 1.75rem; font-weight: 700; color: var(--accent-hover);">$0</div>
+                <p style="font-size: 0.875rem; color: var(--text-muted); margin-top: 0.5rem;">Compute Resources</p>
               </div>
-              <div class="provider-card" id="azureCard">
-                <div class="provider-name">🔷 Azure</div>
-                <div id="azureCost" class="provider-cost">$0</div>
-                <p style="font-size: 0.875rem; color: var(--text-muted); margin-top: 0.5rem;">Microsoft Azure</p>
+              <div class="result-item" style="text-align: center; padding: 1.5rem;">
+                <div class="provider-name" style="font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">💾 Storage</div>
+                <div data-output="storageCost" class="provider-cost" style="font-size: 1.75rem; font-weight: 700; color: var(--accent-hover);">$0</div>
+                <p style="font-size: 0.875rem; color: var(--text-muted); margin-top: 0.5rem;">Storage Costs</p>
               </div>
-              <div class="provider-card" id="gcpCard">
-                <div class="provider-name">🔶 GCP</div>
-                <div id="gcpCost" class="provider-cost">$0</div>
-                <p style="font-size: 0.875rem; color: var(--text-muted); margin-top: 0.5rem;">Google Cloud</p>
+              <div class="result-item highlight" style="text-align: center; padding: 1.5rem; border-color: #22C55E; background: rgba(34, 197, 94, 0.05);">
+                <div class="provider-name" style="font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">💰 Total Monthly</div>
+                <div data-output="totalMonthly" class="provider-cost" style="font-size: 1.75rem; font-weight: 700; color: #22C55E;">$0</div>
+                <p style="font-size: 0.875rem; color: var(--text-muted); margin-top: 0.5rem;">Estimated Monthly Cost</p>
               </div>
+            </div>
+            
+            <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(255,255,255,0.03); border-radius: var(--radius-md); font-size: 0.9375rem; color: var(--text-secondary);">
+              <strong>Yearly Estimate:</strong> <span data-output="totalYearly">$0</span>
             </div>
             
             <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(255,255,255,0.03); border-radius: var(--radius-md); font-size: 0.9375rem; color: var(--text-secondary);">
@@ -153,56 +146,5 @@
       </div>
     </footer>
   </div>
-
-  <script>
-    document.getElementById('calculateBtn').addEventListener('click', function() {
-      const instances = parseInt(document.getElementById('instances').value) || 1;
-      const instanceType = document.getElementById('instanceType').value;
-      const storage = parseInt(document.getElementById('storage').value) || 0;
-      const bandwidth = parseInt(document.getElementById('bandwidth').value) || 0;
-      const hours = parseInt(document.getElementById('hours').value) || 24;
-      const region = document.getElementById('region').value;
-      
-      // Pricing factors (simplified estimates per hour)
-      const hourlyRates = {
-        small: 0.05,
-        medium: 0.10,
-        large: 0.20,
-        xlarge: 0.40
-      };
-      
-      const regionMultipliers = {
-        us: 1.0,
-        eu: 1.1,
-        asia: 1.05
-      };
-      
-      const baseCompute = hourlyRates[instanceType] * hours * 30 * instances * regionMultipliers[region];
-      const storageCost = storage * 0.10; // $0.10 per GB
-      const bandwidthCost = bandwidth * 0.09; // $0.09 per GB
-      
-      // Provider variations
-      const awsTotal = baseCompute * 1.0 + storageCost * 1.0 + bandwidthCost * 1.0;
-      const azureTotal = baseCompute * 0.95 + storageCost * 1.05 + bandwidthCost * 1.0;
-      const gcpTotal = baseCompute * 0.90 + storageCost * 1.0 + bandwidthCost * 1.2;
-      
-      const formatCurrency = (num) => '$' + num.toFixed(2);
-      
-      document.getElementById('awsCost').textContent = formatCurrency(awsTotal);
-      document.getElementById('azureCost').textContent = formatCurrency(azureTotal);
-      document.getElementById('gcpCost').textContent = formatCurrency(gcpTotal);
-      
-      // Highlight best price
-      document.querySelectorAll('.provider-card').forEach(card => card.classList.remove('best'));
-      let bestProvider = 'awsCard';
-      let bestPrice = awsTotal;
-      if (azureTotal < bestPrice) { bestProvider = 'azureCard'; bestPrice = azureTotal; }
-      if (gcpTotal < bestPrice) { bestProvider = 'gcpCard'; bestPrice = gcpTotal; }
-      document.getElementById(bestProvider).classList.add('best');
-      
-      document.getElementById('resultsPanel').classList.add('visible');
-      document.getElementById('resultsPanel').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    });
-  </script>
 </body>
 </html>

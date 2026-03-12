@@ -197,60 +197,64 @@
           <p>Combine multiple PDF files into one document instantly. Your files never leave your browser.</p>
         </div>
         
-        <div id="dropzone" class="dropzone">
-          <div class="dropzone-icon">📁</div>
-          <div class="dropzone-title">Drop PDF files here or click to browse</div>
-          <div class="dropzone-hint">Max 20 files • 50MB total • PDF format only</div>
-          <input type="file" id="fileInput" accept=".pdf,application/pdf" multiple style="display: none;">
-        </div>
-        
-        <div id="fileList" class="file-list"></div>
-        
-        <div id="controls" class="controls" style="display: none;">
-          <div class="control-group">
-            <label for="outputName">Output Filename</label>
-            <input type="text" id="outputName" value="merged-document" placeholder="merged-document">
+        <form data-tool="pdf-merge" data-result=".results-panel">
+          <div id="dropzone" class="dropzone">
+            <div class="dropzone-icon">📁</div>
+            <div class="dropzone-title">Drop PDF files here or click to browse</div>
+            <div class="dropzone-hint">Max 20 files • 50MB total • PDF format only</div>
+            <input type="file" name="files" id="fileInput" accept=".pdf,application/pdf" multiple style="display: none;">
           </div>
           
-          <div class="control-group">
-            <label for="sortOrder">Sort Order</label>
-            <select id="sortOrder">
-              <option value="manual">Manual Order</option>
-              <option value="name">By Name (A-Z)</option>
-              <option value="size">By Size (Largest First)</option>
-            </select>
+          <div id="fileList" class="file-list"></div>
+          
+          <div id="controls" class="controls" style="display: none;">
+            <div class="control-group">
+              <label for="outputName">Output Filename</label>
+              <input type="text" id="outputName" value="merged-document" placeholder="merged-document">
+            </div>
+            
+            <div class="control-group">
+              <label for="sortOrder">Sort Order</label>
+              <select id="sortOrder" name="sortOrder">
+                <option value="manual">Manual Order</option>
+                <option value="name">By Name (A-Z)</option>
+                <option value="size">By Size (Largest First)</option>
+              </select>
+            </div>
+            
+            <button type="submit" id="mergeBtn" class="btn btn-primary" disabled>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 4v16m-8-8h16"/>
+              </svg>
+              Merge PDFs
+            </button>
+            
+            <button type="button" id="clearBtn" class="btn btn-secondary" style="width: 100%; margin-top: 0.75rem;">
+              Clear All
+            </button>
+          </div>
+        </form>
+        
+        <div class="results-panel">
+          <div id="progressSection" class="progress-section">
+            <div class="progress-text" id="progressText">Processing...</div>
+            <div class="progress-bar">
+              <div id="progressFill" class="progress-fill" style="width: 0%"></div>
+            </div>
+            <div class="progress-text" id="progressDetail"></div>
           </div>
           
-          <button id="mergeBtn" class="btn btn-primary" disabled>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M12 4v16m-8-8h16"/>
-            </svg>
-            Merge PDFs
-          </button>
-          
-          <button id="clearBtn" class="btn btn-secondary" style="width: 100%; margin-top: 0.75rem;">
-            Clear All
-          </button>
-        </div>
-        
-        <div id="progressSection" class="progress-section">
-          <div class="progress-text" id="progressText">Processing...</div>
-          <div class="progress-bar">
-            <div id="progressFill" class="progress-fill" style="width: 0%"></div>
+          <div id="downloadSection" class="download-section">
+            <div style="font-size: 3rem; margin-bottom: 1rem;">✅</div>
+            <h3 style="margin-bottom: 0.5rem;">PDFs Merged Successfully!</h3>
+            <p id="resultInfo" style="color: var(--text-secondary); margin-bottom: 1.5rem;"></p>
+            <a id="downloadLink" href="#" class="download-btn" download>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+              </svg>
+              Download Merged PDF
+            </a>
           </div>
-          <div class="progress-text" id="progressDetail"></div>
-        </div>
-        
-        <div id="downloadSection" class="download-section">
-          <div style="font-size: 3rem; margin-bottom: 1rem;">✅</div>
-          <h3 style="margin-bottom: 0.5rem;">PDFs Merged Successfully!</h3>
-          <p id="resultInfo" style="color: var(--text-secondary); margin-bottom: 1.5rem;"></p>
-          <a id="downloadLink" href="#" class="download-btn" download>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
-            </svg>
-            Download Merged PDF
-          </a>
         </div>
         
         <div id="errorSection" class="error-message"></div>
@@ -273,236 +277,5 @@
       </div>
     </footer>
   </div>
-
-  <script type="module">
-    import { PDFDocument } from 'https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/+esm';
-    
-    const CONFIG = {
-      MAX_FILES: 20,
-      MAX_TOTAL_SIZE: 50 * 1024 * 1024
-    };
-    
-    let files = [];
-    let isProcessing = false;
-    
-    const dropzone = document.getElementById('dropzone');
-    const fileInput = document.getElementById('fileInput');
-    const fileList = document.getElementById('fileList');
-    const controls = document.getElementById('controls');
-    const mergeBtn = document.getElementById('mergeBtn');
-    const clearBtn = document.getElementById('clearBtn');
-    const sortOrder = document.getElementById('sortOrder');
-    const progressSection = document.getElementById('progressSection');
-    const downloadSection = document.getElementById('downloadSection');
-    const errorSection = document.getElementById('errorSection');
-    
-    // Drag & Drop
-    dropzone.addEventListener('click', () => fileInput.click());
-    
-    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(e => {
-      dropzone.addEventListener(e, (ev) => {
-        ev.preventDefault();
-        ev.stopPropagation();
-      });
-    });
-    
-    ['dragenter', 'dragover'].forEach(e => {
-      dropzone.addEventListener(e, () => dropzone.classList.add('drag-active'));
-    });
-    
-    ['dragleave', 'drop'].forEach(e => {
-      dropzone.addEventListener(e, () => dropzone.classList.remove('drag-active'));
-    });
-    
-    dropzone.addEventListener('drop', (e) => {
-      handleFiles(e.dataTransfer.files);
-    });
-    
-    fileInput.addEventListener('change', (e) => {
-      handleFiles(e.target.files);
-      fileInput.value = '';
-    });
-    
-    function handleFiles(fileList) {
-      const newFiles = Array.from(fileList);
-      
-      if (files.length + newFiles.length > CONFIG.MAX_FILES) {
-        showError(`Maximum ${CONFIG.MAX_FILES} files allowed.`);
-        return;
-      }
-      
-      const currentSize = files.reduce((sum, f) => sum + f.size, 0);
-      const newSize = newFiles.reduce((sum, f) => sum + f.size, 0);
-      
-      if (currentSize + newSize > CONFIG.MAX_TOTAL_SIZE) {
-        showError(`Total file size exceeds ${formatBytes(CONFIG.MAX_TOTAL_SIZE)}.`);
-        return;
-      }
-      
-      for (const file of newFiles) {
-        if (!file.name.toLowerCase().endsWith('.pdf')) {
-          showError(`"${file.name}" is not a PDF file.`);
-          continue;
-        }
-        const isDuplicate = files.some(f => f.name === file.name && f.size === file.size);
-        if (!isDuplicate) {
-          files.push(file);
-        }
-      }
-      
-      updateUI();
-      hideError();
-    }
-    
-    function renderFileList() {
-      if (files.length === 0) {
-        fileList.innerHTML = '';
-        return;
-      }
-      
-      fileList.innerHTML = files.map((file, index) => `
-        <div class="file-item" draggable="true" data-index="${index}">
-          <span class="file-icon">📄</span>
-          <div class="file-info">
-            <div class="file-name">${file.name}</div>
-            <div class="file-size">${formatBytes(file.size)}</div>
-          </div>
-          <button class="file-remove" data-index="${index}" title="Remove">×</button>
-        </div>
-      `).join('');
-      
-      // Remove buttons
-      fileList.querySelectorAll('.file-remove').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          const idx = parseInt(e.target.dataset.index);
-          files.splice(idx, 1);
-          updateUI();
-        });
-      });
-      
-      // Drag and drop reordering
-      let dragSrcEl = null;
-      fileList.querySelectorAll('.file-item').forEach(item => {
-        item.addEventListener('dragstart', (e) => {
-          dragSrcEl = item;
-          e.dataTransfer.effectAllowed = 'move';
-        });
-        
-        item.addEventListener('dragover', (e) => {
-          e.preventDefault();
-          e.dataTransfer.dropEffect = 'move';
-        });
-        
-        item.addEventListener('drop', (e) => {
-          e.preventDefault();
-          if (dragSrcEl !== item) {
-            const srcIdx = parseInt(dragSrcEl.dataset.index);
-            const targetIdx = parseInt(item.dataset.index);
-            const [moved] = files.splice(srcIdx, 1);
-            files.splice(targetIdx, 0, moved);
-            updateUI();
-          }
-        });
-      });
-    }
-    
-    function updateUI() {
-      renderFileList();
-      controls.style.display = files.length > 0 ? 'block' : 'none';
-      mergeBtn.disabled = files.length < 2 || isProcessing;
-    }
-    
-    sortOrder.addEventListener('change', () => {
-      const sort = sortOrder.value;
-      if (sort === 'name') {
-        files.sort((a, b) => a.name.localeCompare(b.name));
-      } else if (sort === 'size') {
-        files.sort((a, b) => b.size - a.size);
-      }
-      updateUI();
-    });
-    
-    clearBtn.addEventListener('click', () => {
-      files = [];
-      updateUI();
-      progressSection.classList.remove('visible');
-      downloadSection.classList.remove('visible');
-      hideError();
-    });
-    
-    mergeBtn.addEventListener('click', async () => {
-      if (files.length < 2) return;
-      
-      isProcessing = true;
-      mergeBtn.disabled = true;
-      progressSection.classList.add('visible');
-      downloadSection.classList.remove('visible');
-      hideError();
-      
-      try {
-        updateProgress(10, 'Reading PDFs...');
-        
-        const mergedPdf = await PDFDocument.create();
-        let totalPages = 0;
-        
-        for (let i = 0; i < files.length; i++) {
-          const arrayBuffer = await files[i].arrayBuffer();
-          const pdf = await PDFDocument.load(arrayBuffer);
-          const pages = await mergedPdf.copyPages(pdf, pdf.getPageIndices());
-          pages.forEach(page => mergedPdf.addPage(page));
-          totalPages += pages.length;
-          
-          updateProgress(10 + ((i + 1) / files.length) * 70, `Processing ${files[i].name}...`);
-        }
-        
-        updateProgress(90, 'Generating merged PDF...');
-        
-        const bytes = await mergedPdf.save();
-        const blob = new Blob([bytes], { type: 'application/pdf' });
-        const url = URL.createObjectURL(blob);
-        
-        const outputName = document.getElementById('outputName').value.trim() || 'merged-document';
-        const downloadLink = document.getElementById('downloadLink');
-        downloadLink.href = url;
-        downloadLink.download = `${outputName}.pdf`;
-        
-        document.getElementById('resultInfo').textContent = 
-          `${files.length} files merged • ${totalPages} pages • ${formatBytes(bytes.length)}`;
-        
-        updateProgress(100, 'Complete!');
-        downloadSection.classList.add('visible');
-        downloadSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        
-      } catch (error) {
-        showError(`Error merging PDFs: ${error.message}`);
-      } finally {
-        isProcessing = false;
-        mergeBtn.disabled = false;
-      }
-    });
-    
-    function updateProgress(percent, text) {
-      document.getElementById('progressFill').style.width = `${percent}%`;
-      document.getElementById('progressText').textContent = text;
-      document.getElementById('progressDetail').textContent = `${Math.round(percent)}%`;
-    }
-    
-    function showError(message) {
-      errorSection.textContent = message;
-      errorSection.classList.add('visible');
-    }
-    
-    function hideError() {
-      errorSection.classList.remove('visible');
-    }
-    
-    function formatBytes(bytes) {
-      if (bytes === 0) return '0 B';
-      const k = 1024;
-      const sizes = ['B', 'KB', 'MB', 'GB'];
-      const i = Math.floor(Math.log(bytes) / Math.log(k));
-      return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
-    }
-  </script>
 </body>
 </html>

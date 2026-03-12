@@ -5,6 +5,7 @@
 
 // Import individual tool implementations
 import { mortgageCalculator } from './mortgage.mjs';
+import { refinanceCalculator } from './mortgage-refinance.mjs';
 import { compoundInterestCalculator } from './compound.mjs';
 import { cryptoTaxCalculator } from './crypto-tax.mjs';
 import { cloudCostCalculator } from './cloud-cost.mjs';
@@ -269,6 +270,79 @@ export function registerFinanceTools(controller) {
       { name: 'inverseRate', type: 'number' }
     ]
   }, currencyConverter);
+
+  // Mortgage Refinance Calculator
+  controller.registerTool('mortgage-refinance', {
+    name: 'Mortgage Refinance Calculator',
+    description: 'Calculate refinance savings and break-even analysis',
+    category: 'finance',
+    icon: '🏦',
+    inputs: [
+      {
+        name: 'balance',
+        type: 'number',
+        label: 'Current Balance',
+        required: true,
+        min: 1000,
+        max: 10000000,
+        placeholder: '300000'
+      },
+      {
+        name: 'currentRate',
+        type: 'number',
+        label: 'Current Interest Rate (%)',
+        required: true,
+        min: 0.01,
+        max: 20,
+        step: 0.01,
+        placeholder: '6.5'
+      },
+      {
+        name: 'yearsRemaining',
+        type: 'integer',
+        label: 'Years Remaining',
+        required: true,
+        min: 1,
+        max: 30,
+        placeholder: '25'
+      },
+      {
+        name: 'newRate',
+        type: 'number',
+        label: 'New Interest Rate (%)',
+        required: true,
+        min: 0.01,
+        max: 20,
+        step: 0.01,
+        placeholder: '4.5'
+      },
+      {
+        name: 'newTerm',
+        type: 'integer',
+        label: 'New Loan Term (Years)',
+        required: true,
+        min: 1,
+        max: 30,
+        placeholder: '30'
+      },
+      {
+        name: 'closingCosts',
+        type: 'number',
+        label: 'Closing Costs',
+        required: false,
+        min: 0,
+        default: 5000,
+        placeholder: '5000'
+      }
+    ],
+    outputs: [
+      { name: 'monthlySavings', type: 'currency' },
+      { name: 'totalSavings', type: 'currency' },
+      { name: 'interestSaved', type: 'currency' },
+      { name: 'breakEvenMonths', type: 'integer' },
+      { name: 'recommendation', type: 'object' }
+    ]
+  }, refinanceCalculator);
 
   console.log('✓ Finance tools registered');
 }

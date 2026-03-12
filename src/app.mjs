@@ -9,7 +9,8 @@ import {
   stateManager,
   apiClient,
   ErrorHandler,
-  toolController
+  toolController,
+  initToolBridges
 } from './core/index.mjs';
 
 // Services
@@ -190,6 +191,9 @@ class NovaToolsApp {
     document.querySelectorAll('[data-dropzone]').forEach(el => {
       this.initDropzone(el);
     });
+
+    // Initialize tool bridges for forms with data-tool attribute
+    initToolBridges();
   }
 
   /**
