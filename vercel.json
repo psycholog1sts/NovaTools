@@ -13,58 +13,73 @@
     }
   ],
 
-  "routes": [
+  "rewrites": [
     {
-      "src": "/sitemap\\.xml$",
-      "dest": "/sitemap.xml",
-      "headers": {
-        "Content-Type": "application/xml",
-        "Cache-Control": "public, max-age=86400"
-      }
+      "source": "/sitemap.xml",
+      "destination": "/sitemap.xml"
     },
     {
-      "src": "/sitemap-index.xml",
-      "dest": "/sitemap-index.xml",
-      "headers": {
-        "Content-Type": "application/xml",
-        "Cache-Control": "public, max-age=86400"
-      }
+      "source": "/sitemap-index.xml",
+      "destination": "/sitemap-index.xml"
     },
     {
-      "src": "/sitemap-([^/]+)\\.xml",
-      "dest": "/sitemap-$1.xml",
-      "headers": {
-        "Content-Type": "application/xml",
-        "Cache-Control": "public, max-age=86400"
-      }
+      "source": "/sitemap-:name.xml",
+      "destination": "/sitemap-:name.xml"
     },
     {
-      "src": "/robots.txt",
-      "dest": "/robots.txt",
-      "headers": {
-        "Content-Type": "text/plain",
-        "Cache-Control": "public, max-age=86400"
-      }
+      "source": "/robots.txt",
+      "destination": "/robots.txt"
     },
     {
-      "src": "/manifest.json",
-      "dest": "/manifest.json",
-      "headers": {
-        "Content-Type": "application/json",
-        "Cache-Control": "public, max-age=86400"
-      }
+      "source": "/manifest.json",
+      "destination": "/manifest.json"
     },
     {
-      "handle": "filesystem"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html",
-      "status": 200
+      "source": "/((?!assets|vendor|js|css|wasm|icons|images|fonts|meta).*)",
+      "destination": "/index.html"
     }
   ],
 
   "headers": [
+    {
+      "source": "/(.*\\.xml)$",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/xml; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400"
+        }
+      ]
+    },
+    {
+      "source": "/robots.txt",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/plain; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400"
+        }
+      ]
+    },
+    {
+      "source": "/manifest.json",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/json; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400"
+        }
+      ]
+    },
     {
       "source": "/src/styles/critical.css",
       "headers": [
