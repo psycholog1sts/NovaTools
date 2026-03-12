@@ -1,225 +1,61 @@
 {
-  "$schema": "https://openapi.vercel.sh/vercel.json",
   "version": 2,
   "name": "novatools-mc",
   
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist",
-  "installCommand": "npm install",
-  
-  "routes": [
+  "builds": [
     {
-      "src": "/favicon.ico",
-      "dest": "/favicon.ico",
-      "headers": {
-        "Cache-Control": "public, max-age=604800"
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"
       }
-    },
-    {
-      "src": "/favicon-16.png",
-      "dest": "/favicon-16.png",
-      "headers": {
-        "Cache-Control": "public, max-age=604800"
-      }
-    },
-    {
-      "src": "/favicon-32.png",
-      "dest": "/favicon-32.png",
-      "headers": {
-        "Cache-Control": "public, max-age=604800"
-      }
-    },
-    {
-      "src": "/apple-touch-icon.png",
-      "dest": "/apple-touch-icon.png",
-      "headers": {
-        "Cache-Control": "public, max-age=604800"
-      }
-    },
-    {
-      "src": "/favicon.svg",
-      "dest": "/favicon.svg",
-      "headers": {
-        "Cache-Control": "public, max-age=604800",
-        "Content-Type": "image/svg+xml"
-      }
-    },
-    {
-      "src": "/sitemap.xml",
-      "dest": "/sitemap.xml"
-    },
-    {
-      "src": "/sitemap-index.xml",
-      "dest": "/sitemap-index.xml"
-    },
-    {
-      "src": "/sitemap-:name.xml",
-      "dest": "/sitemap-:name.xml"
-    },
-    {
-      "src": "/robots.txt",
-      "dest": "/robots.txt"
-    },
-    {
-      "src": "/manifest.json",
-      "dest": "/manifest.json"
-    },
-    {
-      "src": "/manifest.webmanifest",
-      "dest": "/manifest.webmanifest"
-    },
-    {
-      "src": "/ads.txt",
-      "dest": "/ads.txt"
-    },
-    {
-      "src": "/",
-      "dest": "/index.html"
-    },
-    {
-      "src": "/tools/finance/mortgage-refinance",
-      "dest": "/src/tools/finance/mortgage-refinance/index.html"
-    },
-    {
-      "src": "/tools/finance/compound-interest",
-      "dest": "/src/tools/finance/compound-interest/index.html"
-    },
-    {
-      "src": "/tools/finance/cloud-cost",
-      "dest": "/src/tools/finance/cloud-cost/index.html"
-    },
-    {
-      "src": "/tools/finance/crypto-tax",
-      "dest": "/src/tools/finance/crypto-tax/index.html"
-    },
-    {
-      "src": "/tools/finance/life-insurance",
-      "dest": "/src/tools/finance/life-insurance/index.html"
-    },
-    {
-      "src": "/tools/finance/student-loan",
-      "dest": "/src/tools/finance/student-loan/index.html"
-    },
-    {
-      "src": "/tools/finance/retirement",
-      "dest": "/src/tools/finance/retirement/index.html"
-    },
-    {
-      "src": "/tools/finance/tax",
-      "dest": "/src/tools/finance/tax/index.html"
-    },
-    {
-      "src": "/tools/pdf/merge",
-      "dest": "/src/tools/pdf/merge/index.html"
-    },
-    {
-      "src": "/tools/pdf/compress",
-      "dest": "/src/tools/pdf/compress/index.html"
-    },
-    {
-      "src": "/tools/pdf/split",
-      "dest": "/src/tools/pdf/split/index.html"
-    },
-    {
-      "src": "/tools/image/compress",
-      "dest": "/src/tools/image/compress/index.html"
-    },
-    {
-      "src": "/tools/image/convert",
-      "dest": "/src/tools/image/convert/index.html"
-    },
-    {
-      "src": "/tools/religious/islamic-calendar",
-      "dest": "/src/tools/religious/islamic-calendar/index.html"
-    },
-    {
-      "src": "/tools/news/summarizer",
-      "dest": "/src/tools/news/summarizer/index.html"
-    },
-    {
-      "src": "/tools/(.*)",
-      "dest": "/src/tools/$1"
-    },
-    {
-      "src": "/blog/(.*)",
-      "dest": "/src/blog/$1"
-    },
-    {
-      "src": "/admin/(.*)",
-      "dest": "/admin/$1"
-    },
-    {
-      "src": "/:path*",
-      "dest": "/index.html"
     }
+  ],
+
+  "rewrites": [
+    { "source": "/tools/finance/mortgage-refinance", "destination": "/src/tools/finance/mortgage-refinance/index.html" },
+    { "source": "/tools/finance/compound-interest", "destination": "/src/tools/finance/compound-interest/index.html" },
+    { "source": "/tools/finance/cloud-cost", "destination": "/src/tools/finance/cloud-cost/index.html" },
+    { "source": "/tools/finance/crypto-tax", "destination": "/src/tools/finance/crypto-tax/index.html" },
+    { "source": "/tools/finance/life-insurance", "destination": "/src/tools/finance/life-insurance/index.html" },
+    { "source": "/tools/finance/student-loan", "destination": "/src/tools/finance/student-loan/index.html" },
+    { "source": "/tools/finance/retirement", "destination": "/src/tools/finance/retirement/index.html" },
+    { "source": "/tools/finance/tax", "destination": "/src/tools/finance/tax/index.html" },
+    { "source": "/tools/pdf/merge", "destination": "/src/tools/pdf/merge/index.html" },
+    { "source": "/tools/pdf/compress", "destination": "/src/tools/pdf/compress/index.html" },
+    { "source": "/tools/pdf/split", "destination": "/src/tools/pdf/split/index.html" },
+    { "source": "/tools/image/compress", "destination": "/src/tools/image/compress/index.html" },
+    { "source": "/tools/image/convert", "destination": "/src/tools/image/convert/index.html" },
+    { "source": "/tools/religious/islamic-calendar", "destination": "/src/tools/religious/islamic-calendar/index.html" },
+    { "source": "/tools/news/summarizer", "destination": "/src/tools/news/summarizer/index.html" },
+    { "source": "/tools/(.*)", "destination": "/src/tools/$1" },
+    { "source": "/blog/(.*)", "destination": "/src/blog/$1" },
+    { "source": "/admin/(.*)", "destination": "/admin/$1" },
+    { "source": "/(.*)", "destination": "/index.html" }
   ],
 
   "headers": [
     {
       "source": "/(.*\\.xml)$",
       "headers": [
-        {
-          "key": "Content-Type",
-          "value": "application/xml; charset=utf-8"
-        },
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=86400"
-        }
+        { "key": "Content-Type", "value": "application/xml; charset=utf-8" },
+        { "key": "Cache-Control", "value": "public, max-age=86400" }
       ]
     },
     {
       "source": "/robots.txt",
       "headers": [
-        {
-          "key": "Content-Type",
-          "value": "text/plain; charset=utf-8"
-        },
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=86400"
-        }
-      ]
-    },
-    {
-      "source": "/manifest.json",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "application/json; charset=utf-8"
-        },
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=86400"
-        }
+        { "key": "Content-Type", "value": "text/plain; charset=utf-8" },
+        { "key": "Cache-Control", "value": "public, max-age=86400" }
       ]
     },
     {
       "source": "/(.*)",
       "headers": [
-        {
-          "key": "X-Frame-Options",
-          "value": "DENY"
-        },
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        },
-        {
-          "key": "Referrer-Policy",
-          "value": "strict-origin-when-cross-origin"
-        },
-        {
-          "key": "Permissions-Policy",
-          "value": "camera=(), microphone=(), geolocation=()"
-        }
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
       ]
     }
-  ],
-
-  "cleanUrls": true,
-
-  "github": {
-    "silent": true
-  }
+  ]
 }
