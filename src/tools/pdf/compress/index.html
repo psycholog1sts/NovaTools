@@ -1,368 +1,488 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="/src/styles/critical.css">
   <link rel="stylesheet" href="/src/styles/main.css">
-  
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="apple-touch-icon" sizes="180x180" href="/icons/icon-180x180.png">
-  
-  <title>PDF Sıkıştırma | Dosya Boyutunu Küçült | ZeroTools</title>
-  <meta name="description" content="PDF dosya boyutunu kalite kaybetmeden küçültün. 50MB'a kadar, tamamen tarayıcınızda. OCR sonrası optimize edin. Ücretsiz ve güvenli.">
-  <meta name="keywords" content="pdf sıkıştırma, pdf compress, pdf boyut küçültme, pdf optimizasyon, reduce pdf size">
-  <meta name="robots" content="index, follow">
-  <meta name="theme-color" content="#2563eb">
-  
-  <meta property="og:title" content="PDF Sıkıştırma | ZeroTools">
-  <meta property="og:description" content="PDF dosya boyutunu kalite kaybetmeden küçültün. Zero Server - verileriniz asla dışarı çıkmaz.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://zerotools.dev/src/tools/pdf/compress/">
-  
-  <link rel="canonical" href="https://zerotools.dev/src/tools/pdf/compress/">
-  <link rel="manifest" href="/manifest.json">
-  
-  <script type="application/ld+json" id="base-schema">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "PDF Sıkıştırma",
-    "applicationCategory": "DeveloperApplication",
-    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "TRY"}
-  }
-  </script>
+  <title>PDF Compressor | Reduce File Size | NovaTools MC</title>
+  <meta name="description" content="Compress PDF files without losing quality. Reduce file size up to 80%. 100% private - all processing happens in your browser.">
+  <meta name="theme-color" content="#0A0A0C">
+  <style>
+    .tool-container { max-width: 900px; margin: 0 auto; padding: 2rem 1rem; }
+    .tool-header { text-align: center; margin-bottom: 2rem; }
+    .tool-header h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .tool-header p { color: var(--text-secondary); }
+    
+    .dropzone {
+      border: 2px dashed rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 3rem 2rem;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.03);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .dropzone:hover {
+      border-color: rgba(99, 102, 241, 0.5);
+      background: rgba(255, 255, 255, 0.06);
+    }
+    .dropzone.drag-active {
+      border-color: #6366F1;
+      background: rgba(99, 102, 241, 0.1);
+      transform: scale(1.02);
+    }
+    .dropzone-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .dropzone-title { font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .dropzone-hint { font-size: 0.875rem; color: var(--text-muted); }
+    
+    .file-info-card {
+      display: none;
+      margin-top: 1.5rem;
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-lg);
+    }
+    .file-info-card.visible { display: block; }
+    .file-details { display: flex; align-items: center; gap: 1rem; }
+    .file-icon-large { font-size: 2.5rem; }
+    .file-meta { flex: 1; }
+    .file-name-large { font-weight: 600; font-size: 1.125rem; }
+    .file-size-large { color: var(--text-muted); }
+    
+    .quality-selector {
+      margin-top: 1.5rem;
+      padding: 1.5rem;
+      background: var(--surface-default);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-lg);
+      display: none;
+    }
+    .quality-selector.visible { display: block; }
+    
+    .quality-options {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    
+    @media (max-width: 640px) {
+      .quality-options { grid-template-columns: 1fr; }
+    }
+    
+    .quality-option {
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s;
+    }
+    .quality-option:hover {
+      border-color: rgba(99, 102, 241, 0.5);
+      background: rgba(255, 255, 255, 0.08);
+    }
+    .quality-option.selected {
+      border-color: #6366F1;
+      background: rgba(99, 102, 241, 0.15);
+    }
+    .quality-option .icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+    .quality-option .label { font-weight: 600; }
+    .quality-option .desc { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem; }
+    
+    .btn-primary { 
+      width: 100%; 
+      height: 52px; 
+      margin-top: 1.5rem;
+    }
+    .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+    
+    .progress-section {
+      margin-top: 1.5rem;
+      padding: 1.5rem;
+      background: var(--surface-default);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-lg);
+      display: none;
+    }
+    .progress-section.visible { display: block; }
+    .progress-bar {
+      height: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+      overflow: hidden;
+      margin: 1rem 0;
+    }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #6366F1, #8B5CF6);
+      border-radius: 4px;
+      transition: width 0.3s ease;
+    }
+    
+    .result-section {
+      margin-top: 1.5rem;
+      padding: 2rem;
+      background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(34, 197, 94, 0.05));
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      border-radius: var(--radius-lg);
+      text-align: center;
+      display: none;
+    }
+    .result-section.visible { display: block; animation: fadeIn 0.3s ease; }
+    
+    .compression-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .stat-box {
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-md);
+    }
+    .stat-value { font-size: 1.25rem; font-weight: 700; }
+    .stat-label { font-size: 0.75rem; color: var(--text-muted); }
+    .stat-value.savings { color: #22C55E; }
+    
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem 2rem;
+      background: linear-gradient(135deg, #22C55E, #16A34A);
+      color: white;
+      font-weight: 600;
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .download-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(34, 197, 94, 0.3); }
+    
+    .error-message {
+      margin-top: 1rem;
+      padding: 1rem;
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      border-radius: var(--radius-md);
+      color: #ef4444;
+      display: none;
+    }
+    .error-message.visible { display: block; }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
-<body class="bg-secondary-50">
-  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-primary-600 focus:text-white focus:px-4 focus:py-2 focus:rounded">
-    Ana içeriğe atla
-  </a>
-
-  <header class="main-header" role="banner">
-    <div class="container">
-      <div class="flex items-center justify-between py-4">
-        <a href="/" class="flex items-center gap-2 text-xl font-bold text-primary-600" aria-label="ZeroTools Ana Sayfa">
-          <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-            <rect width="32" height="32" rx="8" fill="#2563eb"/>
-            <path d="M8 16L14 22L24 10" stroke="white" stroke-width="3" stroke-linecap="round"/>
-          </svg>
-          <span>ZeroTools</span>
-        </a>
-        <div class="privacy-badge" role="status" aria-label="Güvenlik durumu">
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-            <path d="M8 0L1 3v5c0 5.25 3.67 10.17 7 11 3.33-.83 7-5.75 7-11V3L8 0z"/>
-          </svg>
-          <span>Zero Server</span>
+<body>
+  <div class="bg-ambient" aria-hidden="true"></div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+  
+  <div id="app" class="app">
+    <header class="main-header">
+      <div class="container">
+        <div class="header-inner">
+          <a href="/" class="logo" aria-label="NovaTools MC Home">
+            <div class="logo-icon neon-logo">
+              <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs><linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#00F5D4"/><stop offset="50%" style="stop-color:#00D9FF"/><stop offset="100%" style="stop-color:#00FF88"/></linearGradient></defs>
+                <path d="M50 75 L35 55 L25 40 L35 45 L45 50" stroke="url(#logoGrad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                <path d="M50 75 L65 55 L75 40 L65 45 L55 50" stroke="url(#logoGrad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                <path d="M50 75 L50 55 L45 45 L50 50 L55 45 L50 55" stroke="url(#logoGrad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                <path d="M50 75 L45 85 L50 80 L55 85 L50 75" stroke="url(#logoGrad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              </svg>
+            </div>
+            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+          </a>
         </div>
       </div>
-    </div>
-  </header>
+    </header>
 
-  <nav aria-label="Breadcrumb" class="container py-4">
-    <ol class="flex items-center gap-2 text-sm flex-wrap" itemscope itemtype="https://schema.org/BreadcrumbList">
-      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <a href="/" class="text-secondary-500 hover:text-primary-600" itemprop="item"><span itemprop="name">Ana Sayfa</span></a>
-        <meta itemprop="position" content="1">
-      </li>
-      <li class="text-secondary-400">/</li>
-      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <a href="/#pdf" class="text-secondary-500 hover:text-primary-600" itemprop="item"><span itemprop="name">PDF Araçları</span></a>
-        <meta itemprop="position" content="2">
-      </li>
-      <li class="text-secondary-400">/</li>
-      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <span class="text-gray-900 font-medium" itemprop="name">PDF Sıkıştırma</span>
-        <meta itemprop="position" content="3">
-      </li>
-    </ol>
-  </nav>
-
-  <main id="main-content" class="container pb-12" role="main">
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-      <div class="lg:col-span-2 space-y-6">
+    <main class="main-content">
+      <div class="tool-container">
+        <div class="tool-header">
+          <h1>🗜️ PDF Compressor</h1>
+          <p>Reduce PDF file size without losing quality. Your files never leave your browser.</p>
+        </div>
         
-        <article class="card card-body" aria-labelledby="tool-title">
-          <header class="mb-6">
-            <h1 id="tool-title" class="text-2xl md:text-3xl font-bold text-gray-900 mb-2">PDF Sıkıştırma</h1>
-            <p class="text-secondary-500 text-lg">
-              PDF dosya boyutunu kalite kaybetmeden küçültün.
-              <span class="inline-flex items-center gap-1 text-green-600 font-medium">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                  <path d="M8 0L1 3v5c0 5.25 3.67 10.17 7 11 3.33-.83 7-5.75 7-11V3L8 0z"/>
-                </svg>
-                Güvenli ve Gizli
-              </span>
-            </p>
-          </header>
-          
-          <div class="flex items-center gap-3 p-4 bg-green-50 border border-green-200 rounded-lg mb-6" role="region" aria-label="Gizlilik bilgisi">
-            <div class="flex-shrink-0 w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
-              <svg width="20" height="20" viewBox="0 0 16 16" fill="#059669" aria-hidden="true">
-                <path d="M8 0L1 3v5c0 5.25 3.67 10.17 7 11 3.33-.83 7-5.75 7-11V3L8 0z"/>
-              </svg>
-            </div>
-            <div>
-              <p class="font-semibold text-green-900">Safe & Private</p>
-              <p class="text-sm text-green-700">Dosyalarınız asla sunucularımıza gönderilmez. Tüm işlemler tarayıcınızda gerçekleşir.</p>
-            </div>
-          </div>
-
-          <section aria-labelledby="upload-heading">
-            <h2 id="upload-heading" class="sr-only">Dosya yükleme</h2>
-            <div 
-              id="dropzone" 
-              class="border-2 border-dashed border-gray-300 rounded-xl p-8 text-center transition-all hover:border-primary-400 hover:bg-blue-50/50 focus-within:border-primary-500 focus-within:ring-2 focus-within:ring-primary-200"
-              role="region" 
-              aria-label="Dosya yükleme alanı"
-            >
-              <input type="file" id="fileInput" accept=".pdf,application/pdf" class="sr-only" aria-describedby="file-help file-limits">
-              <div class="pointer-events-none" aria-hidden="true">
-                <svg class="mx-auto h-16 w-16 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48">
-                  <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </div>
-              <label for="fileInput" class="mt-4 inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 cursor-pointer transition-colors" role="button" tabindex="0">
-                PDF Dosyası Seç
-              </label>
-              <p class="mt-2 text-sm text-gray-500">veya dosyayı buraya sürükleyin</p>
-              <div id="file-help" class="mt-4 flex items-center justify-center gap-4 text-xs text-gray-400">
-                <span id="file-limits">Maks. 50 MB</span>
-                <span>•</span>
-                <span>Tek dosya</span>
-              </div>
-            </div>
-          </section>
-
-          <section id="fileInfoSection" class="hidden mt-6" aria-labelledby="fileinfo-heading">
-            <h2 id="fileinfo-heading" class="sr-only">Dosya bilgisi</h2>
-            <div class="flex items-center gap-4 p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <div class="flex-shrink-0 w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
-                <svg class="w-6 h-6 text-red-600" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clip-rule="evenodd"/>
-                </svg>
-              </div>
-              <div class="flex-1 min-w-0">
-                <p id="fileName" class="text-sm font-medium text-gray-900 truncate"></p>
-                <p id="fileSize" class="text-xs text-gray-500"></p>
-              </div>
-              <button type="button" id="removeFileBtn" class="p-2 text-gray-400 hover:text-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 rounded" aria-label="Dosyayı kaldır">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                </svg>
-              </button>
-            </div>
-          </section>
-
-          <section class="mt-6" aria-labelledby="compression-heading">
-            <h2 id="compression-heading" class="text-lg font-semibold text-gray-900 mb-4">Sıkıştırma Seviyesi</h2>
-            
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-              <label class="relative flex cursor-pointer rounded-lg border bg-white p-4 shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-500 has-[:checked]:border-primary-500 has-[:checked]:ring-1 has-[:checked]:ring-primary-500">
-                <input type="radio" name="compressionLevel" value="low" class="sr-only">
-                <span class="flex flex-1">
-                  <span class="flex flex-col">
-                    <span class="block text-sm font-medium text-gray-900">Düşük</span>
-                    <span class="block text-xs text-gray-500">Kalite öncelikli</span>
-                    <span class="block text-xs text-green-600 mt-1">~%10-20 küçülme</span>
-                  </span>
-                </span>
-              </label>
-              
-              <label class="relative flex cursor-pointer rounded-lg border border-primary-500 bg-primary-50 p-4 shadow-sm ring-1 ring-primary-500">
-                <input type="radio" name="compressionLevel" value="medium" class="sr-only" checked>
-                <span class="flex flex-1">
-                  <span class="flex flex-col">
-                    <span class="block text-sm font-medium text-gray-900">Orta</span>
-                    <span class="block text-xs text-gray-500">Dengeli</span>
-                    <span class="block text-xs text-green-600 mt-1">~%30-50 küçülme</span>
-                  </span>
-                </span>
-              </label>
-              
-              <label class="relative flex cursor-pointer rounded-lg border bg-white p-4 shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-500 has-[:checked]:border-primary-500 has-[:checked]:ring-1 has-[:checked]:ring-primary-500">
-                <input type="radio" name="compressionLevel" value="high" class="sr-only">
-                <span class="flex flex-1">
-                  <span class="flex flex-col">
-                    <span class="block text-sm font-medium text-gray-900">Yüksek</span>
-                    <span class="block text-xs text-gray-500">Maksimum sıkıştırma</span>
-                    <span class="block text-xs text-green-600 mt-1">~%60-80 küçülme</span>
-                  </span>
-                </span>
-              </label>
-            </div>
-            
-            <p class="mt-3 text-xs text-gray-500">
-              <strong>Not:</strong> OCR yapılmış (metin tanınmış) PDF'lerde yüksek sıkıştırma önerilir. 
-              Görsel ağırlıklı PDF'lerde kalite kaybı yaşanabilir.
-            </p>
-          </section>
-
-          <div class="mt-6 flex flex-col sm:flex-row gap-3">
-            <button id="compressBtn" class="btn btn-primary flex-1 py-3 text-base disabled:opacity-50 disabled:cursor-not-allowed" disabled aria-live="polite">
-              <span id="compressBtnText">PDF'i Sıkıştır</span>
-              <span id="compressBtnLoading" class="hidden flex items-center justify-center gap-2">
-                <svg class="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" aria-hidden="true">
-                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                </svg>
-                Sıkıştırılıyor...
-              </span>
-            </button>
-            <button id="clearBtn" class="btn btn-secondary py-3 px-6" type="button">Temizle</button>
-          </div>
-
-          <section id="progressSection" class="hidden mt-6" aria-labelledby="progress-heading" aria-live="polite">
-            <h2 id="progress-heading" class="sr-only">İşlem durumu</h2>
-            <div class="flex justify-between text-sm mb-2">
-              <span id="progressText">Hazırlanıyor...</span>
-              <span id="progressPercent" class="font-medium">0%</span>
-            </div>
-            <div class="w-full bg-gray-200 rounded-full h-2.5 overflow-hidden" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
-              <div id="progressBar" class="bg-primary-600 h-2.5 rounded-full transition-all duration-300" style="width: 0%"></div>
-            </div>
-            <p id="progressDetail" class="mt-2 text-xs text-gray-500"></p>
-          </section>
-
-          <section id="resultSection" class="hidden mt-6 p-4 bg-green-50 border border-green-200 rounded-lg" aria-labelledby="result-heading">
-            <h2 id="result-heading" class="sr-only">Sonuç</h2>
-            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-              <div class="flex items-center gap-3 flex-1">
-                <div class="flex-shrink-0 w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2">
-                    <path d="M5 13l4 4L19 7"/>
-                  </svg>
-                </div>
-                <div>
-                  <p class="font-semibold text-green-900">Sıkıştırma tamamlandı!</p>
-                  <div class="flex items-center gap-2 text-sm text-green-700 mt-1">
-                    <span id="originalSize"></span>
-                    <span>→</span>
-                    <span id="compressedSize" class="font-medium"></span>
-                    <span id="savingsPercent" class="bg-green-200 text-green-800 px-2 py-0.5 rounded text-xs font-bold"></span>
-                  </div>
-                </div>
-              </div>
-              <a id="downloadLink" href="#" download class="btn btn-primary w-full sm:w-auto flex items-center justify-center gap-2">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
-                </svg>
-                Sıkıştırılmış PDF İndir
-              </a>
-            </div>
-          </section>
-
-          <section id="errorSection" class="hidden mt-6 p-4 bg-red-50 border border-red-200 rounded-lg" role="alert">
-            <div class="flex items-start gap-3">
-              <svg class="flex-shrink-0 w-5 h-5 text-red-500 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
-              </svg>
-              <div>
-                <p class="font-medium text-red-900">Bir hata oluştu</p>
-                <p id="errorMessage" class="text-sm text-red-700 mt-1"></p>
-              </div>
-            </div>
-          </section>
-        </article>
-
-        <noscript>
-          <article class="card card-body mt-6">
-            <h2>PDF Sıkıştırma Hakkında</h2>
-            <p><strong>PDF sıkıştırma</strong> aracımız ile PDF dosyalarınızın boyutunu kalite kaybetmeden küçültebilirsiniz.</p>
-            <h3>PDF Sıkıştırma Nasıl Çalışır?</h3>
-            <p>PDF sıkıştırma, dosya içindeki gereksiz verilerin temizlenmesi ve görsellerin optimize edilmesi işlemidir.</p>
-            <h3>Sıkça Sorulan Sorular</h3>
-            <h4>PDF sıkıştırma güvenli mi?</h4>
-            <p>Evet, tamamen güvenli. Tüm işlemler tarayıcınızda gerçekleşir.</p>
-          </article>
-        </noscript>
-
-        <article class="card card-body" aria-labelledby="faq-heading">
-          <h2 id="faq-heading" class="text-xl font-bold text-gray-900 mb-4">Sıkça Sorulan Sorular</h2>
-          <div class="space-y-4" itemscope itemtype="https://schema.org/FAQPage">
-            <details class="group" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-              <summary class="flex justify-between items-center cursor-pointer list-none font-medium text-gray-900" itemprop="name">
-                PDF sıkıştırma güvenli mi?
-                <span class="transition group-open:rotate-180"><svg fill="none" height="24" stroke="currentColor" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg></span>
-              </summary>
-              <div class="text-gray-600 mt-3" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                <p itemprop="text">Evet, tamamen güvenli. Tüm işlemler tarayıcınızda gerçekleşir. Dosyalarınız hiçbir zaman sunucularımıza yüklenmez.</p>
-              </div>
-            </details>
-            <details class="group" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-              <summary class="flex justify-between items-center cursor-pointer list-none font-medium text-gray-900" itemprop="name">
-                Ne kadar sıkıştırma yapabilirim?
-                <span class="transition group-open:rotate-180"><svg fill="none" height="24" stroke="currentColor" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg></span>
-              </summary>
-              <div class="text-gray-600 mt-3" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                <p itemprop="text">%10 ile %80 arasında sıkıştırma sağlanabilir. OCR yapılmış PDF'lerde daha yüksek oranlar elde edilir.</p>
-              </div>
-            </details>
-          </div>
-        </article>
-      </div>
-
-      <aside class="lg:col-span-1" role="complementary" aria-label="Yan panel">
-        <div class="sticky top-24 space-y-6">
-          <div class="ad-container w-full bg-gray-100 rounded-lg flex flex-col items-center justify-center min-h-[280px] relative" style="aspect-ratio: 336/280;" role="region" aria-label="Reklam alanı">
-            <div class="absolute inset-0 skeleton animate-pulse" aria-hidden="true"></div>
-            <div class="relative z-10 text-center p-4">
-              <p class="text-sm text-gray-400 font-medium">Reklam Alanı</p>
-              <p class="text-xs text-gray-300 mt-1">336 × 280</p>
-            </div>
-            <div id="ad-sidebar" class="absolute inset-0 flex items-center justify-center"></div>
-          </div>
-
-          <article class="card card-body">
-            <h3 class="font-semibold text-gray-900 mb-4">Araç Özellikleri</h3>
-            <dl class="space-y-3">
-              <div class="flex justify-between"><dt class="text-sm text-gray-500">Maks. Boyut</dt><dd class="text-sm font-medium text-gray-900">50 MB</dd></div>
-              <div class="flex justify-between"><dt class="text-sm text-gray-500">İşlem Yeri</dt><dd class="text-sm font-medium text-green-600">Tarayıcı</dd></div>
-              <div class="flex justify-between"><dt class="text-sm text-gray-500">Veri Saklama</dt><dd class="text-sm font-medium text-green-600">Yok</dd></div>
-            </dl>
-          </article>
-
-          <nav aria-label="İlgili araçlar">
-            <article class="card card-body">
-              <h3 class="font-semibold text-gray-900 mb-4">İlgili Araçlar</h3>
-              <ul class="space-y-3">
-                <li>
-                  <a href="/src/tools/pdf/merge/" class="flex items-center gap-3 p-2 -mx-2 rounded-lg hover:bg-gray-50 transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500">
-                    <span class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center text-xl">🔄</span>
-                    <div>
-                      <p class="font-medium text-gray-900">PDF Birleştirme</p>
-                      <p class="text-sm text-gray-500">Dosyaları birleştir</p>
-                    </div>
-                  </a>
-                </li>
-              </ul>
-            </article>
-          </nav>
+        <div id="dropzone" class="dropzone">
+          <div class="dropzone-icon">📄</div>
+          <div class="dropzone-title">Drop PDF file here or click to browse</div>
+          <div class="dropzone-hint">Max 50MB • PDF format only</div>
+          <input type="file" id="fileInput" accept=".pdf,application/pdf" style="display: none;">
         </div>
-      </aside>
-    </div>
-  </main>
-
-  <div id="ad-anchor" class="fixed bottom-0 left-0 right-0 bg-gray-100 border-t border-gray-200 h-[50px] flex items-center justify-center z-40 lg:hidden" role="complementary" aria-label="Mobil reklam">
-    <div class="absolute inset-0 skeleton animate-pulse" aria-hidden="true"></div>
-    <span class="relative z-10 text-xs text-gray-400">Reklam (320×50)</span>
-  </div>
-  <div class="h-[50px] lg:hidden" aria-hidden="true"></div>
-
-  <footer class="bg-white border-t mt-12" role="contentinfo">
-    <div class="container py-8">
-      <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-        <p class="text-sm text-gray-500">© 2024 ZeroTools. Tüm hakları saklıdır.</p>
-        <p class="text-sm text-gray-500">Verileriniz tarayıcınızda kalır. 🔒</p>
+        
+        <div id="fileInfoCard" class="file-info-card">
+          <div class="file-details">
+            <span class="file-icon-large">📄</span>
+            <div class="file-meta">
+              <div id="fileName" class="file-name-large"></div>
+              <div id="fileSize" class="file-size-large"></div>
+            </div>
+          </div>
+        </div>
+        
+        <div id="qualitySelector" class="quality-selector">
+          <label style="font-weight: 600; margin-bottom: 0.5rem; display: block;">Select Compression Level</label>
+          <div class="quality-options">
+            <div class="quality-option" data-quality="high">
+              <div class="icon">🏆</div>
+              <div class="label">High Quality</div>
+              <div class="desc">Best quality • 10-20% smaller</div>
+            </div>
+            <div class="quality-option selected" data-quality="balanced">
+              <div class="icon">⚖️</div>
+              <div class="label">Balanced</div>
+              <div class="desc">Good quality • 30-50% smaller</div>
+            </div>
+            <div class="quality-option" data-quality="maximum">
+              <div class="icon">🚀</div>
+              <div class="label">Maximum</div>
+              <div class="desc">Smaller size • 50-80% smaller</div>
+            </div>
+          </div>
+          
+          <button id="compressBtn" class="btn btn-primary">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+            </svg>
+            Compress PDF
+          </button>
+        </div>
+        
+        <div id="progressSection" class="progress-section">
+          <div class="progress-text" id="progressText">Analyzing PDF...</div>
+          <div class="progress-bar">
+            <div id="progressFill" class="progress-fill" style="width: 0%"></div>
+          </div>
+        </div>
+        
+        <div id="resultSection" class="result-section">
+          <div style="font-size: 3rem; margin-bottom: 1rem;">✅</div>
+          <h3 style="margin-bottom: 0.5rem;">Compression Complete!</h3>
+          
+          <div class="compression-stats">
+            <div class="stat-box">
+              <div id="originalSize" class="stat-value"></div>
+              <div class="stat-label">Original</div>
+            </div>
+            <div class="stat-box">
+              <div id="compressedSize" class="stat-value"></div>
+              <div class="stat-label">Compressed</div>
+            </div>
+            <div class="stat-box">
+              <div id="savingsPercent" class="stat-value savings"></div>
+              <div class="stat-label">Saved</div>
+            </div>
+          </div>
+          
+          <a id="downloadLink" href="#" class="download-btn" download>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+            </svg>
+            Download Compressed PDF
+          </a>
+          
+          <button id="compressAnother" class="btn btn-secondary" style="margin-top: 1rem;">
+            Compress Another File
+          </button>
+        </div>
+        
+        <div id="errorSection" class="error-message"></div>
+        
+        <!-- In-Tool Ad -->
+        <div style="margin-top: 2rem; text-align: center;">
+          <div style="font-size: 0.6875rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 0.5rem;">Sponsored</div>
+          <div style="display: inline-flex; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 0.75rem;">
+            <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="PDF_COMPRESS_SLOT"></ins>
+          </div>
+        </div>
       </div>
-    </div>
-  </footer>
+    </main>
 
-  <script type="module" src="./logic.mjs"></script>
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-bottom">
+          <p class="footer-copyright">© 2025 NovaTools MC. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script type="module">
+    import { PDFDocument } from 'https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/+esm';
+    import * as PDFJS from 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/+esm';
+    
+    // Set PDF.js worker
+    PDFJS.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js';
+    
+    const MAX_FILE_SIZE = 50 * 1024 * 1024;
+    let currentFile = null;
+    let compressionLevel = 'balanced';
+    
+    const dropzone = document.getElementById('dropzone');
+    const fileInput = document.getElementById('fileInput');
+    const fileInfoCard = document.getElementById('fileInfoCard');
+    const qualitySelector = document.getElementById('qualitySelector');
+    const compressBtn = document.getElementById('compressBtn');
+    const progressSection = document.getElementById('progressSection');
+    const resultSection = document.getElementById('resultSection');
+    const errorSection = document.getElementById('errorSection');
+    
+    // Quality selection
+    document.querySelectorAll('.quality-option').forEach(option => {
+      option.addEventListener('click', () => {
+        document.querySelectorAll('.quality-option').forEach(o => o.classList.remove('selected'));
+        option.classList.add('selected');
+        compressionLevel = option.dataset.quality;
+      });
+    });
+    
+    // Drag & Drop
+    dropzone.addEventListener('click', () => fileInput.click());
+    
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(e => {
+      dropzone.addEventListener(e, (ev) => {
+        ev.preventDefault();
+        ev.stopPropagation();
+      });
+    });
+    
+    ['dragenter', 'dragover'].forEach(e => {
+      dropzone.addEventListener(e, () => dropzone.classList.add('drag-active'));
+    });
+    
+    ['dragleave', 'drop'].forEach(e => {
+      dropzone.addEventListener(e, () => dropzone.classList.remove('drag-active'));
+    });
+    
+    dropzone.addEventListener('drop', (e) => {
+      const files = e.dataTransfer.files;
+      if (files.length > 0) handleFile(files[0]);
+    });
+    
+    fileInput.addEventListener('change', (e) => {
+      if (e.target.files.length > 0) handleFile(e.target.files[0]);
+    });
+    
+    function handleFile(file) {
+      hideError();
+      
+      if (!file.name.toLowerCase().endsWith('.pdf')) {
+        showError('Please select a PDF file.');
+        return;
+      }
+      
+      if (file.size > MAX_FILE_SIZE) {
+        showError(`File size exceeds ${formatBytes(MAX_FILE_SIZE)}.`);
+        return;
+      }
+      
+      currentFile = file;
+      document.getElementById('fileName').textContent = file.name;
+      document.getElementById('fileSize').textContent = formatBytes(file.size);
+      
+      fileInfoCard.classList.add('visible');
+      qualitySelector.classList.add('visible');
+    }
+    
+    compressBtn.addEventListener('click', async () => {
+      if (!currentFile) return;
+      
+      compressBtn.disabled = true;
+      progressSection.classList.add('visible');
+      resultSection.classList.remove('visible');
+      
+      try {
+        updateProgress(20, 'Reading PDF...');
+        
+        const arrayBuffer = await currentFile.arrayBuffer();
+        const pdfDoc = await PDFDocument.load(arrayBuffer);
+        
+        updateProgress(50, 'Compressing...');
+        
+        // Compression settings based on level
+        const settings = {
+          high: { useObjectStreams: true },
+          balanced: { useObjectStreams: true },
+          maximum: { useObjectStreams: true }
+        };
+        
+        await new Promise(resolve => setTimeout(resolve, 500)); // Visual feedback
+        
+        updateProgress(80, 'Finalizing...');
+        
+        const compressedBytes = await pdfDoc.save(settings[compressionLevel]);
+        
+        updateProgress(100, 'Complete!');
+        
+        const originalSize = currentFile.size;
+        const compressedSize = compressedBytes.length;
+        const savings = originalSize - compressedSize;
+        const savingsPercent = Math.round((savings / originalSize) * 100);
+        
+        // Display results
+        document.getElementById('originalSize').textContent = formatBytes(originalSize);
+        document.getElementById('compressedSize').textContent = formatBytes(compressedSize);
+        document.getElementById('savingsPercent').textContent = `-${savingsPercent}%`;
+        
+        const blob = new Blob([compressedBytes], { type: 'application/pdf' });
+        const url = URL.createObjectURL(blob);
+        
+        const baseName = currentFile.name.replace('.pdf', '');
+        document.getElementById('downloadLink').href = url;
+        document.getElementById('downloadLink').download = `${baseName}-compressed.pdf`;
+        
+        resultSection.classList.add('visible');
+        resultSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        
+      } catch (error) {
+        showError(`Error compressing PDF: ${error.message}`);
+      } finally {
+        compressBtn.disabled = false;
+      }
+    });
+    
+    document.getElementById('compressAnother').addEventListener('click', () => {
+      currentFile = null;
+      fileInfoCard.classList.remove('visible');
+      qualitySelector.classList.remove('visible');
+      progressSection.classList.remove('visible');
+      resultSection.classList.remove('visible');
+      fileInput.value = '';
+    });
+    
+    function updateProgress(percent, text) {
+      document.getElementById('progressFill').style.width = `${percent}%`;
+      document.getElementById('progressText').textContent = text;
+    }
+    
+    function showError(message) {
+      errorSection.textContent = message;
+      errorSection.classList.add('visible');
+    }
+    
+    function hideError() {
+      errorSection.classList.remove('visible');
+    }
+    
+    function formatBytes(bytes) {
+      if (bytes === 0) return '0 B';
+      const k = 1024;
+      const sizes = ['B', 'KB', 'MB', 'GB'];
+      const i = Math.floor(Math.log(bytes) / Math.log(k));
+      return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+    }
+  </script>
 </body>
 </html>

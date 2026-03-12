@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/src/styles/critical.css">
+  <link rel="stylesheet" href="/src/styles/main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <title>Student Loan Payoff Calculator | US & UK | NovaTools MC</title>
+  <meta name="description" content="Calculate your student loan payoff date. See how extra payments save interest. Supports US Federal, Private, and UK Student Loans.">
+  <meta name="theme-color" content="#0A0A0C">
+  <style>
+    .calculator-form { background: var(--surface-default); border: 1px solid var(--border-default); border-radius: var(--radius-lg); padding: 2rem; margin: 2rem 0; }
+    .form-group { margin-bottom: 1.5rem; }
+    .form-group label { display: block; font-size: 0.9375rem; font-weight: 500; color: var(--text-secondary); margin-bottom: 0.5rem; }
+    .form-group input, .form-group select { width: 100%; height: 48px; padding: 0 1rem; background: var(--bg-tertiary); border: 1px solid var(--border-default); border-radius: var(--radius-md); color: var(--text-primary); font-size: 1rem; }
+    .form-group input:focus, .form-group select:focus { outline: none; border-color: var(--accent-primary); box-shadow: 0 0 0 3px var(--accent-glow); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 640px) { .form-row { grid-template-columns: 1fr; } }
+    .results-panel { background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.05)); border: 1px solid rgba(99, 102, 241, 0.2); border-radius: var(--radius-lg); padding: 2rem; margin-top: 2rem; display: none; }
+    .results-panel.visible { display: block; animation: fadeIn 0.3s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .result-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
+    .result-item { text-align: center; padding: 1.5rem; background: var(--surface-default); border-radius: var(--radius-md); border: 1px solid var(--border-default); }
+    .result-value { font-size: 1.5rem; font-weight: 700; color: var(--accent-hover); margin-bottom: 0.25rem; }
+    .result-label { font-size: 0.875rem; color: var(--text-tertiary); }
+    .savings-highlight { background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.2); border-radius: var(--radius-lg); padding: 1.5rem; margin-top: 1.5rem; text-align: center; }
+    .savings-value { font-size: 2rem; font-weight: 800; color: #22C55E; }
+    .amortization-preview { margin-top: 2rem; max-height: 300px; overflow-y: auto; }
+    .amortization-preview table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+    .amortization-preview th { background: rgba(99, 102, 241, 0.1); padding: 0.75rem; text-align: left; font-weight: 600; color: var(--text-primary); border-bottom: 1px solid var(--border-default); position: sticky; top: 0; }
+    .amortization-preview td { padding: 0.75rem; border-bottom: 1px solid var(--border-default); color: var(--text-secondary); }
+  </style>
+</head>
+<body>
+  <div class="bg-ambient" aria-hidden="true"></div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+  
+  <div id="app" class="app">
+    <header class="main-header">
+      <div class="container">
+        <div class="header-inner">
+          <a href="/" class="logo" aria-label="NovaTools MC Home">
+            <div class="logo-icon neon-logo">
+              <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs><linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#00F5D4"/><stop offset="50%" style="stop-color:#00D9FF"/><stop offset="100%" style="stop-color:#00FF88"/></linearGradient></defs>
+                <path d="M50 75 L35 55 L25 40 L35 45 L45 50" stroke="url(#logoGrad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                <path d="M50 75 L65 55 L75 40 L65 45 L55 50" stroke="url(#logoGrad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                <path d="M50 75 L50 55 L45 45 L50 50 L55 45 L50 55" stroke="url(#logoGrad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                <path d="M50 75 L45 85 L50 80 L55 85 L50 75" stroke="url(#logoGrad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              </svg>
+            </div>
+            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <div class="container" style="padding: 4rem 1rem;">
+        <div style="max-width: 900px; margin: 0 auto;">
+          <div style="text-align: center; margin-bottom: 2rem;">
+            <div style="font-size: 4rem; margin-bottom: 1rem;">🎓</div>
+            <h1 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem;">Student Loan Payoff Calculator</h1>
+            <p style="color: var(--text-secondary);">Calculate your payoff date and see how extra payments can save you thousands in interest. Supports US Federal, Private, and UK Student Loans.</p>
+          </div>
+          
+          <div class="calculator-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="country">Country</label>
+                <select id="country">
+                  <option value="us">United States</option>
+                  <option value="uk">United Kingdom</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="loanType">Loan Type</label>
+                <select id="loanType">
+                  <option value="federal">US Federal Loan</option>
+                  <option value="private">Private Loan</option>
+                  <option value="plan2">UK Plan 2</option>
+                  <option value="plan5">UK Plan 5</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="balance">Current Balance ($)</label>
+                <input type="number" id="balance" placeholder="35000" min="0">
+              </div>
+              <div class="form-group">
+                <label for="interestRate">Interest Rate (%)</label>
+                <input type="number" id="interestRate" placeholder="5.5" min="0" max="20" step="0.1">
+              </div>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="monthlyPayment">Monthly Payment ($)</label>
+                <input type="number" id="monthlyPayment" placeholder="400" min="0">
+              </div>
+              <div class="form-group">
+                <label for="extraPayment">Extra Monthly Payment ($)</label>
+                <input type="number" id="extraPayment" placeholder="100" min="0" value="0">
+              </div>
+            </div>
+            
+            <button type="button" id="calculateBtn" class="btn btn-primary" style="width: 100%; margin-top: 1rem; height: 52px; font-size: 1rem;">
+              Calculate Payoff Plan
+            </button>
+          </div>
+          
+          <!-- In-Tool Ad -->
+          <div class="ad-in-tool" role="complementary" aria-label="Advertisement" style="margin: 2rem auto; text-align: center;">
+            <div style="font-size: 0.6875rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 0.5rem;">Sponsored</div>
+            <div style="display: inline-flex; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 0.75rem;">
+              <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="STUDENT_LOAN_SLOT"></ins>
+            </div>
+          </div>
+          
+          <div id="resultsPanel" class="results-panel">
+            <h2 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; text-align: center;">📊 Your Payoff Plan</h2>
+            
+            <div class="result-grid">
+              <div class="result-item">
+                <div id="payoffDate" class="result-value">-</div>
+                <div class="result-label">Payoff Date</div>
+              </div>
+              <div class="result-item">
+                <div id="monthsLeft" class="result-value">-</div>
+                <div class="result-label">Months Remaining</div>
+              </div>
+              <div class="result-item">
+                <div id="totalInterest" class="result-value">-</div>
+                <div class="result-label">Total Interest</div>
+              </div>
+              <div class="result-item">
+                <div id="totalCost" class="result-value">-</div>
+                <div class="result-label">Total Cost</div>
+              </div>
+            </div>
+            
+            <div id="savingsPanel" class="savings-highlight" style="display: none;">
+              <div style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 0.5rem;">💰 With Extra Payments, You'll Save</div>
+              <div id="interestSaved" class="savings-value">$0</div>
+              <div style="font-size: 0.875rem; color: var(--text-secondary); margin-top: 0.5rem;">and pay off <span id="timeSaved" style="font-weight: 600; color: #22C55E;">0 months</span> earlier!</div>
+            </div>
+            
+            <div class="amortization-preview">
+              <h4 style="font-size: 1rem; font-weight: 600; margin-bottom: 1rem;">Payment Schedule (First 12 Months)</h4>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Month</th>
+                    <th>Payment</th>
+                    <th>Principal</th>
+                    <th>Interest</th>
+                    <th>Balance</th>
+                  </tr>
+                </thead>
+                <tbody id="amortizationBody">
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-bottom">
+          <p class="footer-copyright">© 2025 NovaTools MC. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('calculateBtn').addEventListener('click', function() {
+      const balance = parseFloat(document.getElementById('balance').value) || 0;
+      const interestRate = parseFloat(document.getElementById('interestRate').value) || 0;
+      const monthlyPayment = parseFloat(document.getElementById('monthlyPayment').value) || 0;
+      const extraPayment = parseFloat(document.getElementById('extraPayment').value) || 0;
+      
+      if (!balance || !monthlyPayment) {
+        alert('Please enter your loan balance and monthly payment.');
+        return;
+      }
+      
+      const totalPayment = monthlyPayment + extraPayment;
+      
+      // Calculate payoff with current payments
+      function calculatePayoff(principal, rate, payment) {
+        const monthlyRate = rate / 100 / 12;
+        let balance = principal;
+        let totalInterest = 0;
+        let months = 0;
+        const schedule = [];
+        
+        while (balance > 0 && months < 600) {
+          const interest = balance * monthlyRate;
+          let principalPaid = payment - interest;
+          
+          if (principalPaid >= balance) {
+            principalPaid = balance;
+            balance = 0;
+          } else {
+            balance -= principalPaid;
+          }
+          
+          totalInterest += interest;
+          months++;
+          
+          if (months <= 12) {
+            schedule.push({
+              month: months,
+              payment: payment,
+              principal: principalPaid,
+              interest: interest,
+              balance: Math.max(0, balance)
+            });
+          }
+        }
+        
+        return { months, totalInterest, schedule, totalCost: principal + totalInterest };
+      }
+      
+      const withExtra = calculatePayoff(balance, interestRate, totalPayment);
+      const withoutExtra = extraPayment > 0 ? calculatePayoff(balance, interestRate, monthlyPayment) : null;
+      
+      // Calculate payoff date
+      const now = new Date();
+      const payoffDate = new Date(now.getFullYear(), now.getMonth() + withExtra.months, 1);
+      
+      const formatCurrency = (num) => '$' + num.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+      const formatDate = (date) => date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+      
+      document.getElementById('payoffDate').textContent = formatDate(payoffDate);
+      document.getElementById('monthsLeft').textContent = withExtra.months;
+      document.getElementById('totalInterest').textContent = formatCurrency(withExtra.totalInterest);
+      document.getElementById('totalCost').textContent = formatCurrency(withExtra.totalCost);
+      
+      // Show savings if extra payment
+      if (extraPayment > 0 && withoutExtra) {
+        const savings = withoutExtra.totalInterest - withExtra.totalInterest;
+        const timeSaved = withoutExtra.months - withExtra.months;
+        
+        document.getElementById('interestSaved').textContent = formatCurrency(savings);
+        document.getElementById('timeSaved').textContent = timeSaved + ' months';
+        document.getElementById('savingsPanel').style.display = 'block';
+      } else {
+        document.getElementById('savingsPanel').style.display = 'none';
+      }
+      
+      // Render amortization
+      const tbody = document.getElementById('amortizationBody');
+      tbody.innerHTML = withExtra.schedule.map(row => `
+        <tr>
+          <td>${row.month}</td>
+          <td>${formatCurrency(row.payment)}</td>
+          <td>${formatCurrency(row.principal)}</td>
+          <td>${formatCurrency(row.interest)}</td>
+          <td>${formatCurrency(row.balance)}</td>
+        </tr>
+      `).join('');
+      
+      document.getElementById('resultsPanel').classList.add('visible');
+      document.getElementById('resultsPanel').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+    
+    // Update loan type based on country
+    document.getElementById('country').addEventListener('change', function() {
+      const loanType = document.getElementById('loanType');
+      if (this.value === 'uk') {
+        loanType.innerHTML = `
+          <option value="plan2">UK Plan 2 (Post-2012)</option>
+          <option value="plan5">UK Plan 5 (Post-2023)</option>
+          <option value="plan1">UK Plan 1 (Pre-2012)</option>
+        `;
+      } else {
+        loanType.innerHTML = `
+          <option value="federal">US Federal Loan</option>
+          <option value="private">Private Loan</option>
+        `;
+      }
+    });
+  </script>
+</body>
+</html>

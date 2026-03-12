@@ -248,6 +248,21 @@
             <!-- Main Tools Grid -->
             <div class="tools-main">
               
+              <!-- Special Day Banner (Dynamic) -->
+              <div id="specialDayBanner" class="special-day-banner" style="display: none; margin-bottom: 2rem;">
+                <div class="special-day-content">
+                  <span class="special-day-icon">🎉</span>
+                  <span class="special-day-text" id="specialDayText"></span>
+                </div>
+              </div>
+              <style>
+                .special-day-banner { background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(139, 92, 246, 0.1)); border: 1px solid rgba(99, 102, 241, 0.3); border-radius: var(--radius-lg); padding: 1rem 1.5rem; text-align: center; animation: pulse-glow 3s infinite; }
+                .special-day-content { display: flex; align-items: center; justify-content: center; gap: 0.75rem; }
+                .special-day-icon { font-size: 1.5rem; }
+                .special-day-text { font-size: 1rem; color: var(--text-primary); font-weight: 500; }
+                @keyframes pulse-glow { 0%, 100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.2); } 50% { box-shadow: 0 0 20px 4px rgba(99, 102, 241, 0.1); } }
+              </style>
+
               <!-- Finance Tools -->
               <section id="finance">
                 <div class="section-header">
@@ -344,6 +359,36 @@
                       <div class="card-icon">📋</div>
                       <h3 class="card-title">Tax Estimator</h3>
                       <p class="card-description">Estimate federal and state taxes with deductions and credits.</p>
+                      <span class="card-arrow">
+                        Calculate
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                      </span>
+                    </div>
+                  </a>
+                  
+                  <!-- Crypto Tax -->
+                  <a href="/src/tools/finance/crypto-tax/" class="card">
+                    <div class="card-body">
+                      <div class="card-icon">₿</div>
+                      <h3 class="card-title">Crypto Tax Calculator</h3>
+                      <p class="card-description">Calculate capital gains tax on crypto with FIFO/LIFO methods.</p>
+                      <span class="card-arrow">
+                        Calculate
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                      </span>
+                    </div>
+                  </a>
+                  
+                  <!-- Student Loan -->
+                  <a href="/src/tools/finance/student-loan/" class="card">
+                    <div class="card-body">
+                      <div class="card-icon">🎓</div>
+                      <h3 class="card-title">Student Loan Payoff</h3>
+                      <p class="card-description">US & UK student loan payoff calculator with extra payment savings.</p>
                       <span class="card-arrow">
                         Calculate
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -472,6 +517,53 @@
                 </div>
               </section>
               
+              <!-- Lifestyle & Utility Tools -->
+              <section id="lifestyle">
+                <div class="section-header">
+                  <div class="section-label">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="12" cy="12" r="10"/>
+                      <path d="M12 6v6l4 2"/>
+                    </svg>
+                    Lifestyle & Utilities
+                  </div>
+                  <h2 class="section-title">Everyday Tools</h2>
+                  <p class="section-description">Religious calendars, news briefs, and daily utilities for informed living.</p>
+                </div>
+                
+                <div class="grid grid-3">
+                  <!-- Islamic Calendar -->
+                  <a href="/src/tools/religious/islamic-calendar/" class="card">
+                    <div class="card-body">
+                      <div class="card-icon">🌙</div>
+                      <h3 class="card-title">Islamic Calendar</h3>
+                      <p class="card-description">Hijri calendar with countdowns for Ramadan, Eid, and Kandil nights.</p>
+                      <span class="card-arrow">
+                        View Calendar
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                      </span>
+                    </div>
+                  </a>
+                  
+                  <!-- News Summarizer -->
+                  <a href="/src/tools/news/summarizer/" class="card">
+                    <div class="card-body">
+                      <div class="card-icon">📰</div>
+                      <h3 class="card-title">Tech & Finance News</h3>
+                      <p class="card-description">AI-curated daily briefs on crypto, stocks, and technology trends.</p>
+                      <span class="card-arrow">
+                        Read Brief
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                      </span>
+                    </div>
+                  </a>
+                </div>
+              </section>
+
               <!-- Developer Tools -->
               <section id="dev">
                 <div class="section-header">
@@ -583,7 +675,7 @@
                 <div>
                   <div class="stat-row">
                     <span class="stat-label">Available Tools</span>
-                    <span class="stat-value">12+</span>
+                    <span class="stat-value">15+</span>
                   </div>
                   <div class="stat-row">
                     <span class="stat-label">Server Processing</span>
@@ -661,8 +753,11 @@
             <ul class="footer-links">
               <li><a href="/src/tools/finance/mortgage-refinance/" class="footer-link">Mortgage Refinance</a></li>
               <li><a href="/src/tools/finance/life-insurance/" class="footer-link">Life Insurance</a></li>
+              <li><a href="/src/tools/finance/crypto-tax/" class="footer-link">Crypto Tax</a></li>
+              <li><a href="/src/tools/finance/student-loan/" class="footer-link">Student Loan</a></li>
+              <li><a href="/src/tools/religious/islamic-calendar/" class="footer-link">Islamic Calendar</a></li>
+              <li><a href="/src/tools/news/summarizer/" class="footer-link">News Brief</a></li>
               <li><a href="/src/tools/pdf/merge/" class="footer-link">PDF Merge</a></li>
-              <li><a href="/src/tools/image/compress/" class="footer-link">Image Compress</a></li>
             </ul>
           </div>
           
@@ -687,6 +782,39 @@
           </div>
         </div>
         
+        <!-- Live Ticker -->
+        <div class="live-ticker" style="margin: 2rem 0; padding: 1rem 0; border-top: 1px solid var(--border-default); border-bottom: 1px solid var(--border-default);">
+          <style>
+            .live-ticker { display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; font-size: 0.875rem; color: var(--text-secondary); }
+            .ticker-item { display: flex; align-items: center; gap: 0.5rem; }
+            .ticker-item .value { color: var(--text-primary); font-weight: 600; }
+            .ticker-item .change { font-size: 0.75rem; padding: 0.125rem 0.375rem; border-radius: 4px; }
+            .ticker-item .change.positive { color: #22C55E; background: rgba(34, 197, 94, 0.1); }
+            .ticker-item .change.negative { color: #ef4444; background: rgba(239, 68, 68, 0.1); }
+            .ticker-item.holiday { color: var(--accent-hover); }
+          </style>
+          <div class="ticker-item">
+            <span>💵 USD/EUR:</span>
+            <span class="value" id="usdeur">-</span>
+          </div>
+          <div class="ticker-item">
+            <span>💴 USD/JPY:</span>
+            <span class="value" id="usdjpy">-</span>
+          </div>
+          <div class="ticker-item">
+            <span>🪙 BTC:</span>
+            <span class="value" id="btcprice">-</span>
+          </div>
+          <div class="ticker-item">
+            <span>📈 S&P 500:</span>
+            <span class="value" id="sp500">-</span>
+          </div>
+          <div class="ticker-item holiday" id="holidayCountdown">
+            <span>🎉</span>
+            <span id="holidayText">Loading...</span>
+          </div>
+        </div>
+
         <div class="footer-bottom">
           <p class="footer-copyright">
             © 2025 NovaTools MC. All rights reserved.
@@ -753,6 +881,89 @@
         });
       }
     });
+  </script>
+  
+  <!-- Live Ticker Data & Holiday Countdown -->
+  <script type="module">
+    import { getSpecialDayContent, getIslamicHolidays, getGlobalHolidays } from '/src/core/automation/calendar.mjs';
+    
+    // Special Day Banner
+    function updateSpecialDayBanner() {
+      const content = getSpecialDayContent();
+      const banner = document.getElementById('specialDayBanner');
+      const text = document.getElementById('specialDayText');
+      
+      if (content && banner && text) {
+        text.textContent = content.banner;
+        banner.style.display = 'block';
+      }
+    }
+    
+    // Footer Ticker - Exchange Rates (mock data - replace with real API)
+    async function updateExchangeRates() {
+      try {
+        // TODO: Replace with real exchange rate API
+        // const response = await fetch('https://api.exchangerate.host/latest?base=USD');
+        // const data = await response.json();
+        
+        // Mock data for demonstration
+        const mockRates = {
+          USDEUR: { rate: 0.9234, change: 0.12 },
+          USDJPY: { rate: 149.52, change: -0.23 },
+          BTC: { rate: 88450, change: 2.4 },
+          SP500: { rate: 5120.5, change: 0.8 }
+        };
+        
+        const usdeur = document.getElementById('usdeur');
+        const usdjpy = document.getElementById('usdjpy');
+        const btcprice = document.getElementById('btcprice');
+        const sp500 = document.getElementById('sp500');
+        
+        if (usdeur) usdeur.innerHTML = `${mockRates.USDEUR.rate.toFixed(4)} <span class="change ${mockRates.USDEUR.change >= 0 ? 'positive' : 'negative'}">${mockRates.USDEUR.change >= 0 ? '+' : ''}${mockRates.USDEUR.change}%</span>`;
+        if (usdjpy) usdjpy.innerHTML = `${mockRates.USDJPY.rate.toFixed(2)} <span class="change ${mockRates.USDJPY.change >= 0 ? 'positive' : 'negative'}">${mockRates.USDJPY.change >= 0 ? '+' : ''}${mockRates.USDJPY.change}%</span>`;
+        if (btcprice) btcprice.innerHTML = `$${(mockRates.BTC.rate / 1000).toFixed(1)}K <span class="change ${mockRates.BTC.change >= 0 ? 'positive' : 'negative'}">${mockRates.BTC.change >= 0 ? '+' : ''}${mockRates.BTC.change}%</span>`;
+        if (sp500) sp500.innerHTML = `${mockRates.SP500.rate.toFixed(1)} <span class="change ${mockRates.SP500.change >= 0 ? 'positive' : 'negative'}">${mockRates.SP500.change >= 0 ? '+' : ''}${mockRates.SP500.change}%</span>`;
+      } catch (e) {
+        console.error('Failed to load exchange rates:', e);
+      }
+    }
+    
+    // Holiday Countdown
+    function updateHolidayCountdown() {
+      const now = new Date();
+      const currentYear = now.getFullYear();
+      
+      const islamic = Object.values(getIslamicHolidays(currentYear));
+      const global = Object.values(getGlobalHolidays(currentYear));
+      const allHolidays = [...islamic, ...global].sort((a, b) => {
+        return new Date(a.date) - new Date(b.date);
+      });
+      
+      const upcoming = allHolidays.find(h => {
+        const holidayDate = new Date(h.date);
+        return holidayDate > now;
+      });
+      
+      if (upcoming) {
+        const holidayDate = new Date(upcoming.date);
+        const daysLeft = Math.ceil((holidayDate - now) / (1000 * 60 * 60 * 24));
+        const text = document.getElementById('holidayText');
+        if (text) {
+          text.textContent = `${upcoming.name} in ${daysLeft} days`;
+        }
+      }
+    }
+    
+    // Initialize
+    updateSpecialDayBanner();
+    updateExchangeRates();
+    updateHolidayCountdown();
+    
+    // Refresh every 5 minutes
+    setInterval(() => {
+      updateExchangeRates();
+      updateHolidayCountdown();
+    }, 300000);
   </script>
 </body>
 </html>

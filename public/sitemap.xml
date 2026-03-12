@@ -62,6 +62,40 @@
     <priority>0.85</priority>
   </url>
 
+  <!-- Crypto Tax Calculator -->
+  <url>
+    <loc>https://novatools.mc/src/tools/finance/crypto-tax/</loc>
+    <lastmod>2026-03-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Student Loan Payoff Calculator -->
+  <url>
+    <loc>https://novatools.mc/src/tools/finance/student-loan/</loc>
+    <lastmod>2026-03-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- ==================== LIFESTYLE & UTILITY TOOLS ==================== -->
+
+  <!-- Islamic Calendar -->
+  <url>
+    <loc>https://novatools.mc/src/tools/religious/islamic-calendar/</loc>
+    <lastmod>2026-03-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Tech & Finance News Summarizer -->
+  <url>
+    <loc>https://novatools.mc/src/tools/news/summarizer/</loc>
+    <lastmod>2026-03-12</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.80</priority>
+  </url>
+
   <!-- ==================== PDF TOOLS ==================== -->
 
   <!-- PDF Merger -->
@@ -156,6 +190,138 @@
     <lastmod>2025-01-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.40</priority>
+  </url>
+
+  <!-- ==================== BLOG ==================== -->
+
+  <!-- Blog Index -->
+  <url>
+    <loc>https://novatools.mc/src/blog/</loc>
+    <lastmod>2026-03-12</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <!-- Blog Articles -->
+  <url>
+    <loc>https://novatools.mc/src/blog/articles/mortgage-refinancing-guide.html</loc>
+    <lastmod>2026-03-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://novatools.mc/src/blog/articles/life-insurance-coverage-guide.html</loc>
+    <lastmod>2026-03-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://novatools.mc/src/blog/articles/best-credit-cards-2026.html</loc>
+    <lastmod>2026-03-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://novatools.mc/src/blog/articles/cloud-cost-comparison.html</loc>
+    <lastmod>2026-03-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://novatools.mc/src/blog/articles/crypto-tax-guide.html</loc>
+    <lastmod>2026-03-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://novatools.mc/src/blog/articles/student-loan-repayment.html</loc>
+    <lastmod>2026-03-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://novatools.mc/src/blog/articles/islamic-finance-investing.html</loc>
+    <lastmod>2026-03-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://novatools.mc/src/blog/articles/first-time-home-buyer.html</loc>
+    <lastmod>2026-03-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://novatools.mc/src/blog/articles/term-vs-whole-life.html</loc>
+    <lastmod>2026-03-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://novatools.mc/src/blog/articles/emergency-fund-guide.html</loc>
+    <lastmod>2026-03-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://novatools.mc/src/blog/articles/credit-score-hacks.html</loc>
+    <lastmod>2026-03-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://novatools.mc/src/blog/articles/retirement-planning-millennials.html</loc>
+    <lastmod>2026-03-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://novatools.mc/src/blog/articles/halal-mortgage-usa.html</loc>
+    <lastmod>2026-03-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://novatools.mc/src/blog/articles/zakat-investments-guide.html</loc>
+    <lastmod>2026-03-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://novatools.mc/src/blog/articles/debt-consolidation-guide.html</loc>
+    <lastmod>2026-03-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://novatools.mc/src/blog/articles/tax-deductions-homeowners.html</loc>
+    <lastmod>2026-03-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://novatools.mc/src/blog/articles/nft-tax-guide.html</loc>
+    <lastmod>2026-03-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://novatools.mc/src/blog/articles/pmi-removal-guide.html</loc>
+    <lastmod>2026-03-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://novatools.mc/src/blog/articles/index-funds-vs-etfs.html</loc>
+    <lastmod>2026-03-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://novatools.mc/src/blog/articles/pdf-financial-records.html</loc>
+    <lastmod>2026-03-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
   </url>
 
 </urlset>

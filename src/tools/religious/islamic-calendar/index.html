@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/src/styles/critical.css">
+  <link rel="stylesheet" href="/src/styles/main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <title>Global Islamic Calendar 2026-2027 | Hijri Date & Event Countdown | NovaTools MC</title>
+  <meta name="description" content="Global Islamic Calendar with Hijri dates, Ramadan countdown, Eid dates, Kandil nights, and Muslim holidays for 2026-2027. Accurate prayer times.">
+  <meta name="theme-color" content="#0A0A0C">
+  <style>
+    .calendar-hero { text-align: center; padding: 3rem 0; }
+    .hijri-date-display { font-size: 2rem; font-weight: 700; color: var(--accent-hover); margin: 1rem 0; }
+    .countdown-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+    .countdown-card { background: var(--surface-default); border: 1px solid var(--border-default); border-radius: var(--radius-lg); padding: 1.5rem; text-align: center; position: relative; overflow: hidden; }
+    .countdown-card.major { border-color: rgba(99, 102, 241, 0.3); background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), transparent); }
+    .countdown-card .emoji { font-size: 3rem; margin-bottom: 1rem; }
+    .countdown-card h3 { font-size: 1.25rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem; }
+    .countdown-card .date { color: var(--text-secondary); font-size: 0.9375rem; margin-bottom: 1rem; }
+    .countdown-timer { display: flex; justify-content: center; gap: 1rem; margin-top: 1rem; }
+    .timer-unit { text-align: center; }
+    .timer-value { font-size: 1.75rem; font-weight: 700; color: var(--accent-hover); display: block; }
+    .timer-label { font-size: 0.75rem; color: var(--text-tertiary); text-transform: uppercase; }
+    .calendar-table { width: 100%; background: var(--surface-default); border: 1px solid var(--border-default); border-radius: var(--radius-lg); overflow: hidden; margin: 2rem 0; }
+    .calendar-table table { width: 100%; border-collapse: collapse; }
+    .calendar-table th { background: rgba(99, 102, 241, 0.1); padding: 1rem; text-align: left; font-weight: 600; color: var(--text-primary); border-bottom: 1px solid var(--border-default); }
+    .calendar-table td { padding: 1rem; border-bottom: 1px solid var(--border-default); color: var(--text-secondary); }
+    .calendar-table tr:hover td { background: rgba(255, 255, 255, 0.03); }
+    .event-badge { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 500; }
+    .event-badge.major { background: rgba(99, 102, 241, 0.15); color: #818CF8; border: 1px solid rgba(99, 102, 241, 0.3); }
+    .event-badge.kandil { background: rgba(245, 158, 11, 0.15); color: #F59E0B; border: 1px solid rgba(245, 158, 11, 0.3); }
+    .event-badge.regular { background: rgba(255, 255, 255, 0.06); color: var(--text-tertiary); }
+    .days-left { font-weight: 600; color: var(--success); }
+    .days-left.urgent { color: #F59E0B; }
+  </style>
+</head>
+<body>
+  <div class="bg-ambient" aria-hidden="true"></div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+  
+  <div id="app" class="app">
+    <header class="main-header">
+      <div class="container">
+        <div class="header-inner">
+          <a href="/" class="logo" aria-label="NovaTools MC Home">
+            <div class="logo-icon neon-logo">
+              <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs><linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#00F5D4"/><stop offset="50%" style="stop-color:#00D9FF"/><stop offset="100%" style="stop-color:#00FF88"/></linearGradient></defs>
+                <path d="M50 75 L35 55 L25 40 L35 45 L45 50" stroke="url(#logoGrad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                <path d="M50 75 L65 55 L75 40 L65 45 L55 50" stroke="url(#logoGrad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                <path d="M50 75 L50 55 L45 45 L50 50 L55 45 L50 55" stroke="url(#logoGrad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                <path d="M50 75 L45 85 L50 80 L55 85 L50 75" stroke="url(#logoGrad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              </svg>
+            </div>
+            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <div class="container" style="padding: 2rem 1rem;">
+        <div class="calendar-hero">
+          <h1 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem;">🌙 Global Islamic Calendar</h1>
+          <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Hijri dates, Ramadan countdown, and Muslim holidays for 2026-2027</p>
+          <div class="hijri-date-display" id="currentHijri">Loading...</div>
+          <p style="color: var(--text-tertiary);" id="currentGregorian"></p>
+        </div>
+
+        <!-- Countdown Cards -->
+        <div class="countdown-grid" id="countdownContainer">
+          <!-- Dynamic content -->
+        </div>
+
+        <!-- In-Tool Ad -->
+        <div class="ad-in-tool" role="complementary" aria-label="Advertisement" style="margin: 2rem auto; text-align: center;">
+          <div style="font-size: 0.6875rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 0.5rem;">Sponsored</div>
+          <div style="display: inline-flex; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 0.75rem;">
+            <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="ISLAMIC_CALENDAR_SLOT"></ins>
+          </div>
+        </div>
+
+        <!-- Full Calendar Table -->
+        <h2 style="font-size: 1.5rem; font-weight: 600; margin: 3rem 0 1.5rem;">📅 Islamic Events 2026-2027</h2>
+        <div class="calendar-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Event</th>
+                <th>Hijri Date</th>
+                <th>Gregorian Date</th>
+                <th>Days Left</th>
+                <th>Type</th>
+              </tr>
+            </thead>
+            <tbody id="calendarBody">
+              <!-- Dynamic content -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Kandil Nights Section -->
+        <h2 style="font-size: 1.5rem; font-weight: 600; margin: 3rem 0 1.5rem;">✨ Kandil Nights (Special Islamic Nights)</h2>
+        <div class="countdown-grid" id="kandilContainer">
+          <!-- Dynamic content -->
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-bottom">
+          <p class="footer-copyright">© 2025 NovaTools MC. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script type="module">
+    import { islamicCalendar, globalHolidays, specialDayContent } from '/src/core/automation/calendar.mjs';
+
+    // Update current Hijri date
+    function updateCurrentDate() {
+      const hijri = islamicCalendar.gregorianToHijri(new Date());
+      document.getElementById('currentHijri').textContent = hijri.formatted;
+      document.getElementById('currentGregorian').textContent = new Date().toLocaleDateString('en-US', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+    }
+
+    // Render countdown cards
+    function renderCountdowns() {
+      const events = islamicCalendar.getIslamicEvents(2026).filter(e => e.daysUntil > -5);
+      const container = document.getElementById('countdownContainer');
+      
+      const majorEvents = events.filter(e => e.major).slice(0, 3);
+      
+      container.innerHTML = majorEvents.map(event => {
+        const days = Math.max(0, event.daysUntil);
+        return `
+          <div class="countdown-card ${event.major ? 'major' : ''}">
+            <div class="emoji">${getEventEmoji(event.name)}</div>
+            <h3>${event.name}</h3>
+            <div class="date">${event.date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</div>
+            <div class="countdown-timer">
+              <div class="timer-unit">
+                <span class="timer-value">${days}</span>
+                <span class="timer-label">Days</span>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Render calendar table
+    function renderCalendar() {
+      const events = islamicCalendar.getIslamicEvents(2026);
+      const tbody = document.getElementById('calendarBody');
+      
+      tbody.innerHTML = events.map(event => {
+        const daysLeft = event.daysUntil;
+        let daysClass = 'days-left';
+        if (daysLeft <= 7 && daysLeft >= 0) daysClass += ' urgent';
+        
+        return `
+          <tr>
+            <td><strong>${event.name}</strong></td>
+            <td>${event.hijri.day} ${islamicCalendar.getHijriMonthName(event.hijri.month - 1)}</td>
+            <td>${event.date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</td>
+            <td class="${daysClass}">${daysLeft >= 0 ? daysLeft + ' days' : 'Past'}</td>
+            <td><span class="event-badge ${event.major ? 'major' : 'regular'}">${event.major ? 'Major' : 'Regular'}</span></td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    // Render Kandil nights
+    function renderKandil() {
+      const kandilNights = specialDayContent.getKandilDates(2026).filter(k => k.daysUntil >= 0);
+      const container = document.getElementById('kandilContainer');
+      
+      container.innerHTML = kandilNights.map(k => `
+        <div class="countdown-card">
+          <div class="emoji">🌟</div>
+          <h3>${k.name}</h3>
+          <div class="date">${k.date.toLocaleDateString('en-US', { month: 'long', day: 'numeric' })}</div>
+          <p style="font-size: 0.875rem; color: var(--text-tertiary); margin-top: 0.5rem;">${k.description}</p>
+          <div class="countdown-timer" style="margin-top: 1rem;">
+            <div class="timer-unit">
+              <span class="timer-value">${k.daysUntil}</span>
+              <span class="timer-label">Days Left</span>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function getEventEmoji(name) {
+      if (name.includes('Ramadan')) return '🌙';
+      if (name.includes('Eid')) return '🎉';
+      if (name.includes('New Year')) return '📅';
+      return '✨';
+    }
+
+    // Initialize
+    updateCurrentDate();
+    renderCountdowns();
+    renderCalendar();
+    renderKandil();
+    
+    // Push AdSense ad
+    if (window.adsbygoogle) {
+      window.adsbygoogle.push({});
+    }
+  </script>
+</body>
+</html>
