@@ -1,17 +1,8 @@
 {
   "version": 2,
   "name": "novatools-mc",
+  "cleanUrls": true,
   
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist"
-      }
-    }
-  ],
-
   "rewrites": [
     { "source": "/tools/finance/mortgage-refinance", "destination": "/src/tools/finance/mortgage-refinance/index.html" },
     { "source": "/tools/finance/compound-interest", "destination": "/src/tools/finance/compound-interest/index.html" },
@@ -27,26 +18,28 @@
     { "source": "/tools/image/compress", "destination": "/src/tools/image/compress/index.html" },
     { "source": "/tools/image/convert", "destination": "/src/tools/image/convert/index.html" },
     { "source": "/tools/religious/islamic-calendar", "destination": "/src/tools/religious/islamic-calendar/index.html" },
-    { "source": "/tools/news/summarizer", "destination": "/src/tools/news/summarizer/index.html" },
-    { "source": "/tools/(.*)", "destination": "/src/tools/$1" },
-    { "source": "/blog/(.*)", "destination": "/src/blog/$1" },
-    { "source": "/admin/(.*)", "destination": "/admin/$1" },
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/tools/news/summarizer", "destination": "/src/tools/news/summarizer/index.html" }
   ],
 
   "headers": [
     {
-      "source": "/(.*\\.xml)$",
+      "source": "/(.*\\.js)$",
       "headers": [
-        { "key": "Content-Type", "value": "application/xml; charset=utf-8" },
-        { "key": "Cache-Control", "value": "public, max-age=86400" }
+        { "key": "Content-Type", "value": "application/javascript; charset=utf-8" },
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
       ]
     },
     {
-      "source": "/robots.txt",
+      "source": "/(.*\\.css)$",
       "headers": [
-        { "key": "Content-Type", "value": "text/plain; charset=utf-8" },
-        { "key": "Cache-Control", "value": "public, max-age=86400" }
+        { "key": "Content-Type", "value": "text/css; charset=utf-8" },
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/(.*\\.xml)$",
+      "headers": [
+        { "key": "Content-Type", "value": "application/xml; charset=utf-8" }
       ]
     },
     {
