@@ -1,55 +1,110 @@
 
-# ZeroTools Platform
+# NovaTools MC
 
-> Privacy-first online tools. Zero server, zero data transmission, maximum performance.
+> High-CPC Utility Tools Platform. Privacy-first. USD Optimized. AdSense Ready.
 
 [![Lighthouse](https://img.shields.io/badge/Lighthouse-95+-brightgreen)](./lighthouserc.js)
-[![Zero Server](https://img.shields.io/badge/Server-Zero%20Processing-blue)](https://zerotools.dev)
+[![Zero Server](https://img.shields.io/badge/Server-Zero%20Processing-blue)](https://novatools.mc)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
+[![AdSense](https://img.shields.io/badge/AdSense-Optimized-green)](https://novatools.mc)
 
 ## 🎯 Overview
 
-ZeroTools is a **privacy-first, zero-server online tools platform**. All processing happens in your browser—your data never leaves your device.
+**NovaTools MC** is a high-CPC, privacy-first utility tools platform designed for maximum AdSense revenue. All processing happens in the browser—your data never leaves your device.
 
 ### Key Features
 
-- 🔒 **Zero Data Transmission** - Everything processes client-side
-- ⚡ **Blazing Fast** - FCP < 1.2s, LCP < 2.5s
+- 💰 **High-CPC Tools** - Mortgage, Insurance, Cloud Cost calculators ($2-8 CPC)
+- 🔒 **Zero Data Transmission** - Everything processes client-side (GDPR compliant)
+- 🎨 **Matrix Theme** - Hacker/cyber aesthetic with neon accents
 - 📱 **PWA Ready** - Works offline
 - ♿ **Accessible** - WCAG 2.1 AA compliant
-- 🌍 **GDPR/KVKK Compliant** - No cookies, no tracking
+- 🌍 **Global English** - USD-focused, AdSense optimized
 
-### 🚀 Phase 7: The Singularity Tier
+## 🚀 High-CPC Tool Portfolio
 
-Advanced autonomous edge-native architecture:
+### Finance Tools (Premium CPC: $3-8)
 
-| Feature | Status | Description |
-|---------|--------|-------------|
-| ⚡ **WebGPU Acceleration** | ✅ | GPU compute for image analysis & financial simulations |
-| 🔄 **CRDT Multi-Device Sync** | ✅ | Seamless state sync across devices without servers |
-| 🔗 **WebRTC P2P Collaboration** | ✅ | Real-time collaboration with presence cursors |
-| 🧠 **Federated Learning** | ✅ | On-device AI training with differential privacy |
-| 🔐 **Post-Quantum Crypto** | ✅ | CRYSTALS-Kyber inspired KEM for encryption |
-| 🎮 **Hardware Integration** | ✅ | WebHID, Web Serial, haptics, device orientation |
-| ⏱️ **Background Sync** | ✅ | Periodic sync and background fetch |
-| 🔑 **WebAuthn Passkeys** | ✅ | Passwordless biometric authentication |
-| 📈 **Header Bidding 2.0** | ✅ | Privacy-first ad auction without cookies |
-| 🏥 **Self-Healing System** | ✅ | Automatic error recovery & optimization |
+| Tool | CPC (US) | Description |
+|------|----------|-------------|
+| **Mortgage Refinance Calculator** | $5.50 | Compare rates & calculate savings |
+| **Life Insurance Estimator** | $8.50 | Payout & premium calculator |
+| **Cloud Cost Estimator** | $4.50 | AWS/GCP/Azure comparison |
+| **Retirement Planner** | $3.20 | 401k & IRA projections |
+| **Tax Estimator** | $3.80 | Federal & state tax calculator |
+| **Compound Interest** | $2.50 | Investment growth projection |
 
-### 🌌 Phase 8: The Omega Point
+### PDF Tools (CPC: $2-2.50)
 
-Self-evolving, sentient utility platform - the theoretical limit:
+- PDF Merger
+- PDF Compressor
+- PDF Splitter
 
-| Feature | Status | Description |
-|---------|--------|-------------|
-| 🧬 **Generative Tool Synthesis** | ✅ | WebLLM-powered zero-code tool generation |
-| ⚖️ **Legal Consciousness** | ✅ | Self-monitoring regulatory compliance |
-| 🌐 **Swarm Compute** | ✅ | P2P distributed supercomputer with Bitcoin payments |
-| 🔐 **ZK Monetization** | ✅ | FHE + zk-SNARKs for private ad targeting ($200+ CPM) |
-| 🥽 **Neural Interface** | ✅ | WebXR, eye-tracking, ambient intelligence |
-| 🧬 **Genetic Algorithms** | ✅ | Self-improving UI through evolution |
-| 👤 **Digital Twin** | ✅ | Predictive financial modeling from bank statements |
-| 🤖 **Full Autonomy** | ✅ | Self-replication, optimization, infinite passive income |
+### Image Tools (CPC: $1.2-1.8)
+
+- Image Compressor (WebP/AVIF)
+- Format Converter
+
+### Developer Tools (CPC: $1-1.50)
+
+- JSON Validator & Formatter
+- Regex Tester & Debugger
+
+## 🎨 Matrix Theme Design
+
+### Color Palette
+
+```css
+--matrix-dark: #0a0a0a;        /* Deep black background */
+--matrix-green: #00FF41;        /* Primary accent (Matrix Green) */
+--matrix-cyan: #00F3FF;         /* Cyber Blue */
+--matrix-blue: #0080FF;         /* Electric Blue */
+--matrix-purple: #BD00FF;       /* Neon Purple */
+--matrix-yellow: #FFD700;       /* Gold */
+--matrix-red: #FF0040;          /* Neon Red */
+--matrix-gray: #6B7280;         /* Text gray */
+```
+
+### Typography
+
+- **Primary Font:** JetBrains Mono
+- **Backup:** Roboto Mono, monospace
+- **Style:** Terminal-inspired, code-like aesthetics
+
+## 📺 Ad Placement Strategy
+
+### Ad Slots
+
+| Placement | Size | Device | CPC Optimization |
+|-----------|------|--------|------------------|
+| **Top Banner** | 728x90 / Responsive | All | Finance tools ($3-5) |
+| **Sidebar** | 336x280 | Desktop | All tools (sticky) |
+| **Medium Rectangle** | 300x250 | All | Between tool cards |
+| **Anchor** | 320x50 | Mobile | Fixed bottom |
+
+### AdSense Integration
+
+```html
+<!-- Top Banner -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+     data-ad-slot="BANNER_SLOT_ID"
+     data-ad-format="horizontal"
+     data-full-width-responsive="true"></ins>
+
+<!-- Sidebar (336x280) -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:336px;height:280px"
+     data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+     data-ad-slot="SIDEBAR_SLOT_ID"></ins>
+
+<!-- Anchor (320x50) -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:320px;height:50px"
+     data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+     data-ad-slot="ANCHOR_SLOT_ID"></ins>
+```
 
 ## 🚀 Quick Start
 
@@ -79,95 +134,37 @@ zero-tools-platform/
 │   │   └── ui/
 │   │       ├── file-dropzone.mjs
 │   │       └── index.mjs
-│   ├── core/                # Core utilities (Phase 7)
+│   ├── core/                # Core utilities
+│   │   ├── ads/             # AdSense configuration
 │   │   ├── ai/              # AI & Machine Learning
-│   │   │   ├── federated/   # Federated learning engine
-│   │   │   ├── recommendation-engine.mjs
-│   │   │   └── smart-validation.mjs
 │   │   ├── auth/            # WebAuthn & passkeys
-│   │   ├── codec/           # Compression & WebCodecs
 │   │   ├── compute/         # WebGPU acceleration
 │   │   ├── crypto/          # Post-quantum cryptography
-│   │   ├── edge/            # Edge compute utilities
-│   │   ├── hardware/        # HID, Serial, Haptics
-│   │   ├── monetization/    # Header bidding 2.0
-│   │   ├── optimization/    # Self-healing system
-│   │   ├── p2p/             # WebRTC collaboration
-│   │   ├── sw-intelligence/ # Background sync
-│   │   ├── sync/            # CRDT engine
-│   │   ├── workflow/        # Tool pipelines
+│   │   ├── monetization/    # Header bidding
+│   │   ├── optimization/    # Self-healing
 │   │   ├── router.mjs
-│   │   └── index.mjs        # Phase 7 exports
+│   │   └── index.mjs
 │   ├── styles/
-│   │   └── critical.css
+│   │   ├── critical.css     # Matrix theme critical CSS
+│   │   └── main.css
 │   └── tools/               # Tool implementations
-│       ├── demo-phase7/     # Phase 7 feature demo
-│       ├── finance/
+│       ├── finance/         # High-CPC finance tools
+│       │   ├── mortgage-refinance/
+│       │   ├── life-insurance/
+│       │   ├── cloud-cost/
+│       │   ├── compound-interest/
+│       │   ├── retirement/
+│       │   └── tax/
 │       ├── pdf/
 │       ├── image/
 │       └── dev/
-├── api/                     # Edge functions
-│   ├── geo-suggestions.mjs
-│   ├── esi-render.mjs
-│   └── edge-middleware/
 ├── static/                  # Static assets
 ├── dist/                    # Build output
-├── middleware.mjs           # Vercel edge middleware
+├── tools-manifest.json      # CPC data, ad config
+├── tailwind.config.js       # Matrix theme colors
 ├── vite.config.js           # Build configuration
-├── tailwind.config.js       # 10KB CSS budget
-└── lighthouserc.js          # Performance budgets
+└── vercel.json              # Static deployment
 ```
-
-## 🛠️ Tool Development
-
-### Creating a New Tool
-
-1. **Create directory structure:**
-```bash
-mkdir -p src/tools/{category}/{tool-name}
-```
-
-2. **Create meta.json:**
-```json
-{
-  "id": "tool-id",
-  "name": "Tool Name",
-  "category": "category",
-  "tier": 1,
-  "description": "Tool description"
-}
-```
-
-3. **Create index.html:**
-```html
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-  <title>Tool Name | ZeroTools</title>
-  <link rel="stylesheet" href="/src/styles/critical.css">
-  <script type="module" src="./logic.mjs"></script>
-</head>
-<body>
-  <!-- Tool interface -->
-</body>
-</html>
-```
-
-4. **Create logic.mjs:**
-```javascript
-import { initToolPage } from '../../../core/router.mjs';
-
-initToolPage('category/tool-name').then(() => {
-  // Tool initialization
-});
-```
-
-### Tool Standards
-
-- **Bundle size:** Max 150KB (vendor excluded)
-- **Memory limit:** 50MB per operation
-- **WASM:** Lazy loaded, < 500KB chunks
-- **Validation:** Zod schemas in `core/validation/`
 
 ## 🏗️ Architecture
 
@@ -180,7 +177,7 @@ initToolPage('category/tool-name').then(() => {
 │  │  Vite-built Static Assets   │   │
 │  │  ├── HTML Entry Points      │   │
 │  │  ├── JS Chunks (vendor/*)   │   │
-│  │  ├── CSS (critical + lazy)  │   │
+│  │  ├── CSS (Matrix Theme)     │   │
 │  │  └── WASM (pdf-lib, etc)    │   │
 │  └─────────────────────────────┘   │
 │              ↓                      │
@@ -198,70 +195,32 @@ initToolPage('category/tool-name').then(() => {
 └─────────────────────────────────────┘
 ```
 
-### Phase 7: Autonomous Edge-Native Architecture
-
-```
-┌─────────────────────────────────────────────────────────────┐
-│                    EDGE LAYER (Vercel)                      │
-│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐      │
-│  │   Geo-       │  │   ESI        │  │   Feature    │      │
-│  │   Routing    │  │   Renderer   │  │   Flags      │      │
-│  └──────────────┘  └──────────────┘  └──────────────┘      │
-└─────────────────────────────────────────────────────────────┘
-                            │
-                            ▼
-┌─────────────────────────────────────────────────────────────┐
-│                 CLIENT CAPABILITIES LAYER                   │
-│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐      │
-│  │   WebGPU     │  │   WebRTC     │  │   WebAuthn   │      │
-│  │   Compute    │  │   P2P Mesh   │  │   Passkeys   │      │
-│  └──────────────┘  └──────────────┘  └──────────────┘      │
-│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐      │
-│  │   CRDT       │  │   Federated  │  │   Hardware   │      │
-│  │   Sync       │  │   Learning   │  │   APIs       │      │
-│  └──────────────┘  └──────────────┘  └──────────────┘      │
-└─────────────────────────────────────────────────────────────┘
-                            │
-                            ▼
-┌─────────────────────────────────────────────────────────────┐
-│              INTELLIGENCE & OPTIMIZATION                    │
-│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐      │
-│  │   Self-      │  │   Background │  │   Predictive │      │
-│  │   Healing    │  │   Sync       │  │   Prefetch   │      │
-│  └──────────────┘  └──────────────┘  └──────────────┘      │
-└─────────────────────────────────────────────────────────────┘
-```
-
-### Chunking Strategy
-
-| Chunk | Contents | Size |
-|-------|----------|------|
-| `pdf-vendor` | pdf-lib, pdfjs-dist | ~250KB |
-| `finance-vendor` | decimal.js | ~15KB |
-| `image-vendor` | WASM modules | ~400KB |
-| `ui-vendor` | DOMPurify, zod | ~20KB |
-| `core` | Router, validation | ~15KB |
-
 ## 🎨 Styling
 
 ### CSS Architecture
 
 ```css
-/* critical.css - Inline in <head> */
+/* critical.css - Matrix theme, inline in <head> */
 /* 10KB budget - Above-fold only */
 
 /* Component styles - Lazy loaded */
-/* Tool-specific in shadow DOM */
+/* Matrix card glow effects */
 
 /* Tailwind - Purged and minified */
-/* Only used utilities included */
+/* Matrix color utilities */
 ```
 
-### Ad Placement
+### Matrix Card Component
 
-- **Desktop Sidebar:** 336x280 (sticky)
-- **Mobile Anchor:** 320x50 (fixed bottom)
-- **Banner:** 728x90 (content area)
+```html
+<a href="/tools/finance/mortgage-refinance/" 
+   class="card matrix-card hover:glow-green transition-all">
+  <div class="card-body">
+    <h3 class="font-mono text-white">Mortgage Refinance</h3>
+    <p class="text-matrix-gray">Compare rates & calculate savings</p>
+  </div>
+</a>
+```
 
 ## 📊 Performance Budgets
 
@@ -292,12 +251,16 @@ npm run preview
 
 ## 📈 Analytics
 
-Privacy-first, self-hosted Umami:
+Privacy-first, cookie-free Fathom Analytics:
 
 - No cookies
 - No personal data
+- GDPR compliant
 - Event tracking only
-- Offline queue support
+
+```html
+<script src="https://cdn.usefathom.com/script.js" data-site="NOVATOOLS" defer></script>
+```
 
 ## 🚢 Deployment
 
@@ -318,156 +281,37 @@ npm run build
 cd dist && npx wrangler pages deploy .
 ```
 
-## 🚀 Phase 7 Features Usage
+## 📊 Revenue Optimization
 
-### WebGPU Acceleration
-
-```javascript
-import { getWebGPUEngine } from './src/core/index.mjs';
-
-const gpu = await getWebGPUEngine();
-
-// GPU-accelerated image histogram
-const histogram = await gpu.computeImageHistogram(imageData);
-
-// Monte Carlo simulation for financial projections
-const stats = await gpu.runMonteCarloSimulation(
-  10000,    // principal
-  0.07,     // annual rate
-  30,       // years
-  10000     // simulations
-);
-```
-
-### CRDT Multi-Device Sync
+### Header Bidding (Optional)
 
 ```javascript
-import { getSyncManager } from './src/core/index.mjs';
+// Prebid.js integration for higher CPM
+import { initHeaderBidding } from './src/core/monetization/header-bidding.mjs';
 
-const sync = getSyncManager();
-
-// Sync field across devices
-sync.setField('pdf-merger', 'files', fileList);
-
-// Subscribe to changes
-sync.subscribe('pdf-merger', (op) => {
-  console.log('State updated:', op);
-});
-
-// Export/import for device pairing
-const state = sync.exportDocument('pdf-merger');
-sync.importDocument(state);
-```
-
-### WebRTC P2P Collaboration
-
-```javascript
-import { createCollaborationSession } from './src/core/index.mjs';
-
-// Host a session
-const session = createCollaborationSession('User Name');
-const inviteCode = await session.host();
-
-// Join with code
-await session.join(inviteCode);
-
-// Send cursor position
-session.sendCursor(x, y, 'pdf/merge');
-
-// Listen for remote cursors
-session.on('cursor-move', ({ userId, x, y }) => {
-  updateRemoteCursor(userId, x, y);
+initHeaderBidding({
+  bidders: ['appnexus', 'openx', 'rubicon'],
+  timeout: 2000
 });
 ```
 
-### Federated Learning
+### Ad Refresh Strategy
 
-```javascript
-import { getToolRecommender, getAnomalyDetector } from './src/core/index.mjs';
-
-// Record tool usage for training
-const recommender = getToolRecommender();
-recommender.recordUsage({ currentTool: 0 }, selectedTool);
-
-// Get recommendations
-const recommendations = recommender.recommend({
-  currentTool: 0,
-  recentTools: [1, 2]
-});
-
-// Check for anomalies
-const detector = getAnomalyDetector();
-const result = detector.check(userInput, toolId);
-if (result.isAnomaly) {
-  showWarning(result.suggestion);
-}
-```
-
-### WebAuthn Passkeys
-
-```javascript
-import { getPasswordlessAuth } from './src/core/index.mjs';
-
-const auth = getPasswordlessAuth();
-
-// Register biometric auth
-await auth.startRegistration('user@example.com');
-
-// Authenticate
-const result = await auth.startAuthentication();
-if (result.success) {
-  // User authenticated
-}
-```
-
-### Self-Healing & Optimization
-
-```javascript
-import { getSelfHealingSystem, optimizeForDevice } from './src/core/index.mjs';
-
-// Initialize monitoring
-const healing = getSelfHealingSystem();
-
-// Get health report
-const report = healing.getHealthReport();
-console.log(report.metrics);
-
-// Adaptive quality based on device
-const settings = await optimizeForDevice();
-// Automatically adjusts quality, animations, etc.
-```
-
-### Demo Page
-
-Explore all Phase 7 features at `/src/tools/demo-phase7/` after running the dev server.
-
-```bash
-npm run dev
-# Open http://localhost:5173/src/tools/demo-phase7/
-```
+- Refresh ads every 60 seconds on active tools
+- Higher CPM for finance tool impressions
+- Sticky sidebar for maximum viewability
 
 ## 📝 License
 
-[MIT License](./LICENSE) © ZeroTools Platform
+[MIT License](./LICENSE) © NovaTools MC
 
-## 🤝 Contributing
+## ⚠️ Disclaimer
 
-1. Fork the repository
-2. Create a feature branch
-3. Follow existing code style
-4. Add tests for new features
-5. Ensure Lighthouse scores ≥ 95
-6. Submit a pull request
-
-## 🙏 Credits
-
-- [pdf-lib](https://pdf-lib.js.org/) - PDF manipulation
-- [decimal.js](https://mikemcl.github.io/decimal.js/) - Precise calculations
-- [Vite](https://vitejs.dev/) - Build tool
-- [Tailwind CSS](https://tailwindcss.com/) - Styling
+This platform provides calculators for informational purposes only. Results are estimates and should not be considered financial advice. Consult a qualified professional for financial decisions.
 
 ---
 
 <p align="center">
-  <strong>🔒 Your data stays in your browser. Always.</strong>
+  <strong>🔒 Your data stays in your browser. Always.</strong><br>
+  <span class="font-mono">$ echo "Privacy is not a feature, it's a foundation."</span>
 </p>

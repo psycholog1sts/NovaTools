@@ -1,5 +1,5 @@
 /**
- * Main Stylesheet
+ * Main Stylesheet - Matrix Theme
  * Imported after critical.css, contains full Tailwind utilities
  * This file is processed by PostCSS/Tailwind
  */
@@ -10,48 +10,48 @@
 
 /* Custom utilities */
 @layer utilities {
-  /* Ad container base */
+  /* Ad container base - Matrix */
   .ad-container {
-    @apply bg-gray-100 rounded-lg flex items-center justify-center text-gray-400;
+    @apply bg-matrix-darker rounded-lg flex items-center justify-center text-matrix-gray border border-matrix-green/20;
   }
   
-  /* Privacy badge variations */
+  /* Privacy badge - Matrix */
   .privacy-badge {
-    @apply inline-flex items-center gap-2 text-sm text-green-700 bg-green-50 px-3 py-1 rounded-full;
+    @apply inline-flex items-center gap-2 text-sm text-matrix-green bg-matrix-green/10 px-3 py-1 rounded-full border border-matrix-green/30 font-mono;
   }
   
-  /* Tool card hover effect */
+  /* Tool card hover effect - Matrix */
   .tool-card {
-    @apply transition-all duration-200 ease-out;
+    @apply transition-all duration-200 ease-out bg-matrix-darker border border-matrix-green/20;
   }
   
   .tool-card:hover {
-    @apply -translate-y-1 shadow-lg;
+    @apply -translate-y-1 shadow-glow-green border-matrix-green;
   }
   
-  /* Focus visible for accessibility */
+  /* Focus visible for accessibility - Matrix */
   .focus-ring {
-    @apply focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+    @apply focus:outline-none focus:ring-2 focus:ring-matrix-green focus:ring-offset-2 focus:ring-offset-matrix-dark;
   }
   
-  /* Skeleton loading */
+  /* Skeleton loading - Matrix */
   .skeleton-pulse {
-    @apply animate-pulse bg-gray-200 rounded;
+    @apply animate-pulse bg-matrix-darker rounded border border-matrix-green/10;
   }
   
-  /* Gradient backgrounds */
+  /* Gradient backgrounds - Matrix */
   .gradient-primary {
-    @apply bg-gradient-to-r from-primary-600 to-primary-500;
+    @apply bg-gradient-to-r from-matrix-green to-matrix-cyan;
   }
   
   .gradient-success {
-    @apply bg-gradient-to-r from-green-500 to-emerald-500;
+    @apply bg-gradient-to-r from-matrix-green to-matrix-cyan;
   }
   
-  /* Scrollbar styling */
+  /* Scrollbar styling - Matrix */
   .custom-scrollbar {
     scrollbar-width: thin;
-    scrollbar-color: theme('colors.gray.300') transparent;
+    scrollbar-color: #00FF41 #111;
   }
   
   .custom-scrollbar::-webkit-scrollbar {
@@ -60,62 +60,111 @@
   }
   
   .custom-scrollbar::-webkit-scrollbar-track {
-    @apply bg-transparent;
+    @apply bg-matrix-darker;
   }
   
   .custom-scrollbar::-webkit-scrollbar-thumb {
-    @apply bg-gray-300 rounded-full;
+    @apply bg-matrix-green/30 rounded-full;
   }
   
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    @apply bg-gray-400;
+    @apply bg-matrix-green/50;
+  }
+  
+  /* Matrix Glow Effects */
+  .shadow-glow-green {
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.4), 0 0 30px rgba(0, 255, 65, 0.2);
+  }
+  
+  .shadow-glow-cyan {
+    box-shadow: 0 0 15px rgba(0, 243, 255, 0.4), 0 0 30px rgba(0, 243, 255, 0.2);
+  }
+  
+  .shadow-glow-blue {
+    box-shadow: 0 0 15px rgba(0, 128, 255, 0.4), 0 0 30px rgba(0, 128, 255, 0.2);
+  }
+  
+  .shadow-glow-purple {
+    box-shadow: 0 0 15px rgba(189, 0, 255, 0.4), 0 0 30px rgba(189, 0, 255, 0.2);
+  }
+  
+  /* Text Glow */
+  .text-glow-green {
+    text-shadow: 0 0 10px rgba(0, 255, 65, 0.5), 0 0 20px rgba(0, 255, 65, 0.3);
+  }
+  
+  .text-glow-cyan {
+    text-shadow: 0 0 10px rgba(0, 243, 255, 0.5), 0 0 20px rgba(0, 243, 255, 0.3);
   }
 }
 
 /* Component layer */
 @layer components {
-  /* Button variants */
+  /* Button variants - Matrix */
   .btn-sm {
-    @apply px-3 py-1.5 text-sm;
+    @apply px-3 py-1.5 text-sm font-mono;
   }
   
   .btn-lg {
-    @apply px-6 py-3 text-lg;
+    @apply px-6 py-3 text-lg font-mono;
   }
   
-  /* Card variants */
+  /* Card variants - Matrix */
   .card-compact {
-    @apply p-4;
+    @apply p-4 bg-matrix-darker border border-matrix-green/20;
   }
   
-  /* Input variants */
+  /* Input variants - Matrix */
   .input-error {
-    @apply border-red-500 focus:border-red-500 focus:ring-red-500;
+    @apply border-matrix-red focus:border-matrix-red focus:ring-matrix-red;
   }
   
   .input-success {
-    @apply border-green-500 focus:border-green-500 focus:ring-green-500;
+    @apply border-matrix-green focus:border-matrix-green focus:ring-matrix-green;
   }
   
-  /* Alert components */
+  /* Alert components - Matrix */
   .alert {
-    @apply p-4 rounded-lg border;
+    @apply p-4 rounded-lg border font-mono;
   }
   
   .alert-info {
-    @apply bg-blue-50 border-blue-200 text-blue-800;
+    @apply bg-matrix-blue/10 border-matrix-blue/30 text-matrix-blue;
   }
   
   .alert-success {
-    @apply bg-green-50 border-green-200 text-green-800;
+    @apply bg-matrix-green/10 border-matrix-green/30 text-matrix-green;
   }
   
   .alert-warning {
-    @apply bg-amber-50 border-amber-200 text-amber-800;
+    @apply bg-matrix-yellow/10 border-matrix-yellow/30 text-matrix-yellow;
   }
   
   .alert-error {
-    @apply bg-red-50 border-red-200 text-red-800;
+    @apply bg-matrix-red/10 border-matrix-red/30 text-matrix-red;
+  }
+  
+  /* Matrix Terminal */
+  .terminal {
+    @apply bg-matrix-darker border border-matrix-green/30 rounded-lg font-mono text-sm;
+  }
+  
+  .terminal-header {
+    @apply bg-matrix-dark border-b border-matrix-green/20 px-4 py-2 flex items-center gap-2;
+  }
+  
+  .terminal-body {
+    @apply p-4 text-matrix-green;
+  }
+  
+  /* Code Block */
+  .code-block {
+    @apply bg-matrix-darker border border-matrix-green/20 rounded-lg p-4 font-mono text-sm text-matrix-gray overflow-x-auto;
+  }
+  
+  /* Ad Slots */
+  .ad-slot {
+    @apply bg-matrix-darker border border-matrix-green/10 rounded flex items-center justify-center text-matrix-gray/50 font-mono text-xs;
   }
 }
 
@@ -126,17 +175,17 @@
   }
   
   body {
-    @apply antialiased text-gray-900 bg-secondary-50;
+    @apply antialiased text-gray-100 bg-matrix-dark font-mono;
   }
   
-  /* Selection styling */
+  /* Selection styling - Matrix */
   ::selection {
-    @apply bg-primary-100 text-primary-900;
+    @apply bg-matrix-green/30 text-white;
   }
   
-  /* Focus visible for keyboard navigation */
+  /* Focus visible for keyboard navigation - Matrix */
   :focus-visible {
-    @apply outline-none ring-2 ring-primary-500 ring-offset-2;
+    @apply outline-none ring-2 ring-matrix-green ring-offset-2 ring-offset-matrix-dark;
   }
   
   /* Reduced motion preference */
@@ -156,11 +205,17 @@
 @media print {
   .ad-container,
   .ad-anchor,
+  .ad-anchor-matrix,
+  .ad-slot,
+  .ad-slot-sidebar,
+  .ad-slot-banner,
+  .ad-slot-medium-rectangle,
   .privacy-badge {
     display: none !important;
   }
   
   body {
     background: white !important;
+    color: black !important;
   }
 }

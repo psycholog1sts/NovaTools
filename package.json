@@ -1,9 +1,9 @@
 {
-  "name": "zero-tools-platform",
+  "name": "novatools-mc",
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "Privacy-first online tools platform. Zero server, zero data transmission.",
+  "description": "High-CPC utility tools platform. Privacy-first, AdSense optimized, Matrix themed.",
   "packageManager": "npm@10.2.4",
   "scripts": {
     "dev": "vite",

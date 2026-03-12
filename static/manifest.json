@@ -1,14 +1,14 @@
 {
-  "name": "ZeroTools - Privacy First Utilities",
-  "short_name": "ZeroTools",
-  "description": "Zero-server online tools. Your data never leaves your browser.",
+  "name": "NovaTools MC - High-CPC Utility Tools",
+  "short_name": "NovaTools MC",
+  "description": "High-CPC utility tools for mortgage, insurance, and cloud costs. Privacy-first.",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#ffffff",
-  "theme_color": "#2563eb",
+  "background_color": "#0a0a0a",
+  "theme_color": "#00FF41",
   "categories": ["finance", "utilities", "productivity", "developer"],
-  "lang": "tr",
+  "lang": "en",
   "dir": "ltr",
   
   "icons": [
@@ -24,18 +24,25 @@
   
   "shortcuts": [
     {
-      "name": "PDF Birleştirme",
-      "short_name": "PDF Merge",
-      "description": "PDF dosyalarını birleştir",
-      "url": "/src/tools/pdf/merge/",
-      "icons": [{ "src": "/icons/pdf-192.png", "sizes": "192x192" }]
+      "name": "Mortgage Refinance",
+      "short_name": "Mortgage",
+      "description": "Calculate mortgage refinance savings",
+      "url": "/src/tools/finance/mortgage-refinance/",
+      "icons": [{ "src": "/icons/finance-192.png", "sizes": "192x192" }]
     },
     {
-      "name": "Konut Kredisi",
-      "short_name": "Mortgage",
-      "description": "Konut kredisi hesapla",
-      "url": "/src/tools/finance/mortgage-tr/",
+      "name": "Life Insurance",
+      "short_name": "Insurance",
+      "description": "Estimate life insurance payouts",
+      "url": "/src/tools/finance/life-insurance/",
       "icons": [{ "src": "/icons/finance-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "PDF Merger",
+      "short_name": "PDF Merge",
+      "description": "Merge PDF files",
+      "url": "/src/tools/pdf/merge/",
+      "icons": [{ "src": "/icons/pdf-192.png", "sizes": "192x192" }]
     }
   ],
   
@@ -82,11 +89,11 @@
     },
     {
       "protocol": "web+mortgage",
-      "url": "/src/tools/finance/mortgage-tr/?source=%s"
+      "url": "/src/tools/finance/mortgage-refinance/?source=%s"
     }
   ],
   
   "scope_extensions": [
-    { "origin": "*.zerotools.dev" }
+    { "origin": "*.novatools.mc" }
   ]
 }

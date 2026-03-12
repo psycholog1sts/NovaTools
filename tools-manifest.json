@@ -1,34 +1,30 @@
 {
-  "generated": "2026-03-11T18:54:55.926Z",
-  "count": 10,
+  "generated": "2025-01-01T00:00:00.000Z",
+  "count": 14,
   "tools": [
     {
       "id": "json-formatter",
-      "name": "JSON Formatter",
-      "nameEn": "JSON Formatter",
+      "name": "JSON Validator & Formatter",
+      "nameEn": "JSON Validator & Formatter",
       "category": "dev",
       "tier": 1,
       "cpc": {
-        "tr": 0.8,
-        "us": 1.5
+        "us": 1.5,
+        "gb": 1.2,
+        "ca": 1.3
       },
       "keywords": {
-        "tr": [
-          "json formatlama",
-          "json düzenleme",
-          "json doğrulama",
-          "json beautify"
-        ],
         "en": [
-          "json formatter",
           "json validator",
+          "json formatter",
           "json beautifier",
+          "json parser online",
+          "validate json",
           "format json"
         ]
       },
       "description": {
-        "tr": "JSON verilerinizi formatlayın, doğrulayın ve okunabilir hale getirin. Syntax highlighting ve hata tespiti.",
-        "en": "Format, validate and beautify JSON data. Syntax highlighting and error detection."
+        "en": "Format, validate and beautify JSON data. Syntax highlighting and error detection. 100% client-side."
       },
       "schema": {
         "@type": "WebApplication",
@@ -42,7 +38,7 @@
         "sidebar": {
           "enabled": true,
           "size": "336x280",
-          "minCpm": 0.3
+          "minCpm": 0.5
         }
       },
       "bundle": {
@@ -57,30 +53,25 @@
     },
     {
       "id": "regex-tester",
-      "name": "Regex Tester",
-      "nameEn": "Regex Tester",
+      "name": "Regex Tester & Debugger",
+      "nameEn": "Regex Tester & Debugger",
       "category": "dev",
       "tier": 1,
       "cpc": {
-        "tr": 0.5,
-        "us": 1
+        "us": 1.0,
+        "gb": 0.9,
+        "ca": 0.95
       },
       "keywords": {
-        "tr": [
-          "regex test",
-          "regular expression",
-          "düzenli ifade",
-          "regex öğrenme"
-        ],
         "en": [
           "regex tester",
           "regular expression",
           "regex debugger",
-          "test regex"
+          "test regex",
+          "regex validator"
         ]
       },
       "description": {
-        "tr": "Düzenli ifadelerinizi test edin ve debug yapın. Gerçek zamanlı eşleşme ve açıklama.",
         "en": "Test and debug your regular expressions. Real-time matching with explanations."
       },
       "schema": {
@@ -107,32 +98,27 @@
       "entry": "/src/tools/dev/regex-tester/"
     },
     {
-      "id": "mortgage-tr",
-      "name": "Konut Kredisi Hesaplama",
-      "nameEn": "Mortgage Calculator Turkey",
+      "id": "mortgage-refinance",
+      "name": "Mortgage Refinance Calculator",
+      "nameEn": "Mortgage Refinance Calculator",
       "category": "finance",
       "tier": 1,
       "cpc": {
-        "tr": 2.5,
-        "us": 3
+        "us": 5.5,
+        "gb": 4.2,
+        "ca": 4.8
       },
       "keywords": {
-        "tr": [
-          "konut kredisi hesaplama",
-          "aylık taksit hesaplama",
-          "faiz oranı",
-          "kkdf bsmv hesaplama"
-        ],
         "en": [
-          "turkey mortgage calculator",
-          "home loan calculator",
-          "monthly payment",
-          "kkdf bsmv"
+          "mortgage refinance calculator",
+          "refinance rates",
+          "mortgage calculator",
+          "home loan refinance",
+          "refinance savings"
         ]
       },
       "description": {
-        "tr": "Ücretsiz konut kredisi hesaplama aracı. KKDF ve BSMV dahil aylık taksit, toplam geri ödeme ve faiz oranlarını hesaplayın.",
-        "en": "Free Turkish mortgage calculator with KKDF and BSMV tax calculations. Calculate monthly payments and total interest."
+        "en": "Calculate mortgage refinance savings. Compare rates, monthly payments, and break-even points."
       },
       "schema": {
         "@type": "WebApplication",
@@ -146,7 +132,7 @@
         "sidebar": {
           "enabled": true,
           "size": "336x280",
-          "minCpm": 0.8
+          "minCpm": 1.5
         },
         "banner": {
           "enabled": true,
@@ -163,40 +149,140 @@
         "lazyLoad": false
       },
       "relatedTools": [
-        "finance/compound-interest",
-        "finance/cloud-cost"
+        "finance/life-insurance",
+        "finance/compound-interest"
       ],
       "memoryLimits": {
         "maxResults": 360
       },
-      "path": "/finance/mortgage-tr",
-      "entry": "/src/tools/finance/mortgage-tr/"
+      "path": "/finance/mortgage-refinance",
+      "entry": "/src/tools/finance/mortgage-refinance/"
+    },
+    {
+      "id": "life-insurance",
+      "name": "Life Insurance Payout Estimator",
+      "nameEn": "Life Insurance Payout Estimator",
+      "category": "finance",
+      "tier": 1,
+      "cpc": {
+        "us": 8.5,
+        "gb": 6.2,
+        "ca": 7.1
+      },
+      "keywords": {
+        "en": [
+          "life insurance calculator",
+          "life insurance payout",
+          "insurance premium estimator",
+          "term life insurance",
+          "whole life insurance calculator"
+        ]
+      },
+      "description": {
+        "en": "Estimate life insurance payouts and premiums. Compare term vs whole life policies."
+      },
+      "schema": {
+        "@type": "WebApplication",
+        "applicationCategory": "FinanceApplication",
+        "offers": {
+          "@type": "Offer",
+          "price": "0"
+        }
+      },
+      "ads": {
+        "sidebar": {
+          "enabled": true,
+          "size": "336x280",
+          "minCpm": 2.0
+        },
+        "banner": {
+          "enabled": true,
+          "size": "728x90"
+        },
+        "anchor": {
+          "enabled": true,
+          "size": "320x50",
+          "mobileOnly": true
+        }
+      },
+      "bundle": {
+        "vendor": "finance-vendor",
+        "lazyLoad": false
+      },
+      "relatedTools": [
+        "finance/mortgage-refinance",
+        "finance/retirement"
+      ],
+      "path": "/finance/life-insurance",
+      "entry": "/src/tools/finance/life-insurance/"
+    },
+    {
+      "id": "cloud-cost",
+      "name": "Cloud Server Cost Estimator",
+      "nameEn": "Cloud Server Cost Estimator",
+      "category": "finance",
+      "tier": 1,
+      "cpc": {
+        "us": 4.5,
+        "gb": 3.8,
+        "ca": 4.1
+      },
+      "keywords": {
+        "en": [
+          "cloud cost calculator",
+          "aws pricing calculator",
+          "gcp pricing",
+          "azure cost estimator",
+          "cloud comparison"
+        ]
+      },
+      "description": {
+        "en": "Compare AWS, GCP, and Azure costs. Find optimal cloud configuration for your workload."
+      },
+      "schema": {
+        "@type": "WebApplication",
+        "applicationCategory": "BusinessApplication",
+        "offers": {
+          "@type": "Offer",
+          "price": "0"
+        }
+      },
+      "ads": {
+        "sidebar": {
+          "enabled": true,
+          "size": "336x280",
+          "minCpm": 1.2
+        }
+      },
+      "bundle": {
+        "vendor": "finance-vendor"
+      },
+      "relatedTools": [
+        "finance/mortgage-refinance"
+      ],
+      "path": "/finance/cloud-cost",
+      "entry": "/src/tools/finance/cloud-cost/"
     },
     {
       "id": "compound-interest",
-      "name": "Bileşik Faiz Hesaplama",
+      "name": "Compound Interest Calculator",
       "nameEn": "Compound Interest Calculator",
       "category": "finance",
       "tier": 2,
       "cpc": {
-        "tr": 1.8,
-        "us": 2.5
+        "us": 2.5,
+        "gb": 2.0,
+        "ca": 2.2
       },
       "keywords": {
-        "tr": [
-          "bileşik faiz hesaplama",
-          "yatırım getirisi",
-          "para biriktirme",
-          "tasarruf hesaplama"
-        ],
         "en": [
           "compound interest calculator",
-          "investment return",
-          "savings calculator"
+          "investment return calculator",
+          "savings calculator",
+          "apy calculator"
         ]
       },
       "description": {
-        "tr": "Bileşik faiz hesaplama aracı. Aylık katkı ile yatırım büyümesini hesaplayın.",
         "en": "Calculate compound interest with monthly contributions. See your investment growth over time."
       },
       "schema": {
@@ -217,42 +303,36 @@
         "vendor": "finance-vendor"
       },
       "relatedTools": [
-        "finance/mortgage-tr"
+        "finance/mortgage-refinance"
       ],
       "path": "/finance/compound-interest",
       "entry": "/src/tools/finance/compound-interest/"
     },
     {
-      "id": "cloud-cost",
-      "name": "Bulut Maliyet Hesaplama",
-      "nameEn": "Cloud Cost Calculator",
+      "id": "retirement",
+      "name": "Retirement Planner Calculator",
+      "nameEn": "Retirement Planner Calculator",
       "category": "finance",
-      "tier": 3,
+      "tier": 2,
       "cpc": {
-        "tr": 2,
-        "us": 4.5
+        "us": 3.2,
+        "gb": 2.5,
+        "ca": 2.8
       },
       "keywords": {
-        "tr": [
-          "bulut maliyet",
-          "aws fiyat",
-          "gcp maliyet",
-          "azure hesaplama"
-        ],
         "en": [
-          "cloud cost calculator",
-          "aws pricing",
-          "gcp pricing",
-          "azure calculator"
+          "retirement calculator",
+          "401k calculator",
+          "retirement planning",
+          "ira calculator"
         ]
       },
       "description": {
-        "tr": "AWS, GCP ve Azure maliyet karşılaştırması. Türkiye'den erişim için optimal bulut seçimi.",
-        "en": "Compare AWS, GCP and Azure costs. Find optimal cloud choice for Turkish access."
+        "en": "Plan your retirement with 401k and IRA projections. Calculate required savings."
       },
       "schema": {
         "@type": "WebApplication",
-        "applicationCategory": "BusinessApplication",
+        "applicationCategory": "FinanceApplication",
         "offers": {
           "@type": "Offer",
           "price": "0"
@@ -261,33 +341,75 @@
       "ads": {
         "sidebar": {
           "enabled": true,
-          "size": "336x280",
-          "minCpm": 1
+          "size": "336x280"
         }
       },
+      "bundle": {
+        "vendor": "finance-vendor"
+      },
       "relatedTools": [
-        "finance/mortgage-tr"
+        "finance/compound-interest"
       ],
-      "path": "/finance/cloud-cost",
-      "entry": "/src/tools/finance/cloud-cost/"
+      "path": "/finance/retirement",
+      "entry": "/src/tools/finance/retirement/"
+    },
+    {
+      "id": "tax",
+      "name": "Tax Estimator Calculator",
+      "nameEn": "Tax Estimator Calculator",
+      "category": "finance",
+      "tier": 2,
+      "cpc": {
+        "us": 3.8,
+        "gb": 2.9,
+        "ca": 3.2
+      },
+      "keywords": {
+        "en": [
+          "tax calculator",
+          "federal tax estimator",
+          "income tax calculator",
+          "tax withholding"
+        ]
+      },
+      "description": {
+        "en": "Estimate federal and state taxes. Calculate take-home pay and deductions."
+      },
+      "schema": {
+        "@type": "WebApplication",
+        "applicationCategory": "FinanceApplication",
+        "offers": {
+          "@type": "Offer",
+          "price": "0"
+        }
+      },
+      "ads": {
+        "sidebar": {
+          "enabled": true,
+          "size": "336x280"
+        }
+      },
+      "bundle": {
+        "vendor": "finance-vendor"
+      },
+      "relatedTools": [
+        "finance/compound-interest"
+      ],
+      "path": "/finance/tax",
+      "entry": "/src/tools/finance/tax/"
     },
     {
       "id": "image-compress",
-      "name": "Görsel Sıkıştırma",
+      "name": "Image Compressor",
       "nameEn": "Image Compressor",
       "category": "image",
       "tier": 2,
       "cpc": {
-        "tr": 1.2,
-        "us": 1.8
+        "us": 1.8,
+        "gb": 1.4,
+        "ca": 1.6
       },
       "keywords": {
-        "tr": [
-          "görsel sıkıştırma",
-          "resim optimize",
-          "webp dönüştürme",
-          "fotoğraf küçültme"
-        ],
         "en": [
           "image compressor",
           "optimize images",
@@ -296,7 +418,6 @@
         ]
       },
       "description": {
-        "tr": "JPEG/PNG görsellerini WebP/AVIF formatında sıkıştırın. Kalite kaybı olmadan dosya boyutunu %70'e varan oranda küçültün.",
         "en": "Compress JPEG/PNG to WebP/AVIF. Reduce file size by up to 70% without quality loss."
       },
       "schema": {
@@ -311,7 +432,7 @@
         "sidebar": {
           "enabled": true,
           "size": "336x280",
-          "minCpm": 0.4
+          "minCpm": 0.5
         },
         "anchor": {
           "enabled": true,
@@ -338,30 +459,24 @@
     },
     {
       "id": "image-convert",
-      "name": "Format Dönüştürme",
-      "nameEn": "Image Converter",
+      "name": "Image Format Converter",
+      "nameEn": "Image Format Converter",
       "category": "image",
       "tier": 2,
       "cpc": {
-        "tr": 0.9,
-        "us": 1.2
+        "us": 1.2,
+        "gb": 0.95,
+        "ca": 1.05
       },
       "keywords": {
-        "tr": [
-          "resim formatı değiştirme",
-          "jpeg png dönüştürme",
-          "webp dönüştür",
-          "fotoğraf formatı"
-        ],
         "en": [
           "image converter",
           "convert jpeg png",
           "webp converter",
-          "image format"
+          "avif converter"
         ]
       },
       "description": {
-        "tr": "JPEG, PNG, WebP, AVIF arasında format dönüştürme. Toplu dönüştürme desteği.",
         "en": "Convert between JPEG, PNG, WebP, AVIF formats. Batch conversion support."
       },
       "schema": {
@@ -389,21 +504,16 @@
     },
     {
       "id": "pdf-merge",
-      "name": "PDF Birleştirme",
+      "name": "PDF Merger",
       "nameEn": "PDF Merger",
       "category": "pdf",
       "tier": 1,
       "cpc": {
-        "tr": 1.5,
-        "us": 2
+        "us": 2.0,
+        "gb": 1.6,
+        "ca": 1.8
       },
       "keywords": {
-        "tr": [
-          "pdf birleştirme",
-          "pdf merge",
-          "pdf birleştir",
-          "dosya birleştirme"
-        ],
         "en": [
           "pdf merge",
           "combine pdf",
@@ -412,7 +522,6 @@
         ]
       },
       "description": {
-        "tr": "Birden fazla PDF dosyasını tek bir dosyada birleştirin. 50MB'a kadar, tamamen tarayıcınızda.",
         "en": "Merge multiple PDF files into one. Up to 50MB, completely in your browser."
       },
       "schema": {
@@ -427,7 +536,7 @@
         "sidebar": {
           "enabled": true,
           "size": "336x280",
-          "minCpm": 0.5
+          "minCpm": 0.8
         },
         "banner": {
           "enabled": true,
@@ -450,10 +559,6 @@
         "pdf-split",
         "image-convert"
       ],
-      "legacyRedirects": [
-        "/tools/pdf-birlestirme",
-        "/pdf/merge-files"
-      ],
       "memoryLimits": {
         "maxFileSize": 52428800,
         "maxFiles": 20,
@@ -464,21 +569,16 @@
     },
     {
       "id": "pdf-compress",
-      "name": "PDF Sıkıştırma",
+      "name": "PDF Compressor",
       "nameEn": "PDF Compressor",
       "category": "pdf",
       "tier": 2,
       "cpc": {
-        "tr": 1.8,
-        "us": 2.5
+        "us": 2.5,
+        "gb": 2.0,
+        "ca": 2.2
       },
       "keywords": {
-        "tr": [
-          "pdf sıkıştırma",
-          "pdf boyut küçültme",
-          "pdf optimizasyon",
-          "compress pdf"
-        ],
         "en": [
           "pdf compression",
           "reduce pdf size",
@@ -487,7 +587,6 @@
         ]
       },
       "description": {
-        "tr": "PDF dosya boyutunu kalite kaybetmeden küçültün. OCR sonrası optimize edin.",
         "en": "Reduce PDF file size without quality loss. Optimize after OCR."
       },
       "schema": {
@@ -527,21 +626,16 @@
     },
     {
       "id": "pdf-split",
-      "name": "PDF Bölme",
+      "name": "PDF Splitter",
       "nameEn": "PDF Splitter",
       "category": "pdf",
       "tier": 2,
       "cpc": {
-        "tr": 1.3,
-        "us": 2
+        "us": 2.0,
+        "gb": 1.6,
+        "ca": 1.8
       },
       "keywords": {
-        "tr": [
-          "pdf bölme",
-          "sayfa ayırma",
-          "pdf split",
-          "tek sayfa pdf"
-        ],
         "en": [
           "pdf split",
           "split pdf pages",
@@ -550,7 +644,6 @@
         ]
       },
       "description": {
-        "tr": "PDF dosyasını sayfalara ayırın. Belirli sayfaları veya aralıkları çıkarın.",
         "en": "Split PDF into individual pages. Extract specific pages or ranges."
       },
       "schema": {
