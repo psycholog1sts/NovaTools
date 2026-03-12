@@ -538,16 +538,27 @@ ul, ol {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--accent-primary), #8B5CF6);
+  background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #00D9FF 100%);
   color: white;
-  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3), 
-              inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.5),
+              0 0 40px rgba(99, 102, 241, 0.3),
+              0 4px 20px rgba(99, 102, 241, 0.4), 
+              inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(99, 102, 241, 0.5);
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(99, 102, 241, 0.4), 
-              inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 0 30px rgba(99, 102, 241, 0.7),
+              0 0 60px rgba(99, 102, 241, 0.4),
+              0 8px 30px rgba(99, 102, 241, 0.5), 
+              inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  background: linear-gradient(135deg, #7C7EF5 0%, #9B7CF7 50%, #33E0FF 100%);
+}
+
+.btn-primary:active {
+  transform: translateY(0) scale(0.98);
 }
 
 .btn-primary:active {
@@ -646,13 +657,16 @@ ul, ol {
   align-items: center;
   gap: 0.375rem;
   font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--accent-hover);
-  transition: gap 0.2s ease;
+  font-weight: 600;
+  color: #00D9FF;
+  transition: all 0.2s ease;
+  text-shadow: 0 0 10px rgba(0, 217, 255, 0.3);
 }
 
 .card:hover .card-arrow {
   gap: 0.625rem;
+  color: #00F5D4;
+  text-shadow: 0 0 15px rgba(0, 245, 212, 0.5);
 }
 
 /* ============================================

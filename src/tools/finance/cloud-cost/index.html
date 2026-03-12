@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/src/styles/critical.css">
+  <link rel="stylesheet" href="/src/styles/main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <title>Cloud Cost Estimator | AWS vs Azure vs GCP | NovaTools MC</title>
+  <meta name="description" content="Compare cloud costs across AWS, Azure, and Google Cloud. Estimate your monthly infrastructure expenses with our free calculator.">
+  <meta name="theme-color" content="#0A0A0C">
+  <style>
+    .calculator-form { background: var(--surface-default); border: 1px solid var(--border-default); border-radius: var(--radius-lg); padding: 2rem; margin: 2rem 0; }
+    .form-group { margin-bottom: 1.5rem; }
+    .form-group label { display: block; font-size: 0.9375rem; font-weight: 500; color: var(--text-secondary); margin-bottom: 0.5rem; }
+    .form-group input, .form-group select { width: 100%; height: 48px; padding: 0 1rem; background: var(--bg-tertiary); border: 1px solid var(--border-default); border-radius: var(--radius-md); color: var(--text-primary); font-size: 1rem; }
+    .form-group input:focus, .form-group select:focus { outline: none; border-color: var(--accent-primary); box-shadow: 0 0 0 3px var(--accent-glow); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 640px) { .form-row { grid-template-columns: 1fr; } }
+    .results-panel { background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.05)); border: 1px solid rgba(99, 102, 241, 0.2); border-radius: var(--radius-lg); padding: 2rem; margin-top: 2rem; display: none; }
+    .results-panel.visible { display: block; animation: fadeIn 0.3s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .provider-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.5rem; }
+    @media (max-width: 768px) { .provider-grid { grid-template-columns: 1fr; } }
+    .provider-card { background: var(--surface-default); border: 1px solid var(--border-default); border-radius: var(--radius-md); padding: 1.5rem; text-align: center; }
+    .provider-card.best { border-color: #22C55E; background: rgba(34, 197, 94, 0.05); }
+    .provider-name { font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem; }
+    .provider-cost { font-size: 1.75rem; font-weight: 700; color: var(--accent-hover); }
+    .provider-card.best .provider-cost { color: #22C55E; }
+  </style>
+</head>
+<body>
+  <div class="bg-ambient" aria-hidden="true"></div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+  
+  <div id="app" class="app">
+    <header class="main-header">
+      <div class="container">
+        <div class="header-inner">
+          <a href="/" class="logo" aria-label="NovaTools MC Home">
+            <div class="logo-icon neon-logo">
+              <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs><linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#00F5D4"/><stop offset="50%" style="stop-color:#00D9FF"/><stop offset="100%" style="stop-color:#00FF88"/></linearGradient></defs>
+                <path d="M50 75 L35 55 L25 40 L35 45 L45 50" stroke="url(#logoGrad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                <path d="M50 75 L65 55 L75 40 L65 45 L55 50" stroke="url(#logoGrad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                <path d="M50 75 L50 55 L45 45 L50 50 L55 45 L50 55" stroke="url(#logoGrad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                <path d="M50 75 L45 85 L50 80 L55 85 L50 75" stroke="url(#logoGrad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              </svg>
+            </div>
+            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <div class="container" style="padding: 4rem 1rem;">
+        <div style="max-width: 900px; margin: 0 auto;">
+          <div style="text-align: center; margin-bottom: 2rem;">
+            <div style="font-size: 4rem; margin-bottom: 1rem;">☁️</div>
+            <h1 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem;">Cloud Cost Estimator</h1>
+            <p style="color: var(--text-secondary);">Compare costs across AWS, Azure, and Google Cloud Platform. Estimate your monthly infrastructure expenses.</p>
+          </div>
+          
+          <div class="calculator-form">
+            <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 1.5rem;">Server Configuration</h3>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="instances">Number of Instances</label>
+                <input type="number" id="instances" placeholder="5" min="1" value="1">
+              </div>
+              <div class="form-group">
+                <label for="instanceType">Instance Type</label>
+                <select id="instanceType">
+                  <option value="small">Small (2 vCPU, 4 GB RAM)</option>
+                  <option value="medium" selected>Medium (4 vCPU, 8 GB RAM)</option>
+                  <option value="large">Large (8 vCPU, 16 GB RAM)</option>
+                  <option value="xlarge">X-Large (16 vCPU, 32 GB RAM)</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="storage">Storage (GB)</label>
+                <input type="number" id="storage" placeholder="500" min="0" value="100">
+              </div>
+              <div class="form-group">
+                <label for="bandwidth">Bandwidth (GB/month)</label>
+                <input type="number" id="bandwidth" placeholder="1000" min="0" value="500">
+              </div>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="hours">Hours Running per Day</label>
+                <input type="number" id="hours" placeholder="24" min="1" max="24" value="24">
+              </div>
+              <div class="form-group">
+                <label for="region">Region</label>
+                <select id="region">
+                  <option value="us">US East</option>
+                  <option value="eu">Europe</option>
+                  <option value="asia">Asia Pacific</option>
+                </select>
+              </div>
+            </div>
+            
+            <button type="button" id="calculateBtn" class="btn btn-primary" style="width: 100%; margin-top: 1rem; height: 52px; font-size: 1rem;">
+              Compare Cloud Costs
+            </button>
+          </div>
+          
+          <div id="resultsPanel" class="results-panel">
+            <h2 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; text-align: center;">Monthly Cost Comparison</h2>
+            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 1.5rem;">Estimated costs based on your configuration</p>
+            
+            <div class="provider-grid">
+              <div class="provider-card" id="awsCard">
+                <div class="provider-name">☁️ AWS</div>
+                <div id="awsCost" class="provider-cost">$0</div>
+                <p style="font-size: 0.875rem; color: var(--text-muted); margin-top: 0.5rem;">Amazon Web Services</p>
+              </div>
+              <div class="provider-card" id="azureCard">
+                <div class="provider-name">🔷 Azure</div>
+                <div id="azureCost" class="provider-cost">$0</div>
+                <p style="font-size: 0.875rem; color: var(--text-muted); margin-top: 0.5rem;">Microsoft Azure</p>
+              </div>
+              <div class="provider-card" id="gcpCard">
+                <div class="provider-name">🔶 GCP</div>
+                <div id="gcpCost" class="provider-cost">$0</div>
+                <p style="font-size: 0.875rem; color: var(--text-muted); margin-top: 0.5rem;">Google Cloud</p>
+              </div>
+            </div>
+            
+            <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(255,255,255,0.03); border-radius: var(--radius-md); font-size: 0.9375rem; color: var(--text-secondary);">
+              <strong>Note:</strong> These are estimated costs. Actual prices vary based on region, reserved instances, and additional services. Always check official pricing calculators for exact figures.
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-bottom">
+          <p class="footer-copyright">© 2026 NovaTools MC. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('calculateBtn').addEventListener('click', function() {
+      const instances = parseInt(document.getElementById('instances').value) || 1;
+      const instanceType = document.getElementById('instanceType').value;
+      const storage = parseInt(document.getElementById('storage').value) || 0;
+      const bandwidth = parseInt(document.getElementById('bandwidth').value) || 0;
+      const hours = parseInt(document.getElementById('hours').value) || 24;
+      const region = document.getElementById('region').value;
+      
+      // Pricing factors (simplified estimates per hour)
+      const hourlyRates = {
+        small: 0.05,
+        medium: 0.10,
+        large: 0.20,
+        xlarge: 0.40
+      };
+      
+      const regionMultipliers = {
+        us: 1.0,
+        eu: 1.1,
+        asia: 1.05
+      };
+      
+      const baseCompute = hourlyRates[instanceType] * hours * 30 * instances * regionMultipliers[region];
+      const storageCost = storage * 0.10; // $0.10 per GB
+      const bandwidthCost = bandwidth * 0.09; // $0.09 per GB
+      
+      // Provider variations
+      const awsTotal = baseCompute * 1.0 + storageCost * 1.0 + bandwidthCost * 1.0;
+      const azureTotal = baseCompute * 0.95 + storageCost * 1.05 + bandwidthCost * 1.0;
+      const gcpTotal = baseCompute * 0.90 + storageCost * 1.0 + bandwidthCost * 1.2;
+      
+      const formatCurrency = (num) => '$' + num.toFixed(2);
+      
+      document.getElementById('awsCost').textContent = formatCurrency(awsTotal);
+      document.getElementById('azureCost').textContent = formatCurrency(azureTotal);
+      document.getElementById('gcpCost').textContent = formatCurrency(gcpTotal);
+      
+      // Highlight best price
+      document.querySelectorAll('.provider-card').forEach(card => card.classList.remove('best'));
+      let bestProvider = 'awsCard';
+      let bestPrice = awsTotal;
+      if (azureTotal < bestPrice) { bestProvider = 'azureCard'; bestPrice = azureTotal; }
+      if (gcpTotal < bestPrice) { bestProvider = 'gcpCard'; bestPrice = gcpTotal; }
+      document.getElementById(bestProvider).classList.add('best');
+      
+      document.getElementById('resultsPanel').classList.add('visible');
+      document.getElementById('resultsPanel').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+  </script>
+</body>
+</html>

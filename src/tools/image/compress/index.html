@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/src/styles/critical.css">
+  <link rel="stylesheet" href="/src/styles/main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <title>Image Compressor | JPEG PNG WebP | NovaTools MC</title>
+  <meta name="description" content="Compress images to reduce file size without losing quality. Convert to WebP, JPEG, or PNG. 100% private - all processing in your browser.">
+  <meta name="theme-color" content="#0A0A0C">
+  <style>
+    .tool-container { max-width: 900px; margin: 0 auto; padding: 2rem 1rem; }
+    .tool-header { text-align: center; margin-bottom: 2rem; }
+    .tool-header h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .dropzone { border: 2px dashed rgba(255, 255, 255, 0.1); border-radius: 16px; padding: 3rem 2rem; text-align: center; background: rgba(255, 255, 255, 0.03); transition: all 0.3s ease; cursor: pointer; }
+    .dropzone:hover { border-color: rgba(99, 102, 241, 0.5); background: rgba(255, 255, 255, 0.06); }
+    .dropzone.drag-active { border-color: #6366F1; background: rgba(99, 102, 241, 0.1); transform: scale(1.02); }
+    .controls { margin-top: 1.5rem; padding: 1.5rem; background: var(--surface-default); border: 1px solid var(--border-default); border-radius: var(--radius-lg); display: none; }
+    .controls.visible { display: block; }
+    .quality-slider { width: 100%; margin: 1rem 0; }
+    .preview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
+    @media (max-width: 640px) { .preview-grid { grid-template-columns: 1fr; } }
+    .preview-box { padding: 1rem; background: rgba(255, 255, 255, 0.05); border-radius: var(--radius-md); text-align: center; }
+    .preview-box img { max-width: 100%; max-height: 200px; border-radius: var(--radius-md); }
+    .result-section { margin-top: 1.5rem; padding: 2rem; background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(34, 197, 94, 0.05)); border: 1px solid rgba(34, 197, 94, 0.3); border-radius: var(--radius-lg); text-align: center; display: none; }
+    .result-section.visible { display: block; }
+    .download-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; background: linear-gradient(135deg, #22C55E, #16A34A); color: white; font-weight: 600; border-radius: var(--radius-md); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="bg-ambient" aria-hidden="true"></div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+  
+  <div id="app" class="app">
+    <header class="main-header">
+      <div class="container">
+        <div class="header-inner">
+          <a href="/" class="logo" aria-label="NovaTools MC Home">
+            <div class="logo-icon neon-logo">
+              <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs><linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#00F5D4"/><stop offset="50%" style="stop-color:#00D9FF"/><stop offset="100%" style="stop-color:#00FF88"/></linearGradient></defs>
+                <path d="M50 75 L35 55 L25 40 L35 45 L45 50" stroke="url(#logoGrad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                <path d="M50 75 L65 55 L75 40 L65 45 L55 50" stroke="url(#logoGrad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                <path d="M50 75 L50 55 L45 45 L50 50 L55 45 L50 55" stroke="url(#logoGrad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                <path d="M50 75 L45 85 L50 80 L55 85 L50 75" stroke="url(#logoGrad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              </svg>
+            </div>
+            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <div class="tool-container">
+        <div class="tool-header">
+          <h1>🖼️ Image Compressor</h1>
+          <p>Reduce image file size without losing quality. Supports JPEG, PNG, and WebP.</p>
+        </div>
+        
+        <div id="dropzone" class="dropzone">
+          <div style="font-size: 3rem; margin-bottom: 1rem;">🖼️</div>
+          <div style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem;">Drop image here or click to browse</div>
+          <div style="font-size: 0.875rem; color: var(--text-muted);">Supports JPG, PNG, WebP • Max 10MB</div>
+          <input type="file" id="fileInput" accept="image/*" style="display: none;">
+        </div>
+        
+        <div id="controls" class="controls">
+          <label style="font-weight: 600;">Quality: <span id="qualityValue">80</span>%</label>
+          <input type="range" id="qualitySlider" class="quality-slider" min="1" max="100" value="80">
+          
+          <label style="font-weight: 600; margin-top: 1rem; display: block;">Output Format</label>
+          <select id="formatSelect" style="width: 100%; height: 48px; margin-top: 0.5rem; padding: 0 1rem; background: var(--bg-tertiary); border: 1px solid var(--border-default); border-radius: var(--radius-md); color: var(--text-primary);">
+            <option value="image/jpeg">JPEG</option>
+            <option value="image/png">PNG</option>
+            <option value="image/webp">WebP</option>
+          </select>
+          
+          <div class="preview-grid">
+            <div class="preview-box">
+              <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 0.5rem;">Original</p>
+              <img id="originalPreview" src="" alt="Original">
+              <p id="originalSize" style="font-size: 0.875rem; margin-top: 0.5rem;"></p>
+            </div>
+            <div class="preview-box">
+              <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 0.5rem;">Compressed</p>
+              <img id="compressedPreview" src="" alt="Compressed">
+              <p id="compressedSize" style="font-size: 0.875rem; margin-top: 0.5rem;"></p>
+            </div>
+          </div>
+          
+          <button id="compressBtn" class="btn btn-primary" style="width: 100%; height: 52px;">Compress Image</button>
+        </div>
+        
+        <div id="resultSection" class="result-section">
+          <div style="font-size: 3rem; margin-bottom: 1rem;">✅</div>
+          <h3 style="margin-bottom: 0.5rem;">Image Compressed!</h3>
+          <p id="savingsText" style="color: var(--text-secondary); margin-bottom: 1.5rem;"></p>
+          <a id="downloadLink" href="#" class="download-btn" download>Download Compressed Image</a>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-bottom">
+          <p class="footer-copyright">© 2026 NovaTools MC. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const dropzone = document.getElementById('dropzone');
+    const fileInput = document.getElementById('fileInput');
+    const controls = document.getElementById('controls');
+    const qualitySlider = document.getElementById('qualitySlider');
+    const qualityValue = document.getElementById('qualityValue');
+    const originalPreview = document.getElementById('originalPreview');
+    const compressedPreview = document.getElementById('compressedPreview');
+    
+    let currentFile = null;
+    
+    dropzone.addEventListener('click', () => fileInput.click());
+    
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(e => {
+      dropzone.addEventListener(e, (ev) => { ev.preventDefault(); ev.stopPropagation(); });
+    });
+    
+    ['dragenter', 'dragover'].forEach(e => dropzone.addEventListener(e, () => dropzone.classList.add('drag-active')));
+    ['dragleave', 'drop'].forEach(e => dropzone.addEventListener(e, () => dropzone.classList.remove('drag-active')));
+    
+    dropzone.addEventListener('drop', (e) => { if (e.dataTransfer.files.length) handleFile(e.dataTransfer.files[0]); });
+    fileInput.addEventListener('change', (e) => { if (e.target.files.length) handleFile(e.target.files[0]); });
+    
+    qualitySlider.addEventListener('input', (e) => { qualityValue.textContent = e.target.value; });
+    
+    function handleFile(file) {
+      if (!file.type.startsWith('image/')) { alert('Please select an image file.'); return; }
+      if (file.size > 10 * 1024 * 1024) { alert('File size exceeds 10MB.'); return; }
+      
+      currentFile = file;
+      const url = URL.createObjectURL(file);
+      originalPreview.src = url;
+      document.getElementById('originalSize').textContent = (file.size / 1024).toFixed(1) + ' KB';
+      controls.classList.add('visible');
+    }
+    
+    document.getElementById('compressBtn').addEventListener('click', () => {
+      if (!currentFile) return;
+      
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        canvas.width = img.width;
+        canvas.height = img.height;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0);
+        
+        const quality = parseInt(qualitySlider.value) / 100;
+        const format = document.getElementById('formatSelect').value;
+        
+        canvas.toBlob((blob) => {
+          const url = URL.createObjectURL(blob);
+          compressedPreview.src = url;
+          document.getElementById('compressedSize').textContent = (blob.size / 1024).toFixed(1) + ' KB';
+          
+          const savings = ((currentFile.size - blob.size) / currentFile.size * 100).toFixed(0);
+          document.getElementById('savingsText').textContent = `Saved ${savings}% file size`;
+          
+          const ext = format.split('/')[1];
+          const baseName = currentFile.name.replace(/\.[^/.]+$/, '');
+          document.getElementById('downloadLink').href = url;
+          document.getElementById('downloadLink').download = `${baseName}-compressed.${ext}`;
+          
+          document.getElementById('resultSection').classList.add('visible');
+        }, format, quality);
+      };
+      img.src = URL.createObjectURL(currentFile);
+    });
+  </script>
+</body>
+</html>

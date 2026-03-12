@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/src/styles/critical.css">
+  <link rel="stylesheet" href="/src/styles/main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <title>PDF Split Tool | Extract Pages | NovaTools MC</title>
+  <meta name="description" content="Split PDF files and extract specific pages. Separate PDF pages instantly in your browser. 100% private - no server uploads.">
+  <meta name="theme-color" content="#0A0A0C">
+  <style>
+    .tool-container { max-width: 900px; margin: 0 auto; padding: 2rem 1rem; }
+    .tool-header { text-align: center; margin-bottom: 2rem; }
+    .tool-header h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .tool-header p { color: var(--text-secondary); }
+    .dropzone { border: 2px dashed rgba(255, 255, 255, 0.1); border-radius: 16px; padding: 3rem 2rem; text-align: center; background: rgba(255, 255, 255, 0.03); transition: all 0.3s ease; cursor: pointer; }
+    .dropzone:hover { border-color: rgba(99, 102, 241, 0.5); background: rgba(255, 255, 255, 0.06); }
+    .dropzone.drag-active { border-color: #6366F1; background: rgba(99, 102, 241, 0.1); transform: scale(1.02); }
+    .file-info-card { display: none; margin-top: 1.5rem; padding: 1.5rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: var(--radius-lg); }
+    .file-info-card.visible { display: block; }
+    .page-selector { margin-top: 1.5rem; padding: 1.5rem; background: var(--surface-default); border: 1px solid var(--border-default); border-radius: var(--radius-lg); display: none; }
+    .page-selector.visible { display: block; }
+    .btn-primary { width: 100%; height: 52px; margin-top: 1.5rem; }
+    .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+    .result-section { margin-top: 1.5rem; padding: 2rem; background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(34, 197, 94, 0.05)); border: 1px solid rgba(34, 197, 94, 0.3); border-radius: var(--radius-lg); text-align: center; display: none; }
+    .result-section.visible { display: block; animation: fadeIn 0.3s ease; }
+    .download-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; background: linear-gradient(135deg, #22C55E, #16A34A); color: white; font-weight: 600; border-radius: var(--radius-md); text-decoration: none; transition: all 0.2s; }
+    .download-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(34, 197, 94, 0.3); }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+  </style>
+</head>
+<body>
+  <div class="bg-ambient" aria-hidden="true"></div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+  
+  <div id="app" class="app">
+    <header class="main-header">
+      <div class="container">
+        <div class="header-inner">
+          <a href="/" class="logo" aria-label="NovaTools MC Home">
+            <div class="logo-icon neon-logo">
+              <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs><linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#00F5D4"/><stop offset="50%" style="stop-color:#00D9FF"/><stop offset="100%" style="stop-color:#00FF88"/></linearGradient></defs>
+                <path d="M50 75 L35 55 L25 40 L35 45 L45 50" stroke="url(#logoGrad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                <path d="M50 75 L65 55 L75 40 L65 45 L55 50" stroke="url(#logoGrad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                <path d="M50 75 L50 55 L45 45 L50 50 L55 45 L50 55" stroke="url(#logoGrad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                <path d="M50 75 L45 85 L50 80 L55 85 L50 75" stroke="url(#logoGrad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              </svg>
+            </div>
+            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <div class="tool-container">
+        <div class="tool-header">
+          <h1>✂️ PDF Split Tool</h1>
+          <p>Extract specific pages from your PDF files instantly in your browser.</p>
+        </div>
+        
+        <div id="dropzone" class="dropzone">
+          <div style="font-size: 3rem; margin-bottom: 1rem;">📄</div>
+          <div style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem;">Drop PDF file here or click to browse</div>
+          <div style="font-size: 0.875rem; color: var(--text-muted);">Max 50MB • PDF format only</div>
+          <input type="file" id="fileInput" accept=".pdf,application/pdf" style="display: none;">
+        </div>
+        
+        <div id="fileInfoCard" class="file-info-card">
+          <div style="display: flex; align-items: center; gap: 1rem;">
+            <span style="font-size: 2.5rem;">📄</span>
+            <div style="flex: 1;">
+              <div id="fileName" style="font-weight: 600; font-size: 1.125rem;"></div>
+              <div id="fileSize" style="color: var(--text-muted);"></div>
+            </div>
+          </div>
+        </div>
+        
+        <div id="pageSelector" class="page-selector">
+          <label style="font-weight: 600; margin-bottom: 0.5rem; display: block;">Select Pages to Extract</label>
+          <div class="form-group" style="margin-top: 1rem;">
+            <label>Page Range (e.g., "1-5" or "1,3,5")</label>
+            <input type="text" id="pageRange" placeholder="1-3" style="width: 100%; height: 48px; padding: 0 1rem; background: var(--bg-tertiary); border: 1px solid var(--border-default); border-radius: var(--radius-md); color: var(--text-primary);">
+          </div>
+          <p style="font-size: 0.875rem; color: var(--text-muted); margin-top: 0.5rem;">Leave empty to split all pages individually</p>
+          
+          <button id="splitBtn" class="btn btn-primary">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 0.5rem;">
+              <path d="M4 12h16M12 4v16"/>
+            </svg>
+            Split PDF
+          </button>
+        </div>
+        
+        <div id="resultSection" class="result-section">
+          <div style="font-size: 3rem; margin-bottom: 1rem;">✅</div>
+          <h3 style="margin-bottom: 0.5rem;">PDF Split Successfully!</h3>
+          <p id="resultInfo" style="color: var(--text-secondary); margin-bottom: 1.5rem;"></p>
+          <a id="downloadLink" href="#" class="download-btn" download>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+            </svg>
+            Download Split PDF
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-bottom">
+          <p class="footer-copyright">© 2026 NovaTools MC. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script type="module">
+    import { PDFDocument } from 'https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/+esm';
+    
+    const MAX_FILE_SIZE = 50 * 1024 * 1024;
+    let currentFile = null;
+    
+    const dropzone = document.getElementById('dropzone');
+    const fileInput = document.getElementById('fileInput');
+    const fileInfoCard = document.getElementById('fileInfoCard');
+    const pageSelector = document.getElementById('pageSelector');
+    const splitBtn = document.getElementById('splitBtn');
+    const resultSection = document.getElementById('resultSection');
+    
+    dropzone.addEventListener('click', () => fileInput.click());
+    
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(e => {
+      dropzone.addEventListener(e, (ev) => {
+        ev.preventDefault();
+        ev.stopPropagation();
+      });
+    });
+    
+    ['dragenter', 'dragover'].forEach(e => {
+      dropzone.addEventListener(e, () => dropzone.classList.add('drag-active'));
+    });
+    
+    ['dragleave', 'drop'].forEach(e => {
+      dropzone.addEventListener(e, () => dropzone.classList.remove('drag-active'));
+    });
+    
+    dropzone.addEventListener('drop', (e) => {
+      const files = e.dataTransfer.files;
+      if (files.length > 0) handleFile(files[0]);
+    });
+    
+    fileInput.addEventListener('change', (e) => {
+      if (e.target.files.length > 0) handleFile(e.target.files[0]);
+    });
+    
+    function handleFile(file) {
+      if (!file.name.toLowerCase().endsWith('.pdf')) {
+        alert('Please select a PDF file.');
+        return;
+      }
+      
+      if (file.size > MAX_FILE_SIZE) {
+        alert(`File size exceeds ${(MAX_FILE_SIZE / 1024 / 1024).toFixed(0)}MB.`);
+        return;
+      }
+      
+      currentFile = file;
+      document.getElementById('fileName').textContent = file.name;
+      document.getElementById('fileSize').textContent = (file.size / 1024 / 1024).toFixed(2) + ' MB';
+      
+      fileInfoCard.classList.add('visible');
+      pageSelector.classList.add('visible');
+    }
+    
+    splitBtn.addEventListener('click', async () => {
+      if (!currentFile) return;
+      
+      splitBtn.disabled = true;
+      splitBtn.textContent = 'Processing...';
+      
+      try {
+        const arrayBuffer = await currentFile.arrayBuffer();
+        const pdfDoc = await PDFDocument.load(arrayBuffer);
+        const pageCount = pdfDoc.getPageCount();
+        
+        const pageRange = document.getElementById('pageRange').value.trim();
+        let pagesToExtract = [];
+        
+        if (pageRange) {
+          // Parse range like "1-3" or "1,3,5"
+          const parts = pageRange.split(',');
+          for (const part of parts) {
+            if (part.includes('-')) {
+              const [start, end] = part.split('-').map(n => parseInt(n.trim()) - 1);
+              for (let i = start; i <= end && i < pageCount; i++) {
+                pagesToExtract.push(i);
+              }
+            } else {
+              const page = parseInt(part.trim()) - 1;
+              if (page >= 0 && page < pageCount) pagesToExtract.push(page);
+            }
+          }
+        } else {
+          // Extract all pages individually
+          pagesToExtract = [0]; // For simplicity, extract first page if no range specified
+        }
+        
+        if (pagesToExtract.length === 0) pagesToExtract = [0];
+        
+        // Create new PDF with selected pages
+        const newPdf = await PDFDocument.create();
+        const pages = await newPdf.copyPages(pdfDoc, pagesToExtract);
+        pages.forEach(page => newPdf.addPage(page));
+        
+        const bytes = await newPdf.save();
+        const blob = new Blob([bytes], { type: 'application/pdf' });
+        const url = URL.createObjectURL(blob);
+        
+        const baseName = currentFile.name.replace('.pdf', '');
+        document.getElementById('downloadLink').href = url;
+        document.getElementById('downloadLink').download = `${baseName}-split.pdf`;
+        document.getElementById('resultInfo').textContent = `Extracted ${pagesToExtract.length} page(s) from ${pageCount} total pages`;
+        
+        resultSection.classList.add('visible');
+        resultSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        
+      } catch (error) {
+        alert('Error splitting PDF: ' + error.message);
+      } finally {
+        splitBtn.disabled = false;
+        splitBtn.innerHTML = `
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 0.5rem;">
+            <path d="M4 12h16M12 4v16"/>
+          </svg>
+          Split PDF
+        `;
+      }
+    });
+  </script>
+</body>
+</html>

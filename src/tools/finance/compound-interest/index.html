@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/src/styles/critical.css">
+  <link rel="stylesheet" href="/src/styles/main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <title>Compound Interest Calculator | Investment Growth | NovaTools MC</title>
+  <meta name="description" content="Calculate compound interest and see how your investments grow over time. Plan your financial future with our free calculator.">
+  <meta name="theme-color" content="#0A0A0C">
+  <style>
+    .calculator-form { background: var(--surface-default); border: 1px solid var(--border-default); border-radius: var(--radius-lg); padding: 2rem; margin: 2rem 0; }
+    .form-group { margin-bottom: 1.5rem; }
+    .form-group label { display: block; font-size: 0.9375rem; font-weight: 500; color: var(--text-secondary); margin-bottom: 0.5rem; }
+    .form-group input { width: 100%; height: 48px; padding: 0 1rem; background: var(--bg-tertiary); border: 1px solid var(--border-default); border-radius: var(--radius-md); color: var(--text-primary); font-size: 1rem; }
+    .form-group input:focus { outline: none; border-color: var(--accent-primary); box-shadow: 0 0 0 3px var(--accent-glow); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 640px) { .form-row { grid-template-columns: 1fr; } }
+    .results-panel { background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.05)); border: 1px solid rgba(99, 102, 241, 0.2); border-radius: var(--radius-lg); padding: 2rem; margin-top: 2rem; display: none; }
+    .results-panel.visible { display: block; animation: fadeIn 0.3s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .result-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
+    .result-item { text-align: center; padding: 1.5rem; background: var(--surface-default); border-radius: var(--radius-md); border: 1px solid var(--border-default); }
+    .result-value { font-size: 1.75rem; font-weight: 700; color: var(--accent-hover); margin-bottom: 0.25rem; }
+    .result-item.highlight { border-color: #22C55E; background: rgba(34, 197, 94, 0.05); }
+    .result-item.highlight .result-value { color: #22C55E; }
+    .result-label { font-size: 0.875rem; color: var(--text-tertiary); }
+    .chart-container { margin-top: 2rem; padding: 1.5rem; background: var(--surface-default); border-radius: var(--radius-md); }
+  </style>
+</head>
+<body>
+  <div class="bg-ambient" aria-hidden="true"></div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+  
+  <div id="app" class="app">
+    <header class="main-header">
+      <div class="container">
+        <div class="header-inner">
+          <a href="/" class="logo" aria-label="NovaTools MC Home">
+            <div class="logo-icon neon-logo">
+              <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs><linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#00F5D4"/><stop offset="50%" style="stop-color:#00D9FF"/><stop offset="100%" style="stop-color:#00FF88"/></linearGradient></defs>
+                <path d="M50 75 L35 55 L25 40 L35 45 L45 50" stroke="url(#logoGrad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                <path d="M50 75 L65 55 L75 40 L65 45 L55 50" stroke="url(#logoGrad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                <path d="M50 75 L50 55 L45 45 L50 50 L55 45 L50 55" stroke="url(#logoGrad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                <path d="M50 75 L45 85 L50 80 L55 85 L50 75" stroke="url(#logoGrad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              </svg>
+            </div>
+            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <div class="container" style="padding: 4rem 1rem;">
+        <div style="max-width: 800px; margin: 0 auto;">
+          <div style="text-align: center; margin-bottom: 2rem;">
+            <div style="font-size: 4rem; margin-bottom: 1rem;">📈</div>
+            <h1 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem;">Compound Interest Calculator</h1>
+            <p style="color: var(--text-secondary);">See how your investments grow over time with the power of compound interest. Plan your financial future.</p>
+          </div>
+          
+          <div class="calculator-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="principal">Initial Investment ($)</label>
+                <input type="number" id="principal" placeholder="10000" min="0" value="10000">
+              </div>
+              <div class="form-group">
+                <label for="monthlyContribution">Monthly Contribution ($)</label>
+                <input type="number" id="monthlyContribution" placeholder="500" min="0" value="500">
+              </div>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="rate">Annual Interest Rate (%)</label>
+                <input type="number" id="rate" placeholder="7" min="0" max="100" step="0.1" value="7">
+              </div>
+              <div class="form-group">
+                <label for="years">Time Period (years)</label>
+                <input type="number" id="years" placeholder="20" min="1" max="50" value="20">
+              </div>
+            </div>
+            
+            <button type="button" id="calculateBtn" class="btn btn-primary" style="width: 100%; margin-top: 1rem; height: 52px; font-size: 1rem;">
+              Calculate Growth
+            </button>
+          </div>
+          
+          <div id="resultsPanel" class="results-panel">
+            <h2 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; text-align: center;">Projected Growth</h2>
+            
+            <div class="result-grid">
+              <div class="result-item">
+                <div id="finalAmount" class="result-value">$0</div>
+                <div class="result-label">Final Amount</div>
+              </div>
+              <div class="result-item">
+                <div id="totalContributed" class="result-value">$0</div>
+                <div class="result-label">Total Contributed</div>
+              </div>
+              <div class="result-item highlight">
+                <div id="totalInterest" class="result-value">$0</div>
+                <div class="result-label">Interest Earned</div>
+              </div>
+              <div class="result-item">
+                <div id="growthMultiplier" class="result-value">0x</div>
+                <div class="result-label">Growth Multiplier</div>
+              </div>
+            </div>
+            
+            <div class="chart-container">
+              <h4 style="margin-bottom: 1rem; color: var(--text-primary);">Year by Year Breakdown</h4>
+              <div id="yearlyBreakdown" style="max-height: 300px; overflow-y: auto;">
+                <table style="width: 100%; font-size: 0.9375rem;">
+                  <thead>
+                    <tr style="border-bottom: 1px solid var(--border-default);">
+                      <th style="text-align: left; padding: 0.5rem;">Year</th>
+                      <th style="text-align: right; padding: 0.5rem;">Balance</th>
+                      <th style="text-align: right; padding: 0.5rem;">Interest</th>
+                    </tr>
+                  </thead>
+                  <tbody id="breakdownBody"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-bottom">
+          <p class="footer-copyright">© 2026 NovaTools MC. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('calculateBtn').addEventListener('click', function() {
+      const principal = parseFloat(document.getElementById('principal').value) || 0;
+      const monthlyContribution = parseFloat(document.getElementById('monthlyContribution').value) || 0;
+      const rate = parseFloat(document.getElementById('rate').value) || 0;
+      const years = parseInt(document.getElementById('years').value) || 0;
+      
+      const monthlyRate = rate / 100 / 12;
+      const months = years * 12;
+      
+      // Compound interest formula with monthly contributions
+      let balance = principal;
+      let totalContributed = principal;
+      const yearlyData = [];
+      
+      for (let month = 1; month <= months; month++) {
+        balance = balance * (1 + monthlyRate) + monthlyContribution;
+        totalContributed += monthlyContribution;
+        
+        if (month % 12 === 0) {
+          const year = month / 12;
+          const yearlyInterest = balance - totalContributed;
+          yearlyData.push({ year, balance, interest: yearlyInterest });
+        }
+      }
+      
+      const totalInterest = balance - totalContributed;
+      const multiplier = balance / principal;
+      
+      const formatCurrency = (num) => '$' + num.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+      
+      document.getElementById('finalAmount').textContent = formatCurrency(balance);
+      document.getElementById('totalContributed').textContent = formatCurrency(totalContributed);
+      document.getElementById('totalInterest').textContent = formatCurrency(totalInterest);
+      document.getElementById('growthMultiplier').textContent = multiplier.toFixed(1) + 'x';
+      
+      // Render breakdown
+      const tbody = document.getElementById('breakdownBody');
+      tbody.innerHTML = yearlyData.map(d => `
+        <tr style="border-bottom: 1px solid var(--border-default);">
+          <td style="padding: 0.5rem;">Year ${d.year}</td>
+          <td style="text-align: right; padding: 0.5rem; font-weight: 500;">${formatCurrency(d.balance)}</td>
+          <td style="text-align: right; padding: 0.5rem; color: #22C55E;">${formatCurrency(d.interest)}</td>
+        </tr>
+      `).join('');
+      
+      document.getElementById('resultsPanel').classList.add('visible');
+      document.getElementById('resultsPanel').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+  </script>
+</body>
+</html>
