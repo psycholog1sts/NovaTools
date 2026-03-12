@@ -1,5 +1,5 @@
 /**
- * File Dropzone Web Component
+ * File Dropzone Web Component - Premium Dark Mode
  * Shadow DOM isolated, zero style leakage
  */
 
@@ -47,84 +47,116 @@ class FileDropzone extends HTMLElement {
       <style>
         :host {
           display: block;
-          font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+          font-family: 'Inter', system-ui, -apple-system, sans-serif;
         }
         
         .dropzone {
-          border: 2px dashed #cbd5e1;
-          border-radius: 0.75rem;
-          padding: 2rem;
+          border: 2px dashed rgba(255, 255, 255, 0.1);
+          border-radius: 12px;
+          padding: 2.5rem 2rem;
           text-align: center;
-          transition: all 0.2s ease;
-          background: #f8fafc;
+          transition: all 0.3s ease;
+          background: rgba(255, 255, 255, 0.03);
           cursor: pointer;
+          position: relative;
+          overflow: hidden;
+        }
+        
+        .dropzone::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 1px;
+          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
         }
         
         .dropzone:hover {
-          border-color: #3b82f6;
-          background: #eff6ff;
+          border-color: rgba(99, 102, 241, 0.5);
+          background: rgba(255, 255, 255, 0.06);
         }
         
         .dropzone.drag-active {
-          border-color: #3b82f6;
-          background: #dbeafe;
+          border-color: #6366F1;
+          background: rgba(99, 102, 241, 0.1);
           transform: scale(1.02);
+          box-shadow: 0 0 30px rgba(99, 102, 241, 0.2);
         }
         
         .dropzone.drag-error {
           border-color: #ef4444;
-          background: #fef2f2;
+          background: rgba(239, 68, 68, 0.1);
         }
         
         .icon {
-          font-size: 3rem;
-          margin-bottom: 0.75rem;
-          line-height: 1;
+          width: 64px;
+          height: 64px;
+          margin: 0 auto 1rem;
+          background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.1));
+          border-radius: 16px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 2rem;
+          border: 1px solid rgba(99, 102, 241, 0.3);
         }
         
         .title {
-          font-size: 1rem;
-          font-weight: 500;
-          color: #374151;
-          margin-bottom: 0.25rem;
+          font-size: 1.0625rem;
+          font-weight: 600;
+          color: #FAFAFA;
+          margin-bottom: 0.5rem;
         }
         
         .hint {
           font-size: 0.875rem;
-          color: #6b7280;
+          color: #71717A;
+        }
+        
+        .hint span {
+          color: #A1A1AA;
         }
         
         .file-list {
-          margin-top: 1rem;
+          margin-top: 1.5rem;
           text-align: left;
         }
         
         .file-item {
           display: flex;
           align-items: center;
-          gap: 0.75rem;
-          padding: 0.75rem;
-          background: white;
-          border-radius: 0.5rem;
-          margin-bottom: 0.5rem;
-          border: 1px solid #e5e7eb;
-          animation: slideIn 0.2s ease;
+          gap: 0.875rem;
+          padding: 1rem;
+          background: rgba(255, 255, 255, 0.05);
+          border-radius: 10px;
+          margin-bottom: 0.625rem;
+          border: 1px solid rgba(255, 255, 255, 0.06);
+          animation: slideIn 0.25s ease;
+          transition: all 0.2s ease;
+        }
+        
+        .file-item:hover {
+          background: rgba(255, 255, 255, 0.08);
+          border-color: rgba(255, 255, 255, 0.12);
         }
         
         @keyframes slideIn {
-          from {
-            opacity: 0;
-            transform: translateY(-10px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
+          from { opacity: 0; transform: translateY(-10px); }
+          to { opacity: 1; transform: translateY(0); }
         }
         
         .file-icon {
-          font-size: 1.5rem;
+          width: 40px;
+          height: 40px;
+          background: rgba(99, 102, 241, 0.15);
+          border-radius: 8px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.25rem;
           flex-shrink: 0;
+          border: 1px solid rgba(99, 102, 241, 0.2);
         }
         
         .file-info {
@@ -134,36 +166,38 @@ class FileDropzone extends HTMLElement {
         
         .file-name {
           font-weight: 500;
-          color: #111827;
+          color: #FAFAFA;
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
+          font-size: 0.9375rem;
         }
         
         .file-size {
-          font-size: 0.75rem;
-          color: #6b7280;
+          font-size: 0.8125rem;
+          color: #71717A;
+          margin-top: 0.125rem;
         }
         
         .file-remove {
-          background: none;
-          border: none;
+          width: 32px;
+          height: 32px;
+          background: rgba(239, 68, 68, 0.1);
+          border: 1px solid rgba(239, 68, 68, 0.2);
           color: #ef4444;
           cursor: pointer;
-          padding: 0.25rem;
-          font-size: 1.25rem;
+          border-radius: 6px;
+          font-size: 1.125rem;
           line-height: 1;
-          border-radius: 0.25rem;
-          transition: background 0.2s;
+          transition: all 0.2s;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
         
         .file-remove:hover {
-          background: #fef2f2;
-        }
-        
-        .file-remove:focus {
-          outline: 2px solid #ef4444;
-          outline-offset: 2px;
+          background: rgba(239, 68, 68, 0.2);
+          border-color: rgba(239, 68, 68, 0.4);
         }
         
         input[type="file"] {
@@ -181,21 +215,40 @@ class FileDropzone extends HTMLElement {
         .error-message {
           color: #ef4444;
           font-size: 0.875rem;
-          margin-top: 0.5rem;
-          padding: 0.5rem;
-          background: #fef2f2;
-          border-radius: 0.375rem;
+          margin-top: 0.75rem;
+          padding: 0.75rem 1rem;
+          background: rgba(239, 68, 68, 0.1);
+          border: 1px solid rgba(239, 68, 68, 0.2);
+          border-radius: 8px;
+        }
+        
+        .upload-progress {
+          margin-top: 1rem;
+        }
+        
+        .progress-bar {
+          height: 4px;
+          background: rgba(255, 255, 255, 0.06);
+          border-radius: 2px;
+          overflow: hidden;
+        }
+        
+        .progress-fill {
+          height: 100%;
+          background: linear-gradient(90deg, #6366F1, #8B5CF6);
+          border-radius: 2px;
+          transition: width 0.3s ease;
         }
       </style>
       
-      <div class="dropzone" part="dropzone" role="button" tabindex="0" aria-label="Dosya yüklemek için tıklayın veya sürükleyin">
+      <div class="dropzone" part="dropzone" role="button" tabindex="0" aria-label="Click or drag files to upload">
         <div class="icon" aria-hidden="true">📁</div>
-        <div class="title">Dosyaları sürükleyin veya seçin</div>
-        <div class="hint">En fazla ${this.maxSize / 1024 / 1024}MB • ${this.accept === '*' ? 'Tüm formatlar' : this.accept}</div>
+        <div class="title">Drop files here or click to browse</div>
+        <div class="hint">Max ${this.maxSize / 1024 / 1024}MB • <span>${this.accept === '*' ? 'All formats' : this.accept}</span></div>
         <input type="file" accept="${this.accept}" ${this.multiple ? 'multiple' : ''} aria-hidden="true">
       </div>
       
-      <div class="file-list" part="file-list" role="list" aria-label="Yüklenen dosyalar"></div>
+      <div class="file-list" part="file-list" role="list" aria-label="Uploaded files"></div>
     `;
   }
 
@@ -203,7 +256,6 @@ class FileDropzone extends HTMLElement {
     const dropzone = this.shadowRoot.querySelector('.dropzone');
     const input = this.shadowRoot.querySelector('input[type="file"]');
 
-    // Click to select
     dropzone.addEventListener('click', () => input.click());
     dropzone.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
@@ -212,13 +264,11 @@ class FileDropzone extends HTMLElement {
       }
     });
 
-    // File selection
     input.addEventListener('change', (e) => {
       this.handleFiles(e.target.files);
-      input.value = ''; // Reset for re-selection
+      input.value = '';
     });
 
-    // Drag and drop
     ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
       dropzone.addEventListener(eventName, (e) => {
         e.preventDefault();
@@ -253,16 +303,14 @@ class FileDropzone extends HTMLElement {
     const files = Array.from(fileList);
     const errors = [];
     
-    // Validate file count
     if (this.files.length + files.length > this.maxFiles) {
-      this.showError(`En fazla ${this.maxFiles} dosya yükleyebilirsiniz`);
+      this.showError(`Maximum ${this.maxFiles} files allowed`);
       return;
     }
 
-    // Validate each file
     const validFiles = files.filter(file => {
       if (file.size > this.maxSize) {
-        errors.push(`${file.name}: Boyut limiti aşıldı (${this.formatFileSize(this.maxSize)})`);
+        errors.push(`${file.name}: File too large (max ${this.formatFileSize(this.maxSize)})`);
         return false;
       }
       
@@ -272,11 +320,11 @@ class FileDropzone extends HTMLElement {
           if (type.includes('*')) {
             return file.type.startsWith(type.replace('/*', ''));
           }
-          return file.type === type;
+          return file.type === type || file.name.endsWith(type.replace('.', ''));
         });
         
         if (!isAccepted) {
-          errors.push(`${file.name}: Geçersiz dosya formatı`);
+          errors.push(`${file.name}: Invalid file type`);
           return false;
         }
       }
@@ -285,7 +333,7 @@ class FileDropzone extends HTMLElement {
     });
 
     if (errors.length > 0) {
-      this.showError(errors.join('\n'));
+      this.showError(errors.join('. '));
     }
 
     if (validFiles.length === 0) return;
@@ -322,8 +370,8 @@ class FileDropzone extends HTMLElement {
         <button 
           class="file-remove" 
           data-index="${index}" 
-          aria-label="${file.name} dosyasını kaldır"
-          title="Kaldır"
+          aria-label="Remove ${file.name}"
+          title="Remove"
         >×</button>
       </div>
     `).join('');
@@ -355,6 +403,7 @@ class FileDropzone extends HTMLElement {
     if (mimeType.includes('image')) return '🖼️';
     if (mimeType.includes('text')) return '📝';
     if (mimeType.includes('json')) return '📋';
+    if (mimeType.includes('zip') || mimeType.includes('compressed')) return '📦';
     return '📎';
   }
 
@@ -398,3 +447,5 @@ class FileDropzone extends HTMLElement {
 }
 
 customElements.define('file-dropzone', FileDropzone);
+
+export default FileDropzone;

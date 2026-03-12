@@ -35,7 +35,15 @@
       "destination": "/manifest.json"
     },
     {
-      "source": "/((?!assets|vendor|js|css|wasm|icons|images|fonts|meta).*)",
+      "source": "/tools/:path*",
+      "destination": "/src/tools/:path*"
+    },
+    {
+      "source": "/blog/:path*",
+      "destination": "/src/blog/:path*"
+    },
+    {
+      "source": "/((?!assets|vendor|js|css|wasm|icons|images|fonts|meta|src|blog).*)",
       "destination": "/index.html"
     }
   ],

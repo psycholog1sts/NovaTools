@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/src/styles/critical.css">
+  <link rel="stylesheet" href="/src/styles/main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  
+  <title>Life Insurance Calculator | NovaTools MC</title>
+  <meta name="description" content="Calculate how much life insurance coverage you need. Protect your family's financial future with the right coverage amount.">
+  <meta name="theme-color" content="#0A0A0C">
+  
+  <style>
+    .calculator-form {
+      background: var(--surface-default);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      margin: 2rem 0;
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-group label {
+      display: block;
+      font-size: 0.9375rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      margin-bottom: 0.5rem;
+    }
+    
+    .form-group input, .form-group select {
+      width: 100%;
+      height: 48px;
+      padding: 0 1rem;
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-md);
+      color: var(--text-primary);
+      font-size: 1rem;
+      transition: all 0.2s ease;
+    }
+    
+    .form-group input:focus, .form-group select:focus {
+      outline: none;
+      border-color: var(--accent-primary);
+      box-shadow: 0 0 0 3px var(--accent-glow);
+    }
+    
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    
+    @media (max-width: 640px) {
+      .form-row { grid-template-columns: 1fr; }
+    }
+    
+    .results-panel {
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.05));
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      margin-top: 2rem;
+      display: none;
+    }
+    
+    .results-panel.visible { display: block; animation: fadeIn 0.3s ease; }
+    
+    .coverage-display {
+      text-align: center;
+      padding: 2rem;
+      background: var(--surface-default);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-default);
+      margin-bottom: 1.5rem;
+    }
+    
+    .coverage-amount {
+      font-size: 3rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--accent-primary), #8B5CF6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .breakdown-list {
+      list-style: none;
+      padding: 0;
+      margin: 1.5rem 0 0;
+    }
+    
+    .breakdown-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.875rem 0;
+      border-bottom: 1px solid var(--border-default);
+      font-size: 0.9375rem;
+    }
+    
+    .breakdown-item:last-child { border-bottom: none; }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-ambient" aria-hidden="true"></div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+  
+  <div id="app" class="app">
+    <header class="main-header">
+      <div class="container">
+        <div class="header-inner">
+          <a href="/" class="logo" aria-label="NovaTools MC Home">
+            <div class="logo-icon neon-logo">
+              <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs><linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#00F5D4"/><stop offset="50%" style="stop-color:#00D9FF"/><stop offset="100%" style="stop-color:#00FF88"/></linearGradient></defs>
+                <path d="M50 75 L35 55 L25 40 L35 45 L45 50" stroke="url(#logoGrad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                <path d="M50 75 L65 55 L75 40 L65 45 L55 50" stroke="url(#logoGrad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                <path d="M50 75 L50 55 L45 45 L50 50 L55 45 L50 55" stroke="url(#logoGrad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                <path d="M50 75 L45 85 L50 80 L55 85 L50 75" stroke="url(#logoGrad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              </svg>
+            </div>
+            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <div class="container" style="padding: 4rem 1rem;">
+        <div style="max-width: 800px; margin: 0 auto;">
+          <h1 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; text-align: center;">Life Insurance Calculator</h1>
+          <p style="color: var(--text-secondary); text-align: center; margin-bottom: 2rem;">Calculate the right coverage amount to protect your family's financial future using the DIME method.</p>
+          
+          <div class="calculator-form">
+            <h2 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1.5rem;">Your Information</h2>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="annualIncome">Annual Income ($)</label>
+                <input type="number" id="annualIncome" placeholder="75000" min="0">
+              </div>
+              <div class="form-group">
+                <label for="yearsReplace">Years to Replace Income</label>
+                <input type="number" id="yearsReplace" placeholder="10" min="1" max="30" value="10">
+              </div>
+            </div>
+            
+            <h2 style="font-size: 1.25rem; font-weight: 600; margin: 2rem 0 1.5rem;">Debts & Obligations</h2>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="mortgageBalance">Mortgage Balance ($)</label>
+                <input type="number" id="mortgageBalance" placeholder="250000" min="0">
+              </div>
+              <div class="form-group">
+                <label for="otherDebts">Other Debts ($)</label>
+                <input type="number" id="otherDebts" placeholder="20000" min="0">
+              </div>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="numChildren">Number of Children</label>
+                <input type="number" id="numChildren" placeholder="2" min="0" max="10">
+              </div>
+              <div class="form-group">
+                <label for="educationCost">Education Cost per Child ($)</label>
+                <input type="number" id="educationCost" placeholder="100000" min="0">
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="finalExpenses">Final Expenses ($)</label>
+              <input type="number" id="finalExpenses" placeholder="15000" min="0">
+            </div>
+            
+            <button type="button" id="calculateBtn" class="btn btn-primary" style="width: 100%; margin-top: 1rem; height: 52px; font-size: 1rem;">
+              Calculate Coverage Needs
+            </button>
+          </div>
+          
+          <div id="resultsPanel" class="results-panel">
+            <h2 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; text-align: center;">Recommended Coverage</h2>
+            
+            <div class="coverage-display">
+              <div id="totalCoverage" class="coverage-amount">$0</div>
+              <p style="color: var(--text-tertiary); margin-top: 0.5rem;">Total Coverage Needed</p>
+            </div>
+            
+            <h3 style="font-size: 1rem; font-weight: 600; margin-bottom: 1rem;">Coverage Breakdown (DIME Method)</h3>
+            <ul class="breakdown-list">
+              <li class="breakdown-item">
+                <span>Debt (excluding mortgage)</span>
+                <span id="debtAmount">$0</span>
+              </li>
+              <li class="breakdown-item">
+                <span>Income Replacement</span>
+                <span id="incomeAmount">$0</span>
+              </li>
+              <li class="breakdown-item">
+                <span>Mortgage Payoff</span>
+                <span id="mortgageAmount">$0</span>
+              </li>
+              <li class="breakdown-item">
+                <span>Education Fund</span>
+                <span id="educationAmount">$0</span>
+              </li>
+              <li class="breakdown-item">
+                <span>Final Expenses</span>
+                <span id="finalAmount">$0</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-bottom">
+          <p class="footer-copyright">© 2025 NovaTools MC. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('calculateBtn').addEventListener('click', function() {
+      const annualIncome = parseFloat(document.getElementById('annualIncome').value) || 0;
+      const yearsReplace = parseFloat(document.getElementById('yearsReplace').value) || 0;
+      const mortgageBalance = parseFloat(document.getElementById('mortgageBalance').value) || 0;
+      const otherDebts = parseFloat(document.getElementById('otherDebts').value) || 0;
+      const numChildren = parseFloat(document.getElementById('numChildren').value) || 0;
+      const educationCost = parseFloat(document.getElementById('educationCost').value) || 0;
+      const finalExpenses = parseFloat(document.getElementById('finalExpenses').value) || 0;
+      
+      // DIME Method calculation
+      const debtAmount = otherDebts;
+      const incomeAmount = annualIncome * yearsReplace;
+      const mortgageAmount = mortgageBalance;
+      const educationAmount = numChildren * educationCost;
+      const finalAmount = finalExpenses;
+      
+      const totalCoverage = debtAmount + incomeAmount + mortgageAmount + educationAmount + finalAmount;
+      
+      const formatCurrency = (num) => '$' + num.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+      
+      document.getElementById('totalCoverage').textContent = formatCurrency(totalCoverage);
+      document.getElementById('debtAmount').textContent = formatCurrency(debtAmount);
+      document.getElementById('incomeAmount').textContent = formatCurrency(incomeAmount);
+      document.getElementById('mortgageAmount').textContent = formatCurrency(mortgageAmount);
+      document.getElementById('educationAmount').textContent = formatCurrency(educationAmount);
+      document.getElementById('finalAmount').textContent = formatCurrency(finalAmount);
+      
+      document.getElementById('resultsPanel').classList.add('visible');
+      document.getElementById('resultsPanel').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+  </script>
+</body>
+</html>

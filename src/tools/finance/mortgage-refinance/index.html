@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/src/styles/critical.css">
+  <link rel="stylesheet" href="/src/styles/main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  
+  <title>Mortgage Refinance Calculator | NovaTools MC</title>
+  <meta name="description" content="Calculate mortgage refinance savings. Compare current vs new rates, find break-even point, and save thousands on your home loan.">
+  <meta name="theme-color" content="#0A0A0C">
+  
+  <style>
+    .calculator-form {
+      background: var(--surface-default);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      margin: 2rem 0;
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-group label {
+      display: block;
+      font-size: 0.9375rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      margin-bottom: 0.5rem;
+    }
+    
+    .form-group input {
+      width: 100%;
+      height: 48px;
+      padding: 0 1rem;
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-md);
+      color: var(--text-primary);
+      font-size: 1rem;
+      transition: all 0.2s ease;
+    }
+    
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--accent-primary);
+      box-shadow: 0 0 0 3px var(--accent-glow);
+    }
+    
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    
+    @media (max-width: 640px) {
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .results-panel {
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.05));
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      margin-top: 2rem;
+      display: none;
+    }
+    
+    .results-panel.visible {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+    
+    .result-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    
+    .result-item {
+      text-align: center;
+      padding: 1.5rem;
+      background: var(--surface-default);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-default);
+    }
+    
+    .result-value {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--accent-hover);
+      margin-bottom: 0.25rem;
+    }
+    
+    .result-label {
+      font-size: 0.875rem;
+      color: var(--text-tertiary);
+    }
+    
+    .result-item.positive .result-value {
+      color: var(--success);
+    }
+    
+    .result-item.negative .result-value {
+      color: var(--error);
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-ambient" aria-hidden="true"></div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+  
+  <div id="app" class="app">
+    <header class="main-header">
+      <div class="container">
+        <div class="header-inner">
+          <a href="/" class="logo" aria-label="NovaTools MC Home">
+            <div class="logo-icon neon-logo">
+              <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs><linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#00F5D4"/><stop offset="50%" style="stop-color:#00D9FF"/><stop offset="100%" style="stop-color:#00FF88"/></linearGradient></defs>
+                <path d="M50 75 L35 55 L25 40 L35 45 L45 50" stroke="url(#logoGrad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                <path d="M50 75 L65 55 L75 40 L65 45 L55 50" stroke="url(#logoGrad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                <path d="M50 75 L50 55 L45 45 L50 50 L55 45 L50 55" stroke="url(#logoGrad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                <path d="M50 75 L45 85 L50 80 L55 85 L50 75" stroke="url(#logoGrad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              </svg>
+            </div>
+            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <div class="container" style="padding: 4rem 1rem;">
+        <div style="max-width: 800px; margin: 0 auto;">
+          <h1 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; text-align: center;">Mortgage Refinance Calculator</h1>
+          <p style="color: var(--text-secondary); text-align: center; margin-bottom: 2rem;">Calculate your potential savings by refinancing your mortgage. Compare rates and find your break-even point.</p>
+          
+          <div class="calculator-form">
+            <h2 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1.5rem;">Current Loan</h2>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="currentBalance">Current Balance ($)</label>
+                <input type="number" id="currentBalance" placeholder="300000" min="0" step="1000">
+              </div>
+              <div class="form-group">
+                <label for="currentRate">Current Interest Rate (%)</label>
+                <input type="number" id="currentRate" placeholder="6.5" min="0" max="20" step="0.1">
+              </div>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="yearsRemaining">Years Remaining</label>
+                <input type="number" id="yearsRemaining" placeholder="25" min="1" max="30" step="1">
+              </div>
+              <div class="form-group">
+                <label for="currentPayment">Current Monthly Payment ($)</label>
+                <input type="number" id="currentPayment" placeholder="1896" min="0" step="1">
+              </div>
+            </div>
+            
+            <h2 style="font-size: 1.25rem; font-weight: 600; margin: 2rem 0 1.5rem;">New Loan</h2>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="newRate">New Interest Rate (%)</label>
+                <input type="number" id="newRate" placeholder="4.5" min="0" max="20" step="0.1">
+              </div>
+              <div class="form-group">
+                <label for="newTerm">New Loan Term (years)</label>
+                <input type="number" id="newTerm" placeholder="30" min="1" max="30" step="1">
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="closingCosts">Closing Costs ($)</label>
+              <input type="number" id="closingCosts" placeholder="5000" min="0" step="500">
+            </div>
+            
+            <button type="button" id="calculateBtn" class="btn btn-primary" style="width: 100%; margin-top: 1rem; height: 52px; font-size: 1rem;">
+              Calculate Savings
+            </button>
+          </div>
+          
+          <div id="resultsPanel" class="results-panel">
+            <h2 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; text-align: center;">Refinance Analysis</h2>
+            <p id="recommendation" style="text-align: center; color: var(--text-secondary); margin-bottom: 1.5rem;"></p>
+            
+            <div class="result-grid">
+              <div class="result-item">
+                <div id="monthlySavings" class="result-value">$0</div>
+                <div class="result-label">Monthly Savings</div>
+              </div>
+              <div class="result-item">
+                <div id="totalSavings" class="result-value">$0</div>
+                <div class="result-label">Total Savings</div>
+              </div>
+              <div class="result-item">
+                <div id="breakEven" class="result-value">0 months</div>
+                <div class="result-label">Break-Even Point</div>
+              </div>
+              <div class="result-item">
+                <div id="lifetimeInterest" class="result-value">$0</div>
+                <div class="result-label">Interest Saved</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-bottom">
+          <p class="footer-copyright">© 2025 NovaTools MC. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('calculateBtn').addEventListener('click', function() {
+      // Get inputs
+      const balance = parseFloat(document.getElementById('currentBalance').value) || 0;
+      const currentRate = parseFloat(document.getElementById('currentRate').value) || 0;
+      const yearsRemaining = parseFloat(document.getElementById('yearsRemaining').value) || 0;
+      const newRate = parseFloat(document.getElementById('newRate').value) || 0;
+      const newTerm = parseFloat(document.getElementById('newTerm').value) || 0;
+      const closingCosts = parseFloat(document.getElementById('closingCosts').value) || 0;
+      
+      if (!balance || !currentRate || !newRate) {
+        alert('Please fill in at least the balance and interest rates.');
+        return;
+      }
+      
+      // Calculate monthly payment formula: P * (r(1+r)^n) / ((1+r)^n - 1)
+      function calculatePayment(principal, annualRate, years) {
+        const monthlyRate = annualRate / 100 / 12;
+        const numPayments = years * 12;
+        if (monthlyRate === 0) return principal / numPayments;
+        return principal * (monthlyRate * Math.pow(1 + monthlyRate, numPayments)) / (Math.pow(1 + monthlyRate, numPayments) - 1);
+      }
+      
+      const currentPayment = calculatePayment(balance, currentRate, yearsRemaining);
+      const newPayment = calculatePayment(balance, newRate, newTerm);
+      const monthlySavings = currentPayment - newPayment;
+      
+      // Calculate total interest for both scenarios
+      const currentTotalInterest = currentPayment * yearsRemaining * 12 - balance;
+      const newTotalInterest = newPayment * newTerm * 12 - balance;
+      const interestSaved = currentTotalInterest - newTotalInterest;
+      
+      // Break-even
+      const breakEvenMonths = monthlySavings > 0 ? Math.ceil(closingCosts / monthlySavings) : 0;
+      
+      // Total savings (accounting for longer term if applicable)
+      const currentTotalCost = currentPayment * yearsRemaining * 12;
+      const newTotalCost = newPayment * newTerm * 12 + closingCosts;
+      const totalSavings = currentTotalCost - newTotalCost;
+      
+      // Format currency
+      const formatCurrency = (num) => {
+        const absNum = Math.abs(num);
+        return '$' + absNum.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+      };
+      
+      // Update results
+      document.getElementById('monthlySavings').textContent = formatCurrency(monthlySavings) + (monthlySavings >= 0 ? '' : '');
+      document.getElementById('monthlySavings').parentElement.className = 'result-item ' + (monthlySavings > 0 ? 'positive' : 'negative');
+      
+      document.getElementById('totalSavings').textContent = formatCurrency(totalSavings);
+      document.getElementById('totalSavings').parentElement.className = 'result-item ' + (totalSavings > 0 ? 'positive' : 'negative');
+      
+      document.getElementById('breakEven').textContent = breakEvenMonths + ' months';
+      document.getElementById('lifetimeInterest').textContent = formatCurrency(interestSaved);
+      
+      // Recommendation
+      const recEl = document.getElementById('recommendation');
+      if (monthlySavings <= 0) {
+        recEl.textContent = 'Refinancing may not save you money with these rates.';
+        recEl.style.color = 'var(--error)';
+      } else if (breakEvenMonths > 60) {
+        recEl.textContent = 'Long break-even period. Consider if you\'ll stay in the home long enough.';
+        recEl.style.color = 'var(--warning)';
+      } else {
+        recEl.textContent = 'Great savings opportunity! Refinancing looks beneficial.';
+        recEl.style.color = 'var(--success)';
+      }
+      
+      document.getElementById('resultsPanel').classList.add('visible');
+      document.getElementById('resultsPanel').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+  </script>
+</body>
+</html>
