@@ -884,6 +884,7 @@
   <!-- Live Ticker Data & Holiday Countdown -->
   <script type="module">
     import { getSpecialDayContent, getIslamicHolidays, getGlobalHolidays } from '/src/core/automation/calendar.mjs';
+    import { updateFooterTicker, fetchIslamicDate } from '/src/core/api/live-data.mjs';
     
     // Special Day Banner
     function updateSpecialDayBanner() {
@@ -897,32 +898,12 @@
       }
     }
     
-    // Footer Ticker - Exchange Rates (mock data - replace with real API)
-    async function updateExchangeRates() {
-      try {
-        // TODO: Replace with real exchange rate API
-        // const response = await fetch('https://api.exchangerate.host/latest?base=USD');
-        // const data = await response.json();
-        
-        // Mock data for demonstration
-        const mockRates = {
-          USDEUR: { rate: 0.9234, change: 0.12 },
-          USDJPY: { rate: 149.52, change: -0.23 },
-          BTC: { rate: 88450, change: 2.4 },
-          SP500: { rate: 5120.5, change: 0.8 }
-        };
-        
-        const usdeur = document.getElementById('usdeur');
-        const usdjpy = document.getElementById('usdjpy');
-        const btcprice = document.getElementById('btcprice');
-        const sp500 = document.getElementById('sp500');
-        
-        if (usdeur) usdeur.innerHTML = `${mockRates.USDEUR.rate.toFixed(4)} <span class="change ${mockRates.USDEUR.change >= 0 ? 'positive' : 'negative'}">${mockRates.USDEUR.change >= 0 ? '+' : ''}${mockRates.USDEUR.change}%</span>`;
-        if (usdjpy) usdjpy.innerHTML = `${mockRates.USDJPY.rate.toFixed(2)} <span class="change ${mockRates.USDJPY.change >= 0 ? 'positive' : 'negative'}">${mockRates.USDJPY.change >= 0 ? '+' : ''}${mockRates.USDJPY.change}%</span>`;
-        if (btcprice) btcprice.innerHTML = `$${(mockRates.BTC.rate / 1000).toFixed(1)}K <span class="change ${mockRates.BTC.change >= 0 ? 'positive' : 'negative'}">${mockRates.BTC.change >= 0 ? '+' : ''}${mockRates.BTC.change}%</span>`;
-        if (sp500) sp500.innerHTML = `${mockRates.SP500.rate.toFixed(1)} <span class="change ${mockRates.SP500.change >= 0 ? 'positive' : 'negative'}">${mockRates.SP500.change >= 0 ? '+' : ''}${mockRates.SP500.change}%</span>`;
-      } catch (e) {
-        console.error('Failed to load exchange rates:', e);
+    // Update Hijri Date Display
+    async function updateHijriDate() {
+      const hijri = await fetchIslamicDate();
+      if (hijri) {
+        const display = document.getElementById('currentHijriDate');
+        if (display) display.textContent = hijri.formatted;
       }
     }
     
@@ -954,12 +935,13 @@
     
     // Initialize
     updateSpecialDayBanner();
-    updateExchangeRates();
+    updateFooterTicker();
     updateHolidayCountdown();
+    updateHijriDate();
     
     // Refresh every 5 minutes
     setInterval(() => {
-      updateExchangeRates();
+      updateFooterTicker();
       updateHolidayCountdown();
     }, 300000);
   </script>
