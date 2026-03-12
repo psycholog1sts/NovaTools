@@ -3,16 +3,10 @@
   "version": 2,
   "name": "novatools-mc",
   
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist"
-      }
-    }
-  ],
-
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "installCommand": "npm install",
+  
   "routes": [
     {
       "src": "/favicon.ico",
@@ -79,7 +73,8 @@
       "dest": "/ads.txt"
     },
     {
-      "handle": "filesystem"
+      "src": "/",
+      "dest": "/index.html"
     },
     {
       "src": "/tools/finance/mortgage-refinance",
@@ -154,7 +149,7 @@
       "dest": "/admin/$1"
     },
     {
-      "src": "/((?!assets|vendor|js|css|wasm|icons|images|fonts|meta|src|blog|admin|public).*)",
+      "src": "/:path*",
       "dest": "/index.html"
     }
   ],
@@ -200,64 +195,6 @@
       ]
     },
     {
-      "source": "/src/styles/critical.css",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
-    },
-    {
-      "source": "/assets/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
-    },
-    {
-      "source": "/vendor/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
-    },
-    {
-      "source": "/wasm/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        },
-        {
-          "key": "Content-Type",
-          "value": "application/wasm"
-        }
-      ]
-    },
-    {
-      "source": "/icons/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=604800"
-        }
-      ]
-    },
-    {
-      "source": "/public/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=604800"
-        }
-      ]
-    },
-    {
       "source": "/(.*)",
       "headers": [
         {
@@ -280,7 +217,6 @@
     }
   ],
 
-  "trailingSlash": false,
   "cleanUrls": true,
 
   "github": {
