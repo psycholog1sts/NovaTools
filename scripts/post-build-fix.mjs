@@ -31,11 +31,37 @@ const blogSrcDir = path.join(srcDir, 'blog');
 const blogDstDir = path.join(distDir, 'blog');
 
 if (fs.existsSync(blogSrcDir)) {
+  // First, ensure the articles are copied before moving
+  const blogArticlesSrc = path.join(blogSrcDir, 'articles');
+  const blogArticlesDst = path.join(blogDstDir, 'articles');
+  
   if (fs.existsSync(blogDstDir)) {
-    fs.rmSync(blogDstDir, { recursive: true });
+    // If blog already exists (from viteStaticCopy), merge the index.html
+    const srcIndex = path.join(blogSrcDir, 'index.html');
+    const dstIndex = path.join(blogDstDir, 'index.html');
+    if (fs.existsSync(srcIndex) && !fs.existsSync(dstIndex)) {
+      fs.copyFileSync(srcIndex, dstIndex);
+    }
+    // Copy articles if they exist in src
+    if (fs.existsSync(blogArticlesSrc) && !fs.existsSync(blogArticlesDst)) {
+      fs.cpSync(blogArticlesSrc, blogArticlesDst, { recursive: true });
+      console.log('✅ Copied: blog/articles');
+    }
+    fs.rmSync(blogSrcDir, { recursive: true });
+  } else {
+    fs.renameSync(blogSrcDir, blogDstDir);
   }
-  fs.renameSync(blogSrcDir, blogDstDir);
   console.log('✅ Fixed: dist/src/blog -> dist/blog');
+}
+
+// Ensure blog articles are copied from source if not present
+const sourceArticlesDir = path.join(__dirname, '..', 'src', 'blog', 'articles');
+const distBlogArticlesDir = path.join(distDir, 'blog', 'articles');
+
+if (fs.existsSync(sourceArticlesDir) && !fs.existsSync(distBlogArticlesDir)) {
+  fs.mkdirSync(path.join(distDir, 'blog'), { recursive: true });
+  fs.cpSync(sourceArticlesDir, distBlogArticlesDir, { recursive: true });
+  console.log('✅ Copied: src/blog/articles -> dist/blog/articles');
 }
 
 // Fix 3: Clean up dist/src if empty
