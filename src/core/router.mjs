@@ -25,7 +25,7 @@ class Router {
       this.handleRouteChange(window.location.pathname, e.state);
     });
 
-    // Handle link clicks
+    // Handle link clicks - BUT ONLY for SPA routes, not static files
     document.addEventListener('click', (e) => {
       const link = e.target.closest('a[href]');
       if (!link) return;
@@ -38,13 +38,32 @@ class Router {
 
       // Skip links with data-external attribute
       if (link.dataset.external) return;
+      
+      // CRITICAL: Skip links to static HTML files (MPA structure)
+      // Let browser handle navigation to actual files
+      const href = link.getAttribute('href');
+      if (href.startsWith('/tools/') || 
+          href.startsWith('/blog/') || 
+          href.startsWith('/admin/') ||
+          href.endsWith('.html')) {
+        return; // Let browser handle it normally
+      }
 
       e.preventDefault();
       this.navigate(link.pathname);
     });
 
-    // Handle initial route
-    this.handleRouteChange(window.location.pathname);
+    // Handle initial route - ONLY for SPA routes, not on page load for static files
+    // Static pages should be served by the server, not handled by client router
+    const currentPath = window.location.pathname;
+    const isStaticPage = currentPath.startsWith('/tools/') || 
+                         currentPath.startsWith('/blog/') || 
+                         currentPath.startsWith('/admin/');
+    
+    // Only handle route if it's not a static page
+    if (!isStaticPage && currentPath !== '/') {
+      this.handleRouteChange(currentPath);
+    }
   }
 
   /**

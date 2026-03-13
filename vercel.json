@@ -25,7 +25,8 @@
     { "source": "/tools/image/convert", "destination": "/tools/image/convert/index.html" },
     { "source": "/tools/religious/islamic-calendar", "destination": "/tools/religious/islamic-calendar/index.html" },
     { "source": "/tools/news/summarizer", "destination": "/tools/news/summarizer/index.html" },
-    { "source": "/tools/request", "destination": "/tools/request/index.html" }
+    { "source": "/tools/request", "destination": "/tools/request/index.html" },
+    { "source": "/(.*)", "destination": "/index.html" }
   ],
   "headers": [
     {
