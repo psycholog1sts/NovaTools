@@ -23,6 +23,16 @@ const toolEntries = globSync('src/tools/**/index.html', {
   return acc;
 }, {});
 
+// Admin entry point (in root admin/ folder)
+const adminEntry = {
+  'admin': resolve(__dirname, 'admin/index.html')
+};
+
+// Blog entry point
+const blogEntry = {
+  'blog': resolve(__dirname, 'src/blog/index.html')
+};
+
 export default defineConfig({
   root: '.',
   publicDir: 'public',
@@ -38,6 +48,8 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
+        ...adminEntry,
+        ...blogEntry,
         ...toolEntries
       },
       
@@ -134,6 +146,14 @@ export default defineConfig({
         {
           src: 'src/tools/**/meta.json',
           dest: 'meta'
+        },
+        {
+          src: 'src/blog/articles/**/*',
+          dest: 'blog/articles'
+        },
+        {
+          src: 'admin/**/*',
+          dest: 'admin'
         }
       ]
     }),

@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build && npm run build:fix-paths",
-    "build:fix-paths": "node -e \"const fs=require('fs'),path=require('path'); const srcDir=path.join('dist','src'); if(fs.existsSync(srcDir)){const toolsDir=path.join(srcDir,'tools'); if(fs.existsSync(toolsDir)){fs.renameSync(toolsDir, path.join('dist','tools'));} fs.rmSync(srcDir,{recursive:true}); console.log('Fixed: dist/src/tools -> dist/tools');}\"",
+    "build:fix-paths": "node scripts/post-build-fix.mjs",
     "build:analyze": "vite build --mode analyze",
     "preview": "vite preview",
     "lint": "eslint src/",
