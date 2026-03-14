@@ -4,28 +4,13 @@
   "outputDirectory": "dist",
   "framework": "vite",
   "cleanUrls": true,
-  
+
   "rewrites": [
-    { "source": "/", "destination": "/index.html" },
     { "source": "/admin", "destination": "/admin/index.html" },
+    { "source": "/admin/:path*", "destination": "/admin/:path*" },
     { "source": "/blog", "destination": "/blog/index.html" },
     { "source": "/blog/articles/:path*", "destination": "/blog/articles/:path*" },
-    { "source": "/tools/finance/mortgage-refinance", "destination": "/tools/finance/mortgage-refinance/index.html" },
-    { "source": "/tools/finance/compound-interest", "destination": "/tools/finance/compound-interest/index.html" },
-    { "source": "/tools/finance/cloud-cost", "destination": "/tools/finance/cloud-cost/index.html" },
-    { "source": "/tools/finance/crypto-tax", "destination": "/tools/finance/crypto-tax/index.html" },
-    { "source": "/tools/finance/life-insurance", "destination": "/tools/finance/life-insurance/index.html" },
-    { "source": "/tools/finance/student-loan", "destination": "/tools/finance/student-loan/index.html" },
-    { "source": "/tools/finance/retirement", "destination": "/tools/finance/retirement/index.html" },
-    { "source": "/tools/finance/tax", "destination": "/tools/finance/tax/index.html" },
-    { "source": "/tools/pdf/merge", "destination": "/tools/pdf/merge/index.html" },
-    { "source": "/tools/pdf/compress", "destination": "/tools/pdf/compress/index.html" },
-    { "source": "/tools/pdf/split", "destination": "/tools/pdf/split/index.html" },
-    { "source": "/tools/image/compress", "destination": "/tools/image/compress/index.html" },
-    { "source": "/tools/image/convert", "destination": "/tools/image/convert/index.html" },
-    { "source": "/tools/religious/islamic-calendar", "destination": "/tools/religious/islamic-calendar/index.html" },
-    { "source": "/tools/news/summarizer", "destination": "/tools/news/summarizer/index.html" },
-    { "source": "/tools/request", "destination": "/tools/request/index.html" },
+    { "source": "/tools/:path*", "destination": "/tools/:path*/index.html" },
     { "source": "/(.*)", "destination": "/index.html" }
   ],
   "headers": [
@@ -34,14 +19,17 @@
       "headers": [
         { "key": "X-Content-Type-Options", "value": "nosniff" },
         { "key": "X-Frame-Options", "value": "DENY" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" }
       ]
     },
     {
-      "source": "/blog/articles/(.*)",
-      "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=3600" }
-      ]
+      "source": "/assets/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+    },
+    {
+      "source": "/js/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
     }
   ]
 }
