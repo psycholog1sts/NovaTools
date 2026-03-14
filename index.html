@@ -83,14 +83,25 @@
   <script src="https://cdn.usefathom.com/script.js" data-site="NOVATOOLS" defer></script>
   
   <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+  <script>
+  (function() {
+    var clientId = '__ADSENSE_CLIENT__';
+    if (clientId && clientId !== '__ADSENSE_CLIENT__') {
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=' + clientId;
+      s.crossOrigin = 'anonymous';
+      document.head.appendChild(s);
+    }
+  })();
+  </script>
 </head>
 <body>
   <!-- Top Header Ad (728x90) - Sticky -->
   <div class="ad-header-top" role="complementary" aria-label="Advertisement">
     <div class="ad-label">Sponsored</div>
     <div class="ad-container-banner">
-      <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="HEADER_BANNER_SLOT"></ins>
+      <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="__ADSENSE_CLIENT__" data-ad-slot="HEADER_BANNER_SLOT"></ins>
     </div>
   </div>
   
@@ -208,7 +219,7 @@
             <div class="ad-subheader" role="complementary" aria-label="Advertisement">
               <div class="ad-label">Sponsored</div>
               <div class="ad-container-rectangle">
-                <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="SUBHEADER_RECTANGLE_SLOT"></ins>
+                <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="__ADSENSE_CLIENT__" data-ad-slot="SUBHEADER_RECTANGLE_SLOT"></ins>
               </div>
             </div>
             
@@ -245,11 +256,10 @@
         <div class="ad-container ad-banner">
           <ins class="adsbygoogle"
                style="display:block"
-               data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+               data-ad-client="__ADSENSE_CLIENT__"
                data-ad-slot="BANNER_SLOT_ID"
                data-ad-format="horizontal"
                data-full-width-responsive="true"></ins>
-          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
       </div>
       
@@ -414,10 +424,9 @@
                 <div class="ad-in-content">
                   <div class="ad-label">Sponsored</div>
                   <div class="ad-container-rectangle">
-                    <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="FINANCE_INLINE_SLOT"
-                       data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                    <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="__ADSENSE_CLIENT__" data-ad-slot="FINANCE_INLINE_SLOT"
+                       data-ad-client="__ADSENSE_CLIENT__"
                        data-ad-slot="MID_RECTANGLE_SLOT_ID"></ins>
-                  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
                 </div>
               </section>
               
@@ -676,7 +685,7 @@
               <div class="ad-sidebar-slot" role="complementary" aria-label="Advertisement">
                 <div class="ad-label">Advertisement</div>
                 <div class="ad-container-skyscraper">
-                  <ins class="adsbygoogle" style="display:inline-block;width:300px;height:600px" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="SIDEBAR_SKYSCRAPER_SLOT"></ins>
+                  <ins class="adsbygoogle" style="display:inline-block;width:300px;height:600px" data-ad-client="__ADSENSE_CLIENT__" data-ad-slot="SIDEBAR_SKYSCRAPER_SLOT"></ins>
                 </div>
               </div>
               
@@ -840,16 +849,15 @@
     <div class="ad-mobile-anchor" role="complementary" aria-label="Advertisement">
       <ins class="adsbygoogle"
            style="display:inline-block;width:320px;height:50px"
-           data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+           data-ad-client="__ADSENSE_CLIENT__"
            data-ad-slot="ANCHOR_SLOT_ID"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
-    
+
     <!-- Left Sidebar Skyscraper (300x600) - Desktop Only -->
     <aside class="ad-sidebar-left" role="complementary" aria-label="Advertisement">
       <div class="ad-label">Advertisement</div>
       <div class="ad-container-skyscraper">
-        <ins class="adsbygoogle" style="display:inline-block;width:300px;height:600px" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="LEFT_SKYSCRAPER_SLOT"></ins>
+        <ins class="adsbygoogle" style="display:inline-block;width:300px;height:600px" data-ad-client="__ADSENSE_CLIENT__" data-ad-slot="LEFT_SKYSCRAPER_SLOT"></ins>
       </div>
     </aside>
     
@@ -857,14 +865,14 @@
     <aside class="ad-sidebar-right" role="complementary" aria-label="Advertisement">
       <div class="ad-label">Advertisement</div>
       <div class="ad-container-skyscraper">
-        <ins class="adsbygoogle" style="display:inline-block;width:300px;height:600px" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="RIGHT_SKYSCRAPER_SLOT"></ins>
+        <ins class="adsbygoogle" style="display:inline-block;width:300px;height:600px" data-ad-client="__ADSENSE_CLIENT__" data-ad-slot="RIGHT_SKYSCRAPER_SLOT"></ins>
       </div>
     </aside>
     
     <!-- Mobile Anchor Ad (320x50) -->
     <div class="ad-mobile-anchor" role="complementary" aria-label="Advertisement">
       <div class="ad-container-mobile">
-        <ins class="adsbygoogle" style="display:inline-block;width:320px;height:50px" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="MOBILE_ANCHOR_SLOT"></ins>
+        <ins class="adsbygoogle" style="display:inline-block;width:320px;height:50px" data-ad-client="__ADSENSE_CLIENT__" data-ad-slot="MOBILE_ANCHOR_SLOT"></ins>
       </div>
     </div>
     
