@@ -4,7 +4,6 @@
  */
 
 const API_ENDPOINTS = {
-  crypto: 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd&include_24hr_change=true',
   exchange: 'https://open.er-api.com/v6/latest/USD',
   islamicCalendar: 'https://api.aladhan.com/v1/gToH?date='
 };
@@ -32,10 +31,14 @@ export async function fetchCryptoPrices() {
   }
   
   try {
-    const response = await fetch(API_ENDPOINTS.crypto);
+    const url = new URL('https://api.coingecko.com/api/v3/simple/price');
+    url.searchParams.set('ids', 'bitcoin,ethereum');
+    url.searchParams.set('vs_currencies', 'usd');
+    url.searchParams.set('include_24hr_change', 'true');
+    const response = await fetch(url.toString());
     if (!response.ok) throw new Error('API Error');
     const data = await response.json();
-    
+
     cache.crypto = {
       btc: {
         price: data.bitcoin.usd,
@@ -47,14 +50,15 @@ export async function fetchCryptoPrices() {
       }
     };
     cache.timestamps.crypto = Date.now();
-    
+
     return cache.crypto;
   } catch (error) {
     console.error('Failed to fetch crypto prices:', error);
-    // Return fallback data
+    // Return fallback data with cached flag
     return {
-      btc: { price: 88450, change24h: 2.4 },
-      eth: { price: 3250, change24h: 1.8 }
+      btc: { price: 88450, change24h: 0 },
+      eth: { price: 3250, change24h: 0 },
+      cached: true
     };
   }
 }
