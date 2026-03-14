@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y896L63239"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Y896L63239');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/src/styles/critical.css">
+  <link rel="stylesheet" href="/src/styles/main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <title>JSON Formatter and Validator — Free Online Tool | NovaTools MC</title>
+  <meta name="description" content="Free online JSON formatter, validator and beautifier. Format, validate and minify JSON with syntax highlighting. No signup required.">
+  <meta name="theme-color" content="#0A0A0C">
+  <link rel="canonical" href="https://www.mc-novatools.com/tools/dev/json-formatter/">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [{
+      "@type": "WebApplication",
+      "name": "JSON Formatter and Validator",
+      "description": "Free online JSON formatter, validator and beautifier. Format, validate and minify JSON with syntax highlighting. No signup required.",
+      "url": "https://www.mc-novatools.com/tools/dev/json-formatter/",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+    }]
+  }
+  </script>
+
+  <style>
+    /* ─── Layout ─────────────────────────────────── */
+    .tool-wrapper {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 3rem 1rem 5rem;
+    }
+
+    /* ─── Hero ───────────────────────────────────── */
+    .tool-hero {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    .tool-hero-icon {
+      font-size: 3.5rem;
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+    .tool-hero h1 {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #FAFAFA;
+      margin-bottom: 0.75rem;
+    }
+    .tool-hero p {
+      color: #A1A1AA;
+      font-size: 1.0625rem;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    /* ─── Card ───────────────────────────────────── */
+    .card {
+      background: rgba(15, 15, 20, 0.7);
+      border: 1px solid rgba(0, 217, 255, 0.15);
+      border-radius: 14px;
+      padding: 1.75rem;
+      backdrop-filter: blur(12px);
+    }
+
+    /* ─── Input area ─────────────────────────────── */
+    .input-section {
+      margin-bottom: 1.25rem;
+    }
+    .input-label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #71717A;
+      margin-bottom: 0.625rem;
+    }
+    #jsonInput {
+      width: 100%;
+      min-height: 220px;
+      padding: 1rem 1.125rem;
+      background: #0F0F12;
+      border: 1px solid rgba(0, 217, 255, 0.12);
+      border-radius: 10px;
+      color: #FAFAFA;
+      font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+      font-size: 0.875rem;
+      line-height: 1.7;
+      resize: vertical;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+    }
+    #jsonInput::placeholder { color: #52525B; }
+    #jsonInput:focus {
+      border-color: rgba(0, 217, 255, 0.45);
+      box-shadow: 0 0 0 3px rgba(0, 217, 255, 0.08);
+    }
+
+    /* ─── Button bar ─────────────────────────────── */
+    .btn-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.625rem;
+      margin-bottom: 1.5rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      height: 40px;
+      padding: 0 1.125rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.18s, transform 0.12s, opacity 0.18s;
+      outline: none;
+      user-select: none;
+    }
+    .btn:active { transform: scale(0.97); }
+    .btn-primary {
+      background: linear-gradient(135deg, #00D9FF, #0099CC);
+      color: #0A0A0C;
+    }
+    .btn-primary:hover { background: linear-gradient(135deg, #1FE2FF, #00B8EE); }
+    .btn-secondary {
+      background: rgba(0, 217, 255, 0.1);
+      border: 1px solid rgba(0, 217, 255, 0.25);
+      color: #00D9FF;
+    }
+    .btn-secondary:hover { background: rgba(0, 217, 255, 0.18); }
+    .btn-ghost {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #A1A1AA;
+    }
+    .btn-ghost:hover { background: rgba(255, 255, 255, 0.09); color: #FAFAFA; }
+    .btn-danger {
+      background: rgba(255, 85, 85, 0.1);
+      border: 1px solid rgba(255, 85, 85, 0.25);
+      color: #FF5555;
+    }
+    .btn-danger:hover { background: rgba(255, 85, 85, 0.18); }
+
+    .kbd-hint {
+      font-size: 0.7rem;
+      padding: 1px 5px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 4px;
+      font-family: monospace;
+      opacity: 0.75;
+      margin-left: 2px;
+    }
+
+    /* ─── Stats badge ────────────────────────────── */
+    .stats-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+      min-height: 28px;
+    }
+    .stats-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      height: 28px;
+      padding: 0 0.75rem;
+      background: rgba(0, 255, 136, 0.08);
+      border: 1px solid rgba(0, 255, 136, 0.25);
+      border-radius: 999px;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: #00FF88;
+      animation: fadeSlideIn 0.25s ease;
+    }
+    @keyframes fadeSlideIn {
+      from { opacity: 0; transform: translateY(-4px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── Error banner ───────────────────────────── */
+    .error-banner {
+      display: none;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.875rem 1rem;
+      background: rgba(255, 85, 85, 0.08);
+      border: 1px solid rgba(255, 85, 85, 0.3);
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      animation: fadeSlideIn 0.2s ease;
+    }
+    .error-banner.visible { display: flex; }
+    .error-icon {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      background: rgba(255, 85, 85, 0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      color: #FF5555;
+      margin-top: 1px;
+    }
+    .error-text {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8125rem;
+      color: #FF7777;
+      line-height: 1.6;
+      word-break: break-word;
+    }
+
+    /* ─── Output area ────────────────────────────── */
+    .output-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.625rem;
+    }
+    .output-label {
+      font-size: 0.8125rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #71717A;
+    }
+    .output-wrap {
+      position: relative;
+      background: #08080A;
+      border: 1px solid rgba(0, 217, 255, 0.1);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .output-placeholder {
+      padding: 2rem 1.5rem;
+      text-align: center;
+      color: #52525B;
+      font-size: 0.9375rem;
+    }
+    #jsonOutput {
+      display: none;
+      margin: 0;
+      padding: 1.125rem 1.25rem;
+      overflow-x: auto;
+      font-family: 'JetBrains Mono', 'Fira Code', monospace;
+      font-size: 0.8125rem;
+      line-height: 1.75;
+      color: #FAFAFA;
+      white-space: pre;
+      tab-size: 2;
+    }
+
+    /* ─── Syntax highlight colours ───────────────── */
+    .json-key     { color: #00D9FF; }
+    .json-string  { color: #00FF88; }
+    .json-number  { color: #FF9500; }
+    .json-boolean { color: #BD93F9; }
+    .json-null    { color: #FF5555; }
+
+    /* ─── Copy feedback ──────────────────────────── */
+    .copy-feedback {
+      font-size: 0.8rem;
+      color: #00FF88;
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+    }
+    .copy-feedback.show { opacity: 1; }
+
+    /* ─── SEO section ────────────────────────────── */
+    .seo-section {
+      max-width: 960px;
+      margin: 3.5rem auto 0;
+      padding: 0 1rem;
+    }
+    .seo-section h2 {
+      font-size: 1.375rem;
+      font-weight: 700;
+      color: #FAFAFA;
+      margin-bottom: 0.75rem;
+    }
+    .seo-section h3 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #FAFAFA;
+      margin: 2rem 0 0.75rem;
+    }
+    .seo-section p, .seo-section li {
+      color: #A1A1AA;
+      line-height: 1.8;
+      font-size: 0.9375rem;
+    }
+    .seo-section ol { padding-left: 1.25rem; }
+    .seo-section ol li { margin-bottom: 0.4rem; }
+    .faq-item {
+      border: 1px solid rgba(0, 217, 255, 0.1);
+      border-radius: 10px;
+      padding: 1rem 1.125rem;
+      margin-bottom: 0.875rem;
+      background: rgba(15, 15, 20, 0.5);
+    }
+    .faq-item summary {
+      font-weight: 600;
+      color: #FAFAFA;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after {
+      content: '+';
+      color: #00D9FF;
+      font-size: 1.25rem;
+      flex-shrink: 0;
+      transition: transform 0.2s;
+    }
+    .faq-item[open] summary::after { content: '\2212'; }
+    .faq-item p {
+      margin-top: 0.625rem;
+      color: #A1A1AA;
+      line-height: 1.7;
+    }
+
+    /* ─── Responsive ─────────────────────────────── */
+    @media (max-width: 600px) {
+      .btn-bar { gap: 0.5rem; }
+      .btn { height: 38px; padding: 0 0.875rem; font-size: 0.85rem; }
+      .kbd-hint { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-ambient" aria-hidden="true"></div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <div id="app" class="app">
+    <header class="main-header">
+      <div class="container">
+        <div class="header-inner">
+          <a href="/" class="logo" aria-label="NovaTools MC Home">
+            <div class="logo-icon neon-logo">
+              <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#00F5D4"/>
+                    <stop offset="50%" style="stop-color:#00D9FF"/>
+                    <stop offset="100%" style="stop-color:#00FF88"/>
+                  </linearGradient>
+                </defs>
+                <path d="M50 75 L35 55 L25 40 L35 45 L45 50" stroke="url(#logoGrad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                <path d="M50 75 L65 55 L75 40 L65 45 L55 50" stroke="url(#logoGrad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                <path d="M50 75 L50 55 L45 45 L50 50 L55 45 L50 55" stroke="url(#logoGrad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                <path d="M50 75 L45 85 L50 80 L55 85 L50 75" stroke="url(#logoGrad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              </svg>
+            </div>
+            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <div class="tool-wrapper">
+
+        <!-- Hero -->
+        <div class="tool-hero">
+          <div class="tool-hero-icon">&#123;&#125;</div>
+          <h1>JSON Formatter &amp; Validator</h1>
+          <p>Instantly format, validate, and minify JSON with full syntax highlighting. Works 100% in your browser — nothing is sent to any server.</p>
+        </div>
+
+        <!-- Main Card -->
+        <div class="card">
+
+          <!-- Input -->
+          <div class="input-section">
+            <div class="input-label">
+              <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M2 3.5A1.5 1.5 0 013.5 2h9A1.5 1.5 0 0114 3.5v9a1.5 1.5 0 01-1.5 1.5h-9A1.5 1.5 0 012 12.5v-9zM3.5 3a.5.5 0 00-.5.5v9a.5.5 0 00.5.5h9a.5.5 0 00.5-.5v-9a.5.5 0 00-.5-.5h-9z"/></svg>
+              JSON Input
+            </div>
+            <textarea
+              id="jsonInput"
+              spellcheck="false"
+              autocomplete="off"
+              autocorrect="off"
+              autocapitalize="off"
+              placeholder="Paste your JSON here..."
+              aria-label="JSON input"
+            ></textarea>
+          </div>
+
+          <!-- Button Bar -->
+          <div class="btn-bar" role="toolbar" aria-label="JSON actions">
+            <button class="btn btn-primary" id="btnFormat" type="button" aria-label="Format JSON (Ctrl+Enter)">
+              <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M2 4h12v1.5H2V4zm2 3.25h8v1.5H4V7.25zm2 3.25h4v1.5H6V10.5z"/></svg>
+              Format
+              <span class="kbd-hint">Ctrl+Enter</span>
+            </button>
+            <button class="btn btn-secondary" id="btnMinify" type="button" aria-label="Minify JSON">
+              <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M1.5 3.5h13v1H1.5v-1zm0 4h13v1h-13v-1zm0 4h13v1h-13v-1z"/></svg>
+              Minify
+            </button>
+            <button class="btn btn-ghost" id="btnCopy" type="button" aria-label="Copy output to clipboard">
+              <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 1.5H3a2 2 0 00-2 2V14a2 2 0 002 2h10a2 2 0 002-2V3.5a2 2 0 00-2-2h-1v1h1a1 1 0 011 1V14a1 1 0 01-1 1H3a1 1 0 01-1-1V3.5a1 1 0 011-1h1v-1zM9.5 1a.5.5 0 01.5.5v1a.5.5 0 01-.5.5h-3a.5.5 0 01-.5-.5v-1a.5.5 0 01.5-.5h3z"/></svg>
+              Copy
+            </button>
+            <button class="btn btn-danger" id="btnClear" type="button" aria-label="Clear input and output">
+              <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M5.5 5.5A.5.5 0 016 6v6a.5.5 0 01-1 0V6a.5.5 0 01.5-.5zm2.5 0a.5.5 0 01.5.5v6a.5.5 0 01-1 0V6a.5.5 0 01.5-.5zm3 .5a.5.5 0 00-1 0v6a.5.5 0 001 0V6z"/><path fill-rule="evenodd" d="M14.5 3a1 1 0 01-1 1H13v9a2 2 0 01-2 2H5a2 2 0 01-2-2V4h-.5a1 1 0 01-1-1V2a1 1 0 011-1H6a1 1 0 011-1h2a1 1 0 011 1h3.5a1 1 0 011 1v1zM4.118 4L4 4.059V13a1 1 0 001 1h6a1 1 0 001-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/></svg>
+              Clear
+            </button>
+            <span class="copy-feedback" id="copyFeedback" aria-live="polite">Copied!</span>
+          </div>
+
+          <!-- Stats Badge -->
+          <div class="stats-row" aria-live="polite">
+            <div id="statsBadge" style="display:none" class="stats-badge">
+              <svg width="11" height="11" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 15A7 7 0 108 1a7 7 0 000 14zm0 1A8 8 0 118 0a8 8 0 010 16z"/><path d="M8 4a.5.5 0 01.5.5v3h3a.5.5 0 010 1H8a.5.5 0 01-.5-.5v-3.5A.5.5 0 018 4z"/></svg>
+              <span id="statsText"></span>
+            </div>
+          </div>
+
+          <!-- Error Banner -->
+          <div class="error-banner" id="errorBanner" role="alert">
+            <div class="error-icon">!</div>
+            <div class="error-text" id="errorText"></div>
+          </div>
+
+          <!-- Output -->
+          <div>
+            <div class="output-header">
+              <div class="output-label">
+                <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" style="display:inline;vertical-align:-1px;margin-right:4px"><path d="M5.854 4.146a.5.5 0 010 .708L3.707 7l2.147 2.146a.5.5 0 01-.708.708l-2.5-2.5a.5.5 0 010-.708l2.5-2.5a.5.5 0 01.708 0zm4.292 0a.5.5 0 000 .708L12.293 7l-2.147 2.146a.5.5 0 00.708.708l2.5-2.5a.5.5 0 000-.708l-2.5-2.5a.5.5 0 00-.708 0z"/></svg>
+                Output
+              </div>
+            </div>
+            <div class="output-wrap">
+              <div class="output-placeholder" id="outputPlaceholder">
+                Output will appear here after formatting
+              </div>
+              <pre id="jsonOutput" aria-label="Formatted JSON output"></pre>
+            </div>
+          </div>
+        </div><!-- /card -->
+
+      </div><!-- /tool-wrapper -->
+
+      <!-- SEO Content -->
+      <section class="seo-section" aria-label="About this tool">
+        <h2>About JSON Formatter &amp; Validator</h2>
+        <p>
+          JSON (JavaScript Object Notation) is the universal data interchange format for APIs, configuration files, and data storage. This free online tool lets you instantly format messy or minified JSON into readable, indented output and validates it at the same time. The syntax highlighter colour-codes keys, strings, numbers, booleans, and nulls so you can scan large payloads at a glance. Everything runs locally in your browser; your data is never transmitted to any server.
+        </p>
+
+        <h3>How to Use</h3>
+        <ol>
+          <li>Paste your raw or minified JSON into the input area.</li>
+          <li>Click <strong>Format</strong> (or press <strong>Ctrl+Enter</strong>) to pretty-print with 2-space indentation.</li>
+          <li>Click <strong>Minify</strong> to compress JSON by removing all whitespace.</li>
+          <li>Use <strong>Copy</strong> to copy the output to your clipboard, then <strong>Clear</strong> to reset.</li>
+        </ol>
+
+        <h3>Frequently Asked Questions</h3>
+
+        <details class="faq-item">
+          <summary>What is JSON and why do I need a formatter?</summary>
+          <p>JSON is a lightweight text format for representing structured data. When JSON is minified (all whitespace removed) for transmission efficiency, it becomes unreadable by humans. A formatter re-adds indentation and line breaks so you can read, debug, or audit the structure easily.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Does this tool validate JSON?</summary>
+          <p>Yes. When you click Format or Minify, the tool attempts to parse your input using the native JSON.parse() function. If parsing fails, the exact error message is shown in red so you can fix it quickly.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Is my JSON data kept private?</summary>
+          <p>Absolutely. All processing happens entirely in your browser using JavaScript. No data is sent to any server, logged, or stored anywhere. You can use this tool safely with sensitive API responses or configuration files.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>What is the difference between Format and Minify?</summary>
+          <p>Format (also called "pretty print" or "beautify") adds indentation and newlines to make JSON human-readable. Minify strips all unnecessary whitespace to produce the smallest possible JSON string, which is ideal for sending over a network or storing in a database.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>What do the syntax highlight colours mean?</summary>
+          <p>Keys are shown in cyan, string values in green, numbers in orange, booleans (true/false) in purple, and null in red. These colours follow popular code-editor conventions for quick visual scanning.</p>
+        </details>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-bottom">
+          <p class="footer-copyright">&#169; 2026 NovaTools MC. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </div><!-- /#app -->
+
+  <script type="module">
+    // ─── Core helpers ──────────────────────────────────────────────────────────
+
+    function escapeHtml(str) {
+      return str
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    function processJSON(raw) {
+      try {
+        const parsed = JSON.parse(raw);
+        const pretty = JSON.stringify(parsed, null, 2);
+        const minified = JSON.stringify(parsed);
+        const type = Array.isArray(parsed)
+          ? 'Array'
+          : typeof parsed === 'object' && parsed !== null
+            ? 'Object'
+            : typeof parsed;
+        const count = Array.isArray(parsed)
+          ? parsed.length
+          : (typeof parsed === 'object' && parsed !== null ? Object.keys(parsed).length : null);
+        return { ok: true, pretty, minified, type, count };
+      } catch (e) {
+        return { ok: false, error: e.message };
+      }
+    }
+
+    function syntaxHighlight(json) {
+      return escapeHtml(json).replace(
+        /("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g,
+        (match) => {
+          let cls = 'json-number';
+          if (/^"/.test(match)) {
+            cls = /:$/.test(match) ? 'json-key' : 'json-string';
+          } else if (/true|false/.test(match)) {
+            cls = 'json-boolean';
+          } else if (/null/.test(match)) {
+            cls = 'json-null';
+          }
+          return '<span class="' + cls + '">' + match + '</span>';
+        }
+      );
+    }
+
+    // ─── DOM references ────────────────────────────────────────────────────────
+
+    const jsonInput         = document.getElementById('jsonInput');
+    const btnFormat         = document.getElementById('btnFormat');
+    const btnMinify         = document.getElementById('btnMinify');
+    const btnCopy           = document.getElementById('btnCopy');
+    const btnClear          = document.getElementById('btnClear');
+    const jsonOutput        = document.getElementById('jsonOutput');
+    const outputPlaceholder = document.getElementById('outputPlaceholder');
+    const errorBanner       = document.getElementById('errorBanner');
+    const errorText         = document.getElementById('errorText');
+    const statsBadge        = document.getElementById('statsBadge');
+    const statsText         = document.getElementById('statsText');
+    const copyFeedback      = document.getElementById('copyFeedback');
+
+    // Current plain-text output (used by Copy button)
+    let currentOutput = '';
+    let copyTimer = null;
+
+    // ─── UI helpers ────────────────────────────────────────────────────────────
+
+    /**
+     * Render highlighted JSON into the output <pre>.
+     * syntaxHighlight() runs escapeHtml() first, then wraps tokens in <span>
+     * tags using a fixed set of CSS class names — no user-supplied HTML reaches
+     * the DOM, making this safe from XSS.
+     */
+    function showOutput(text) {
+      currentOutput = text;
+      // eslint-disable-next-line no-unsanitized/property
+      jsonOutput.innerHTML = syntaxHighlight(text);
+      jsonOutput.style.display = 'block';
+      outputPlaceholder.style.display = 'none';
+    }
+
+    function hideOutput() {
+      currentOutput = '';
+      jsonOutput.style.display = 'none';
+      jsonOutput.textContent = '';
+      outputPlaceholder.style.display = 'block';
+    }
+
+    function showError(msg) {
+      errorText.textContent = msg;
+      errorBanner.classList.add('visible');
+    }
+
+    function hideError() {
+      errorBanner.classList.remove('visible');
+    }
+
+    function showStats(result) {
+      let label;
+      if (result.count !== null) {
+        const noun = result.type === 'Array'
+          ? (result.count === 1 ? 'item' : 'items')
+          : (result.count === 1 ? 'key' : 'keys');
+        label = result.type + ' \u2022 ' + result.count + ' ' + noun;
+      } else {
+        label = result.type;
+      }
+      statsText.textContent = label;
+      // Re-trigger CSS animation by briefly hiding
+      statsBadge.style.display = 'none';
+      requestAnimationFrame(() => {
+        statsBadge.style.display = 'inline-flex';
+      });
+    }
+
+    function hideStats() {
+      statsBadge.style.display = 'none';
+    }
+
+    function reset() {
+      hideOutput();
+      hideError();
+      hideStats();
+    }
+
+    // ─── Actions ───────────────────────────────────────────────────────────────
+
+    function handleFormat() {
+      const raw = jsonInput.value.trim();
+      if (!raw) { reset(); return; }
+      hideError();
+      hideStats();
+      const result = processJSON(raw);
+      if (!result.ok) { hideOutput(); showError(result.error); return; }
+      showOutput(result.pretty);
+      showStats(result);
+    }
+
+    function handleMinify() {
+      const raw = jsonInput.value.trim();
+      if (!raw) { reset(); return; }
+      hideError();
+      hideStats();
+      const result = processJSON(raw);
+      if (!result.ok) { hideOutput(); showError(result.error); return; }
+      showOutput(result.minified);
+      showStats(result);
+    }
+
+    async function handleCopy() {
+      if (!currentOutput) return;
+      try {
+        await navigator.clipboard.writeText(currentOutput);
+      } catch (_) {
+        // Fallback for restricted environments
+        const ta = document.createElement('textarea');
+        ta.value = currentOutput;
+        ta.style.cssText = 'position:fixed;opacity:0;pointer-events:none;';
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+      }
+      copyFeedback.classList.add('show');
+      clearTimeout(copyTimer);
+      copyTimer = setTimeout(() => copyFeedback.classList.remove('show'), 1800);
+    }
+
+    function handleClear() {
+      jsonInput.value = '';
+      reset();
+      jsonInput.focus();
+    }
+
+    // ─── Event listeners ───────────────────────────────────────────────────────
+
+    btnFormat.addEventListener('click', handleFormat);
+    btnMinify.addEventListener('click', handleMinify);
+    btnCopy.addEventListener('click', handleCopy);
+    btnClear.addEventListener('click', handleClear);
+
+    // Ctrl+Enter triggers Format
+    jsonInput.addEventListener('keydown', (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+        e.preventDefault();
+        handleFormat();
+      }
+    });
+
+    // Clear the error banner as soon as the user starts editing again
+    jsonInput.addEventListener('input', () => {
+      if (errorBanner.classList.contains('visible')) hideError();
+    });
+  </script>
+</body>
+</html>
