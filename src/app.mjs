@@ -99,13 +99,14 @@ class NovaToolsApp {
     router.register('/', () => {}, {
       title: 'NovaTools MC - Professional Financial Tools'
     });
-    router.register('/404', () => {
-      document.title = 'Page Not Found | NovaTools MC';
+    router.register('/404', () => {}, {
+      title: 'Page Not Found | NovaTools MC'
     });
-    router.onNavigate = (route) => {
+    window.addEventListener('routechange', (event) => {
+      const route = event.detail?.route;
       stateManager.set('app.currentRoute', route?.path || '/');
       this.handleRouteChange(route);
-    };
+    });
     // Router self-initializes in constructor. Do NOT call router.init().
   }
 
