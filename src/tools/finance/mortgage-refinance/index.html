@@ -341,7 +341,29 @@
     </footer>
   </div>
 
-  <!-- Load main app module which includes tool registration -->
-  <script type="module" src="/src/app.mjs"></script>
+  <script type="module">
+import { refinanceCalculator } from '../mortgage-refinance.mjs';
+
+const form = document.querySelector('form[data-tool-form], form#mortgage-form, form');
+const resultsPanel = document.querySelector('.results-panel, #results, [data-results]');
+
+if (form) {
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = Object.fromEntries(new FormData(form));
+    try {
+      const result = refinanceCalculator(data);
+      if (resultsPanel) {
+        resultsPanel.innerHTML = result.html;
+        resultsPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    } catch (err) {
+      if (resultsPanel) {
+        resultsPanel.innerHTML = '<p style="color:#FF5555">Error: ' + err.message + '</p>';
+      }
+    }
+  });
+}
+</script>
 </body>
 </html>
