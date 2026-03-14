@@ -96,21 +96,17 @@ class NovaToolsApp {
    * Initialize router
    */
   initRouter() {
-    // Define routes
-    router.addRoute('/', { name: 'home', requiresAuth: false });
-    router.addRoute('/tools/:category/:tool', { name: 'tool', requiresAuth: false });
-    router.addRoute('/blog', { name: 'blog', requiresAuth: false });
-    router.addRoute('/blog/:slug', { name: 'article', requiresAuth: false });
-    router.addRoute('/admin', { name: 'admin', requiresAuth: true });
-
-    // Handle navigation
+    router.register('/', () => {}, {
+      title: 'NovaTools MC - Professional Financial Tools'
+    });
+    router.register('/404', () => {
+      document.title = 'Page Not Found | NovaTools MC';
+    });
     router.onNavigate = (route) => {
-      stateManager.set('app.currentRoute', route.path);
+      stateManager.set('app.currentRoute', route?.path || '/');
       this.handleRouteChange(route);
     };
-
-    // Initialize
-    router.init();
+    // Router self-initializes in constructor. Do NOT call router.init().
   }
 
   /**
