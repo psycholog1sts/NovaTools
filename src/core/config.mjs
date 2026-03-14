@@ -24,7 +24,7 @@ export const CONFIG = {
       retryAttempts: 3
     },
     exchangeRate: {
-      baseUrl: 'https://api.exchangerate-api.com/v4',
+      baseUrl: 'https://open.er-api.com/v6',
       cacheDuration: 5 * 60 * 1000,
       fallbackRates: {
         EUR: 0.9234,

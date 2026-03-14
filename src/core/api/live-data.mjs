@@ -5,12 +5,12 @@
 
 const API_ENDPOINTS = {
   crypto: 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd&include_24hr_change=true',
-  exchange: 'https://api.exchangerate-api.com/v4/latest/USD',
+  exchange: 'https://open.er-api.com/v6/latest/USD',
   islamicCalendar: 'https://api.aladhan.com/v1/gToH?date='
 };
 
 const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
-let cache = {
+const cache = {
   crypto: null,
   exchange: null,
   islamic: null,
