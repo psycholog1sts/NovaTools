@@ -7,9 +7,8 @@
 
   "rewrites": [
     { "source": "/admin", "destination": "/admin/index.html" },
-    { "source": "/admin/:path*", "destination": "/admin/:path*" },
+    { "source": "/admin/:path*", "destination": "/admin/index.html" },
     { "source": "/blog", "destination": "/blog/index.html" },
-    { "source": "/blog/articles/:path*", "destination": "/blog/articles/:path*" },
     { "source": "/tools/:path*", "destination": "/tools/:path*/index.html" },
     { "source": "/(.*)", "destination": "/index.html" }
   ],
@@ -17,6 +16,7 @@
     {
       "source": "/(.*)",
       "headers": [
+        { "key": "Strict-Transport-Security", "value": "max-age=31536000; includeSubDomains" },
         { "key": "X-Content-Type-Options", "value": "nosniff" },
         { "key": "X-Frame-Options", "value": "DENY" },
         { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
