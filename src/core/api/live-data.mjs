@@ -35,7 +35,7 @@ export async function fetchCryptoPrices() {
     url.searchParams.set('ids', 'bitcoin,ethereum');
     url.searchParams.set('vs_currencies', 'usd');
     url.searchParams.set('include_24hr_change', 'true');
-    const response = await fetch(url.toString());
+    const response = await fetch(url);
     if (!response.ok) throw new Error('API Error');
     const data = await response.json();
 
@@ -55,11 +55,9 @@ export async function fetchCryptoPrices() {
   } catch (error) {
     console.error('Failed to fetch crypto prices:', error);
     // Return fallback data with cached flag
-    return {
-      btc: { price: 88450, change24h: 0 },
-      eth: { price: 3250, change24h: 0 },
-      cached: true
-    };
+    const fallback = { btc: { price: 88450, change24h: 0 }, eth: { price: 3250, change24h: 0 }, cached: true };
+    cache.crypto = fallback;
+    return fallback;
   }
 }
 
@@ -82,7 +80,7 @@ export async function fetchExchangeRates() {
       GBP: data.rates.GBP,
       JPY: data.rates.JPY,
       TRY: data.rates.TRY,
-      lastUpdate: data.date
+      lastUpdate: data.time_last_update_utc
     };
     cache.timestamps.exchange = Date.now();
     
