@@ -3,36 +3,39 @@
  * Estimates cloud infrastructure costs across providers
  */
 
-// Pricing per unit (approximate, updated periodically)
+// Pricing per unit (2024 rates — approximate, updated periodically)
+// AWS: cpuHour=0.048, ramGbHour=0.006, storageGbMonth=0.023
+// GCP: cpuHour=0.047, ramGbHour=0.0063, storageGbMonth=0.020
+// Azure: cpuHour=0.048, ramGbHour=0.006, storageGbMonth=0.018
 const PRICING = {
   aws: {
     compute: {
-      perVCPU: 0.04,
-      perGB: 0.004
+      perVCPU: 0.048,
+      perGB: 0.006
     },
     storage: {
-      ssd: 0.10,
-      hdd: 0.045
+      ssd: 0.023,
+      hdd: 0.015
     }
   },
   azure: {
     compute: {
-      perVCPU: 0.043,
-      perGB: 0.0045
+      perVCPU: 0.048,
+      perGB: 0.006
     },
     storage: {
-      ssd: 0.12,
-      hdd: 0.048
+      ssd: 0.018,
+      hdd: 0.010
     }
   },
   gcp: {
     compute: {
-      perVCPU: 0.038,
-      perGB: 0.0042
+      perVCPU: 0.047,
+      perGB: 0.0063
     },
     storage: {
-      ssd: 0.11,
-      hdd: 0.040
+      ssd: 0.020,
+      hdd: 0.012
     }
   }
 };
@@ -114,6 +117,10 @@ function formatCloudCostResult(data) {
 
       <div class="cost-note">
         <p>💡 Prices are estimates. Actual costs may vary based on region, reserved instances, and other factors.</p>
+      </div>
+
+      <div class="disclaimer-note" style="margin-top:1rem; padding:0.75rem 1rem; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:8px; font-size:0.8125rem; color:var(--text-muted, #888);">
+        <strong>Disclaimer:</strong> This tool provides estimates only, not financial or professional advice. Cloud pricing changes frequently — always verify current rates with the provider.
       </div>
     </div>
   `;

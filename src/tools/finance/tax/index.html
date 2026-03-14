@@ -66,8 +66,8 @@
               <div class="form-group"><label>Gross Income ($)</label><input type="number" id="grossIncome" placeholder="75000" min="0"></div>
             </div>
             <div class="form-row">
-              <div class="form-group"><label>Pre-tax Deductions ($)</label><input type="number" id="deductions" placeholder="10000" min="0"></div>
-              <div class="form-group"><label>Tax Credits ($)</label><input type="number" id="taxCredits" placeholder="2000" min="0"></div>
+              <div class="form-group"><label>Itemized Deductions ($) <span style="font-size:0.8em;color:var(--text-muted,#888)">(leave 0 to use standard deduction)</span></label><input type="number" id="deductions" placeholder="0" min="0" value="0"></div>
+              <div class="form-group"><label>Tax Credits ($)</label><input type="number" id="taxCredits" placeholder="0" min="0"></div>
             </div>
             <button type="button" id="calcBtn" class="btn btn-primary" style="width: 100%; margin-top: 1rem; height: 52px;">Calculate Tax Estimate</button>
           </div>
@@ -96,6 +96,9 @@
                 <div style="font-size: 0.875rem; color: var(--text-tertiary);">Effective Rate</div>
               </div>
             </div>
+            <div style="margin-top:1.5rem; padding:0.75rem 1rem; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:8px; font-size:0.8125rem; color:var(--text-muted, #888);">
+              <strong>Disclaimer:</strong> This tool provides estimates only, not financial or professional advice. Federal brackets only — state taxes, FICA, AMT, and other factors are not included. Consult a tax professional for your actual tax liability.
+            </div>
           </div>
         </div>
       </div>
@@ -105,20 +108,26 @@
   <script>
     document.getElementById('calcBtn').addEventListener('click', function() {
       const income = parseFloat(document.getElementById('grossIncome').value) || 0;
-      const deductions = parseFloat(document.getElementById('deductions').value) || 0;
+      const itemizedDeductions = parseFloat(document.getElementById('deductions').value) || 0;
       const credits = parseFloat(document.getElementById('taxCredits').value) || 0;
       const filingStatus = document.getElementById('filingStatus').value;
-      
-      const taxableIncome = Math.max(0, income - deductions);
-      
-      // Simplified 2024 tax brackets (single filer)
+
+      // 2024 Standard deductions
+      const standardDeductions = { single: 14600, married: 29200, head: 21900 };
+      const standardDeduction = standardDeductions[filingStatus] || 14600;
+
+      // Use greater of standard or itemized deduction
+      const deduction = Math.max(standardDeduction, itemizedDeductions);
+      const taxableIncome = Math.max(0, income - deduction);
+
+      // 2024 US Federal tax brackets
       let tax = 0;
-      const brackets = filingStatus === 'married' ? 
+      const brackets = filingStatus === 'married' ?
         [[23200, 0.1], [94300, 0.12], [201050, 0.22], [383900, 0.24], [487450, 0.32], [731200, 0.35], [Infinity, 0.37]] :
         filingStatus === 'head' ?
         [[16550, 0.1], [63100, 0.12], [100500, 0.22], [191950, 0.24], [243700, 0.32], [609350, 0.35], [Infinity, 0.37]] :
         [[11600, 0.1], [47150, 0.12], [100525, 0.22], [191950, 0.24], [243725, 0.32], [609350, 0.35], [Infinity, 0.37]];
-      
+
       let remaining = taxableIncome;
       let previous = 0;
       for (const [limit, rate] of brackets) {
@@ -128,12 +137,12 @@
         remaining -= taxableAtRate;
         previous = limit;
       }
-      
+
       const finalTax = Math.max(0, tax - credits);
       const effectiveRate = income > 0 ? ((finalTax / income) * 100).toFixed(1) : 0;
-      
+
       const formatCurrency = (num) => '$' + num.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-      
+
       document.getElementById('taxableIncome').textContent = formatCurrency(taxableIncome);
       document.getElementById('taxLiability').textContent = formatCurrency(finalTax);
       document.getElementById('effectiveRate').textContent = effectiveRate + '%';

@@ -114,6 +114,10 @@ function formatCompoundResult(data) {
           </tbody>
         </table>
       </div>
+
+      <div class="disclaimer-note" style="margin-top:1rem; padding:0.75rem 1rem; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:8px; font-size:0.8125rem; color:var(--text-muted, #888);">
+        <strong>Disclaimer:</strong> This tool provides estimates only, not financial or professional advice. Past returns do not guarantee future results.
+      </div>
     </div>
   `;
 }
