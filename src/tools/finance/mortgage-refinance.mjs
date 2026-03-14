@@ -130,7 +130,7 @@ function generateRecommendation(monthlySavings, breakEvenMonths, interestSaved) 
  */
 function formatRefinanceResult(data) {
   const formatCurrency = (num) => {
-    return '$' + Math.abs(num).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    return `$${  Math.abs(num).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`;
   };
 
   const savingsClass = data.monthlySavings > 0 ? 'positive' : 'negative';
@@ -163,7 +163,7 @@ function formatRefinanceResult(data) {
           <div class="result-label">Total Savings</div>
         </div>
         <div class="result-item">
-          <div class="result-value">${data.breakEvenMonths ? data.breakEvenMonths + ' mo' : 'N/A'}</div>
+          <div class="result-value">${data.breakEvenMonths ? `${data.breakEvenMonths  } mo` : 'N/A'}</div>
           <div class="result-label">Break-Even</div>
         </div>
         <div class="result-item positive">
@@ -210,6 +210,10 @@ function formatRefinanceResult(data) {
           </tbody>
         </table>
       </div>
+
+      <p style="margin-top:1.5rem;font-size:0.8125rem;color:#71717A;border-top:1px solid rgba(255,255,255,0.06);padding-top:1rem;">
+        This tool provides estimates only, not financial or professional advice. Consult a licensed mortgage professional before making refinancing decisions.
+      </p>
     </div>
   `;
 }

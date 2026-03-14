@@ -129,6 +129,10 @@ function formatMortgageResult(data) {
           </tbody>
         </table>
       </div>
+
+      <p style="margin-top:1.5rem;font-size:0.8125rem;color:#71717A;border-top:1px solid rgba(255,255,255,0.06);padding-top:1rem;">
+        This tool provides estimates only, not financial or professional advice. Consult a licensed mortgage professional before making any decisions.
+      </p>
     </div>
   `;
 }
