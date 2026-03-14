@@ -2,18 +2,26 @@
  * WebAuthn FIDO2 Authentication
  * Passwordless authentication with hardware security keys
  * Biometric authentication (TouchID, FaceID, Windows Hello)
+ * SSR-safe: All browser APIs guarded with typeof checks
  */
 
-// Check for WebAuthn support
+// SSR-safe environment detection
+const isBrowserEnv = typeof window !== 'undefined' && typeof document !== 'undefined';
+
+// Check for WebAuthn support (SSR-safe)
 export function isWebAuthnSupported() {
-  return window.PublicKeyCredential !== undefined;
+  return isBrowserEnv && typeof window.PublicKeyCredential !== 'undefined';
 }
 
 // Check for platform authenticator (biometric)
 export async function isPlatformAuthenticatorAvailable() {
   if (!isWebAuthnSupported()) return false;
-  
-  return PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable();
+
+  try {
+    return await window.PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable();
+  } catch (_err) {
+    return false;
+  }
 }
 
 /**

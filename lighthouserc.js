@@ -64,6 +64,7 @@ module.exports = {
     },
     upload: {
       target: 'temporary-public-storage',
+      outputDir: './lighthouse-results',
       githubAppToken: process.env.LHCI_GITHUB_APP_TOKEN,
     },
     server: {

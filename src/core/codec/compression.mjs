@@ -1,11 +1,39 @@
+/* global ImageDecoder, VideoEncoder, VideoFrame, VideoDecoder */
+
 /**
  * Advanced Binary Optimization & Compression
  * WebCodecs API, Zstd, and custom compression algorithms
+ * SSR-safe: All browser APIs are guarded with typeof checks
  */
 
-// Check for WebCodecs support
-const hasWebCodecs = typeof VideoEncoder !== 'undefined' && 
+// SSR-safe WebCodecs feature detection
+const isBrowserEnv = typeof window !== 'undefined' && typeof document !== 'undefined';
+
+const hasWebCodecs = isBrowserEnv &&
+                      typeof VideoEncoder !== 'undefined' &&
                       typeof ImageDecoder !== 'undefined';
+
+/**
+ * Factory: SSR-safe VideoEncoder wrapper
+ * Returns native VideoEncoder in browser, or null in SSR
+ */
+export function createVideoEncoder(init) {
+  if (typeof VideoEncoder !== 'undefined') {
+    return new VideoEncoder(init);
+  }
+  return null;
+}
+
+/**
+ * Factory: SSR-safe ImageDecoder wrapper
+ * Returns native ImageDecoder in browser, or null in SSR
+ */
+export function createImageDecoder(init) {
+  if (typeof ImageDecoder !== 'undefined') {
+    return new ImageDecoder(init);
+  }
+  return null;
+}
 
 // Zstd-inspired fast compression (simplified LZ77 + Huffman)
 class FastCompressor {
@@ -59,7 +87,7 @@ class FastCompressor {
     let bestDistance = 0;
 
     // Simple hash-based search (simplified)
-    const hash = (input[pos] << 16) | (input[pos + 1] << 8) | input[pos + 2];
+    const _hash = (input[pos] << 16) | (input[pos + 1] << 8) | input[pos + 2];
     
     for (let dist = 1; dist <= maxDist; dist++) {
       const start = pos - dist;
@@ -137,10 +165,14 @@ class WebCodecsOptimizer {
 
     try {
       // Decode image
-      const imageDecoder = new ImageDecoder({
+      const imageDecoder = createImageDecoder({
         data: blob,
         type: blob.type
       });
+
+      if (!imageDecoder) {
+        return this.fallbackOptimize(blob, options);
+      }
 
       const frame = await imageDecoder.decode();
       const bitmap = frame.image;
@@ -158,8 +190,7 @@ class WebCodecsOptimizer {
       imageDecoder.close();
       
       return encoded;
-    } catch (error) {
-      console.warn('WebCodecs optimization failed:', error);
+    } catch (_error) {
       return this.fallbackOptimize(blob, options);
     }
   }
@@ -172,19 +203,23 @@ class WebCodecsOptimizer {
       throw new Error('WebCodecs not supported');
     }
 
-    const { fps = 30, quality = 0.85 } = options;
+    const { fps = 30, quality: _quality = 0.85 } = options;
 
     // Use VideoEncoder to create WebM, then convert
     const width = frames[0].width;
     const height = frames[0].height;
 
     const chunks = [];
-    const encoder = new VideoEncoder({
+    const encoder = createVideoEncoder({
       output: (chunk, meta) => {
         chunks.push({ chunk, meta });
       },
-      error: (e) => console.error('VideoEncoder error:', e)
+      error: (_e) => { /* VideoEncoder error handled silently in production */ }
     });
+
+    if (!encoder) {
+      throw new Error('WebCodecs VideoEncoder not available in this environment');
+    }
 
     encoder.configure({
       codec: 'vp9',
@@ -195,8 +230,12 @@ class WebCodecsOptimizer {
     });
 
     // Encode frames
+    const VideoFrameClass = typeof VideoFrame !== 'undefined' ? VideoFrame : null;
+    if (!VideoFrameClass) {
+      throw new Error('VideoFrame not available in this environment');
+    }
     for (let i = 0; i < frames.length; i++) {
-      const frame = new VideoFrame(frames[i], {
+      const frame = new VideoFrameClass(frames[i], {
         timestamp: (i / fps) * 1000000 // microseconds
       });
       encoder.encode(frame);
@@ -217,27 +256,31 @@ class WebCodecsOptimizer {
       return this.fallbackExtractFrames(videoBlob, options);
     }
 
-    const { fps = 1, maxFrames = 100 } = options;
+    const { fps: _fps = 1, maxFrames: _maxFrames = 100 } = options;
 
-    const decoder = new VideoDecoder({
+    if (typeof VideoDecoder === 'undefined') {
+      return this.fallbackExtractFrames(videoBlob, options);
+    }
+
+    const frames = [];
+
+    const _decoder = new VideoDecoder({
       output: (frame) => {
-        // Process frame
         frames.push(frame);
       },
-      error: (e) => console.error('VideoDecoder error:', e)
+      error: () => { /* VideoDecoder error handled silently */ }
     });
 
     // Get video metadata and configure
-    const buffer = await videoBlob.arrayBuffer();
-    
-    // Note: Full implementation would parse container format
-    // This is a simplified version
-    
-    const frames = [];
+    const _buffer = await videoBlob.arrayBuffer();
+
+    // TODO: Full implementation would parse container format (WebM/MP4)
+    // This is a simplified placeholder version
+
     return frames;
   }
 
-  fallbackOptimize(blob, options) {
+  fallbackOptimize(blob, _options) {
     // Return as-is for now - Canvas API would be used here
     return Promise.resolve(blob);
   }
@@ -296,7 +339,7 @@ class PDFCompressor {
    * Compress PDF by optimizing structure
    */
   async compressPDF(pdfBytes, options = {}) {
-    const { compressImages = true, removeMetadata = false, linearize = true } = options;
+    const { compressImages = true, removeMetadata = false, linearize: _linearize = true } = options;
 
     // Parse PDF structure
     const view = new Uint8Array(pdfBytes);
@@ -324,7 +367,7 @@ class PDFCompressor {
     return header.includes('/FlateDecode') || header.includes('/DCTDecode');
   }
 
-  async compressStreams(data, compressImages) {
+  async compressStreams(data, _compressImages) {
     // This is a simplified version
     // Full implementation would parse PDF objects and compress streams
     

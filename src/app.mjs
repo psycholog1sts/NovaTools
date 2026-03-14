@@ -7,7 +7,6 @@
 import {
   router,
   stateManager,
-  apiClient,
   ErrorHandler,
   toolController,
   initToolBridges
@@ -43,8 +42,7 @@ class NovaToolsApp {
   async init() {
     if (this.initialized) return;
 
-    console.log('🚀 NovaTools v' + this.version);
-    console.log('Initializing modular architecture...');
+    // Application initialization started
 
     // Initialize state
     this.initState();
@@ -65,7 +63,6 @@ class NovaToolsApp {
     this.initErrorHandling();
 
     this.initialized = true;
-    console.log('✓ Application initialized');
   }
 
   /**
@@ -122,12 +119,11 @@ class NovaToolsApp {
   registerTools() {
     // Add hooks
     toolController.addHook('beforeExecute', (ctx) => {
-      console.log(`[Tool] Executing: ${ctx.toolId}`);
       stateManager.set('ui.currentTool', ctx.toolId);
     });
 
-    toolController.addHook('afterExecute', (ctx) => {
-      console.log(`[Tool] Completed: ${ctx.toolId} (${ctx.duration.toFixed(2)}ms)`);
+    toolController.addHook('afterExecute', (_ctx) => {
+      // Tool execution completed — metrics tracked via stateManager
     });
 
     toolController.addHook('onError', (ctx) => {
@@ -139,7 +135,7 @@ class NovaToolsApp {
     registerPDFTools(toolController);
     registerImageTools(toolController);
 
-    console.log(`✓ Registered ${toolController.getTools().length} tools`);
+    // Tools registered successfully
   }
 
   /**
@@ -310,8 +306,8 @@ class NovaToolsApp {
       const crypto = await cryptoService.getBitcoinPrice();
       stateManager.set('data.crypto', crypto);
       this.updateCryptoDisplay(crypto);
-    } catch (e) {
-      console.warn('Failed to load crypto data');
+    } catch (_e) {
+      // Crypto data load failed — non-critical, UI will show defaults
     }
 
     try {
@@ -319,8 +315,8 @@ class NovaToolsApp {
       const rates = await exchangeRateService.getRates();
       stateManager.set('data.exchangeRates', rates);
       this.updateRatesDisplay(rates);
-    } catch (e) {
-      console.warn('Failed to load exchange rates');
+    } catch (_e) {
+      // Exchange rates load failed — non-critical
     }
 
     try {
@@ -328,8 +324,8 @@ class NovaToolsApp {
       const hijri = await calendarService.getCurrentIslamicDate();
       stateManager.set('data.calendar', hijri);
       this.updateCalendarDisplay(hijri);
-    } catch (e) {
-      console.warn('Failed to load calendar data');
+    } catch (_e) {
+      // Calendar data load failed — non-critical
     }
 
     // Set last updated

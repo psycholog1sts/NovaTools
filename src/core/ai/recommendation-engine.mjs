@@ -76,7 +76,7 @@ export function getRecommendations(currentTool, userContext = {}) {
   // Get related tools
   if (relationships.related) {
     relationships.related.forEach(tool => {
-      let confidence = relationships.confidence?.[tool] || 0.40;
+      const confidence = relationships.confidence?.[tool] || 0.40;
       
       recommendations.push({
         tool,
@@ -133,8 +133,9 @@ export function trackToolUsage(tool, metadata = {}) {
     if (history.length > 50) history.shift();
     
     localStorage.setItem('zerotools_history', JSON.stringify(history));
-  } catch {
-    // localStorage not available
+  } catch (_e) {
+    // localStorage not available in SSR or private browsing
+    void _e;
   }
 }
 
@@ -176,7 +177,8 @@ export function getPersonalizedRecommendations() {
         confidence: 0.70,
         reason: 'Sık kullandığınız kategoriden'
       }));
-  } catch {
+  } catch (_e) {
+    // localStorage may not be available
     return [];
   }
 }
@@ -219,13 +221,19 @@ export function shouldShowRecommendations() {
         return false;
       }
     }
-  } catch {}
-  
+  } catch (_e) {
+    // localStorage may not be available in SSR or private browsing
+    void _e;
+  }
+
   return true;
 }
 
 export function dismissRecommendations() {
   try {
     localStorage.setItem('zerotools_recommendations_dismissed', Date.now().toString());
-  } catch {}
+  } catch (_e) {
+    // localStorage may not be available in SSR or private browsing
+    void _e;
+  }
 }

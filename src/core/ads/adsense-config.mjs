@@ -38,7 +38,6 @@ const ADSENSE_CONFIG = {
 
 export function initAdSense() {
   if (shouldBlockAds()) {
-    console.log('[Ads] Blocking ads - DNT enabled');
     return;
   }
   
@@ -52,7 +51,10 @@ function shouldBlockAds() {
   if (navigator.globalPrivacyControl) return true;
   try {
     if (localStorage.getItem('novatools_no_ads') === 'true') return true;
-  } catch (e) {}
+  } catch (_e) {
+    // Storage/ad operation may fail in restricted environments
+    void _e;
+  }
   return false;
 }
 
@@ -95,7 +97,10 @@ function initSidebarAd() {
   
   try {
     (window.adsbygoogle = window.adsbygoogle || []).push({});
-  } catch (e) {}
+  } catch (_e) {
+    // Storage/ad operation may fail in restricted environments
+    void _e;
+  }
 }
 
 function initAnchorAd() {
@@ -116,7 +121,10 @@ function initAnchorAd() {
   
   try {
     (window.adsbygoogle = window.adsbygoogle || []).push({ overlays: { bottom: true } });
-  } catch (e) {}
+  } catch (_e) {
+    // Storage/ad operation may fail in restricted environments
+    void _e;
+  }
 }
 
 function createAdElement({ slot, format, responsive, style }) {
@@ -143,7 +151,10 @@ function setupLazyLoading() {
         entry.target.dataset.adLoaded = 'true';
         try {
           (window.adsbygoogle = window.adsbygoogle || []).push({});
-        } catch (e) {}
+        } catch (_e) {
+    // Storage/ad operation may fail in restricted environments
+    void _e;
+  }
       }
     });
   }, { rootMargin: '100%' });
@@ -169,7 +180,10 @@ export function disableAds() {
   try {
     localStorage.setItem('novatools_no_ads', 'true');
     document.querySelectorAll('.adsbygoogle').forEach(el => el.style.display = 'none');
-  } catch (e) {}
+  } catch (_e) {
+    // Storage/ad operation may fail in restricted environments
+    void _e;
+  }
 }
 
 export { ADSENSE_CONFIG };

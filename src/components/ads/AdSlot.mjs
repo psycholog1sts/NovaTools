@@ -326,11 +326,11 @@ export function initializeAds(config = {}) {
     });
   } else {
     // Immediate load if lazy loading not supported
-    document.querySelectorAll('.adsbygoogle').forEach(ad => {
+    document.querySelectorAll('.adsbygoogle').forEach(_ad => {
       try {
         (window.adsbygoogle = window.adsbygoogle || []).push({});
-      } catch (e) {
-        console.warn('Ad load failed:', e);
+      } catch (_e) {
+        // Ad load failed — non-critical, fallback shown
       }
     });
   }
