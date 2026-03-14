@@ -739,111 +739,63 @@
     </main>
     
     <!-- Footer -->
-    <footer class="footer">
-      <div class="container">
-        <div class="footer-grid">
-          <!-- Brand -->
-          <div class="footer-brand">
-            <a href="/" class="footer-logo">
-              <div class="neon-logo" style="width: 36px; height: 36px;">
-                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <defs>
-                    <linearGradient id="footerLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" style="stop-color:#00F5D4"/>
-                      <stop offset="50%" style="stop-color:#00D9FF"/>
-                      <stop offset="100%" style="stop-color:#00FF88"/>
-                    </linearGradient>
-                  </defs>
-                  <path d="M50 75 L35 55 L25 40 L35 45 L45 50" stroke="url(#footerLogoGrad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-                  <path d="M50 75 L65 55 L75 40 L65 45 L55 50" stroke="url(#footerLogoGrad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-                  <path d="M50 75 L50 55 L45 45 L50 50 L55 45 L50 55" stroke="url(#footerLogoGrad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-                  <path d="M50 75 L45 85 L50 80 L55 85 L50 75" stroke="url(#footerLogoGrad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-                </svg>
-              </div>
-              <span style="font-weight: 700; font-size: 1.125rem;">NovaTools <span style="color: #00D9FF;">MC</span></span>
-            </a>
-            <p class="footer-tagline">
-              Professional utility tools that respect your privacy. All processing happens client-side.
-            </p>
-          </div>
-          
-          <!-- Tools Links -->
-          <div>
-            <h4 class="footer-title">Tools</h4>
-            <ul class="footer-links">
-              <li><a href="/tools/finance/mortgage-refinance/" class="footer-link">Mortgage Refinance</a></li>
-              <li><a href="/tools/finance/life-insurance/" class="footer-link">Life Insurance</a></li>
-              <li><a href="/tools/finance/crypto-tax/" class="footer-link">Crypto Tax</a></li>
-              <li><a href="/tools/finance/student-loan/" class="footer-link">Student Loan</a></li>
-              <li><a href="/tools/religious/islamic-calendar/" class="footer-link">Islamic Calendar</a></li>
-              <li><a href="/tools/news/summarizer/" class="footer-link">News Brief</a></li>
-              <li><a href="/tools/pdf/merge/" class="footer-link">PDF Merge</a></li>
-            </ul>
-          </div>
-          
-          <!-- Legal Links -->
-          <div>
-            <h4 class="footer-title">Legal</h4>
-            <ul class="footer-links">
-              <li><a href="/privacy" class="footer-link">Privacy Policy</a></li>
-              <li><a href="/terms" class="footer-link">Terms of Use</a></li>
-              <li><a href="/disclaimer" class="footer-link">Disclaimer</a></li>
-            </ul>
-          </div>
-          
-          <!-- Connect Links -->
-          <div>
-            <h4 class="footer-title">Contact</h4>
-            <ul class="footer-links">
-              <li><a href="mailto:proside2026@gmail.com" class="footer-link">proside2026@gmail.com</a></li>
-            </ul>
-          </div>
-        </div>
-        
-        <!-- Live Ticker -->
-        <div class="live-ticker" style="margin: 2rem 0; padding: 1rem 0; border-top: 1px solid var(--border-default); border-bottom: 1px solid var(--border-default);">
-          <style>
-            .live-ticker { display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; font-size: 0.875rem; color: var(--text-secondary); }
-            .ticker-item { display: flex; align-items: center; gap: 0.5rem; }
-            .ticker-item .value { color: var(--text-primary); font-weight: 600; }
-            .ticker-item .change { font-size: 0.75rem; padding: 0.125rem 0.375rem; border-radius: 4px; }
-            .ticker-item .change.positive { color: #22C55E; background: rgba(34, 197, 94, 0.1); }
-            .ticker-item .change.negative { color: #ef4444; background: rgba(239, 68, 68, 0.1); }
-            .ticker-item.holiday { color: var(--accent-hover); }
-          </style>
-          <div class="ticker-item">
-            <span>💵 USD/EUR:</span>
-            <span class="value" id="usdeur">-</span>
-          </div>
-          <div class="ticker-item">
-            <span>💴 USD/JPY:</span>
-            <span class="value" id="usdjpy">-</span>
-          </div>
-          <div class="ticker-item">
-            <span>🪙 BTC:</span>
-            <span class="value" id="btcprice">-</span>
-          </div>
-          <div class="ticker-item">
-            <span>📈 S&P 500:</span>
-            <span class="value" id="sp500">-</span>
-          </div>
-          <div class="ticker-item holiday" id="holidayCountdown">
-            <span>🎉</span>
-            <span id="holidayText">Loading...</span>
-          </div>
-        </div>
-
-        <div class="footer-bottom">
-          <p class="footer-copyright">
-            © 2026 Psychological Counselor Metehan ÇETİN. All rights reserved.
-          </p>
-          <p class="footer-privacy-note">
-            <span style="width: 6px; height: 6px; background: var(--success); border-radius: 50%; box-shadow: 0 0 8px var(--success);"></span>
-            Your data stays in your browser
-          </p>
+    <footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h3 class="footer-brand">NovaTools MC</h3>
+        <p class="footer-about">Free professional tools for finance, PDF, image processing, and development. All calculations run in your browser — your data never leaves your device.</p>
+        <span class="footer-privacy-badge">🔒 Privacy First</span>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-heading">Top Tools</h4>
+        <ul class="footer-links">
+          <li><a href="/tools/finance/mortgage-refinance/">Mortgage Refinance Calculator</a></li>
+          <li><a href="/tools/finance/compound-interest/">Compound Interest Calculator</a></li>
+          <li><a href="/tools/finance/tax/">Tax Estimator 2024</a></li>
+          <li><a href="/tools/dev/json-formatter/">JSON Formatter</a></li>
+          <li><a href="/tools/dev/regex-tester/">Regex Tester</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-heading">Financial Tips</h4>
+        <ol class="footer-tips">
+          <li>Build 6 months emergency fund before any major financial decision.</li>
+          <li>Refinance only if break-even point is under 36 months.</li>
+          <li>Diversify: index funds, real estate, and liquid savings.</li>
+        </ol>
+        <div class="footer-contact">
+          <p>Psk. Metehan CETIN</p>
+          <a href="mailto:proside2026@gmail.com">proside2026@gmail.com</a>
         </div>
       </div>
-    </footer>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 NovaTools MC &mdash; Psk. Metehan CETIN. All rights reserved.</p>
+      <p class="footer-disclaimer">All tools provide estimates only, not financial or professional advice.</p>
+    </div>
+  </div>
+</footer>
+<style>
+.site-footer { background: rgba(10,10,14,0.95); border-top: 1px solid rgba(0,217,255,0.1); padding: 3rem 1rem 1.5rem; margin-top: 4rem; }
+.footer-container { max-width: 1200px; margin: 0 auto; }
+.footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2.5rem; margin-bottom: 2.5rem; }
+.footer-brand { color: #00D9FF; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.75rem; }
+.footer-about { color: #718096; font-size: 0.875rem; line-height: 1.7; margin-bottom: 0.75rem; }
+.footer-privacy-badge { display: inline-block; padding: 3px 10px; background: rgba(0,255,136,0.1); border: 1px solid rgba(0,255,136,0.3); border-radius: 12px; color: #00FF88; font-size: 0.75rem; }
+.footer-heading { color: #E2E8F0; font-size: 0.875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.875rem; }
+.footer-links { list-style: none; padding: 0; }
+.footer-links li { margin-bottom: 0.5rem; }
+.footer-links a { color: #718096; font-size: 0.875rem; text-decoration: none; transition: color 0.15s; }
+.footer-links a:hover { color: #00D9FF; }
+.footer-tips { padding-left: 1.25rem; color: #718096; font-size: 0.8125rem; line-height: 1.7; margin-bottom: 1.25rem; }
+.footer-tips li { margin-bottom: 0.375rem; }
+.footer-contact { color: #718096; font-size: 0.8125rem; }
+.footer-contact a { color: #00D9FF; text-decoration: none; }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1.25rem; text-align: center; }
+.footer-bottom p { color: #718096; font-size: 0.8125rem; line-height: 1.6; }
+.footer-disclaimer { margin-top: 0.375rem; }
+</style>
     
     <!-- Mobile Anchor Ad -->
     <div class="ad-mobile-anchor" role="complementary" aria-label="Advertisement">
