@@ -50,19 +50,8 @@
     .pattern-row:focus-within { border-color: rgba(0,217,255,0.45); box-shadow: 0 0 0 3px rgba(0,217,255,0.08); }
     .pattern-slash { padding: 0 0.625rem; font-family: 'JetBrains Mono', monospace; font-size: 1.25rem; color: rgba(0,217,255,0.5); user-select: none; line-height: 1; }
     #patternInput { flex: 1; padding: 0.75rem 0; background: transparent; border: none; color: #00D9FF; font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.9375rem; line-height: 1.5; outline: none; }
-  <style>
-    .tool-wrapper { max-width: 960px; margin: 0 auto; padding: 3rem 1rem 5rem; }
-    .tool-hero { text-align: center; margin-bottom: 2.5rem; }
-    .tool-hero-icon { font-size: 3.5rem; line-height: 1; margin-bottom: 1rem; }
-    .tool-hero h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; letter-spacing: -0.02em; color: #FAFAFA; margin-bottom: 0.75rem; }
-    .tool-hero p { color: #A1A1AA; font-size: 1.0625rem; max-width: 560px; margin: 0 auto; }
-    .card { background: rgba(15,15,20,0.7); border: 1px solid rgba(0,217,255,0.15); border-radius: 14px; padding: 1.75rem; backdrop-filter: blur(12px); margin-bottom: 1.5rem; }
-    .input-label { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #71717A; margin-bottom: 0.625rem; }
-    .pattern-row { display: flex; align-items: center; background: #0F0F12; border: 1px solid rgba(0,217,255,0.12); border-radius: 10px; overflow: hidden; transition: border-color 0.2s, box-shadow 0.2s; margin-bottom: 1rem; }
-    .pattern-row:focus-within { border-color: rgba(0,217,255,0.45); box-shadow: 0 0 0 3px rgba(0,217,255,0.08); }
-    .pattern-slash { padding: 0 0.625rem; font-family: 'JetBrains Mono', monospace; font-size: 1.25rem; color: rgba(0,217,255,0.5); user-select: none; line-height: 1; }
-    #patternInput { flex: 1; padding: 0.75rem 0; background: transparent; border: none; color: #00D9FF; font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.9375rem; line-height: 1.5; outline: none; }
     #patternInput::placeholder { color: #3D3D4A; }
+    .pattern-row--error { border-color: rgba(255,85,85,0.55) !important; box-shadow: 0 0 0 3px rgba(255,85,85,0.1) !important; }
     .flags-row { display: flex; align-items: center; flex-wrap: wrap; gap: 0.625rem; margin-bottom: 1.25rem; }
     .flags-label { font-size: 0.8125rem; font-weight: 600; color: #71717A; letter-spacing: 0.05em; text-transform: uppercase; margin-right: 0.25rem; }
     .flag-checkbox { display: none; }
@@ -323,8 +312,9 @@
     const matchBadgeText    = document.getElementById('matchBadgeText');
     const tableSection      = document.getElementById('tableSection');
     const matchTableBody    = document.getElementById('matchTableBody');
-    function showError(msg) { errorText.textContent = msg; errorBanner.classList.add('visible'); }
-    function hideError() { errorBanner.classList.remove('visible'); }
+    const patternRow = document.querySelector('.pattern-row');
+    function showError(msg) { errorText.textContent = msg; errorBanner.classList.add('visible'); patternRow.classList.add('pattern-row--error'); }
+    function hideError() { errorBanner.classList.remove('visible'); patternRow.classList.remove('pattern-row--error'); }
 
     function setHighlight(html) {
       highlightOutput.innerHTML = html;
