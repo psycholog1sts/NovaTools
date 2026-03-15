@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y896L63239"></script>
@@ -10,6 +10,7 @@
   gtag('config', 'G-Y896L63239');
 </script>
   <meta charset="UTF-8">
+  <script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -63,21 +64,21 @@
     .tool-header p { color: var(--text-secondary); }
     
     .dropzone {
-      border: 2px dashed rgba(255, 255, 255, 0.1);
+      border: 2px dashed var(--border-default);
       border-radius: 16px;
       padding: 3rem 2rem;
       text-align: center;
-      background: rgba(255, 255, 255, 0.03);
+      background: var(--surface-default);
       transition: all 0.3s ease;
       cursor: pointer;
     }
     .dropzone:hover {
-      border-color: rgba(99, 102, 241, 0.5);
-      background: rgba(255, 255, 255, 0.06);
+      border-color: var(--border-accent);
+      background: var(--border-default);
     }
     .dropzone.drag-active {
-      border-color: #6366F1;
-      background: rgba(99, 102, 241, 0.1);
+      border-color: var(--accent-primary);
+      background: var(--accent-subtle);
       transform: scale(1.02);
     }
     .dropzone-icon { font-size: 3rem; margin-bottom: 1rem; }
@@ -90,8 +91,8 @@
       align-items: center;
       gap: 1rem;
       padding: 1rem;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: var(--surface-default);
+      border: 1px solid var(--border-default);
       border-radius: 10px;
       margin-bottom: 0.75rem;
     }
@@ -156,7 +157,7 @@
     .progress-section.visible { display: block; }
     .progress-bar {
       height: 8px;
-      background: rgba(255, 255, 255, 0.1);
+      background: var(--border-hover);
       border-radius: 4px;
       overflow: hidden;
       margin: 1rem 0;
@@ -215,18 +216,40 @@
   <div class="noise-overlay" aria-hidden="true"></div>
   
   <div id="app" class="app">
-    <header class="main-header">
+        <header class="main-header">
       <div class="container">
         <div class="header-inner">
           <a href="/" class="logo" aria-label="NovaTools MC Home">
-            <img src="/image.png" alt="NovaTools MC" class="header-logo-img" width="52" height="52">
+            <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
             <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
           </a>
+          <nav class="nav-desktop" aria-label="Main navigation">
+            <a href="/#finance" class="nav-link">Finance</a>
+            <a href="/#pdf" class="nav-link">PDF Tools</a>
+            <a href="/#image" class="nav-link">Images</a>
+            <a href="/#dev" class="nav-link">Developers</a>
+          </nav>
+          <div class="privacy-badge" title="Your data never leaves your browser">
+            <span class="privacy-badge-dot"></span>
+            <span>Privacy First</span>
+          </div>
+          <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+            <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+          <button type="button" id="mobileMenuBtn" class="menu-btn" aria-label="Toggle menu" aria-expanded="false">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
         </div>
+        <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
+          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+        </nav>
       </div>
     </header>
-
-    <main class="main-content">
+<main class="main-content">
       <div class="tool-container">
         <div class="tool-header">
           <h1>📎 PDF Merge Tool</h1>
@@ -299,13 +322,13 @@
         <!-- In-Tool Ad -->
         <div style="margin-top: 2rem; text-align: center;">
           <div style="font-size: 0.6875rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 0.5rem;">Sponsored</div>
-          <div style="display: inline-flex; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 0.75rem;">
+          <div style="display: inline-flex; background: var(--surface-default); border: 1px solid var(--border-default); border-radius: 12px; padding: 0.75rem;">
             <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="PDF_MERGE_SLOT"></ins>
           </div>
         </div>
         
         <!-- SEO Content Block -->
-        <article class="seo-content" style="margin-top: 3rem; padding: 2rem; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: var(--radius-lg);">
+        <article class="seo-content" style="margin-top: 3rem; padding: 2rem; background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-default); border-radius: var(--radius-lg);">
           <h2 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem;">Merge PDF Files Online - Free PDF Combiner</h2>
           <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">
             Looking for the easiest way to <strong>merge PDF online</strong> and <strong>combine PDF files</strong> into a single document? 
@@ -328,21 +351,21 @@
           
           <h3 style="font-size: 1.25rem; font-weight: 600; margin: 1.5rem 0 1rem;">Frequently Asked Questions</h3>
           
-          <details style="margin-bottom: 0.75rem; background: rgba(255, 255, 255, 0.03); border-radius: var(--radius-md);">
+          <details style="margin-bottom: 0.75rem; background: var(--surface-default); border-radius: var(--radius-md);">
             <summary style="padding: 1rem; cursor: pointer; font-weight: 500; color: var(--text-primary);">Is this PDF merger completely free to use?</summary>
             <div style="padding: 0 1rem 1rem; color: var(--text-secondary); line-height: 1.6;">
               Yes, our PDF merge tool is 100% free to use with no hidden fees, no registration required, and no watermarks added to your documents. You can combine PDF files as often as you need.
             </div>
           </details>
           
-          <details style="margin-bottom: 0.75rem; background: rgba(255, 255, 255, 0.03); border-radius: var(--radius-md);">
+          <details style="margin-bottom: 0.75rem; background: var(--surface-default); border-radius: var(--radius-md);">
             <summary style="padding: 1rem; cursor: pointer; font-weight: 500; color: var(--text-primary);">Are my PDF files secure when merging online?</summary>
             <div style="padding: 0 1rem 1rem; color: var(--text-secondary); line-height: 1.6;">
               Absolutely! All processing happens directly in your browser using client-side technology. Your PDFs are never uploaded to our servers, ensuring complete privacy and security for your sensitive documents.
             </div>
           </details>
           
-          <details style="margin-bottom: 0.75rem; background: rgba(255, 255, 255, 0.03); border-radius: var(--radius-md);">
+          <details style="margin-bottom: 0.75rem; background: var(--surface-default); border-radius: var(--radius-md);">
             <summary style="padding: 1rem; cursor: pointer; font-weight: 500; color: var(--text-primary);">How many PDF files can I merge at once?</summary>
             <div style="padding: 0 1rem 1rem; color: var(--text-secondary); line-height: 1.6;">
               You can merge up to 20 PDF files in a single operation, with a combined total size limit of 50MB. This makes it perfect for combining multiple reports, presentations, or scanned documents.
@@ -357,9 +380,43 @@
   <p>Estimates only &mdash; not financial, legal, or tax advice.</p>
 </footer>
 <style>
-.tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid rgba(255,255,255,0.06); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }
+.tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }
 .tool-footer a { color: #00D9FF; text-decoration: none; }
 </style>
   </div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var menuBtn = document.getElementById('mobileMenuBtn');
+  var mobileMenu = document.getElementById('mobileMenu');
+  if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener('click', function() {
+      var isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+      menuBtn.setAttribute('aria-expanded', !isExpanded);
+      mobileMenu.hidden = isExpanded;
+      mobileMenu.classList.toggle('active', !isExpanded);
+    });
+  }
+  var themeBtn = document.getElementById('themeToggle');
+  if (themeBtn) {
+    function getTheme() {
+      var s = localStorage.getItem('theme');
+      if (s) return s;
+      return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    }
+    function updateIcon() {
+      var t = getTheme();
+      themeBtn.querySelector('.icon-sun').style.display = t === 'light' ? 'none' : 'block';
+      themeBtn.querySelector('.icon-moon').style.display = t === 'dark' ? 'none' : 'block';
+    }
+    themeBtn.addEventListener('click', function() {
+      var next = getTheme() === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      updateIcon();
+    });
+    updateIcon();
+  }
+});
+</script>
 </body>
 </html>
