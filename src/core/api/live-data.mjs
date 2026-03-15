@@ -4,7 +4,7 @@
  */
 
 const API_ENDPOINTS = {
-  exchange: 'https://open.er-api.com/v6/latest/USD',
+  exchange: 'https://api.exchangerate-api.com/v4/latest/USD',
   islamicCalendar: 'https://api.aladhan.com/v1/gToH?date='
 };
 
@@ -80,7 +80,7 @@ export async function fetchExchangeRates() {
       GBP: data.rates.GBP,
       JPY: data.rates.JPY,
       TRY: data.rates.TRY,
-      lastUpdate: data.time_last_update_utc
+      lastUpdate: data.time_last_update_utc || data.date || new Date().toISOString().split('T')[0]
     };
     cache.timestamps.exchange = Date.now();
     

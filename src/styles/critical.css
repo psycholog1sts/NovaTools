@@ -849,9 +849,12 @@ ul, ol {
 
 .card-description {
   font-size: 0.9375rem;
-  color: var(--text-tertiary);
+  color: #9CA3AF;
   line-height: 1.6;
   margin-bottom: 1rem;
+}
+[data-theme="light"] .card-description {
+  color: #4B5563;
 }
 
 .card-arrow {

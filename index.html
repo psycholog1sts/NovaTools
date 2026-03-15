@@ -14,8 +14,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <!-- Preconnect for performance -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
 
   <!-- Preload LCP hero image -->
   <link rel="preload" as="image" type="image/webp" href="/logo-brand-260.webp" fetchpriority="high">
@@ -706,6 +706,12 @@
         <h3 class="footer-brand">NovaTools MC</h3>
         <p class="footer-about">Free professional tools for finance, PDF, image processing, and development. All calculations run in your browser — your data never leaves your device.</p>
         <span class="footer-privacy-badge">🔒 Privacy First</span>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem;">
+          <span class="footer-privacy-badge">No Data Stored</span>
+          <span class="footer-privacy-badge">100% Client-Side</span>
+          <span class="footer-privacy-badge">No Cookies Required</span>
+          <span class="footer-privacy-badge">GDPR Friendly</span>
+        </div>
       </div>
       <div class="footer-col">
         <h4 class="footer-heading">Top Tools</h4>
@@ -750,8 +756,7 @@
   <!-- Main JavaScript - Modular Architecture -->
   <script type="module" src="/src/app.mjs"></script>
   
-  <!-- pdf-lib for PDF processing -->
-  <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+  <!-- pdf-lib loaded on-demand by PDF tool pages only -->
   
   <!-- Mobile Menu Toggle -->
   <script>

@@ -20,21 +20,30 @@ class ExchangeRateService {
    */
   async getRates() {
     try {
-      const data = await apiClient.get(`${this.baseUrl}/latest/USD`);
-      
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 8000);
+
+      const response = await fetch(`${this.baseUrl}/latest/USD`, {
+        signal: controller.signal
+      });
+      clearTimeout(timeoutId);
+
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const data = await response.json();
+
       const result = {
-        base: data.base,
-        date: data.date,
+        base: data.base || 'USD',
+        date: data.date || new Date().toISOString().split('T')[0],
         rates: data.rates,
         timestamp: Date.now()
       };
 
       // Update state
       stateManager.set('data.exchangeRates', result);
-      
+
       return result;
     } catch (error) {
-      console.error('Failed to fetch exchange rates:', error);
+      console.warn('Exchange rate fetch failed, using fallback:', error.message);
       return this.getFallbackRates();
     }
   }
