@@ -225,16 +225,27 @@ ul, ol {
   opacity: 0.9;
 }
 
-.logo:hover .neon-logo {
-  filter: drop-shadow(0 0 12px rgba(57, 255, 20, 0.6))
-          drop-shadow(0 0 24px rgba(0, 207, 255, 0.4));
+.logo:hover .header-logo-img {
+  filter: drop-shadow(0 0 14px rgba(57, 255, 20, 0.7))
+          drop-shadow(0 0 28px rgba(0, 207, 255, 0.5));
   transform: scale(1.05);
 }
 
-/* Neon Logo Icon */
+/* Header PNG Logo */
+.header-logo-img {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 8px rgba(57, 255, 20, 0.45))
+          drop-shadow(0 0 18px rgba(0, 207, 255, 0.35));
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+/* Neon Logo Icon (backward compat) */
 .neon-logo {
-  width: 42px;
-  height: 42px;
+  width: 52px;
+  height: 52px;
   border-radius: var(--radius-md);
   display: flex;
   align-items: center;
@@ -244,9 +255,10 @@ ul, ol {
   transition: all 0.3s ease;
 }
 
-.neon-logo svg {
+.neon-logo svg, .neon-logo img {
   width: 100%;
   height: 100%;
+  object-fit: contain;
 }
 
 /* Logo Text */
@@ -418,6 +430,26 @@ ul, ol {
   align-items: center;
   margin-bottom: 2rem;
   animation: fadeInUp 0.8s ease-out;
+}
+
+/* Hero brand PNG logo */
+.hero-brand-img {
+  width: 260px;
+  height: 260px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 28px rgba(57, 255, 20, 0.45))
+          drop-shadow(0 0 56px rgba(0, 207, 255, 0.3))
+          drop-shadow(0 0 84px rgba(0, 207, 255, 0.15));
+  animation: float 6s ease-in-out infinite;
+  display: block;
+  margin: 0 auto 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .hero-brand-img {
+    width: 320px;
+    height: 320px;
+  }
 }
 
 .hero-neon-logo {
