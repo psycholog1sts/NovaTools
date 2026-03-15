@@ -22,15 +22,15 @@
   
   /* Glass effect */
   .glass {
-    background: rgba(255, 255, 255, 0.03);
+    background: var(--surface-default);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--border-default);
   }
-  
+
   .glass-hover:hover {
-    background: rgba(255, 255, 255, 0.06);
-    border-color: rgba(255, 255, 255, 0.12);
+    background: var(--surface-hover);
+    border-color: var(--border-hover);
   }
   
   /* Glow effects */
@@ -111,12 +111,20 @@
   
   /* Input styles */
   .input-field {
-    @apply w-full h-12 px-4 bg-[#0F0F12] text-white border border-white/10 rounded-lg 
+    @apply w-full h-12 px-4 border rounded-lg
            placeholder:text-gray-500
-           hover:border-white/20
-           focus:border-[#6366F1] focus:ring-2 focus:ring-[#6366F1]/20
            focus:outline-none
            transition-all duration-200;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    border-color: var(--border-default);
+  }
+  .input-field:hover {
+    border-color: var(--border-hover);
+  }
+  .input-field:focus {
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 2px var(--accent-glow);
   }
   
   .input-error {
@@ -150,14 +158,20 @@
   
   /* Ad container refinements */
   .ad-container-refined {
-    @apply bg-[#141416] border border-white/[0.06] rounded-xl;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-default);
+    @apply rounded-xl;
   }
   
   /* Feature card with icon */
   .feature-card {
-    @apply p-6 rounded-xl bg-white/[0.03] border border-white/[0.06]
-           hover:bg-white/[0.06] hover:border-white/[0.12]
-           transition-all duration-300;
+    @apply p-6 rounded-xl transition-all duration-300;
+    background: var(--surface-default);
+    border: 1px solid var(--border-default);
+  }
+  .feature-card:hover {
+    background: var(--surface-hover);
+    border-color: var(--border-hover);
   }
   
   .feature-card-icon {
@@ -168,14 +182,16 @@
   
   /* Stat card */
   .stat-card {
-    @apply p-6 rounded-xl bg-white/[0.03] border border-white/[0.06]
-           text-center transition-all duration-300;
+    @apply p-6 rounded-xl text-center transition-all duration-300;
+    background: var(--surface-default);
+    border: 1px solid var(--border-default);
   }
-  
+
   .stat-card:hover {
-    @apply bg-white/[0.06] border-white/[0.12];
+    background: var(--surface-hover);
+    border-color: var(--border-hover);
     transform: translateY(-4px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
   }
   
   .stat-card-value {
@@ -193,8 +209,10 @@
   
   /* Tag/Badge */
   .tag {
-    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
-           bg-white/[0.06] text-gray-400 border border-white/[0.08];
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+    background: var(--surface-default);
+    color: var(--text-tertiary);
+    border: 1px solid var(--border-default);
   }
   
   .tag-accent {
@@ -217,13 +235,13 @@
   
   /* Selection styling */
   ::selection {
-    background: rgba(99, 102, 241, 0.3);
+    background: var(--accent-glow);
     color: white;
   }
-  
+
   /* Focus visible for keyboard navigation */
   :focus-visible {
-    outline: 2px solid #6366F1;
+    outline: 2px solid var(--accent-primary);
     outline-offset: 2px;
   }
   

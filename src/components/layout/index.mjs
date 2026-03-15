@@ -9,45 +9,25 @@
 export function createHeader() {
   const header = document.createElement('header');
   header.className = 'main-header';
+  // Note: innerHTML used here with static template literals only (no user input)
   header.innerHTML = `
     <div class="container">
       <div class="flex items-center justify-between py-4">
         <a href="/" class="flex items-center gap-2 text-xl font-bold text-primary-600" aria-label="NovaTools Ana Sayfa">
-          <div class="logo-icon neon-logo">
-            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="layoutLogoGrad" x1="0%" y1="50%" x2="100%" y2="50%">
-                  <stop offset="0%" stop-color="#39FF14"/>
-                  <stop offset="100%" stop-color="#00CFFF"/>
-                </linearGradient>
-                <filter id="layoutGlow" x="-30%" y="-30%" width="160%" height="160%">
-                  <feGaussianBlur stdDeviation="2" result="blur"/>
-                  <feMerge><feMergeNode in="blur"/><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-                </filter>
-              </defs>
-              <g filter="url(#layoutGlow)" stroke="url(#layoutLogoGrad)" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M50 75 L35 55 L25 40 L35 45 L45 50" stroke-width="4"/>
-                <path d="M35 55 L30 35 L40 45" stroke-width="3"/>
-                <path d="M25 40 L20 25 L32 38" stroke-width="2.5"/>
-                <path d="M50 75 L65 55 L75 40 L65 45 L55 50" stroke-width="4"/>
-                <path d="M65 55 L70 35 L60 45" stroke-width="3"/>
-                <path d="M75 40 L80 25 L68 38" stroke-width="2.5"/>
-                <path d="M50 75 L50 55 L45 45 L50 50 L55 45 L50 55" stroke-width="4"/>
-                <path d="M50 50 L42 35 L50 42 L58 35 L50 50" stroke-width="3"/>
-                <path d="M50 75 L45 85 L50 80 L55 85 L50 75" stroke-width="4"/>
-                <rect x="55" y="25" width="4" height="4" fill="url(#layoutLogoGrad)" stroke="none"/>
-                <rect x="62" y="20" width="3" height="3" fill="url(#layoutLogoGrad)" stroke="none"/>
-                <rect x="68" y="16" width="2" height="2" fill="url(#layoutLogoGrad)" stroke="none"/>
-              </g>
-            </svg>
-          </div>
+          <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
           <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
         </a>
-        <div class="privacy-badge" role="status" aria-label="Güvenlik durumu">
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-            <path d="M8 0L1 3v5c0 5.25 3.67 10.17 7 11 3.33-.83 7-5.75 7-11V3L8 0z"/>
-          </svg>
-          <span>Zero Server</span>
+        <div class="flex items-center gap-3">
+          <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+            <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+          <div class="privacy-badge" role="status" aria-label="Güvenlik durumu">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+              <path d="M8 0L1 3v5c0 5.25 3.67 10.17 7 11 3.33-.83 7-5.75 7-11V3L8 0z"/>
+            </svg>
+            <span>Zero Server</span>
+          </div>
         </div>
       </div>
     </div>
@@ -105,13 +85,14 @@ export function createBreadcrumb(items) {
  */
 export function createFooter() {
   const footer = document.createElement('footer');
-  footer.className = 'bg-white border-t mt-12';
+  footer.className = 'border-t mt-12';
+  footer.style.cssText = 'background: var(--bg-secondary); border-color: var(--border-default);';
   footer.setAttribute('role', 'contentinfo');
   footer.innerHTML = `
     <div class="container py-8">
       <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-        <p class="text-sm text-gray-500">© ${new Date().getFullYear()} NovaTools. Tüm hakları saklıdır.</p>
-        <p class="text-sm text-gray-500">Verileriniz tarayıcınızda kalır. 🔒</p>
+        <p class="text-sm" style="color: var(--text-tertiary);">© ${new Date().getFullYear()} NovaTools. Tüm hakları saklıdır.</p>
+        <p class="text-sm" style="color: var(--text-tertiary);">Verileriniz tarayıcınızda kalır. 🔒</p>
       </div>
     </div>
   `;
@@ -236,6 +217,30 @@ export function initCommonUI() {
     });
   }
   
+  // Theme toggle
+  const themeBtn = document.getElementById('themeToggle');
+  if (themeBtn) {
+    function getTheme() {
+      const s = localStorage.getItem('theme');
+      if (s) return s;
+      return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    }
+    function updateIcon() {
+      const t = getTheme();
+      const sun = themeBtn.querySelector('.icon-sun');
+      const moon = themeBtn.querySelector('.icon-moon');
+      if (sun) sun.style.display = t === 'light' ? 'none' : 'block';
+      if (moon) moon.style.display = t === 'dark' ? 'none' : 'block';
+    }
+    themeBtn.addEventListener('click', () => {
+      const next = getTheme() === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      updateIcon();
+    });
+    updateIcon();
+  }
+
   // Smooth scroll for anchor links
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', (e) => {
