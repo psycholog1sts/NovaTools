@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y896L63239"></script>
@@ -10,6 +10,7 @@
   gtag('config', 'G-Y896L63239');
 </script>
   <meta charset="UTF-8">
+  <script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cloud Computing Cost Optimization 2025: AWS vs Azure vs GCP | NovaTools MC</title>
   <meta name="description" content="Complete guide to cloud computing costs in 2025. Compare AWS, Azure, and GCP pricing. Learn cost optimization strategies to reduce your cloud bill by up to 40%.">
@@ -90,14 +91,37 @@
   <div class="noise-overlay" aria-hidden="true"></div>
   
   <div id="app" class="app">
-    <header class="main-header">
+        <header class="main-header">
       <div class="container">
         <div class="header-inner">
           <a href="/" class="logo" aria-label="NovaTools MC Home">
-            <img src="/image.png" alt="NovaTools MC" class="header-logo-img" width="52" height="52">
+            <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
             <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
           </a>
+          <nav class="nav-desktop" aria-label="Main navigation">
+            <a href="/#finance" class="nav-link">Finance</a>
+            <a href="/#pdf" class="nav-link">PDF Tools</a>
+            <a href="/#image" class="nav-link">Images</a>
+            <a href="/#dev" class="nav-link">Developers</a>
+          </nav>
+          <div class="privacy-badge" title="Your data never leaves your browser">
+            <span class="privacy-badge-dot"></span>
+            <span>Privacy First</span>
+          </div>
+          <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+            <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+          <button type="button" id="mobileMenuBtn" class="menu-btn" aria-label="Toggle menu" aria-expanded="false">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
         </div>
+        <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
+          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+        </nav>
       </div>
     </header>
 
@@ -294,5 +318,39 @@
   </div>
 
   <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var menuBtn = document.getElementById('mobileMenuBtn');
+  var mobileMenu = document.getElementById('mobileMenu');
+  if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener('click', function() {
+      var isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+      menuBtn.setAttribute('aria-expanded', !isExpanded);
+      mobileMenu.hidden = isExpanded;
+      mobileMenu.classList.toggle('active', !isExpanded);
+    });
+  }
+  var themeBtn = document.getElementById('themeToggle');
+  if (themeBtn) {
+    function getTheme() {
+      var s = localStorage.getItem('theme');
+      if (s) return s;
+      return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    }
+    function updateIcon() {
+      var t = getTheme();
+      themeBtn.querySelector('.icon-sun').style.display = t === 'light' ? 'none' : 'block';
+      themeBtn.querySelector('.icon-moon').style.display = t === 'dark' ? 'none' : 'block';
+    }
+    themeBtn.addEventListener('click', function() {
+      var next = getTheme() === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      updateIcon();
+    });
+    updateIcon();
+  }
+});
+</script>
 </body>
 </html>
