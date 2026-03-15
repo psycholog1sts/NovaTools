@@ -300,7 +300,7 @@ export class SerialManager {
   }
 
   async writeJSON(obj) {
-    return this.write(JSON.stringify(obj) + '\n');
+    return this.write(`${JSON.stringify(obj)  }\n`);
   }
 
   async disconnect() {

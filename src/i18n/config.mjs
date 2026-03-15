@@ -51,7 +51,7 @@ export function detectLocale() {
     if (stored && I18N_CONFIG.locales.includes(stored)) {
       return stored;
     }
-  } catch (e) {}
+  } catch (e) { /* ignore */ }
   
   // Check browser language
   const browserLang = navigator.language || navigator.userLanguage;

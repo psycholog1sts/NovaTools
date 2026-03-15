@@ -10,8 +10,8 @@
  */
 export async function imageResizer(inputs) {
   const file = inputs.file;
-  let targetWidth = parseInt(inputs.width);
-  let targetHeight = parseInt(inputs.height);
+  const targetWidth = parseInt(inputs.width);
+  const targetHeight = parseInt(inputs.height);
   const maintainAspect = inputs.maintainAspect !== 'false';
 
   if (!file) {

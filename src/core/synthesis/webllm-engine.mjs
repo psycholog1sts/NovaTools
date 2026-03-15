@@ -221,7 +221,7 @@ export class WebLLMEngine {
   }
 
   extractSection(output, sectionName) {
-    const regex = new RegExp(`---${sectionName}---([\s\S]*?)(?=---|$)`);
+    const regex = new RegExp(`---${sectionName}---([\\s\\S]*?)(?=---|$)`);
     const match = output.match(regex);
     return match ? match[1].trim() : '';
   }
@@ -240,9 +240,9 @@ export class WebLLMEngine {
    * Refine existing tool UI
    */
   async refineUI(currentUI, feedback = '') {
-    const prompt = PROMPT_TEMPLATES.uiRefinement
+    const prompt = `${PROMPT_TEMPLATES.uiRefinement
       .replace('{{currentUI}}', currentUI)
-      + '\n\nUSER FEEDBACK: ' + feedback;
+       }\n\nUSER FEEDBACK: ${  feedback}`;
 
     return this.generate(prompt);
   }
@@ -303,8 +303,8 @@ test('calc', () => { expect(calculate(2)).toBe(4); });
     
     for (const chunk of chunks) {
       await new Promise(r => setTimeout(r, 50));
-      response += chunk + ' ';
-      onStream?.(chunk + ' ', response);
+      response += `${chunk  } `;
+      onStream?.(`${chunk  } `, response);
     }
 
     return response;

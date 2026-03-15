@@ -1,3 +1,5 @@
+/* global GPUBufferUsage, GPUMapMode */
+
 /**
  * WebGPU Compute Engine
  * GPU-accelerated parallel computation for data-intensive tools

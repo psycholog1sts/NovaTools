@@ -247,10 +247,11 @@ class ToolStateDocument {
         this.files.remove(op.fileRef, op.tag);
         break;
         
-      case 'metadata':
+      case 'metadata': {
         const current = this.metadata.get() || {};
         this.metadata.set({ ...current, ...op.data }, op.timestamp, op.peerId);
         break;
+      }
     }
     
     this.history.add(op);

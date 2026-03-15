@@ -1,161 +1,106 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-  
-  <!-- Home Page - Highest Priority -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Main Pages -->
   <url>
-    <loc>https://novatools.mc/</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://www.mc-novatools.com/</loc>
+    <lastmod>2026-03-15</lastmod>
     <priority>1.0</priority>
   </url>
 
-  <!-- ==================== HIGH-CPC FINANCE TOOLS ==================== -->
-  
-  <!-- Mortgage Refinance Calculator - High CPC $5.50 -->
+  <!-- Finance Tools -->
   <url>
-    <loc>https://novatools.mc/src/tools/finance/mortgage-refinance/</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
+    <loc>https://www.mc-novatools.com/tools/finance/mortgage-refinance/</loc>
+    <lastmod>2026-03-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.mc-novatools.com/tools/finance/life-insurance/</loc>
+    <lastmod>2026-03-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.mc-novatools.com/tools/finance/cloud-cost/</loc>
+    <lastmod>2026-03-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.mc-novatools.com/tools/finance/compound-interest/</loc>
+    <lastmod>2026-03-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.mc-novatools.com/tools/finance/retirement/</loc>
+    <lastmod>2026-03-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.mc-novatools.com/tools/finance/tax/</loc>
+    <lastmod>2026-03-15</lastmod>
+    <priority>0.8</priority>
   </url>
 
-  <!-- Life Insurance Payout Estimator - Highest CPC $8.50 -->
+  <!-- PDF Tools -->
   <url>
-    <loc>https://novatools.mc/src/tools/finance/life-insurance/</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
+    <loc>https://www.mc-novatools.com/tools/pdf/merge/</loc>
+    <lastmod>2026-03-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.mc-novatools.com/tools/pdf/compress/</loc>
+    <lastmod>2026-03-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.mc-novatools.com/tools/pdf/split/</loc>
+    <lastmod>2026-03-15</lastmod>
+    <priority>0.8</priority>
   </url>
 
-  <!-- Cloud Cost Estimator - High CPC $4.50 -->
+  <!-- Image Tools -->
   <url>
-    <loc>https://novatools.mc/src/tools/finance/cloud-cost/</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
+    <loc>https://www.mc-novatools.com/tools/image/compress/</loc>
+    <lastmod>2026-03-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.mc-novatools.com/tools/image/convert/</loc>
+    <lastmod>2026-03-15</lastmod>
+    <priority>0.8</priority>
   </url>
 
-  <!-- Compound Interest Calculator -->
+  <!-- Dev Tools -->
   <url>
-    <loc>https://novatools.mc/src/tools/finance/compound-interest/</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <loc>https://www.mc-novatools.com/tools/dev/json-formatter/</loc>
+    <lastmod>2026-03-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.mc-novatools.com/tools/dev/regex-tester/</loc>
+    <lastmod>2026-03-15</lastmod>
+    <priority>0.8</priority>
   </url>
 
-  <!-- Retirement Planner Calculator -->
+  <!-- Legal Pages -->
   <url>
-    <loc>https://novatools.mc/src/tools/finance/retirement/</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <loc>https://www.mc-novatools.com/privacy/</loc>
+    <lastmod>2026-03-15</lastmod>
+    <priority>0.5</priority>
   </url>
-
-  <!-- Tax Estimator Calculator -->
   <url>
-    <loc>https://novatools.mc/src/tools/finance/tax/</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
+    <loc>https://www.mc-novatools.com/terms/</loc>
+    <lastmod>2026-03-15</lastmod>
+    <priority>0.5</priority>
   </url>
-
-  <!-- ==================== PDF TOOLS ==================== -->
-
-  <!-- PDF Merger -->
   <url>
-    <loc>https://novatools.mc/src/tools/pdf/merge/</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.80</priority>
+    <loc>https://www.mc-novatools.com/disclaimer/</loc>
+    <lastmod>2026-03-15</lastmod>
+    <priority>0.5</priority>
   </url>
-
-  <!-- PDF Compressor -->
   <url>
-    <loc>https://novatools.mc/src/tools/pdf/compress/</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.80</priority>
-  </url>
-
-  <!-- PDF Splitter -->
-  <url>
-    <loc>https://novatools.mc/src/tools/pdf/split/</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
-  </url>
-
-  <!-- ==================== IMAGE TOOLS ==================== -->
-
-  <!-- Image Compressor -->
-  <url>
-    <loc>https://novatools.mc/src/tools/image/compress/</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
-  </url>
-
-  <!-- Image Format Converter -->
-  <url>
-    <loc>https://novatools.mc/src/tools/image/convert/</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.70</priority>
-  </url>
-
-  <!-- ==================== DEVELOPER TOOLS ==================== -->
-
-  <!-- JSON Validator & Formatter -->
-  <url>
-    <loc>https://novatools.mc/src/tools/dev/json-formatter/</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
-  </url>
-
-  <!-- Regex Tester & Debugger -->
-  <url>
-    <loc>https://novatools.mc/src/tools/dev/regex-tester/</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.70</priority>
-  </url>
-
-  <!-- ==================== LEGAL & INFO PAGES ==================== -->
-
-  <!-- Privacy Policy -->
-  <url>
-    <loc>https://novatools.mc/privacy</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.50</priority>
-  </url>
-
-  <!-- Terms of Use -->
-  <url>
-    <loc>https://novatools.mc/terms</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.50</priority>
-  </url>
-
-  <!-- Disclaimer -->
-  <url>
-    <loc>https://novatools.mc/disclaimer</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.50</priority>
-  </url>
-
-  <!-- Feedback Page -->
-  <url>
-    <loc>https://novatools.mc/feedback</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.40</priority>
+    <loc>https://www.mc-novatools.com/feedback/</loc>
+    <lastmod>2026-03-15</lastmod>
+    <priority>0.5</priority>
   </url>
 
 </urlset>

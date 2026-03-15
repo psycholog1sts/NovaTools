@@ -350,4 +350,77 @@ function loadTool(category, tool) {
   console.log(`Loading tool: ${category}/${tool}`);
 }
 
+// ============================================================================
+// UTILITY FUNCTIONS (Exported for testing)
+// ============================================================================
+
+const META_CACHE = new Map();
+
+/**
+ * Get vendor chunk name for a tool category
+ * @param {string} category - Tool category
+ * @returns {string|null} Vendor chunk name or null
+ */
+export function getVendorForCategory(category) {
+  const vendorMap = {
+    'pdf': 'pdf-vendor',
+    'finance': 'finance-vendor',
+    'image': 'image-vendor'
+  };
+  return vendorMap[category] || null;
+}
+
+/**
+ * Load tool metadata from server
+ * @param {string} toolPath - Tool path (e.g., 'pdf/merge')
+ * @returns {Promise<Object|null>} Tool metadata or null
+ */
+export async function loadToolMeta(toolPath) {
+  // Return cached result if available
+  if (META_CACHE.has(toolPath)) {
+    return META_CACHE.get(toolPath);
+  }
+
+  try {
+    const response = await fetch(`/meta/${toolPath}.json`);
+    if (!response.ok) {
+      return null;
+    }
+    const meta = await response.json();
+    META_CACHE.set(toolPath, meta);
+    return meta;
+  } catch (error) {
+    console.warn(`Failed to load metadata for ${toolPath}:`, error);
+    return null;
+  }
+}
+
+/**
+ * Generate breadcrumb HTML
+ * @param {string} category - Tool category
+ * @param {string} toolName - Tool name
+ */
+export function generateBreadcrumb(category, toolName) {
+  const container = document.getElementById('breadcrumb');
+  if (!container) return;
+
+  const categoryLabels = {
+    'pdf': 'PDF Araçları',
+    'finance': 'Finans Araçları',
+    'image': 'Görüntü Araçları',
+    'religious': 'Dini Araçlar',
+    'news': 'Haber Araçları'
+  };
+
+  container.innerHTML = `
+    <nav class="breadcrumb">
+      <a href="/">Ana Sayfa</a>
+      <span class="separator">/</span>
+      <a href="/tools/${category}/">${categoryLabels[category] || category}</a>
+      <span class="separator">/</span>
+      <span class="current">${toolName}</span>
+    </nav>
+  `;
+}
+
 export default router;

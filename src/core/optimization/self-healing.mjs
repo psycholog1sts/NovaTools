@@ -117,7 +117,7 @@ export class PerformanceMonitor {
         // Large resources warning
         if (entry.transferSize > 1000000) { // 1MB
           console.warn('[SelfHealing] Large resource:', entry.name, 
-            (entry.transferSize / 1024 / 1024).toFixed(2) + 'MB');
+            `${(entry.transferSize / 1024 / 1024).toFixed(2)  }MB`);
         }
       }
     }).observe({ entryTypes: ['resource'] });
@@ -446,7 +446,7 @@ export class SelfHealingSystem {
     // Reserve space for dynamic content
     document.querySelectorAll('[data-dynamic]').forEach(el => {
       if (!el.style.minHeight) {
-        el.style.minHeight = el.offsetHeight + 'px';
+        el.style.minHeight = `${el.offsetHeight  }px`;
       }
     });
 
@@ -567,7 +567,7 @@ export class AdaptiveQualityManager {
     // Test actual speed
     const startTime = performance.now();
     try {
-      await fetch('/api/ping?t=' + Date.now(), { cache: 'no-store' });
+      await fetch(`/api/ping?t=${  Date.now()}`, { cache: 'no-store' });
       const latency = performance.now() - startTime;
       
       if (latency > 500) this.networkQuality = 'poor';

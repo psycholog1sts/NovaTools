@@ -30,9 +30,9 @@ export class IslamicCalendar {
     const month = date.getMonth() + 1;
     const day = date.getDate();
     
-    let a = Math.floor((14 - month) / 12);
-    let y = year + 4800 - a;
-    let m = month + 12 * a - 3;
+    const a = Math.floor((14 - month) / 12);
+    const y = year + 4800 - a;
+    const m = month + 12 * a - 3;
     
     return day + Math.floor((153 * m + 2) / 5) + 
            365 * y + Math.floor(y / 4) - Math.floor(y / 100) + 
@@ -45,16 +45,16 @@ export class IslamicCalendar {
   julianToHijri(jd) {
     jd = Math.floor(jd) + 0.5;
     let days = jd - this.HIJRI_EPOCH;
-    let months = Math.floor(days / 29.53059);
+    const months = Math.floor(days / 29.53059);
     
     // Refine calculation
     let year = Math.floor(months / 12);
     let month = months % 12;
-    let day = Math.floor(days - (month * 29.53059) - (year * 354.36707));
+    const day = Math.floor(days - (month * 29.53059) - (year * 354.36707));
     
     // Adjust to actual calendar
     year = Math.floor((jd - this.HIJRI_EPOCH) / this.ISLAMIC_YEAR_DAYS) + 1;
-    let yearStart = this.HIJRI_EPOCH + (year - 1) * this.ISLAMIC_YEAR_DAYS;
+    const yearStart = this.HIJRI_EPOCH + (year - 1) * this.ISLAMIC_YEAR_DAYS;
     days = jd - yearStart;
     
     // Month lengths (alternating 30 and 29 days)

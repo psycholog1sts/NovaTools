@@ -126,7 +126,7 @@ ${this.generateFAQ(trend).map(f => `**Q: ${f.question}**\nA: ${f.answer}\n`).joi
     const root = await navigator.storage.getDirectory();
     const contentDir = await root.getDirectoryHandle('generated-content', { create: true });
     
-    const filename = content.title.toLowerCase().replace(/[^a-z0-9]+/g, '-') + '.md';
+    const filename = `${content.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')  }.md`;
     const file = await contentDir.getFileHandle(filename, { create: true });
     
     const writable = await file.createWritable();

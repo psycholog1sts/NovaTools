@@ -253,7 +253,7 @@ export class OpenBankingConnector {
       client_id: 'zero-tools-platform',
       response_type: 'code',
       scope: 'accounts transactions',
-      redirect_uri: window.location.origin + '/oauth/callback'
+      redirect_uri: `${window.location.origin  }/oauth/callback`
     });
     
     window.location.href = `${authUrl}?${params}`;

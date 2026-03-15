@@ -1,46 +1,4 @@
 User-agent: *
 Allow: /
 
-# Sitemaps
-Sitemap: https://novatools.mc/sitemap-index.xml
-
-# Crawl-delay
-Crawl-delay: 1
-
-# Block legacy patterns
-Disallow: /wp-admin/
-Disallow: /wp-content/
-Disallow: /wp-includes/
-Disallow: /xmlrpc.php
-Disallow: /feed
-Disallow: /feed.xml
-Disallow: /rss
-Disallow: /rss.xml
-Disallow: /author/
-Disallow: /page/
-Disallow: /tag/
-Disallow: /category/
-
-# Block search
-Disallow: /search
-
-# Block environment files
-Disallow: /.env
-Disallow: /config.php
-
-# Block date archives (if any)
-Disallow: /20
-
-# Allow important assets
-Allow: /static/
-Allow: /src/styles/
-Allow: /src/tools/
-Allow: /icons/
-
-# Google-specific
-User-agent: Googlebot
-Allow: /
-
-# Bing-specific
-User-agent: Bingbot
-Allow: /
+Sitemap: https://www.mc-novatools.com/sitemap.xml

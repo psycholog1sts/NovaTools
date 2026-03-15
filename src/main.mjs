@@ -3,6 +3,8 @@
  * Production-grade modular architecture with Vercel Speed Insights
  */
 
+/* global __APP_VERSION__ */
+
 import { injectSpeedInsights } from '@vercel/speed-insights';
 import { initAnalytics } from './core/analytics.mjs';
 import { registerSW } from './core/pwa.mjs';

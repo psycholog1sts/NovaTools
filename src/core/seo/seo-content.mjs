@@ -294,7 +294,7 @@ export const toolSeoContent = {
       },
       {
         question: 'What is the difference between FIFO and LIFO for crypto taxes?',
-        answer': 'FIFO (First In, First Out) assumes you sell your oldest coins first, which often results in higher gains if you bought early at lower prices. LIFO (Last In, Last Out) assumes you sell your newest coins first, which may reduce current-year taxes if recent purchases were at higher prices. Most tax authorities default to FIFO, but some allow you to specify your accounting method.'
+        answer: 'FIFO (First In, First Out) assumes you sell your oldest coins first, which often results in higher gains if you bought early at lower prices. LIFO (Last In, Last Out) assumes you sell your newest coins first, which may reduce current-year taxes if recent purchases were at higher prices. Most tax authorities default to FIFO, but some allow you to specify your accounting method.'
       },
       {
         question: 'Do I need to pay taxes on crypto if I only traded and never cashed out to fiat?',

@@ -81,9 +81,9 @@ function loadImage(file) {
 function formatCompressResult(originalSize, compressedSize, savings, width, height, blob) {
   const url = URL.createObjectURL(blob);
   const formatBytes = (bytes) => {
-    if (bytes < 1024) return bytes + ' B';
-    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
-    return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
+    if (bytes < 1024) return `${bytes  } B`;
+    if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)  } KB`;
+    return `${(bytes / (1024 * 1024)).toFixed(2)  } MB`;
   };
 
   return `

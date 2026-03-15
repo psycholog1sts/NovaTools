@@ -54,7 +54,7 @@ export class ValidationEngine {
 
     // Type validation
     switch (field.type) {
-      case 'number':
+      case 'number': {
         const num = parseFloat(value);
         if (isNaN(num)) {
           errors.push(`${field.label || field.name} must be a valid number`);
@@ -70,8 +70,9 @@ export class ValidationEngine {
           }
         }
         break;
+      }
 
-      case 'integer':
+      case 'integer': {
         const int = parseInt(value);
         if (isNaN(int)) {
           errors.push(`${field.label || field.name} must be a valid integer`);
@@ -86,6 +87,7 @@ export class ValidationEngine {
           }
         }
         break;
+      }
 
       case 'string':
         sanitizedValue = String(value).trim();
@@ -138,7 +140,7 @@ export class ValidationEngine {
         }
         break;
 
-      case 'date':
+      case 'date': {
         const date = new Date(value);
         if (isNaN(date.getTime())) {
           errors.push(`${field.label || field.name} must be a valid date`);
@@ -146,16 +148,18 @@ export class ValidationEngine {
           sanitizedValue = date;
         }
         break;
+      }
 
-      case 'email':
+      case 'email': {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(String(value))) {
           errors.push(`${field.label || field.name} must be a valid email address`);
         }
         sanitizedValue = String(value).trim().toLowerCase();
         break;
+      }
 
-      case 'percentage':
+      case 'percentage': {
         const pct = parseFloat(value);
         if (isNaN(pct)) {
           errors.push(`${field.label || field.name} must be a valid percentage`);
@@ -163,14 +167,16 @@ export class ValidationEngine {
           sanitizedValue = Math.max(0, Math.min(100, pct));
         }
         break;
+      }
 
-      case 'currency':
+      case 'currency': {
         const currencyRegex = /^[A-Z]{3}$/;
         if (!currencyRegex.test(String(value).toUpperCase())) {
           errors.push(`${field.label || field.name} must be a valid 3-letter currency code`);
         }
         sanitizedValue = String(value).toUpperCase();
         break;
+      }
 
       default:
         sanitizedValue = value;
@@ -201,7 +207,7 @@ export class ValidationEngine {
     const k = 1024;
     const sizes = ['Bytes', 'KB', 'MB', 'GB'];
     const i = Math.floor(Math.log(bytes) / Math.log(k));
-    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+    return `${parseFloat((bytes / Math.pow(k, i)).toFixed(2))  } ${  sizes[i]}`;
   }
 }
 
