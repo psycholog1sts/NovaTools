@@ -226,8 +226,8 @@ ul, ol {
 }
 
 .logo:hover .neon-logo {
-  filter: drop-shadow(0 0 12px rgba(0, 249, 212, 0.6)) 
-          drop-shadow(0 0 24px rgba(0, 217, 255, 0.4));
+  filter: drop-shadow(0 0 12px rgba(57, 255, 20, 0.6))
+          drop-shadow(0 0 24px rgba(0, 207, 255, 0.4));
   transform: scale(1.05);
 }
 
@@ -239,8 +239,8 @@ ul, ol {
   display: flex;
   align-items: center;
   justify-content: center;
-  filter: drop-shadow(0 0 8px rgba(0, 249, 212, 0.4)) 
-          drop-shadow(0 0 16px rgba(0, 217, 255, 0.3));
+  filter: drop-shadow(0 0 8px rgba(57, 255, 20, 0.4))
+          drop-shadow(0 0 16px rgba(0, 207, 255, 0.3));
   transition: all 0.3s ease;
 }
 
@@ -258,7 +258,7 @@ ul, ol {
 }
 
 .logo-mc {
-  background: linear-gradient(135deg, #00F5D4 0%, #00D9FF 50%, #00FF88 100%);
+  background: linear-gradient(90deg, #39FF14 0%, #00CFFF 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -421,18 +421,19 @@ ul, ol {
 }
 
 .hero-neon-logo {
-  width: 100px;
-  height: 100px;
-  margin-bottom: 1.5rem;
-  filter: drop-shadow(0 0 20px rgba(0, 249, 212, 0.5)) 
-          drop-shadow(0 0 40px rgba(0, 217, 255, 0.35))
-          drop-shadow(0 0 60px rgba(0, 255, 136, 0.25));
+  width: 220px;
+  height: 220px;
+  margin-bottom: 0.5rem;
+  filter: drop-shadow(0 0 24px rgba(57, 255, 20, 0.4))
+          drop-shadow(0 0 48px rgba(0, 207, 255, 0.3))
+          drop-shadow(0 0 72px rgba(0, 207, 255, 0.15));
   animation: float 6s ease-in-out infinite;
 }
 
-.hero-neon-logo svg {
+.hero-neon-logo img {
   width: 100%;
   height: 100%;
+  object-fit: contain;
 }
 
 .hero-brand-text {
@@ -447,7 +448,7 @@ ul, ol {
 }
 
 .hero-brand-text span {
-  background: linear-gradient(135deg, #00F5D4 0%, #00D9FF 50%, #00FF88 100%);
+  background: linear-gradient(90deg, #39FF14 0%, #00CFFF 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -459,8 +460,8 @@ ul, ol {
   }
   
   .hero-neon-logo {
-    width: 120px;
-    height: 120px;
+    width: 280px;
+    height: 280px;
   }
   
   .hero-brand-text {

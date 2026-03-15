@@ -13,11 +13,35 @@ export function createHeader() {
     <div class="container">
       <div class="flex items-center justify-between py-4">
         <a href="/" class="flex items-center gap-2 text-xl font-bold text-primary-600" aria-label="NovaTools Ana Sayfa">
-          <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-            <rect width="32" height="32" rx="8" fill="#2563eb"/>
-            <path d="M8 16L14 22L24 10" stroke="white" stroke-width="3" stroke-linecap="round"/>
-          </svg>
-          <span>NovaTools</span>
+          <div class="logo-icon neon-logo">
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="layoutLogoGrad" x1="0%" y1="50%" x2="100%" y2="50%">
+                  <stop offset="0%" stop-color="#39FF14"/>
+                  <stop offset="100%" stop-color="#00CFFF"/>
+                </linearGradient>
+                <filter id="layoutGlow" x="-30%" y="-30%" width="160%" height="160%">
+                  <feGaussianBlur stdDeviation="2" result="blur"/>
+                  <feMerge><feMergeNode in="blur"/><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                </filter>
+              </defs>
+              <g filter="url(#layoutGlow)" stroke="url(#layoutLogoGrad)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M50 75 L35 55 L25 40 L35 45 L45 50" stroke-width="4"/>
+                <path d="M35 55 L30 35 L40 45" stroke-width="3"/>
+                <path d="M25 40 L20 25 L32 38" stroke-width="2.5"/>
+                <path d="M50 75 L65 55 L75 40 L65 45 L55 50" stroke-width="4"/>
+                <path d="M65 55 L70 35 L60 45" stroke-width="3"/>
+                <path d="M75 40 L80 25 L68 38" stroke-width="2.5"/>
+                <path d="M50 75 L50 55 L45 45 L50 50 L55 45 L50 55" stroke-width="4"/>
+                <path d="M50 50 L42 35 L50 42 L58 35 L50 50" stroke-width="3"/>
+                <path d="M50 75 L45 85 L50 80 L55 85 L50 75" stroke-width="4"/>
+                <rect x="55" y="25" width="4" height="4" fill="url(#layoutLogoGrad)" stroke="none"/>
+                <rect x="62" y="20" width="3" height="3" fill="url(#layoutLogoGrad)" stroke="none"/>
+                <rect x="68" y="16" width="2" height="2" fill="url(#layoutLogoGrad)" stroke="none"/>
+              </g>
+            </svg>
+          </div>
+          <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
         </a>
         <div class="privacy-badge" role="status" aria-label="Güvenlik durumu">
           <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
