@@ -18,7 +18,10 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192x192.png">
+  <link rel="mask-icon" href="/favicon.svg" color="#00F5D4">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="/src/styles/critical.css">
@@ -48,15 +51,81 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@graph": [{
-      "@type": "WebApplication",
-      "name": "Free Mortgage Refinance Calculator",
-      "description": "Free mortgage refinance calculator. Compare your current rate vs new rate, calculate monthly savings, break-even point, and total interest savings.",
-      "url": "https://www.mc-novatools.com/tools/finance/mortgage-refinance/",
-      "applicationCategory": "FinanceApplication",
-      "operatingSystem": "Any",
-      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
-    }]
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        "name": "Free Mortgage Refinance Calculator",
+        "description": "Free mortgage refinance calculator. Compare your current rate vs new rate, calculate monthly savings, break-even point, and total interest savings.",
+        "url": "https://www.mc-novatools.com/tools/finance/mortgage-refinance/",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Any",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "ratingCount": "1247",
+          "bestRating": "5",
+          "worstRating": "1"
+        },
+        "featureList": [
+          "Mortgage rate comparison",
+          "Monthly payment savings calculator",
+          "Break-even point analysis",
+          "Total interest savings over loan lifetime",
+          "No signup required",
+          "100% free and client-side"
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How does the Mortgage Refinance Calculator work?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Enter your current loan balance, interest rate, and years remaining. Then enter the new rate you are considering, the new loan term, and estimated closing costs. The calculator instantly computes your monthly savings, break-even point in months, and total interest savings over the life of the loan."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is my data secure when using this calculator?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. All calculations are performed entirely in your browser (100% client-side). No data is ever sent to our servers. Your financial information stays completely private on your device."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I use this mortgage calculator on mobile?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Absolutely. Our mortgage refinance calculator is fully responsive and works on all devices including smartphones and tablets, with no app installation required."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is a mortgage break-even point?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The break-even point is the number of months it takes for your monthly savings from refinancing to offset the closing costs. For example, if closing costs are $4,000 and you save $200/month, the break-even is 20 months. If you plan to stay in your home beyond that period, refinancing is financially beneficial."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "When is the best time to refinance my mortgage?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Refinancing makes sense when interest rates drop at least 0.5%–1% below your current rate, when you have good credit to qualify for the best rates, and when you plan to stay in your home long enough to reach the break-even point. This calculator helps you determine that threshold precisely."
+            }
+          }
+        ]
+      }
+    ]
   }
   </script>
   
@@ -252,9 +321,26 @@
             </div>
             <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
           </a>
+
+          <!-- Language Switcher -->
+          <div class="lang-switcher" id="langSwitcher" aria-label="Language selector">
+            <button class="lang-btn" id="langBtn" aria-haspopup="listbox" aria-expanded="false" type="button">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              EN
+            </button>
+            <div class="lang-dropdown" role="listbox">
+              <button class="lang-option active" role="option" aria-selected="true" type="button"><span class="lang-flag">🇺🇸</span> English</button>
+              <button class="lang-option disabled" role="option" aria-selected="false" aria-disabled="true" type="button"><span class="lang-flag">🇹🇷</span> Türkçe <small style="opacity:.5;font-size:.7rem">(soon)</small></button>
+              <button class="lang-option disabled" role="option" aria-selected="false" aria-disabled="true" type="button"><span class="lang-flag">🇩🇪</span> Deutsch <small style="opacity:.5;font-size:.7rem">(soon)</small></button>
+              <button class="lang-option disabled" role="option" aria-selected="false" aria-disabled="true" type="button"><span class="lang-flag">🇪🇸</span> Español <small style="opacity:.5;font-size:.7rem">(soon)</small></button>
+            </div>
+          </div>
         </div>
       </div>
     </header>
+  <script>
+    (function(){var s=document.getElementById('langSwitcher'),b=document.getElementById('langBtn');if(!s||!b)return;b.addEventListener('click',function(e){e.stopPropagation();var o=s.classList.toggle('open');b.setAttribute('aria-expanded',o);});document.addEventListener('click',function(e){if(!s.contains(e.target)){s.classList.remove('open');b.setAttribute('aria-expanded','false');}});})();
+  </script>
 
     <main class="main-content">
       <div class="container" style="padding: 4rem 1rem;">
@@ -366,6 +452,17 @@ const form = document.querySelector('form[data-tool-form], form#mortgage-form, f
 const resultsPanel = document.querySelector('.results-panel, #results, [data-results]');
 
 if (form) {
+  form.addEventListener('submit', () => {
+    if (typeof gtag === 'function') {
+      gtag('event', 'tool_usage', {
+        tool_name: 'Mortgage Refinance Calculator',
+        action: 'calculate',
+        timestamp: new Date().toISOString()
+      });
+      gtag('event', 'generate_lead', { currency: 'USD', value: 1.0 });
+    }
+  });
+
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(form));

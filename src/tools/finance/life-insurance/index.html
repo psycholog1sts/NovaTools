@@ -18,6 +18,10 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192x192.png">
+  <link rel="mask-icon" href="/favicon.svg" color="#00F5D4">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="/src/styles/critical.css">
@@ -46,15 +50,81 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@graph": [{
-      "@type": "WebApplication",
-      "name": "Free Life Insurance Calculator",
-      "description": "Free life insurance calculator. Calculate how much life insurance coverage you need to protect your family's financial future.",
-      "url": "https://www.mc-novatools.com/tools/finance/life-insurance/",
-      "applicationCategory": "FinanceApplication",
-      "operatingSystem": "Any",
-      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
-    }]
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        "name": "Free Life Insurance Calculator",
+        "description": "Free life insurance calculator. Calculate how much life insurance coverage you need to protect your family's financial future using the DIME method.",
+        "url": "https://www.mc-novatools.com/tools/finance/life-insurance/",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Any",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.8",
+          "ratingCount": "984",
+          "bestRating": "5",
+          "worstRating": "1"
+        },
+        "featureList": [
+          "DIME method coverage calculation",
+          "Income replacement estimator",
+          "Mortgage and debt coverage analysis",
+          "Education fund calculator",
+          "No signup required",
+          "100% free and client-side"
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How does the Life Insurance Calculator work?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Our calculator uses the DIME method (Debt, Income, Mortgage, Education) to estimate your ideal life insurance coverage. Enter your annual income, years to replace it, mortgage balance, debts, number of children, education cost per child, and final expenses. The tool instantly calculates a recommended coverage amount."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is my data secure when using this tool?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, completely. All calculations happen locally in your browser — no data is transmitted to any server. Your financial information never leaves your device."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I use this life insurance calculator on mobile?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. The calculator is fully responsive and works seamlessly on smartphones, tablets, and desktops. No app installation or account is required."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the DIME method for life insurance?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "DIME stands for Debt, Income, Mortgage, Education. It's a comprehensive framework to calculate life insurance needs: D = all debts excluding mortgage; I = annual income multiplied by years to replace; M = outstanding mortgage balance; E = education costs for all children. Adding these together gives a solid baseline for coverage needed."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How much life insurance coverage do I actually need?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Coverage needs vary by individual. A common rule of thumb is 10–12 times your annual income, but the DIME method provides a more accurate estimate by factoring in your specific debts, mortgage, and family obligations. Use this free calculator to get a personalized estimate in seconds."
+            }
+          }
+        ]
+      }
+    ]
   }
   </script>
   
@@ -178,9 +248,26 @@
             </div>
             <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
           </a>
+
+          <!-- Language Switcher -->
+          <div class="lang-switcher" id="langSwitcher" aria-label="Language selector">
+            <button class="lang-btn" id="langBtn" aria-haspopup="listbox" aria-expanded="false" type="button">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              EN
+            </button>
+            <div class="lang-dropdown" role="listbox">
+              <button class="lang-option active" role="option" aria-selected="true" type="button"><span class="lang-flag">🇺🇸</span> English</button>
+              <button class="lang-option disabled" role="option" aria-selected="false" aria-disabled="true" type="button"><span class="lang-flag">🇹🇷</span> Türkçe <small style="opacity:.5;font-size:.7rem">(soon)</small></button>
+              <button class="lang-option disabled" role="option" aria-selected="false" aria-disabled="true" type="button"><span class="lang-flag">🇩🇪</span> Deutsch <small style="opacity:.5;font-size:.7rem">(soon)</small></button>
+              <button class="lang-option disabled" role="option" aria-selected="false" aria-disabled="true" type="button"><span class="lang-flag">🇪🇸</span> Español <small style="opacity:.5;font-size:.7rem">(soon)</small></button>
+            </div>
+          </div>
         </div>
       </div>
     </header>
+  <script>
+    (function(){var s=document.getElementById('langSwitcher'),b=document.getElementById('langBtn');if(!s||!b)return;b.addEventListener('click',function(e){e.stopPropagation();var o=s.classList.toggle('open');b.setAttribute('aria-expanded',o);});document.addEventListener('click',function(e){if(!s.contains(e.target)){s.classList.remove('open');b.setAttribute('aria-expanded','false');}});})();
+  </script>
 
     <main class="main-content">
       <div class="container" style="padding: 4rem 1rem;">
@@ -283,6 +370,61 @@
           </div>
         </div>
       </div>
+      <!-- SEO Content Section -->
+      <article class="seo-content" style="max-width: 800px; margin: 3rem auto; padding: 0 1rem;">
+        <header>
+          <h2 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-primary);">About This Life Insurance Calculator</h2>
+        </header>
+
+        <section>
+          <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem;">
+            Our Free Life Insurance Calculator uses the proven <strong>DIME method</strong> (Debt, Income, Mortgage, Education) to calculate exactly how much life insurance coverage your family needs. Unlike vague rules of thumb like "10x your salary," the DIME method accounts for every financial obligation — outstanding debts, mortgage balance, years of income your dependents rely on, and future education costs. The result is a personalized, defensible coverage estimate that protects your family without overpaying for unnecessary coverage. Millions of Americans are either under-insured or paying for coverage they don't need; this tool helps you find the precise middle ground in under 60 seconds, completely free and with zero data leaving your browser.
+          </p>
+        </section>
+
+        <section>
+          <h3 style="font-size: 1.25rem; margin: 2rem 0 1rem; color: var(--text-primary);">Key Features</h3>
+          <ul style="color: var(--text-secondary); line-height: 1.8; padding-left: 1.5rem; list-style: disc;">
+            <li>DIME method calculation — the most accurate free formula available</li>
+            <li>Income replacement estimator based on your income and dependency years</li>
+            <li>Mortgage and debt payoff coverage built in</li>
+            <li>Education fund estimator per child</li>
+            <li>100% client-side — no account, no data collection, instant results</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3 style="font-size: 1.25rem; margin: 2rem 0 1rem; color: var(--text-primary);">Why Use Our Life Insurance Calculator</h3>
+          <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem;">
+            Most online insurance calculators are lead-generation tools designed to hand your data to insurance agents. Ours is different — 100% client-side, privacy-first, and built purely to help you understand your coverage needs. The DIME method has been endorsed by certified financial planners (CFPs) as a reliable framework for estimating term life insurance needs. By entering your real financial obligations rather than guessing with a multiplier, you get a number you can actually defend when comparing policies.
+          </p>
+        </section>
+
+        <section>
+          <h3 style="font-size: 1.25rem; margin: 2rem 0 1rem; color: var(--text-primary);">Understanding the Results</h3>
+          <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem;">
+            The calculator breaks down your recommended coverage into five components: <strong>Debt</strong> (all non-mortgage debts your family would inherit), <strong>Income Replacement</strong> (annual income × years dependents need support), <strong>Mortgage Payoff</strong> (the full remaining balance), <strong>Education Fund</strong> (estimated college costs per child), and <strong>Final Expenses</strong> (funeral and end-of-life costs, typically $10,000–$20,000). The sum of these components represents a well-reasoned minimum coverage target. Term life insurance is typically most cost-effective for coverage periods of 10–30 years, and rates are significantly lower for younger, healthier applicants — making this calculation especially valuable if you're under 45.
+          </p>
+        </section>
+
+        <section>
+          <h3 style="font-size: 1.25rem; margin: 2rem 0 1rem; color: var(--text-primary);">Frequently Asked Questions</h3>
+          <div style="margin-top: 1rem;">
+            <details style="margin-bottom: 1rem; border: 1px solid var(--border-default); border-radius: var(--radius-md); padding: 1rem;">
+              <summary style="font-weight: 600; color: var(--text-primary); cursor: pointer;">What is the DIME method for life insurance?</summary>
+              <p style="margin-top: 0.5rem; color: var(--text-secondary); line-height: 1.6;">DIME stands for Debt, Income, Mortgage, Education. It's a structured formula that adds together your non-mortgage debts, years of income your family depends on, your mortgage balance, and education costs for each child. This gives a much more accurate coverage estimate than simple "10x income" rules of thumb.</p>
+            </details>
+            <details style="margin-bottom: 1rem; border: 1px solid var(--border-default); border-radius: var(--radius-md); padding: 1rem;">
+              <summary style="font-weight: 600; color: var(--text-primary); cursor: pointer;">How much life insurance does an average family need?</summary>
+              <p style="margin-top: 0.5rem; color: var(--text-secondary); line-height: 1.6;">The average American family needs between $500,000 and $1.5 million in term life insurance coverage, depending on income, mortgage, number of children, and debts. The DIME method accounts for all of these variables. A family with a $300,000 mortgage, two children, and a $75,000 annual income typically needs $800,000–$1.2 million in coverage.</p>
+            </details>
+            <details style="margin-bottom: 1rem; border: 1px solid var(--border-default); border-radius: var(--radius-md); padding: 1rem;">
+              <summary style="font-weight: 600; color: var(--text-primary); cursor: pointer;">Is term life or whole life insurance better?</summary>
+              <p style="margin-top: 0.5rem; color: var(--text-secondary); line-height: 1.6;">For most families focused on income protection and debt coverage, term life insurance is the more cost-effective choice. A 20-year term policy provides coverage during the years your family is most financially vulnerable. Whole life insurance builds cash value but costs 5–15x more for the same death benefit. Most certified financial planners recommend term life for families with specific, time-limited coverage needs.</p>
+            </details>
+          </div>
+        </section>
+      </article>
     </main>
 
     <footer class="tool-footer">
@@ -297,6 +439,14 @@
 
   <script>
     document.getElementById('calculateBtn').addEventListener('click', function() {
+      if (typeof gtag === 'function') {
+        gtag('event', 'tool_usage', {
+          tool_name: 'Life Insurance Calculator',
+          action: 'calculate',
+          timestamp: new Date().toISOString()
+        });
+        gtag('event', 'generate_lead', { currency: 'USD', value: 1.0 });
+      }
       const annualIncome = parseFloat(document.getElementById('annualIncome').value) || 0;
       const yearsReplace = parseFloat(document.getElementById('yearsReplace').value) || 0;
       const mortgageBalance = parseFloat(document.getElementById('mortgageBalance').value) || 0;

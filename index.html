@@ -28,7 +28,10 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192x192.png">
+  <link rel="mask-icon" href="/favicon.svg" color="#00F5D4">
+
   <!-- Meta -->
   <title>Free Online Tools - Finance, PDF &amp; Image | NovaTools MC</title>
   <meta name="description" content="Free online tools: mortgage refinance, tax, compound interest, PDF compress/merge/split, image converter &amp; more. No signup. Instant results. 100% private.">
@@ -160,7 +163,21 @@
             <span class="privacy-badge-dot"></span>
             <span>Privacy First</span>
           </div>
-          
+
+          <!-- Language Switcher -->
+          <div class="lang-switcher" id="langSwitcher" aria-label="Language selector">
+            <button class="lang-btn" id="langBtn" aria-haspopup="listbox" aria-expanded="false" type="button">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              EN
+            </button>
+            <div class="lang-dropdown" role="listbox" aria-label="Select language">
+              <button class="lang-option active" role="option" aria-selected="true" type="button"><span class="lang-flag">🇺🇸</span> English</button>
+              <button class="lang-option disabled" role="option" aria-selected="false" aria-disabled="true" type="button"><span class="lang-flag">🇹🇷</span> Türkçe <small style="opacity:.5;font-size:.7rem">(soon)</small></button>
+              <button class="lang-option disabled" role="option" aria-selected="false" aria-disabled="true" type="button"><span class="lang-flag">🇩🇪</span> Deutsch <small style="opacity:.5;font-size:.7rem">(soon)</small></button>
+              <button class="lang-option disabled" role="option" aria-selected="false" aria-disabled="true" type="button"><span class="lang-flag">🇪🇸</span> Español <small style="opacity:.5;font-size:.7rem">(soon)</small></button>
+            </div>
+          </div>
+
           <!-- Mobile Menu Button -->
           <button type="button" id="mobileMenuBtn" class="menu-btn" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileMenu">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -929,6 +946,25 @@
       updateTicker();
       updateHolidayCountdown();
     }, 300000);
+  </script>
+
+  <script>
+    (function() {
+      var switcher = document.getElementById('langSwitcher');
+      var btn = document.getElementById('langBtn');
+      if (!switcher || !btn) return;
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        var isOpen = switcher.classList.toggle('open');
+        btn.setAttribute('aria-expanded', isOpen);
+      });
+      document.addEventListener('click', function(e) {
+        if (!switcher.contains(e.target)) {
+          switcher.classList.remove('open');
+          btn.setAttribute('aria-expanded', 'false');
+        }
+      });
+    })();
   </script>
 </body>
 </html>
