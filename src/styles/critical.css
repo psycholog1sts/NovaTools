@@ -373,13 +373,23 @@ ul, ol {
 
 /* Header PNG Logo */
 .header-logo-img {
-  width: 52px;
-  height: 52px;
+  width: 44px;
+  height: 44px;
   object-fit: contain;
-  filter: drop-shadow(0 0 8px rgba(57, 255, 20, 0.45))
-          drop-shadow(0 0 18px rgba(0, 207, 255, 0.35));
+  border-radius: var(--radius-md);
+  filter: drop-shadow(0 0 6px rgba(57, 255, 20, 0.3))
+          drop-shadow(0 0 12px rgba(0, 207, 255, 0.2));
   transition: all 0.3s ease;
   flex-shrink: 0;
+}
+
+[data-theme="light"] .header-logo-img {
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.15));
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) .header-logo-img {
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.15));
+  }
 }
 
 /* Neon Logo Icon (backward compat) */
@@ -574,21 +584,29 @@ ul, ol {
 
 /* Hero brand PNG logo */
 .hero-brand-img {
-  width: 260px;
-  height: 260px;
+  width: 200px;
+  height: 200px;
   object-fit: contain;
-  filter: drop-shadow(0 0 28px rgba(57, 255, 20, 0.45))
-          drop-shadow(0 0 56px rgba(0, 207, 255, 0.3))
-          drop-shadow(0 0 84px rgba(0, 207, 255, 0.15));
+  border-radius: var(--radius-xl);
+  filter: drop-shadow(0 0 20px rgba(57, 255, 20, 0.3))
+          drop-shadow(0 0 40px rgba(0, 207, 255, 0.2));
   animation: float 6s ease-in-out infinite;
   display: block;
-  margin: 0 auto 0.5rem;
+  margin: 0 auto 1.5rem;
 }
-
 @media (min-width: 768px) {
   .hero-brand-img {
-    width: 320px;
-    height: 320px;
+    width: 260px;
+    height: 260px;
+  }
+}
+
+[data-theme="light"] .hero-brand-img {
+  filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.1));
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) .hero-brand-img {
+    filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.1));
   }
 }
 
