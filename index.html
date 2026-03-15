@@ -16,7 +16,10 @@
   <!-- Preconnect for performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  
+
+  <!-- Preload LCP hero image -->
+  <link rel="preload" as="image" type="image/webp" href="/logo-brand-260.webp" fetchpriority="high">
+
   <!-- Critical CSS inline -->
   <link rel="stylesheet" href="/src/styles/critical.css">
   
@@ -25,11 +28,11 @@
   
   <!-- Favicon - Required by Google Search -->
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192x192.png">
   <link rel="mask-icon" href="/favicon.svg" color="#00F5D4">
 
@@ -121,7 +124,10 @@
         <div class="header-inner">
           <!-- Logo -->
           <a href="/" class="logo" aria-label="NovaTools MC Home">
-            <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
+            <picture>
+              <source srcset="/logo-bird-44.webp 1x, /logo-bird-88.webp 2x" type="image/webp">
+              <img src="/logo-bird-44.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
+            </picture>
             <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
           </a>
           
@@ -191,7 +197,10 @@
           <div class="hero-content">
             <!-- Hero Logo Display -->
             <div class="hero-logo-display">
-              <img src="/logo-brand.png" alt="NovaTools MC" class="hero-brand-img" width="200" height="200" loading="eager">
+              <picture>
+                <source srcset="/logo-brand-260.webp 260w, /logo-brand-520.webp 520w" type="image/webp" sizes="(min-width: 768px) 260px, 200px">
+                <img src="/logo-brand-260.png" alt="NovaTools MC" class="hero-brand-img" width="260" height="260" loading="eager" fetchpriority="high" decoding="async">
+              </picture>
             </div>
             
             <!-- Sub-Header Rectangle Ad (300x250) -->
