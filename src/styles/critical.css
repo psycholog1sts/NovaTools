@@ -336,10 +336,10 @@ ul, ol {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(10, 10, 12, 0.8);
+  background: var(--header-bg);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border-default);
+  border-bottom: 1px solid var(--header-border);
 }
 
 .header-inner {
@@ -770,8 +770,8 @@ ul, ol {
    CARDS
    ============================================ */
 .card {
-  background: var(--surface-default);
-  border: 1px solid var(--border-default);
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
   border-radius: var(--radius-lg);
   transition: all 0.3s ease;
   position: relative;
@@ -786,14 +786,14 @@ ul, ol {
   right: 0;
   height: 1px;
   background: linear-gradient(90deg, 
-    transparent, 
-    rgba(255, 255, 255, 0.1), 
+    transparent,
+    var(--border-hover),
     transparent);
 }
 
 .card:hover {
-  background: var(--surface-hover);
-  border-color: var(--border-hover);
+  background: var(--card-hover-bg);
+  border-color: var(--card-hover-border);
   transform: translateY(-4px);
   box-shadow: var(--shadow-lg), var(--shadow-glow);
 }
@@ -1023,9 +1023,9 @@ ul, ol {
   left: 0;
   right: 0;
   z-index: 100;
-  background: rgba(10, 10, 12, 0.98);
+  background: var(--header-bg);
   backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid var(--border-default);
   padding: 0.5rem 1rem;
   text-align: center;
   display: none; /* Hidden by default, shown via JS */
@@ -1045,8 +1045,8 @@ ul, ol {
   align-items: center;
   justify-content: center;
   min-height: 90px;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: var(--ad-bg);
+  border: 1px solid var(--border-default);
   border-radius: 8px;
   padding: 0.5rem;
 }
@@ -1086,8 +1086,8 @@ ul, ol {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--ad-bg);
+  border: 1px solid var(--border-default);
   border-radius: 12px;
   padding: 0.75rem;
   position: relative;
@@ -1136,8 +1136,8 @@ ul, ol {
 
 .ad-sidebar-left .ad-container-skyscraper,
 .ad-sidebar-right .ad-container-skyscraper {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--ad-bg);
+  border: 1px solid var(--border-default);
   border-radius: 12px;
   padding: 0.75rem;
   display: flex;
@@ -1191,8 +1191,8 @@ ul, ol {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--ad-bg);
+  border: 1px solid var(--border-default);
   border-radius: 12px;
   padding: 0.75rem;
   position: relative;
@@ -1205,9 +1205,9 @@ ul, ol {
   left: 0;
   right: 0;
   z-index: 100;
-  background: rgba(10, 10, 12, 0.98);
+  background: var(--header-bg);
   backdrop-filter: blur(20px);
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid var(--border-default);
   padding: 0.5rem;
   text-align: center;
   display: none; /* Shown on mobile via media query */
@@ -1272,6 +1272,23 @@ ul, ol {
   .ad-mobile-anchor {
     display: none;
   }
+}
+
+/* Ad Frame Component */
+.ad-frame {
+  background: var(--ad-bg);
+  border: 1px solid var(--ad-border);
+  border-radius: var(--radius-lg);
+  padding: 0.75rem;
+  text-align: center;
+}
+.ad-frame .ad-label {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ad-label-color);
+  margin-bottom: 0.5rem;
 }
 
 /* ============================================
@@ -1680,8 +1697,136 @@ ul, ol {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-  
+
   html {
     scroll-behavior: auto;
   }
+}
+
+/* ============================================
+   SITE FOOTER (theme-aware)
+   ============================================ */
+.site-footer {
+  background: var(--footer-bg);
+  border-top: 1px solid var(--footer-border);
+  padding: 3rem 1rem 1.5rem;
+  margin-top: 4rem;
+}
+.footer-container { max-width: 1200px; margin: 0 auto; }
+.footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2.5rem; margin-bottom: 2.5rem; }
+.footer-brand-name { color: var(--accent-hover); font-size: 1.1rem; font-weight: 700; margin-bottom: 0.75rem; }
+.footer-about { color: var(--text-tertiary); font-size: 0.875rem; line-height: 1.7; margin-bottom: 0.75rem; }
+.footer-privacy-badge { display: inline-block; padding: 3px 10px; background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.3); border-radius: 12px; color: var(--success); font-size: 0.75rem; }
+.footer-heading { color: var(--text-primary); font-size: 0.875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.875rem; }
+.footer-links a { color: var(--text-tertiary); font-size: 0.875rem; transition: color 0.15s; }
+.footer-links a:hover { color: var(--accent-hover); }
+.footer-tips { padding-left: 1.25rem; color: var(--text-tertiary); font-size: 0.8125rem; line-height: 1.7; margin-bottom: 1.25rem; }
+.footer-contact { color: var(--text-tertiary); font-size: 0.8125rem; }
+.footer-contact a { color: var(--accent-hover); }
+.footer-bottom { border-top: 1px solid var(--border-default); padding-top: 1.25rem; text-align: center; }
+.footer-bottom p { color: var(--text-muted); font-size: 0.8125rem; line-height: 1.6; }
+
+/* ============================================
+   BREADCRUMB
+   ============================================ */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+.breadcrumb a { color: var(--text-tertiary); transition: color 0.2s; }
+.breadcrumb a:hover { color: var(--accent-hover); }
+.breadcrumb-sep { color: var(--text-muted); }
+
+/* ============================================
+   TOOL ACCORDION
+   ============================================ */
+.tool-accordion {
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+.tool-accordion summary {
+  padding: 1rem 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: var(--surface-default);
+  color: var(--text-primary);
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.tool-accordion summary::-webkit-details-marker { display: none; }
+.tool-accordion summary::after {
+  content: '+';
+  font-size: 1.25rem;
+  color: var(--text-muted);
+  transition: transform 0.2s;
+}
+.tool-accordion[open] summary::after { content: '\2212'; }
+.tool-accordion .accordion-content {
+  padding: 1.5rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* ============================================
+   3-COLUMN AD LAYOUT
+   ============================================ */
+.page-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+@media (min-width: 1200px) {
+  .page-layout {
+    grid-template-columns: 160px 1fr 160px;
+    padding: 0 2rem;
+  }
+}
+@media (min-width: 1400px) {
+  .page-layout {
+    grid-template-columns: 300px 1fr 300px;
+  }
+}
+.ad-rail { display: none; }
+@media (min-width: 1200px) {
+  .ad-rail {
+    display: block;
+    position: sticky;
+    top: 100px;
+    align-self: start;
+  }
+}
+.ad-rail .ad-frame { margin-bottom: 1.5rem; }
+.page-center { min-width: 0; }
+
+/* ============================================
+   THEME TOGGLE
+   ============================================ */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: var(--surface-default);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-full);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.theme-toggle:hover {
+  background: var(--surface-hover);
+  border-color: var(--border-hover);
+  color: var(--text-primary);
 }
