@@ -10,6 +10,7 @@
   gtag('config', 'G-Y896L63239');
 </script>
   <meta charset="UTF-8">
+  <script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <!-- Preconnect for performance -->
@@ -37,7 +38,8 @@
   <meta name="description" content="Free online tools: mortgage refinance, tax, compound interest, PDF compress/merge/split, image converter &amp; more. No signup. Instant results. 100% private.">
   <meta name="keywords" content="free online tools, free mortgage calculator, free PDF compressor, free image converter, free tax calculator, financial tools, privacy-first">
   <meta name="author" content="NovaTools MC">
-  <meta name="theme-color" content="#0A0A0C">
+  <meta name="theme-color" content="#0A0A0C" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#F8F9FA" media="(prefers-color-scheme: light)">
 
   <!-- Open Graph -->
   <meta property="og:title" content="Free Online Tools - Finance, PDF &amp; Image | NovaTools MC">
@@ -150,6 +152,16 @@
               <button class="lang-option disabled" role="option" aria-selected="false" aria-disabled="true" type="button"><span class="lang-flag">🇪🇸</span> Español <small style="opacity:.5;font-size:.7rem">(soon)</small></button>
             </div>
           </div>
+
+          <!-- Theme Toggle -->
+          <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+            <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+            </svg>
+            <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+          </button>
 
           <!-- Mobile Menu Button -->
           <button type="button" id="mobileMenuBtn" class="menu-btn" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileMenu">
@@ -819,6 +831,28 @@
           mobileMenu.hidden = isExpanded;
           mobileMenu.classList.toggle('active', !isExpanded);
         });
+      }
+
+      // Theme toggle
+      var themeBtn = document.getElementById('themeToggle');
+      if (themeBtn) {
+        function getTheme() {
+          var s = localStorage.getItem('theme');
+          if (s) return s;
+          return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        }
+        function updateIcon() {
+          var t = getTheme();
+          themeBtn.querySelector('.icon-sun').style.display = t === 'light' ? 'none' : 'block';
+          themeBtn.querySelector('.icon-moon').style.display = t === 'dark' ? 'none' : 'block';
+        }
+        themeBtn.addEventListener('click', function() {
+          var next = getTheme() === 'dark' ? 'light' : 'dark';
+          document.documentElement.setAttribute('data-theme', next);
+          localStorage.setItem('theme', next);
+          updateIcon();
+        });
+        updateIcon();
       }
     });
   </script>
