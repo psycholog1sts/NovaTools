@@ -94,8 +94,6 @@ export class AutonomousPlatform {
     const relevantPrograms = this.findRelevantAffiliates(toolMeta);
     
     for (const program of relevantPrograms) {
-      console.log(`[Autonomy] Applying for ${program.name} affiliate program`);
-      
       // In real implementation, this would use affiliate APIs
       this.state.affiliates.set(toolMeta.id, {
         program: program.name,
@@ -167,7 +165,6 @@ export class AutonomousPlatform {
   }
 
   testNewPlacement(toolId, placement) {
-    console.log(`[Autonomy] Testing ${placement} placement for ${toolId}`);
     // Implementation would modify tool HTML
   }
 
@@ -187,8 +184,7 @@ export class AutonomousPlatform {
       .slice(0, 5);
     
     for (const tool of topTools) {
-      const content = this.createSocialPost(tool);
-      console.log(`[Autonomy] Generated social content for ${tool.meta.name}`);
+      const _content = this.createSocialPost(tool);
       // In real implementation, post to social media APIs
     }
   }
@@ -244,12 +240,10 @@ export class IPFSArchiver {
     // In real implementation, use ipfs-http-client
     const cid = await this.uploadToIPFS(content);
     
-    console.log(`[IPFS] Archived tool to: ${cid}`);
-    
     return cid;
   }
 
-  async uploadToIPFS(content) {
+  async uploadToIPFS(_content) {
     // Placeholder for IPFS upload
     // Real implementation would use:
     // const { create } = await import('ipfs-http-client');
@@ -282,8 +276,6 @@ export class SmartContractRevenue {
       data: '0x'
     };
 
-    console.log(`[Revenue] Processing daily revenue: ${revenue} ETH`);
-    
     return tx;
   }
 

@@ -20,8 +20,8 @@ const calculateMonthlyPayment = (principal, annualRate, years) => {
   return Math.round(payment * 100) / 100;
 };
 
-// Total interest calculation
-const calculateTotalInterest = (monthlyPayment, years, principal) => {
+// Total interest calculation (unused but kept for future tests)
+const _calculateTotalInterest = (monthlyPayment, years, principal) => {
   const totalPayments = monthlyPayment * years * 12;
   return Math.round((totalPayments - principal) * 100) / 100;
 };
@@ -139,9 +139,6 @@ describe('Mortgage Calculator', () => {
       
       // Much higher rate (8%), shorter remaining term makes it not worthwhile
       const result = calculateRefinanceSavings(currentLoan, 8.0, 15, 8000);
-      
-      // Debug log to understand the calculation
-      console.log('Bad deal result:', result);
       
       // Negative monthly savings or break-even too long makes it not worthwhile
       expect(result.isWorthwhile).toBe(false);

@@ -99,9 +99,9 @@ export class DistributedComputeNode {
     const start = performance.now();
     
     // Simple compute benchmark
-    let sum = 0;
+    let _sum = 0;
     for (let i = 0; i < 1000000; i++) {
-      sum += Math.sqrt(i);
+      _sum += Math.sqrt(i);
     }
     
     const duration = performance.now() - start;
