@@ -18,7 +18,7 @@ const ERROR_PATTERNS = {
   ]
 };
 
-export function detectAnomaly(field, value, context = {}) {
+export function detectAnomaly(field, value, _context = {}) {
   const anomalies = [];
   const numValue = parseFloat(value);
   

@@ -3,7 +3,7 @@
  * Unified HTTP client with caching, retries, and error handling
  */
 
-import { getConfig } from './config.mjs';
+// import { getConfig } from './config.mjs';
 import { errorHandler } from './error-handler.mjs';
 
 class APIClient {

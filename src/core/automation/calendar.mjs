@@ -50,7 +50,7 @@ export class IslamicCalendar {
     // Refine calculation
     let year = Math.floor(months / 12);
     let month = months % 12;
-    const day = Math.floor(days - (month * 29.53059) - (year * 354.36707));
+    const _day = Math.floor(days - (month * 29.53059) - (year * 354.36707));
     
     // Adjust to actual calendar
     year = Math.floor((jd - this.HIJRI_EPOCH) / this.ISLAMIC_YEAR_DAYS) + 1;

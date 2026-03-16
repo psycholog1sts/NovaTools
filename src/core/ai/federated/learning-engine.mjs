@@ -210,7 +210,7 @@ export class FederatedLearning {
       
       for (const sample of shuffled) {
         // Forward pass
-        const prediction = model.forward(sample.features);
+        model.forward(sample.features); // Forward pass only
         
         // Create target vector (one-hot)
         const target = new Array(modelInfo.config.outputSize).fill(0);

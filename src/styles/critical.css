@@ -335,11 +335,17 @@ ul, ol {
 .main-header {
   position: sticky;
   top: 0;
-  z-index: 50;
+  z-index: 100;
   background: var(--header-bg);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--header-border);
+}
+
+/* Logo z-index fix - prevent overlap issues */
+.logo {
+  position: relative;
+  z-index: 1;
 }
 
 .header-inner {
