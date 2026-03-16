@@ -105,14 +105,6 @@
   </script>
 </head>
 <body>
-  <!-- Top Header Ad (728x90) - Sticky -->
-  <div class="ad-header-top" role="complementary" aria-label="Advertisement">
-    <div class="ad-label">Sponsored</div>
-    <div class="ad-container-banner">
-      <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="__ADSENSE_CLIENT__" data-ad-slot="HEADER_BANNER_SLOT"></ins>
-    </div>
-  </div>
-  
   <!-- Ambient Background -->
   <div class="bg-ambient" aria-hidden="true"></div>
   <div class="noise-overlay" aria-hidden="true"></div>
@@ -133,10 +125,10 @@
           
           <!-- Desktop Navigation -->
           <nav class="nav-desktop" aria-label="Main navigation">
-            <a href="#finance" class="nav-link">Finance</a>
-            <a href="#pdf" class="nav-link">PDF Tools</a>
-            <a href="#image" class="nav-link">Images</a>
-            <a href="#dev" class="nav-link">Developers</a>
+            <a href="#finance" class="nav-link" data-i18n="nav.finance">Finance</a>
+            <a href="#pdf" class="nav-link" data-i18n="nav.pdf">PDF Tools</a>
+            <a href="#image" class="nav-link" data-i18n="nav.images">Images</a>
+            <a href="#dev" class="nav-link" data-i18n="nav.dev">Developers</a>
           </nav>
           
           <!-- Privacy Badge -->
@@ -152,10 +144,12 @@
               EN
             </button>
             <div class="lang-dropdown" role="listbox" aria-label="Select language">
-              <button class="lang-option active" role="option" aria-selected="true" type="button"><span class="lang-flag">🇺🇸</span> English</button>
-              <button class="lang-option disabled" role="option" aria-selected="false" aria-disabled="true" type="button"><span class="lang-flag">🇹🇷</span> Türkçe <small style="opacity:.5;font-size:.7rem">(soon)</small></button>
-              <button class="lang-option disabled" role="option" aria-selected="false" aria-disabled="true" type="button"><span class="lang-flag">🇩🇪</span> Deutsch <small style="opacity:.5;font-size:.7rem">(soon)</small></button>
-              <button class="lang-option disabled" role="option" aria-selected="false" aria-disabled="true" type="button"><span class="lang-flag">🇪🇸</span> Español <small style="opacity:.5;font-size:.7rem">(soon)</small></button>
+              <button class="lang-option" role="option" aria-selected="false" data-lang="zh" type="button"><span class="lang-flag">🇨🇳</span> 中文</button>
+              <button class="lang-option" role="option" aria-selected="false" data-lang="hi" type="button"><span class="lang-flag">🇮🇳</span> हिंदी</button>
+              <button class="lang-option active" role="option" aria-selected="true" data-lang="en" type="button"><span class="lang-flag">🇺🇸</span> English</button>
+              <button class="lang-option" role="option" aria-selected="false" data-lang="tr" type="button"><span class="lang-flag">🇹🇷</span> Türkçe</button>
+              <button class="lang-option" role="option" aria-selected="false" data-lang="de" type="button"><span class="lang-flag">🇩🇪</span> Deutsch</button>
+              <button class="lang-option" role="option" aria-selected="false" data-lang="es" type="button"><span class="lang-flag">🇪🇸</span> Español</button>
             </div>
           </div>
 
@@ -203,36 +197,28 @@
               </picture>
             </div>
             
-            <!-- Sub-Header Rectangle Ad (300x250) -->
-            <div class="ad-subheader" role="complementary" aria-label="Advertisement">
-              <div class="ad-label">Sponsored</div>
-              <div class="ad-container-rectangle">
-                <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="__ADSENSE_CLIENT__" data-ad-slot="SUBHEADER_RECTANGLE_SLOT"></ins>
-              </div>
-            </div>
-            
             <div class="hero-badge">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
               </svg>
               Zero Data Collection
             </div>
-            <h1 class="hero-title">
+            <h1 class="hero-title" data-i18n="hero.title">
               Professional Tools.<br>Complete Privacy.
             </h1>
             <span class="sr-only">Free online tools — 100% free, no registration required. Free mortgage refinance calculator, free tax calculator, free PDF compressor, free PDF merger, free image converter, free compound interest calculator, free crypto tax calculator, free cloud cost estimator.</span>
-            <p class="hero-description">
+            <p class="hero-description" data-i18n="hero.description">
               Powerful calculators for mortgage, insurance, and cloud costs.
               All processing happens in your browser — your data never leaves your device.
             </p>
             <div class="hero-cta">
               <a href="#finance" class="btn btn-primary">
-                Explore Tools
+                <span data-i18n="hero.cta.primary">Explore Tools</span>
                 <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M5 12h14M12 5l7 7-7 7"/>
                 </svg>
               </a>
-              <a href="#privacy" class="btn btn-secondary">
+              <a href="#privacy" class="btn btn-secondary" data-i18n="hero.cta.secondary">
                 How It Works
               </a>
             </div>
@@ -278,10 +264,10 @@
                       <line x1="12" y1="1" x2="12" y2="23"/>
                       <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
                     </svg>
-                    Financial Tools
+                    <span data-i18n="section.finance.label">Financial Tools</span>
                   </div>
-                  <h2 class="section-title">High-Value Financial Calculators</h2>
-                  <p class="section-description">Professional-grade tools for mortgage planning, insurance estimates, and investment projections.</p>
+                  <h2 class="section-title" data-i18n="section.finance.title">High-Value Financial Calculators</h2>
+                  <p class="section-description" data-i18n="section.finance.desc">Professional-grade tools for mortgage planning, insurance estimates, and investment projections.</p>
                 </div>
 
                 <div class="grid grid-3">
@@ -426,10 +412,10 @@
                       <line x1="16" y1="13" x2="8" y2="13"/>
                       <line x1="16" y1="17" x2="8" y2="17"/>
                     </svg>
-                    PDF Tools
+                    <span data-i18n="section.pdf.label">PDF Tools</span>
                   </div>
-                  <h2 class="section-title">PDF Manipulation Suite</h2>
-                  <p class="section-description">Merge, compress, and split PDFs directly in your browser. No file uploads required.</p>
+                  <h2 class="section-title" data-i18n="section.pdf.title">PDF Manipulation Suite</h2>
+                  <p class="section-description" data-i18n="section.pdf.desc">Merge, compress, and split PDFs directly in your browser. No file uploads required.</p>
                 </div>
 
                 <div class="grid grid-3">
@@ -486,10 +472,10 @@
                       <circle cx="8.5" cy="8.5" r="1.5"/>
                       <path d="M21 15l-5-5L5 21"/>
                     </svg>
-                    Image Tools
+                    <span data-i18n="section.image.label">Image Tools</span>
                   </div>
-                  <h2 class="section-title">Image Optimization</h2>
-                  <p class="section-description">Compress and convert images to modern formats for faster websites.</p>
+                  <h2 class="section-title" data-i18n="section.image.title">Image Optimization</h2>
+                  <p class="section-description" data-i18n="section.image.desc">Compress and convert images to modern formats for faster websites.</p>
                 </div>
 
                 <div class="grid grid-3">
@@ -578,10 +564,10 @@
                       <polyline points="16 18 22 12 16 6"/>
                       <polyline points="8 6 2 12 8 18"/>
                     </svg>
-                    Developer Tools
+                    <span data-i18n="section.dev.label">Developer Tools</span>
                   </div>
-                  <h2 class="section-title">Developer Utilities</h2>
-                  <p class="section-description">Essential tools for debugging and formatting code in your browser.</p>
+                  <h2 class="section-title" data-i18n="section.dev.title">Developer Utilities</h2>
+                  <p class="section-description" data-i18n="section.dev.desc">Essential tools for debugging and formatting code in your browser.</p>
                 </div>
 
                 <div class="grid grid-3">
@@ -873,10 +859,44 @@
   </script>
 
   <script>
-    (function() {
-      var switcher = document.getElementById('langSwitcher');
+  (function() {
+    var T = {
+      en: { ht:'Professional Tools. Complete Privacy.', hd:'Powerful calculators for mortgage, insurance, and cloud costs. All processing happens in your browser.', cp:'Explore Tools', cs:'How It Works', nf:'Finance', np:'PDF Tools', ni:'Images', nd:'Developers', sfl:'Financial Tools', sft:'High-Value Financial Calculators', sfd:'Professional-grade tools for mortgage planning, insurance estimates, and investment projections.', spl:'PDF Tools', spt:'PDF Manipulation Suite', spd:'Merge, compress, and split PDFs directly in your browser.', sil:'Image Tools', sit:'Image Optimization', sid:'Compress and convert images to modern formats.', sdl:'Developer Tools', sdt:'Developer Utilities', sdd:'Essential tools for debugging and formatting code.' },
+      zh: { ht:'专业工具。完全私密。', hd:'强大的抵押贷款、保险和云成本计算器。所有处理均在您的浏览器中进行。', cp:'探索工具', cs:'工作原理', nf:'金融', np:'PDF工具', ni:'图片', nd:'开发者', sfl:'金融工具', sft:'高价值金融计算器', sfd:'专业级的抵押贷款规划、保险估算和投资预测工具。', spl:'PDF工具', spt:'PDF操作套件', spd:'直接在浏览器中合并、压缩和分割PDF。', sil:'图片工具', sit:'图片优化', sid:'将图片压缩并转换为现代格式。', sdl:'开发者工具', sdt:'开发者实用工具', sdd:'在浏览器中调试和格式化代码的必备工具。' },
+      hi: { ht:'पेशेवर टूल्स। पूर्ण गोपनीयता।', hd:'बंधक, बीमा और क्लाउड लागत के लिए शक्तिशाली कैलकुलेटर। सभी प्रसंस्करण आपके ब्राउज़र में होता है।', cp:'टूल्स देखें', cs:'यह कैसे काम करता है', nf:'वित्त', np:'PDF टूल्स', ni:'छवियां', nd:'डेवलपर्स', sfl:'वित्तीय टूल्स', sft:'उच्च-मूल्य वित्तीय कैलकुलेटर', sfd:'बंधक योजना, बीमा अनुमान और निवेश के लिए पेशेवर उपकरण।', spl:'PDF टूल्स', spt:'PDF मैनिपुलेशन सूट', spd:'ब्राउज़र में सीधे PDF मर्ज, कम्प्रेस और स्प्लिट करें।', sil:'छवि टूल्स', sit:'छवि अनुकूलन', sid:'तेज़ वेबसाइटों के लिए छवियों को आधुनिक प्रारूपों में अनुकूलित करें।', sdl:'डेवलपर टूल्स', sdt:'डेवलपर यूटिलिटीज़', sdd:'ब्राउज़र में कोड डीबग और फ़ॉर्मेट करने के लिए आवश्यक टूल।' },
+      tr: { ht:'Profesyonel Araçlar. Tam Gizlilik.', hd:'Mortgage, sigorta ve bulut maliyetleri için güçlü hesaplayıcılar. Tüm işlemler tarayıcınızda gerçekleşir.', cp:'Araçları Keşfet', cs:'Nasıl Çalışır', nf:'Finans', np:'PDF Araçları', ni:'Görseller', nd:'Geliştiriciler', sfl:'Finansal Araçlar', sft:'Yüksek Değerli Hesaplayıcılar', sfd:'Mortgage planlaması, sigorta tahminleri ve yatırım projeksiyonları.', spl:'PDF Araçları', spt:'PDF İşleme Paketi', spd:"PDF'leri tarayıcınızda birleştirin, sıkıştırın ve bölün.", sil:'Görsel Araçlar', sit:'Görsel Optimizasyon', sid:'Görselleri modern formatlara dönüştürün.', sdl:'Geliştirici Araçları', sdt:'Geliştirici Araçları', sdd:'Tarayıcıda kod hata ayıklama araçları.' },
+      de: { ht:'Professionelle Tools. Vollständige Privatsphäre.', hd:'Leistungsstarke Rechner für Hypotheken, Versicherungen und Cloud-Kosten. Alles läuft in Ihrem Browser.', cp:'Tools entdecken', cs:'Wie es funktioniert', nf:'Finanzen', np:'PDF-Tools', ni:'Bilder', nd:'Entwickler', sfl:'Finanzielle Tools', sft:'Hochwertige Finanzrechner', sfd:'Professionelle Tools für Hypothekenplanung und Investitionsprojektionen.', spl:'PDF-Tools', spt:'PDF-Bearbeitungspaket', spd:'PDFs direkt im Browser zusammenführen, komprimieren und aufteilen.', sil:'Bild-Tools', sit:'Bildoptimierung', sid:'Bilder in moderne Formate konvertieren.', sdl:'Entwickler-Tools', sdt:'Entwickler-Utilities', sdd:'Wesentliche Tools zum Debuggen von Code im Browser.' },
+      es: { ht:'Herramientas Profesionales. Privacidad Total.', hd:'Potentes calculadoras para hipotecas, seguros y costes en la nube. Todo se procesa en tu navegador.', cp:'Explorar', cs:'Cómo Funciona', nf:'Finanzas', np:'PDF', ni:'Imágenes', nd:'Desarrolladores', sfl:'Herramientas Financieras', sft:'Calculadoras de Alto Valor', sfd:'Herramientas para planificación hipotecaria y proyecciones de inversión.', spl:'PDF', spt:'Suite PDF', spd:'Combina, comprime y divide PDFs en tu navegador.', sil:'Imágenes', sit:'Optimización de Imágenes', sid:'Comprime y convierte imágenes a formatos modernos.', sdl:'Herramientas Dev', sdt:'Utilidades para Desarrolladores', sdd:'Herramientas para depurar código en el navegador.' }
+    };
+    var MAP = {
+      'hero.title':'ht','hero.description':'hd','hero.cta.primary':'cp','hero.cta.secondary':'cs',
+      'nav.finance':'nf','nav.pdf':'np','nav.images':'ni','nav.dev':'nd',
+      'section.finance.label':'sfl','section.finance.title':'sft','section.finance.desc':'sfd',
+      'section.pdf.label':'spl','section.pdf.title':'spt','section.pdf.desc':'spd',
+      'section.image.label':'sil','section.image.title':'sit','section.image.desc':'sid',
+      'section.dev.label':'sdl','section.dev.title':'sdt','section.dev.desc':'sdd'
+    };
+    var LBL = {en:'EN',zh:'中文',hi:'हि',tr:'TR',de:'DE',es:'ES'};
+
+    function applyLang(lang) {
+      var t = T[lang] || T.en;
+      document.querySelectorAll('[data-i18n]').forEach(function(el) {
+        var k = MAP[el.getAttribute('data-i18n')];
+        if (k && t[k]) el.textContent = t[k];
+      });
       var btn = document.getElementById('langBtn');
-      if (!switcher || !btn) return;
+      if (btn) { btn.lastChild.textContent = ' ' + (LBL[lang] || lang.toUpperCase()); }
+      document.querySelectorAll('.lang-option[data-lang]').forEach(function(o) {
+        var a = o.getAttribute('data-lang') === lang;
+        o.classList.toggle('active', a);
+        o.setAttribute('aria-selected', String(a));
+      });
+      localStorage.setItem('lang', lang);
+    }
+
+    var switcher = document.getElementById('langSwitcher');
+    var btn = document.getElementById('langBtn');
+    if (switcher && btn) {
       btn.addEventListener('click', function(e) {
         e.stopPropagation();
         var isOpen = switcher.classList.toggle('open');
@@ -888,7 +908,17 @@
           btn.setAttribute('aria-expanded', 'false');
         }
       });
-    })();
+      switcher.querySelectorAll('.lang-option[data-lang]').forEach(function(opt) {
+        opt.addEventListener('click', function() {
+          applyLang(opt.getAttribute('data-lang'));
+          switcher.classList.remove('open');
+          btn.setAttribute('aria-expanded', 'false');
+        });
+      });
+      var saved = localStorage.getItem('lang') || 'en';
+      if (saved !== 'en') applyLang(saved);
+    }
+  })();
   </script>
 </body>
 </html>

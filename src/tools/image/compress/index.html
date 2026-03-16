@@ -219,6 +219,85 @@
   </div>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+  // ── Image Compress Logic ───────────────────────────────────
+  var dropzone = document.getElementById('dropzone');
+  var fileInput = document.getElementById('fileInput');
+  var qualitySlider = document.getElementById('qualitySlider');
+  var qualityValue = document.getElementById('qualityValue');
+  var compressBtn = document.getElementById('compressBtn');
+  var controls = document.getElementById('controls');
+  var originalPreview = document.getElementById('originalPreview');
+  var compressedPreview = document.getElementById('compressedPreview');
+  var originalSize = document.getElementById('originalSize');
+  var compressedSize = document.getElementById('compressedSize');
+  var downloadLink = document.getElementById('downloadLink');
+  var savingsText = document.getElementById('savingsText');
+  var resultSection = document.getElementById('resultSection');
+  var currentFile = null;
+
+  function fmt(b) { return b < 1048576 ? (b/1024).toFixed(1)+' KB' : (b/1048576).toFixed(1)+' MB'; }
+
+  function loadFile(file) {
+    if (!file || !file.type.startsWith('image/')) return;
+    currentFile = file;
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      if (originalPreview) { originalPreview.src = e.target.result; originalPreview.style.display = 'block'; }
+      if (originalSize) originalSize.textContent = 'Original: ' + fmt(file.size);
+      if (controls) controls.style.display = 'block';
+      updatePreview(e.target.result);
+    };
+    reader.readAsDataURL(file);
+  }
+
+  function updatePreview(src) {
+    var quality = qualitySlider ? qualitySlider.value / 100 : 0.8;
+    var format = document.getElementById('formatSelect') ? document.getElementById('formatSelect').value : 'image/jpeg';
+    var img = new Image();
+    img.onload = function() {
+      var canvas = document.createElement('canvas');
+      canvas.width = img.width; canvas.height = img.height;
+      var ctx = canvas.getContext('2d'); ctx.drawImage(img, 0, 0);
+      canvas.toBlob(function(blob) {
+        if (!blob) return;
+        var url = URL.createObjectURL(blob);
+        if (compressedPreview) { compressedPreview.src = url; compressedPreview.style.display = 'block'; }
+        if (compressedSize) compressedSize.textContent = 'Compressed: ' + fmt(blob.size);
+        if (downloadLink) { downloadLink.href = url; downloadLink.download = 'compressed.' + (format.split('/')[1] || 'jpg'); }
+        if (savingsText && currentFile) {
+          var saved = Math.round((1 - blob.size/currentFile.size)*100);
+          savingsText.textContent = fmt(currentFile.size) + ' \u2192 ' + fmt(blob.size) + ' (' + (saved > 0 ? '-'+saved+'%' : 'no change') + ')';
+        }
+        if (resultSection) resultSection.style.display = 'block';
+      }, format, quality);
+    };
+    img.src = src;
+  }
+
+  if (dropzone && fileInput) {
+    dropzone.addEventListener('click', function(e){ if (e.target !== fileInput) fileInput.click(); });
+    fileInput.addEventListener('change', function(){ if (fileInput.files[0]) loadFile(fileInput.files[0]); });
+    dropzone.addEventListener('dragover', function(e){ e.preventDefault(); dropzone.classList.add('drag-active'); });
+    dropzone.addEventListener('dragleave', function(){ dropzone.classList.remove('drag-active'); });
+    dropzone.addEventListener('drop', function(e){ e.preventDefault(); dropzone.classList.remove('drag-active'); if (e.dataTransfer.files[0]) loadFile(e.dataTransfer.files[0]); });
+  }
+
+  if (qualitySlider && qualityValue) {
+    qualitySlider.addEventListener('input', function(){ qualityValue.textContent = qualitySlider.value; });
+  }
+
+  var form = document.querySelector('form');
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      if (!currentFile) return;
+      var reader = new FileReader();
+      reader.onload = function(ev){ updatePreview(ev.target.result); };
+      reader.readAsDataURL(currentFile);
+    });
+  }
+  // ──────────────────────────────────────────────────────────
+
   var menuBtn = document.getElementById('mobileMenuBtn');
   var mobileMenu = document.getElementById('mobileMenu');
   if (menuBtn && mobileMenu) {

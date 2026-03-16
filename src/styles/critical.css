@@ -557,13 +557,13 @@ ul, ol {
    ============================================ */
 .hero {
   position: relative;
-  padding: 3rem 0 6rem;
+  padding: 1.5rem 0 2rem;
   overflow: hidden;
 }
 
 @media (min-width: 768px) {
   .hero {
-    padding: 4rem 0 8rem;
+    padding: 2rem 0 3rem;
   }
 }
 
@@ -584,8 +584,8 @@ ul, ol {
 
 /* Hero brand PNG logo */
 .hero-brand-img {
-  width: 200px;
-  height: 200px;
+  width: 120px;
+  height: 120px;
   object-fit: contain;
   border-radius: var(--radius-xl);
   filter: drop-shadow(0 0 20px rgba(57, 255, 20, 0.3))
@@ -596,8 +596,8 @@ ul, ol {
 }
 @media (min-width: 768px) {
   .hero-brand-img {
-    width: 260px;
-    height: 260px;
+    width: 160px;
+    height: 160px;
   }
 }
 
@@ -922,7 +922,7 @@ ul, ol {
    ============================================ */
 .grid {
   display: grid;
-  gap: 1.25rem;
+  gap: 1rem;
 }
 
 .grid-2 {
