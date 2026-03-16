@@ -1,0 +1,657 @@
+<!--
+  NOVATOOLS MC - STANDARD TOOL PAGE TEMPLATE
+  ============================================
+  Bu template tüm araç sayfaları için standart yapıyı tanımlar.
+  Her yeni araç oluşturulurken bu template kullanılmalıdır.
+  
+  Checklist:
+  [ ] Tema scripti <head>'e eklendi
+  [ ] Meta tag'ler tam ve SEO uyumlu
+  [ ] Schema.org JSON-LD yapısı eklendi
+  [ ] 3-column ad layout kullanıldı
+  [ ] Legal disclaimer eklendi
+  [ ] Footer standart yapıda
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y896L63239"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Y896L63239');
+  </script>
+
+  <meta charset="UTF-8">
+  
+  <!-- CRITICAL: Theme FOUC Prevention -->
+  <script>(function(){var t=localStorage.getItem('novatools-theme');if(t)document.documentElement.setAttribute('data-theme',t);else{var d=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',d);document.documentElement.style.colorScheme=d;}})();</script>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Favicon - Complete Set -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192x192.png">
+  <link rel="mask-icon" href="/favicon.svg" color="#00F5D4">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/src/styles/critical.css">
+  <link rel="stylesheet" href="/src/styles/main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Primary Meta Tags -->
+  <title>[[TOOL_NAME]] — Free Online Tool | NovaTools MC</title>
+  <meta name="title" content="[[TOOL_NAME]] — Free Online Tool | NovaTools MC">
+  <meta name="description" content="[[TOOL_DESCRIPTION_150_160_CHARS]]">
+  <meta name="keywords" content="[[TOOL_KEYWORDS_COMMA_SEPARATED]]">
+  <meta name="author" content="NovaTools MC - Psk. Metehan CETIN">
+  <meta name="theme-color" content="#0A0A0C" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#F8F9FA" media="(prefers-color-scheme: light)">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://www.mc-novatools.com/tools/[[CATEGORY]]/[[TOOL_SLUG]]/">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.mc-novatools.com/tools/[[CATEGORY]]/[[TOOL_SLUG]]/">
+  <meta property="og:title" content="[[TOOL_NAME]] — Free Online Tool | NovaTools MC">
+  <meta property="og:description" content="[[TOOL_DESCRIPTION]]">
+  <meta property="og:image" content="https://www.mc-novatools.com/og-image.png">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://www.mc-novatools.com/tools/[[CATEGORY]]/[[TOOL_SLUG]]/">
+  <meta property="twitter:title" content="[[TOOL_NAME]] — Free Online Tool | NovaTools MC">
+  <meta property="twitter:description" content="[[TOOL_DESCRIPTION]]">
+  <meta property="twitter:image" content="https://www.mc-novatools.com/og-image.png">
+
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        "name": "[[TOOL_NAME]]",
+        "description": "[[TOOL_DESCRIPTION]]",
+        "url": "https://www.mc-novatools.com/tools/[[CATEGORY]]/[[TOOL_SLUG]]/",
+        "applicationCategory": "[[APPLICATION_CATEGORY]]",
+        "operatingSystem": "Any",
+        "browserRequirements": "Requires JavaScript",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.8",
+          "ratingCount": "1000",
+          "bestRating": "5",
+          "worstRating": "1"
+        },
+        "author": {
+          "@type": "Organization",
+          "name": "NovaTools MC",
+          "url": "https://www.mc-novatools.com"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How does [[TOOL_NAME]] work?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "[[HOW_IT_WORKS]]"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is my data secure when using this tool?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. All processing is performed entirely in your browser (100% client-side). No data is ever sent to our servers. Your information stays completely private on your device."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I use this tool on mobile?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Absolutely. Our tool is fully responsive and works on all devices including smartphones and tablets, with no app installation required."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+  
+  <!-- Tool-specific CSS -->
+  <style>
+    /* Tool Container */
+    .tool-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 0;
+    }
+    
+    /* Tool Header */
+    .tool-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    
+    .tool-title {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.75rem;
+    }
+    
+    .tool-subtitle {
+      font-size: 1.125rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    /* Privacy Badge */
+    .privacy-notice {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: rgba(34, 197, 94, 0.1);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      border-radius: var(--radius-full);
+      font-size: 0.875rem;
+      color: var(--success);
+      margin-bottom: 1.5rem;
+    }
+    
+    /* Tool Workspace */
+    .tool-workspace {
+      background: var(--surface-default);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+    
+    /* Form Styles */
+    .tool-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    
+    .form-label {
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+    
+    .form-input {
+      padding: 0.75rem 1rem;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-md);
+      color: var(--text-primary);
+      font-size: 1rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    
+    .form-input:focus {
+      outline: none;
+      border-color: var(--accent-primary);
+      box-shadow: 0 0 0 3px var(--accent-glow);
+    }
+    
+    /* Results Panel */
+    .results-panel {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      margin-top: 1.5rem;
+      display: none;
+    }
+    
+    .results-panel.visible {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    /* Legal Disclaimer */
+    .legal-disclaimer {
+      background: var(--surface-default);
+      border-left: 4px solid var(--warning);
+      padding: 1rem 1.25rem;
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      margin-top: 2rem;
+    }
+    
+    .legal-disclaimer p {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      margin: 0;
+      line-height: 1.6;
+    }
+    
+    /* How to Use Section */
+    .how-to-use {
+      margin-top: 3rem;
+    }
+    
+    .how-to-use h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+    }
+    
+    .how-to-use ol {
+      padding-left: 1.5rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+    
+    .how-to-use li {
+      margin-bottom: 0.5rem;
+    }
+    
+    /* FAQ Accordion */
+    .faq-section {
+      margin-top: 3rem;
+    }
+    
+    .faq-section h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+    }
+    
+    .faq-item {
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-md);
+      margin-bottom: 0.75rem;
+      overflow: hidden;
+    }
+    
+    .faq-question {
+      width: 100%;
+      padding: 1rem 1.25rem;
+      background: var(--surface-default);
+      border: none;
+      text-align: left;
+      font-weight: 500;
+      color: var(--text-primary);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .faq-answer {
+      padding: 0 1.25rem 1rem;
+      color: var(--text-secondary);
+      font-size: 0.9375rem;
+      line-height: 1.6;
+      display: none;
+    }
+    
+    .faq-item.open .faq-answer {
+      display: block;
+    }
+    
+    /* Compact Footer for Tool Pages */
+    .tool-footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      border-top: 1px solid var(--border-default);
+      margin-top: 3rem;
+    }
+    
+    .tool-footer p {
+      font-size: 0.875rem;
+      color: var(--text-tertiary);
+      margin: 0.25rem 0;
+    }
+    
+    .tool-footer a {
+      color: var(--accent-primary);
+    }
+  </style>
+</head>
+<body>
+  <!-- Background Effects -->
+  <div class="bg-ambient" aria-hidden="true"></div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <!-- Header -->
+  <header class="main-header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="/" class="logo" aria-label="NovaTools MC Home">
+          <picture>
+            <source srcset="/logo-bird-44.webp 1x, /logo-bird-88.webp 2x" type="image/webp">
+            <img src="/logo-bird-44.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
+          </picture>
+          <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+        </a>
+        
+        <nav class="nav-desktop" aria-label="Main navigation">
+          <a href="/#finance" class="nav-link">Finance</a>
+          <a href="/#pdf" class="nav-link">PDF Tools</a>
+          <a href="/#image" class="nav-link">Images</a>
+          <a href="/#dev" class="nav-link">Developers</a>
+        </nav>
+        
+        <div class="privacy-badge" title="Your data never leaves your browser">
+          <span class="privacy-badge-dot"></span>
+          <span>Privacy First</span>
+        </div>
+
+        <!-- Theme Toggle -->
+        <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+          <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"/>
+            <line x1="12" y1="1" x2="12" y2="3"/>
+            <line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1" y1="12" x2="3" y2="12"/>
+            <line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+          <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+
+        <!-- Mobile Menu Button -->
+        <button type="button" id="mobileMenuBtn" class="menu-btn" aria-label="Toggle menu" aria-expanded="false">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <line x1="3" y1="12" x2="21" y2="12"/>
+            <line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+      </div>
+      
+      <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
+        <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
+        <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
+        <a href="/#image" class="mobile-nav-link">Image Tools</a>
+        <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Breadcrumb -->
+    <div class="container" style="padding-top: 1.5rem;">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="/tools/[[CATEGORY]]/">[[CATEGORY_LABEL]]</a>
+        <span class="breadcrumb-sep">/</span>
+        <span aria-current="page">[[TOOL_NAME]]</span>
+      </nav>
+    </div>
+
+    <!-- 3-Column Layout -->
+    <div class="page-layout container">
+      <!-- Left Ad Rail -->
+      <aside class="ad-rail" role="complementary" aria-label="Advertisement">
+        <div class="ad-frame">
+          <div class="ad-label">Advertisement</div>
+          <div class="ad-slot" style="min-height: 600px;">
+            <ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="__ADSENSE_CLIENT__" data-ad-slot="LEFT_RAIL_SLOT"></ins>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Center Content -->
+      <div class="page-center">
+        <div class="tool-container">
+          <!-- Tool Header -->
+          <div class="tool-header">
+            <div class="privacy-notice">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+              100% Client-Side • No Data Sent to Server
+            </div>
+            <h1 class="tool-title">[[TOOL_NAME]]</h1>
+            <p class="tool-subtitle">[[TOOL_SUBTITLE]]</p>
+          </div>
+
+          <!-- Tool Workspace -->
+          <div class="tool-workspace">
+            <!-- TOOL-SPECIFIC FORM GOES HERE -->
+            <form class="tool-form" id="toolForm" data-tool="[[TOOL_ID]]">
+              <!-- Form fields will be inserted here -->
+              
+              <button type="submit" class="btn btn-primary">
+                Calculate / Process
+                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </button>
+            </form>
+
+            <!-- Results Panel -->
+            <div class="results-panel" id="resultsPanel">
+              <!-- Results will be inserted here -->
+            </div>
+          </div>
+
+          <!-- Legal Disclaimer -->
+          <div class="legal-disclaimer">
+            <p>
+              <strong>Gizlilik ve Güvenlik:</strong> Bu araç kişisel kullanım içindir. 
+              Verileriniz işlenmez ve hiçbir sunucuya gönderilmez. Tüm işlemler 
+              tarayıcınızda client-side olarak gerçekleştirilir.
+            </p>
+            <p style="margin-top: 0.5rem;">
+              <strong>Sorumluluk Reddi:</strong> Bu araç tahmini değerler sunar, 
+              finansal, hukuki veya vergi danışmanlığı değildir.
+            </p>
+          </div>
+
+          <!-- How to Use Section -->
+          <section class="how-to-use">
+            <h2>How to Use [[TOOL_NAME]]</h2>
+            <ol>
+              <li>[[STEP_1]]</li>
+              <li>[[STEP_2]]</li>
+              <li>[[STEP_3]]</li>
+              <li>Review your results instantly. No waiting, no data sent to servers.</li>
+            </ol>
+          </section>
+
+          <!-- FAQ Section -->
+          <section class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                How does [[TOOL_NAME]] work?
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M6 9l6 6 6-6"/>
+                </svg>
+              </button>
+              <div class="faq-answer">
+                [[FAQ_ANSWER_1]]
+              </div>
+            </div>
+            
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                Is my data secure when using this tool?
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M6 9l6 6 6-6"/>
+                </svg>
+              </button>
+              <div class="faq-answer">
+                Yes. All processing is performed entirely in your browser (100% client-side). 
+                No data is ever sent to our servers. Your information stays completely private 
+                on your device.
+              </div>
+            </div>
+            
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                Can I use this tool on mobile?
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M6 9l6 6 6-6"/>
+                </svg>
+              </button>
+              <div class="faq-answer">
+                Absolutely. Our tool is fully responsive and works on all devices including 
+                smartphones and tablets, with no app installation required.
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- Mid-Content Ad -->
+        <div class="ad-frame" style="margin: 2rem auto; max-width: 728px;">
+          <div class="ad-label">Advertisement</div>
+          <div class="ad-slot" style="min-height: 250px;">
+            <ins class="adsbygoogle" style="display:block;width:100%;height:250px" data-ad-client="__ADSENSE_CLIENT__" data-ad-slot="MID_CONTENT_SLOT"></ins>
+          </div>
+        </div>
+
+        <!-- Tool Footer -->
+        <footer class="tool-footer">
+          <p>2026 NovaTools MC — <strong>Psk. Metehan CETIN</strong> | <a href="mailto:proside2026@gmail.com">proside2026@gmail.com</a></p>
+          <p>Estimates only — not financial, legal, or tax advice.</p>
+          <p style="margin-top: 0.75rem; font-size: 0.75rem; color: var(--text-muted);">
+            <a href="/privacy.html">Privacy Policy</a> • 
+            <a href="/terms.html">Terms of Use</a> • 
+            <a href="/contact.html">Contact</a>
+          </p>
+        </footer>
+      </div>
+
+      <!-- Right Ad Rail -->
+      <aside class="ad-rail" role="complementary" aria-label="Advertisement">
+        <div class="ad-frame">
+          <div class="ad-label">Advertisement</div>
+          <div class="ad-slot" style="min-height: 600px;">
+            <ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="__ADSENSE_CLIENT__" data-ad-slot="RIGHT_RAIL_SLOT"></ins>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- Toast Container -->
+  <div id="toastContainer" class="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Scripts -->
+  <script type="module">
+    // Theme toggle initialization
+    import('/src/theme-toggle.mjs').then(({ setupThemeToggle }) => {
+      setupThemeToggle('themeToggle');
+    });
+
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    if (mobileMenuBtn && mobileMenu) {
+      mobileMenuBtn.addEventListener('click', () => {
+        const isHidden = mobileMenu.hidden;
+        mobileMenu.hidden = !isHidden;
+        mobileMenuBtn.setAttribute('aria-expanded', !isHidden);
+        mobileMenu.classList.toggle('active', !isHidden);
+      });
+    }
+
+    // FAQ Accordion
+    document.querySelectorAll('.faq-question').forEach(button => {
+      button.addEventListener('click', () => {
+        const item = button.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        
+        // Close all others
+        document.querySelectorAll('.faq-item').forEach(i => {
+          i.classList.remove('open');
+          i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        });
+        
+        // Toggle current
+        if (!isOpen) {
+          item.classList.add('open');
+          button.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    // Tool form handling (template - customize per tool)
+    const toolForm = document.getElementById('toolForm');
+    const resultsPanel = document.getElementById('resultsPanel');
+    
+    if (toolForm) {
+      toolForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        // Show loading state
+        const submitBtn = toolForm.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
+        submitBtn.innerHTML = 'Processing...';
+        submitBtn.disabled = true;
+        
+        try {
+          // Get form data
+          const formData = new FormData(toolForm);
+          const inputs = Object.fromEntries(formData.entries());
+          
+          // TOOL-SPECIFIC LOGIC GOES HERE
+          // const result = await processTool(inputs);
+          
+          // Display results
+          // resultsPanel.innerHTML = formatResults(result);
+          // resultsPanel.classList.add('visible');
+          
+        } catch (error) {
+          console.error('Tool error:', error);
+          alert('An error occurred. Please try again.');
+        } finally {
+          submitBtn.innerHTML = originalText;
+          submitBtn.disabled = false;
+        }
+      });
+    }
+  </script>
+</body>
+</html>

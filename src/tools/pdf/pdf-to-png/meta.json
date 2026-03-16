@@ -1,0 +1,17 @@
+{
+  "id": "pdf-to-png",
+  "name": "PDF to PNG Converter",
+  "description": "Convert PDF pages to high-quality PNG images",
+  "category": "pdf",
+  "icon": "🎨",
+  "keywords": ["pdf to png", "pdf to image", "transparent png"],
+  "complexity": 5,
+  "hasClientSideProcessing": true,
+  "maxFileSize": 52428800,
+  "supportedFormats": ["pdf"],
+  "outputFormat": "png",
+  "version": "1.0.0",
+  "author": "NovaTools MC",
+  "created": "2026-03-16",
+  "updated": "2026-03-16"
+}

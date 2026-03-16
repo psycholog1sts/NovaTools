@@ -1,0 +1,41 @@
+{
+  "id": "roman-numerals",
+  "name": "Roman Numerals Converter",
+  "nameEn": "Roman Numerals Converter",
+  "category": "converters",
+  "tier": 1,
+  "cpc": {
+    "tr": 0.25,
+    "us": 0.5
+  },
+  "keywords": {
+    "tr": ["roma rakamları", "roma sayıları", "roma dönüştürücü", "romen rakamları", "sayı dönüştürücü"],
+    "en": ["roman numerals", "roman numbers", "roman converter", "numeral converter", "convert to roman"]
+  },
+  "description": {
+    "tr": "Arap rakamları ile Roma rakamları arasında dönüşüm yapın. 1-3999 arası destekler. Roma rakamı tarihi ve örnekler.",
+    "en": "Convert between Arabic numbers and Roman numerals. Supports 1-3999 with history and examples."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "UtilityApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.2
+    }
+  },
+  "bundle": {
+    "lazyLoad": false
+  },
+  "relatedTools": [
+    "number-base-converter",
+    "scientific-calculator"
+  ]
+}

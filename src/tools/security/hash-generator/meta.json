@@ -1,0 +1,41 @@
+{
+  "id": "hash-generator",
+  "name": "Hash Generator",
+  "nameEn": "Hash Generator",
+  "category": "security",
+  "tier": 1,
+  "cpc": {
+    "tr": 0.75,
+    "us": 1.6
+  },
+  "keywords": {
+    "tr": ["hash oluşturucu", "md5 hash", "sha256", "checksum", "dosya hash"],
+    "en": ["hash generator", "md5 hash", "sha256", "checksum", "file hash"]
+  },
+  "description": {
+    "tr": "MD5, SHA-1, SHA-256, SHA-512 hash değerleri oluşturun. Metin ve dosya hash hesaplama, doğrulama özellikleri.",
+    "en": "Generate MD5, SHA-1, SHA-256, SHA-512 hashes. Text and file hash calculation with verification features."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "SecurityApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.3
+    }
+  },
+  "bundle": {
+    "lazyLoad": false
+  },
+  "relatedTools": [
+    "password-generator",
+    "encrypt-decrypt"
+  ]
+}

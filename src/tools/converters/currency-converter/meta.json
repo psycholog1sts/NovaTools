@@ -1,0 +1,41 @@
+{
+  "id": "currency-converter",
+  "name": "Currency Converter",
+  "nameEn": "Currency Converter",
+  "category": "converters",
+  "tier": 1,
+  "cpc": {
+    "tr": 0.5,
+    "us": 1.0
+  },
+  "keywords": {
+    "tr": ["döviz dönüştürücü", "kur hesaplama", "para birimi dönüştürücü", "dolar euro çevirici"],
+    "en": ["currency converter", "exchange rate", "money converter", "forex", "usd to eur", "currency exchange"]
+  },
+  "description": {
+    "tr": "Döviz kurları ile para birimleri arasında dönüşüm yapın. Gerçek zamanlı kur bilgileri.",
+    "en": "Convert between currencies with exchange rates. Real-time exchange rate information."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "FinanceApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.3
+    }
+  },
+  "bundle": {
+    "lazyLoad": false
+  },
+  "relatedTools": [
+    "unit-converter",
+    "compound-interest"
+  ]
+}

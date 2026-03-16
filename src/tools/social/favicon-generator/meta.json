@@ -1,0 +1,42 @@
+{
+  "id": "favicon-generator",
+  "name": "Favicon Generator",
+  "nameEn": "Favicon Generator",
+  "category": "social",
+  "tier": 1,
+  "cpc": {
+    "tr": 0.45,
+    "us": 0.9
+  },
+  "keywords": {
+    "tr": ["favicon oluşturucu", "site ikonu yapma", "favicon üretici", "web ikonu"],
+    "en": ["favicon generator", "favicon maker", "site icon creator", "favicon from image", "browser icon generator"]
+  },
+  "description": {
+    "tr": "Görsellerinizden tüm boyutlarda favicon setleri oluşturun. ICO, PNG formatları ve HTML kodu dahil.",
+    "en": "Generate complete favicon sets in all sizes from your images. Includes ICO, PNG formats and HTML code."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "DeveloperApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.3
+    }
+  },
+  "bundle": {
+    "lazyLoad": false
+  },
+  "relatedTools": [
+    "app-icon-generator",
+    "social-image-resizer",
+    "image-convert"
+  ]
+}

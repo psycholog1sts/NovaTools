@@ -1,0 +1,41 @@
+{
+  "id": "json-validator",
+  "name": "JSON Validator & Formatter",
+  "nameEn": "JSON Validator & Formatter",
+  "category": "dev",
+  "tier": 1,
+  "cpc": {
+    "tr": 0.7,
+    "us": 1.4
+  },
+  "keywords": {
+    "tr": ["json doğrulama", "json formatla", "json düzenleme", "json hata kontrol"],
+    "en": ["json validator", "json formatter", "validate json", "json beautifier"]
+  },
+  "description": {
+    "tr": "JSON verilerinizi doğrulayın ve formatlayın. Hata konumu göstergesi ve syntax highlighting.",
+    "en": "Validate and format JSON data. Error position indicator with syntax highlighting."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "DeveloperApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.3
+    }
+  },
+  "bundle": {
+    "lazyLoad": false
+  },
+  "relatedTools": [
+    "code-formatter",
+    "base64-converter"
+  ]
+}

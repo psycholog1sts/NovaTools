@@ -1,0 +1,42 @@
+{
+  "id": "countdown-timer",
+  "name": "Countdown Timer",
+  "nameEn": "Countdown Timer",
+  "category": "productivity",
+  "tier": 1,
+  "cpc": {
+    "tr": 0.14,
+    "us": 0.32
+  },
+  "keywords": {
+    "tr": ["geri sayım zamanlayıcı", "countdown timer", "zamanlayıcı", "geri sayım", "süre sayacı"],
+    "en": ["countdown timer", "timer", "countdown clock", "time countdown", "interval timer"]
+  },
+  "description": {
+    "tr": "Özel süreler için geri sayım zamanlayıcı. Sesli uyarı ve görsel bildirim özellikleri.",
+    "en": "Countdown timer for custom durations. Features audio alerts and visual notifications."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "ProductivityApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.15
+    }
+  },
+  "bundle": {
+    "lazyLoad": false
+  },
+  "relatedTools": [
+    "pomodoro-timer",
+    "stopwatch",
+    "world-clock"
+  ]
+}

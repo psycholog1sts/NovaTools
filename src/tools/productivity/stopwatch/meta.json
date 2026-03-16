@@ -1,0 +1,42 @@
+{
+  "id": "stopwatch",
+  "name": "Stopwatch",
+  "nameEn": "Stopwatch",
+  "category": "productivity",
+  "tier": 1,
+  "cpc": {
+    "tr": 0.12,
+    "us": 0.28
+  },
+  "keywords": {
+    "tr": ["kronometre", "stopwatch", "zaman ölçer", "süre hesaplama", "zamanlayıcı"],
+    "en": ["stopwatch", "timer", "time tracker", "lap timer", "chronometer"]
+  },
+  "description": {
+    "tr": "Çevrimiçi kronometre ile zamanınızı hassas bir şekilde ölçün. Tur kaydetme özelliği.",
+    "en": "Measure time precisely with this online stopwatch. Features lap time recording."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "ProductivityApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.15
+    }
+  },
+  "bundle": {
+    "lazyLoad": false
+  },
+  "relatedTools": [
+    "pomodoro-timer",
+    "countdown-timer",
+    "time-tracker"
+  ]
+}

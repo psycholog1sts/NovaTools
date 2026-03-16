@@ -382,9 +382,19 @@ export const app = new NovaToolsApp();
 
 // Auto-initialize when DOM is ready
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => app.init());
+  document.addEventListener('DOMContentLoaded', () => {
+    app.init();
+    // Initialize theme toggle
+    import('./theme-toggle.mjs').then(({ setupThemeToggle }) => {
+      setupThemeToggle('themeToggle');
+    });
+  });
 } else {
   app.init();
+  // Initialize theme toggle
+  import('./theme-toggle.mjs').then(({ setupThemeToggle }) => {
+    setupThemeToggle('themeToggle');
+  });
 }
 
 export default app;

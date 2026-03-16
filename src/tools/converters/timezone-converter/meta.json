@@ -1,0 +1,41 @@
+{
+  "id": "timezone-converter",
+  "name": "Time Zone Converter",
+  "nameEn": "Time Zone Converter",
+  "category": "converters",
+  "tier": 1,
+  "cpc": {
+    "tr": 0.4,
+    "us": 0.8
+  },
+  "keywords": {
+    "tr": ["saat dilimi dönüştürücü", "zaman dönüştürücü", "dünya saati", "saat farkı", "uluslararası saat"],
+    "en": ["timezone converter", "time converter", "world clock", "time difference", "convert time zones"]
+  },
+  "description": {
+    "tr": "Farklı saat dilimleri arasında zaman dönüşümü yapın. Dünyanın herhangi bir yerindeki saati anında öğrenin.",
+    "en": "Convert time between different time zones worldwide. Check current time in any timezone instantly."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "UtilityApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.2
+    }
+  },
+  "bundle": {
+    "lazyLoad": false
+  },
+  "relatedTools": [
+    "unix-timestamp",
+    "unit-converter"
+  ]
+}

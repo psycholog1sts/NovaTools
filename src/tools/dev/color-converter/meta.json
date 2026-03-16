@@ -1,0 +1,41 @@
+{
+  "id": "color-converter",
+  "name": "Color Converter",
+  "nameEn": "Color Converter",
+  "category": "dev",
+  "tier": 1,
+  "cpc": {
+    "tr": 0.4,
+    "us": 0.8
+  },
+  "keywords": {
+    "tr": ["renk dönüştürücü", "hex rgb", "rgb hsl", "renk seçici"],
+    "en": ["color converter", "hex to rgb", "rgb to hsl", "color picker"]
+  },
+  "description": {
+    "tr": "HEX, RGB, HSL ve HSV renk formatları arasında dönüşüm yapın. Gerçek zamanlı dönüştürme.",
+    "en": "Convert between HEX, RGB, HSL, and HSV color formats. Real-time conversion with color preview."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "DeveloperApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.3
+    }
+  },
+  "bundle": {
+    "lazyLoad": false
+  },
+  "relatedTools": [
+    "css-minifier",
+    "json-formatter"
+  ]
+}

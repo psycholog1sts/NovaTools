@@ -1,0 +1,42 @@
+{
+  "id": "text-diff",
+  "name": "Text Diff Checker",
+  "nameEn": "Text Diff Checker",
+  "category": "text",
+  "tier": 2,
+  "cpc": {
+    "tr": 0.2,
+    "us": 0.5
+  },
+  "keywords": {
+    "tr": ["metin farkı", "metin karşılaştırma", "fark denetleyici", "değişiklik takibi"],
+    "en": ["text diff", "compare text", "difference checker", "text comparison", "diff tool"]
+  },
+  "description": {
+    "tr": "İki metni karşılaştırın ve farkları bulun. Satır satır karşılaştırma ve istatistikler.",
+    "en": "Compare two texts and find differences. Line by line comparison with statistics."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "UtilityApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.2
+    }
+  },
+  "bundle": {
+    "lazyLoad": false
+  },
+  "relatedTools": [
+    "case-converter",
+    "html-entity-encoder",
+    "url-encoder"
+  ]
+}

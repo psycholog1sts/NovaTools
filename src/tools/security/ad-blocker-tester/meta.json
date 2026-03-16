@@ -1,0 +1,41 @@
+{
+  "id": "ad-blocker-tester",
+  "name": "Ad Blocker Tester",
+  "nameEn": "Ad Blocker Tester",
+  "category": "security",
+  "tier": 1,
+  "cpc": {
+    "tr": 0.4,
+    "us": 0.9
+  },
+  "keywords": {
+    "tr": ["ad blocker test", "adblock kontrol", "reklam engelleyici test", "adblocker çalışıyor mu"],
+    "en": ["ad blocker test", "adblock tester", "check ad blocker", "adblocker working", "privacy test"]
+  },
+  "description": {
+    "tr": "Reklam engelleyicinizin düzgün çalışıp çalışmadığını test edin. Reklam engelleme, izleyici tespiti ve gizlilik önerileri.",
+    "en": "Test if your ad blocker is working properly. Ad blocking, tracker detection, and privacy recommendations."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "SecurityApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.3
+    }
+  },
+  "bundle": {
+    "lazyLoad": false
+  },
+  "relatedTools": [
+    "ip-lookup",
+    "user-agent-parser"
+  ]
+}

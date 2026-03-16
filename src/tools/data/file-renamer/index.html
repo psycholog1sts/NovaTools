@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y896L63239"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Y896L63239');
+  </script>
+  <meta charset="UTF-8">
+  <script>(function(){var t=localStorage.getItem('novatools-theme');if(t)document.documentElement.setAttribute('data-theme',t);else{var d=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',d);document.documentElement.style.colorScheme=d;}})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/src/styles/critical.css">
+  <link rel="stylesheet" href="/src/styles/main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <title>Batch File Renamer — Free Online Tool | NovaTools MC</title>
+  <meta name="description" content="Rename multiple files at once. Free online batch file renamer with patterns, find/replace, and numbering options. 100% client-side.">
+  <meta name="keywords" content="batch rename, file renamer, rename multiple files, bulk rename, file naming tool">
+  <meta name="theme-color" content="#0A0A0C">
+
+  <meta property="og:title" content="Batch File Renamer — Free Online Tool | NovaTools MC">
+  <meta property="og:description" content="Rename multiple files at once. Free online batch file renamer.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.mc-novatools.com/tools/data/file-renamer/">
+  <meta property="og:image" content="https://www.mc-novatools.com/og-image.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Batch File Renamer | NovaTools MC">
+  <meta name="twitter:description" content="Rename multiple files at once. Free online batch file renamer.">
+
+  <link rel="canonical" href="https://www.mc-novatools.com/tools/data/file-renamer/">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [{
+      "@type": "WebApplication",
+      "name": "Batch File Renamer",
+      "description": "Rename multiple files at once. Free online batch file renamer with patterns, find/replace, and numbering options.",
+      "url": "https://www.mc-novatools.com/tools/data/file-renamer/",
+      "applicationCategory": "FileUtilityApplication",
+      "operatingSystem": "Any",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+    }]
+  }
+  </script>
+
+  <style>
+    .tool-wrapper { max-width: 960px; margin: 0 auto; padding: 3rem 1rem 5rem; }
+    .tool-hero { text-align: center; margin-bottom: 2.5rem; }
+    .tool-hero-icon { font-size: 3.5rem; line-height: 1; margin-bottom: 1rem; }
+    .tool-hero h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; letter-spacing: -0.02em; color: #FAFAFA; margin-bottom: 0.75rem; }
+    .tool-hero p { color: #A1A1AA; font-size: 1.0625rem; max-width: 560px; margin: 0 auto; }
+    .card { background: rgba(15, 15, 20, 0.7); border: 1px solid rgba(0, 217, 255, 0.15); border-radius: 14px; padding: 1.75rem; backdrop-filter: blur(12px); }
+    
+    .upload-area { border: 2px dashed rgba(0, 217, 255, 0.3); border-radius: 12px; padding: 2.5rem; text-align: center; cursor: pointer; transition: all 0.2s; margin-bottom: 1.5rem; }
+    .upload-area:hover { border-color: rgba(0, 217, 255, 0.6); background: rgba(0, 217, 255, 0.05); }
+    .upload-area.dragover { border-color: #00D9FF; background: rgba(0, 217, 255, 0.1); }
+    .upload-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+    .upload-text { color: #FAFAFA; font-weight: 500; margin-bottom: 0.5rem; }
+    .upload-hint { color: #71717A; font-size: 0.875rem; }
+    #fileInput { display: none; }
+    
+    .options-panel { background: rgba(0, 0, 0, 0.2); border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; }
+    .options-panel h3 { font-size: 0.875rem; color: #A1A1AA; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .option-row { display: flex; gap: 1rem; margin-bottom: 1rem; align-items: center; }
+    .option-row:last-child { margin-bottom: 0; }
+    .option-label { color: #E4E4E7; font-size: 0.875rem; min-width: 100px; }
+    .option-input { flex: 1; padding: 0.5rem 0.75rem; background: #0F0F12; border: 1px solid rgba(0, 217, 255, 0.2); border-radius: 6px; color: #FAFAFA; font-size: 0.875rem; }
+    .option-input:focus { outline: none; border-color: rgba(0, 217, 255, 0.5); }
+    .option-select { padding: 0.5rem; background: #0F0F12; border: 1px solid rgba(0, 217, 255, 0.2); border-radius: 6px; color: #FAFAFA; }
+    .option-checkbox { display: flex; align-items: center; gap: 0.5rem; color: #A1A1AA; font-size: 0.875rem; }
+    
+    .btn-bar { display: flex; flex-wrap: wrap; gap: 0.625rem; margin-bottom: 1.5rem; }
+    .btn { display: inline-flex; align-items: center; gap: 0.4rem; height: 40px; padding: 0 1.125rem; border: none; border-radius: 8px; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: all 0.18s; }
+    .btn:active { transform: scale(0.97); }
+    .btn-primary { background: linear-gradient(135deg, #00D9FF, #0099CC); color: #0A0A0C; }
+    .btn-primary:hover { background: linear-gradient(135deg, #1FE2FF, #00B8EE); }
+    .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+    .btn-secondary { background: rgba(0, 217, 255, 0.1); border: 1px solid rgba(0, 217, 255, 0.25); color: #00D9FF; }
+    .btn-secondary:hover { background: rgba(0, 217, 255, 0.18); }
+    .btn-danger { background: rgba(255, 85, 85, 0.1); border: 1px solid rgba(255, 85, 85, 0.25); color: #FF5555; }
+    .btn-danger:hover { background: rgba(255, 85, 85, 0.18); }
+    
+    .preview-section { margin-top: 1.5rem; }
+    .preview-section h3 { font-size: 1rem; color: #FAFAFA; margin-bottom: 1rem; }
+    .preview-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+    .preview-table th { text-align: left; padding: 0.75rem; background: rgba(0, 217, 255, 0.1); color: #00D9FF; font-weight: 600; border-bottom: 1px solid rgba(0, 217, 255, 0.2); }
+    .preview-table td { padding: 0.625rem 0.75rem; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .preview-old { color: #A1A1AA; text-decoration: line-through; }
+    .preview-new { color: #00FF88; font-weight: 500; }
+    .preview-arrow { color: #71717A; }
+    
+    .progress-bar { height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; margin-top: 1rem; display: none; }
+    .progress-bar.visible { display: block; }
+    .progress-fill { height: 100%; background: linear-gradient(90deg, #00D9FF, #00FF88); width: 0; transition: width 0.3s; }
+    
+    .error-banner { display: none; align-items: flex-start; gap: 0.75rem; padding: 0.875rem 1rem; background: rgba(255, 85, 85, 0.08); border: 1px solid rgba(255, 85, 85, 0.3); border-radius: 10px; margin-bottom: 1rem; }
+    .error-banner.visible { display: flex; }
+    .error-text { font-size: 0.875rem; color: #FF7777; }
+    
+    .legal-disclaimer { background: rgba(255, 193, 7, 0.08); border-left: 4px solid #FFC107; padding: 1rem 1.25rem; border-radius: 0 8px 8px 0; margin-top: 2rem; }
+    .legal-disclaimer p { font-size: 0.875rem; color: #A1A1AA; margin: 0; line-height: 1.6; }
+    .legal-disclaimer strong { color: #FFC107; }
+    
+    .seo-section { max-width: 960px; margin: 3.5rem auto 0; padding: 0 1rem; }
+    .seo-section h2 { font-size: 1.375rem; font-weight: 700; color: #FAFAFA; margin-bottom: 0.75rem; }
+    .seo-section h3 { font-size: 1.125rem; font-weight: 600; color: #FAFAFA; margin: 2rem 0 0.75rem; }
+    .seo-section p, .seo-section li { color: #A1A1AA; line-height: 1.8; font-size: 0.9375rem; }
+    .seo-section ol { padding-left: 1.25rem; }
+    .seo-section ol li { margin-bottom: 0.4rem; }
+    .faq-item { border: 1px solid rgba(0, 217, 255, 0.1); border-radius: 10px; padding: 1rem 1.125rem; margin-bottom: 0.875rem; background: rgba(15, 15, 20, 0.5); }
+    .faq-item summary { font-weight: 600; color: #FAFAFA; cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: '+'; color: #00D9FF; font-size: 1.25rem; flex-shrink: 0; }
+    .faq-item[open] summary::after { content: '−'; }
+    .faq-item p { margin-top: 0.625rem; color: #A1A1AA; line-height: 1.7; }
+    
+    .tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid rgba(255,255,255,0.1); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }
+    .tool-footer a { color: #00D9FF; text-decoration: none; }
+    
+    @media (max-width: 600px) {
+      .option-row { flex-direction: column; align-items: stretch; }
+      .option-label { min-width: auto; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-ambient" aria-hidden="true"></div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <div id="app" class="app">
+    <header class="main-header">
+      <div class="container">
+        <div class="header-inner">
+          <a href="/" class="logo" aria-label="NovaTools MC Home">
+            <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
+            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+          </a>
+          <nav class="nav-desktop" aria-label="Main navigation">
+            <a href="/#finance" class="nav-link">Finance</a>
+            <a href="/#pdf" class="nav-link">PDF Tools</a>
+            <a href="/#image" class="nav-link">Images</a>
+            <a href="/#dev" class="nav-link">Developers</a>
+          </nav>
+          <div class="privacy-badge" title="Your data never leaves your browser">
+            <span class="privacy-badge-dot"></span>
+            <span>Privacy First</span>
+          </div>
+          <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+            <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+          <button type="button" id="mobileMenuBtn" class="menu-btn" aria-label="Toggle menu" aria-expanded="false">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+        </div>
+        <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
+          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <div class="tool-wrapper">
+        <div class="tool-hero">
+          <div class="tool-hero-icon">🏷️</div>
+          <h1>Batch File Renamer</h1>
+          <p>Rename multiple files at once with patterns, find/replace, and auto-numbering. Preview changes before applying.</p>
+        </div>
+
+        <div class="card">
+          <div class="upload-area" id="uploadArea">
+            <div class="upload-icon">📁</div>
+            <div class="upload-text">Drop files here or click to select multiple files</div>
+            <div class="upload-hint">Select all files you want to rename</div>
+          </div>
+          <input type="file" id="fileInput" multiple>
+
+          <div class="options-panel">
+            <h3>Rename Options</h3>
+            <div class="option-row">
+              <span class="option-label">Find:</span>
+              <input type="text" class="option-input" id="findText" placeholder="Text to find (optional)">
+            </div>
+            <div class="option-row">
+              <span class="option-label">Replace:</span>
+              <input type="text" class="option-input" id="replaceText" placeholder="Replacement text">
+            </div>
+            <div class="option-row">
+              <span class="option-label">Prefix:</span>
+              <input type="text" class="option-input" id="prefixText" placeholder="Add to beginning">
+            </div>
+            <div class="option-row">
+              <span class="option-label">Suffix:</span>
+              <input type="text" class="option-input" id="suffixText" placeholder="Add before extension">
+            </div>
+            <div class="option-row">
+              <span class="option-label">Numbering:</span>
+              <select class="option-select" id="numberingMode">
+                <option value="none">None</option>
+                <option value="prefix">Prefix (001_filename)</option>
+                <option value="suffix">Suffix (filename_001)</option>
+              </select>
+              <label class="option-checkbox"><input type="checkbox" id="preserveExt" checked> Keep extensions</label>
+              <label class="option-checkbox"><input type="checkbox" id="lowercase"> lowercase names</label>
+            </div>
+          </div>
+
+          <div class="btn-bar">
+            <button class="btn btn-secondary" id="btnPreview" disabled>Preview Changes</button>
+            <button class="btn btn-primary" id="btnDownloadAll" disabled>Download All (ZIP)</button>
+            <button class="btn btn-danger" id="btnClear">Clear</button>
+          </div>
+
+          <div class="progress-bar" id="progressBar">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+
+          <div class="error-banner" id="errorBanner">
+            <div class="error-text" id="errorText"></div>
+          </div>
+
+          <div class="preview-section" id="previewSection" style="display:none">
+            <h3>Preview <span id="fileCount"></span></h3>
+            <div style="overflow-x:auto">
+              <table class="preview-table" id="previewTable">
+                <thead><tr><th>Original Name</th><th></th><th>New Name</th></tr></thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="legal-disclaimer">
+          <p><strong>Privacy & Security:</strong> This tool is for personal use. Your files are not uploaded to any server. All processing happens client-side in your browser.</p>
+          <p style="margin-top: 0.5rem;"><strong>Disclaimer:</strong> Downloaded files will have new names. Original files on your system are not modified.</p>
+        </div>
+      </div>
+
+      <section class="seo-section" aria-label="About this tool">
+        <h2>About Batch File Renamer</h2>
+        <p>This free online tool helps you rename multiple files at once according to custom rules. You can find and replace text, add prefixes or suffixes, apply auto-numbering, and more. All changes are previewed before you download the renamed files.</p>
+
+        <h3>How to Use</h3>
+        <ol>
+          <li>Select files by dropping them onto the upload area or clicking to browse.</li>
+          <li>Configure rename options: find/replace, prefix/suffix, numbering, and case options.</li>
+          <li>Click <strong>Preview Changes</strong> to see how files will be renamed.</li>
+          <li>Download all renamed files as a ZIP archive.</li>
+        </ol>
+
+        <h3>Frequently Asked Questions</h3>
+
+        <details class="faq-item">
+          <summary>Is my file data kept private?</summary>
+          <p>Absolutely. All processing happens entirely in your browser. No file data is sent to any server. Your files are only used to generate renamed copies.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Are my original files modified?</summary>
+          <p>No, this tool cannot modify files on your system. It creates new copies with different names that you download as a ZIP file. Your original files remain unchanged.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Can I rename files by their content?</summary>
+          <p>No, this tool renames based on the current filenames and your specified rules. It does not analyze file contents for renaming purposes.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>What file extensions are preserved?</summary>
+          <p>When "Keep extensions" is enabled (default), the last part after the final dot is preserved as the extension. This works for most common file types.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Is there a limit to how many files I can rename?</summary>
+          <p>There is no strict limit, but very large numbers of files (hundreds or more) may take longer to process and ZIP for download.</p>
+        </details>
+      </section>
+
+      <footer class="tool-footer">
+        <p>&copy; 2026 NovaTools MC &mdash; Psk. Metehan CETIN | <a href="mailto:proside2026@gmail.com">proside2026@gmail.com</a></p>
+        <p>Estimates only &mdash; not financial, legal, or tax advice.</p>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    const uploadArea = document.getElementById('uploadArea');
+    const fileInput = document.getElementById('fileInput');
+    const findText = document.getElementById('findText');
+    const replaceText = document.getElementById('replaceText');
+    const prefixText = document.getElementById('prefixText');
+    const suffixText = document.getElementById('suffixText');
+    const numberingMode = document.getElementById('numberingMode');
+    const preserveExt = document.getElementById('preserveExt');
+    const lowercase = document.getElementById('lowercase');
+    const btnPreview = document.getElementById('btnPreview');
+    const btnDownloadAll = document.getElementById('btnDownloadAll');
+    const btnClear = document.getElementById('btnClear');
+    const previewSection = document.getElementById('previewSection');
+    const previewTable = document.getElementById('previewTable').querySelector('tbody');
+    const fileCount = document.getElementById('fileCount');
+    const progressBar = document.getElementById('progressBar');
+    const progressFill = document.getElementById('progressFill');
+    const errorBanner = document.getElementById('errorBanner');
+    const errorText = document.getElementById('errorText');
+
+    let selectedFiles = [];
+    let renamedFiles = [];
+
+    uploadArea.addEventListener('click', () => fileInput.click());
+    uploadArea.addEventListener('dragover', (e) => { e.preventDefault(); uploadArea.classList.add('dragover'); });
+    uploadArea.addEventListener('dragleave', () => uploadArea.classList.remove('dragover'));
+    uploadArea.addEventListener('drop', (e) => {
+      e.preventDefault();
+      uploadArea.classList.remove('dragover');
+      handleFiles(Array.from(e.dataTransfer.files));
+    });
+    fileInput.addEventListener('change', () => handleFiles(Array.from(fileInput.files)));
+
+    function handleFiles(files) {
+      files.forEach(file => { if (!selectedFiles.some(f => f.name === file.name)) selectedFiles.push(file); });
+      btnPreview.disabled = selectedFiles.length === 0;
+      uploadArea.querySelector('.upload-text').textContent = `${selectedFiles.length} file(s) selected`;
+      hideError();
+    }
+
+    btnPreview.addEventListener('click', () => {
+      renamedFiles = [];
+      previewTable.innerHTML = '';
+      
+      selectedFiles.forEach((file, index) => {
+        let newName = generateNewName(file.name, index);
+        renamedFiles.push({ original: file, newName });
+        
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td class="preview-old">${escapeHtml(file.name)}</td>
+          <td class="preview-arrow">→</td>
+          <td class="preview-new">${escapeHtml(newName)}</td>
+        `;
+        previewTable.appendChild(row);
+      });
+      
+      fileCount.textContent = `(${selectedFiles.length} files)`;
+      previewSection.style.display = 'block';
+      btnDownloadAll.disabled = false;
+    });
+
+    function generateNewName(originalName, index) {
+      let name = originalName;
+      let ext = '';
+      
+      if (preserveExt.checked) {
+        const lastDot = originalName.lastIndexOf('.');
+        if (lastDot > 0) { ext = originalName.substring(lastDot); name = originalName.substring(0, lastDot); }
+      }
+      
+      if (findText.value) name = name.split(findText.value).join(replaceText.value);
+      if (prefixText.value) name = prefixText.value + name;
+      if (suffixText.value) name = name + suffixText.value;
+      
+      if (numberingMode.value === 'prefix') name = String(index + 1).padStart(3, '0') + '_' + name;
+      if (numberingMode.value === 'suffix') name = name + '_' + String(index + 1).padStart(3, '0');
+      
+      if (lowercase.checked) name = name.toLowerCase();
+      
+      return name + ext;
+    }
+
+    btnDownloadAll.addEventListener('click', async () => {
+      if (renamedFiles.length === 0) return;
+      btnDownloadAll.disabled = true;
+      progressBar.classList.add('visible');
+      
+      const JSZip = window.JSZip;
+      if (!JSZip) { loadJSZip().then(() => createAndDownloadZip()); }
+      else { createAndDownloadZip(); }
+    });
+
+    async function createAndDownloadZip() {
+      const zip = new JSZip();
+      
+      for (let i = 0; i < renamedFiles.length; i++) {
+        const rf = renamedFiles[i];
+        const content = await rf.original.arrayBuffer();
+        zip.file(rf.newName, content);
+        progressFill.style.width = `${((i + 1) / renamedFiles.length) * 100}%`;
+      }
+      
+      const blob = await zip.generateAsync({ type: 'blob' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'renamed_files.zip';
+      a.click();
+      URL.revokeObjectURL(url);
+      
+      btnDownloadAll.disabled = false;
+      progressBar.classList.remove('visible');
+      progressFill.style.width = '0';
+    }
+
+    function loadJSZip() {
+      return new Promise((resolve) => {
+        const script = document.createElement('script');
+        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js';
+        script.onload = resolve;
+        document.head.appendChild(script);
+      });
+    }
+
+    btnClear.addEventListener('click', () => {
+      selectedFiles = [];
+      renamedFiles = [];
+      fileInput.value = '';
+      btnPreview.disabled = true;
+      btnDownloadAll.disabled = true;
+      previewSection.style.display = 'none';
+      uploadArea.querySelector('.upload-text').textContent = 'Drop files here or click to select multiple files';
+      hideError();
+    });
+
+    function escapeHtml(str) {
+      const div = document.createElement('div');
+      div.textContent = str;
+      return div.innerHTML;
+    }
+
+    function showError(msg) { errorText.textContent = msg; errorBanner.classList.add('visible'); }
+    function hideError() { errorBanner.classList.remove('visible'); }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuBtn = document.getElementById('mobileMenuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener('click', function() {
+          const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+          menuBtn.setAttribute('aria-expanded', !isExpanded);
+          mobileMenu.hidden = isExpanded;
+          mobileMenu.classList.toggle('active', !isExpanded);
+        });
+      }
+      const themeBtn = document.getElementById('themeToggle');
+      if (themeBtn) {
+        function getTheme() { return localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'); }
+        function updateIcon() { const t = getTheme(); themeBtn.querySelector('.icon-sun').style.display = t === 'light' ? 'none' : 'block'; themeBtn.querySelector('.icon-moon').style.display = t === 'dark' ? 'none' : 'block'; }
+        themeBtn.addEventListener('click', function() { const next = getTheme() === 'dark' ? 'light' : 'dark'; document.documentElement.setAttribute('data-theme', next); localStorage.setItem('theme', next); updateIcon(); });
+        updateIcon();
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+{
+  "id": "number-base-converter",
+  "name": "Number Base Converter",
+  "nameEn": "Number Base Converter",
+  "category": "converters",
+  "tier": 1,
+  "cpc": {
+    "tr": 0.3,
+    "us": 0.6
+  },
+  "keywords": {
+    "tr": ["binary dönüştürücü", "hex dönüştürücü", "decimal binary", "sayı tabanı", "oktal dönüştürücü"],
+    "en": ["binary converter", "hex converter", "decimal to binary", "number base", "octal converter", "numeral system"]
+  },
+  "description": {
+    "tr": "Binary, Decimal, Hexadecimal ve Octal sayı sistemleri arasında dönüşüm yapın. Tüm sayı tabanlarını destekler.",
+    "en": "Convert between Binary, Decimal, Hexadecimal, and Octal number systems instantly. Supports all numeral systems."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "DeveloperApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.2
+    }
+  },
+  "bundle": {
+    "lazyLoad": false
+  },
+  "relatedTools": [
+    "unix-timestamp",
+    "scientific-calculator"
+  ]
+}

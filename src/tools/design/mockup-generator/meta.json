@@ -1,0 +1,41 @@
+{
+  "id": "mockup-generator",
+  "name": "Mockup Generator",
+  "nameEn": "Mockup Generator",
+  "category": "design",
+  "tier": 1,
+  "cpc": {
+    "tr": 0.5,
+    "us": 1.0
+  },
+  "keywords": {
+    "tr": ["mockup oluşturucu", "cihaz mockup", "telefon mockup", "ekran görüntüsü mockup"],
+    "en": ["mockup generator", "device mockup", "phone mockup", "screenshot mockup"]
+  },
+  "description": {
+    "tr": "Ekran görüntülerinizle cihaz maketleri oluşturun. Laptop, telefon, tablet ve masaüstü çerçeveleri.",
+    "en": "Create device mockups with your screenshots. Laptop, phone, tablet, and desktop frames."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "DesignApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.4
+    }
+  },
+  "bundle": {
+    "lazyLoad": false
+  },
+  "relatedTools": [
+    "wireframe-tool",
+    "logo-maker"
+  ]
+}

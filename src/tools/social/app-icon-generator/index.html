@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y896L63239"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Y896L63239');
+  </script>
+  <meta charset="UTF-8">
+  <script>(function(){var t=localStorage.getItem('novatools-theme');if(t)document.documentElement.setAttribute('data-theme',t);else{var d=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',d);document.documentElement.style.colorScheme=d;}})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/src/styles/critical.css">
+  <link rel="stylesheet" href="/src/styles/main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <title>Free App Icon Generator | NovaTools MC</title>
+  <meta name="description" content="Generate app icons for iOS and Android in all required sizes. Upload one image, get all icon sizes for App Store and Google Play. Free client-side processing.">
+  <meta name="keywords" content="app icon generator, ios icon maker, android icon creator, app logo maker, mobile app icons">
+  <meta name="theme-color" content="#0A0A0C">
+
+  <meta property="og:title" content="Free App Icon Generator | NovaTools MC">
+  <meta property="og:description" content="Generate iOS and Android app icons. Free and private.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.mc-novatools.com/tools/social/app-icon-generator/">
+  <meta property="og:image" content="https://www.mc-novatools.com/og-image.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free App Icon Generator | NovaTools MC">
+  <meta name="twitter:description" content="Generate iOS and Android app icons. Free and private.">
+
+  <link rel="canonical" href="https://www.mc-novatools.com/tools/social/app-icon-generator/">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [{
+      "@type": "WebApplication",
+      "name": "App Icon Generator",
+      "description": "Generate iOS and Android app icons in all required sizes.",
+      "url": "https://www.mc-novatools.com/tools/social/app-icon-generator/",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+    }]
+  }
+  </script>
+
+  <style>
+    .tool-wrapper { max-width: 960px; margin: 0 auto; padding: 3rem 1rem 5rem; }
+    .tool-hero { text-align: center; margin-bottom: 2.5rem; }
+    .tool-hero-icon { font-size: 3.5rem; line-height: 1; margin-bottom: 1rem; }
+    .tool-hero h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; letter-spacing: -0.02em; color: #FAFAFA; margin-bottom: 0.75rem; }
+    .tool-hero p { color: #A1A1AA; font-size: 1.0625rem; max-width: 560px; margin: 0 auto; }
+    .card { background: rgba(15,15,20,0.7); border: 1px solid rgba(0,217,255,0.15); border-radius: 14px; padding: 1.75rem; backdrop-filter: blur(12px); }
+    
+    .upload-area { border: 2px dashed rgba(0,217,255,0.3); border-radius: 12px; padding: 2.5rem; text-align: center; transition: all 0.3s; cursor: pointer; margin-bottom: 1.5rem; }
+    .upload-area:hover { border-color: rgba(0,217,255,0.6); background: rgba(0,217,255,0.05); }
+    .upload-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .upload-text { color: #A1A1AA; font-size: 0.9375rem; }
+    .upload-text strong { color: #00D9FF; }
+    #fileInput { display: none; }
+    
+    .platform-tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .platform-tab { padding: 0.75rem 1.5rem; background: transparent; border: none; color: #71717A; font-size: 0.875rem; font-weight: 600; cursor: pointer; border-bottom: 2px solid transparent; transition: all 0.2s; }
+    .platform-tab:hover { color: #A1A1AA; }
+    .platform-tab.active { color: #00D9FF; border-bottom-color: #00D9FF; }
+    
+    .icons-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 0.75rem; margin: 1.5rem 0; }
+    .icon-item { text-align: center; padding: 0.75rem; background: rgba(255,255,255,0.03); border-radius: 10px; border: 1px solid rgba(255,255,255,0.05); }
+    .icon-item img { width: 60px; height: 60px; object-fit: contain; margin-bottom: 0.5rem; border-radius: 12px; }
+    .icon-size { font-size: 0.6875rem; color: #71717A; }
+    .icon-label { font-size: 0.625rem; color: #52525B; margin-top: 0.125rem; }
+    
+    .btn { display: inline-flex; align-items: center; gap: 0.4rem; height: 44px; padding: 0 1.25rem; border: none; border-radius: 8px; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: background 0.18s, transform 0.12s, opacity 0.18s; outline: none; user-select: none; }
+    .btn:active { transform: scale(0.97); }
+    .btn-primary { background: linear-gradient(135deg, #00D9FF, #0099CC); color: #0A0A0C; }
+    .btn-primary:hover { background: linear-gradient(135deg, #1FE2FF, #00B8EE); }
+    .btn-secondary { background: rgba(0,217,255,0.1); border: 1px solid rgba(0,217,255,0.25); color: #00D9FF; }
+    .btn-secondary:hover { background: rgba(0,217,255,0.18); }
+    
+    .info-box { margin-top: 1rem; padding: 1rem; background: rgba(0,217,255,0.05); border: 1px solid rgba(0,217,255,0.1); border-radius: 8px; }
+    .info-box p { color: #A1A1AA; font-size: 0.8125rem; margin: 0; line-height: 1.6; }
+    .info-box strong { color: #00D9FF; }
+    
+    .legal-note { margin-top: 1.5rem; padding: 1rem 1.25rem; background: rgba(255,193,7,0.05); border: 1px solid rgba(255,193,7,0.15); border-radius: 10px; font-size: 0.8125rem; color: #A1A1AA; line-height: 1.6; }
+    .legal-note strong { color: #FFC107; }
+    
+    .seo-section { max-width: 960px; margin: 3.5rem auto 0; padding: 0 1rem; }
+    .seo-section h2 { font-size: 1.375rem; font-weight: 700; color: #FAFAFA; margin-bottom: 0.75rem; }
+    .seo-section h3 { font-size: 1.125rem; font-weight: 600; color: #FAFAFA; margin: 2rem 0 0.75rem; }
+    .seo-section p, .seo-section li { color: #A1A1AA; line-height: 1.8; font-size: 0.9375rem; }
+    .seo-section ol { padding-left: 1.25rem; }
+    .seo-section ol li { margin-bottom: 0.4rem; }
+    .faq-item { border: 1px solid rgba(0,217,255,0.1); border-radius: 10px; padding: 1rem 1.125rem; margin-bottom: 0.875rem; background: rgba(15,15,20,0.5); }
+    .faq-item summary { font-weight: 600; color: #FAFAFA; cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: '+'; color: #00D9FF; font-size: 1.25rem; flex-shrink: 0; transition: transform 0.2s; }
+    .faq-item[open] summary::after { content: '\2212'; }
+    .faq-item p { margin-top: 0.625rem; color: #A1A1AA; line-height: 1.7; }
+    
+    .sizes-table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.875rem; }
+    .sizes-table th, .sizes-table td { padding: 0.75rem; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .sizes-table th { color: #00D9FF; font-weight: 600; }
+    .sizes-table td { color: #A1A1AA; }
+  </style>
+</head>
+<body>
+  <div class="bg-ambient" aria-hidden="true"></div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <div id="app" class="app">
+    <header class="main-header">
+      <div class="container">
+        <div class="header-inner">
+          <a href="/" class="logo" aria-label="NovaTools MC Home">
+            <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
+            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+          </a>
+          <nav class="nav-desktop" aria-label="Main navigation">
+            <a href="/#finance" class="nav-link">Finance</a>
+            <a href="/#pdf" class="nav-link">PDF Tools</a>
+            <a href="/#image" class="nav-link">Images</a>
+            <a href="/#dev" class="nav-link">Developers</a>
+          </nav>
+          <div class="privacy-badge" title="Your data never leaves your browser">
+            <span class="privacy-badge-dot"></span>
+            <span>Privacy First</span>
+          </div>
+          <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+            <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+          <button type="button" id="mobileMenuBtn" class="menu-btn" aria-label="Toggle menu" aria-expanded="false">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+        </div>
+        <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
+          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <div class="tool-wrapper">
+        <div class="tool-hero">
+          <div class="tool-hero-icon">&#128241;</div>
+          <h1>App Icon Generator</h1>
+          <p>Generate app icons for iOS and Android in all required sizes. Upload one high-resolution image and get all the icons you need for App Store and Google Play.</p>
+        </div>
+
+        <div class="card">
+          <div class="upload-area" id="uploadArea">
+            <div class="upload-icon">&#128194;</div>
+            <div class="upload-text">
+              <strong>Click to upload</strong> or drag and drop<br>
+              Recommended: 1024x1024px square image with no transparency
+            </div>
+            <input type="file" id="fileInput" accept="image/*">
+          </div>
+
+          <div class="platform-tabs">
+            <button class="platform-tab active" data-platform="ios">iOS</button>
+            <button class="platform-tab" data-platform="android">Android</button>
+          </div>
+
+          <div class="icons-grid" id="iconsGrid"></div>
+
+          <div class="btn-bar" id="btnBar" style="display: none; gap: 0.75rem; flex-wrap: wrap;">
+            <button class="btn btn-primary" id="btnDownloadAll">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/><path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/></svg>
+              Download All Icons
+            </button>
+          </div>
+
+          <div class="info-box">
+            <p><strong>Tip:</strong> iOS icons will have rounded corners applied automatically by the system. Android supports adaptive icons with separate foreground and background layers. For best results, use a 1024x1024px source image with your logo centered.</p>
+          </div>
+
+          <div class="legal-note">
+            <strong>Legal Disclaimer / Yasal Uyar&#305;:</strong> This tool generates app icons entirely in your browser. No images are uploaded to our servers. Ensure you have rights to use and modify the uploaded image. / Bu ara&#231; uygulama ikonlar&#305;n&#305; tamamen taray&#305;c&#305;n&#305;zda olu&#351;turur.
+          </div>
+        </div>
+      </div>
+
+      <section class="seo-section" aria-label="About this tool">
+        <h2>About App Icon Generator</h2>
+        <p>App Icon Generator is a free tool for mobile app developers that creates all required icon sizes for iOS and Android platforms from a single source image. Instead of manually resizing your app icon dozens of times, upload one high-resolution image and get a complete set of icons ready for App Store Connect and Google Play Console.</p>
+
+        <h3>How to Use</h3>
+        <ol>
+          <li>Create or prepare a 1024x1024px square image of your app icon.</li>
+          <li>Upload the image using the upload area above.</li>
+          <li>Select your target platform (iOS or Android) using the tabs.</li>
+          <li>Preview all generated icon sizes.</li>
+          <li>Click "Download All Icons" to save all files at once.</li>
+        </ol>
+
+        <h3>iOS Icon Sizes</h3>
+        <table class="sizes-table">
+          <thead><tr><th>Size</th><th>Usage</th><th>Filename</th></tr></thead>
+          <tbody>
+            <tr><td>20x20 @2x, @3x</td><td>iPad/iPhone notification</td><td>Icon-20@2x.png, Icon-20@3x.png</td></tr>
+            <tr><td>29x29 @2x, @3x</td><td>iPad/iPhone settings</td><td>Icon-29@2x.png, Icon-29@3x.png</td></tr>
+            <tr><td>40x40 @2x, @3x</td><td>iPad/iPhone spotlight</td><td>Icon-40@2x.png, Icon-40@3x.png</td></tr>
+            <tr><td>60x60 @2x, @3x</td><td>iPhone app icon</td><td>Icon-60@2x.png, Icon-60@3x.png</td></tr>
+            <tr><td>76x76 @2x</td><td>iPad app icon</td><td>Icon-76@2x.png</td></tr>
+            <tr><td>83.5x83.5 @2x</td><td>iPad Pro app icon</td><td>Icon-83.5@2x.png</td></tr>
+            <tr><td>1024x1024</td><td>App Store</td><td>Icon-1024.png</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Android Icon Sizes</h3>
+        <table class="sizes-table">
+          <thead><tr><th>Density</th><th>Size</th><th>Folder</th></tr></thead>
+          <tbody>
+            <tr><td>ldpi</td><td>36x36</td><td>mipmap-ldpi</td></tr>
+            <tr><td>mdpi</td><td>48x48</td><td>mipmap-mdpi</td></tr>
+            <tr><td>hdpi</td><td>72x72</td><td>mipmap-hdpi</td></tr>
+            <tr><td>xhdpi</td><td>96x96</td><td>mipmap-xhdpi</td></tr>
+            <tr><td>xxhdpi</td><td>144x144</td><td>mipmap-xxhdpi</td></tr>
+            <tr><td>xxxhdpi</td><td>192x192</td><td>mipmap-xxxhdpi</td></tr>
+            <tr><td>Google Play</td><td>512x512</td><td>Play Console</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Frequently Asked Questions</h3>
+
+        <details class="faq-item">
+          <summary>What image format should I upload?</summary>
+          <p>Upload a PNG or JPG file with a square aspect ratio (1:1) and at least 1024x1024 pixels. The image should have a solid or transparent background with your logo/icon centered. Avoid using photos as app icons - simple vector-style graphics work best.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Does iOS add rounded corners automatically?</summary>
+          <p>Yes. iOS automatically applies rounded corners and the "squircle" shape to your app icons. You should upload a square image without rounded corners. The system will mask it appropriately on the device.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>What's the difference between iOS and Android icons?</summary>
+          <p>iOS uses a consistent grid system with specific @2x and @3x scales for different device pixel densities. Android uses density buckets (mdpi, hdpi, xhdpi, etc.) with different base sizes. Android also supports adaptive icons that can have different shapes on different devices.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Are my images stored on your servers?</summary>
+          <p>No. All processing happens entirely in your browser using HTML5 Canvas. Your app icon designs are never uploaded to any server, ensuring complete privacy and security for your intellectual property.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Can I use this for web app icons too?</question>
+          <p>Yes! The 192x192 and 512x512 sizes generated are perfect for Progressive Web App (PWA) icons. You can also use the Favicon Generator tool for browser tab icons.</p>
+        </details>
+      </section>
+    </main>
+
+    <footer class="tool-footer">
+      <p>&copy; 2026 NovaTools MC &mdash; Psk. Metehan CETIN | <a href="mailto:proside2026@gmail.com">proside2026@gmail.com</a></p>
+      <p>Estimates only &mdash; not financial, legal, or tax advice.</p>
+    </footer>
+    <style>
+      .tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }
+      .tool-footer a { color: #00D9FF; text-decoration: none; }
+    </style>
+  </div>
+
+  <script type="module">
+    const uploadArea = document.getElementById('uploadArea');
+    const fileInput = document.getElementById('fileInput');
+    const platformTabs = document.querySelectorAll('.platform-tab');
+    const iconsGrid = document.getElementById('iconsGrid');
+    const btnBar = document.getElementById('btnBar');
+    const btnDownloadAll = document.getElementById('btnDownloadAll');
+
+    let currentPlatform = 'ios';
+    let generatedIcons = {};
+    let currentImage = null;
+
+    const iosSizes = [
+      { size: 20, scale: 2, label: 'Notif' }, { size: 20, scale: 3, label: 'Notif' },
+      { size: 29, scale: 2, label: 'Sett' }, { size: 29, scale: 3, label: 'Sett' },
+      { size: 40, scale: 2, label: 'Spot' }, { size: 40, scale: 3, label: 'Spot' },
+      { size: 60, scale: 2, label: 'iPhone' }, { size: 60, scale: 3, label: 'iPhone' },
+      { size: 76, scale: 2, label: 'iPad' }, { size: 83.5, scale: 2, label: 'iPad Pro' },
+      { size: 1024, scale: 1, label: 'Store' }
+    ];
+
+    const androidSizes = [
+      { size: 36, density: 'ldpi' }, { size: 48, density: 'mdpi' },
+      { size: 72, density: 'hdpi' }, { size: 96, density: 'xhdpi' },
+      { size: 144, density: 'xxhdpi' }, { size: 192, density: 'xxxhdpi' },
+      { size: 512, density: 'Play' }
+    ];
+
+    platformTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        platformTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        currentPlatform = tab.dataset.platform;
+        if (currentImage) generateIcons();
+      });
+    });
+
+    uploadArea.addEventListener('click', () => fileInput.click());
+    fileInput.addEventListener('change', () => { if (fileInput.files.length) handleFile(fileInput.files[0]); });
+
+    function handleFile(file) {
+      if (!file.type.startsWith('image/')) { alert('Please select an image file'); return; }
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const img = new Image();
+        img.onload = () => { currentImage = img; generateIcons(); };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function generateIcons() {
+      generatedIcons = {};
+      iconsGrid.innerHTML = '';
+      
+      if (currentPlatform === 'ios') {
+        iosSizes.forEach(({ size, scale, label }) => {
+          const pixelSize = Math.round(size * scale);
+          const canvas = document.createElement('canvas');
+          canvas.width = pixelSize;
+          canvas.height = pixelSize;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(currentImage, 0, 0, pixelSize, pixelSize);
+          
+          const dataUrl = canvas.toDataURL('image/png');
+          generatedIcons[`Icon-${size}@${scale}x`] = dataUrl;
+          
+          const item = document.createElement('div');
+          item.className = 'icon-item';
+          item.innerHTML = `
+            <img src="${dataUrl}" alt="${size}@${scale}x">
+            <div class="icon-size">${size}@${scale}x</div>
+            <div class="icon-label">${label}</div>
+          `;
+          iconsGrid.appendChild(item);
+        });
+      } else {
+        androidSizes.forEach(({ size, density }) => {
+          const canvas = document.createElement('canvas');
+          canvas.width = size;
+          canvas.height = size;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(currentImage, 0, 0, size, size);
+          
+          const dataUrl = canvas.toDataURL('image/png');
+          generatedIcons[`${density}-${size}`] = dataUrl;
+          
+          const item = document.createElement('div');
+          item.className = 'icon-item';
+          item.innerHTML = `
+            <img src="${dataUrl}" alt="${size}px">
+            <div class="icon-size">${size}px</div>
+            <div class="icon-label">${density}</div>
+          `;
+          iconsGrid.appendChild(item);
+        });
+      }
+      
+      btnBar.style.display = 'flex';
+    }
+
+    btnDownloadAll.addEventListener('click', () => {
+      Object.entries(generatedIcons).forEach(([name, dataUrl]) => {
+        const link = document.createElement('a');
+        link.download = `${name}.png`;
+        link.href = dataUrl;
+        link.click();
+      });
+    });
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var menuBtn = document.getElementById('mobileMenuBtn');
+      var mobileMenu = document.getElementById('mobileMenu');
+      if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener('click', function() {
+          var isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+          menuBtn.setAttribute('aria-expanded', !isExpanded);
+          mobileMenu.hidden = isExpanded;
+          mobileMenu.classList.toggle('active', !isExpanded);
+        });
+      }
+      var themeBtn = document.getElementById('themeToggle');
+      if (themeBtn) {
+        function getTheme() {
+          var s = localStorage.getItem('theme');
+          if (s) return s;
+          return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        }
+        function updateIcon() {
+          var t = getTheme();
+          themeBtn.querySelector('.icon-sun').style.display = t === 'light' ? 'none' : 'block';
+          themeBtn.querySelector('.icon-moon').style.display = t === 'dark' ? 'none' : 'block';
+        }
+        themeBtn.addEventListener('click', function() {
+          var next = getTheme() === 'dark' ? 'light' : 'dark';
+          document.documentElement.setAttribute('data-theme', next);
+          localStorage.setItem('theme', next);
+          updateIcon();
+        });
+        updateIcon();
+      }
+    });
+  </script>
+</body>
+</html>

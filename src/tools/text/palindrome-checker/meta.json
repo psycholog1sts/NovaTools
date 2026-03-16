@@ -1,0 +1,42 @@
+{
+  "id": "palindrome-checker",
+  "name": "Palindrome Checker",
+  "nameEn": "Palindrome Checker",
+  "category": "text",
+  "tier": 2,
+  "cpc": {
+    "tr": 0.1,
+    "us": 0.25
+  },
+  "keywords": {
+    "tr": ["palindrom denetleyici", "palindrom testi", "ters metin", "ayna metni"],
+    "en": ["palindrome checker", "palindrome test", "reverse text", "mirror text"]
+  },
+  "description": {
+    "tr": "Metnin palindrom olup olmadığını kontrol edin. Gerçek zamanlı kontrol ve örnekler.",
+    "en": "Check if text is a palindrome. Real-time checking with examples."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "UtilityApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.1
+    }
+  },
+  "bundle": {
+    "lazyLoad": false
+  },
+  "relatedTools": [
+    "text-to-ascii",
+    "case-converter",
+    "character-counter"
+  ]
+}

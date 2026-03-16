@@ -1,0 +1,17 @@
+{
+  "id": "pdf-to-jpg",
+  "name": "PDF to JPG Converter",
+  "description": "Convert PDF pages to JPG images",
+  "category": "pdf",
+  "icon": "🖼️",
+  "keywords": ["pdf to jpg", "pdf to image", "convert pdf pages"],
+  "complexity": 5,
+  "hasClientSideProcessing": true,
+  "maxFileSize": 52428800,
+  "supportedFormats": ["pdf"],
+  "outputFormat": "jpg",
+  "version": "1.0.0",
+  "author": "NovaTools MC",
+  "created": "2026-03-16",
+  "updated": "2026-03-16"
+}

@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y896L63239"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-Y896L63239');
+</script>
+  <meta charset="UTF-8">
+  <script>(function(){var t=localStorage.getItem('novatools-theme');if(t)document.documentElement.setAttribute('data-theme',t);else{var d=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',d);document.documentElement.style.colorScheme=d;}})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/src/styles/critical.css">
+  <link rel="stylesheet" href="/src/styles/main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <title>Image Rotator - Rotate & Flip Photos Online | NovaTools</title>
+  <meta name="description" content="Rotate images by any angle online. 90° CW/CCW, 180° flip, horizontal and vertical flip. Free and private image rotation tool.">
+  <meta name="keywords" content="rotate image, flip image, image rotation, mirror image, turn photo">
+  <meta name="theme-color" content="#0A0A0C">
+
+  <meta property="og:title" content="Image Rotator - Rotate & Flip Photos Online">
+  <meta property="og:description" content="Rotate images by any angle. 90° CW/CCW, 180° flip, and custom angles.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.mc-novatools.com/tools/image/image-rotator/">
+  <meta property="og:image" content="https://www.mc-novatools.com/og-image.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Image Rotator | NovaTools MC">
+  <meta name="twitter:description" content="Rotate and flip images online. Free & private.">
+
+  <link rel="canonical" href="https://www.mc-novatools.com/tools/image/image-rotator/">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [{
+      "@type": "WebApplication",
+      "name": "Image Rotator",
+      "description": "Free online tool to rotate images by any angle or flip horizontally/vertically.",
+      "url": "https://www.mc-novatools.com/tools/image/image-rotator/",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "Any",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+    }]
+  }
+  </script>
+  <style>
+    .tool-container { max-width: 1100px; margin: 0 auto; padding: 2rem 1rem; }
+    .tool-header { text-align: center; margin-bottom: 2rem; }
+    .tool-header h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .tool-header p { color: var(--text-secondary); }
+    
+    .ad-top { display: flex; justify-content: center; margin-bottom: 1.5rem; min-height: 90px; }
+    .ad-sidebar-left, .ad-sidebar-right { display: none; }
+    @media (min-width: 1200px) {
+      .tool-layout { display: grid; grid-template-columns: 160px 1fr 160px; gap: 1.5rem; }
+      .ad-sidebar-left, .ad-sidebar-right { display: flex; flex-direction: column; gap: 1rem; }
+    }
+    
+    .dropzone { border: 2px dashed var(--border-default); border-radius: 16px; padding: 3rem 2rem; text-align: center; background: var(--surface-default); transition: all 0.3s ease; cursor: pointer; }
+    .dropzone:hover { border-color: var(--border-accent); background: var(--border-default); }
+    .dropzone.drag-active { border-color: var(--accent-primary); background: var(--accent-subtle); transform: scale(1.02); }
+    
+    .editor-section { margin-top: 1.5rem; display: none; }
+    .editor-section.visible { display: block; }
+    
+    .editor-grid { display: grid; grid-template-columns: 280px 1fr; gap: 1.5rem; }
+    @media (max-width: 900px) { .editor-grid { grid-template-columns: 1fr; } }
+    
+    .controls-panel { background: var(--surface-default); border: 1px solid var(--border-default); border-radius: var(--radius-lg); padding: 1.5rem; }
+    .control-group { margin-bottom: 1.25rem; }
+    .control-group label { display: block; font-weight: 500; margin-bottom: 0.5rem; font-size: 0.875rem; }
+    .control-group input[type="number"] { width: 100%; height: 44px; padding: 0 0.75rem; background: var(--bg-tertiary); border: 1px solid var(--border-default); border-radius: var(--radius-md); color: var(--text-primary); }
+    
+    .rotate-buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-bottom: 1rem; }
+    .rotate-btn { padding: 0.75rem; background: var(--bg-tertiary); border: 1px solid var(--border-default); border-radius: var(--radius-md); color: var(--text-primary); cursor: pointer; transition: all 0.2s; font-size: 0.875rem; }
+    .rotate-btn:hover { border-color: var(--border-accent); background: var(--border-default); }
+    .rotate-btn.primary { background: linear-gradient(135deg, #6366F1, #8B5CF6); color: white; border-color: transparent; }
+    
+    .flip-buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+    .flip-btn { padding: 0.75rem; background: var(--bg-tertiary); border: 1px solid var(--border-default); border-radius: var(--radius-md); color: var(--text-primary); cursor: pointer; transition: all 0.2s; font-size: 0.875rem; }
+    .flip-btn:hover { border-color: var(--border-accent); background: var(--border-default); }
+    .flip-btn.active { border-color: var(--accent-primary); background: var(--accent-subtle); color: var(--accent-primary); }
+    
+    .custom-angle { display: flex; gap: 0.5rem; align-items: center; }
+    .custom-angle input { flex: 1; }
+    .custom-angle button { padding: 0.5rem 1rem; background: var(--accent-primary); color: white; border: none; border-radius: var(--radius-md); cursor: pointer; }
+    
+    .preview-panel { background: var(--surface-default); border: 1px solid var(--border-default); border-radius: var(--radius-lg); padding: 1rem; text-align: center; min-height: 300px; display: flex; align-items: center; justify-content: center; }
+    #previewCanvas { max-width: 100%; max-height: 500px; border-radius: var(--radius-md); }
+    
+    .action-buttons { display: flex; gap: 0.75rem; margin-top: 1rem; }
+    .btn { flex: 1; height: 48px; border-radius: var(--radius-md); font-weight: 500; cursor: pointer; transition: all 0.2s; border: none; }
+    .btn-primary { background: linear-gradient(135deg, #22C55E, #16A34A); color: white; }
+    .btn-secondary { background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-default); }
+    .btn:hover { transform: translateY(-2px); }
+    
+    .progress-container { margin: 1rem 0; display: none; }
+    .progress-container.visible { display: block; }
+    .progress-bar { height: 8px; background: var(--bg-tertiary); border-radius: 4px; overflow: hidden; }
+    .progress-fill { height: 100%; background: linear-gradient(90deg, #6366F1, #8B5CF6); width: 0%; transition: width 0.3s; }
+    .progress-text { text-align: center; font-size: 0.875rem; color: var(--text-secondary); margin-top: 0.5rem; }
+    
+    .result-section { margin-top: 1.5rem; padding: 2rem; background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(34, 197, 94, 0.05)); border: 1px solid rgba(34, 197, 94, 0.3); border-radius: var(--radius-lg); text-align: center; display: none; }
+    .result-section.visible { display: block; }
+    .download-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; background: linear-gradient(135deg, #22C55E, #16A34A); color: white; font-weight: 600; border-radius: var(--radius-md); text-decoration: none; }
+    
+    .legal-disclaimer { background: var(--surface-default); border-left: 4px solid var(--warning); padding: 1rem 1.25rem; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin-top: 2rem; font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6; }
+    .how-to-use { margin-top: 3rem; }
+    .how-to-use h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; }
+    .how-to-use ol { padding-left: 1.5rem; color: var(--text-secondary); line-height: 1.8; }
+    .how-to-use li { margin-bottom: 0.5rem; }
+    .faq-section { margin-top: 3rem; }
+    .faq-section h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; }
+    .faq-item { border: 1px solid var(--border-hover); border-radius: var(--radius-md); overflow: hidden; margin-bottom: 0.75rem; }
+    .faq-item summary { padding: 1rem; background: var(--surface-default); cursor: pointer; font-weight: 500; }
+    .faq-item summary:hover { background: var(--border-default); }
+    .faq-item p { padding: 1rem; margin: 0; border-top: 1px solid var(--border-hover); color: var(--text-secondary); }
+    .tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }
+    .tool-footer a { color: #00D9FF; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="bg-ambient" aria-hidden="true"></div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+  
+  <div id="app" class="app">
+    <header class="main-header">
+      <div class="container">
+        <div class="header-inner">
+          <a href="/" class="logo" aria-label="NovaTools MC Home">
+            <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
+            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+          </a>
+          <nav class="nav-desktop" aria-label="Main navigation">
+            <a href="/#finance" class="nav-link">Finance</a>
+            <a href="/#pdf" class="nav-link">PDF Tools</a>
+            <a href="/#image" class="nav-link">Images</a>
+            <a href="/#dev" class="nav-link">Developers</a>
+          </nav>
+          <div class="privacy-badge" title="Your data never leaves your browser">
+            <span class="privacy-badge-dot"></span>
+            <span>Privacy First</span>
+          </div>
+          <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+            <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+          <button type="button" id="mobileMenuBtn" class="menu-btn" aria-label="Toggle menu" aria-expanded="false">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+        </div>
+        <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
+          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <div class="ad-top"><div style="width:728px;height:90px;background:var(--surface-default);border:1px solid var(--border-default);display:flex;align-items:center;justify-content:center;color:var(--text-muted);">Ad 728x90</div></div>
+      
+      <div class="tool-container">
+        <div class="tool-header">
+          <h1>🔄 Image Rotator</h1>
+          <span class="sr-only">Free image rotator - rotate images by any angle online. 90° CW/CCW, 180° flip, and custom angles.</span>
+          <p>Rotate images by any angle or flip horizontally/vertically. Quick and easy image transformation.</p>
+        </div>
+        
+        <div class="tool-layout">
+          <aside class="ad-sidebar-left"><div style="width:160px;height:600px;background:var(--surface-default);border:1px solid var(--border-default);display:flex;align-items:center;justify-content:center;color:var(--text-muted);">Ad 160x600</div></aside>
+          
+          <div class="tool-main">
+            <div id="dropzone" class="dropzone">
+              <div style="font-size: 3rem; margin-bottom: 1rem;">🔄</div>
+              <div style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem;">Drop image here or click to browse</div>
+              <div style="font-size: 0.875rem; color: var(--text-muted);">Supports JPG, PNG, WebP • Max 20MB</div>
+              <input type="file" id="fileInput" accept="image/*" style="display: none;">
+            </div>
+            
+            <div id="editorSection" class="editor-section">
+              <div class="editor-grid">
+                <div class="controls-panel">
+                  <div class="control-group">
+                    <label>Quick Rotate</label>
+                    <div class="rotate-buttons">
+                      <button type="button" class="rotate-btn" data-rotate="-90">↺ 90° CCW</button>
+                      <button type="button" class="rotate-btn" data-rotate="90">↻ 90° CW</button>
+                      <button type="button" class="rotate-btn" data-rotate="180">↻ 180°</button>
+                      <button type="button" class="rotate-btn" data-rotate="-180">↺ 180°</button>
+                    </div>
+                  </div>
+                  
+                  <div class="control-group">
+                    <label>Flip</label>
+                    <div class="flip-buttons">
+                      <button type="button" class="flip-btn" id="flipHBtn">↔ Horizontal</button>
+                      <button type="button" class="flip-btn" id="flipVBtn">↕ Vertical</button>
+                    </div>
+                  </div>
+                  
+                  <div class="control-group">
+                    <label>Custom Angle</label>
+                    <div class="custom-angle">
+                      <input type="number" id="customAngle" min="-360" max="360" value="0" placeholder="Angle">
+                      <button type="button" id="applyAngleBtn">Apply</button>
+                    </div>
+                  </div>
+                  
+                  <div class="action-buttons">
+                    <button type="button" id="downloadBtn" class="btn btn-primary">Download</button>
+                    <button type="button" id="resetBtn" class="btn btn-secondary">Reset</button>
+                  </div>
+                  
+                  <div id="progressContainer" class="progress-container">
+                    <div class="progress-bar"><div id="progressFill" class="progress-fill"></div></div>
+                    <div id="progressText" class="progress-text">Processing...</div>
+                  </div>
+                </div>
+                
+                <div class="preview-panel">
+                  <canvas id="previewCanvas"></canvas>
+                </div>
+              </div>
+            </div>
+            
+            <div id="resultSection" class="result-section">
+              <div style="font-size: 3rem; margin-bottom: 1rem;">✅</div>
+              <h3 style="margin-bottom: 0.5rem;">Image Rotated!</h3>
+              <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Your transformed image is ready to download.</p>
+              <a id="downloadLink" href="#" class="download-btn" download>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                Download Rotated Image
+              </a>
+            </div>
+
+            <div class="legal-disclaimer">
+              <p><strong>Gizlilik ve Güvenlik / Privacy & Security:</strong> Bu araç kişisel kullanım içindir. Verileriniz işlenmez ve hiçbir sunucuya gönderilmez. Tüm işlemler tarayıcınızda client-side olarak gerçekleştirilir. / This tool is for personal use. Your data is not processed and never sent to any server. All operations are performed client-side in your browser.</p>
+              <p style="margin-top: 0.5rem;"><strong>Sorumluluk Reddi / Disclaimer:</strong> Bu araç tahmini değerler sunar, profesyonel görsel işleme hizmeti değildir. / This tool provides estimated values and is not professional image processing service.</p>
+            </div>
+
+            <section class="how-to-use">
+              <h2>How to Rotate Images</h2>
+              <ol>
+                <li>Upload your image by dragging and dropping or clicking to browse.</li>
+                <li>Use the quick rotate buttons for 90° or 180° rotations.</li>
+                <li>Use the flip buttons to mirror your image horizontally or vertically.</li>
+                <li>Or enter a custom angle for precise rotation.</li>
+                <li>Preview the result and download your transformed image.</li>
+              </ol>
+            </section>
+
+            <section class="faq-section">
+              <h2>Frequently Asked Questions</h2>
+              
+              <details class="faq-item">
+                <summary>Will rotating affect image quality?</summary>
+                <p>For 90°, 180°, and 270° rotations, no quality is lost as these are lossless transformations. For custom angles, there may be slight quality reduction due to interpolation.</p>
+              </details>
+              
+              <details class="faq-item">
+                <summary>What's the difference between flip and rotate?</summary>
+                <p>Flip creates a mirror image (reverses the image along an axis), while rotate turns the entire image around its center point. Flipping horizontally is like looking at the image in a mirror.</p>
+              </details>
+              
+              <details class="faq-item">
+                <summary>Is my data secure?</summary>
+                <p>Absolutely! All image processing happens entirely in your browser. Your images are never uploaded to any server, ensuring complete privacy and security.</p>
+              </details>
+              
+              <details class="faq-item">
+                <summary>Can I rotate by any angle?</summary>
+                <p>Yes! You can enter any angle from -360° to 360°. Positive values rotate clockwise, negative values rotate counter-clockwise.</p>
+              </details>
+            </section>
+          </div>
+          
+          <aside class="ad-sidebar-right"><div style="width:160px;height:600px;background:var(--surface-default);border:1px solid var(--border-default);display:flex;align-items:center;justify-content:center;color:var(--text-muted);">Ad 160x600</div></aside>
+        </div>
+      </div>
+    </main>
+
+    <footer class="tool-footer">
+      <p>&copy; 2026 NovaTools MC &mdash; Psk. Metehan CETIN | <a href="mailto:proside2026@gmail.com">proside2026@gmail.com</a></p>
+      <p>Estimates only &mdash; not professional image processing advice.</p>
+    </footer>
+  </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Theme and menu toggle
+  var menuBtn = document.getElementById('mobileMenuBtn');
+  var mobileMenu = document.getElementById('mobileMenu');
+  if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener('click', function() {
+      var isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+      menuBtn.setAttribute('aria-expanded', !isExpanded);
+      mobileMenu.hidden = isExpanded;
+      mobileMenu.classList.toggle('active', !isExpanded);
+    });
+  }
+  
+  var themeBtn = document.getElementById('themeToggle');
+  if (themeBtn) {
+    function getTheme() {
+      var s = localStorage.getItem('theme');
+      if (s) return s;
+      return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    }
+    function updateIcon() {
+      var t = getTheme();
+      themeBtn.querySelector('.icon-sun').style.display = t === 'light' ? 'none' : 'block';
+      themeBtn.querySelector('.icon-moon').style.display = t === 'dark' ? 'none' : 'block';
+    }
+    themeBtn.addEventListener('click', function() {
+      var next = getTheme() === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      updateIcon();
+    });
+    updateIcon();
+  }
+
+  // Image Rotator Logic
+  var dropzone = document.getElementById('dropzone');
+  var fileInput = document.getElementById('fileInput');
+  var editorSection = document.getElementById('editorSection');
+  var previewCanvas = document.getElementById('previewCanvas');
+  var rotateBtns = document.querySelectorAll('.rotate-btn');
+  var flipHBtn = document.getElementById('flipHBtn');
+  var flipVBtn = document.getElementById('flipVBtn');
+  var customAngle = document.getElementById('customAngle');
+  var applyAngleBtn = document.getElementById('applyAngleBtn');
+  var downloadBtn = document.getElementById('downloadBtn');
+  var resetBtn = document.getElementById('resetBtn');
+  var resultSection = document.getElementById('resultSection');
+  var downloadLink = document.getElementById('downloadLink');
+  var progressContainer = document.getElementById('progressContainer');
+  var progressFill = document.getElementById('progressFill');
+  
+  var ctx = previewCanvas.getContext('2d');
+  var originalImage = null;
+  var currentRotation = 0;
+  var flipH = false;
+  var flipV = false;
+  
+  function loadFile(file) {
+    if (file.size > 20 * 1024 * 1024) { alert('File exceeds 20MB limit.'); return; }
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      originalImage = new Image();
+      originalImage.onload = function() {
+        currentRotation = 0; flipH = false; flipV = false;
+        flipHBtn.classList.remove('active');
+        flipVBtn.classList.remove('active');
+        customAngle.value = 0;
+        renderImage();
+        editorSection.classList.add('visible');
+        resultSection.classList.remove('visible');
+      };
+      originalImage.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+  
+  if (dropzone && fileInput) {
+    dropzone.addEventListener('click', function(e) { if (e.target !== fileInput) fileInput.click(); });
+    fileInput.addEventListener('change', function() { if (fileInput.files[0]) loadFile(fileInput.files[0]); });
+    dropzone.addEventListener('dragover', function(e) { e.preventDefault(); dropzone.classList.add('drag-active'); });
+    dropzone.addEventListener('dragleave', function() { dropzone.classList.remove('drag-active'); });
+    dropzone.addEventListener('drop', function(e) {
+      e.preventDefault(); dropzone.classList.remove('drag-active');
+      if (e.dataTransfer.files[0]) loadFile(e.dataTransfer.files[0]);
+    });
+  }
+  
+  function renderImage() {
+    if (!originalImage) return;
+    
+    var angleRad = currentRotation * Math.PI / 180;
+    var absCos = Math.abs(Math.cos(angleRad));
+    var absSin = Math.abs(Math.sin(angleRad));
+    var newWidth = originalImage.width * absCos + originalImage.height * absSin;
+    var newHeight = originalImage.width * absSin + originalImage.height * absCos;
+    
+    previewCanvas.width = newWidth;
+    previewCanvas.height = newHeight;
+    
+    ctx.save();
+    ctx.translate(newWidth / 2, newHeight / 2);
+    ctx.rotate(angleRad);
+    ctx.scale(flipH ? -1 : 1, flipV ? -1 : 1);
+    ctx.drawImage(originalImage, -originalImage.width / 2, -originalImage.height / 2);
+    ctx.restore();
+  }
+  
+  rotateBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      currentRotation += parseInt(this.dataset.rotate);
+      currentRotation = currentRotation % 360;
+      customAngle.value = currentRotation;
+      renderImage();
+    });
+  });
+  
+  flipHBtn.addEventListener('click', function() {
+    flipH = !flipH;
+    this.classList.toggle('active');
+    renderImage();
+  });
+  
+  flipVBtn.addEventListener('click', function() {
+    flipV = !flipV;
+    this.classList.toggle('active');
+    renderImage();
+  });
+  
+  applyAngleBtn.addEventListener('click', function() {
+    currentRotation = parseInt(customAngle.value) || 0;
+    renderImage();
+  });
+  
+  customAngle.addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') { currentRotation = parseInt(this.value) || 0; renderImage(); }
+  });
+  
+  downloadBtn.addEventListener('click', function() {
+    progressContainer.classList.add('visible');
+    var progress = 0;
+    var interval = setInterval(function() {
+      progress += 20;
+      progressFill.style.width = progress + '%';
+      if (progress >= 100) {
+        clearInterval(interval);
+        progressContainer.classList.remove('visible');
+        resultSection.classList.add('visible');
+        previewCanvas.toBlob(function(blob) {
+          var url = URL.createObjectURL(blob);
+          downloadLink.href = url;
+          downloadLink.download = 'rotated-image.png';
+        }, 'image/png');
+        resultSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 50);
+  });
+  
+  resetBtn.addEventListener('click', function() {
+    currentRotation = 0; flipH = false; flipV = false;
+    flipHBtn.classList.remove('active');
+    flipVBtn.classList.remove('active');
+    customAngle.value = 0;
+    renderImage();
+    resultSection.classList.remove('visible');
+  });
+});
+</script>
+</body>
+</html>

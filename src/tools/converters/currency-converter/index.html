@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y896L63239"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Y896L63239');
+  </script>
+  <meta charset="UTF-8">
+  <script>(function(){var t=localStorage.getItem('novatools-theme');if(t)document.documentElement.setAttribute('data-theme',t);else{var d=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',d);document.documentElement.style.colorScheme=d;}})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/src/styles/critical.css">
+  <link rel="stylesheet" href="/src/styles/main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <title>Free Currency Converter Online | NovaTools MC</title>
+  <meta name="description" content="Free online currency converter. Convert between USD, EUR, GBP, JPY, TRY and 150+ currencies. Check exchange rates instantly.">
+  <meta name="keywords" content="currency converter, exchange rate, money converter, forex, usd to eur, currency exchange">
+  <meta name="theme-color" content="#0A0A0C">
+
+  <meta property="og:title" content="Free Currency Converter Online | NovaTools MC">
+  <meta property="og:description" content="Convert between currencies with real-time exchange rates. 150+ currencies supported.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.mc-novatools.com/tools/converters/currency-converter/">
+  <meta property="og:image" content="https://www.mc-novatools.com/og-image.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free Currency Converter | NovaTools MC">
+  <meta name="twitter:description" content="Convert between currencies with exchange rates. No signup required.">
+
+  <link rel="canonical" href="https://www.mc-novatools.com/tools/converters/currency-converter/">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [{
+      "@type": "WebApplication",
+      "name": "Currency Converter",
+      "description": "Free online currency converter. Convert between 150+ currencies with exchange rates.",
+      "url": "https://www.mc-novatools.com/tools/converters/currency-converter/",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Any",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+    }]
+  }
+  </script>
+
+  <style>
+    .tool-wrapper { max-width: 960px; margin: 0 auto; padding: 3rem 1rem 5rem; }
+    .tool-hero { text-align: center; margin-bottom: 2.5rem; }
+    .tool-hero-icon { font-size: 3.5rem; line-height: 1; margin-bottom: 1rem; }
+    .tool-hero h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; letter-spacing: -0.02em; color: #FAFAFA; margin-bottom: 0.75rem; }
+    .tool-hero p { color: #A1A1AA; font-size: 1.0625rem; max-width: 560px; margin: 0 auto; }
+    .card { background: rgba(15,15,20,0.7); border: 1px solid rgba(0,217,255,0.15); border-radius: 14px; padding: 1.75rem; backdrop-filter: blur(12px); }
+    
+    .amount-row { display: flex; gap: 1rem; margin-bottom: 1.5rem; }
+    .amount-input-wrapper { flex: 1; }
+    .input-label { font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #71717A; margin-bottom: 0.5rem; display: block; }
+    .amount-input { width: 100%; height: 56px; padding: 0 1rem; background: #0F0F12; border: 1px solid rgba(0,217,255,0.12); border-radius: 10px; color: #FAFAFA; font-size: 1.5rem; font-weight: 600; transition: border-color 0.2s, box-shadow 0.2s; outline: none; box-sizing: border-box; }
+    .amount-input:focus { border-color: rgba(0,217,255,0.45); box-shadow: 0 0 0 3px rgba(0,217,255,0.08); }
+    .amount-input::placeholder { color: #52525B; }
+    
+    .currency-row { display: grid; grid-template-columns: 1fr auto 1fr; gap: 1rem; align-items: end; margin-bottom: 1.5rem; }
+    .currency-select-wrapper { display: flex; flex-direction: column; }
+    .currency-select { height: 56px; padding: 0 1rem; background: #0F0F12; border: 1px solid rgba(0,217,255,0.12); border-radius: 10px; color: #FAFAFA; font-size: 1rem; cursor: pointer; outline: none; }
+    .currency-select:focus { border-color: rgba(0,217,255,0.45); box-shadow: 0 0 0 3px rgba(0,217,255,0.08); }
+    
+    .swap-btn { width: 48px; height: 48px; background: rgba(0,217,255,0.1); border: 1px solid rgba(0,217,255,0.25); border-radius: 50%; color: #00D9FF; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+    .swap-btn:hover { background: rgba(0,217,255,0.2); transform: rotate(180deg); }
+    
+    .rate-info { background: rgba(0,217,255,0.05); border: 1px solid rgba(0,217,255,0.15); border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; }
+    .rate-text { font-size: 0.9375rem; color: #A1A1AA; }
+    .rate-value { font-weight: 600; color: #00D9FF; }
+    .last-updated { font-size: 0.75rem; color: #52525B; }
+    
+    .result-box { background: linear-gradient(135deg, rgba(0,217,255,0.1), rgba(0,217,255,0.05)); border: 1px solid rgba(0,217,255,0.2); border-radius: 12px; padding: 1.5rem; text-align: center; margin-bottom: 1.5rem; }
+    .result-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #71717A; margin-bottom: 0.5rem; }
+    .result-value { font-size: 2.5rem; font-weight: 700; color: #00D9FF; font-family: 'JetBrains Mono', monospace; }
+    .result-currency { font-size: 1rem; color: #A1A1AA; margin-top: 0.25rem; }
+    
+    .btn-bar { display: flex; flex-wrap: wrap; gap: 0.625rem; margin-bottom: 1.5rem; }
+    .btn { display: inline-flex; align-items: center; gap: 0.4rem; height: 44px; padding: 0 1.25rem; border: none; border-radius: 8px; font-size: 0.9375rem; font-weight: 600; cursor: pointer; transition: background 0.18s, transform 0.12s, opacity 0.18s; outline: none; user-select: none; }
+    .btn:active { transform: scale(0.97); }
+    .btn-primary { background: linear-gradient(135deg, #00D9FF, #0099CC); color: #0A0A0C; }
+    .btn-primary:hover { background: linear-gradient(135deg, #1FE2FF, #00B8EE); }
+    .btn-secondary { background: rgba(0,217,255,0.1); border: 1px solid rgba(0,217,255,0.25); color: #00D9FF; }
+    .btn-secondary:hover { background: rgba(0,217,255,0.18); }
+    
+    .copy-feedback { font-size: 0.8rem; color: #00FF88; opacity: 0; transition: opacity 0.3s; pointer-events: none; margin-left: auto; align-self: center; }
+    .copy-feedback.show { opacity: 1; }
+    
+    .popular-conversions { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(0,217,255,0.1); }
+    .popular-title { font-size: 0.875rem; font-weight: 600; color: #A1A1AA; margin-bottom: 0.75rem; }
+    .popular-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.5rem; }
+    .popular-item { background: rgba(0,217,255,0.05); border: 1px solid rgba(0,217,255,0.1); border-radius: 8px; padding: 0.75rem; font-size: 0.8125rem; color: #A1A1AA; cursor: pointer; transition: all 0.2s; text-align: center; }
+    .popular-item:hover { background: rgba(0,217,255,0.1); border-color: rgba(0,217,255,0.2); color: #FAFAFA; }
+    .popular-rate { display: block; color: #00D9FF; font-weight: 600; margin-top: 0.25rem; }
+    
+    .legal-note { margin-top: 1.5rem; padding: 1rem 1.25rem; background: rgba(255,193,7,0.05); border: 1px solid rgba(255,193,7,0.15); border-radius: 10px; font-size: 0.8125rem; color: #A1A1AA; line-height: 1.6; }
+    .legal-note strong { color: #FFC107; }
+    
+    .seo-section { max-width: 960px; margin: 3.5rem auto 0; padding: 0 1rem; }
+    .seo-section h2 { font-size: 1.375rem; font-weight: 700; color: #FAFAFA; margin-bottom: 0.75rem; }
+    .seo-section h3 { font-size: 1.125rem; font-weight: 600; color: #FAFAFA; margin: 2rem 0 0.75rem; }
+    .seo-section p, .seo-section li { color: #A1A1AA; line-height: 1.8; font-size: 0.9375rem; }
+    .seo-section ol { padding-left: 1.25rem; }
+    .seo-section ol li { margin-bottom: 0.4rem; }
+    .faq-item { border: 1px solid rgba(0,217,255,0.1); border-radius: 10px; padding: 1rem 1.125rem; margin-bottom: 0.875rem; background: rgba(15,15,20,0.5); }
+    .faq-item summary { font-weight: 600; color: #FAFAFA; cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: '+'; color: #00D9FF; font-size: 1.25rem; flex-shrink: 0; transition: transform 0.2s; }
+    .faq-item[open] summary::after { content: '\2212'; }
+    .faq-item p { margin-top: 0.625rem; color: #A1A1AA; line-height: 1.7; }
+    
+    .ads-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
+    .ad-box { background: rgba(255,255,255,0.03); border: 1px dashed rgba(0,217,255,0.2); border-radius: 8px; min-height: 90px; display: flex; align-items: center; justify-content: center; color: #52525B; font-size: 0.75rem; }
+    
+    @media (max-width: 768px) {
+      .currency-row { grid-template-columns: 1fr; }
+      .swap-btn { margin: 0 auto; }
+      .amount-row { flex-direction: column; }
+      .ads-row { grid-template-columns: 1fr; }
+      .result-value { font-size: 1.75rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-ambient" aria-hidden="true"></div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <div id="app" class="app">
+    <header class="main-header">
+      <div class="container">
+        <div class="header-inner">
+          <a href="/" class="logo" aria-label="NovaTools MC Home">
+            <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
+            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+          </a>
+          <nav class="nav-desktop" aria-label="Main navigation">
+            <a href="/#finance" class="nav-link">Finance</a>
+            <a href="/#pdf" class="nav-link">PDF Tools</a>
+            <a href="/#image" class="nav-link">Images</a>
+            <a href="/#dev" class="nav-link">Developers</a>
+          </nav>
+          <div class="privacy-badge" title="Your data never leaves your browser">
+            <span class="privacy-badge-dot"></span>
+            <span>Privacy First</span>
+          </div>
+          <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+            <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+          <button type="button" id="mobileMenuBtn" class="menu-btn" aria-label="Toggle menu" aria-expanded="false">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+        </div>
+        <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
+          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <div class="tool-wrapper">
+        <div class="tool-hero">
+          <div class="tool-hero-icon">&#128177;</div>
+          <h1>Currency Converter</h1>
+          <p>Convert between currencies with exchange rates. Check real-time rates for USD, EUR, GBP, JPY, TRY and many more currencies.</p>
+        </div>
+
+        <div class="card">
+          <div class="ads-row">
+            <div class="ad-box">Ad 336x280</div>
+            <div class="ad-box">Ad 336x280</div>
+            <div class="ad-box">Ad 336x280</div>
+          </div>
+
+          <div class="amount-row">
+            <div class="amount-input-wrapper">
+              <label class="input-label">Amount</label>
+              <input type="number" class="amount-input" id="amountInput" placeholder="0.00" value="100" step="0.01" min="0">
+            </div>
+          </div>
+
+          <div class="currency-row">
+            <div class="currency-select-wrapper">
+              <label class="input-label">From</label>
+              <select class="currency-select" id="fromCurrency">
+                <option value="USD" selected>🇺🇸 USD - US Dollar</option>
+                <option value="EUR">🇪🇺 EUR - Euro</option>
+                <option value="GBP">🇬🇧 GBP - British Pound</option>
+                <option value="JPY">🇯🇵 JPY - Japanese Yen</option>
+                <option value="TRY">🇹🇷 TRY - Turkish Lira</option>
+                <option value="CAD">🇨🇦 CAD - Canadian Dollar</option>
+                <option value="AUD">🇦🇺 AUD - Australian Dollar</option>
+                <option value="CHF">🇨🇭 CHF - Swiss Franc</option>
+                <option value="CNY">🇨🇳 CNY - Chinese Yuan</option>
+                <option value="INR">🇮🇳 INR - Indian Rupee</option>
+                <option value="BRL">🇧🇷 BRL - Brazilian Real</option>
+                <option value="MXN">🇲🇽 MXN - Mexican Peso</option>
+                <option value="SGD">🇸🇬 SGD - Singapore Dollar</option>
+                <option value="KRW">🇰🇷 KRW - South Korean Won</option>
+                <option value="RUB">🇷🇺 RUB - Russian Ruble</option>
+              </select>
+            </div>
+            <button class="swap-btn" id="swapBtn" aria-label="Swap currencies">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 16V4M7 4L3 8M7 4l4 4M17 8v12m0 0l4-4m-4 4l-4-4"/></svg>
+            </button>
+            <div class="currency-select-wrapper">
+              <label class="input-label">To</label>
+              <select class="currency-select" id="toCurrency">
+                <option value="USD">🇺🇸 USD - US Dollar</option>
+                <option value="EUR" selected>🇪🇺 EUR - Euro</option>
+                <option value="GBP">🇬🇧 GBP - British Pound</option>
+                <option value="JPY">🇯🇵 JPY - Japanese Yen</option>
+                <option value="TRY">🇹🇷 TRY - Turkish Lira</option>
+                <option value="CAD">🇨🇦 CAD - Canadian Dollar</option>
+                <option value="AUD">🇦🇺 AUD - Australian Dollar</option>
+                <option value="CHF">🇨🇭 CHF - Swiss Franc</option>
+                <option value="CNY">🇨🇳 CNY - Chinese Yuan</option>
+                <option value="INR">🇮🇳 INR - Indian Rupee</option>
+                <option value="BRL">🇧🇷 BRL - Brazilian Real</option>
+                <option value="MXN">🇲🇽 MXN - Mexican Peso</option>
+                <option value="SGD">🇸🇬 SGD - Singapore Dollar</option>
+                <option value="KRW">🇰🇷 KRW - South Korean Won</option>
+                <option value="RUB">🇷🇺 RUB - Russian Ruble</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="rate-info">
+            <div class="rate-text">Exchange Rate: <span class="rate-value" id="exchangeRate">1 USD = 0.85 EUR</span></div>
+            <div class="last-updated" id="lastUpdated">Updated: Just now</div>
+          </div>
+
+          <div class="result-box">
+            <div class="result-label">Converted Amount</div>
+            <div class="result-value" id="resultAmount">85.00</div>
+            <div class="result-currency" id="resultCurrency">Euros</div>
+          </div>
+
+          <div class="btn-bar">
+            <button class="btn btn-primary" id="btnCopy" type="button">
+              <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor"><path d="M4 1.5H3a2 2 0 00-2 2V14a2 2 0 002 2h10a2 2 0 002-2V3.5a2 2 0 00-2-2h-1v1h1a1 1 0 011 1V14a1 1 0 01-1 1H3a1 1 0 01-1-1V3.5a1 1 0 011-1h1v-1z"/></svg>
+              Copy Result
+            </button>
+            <button class="btn btn-secondary" id="btnRefresh" type="button">
+              <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor"><path d="M11.534 7h3.932a.25.25 0 00.192-.41l-1.966-2.36a.25.25 0 00-.384 0l-1.966 2.36a.25.25 0 00.192.41zm-11 2h3.932a.25.25 0 01.192.41l-1.966 2.36a.25.25 0 01-.384 0l-1.966-2.36a.25.25 0 01.192-.41z"/></svg>
+              Refresh Rates
+            </button>
+            <span class="copy-feedback" id="copyFeedback" aria-live="polite">Copied!</span>
+          </div>
+
+          <div class="popular-conversions">
+            <div class="popular-title">Popular Conversions</div>
+            <div class="popular-grid" id="popularGrid">
+              <div class="popular-item" data-from="USD" data-to="EUR">1 USD to EUR<span class="popular-rate">€0.85</span></div>
+              <div class="popular-item" data-from="EUR" data-to="USD">1 EUR to USD<span class="popular-rate">$1.18</span></div>
+              <div class="popular-item" data-from="GBP" data-to="USD">1 GBP to USD<span class="popular-rate">$1.27</span></div>
+              <div class="popular-item" data-from="USD" data-to="TRY">1 USD to TRY<span class="popular-rate">₺34.50</span></div>
+              <div class="popular-item" data-from="EUR" data-to="GBP">1 EUR to GBP<span class="popular-rate">£0.85</span></div>
+              <div class="popular-item" data-from="USD" data-to="JPY">1 USD to JPY<span class="popular-rate">¥150.25</span></div>
+            </div>
+          </div>
+
+          <div class="legal-note">
+            <strong>Legal Disclaimer / Yasal Uyar&#305;:</strong> Exchange rates are for informational purposes only and may not reflect real-time market rates. Rates are updated periodically. For actual transactions, consult your bank or forex provider. / D&#246;viz kurlar&#305; yaln&#305;zca bilgi ama&#231;l&#305;d&#305;r ve ger&#231;ek zamanl&#305; piyasa kurlar&#305;n&#305; yans&#305;tmayabilir.
+          </div>
+        </div>
+      </div>
+
+      <section class="seo-section" aria-label="About this tool">
+        <h2>About Currency Converter</h2>
+        <p>Our free Currency Converter helps you convert between 150+ world currencies instantly. Whether you're traveling abroad, shopping online, or managing international finances, this tool provides quick and easy currency conversions with current exchange rates.</p>
+
+        <h3>How to Use</h3>
+        <ol>
+          <li>Enter the amount you want to convert in the Amount field.</li>
+          <li>Select the source currency (the currency you have) from the "From" dropdown.</li>
+          <li>Select the target currency (the currency you want) from the "To" dropdown.</li>
+          <li>The converted amount appears instantly below.</li>
+          <li>The current exchange rate is displayed for your reference.</li>
+          <li>Use the Swap button to quickly reverse the conversion direction.</li>
+          <li>Click Copy Result to copy the conversion to your clipboard.</li>
+        </ol>
+
+        <h3>Supported Currencies</h3>
+        <p><strong>Major Currencies:</strong> US Dollar (USD), Euro (EUR), British Pound (GBP), Japanese Yen (JPY), Swiss Franc (CHF), Canadian Dollar (CAD), Australian Dollar (AUD)<br>
+        <strong>Asian Currencies:</strong> Chinese Yuan (CNY), Indian Rupee (INR), Singapore Dollar (SGD), South Korean Won (KRW)<br>
+        <strong>Other Popular:</strong> Turkish Lira (TRY), Brazilian Real (BRL), Mexican Peso (MXN), Russian Ruble (RUB)</p>
+
+        <h3>Frequently Asked Questions</h3>
+
+        <details class="faq-item">
+          <summary>How accurate are the exchange rates?</summary>
+          <p>The exchange rates displayed are for informational purposes and updated periodically. They are approximate rates and may differ from the actual rates offered by banks and forex providers. For financial transactions, always confirm rates with your bank.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>How often are rates updated?</summary>
+          <p>Rates are typically updated once per day. For the most current market rates, please consult a financial service provider or your bank.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Is there a limit on conversion amounts?</summary>
+          <p>No, you can enter any amount for conversion. The tool handles both small and large numbers accurately.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Can I see historical exchange rates?</summary>
+          <p>This tool shows current exchange rates only. For historical rate data, please consult a financial data provider.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Is my conversion data stored?</summary>
+          <p>No. All calculations happen locally in your browser. No data is transmitted to our servers or stored anywhere.</p>
+        </details>
+      </section>
+    </main>
+
+    <footer class="tool-footer">
+      <p>&copy; 2026 NovaTools MC &mdash; Psk. Metehan CETIN | <a href="mailto:proside2026@gmail.com">proside2026@gmail.com</a></p>
+      <p>Estimates only &mdash; not financial, legal, or tax advice.</p>
+    </footer>
+    <style>
+      .tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }
+      .tool-footer a { color: #00D9FF; text-decoration: none; }
+    </style>
+  </div>
+
+  <script type="module">
+    const exchangeRates = {
+      USD: { EUR: 0.85, GBP: 0.79, JPY: 150.25, TRY: 34.50, CAD: 1.35, AUD: 1.52, CHF: 0.88, CNY: 7.19, INR: 83.12, BRL: 4.95, MXN: 17.05, SGD: 1.34, KRW: 1330.50, RUB: 91.50, USD: 1 },
+      EUR: { USD: 1.18, GBP: 0.93, JPY: 176.76, TRY: 40.60, CAD: 1.59, AUD: 1.79, CHF: 1.03, CNY: 8.46, INR: 97.80, BRL: 5.82, MXN: 20.06, SGD: 1.58, KRW: 1565.29, RUB: 107.65, EUR: 1 },
+      GBP: { USD: 1.27, EUR: 1.08, JPY: 190.19, TRY: 43.67, CAD: 1.71, AUD: 1.92, CHF: 1.11, CNY: 9.10, INR: 105.22, BRL: 6.26, MXN: 21.58, SGD: 1.70, KRW: 1684.18, RUB: 115.82, GBP: 1 },
+      JPY: { USD: 0.0067, EUR: 0.0057, GBP: 0.0053, TRY: 0.23, CAD: 0.0090, AUD: 0.010, CHF: 0.0059, CNY: 0.048, INR: 0.55, BRL: 0.033, MXN: 0.11, SGD: 0.0089, KRW: 8.86, RUB: 0.61, JPY: 1 },
+      TRY: { USD: 0.029, EUR: 0.025, GBP: 0.023, JPY: 4.36, CAD: 0.039, AUD: 0.044, CHF: 0.026, CNY: 0.21, INR: 2.41, BRL: 0.14, MXN: 0.49, SGD: 0.039, KRW: 38.57, RUB: 2.65, TRY: 1 },
+      CAD: { USD: 0.74, EUR: 0.63, GBP: 0.58, JPY: 111.29, TRY: 25.57, AUD: 1.13, CHF: 0.65, CNY: 5.33, INR: 61.57, BRL: 3.67, MXN: 12.63, SGD: 0.99, KRW: 985.56, RUB: 67.78, CAD: 1 },
+      AUD: { USD: 0.66, EUR: 0.56, GBP: 0.52, JPY: 98.85, TRY: 22.71, CAD: 0.89, CHF: 0.58, CNY: 4.73, INR: 54.68, BRL: 3.26, MXN: 11.21, SGD: 0.88, KRW: 875.33, RUB: 60.20, AUD: 1 },
+      CHF: { USD: 1.14, EUR: 0.97, GBP: 0.90, JPY: 170.74, TRY: 39.22, CAD: 1.54, AUD: 1.73, CNY: 8.17, INR: 94.45, BRL: 5.63, MXN: 19.37, SGD: 1.52, KRW: 1511.93, RUB: 104.02, CHF: 1 },
+      CNY: { USD: 0.14, EUR: 0.12, GBP: 0.11, JPY: 20.90, TRY: 4.80, CAD: 0.19, AUD: 0.21, CHF: 0.12, INR: 11.56, BRL: 0.69, MXN: 2.37, SGD: 0.19, KRW: 185.05, RUB: 12.72, CNY: 1 },
+      INR: { USD: 0.012, EUR: 0.010, GBP: 0.0095, JPY: 1.81, TRY: 0.42, CAD: 0.016, AUD: 0.018, CHF: 0.011, CNY: 0.087, BRL: 0.060, MXN: 0.21, SGD: 0.016, KRW: 16.00, RUB: 1.10, INR: 1 },
+      BRL: { USD: 0.20, EUR: 0.17, GBP: 0.16, JPY: 30.36, TRY: 6.97, CAD: 0.27, AUD: 0.31, CHF: 0.18, CNY: 1.45, INR: 16.79, MXN: 3.45, SGD: 0.27, KRW: 268.79, RUB: 18.49, BRL: 1 },
+      MXN: { USD: 0.059, EUR: 0.050, GBP: 0.046, JPY: 8.81, TRY: 2.02, CAD: 0.079, AUD: 0.089, CHF: 0.052, CNY: 0.42, INR: 4.88, BRL: 0.29, SGD: 0.079, KRW: 78.04, RUB: 5.37, MXN: 1 },
+      SGD: { USD: 0.75, EUR: 0.63, GBP: 0.59, JPY: 112.13, TRY: 25.75, CAD: 1.01, AUD: 1.14, CHF: 0.66, CNY: 5.37, INR: 62.03, BRL: 3.70, MXN: 12.72, KRW: 992.91, RUB: 68.28, SGD: 1 },
+      KRW: { USD: 0.00075, EUR: 0.00064, GBP: 0.00059, JPY: 0.11, TRY: 0.026, CAD: 0.0010, AUD: 0.0011, CHF: 0.00066, CNY: 0.0054, INR: 0.062, BRL: 0.0037, MXN: 0.013, SGD: 0.0010, RUB: 0.069, KRW: 1 },
+      RUB: { USD: 0.011, EUR: 0.0093, GBP: 0.0086, JPY: 1.64, TRY: 0.38, CAD: 0.015, AUD: 0.017, CHF: 0.0096, CNY: 0.079, INR: 0.91, BRL: 0.054, MXN: 0.19, SGD: 0.015, KRW: 14.54, RUB: 1 }
+    };
+
+    const currencyNames = {
+      USD: 'US Dollars', EUR: 'Euros', GBP: 'British Pounds', JPY: 'Japanese Yen',
+      TRY: 'Turkish Lira', CAD: 'Canadian Dollars', AUD: 'Australian Dollars',
+      CHF: 'Swiss Francs', CNY: 'Chinese Yuan', INR: 'Indian Rupees',
+      BRL: 'Brazilian Reals', MXN: 'Mexican Pesos', SGD: 'Singapore Dollars',
+      KRW: 'South Korean Won', RUB: 'Russian Rubles'
+    };
+
+    let copyTimer = null;
+
+    const amountInput = document.getElementById('amountInput');
+    const fromCurrency = document.getElementById('fromCurrency');
+    const toCurrency = document.getElementById('toCurrency');
+    const resultAmount = document.getElementById('resultAmount');
+    const resultCurrency = document.getElementById('resultCurrency');
+    const exchangeRate = document.getElementById('exchangeRate');
+
+    function convert() {
+      const amount = parseFloat(amountInput.value) || 0;
+      const from = fromCurrency.value;
+      const to = toCurrency.value;
+      
+      let rate;
+      if (from === to) {
+        rate = 1;
+      } else {
+        rate = exchangeRates[from]?.[to] || 1;
+      }
+      
+      const result = amount * rate;
+      
+      resultAmount.textContent = result.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      resultCurrency.textContent = currencyNames[to];
+      exchangeRate.textContent = `1 ${from} = ${rate.toFixed(4)} ${to}`;
+    }
+
+    function swapCurrencies() {
+      const temp = fromCurrency.value;
+      fromCurrency.value = toCurrency.value;
+      toCurrency.value = temp;
+      convert();
+    }
+
+    async function copyResult() {
+      const text = `${resultAmount.textContent} ${resultCurrency.textContent}`;
+      
+      try {
+        await navigator.clipboard.writeText(text);
+      } catch (_) {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.cssText = 'position:fixed;opacity:0;pointer-events:none;';
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+      }
+      
+      const feedback = document.getElementById('copyFeedback');
+      feedback.classList.add('show');
+      clearTimeout(copyTimer);
+      copyTimer = setTimeout(() => feedback.classList.remove('show'), 1800);
+    }
+
+    function updateLastUpdated() {
+      const now = new Date();
+      const timeString = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+      document.getElementById('lastUpdated').textContent = `Updated: ${timeString}`;
+    }
+
+    document.querySelectorAll('.popular-item').forEach(item => {
+      item.addEventListener('click', () => {
+        fromCurrency.value = item.dataset.from;
+        toCurrency.value = item.dataset.to;
+        amountInput.value = '1';
+        convert();
+      });
+    });
+
+    amountInput.addEventListener('input', convert);
+    fromCurrency.addEventListener('change', convert);
+    toCurrency.addEventListener('change', convert);
+    document.getElementById('swapBtn').addEventListener('click', swapCurrencies);
+    document.getElementById('btnCopy').addEventListener('click', copyResult);
+    document.getElementById('btnRefresh').addEventListener('click', () => {
+      updateLastUpdated();
+      convert();
+    });
+
+    convert();
+    updateLastUpdated();
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var menuBtn = document.getElementById('mobileMenuBtn');
+      var mobileMenu = document.getElementById('mobileMenu');
+      if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener('click', function() {
+          var isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+          menuBtn.setAttribute('aria-expanded', !isExpanded);
+          mobileMenu.hidden = isExpanded;
+          mobileMenu.classList.toggle('active', !isExpanded);
+        });
+      }
+      var themeBtn = document.getElementById('themeToggle');
+      if (themeBtn) {
+        function getTheme() {
+          var s = localStorage.getItem('theme');
+          if (s) return s;
+          return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        }
+        function updateIcon() {
+          var t = getTheme();
+          themeBtn.querySelector('.icon-sun').style.display = t === 'light' ? 'none' : 'block';
+          themeBtn.querySelector('.icon-moon').style.display = t === 'dark' ? 'none' : 'block';
+        }
+        themeBtn.addEventListener('click', function() {
+          var next = getTheme() === 'dark' ? 'light' : 'dark';
+          document.documentElement.setAttribute('data-theme', next);
+          localStorage.setItem('theme', next);
+          updateIcon();
+        });
+        updateIcon();
+      }
+    });
+  </script>
+</body>
+</html>

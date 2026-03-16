@@ -1,0 +1,41 @@
+{
+  "id": "ip-lookup",
+  "name": "IP Address Lookup",
+  "nameEn": "IP Address Lookup",
+  "category": "security",
+  "tier": 1,
+  "cpc": {
+    "tr": 0.45,
+    "us": 1.0
+  },
+  "keywords": {
+    "tr": ["ip sorgulama", "benim ip adresim", "ip adresim ne", "ip lokasyon"],
+    "en": ["ip lookup", "my ip", "ip address", "whats my ip", "ip location"]
+  },
+  "description": {
+    "tr": "IP adresinizi ve konum bilgilerinizi görüntüleyin. ISP bilgisi, şehir, ülke ve koordinatlar.",
+    "en": "Display your IP address and location info. ISP information, city, country, and coordinates."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "SecurityApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.3
+    }
+  },
+  "bundle": {
+    "lazyLoad": false
+  },
+  "relatedTools": [
+    "ssl-checker",
+    "user-agent-parser"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "id": "encrypt-decrypt",
+  "name": "Encryption/Decryption Tool",
+  "nameEn": "Encryption/Decryption Tool",
+  "category": "security",
+  "tier": 1,
+  "cpc": {
+    "tr": 0.95,
+    "us": 2.2
+  },
+  "keywords": {
+    "tr": ["şifreleme aracı", "şifre çözme", "aes şifreleme", "metin şifreleme"],
+    "en": ["encryption tool", "decrypt", "aes encryption", "text encryption"]
+  },
+  "description": {
+    "tr": "AES şifreleme kullanarak metinleri şifreleyin ve çözün. Güvenli istemci tarafı şifreleme, anahtar yönetimi uyarıları.",
+    "en": "Encrypt and decrypt text using AES encryption. Secure client-side encryption with key management warnings."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "SecurityApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.3
+    }
+  },
+  "bundle": {
+    "lazyLoad": false
+  },
+  "relatedTools": [
+    "hash-generator",
+    "password-generator"
+  ]
+}

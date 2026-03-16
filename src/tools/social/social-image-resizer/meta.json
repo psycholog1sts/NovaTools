@@ -1,0 +1,42 @@
+{
+  "id": "social-image-resizer",
+  "name": "Social Media Image Resizer",
+  "nameEn": "Social Media Image Resizer",
+  "category": "social",
+  "tier": 1,
+  "cpc": {
+    "tr": 0.4,
+    "us": 0.8
+  },
+  "keywords": {
+    "tr": ["sosyal medya resim boyutu", "instagram boyutlandırma", "facebook kapak fotoğrafı", "twitter banner"],
+    "en": ["social media image resizer", "instagram resize", "facebook cover photo", "twitter banner size", "linkedin image size"]
+  },
+  "description": {
+    "tr": "Tüm sosyal medya platformları için görselleri otomatik olarak boyutlandırın. Instagram, Facebook, Twitter, LinkedIn ve daha fazlası.",
+    "en": "Automatically resize images for all social media platforms. Instagram, Facebook, Twitter, LinkedIn, and more."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "UtilitiesApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.3
+    }
+  },
+  "bundle": {
+    "lazyLoad": false
+  },
+  "relatedTools": [
+    "image-resizer",
+    "hashtag-generator",
+    "favicon-generator"
+  ]
+}

@@ -4,7 +4,7 @@
  */
 
 const API_ENDPOINTS = {
-  exchange: 'https://api.exchangerate-api.com/v4/latest/USD',
+  exchange: 'https://open.er-api.com/v6/latest/USD',
   islamicCalendar: 'https://api.aladhan.com/v1/gToH?date='
 };
 

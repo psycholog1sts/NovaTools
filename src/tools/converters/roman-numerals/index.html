@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y896L63239"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Y896L63239');
+  </script>
+  <meta charset="UTF-8">
+  <script>(function(){var t=localStorage.getItem('novatools-theme');if(t)document.documentElement.setAttribute('data-theme',t);else{var d=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',d);document.documentElement.style.colorScheme=d;}})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/src/styles/critical.css">
+  <link rel="stylesheet" href="/src/styles/main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <title>Free Roman Numerals Converter Online | NovaTools MC</title>
+  <meta name="description" content="Free online Roman numerals converter. Convert between Arabic numbers and Roman numerals (1-3999). Learn Roman numeral history and common examples.">
+  <meta name="keywords" content="roman numerals, roman numbers, roman converter, numeral converter, convert to roman">
+  <meta name="theme-color" content="#0A0A0C">
+
+  <meta property="og:title" content="Free Roman Numerals Converter Online | NovaTools MC">
+  <meta property="og:description" content="Convert between Arabic numbers and Roman numerals. Learn Roman numeral history and common examples.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.mc-novatools.com/tools/converters/roman-numerals/">
+  <meta property="og:image" content="https://www.mc-novatools.com/og-image.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free Roman Numerals Converter | NovaTools MC">
+  <meta name="twitter:description" content="Convert to and from Roman numerals instantly. No signup required.">
+
+  <link rel="canonical" href="https://www.mc-novatools.com/tools/converters/roman-numerals/">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [{
+      "@type": "WebApplication",
+      "name": "Roman Numerals Converter",
+      "description": "Free online Roman numerals converter. Convert between Arabic numbers and Roman numerals.",
+      "url": "https://www.mc-novatools.com/tools/converters/roman-numerals/",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "Any",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+    }]
+  }
+  </script>
+
+  <style>
+    .tool-wrapper { max-width: 960px; margin: 0 auto; padding: 3rem 1rem 5rem; }
+    .tool-hero { text-align: center; margin-bottom: 2.5rem; }
+    .tool-hero-icon { font-size: 3.5rem; line-height: 1; margin-bottom: 1rem; }
+    .tool-hero h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; letter-spacing: -0.02em; color: #FAFAFA; margin-bottom: 0.75rem; }
+    .tool-hero p { color: #A1A1AA; font-size: 1.0625rem; max-width: 560px; margin: 0 auto; }
+    .card { background: rgba(15,15,20,0.7); border: 1px solid rgba(0,217,255,0.15); border-radius: 14px; padding: 1.75rem; backdrop-filter: blur(12px); }
+    
+    .converter-tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; }
+    .tab-btn { flex: 1; padding: 0.75rem 1rem; background: rgba(0,217,255,0.05); border: 1px solid rgba(0,217,255,0.15); border-radius: 8px; color: #A1A1AA; font-size: 0.9375rem; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+    .tab-btn:hover { background: rgba(0,217,255,0.1); color: #FAFAFA; }
+    .tab-btn.active { background: rgba(0,217,255,0.15); border-color: rgba(0,217,255,0.4); color: #00D9FF; }
+    
+    .input-group { margin-bottom: 1.5rem; }
+    .input-label { font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #71717A; margin-bottom: 0.5rem; display: block; }
+    .roman-input { width: 100%; height: 56px; padding: 0 1rem; background: #0F0F12; border: 1px solid rgba(0,217,255,0.12); border-radius: 8px; color: #FAFAFA; font-size: 1.25rem; text-align: center; outline: none; box-sizing: border-box; }
+    .roman-input:focus { border-color: rgba(0,217,255,0.45); box-shadow: 0 0 0 3px rgba(0,217,255,0.08); }
+    .roman-input::placeholder { color: #52525B; }
+    .roman-input.roman-font { font-family: 'Georgia', serif; font-style: italic; }
+    
+    .result-box { background: linear-gradient(135deg, rgba(0,217,255,0.1), rgba(0,217,255,0.05)); border: 1px solid rgba(0,217,255,0.2); border-radius: 12px; padding: 2rem; text-align: center; margin-bottom: 1.5rem; }
+    .result-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #71717A; margin-bottom: 0.5rem; }
+    .result-value { font-size: 3rem; font-weight: 700; color: #00D9FF; font-family: 'Georgia', serif; }
+    .result-value.roman { font-style: italic; letter-spacing: 0.1em; }
+    .result-value.number { font-family: 'JetBrains Mono', monospace; }
+    .validation-msg { font-size: 0.875rem; margin-top: 0.75rem; }
+    .validation-msg.valid { color: #00FF88; }
+    .validation-msg.invalid { color: #FF6B6B; }
+    
+    .btn-bar { display: flex; flex-wrap: wrap; gap: 0.625rem; margin-bottom: 1.5rem; justify-content: center; }
+    .btn { display: inline-flex; align-items: center; gap: 0.4rem; height: 44px; padding: 0 1.25rem; border: none; border-radius: 8px; font-size: 0.9375rem; font-weight: 600; cursor: pointer; transition: background 0.18s, transform 0.12s, opacity 0.18s; outline: none; user-select: none; }
+    .btn:active { transform: scale(0.97); }
+    .btn-primary { background: linear-gradient(135deg, #00D9FF, #0099CC); color: #0A0A0C; }
+    .btn-primary:hover { background: linear-gradient(135deg, #1FE2FF, #00B8EE); }
+    .btn-secondary { background: rgba(0,217,255,0.1); border: 1px solid rgba(0,217,255,0.25); color: #00D9FF; }
+    .btn-secondary:hover { background: rgba(0,217,255,0.18); }
+    
+    .copy-feedback { font-size: 0.8rem; color: #00FF88; opacity: 0; transition: opacity 0.3s; pointer-events: none; margin-left: auto; align-self: center; }
+    .copy-feedback.show { opacity: 1; }
+    
+    .examples-section { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(0,217,255,0.1); }
+    .examples-title { font-size: 0.875rem; font-weight: 600; color: #A1A1AA; margin-bottom: 0.75rem; }
+    .examples-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 0.5rem; }
+    .example-item { background: rgba(0,217,255,0.05); border: 1px solid rgba(0,217,255,0.1); border-radius: 8px; padding: 0.75rem; text-align: center; cursor: pointer; transition: all 0.2s; }
+    .example-item:hover { background: rgba(0,217,255,0.1); border-color: rgba(0,217,255,0.2); }
+    .example-arabic { font-size: 0.875rem; color: #A1A1AA; }
+    .example-roman { font-size: 1.125rem; font-weight: 600; color: #00D9FF; font-family: 'Georgia', serif; font-style: italic; margin-top: 0.25rem; }
+    
+    .history-section { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(0,217,255,0.1); }
+    .history-title { font-size: 1rem; font-weight: 600; color: #FAFAFA; margin-bottom: 0.75rem; }
+    .history-content { color: #A1A1AA; font-size: 0.9375rem; line-height: 1.8; }
+    .history-content p { margin-bottom: 1rem; }
+    
+    .rules-section { margin-top: 1.5rem; }
+    .rules-title { font-size: 0.875rem; font-weight: 600; color: #A1A1AA; margin-bottom: 0.75rem; }
+    .rules-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; }
+    .rule-item { background: rgba(0,217,255,0.05); border: 1px solid rgba(0,217,255,0.1); border-radius: 8px; padding: 0.75rem; text-align: center; }
+    .rule-symbol { font-size: 1.5rem; font-weight: 700; color: #00D9FF; font-family: 'Georgia', serif; }
+    .rule-value { font-size: 0.75rem; color: #A1A1AA; margin-top: 0.25rem; }
+    
+    .legal-note { margin-top: 1.5rem; padding: 1rem 1.25rem; background: rgba(255,193,7,0.05); border: 1px solid rgba(255,193,7,0.15); border-radius: 10px; font-size: 0.8125rem; color: #A1A1AA; line-height: 1.6; }
+    .legal-note strong { color: #FFC107; }
+    
+    .seo-section { max-width: 960px; margin: 3.5rem auto 0; padding: 0 1rem; }
+    .seo-section h2 { font-size: 1.375rem; font-weight: 700; color: #FAFAFA; margin-bottom: 0.75rem; }
+    .seo-section h3 { font-size: 1.125rem; font-weight: 600; color: #FAFAFA; margin: 2rem 0 0.75rem; }
+    .seo-section p, .seo-section li { color: #A1A1AA; line-height: 1.8; font-size: 0.9375rem; }
+    .seo-section ol { padding-left: 1.25rem; }
+    .seo-section ol li { margin-bottom: 0.4rem; }
+    .faq-item { border: 1px solid rgba(0,217,255,0.1); border-radius: 10px; padding: 1rem 1.125rem; margin-bottom: 0.875rem; background: rgba(15,15,20,0.5); }
+    .faq-item summary { font-weight: 600; color: #FAFAFA; cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: '+'; color: #00D9FF; font-size: 1.25rem; flex-shrink: 0; transition: transform 0.2s; }
+    .faq-item[open] summary::after { content: '\2212'; }
+    .faq-item p { margin-top: 0.625rem; color: #A1A1AA; line-height: 1.7; }
+    
+    .ads-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
+    .ad-box { background: rgba(255,255,255,0.03); border: 1px dashed rgba(0,217,255,0.2); border-radius: 8px; min-height: 90px; display: flex; align-items: center; justify-content: center; color: #52525B; font-size: 0.75rem; }
+    
+    @media (max-width: 768px) {
+      .converter-tabs { flex-direction: column; }
+      .result-value { font-size: 2rem; }
+      .rules-grid { grid-template-columns: repeat(2, 1fr); }
+      .ads-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-ambient" aria-hidden="true"></div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <div id="app" class="app">
+    <header class="main-header">
+      <div class="container">
+        <div class="header-inner">
+          <a href="/" class="logo" aria-label="NovaTools MC Home">
+            <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
+            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+          </a>
+          <nav class="nav-desktop" aria-label="Main navigation">
+            <a href="/#finance" class="nav-link">Finance</a>
+            <a href="/#pdf" class="nav-link">PDF Tools</a>
+            <a href="/#image" class="nav-link">Images</a>
+            <a href="/#dev" class="nav-link">Developers</a>
+          </nav>
+          <div class="privacy-badge" title="Your data never leaves your browser">
+            <span class="privacy-badge-dot"></span>
+            <span>Privacy First</span>
+          </div>
+          <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+            <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+          <button type="button" id="mobileMenuBtn" class="menu-btn" aria-label="Toggle menu" aria-expanded="false">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+        </div>
+        <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
+          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <div class="tool-wrapper">
+        <div class="tool-hero">
+          <div class="tool-hero-icon">&#127963;</div>
+          <h1>Roman Numerals Converter</h1>
+          <p>Convert between Arabic numbers and Roman numerals. Supports numbers 1-3999 with validation and examples.</p>
+        </div>
+
+        <div class="card">
+          <div class="ads-row">
+            <div class="ad-box">Ad 336x280</div>
+            <div class="ad-box">Ad 336x280</div>
+            <div class="ad-box">Ad 336x280</div>
+          </div>
+
+          <div class="converter-tabs">
+            <button class="tab-btn active" id="tabToRoman" data-mode="toRoman">Number to Roman</button>
+            <button class="tab-btn" id="tabToNumber" data-mode="toNumber">Roman to Number</button>
+          </div>
+
+          <div class="input-group">
+            <label class="input-label" id="inputLabel">Enter a Number (1-3999)</label>
+            <input type="text" class="roman-input" id="inputField" placeholder="e.g., 2024">
+          </div>
+
+          <div class="result-box">
+            <div class="result-label">Result</div>
+            <div class="result-value roman" id="resultValue">-</div>
+            <div class="validation-msg" id="validationMsg"></div>
+          </div>
+
+          <div class="btn-bar">
+            <button class="btn btn-primary" id="btnConvert" type="button">
+              <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor"><path d="M8 4a.5.5 0 01.5.5v3h3a.5.5 0 010 1h-3v3a.5.5 0 01-1 0v-3h-3a.5.5 0 010-1h3v-3A.5.5 0 018 4z"/></svg>
+              Convert
+            </button>
+            <button class="btn btn-secondary" id="btnCopy" type="button">
+              <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor"><path d="M4 1.5H3a2 2 0 00-2 2V14a2 2 0 002 2h10a2 2 0 002-2V3.5a2 2 0 00-2-2h-1v1h1a1 1 0 011 1V14a1 1 0 01-1 1H3a1 1 0 01-1-1V3.5a1 1 0 011-1h1v-1z"/></svg>
+              Copy Result
+            </button>
+            <span class="copy-feedback" id="copyFeedback" aria-live="polite">Copied!</span>
+          </div>
+
+          <div class="rules-section">
+            <div class="rules-title">Roman Numeral Values</div>
+            <div class="rules-grid">
+              <div class="rule-item"><div class="rule-symbol">I</div><div class="rule-value">1</div></div>
+              <div class="rule-item"><div class="rule-symbol">V</div><div class="rule-value">5</div></div>
+              <div class="rule-item"><div class="rule-symbol">X</div><div class="rule-value">10</div></div>
+              <div class="rule-item"><div class="rule-symbol">L</div><div class="rule-value">50</div></div>
+              <div class="rule-item"><div class="rule-symbol">C</div><div class="rule-value">100</div></div>
+              <div class="rule-item"><div class="rule-symbol">D</div><div class="rule-value">500</div></div>
+              <div class="rule-item"><div class="rule-symbol">M</div><div class="rule-value">1000</div></div>
+              <div class="rule-item"><div class="rule-symbol">V&#773;</div><div class="rule-value">5000</div></div>
+            </div>
+          </div>
+
+          <div class="examples-section">
+            <div class="examples-title">Common Examples</div>
+            <div class="examples-grid">
+              <div class="example-item" data-val="1"><div class="example-arabic">1</div><div class="example-roman">I</div></div>
+              <div class="example-item" data-val="5"><div class="example-arabic">5</div><div class="example-roman">V</div></div>
+              <div class="example-item" data-val="10"><div class="example-arabic">10</div><div class="example-roman">X</div></div>
+              <div class="example-item" data-val="50"><div class="example-arabic">50</div><div class="example-roman">L</div></div>
+              <div class="example-item" data-val="100"><div class="example-arabic">100</div><div class="example-roman">C</div></div>
+              <div class="example-item" data-val="500"><div class="example-arabic">500</div><div class="example-roman">D</div></div>
+              <div class="example-item" data-val="1000"><div class="example-arabic">1000</div><div class="example-roman">M</div></div>
+              <div class="example-item" data-val="2024"><div class="example-arabic">2024</div><div class="example-roman">MMXXIV</div></div>
+            </div>
+          </div>
+
+          <div class="history-section">
+            <div class="history-title">History of Roman Numerals</div>
+            <div class="history-content">
+              <p>Roman numerals originated in ancient Rome around 500 BCE and remained the primary numeral system throughout the Roman Empire. The system uses combinations of letters from the Latin alphabet to represent values.</p>
+              <p>The subtractive notation (like IV for 4 instead of IIII) became popular during the Middle Ages to save space and make numbers easier to read. Today, Roman numerals are still used in various contexts including clock faces, book chapters, movie sequels, and formal names.</p>
+            </div>
+          </div>
+
+          <div class="legal-note">
+            <strong>Legal Disclaimer / Yasal Uyar&#305;:</strong> This converter follows standard Roman numeral rules. Valid range is 1-3999 for standard notation. / Bu d&#246;n&#252;&#351;t&#252;r&#252;c&#252; standart Roma rakam&#305; kurallar&#305;n&#305; izler. Standart g&#246;sterim i&#231;in ge&#231;erli aral&#305;k 1-3999'dur.
+          </div>
+        </div>
+      </div>
+
+      <section class="seo-section" aria-label="About this tool">
+        <h2>About Roman Numerals Converter</h2>
+        <p>Our free Roman Numerals Converter helps you convert between Arabic numbers and Roman numerals instantly. Whether you're deciphering dates on monuments, writing formal documents, or simply learning about this ancient number system, this tool makes conversion easy.</p>
+
+        <h3>How to Use</h3>
+        <ol>
+          <li>Choose your conversion direction: "Number to Roman" or "Roman to Number".</li>
+          <li>Enter the value you want to convert (numbers 1-3999 supported).</li>
+          <li>Click "Convert" or press Enter to see the result.</li>
+          <li>The result will display with validation feedback.</li>
+          <li>Click "Copy Result" to copy the converted value.</li>
+          <li>Use the Common Examples section for quick reference.</li>
+        </ol>
+
+        <h3>Roman Numeral Rules</h3>
+        <p><strong>Basic Symbols:</strong> I=1, V=5, X=10, L=50, C=100, D=500, M=1000<br>
+        <strong>Repetition:</strong> Symbols I, X, C, M can be repeated up to 3 times.<br>
+        <strong>Subtraction:</strong> I before V or X (IV=4, IX=9), X before L or C (XL=40, XC=90), C before D or M (CD=400, CM=900).<br>
+        <strong>Addition:</strong> Symbols are added when a smaller value follows a larger one (VI=6, XI=11).</p>
+
+        <h3>Frequently Asked Questions</h3>
+
+        <details class="faq-item">
+          <summary>What is the largest number supported?</summary>
+          <p>This converter supports numbers from 1 to 3999 in standard Roman notation. Numbers larger than 3999 require special notation with overlines or additional symbols.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Is there a zero in Roman numerals?</summary>
+          <p>No, the ancient Romans did not have a symbol for zero. The concept of zero as a number was introduced later from India via Arab mathematicians.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Why are Roman numerals still used today?</summary>
+          <p>Roman numerals are used for their classic, formal appearance in contexts like clock faces, building cornerstones, book chapters, movie sequels, monarch names, and sporting events (like Super Bowl).</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>How do I validate a Roman numeral?</summary>
+          <p>Valid Roman numerals only use the letters I, V, X, L, C, D, M. Letters should generally appear in descending value order, with specific subtractive combinations allowed (IV, IX, XL, XC, CD, CM).</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Is my data stored?</summary>
+          <p>No. All conversions happen locally in your browser. No data is transmitted to our servers or stored anywhere.</p>
+        </details>
+      </section>
+    </main>
+
+    <footer class="tool-footer">
+      <p>&copy; 2026 NovaTools MC &mdash; Psk. Metehan CETIN | <a href="mailto:proside2026@gmail.com">proside2026@gmail.com</a></p>
+      <p>Estimates only &mdash; not financial, legal, or tax advice.</p>
+    </footer>
+    <style>
+      .tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }
+      .tool-footer a { color: #00D9FF; text-decoration: none; }
+    </style>
+  </div>
+
+  <script type="module">
+    let currentMode = 'toRoman';
+    let copyTimer = null;
+
+    const romanMap = [
+      { value: 1000, symbol: 'M' },
+      { value: 900, symbol: 'CM' },
+      { value: 500, symbol: 'D' },
+      { value: 400, symbol: 'CD' },
+      { value: 100, symbol: 'C' },
+      { value: 90, symbol: 'XC' },
+      { value: 50, symbol: 'L' },
+      { value: 40, symbol: 'XL' },
+      { value: 10, symbol: 'X' },
+      { value: 9, symbol: 'IX' },
+      { value: 5, symbol: 'V' },
+      { value: 4, symbol: 'IV' },
+      { value: 1, symbol: 'I' }
+    ];
+
+    const inputField = document.getElementById('inputField');
+    const resultValue = document.getElementById('resultValue');
+    const validationMsg = document.getElementById('validationMsg');
+
+    function toRoman(num) {
+      let result = '';
+      for (const { value, symbol } of romanMap) {
+        while (num >= value) {
+          result += symbol;
+          num -= value;
+        }
+      }
+      return result;
+    }
+
+    function fromRoman(roman) {
+      const romanValues = { I: 1, V: 5, X: 10, L: 50, C: 100, D: 500, M: 1000 };
+      let result = 0;
+      let prev = 0;
+      
+      for (let i = roman.length - 1; i >= 0; i--) {
+        const current = romanValues[roman[i]];
+        if (current < prev) {
+          result -= current;
+        } else {
+          result += current;
+        }
+        prev = current;
+      }
+      return result;
+    }
+
+    function isValidRoman(roman) {
+      const validPattern = /^(M{0,3})(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$/;
+      return validPattern.test(roman) && roman.length > 0;
+    }
+
+    function convert() {
+      const input = inputField.value.trim().toUpperCase();
+      
+      if (!input) {
+        resultValue.textContent = '-';
+        validationMsg.textContent = '';
+        return;
+      }
+
+      if (currentMode === 'toRoman') {
+        const num = parseInt(input);
+        if (isNaN(num) || num < 1 || num > 3999) {
+          resultValue.textContent = 'Invalid';
+          validationMsg.textContent = 'Please enter a number between 1 and 3999';
+          validationMsg.className = 'validation-msg invalid';
+          return;
+        }
+        resultValue.textContent = toRoman(num);
+        validationMsg.textContent = 'Valid conversion';
+        validationMsg.className = 'validation-msg valid';
+      } else {
+        if (!isValidRoman(input)) {
+          resultValue.textContent = 'Invalid';
+          validationMsg.textContent = 'Invalid Roman numeral format';
+          validationMsg.className = 'validation-msg invalid';
+          return;
+        }
+        resultValue.textContent = fromRoman(input);
+        validationMsg.textContent = 'Valid conversion';
+        validationMsg.className = 'validation-msg valid';
+      }
+    }
+
+    function switchMode(mode) {
+      currentMode = mode;
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelector(`[data-mode="${mode}"]`).classList.add('active');
+      
+      inputField.value = '';
+      resultValue.textContent = '-';
+      validationMsg.textContent = '';
+      
+      if (mode === 'toRoman') {
+        document.getElementById('inputLabel').textContent = 'Enter a Number (1-3999)';
+        inputField.placeholder = 'e.g., 2024';
+        inputField.classList.remove('roman-font');
+        resultValue.classList.remove('number');
+        resultValue.classList.add('roman');
+      } else {
+        document.getElementById('inputLabel').textContent = 'Enter a Roman Numeral';
+        inputField.placeholder = 'e.g., MMXXIV';
+        inputField.classList.add('roman-font');
+        resultValue.classList.remove('roman');
+        resultValue.classList.add('number');
+      }
+    }
+
+    async function copyResult() {
+      const text = resultValue.textContent;
+      if (!text || text === '-' || text === 'Invalid') return;
+      
+      try {
+        await navigator.clipboard.writeText(text);
+      } catch (_) {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.cssText = 'position:fixed;opacity:0;pointer-events:none;';
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+      }
+      
+      const feedback = document.getElementById('copyFeedback');
+      feedback.classList.add('show');
+      clearTimeout(copyTimer);
+      copyTimer = setTimeout(() => feedback.classList.remove('show'), 1800);
+    }
+
+    document.getElementById('tabToRoman').addEventListener('click', () => switchMode('toRoman'));
+    document.getElementById('tabToNumber').addEventListener('click', () => switchMode('toNumber'));
+    document.getElementById('btnConvert').addEventListener('click', convert);
+    document.getElementById('btnCopy').addEventListener('click', copyResult);
+    inputField.addEventListener('keypress', (e) => { if (e.key === 'Enter') convert(); });
+
+    document.querySelectorAll('.example-item').forEach(item => {
+      item.addEventListener('click', () => {
+        inputField.value = item.dataset.val;
+        switchMode('toRoman');
+        convert();
+      });
+    });
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var menuBtn = document.getElementById('mobileMenuBtn');
+      var mobileMenu = document.getElementById('mobileMenu');
+      if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener('click', function() {
+          var isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+          menuBtn.setAttribute('aria-expanded', !isExpanded);
+          mobileMenu.hidden = isExpanded;
+          mobileMenu.classList.toggle('active', !isExpanded);
+        });
+      }
+      var themeBtn = document.getElementById('themeToggle');
+      if (themeBtn) {
+        function getTheme() {
+          var s = localStorage.getItem('theme');
+          if (s) return s;
+          return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        }
+        function updateIcon() {
+          var t = getTheme();
+          themeBtn.querySelector('.icon-sun').style.display = t === 'light' ? 'none' : 'block';
+          themeBtn.querySelector('.icon-moon').style.display = t === 'dark' ? 'none' : 'block';
+        }
+        themeBtn.addEventListener('click', function() {
+          var next = getTheme() === 'dark' ? 'light' : 'dark';
+          document.documentElement.setAttribute('data-theme', next);
+          localStorage.setItem('theme', next);
+          updateIcon();
+        });
+        updateIcon();
+      }
+    });
+  </script>
+</body>
+</html>

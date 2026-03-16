@@ -1,0 +1,41 @@
+{
+  "id": "checksum-calculator",
+  "name": "Checksum Calculator",
+  "nameEn": "Checksum Calculator",
+  "category": "data",
+  "tier": 1,
+  "cpc": {
+    "tr": 0.5,
+    "us": 1.2
+  },
+  "keywords": {
+    "tr": ["checksum hesaplayıcı", "MD5 hash", "SHA256", "dosya hash", "hash doğrulama"],
+    "en": ["checksum calculator", "MD5 hash", "SHA256", "file hash", "verify checksum", "hash generator"]
+  },
+  "description": {
+    "tr": "MD5, SHA-1, SHA-256 ve SHA-512 checksum değerlerini hesaplayın. Dosya bütünlüğü doğrulama aracı.",
+    "en": "Calculate MD5, SHA-1, SHA-256, and SHA-512 checksums. File integrity verification tool."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "SecurityApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.3
+    }
+  },
+  "bundle": {
+    "lazyLoad": false
+  },
+  "relatedTools": [
+    "duplicate-finder",
+    "encrypt-decrypt"
+  ]
+}
