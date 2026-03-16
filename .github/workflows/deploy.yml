@@ -53,15 +53,24 @@ jobs:
     name: Deploy to Vercel
     needs: test
     runs-on: ubuntu-latest
-    if: |
-      (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master') &&
-      secrets.VERCEL_TOKEN != ''
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
     
     steps:
       - name: Checkout
         uses: actions/checkout@v4
       
+      - name: Check Vercel Token
+        id: check-vercel
+        run: |
+          if [ -n "${{ secrets.VERCEL_TOKEN }}" ]; then
+            echo "has_token=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_token=false" >> $GITHUB_OUTPUT
+            echo "⚠️ VERCEL_TOKEN not set, skipping Vercel deploy"
+          fi
+      
       - name: Deploy to Vercel
+        if: steps.check-vercel.outputs.has_token == 'true'
         uses: amondnet/vercel-action@v25
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
@@ -74,9 +83,7 @@ jobs:
     name: Deploy to Cloudflare Pages
     needs: test
     runs-on: ubuntu-latest
-    if: |
-      (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master') &&
-      secrets.CLOUDFLARE_API_TOKEN != ''
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
     
     steps:
       - name: Checkout
@@ -88,21 +95,18 @@ jobs:
           name: build
           path: ./dist
       
-      - name: Debug Secrets
+      - name: Check Cloudflare Token
+        id: check-cloudflare
         run: |
-          echo "Checking Cloudflare secrets..."
           if [ -n "${{ secrets.CLOUDFLARE_API_TOKEN }}" ]; then
-            echo "CLOUDFLARE_API_TOKEN: Set (length: ${#secrets.CLOUDFLARE_API_TOKEN})"
+            echo "has_token=true" >> $GITHUB_OUTPUT
           else
-            echo "CLOUDFLARE_API_TOKEN: Not set"
-          fi
-          if [ -n "${{ secrets.CLOUDFLARE_ACCOUNT_ID }}" ]; then
-            echo "CLOUDFLARE_ACCOUNT_ID: Set (length: ${#secrets.CLOUDFLARE_ACCOUNT_ID})"
-          else
-            echo "CLOUDFLARE_ACCOUNT_ID: Not set"
+            echo "has_token=false" >> $GITHUB_OUTPUT
+            echo "⚠️ CLOUDFLARE_API_TOKEN not set, skipping Cloudflare deploy"
           fi
       
       - name: Deploy to Cloudflare Pages
+        if: steps.check-cloudflare.outputs.has_token == 'true'
         uses: cloudflare/pages-action@v1
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
