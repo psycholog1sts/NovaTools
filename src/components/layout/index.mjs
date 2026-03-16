@@ -220,18 +220,18 @@ export function initCommonUI() {
   // Theme toggle
   const themeBtn = document.getElementById('themeToggle');
   if (themeBtn) {
-    function getTheme() {
+    const getTheme = function() {
       const s = localStorage.getItem('theme');
       if (s) return s;
       return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-    }
-    function updateIcon() {
+    };
+    const updateIcon = function() {
       const t = getTheme();
       const sun = themeBtn.querySelector('.icon-sun');
       const moon = themeBtn.querySelector('.icon-moon');
       if (sun) sun.style.display = t === 'light' ? 'none' : 'block';
       if (moon) moon.style.display = t === 'dark' ? 'none' : 'block';
-    }
+    };
     themeBtn.addEventListener('click', () => {
       const next = getTheme() === 'dark' ? 'light' : 'dark';
       document.documentElement.setAttribute('data-theme', next);

@@ -235,7 +235,7 @@ export class FederatedLearning {
     
     modelInfo.lastUpdate = Date.now();
     
-    console.log(`[FL] Local training completed for ${modelId}`);
+    // Local training completed
   }
 
   applyGradients(model, gradients, lr) {
@@ -290,7 +290,7 @@ export class FederatedLearning {
     modelInfo.model.setWeights(aggregatedWeights);
     this.round++;
     
-    console.log(`[FL] Imported aggregated model for ${modelId}, round ${this.round}`);
+    // Aggregated model imported
   }
 
   /**

@@ -4,7 +4,6 @@
  */
 
 import { getWebLLMEngine } from '../synthesis/webllm-engine.mjs';
-import { getRegulatoryMonitor } from '../legal/regulatory-monitor.mjs';
 
 export class AutonomousPlatform {
   constructor() {
@@ -29,7 +28,7 @@ export class AutonomousPlatform {
     this.startAffiliateOptimization();
     this.startSelfReplication();
     
-    console.log('[Autonomy] Platform initialized in autonomous mode');
+    // Platform initialized
   }
 
   /**
@@ -63,7 +62,7 @@ export class AutonomousPlatform {
    * Generate tools for high-opportunity niches
    */
   async generateToolForNiche(niche) {
-    console.log(`[Autonomy] Generating tool for: ${niche.keyword}`);
+    // Generating tool for niche
     
     const engine = getWebLLMEngine();
     
