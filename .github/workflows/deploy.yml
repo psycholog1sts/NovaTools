@@ -11,6 +11,9 @@ permissions:
   statuses: write
   pull-requests: write
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   test:
     name: Test & Build
@@ -50,7 +53,9 @@ jobs:
     name: Deploy to Vercel
     needs: test
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+    if: |
+      (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master') &&
+      secrets.VERCEL_TOKEN != ''
     
     steps:
       - name: Checkout
@@ -69,7 +74,9 @@ jobs:
     name: Deploy to Cloudflare Pages
     needs: test
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+    if: |
+      (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master') &&
+      secrets.CLOUDFLARE_API_TOKEN != ''
     
     steps:
       - name: Checkout
@@ -80,6 +87,20 @@ jobs:
         with:
           name: build
           path: ./dist
+      
+      - name: Debug Secrets
+        run: |
+          echo "Checking Cloudflare secrets..."
+          if [ -n "${{ secrets.CLOUDFLARE_API_TOKEN }}" ]; then
+            echo "CLOUDFLARE_API_TOKEN: Set (length: ${#secrets.CLOUDFLARE_API_TOKEN})"
+          else
+            echo "CLOUDFLARE_API_TOKEN: Not set"
+          fi
+          if [ -n "${{ secrets.CLOUDFLARE_ACCOUNT_ID }}" ]; then
+            echo "CLOUDFLARE_ACCOUNT_ID: Set (length: ${#secrets.CLOUDFLARE_ACCOUNT_ID})"
+          else
+            echo "CLOUDFLARE_ACCOUNT_ID: Not set"
+          fi
       
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/pages-action@v1

@@ -118,7 +118,7 @@ export class DistributedComputeNode {
     const sync = getSyncManager();
     
     // Create CRDT document for this swarm
-    const swarmDoc = sync.getDocument(`swarm-${swarmId}`);
+    const _swarmDoc = sync.getDocument(`swarm-${swarmId}`);
     
     // Announce capabilities
     sync.setField(`swarm-${swarmId}`, this.id, {
@@ -134,7 +134,7 @@ export class DistributedComputeNode {
       }
     });
 
-    console.log('[Swarm] Joined:', swarmId);
+    // Swarm joined
   }
 
   /**
@@ -183,7 +183,7 @@ export class DistributedComputeNode {
    * Execute assigned task
    */
   async executeTask(task) {
-    const startTime = performance.now();
+    const _startTime = performance.now();
     
     switch (task.type) {
       case TASK_TYPES.MONTE_CARLO:
@@ -268,7 +268,7 @@ export class DistributedComputeNode {
     return this.executeCPUImageOp(imageData, operation, params);
   }
 
-  async executeGPUConvolution(imageData, kernel) {
+  async executeGPUConvolution(_imageData, _kernel) {
     // WebGPU convolution implementation
     const adapter = await navigator.gpu.requestAdapter();
     const device = await adapter.requestDevice();
@@ -281,7 +281,7 @@ export class DistributedComputeNode {
     return { processed: true, method: 'gpu' };
   }
 
-  executeCPUImageOp(imageData, operation, params) {
+  executeCPUImageOp(_imageData, _operation, _params) {
     // CPU fallback
     return { processed: true, method: 'cpu' };
   }

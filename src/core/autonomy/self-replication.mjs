@@ -164,7 +164,7 @@ export class AutonomousPlatform {
     }
   }
 
-  testNewPlacement(toolId, placement) {
+  testNewPlacement(_toolId, _placement) {
     // Implementation would modify tool HTML
   }
 
