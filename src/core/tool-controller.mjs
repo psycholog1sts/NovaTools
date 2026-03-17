@@ -38,8 +38,6 @@ class ToolController {
       },
       handler
     });
-
-    console.log(`✓ Tool registered: ${id}`);
   }
 
   /**

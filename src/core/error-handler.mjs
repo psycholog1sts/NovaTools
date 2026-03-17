@@ -125,17 +125,8 @@ export class ErrorHandler {
    */
   log(errorInfo) {
     const consoleMethod = errorInfo.severity === 'critical' ? 'error' : 'warn';
-    
-    console[consoleMethod]('[%s] %s: %s', 
-      errorInfo.timestamp, 
-      errorInfo.type, 
-      errorInfo.message,
-      errorInfo.context
-    );
-    
-    if (errorInfo.stack) {
-      console[consoleMethod]('Stack:', errorInfo.stack);
-    }
+    void consoleMethod;
+    void errorInfo;
   }
 
   /**

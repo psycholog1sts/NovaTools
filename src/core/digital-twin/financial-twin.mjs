@@ -206,7 +206,7 @@ export class FinancialDigitalTwin {
       const { name, changes } = scenario;
       
       // Apply changes to model
-      const adjustedModel = { ...this.mlModel };
+      const _adjustedModel = { ...this.mlModel };
       
       if (changes.incomeIncrease) {
         // Adjust for new income

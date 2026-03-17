@@ -52,8 +52,6 @@ export class ToolBridge {
       input.addEventListener('blur', () => this.validateField(input));
       input.addEventListener('input', () => this.clearFieldError(input));
     });
-
-    console.log(`[ToolBridge] Bound form to tool: ${this.toolId}`);
   }
 
   /**

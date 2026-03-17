@@ -40,8 +40,6 @@ export function registerProtocolHandlers() {
       '/src/tools/finance/mortgage-tr/?source=%s',
       'NovaTools Mortgage Calculator'
     );
-
-    console.log('Protocol handlers registered');
   } catch (err) {
     console.error('Protocol registration error:', err);
   }

@@ -171,8 +171,6 @@ export class RegulatoryMonitor {
 
     // Load cached formulas
     await this.loadFormulaCache();
-    
-    console.log('[Legal] Regulatory monitor initialized');
   }
 
   /**
@@ -366,8 +364,6 @@ export class RegulatoryMonitor {
   async autoHealFormulas(change) {
     const { jurisdiction, type, value, affectedTools } = change;
     
-    console.log(`[Legal] Auto-healing formulas for ${jurisdiction}`, change);
-    
     // Update formula cache
     if (type === 'interest-rate') {
       this.formulaCache.set(`${jurisdiction}.baseRate`, value);
@@ -453,7 +449,7 @@ Subject to GDPR Article 22 considerations for automated decision-making.`
    */
   async regenerateTool(change) {
     // This would integrate with GTS to regenerate the tool
-    console.log('[Legal] Triggering tool regeneration:', change);
+
     this.emit('regenerate-tool', change);
   }
 
@@ -642,7 +638,7 @@ export class LegalAutoCommit {
         }
       );
 
-      console.log('[Legal] Auto-commit created:', commit.sha);
+
       return commit;
     } catch (error) {
       console.error('[Legal] Auto-commit failed:', error);

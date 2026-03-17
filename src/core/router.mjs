@@ -326,7 +326,7 @@ export function initRoutes() {
     // Admin dashboard
   }, { title: 'Admin Dashboard', requiresAuth: true });
 
-  router.register('/admin/:section', (ctx) => {
+  router.register('/admin/:section', (_ctx) => {
     // Admin section
   }, { title: 'Admin - NovaTools MC', requiresAuth: true });
 
@@ -335,7 +335,7 @@ export function initRoutes() {
     // Blog list
   }, { title: 'Blog - NovaTools MC' });
 
-  router.register('/blog/:slug', (ctx) => {
+  router.register('/blog/:slug', (_ctx) => {
     // Blog post
   }, { title: 'Blog Post - NovaTools MC' });
 
@@ -347,7 +347,6 @@ export function initRoutes() {
 
 function loadTool(category, tool) {
   // Tool loading logic
-  console.log(`Loading tool: ${category}/${tool}`);
 }
 
 // ============================================================================

@@ -2,9 +2,7 @@ import { describe, it, expect } from 'vitest';
 import {
   CurrencySchema,
   PercentageSchema,
-  MonthSchema,
   MortgageInputSchema,
-  PDFMergeSchema,
   validateInput
 } from './schemas.mjs';
 

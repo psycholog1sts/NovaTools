@@ -339,7 +339,7 @@ export function generateToolSchema(toolId, url) {
         "@type": "WebApplication",
         "name": content.title.split(' - ')[0],
         "description": content.description,
-        "url": url,
+        url,
         "applicationCategory": "FinanceApplication",
         "operatingSystem": "Any",
         "browserRequirements": "Requires JavaScript",

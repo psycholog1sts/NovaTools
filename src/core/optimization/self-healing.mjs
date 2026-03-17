@@ -260,7 +260,7 @@ export class SelfHealingSystem {
     // Override fetch to add retry logic
     const originalFetch = window.fetch;
     window.fetch = async (...args) => {
-      const url = args[0];
+      const _url = args[0];
       const maxRetries = 3;
       
       for (let i = 0; i < maxRetries; i++) {
@@ -328,8 +328,6 @@ export class SelfHealingSystem {
   }
 
   attemptChunkRecovery() {
-    console.log('[SelfHealing] Attempting chunk recovery...');
-    
     // Clear module cache and reload
     if (window.__vite_reload) {
       window.__vite_reload();
@@ -340,8 +338,6 @@ export class SelfHealingSystem {
   }
 
   attemptResourceRecovery(error) {
-    console.log('[SelfHealing] Attempting resource recovery for:', error.url);
-    
     // Try loading from alternative source
     if (error.url.includes('cdn')) {
       const fallbackUrl = error.url.replace('cdn.', 'backup.');
@@ -354,7 +350,7 @@ export class SelfHealingSystem {
     }
   }
 
-  attemptErrorRecovery(category, error) {
+  attemptErrorRecovery(category, _error) {
     const attempts = this.recoveryAttempts.get(category) || 0;
     
     if (attempts >= this.maxRecoveryAttempts) {
@@ -378,8 +374,6 @@ export class SelfHealingSystem {
   }
 
   optimizeForResponsiveness() {
-    console.log('[SelfHealing] Optimizing for responsiveness...');
-    
     // Reduce concurrent operations
     if (window.Worker) {
       // Limit worker pool
@@ -393,7 +387,7 @@ export class SelfHealingSystem {
   }
 
   optimizeForFrameRate() {
-    console.log('[SelfHealing] Optimizing for frame rate...');
+
     
     // Disable animations
     document.documentElement.classList.add('reduce-motion');
@@ -469,7 +463,7 @@ export class SelfHealingSystem {
   }
 
   optimizeMemoryUsage() {
-    console.log('[SelfHealing] Optimizing memory usage...');
+
     
     // Clear object URLs
     if (window.__objectURLs) {
@@ -489,7 +483,7 @@ export class SelfHealingSystem {
   }
 
   optimizePDFProcessing() {
-    console.log('[SelfHealing] Optimizing PDF processing...');
+
     
     // Reduce chunk size
     window.__PDF_CHUNK_SIZE = 25; // Half the default
@@ -499,7 +493,7 @@ export class SelfHealingSystem {
   }
 
   enableOfflineMode() {
-    console.log('[SelfHealing] Enabling offline mode...');
+
     
     // Use cached assets only
     document.documentElement.classList.add('offline-mode');

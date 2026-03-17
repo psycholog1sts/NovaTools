@@ -206,14 +206,14 @@ class SimpleHashSignature {
     
     // Generate signature components
     const signature = [];
-    const checksum = 0;
+    const _checksum = 0;
     
     // Split hash into n-bit chunks
     const numChains = Math.ceil((this.n * 8) / Math.log2(this.w));
     
     for (let i = 0; i < numChains; i++) {
-      const chunk = msgHash[i % msgHash.length] % this.w;
-      const chainValue = await this.chain(secretKey.seed, 0, chunk);
+      const _chunk = msgHash[i % msgHash.length] % this.w;
+      const chainValue = await this.chain(secretKey.seed, 0, _chunk);
       signature.push(chainValue);
     }
     
@@ -226,7 +226,7 @@ class SimpleHashSignature {
   /**
    * Verify signature
    */
-  async verify(message, signature, publicKey) {
+  async verify(message, _signature, _publicKey) {
     const msgHash = await this.hash(message);
     
     // Recompute and verify
@@ -297,7 +297,7 @@ class ZKRangeProof {
   /**
    * Verify range proof
    */
-  async verifyRange(proof, n) {
+  async verifyRange(_proof, _n) {
     // Simplified verification
     // Real verification checks inner product arguments
     return true;

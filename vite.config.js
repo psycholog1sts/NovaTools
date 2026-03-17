@@ -38,12 +38,16 @@ export default defineConfig({
   publicDir: 'public',
   
   build: {
-    target: 'es2020',
+    target: 'es2022',
     outDir: 'dist',
     assetsDir: 'assets',
-    sourcemap: true,
+    sourcemap: false,
     cssCodeSplit: true,
     cssMinify: 'lightningcss',
+    assetsInlineLimit: 4096,
+    modulePreload: {
+      polyfill: true
+    },
     
     rollupOptions: {
       input: {
@@ -55,19 +59,31 @@ export default defineConfig({
       
       output: {
         manualChunks: (id) => {
-          if (id.includes('pdf-lib') || id.includes('pdfjs')) {
-            return 'pdf-vendor';
+          // Vendor chunks for better caching
+          if (id.includes('node_modules')) {
+            if (id.includes('pdf-lib') || id.includes('pdfjs') || id.includes('pdf')) {
+              return 'vendor-pdf';
+            }
+            if (id.includes('decimal.js') || id.includes('finance')) {
+              return 'vendor-finance';
+            }
+            if (id.includes('wasm') || id.includes('sharp') || id.includes('image')) {
+              return 'vendor-image';
+            }
+            if (id.includes('dompurify') || id.includes('zod') || id.includes('validator')) {
+              return 'vendor-ui';
+            }
+            if (id.includes('react') || id.includes('vue') || id.includes('preact')) {
+              return 'vendor-framework';
+            }
+            return 'vendor-other';
           }
-          if (id.includes('decimal.js')) {
-            return 'finance-vendor';
-          }
-          if (id.includes('wasm-vips') || id.includes('sharp')) {
-            return 'image-vendor';
-          }
-          if (id.includes('dompurify') || id.includes('zod')) {
-            return 'ui-vendor';
-          }
+          
+          // Application chunks
           if (id.includes('/src/core/')) {
+            if (id.includes('ai')) return 'core-ai';
+            if (id.includes('compute')) return 'core-compute';
+            if (id.includes('security')) return 'core-security';
             return 'core';
           }
           if (id.includes('/src/components/')) {
@@ -245,8 +261,20 @@ export default defineConfig({
   },
 
   optimizeDeps: {
-    exclude: ['pdf-lib', 'decimal.js', 'dompurify'],
-    include: ['zod']
+    exclude: ['pdf-lib', 'decimal.js', 'dompurify', 'wasm-vips'],
+    include: ['zod', 'lodash-es', 'date-fns'],
+    esbuildOptions: {
+      target: 'es2022'
+    }
+  },
+
+  experimental: {
+    renderBuiltUrl(filename, { hostType }) {
+      if (hostType === 'js') {
+        return { relative: true };
+      }
+      return { relative: true };
+    }
   },
 
   server: {

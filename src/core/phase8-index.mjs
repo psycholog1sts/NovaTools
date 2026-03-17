@@ -81,8 +81,6 @@ export {
  * Initialize Phase 8 - The Omega Point
  */
 export async function initPhase8() {
-  console.log('🚀 Initializing Phase 8: The Omega Point...');
-  
   const results = {};
   
   // Initialize WebLLM
@@ -90,7 +88,6 @@ export async function initPhase8() {
     const { getWebLLMEngine } = await import('./synthesis/webllm-engine.mjs');
     const engine = getWebLLMEngine();
     results.webllm = await engine.init();
-    console.log('✓ WebLLM initialized');
   } catch (e) {
     console.warn('✗ WebLLM:', e.message);
     results.webllm = false;
@@ -102,7 +99,6 @@ export async function initPhase8() {
     const monitor = getRegulatoryMonitor();
     await monitor.init();
     results.legal = true;
-    console.log('✓ Legal monitor initialized');
   } catch (e) {
     console.warn('✗ Legal:', e.message);
     results.legal = false;
@@ -114,13 +110,11 @@ export async function initPhase8() {
     const platform = getAutonomousPlatform();
     await platform.init();
     results.autonomy = true;
-    console.log('✓ Autonomous platform initialized');
   } catch (e) {
     console.warn('✗ Autonomy:', e.message);
     results.autonomy = false;
   }
   
-  console.log('🌌 Phase 8 Status:', results);
   return results;
 }
 

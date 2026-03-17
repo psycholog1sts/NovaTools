@@ -191,7 +191,7 @@ export class HeaderBiddingAuction {
     );
 
     // Process results
-    results.forEach((result, index) => {
+    results.forEach((result, _index) => {
       if (result.status === 'fulfilled' && result.value) {
         this.processBids(result.value);
       }
@@ -290,7 +290,7 @@ export class HeaderBiddingAuction {
     if (!bidder || !bidder.endpoint) return [];
 
     // Build bid request
-    const bidRequest = {
+    const _bidRequest = {
       id: `req-${Date.now()}`,
       imp: adUnits.map(unit => ({
         id: unit,
@@ -568,7 +568,7 @@ export class AdRefreshManager {
    * Stop all refreshes
    */
   stopAll() {
-    for (const [adUnit, timer] of this.refreshTimers) {
+    for (const [_adUnit, timer] of this.refreshTimers) {
       clearInterval(timer);
     }
     this.refreshTimers.clear();

@@ -14,8 +14,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="dns-prefetch" href="https://fonts.googleapis.com">
   <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+  <link rel="preconnect" href="https://www.googletagmanager.com">
 
   <!-- Preload LCP hero image -->
   <link rel="preload" as="image" type="image/webp" href="/logo-brand-260.webp" fetchpriority="high">
@@ -23,8 +26,9 @@
   <!-- Critical CSS inline -->
   <link rel="stylesheet" href="/src/styles/critical.css">
   
-  <!-- Inter Font - Premium Sans Serif -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Inter Font - Premium Sans Serif with display=swap for FOUT prevention -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
   
   <!-- Favicon - Required by Google Search -->
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -38,7 +42,8 @@
 
   <!-- Meta -->
   <title>Free Online Tools - Finance, PDF &amp; Image | NovaTools MC</title>
-  <meta name="description" content="Free online tools: mortgage refinance, tax, compound interest, PDF compress/merge/split, image converter &amp; more. No signup. Instant results. 100% private.">
+  <meta name="description" content="119+ free online tools: mortgage refinance calculator, tax estimator, compound interest, PDF compressor, image converter &amp; more. No signup. 100% private. Works offline.">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="keywords" content="free online tools, free mortgage calculator, free PDF compressor, free image converter, free tax calculator, financial tools, privacy-first">
   <meta name="author" content="NovaTools MC">
   <meta name="theme-color" content="#0A0A0C" media="(prefers-color-scheme: dark)">
@@ -51,6 +56,8 @@
   <meta property="og:url" content="https://www.mc-novatools.com/">
   <meta property="og:image" content="https://www.mc-novatools.com/og-image.png">
   <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="NovaTools MC">
+  <meta name="twitter:site" content="@novatoolsmc">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">

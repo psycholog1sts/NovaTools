@@ -88,7 +88,7 @@ class AWORSet {
     this.adds.get(key).add(tag);
   }
 
-  remove(element, tag) {
+  remove(element, _tag) {
     const key = JSON.stringify(element);
     if (this.adds.has(key)) {
       this.adds.get(key).forEach(t => this.removes.add(t));

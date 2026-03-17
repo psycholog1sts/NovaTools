@@ -117,7 +117,6 @@ export class WebLLMEngine {
       if (window.MLCEngine) {
         this.engine = await window.MLCEngine.create(MODEL_CONFIG.model, {
           initProgressCallback: (progress) => {
-            console.log('[WebLLM] Loading:', progress.progress * 100, '%');
             onProgress?.(progress);
           }
         });
@@ -130,7 +129,6 @@ export class WebLLMEngine {
         });
 
         this.isInitialized = true;
-        console.log('[WebLLM] Engine ready');
         return true;
       }
       
@@ -322,7 +320,6 @@ test('calc', () => { expect(calculate(2)).toBe(4); });
     
     this.isInitialized = true;
     this.simulationMode = true;
-    console.log('[WebLLM] Simulation mode ready');
     return true;
   }
 }

@@ -15,8 +15,6 @@ export async function registerSW() {
       updateViaCache: 'imports'
     });
     
-    console.log('SW registered:', registration.scope);
-    
     // Handle updates
     registration.addEventListener('updatefound', () => {
       const newWorker = registration.installing;
@@ -82,7 +80,6 @@ export async function unregisterSW() {
   if ('serviceWorker' in navigator) {
     const registration = await navigator.serviceWorker.ready;
     await registration.unregister();
-    console.log('SW unregistered');
   }
 }
 

@@ -7,7 +7,7 @@
  */
 
 // Compute shader for PDF page parallel processing
-const PDF_MERGE_SHADER = `
+const _PDF_MERGE_SHADER = `
   @group(0) @binding(0) var<storage, read> inputData: array<u32>;
   @group(0) @binding(1) var<storage, read_write> outputData: array<u32>;
   @group(0) @binding(2) var<uniform> params: vec4<u32>;
@@ -138,7 +138,7 @@ class WebGPUEngine {
       
       // Log GPU info
       const info = await this.adapter.requestAdapterInfo();
-      console.log('WebGPU initialized:', info.vendor, info.architecture);
+
       
       return true;
     } catch (error) {
@@ -164,7 +164,7 @@ class WebGPUEngine {
     }
 
     const { data, width, height } = imageData;
-    const pixelCount = width * height;
+    const _pixelCount = width * height;
     
     // Create buffers
     const pixelBuffer = this.device.createBuffer({

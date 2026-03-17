@@ -40,7 +40,7 @@ export function getRegionalDisclaimer() {
  * Check if tool is available in current region
  */
 export async function checkToolAvailability(toolId) {
-  const geo = getEdgeGeoData();
+  const _geo = getEdgeGeoData();
   
   try {
     const response = await fetch(`/api/geo-suggestions?tool=${toolId}`);

@@ -143,8 +143,6 @@ export class GeneticUIEvolver {
     this.population = newPopulation;
     this.generation++;
 
-    console.log(`[Genetic] Generation ${this.generation}, Best fitness: ${this.population[0].fitness}`);
-
     return this.population[0]; // Best individual
   }
 }
@@ -192,7 +190,7 @@ export class AutoVulnerabilityPatcher {
     await writable.write(patchCode);
     await writable.close();
 
-    console.log(`[Security] Applied patch for ${library}`);
+
   }
 }
 
