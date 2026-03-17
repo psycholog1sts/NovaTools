@@ -221,7 +221,7 @@ export function registerImageTools(controller) {
     ]
   }, imageWatermark);
 
-  console.log('✓ Image tools registered');
+
 }
 
 export default registerImageTools;

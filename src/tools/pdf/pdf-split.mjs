@@ -111,7 +111,7 @@ function formatSplitResult(files, totalPages) {
       <p class="text-muted">From ${totalPages} total pages</p>
 
       <div class="download-list">
-        ${files.map((file, i) => `
+        ${files.map((file, _i) => `
           <div class="download-item">
             <span class="file-icon">📄</span>
             <span class="file-name">${file.filename}</span>

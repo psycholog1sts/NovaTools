@@ -161,7 +161,7 @@ export function registerPDFTools(controller) {
     ]
   }, pdfToImage);
 
-  console.log('✓ PDF tools registered');
+
 }
 
 export default registerPDFTools;

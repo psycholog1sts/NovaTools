@@ -33,7 +33,7 @@ export async function pdfCompressor(inputs) {
     high: { quality: 0.8, scale: 0.9 }
   };
 
-  const settings = compressionSettings[quality];
+  const _settings = compressionSettings[quality];
 
   // Try to compress embedded images
   // Note: pdf-lib doesn't have direct image compression, so we save with optimization
