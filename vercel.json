@@ -4,8 +4,10 @@
   "outputDirectory": "dist",
   "framework": "vite",
   "cleanUrls": true,
-
   "rewrites": [
+    { "source": "/ads.txt", "destination": "/ads.txt" },
+    { "source": "/robots.txt", "destination": "/robots.txt" },
+    { "source": "/sitemap.xml", "destination": "/sitemap.xml" },
     { "source": "/admin", "destination": "/admin/index.html" },
     { "source": "/admin/:path*", "destination": "/admin/index.html" },
     { "source": "/blog", "destination": "/blog/index.html" },
