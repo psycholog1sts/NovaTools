@@ -1,1597 +1,483 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
 <head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y896L63239"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-Y896L63239');
-</script>
   <meta charset="UTF-8">
-  <script>(function(){var t=localStorage.getItem('novatools-theme');if(t)document.documentElement.setAttribute('data-theme',t);else{var d=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',d);document.documentElement.style.colorScheme=d;}})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <!-- Preconnect for performance -->
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y896L63239"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Y896L63239');
+  </script>
+
+  <!-- Preconnect -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
-  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-  <link rel="preconnect" href="https://www.googletagmanager.com">
-
-  <!-- Preload LCP hero image -->
-  <link rel="preload" as="image" type="image/webp" href="/logo-brand-260.webp" fetchpriority="high">
-
-  <!-- Critical CSS inline -->
-  <link rel="stylesheet" href="/src/styles/critical.css">
   
-  <!-- Inter Font - Premium Sans Serif with display=swap for FOUT prevention -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
-  
-  <!-- Favicon - Required by Google Search -->
+  <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192x192.png">
-  <link rel="mask-icon" href="/favicon.svg" color="#00F5D4">
 
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="/src/styles/critical.css">
+  <link rel="stylesheet" href="/src/styles/design-system.css">
+  
   <!-- Meta -->
-  <title>Free Online Tools - Finance, PDF &amp; Image | NovaTools MC</title>
-  <meta name="description" content="119+ free online tools: mortgage refinance calculator, tax estimator, compound interest, PDF compressor, image converter &amp; more. No signup. 100% private. Works offline.">
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-  <meta name="keywords" content="free online tools, free mortgage calculator, free PDF compressor, free image converter, free tax calculator, financial tools, privacy-first">
-  <meta name="author" content="NovaTools MC">
-  <meta name="theme-color" content="#0A0A0C" media="(prefers-color-scheme: dark)">
-  <meta name="theme-color" content="#F8F9FA" media="(prefers-color-scheme: light)">
-
+  <title>Free Online Tools - 300+ Utilities for Files, Finance & Code | MC NovaTools</title>
+  <meta name="description" content="300+ free online tools: PDF converters, image optimizers, financial calculators, developer utilities. Fast, private, no signup required.">
+  <meta name="keywords" content="free online tools, pdf converter, image compressor, mortgage calculator, json formatter">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#0A0A0C">
+  <meta name="author" content="Psk. Dan. Metehan ÇETİN">
+  
   <!-- Open Graph -->
-  <meta property="og:title" content="Free Online Tools - Finance, PDF &amp; Image | NovaTools MC">
-  <meta property="og:description" content="Free mortgage, tax, PDF &amp; image tools. No signup needed. Instant results. 100% client-side &amp; private.">
+  <meta property="og:title" content="MC NovaTools - 300+ Free Online Tools">
+  <meta property="og:description" content="Free PDF tools, image converters, financial calculators & developer utilities.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.mc-novatools.com/">
-  <meta property="og:image" content="https://www.mc-novatools.com/og-image.png">
-  <meta property="og:locale" content="en_US">
-  <meta property="og:site_name" content="NovaTools MC">
-  <meta name="twitter:site" content="@novatoolsmc">
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Free Online Tools - Finance, PDF &amp; Image | NovaTools MC">
-  <meta name="twitter:description" content="Free mortgage, tax, PDF &amp; image tools. No signup, instant results, 100% private.">
-
-  <!-- Canonical -->
-  <link rel="canonical" href="https://www.mc-novatools.com/">
+  <meta property="og:url" content="https://mc-novatools.com">
   
-  <!-- PWA Manifest -->
-  <link rel="manifest" href="/manifest.json">
-  
-  <!-- Schema.org Structured Data -->
+  <!-- Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "NovaTools MC",
-    "url": "https://www.mc-novatools.com",
-    "description": "Free online tools platform: mortgage refinance, tax calculator, PDF compress/merge/split, image converter and more. 100% free, no signup required.",
-    "publisher": {
-      "@type": "Organization",
-      "name": "NovaTools MC",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://www.mc-novatools.com/favicon.svg"
-      }
+    "name": "MC NovaTools",
+    "url": "https://mc-novatools.com",
+    "description": "300+ free online tools for files, finance, and code",
+    "author": {
+      "@type": "Person",
+      "name": "Psk. Dan. Metehan ÇETİN",
+      "jobTitle": "Psychological Counselor",
+      "email": "psk.dan.metehancetin@mc-novatools.com"
     },
     "potentialAction": {
       "@type": "SearchAction",
-      "target": "https://www.mc-novatools.com/search?q={search_term_string}",
+      "target": "https://mc-novatools.com/search?q={search_term_string}",
       "query-input": "required name=search_term_string"
     }
   }
   </script>
-  
-  <!-- Fathom Analytics - Privacy-focused -->
-  <script src="https://cdn.usefathom.com/script.js" data-site="NOVATOOLS" defer></script>
-  
-  <!-- Google AdSense -->
-  <script>
-  (function() {
-    var clientId = '__ADSENSE_CLIENT__';
-    if (clientId && clientId !== 'ca-pub-XXXXXXXXXXXXXXXX') {
-      var s = document.createElement('script');
-      s.async = true;
-      s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=' + clientId;
-      s.crossOrigin = 'anonymous';
-      document.head.appendChild(s);
-    }
-  })();
-  </script>
 </head>
 <body>
-  <!-- Ambient Background -->
-  <div class="bg-ambient" aria-hidden="true"></div>
-  <div class="noise-overlay" aria-hidden="true"></div>
-  
-  <div id="app" class="app">
+  <!-- App Container -->
+  <div id="app">
+    
     <!-- Header -->
-    <header class="main-header">
+    <header class="app-header">
       <div class="container">
         <div class="header-inner">
           <!-- Logo -->
-          <a href="/" class="logo" aria-label="NovaTools MC Home">
-            <picture>
-              <source srcset="/logo-bird-44.webp 1x, /logo-bird-88.webp 2x" type="image/webp">
-              <img src="/logo-bird-44.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
-            </picture>
-            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+          <a href="/" class="logo">
+            <span class="logo-icon">
+              <img src="/logo-brand-260.webp" alt="MC NovaTools Logo" width="36" height="36">
+            </span>
+            <span class="logo-text">MC NovaTools</span>
           </a>
           
-          <!-- Desktop Navigation -->
-          <nav class="nav-desktop" aria-label="Main navigation">
-            <a href="#finance" class="nav-link">Finance</a>
-            <a href="#pdf" class="nav-link">PDF</a>
-            <a href="#image" class="nav-link">Images</a>
-            <a href="#security" class="nav-link">Security</a>
-            <a href="#text" class="nav-link">Text</a>
-            <a href="#converters" class="nav-link">Calc</a>
-            <a href="#data" class="nav-link">Data</a>
-            <a href="#social" class="nav-link">Social</a>
-            <a href="#design" class="nav-link">Design</a>
-            <a href="#productivity" class="nav-link">Tools</a>
+          <!-- Desktop Nav -->
+          <nav class="main-nav" aria-label="Main navigation">
+            <a href="/categories" class="nav-link">Categories</a>
+            <a href="#popular" class="nav-link">Popular</a>
+            <a href="#new" class="nav-link">New</a>
+            <a href="/blog" class="nav-link">Blog</a>
           </nav>
           
-          <!-- Privacy Badge -->
-          <div class="privacy-badge" title="Your data never leaves your browser">
-            <span class="privacy-badge-dot"></span>
-            <span>Privacy First</span>
-          </div>
-
-          <!-- Language Switcher -->
-          <div class="lang-switcher" id="langSwitcher" aria-label="Language selector">
-            <button class="lang-btn" id="langBtn" aria-haspopup="listbox" aria-expanded="false" type="button">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-              EN
+          <!-- Actions -->
+          <div class="header-actions">
+            <button class="btn-icon" aria-label="Search" onclick="toggleSearch()">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"/>
+                <path d="m21 21-4.35-4.35"/>
+              </svg>
             </button>
-            <div class="lang-dropdown" role="listbox" aria-label="Select language">
-              <button class="lang-option" role="option" aria-selected="false" data-lang="zh" type="button"><span class="lang-flag">🇨🇳</span> 中文</button>
-              <button class="lang-option" role="option" aria-selected="false" data-lang="hi" type="button"><span class="lang-flag">🇮🇳</span> हिंदी</button>
-              <button class="lang-option active" role="option" aria-selected="true" data-lang="en" type="button"><span class="lang-flag">🇺🇸</span> English</button>
-              <button class="lang-option" role="option" aria-selected="false" data-lang="tr" type="button"><span class="lang-flag">🇹🇷</span> Türkçe</button>
-              <button class="lang-option" role="option" aria-selected="false" data-lang="de" type="button"><span class="lang-flag">🇩🇪</span> Deutsch</button>
-              <button class="lang-option" role="option" aria-selected="false" data-lang="es" type="button"><span class="lang-flag">🇪🇸</span> Español</button>
-            </div>
+            <button class="btn-icon mobile-menu-toggle" aria-label="Menu" onclick="toggleMobileMenu()">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="3" y1="6" x2="21" y2="6"/>
+                <line x1="3" y1="12" x2="21" y2="12"/>
+                <line x1="3" y1="18" x2="21" y2="18"/>
+              </svg>
+            </button>
           </div>
-
-          <!-- Theme Toggle -->
-          <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
-            <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-            </svg>
-            <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-            </svg>
-          </button>
-
-          <!-- Mobile Menu Button -->
-          <button type="button" id="mobileMenuBtn" class="menu-btn" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileMenu">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <line x1="3" y1="6" x2="21" y2="6"/>
-              <line x1="3" y1="12" x2="21" y2="12"/>
-              <line x1="3" y1="18" x2="21" y2="18"/>
-            </svg>
-          </button>
         </div>
-        
-        <!-- Mobile Menu -->
-        <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
-          <a href="#finance" class="mobile-nav-link">Finance</a>
-          <a href="#pdf" class="mobile-nav-link">PDF</a>
-          <a href="#image" class="mobile-nav-link">Images</a>
-          <a href="#security" class="mobile-nav-link">Security</a>
-          <a href="#text" class="mobile-nav-link">Text</a>
-          <a href="#converters" class="mobile-nav-link">Calculators</a>
-          <a href="#data" class="mobile-nav-link">Data</a>
-          <a href="#social" class="mobile-nav-link">Social</a>
-          <a href="#design" class="mobile-nav-link">Design</a>
-          <a href="#productivity" class="mobile-nav-link">Productivity</a>
-        </nav>
       </div>
     </header>
-    
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+      <nav class="mobile-nav">
+        <a href="/categories" class="mobile-nav-link">Categories</a>
+        <a href="#popular" class="mobile-nav-link">Popular Tools</a>
+        <a href="#new" class="mobile-nav-link">New Tools</a>
+        <a href="/blog" class="mobile-nav-link">Blog</a>
+      </nav>
+    </div>
+
+    <!-- Search Modal -->
+    <div class="search-modal" id="searchModal">
+      <div class="search-container">
+        <div class="search-input-wrapper">
+          <svg class="search-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/>
+            <path d="m21 21-4.35-4.35"/>
+          </svg>
+          <input type="text" class="search-input" placeholder="Search 300+ tools..." id="globalSearch">
+          <button class="search-close" onclick="toggleSearch()">×</button>
+        </div>
+        <div class="search-results" id="searchResults"></div>
+      </div>
+    </div>
+
     <!-- Main Content -->
-    <main class="main-content">
+    <main>
+      
       <!-- Hero Section -->
       <section class="hero">
+        <div class="hero-bg">
+          <div class="hero-grid"></div>
+          <div class="hero-glow hero-glow-1"></div>
+          <div class="hero-glow hero-glow-2"></div>
+        </div>
         <div class="container">
           <div class="hero-content">
-            <!-- Hero Logo Display -->
-            <div class="hero-logo-display">
-              <picture>
-                <source srcset="/logo-brand-260.webp 260w, /logo-brand-520.webp 520w" type="image/webp" sizes="(min-width: 768px) 260px, 200px">
-                <img src="/logo-brand-260.png" alt="NovaTools MC" class="hero-brand-img" width="260" height="260" loading="eager" fetchpriority="high" decoding="async">
-              </picture>
-            </div>
-            
-            <div class="hero-badge">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-              </svg>
-              Zero Data Collection
-            </div>
-            <h1 class="hero-title" data-i18n="hero.title">
-              Professional Tools.<br>Complete Privacy.
+            <h1 class="hero-title">
+              All-in-One Tools for
+              <span class="text-gradient">Files, Finance & Code</span>
             </h1>
-            <span class="sr-only">Free online tools — 100% free, no registration required. Free mortgage refinance calculator, free tax calculator, free PDF compressor, free PDF merger, free image converter, free compound interest calculator, free crypto tax calculator, free cloud cost estimator.</span>
-            <p class="hero-description" data-i18n="hero.description">
-              Powerful calculators for mortgage, insurance, and cloud costs.
-              All processing happens in your browser — your data never leaves your device.
+            <p class="hero-description">
+              Use MC NovaTools to convert, calculate, create, optimize and streamline work with a fast, 
+              clean and privacy-focused toolkit. 300+ free tools, no signup required.
             </p>
-            <div class="hero-cta">
-              <a href="#finance" class="btn btn-primary">
-                <span data-i18n="hero.cta.primary">Explore Tools</span>
-                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <div class="hero-actions">
+              <a href="/categories" class="btn btn-primary btn-lg">
+                Explore Tools
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M5 12h14M12 5l7 7-7 7"/>
                 </svg>
               </a>
-              <a href="#privacy" class="btn btn-secondary" data-i18n="hero.cta.secondary">
-                How It Works
-              </a>
+              <a href="#categories" class="btn btn-secondary btn-lg">Browse Categories</a>
+            </div>
+            <div class="hero-stats">
+              <div class="stat">
+                <span class="stat-value">300+</span>
+                <span class="stat-label">Free Tools</span>
+              </div>
+              <div class="stat">
+                <span class="stat-value">12</span>
+                <span class="stat-label">Categories</span>
+              </div>
+              <div class="stat">
+                <span class="stat-value">100%</span>
+                <span class="stat-label">Private</span>
+              </div>
             </div>
           </div>
         </div>
       </section>
-      
-      <!-- 3-Column Layout -->
-      <div class="page-layout">
-        <!-- Left Ad Rail -->
-        <aside class="ad-rail" role="complementary" aria-label="Advertisement">
-          <div class="ad-frame">
-            <div class="ad-label">Advertisement</div>
-            <div class="ad-slot" style="min-height: 600px;">
-              <ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="__ADSENSE_CLIENT__" data-ad-slot="LEFT_RAIL_SLOT"></ins>
-            </div>
+
+      <!-- Global Search Section -->
+      <section class="search-section">
+        <div class="container">
+          <div class="search-box">
+            <svg class="search-box-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"/>
+              <path d="m21 21-4.35-4.35"/>
+            </svg>
+            <input type="text" class="search-box-input" placeholder="Search 300+ tools (e.g., 'PDF to Word', 'BMI calculator')...">
+            <button class="search-box-btn">Search</button>
           </div>
-        </aside>
-
-        <!-- Center Content -->
-        <div class="page-center">
-
-              <!-- Special Day Banner (Dynamic) -->
-              <div id="specialDayBanner" class="special-day-banner" style="display: none; margin-bottom: 2rem;">
-                <div class="special-day-content">
-                  <span class="special-day-icon">🎉</span>
-                  <span class="special-day-text" id="specialDayText"></span>
-                </div>
-              </div>
-              <style>
-                .special-day-banner { background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(139, 92, 246, 0.1)); border: 1px solid rgba(99, 102, 241, 0.3); border-radius: var(--radius-lg); padding: 1rem 1.5rem; text-align: center; animation: pulse-glow 3s infinite; }
-                .special-day-content { display: flex; align-items: center; justify-content: center; gap: 0.75rem; }
-                .special-day-icon { font-size: 1.5rem; }
-                .special-day-text { font-size: 1rem; color: var(--text-primary); font-weight: 500; }
-                @keyframes pulse-glow { 0%, 100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.2); } 50% { box-shadow: 0 0 20px 4px rgba(99, 102, 241, 0.1); } }
-              </style>
-
-              <!-- Finance Tools -->
-              <section id="finance">
-                <div class="section-header">
-                  <div class="section-label">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <line x1="12" y1="1" x2="12" y2="23"/>
-                      <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-                    </svg>
-                    <span data-i18n="section.finance.label">Financial Tools</span>
-                  </div>
-                  <h2 class="section-title" data-i18n="section.finance.title">High-Value Financial Calculators</h2>
-                  <p class="section-description" data-i18n="section.finance.desc">Professional-grade tools for mortgage planning, insurance estimates, and investment projections.</p>
-                </div>
-
-                <div class="grid grid-3">
-                  <!-- Mortgage Refinance -->
-                  <a href="/tools/finance/mortgage-refinance/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">🏠</div>
-                      <h3 class="card-title">Mortgage Refinance</h3>
-                      <p class="card-description">Compare rates and calculate potential savings from refinancing your home loan.</p>
-                      <span class="card-arrow">
-                        Calculate
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                          <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                      </span>
-                    </div>
-                  </a>
-
-                  <!-- Life Insurance -->
-                  <a href="/tools/finance/life-insurance/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">🛡️</div>
-                      <h3 class="card-title">Life Insurance Estimator</h3>
-                      <p class="card-description">Calculate coverage needs and estimate premiums based on your situation.</p>
-                      <span class="card-arrow">
-                        Calculate
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                          <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                      </span>
-                    </div>
-                  </a>
-
-                  <!-- Cloud Cost -->
-                  <a href="/tools/finance/cloud-cost/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">☁️</div>
-                      <h3 class="card-title">Cloud Cost Estimator</h3>
-                      <p class="card-description">Compare AWS, GCP, and Azure pricing for your infrastructure needs.</p>
-                      <span class="card-arrow">
-                        Calculate
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                          <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                      </span>
-                    </div>
-                  </a>
-
-                  <!-- Compound Interest -->
-                  <a href="/tools/finance/compound-interest/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">📈</div>
-                      <h3 class="card-title">Compound Interest</h3>
-                      <p class="card-description">Project investment growth with customizable rates and time periods.</p>
-                      <span class="card-arrow">
-                        Calculate
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                          <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                      </span>
-                    </div>
-                  </a>
-
-                  <!-- Retirement Planner -->
-                  <a href="/tools/finance/retirement/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">🏖️</div>
-                      <h3 class="card-title">Retirement Planner</h3>
-                      <p class="card-description">Plan your 401k and IRA contributions to reach your retirement goals.</p>
-                      <span class="card-arrow">
-                        Calculate
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                          <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                      </span>
-                    </div>
-                  </a>
-
-                  <!-- Tax Estimator -->
-                  <a href="/tools/finance/tax/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">📋</div>
-                      <h3 class="card-title">Tax Estimator</h3>
-                      <p class="card-description">Estimate federal and state taxes with deductions and credits.</p>
-                      <span class="card-arrow">
-                        Calculate
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                          <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                      </span>
-                    </div>
-                  </a>
-
-                  <!-- Crypto Tax -->
-                  <a href="/tools/finance/crypto-tax/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">₿</div>
-                      <h3 class="card-title">Crypto Tax Calculator</h3>
-                      <p class="card-description">Calculate capital gains tax on crypto with FIFO/LIFO methods.</p>
-                      <span class="card-arrow">
-                        Calculate
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                          <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                      </span>
-                    </div>
-                  </a>
-
-                  <!-- Student Loan -->
-                  <a href="/tools/finance/student-loan/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">🎓</div>
-                      <h3 class="card-title">Student Loan Payoff</h3>
-                      <p class="card-description">US & UK student loan payoff calculator with extra payment savings.</p>
-                      <span class="card-arrow">
-                        Calculate
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                          <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                      </span>
-                    </div>
-                  </a>
-                </div>
-
-                <!-- In-Content Rectangle Ad (300x250) -->
-                <div class="ad-frame" style="margin: 2rem 0;">
-                  <div class="ad-label">Advertisement</div>
-                  <div class="ad-slot" style="min-height: 250px;">
-                    <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="__ADSENSE_CLIENT__" data-ad-slot="FINANCE_INLINE_SLOT"
-                       data-ad-client="__ADSENSE_CLIENT__"
-                       data-ad-slot="MID_RECTANGLE_SLOT_ID"></ins>
-                </div>
-              </section>
-
-              <!-- PDF Tools -->
-              <section id="pdf">
-                <div class="section-header">
-                  <div class="section-label">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                      <polyline points="14 2 14 8 20 8"/>
-                      <line x1="16" y1="13" x2="8" y2="13"/>
-                      <line x1="16" y1="17" x2="8" y2="17"/>
-                    </svg>
-                    <span data-i18n="section.pdf.label">PDF Tools</span>
-                  </div>
-                  <h2 class="section-title" data-i18n="section.pdf.title">PDF Manipulation Suite</h2>
-                  <p class="section-description" data-i18n="section.pdf.desc">Merge, compress, split, convert, and edit PDFs directly in your browser. 13+ free PDF tools. No uploads required.</p>
-                </div>
-
-                <div class="grid grid-3">
-                  <!-- Existing Tools -->
-                  <a href="/tools/pdf/merge/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">📎</div>
-                      <h3 class="card-title">PDF Merge</h3>
-                      <p class="card-description">Combine multiple PDF files into a single document instantly.</p>
-                      <span class="card-arrow">Merge PDFs<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-
-                  <a href="/tools/pdf/compress/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">🗜️</div>
-                      <h3 class="card-title">PDF Compress</h3>
-                      <p class="card-description">Reduce file size while maintaining quality for easy sharing.</p>
-                      <span class="card-arrow">Compress<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-
-                  <a href="/tools/pdf/split/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">✂️</div>
-                      <h3 class="card-title">PDF Split</h3>
-                      <p class="card-description">Extract specific pages or split PDFs into multiple files.</p>
-                      <span class="card-arrow">Split PDF<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-
-                  <!-- NEW: PDF Converter Tools -->
-                  <a href="/tools/pdf/pdf-to-word/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">📄</div>
-                      <h3 class="card-title">PDF to Word</h3>
-                      <p class="card-description">Convert PDF documents to editable Word format.</p>
-                      <span class="card-arrow">Convert<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-
-                  <a href="/tools/pdf/pdf-to-excel/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">📊</div>
-                      <h3 class="card-title">PDF to Excel</h3>
-                      <p class="card-description">Extract tables from PDF to Excel spreadsheet.</p>
-                      <span class="card-arrow">Convert<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-
-                  <a href="/tools/pdf/pdf-to-powerpoint/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">🎯</div>
-                      <h3 class="card-title">PDF to PowerPoint</h3>
-                      <p class="card-description">Convert PDF slides to PowerPoint presentation.</p>
-                      <span class="card-arrow">Convert<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-
-                  <a href="/tools/pdf/pdf-to-jpg/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">🖼️</div>
-                      <h3 class="card-title">PDF to JPG</h3>
-                      <p class="card-description">Convert PDF pages to JPG images.</p>
-                      <span class="card-arrow">Convert<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-
-                  <a href="/tools/pdf/pdf-to-png/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">🎨</div>
-                      <h3 class="card-title">PDF to PNG</h3>
-                      <p class="card-description">Convert PDF pages to high-quality PNG images.</p>
-                      <span class="card-arrow">Convert<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-
-                  <a href="/tools/pdf/pdf-to-html/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">🌐</div>
-                      <h3 class="card-title">PDF to HTML</h3>
-                      <p class="card-description">Convert PDF to web-friendly HTML format.</p>
-                      <span class="card-arrow">Convert<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-
-                  <a href="/tools/pdf/pdf-to-text/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">📝</div>
-                      <h3 class="card-title">PDF to Text</h3>
-                      <p class="card-description">Extract plain text from PDF documents.</p>
-                      <span class="card-arrow">Extract<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-
-                  <a href="/tools/pdf/pdf-ocr/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">🔍</div>
-                      <h3 class="card-title">PDF OCR</h3>
-                      <p class="card-description">Extract text from scanned PDFs using OCR.</p>
-                      <span class="card-arrow">Scan<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-
-                  <a href="/tools/pdf/pdf-page-number/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">🔢</div>
-                      <h3 class="card-title">PDF Page Number</h3>
-                      <p class="card-description">Add page numbers to PDF documents.</p>
-                      <span class="card-arrow">Add Numbers<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-
-                  <a href="/tools/pdf/pdf-watermark/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">💧</div>
-                      <h3 class="card-title">PDF Watermark</h3>
-                      <p class="card-description">Add text or image watermarks to PDF.</p>
-                      <span class="card-arrow">Add Watermark<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-                </div>
-              </section>
-
-              <!-- Image Tools -->
-              <section id="image">
-                <div class="section-header">
-                  <div class="section-label">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <rect x="3" y="3" width="18" height="18" rx="2"/>
-                      <circle cx="8.5" cy="8.5" r="1.5"/>
-                      <path d="M21 15l-5-5L5 21"/>
-                    </svg>
-                    <span data-i18n="section.image.label">Image Tools</span>
-                  </div>
-                  <h2 class="section-title" data-i18n="section.image.title">Image Optimization</h2>
-                  <p class="section-description" data-i18n="section.image.desc">Compress, convert, resize, crop, and edit images. 12+ free image tools. All processing in your browser.</p>
-                </div>
-
-                <div class="grid grid-3">
-                  <!-- Existing Tools -->
-                  <a href="/tools/image/compress/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">🖼️</div>
-                      <h3 class="card-title">Image Compress</h3>
-                      <p class="card-description">Optimize images to WebP and AVIF formats with quality control.</p>
-                      <span class="card-arrow">Compress<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-
-                  <a href="/tools/image/convert/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">🔄</div>
-                      <h3 class="card-title">Format Convert</h3>
-                      <p class="card-description">Convert between JPEG, PNG, WebP, and other formats instantly.</p>
-                      <span class="card-arrow">Convert<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-
-                  <!-- NEW: Image Converter Tools -->
-                  <a href="/tools/image/image-to-webp/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">🚀</div>
-                      <h3 class="card-title">Image to WebP</h3>
-                      <p class="card-description">Convert images to modern WebP format for smaller file sizes.</p>
-                      <span class="card-arrow">Convert<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-
-                  <a href="/tools/image/image-to-avif/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">⚡</div>
-                      <h3 class="card-title">Image to AVIF</h3>
-                      <p class="card-description">Convert to next-gen AVIF format for maximum compression.</p>
-                      <span class="card-arrow">Convert<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-
-                  <!-- NEW: Image Editor Tools -->
-                  <a href="/tools/image/image-resizer/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">📐</div>
-                      <h3 class="card-title">Image Resizer</h3>
-                      <p class="card-description">Resize images to exact dimensions. Batch resize multiple images.</p>
-                      <span class="card-arrow">Resize<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-
-                  <a href="/tools/image/image-cropper/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">✂️</div>
-                      <h3 class="card-title">Image Cropper</h3>
-                      <p class="card-description">Crop images to desired aspect ratio or freehand selection.</p>
-                      <span class="card-arrow">Crop<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-
-                  <a href="/tools/image/background-remover/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">🎭</div>
-                      <h3 class="card-title">Background Remover</h3>
-                      <p class="card-description">Remove background from images automatically.</p>
-                      <span class="card-arrow">Remove BG<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-
-                  <a href="/tools/image/image-watermark/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">💧</div>
-                      <h3 class="card-title">Image Watermark</h3>
-                      <p class="card-description">Add text or image watermarks to photos.</p>
-                      <span class="card-arrow">Watermark<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-
-                  <a href="/tools/image/collage-maker/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">🎨</div>
-                      <h3 class="card-title">Collage Maker</h3>
-                      <p class="card-description">Create photo collages from multiple images.</p>
-                      <span class="card-arrow">Create<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-
-                  <a href="/tools/image/image-rotator/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">🔄</div>
-                      <h3 class="card-title">Image Rotator</h3>
-                      <p class="card-description">Rotate images by any angle or flip horizontally/vertically.</p>
-                      <span class="card-arrow">Rotate<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-
-                  <a href="/tools/image/image-flipper/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">🔀</div>
-                      <h3 class="card-title">Image Flipper</h3>
-                      <p class="card-description">Mirror images horizontally or vertically.</p>
-                      <span class="card-arrow">Flip<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-
-                  <a href="/tools/image/metadata-remover/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">🔒</div>
-                      <h3 class="card-title">Metadata Remover</h3>
-                      <p class="card-description">Remove EXIF data from images for privacy.</p>
-                      <span class="card-arrow">Clean<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-                </div>
-              </section>
-
-              <!-- Security & Privacy Tools -->
-              <section id="security">
-                <div class="section-header">
-                  <div class="section-label">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                    </svg>
-                    Security & Privacy
-                  </div>
-                  <h2 class="section-title">Security Tools</h2>
-                  <p class="section-description">Password generators, encryption tools, and privacy utilities. All processing happens locally.</p>
-                </div>
-
-                <div class="grid grid-3">
-                  <a href="/tools/security/password-generator/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">🔐</div>
-                      <h3 class="card-title">Password Generator</h3>
-                      <p class="card-description">Generate secure, random passwords with customizable options.</p>
-                      <span class="card-arrow">Generate<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-
-                  <a href="/tools/security/password-strength/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">💪</div>
-                      <h3 class="card-title">Password Strength</h3>
-                      <p class="card-description">Check the strength and security of your passwords.</p>
-                      <span class="card-arrow">Check<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-
-                  <a href="/tools/security/hash-generator/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">#️⃣</div>
-                      <h3 class="card-title">Hash Generator</h3>
-                      <p class="card-description">Generate MD5, SHA-1, SHA-256, SHA-512 hashes.</p>
-                      <span class="card-arrow">Hash<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-
-                  <a href="/tools/security/encrypt-decrypt/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">🔒</div>
-                      <h3 class="card-title">Encrypt/Decrypt</h3>
-                      <p class="card-description">Encrypt and decrypt text using AES-256 encryption.</p>
-                      <span class="card-arrow">Encrypt<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-
-                  <a href="/tools/security/uuid-generator/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">🆔</div>
-                      <h3 class="card-title">UUID Generator</h3>
-                      <p class="card-description">Generate universally unique identifiers (UUID/GUID).</p>
-                      <span class="card-arrow">Generate<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-
-                  <a href="/tools/security/jwt-decoder/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">🎫</div>
-                      <h3 class="card-title">JWT Decoder</h3>
-                      <p class="card-description">Decode and verify JSON Web Tokens.</p>
-                      <span class="card-arrow">Decode<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-
-                  <a href="/tools/security/ip-lookup/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">🌐</div>
-                      <h3 class="card-title">IP Lookup</h3>
-                      <p class="card-description">Show your IP address and basic location info.</p>
-                      <span class="card-arrow">Lookup<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-
-                  <a href="/tools/security/user-agent-parser/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">🖥️</div>
-                      <h3 class="card-title">User Agent Parser</h3>
-                      <p class="card-description">Parse browser and system info from user agent.</p>
-                      <span class="card-arrow">Parse<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-
-                  <a href="/tools/security/ssl-checker/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">🔐</div>
-                      <h3 class="card-title">SSL Checker</h3>
-                      <p class="card-description">Check SSL certificate information for domains.</p>
-                      <span class="card-arrow">Check<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-
-                  <a href="/tools/security/ad-blocker-tester/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">🛡️</div>
-                      <h3 class="card-title">Ad Blocker Tester</h3>
-                      <p class="card-description">Test if your ad blocker is working properly.</p>
-                      <span class="card-arrow">Test<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-                </div>
-              </section>
-
-              <!-- Text & Writing Tools -->
-              <section id="text">
-                <div class="section-header">
-                  <div class="section-label">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <path d="M4 7V4h16v3M9 20h6M12 4v16"/>
-                    </svg>
-                    Text & Writing
-                  </div>
-                  <h2 class="section-title">Text Utilities</h2>
-                  <p class="section-description">Word counters, case converters, diff checkers, and text formatters. Essential tools for writers and developers.</p>
-                </div>
-
-                <div class="grid grid-3">
-                  <a href="/tools/text/word-counter/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">🔢</div>
-                      <h3 class="card-title">Word Counter</h3>
-                      <p class="card-description">Count words, characters, sentences with reading time.</p>
-                      <span class="card-arrow">Count<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-
-                  <a href="/tools/text/character-counter/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">🔤</div>
-                      <h3 class="card-title">Character Counter</h3>
-                      <p class="card-description">Count characters with social media limits.</p>
-                      <span class="card-arrow">Count<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-
-                  <a href="/tools/text/case-converter/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">🔄</div>
-                      <h3 class="card-title">Case Converter</h3>
-                      <p class="card-description">Convert between uppercase, lowercase, title case, camelCase.</p>
-                      <span class="card-arrow">Convert<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-
-                  <a href="/tools/text/lorem-ipsum-generator/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">📃</div>
-                      <h3 class="card-title">Lorem Ipsum</h3>
-                      <p class="card-description">Generate placeholder text for design mockups.</p>
-                      <span class="card-arrow">Generate<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-
-                  <a href="/tools/text/text-to-slug/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">🔗</div>
-                      <h3 class="card-title">Text to Slug</h3>
-                      <p class="card-description">Convert text to URL-friendly slugs.</p>
-                      <span class="card-arrow">Convert<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-
-                  <a href="/tools/text/url-encoder/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">🌐</div>
-                      <h3 class="card-title">URL Encoder</h3>
-                      <p class="card-description">Encode and decode text for URLs.</p>
-                      <span class="card-arrow">Encode<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-
-                  <a href="/tools/text/html-entity-encoder/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">🌐</div>
-                      <h3 class="card-title">HTML Entities</h3>
-                      <p class="card-description">Encode special characters to HTML entities.</p>
-                      <span class="card-arrow">Encode<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-
-                  <a href="/tools/text/text-diff/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">📊</div>
-                      <h3 class="card-title">Text Diff</h3>
-                      <p class="card-description">Compare two texts and find differences.</p>
-                      <span class="card-arrow">Compare<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-
-                  <a href="/tools/text/palindrome-checker/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">🪞</div>
-                      <h3 class="card-title">Palindrome Checker</h3>
-                      <p class="card-description">Check if text reads the same forwards and backwards.</p>
-                      <span class="card-arrow">Check<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-
-                  <a href="/tools/text/text-to-ascii/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">💻</div>
-                      <h3 class="card-title">Text to ASCII</h3>
-                      <p class="card-description">Convert text to ASCII, binary, hex, and Base64.</p>
-                      <span class="card-arrow">Convert<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-                </div>
-              </section>
-
-              <!-- Converters & Calculators -->
-              <section id="converters">
-                <div class="section-header">
-                  <div class="section-label">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                    </svg>
-                    Converters & Calculators
-                  </div>
-                  <h2 class="section-title">Unit & Number Tools</h2>
-                  <p class="section-description">Currency, units, time zones, and scientific calculators. Fast, accurate conversions.</p>
-                </div>
-
-                <div class="grid grid-3">
-                  <a href="/tools/converters/unit-converter/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">📏</div>
-                      <h3 class="card-title">Unit Converter</h3>
-                      <p class="card-description">Convert length, weight, temperature, volume, and area units.</p>
-                      <span class="card-arrow">Convert<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-
-                  <a href="/tools/converters/currency-converter/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">💱</div>
-                      <h3 class="card-title">Currency Converter</h3>
-                      <p class="card-description">Convert between currencies with current exchange rates.</p>
-                      <span class="card-arrow">Convert<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-
-                  <a href="/tools/converters/percentage-calculator/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">📊</div>
-                      <h3 class="card-title">Percentage Calc</h3>
-                      <p class="card-description">Calculate percentages, increases, decreases easily.</p>
-                      <span class="card-arrow">Calculate<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-
-                  <a href="/tools/converters/age-calculator/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">🎂</div>
-                      <h3 class="card-title">Age Calculator</h3>
-                      <p class="card-description">Calculate exact age with next birthday countdown.</p>
-                      <span class="card-arrow">Calculate<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-
-                  <a href="/tools/converters/bmi-calculator/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">⚖️</div>
-                      <h3 class="card-title">BMI Calculator</h3>
-                      <p class="card-description">Calculate Body Mass Index and health category.</p>
-                      <span class="card-arrow">Calculate<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-
-                  <a href="/tools/converters/timezone-converter/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">🌍</div>
-                      <h3 class="card-title">Time Zone</h3>
-                      <p class="card-description">Convert time between different time zones worldwide.</p>
-                      <span class="card-arrow">Convert<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-
-                  <a href="/tools/converters/unix-timestamp/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">⏱️</div>
-                      <h3 class="card-title">Unix Timestamp</h3>
-                      <p class="card-description">Convert between Unix timestamps and readable dates.</p>
-                      <span class="card-arrow">Convert<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-
-                  <a href="/tools/converters/number-base-converter/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">🔢</div>
-                      <h3 class="card-title">Number Base</h3>
-                      <p class="card-description">Convert between Binary, Decimal, Hexadecimal, Octal.</p>
-                      <span class="card-arrow">Convert<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-
-                  <a href="/tools/converters/roman-numerals/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">🏛️</div>
-                      <h3 class="card-title">Roman Numerals</h3>
-                      <p class="card-description">Convert between Arabic numbers and Roman numerals.</p>
-                      <span class="card-arrow">Convert<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-
-                  <a href="/tools/converters/scientific-calculator/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">🧮</div>
-                      <h3 class="card-title">Scientific Calc</h3>
-                      <p class="card-description">Advanced calculator with scientific functions.</p>
-                      <span class="card-arrow">Calculate<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-                </div>
-              </section>
-
-              <!-- Data & File Tools -->
-              <section id="data">
-                <div class="section-header">
-                  <div class="section-label">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/>
-                    </svg>
-                    Data & Files
-                  </div>
-                  <h2 class="section-title">Data Processing</h2>
-                  <p class="section-description">CSV, JSON, SQL tools and file utilities. Process data locally in your browser.</p>
-                </div>
-                <div class="grid grid-3">
-                  <a href="/tools/data/csv-to-json/" class="card"><div class="card-body"><div class="card-icon">📊</div><h3 class="card-title">CSV to JSON</h3><p class="card-description">Convert CSV files to JSON format.</p><span class="card-arrow">Convert<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div></a>
-                  <a href="/tools/data/json-to-csv/" class="card"><div class="card-body"><div class="card-icon">📋</div><h3 class="card-title">JSON to CSV</h3><p class="card-description">Convert JSON data to CSV format.</p><span class="card-arrow">Convert<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div></a>
-                  <a href="/tools/data/sql-formatter/" class="card"><div class="card-body"><div class="card-icon">🗄️</div><h3 class="card-title">SQL Formatter</h3><p class="card-description">Format and beautify SQL queries.</p><span class="card-arrow">Format<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div></a>
-                  <a href="/tools/data/csv-viewer/" class="card"><div class="card-body"><div class="card-icon">👁️</div><h3 class="card-title">CSV Viewer</h3><p class="card-description">View and edit CSV files online.</p><span class="card-arrow">View<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div></a>
-                  <a href="/tools/data/file-splitter/" class="card"><div class="card-body"><div class="card-icon">✂️</div><h3 class="card-title">File Splitter</h3><p class="card-description">Split large files into smaller parts.</p><span class="card-arrow">Split<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div></a>
-                  <a href="/tools/data/file-merger/" class="card"><div class="card-body"><div class="card-icon">📎</div><h3 class="card-title">File Merger</h3><p class="card-description">Merge multiple files into one.</p><span class="card-arrow">Merge<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div></a>
-                  <a href="/tools/data/duplicate-finder/" class="card"><div class="card-body"><div class="card-icon">🔍</div><h3 class="card-title">Duplicate Finder</h3><p class="card-description">Find and remove duplicate files.</p><span class="card-arrow">Find<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div></a>
-                  <a href="/tools/data/file-renamer/" class="card"><div class="card-body"><div class="card-icon">🏷️</div><h3 class="card-title">File Renamer</h3><p class="card-description">Batch rename files with patterns.</p><span class="card-arrow">Rename<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div></a>
-                  <a href="/tools/data/checksum-calculator/" class="card"><div class="card-body"><div class="card-icon">#️⃣</div><h3 class="card-title">Checksum Calc</h3><p class="card-description">Calculate MD5, SHA-1, SHA-256 checksums.</p><span class="card-arrow">Calculate<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div></a>
-                  <a href="/tools/data/file-organizer/" class="card"><div class="card-body"><div class="card-icon">📁</div><h3 class="card-title">File Organizer</h3><p class="card-description">Organize files by date, type, size.</p><span class="card-arrow">Organize<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div></a>
-                </div>
-              </section>
-
-              <!-- Social Media & Web Tools -->
-              <section id="social">
-                <div class="section-header">
-                  <div class="section-label">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-                    </svg>
-                    Social & Web
-                  </div>
-                  <h2 class="section-title">Social Media Tools</h2>
-                  <p class="section-description">YouTube, Instagram, Twitter utilities. Hashtags, UTM builder, and more.</p>
-                </div>
-                <div class="grid grid-3">
-                  <a href="/tools/social/youtube-thumbnail/" class="card"><div class="card-body"><div class="card-icon">🎬</div><h3 class="card-title">YT Thumbnail</h3><p class="card-description">Download YouTube video thumbnails.</p><span class="card-arrow">Download<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div></a>
-                  <a href="/tools/social/instagram-photo/" class="card"><div class="card-body"><div class="card-icon">📸</div><h3 class="card-title">Instagram Photo</h3><p class="card-description">Download Instagram photos.</p><span class="card-arrow">Download<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div></a>
-                  <a href="/tools/social/twitter-video/" class="card"><div class="card-body"><div class="card-icon">🐦</div><h3 class="card-title">Twitter Video</h3><p class="card-description">Download Twitter/X videos.</p><span class="card-arrow">Download<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div></a>
-                  <a href="/tools/social/hashtag-generator/" class="card"><div class="card-body"><div class="card-icon">#️⃣</div><h3 class="card-title">Hashtag Gen</h3><p class="card-description">Generate trending hashtags.</p><span class="card-arrow">Generate<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div></a>
-                  <a href="/tools/social/social-image-resizer/" class="card"><div class="card-body"><div class="card-icon">📐</div><h3 class="card-title">Social Resizer</h3><p class="card-description">Resize images for all platforms.</p><span class="card-arrow">Resize<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div></a>
-                  <a href="/tools/social/utm-builder/" class="card"><div class="card-body"><div class="card-icon">🔗</div><h3 class="card-title">UTM Builder</h3><p class="card-description">Build UTM tracking URLs.</p><span class="card-arrow">Build<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div></a>
-                  <a href="/tools/social/url-shortener/" class="card"><div class="card-body"><div class="card-icon">✂️</div><h3 class="card-title">URL Shortener</h3><p class="card-description">Create short URLs with hash.</p><span class="card-arrow">Shorten<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div></a>
-                  <a href="/tools/social/favicon-generator/" class="card"><div class="card-body"><div class="card-icon">🎨</div><h3 class="card-title">Favicon Gen</h3><p class="card-description">Generate favicon from image.</p><span class="card-arrow">Generate<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div></a>
-                  <a href="/tools/social/app-icon-generator/" class="card"><div class="card-body"><div class="card-icon">📱</div><h3 class="card-title">App Icon Gen</h3><p class="card-description">Generate app icons for all sizes.</p><span class="card-arrow">Generate<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div></a>
-                  <a href="/tools/social/website-screenshot/" class="card"><div class="card-body"><div class="card-icon">📷</div><h3 class="card-title">Screenshot</h3><p class="card-description">Capture website screenshots.</p><span class="card-arrow">Capture<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div></a>
-                </div>
-              </section>
-
-              <!-- Graphic & Design Tools -->
-              <section id="design">
-                <div class="section-header">
-                  <div class="section-label">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/>
-                    </svg>
-                    Design
-                  </div>
-                  <h2 class="section-title">Graphic Design</h2>
-                  <p class="section-description">Logo maker, business cards, QR codes, diagrams. Create designs in your browser.</p>
-                </div>
-                <div class="grid grid-3">
-                  <a href="/tools/design/logo-maker/" class="card"><div class="card-body"><div class="card-icon">🎨</div><h3 class="card-title">Logo Maker</h3><p class="card-description">Create logos with SVG shapes.</p><span class="card-arrow">Create<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div></a>
-                  <a href="/tools/design/business-card-maker/" class="card"><div class="card-body"><div class="card-icon">💼</div><h3 class="card-title">Business Card</h3><p class="card-description">Design professional business cards.</p><span class="card-arrow">Design<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div></a>
-                  <a href="/tools/design/resume-builder/" class="card"><div class="card-body"><div class="card-icon">📄</div><h3 class="card-title">Resume Builder</h3><p class="card-description">Build ATS-friendly resumes.</p><span class="card-arrow">Build<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div></a>
-                  <a href="/tools/design/invoice-generator/" class="card"><div class="card-body"><div class="card-icon">🧾</div><h3 class="card-title">Invoice Gen</h3><p class="card-description">Generate professional invoices.</p><span class="card-arrow">Generate<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div></a>
-                  <a href="/tools/design/barcode-generator/" class="card"><div class="card-body"><div class="card-icon">📊</div><h3 class="card-title">Barcode Gen</h3><p class="card-description">Create various barcode types.</p><span class="card-arrow">Create<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div></a>
-                  <a href="/tools/design/qr-code-designer/" class="card"><div class="card-body"><div class="card-icon">🔳</div><h3 class="card-title">QR Designer</h3><p class="card-description">Design custom QR codes.</p><span class="card-arrow">Design<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div></a>
-                  <a href="/tools/design/diagram-maker/" class="card"><div class="card-body"><div class="card-icon">📊</div><h3 class="card-title">Diagram Maker</h3><p class="card-description">Create flowcharts and diagrams.</p><span class="card-arrow">Create<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div></a>
-                  <a href="/tools/design/mind-map-tool/" class="card"><div class="card-body"><div class="card-icon">🧠</div><h3 class="card-title">Mind Map</h3><p class="card-description">Create mind maps and brainstorm.</p><span class="card-arrow">Create<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div></a>
-                  <a href="/tools/design/wireframe-tool/" class="card"><div class="card-body"><div class="card-icon">📐</div><h3 class="card-title">Wireframe Tool</h3><p class="card-description">Create UI wireframes.</p><span class="card-arrow">Create<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div></a>
-                  <a href="/tools/design/mockup-generator/" class="card"><div class="card-body"><div class="card-icon">🖼️</div><h3 class="card-title">Mockup Gen</h3><p class="card-description">Generate device mockups.</p><span class="card-arrow">Generate<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div></a>
-                </div>
-              </section>
-
-              <!-- Productivity & Organization Tools -->
-              <section id="productivity">
-                <div class="section-header">
-                  <div class="section-label">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
-                    </svg>
-                    Productivity
-                  </div>
-                  <h2 class="section-title">Productivity Tools</h2>
-                  <p class="section-description">Timers, notes, todo lists, kanban boards. Organize your work and life.</p>
-                </div>
-                <div class="grid grid-3">
-                  <a href="/tools/productivity/pomodoro-timer/" class="card"><div class="card-body"><div class="card-icon">🍅</div><h3 class="card-title">Pomodoro</h3><p class="card-description">25-minute focus timer.</p><span class="card-arrow">Start<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div></a>
-                  <a href="/tools/productivity/stopwatch/" class="card"><div class="card-body"><div class="card-icon">⏱️</div><h3 class="card-title">Stopwatch</h3><p class="card-description">Precision stopwatch with laps.</p><span class="card-arrow">Start<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div></a>
-                  <a href="/tools/productivity/countdown-timer/" class="card"><div class="card-body"><div class="card-icon">⏰</div><h3 class="card-title">Countdown</h3><p class="card-description">Custom countdown timer.</p><span class="card-arrow">Start<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div></a>
-                  <a href="/tools/productivity/world-clock/" class="card"><div class="card-body"><div class="card-icon">🌍</div><h3 class="card-title">World Clock</h3><p class="card-description">Time across the world.</p><span class="card-arrow">View<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div></a>
-                  <a href="/tools/productivity/notes/" class="card"><div class="card-body"><div class="card-icon">📝</div><h3 class="card-title">Notes</h3><p class="card-description">Quick notes, saved locally.</p><span class="card-arrow">Write<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div></a>
-                  <a href="/tools/productivity/todo-list/" class="card"><div class="card-body"><div class="card-icon">✅</div><h3 class="card-title">Todo List</h3><p class="card-description">Task management with priorities.</p><span class="card-arrow">Manage<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div></a>
-                  <a href="/tools/productivity/kanban-board/" class="card"><div class="card-body"><div class="card-icon">📋</div><h3 class="card-title">Kanban Board</h3><p class="card-description">Drag-drop task board.</p><span class="card-arrow">Organize<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div></a>
-                  <a href="/tools/productivity/habit-tracker/" class="card"><div class="card-body"><div class="card-icon">📈</div><h3 class="card-title">Habit Tracker</h3><p class="card-description">Track daily habits.</p><span class="card-arrow">Track<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div></a>
-                  <a href="/tools/productivity/expense-tracker/" class="card"><div class="card-body"><div class="card-icon">💰</div><h3 class="card-title">Expense Tracker</h3><p class="card-description">Track income and expenses.</p><span class="card-arrow">Track<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div></a>
-                  <a href="/tools/productivity/time-tracker/" class="card"><div class="card-body"><div class="card-icon">⏲️</div><h3 class="card-title">Time Tracker</h3><p class="card-description">Track time spent on projects.</p><span class="card-arrow">Track<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div></a>
-                </div>
-              </section>
-
-              <!-- Lifestyle & Utility Tools -->
-              <section id="lifestyle">
-                <div class="section-header">
-                  <div class="section-label">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <circle cx="12" cy="12" r="10"/>
-                      <path d="M12 6v6l4 2"/>
-                    </svg>
-                    Lifestyle & Utilities
-                  </div>
-                  <h2 class="section-title">Everyday Tools</h2>
-                  <p class="section-description">Religious calendars, news briefs, and daily utilities for informed living.</p>
-                </div>
-
-                <div class="grid grid-3">
-                  <!-- Islamic Calendar -->
-                  <a href="/tools/religious/islamic-calendar/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">🌙</div>
-                      <h3 class="card-title">Islamic Calendar</h3>
-                      <p class="card-description">Hijri calendar with countdowns for Ramadan, Eid, and Kandil nights.</p>
-                      <span class="card-arrow">View Calendar<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-
-                  <!-- News Summarizer -->
-                  <a href="/tools/news/summarizer/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">📰</div>
-                      <h3 class="card-title">Tech & Finance News</h3>
-                      <p class="card-description">AI-curated daily briefs on crypto, stocks, and technology trends.</p>
-                      <span class="card-arrow">Read Brief<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-                </div>
-              </section>
-
-              <!-- Developer Tools -->
-              <section id="dev">
-                <div class="section-header">
-                  <div class="section-label">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <polyline points="16 18 22 12 16 6"/>
-                      <polyline points="8 6 2 12 8 18"/>
-                    </svg>
-                    <span data-i18n="section.dev.label">Developer Tools</span>
-                  </div>
-                  <h2 class="section-title" data-i18n="section.dev.title">Developer Utilities</h2>
-                  <p class="section-description" data-i18n="section.dev.desc">Format, validate, convert, and minify code. 12+ developer tools for web development.</p>
-                </div>
-
-                <div class="grid grid-3">
-                  <!-- Existing Tools -->
-                  <a href="/tools/dev/json-formatter/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon" style="font-family: monospace; font-weight: 700;">{ }</div>
-                      <h3 class="card-title">JSON Formatter</h3>
-                      <p class="card-description">Format, validate, and beautify JSON data with syntax highlighting.</p>
-                      <span class="card-arrow">Format<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-
-                  <a href="/tools/dev/regex-tester/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon" style="font-family: monospace; font-weight: 700;">.*</div>
-                      <h3 class="card-title">Regex Tester</h3>
-                      <p class="card-description">Test and debug regular expressions with real-time matching.</p>
-                      <span class="card-arrow">Test<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-
-                  <!-- NEW: Developer Tools -->
-                  <a href="/tools/dev/code-formatter/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">📝</div>
-                      <h3 class="card-title">Code Formatter</h3>
-                      <p class="card-description">Format and beautify HTML, CSS, and JavaScript code.</p>
-                      <span class="card-arrow">Format<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-
-                  <a href="/tools/dev/json-validator/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">🔍</div>
-                      <h3 class="card-title">JSON Validator</h3>
-                      <p class="card-description">Validate JSON data with error highlighting and position info.</p>
-                      <span class="card-arrow">Validate<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-
-                  <a href="/tools/dev/base64-converter/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">🔄</div>
-                      <h3 class="card-title">Base64 Converter</h3>
-                      <p class="card-description">Encode and decode Base64 strings and files.</p>
-                      <span class="card-arrow">Convert<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-
-                  <a href="/tools/dev/url-encoder/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">🔗</div>
-                      <h3 class="card-title">URL Encoder</h3>
-                      <p class="card-description">Encode and decode URLs and URL components.</p>
-                      <span class="card-arrow">Encode<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-
-                  <a href="/tools/dev/markdown-to-html/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">📄</div>
-                      <h3 class="card-title">Markdown to HTML</h3>
-                      <p class="card-description">Convert Markdown to HTML with live preview.</p>
-                      <span class="card-arrow">Convert<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-
-                  <a href="/tools/dev/html-to-markdown/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">🔄</div>
-                      <h3 class="card-title">HTML to Markdown</h3>
-                      <p class="card-description">Convert HTML code to clean Markdown format.</p>
-                      <span class="card-arrow">Convert<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-
-                  <a href="/tools/dev/css-minifier/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">🗜️</div>
-                      <h3 class="card-title">CSS Minifier</h3>
-                      <p class="card-description">Minify CSS code to reduce file size for production.</p>
-                      <span class="card-arrow">Minify<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-
-                  <a href="/tools/dev/js-minifier/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">⚡</div>
-                      <h3 class="card-title">JS Minifier</h3>
-                      <p class="card-description">Minify JavaScript code for faster page loads.</p>
-                      <span class="card-arrow">Minify<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-
-                  <a href="/tools/dev/color-converter/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">🎨</div>
-                      <h3 class="card-title">Color Converter</h3>
-                      <p class="card-description">Convert between HEX, RGB, HSL color formats.</p>
-                      <span class="card-arrow">Convert<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-
-                  <a href="/tools/dev/lorem-generator/" class="card">
-                    <div class="card-body">
-                      <div class="card-icon">📃</div>
-                      <h3 class="card-title">Lorem Ipsum</h3>
-                      <p class="card-description">Generate placeholder text for design and development.</p>
-                      <span class="card-arrow">Generate<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                  </a>
-                </div>
-              </section>
+          <div class="search-tags">
+            <span class="search-tag-label">Popular:</span>
+            <a href="/tools/pdf/merge" class="search-tag">PDF Merge</a>
+            <a href="/tools/image/compress" class="search-tag">Image Compress</a>
+            <a href="/tools/finance/mortgage-refinance" class="search-tag">Mortgage Calc</a>
+            <a href="/tools/dev/json-formatter" class="search-tag">JSON Formatter</a>
+            <a href="/tools/converters/unit-converter" class="search-tag">Unit Converter</a>
+          </div>
         </div>
+      </section>
 
-        <!-- Right Ad Rail -->
-        <aside class="ad-rail" role="complementary" aria-label="Advertisement">
-          <div class="ad-frame">
-            <div class="ad-label">Advertisement</div>
-            <div class="ad-slot" style="min-height: 600px;">
-              <ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="__ADSENSE_CLIENT__" data-ad-slot="RIGHT_RAIL_SLOT"></ins>
-            </div>
+      <!-- Featured Categories -->
+      <section class="section section-categories" id="categories">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">Browse by Category</h2>
+            <p class="section-description">
+              Organized collections of tools for every need. Click a category to explore.
+            </p>
           </div>
-          <!-- Privacy Card -->
-          <div class="sidebar-card" id="privacy" style="margin-top: 1.5rem;">
-            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.25rem;">
-              <div style="width: 40px; height: 40px; background: rgba(34, 197, 94, 0.1); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center;">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2">
+          <div class="categories-grid" id="categoriesGrid">
+            <!-- Categories injected by JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Popular Tools -->
+      <section class="section section-popular" id="popular">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">Popular Tools</h2>
+            <p class="section-description">Most used tools by our community this week</p>
+          </div>
+          <div class="tools-grid" id="popularTools">
+            <!-- Tools injected by JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- New Tools -->
+      <section class="section section-new" id="new">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">New & Trending</h2>
+            <p class="section-description">Recently added tools and updates</p>
+          </div>
+          <div class="tools-grid" id="newTools">
+            <!-- Tools injected by JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Features/Trust Section -->
+      <section class="section section-features">
+        <div class="container">
+          <div class="features-grid">
+            <div class="feature">
+              <div class="feature-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                </svg>
+              </div>
+              <h3 class="feature-title">Lightning Fast</h3>
+              <p class="feature-description">All tools run in your browser. No server uploads, instant results.</p>
+            </div>
+            <div class="feature">
+              <div class="feature-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                 </svg>
               </div>
-              <h3 class="sidebar-title" style="margin: 0;">Privacy First</h3>
+              <h3 class="feature-title">100% Private</h3>
+              <p class="feature-description">Your files never leave your device. Zero data collection, GDPR compliant.</p>
             </div>
-            <p style="font-size: 0.9375rem; color: var(--text-tertiary); line-height: 1.7; margin-bottom: 1.25rem;">
-              All tools run entirely in your browser. Your files and data are never uploaded to any server.
+            <div class="feature">
+              <div class="feature-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                </svg>
+              </div>
+              <h3 class="feature-title">Completely Free</h3>
+              <p class="feature-description">All tools are free to use. No hidden fees, no signup required.</p>
+            </div>
+            <div class="feature">
+              <div class="feature-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <line x1="2" y1="12" x2="22" y2="12"/>
+                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                </svg>
+              </div>
+              <h3 class="feature-title">Multi-Language</h3>
+              <p class="feature-description">Tools available in multiple languages. Accessible worldwide.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="section section-cta">
+        <div class="container">
+          <div class="cta-box">
+            <h2 class="cta-title">Need a specific tool?</h2>
+            <p class="cta-description">
+              Browse our complete collection of 300+ tools organized by category.
             </p>
-            <ul class="feature-list">
-              <li class="feature-item">
-                <span class="feature-check">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                    <polyline points="20 6 9 17 4 12"/>
-                  </svg>
-                </span>
-                No data transmission
-              </li>
-              <li class="feature-item">
-                <span class="feature-check">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                    <polyline points="20 6 9 17 4 12"/>
-                  </svg>
-                </span>
-                No cookies required
-              </li>
-              <li class="feature-item">
-                <span class="feature-check">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                    <polyline points="20 6 9 17 4 12"/>
-                  </svg>
-                </span>
-                GDPR compliant
-              </li>
-              <li class="feature-item">
-                <span class="feature-check">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                    <polyline points="20 6 9 17 4 12"/>
-                  </svg>
-                </span>
-                Open source
-              </li>
-            </ul>
+            <a href="/categories" class="btn btn-primary btn-lg">
+              View All Categories
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
           </div>
-          <!-- Stats Card -->
-          <div class="sidebar-card" style="margin-top: 1.5rem;">
-            <h3 class="sidebar-title">Platform Stats</h3>
-            <div>
-              <div class="stat-row">
-                <span class="stat-label">Available Tools</span>
-                <span class="stat-value">15+</span>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer - Enhanced for Google Trust & Compliance -->
+    <footer class="app-footer">
+      
+      <!-- Trust Bar -->
+      <div class="footer-trust-bar">
+        <div class="container">
+          <div class="trust-items">
+            <div class="trust-item">
+              <div class="trust-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
               </div>
-              <div class="stat-row">
-                <span class="stat-label">Server Processing</span>
-                <span class="stat-value" style="color: var(--success);">0%</span>
+              <div class="trust-content">
+                <h4>Secure & Private</h4>
+                <p>Your data never leaves your browser</p>
               </div>
-              <div class="stat-row">
-                <span class="stat-label">Privacy Score</span>
-                <span class="stat-value accent">A+</span>
+            </div>
+            <div class="trust-item">
+              <div class="trust-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                  <polyline points="14 2 14 8 20 8"/>
+                  <line x1="16" y1="13" x2="8" y2="13"/>
+                  <line x1="16" y1="17" x2="8" y2="17"/>
+                </svg>
               </div>
-              <div class="stat-row">
-                <span class="stat-label">Uptime</span>
-                <span class="stat-value">99.9%</span>
+              <div class="trust-content">
+                <h4>Transparent</h4>
+                <p>Clear privacy policy & terms</p>
+              </div>
+            </div>
+            <div class="trust-item">
+              <div class="trust-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                </svg>
+              </div>
+              <div class="trust-content">
+                <h4>Support</h4>
+                <p>Contact us for any questions</p>
+              </div>
+            </div>
+            <div class="trust-item">
+              <div class="trust-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <line x1="12" y1="16" x2="12" y2="12"/>
+                  <line x1="12" y1="8" x2="12.01" y2="8"/>
+                </svg>
+              </div>
+              <div class="trust-content">
+                <h4>Verified</h4>
+                <p>Google AdSense compliant</p>
               </div>
             </div>
           </div>
-        </aside>
-      </div>
-    </main>
-    
-    <!-- Footer -->
-    <footer class="site-footer">
-  <div class="footer-container">
-    <div class="footer-grid">
-      <div class="footer-col">
-        <h3 class="footer-brand">NovaTools MC</h3>
-        <p class="footer-about">Free professional tools for finance, PDF, image processing, and development. All calculations run in your browser — your data never leaves your device.</p>
-        <span class="footer-privacy-badge">🔒 Privacy First</span>
-        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem;">
-          <span class="footer-privacy-badge">No Data Stored</span>
-          <span class="footer-privacy-badge">100% Client-Side</span>
-          <span class="footer-privacy-badge">No Cookies Required</span>
-          <span class="footer-privacy-badge">GDPR Friendly</span>
         </div>
       </div>
-      <div class="footer-col">
-        <h4 class="footer-heading">Top Tools</h4>
-        <ul class="footer-links">
-          <li><a href="/tools/finance/mortgage-refinance/">Mortgage Refinance Calculator</a></li>
-          <li><a href="/tools/finance/compound-interest/">Compound Interest Calculator</a></li>
-          <li><a href="/tools/finance/tax/">Tax Estimator 2024</a></li>
-          <li><a href="/tools/dev/json-formatter/">JSON Formatter</a></li>
-          <li><a href="/tools/dev/regex-tester/">Regex Tester</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4 class="footer-heading">Financial Tips</h4>
-        <ol class="footer-tips">
-          <li>Build 6 months emergency fund before any major financial decision.</li>
-          <li>Refinance only if break-even point is under 36 months.</li>
-          <li>Diversify: index funds, real estate, and liquid savings.</li>
-        </ol>
-        <div class="footer-contact">
-          <p>Psk. Metehan CETIN</p>
-          <a href="mailto:proside2026@gmail.com">proside2026@gmail.com</a>
+
+      <!-- Main Footer -->
+      <div class="footer-main">
+        <div class="container">
+          <div class="footer-grid">
+            
+            <!-- Brand Column -->
+            <div class="footer-brand">
+              <a href="/" class="footer-logo">
+                <span class="footer-logo-icon">
+                  <img src="/logo-brand-260.webp" alt="MC NovaTools" width="44" height="44">
+                </span>
+                <span class="footer-logo-text">MC NovaTools</span>
+              </a>
+              <p class="footer-description">
+                300+ free online tools for files, finance, code and creativity. 
+                Fast, private, secure, and always free. Your data stays on your device.
+              </p>
+              
+              <!-- Owner Contact Card -->
+              <div class="footer-contact">
+                <div class="contact-title">Site Owner & Contact</div>
+                <div class="contact-person">Psk. Dan. Metehan ÇETİN</div>
+                <div class="contact-role">Psychological Counselor (Psk. Dan.)</div>
+                <a href="mailto:psk.dan.metehancetin@mc-novatools.com" class="contact-email">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                    <polyline points="22,6 12,13 2,6"/>
+                  </svg>
+                  psk.dan.metehancetin@mc-novatools.com
+                </a>
+              </div>
+            </div>
+            
+            <!-- Links Columns -->
+            <div class="footer-links">
+              <div class="footer-column">
+                <h4 class="footer-column-title">Tool Categories</h4>
+                <ul class="footer-column-list">
+                  <li><a href="/categories/pdf-tools">PDF Tools</a></li>
+                  <li><a href="/categories/image-tools">Image Tools</a></li>
+                  <li><a href="/categories/finance-tools">Finance Tools</a></li>
+                  <li><a href="/categories/developer-tools">Developer Tools</a></li>
+                  <li><a href="/categories/text-tools">Text & Writing</a></li>
+                  <li><a href="/categories/converter-tools">Converters</a></li>
+                </ul>
+              </div>
+              
+              <div class="footer-column">
+                <h4 class="footer-column-title">Company</h4>
+                <ul class="footer-column-list">
+                  <li><a href="/about">About Us</a></li>
+                  <li><a href="/blog">Blog</a></li>
+                  <li><a href="/contact">Contact</a></li>
+                  <li><a href="/request">Request a Tool</a></li>
+                </ul>
+              </div>
+              
+              <div class="footer-column">
+                <h4 class="footer-column-title">Legal & Privacy</h4>
+                <ul class="footer-column-list">
+                  <li><a href="/privacy">Privacy Policy</a></li>
+                  <li><a href="/terms">Terms of Service</a></li>
+                  <li><a href="/cookies">Cookie Policy</a></li>
+                  <li><a href="/security">Security</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Owner Signature Section -->
+          <div class="owner-signature">
+            <div class="owner-avatar">MÇ</div>
+            <div class="owner-info">
+              <h4>Psk. Dan. Metehan ÇETİN</h4>
+              <p>Psychological Counselor & Founder</p>
+              <a href="mailto:psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2026 NovaTools MC &mdash; Psk. Metehan CETIN. All rights reserved.</p>
-      <p class="footer-disclaimer">All tools provide estimates only, not financial or professional advice.</p>
-    </div>
-  </div>
-</footer>
-    
-    <!-- Mobile Anchor Ad -->
-    <div class="ad-mobile-anchor" role="complementary" aria-label="Advertisement">
-      <ins class="adsbygoogle"
-           style="display:inline-block;width:320px;height:50px"
-           data-ad-client="__ADSENSE_CLIENT__"
-           data-ad-slot="ANCHOR_SLOT_ID"></ins>
-    </div>
+
+      <!-- Legal Bar -->
+      <div class="footer-legal-bar">
+        <div class="container">
+          <div class="legal-content">
+            <div class="legal-links">
+              <a href="/privacy">Privacy Policy</a>
+              <span class="legal-divider">|</span>
+              <a href="/terms">Terms of Service</a>
+              <span class="legal-divider">|</span>
+              <a href="/cookies">Cookie Settings</a>
+              <span class="legal-divider">|</span>
+              <a href="/contact">Contact Support</a>
+              <span class="legal-divider">|</span>
+              <a href="mailto:psk.dan.metehancetin@mc-novatools.com">Report Issue</a>
+            </div>
+            <p class="copyright">
+              © 2026 MC NovaTools. Owned and operated by Psk. Dan. Metehan ÇETİN. All rights reserved.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </footer>
 
   </div>
-  
-  <!-- Main JavaScript - Modular Architecture -->
-  <script type="module" src="/src/app.mjs"></script>
-  
-  <!-- pdf-lib loaded on-demand by PDF tool pages only -->
-  
-  <!-- Mobile Menu Toggle -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const menuBtn = document.getElementById('mobileMenuBtn');
-      const mobileMenu = document.getElementById('mobileMenu');
-      
-      if (menuBtn && mobileMenu) {
-        menuBtn.addEventListener('click', function() {
-          const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
-          menuBtn.setAttribute('aria-expanded', !isExpanded);
-          mobileMenu.hidden = isExpanded;
-          mobileMenu.classList.toggle('active', !isExpanded);
-        });
-      }
 
-      // Theme toggle
-      var themeBtn = document.getElementById('themeToggle');
-      if (themeBtn) {
-        function getTheme() {
-          var s = localStorage.getItem('theme');
-          if (s) return s;
-          return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-        }
-        function updateIcon() {
-          var t = getTheme();
-          themeBtn.querySelector('.icon-sun').style.display = t === 'light' ? 'none' : 'block';
-          themeBtn.querySelector('.icon-moon').style.display = t === 'dark' ? 'none' : 'block';
-        }
-        themeBtn.addEventListener('click', function() {
-          var next = getTheme() === 'dark' ? 'light' : 'dark';
-          document.documentElement.setAttribute('data-theme', next);
-          localStorage.setItem('theme', next);
-          updateIcon();
-        });
-        updateIcon();
-      }
-    });
-  </script>
-  
-  <!-- Live Ticker Data & Holiday Countdown -->
-  <script type="module">
-    import { calendarService } from '/src/services/calendar-service.mjs';
-    import { cryptoService } from '/src/services/crypto-service.mjs';
-    import { exchangeRateService } from '/src/services/exchange-rate-service.mjs';
-
-    // Special Day Banner
-    function updateSpecialDayBanner() {
-      const today = new Date();
-      const month = today.getMonth();
-      const date = today.getDate();
-      
-      const specialDays = {
-        '0-1': { banner: '🎉 Happy New Year! Start fresh with your finances.' },
-        '1-14': { banner: '💝 Valentine\'s Day - Special offers for couples!' },
-        '11-25': { banner: '🎄 Merry Christmas from NovaTools!' }
-      };
-      
-      const key = `${month}-${date}`;
-      const content = specialDays[key];
-      
-      const banner = document.getElementById('specialDayBanner');
-      const text = document.getElementById('specialDayText');
-      
-      if (content && banner && text) {
-        text.textContent = content.banner;
-        banner.style.display = 'block';
-      }
-    }
-    
-    // Update live ticker data
-    async function updateTicker() {
-      try {
-        const crypto = await cryptoService.getBitcoinPrice();
-        const btcEl = document.getElementById('btcprice');
-        if (btcEl && crypto.price) {
-          btcEl.textContent = `$${crypto.price.toLocaleString()}`;
-          btcEl.className = `value ${crypto.change24h >= 0 ? 'positive' : 'negative'}`;
-        }
-      } catch (e) { console.warn('BTC fetch failed'); }
-
-      try {
-        const rates = await exchangeRateService.getRates();
-        const eurEl = document.getElementById('usdeur');
-        const jpyEl = document.getElementById('usdjpy');
-        if (eurEl) eurEl.textContent = rates.rates.EUR?.toFixed(4) || '--';
-        if (jpyEl) jpyEl.textContent = rates.rates.JPY?.toFixed(2) || '--';
-      } catch (e) { console.warn('Rates fetch failed'); }
-    }
-    
-    // Holiday Countdown
-    function updateHolidayCountdown() {
-      const holidays = calendarService.getUpcomingEvents();
-      const nextEvent = holidays[0];
-      
-      if (nextEvent) {
-        const text = document.getElementById('holidayText');
-        if (text) {
-          text.textContent = `${nextEvent.name} in ${nextEvent.daysUntil} days`;
-        }
-      }
-    }
-    
-    // Initialize
-    updateSpecialDayBanner();
-    updateTicker();
-    updateHolidayCountdown();
-    
-    // Refresh every 5 minutes
-    setInterval(() => {
-      updateTicker();
-      updateHolidayCountdown();
-    }, 300000);
-  </script>
-
-  <script>
-  (function() {
-    var T = {
-      en: { ht:'Professional Tools. Complete Privacy.', hd:'Powerful calculators for mortgage, insurance, and cloud costs. All processing happens in your browser.', cp:'Explore Tools', cs:'How It Works', nf:'Finance', np:'PDF Tools', ni:'Images', nd:'Developers', sfl:'Financial Tools', sft:'High-Value Financial Calculators', sfd:'Professional-grade tools for mortgage planning, insurance estimates, and investment projections.', spl:'PDF Tools', spt:'PDF Manipulation Suite', spd:'Merge, compress, and split PDFs directly in your browser.', sil:'Image Tools', sit:'Image Optimization', sid:'Compress and convert images to modern formats.', sdl:'Developer Tools', sdt:'Developer Utilities', sdd:'Essential tools for debugging and formatting code.' },
-      zh: { ht:'专业工具。完全私密。', hd:'强大的抵押贷款、保险和云成本计算器。所有处理均在您的浏览器中进行。', cp:'探索工具', cs:'工作原理', nf:'金融', np:'PDF工具', ni:'图片', nd:'开发者', sfl:'金融工具', sft:'高价值金融计算器', sfd:'专业级的抵押贷款规划、保险估算和投资预测工具。', spl:'PDF工具', spt:'PDF操作套件', spd:'直接在浏览器中合并、压缩和分割PDF。', sil:'图片工具', sit:'图片优化', sid:'将图片压缩并转换为现代格式。', sdl:'开发者工具', sdt:'开发者实用工具', sdd:'在浏览器中调试和格式化代码的必备工具。' },
-      hi: { ht:'पेशेवर टूल्स। पूर्ण गोपनीयता।', hd:'बंधक, बीमा और क्लाउड लागत के लिए शक्तिशाली कैलकुलेटर। सभी प्रसंस्करण आपके ब्राउज़र में होता है।', cp:'टूल्स देखें', cs:'यह कैसे काम करता है', nf:'वित्त', np:'PDF टूल्स', ni:'छवियां', nd:'डेवलपर्स', sfl:'वित्तीय टूल्स', sft:'उच्च-मूल्य वित्तीय कैलकुलेटर', sfd:'बंधक योजना, बीमा अनुमान और निवेश के लिए पेशेवर उपकरण।', spl:'PDF टूल्स', spt:'PDF मैनिपुलेशन सूट', spd:'ब्राउज़र में सीधे PDF मर्ज, कम्प्रेस और स्प्लिट करें।', sil:'छवि टूल्स', sit:'छवि अनुकूलन', sid:'तेज़ वेबसाइटों के लिए छवियों को आधुनिक प्रारूपों में अनुकूलित करें।', sdl:'डेवलपर टूल्स', sdt:'डेवलपर यूटिलिटीज़', sdd:'ब्राउज़र में कोड डीबग और फ़ॉर्मेट करने के लिए आवश्यक टूल।' },
-      tr: { ht:'Profesyonel Araçlar. Tam Gizlilik.', hd:'Mortgage, sigorta ve bulut maliyetleri için güçlü hesaplayıcılar. Tüm işlemler tarayıcınızda gerçekleşir.', cp:'Araçları Keşfet', cs:'Nasıl Çalışır', nf:'Finans', np:'PDF Araçları', ni:'Görseller', nd:'Geliştiriciler', sfl:'Finansal Araçlar', sft:'Yüksek Değerli Hesaplayıcılar', sfd:'Mortgage planlaması, sigorta tahminleri ve yatırım projeksiyonları.', spl:'PDF Araçları', spt:'PDF İşleme Paketi', spd:"PDF'leri tarayıcınızda birleştirin, sıkıştırın ve bölün.", sil:'Görsel Araçlar', sit:'Görsel Optimizasyon', sid:'Görselleri modern formatlara dönüştürün.', sdl:'Geliştirici Araçları', sdt:'Geliştirici Araçları', sdd:'Tarayıcıda kod hata ayıklama araçları.' },
-      de: { ht:'Professionelle Tools. Vollständige Privatsphäre.', hd:'Leistungsstarke Rechner für Hypotheken, Versicherungen und Cloud-Kosten. Alles läuft in Ihrem Browser.', cp:'Tools entdecken', cs:'Wie es funktioniert', nf:'Finanzen', np:'PDF-Tools', ni:'Bilder', nd:'Entwickler', sfl:'Finanzielle Tools', sft:'Hochwertige Finanzrechner', sfd:'Professionelle Tools für Hypothekenplanung und Investitionsprojektionen.', spl:'PDF-Tools', spt:'PDF-Bearbeitungspaket', spd:'PDFs direkt im Browser zusammenführen, komprimieren und aufteilen.', sil:'Bild-Tools', sit:'Bildoptimierung', sid:'Bilder in moderne Formate konvertieren.', sdl:'Entwickler-Tools', sdt:'Entwickler-Utilities', sdd:'Wesentliche Tools zum Debuggen von Code im Browser.' },
-      es: { ht:'Herramientas Profesionales. Privacidad Total.', hd:'Potentes calculadoras para hipotecas, seguros y costes en la nube. Todo se procesa en tu navegador.', cp:'Explorar', cs:'Cómo Funciona', nf:'Finanzas', np:'PDF', ni:'Imágenes', nd:'Desarrolladores', sfl:'Herramientas Financieras', sft:'Calculadoras de Alto Valor', sfd:'Herramientas para planificación hipotecaria y proyecciones de inversión.', spl:'PDF', spt:'Suite PDF', spd:'Combina, comprime y divide PDFs en tu navegador.', sil:'Imágenes', sit:'Optimización de Imágenes', sid:'Comprime y convierte imágenes a formatos modernos.', sdl:'Herramientas Dev', sdt:'Utilidades para Desarrolladores', sdd:'Herramientas para depurar código en el navegador.' }
-    };
-    var MAP = {
-      'hero.title':'ht','hero.description':'hd','hero.cta.primary':'cp','hero.cta.secondary':'cs',
-      'nav.finance':'nf','nav.pdf':'np','nav.images':'ni','nav.dev':'nd',
-      'section.finance.label':'sfl','section.finance.title':'sft','section.finance.desc':'sfd',
-      'section.pdf.label':'spl','section.pdf.title':'spt','section.pdf.desc':'spd',
-      'section.image.label':'sil','section.image.title':'sit','section.image.desc':'sid',
-      'section.dev.label':'sdl','section.dev.title':'sdt','section.dev.desc':'sdd'
-    };
-    var LBL = {en:'EN',zh:'中文',hi:'हि',tr:'TR',de:'DE',es:'ES'};
-
-    function applyLang(lang) {
-      var t = T[lang] || T.en;
-      document.querySelectorAll('[data-i18n]').forEach(function(el) {
-        var k = MAP[el.getAttribute('data-i18n')];
-        if (k && t[k]) el.textContent = t[k];
-      });
-      var btn = document.getElementById('langBtn');
-      if (btn) { btn.lastChild.textContent = ' ' + (LBL[lang] || lang.toUpperCase()); }
-      document.querySelectorAll('.lang-option[data-lang]').forEach(function(o) {
-        var a = o.getAttribute('data-lang') === lang;
-        o.classList.toggle('active', a);
-        o.setAttribute('aria-selected', String(a));
-      });
-      localStorage.setItem('lang', lang);
-    }
-
-    var switcher = document.getElementById('langSwitcher');
-    var btn = document.getElementById('langBtn');
-    if (switcher && btn) {
-      btn.addEventListener('click', function(e) {
-        e.stopPropagation();
-        var isOpen = switcher.classList.toggle('open');
-        btn.setAttribute('aria-expanded', isOpen);
-      });
-      document.addEventListener('click', function(e) {
-        if (!switcher.contains(e.target)) {
-          switcher.classList.remove('open');
-          btn.setAttribute('aria-expanded', 'false');
-        }
-      });
-      switcher.querySelectorAll('.lang-option[data-lang]').forEach(function(opt) {
-        opt.addEventListener('click', function() {
-          applyLang(opt.getAttribute('data-lang'));
-          switcher.classList.remove('open');
-          btn.setAttribute('aria-expanded', 'false');
-        });
-      });
-      var saved = localStorage.getItem('lang') || 'en';
-      if (saved !== 'en') applyLang(saved);
-    }
-  })();
-  </script>
+  <!-- Scripts -->
+  <script type="module" src="/src/main.js"></script>
 </body>
 </html>
