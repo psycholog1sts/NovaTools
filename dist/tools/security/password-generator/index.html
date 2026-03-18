@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y896L63239"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Y896L63239');
+  </script>
+  <meta charset="UTF-8">
+  <script>(function(){var t=localStorage.getItem('novatools-theme');if(t)document.documentElement.setAttribute('data-theme',t);else{var d=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',d);document.documentElement.style.colorScheme=d;}})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <title>Free Secure Password Generator | NovaTools MC</title>
+  
+  <!-- i18n Script -->
+  <script src="/i18n.js"></script>
+  <meta name="description" content="Generate secure, random passwords with customizable options. Strong password generator with length control, character types, and strength indicator. 100% free and private.">
+  <meta name="keywords" content="password generator, secure password, random password, strong password, free password tool">
+  <meta name="theme-color" content="#0A0A0C">
+
+  <meta property="og:title" content="Free Secure Password Generator | NovaTools MC">
+  <meta property="og:description" content="Generate secure, random passwords with customizable options. Strong password generator. 100% free and private.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.mc-novatools.com/tools/security/password-generator/">
+  <meta property="og:image" content="https://www.mc-novatools.com/og-image.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free Secure Password Generator | NovaTools MC">
+  <meta name="twitter:description" content="Generate secure, random passwords. Customizable options. 100% free and private.">
+
+  <link rel="canonical" href="https://www.mc-novatools.com/tools/security/password-generator/">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [{
+      "@type": "WebApplication",
+      "name": "Password Generator",
+      "description": "Generate secure, random passwords with customizable options. Strong password generator with length control and character types.",
+      "url": "https://www.mc-novatools.com/tools/security/password-generator/",
+      "applicationCategory": "SecurityApplication",
+      "operatingSystem": "Any",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+    }]
+  }
+  </script>
+
+  <style>.tool-wrapper{margin:0 auto;max-width:960px;padding:3rem 1rem 5rem}.tool-hero{margin-bottom:2.5rem;text-align:center}.tool-hero-icon{font-size:3.5rem;line-height:1;margin-bottom:1rem}.tool-hero h1{color:#fafafa;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;letter-spacing:-.02em;margin-bottom:.75rem}.tool-hero p{color:#a1a1aa;font-size:1.0625rem;margin:0 auto;max-width:560px}.card{backdrop-filter:blur(12px);background:rgba(15,15,20,.7);border:1px solid rgba(0,217,255,.15);border-radius:14px;padding:1.75rem}.password-display{background:#08080a;border:1px solid rgba(0,217,255,.2);border-radius:12px;margin-bottom:1.5rem;padding:1.5rem;position:relative}#passwordOutput{color:#fafafa;font-family:JetBrains Mono,Fira Code,monospace;font-size:1.25rem;font-weight:500;min-height:2rem;text-align:center;word-break:break-all}.password-placeholder{color:#52525b;font-style:italic}.password-actions{display:flex;gap:.75rem;justify-content:center;margin-top:1rem}.btn{align-items:center;border:none;border-radius:8px;cursor:pointer;display:inline-flex;font-size:.9rem;font-weight:600;gap:.4rem;height:44px;outline:none;padding:0 1.25rem;transition:background .18s,transform .12s,opacity .18s;-webkit-user-select:none;-moz-user-select:none;user-select:none}.btn:active{transform:scale(.97)}.btn-primary{background:linear-gradient(135deg,#00d9ff,#09c);color:#0a0a0c}.btn-primary:hover{background:linear-gradient(135deg,#1fe2ff,#00b8ee)}.btn-secondary{background:rgba(0,217,255,.1);border:1px solid rgba(0,217,255,.25);color:#00d9ff}.btn-secondary:hover{background:rgba(0,217,255,.18)}.strength-meter{margin-bottom:1.5rem}.strength-bar-container{background:hsla(0,0%,100%,.1);border-radius:4px;height:8px;margin-bottom:.5rem;overflow:hidden}.strength-bar{border-radius:4px;height:100%;transition:width .3s ease,background-color .3s ease;width:0}.strength-bar.weak{background:linear-gradient(90deg,#f55,#f77)}.strength-bar.fair{background:linear-gradient(90deg,#ff9500,#ffb84d)}.strength-bar.good{background:linear-gradient(90deg,gold,#ffed4a)}.strength-bar.strong{background:linear-gradient(90deg,#0f8,#4dffb8)}.strength-label{color:#71717a;font-size:.875rem;font-weight:600;text-align:center}.options-section{display:grid;gap:1.25rem}.option-group{display:flex;flex-direction:column;gap:.75rem}.option-label{color:#a1a1aa;font-size:.875rem;font-weight:600;gap:.5rem}.length-control,.option-label{align-items:center;display:flex}.length-control{gap:1rem}#lengthSlider{-webkit-appearance:none;-moz-appearance:none;appearance:none;background:rgba(0,217,255,.2);border-radius:3px;flex:1;height:6px;outline:none}#lengthSlider::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;background:linear-gradient(135deg,#00d9ff,#09c);border-radius:50%;box-shadow:0 0 10px rgba(0,217,255,.3);cursor:pointer;height:20px;width:20px}#lengthSlider::-moz-range-thumb{background:linear-gradient(135deg,#00d9ff,#09c);border:none;border-radius:50%;box-shadow:0 0 10px rgba(0,217,255,.3);cursor:pointer;height:20px;width:20px}#lengthValue{background:rgba(0,217,255,.1);border-radius:6px;color:#00d9ff;font-family:JetBrains Mono,monospace;font-size:1.125rem;font-weight:600;min-width:3rem;padding:.375rem .75rem;text-align:center}.checkbox-group{display:grid;gap:.75rem;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}.checkbox-option{align-items:center;background:hsla(0,0%,100%,.03);border:1px solid hsla(0,0%,100%,.1);border-radius:8px;cursor:pointer;display:flex;gap:.75rem;padding:.75rem;transition:all .2s ease}.checkbox-option:hover{background:rgba(0,217,255,.05);border-color:rgba(0,217,255,.2)}.checkbox-option input[type=checkbox]{accent-color:#00d9ff;cursor:pointer;height:20px;width:20px}.checkbox-option span{color:#fafafa;font-size:.9rem}.generate-btn-container{display:flex;justify-content:center;margin-top:1.5rem}.btn-generate{font-size:1rem;height:52px;padding:0 2rem}.copy-feedback{background:rgba(0,255,136,.9);border-radius:6px;color:#0a0a0c;font-size:.875rem;font-weight:600;left:50%;opacity:0;padding:.5rem 1rem;pointer-events:none;position:absolute;top:50%;transform:translate(-50%,-50%);transition:opacity .3s}.copy-feedback.show{opacity:1}.disclaimer{align-items:flex-start;background:rgba(255,193,7,.1);border:1px solid rgba(255,193,7,.3);border-radius:8px;display:flex;gap:.75rem;margin-top:1.5rem;padding:1rem}.disclaimer-icon{color:#ffc107;flex-shrink:0;font-size:1.125rem}.disclaimer-text{color:#a1a1aa;font-size:.8125rem;line-height:1.6}.seo-section{margin:3.5rem auto 0;max-width:960px;padding:0 1rem}.seo-section h2{color:#fafafa;font-size:1.375rem;font-weight:700;margin-bottom:.75rem}.seo-section h3{color:#fafafa;font-size:1.125rem;font-weight:600;margin:2rem 0 .75rem}.seo-section li,.seo-section p{color:#a1a1aa;font-size:.9375rem;line-height:1.8}.seo-section ol{padding-left:1.25rem}.seo-section ol li{margin-bottom:.4rem}.faq-item{background:rgba(15,15,20,.5);border:1px solid rgba(0,217,255,.1);border-radius:10px;margin-bottom:.875rem;padding:1rem 1.125rem}.faq-item summary{align-items:center;color:#fafafa;cursor:pointer;display:flex;font-weight:600;gap:1rem;justify-content:space-between;list-style:none}.faq-item summary::-webkit-details-marker{display:none}.faq-item summary:after{color:#00d9ff;content:"+";flex-shrink:0;font-size:1.25rem;transition:transform .2s}.faq-item[open] summary:after{content:"\2212"}.faq-item p{color:#a1a1aa;line-height:1.7;margin-top:.625rem}@media (max-width:600px){.checkbox-group{grid-template-columns:1fr}.length-control{flex-wrap:wrap}#passwordOutput{font-size:1rem}}</style>
+  <script type="module" crossorigin src="/js/tools/security/password-generator--d6Xw6y9.js"></script>
+  <link rel="modulepreload" crossorigin href="/js/modulepreload-polyfill-YP0FEG5d.js">
+  <link rel="stylesheet" crossorigin href="/css/critical-D6EXev1O.css">
+  <link rel="stylesheet" crossorigin href="/css/main-C-2uV3x-.css">
+<link rel="manifest" href="/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/registerSW.js"></script></head>
+<body>
+  <div class="bg-ambient" aria-hidden="true"></div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <div id="app" class="app">
+    <header class="main-header">
+      <div class="container">
+        <div class="header-inner">
+          <a href="/" class="logo" aria-label="NovaTools MC Home">
+            <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
+            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+          </a>
+          <nav class="nav-desktop" aria-label="Main navigation">
+            <a href="/#finance" class="nav-link">Finance</a>
+            <a href="/#pdf" class="nav-link">PDF Tools</a>
+            <a href="/#image" class="nav-link">Images</a>
+            <a href="/#dev" class="nav-link">Developers</a>
+          </nav>
+          <div class="privacy-badge" title="Your data never leaves your browser">
+            <span class="privacy-badge-dot"></span>
+            <span>Privacy First</span>
+          </div>
+          <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+            <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+          <button type="button" id="mobileMenuBtn" class="menu-btn" aria-label="Toggle menu" aria-expanded="false">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+        </div>
+        <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
+          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <div class="tool-wrapper">
+        <div class="tool-hero">
+          <div class="tool-hero-icon">&#128272;</div>
+          <h1>Password Generator</h1>
+          <p>Generate secure, random passwords with customizable options. All processing happens in your browser for maximum privacy.</p>
+        </div>
+
+        <div class="card">
+          <div class="password-display">
+            <div id="passwordOutput">
+              <span class="password-placeholder">Click Generate to create a password</span>
+            </div>
+            <div class="password-actions">
+              <button class="btn btn-secondary" id="btnCopy" type="button" aria-label="Copy password">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M4 1.5H3a2 2 0 00-2 2V14a2 2 0 002 2h10a2 2 0 002-2V3.5a2 2 0 00-2-2h-1v1h1a1 1 0 011 1V14a1 1 0 01-1 1H3a1 1 0 01-1-1V3.5a1 1 0 011-1h1v-1zM9.5 1a.5.5 0 01.5.5v1a.5.5 0 01-.5.5h-3a.5.5 0 01-.5-.5v-1a.5.5 0 01.5-.5h3z"/></svg>
+                Copy
+              </button>
+              <button class="btn btn-secondary" id="btnRegenerate" type="button" aria-label="Regenerate password">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M11.534 7h3.932a.25.25 0 00.192-.41l-1.966-2.36a.25.25 0 00-.384 0l-1.966 2.36a.25.25 0 00.192.41zm-11 2h3.932a.25.25 0 00.192-.41L2.692 6.23a.25.25 0 00-.384 0L.342 8.59A.25.25 0 00.534 9z"/><path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 01-.771-.636A6.002 6.002 0 0113.917 7H12.9A5.002 5.002 0 008 3zM3.1 9a5.002 5.002 0 008.757 2.182.5.5 0 01.771.636A6.002 6.002 0 012.083 9H3.1z"/></svg>
+                Regenerate
+              </button>
+            </div>
+            <div class="copy-feedback" id="copyFeedback">Copied!</div>
+          </div>
+
+          <div class="strength-meter">
+            <div class="strength-bar-container">
+              <div class="strength-bar" id="strengthBar"></div>
+            </div>
+            <div class="strength-label" id="strengthLabel">Password Strength: Not generated</div>
+          </div>
+
+          <div class="options-section">
+            <div class="option-group">
+              <div class="option-label">
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1a2 2 0 00-2 2v4a2 2 0 002 2V9a3 3 0 013 3v.5a.5.5 0 001 0V12a4 4 0 00-4-4V7a1 1 0 011-1h.5a.5.5 0 000-1H11a2 2 0 00-2-2H8z"/></svg>
+                Password Length
+              </div>
+              <div class="length-control">
+                <input type="range" id="lengthSlider" min="8" max="64" value="16" aria-label="Password length">
+                <span id="lengthValue">16</span>
+              </div>
+            </div>
+
+            <div class="option-group">
+              <div class="option-label">
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M5.338 1.59a61.44 61.44 0 00-2.837.856.481.481 0 00-.328.39c-.554 4.157.726 7.19 2.253 9.188a10.725 10.725 0 002.287 2.233c.346.244.652.42.893.533.201.091.396.16.583.205a7.04 7.04 0 001.167.088c.39 0 .765-.03 1.123-.087.188-.045.383-.114.584-.205.241-.113.547-.289.893-.533a10.726 10.726 0 002.287-2.233c1.527-1.997 2.807-5.031 2.253-9.188a.48.48 0 00-.328-.39c-.651-.213-1.75-.56-2.837-.855C9.552 1.29 8.531 1.067 8 1.067c-.53 0-1.552.223-2.662.524zM5.072.56C6.157.265 7.31 0 8 0s1.843.265 2.928.56c1.11.3 2.229.655 2.887.87a1.54 1.54 0 011.044 1.262c.596 4.477-.787 7.795-2.465 9.99a11.775 11.775 0 01-2.517 2.453 7.159 7.159 0 01-1.048.625c-.28.132-.581.24-.829.24s-.548-.108-.829-.24a7.158 7.158 0 01-1.048-.625 11.777 11.777 0 01-2.517-2.453C1.928 10.487.545 7.169 1.141 2.692A1.54 1.54 0 012.185 1.43 62.456 62.456 0 015.072.56z"/><path d="M10.854 5.146a.5.5 0 010 .708l-3 3a.5.5 0 01-.708 0l-1.5-1.5a.5.5 0 01.708-.708L7.5 7.793l2.646-2.647a.5.5 0 01.708 0z"/></svg>
+                Character Types
+              </div>
+              <div class="checkbox-group">
+                <label class="checkbox-option">
+                  <input type="checkbox" id="uppercase" checked>
+                  <span>Uppercase (A-Z)</span>
+                </label>
+                <label class="checkbox-option">
+                  <input type="checkbox" id="lowercase" checked>
+                  <span>Lowercase (a-z)</span>
+                </label>
+                <label class="checkbox-option">
+                  <input type="checkbox" id="numbers" checked>
+                  <span>Numbers (0-9)</span>
+                </label>
+                <label class="checkbox-option">
+                  <input type="checkbox" id="symbols">
+                  <span>Symbols (!@#$%)</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="option-group">
+              <div class="option-label">
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 15A7 7 0 108 1a7 7 0 000 14zm0 1A8 8 0 118 0a8 8 0 010 16z"/><path d="M7.002 11a1 1 0 112 0 1 1 0 01-2 0zM7.1 4.995a.905.905 0 111.8 0l-.35 3.507a.552.552 0 01-1.1 0L7.1 4.995z"/></svg>
+                Options
+              </div>
+              <div class="checkbox-group">
+                <label class="checkbox-option">
+                  <input type="checkbox" id="excludeSimilar">
+                  <span>Exclude Similar (0, O, l, 1)</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="generate-btn-container">
+            <button class="btn btn-primary btn-generate" id="btnGenerate" type="button">
+              <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><path d="M8 4a.5.5 0 00-.5.5v3h-3a.5.5 0 000 1h3v3a.5.5 0 001 0v-3h3a.5.5 0 000-1h-3v-3A.5.5 0 008 4z"/></svg>
+              Generate Password
+            </button>
+          </div>
+
+          <div class="disclaimer">
+            <span class="disclaimer-icon">&#9888;</span>
+            <span class="disclaimer-text"><strong>Security Note:</strong> Passwords are generated locally in your browser and are never sent to any server. Make sure to save your password in a secure password manager.</span>
+          </div>
+        </div>
+      </div>
+
+      <section class="seo-section" aria-label="About this tool">
+        <h2>About Password Generator</h2>
+        <p>
+          Create strong, secure passwords instantly with our free password generator. Customize length (8-64 characters), include uppercase, lowercase, numbers, and symbols. The built-in strength indicator shows how secure your password is. All passwords are generated locally in your browser - your data never leaves your device.
+        </p>
+
+        <h3>How to Use</h3>
+        <ol>
+          <li>Adjust the password length using the slider (8-64 characters).</li>
+          <li>Select character types: uppercase, lowercase, numbers, and/or symbols.</li>
+          <li>Optionally enable "Exclude Similar" to avoid confusing characters like 0/O and l/1.</li>
+          <li>Click <strong>Generate Password</strong> to create a secure password.</li>
+          <li>Use the <strong>Copy</strong> button to copy the password to your clipboard.</li>
+          <li>Click <strong>Regenerate</strong> to create a new password with the same settings.</li>
+        </ol>
+
+        <h3>Frequently Asked Questions</h3>
+
+        <details class="faq-item">
+          <summary>How secure are the generated passwords?</summary>
+          <p>Our passwords are generated using cryptographically secure random number generation via the Web Crypto API. This ensures true randomness suitable for secure passwords. The strength meter indicates how resistant your password would be to brute-force attacks.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Are my passwords stored anywhere?</summary>
+          <p>No. All password generation happens entirely within your browser. No data is transmitted to our servers or stored anywhere. Your passwords exist only in your browser's memory until you close or refresh the page.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>What makes a password strong?</summary>
+          <p>A strong password should be at least 12 characters long and include a mix of uppercase letters, lowercase letters, numbers, and symbols. Longer passwords with more character variety are exponentially harder to crack. Our strength meter categorizes passwords as Weak, Fair, Good, or Strong based on these factors.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Should I use the "Exclude Similar" option?</summary>
+          <p>The "Exclude Similar" option removes visually similar characters (like 0/O and l/1/I) from generated passwords. This can be helpful when you need to manually type the password, as it reduces the chance of confusion. However, it slightly reduces the possible character combinations.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Can I use these passwords for important accounts?</summary>
+          <p>Yes, passwords generated with this tool are suitable for any account, including banking, email, and social media. We recommend using at least 16 characters with all character types enabled for maximum security. Always store your passwords in a reputable password manager.</p>
+        </details>
+      </section>
+    </main>
+
+    <footer class="tool-footer">
+      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
+      <p>Estimates only &mdash; not financial, legal, or tax advice.</p>
+    </footer>
+    <style>.tool-footer{border-top:1px solid var(--border-default);color:#718096;font-size:.8rem;line-height:1.8;margin-top:3rem;padding:1.5rem 1rem;text-align:center}.tool-footer a{color:#00d9ff;text-decoration:none}</style>
+  </div>
+
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var menuBtn = document.getElementById('mobileMenuBtn');
+      var mobileMenu = document.getElementById('mobileMenu');
+      if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener('click', function() {
+          var isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+          menuBtn.setAttribute('aria-expanded', !isExpanded);
+          mobileMenu.hidden = isExpanded;
+          mobileMenu.classList.toggle('active', !isExpanded);
+        });
+      }
+      var themeBtn = document.getElementById('themeToggle');
+      if (themeBtn) {
+        function getTheme() {
+          var s = localStorage.getItem('theme');
+          if (s) return s;
+          return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        }
+        function updateIcon() {
+          var t = getTheme();
+          themeBtn.querySelector('.icon-sun').style.display = t === 'light' ? 'none' : 'block';
+          themeBtn.querySelector('.icon-moon').style.display = t === 'dark' ? 'none' : 'block';
+        }
+        themeBtn.addEventListener('click', function() {
+          var next = getTheme() === 'dark' ? 'light' : 'dark';
+          document.documentElement.setAttribute('data-theme', next);
+          localStorage.setItem('theme', next);
+          updateIcon();
+        });
+        updateIcon();
+      }
+    });
+  </script>
+</body>
+</html>

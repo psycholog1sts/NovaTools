@@ -29,6 +29,9 @@
   <link rel="stylesheet" href="/src/styles/critical.css">
   <link rel="stylesheet" href="/src/styles/design-system.css">
   
+  <!-- i18n Script -->
+  <script src="/i18n.js"></script>
+  
   <!-- Meta -->
   <title>Free Online Tools - 300+ Utilities for Files, Finance & Code | MC NovaTools</title>
   <meta name="description" content="300+ free online tools: PDF converters, image optimizers, financial calculators, developer utilities. Fast, private, no signup required.">
@@ -101,12 +104,12 @@
           
           <!-- Desktop Nav -->
           <nav class="main-nav" aria-label="Main navigation">
-            <a href="/categories/pdf-tools.html" class="nav-link">PDF</a>
-            <a href="/categories/image-tools.html" class="nav-link">Image</a>
-            <a href="/categories/finance-tools.html" class="nav-link">Finance</a>
-            <a href="/categories/developer-tools.html" class="nav-link">Dev</a>
-            <a href="/blog/index.html" class="nav-link">Blog</a>
-            <a href="/about-us.html" class="nav-link">About</a>
+            <a href="/categories/pdf-tools.html" class="nav-link" data-i18n="nav.pdf">PDF</a>
+            <a href="/categories/image-tools.html" class="nav-link" data-i18n="nav.image">Image</a>
+            <a href="/categories/finance-tools.html" class="nav-link" data-i18n="nav.finance">Finance</a>
+            <a href="/categories/developer-tools.html" class="nav-link" data-i18n="nav.developer">Dev</a>
+            <a href="/blog/index.html" class="nav-link" data-i18n="nav.blog">Blog</a>
+            <a href="/about-us.html" class="nav-link" data-i18n="nav.about">About</a>
           </nav>
           
           <!-- Actions -->
@@ -185,35 +188,35 @@
         </div>
         <div class="container">
           <div class="hero-content">
-            <h1 class="hero-title">
+            <h1 class="hero-title" data-i18n="hero.title">
               All-in-One Tools for
               <span class="text-gradient">Files, Finance & Code</span>
             </h1>
-            <p class="hero-description">
+            <p class="hero-description" data-i18n="hero.subtitle">
               Use MC NovaTools to convert, calculate, create, optimize and streamline work with a fast, 
               clean and privacy-focused toolkit. 300+ free tools, no signup required.
             </p>
             <div class="hero-actions">
               <a href="/categories" class="btn btn-primary btn-lg">
-                Explore Tools
+                <span data-i18n="hero.cta">Explore Tools</span>
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M5 12h14M12 5l7 7-7 7"/>
                 </svg>
               </a>
-              <a href="#categories" class="btn btn-secondary btn-lg">Browse Categories</a>
+              <a href="#categories" class="btn btn-secondary btn-lg" data-i18n="hero.browse">Browse Categories</a>
             </div>
             <div class="hero-stats">
               <div class="stat">
                 <span class="stat-value">300+</span>
-                <span class="stat-label">Free Tools</span>
+                <span class="stat-label" data-i18n="hero.freeTools">Free Tools</span>
               </div>
               <div class="stat">
                 <span class="stat-value">12</span>
-                <span class="stat-label">Categories</span>
+                <span class="stat-label" data-i18n="hero.categories">Categories</span>
               </div>
               <div class="stat">
                 <span class="stat-value">100%</span>
-                <span class="stat-label">Private</span>
+                <span class="stat-label" data-i18n="hero.private">Private</span>
               </div>
             </div>
           </div>
@@ -246,8 +249,8 @@
       <section class="section section-categories" id="categories">
         <div class="container">
           <div class="section-header">
-            <h2 class="section-title">Browse by Category</h2>
-            <p class="section-description">
+            <h2 class="section-title" data-i18n="tools.categories">Browse by Category</h2>
+            <p class="section-description" data-i18n="tools.categoriesDesc">
               Organized collections of tools for every need. Click a category to explore.
             </p>
           </div>
@@ -545,28 +548,26 @@
   <!-- Scripts -->
   <script type="module" src="/src/main.js"></script>
   
-  <!-- i18n Language Support -->
+  <!-- Radio Player Functions -->
   <script>
-    // Language configuration
-    const supportedLanguages = ['en', 'tr', 'de', 'fr', 'es', 'pt', 'ru', 'zh', 'ja', 'ko', 'ar', 'hi', 'it', 'pl', 'nl'];
-    
-    // Get saved language or detect browser language
-    function getInitialLanguage() {
-      const saved = localStorage.getItem('selected-language');
-      if (saved && supportedLanguages.includes(saved)) return saved;
+    (function() {
+      // Multiple stream sources for fallback
+      const STREAMS = [
+        { name: 'Groove Salad', url: 'https://ice4.somafm.com/groovesalad-128-mp3', genre: 'Ambient/Lo-Fi' },
+        { name: 'Drone Zone', url: 'https://ice4.somafm.com/dronezone-128-mp3', genre: 'Atmospheric' },
+        { name: 'Deep Space One', url: 'https://ice4.somafm.com/deepspaceone-128-mp3', genre: 'Deep Ambient' },
+        { name: 'Sonic Universe', url: 'https://ice4.somafm.com/sonicuniverse-128-mp3', genre: 'Jazz/Ambient' }
+      ];
       
-      const browser = navigator.language.split('-')[0];
-      if (supportedLanguages.includes(browser)) return browser;
-      return 'en';
-    }
-    
-    // Change language
-    function changeLanguage(lang) {
-      if (!supportedLanguages.includes(lang)) return;
-      localStorage.setItem('selected-language', lang);
-      document.documentElement.lang = lang;
-      document.getElementById('language-selector').value = lang;
+      let radioAudio = null;
+      let isPlaying = false;
+      let isMuted = false;
+      let currentStreamIndex = 0;
+      let metadataInterval = null;
+      let retryCount = 0;
+      const MAX_RETRIES = 3;
       
+<<<<<<< HEAD
       // RTL support for Arabic
       if (lang === 'ar') {
         document.documentElement.dir = 'rtl';
@@ -603,6 +604,8 @@
       let retryCount = 0;
       const MAX_RETRIES = 3;
       
+=======
+>>>>>>> 3a98dcb6bb05a27d5721a4cffc04ee044650a074
       // Initialize audio with current stream
       function initAudio() {
         if (radioAudio) {
@@ -613,7 +616,11 @@
         radioAudio = new Audio();
         radioAudio.crossOrigin = 'anonymous';
         radioAudio.src = STREAMS[currentStreamIndex].url;
+<<<<<<< HEAD
         radioAudio.volume = (document.getElementById('volume-control')?.value || 30) / 100;
+=======
+        radioAudio.volume = (document.getElementById('volume-control').value || 30) / 100;
+>>>>>>> 3a98dcb6bb05a27d5721a4cffc04ee044650a074
         
         // Event listeners
         radioAudio.addEventListener('playing', onAudioPlaying);
@@ -690,8 +697,13 @@
       // Fetch metadata from SomaFM
       function startMetadataFetch() {
         stopMetadataFetch();
+<<<<<<< HEAD
         fetchMetadata();
         metadataInterval = setInterval(fetchMetadata, 30000);
+=======
+        fetchMetadata(); // Initial fetch
+        metadataInterval = setInterval(fetchMetadata, 30000); // Every 30 seconds
+>>>>>>> 3a98dcb6bb05a27d5721a4cffc04ee044650a074
       }
       
       function stopMetadataFetch() {
@@ -703,6 +715,10 @@
       
       function fetchMetadata() {
         const stream = STREAMS[currentStreamIndex];
+<<<<<<< HEAD
+=======
+        // SomaFM songs endpoint
+>>>>>>> 3a98dcb6bb05a27d5721a4cffc04ee044650a074
         fetch('https://api.somafm.com/songs/groovesalad.json', { 
           method: 'GET',
           mode: 'cors',
@@ -716,6 +732,10 @@
           }
         })
         .catch(() => {
+<<<<<<< HEAD
+=======
+          // Silent fail - keep showing stream name
+>>>>>>> 3a98dcb6bb05a27d5721a4cffc04ee044650a074
           updateStatus('Playing: ' + stream.name + ' (' + stream.genre + ')');
         });
       }

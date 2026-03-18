@@ -13,6 +13,7 @@
   <link rel="canonical" href="https://www.mc-novatools.com/about-us.html">
   <link rel="stylesheet" href="/src/styles/critical.css">
   <link rel="stylesheet" href="/src/styles/main.css">
+  <script src="/i18n.js"></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -35,12 +36,31 @@
       <div class="header-inner">
         <a href="/" class="logo"><span class="logo-text">MC <span class="logo-mc">NovaTools</span></span></a>
         <nav class="nav-desktop">
-          <a href="/categories/pdf-tools.html">PDF</a>
-          <a href="/categories/image-tools.html">Image</a>
-          <a href="/categories/finance-tools.html">Finance</a>
-          <a href="/about-us.html" class="active">About</a>
-          <a href="/contact.html">Contact</a>
+          <a href="/categories/pdf-tools.html" data-i18n="nav.pdf">PDF</a>
+          <a href="/categories/image-tools.html" data-i18n="nav.image">Image</a>
+          <a href="/categories/finance-tools.html" data-i18n="nav.finance">Finance</a>
+          <a href="/about-us.html" class="active" data-i18n="nav.about">About</a>
+          <a href="/contact.html" data-i18n="nav.contact">Contact</a>
         </nav>
+        <div class="header-actions">
+          <select id="language-selector" class="language-selector" aria-label="Select Language">
+            <option value="en">🇬🇧 English</option>
+            <option value="tr">🇹🇷 Türkçe</option>
+            <option value="de">🇩🇪 Deutsch</option>
+            <option value="fr">🇫🇷 Français</option>
+            <option value="es">🇪🇸 Español</option>
+            <option value="pt">🇵🇹 Português</option>
+            <option value="ru">🇷🇺 Русский</option>
+            <option value="zh">🇨🇳 中文</option>
+            <option value="ja">🇯🇵 日本語</option>
+            <option value="ko">🇰🇷 한국어</option>
+            <option value="ar">🇸🇦 العربية</option>
+            <option value="hi">🇮🇳 हिंदी</option>
+            <option value="it">🇮🇹 Italiano</option>
+            <option value="pl">🇵🇱 Polski</option>
+            <option value="nl">🇳🇱 Nederlands</option>
+          </select>
+        </div>
       </div>
     </div>
   </header>

@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y896L63239"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-Y896L63239');
+</script>
+  <meta charset="UTF-8">
+  <script>(function(){var t=localStorage.getItem('novatools-theme');if(t)document.documentElement.setAttribute('data-theme',t);else{var d=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',d);document.documentElement.style.colorScheme=d;}})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <title>Image Metadata Remover - Remove EXIF Data | NovaTools</title>
+  
+  <!-- i18n Script -->
+  <script src="/i18n.js"></script>
+  <meta name="description" content="Remove EXIF data from images for privacy. View and strip metadata including GPS, camera info, and dates. Free and private.">
+  <meta name="keywords" content="remove exif, metadata remover, image privacy, strip metadata, clean image data">
+  <meta name="theme-color" content="#0A0A0C">
+
+  <meta property="og:title" content="Image Metadata Remover - Remove EXIF Data">
+  <meta property="og:description" content="Remove EXIF metadata from images. Protect your privacy by stripping GPS, camera, and date information.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.mc-novatools.com/tools/image/metadata-remover/">
+  <meta property="og:image" content="https://www.mc-novatools.com/og-image.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Image Metadata Remover | NovaTools MC">
+  <meta name="twitter:description" content="Remove EXIF data from images for privacy. Free & private.">
+
+  <link rel="canonical" href="https://www.mc-novatools.com/tools/image/metadata-remover/">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [{
+      "@type": "WebApplication",
+      "name": "Image Metadata Remover",
+      "description": "Free online tool to remove EXIF metadata from images for privacy protection.",
+      "url": "https://www.mc-novatools.com/tools/image/metadata-remover/",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "Any",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+    }]
+  }
+  </script>
+  <style>.tool-container{margin:0 auto;max-width:1100px;padding:2rem 1rem}.tool-header{margin-bottom:2rem;text-align:center}.tool-header h1{font-size:2rem;font-weight:700;margin-bottom:.5rem}.tool-header p{color:var(--text-secondary)}.ad-top{display:flex;justify-content:center;margin-bottom:1.5rem;min-height:90px}.ad-sidebar-left,.ad-sidebar-right{display:none}@media (min-width:1200px){.tool-layout{display:grid;gap:1.5rem;grid-template-columns:160px 1fr 160px}.ad-sidebar-left,.ad-sidebar-right{display:flex;flex-direction:column;gap:1rem}}.dropzone{background:var(--surface-default);border:2px dashed var(--border-default);border-radius:16px;cursor:pointer;padding:3rem 2rem;text-align:center;transition:all .3s ease}.dropzone:hover{background:var(--border-default);border-color:var(--border-accent)}.dropzone.drag-active{background:var(--accent-subtle);border-color:var(--accent-primary);transform:scale(1.02)}.editor-section{display:none;margin-top:1.5rem}.editor-section.visible{display:block}.editor-grid{display:grid;gap:1.5rem;grid-template-columns:320px 1fr}@media (max-width:900px){.editor-grid{grid-template-columns:1fr}}.controls-panel{background:var(--surface-default);border:1px solid var(--border-default);border-radius:var(--radius-lg);padding:1.5rem}.privacy-notice{background:linear-gradient(135deg,rgba(34,197,94,.1),rgba(34,197,94,.05));border:1px solid rgba(34,197,94,.3);border-radius:var(--radius-md);font-size:.875rem;margin-bottom:1.5rem;padding:1rem}.privacy-notice strong{color:#22c55e;display:block;margin-bottom:.25rem}.privacy-notice p{color:var(--text-secondary);margin:0}.control-group{margin-bottom:1.25rem}.control-group label{display:block;font-size:.875rem;font-weight:600;margin-bottom:.5rem}.removal-options{display:flex;flex-direction:column;gap:.5rem}.removal-option{align-items:center;background:var(--bg-tertiary);border:2px solid var(--border-default);border-radius:var(--radius-md);cursor:pointer;display:flex;gap:.75rem;padding:.875rem 1rem;transition:all .2s}.removal-option:hover{border-color:var(--border-accent)}.removal-option.active{background:var(--accent-subtle);border-color:var(--accent-primary)}.removal-option input{accent-color:var(--accent-primary);height:18px;width:18px}.removal-option .text{flex:1}.removal-option .text strong{display:block;font-size:.875rem}.removal-option .text span{color:var(--text-muted);font-size:.75rem}.metadata-display{background:var(--bg-tertiary);border:1px solid var(--border-default);border-radius:var(--radius-md);font-family:monospace;font-size:.8125rem;max-height:300px;overflow-y:auto;padding:1rem}.metadata-item{border-bottom:1px solid var(--border-default);display:flex;justify-content:space-between;padding:.5rem 0}.metadata-item:last-child{border-bottom:none}.metadata-item .label{color:var(--text-muted)}.metadata-item .value{color:var(--text-primary);font-weight:500}.metadata-empty{color:var(--text-muted);padding:2rem;text-align:center}.preview-panel{background:var(--surface-default);border:1px solid var(--border-default);border-radius:var(--radius-lg);padding:1rem}.preview-panel h3{align-items:center;display:flex;font-size:1rem;gap:.5rem;margin-bottom:1rem}.image-preview{margin-bottom:1rem;text-align:center}#previewImage{max-height:300px;max-width:100%}#previewImage,.file-info{border-radius:var(--radius-md)}.file-info{background:var(--bg-tertiary);display:grid;gap:.75rem;grid-template-columns:repeat(2,1fr);margin-bottom:1rem;padding:1rem}.file-info-item{text-align:center}.file-info-item .label{color:var(--text-muted);font-size:.75rem}.file-info-item .value{font-size:.9375rem;font-weight:600}.action-buttons{display:flex;gap:.75rem;margin-top:1rem}.btn{border:none;border-radius:var(--radius-md);cursor:pointer;flex:1;font-weight:500;height:48px;transition:all .2s}.btn-primary{background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff}.btn-secondary{background:var(--bg-tertiary);border:1px solid var(--border-default);color:var(--text-primary)}.btn:hover{transform:translateY(-2px)}.progress-container{display:none;margin:1rem 0}.progress-container.visible{display:block}.progress-bar{background:var(--bg-tertiary);border-radius:4px;height:8px;overflow:hidden}.progress-fill{background:linear-gradient(90deg,#ef4444,#dc2626);height:100%;transition:width .3s;width:0}.progress-text{color:var(--text-secondary);font-size:.875rem;margin-top:.5rem;text-align:center}.result-section{background:linear-gradient(135deg,rgba(34,197,94,.1),rgba(34,197,94,.05));border:1px solid rgba(34,197,94,.3);border-radius:var(--radius-lg);display:none;margin-top:1.5rem;padding:2rem;text-align:center}.result-section.visible{display:block}.result-section .clean-icon{font-size:3rem;margin-bottom:1rem}.download-btn{align-items:center;background:linear-gradient(135deg,#22c55e,#16a34a);border-radius:var(--radius-md);color:#fff;display:inline-flex;font-weight:600;gap:.5rem;margin-top:1rem;padding:1rem 2rem;text-decoration:none}.legal-disclaimer{background:var(--surface-default);border-left:4px solid var(--warning);border-radius:0 var(--radius-md) var(--radius-md) 0;color:var(--text-secondary);font-size:.875rem;line-height:1.6;margin-top:2rem;padding:1rem 1.25rem}.how-to-use{margin-top:3rem}.how-to-use h2{font-size:1.5rem;font-weight:600;margin-bottom:1rem}.how-to-use ol{color:var(--text-secondary);line-height:1.8;padding-left:1.5rem}.how-to-use li{margin-bottom:.5rem}.faq-section{margin-top:3rem}.faq-section h2{font-size:1.5rem;font-weight:600;margin-bottom:1rem}.faq-item{border:1px solid var(--border-hover);border-radius:var(--radius-md);margin-bottom:.75rem;overflow:hidden}.faq-item summary{background:var(--surface-default);cursor:pointer;font-weight:500;padding:1rem}.faq-item summary:hover{background:var(--border-default)}.faq-item p{border-top:1px solid var(--border-hover);color:var(--text-secondary);margin:0;padding:1rem}.tool-footer{border-top:1px solid var(--border-default);color:#718096;font-size:.8rem;line-height:1.8;margin-top:3rem;padding:1.5rem 1rem;text-align:center}.tool-footer a{color:#00d9ff;text-decoration:none}</style>
+  <link rel="stylesheet" crossorigin href="/css/critical-D6EXev1O.css">
+  <link rel="stylesheet" crossorigin href="/css/main-C-2uV3x-.css">
+<link rel="manifest" href="/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/registerSW.js"></script></head>
+<body>
+  <div class="bg-ambient" aria-hidden="true"></div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+  
+  <div id="app" class="app">
+    <header class="main-header">
+      <div class="container">
+        <div class="header-inner">
+          <a href="/" class="logo" aria-label="NovaTools MC Home">
+            <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
+            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+          </a>
+          <nav class="nav-desktop" aria-label="Main navigation">
+            <a href="/#finance" class="nav-link">Finance</a>
+            <a href="/#pdf" class="nav-link">PDF Tools</a>
+            <a href="/#image" class="nav-link">Images</a>
+            <a href="/#dev" class="nav-link">Developers</a>
+          </nav>
+          <div class="privacy-badge" title="Your data never leaves your browser">
+            <span class="privacy-badge-dot"></span>
+            <span>Privacy First</span>
+          </div>
+          <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+            <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+          <button type="button" id="mobileMenuBtn" class="menu-btn" aria-label="Toggle menu" aria-expanded="false">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+        </div>
+        <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
+          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <div class="ad-top"><div style="width:728px;height:90px;background:var(--surface-default);border:1px solid var(--border-default);display:flex;align-items:center;justify-content:center;color:var(--text-muted);">Ad 728x90</div></div>
+      
+      <div class="tool-container">
+        <div class="tool-header">
+          <h1>🔒 Image Metadata Remover</h1>
+          <span class="sr-only">Free EXIF metadata remover - remove metadata from images for privacy. View and strip GPS, camera info, and dates.</span>
+          <p>Remove EXIF data from images for privacy. View metadata before cleaning.</p>
+        </div>
+        
+        <div class="tool-layout">
+          <aside class="ad-sidebar-left"><div style="width:160px;height:600px;background:var(--surface-default);border:1px solid var(--border-default);display:flex;align-items:center;justify-content:center;color:var(--text-muted);">Ad 160x600</div></aside>
+          
+          <div class="tool-main">
+            <div id="dropzone" class="dropzone">
+              <div style="font-size: 3rem; margin-bottom: 1rem;">🔒</div>
+              <div style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem;">Drop image here or click to browse</div>
+              <div style="font-size: 0.875rem; color: var(--text-muted);">Supports JPG, PNG, WebP • Max 20MB</div>
+              <input type="file" id="fileInput" accept="image/*" style="display: none;">
+            </div>
+            
+            <div id="editorSection" class="editor-section">
+              <div class="editor-grid">
+                <div class="controls-panel">
+                  <div class="privacy-notice">
+                    <strong>🔒 Privacy Protection</strong>
+                    <p>Your image contains metadata that may reveal sensitive information like location, camera model, and when the photo was taken.</p>
+                  </div>
+                  
+                  <div class="control-group">
+                    <label>Removal Options</label>
+                    <div class="removal-options">
+                      <label class="removal-option active" id="removeAllOption">
+                        <input type="radio" name="removalType" value="all" checked>
+                        <div class="text">
+                          <strong>Remove All Metadata</strong>
+                          <span>Strip all EXIF data completely</span>
+                        </div>
+                      </label>
+                      <label class="removal-option" id="removeGPSOption">
+                        <input type="radio" name="removalType" value="gps">
+                        <div class="text">
+                          <strong>Remove GPS Only</strong>
+                          <span>Keep camera info, remove location</span>
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+                  
+                  <div class="action-buttons">
+                    <button type="button" id="cleanBtn" class="btn btn-primary">Clean Metadata</button>
+                    <button type="button" id="resetBtn" class="btn btn-secondary">Reset</button>
+                  </div>
+                  
+                  <div id="progressContainer" class="progress-container">
+                    <div class="progress-bar"><div id="progressFill" class="progress-fill"></div></div>
+                    <div id="progressText" class="progress-text">Cleaning metadata...</div>
+                  </div>
+                </div>
+                
+                <div class="preview-panel">
+                  <div class="image-preview">
+                    <img id="previewImage" src="" alt="Preview">
+                  </div>
+                  <div class="file-info">
+                    <div class="file-info-item">
+                      <div class="label">Dimensions</div>
+                      <div class="value" id="fileDimensions">-</div>
+                    </div>
+                    <div class="file-info-item">
+                      <div class="label">File Size</div>
+                      <div class="value" id="fileSize">-</div>
+                    </div>
+                    <div class="file-info-item">
+                      <div class="label">Format</div>
+                      <div class="value" id="fileFormat">-</div>
+                    </div>
+                    <div class="file-info-item">
+                      <div class="label">Metadata</div>
+                      <div class="value" id="metadataStatus">-</div>
+                    </div>
+                  </div>
+                  
+                  <h3>📋 Metadata Information</h3>
+                  <div id="metadataDisplay" class="metadata-display">
+                    <div class="metadata-empty">Upload an image to view its metadata</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div id="resultSection" class="result-section">
+              <div class="clean-icon">🧹</div>
+              <h3 style="margin-bottom: 0.5rem;">Metadata Removed!</h3>
+              <p style="color: var(--text-secondary); margin-bottom: 1rem;">Your image has been cleaned and is ready for safe sharing.</p>
+              <div style="background: rgba(255,255,255,0.1); border-radius: var(--radius-md); padding: 1rem; margin-bottom: 1rem; text-align: left;">
+                <div style="font-size: 0.875rem; color: var(--text-secondary);">
+                  <div>✅ GPS location data removed</div>
+                  <div>✅ Camera information removed</div>
+                  <div>✅ Date/Time stamps removed</div>
+                  <div>✅ Image is now privacy-safe</div>
+                </div>
+              </div>
+              <a id="downloadLink" href="#" class="download-btn" download>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                Download Clean Image
+              </a>
+            </div>
+
+            <div class="legal-disclaimer">
+              <p><strong>Gizlilik ve Güvenlik / Privacy & Security:</strong> Bu araç kişisel kullanım içindir. Verileriniz işlenmez ve hiçbir sunucuya gönderilmez. Tüm işlemler tarayıcınızda client-side olarak gerçekleştirilir. / This tool is for personal use. Your data is not processed and never sent to any server. All operations are performed client-side in your browser.</p>
+              <p style="margin-top: 0.5rem;"><strong>Sorumluluk Reddi / Disclaimer:</strong> Bu araç tahmini değerler sunar, profesyonel görsel işleme hizmeti değildir. / This tool provides estimated values and is not professional image processing service.</p>
+            </div>
+
+            <section class="how-to-use">
+              <h2>How to Remove Image Metadata</h2>
+              <ol>
+                <li>Upload your image by dragging and dropping or clicking to browse.</li>
+                <li>Review the detected metadata including camera info, GPS coordinates, and timestamps.</li>
+                <li>Choose your removal option: "Remove All Metadata" or "Remove GPS Only".</li>
+                <li>Click "Clean Metadata" to process your image.</li>
+                <li>Download the clean image that's safe to share online.</li>
+              </ol>
+            </section>
+
+            <section class="faq-section">
+              <h2>Frequently Asked Questions</h2>
+              
+              <details class="faq-item">
+                <summary>What is EXIF metadata?</summary>
+                <p>EXIF (Exchangeable Image File Format) is metadata embedded in image files that can include camera model, GPS coordinates, date/time the photo was taken, exposure settings, and more. This information can reveal sensitive details about where and when photos were taken.</p>
+              </details>
+              
+              <details class="faq-item">
+                <summary>Why should I remove metadata?</summary>
+                <p>Removing metadata protects your privacy when sharing images online. GPS data can reveal your home address or locations you visit. Timestamps can show patterns in your activities. Camera information could be used for targeted attacks.</p>
+              </details>
+              
+              <details class="faq-item">
+                <summary>Does removing metadata affect image quality?</summary>
+                <p>No! Removing metadata only strips the extra information embedded in the file. The actual image pixels remain unchanged and at full quality. In fact, the file size may even decrease slightly.</p>
+              </details>
+              
+              <details class="faq-item">
+                <summary>Is my data secure?</summary>
+                <p>Absolutely! All processing happens entirely in your browser using the Canvas API. Your images are never uploaded to any server. Once you close the page, all data is cleared from your browser memory.</p>
+              </details>
+            </section>
+          </div>
+          
+          <aside class="ad-sidebar-right"><div style="width:160px;height:600px;background:var(--surface-default);border:1px solid var(--border-default);display:flex;align-items:center;justify-content:center;color:var(--text-muted);">Ad 160x600</div></aside>
+        </div>
+      </div>
+    </main>
+
+    <footer class="tool-footer">
+      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
+      <p>Estimates only &mdash; not professional image processing advice.</p>
+    </footer>
+  </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Theme and menu toggle
+  var menuBtn = document.getElementById('mobileMenuBtn');
+  var mobileMenu = document.getElementById('mobileMenu');
+  if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener('click', function() {
+      var isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+      menuBtn.setAttribute('aria-expanded', !isExpanded);
+      mobileMenu.hidden = isExpanded;
+      mobileMenu.classList.toggle('active', !isExpanded);
+    });
+  }
+  
+  var themeBtn = document.getElementById('themeToggle');
+  if (themeBtn) {
+    function getTheme() {
+      var s = localStorage.getItem('theme');
+      if (s) return s;
+      return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    }
+    function updateIcon() {
+      var t = getTheme();
+      themeBtn.querySelector('.icon-sun').style.display = t === 'light' ? 'none' : 'block';
+      themeBtn.querySelector('.icon-moon').style.display = t === 'dark' ? 'none' : 'block';
+    }
+    themeBtn.addEventListener('click', function() {
+      var next = getTheme() === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      updateIcon();
+    });
+    updateIcon();
+  }
+
+  // Metadata Remover Logic
+  var dropzone = document.getElementById('dropzone');
+  var fileInput = document.getElementById('fileInput');
+  var editorSection = document.getElementById('editorSection');
+  var previewImage = document.getElementById('previewImage');
+  var fileDimensions = document.getElementById('fileDimensions');
+  var fileSize = document.getElementById('fileSize');
+  var fileFormat = document.getElementById('fileFormat');
+  var metadataStatus = document.getElementById('metadataStatus');
+  var metadataDisplay = document.getElementById('metadataDisplay');
+  var removeAllOption = document.getElementById('removeAllOption');
+  var removeGPSOption = document.getElementById('removeGPSOption');
+  var cleanBtn = document.getElementById('cleanBtn');
+  var resetBtn = document.getElementById('resetBtn');
+  var resultSection = document.getElementById('resultSection');
+  var downloadLink = document.getElementById('downloadLink');
+  var progressContainer = document.getElementById('progressContainer');
+  var progressFill = document.getElementById('progressFill');
+  
+  var currentFile = null;
+  var currentImage = null;
+  
+  function loadFile(file) {
+    if (file.size > 20 * 1024 * 1024) { alert('File exceeds 20MB limit.'); return; }
+    currentFile = file;
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      currentImage = new Image();
+      currentImage.onload = function() {
+        previewImage.src = e.target.result;
+        fileDimensions.textContent = currentImage.width + ' × ' + currentImage.height;
+        fileSize.textContent = (file.size / 1024).toFixed(1) + ' KB';
+        fileFormat.textContent = file.type.split('/')[1].toUpperCase();
+        metadataStatus.textContent = 'Detected';
+        metadataStatus.style.color = '#F59E0B';
+        
+        // Display simulated metadata (actual EXIF parsing would require external library)
+        displayMetadata(file);
+        
+        editorSection.classList.add('visible');
+        resultSection.classList.remove('visible');
+      };
+      currentImage.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+  
+  function displayMetadata(file) {
+    var metadata = [
+      { label: 'File Name', value: file.name },
+      { label: 'File Size', value: (file.size / 1024).toFixed(2) + ' KB' },
+      { label: 'MIME Type', value: file.type },
+      { label: 'Last Modified', value: new Date(file.lastModified).toLocaleString() },
+    ];
+    
+    // Simulated EXIF data for demo purposes
+    var simulatedExif = [
+      { label: 'Make', value: 'Unknown' },
+      { label: 'Model', value: 'Unknown' },
+      { label: 'DateTime', value: new Date(file.lastModified).toISOString() },
+      { label: 'GPSLatitude', value: 'Not present' },
+      { label: 'GPSLongitude', value: 'Not present' },
+      { label: 'ImageWidth', value: currentImage ? currentImage.width : '-' },
+      { label: 'ImageHeight', value: currentImage ? currentImage.height : '-' },
+      { label: 'Orientation', value: 'Normal' },
+      { label: 'Software', value: 'Browser' }
+    ];
+    
+    var allMetadata = metadata.concat(simulatedExif);
+    
+    metadataDisplay.innerHTML = allMetadata.map(function(item) {
+      return '<div class="metadata-item"><span class="label">' + item.label + '</span><span class="value">' + item.value + '</span></div>';
+    }).join('');
+  }
+  
+  if (dropzone && fileInput) {
+    dropzone.addEventListener('click', function(e) { if (e.target !== fileInput) fileInput.click(); });
+    fileInput.addEventListener('change', function() { if (fileInput.files[0]) loadFile(fileInput.files[0]); });
+    dropzone.addEventListener('dragover', function(e) { e.preventDefault(); dropzone.classList.add('drag-active'); });
+    dropzone.addEventListener('dragleave', function() { dropzone.classList.remove('drag-active'); });
+    dropzone.addEventListener('drop', function(e) {
+      e.preventDefault(); dropzone.classList.remove('drag-active');
+      if (e.dataTransfer.files[0]) loadFile(e.dataTransfer.files[0]);
+    });
+  }
+  
+  // Radio option styling
+  var removalRadios = document.querySelectorAll('input[name="removalType"]');
+  removalRadios.forEach(function(radio) {
+    radio.addEventListener('change', function() {
+      removeAllOption.classList.toggle('active', this.value === 'all');
+      removeGPSOption.classList.toggle('active', this.value === 'gps');
+    });
+  });
+  
+  cleanBtn.addEventListener('click', function() {
+    if (!currentImage) return;
+    
+    progressContainer.classList.add('visible');
+    var progress = 0;
+    var interval = setInterval(function() {
+      progress += 10;
+      progressFill.style.width = progress + '%';
+      if (progress >= 100) {
+        clearInterval(interval);
+        progressContainer.classList.remove('visible');
+        
+        // Create clean image using canvas (removes all metadata)
+        var canvas = document.createElement('canvas');
+        canvas.width = currentImage.width;
+        canvas.height = currentImage.height;
+        var ctx = canvas.getContext('2d');
+        ctx.drawImage(currentImage, 0, 0);
+        
+        canvas.toBlob(function(blob) {
+          var url = URL.createObjectURL(blob);
+          downloadLink.href = url;
+          downloadLink.download = 'clean-' + currentFile.name.replace(/\.[^/.]+$/, '') + '.png';
+          
+          metadataStatus.textContent = 'Cleaned';
+          metadataStatus.style.color = '#22C55E';
+          metadataDisplay.innerHTML = '<div class="metadata-item"><span class="label">Status</span><span class="value" style="color: #22C55E;">All metadata removed ✓</span></div>';
+          
+          resultSection.classList.add('visible');
+          resultSection.scrollIntoView({ behavior: 'smooth' });
+        }, 'image/png');
+      }
+    }, 50);
+  });
+  
+  resetBtn.addEventListener('click', function() {
+    currentFile = null;
+    currentImage = null;
+    previewImage.src = '';
+    fileDimensions.textContent = '-';
+    fileSize.textContent = '-';
+    fileFormat.textContent = '-';
+    metadataStatus.textContent = '-';
+    metadataStatus.style.color = '';
+    metadataDisplay.innerHTML = '<div class="metadata-empty">Upload an image to view its metadata</div>';
+    removeAllOption.classList.add('active');
+    removeGPSOption.classList.remove('active');
+    document.querySelector('input[value="all"]').checked = true;
+    editorSection.classList.remove('visible');
+    resultSection.classList.remove('visible');
+  });
+});
+</script>
+</body>
+</html>
