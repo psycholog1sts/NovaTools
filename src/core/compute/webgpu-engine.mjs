@@ -137,8 +137,8 @@ class WebGPUEngine {
       this.initialized = true;
       
       // GPU info available via this.adapter.requestAdapterInfo()
-      const _info = await this.adapter.requestAdapterInfo();
-      void _info; // Reserved for future GPU-specific optimizations
+      const info = await this.adapter.requestAdapterInfo();
+      void info; // Reserved for future GPU-specific optimizations
       return true;
     } catch (error) {
       console.error('WebGPU initialization failed:', error);
@@ -163,7 +163,8 @@ class WebGPUEngine {
     }
 
     const { data, width, height } = imageData;
-    const _pixelCount = width * height;
+    const pixelCount = width * height;
+    void pixelCount; // Reserved for future buffer size calculations
     
     // Create buffers
     const pixelBuffer = this.device.createBuffer({
