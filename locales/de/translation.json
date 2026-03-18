@@ -7,12 +7,23 @@
     "developer": "Entwickler",
     "text": "Text",
     "about": "Über Uns",
-    "contact": "Kontakt"
+    "contact": "Kontakt",
+    "blog": "Blog",
+    "request": "Tool Anfragen",
+    "security": "Sicherheit",
+    "privacy": "Datenschutz",
+    "terms": "Nutzungsbedingungen",
+    "cookies": "Cookies",
+    "converters": "Konverter"
   },
   "hero": {
-    "title": "Professionelle Tools. Vollständige Privatsphäre.",
-    "subtitle": "300+ kostenlose Online-Tools. Keine Registrierung. Keine Datenerfassung.",
-    "cta": "Tools Entdecken"
+    "title": "All-in-One Tools für Dateien, Finanzen & Code",
+    "subtitle": "Nutzen Sie MC NovaTools zum Konvertieren, Berechnen, Erstellen und Optimieren mit einem schnellen, übersichtlichen und datenschutzfreundlichen Toolkit. 300+ kostenlose Tools, keine Anmeldung erforderlich.",
+    "cta": "Tools Entdecken",
+    "browse": "Kategorien Durchsuchen",
+    "freeTools": "Kostenlose Tools",
+    "categories": "Kategorien",
+    "private": "Privat"
   },
   "footer": {
     "signature": "Metehan ÇETİN, LPC",
@@ -21,11 +32,36 @@
     "copyright": "© 2026 MC NovaTools. Alle Rechte vorbehalten."
   },
   "tools": {
-    "categories": "Tool-Kategorien",
-    "popular": "Beliebte Tools"
+    "categories": "Nach Kategorie Durchsuchen",
+    "categoriesDesc": "Organisierte Sammlungen von Tools für jeden Bedarf. Klicken Sie auf eine Kategorie, um zu erkunden.",
+    "popular": "Beliebte Tools",
+    "new": "Neue Tools"
   },
   "privacy": {
     "badge": "Privatsphäre First",
     "description": "Ihre Daten verlassen nie Ihren Browser"
+  },
+  "common": {
+    "loading": "Wird geladen...",
+    "error": "Ein Fehler ist aufgetreten",
+    "success": "Erfolgreich!",
+    "save": "Speichern",
+    "cancel": "Abbrechen",
+    "delete": "Löschen",
+    "edit": "Bearbeiten",
+    "close": "Schließen",
+    "open": "Öffnen",
+    "search": "Suchen",
+    "download": "Herunterladen",
+    "upload": "Hochladen",
+    "copy": "Kopieren",
+    "paste": "Einfügen",
+    "cut": "Ausschneiden",
+    "select": "Auswählen",
+    "clear": "Löschen",
+    "reset": "Zurücksetzen",
+    "apply": "Anwenden",
+    "filter": "Filtern",
+    "sort": "Sortieren"
   }
 }

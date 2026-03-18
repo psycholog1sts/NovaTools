@@ -7,12 +7,23 @@
     "developer": "Développeur",
     "text": "Texte",
     "about": "À Propos",
-    "contact": "Contact"
+    "contact": "Contact",
+    "blog": "Blog",
+    "request": "Demander un Outil",
+    "security": "Sécurité",
+    "privacy": "Confidentialité",
+    "terms": "Conditions",
+    "cookies": "Cookies",
+    "converters": "Convertisseurs"
   },
   "hero": {
-    "title": "Outils Professionnels. Confidentialité Totale.",
-    "subtitle": "300+ outils en ligne gratuits. Sans inscription. Sans collecte de données.",
-    "cta": "Découvrir les Outils"
+    "title": "Outils Tout-en-Un pour Fichiers, Finance & Code",
+    "subtitle": "Utilisez MC NovaTools pour convertir, calculer, créer et optimiser avec une boîte à outils rapide, propre et axée sur la confidentialité. 300+ outils gratuits, sans inscription.",
+    "cta": "Découvrir les Outils",
+    "browse": "Parcourir les Catégories",
+    "freeTools": "Outils Gratuits",
+    "categories": "Catégories",
+    "private": "Privé"
   },
   "footer": {
     "signature": "Metehan ÇETİN, LPC",
@@ -21,11 +32,36 @@
     "copyright": "© 2026 MC NovaTools. Tous droits réservés."
   },
   "tools": {
-    "categories": "Catégories d'Outils",
-    "popular": "Outils Populaires"
+    "categories": "Parcourir par Catégorie",
+    "categoriesDesc": "Collections organisées d'outils pour chaque besoin. Cliquez sur une catégorie pour explorer.",
+    "popular": "Outils Populaires",
+    "new": "Nouveaux Outils"
   },
   "privacy": {
     "badge": "Confidentialité d'Abord",
     "description": "Vos données ne quittent jamais votre navigateur"
+  },
+  "common": {
+    "loading": "Chargement...",
+    "error": "Une erreur s'est produite",
+    "success": "Succès !",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "close": "Fermer",
+    "open": "Ouvrir",
+    "search": "Rechercher",
+    "download": "Télécharger",
+    "upload": "Téléverser",
+    "copy": "Copier",
+    "paste": "Coller",
+    "cut": "Couper",
+    "select": "Sélectionner",
+    "clear": "Effacer",
+    "reset": "Réinitialiser",
+    "apply": "Appliquer",
+    "filter": "Filtrer",
+    "sort": "Trier"
   }
 }

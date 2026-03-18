@@ -29,6 +29,9 @@
   <link rel="stylesheet" href="/src/styles/critical.css">
   <link rel="stylesheet" href="/src/styles/design-system.css">
   
+  <!-- i18n Script -->
+  <script src="/i18n.js"></script>
+  
   <!-- Meta -->
   <title>Free Online Tools - 300+ Utilities for Files, Finance & Code | MC NovaTools</title>
   <meta name="description" content="300+ free online tools: PDF converters, image optimizers, financial calculators, developer utilities. Fast, private, no signup required.">
@@ -101,33 +104,33 @@
           
           <!-- Desktop Nav -->
           <nav class="main-nav" aria-label="Main navigation">
-            <a href="/categories/pdf-tools.html" class="nav-link">PDF</a>
-            <a href="/categories/image-tools.html" class="nav-link">Image</a>
-            <a href="/categories/finance-tools.html" class="nav-link">Finance</a>
-            <a href="/categories/developer-tools.html" class="nav-link">Dev</a>
-            <a href="/blog/index.html" class="nav-link">Blog</a>
-            <a href="/about-us.html" class="nav-link">About</a>
+            <a href="/categories/pdf-tools.html" class="nav-link" data-i18n="nav.pdf">PDF</a>
+            <a href="/categories/image-tools.html" class="nav-link" data-i18n="nav.image">Image</a>
+            <a href="/categories/finance-tools.html" class="nav-link" data-i18n="nav.finance">Finance</a>
+            <a href="/categories/developer-tools.html" class="nav-link" data-i18n="nav.developer">Dev</a>
+            <a href="/blog/index.html" class="nav-link" data-i18n="nav.blog">Blog</a>
+            <a href="/about-us.html" class="nav-link" data-i18n="nav.about">About</a>
           </nav>
           
           <!-- Actions -->
           <div class="header-actions">
             <!-- Language Selector -->
-            <select id="language-selector" class="language-selector" onchange="changeLanguage(this.value)" aria-label="Select Language">
-              <option value="en"> EN</option>
-              <option value="tr"> TR</option>
-              <option value="de"> DE</option>
-              <option value="fr"> FR</option>
-              <option value="es"> ES</option>
-              <option value="pt"> PT</option>
-              <option value="ru"> RU</option>
-              <option value="zh"> 中文</option>
-              <option value="ja"> 日本</option>
-              <option value="ko"> 한국</option>
-              <option value="ar"> عربي</option>
-              <option value="hi"> हिं</option>
-              <option value="it"> IT</option>
-              <option value="pl"> PL</option>
-              <option value="nl"> NL</option>
+            <select id="language-selector" class="language-selector" aria-label="Select Language">
+              <option value="en">🇬🇧 English</option>
+              <option value="tr">🇹🇷 Türkçe</option>
+              <option value="de">🇩🇪 Deutsch</option>
+              <option value="fr">🇫🇷 Français</option>
+              <option value="es">🇪🇸 Español</option>
+              <option value="pt">🇵🇹 Português</option>
+              <option value="ru">🇷🇺 Русский</option>
+              <option value="zh">🇨🇳 中文</option>
+              <option value="ja">🇯🇵 日本語</option>
+              <option value="ko">🇰🇷 한국어</option>
+              <option value="ar">🇸🇦 العربية</option>
+              <option value="hi">🇮🇳 हिंदी</option>
+              <option value="it">🇮🇹 Italiano</option>
+              <option value="pl">🇵🇱 Polski</option>
+              <option value="nl">🇳🇱 Nederlands</option>
             </select>
             
             <button class="btn-icon" aria-label="Search" onclick="toggleSearch()">
@@ -185,35 +188,35 @@
         </div>
         <div class="container">
           <div class="hero-content">
-            <h1 class="hero-title">
+            <h1 class="hero-title" data-i18n="hero.title">
               All-in-One Tools for
               <span class="text-gradient">Files, Finance & Code</span>
             </h1>
-            <p class="hero-description">
+            <p class="hero-description" data-i18n="hero.subtitle">
               Use MC NovaTools to convert, calculate, create, optimize and streamline work with a fast, 
               clean and privacy-focused toolkit. 300+ free tools, no signup required.
             </p>
             <div class="hero-actions">
               <a href="/categories" class="btn btn-primary btn-lg">
-                Explore Tools
+                <span data-i18n="hero.cta">Explore Tools</span>
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M5 12h14M12 5l7 7-7 7"/>
                 </svg>
               </a>
-              <a href="#categories" class="btn btn-secondary btn-lg">Browse Categories</a>
+              <a href="#categories" class="btn btn-secondary btn-lg" data-i18n="hero.browse">Browse Categories</a>
             </div>
             <div class="hero-stats">
               <div class="stat">
                 <span class="stat-value">300+</span>
-                <span class="stat-label">Free Tools</span>
+                <span class="stat-label" data-i18n="hero.freeTools">Free Tools</span>
               </div>
               <div class="stat">
                 <span class="stat-value">12</span>
-                <span class="stat-label">Categories</span>
+                <span class="stat-label" data-i18n="hero.categories">Categories</span>
               </div>
               <div class="stat">
                 <span class="stat-value">100%</span>
-                <span class="stat-label">Private</span>
+                <span class="stat-label" data-i18n="hero.private">Private</span>
               </div>
             </div>
           </div>
@@ -246,8 +249,8 @@
       <section class="section section-categories" id="categories">
         <div class="container">
           <div class="section-header">
-            <h2 class="section-title">Browse by Category</h2>
-            <p class="section-description">
+            <h2 class="section-title" data-i18n="tools.categories">Browse by Category</h2>
+            <p class="section-description" data-i18n="tools.categoriesDesc">
               Organized collections of tools for every need. Click a category to explore.
             </p>
           </div>
@@ -526,108 +529,215 @@
         <svg id="pause-icon" class="radio-icon-svg hidden" viewBox="0 0 24 24" fill="currentColor">
           <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
         </svg>
+        <div id="playing-indicator" class="playing-indicator hidden">
+          <span></span><span></span><span></span>
+        </div>
       </button>
       <div class="radio-info">
-        <div class="radio-title">Deep Focus Radio</div>
-        <div id="now-playing" class="radio-track">Lo-Fi Study Beats</div>
+        <div class="radio-title">🎵 Deep Focus Radio</div>
+        <div id="now-playing" class="radio-track">Ambient beats for concentration</div>
       </div>
-      <input type="range" id="volume-control" class="radio-volume" min="0" max="100" value="30" onchange="setVolume(this.value)" aria-label="Volume">
+      <div class="radio-visualizer" id="visualizer">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <input type="range" id="volume-control" class="radio-volume" min="0" max="100" value="30" oninput="setVolume(this.value)" aria-label="Volume">
       <button id="radio-mute" class="radio-mute" onclick="toggleMute()" aria-label="Mute">🔊</button>
     </div>
   </div>
 
   <!-- Scripts -->
   <script type="module" src="/src/main.js"></script>
-  <script src="/src/services/radio-service.mjs" type="module"></script>
   
-  <!-- i18n Language Support -->
+  <!-- Radio Player Functions -->
   <script>
-    // Language configuration
-    const supportedLanguages = ['en', 'tr', 'de', 'fr', 'es', 'pt', 'ru', 'zh', 'ja', 'ko', 'ar', 'hi', 'it', 'pl', 'nl'];
-    
-    // Get saved language or detect browser language
-    function getInitialLanguage() {
-      const saved = localStorage.getItem('selected-language');
-      if (saved && supportedLanguages.includes(saved)) return saved;
+    (function() {
+      // Multiple stream sources for fallback
+      const STREAMS = [
+        { name: 'Groove Salad', url: 'https://ice4.somafm.com/groovesalad-128-mp3', genre: 'Ambient/Lo-Fi' },
+        { name: 'Drone Zone', url: 'https://ice4.somafm.com/dronezone-128-mp3', genre: 'Atmospheric' },
+        { name: 'Deep Space One', url: 'https://ice4.somafm.com/deepspaceone-128-mp3', genre: 'Deep Ambient' },
+        { name: 'Sonic Universe', url: 'https://ice4.somafm.com/sonicuniverse-128-mp3', genre: 'Jazz/Ambient' }
+      ];
       
-      const browser = navigator.language.split('-')[0];
-      if (supportedLanguages.includes(browser)) return browser;
-      return 'en';
-    }
-    
-    // Change language
-    function changeLanguage(lang) {
-      if (!supportedLanguages.includes(lang)) return;
-      localStorage.setItem('selected-language', lang);
-      document.documentElement.lang = lang;
-      document.getElementById('language-selector').value = lang;
+      let radioAudio = null;
+      let isPlaying = false;
+      let isMuted = false;
+      let currentStreamIndex = 0;
+      let metadataInterval = null;
+      let retryCount = 0;
+      const MAX_RETRIES = 3;
       
-      // RTL support for Arabic
-      if (lang === 'ar') {
-        document.documentElement.dir = 'rtl';
-      } else {
-        document.documentElement.dir = 'ltr';
-      }
-      
-      // Reload page with new language (in real implementation, this would load translations dynamically)
-      // window.location.href = `/${lang}/`;
-    }
-    
-    // Initialize language on load
-    document.addEventListener('DOMContentLoaded', () => {
-      const lang = getInitialLanguage();
-      document.getElementById('language-selector').value = lang;
-      document.documentElement.lang = lang;
-      if (lang === 'ar') document.documentElement.dir = 'rtl';
-    });
-    
-    // Radio Player Functions
-    let radioAudio = null;
-    let isPlaying = false;
-    let isMuted = false;
-    
-    function toggleRadio() {
-      if (!radioAudio) {
+      // Initialize audio with current stream
+      function initAudio() {
+        if (radioAudio) {
+          radioAudio.pause();
+          radioAudio = null;
+        }
+        
         radioAudio = new Audio();
-        radioAudio.src = 'https://stream.zeno.fm/0r0xa7920qzuv';
-        radioAudio.volume = 0.3;
+        radioAudio.crossOrigin = 'anonymous';
+        radioAudio.src = STREAMS[currentStreamIndex].url;
+        radioAudio.volume = (document.getElementById('volume-control').value || 30) / 100;
+        
+        // Event listeners
+        radioAudio.addEventListener('playing', onAudioPlaying);
+        radioAudio.addEventListener('pause', onAudioPause);
+        radioAudio.addEventListener('error', onAudioError);
+        radioAudio.addEventListener('waiting', onAudioBuffering);
+        
+        return radioAudio;
       }
       
-      if (isPlaying) {
-        radioAudio.pause();
-        document.getElementById('play-icon').classList.remove('hidden');
-        document.getElementById('pause-icon').classList.add('hidden');
-      } else {
-        radioAudio.play().catch(() => {});
-        document.getElementById('play-icon').classList.add('hidden');
-        document.getElementById('pause-icon').classList.remove('hidden');
+      function onAudioPlaying() {
+        updateStatus('Playing: ' + STREAMS[currentStreamIndex].name);
+        showPlayingState(true);
+        startMetadataFetch();
+        retryCount = 0;
       }
-      isPlaying = !isPlaying;
-      localStorage.setItem('radio-playing', isPlaying);
-    }
-    
-    function setVolume(value) {
-      if (radioAudio) {
-        radioAudio.volume = value / 100;
+      
+      function onAudioPause() {
+        updateStatus('Ambient beats for concentration');
+        showPlayingState(false);
+        stopMetadataFetch();
       }
-      localStorage.setItem('radio-volume', value);
-    }
-    
-    function toggleMute() {
-      if (radioAudio) {
-        radioAudio.muted = !isMuted;
-        document.getElementById('radio-mute').textContent = isMuted ? '🔊' : '🔇';
+      
+      function onAudioBuffering() {
+        updateStatus('Buffering...');
       }
-      isMuted = !isMuted;
-    }
-    
-    // Restore radio state on load
-    document.addEventListener('DOMContentLoaded', () => {
-      const savedVolume = localStorage.getItem('radio-volume');
-      if (savedVolume) {
-        document.getElementById('volume-control').value = savedVolume;
+      
+      function onAudioError() {
+        console.error('Stream error, trying next...');
+        if (retryCount < MAX_RETRIES) {
+          retryCount++;
+          currentStreamIndex = (currentStreamIndex + 1) % STREAMS.length;
+          updateStatus('Switching stream...');
+          setTimeout(() => {
+            initAudio();
+            radioAudio.play().catch(handlePlayError);
+          }, 1000);
+        } else {
+          updateStatus('Stream unavailable. Try again later.');
+          showPlayingState(false);
+        }
       }
-    });
+      
+      function handlePlayError(err) {
+        console.error('Playback error:', err);
+        updateStatus('Click play to start focus music');
+        showPlayingState(false);
+      }
+      
+      function updateStatus(text) {
+        const trackEl = document.getElementById('now-playing');
+        if (trackEl) trackEl.textContent = text;
+      }
+      
+      function showPlayingState(playing) {
+        const playIcon = document.getElementById('play-icon');
+        const pauseIcon = document.getElementById('pause-icon');
+        const indicator = document.getElementById('playing-indicator');
+        const visualizer = document.getElementById('visualizer');
+        
+        if (playing) {
+          playIcon?.classList.add('hidden');
+          pauseIcon?.classList.remove('hidden');
+          indicator?.classList.remove('hidden');
+          visualizer?.classList.add('active');
+        } else {
+          playIcon?.classList.remove('hidden');
+          pauseIcon?.classList.add('hidden');
+          indicator?.classList.add('hidden');
+          visualizer?.classList.remove('active');
+        }
+      }
+      
+      // Fetch metadata from SomaFM
+      function startMetadataFetch() {
+        stopMetadataFetch();
+        fetchMetadata(); // Initial fetch
+        metadataInterval = setInterval(fetchMetadata, 30000); // Every 30 seconds
+      }
+      
+      function stopMetadataFetch() {
+        if (metadataInterval) {
+          clearInterval(metadataInterval);
+          metadataInterval = null;
+        }
+      }
+      
+      function fetchMetadata() {
+        const stream = STREAMS[currentStreamIndex];
+        // SomaFM songs endpoint
+        fetch('https://api.somafm.com/songs/groovesalad.json', { 
+          method: 'GET',
+          mode: 'cors',
+          cache: 'no-cache'
+        })
+        .then(res => res.json())
+        .then(data => {
+          if (data && data.songs && data.songs[0]) {
+            const song = data.songs[0];
+            updateStatus('🎶 ' + song.title + ' - ' + song.artist);
+          }
+        })
+        .catch(() => {
+          // Silent fail - keep showing stream name
+          updateStatus('Playing: ' + stream.name + ' (' + stream.genre + ')');
+        });
+      }
+      
+      // Global functions
+      window.toggleRadio = function() {
+        if (!radioAudio) {
+          initAudio();
+        }
+        
+        if (isPlaying) {
+          radioAudio.pause();
+          isPlaying = false;
+        } else {
+          const playPromise = radioAudio.play();
+          if (playPromise !== undefined) {
+            playPromise
+              .then(() => {
+                isPlaying = true;
+              })
+              .catch(handlePlayError);
+          }
+        }
+        localStorage.setItem('radio-playing', isPlaying);
+      };
+      
+      window.setVolume = function(value) {
+        if (radioAudio) {
+          radioAudio.volume = value / 100;
+        }
+        localStorage.setItem('radio-volume', value);
+      };
+      
+      window.toggleMute = function() {
+        if (radioAudio) {
+          radioAudio.muted = !isMuted;
+          document.getElementById('radio-mute').textContent = isMuted ? '🔊' : '🔇';
+        }
+        isMuted = !isMuted;
+        localStorage.setItem('radio-muted', isMuted);
+      };
+      
+      // Initialize on load
+      document.addEventListener('DOMContentLoaded', () => {
+        const savedVolume = localStorage.getItem('radio-volume');
+        const savedMuted = localStorage.getItem('radio-muted');
+        
+        if (savedVolume) {
+          document.getElementById('volume-control').value = savedVolume;
+        }
+        if (savedMuted === 'true') {
+          isMuted = true;
+          document.getElementById('radio-mute').textContent = '🔇';
+        }
+      });
+    })();
   </script>
   
   <style>
@@ -637,11 +747,12 @@
       bottom: 0;
       left: 0;
       right: 0;
-      background: linear-gradient(90deg, #1a1a2e 0%, #16213e 100%);
-      border-top: 1px solid #2d2d3a;
+      background: linear-gradient(90deg, #1a1a2e 0%, #16213e 50%, #0f172a 100%);
+      border-top: 1px solid rgba(99, 102, 241, 0.3);
       padding: 12px 24px;
       z-index: 1000;
-      box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+      box-shadow: 0 -4px 30px rgba(99, 102, 241, 0.2);
+      font-family: 'Inter', system-ui, sans-serif;
     }
     .radio-container {
       display: flex;
@@ -651,8 +762,8 @@
       margin: 0 auto;
     }
     .radio-toggle {
-      width: 44px;
-      height: 44px;
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
       background: linear-gradient(135deg, #6366f1, #8b5cf6);
       border: none;
@@ -660,16 +771,122 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: transform 0.2s;
+      transition: all 0.3s ease;
+      position: relative;
+      box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
     }
-    .radio-toggle:hover { transform: scale(1.05); }
+    .radio-toggle:hover { 
+      transform: scale(1.08); 
+      box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
+    }
+    .radio-toggle:active {
+      transform: scale(0.95);
+    }
     .radio-icon-svg { width: 24px; height: 24px; fill: white; }
     .hidden { display: none !important; }
-    .radio-info { flex: 1; }
-    .radio-title { color: #fff; font-weight: 600; font-size: 14px; }
-    .radio-track { color: #a1a1aa; font-size: 12px; }
-    .radio-volume { width: 100px; accent-color: #6366f1; }
-    .radio-mute { background: transparent; border: none; font-size: 20px; cursor: pointer; }
+    
+    /* Playing indicator animation */
+    .playing-indicator {
+      position: absolute;
+      display: flex;
+      gap: 3px;
+      align-items: flex-end;
+      height: 20px;
+    }
+    .playing-indicator span {
+      width: 3px;
+      background: white;
+      border-radius: 2px;
+      animation: sound-bar 0.8s ease-in-out infinite;
+    }
+    .playing-indicator span:nth-child(1) { animation-delay: 0s; height: 8px; }
+    .playing-indicator span:nth-child(2) { animation-delay: 0.2s; height: 16px; }
+    .playing-indicator span:nth-child(3) { animation-delay: 0.4s; height: 12px; }
+    
+    @keyframes sound-bar {
+      0%, 100% { transform: scaleY(0.6); opacity: 0.7; }
+      50% { transform: scaleY(1); opacity: 1; }
+    }
+    
+    .radio-info { 
+      flex: 1;
+      min-width: 0;
+    }
+    .radio-title { 
+      color: #fff; 
+      font-weight: 600; 
+      font-size: 14px;
+      letter-spacing: 0.3px;
+    }
+    .radio-track { 
+      color: #a5b4fc; 
+      font-size: 12px;
+      margin-top: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      transition: color 0.3s;
+    }
+    .radio-track.playing {
+      color: #34d399;
+    }
+    
+    /* Visualizer bars */
+    .radio-visualizer {
+      display: flex;
+      gap: 3px;
+      align-items: flex-end;
+      height: 24px;
+      padding: 0 12px;
+      opacity: 0.3;
+      transition: opacity 0.3s;
+    }
+    .radio-visualizer.active {
+      opacity: 1;
+    }
+    .radio-visualizer span {
+      width: 4px;
+      background: linear-gradient(to top, #6366f1, #8b5cf6);
+      border-radius: 2px;
+      transition: height 0.2s ease;
+      height: 4px;
+    }
+    .radio-visualizer.active span {
+      animation: visualize 0.6s ease-in-out infinite;
+    }
+    .radio-visualizer span:nth-child(1) { animation-delay: 0s; }
+    .radio-visualizer span:nth-child(2) { animation-delay: 0.1s; }
+    .radio-visualizer span:nth-child(3) { animation-delay: 0.2s; }
+    .radio-visualizer span:nth-child(4) { animation-delay: 0.3s; }
+    .radio-visualizer span:nth-child(5) { animation-delay: 0.4s; }
+    
+    @keyframes visualize {
+      0%, 100% { height: 4px; }
+      50% { height: 20px; }
+    }
+    
+    .radio-volume { 
+      width: 100px; 
+      accent-color: #6366f1;
+      cursor: pointer;
+    }
+    .radio-mute { 
+      background: rgba(255,255,255,0.1);
+      border: none;
+      font-size: 20px; 
+      cursor: pointer;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .radio-mute:hover {
+      background: rgba(255,255,255,0.2);
+      transform: scale(1.1);
+    }
     
     /* Language Selector Styles */
     .language-selector {
@@ -683,9 +900,11 @@
     }
     .language-selector option { background: #1a1a2e; color: #fff; }
     
-    @media (max-width: 768px) {
-      .radio-player { padding: 8px 12px; }
-      .radio-info { display: none; }
+    @media (max-width: 640px) {
+      .radio-player { padding: 10px 16px; }
+      .radio-visualizer { display: none; }
+      .radio-volume { width: 70px; }
+      .radio-info { max-width: 140px; }
     }
   </style>
 </body>

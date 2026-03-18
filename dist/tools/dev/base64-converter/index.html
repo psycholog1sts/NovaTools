@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y896L63239"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Y896L63239');
+  </script>
+  <meta charset="UTF-8">
+  <script>(function(){var t=localStorage.getItem('novatools-theme');if(t)document.documentElement.setAttribute('data-theme',t);else{var d=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',d);document.documentElement.style.colorScheme=d;}})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <title>Free Base64 Encoder/Decoder Online | NovaTools MC</title>
+  
+  <!-- i18n Script -->
+  <script src="/i18n.js"></script>
+  <meta name="description" content="Free online Base64 encoder and decoder. Convert text and files to Base64 and back. No signup required, works entirely in your browser.">
+  <meta name="keywords" content="free base64 encoder, base64 decoder online, base64 converter, file to base64, base64 to file">
+  <meta name="theme-color" content="#0A0A0C">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Free Base64 Encoder/Decoder Online | NovaTools MC">
+  <meta property="og:description" content="Encode and decode Base64 strings and files for free. No signup required.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.mc-novatools.com/tools/dev/base64-converter/">
+  <meta property="og:image" content="https://www.mc-novatools.com/og-image.png">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free Base64 Encoder/Decoder | NovaTools MC">
+  <meta name="twitter:description" content="Encode and decode Base64 text and files. No signup.">
+
+  <link rel="canonical" href="https://www.mc-novatools.com/tools/dev/base64-converter/">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [{
+      "@type": "WebApplication",
+      "name": "Base64 Encoder/Decoder",
+      "description": "Free online Base64 encoder and decoder for text and files.",
+      "url": "https://www.mc-novatools.com/tools/dev/base64-converter/",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+    }]
+  }
+  </script>
+
+  <style>.tool-wrapper{margin:0 auto;max-width:960px;padding:3rem 1rem 5rem}.tool-hero{margin-bottom:2.5rem;text-align:center}.tool-hero-icon{font-size:3.5rem;line-height:1;margin-bottom:1rem}.tool-hero h1{color:#fafafa;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;letter-spacing:-.02em;margin-bottom:.75rem}.tool-hero p{color:#a1a1aa;font-size:1.0625rem;margin:0 auto;max-width:560px}.card{backdrop-filter:blur(12px);background:rgba(15,15,20,.7);border:1px solid rgba(0,217,255,.15);border-radius:14px;padding:1.75rem}.card,.mode-toggle{margin-bottom:1.5rem}.mode-toggle{background:rgba(0,0,0,.2);border-radius:10px;display:flex;gap:.5rem;padding:.375rem}.mode-btn{background:transparent;border:none;border-radius:8px;color:#71717a;cursor:pointer;flex:1;font-size:.875rem;font-weight:600;height:40px;transition:all .2s}.mode-btn.active{background:rgba(0,217,255,.15);color:#00d9ff}.mode-btn:hover:not(.active){color:#a1a1aa}.input-section{margin-bottom:1.25rem}.input-label{align-items:center;color:#71717a;display:flex;font-size:.8125rem;font-weight:600;gap:.5rem;letter-spacing:.06em;margin-bottom:.625rem;text-transform:uppercase}#textInput{background:#0f0f12;border:1px solid rgba(0,217,255,.12);border-radius:10px;box-sizing:border-box;color:#fafafa;font-family:JetBrains Mono,Fira Code,monospace;font-size:.875rem;line-height:1.7;min-height:150px;outline:none;padding:1rem 1.125rem;resize:vertical;transition:border-color .2s,box-shadow .2s;width:100%}#textInput::-moz-placeholder{color:#52525b}#textInput::placeholder{color:#52525b}#textInput:focus{border-color:rgba(0,217,255,.45);box-shadow:0 0 0 3px rgba(0,217,255,.08)}.file-section{margin-bottom:1.25rem}.file-dropzone{background:rgba(0,217,255,.02);border:2px dashed rgba(0,217,255,.25);border-radius:10px;cursor:pointer;padding:2rem;text-align:center;transition:all .2s}.file-dropzone:hover{background:rgba(0,217,255,.05);border-color:rgba(0,217,255,.5)}.file-dropzone.dragover{background:rgba(0,217,255,.1);border-color:#00d9ff}.file-dropzone-icon{font-size:2rem;margin-bottom:.5rem}.file-dropzone-text{color:#a1a1aa;font-size:.9375rem}.file-dropzone-hint{color:#52525b;font-size:.8125rem;margin-top:.25rem}#fileInput,.file-info{display:none}.file-info{align-items:center;background:rgba(0,217,255,.08);border:1px solid rgba(0,217,255,.2);border-radius:10px;gap:.75rem;margin-top:.75rem;padding:.875rem 1rem}.file-info.visible{display:flex}.file-info-name{color:#fafafa;flex:1;font-size:.875rem}.file-info-size{color:#71717a;font-size:.75rem}.file-info-remove{background:none;border:none;color:#f55;cursor:pointer;font-size:1.25rem;line-height:1;padding:0}.btn-bar{display:flex;flex-wrap:wrap;gap:.625rem;margin-bottom:1.5rem}.btn{align-items:center;border:none;border-radius:8px;cursor:pointer;display:inline-flex;font-size:.9rem;font-weight:600;gap:.4rem;height:40px;outline:none;padding:0 1.125rem;transition:background .18s,transform .12s,opacity .18s;-webkit-user-select:none;-moz-user-select:none;user-select:none}.btn:active{transform:scale(.97)}.btn-primary{background:linear-gradient(135deg,#00d9ff,#09c);color:#0a0a0c}.btn-primary:hover{background:linear-gradient(135deg,#1fe2ff,#00b8ee)}.btn-secondary{background:rgba(0,217,255,.1);border:1px solid rgba(0,217,255,.25);color:#00d9ff}.btn-secondary:hover{background:rgba(0,217,255,.18)}.btn-ghost{background:var(--surface-default);border:1px solid var(--border-hover);color:#a1a1aa}.btn-ghost:hover{background:hsla(0,0%,100%,.09);color:#fafafa}.btn-danger{background:rgba(255,85,85,.1);border:1px solid rgba(255,85,85,.25);color:#f55}.btn-danger:hover{background:rgba(255,85,85,.18)}.error-banner{align-items:flex-start;animation:fadeSlideIn .2s ease;background:rgba(255,85,85,.08);border:1px solid rgba(255,85,85,.3);border-radius:10px;display:none;gap:.75rem;margin-bottom:1rem;padding:.875rem 1rem}.error-banner.visible,.error-icon{display:flex}.error-icon{align-items:center;background:rgba(255,85,85,.2);border-radius:50%;color:#f55;flex-shrink:0;font-size:.75rem;height:20px;justify-content:center;margin-top:1px;width:20px}.error-text{color:#f77;font-family:JetBrains Mono,monospace;font-size:.8125rem;line-height:1.6}@keyframes fadeSlideIn{0%{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}.output-header{align-items:center;display:flex;justify-content:space-between;margin-bottom:.625rem}.output-label{color:#71717a;font-size:.8125rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase}.output-wrap{background:#08080a;border:1px solid rgba(0,217,255,.1);border-radius:10px;overflow:hidden;position:relative}.output-placeholder{color:#52525b;font-size:.9375rem;padding:2rem 1.5rem;text-align:center}#textOutput{background:transparent;border:none;box-sizing:border-box;color:#fafafa;display:none;font-family:JetBrains Mono,monospace;font-size:.8125rem;line-height:1.75;margin:0;min-height:150px;outline:none;padding:1.125rem 1.25rem;resize:vertical;width:100%}.copy-feedback{color:#0f8;font-size:.8rem;opacity:0;pointer-events:none;transition:opacity .3s}.copy-feedback.show{opacity:1}.legal-note{background:rgba(255,193,7,.05);border:1px solid rgba(255,193,7,.15);border-radius:10px;color:#a1a1aa;font-size:.8125rem;line-height:1.6;margin-top:1.5rem;padding:1rem 1.25rem}.legal-note strong{color:#ffc107}.seo-section{margin:3.5rem auto 0;max-width:960px;padding:0 1rem}.seo-section h2{color:#fafafa;font-size:1.375rem;font-weight:700;margin-bottom:.75rem}.seo-section h3{color:#fafafa;font-size:1.125rem;font-weight:600;margin:2rem 0 .75rem}.seo-section li,.seo-section p{color:#a1a1aa;font-size:.9375rem;line-height:1.8}.seo-section ol{padding-left:1.25rem}.seo-section ol li{margin-bottom:.4rem}.faq-item{background:rgba(15,15,20,.5);border:1px solid rgba(0,217,255,.1);border-radius:10px;margin-bottom:.875rem;padding:1rem 1.125rem}.faq-item summary{align-items:center;color:#fafafa;cursor:pointer;display:flex;font-weight:600;gap:1rem;justify-content:space-between;list-style:none}.faq-item summary::-webkit-details-marker{display:none}.faq-item summary:after{color:#00d9ff;content:"+";flex-shrink:0;font-size:1.25rem;transition:transform .2s}.faq-item[open] summary:after{content:"\2212"}.faq-item p{color:#a1a1aa;line-height:1.7;margin-top:.625rem}@media (max-width:600px){.btn-bar{gap:.5rem}.btn{font-size:.85rem;height:38px;padding:0 .875rem}.file-dropzone{padding:1.5rem 1rem}}</style>
+  <script type="module" crossorigin src="/js/tools/dev/base64-converter-C1JztAV1.js"></script>
+  <link rel="modulepreload" crossorigin href="/js/modulepreload-polyfill-YP0FEG5d.js">
+  <link rel="stylesheet" crossorigin href="/css/critical-D6EXev1O.css">
+  <link rel="stylesheet" crossorigin href="/css/main-C-2uV3x-.css">
+<link rel="manifest" href="/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/registerSW.js"></script></head>
+<body>
+  <div class="bg-ambient" aria-hidden="true"></div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <div id="app" class="app">
+    <header class="main-header">
+      <div class="container">
+        <div class="header-inner">
+          <a href="/" class="logo" aria-label="NovaTools MC Home">
+            <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
+            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+          </a>
+          <nav class="nav-desktop" aria-label="Main navigation">
+            <a href="/#finance" class="nav-link">Finance</a>
+            <a href="/#pdf" class="nav-link">PDF Tools</a>
+            <a href="/#image" class="nav-link">Images</a>
+            <a href="/#dev" class="nav-link">Developers</a>
+          </nav>
+          <div class="privacy-badge" title="Your data never leaves your browser">
+            <span class="privacy-badge-dot"></span>
+            <span>Privacy First</span>
+          </div>
+          <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+            <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+          <button type="button" id="mobileMenuBtn" class="menu-btn" aria-label="Toggle menu" aria-expanded="false">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+        </div>
+        <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
+          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <div class="tool-wrapper">
+        <div class="tool-hero">
+          <div class="tool-hero-icon">&#128260;</div>
+          <h1>Base64 Encoder/Decoder</h1>
+          <span class="sr-only">Free Base64 encoder and decoder — convert text and files to Base64 and back. Free online Base64 converter tool.</span>
+          <p>Encode and decode Base64 strings and files. Convert text to Base64, Base64 to text, or files to Base64. Works 100% in your browser.</p>
+        </div>
+
+        <div class="card">
+          <div class="mode-toggle" role="tablist" aria-label="Conversion mode">
+            <button class="mode-btn active" data-mode="encode-text" role="tab" aria-selected="true">Text to Base64</button>
+            <button class="mode-btn" data-mode="decode-text" role="tab" aria-selected="false">Base64 to Text</button>
+            <button class="mode-btn" data-mode="encode-file" role="tab" aria-selected="false">File to Base64</button>
+          </div>
+
+          <div id="textInputSection" class="input-section">
+            <div class="input-label" id="inputLabel">Input Text</div>
+            <textarea id="textInput" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="Enter text to encode..." aria-label="Text input"></textarea>
+          </div>
+
+          <div id="fileInputSection" class="file-section" style="display:none;">
+            <div class="input-label">Upload File</div>
+            <div class="file-dropzone" id="fileDropzone" role="button" tabindex="0" aria-label="Drop file here or click to browse">
+              <div class="file-dropzone-icon">&#128193;</div>
+              <div class="file-dropzone-text">Drop file here or click to browse</div>
+              <div class="file-dropzone-hint">Maximum file size: 10MB</div>
+            </div>
+            <input type="file" id="fileInput" aria-label="File input">
+            <div class="file-info" id="fileInfo">
+              <span class="file-info-name" id="fileName"></span>
+              <span class="file-info-size" id="fileSize"></span>
+              <button class="file-info-remove" id="fileRemove" aria-label="Remove file">&times;</button>
+            </div>
+          </div>
+
+          <div class="btn-bar" role="toolbar" aria-label="Base64 actions">
+            <button class="btn btn-primary" id="btnConvert" type="button" aria-label="Convert">
+              <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M11.534 7h3.932a.25.25 0 01.192.41l-1.966 2.36a.25.25 0 01-.384 0l-1.966-2.36a.25.25 0 01.192-.41zm-11 2h3.932a.25.25 0 00.192-.41L2.692 6.23a.25.25 0 00-.384 0L.342 8.59A.25.25 0 00.534 9z"/><path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 01-.771-.636A6.002 6.002 0 0113.917 7H12.9A5.002 5.002 0 008 3zM3.1 9a5.002 5.002 0 008.757 2.182.5.5 0 01.771.636A6.002 6.002 0 012.083 9H3.1z"/></svg>
+              Convert
+            </button>
+            <button class="btn btn-ghost" id="btnCopy" type="button" aria-label="Copy output to clipboard">
+              <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 1.5H3a2 2 0 00-2 2V14a2 2 0 002 2h10a2 2 0 002-2V3.5a2 2 0 00-2-2h-1v1h1a1 1 0 011 1V14a1 1 0 01-1 1H3a1 1 0 01-1-1V3.5a1 1 0 011-1h1v-1zM9.5 1a.5.5 0 01.5.5v1a.5.5 0 01-.5.5h-3a.5.5 0 01-.5-.5v-1a.5.5 0 01.5-.5h3z"/></svg>
+              Copy
+            </button>
+            <button class="btn btn-secondary" id="btnDownload" type="button" aria-label="Download result">
+              <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1a.5.5 0 01.5.5v8.793l3.146-3.147a.5.5 0 01.708.708l-4 4a.5.5 0 01-.708 0l-4-4a.5.5 0 01.708-.708L7.5 10.293V1.5A.5.5 0 018 1z"/><path d="M1.5 13.5A.5.5 0 012 13h12a.5.5 0 010 1H2a.5.5 0 01-.5-.5z"/></svg>
+              Download
+            </button>
+            <button class="btn btn-danger" id="btnClear" type="button" aria-label="Clear all">
+              <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M5.5 5.5A.5.5 0 016 6v6a.5.5 0 01-1 0V6a.5.5 0 01.5-.5zm2.5 0a.5.5 0 01.5.5v6a.5.5 0 01-1 0V6a.5.5 0 01.5-.5zm3 .5a.5.5 0 00-1 0v6a.5.5 0 001 0V6z"/><path fill-rule="evenodd" d="M14.5 3a1 1 0 01-1 1H13v9a2 2 0 01-2 2H5a2 2 0 01-2-2V4h-.5a1 1 0 01-1-1V2a1 1 0 011-1H6a1 1 0 011-1h2a1 1 0 011 1h3.5a1 1 0 011 1v1zM4.118 4L4 4.059V13a1 1 0 001 1h6a1 1 0 001-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/></svg>
+              Clear
+            </button>
+            <span class="copy-feedback" id="copyFeedback" aria-live="polite">Copied!</span>
+          </div>
+
+          <div class="error-banner" id="errorBanner" role="alert">
+            <div class="error-icon">!</div>
+            <div class="error-text" id="errorText"></div>
+          </div>
+
+          <div>
+            <div class="output-header">
+              <div class="output-label" id="outputLabel">Base64 Output</div>
+            </div>
+            <div class="output-wrap">
+              <div class="output-placeholder" id="outputPlaceholder">Result will appear here</div>
+              <textarea id="textOutput" spellcheck="false" aria-label="Output" readonly></textarea>
+            </div>
+          </div>
+
+          <div class="legal-note">
+            <strong>Disclaimer:</strong> This tool processes all data locally in your browser. No text or files are sent to any server. File conversion is limited to 10MB per file.
+          </div>
+        </div>
+      </div>
+
+      <section class="seo-section" aria-label="About this tool">
+        <h2>About Base64 Encoder/Decoder</h2>
+        <p>Base64 is a binary-to-text encoding scheme that represents binary data in an ASCII string format. It's commonly used for transmitting data over channels that only support text content, embedding images in HTML/CSS, storing binary data in JSON, and many other applications. This free online tool lets you encode text or files to Base64, or decode Base64 back to its original form.</p>
+
+        <h3>How to Use</h3>
+        <ol>
+          <li>Select your conversion mode: <strong>Text to Base64</strong>, <strong>Base64 to Text</strong>, or <strong>File to Base64</strong>.</li>
+          <li>Enter your text or upload a file (max 10MB).</li>
+          <li>Click <strong>Convert</strong> to perform the encoding/decoding.</li>
+          <li>Use <strong>Copy</strong> to copy the result or <strong>Download</strong> to save it.</li>
+        </ol>
+
+        <h3>Frequently Asked Questions</h3>
+
+        <details class="faq-item">
+          <summary>What is Base64 encoding used for?</summary>
+          <p>Base64 is used to encode binary data as text for transmission over text-based protocols, embedding images in HTML/CSS using data URIs, storing binary data in JSON or XML, email attachments (MIME), and URL parameters that need to handle special characters.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Is my data kept private?</summary>
+          <p>Yes, completely. All encoding and decoding happens locally in your browser using JavaScript. No data is ever transmitted to any server or stored anywhere.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>What's the maximum file size?</summary>
+          <p>The file upload is limited to 10MB per file to ensure smooth performance in your browser. For larger files, consider using command-line tools or desktop applications.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Can I decode Base64 back to a file?</summary>
+          <p>When you decode Base64 text, the result will appear in the output area. If the decoded content represents a file (like an image), you can copy the output and use it in data URIs or save it with the appropriate file extension.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Why does my Base64 look different on different systems?</summary>
+          <p>Base64 encoding is standardized (RFC 4648), so the encoded output should be consistent. However, line breaks and padding characters (=) might be handled differently by various systems. This tool produces standard Base64 without line breaks.</p>
+        </details>
+      </section>
+    </main>
+
+    <footer class="tool-footer">
+      <p>&copy; 2026 NovaTools MC &mdash; Psk. Metehan CETIN | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
+      <p>Estimates only &mdash; not financial, legal, or tax advice.</p>
+    </footer>
+    <style>.tool-footer{border-top:1px solid var(--border-default);color:#718096;font-size:.8rem;line-height:1.8;margin-top:3rem;padding:1.5rem 1rem;text-align:center}.tool-footer a{color:#00d9ff;text-decoration:none}</style>
+  </div>
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var menuBtn = document.getElementById('mobileMenuBtn');
+      var mobileMenu = document.getElementById('mobileMenu');
+      if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener('click', function() {
+          var isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+          menuBtn.setAttribute('aria-expanded', !isExpanded);
+          mobileMenu.hidden = isExpanded;
+          mobileMenu.classList.toggle('active', !isExpanded);
+        });
+      }
+      var themeBtn = document.getElementById('themeToggle');
+      if (themeBtn) {
+        function getTheme() {
+          var s = localStorage.getItem('theme');
+          if (s) return s;
+          return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        }
+        function updateIcon() {
+          var t = getTheme();
+          themeBtn.querySelector('.icon-sun').style.display = t === 'light' ? 'none' : 'block';
+          themeBtn.querySelector('.icon-moon').style.display = t === 'dark' ? 'none' : 'block';
+        }
+        themeBtn.addEventListener('click', function() {
+          var next = getTheme() === 'dark' ? 'light' : 'dark';
+          document.documentElement.setAttribute('data-theme', next);
+          localStorage.setItem('theme', next);
+          updateIcon();
+        });
+        updateIcon();
+      }
+    });
+  </script>
+</body>
+</html>

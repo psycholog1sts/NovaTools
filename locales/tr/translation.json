@@ -7,12 +7,23 @@
     "developer": "Geliştirici",
     "text": "Metin",
     "about": "Hakkımızda",
-    "contact": "İletişim"
+    "contact": "İletişim",
+    "blog": "Blog",
+    "request": "Araç Öner",
+    "security": "Güvenlik",
+    "privacy": "Gizlilik",
+    "terms": "Koşullar",
+    "cookies": "Çerezler",
+    "converters": "Dönüştürücüler"
   },
   "hero": {
-    "title": "Profesyonel Araçlar. Tam Gizlilik.",
-    "subtitle": "300+ ücretsiz çevrimiçi araç. Kayıt yok. Veri toplama yok.",
-    "cta": "Araçları Keşfet"
+    "title": "Dosyalar, Finans ve Kod için Her Şey Dahil Araçlar",
+    "subtitle": "MC NovaTools ile hızlı, temiz ve gizlilik odaklı araç setimizle dönüştürün, hesaplayın, oluşturun ve optimize edin. 300+ ücretsiz araç, kayıt gerekmez.",
+    "cta": "Araçları Keşfet",
+    "browse": "Kategorileri Görüntüle",
+    "freeTools": "Ücretsiz Araçlar",
+    "categories": "Kategoriler",
+    "private": "Gizli"
   },
   "footer": {
     "signature": "Metehan ÇETİN, LPC",
@@ -21,11 +32,36 @@
     "copyright": "© 2026 MC NovaTools. Tüm hakları saklıdır."
   },
   "tools": {
-    "categories": "Araç Kategorileri",
-    "popular": "Popüler Araçlar"
+    "categories": "Kategoriye Göre Gözat",
+    "categoriesDesc": "Her ihtiyaç için düzenlenmiş araç koleksiyonları. Keşfetmek için bir kategoriye tıklayın.",
+    "popular": "Popüler Araçlar",
+    "new": "Yeni Araçlar"
   },
   "privacy": {
     "badge": "Gizlilik İlk",
     "description": "Verileriniz tarayıcınızdan ayrılmaz"
+  },
+  "common": {
+    "loading": "Yükleniyor...",
+    "error": "Bir hata oluştu",
+    "success": "Başarılı!",
+    "save": "Kaydet",
+    "cancel": "İptal",
+    "delete": "Sil",
+    "edit": "Düzenle",
+    "close": "Kapat",
+    "open": "Aç",
+    "search": "Ara",
+    "download": "İndir",
+    "upload": "Yükle",
+    "copy": "Kopyala",
+    "paste": "Yapıştır",
+    "cut": "Kes",
+    "select": "Seç",
+    "clear": "Temizle",
+    "reset": "Sıfırla",
+    "apply": "Uygula",
+    "filter": "Filtrele",
+    "sort": "Sırala"
   }
 }

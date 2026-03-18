@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y896L63239"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Y896L63239');
+  </script>
+  <meta charset="UTF-8">
+  <script>(function(){var t=localStorage.getItem('novatools-theme');if(t)document.documentElement.setAttribute('data-theme',t);else{var d=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',d);document.documentElement.style.colorScheme=d;}})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <title>Batch File Renamer — Free Online Tool | NovaTools MC</title>
+  
+  <!-- i18n Script -->
+  <script src="/i18n.js"></script>
+  <meta name="description" content="Rename multiple files at once. Free online batch file renamer with patterns, find/replace, and numbering options. 100% client-side.">
+  <meta name="keywords" content="batch rename, file renamer, rename multiple files, bulk rename, file naming tool">
+  <meta name="theme-color" content="#0A0A0C">
+
+  <meta property="og:title" content="Batch File Renamer — Free Online Tool | NovaTools MC">
+  <meta property="og:description" content="Rename multiple files at once. Free online batch file renamer.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.mc-novatools.com/tools/data/file-renamer/">
+  <meta property="og:image" content="https://www.mc-novatools.com/og-image.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Batch File Renamer | NovaTools MC">
+  <meta name="twitter:description" content="Rename multiple files at once. Free online batch file renamer.">
+
+  <link rel="canonical" href="https://www.mc-novatools.com/tools/data/file-renamer/">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [{
+      "@type": "WebApplication",
+      "name": "Batch File Renamer",
+      "description": "Rename multiple files at once. Free online batch file renamer with patterns, find/replace, and numbering options.",
+      "url": "https://www.mc-novatools.com/tools/data/file-renamer/",
+      "applicationCategory": "FileUtilityApplication",
+      "operatingSystem": "Any",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+    }]
+  }
+  </script>
+
+  <style>.tool-wrapper{margin:0 auto;max-width:960px;padding:3rem 1rem 5rem}.tool-hero{margin-bottom:2.5rem;text-align:center}.tool-hero-icon{font-size:3.5rem;line-height:1;margin-bottom:1rem}.tool-hero h1{color:#fafafa;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;letter-spacing:-.02em;margin-bottom:.75rem}.tool-hero p{color:#a1a1aa;font-size:1.0625rem;margin:0 auto;max-width:560px}.card{backdrop-filter:blur(12px);background:rgba(15,15,20,.7);border:1px solid rgba(0,217,255,.15);border-radius:14px;padding:1.75rem}.upload-area{border:2px dashed rgba(0,217,255,.3);border-radius:12px;cursor:pointer;margin-bottom:1.5rem;padding:2.5rem;text-align:center;transition:all .2s}.upload-area:hover{background:rgba(0,217,255,.05);border-color:rgba(0,217,255,.6)}.upload-area.dragover{background:rgba(0,217,255,.1);border-color:#00d9ff}.upload-icon{font-size:2.5rem;margin-bottom:1rem}.upload-text{color:#fafafa;font-weight:500;margin-bottom:.5rem}.upload-hint{color:#71717a;font-size:.875rem}#fileInput{display:none}.options-panel{background:rgba(0,0,0,.2);border-radius:10px;margin-bottom:1.5rem;padding:1.25rem}.options-panel h3{color:#a1a1aa;font-size:.875rem;letter-spacing:.05em;margin-bottom:1rem;text-transform:uppercase}.option-row{align-items:center;display:flex;gap:1rem;margin-bottom:1rem}.option-row:last-child{margin-bottom:0}.option-label{color:#e4e4e7;font-size:.875rem;min-width:100px}.option-input{background:#0f0f12;border:1px solid rgba(0,217,255,.2);border-radius:6px;color:#fafafa;flex:1;font-size:.875rem;padding:.5rem .75rem}.option-input:focus{border-color:rgba(0,217,255,.5);outline:none}.option-select{background:#0f0f12;border:1px solid rgba(0,217,255,.2);border-radius:6px;color:#fafafa;padding:.5rem}.option-checkbox{align-items:center;color:#a1a1aa;display:flex;font-size:.875rem;gap:.5rem}.btn-bar{display:flex;flex-wrap:wrap;gap:.625rem;margin-bottom:1.5rem}.btn{align-items:center;border:none;border-radius:8px;cursor:pointer;display:inline-flex;font-size:.9rem;font-weight:600;gap:.4rem;height:40px;padding:0 1.125rem;transition:all .18s}.btn:active{transform:scale(.97)}.btn-primary{background:linear-gradient(135deg,#00d9ff,#09c);color:#0a0a0c}.btn-primary:hover{background:linear-gradient(135deg,#1fe2ff,#00b8ee)}.btn-primary:disabled{cursor:not-allowed;opacity:.5}.btn-secondary{background:rgba(0,217,255,.1);border:1px solid rgba(0,217,255,.25);color:#00d9ff}.btn-secondary:hover{background:rgba(0,217,255,.18)}.btn-danger{background:rgba(255,85,85,.1);border:1px solid rgba(255,85,85,.25);color:#f55}.btn-danger:hover{background:rgba(255,85,85,.18)}.preview-section{margin-top:1.5rem}.preview-section h3{color:#fafafa;font-size:1rem;margin-bottom:1rem}.preview-table{border-collapse:collapse;font-size:.875rem;width:100%}.preview-table th{background:rgba(0,217,255,.1);border-bottom:1px solid rgba(0,217,255,.2);color:#00d9ff;font-weight:600;padding:.75rem;text-align:left}.preview-table td{border-bottom:1px solid hsla(0,0%,100%,.05);padding:.625rem .75rem}.preview-old{color:#a1a1aa;text-decoration:line-through}.preview-new{color:#0f8;font-weight:500}.preview-arrow{color:#71717a}.progress-bar{background:hsla(0,0%,100%,.1);border-radius:4px;display:none;height:8px;margin-top:1rem;overflow:hidden}.progress-bar.visible{display:block}.progress-fill{background:linear-gradient(90deg,#00d9ff,#0f8);height:100%;transition:width .3s;width:0}.error-banner{align-items:flex-start;background:rgba(255,85,85,.08);border:1px solid rgba(255,85,85,.3);border-radius:10px;display:none;gap:.75rem;margin-bottom:1rem;padding:.875rem 1rem}.error-banner.visible{display:flex}.error-text{color:#f77;font-size:.875rem}.legal-disclaimer{background:rgba(255,193,7,.08);border-left:4px solid #ffc107;border-radius:0 8px 8px 0;margin-top:2rem;padding:1rem 1.25rem}.legal-disclaimer p{color:#a1a1aa;font-size:.875rem;line-height:1.6;margin:0}.legal-disclaimer strong{color:#ffc107}.seo-section{margin:3.5rem auto 0;max-width:960px;padding:0 1rem}.seo-section h2{color:#fafafa;font-size:1.375rem;font-weight:700;margin-bottom:.75rem}.seo-section h3{color:#fafafa;font-size:1.125rem;font-weight:600;margin:2rem 0 .75rem}.seo-section li,.seo-section p{color:#a1a1aa;font-size:.9375rem;line-height:1.8}.seo-section ol{padding-left:1.25rem}.seo-section ol li{margin-bottom:.4rem}.faq-item{background:rgba(15,15,20,.5);border:1px solid rgba(0,217,255,.1);border-radius:10px;margin-bottom:.875rem;padding:1rem 1.125rem}.faq-item summary{align-items:center;color:#fafafa;cursor:pointer;display:flex;font-weight:600;gap:1rem;justify-content:space-between;list-style:none}.faq-item summary::-webkit-details-marker{display:none}.faq-item summary:after{color:#00d9ff;content:"+";flex-shrink:0;font-size:1.25rem}.faq-item[open] summary:after{content:"−"}.faq-item p{color:#a1a1aa;line-height:1.7;margin-top:.625rem}.tool-footer{border-top:1px solid hsla(0,0%,100%,.1);color:#718096;font-size:.8rem;line-height:1.8;margin-top:3rem;padding:1.5rem 1rem;text-align:center}.tool-footer a{color:#00d9ff;text-decoration:none}@media (max-width:600px){.option-row{align-items:stretch;flex-direction:column}.option-label{min-width:auto}}</style>
+  <link rel="stylesheet" crossorigin href="/css/critical-D6EXev1O.css">
+  <link rel="stylesheet" crossorigin href="/css/main-C-2uV3x-.css">
+<link rel="manifest" href="/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/registerSW.js"></script></head>
+<body>
+  <div class="bg-ambient" aria-hidden="true"></div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <div id="app" class="app">
+    <header class="main-header">
+      <div class="container">
+        <div class="header-inner">
+          <a href="/" class="logo" aria-label="NovaTools MC Home">
+            <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
+            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+          </a>
+          <nav class="nav-desktop" aria-label="Main navigation">
+            <a href="/#finance" class="nav-link">Finance</a>
+            <a href="/#pdf" class="nav-link">PDF Tools</a>
+            <a href="/#image" class="nav-link">Images</a>
+            <a href="/#dev" class="nav-link">Developers</a>
+          </nav>
+          <div class="privacy-badge" title="Your data never leaves your browser">
+            <span class="privacy-badge-dot"></span>
+            <span>Privacy First</span>
+          </div>
+          <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+            <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+          <button type="button" id="mobileMenuBtn" class="menu-btn" aria-label="Toggle menu" aria-expanded="false">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+        </div>
+        <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
+          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <div class="tool-wrapper">
+        <div class="tool-hero">
+          <div class="tool-hero-icon">🏷️</div>
+          <h1>Batch File Renamer</h1>
+          <p>Rename multiple files at once with patterns, find/replace, and auto-numbering. Preview changes before applying.</p>
+        </div>
+
+        <div class="card">
+          <div class="upload-area" id="uploadArea">
+            <div class="upload-icon">📁</div>
+            <div class="upload-text">Drop files here or click to select multiple files</div>
+            <div class="upload-hint">Select all files you want to rename</div>
+          </div>
+          <input type="file" id="fileInput" multiple>
+
+          <div class="options-panel">
+            <h3>Rename Options</h3>
+            <div class="option-row">
+              <span class="option-label">Find:</span>
+              <input type="text" class="option-input" id="findText" placeholder="Text to find (optional)">
+            </div>
+            <div class="option-row">
+              <span class="option-label">Replace:</span>
+              <input type="text" class="option-input" id="replaceText" placeholder="Replacement text">
+            </div>
+            <div class="option-row">
+              <span class="option-label">Prefix:</span>
+              <input type="text" class="option-input" id="prefixText" placeholder="Add to beginning">
+            </div>
+            <div class="option-row">
+              <span class="option-label">Suffix:</span>
+              <input type="text" class="option-input" id="suffixText" placeholder="Add before extension">
+            </div>
+            <div class="option-row">
+              <span class="option-label">Numbering:</span>
+              <select class="option-select" id="numberingMode">
+                <option value="none">None</option>
+                <option value="prefix">Prefix (001_filename)</option>
+                <option value="suffix">Suffix (filename_001)</option>
+              </select>
+              <label class="option-checkbox"><input type="checkbox" id="preserveExt" checked> Keep extensions</label>
+              <label class="option-checkbox"><input type="checkbox" id="lowercase"> lowercase names</label>
+            </div>
+          </div>
+
+          <div class="btn-bar">
+            <button class="btn btn-secondary" id="btnPreview" disabled>Preview Changes</button>
+            <button class="btn btn-primary" id="btnDownloadAll" disabled>Download All (ZIP)</button>
+            <button class="btn btn-danger" id="btnClear">Clear</button>
+          </div>
+
+          <div class="progress-bar" id="progressBar">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+
+          <div class="error-banner" id="errorBanner">
+            <div class="error-text" id="errorText"></div>
+          </div>
+
+          <div class="preview-section" id="previewSection" style="display:none">
+            <h3>Preview <span id="fileCount"></span></h3>
+            <div style="overflow-x:auto">
+              <table class="preview-table" id="previewTable">
+                <thead><tr><th>Original Name</th><th></th><th>New Name</th></tr></thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="legal-disclaimer">
+          <p><strong>Privacy & Security:</strong> This tool is for personal use. Your files are not uploaded to any server. All processing happens client-side in your browser.</p>
+          <p style="margin-top: 0.5rem;"><strong>Disclaimer:</strong> Downloaded files will have new names. Original files on your system are not modified.</p>
+        </div>
+      </div>
+
+      <section class="seo-section" aria-label="About this tool">
+        <h2>About Batch File Renamer</h2>
+        <p>This free online tool helps you rename multiple files at once according to custom rules. You can find and replace text, add prefixes or suffixes, apply auto-numbering, and more. All changes are previewed before you download the renamed files.</p>
+
+        <h3>How to Use</h3>
+        <ol>
+          <li>Select files by dropping them onto the upload area or clicking to browse.</li>
+          <li>Configure rename options: find/replace, prefix/suffix, numbering, and case options.</li>
+          <li>Click <strong>Preview Changes</strong> to see how files will be renamed.</li>
+          <li>Download all renamed files as a ZIP archive.</li>
+        </ol>
+
+        <h3>Frequently Asked Questions</h3>
+
+        <details class="faq-item">
+          <summary>Is my file data kept private?</summary>
+          <p>Absolutely. All processing happens entirely in your browser. No file data is sent to any server. Your files are only used to generate renamed copies.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Are my original files modified?</summary>
+          <p>No, this tool cannot modify files on your system. It creates new copies with different names that you download as a ZIP file. Your original files remain unchanged.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Can I rename files by their content?</summary>
+          <p>No, this tool renames based on the current filenames and your specified rules. It does not analyze file contents for renaming purposes.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>What file extensions are preserved?</summary>
+          <p>When "Keep extensions" is enabled (default), the last part after the final dot is preserved as the extension. This works for most common file types.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Is there a limit to how many files I can rename?</summary>
+          <p>There is no strict limit, but very large numbers of files (hundreds or more) may take longer to process and ZIP for download.</p>
+        </details>
+      </section>
+
+      <footer class="tool-footer">
+        <p>&copy; 2026 NovaTools MC &mdash; Psk. Metehan CETIN | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
+        <p>Estimates only &mdash; not financial, legal, or tax advice.</p>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    const uploadArea = document.getElementById('uploadArea');
+    const fileInput = document.getElementById('fileInput');
+    const findText = document.getElementById('findText');
+    const replaceText = document.getElementById('replaceText');
+    const prefixText = document.getElementById('prefixText');
+    const suffixText = document.getElementById('suffixText');
+    const numberingMode = document.getElementById('numberingMode');
+    const preserveExt = document.getElementById('preserveExt');
+    const lowercase = document.getElementById('lowercase');
+    const btnPreview = document.getElementById('btnPreview');
+    const btnDownloadAll = document.getElementById('btnDownloadAll');
+    const btnClear = document.getElementById('btnClear');
+    const previewSection = document.getElementById('previewSection');
+    const previewTable = document.getElementById('previewTable').querySelector('tbody');
+    const fileCount = document.getElementById('fileCount');
+    const progressBar = document.getElementById('progressBar');
+    const progressFill = document.getElementById('progressFill');
+    const errorBanner = document.getElementById('errorBanner');
+    const errorText = document.getElementById('errorText');
+
+    let selectedFiles = [];
+    let renamedFiles = [];
+
+    uploadArea.addEventListener('click', () => fileInput.click());
+    uploadArea.addEventListener('dragover', (e) => { e.preventDefault(); uploadArea.classList.add('dragover'); });
+    uploadArea.addEventListener('dragleave', () => uploadArea.classList.remove('dragover'));
+    uploadArea.addEventListener('drop', (e) => {
+      e.preventDefault();
+      uploadArea.classList.remove('dragover');
+      handleFiles(Array.from(e.dataTransfer.files));
+    });
+    fileInput.addEventListener('change', () => handleFiles(Array.from(fileInput.files)));
+
+    function handleFiles(files) {
+      files.forEach(file => { if (!selectedFiles.some(f => f.name === file.name)) selectedFiles.push(file); });
+      btnPreview.disabled = selectedFiles.length === 0;
+      uploadArea.querySelector('.upload-text').textContent = `${selectedFiles.length} file(s) selected`;
+      hideError();
+    }
+
+    btnPreview.addEventListener('click', () => {
+      renamedFiles = [];
+      previewTable.innerHTML = '';
+      
+      selectedFiles.forEach((file, index) => {
+        let newName = generateNewName(file.name, index);
+        renamedFiles.push({ original: file, newName });
+        
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td class="preview-old">${escapeHtml(file.name)}</td>
+          <td class="preview-arrow">→</td>
+          <td class="preview-new">${escapeHtml(newName)}</td>
+        `;
+        previewTable.appendChild(row);
+      });
+      
+      fileCount.textContent = `(${selectedFiles.length} files)`;
+      previewSection.style.display = 'block';
+      btnDownloadAll.disabled = false;
+    });
+
+    function generateNewName(originalName, index) {
+      let name = originalName;
+      let ext = '';
+      
+      if (preserveExt.checked) {
+        const lastDot = originalName.lastIndexOf('.');
+        if (lastDot > 0) { ext = originalName.substring(lastDot); name = originalName.substring(0, lastDot); }
+      }
+      
+      if (findText.value) name = name.split(findText.value).join(replaceText.value);
+      if (prefixText.value) name = prefixText.value + name;
+      if (suffixText.value) name = name + suffixText.value;
+      
+      if (numberingMode.value === 'prefix') name = String(index + 1).padStart(3, '0') + '_' + name;
+      if (numberingMode.value === 'suffix') name = name + '_' + String(index + 1).padStart(3, '0');
+      
+      if (lowercase.checked) name = name.toLowerCase();
+      
+      return name + ext;
+    }
+
+    btnDownloadAll.addEventListener('click', async () => {
+      if (renamedFiles.length === 0) return;
+      btnDownloadAll.disabled = true;
+      progressBar.classList.add('visible');
+      
+      const JSZip = window.JSZip;
+      if (!JSZip) { loadJSZip().then(() => createAndDownloadZip()); }
+      else { createAndDownloadZip(); }
+    });
+
+    async function createAndDownloadZip() {
+      const zip = new JSZip();
+      
+      for (let i = 0; i < renamedFiles.length; i++) {
+        const rf = renamedFiles[i];
+        const content = await rf.original.arrayBuffer();
+        zip.file(rf.newName, content);
+        progressFill.style.width = `${((i + 1) / renamedFiles.length) * 100}%`;
+      }
+      
+      const blob = await zip.generateAsync({ type: 'blob' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'renamed_files.zip';
+      a.click();
+      URL.revokeObjectURL(url);
+      
+      btnDownloadAll.disabled = false;
+      progressBar.classList.remove('visible');
+      progressFill.style.width = '0';
+    }
+
+    function loadJSZip() {
+      return new Promise((resolve) => {
+        const script = document.createElement('script');
+        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js';
+        script.onload = resolve;
+        document.head.appendChild(script);
+      });
+    }
+
+    btnClear.addEventListener('click', () => {
+      selectedFiles = [];
+      renamedFiles = [];
+      fileInput.value = '';
+      btnPreview.disabled = true;
+      btnDownloadAll.disabled = true;
+      previewSection.style.display = 'none';
+      uploadArea.querySelector('.upload-text').textContent = 'Drop files here or click to select multiple files';
+      hideError();
+    });
+
+    function escapeHtml(str) {
+      const div = document.createElement('div');
+      div.textContent = str;
+      return div.innerHTML;
+    }
+
+    function showError(msg) { errorText.textContent = msg; errorBanner.classList.add('visible'); }
+    function hideError() { errorBanner.classList.remove('visible'); }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuBtn = document.getElementById('mobileMenuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener('click', function() {
+          const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+          menuBtn.setAttribute('aria-expanded', !isExpanded);
+          mobileMenu.hidden = isExpanded;
+          mobileMenu.classList.toggle('active', !isExpanded);
+        });
+      }
+      const themeBtn = document.getElementById('themeToggle');
+      if (themeBtn) {
+        function getTheme() { return localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'); }
+        function updateIcon() { const t = getTheme(); themeBtn.querySelector('.icon-sun').style.display = t === 'light' ? 'none' : 'block'; themeBtn.querySelector('.icon-moon').style.display = t === 'dark' ? 'none' : 'block'; }
+        themeBtn.addEventListener('click', function() { const next = getTheme() === 'dark' ? 'light' : 'dark'; document.documentElement.setAttribute('data-theme', next); localStorage.setItem('theme', next); updateIcon(); });
+        updateIcon();
+      }
+    });
+  </script>
+</body>
+</html>
