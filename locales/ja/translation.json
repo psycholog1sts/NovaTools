@@ -1,0 +1,34 @@
+{
+  "nav": {
+    "home": "ホーム",
+    "pdf": "PDFツール",
+    "image": "画像ツール",
+    "finance": "ファイナンス",
+    "developer": "開発者",
+    "text": "テキスト",
+    "about": "会社概要",
+    "contact": "お問い合わせ"
+  },
+  "hero": {
+    "title": "プロフェッショナルツール。完全なプライバシー。",
+    "subtitle": "100以上の無料オンラインツール。登録不要。データ収集なし。",
+    "cta": "ツールを探索"
+  },
+  "footer": {
+    "signature": "Metehan ÇETİN, LPC",
+    "title": "Licensed Professional Counselor",
+    "copyright": "© 2026 MC NovaTools. All rights reserved."
+  },
+  "tools": {
+    "categories": "ツールカテゴリー",
+    "popular": "人気ツール",
+    "pdfMerge": "PDF結合",
+    "pdfCompress": "PDF圧縮",
+    "imageCompress": "画像圧縮",
+    "wordCounter": "文字数カウント"
+  },
+  "privacy": {
+    "badge": "プライバシー優先",
+    "description": "あなたのデータはブラウザから出ることはありません"
+  }
+}

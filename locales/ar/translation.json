@@ -1,0 +1,34 @@
+{
+  "nav": {
+    "home": "الرئيسية",
+    "pdf": "أدوات PDF",
+    "image": "أدوات الصور",
+    "finance": "المالية",
+    "developer": "المطور",
+    "text": "النص",
+    "about": "من نحن",
+    "contact": "اتصل بنا"
+  },
+  "hero": {
+    "title": "أدوات احترافية. خصوصية كاملة.",
+    "subtitle": "أكثر من 100 أداة مجانية عبر الإنترنت. بدون تسجيل. بدون جمع بيانات.",
+    "cta": "استكشف الأدوات"
+  },
+  "footer": {
+    "signature": "Metehan ÇETİN, LPC",
+    "title": "Licensed Professional Counselor",
+    "copyright": "© 2026 MC NovaTools. جميع الحقوق محفوظة."
+  },
+  "tools": {
+    "categories": "فئات الأدوات",
+    "popular": "الأدوات الشائعة",
+    "pdfMerge": "دمج PDF",
+    "pdfCompress": "ضغط PDF",
+    "imageCompress": "ضغط الصور",
+    "wordCounter": "عداد الكلمات"
+  },
+  "privacy": {
+    "badge": "الخصوصية أولاً",
+    "description": "بياناتك لا تغادر متصفحك أبداً"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "nav": {
+    "home": "Home",
+    "pdf": "Strumenti PDF",
+    "image": "Strumenti Immagine",
+    "finance": "Finanza",
+    "developer": "Sviluppatore",
+    "text": "Testo",
+    "about": "Chi Siamo",
+    "contact": "Contatti"
+  },
+  "hero": {
+    "title": "Strumenti Professionali. Privacy Completa.",
+    "subtitle": "Oltre 100 strumenti online gratuiti. Senza registrazione. Senza raccolta dati.",
+    "cta": "Esplora Strumenti"
+  },
+  "footer": {
+    "signature": "Metehan ÇETİN, LPC",
+    "title": "Licensed Professional Counselor",
+    "copyright": "© 2026 MC NovaTools. Tutti i diritti riservati."
+  },
+  "tools": {
+    "categories": "Categorie di Strumenti",
+    "popular": "Strumenti Popolari",
+    "pdfMerge": "Unisci PDF",
+    "pdfCompress": "Comprimi PDF",
+    "imageCompress": "Comprimi Immagine",
+    "wordCounter": "Contatore di Parole"
+  },
+  "privacy": {
+    "badge": "Privacy Prima",
+    "description": "I tuoi dati non lasciano mai il tuo browser"
+  }
+}

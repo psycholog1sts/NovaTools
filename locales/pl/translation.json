@@ -1,0 +1,34 @@
+{
+  "nav": {
+    "home": "Strona Główna",
+    "pdf": "Narzędzia PDF",
+    "image": "Narzędzia Obrazów",
+    "finance": "Finanse",
+    "developer": "Deweloper",
+    "text": "Tekst",
+    "about": "O Nas",
+    "contact": "Kontakt"
+  },
+  "hero": {
+    "title": "Narzędzia Profesjonalne. Całkowita Prywatność.",
+    "subtitle": "Ponad 100 darmowych narzędzi online. Bez rejestracji. Bez zbierania danych.",
+    "cta": "Przeglądaj Narzędzia"
+  },
+  "footer": {
+    "signature": "Metehan ÇETİN, LPC",
+    "title": "Licensed Professional Counselor",
+    "copyright": "© 2026 MC NovaTools. Wszelkie prawa zastrzeżone."
+  },
+  "tools": {
+    "categories": "Kategorie Narzędzi",
+    "popular": "Popularne Narzędzia",
+    "pdfMerge": "Połącz PDF",
+    "pdfCompress": "Kompresuj PDF",
+    "imageCompress": "Kompresuj Obraz",
+    "wordCounter": "Licznik Słów"
+  },
+  "privacy": {
+    "badge": "Prywatność Przede Wszystkim",
+    "description": "Twoje dane nigdy nie opuszczają Twojej przeglądarki"
+  }
+}

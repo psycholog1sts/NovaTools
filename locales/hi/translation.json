@@ -1,0 +1,34 @@
+{
+  "nav": {
+    "home": "होम",
+    "pdf": "PDF टूल्स",
+    "image": "इमेज टूल्स",
+    "finance": "फाइनेंस",
+    "developer": "डेवलपर",
+    "text": "टेक्स्ट",
+    "about": "हमारे बारे में",
+    "contact": "संपर्क करें"
+  },
+  "hero": {
+    "title": "पेशेवर टूल्स। पूरी गोपनीयता।",
+    "subtitle": "100+ मुफ्त ऑनलाइन टूल्स। कोई पंजीकरण नहीं। कोई डेटा संग्रह नहीं।",
+    "cta": "टूल्स देखें"
+  },
+  "footer": {
+    "signature": "Metehan ÇETİN, LPC",
+    "title": "Licensed Professional Counselor",
+    "copyright": "© 2026 MC NovaTools. सर्वाधिकार सुरक्षित।"
+  },
+  "tools": {
+    "categories": "टूल श्रेणियाँ",
+    "popular": "लोकप्रिय टूल्स",
+    "pdfMerge": "PDF मर्ज",
+    "pdfCompress": "PDF कंप्रेस",
+    "imageCompress": "इमेज कंप्रेस",
+    "wordCounter": "शब्द गणक"
+  },
+  "privacy": {
+    "badge": "गोपनीयता पहले",
+    "description": "आपका डेटा कभी भी आपके ब्राउज़र को नहीं छोड़ता"
+  }
+}

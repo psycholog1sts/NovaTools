@@ -8,9 +8,9 @@ export const CONFIG = {
   app: {
     name: 'NovaTools MC',
     version: '2.0.0',
-    author: 'Psychological Counselor Metehan ÇETİN',
+    author: 'Licensed Professional Counselor Metehan ÇETİN',
     email: 'proside2026@gmail.com',
-    copyright: '© 2026 Psychological Counselor Metehan ÇETİN. All rights reserved.'
+    copyright: '© 2026 Licensed Professional Counselor Metehan ÇETİN. All rights reserved.'
   },
 
   // API Configuration

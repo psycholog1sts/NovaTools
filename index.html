@@ -37,6 +37,24 @@
   <meta name="theme-color" content="#0A0A0C">
   <meta name="author" content="Metehan ÇETİN, LPC">
   
+  <!-- Hreflang Tags for 15 Languages -->
+  <link rel="alternate" hreflang="en" href="https://mc-novatools.com/" />
+  <link rel="alternate" hreflang="tr" href="https://mc-novatools.com/tr/" />
+  <link rel="alternate" hreflang="de" href="https://mc-novatools.com/de/" />
+  <link rel="alternate" hreflang="fr" href="https://mc-novatools.com/fr/" />
+  <link rel="alternate" hreflang="es" href="https://mc-novatools.com/es/" />
+  <link rel="alternate" hreflang="pt" href="https://mc-novatools.com/pt/" />
+  <link rel="alternate" hreflang="ru" href="https://mc-novatools.com/ru/" />
+  <link rel="alternate" hreflang="zh" href="https://mc-novatools.com/zh/" />
+  <link rel="alternate" hreflang="ja" href="https://mc-novatools.com/ja/" />
+  <link rel="alternate" hreflang="ko" href="https://mc-novatools.com/ko/" />
+  <link rel="alternate" hreflang="ar" href="https://mc-novatools.com/ar/" />
+  <link rel="alternate" hreflang="hi" href="https://mc-novatools.com/hi/" />
+  <link rel="alternate" hreflang="it" href="https://mc-novatools.com/it/" />
+  <link rel="alternate" hreflang="pl" href="https://mc-novatools.com/pl/" />
+  <link rel="alternate" hreflang="nl" href="https://mc-novatools.com/nl/" />
+  <link rel="alternate" hreflang="x-default" href="https://mc-novatools.com/" />
+  
   <!-- Open Graph -->
   <meta property="og:title" content="MC NovaTools - 300+ Free Online Tools">
   <meta property="og:description" content="Free PDF tools, image converters, financial calculators & developer utilities.">
@@ -54,7 +72,7 @@
     "author": {
       "@type": "Person",
       "name": "Metehan ÇETİN, LPC",
-      "jobTitle": "Psychological Counselor",
+      "jobTitle": "Licensed Professional Counselor",
       "email": "contact@mc-novatools.com"
     },
     "potentialAction": {
@@ -83,14 +101,35 @@
           
           <!-- Desktop Nav -->
           <nav class="main-nav" aria-label="Main navigation">
-            <a href="/categories" class="nav-link">Categories</a>
-            <a href="#popular" class="nav-link">Popular</a>
-            <a href="#new" class="nav-link">New</a>
-            <a href="/blog" class="nav-link">Blog</a>
+            <a href="/categories/pdf-tools.html" class="nav-link">PDF</a>
+            <a href="/categories/image-tools.html" class="nav-link">Image</a>
+            <a href="/categories/finance-tools.html" class="nav-link">Finance</a>
+            <a href="/categories/developer-tools.html" class="nav-link">Dev</a>
+            <a href="/blog/index.html" class="nav-link">Blog</a>
+            <a href="/about-us.html" class="nav-link">About</a>
           </nav>
           
           <!-- Actions -->
           <div class="header-actions">
+            <!-- Language Selector -->
+            <select id="language-selector" class="language-selector" onchange="changeLanguage(this.value)" aria-label="Select Language">
+              <option value="en"> EN</option>
+              <option value="tr"> TR</option>
+              <option value="de"> DE</option>
+              <option value="fr"> FR</option>
+              <option value="es"> ES</option>
+              <option value="pt"> PT</option>
+              <option value="ru"> RU</option>
+              <option value="zh"> 中文</option>
+              <option value="ja"> 日本</option>
+              <option value="ko"> 한국</option>
+              <option value="ar"> عربي</option>
+              <option value="hi"> हिं</option>
+              <option value="it"> IT</option>
+              <option value="pl"> PL</option>
+              <option value="nl"> NL</option>
+            </select>
+            
             <button class="btn-icon" aria-label="Search" onclick="toggleSearch()">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <circle cx="11" cy="11" r="8"/>
@@ -408,32 +447,32 @@
               <div class="footer-column">
                 <h4 class="footer-column-title">Tool Categories</h4>
                 <ul class="footer-column-list">
-                  <li><a href="/categories/pdf-tools">PDF Tools</a></li>
-                  <li><a href="/categories/image-tools">Image Tools</a></li>
-                  <li><a href="/categories/finance-tools">Finance Tools</a></li>
-                  <li><a href="/categories/developer-tools">Developer Tools</a></li>
-                  <li><a href="/categories/text-tools">Text & Writing</a></li>
-                  <li><a href="/categories/converter-tools">Converters</a></li>
+                  <li><a href="/categories/pdf-tools.html">PDF Tools</a></li>
+                  <li><a href="/categories/image-tools.html">Image Tools</a></li>
+                  <li><a href="/categories/finance-tools.html">Finance Tools</a></li>
+                  <li><a href="/categories/developer-tools.html">Developer Tools</a></li>
+                  <li><a href="/categories/text-writing.html">Text & Writing</a></li>
+                  <li><a href="/categories/converters.html">Converters</a></li>
                 </ul>
               </div>
               
               <div class="footer-column">
                 <h4 class="footer-column-title">Company</h4>
                 <ul class="footer-column-list">
-                  <li><a href="/about">About Us</a></li>
-                  <li><a href="/blog">Blog</a></li>
-                  <li><a href="/contact">Contact</a></li>
-                  <li><a href="/request">Request a Tool</a></li>
+                  <li><a href="/about-us.html">About Us</a></li>
+                  <li><a href="/blog/index.html">Blog</a></li>
+                  <li><a href="/contact.html">Contact</a></li>
+                  <li><a href="/request-tool.html">Request a Tool</a></li>
                 </ul>
               </div>
               
               <div class="footer-column">
                 <h4 class="footer-column-title">Legal & Privacy</h4>
                 <ul class="footer-column-list">
-                  <li><a href="/privacy">Privacy Policy</a></li>
-                  <li><a href="/terms">Terms of Service</a></li>
-                  <li><a href="/cookies">Cookie Policy</a></li>
-                  <li><a href="/security">Security</a></li>
+                  <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+                  <li><a href="/terms-of-service.html">Terms of Service</a></li>
+                  <li><a href="/cookie-policy.html">Cookie Policy</a></li>
+                  <li><a href="/security.html">Security</a></li>
                 </ul>
               </div>
             </div>
@@ -456,13 +495,13 @@
         <div class="container">
           <div class="legal-content">
             <div class="legal-links">
-              <a href="/privacy">Privacy Policy</a>
+              <a href="/privacy-policy.html">Privacy Policy</a>
               <span class="legal-divider">|</span>
-              <a href="/terms">Terms of Service</a>
+              <a href="/terms-of-service.html">Terms of Service</a>
               <span class="legal-divider">|</span>
-              <a href="/cookies">Cookie Settings</a>
+              <a href="/cookie-policy.html">Cookie Settings</a>
               <span class="legal-divider">|</span>
-              <a href="/contact">Contact Support</a>
+              <a href="/contact.html">Contact Support</a>
               <span class="legal-divider">|</span>
               <a href="mailto:contact@mc-novatools.com">Report Issue</a>
             </div>
@@ -477,7 +516,177 @@
 
   </div>
 
+  <!-- Deep Focus Radio Player -->
+  <div id="radio-player" class="radio-player">
+    <div class="radio-container">
+      <button id="radio-toggle" class="radio-toggle" onclick="toggleRadio()" aria-label="Toggle Radio">
+        <svg id="play-icon" class="radio-icon-svg" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M8 5v14l11-7z"/>
+        </svg>
+        <svg id="pause-icon" class="radio-icon-svg hidden" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+        </svg>
+      </button>
+      <div class="radio-info">
+        <div class="radio-title">Deep Focus Radio</div>
+        <div id="now-playing" class="radio-track">Lo-Fi Study Beats</div>
+      </div>
+      <input type="range" id="volume-control" class="radio-volume" min="0" max="100" value="30" onchange="setVolume(this.value)" aria-label="Volume">
+      <button id="radio-mute" class="radio-mute" onclick="toggleMute()" aria-label="Mute">🔊</button>
+    </div>
+  </div>
+
   <!-- Scripts -->
   <script type="module" src="/src/main.js"></script>
+  <script src="/src/services/radio-service.mjs" type="module"></script>
+  
+  <!-- i18n Language Support -->
+  <script>
+    // Language configuration
+    const supportedLanguages = ['en', 'tr', 'de', 'fr', 'es', 'pt', 'ru', 'zh', 'ja', 'ko', 'ar', 'hi', 'it', 'pl', 'nl'];
+    
+    // Get saved language or detect browser language
+    function getInitialLanguage() {
+      const saved = localStorage.getItem('selected-language');
+      if (saved && supportedLanguages.includes(saved)) return saved;
+      
+      const browser = navigator.language.split('-')[0];
+      if (supportedLanguages.includes(browser)) return browser;
+      return 'en';
+    }
+    
+    // Change language
+    function changeLanguage(lang) {
+      if (!supportedLanguages.includes(lang)) return;
+      localStorage.setItem('selected-language', lang);
+      document.documentElement.lang = lang;
+      document.getElementById('language-selector').value = lang;
+      
+      // RTL support for Arabic
+      if (lang === 'ar') {
+        document.documentElement.dir = 'rtl';
+      } else {
+        document.documentElement.dir = 'ltr';
+      }
+      
+      // Reload page with new language (in real implementation, this would load translations dynamically)
+      // window.location.href = `/${lang}/`;
+    }
+    
+    // Initialize language on load
+    document.addEventListener('DOMContentLoaded', () => {
+      const lang = getInitialLanguage();
+      document.getElementById('language-selector').value = lang;
+      document.documentElement.lang = lang;
+      if (lang === 'ar') document.documentElement.dir = 'rtl';
+    });
+    
+    // Radio Player Functions
+    let radioAudio = null;
+    let isPlaying = false;
+    let isMuted = false;
+    
+    function toggleRadio() {
+      if (!radioAudio) {
+        radioAudio = new Audio();
+        radioAudio.src = 'https://stream.zeno.fm/0r0xa7920qzuv';
+        radioAudio.volume = 0.3;
+      }
+      
+      if (isPlaying) {
+        radioAudio.pause();
+        document.getElementById('play-icon').classList.remove('hidden');
+        document.getElementById('pause-icon').classList.add('hidden');
+      } else {
+        radioAudio.play().catch(() => {});
+        document.getElementById('play-icon').classList.add('hidden');
+        document.getElementById('pause-icon').classList.remove('hidden');
+      }
+      isPlaying = !isPlaying;
+      localStorage.setItem('radio-playing', isPlaying);
+    }
+    
+    function setVolume(value) {
+      if (radioAudio) {
+        radioAudio.volume = value / 100;
+      }
+      localStorage.setItem('radio-volume', value);
+    }
+    
+    function toggleMute() {
+      if (radioAudio) {
+        radioAudio.muted = !isMuted;
+        document.getElementById('radio-mute').textContent = isMuted ? '🔊' : '🔇';
+      }
+      isMuted = !isMuted;
+    }
+    
+    // Restore radio state on load
+    document.addEventListener('DOMContentLoaded', () => {
+      const savedVolume = localStorage.getItem('radio-volume');
+      if (savedVolume) {
+        document.getElementById('volume-control').value = savedVolume;
+      }
+    });
+  </script>
+  
+  <style>
+    /* Radio Player Styles */
+    .radio-player {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(90deg, #1a1a2e 0%, #16213e 100%);
+      border-top: 1px solid #2d2d3a;
+      padding: 12px 24px;
+      z-index: 1000;
+      box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+    }
+    .radio-container {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .radio-toggle {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s;
+    }
+    .radio-toggle:hover { transform: scale(1.05); }
+    .radio-icon-svg { width: 24px; height: 24px; fill: white; }
+    .hidden { display: none !important; }
+    .radio-info { flex: 1; }
+    .radio-title { color: #fff; font-weight: 600; font-size: 14px; }
+    .radio-track { color: #a1a1aa; font-size: 12px; }
+    .radio-volume { width: 100px; accent-color: #6366f1; }
+    .radio-mute { background: transparent; border: none; font-size: 20px; cursor: pointer; }
+    
+    /* Language Selector Styles */
+    .language-selector {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 6px;
+      color: #fff;
+      padding: 6px 10px;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    .language-selector option { background: #1a1a2e; color: #fff; }
+    
+    @media (max-width: 768px) {
+      .radio-player { padding: 8px 12px; }
+      .radio-info { display: none; }
+    }
+  </style>
 </body>
 </html>

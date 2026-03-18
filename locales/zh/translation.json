@@ -1,0 +1,34 @@
+{
+  "nav": {
+    "home": "首页",
+    "pdf": "PDF工具",
+    "image": "图像工具",
+    "finance": "财务",
+    "developer": "开发者",
+    "text": "文本",
+    "about": "关于我们",
+    "contact": "联系我们"
+  },
+  "hero": {
+    "title": "专业工具。完全隐私。",
+    "subtitle": "100多个免费在线工具。无需注册。不收集数据。",
+    "cta": "探索工具"
+  },
+  "footer": {
+    "signature": "Metehan ÇETİN, LPC",
+    "title": "Licensed Professional Counselor",
+    "copyright": "© 2026 MC NovaTools。保留所有权利。"
+  },
+  "tools": {
+    "categories": "工具分类",
+    "popular": "热门工具",
+    "pdfMerge": "合并PDF",
+    "pdfCompress": "压缩PDF",
+    "imageCompress": "压缩图像",
+    "wordCounter": "字数统计"
+  },
+  "privacy": {
+    "badge": "隐私优先",
+    "description": "您的数据永远不会离开您的浏览器"
+  }
+}
