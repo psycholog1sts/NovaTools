@@ -86,6 +86,17 @@ if (!fs.existsSync(adminSrcDir)) {
   console.log('✅ Verified: dist/admin exists');
 }
 
+// Fix 5: Ensure dist/categories exists (copy from root if not in dist)
+const categoriesSrcDir = path.join(__dirname, '..', 'categories');
+const categoriesDstDir = path.join(distDir, 'categories');
+
+if (fs.existsSync(categoriesSrcDir) && !fs.existsSync(categoriesDstDir)) {
+  fs.cpSync(categoriesSrcDir, categoriesDstDir, { recursive: true });
+  console.log('✅ Copied: categories -> dist/categories');
+} else if (fs.existsSync(categoriesDstDir)) {
+  console.log('✅ Verified: dist/categories exists');
+}
+
 // Verify key files exist
 const keyFiles = [
   'index.html',
@@ -93,6 +104,8 @@ const keyFiles = [
   'blog/index.html',
   'tools/finance/tax/index.html',
   'tools/pdf/merge/index.html',
+  'categories/converters.html',
+  'categories/pdf-tools.html',
 ];
 
 console.log('\n📋 Verification:');

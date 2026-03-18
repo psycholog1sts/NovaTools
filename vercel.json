@@ -11,7 +11,10 @@
     { "source": "/admin", "destination": "/admin/index.html" },
     { "source": "/admin/:path*", "destination": "/admin/index.html" },
     { "source": "/blog", "destination": "/blog/index.html" },
-    { "source": "/tools/:path*", "destination": "/tools/:path*/index.html" },
+    { "source": "/blog/:path*", "destination": "/blog/index.html" },
+    { "source": "/categories/:category", "destination": "/categories/:category.html" },
+    { "source": "/tools/:category/:tool", "destination": "/tools/:category/:tool/index.html" },
+    { "source": "/tools/:category/:tool/:path*", "destination": "/tools/:category/:tool/index.html" },
     { "source": "/(.*)", "destination": "/index.html" }
   ],
   "headers": [

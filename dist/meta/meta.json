@@ -1,42 +1,22 @@
 {
-  "id": "word-counter",
-  "name": "Word Counter",
-  "nameEn": "Word Counter",
-  "category": "text",
-  "tier": 1,
-  "cpc": {
-    "tr": 0.2,
-    "us": 0.5
+  "id": "pdf-watermark",
+  "name": "PDF Watermark Adder",
+  "description": "Add text or image watermarks to PDF",
+  "category": "pdf",
+  "icon": "💧",
+  "keywords": ["pdf watermark", "add watermark", "pdf stamp"],
+  "complexity": 6,
+  "hasClientSideProcessing": true,
+  "maxFileSize": 52428800,
+  "supportedFormats": ["pdf"],
+  "outputFormat": "pdf",
+  "options": {
+    "textWatermark": "string",
+    "opacity": "number (10-90)",
+    "position": ["center", "tile", "top-left", "top-right", "bottom-left", "bottom-right"]
   },
-  "keywords": {
-    "tr": ["kelime sayacı", "karakter sayacı", "metin istatistikleri", "okuma süresi"],
-    "en": ["word counter", "character count", "text statistics", "word count tool", "reading time"]
-  },
-  "description": {
-    "tr": "Kelimeleri, karakterleri, cümleleri ve paragrafları gerçek zamanlı olarak sayın. Okuma süresi ve anahtar kelime yoğunluğu analizi.",
-    "en": "Count words, characters, sentences, and paragraphs in real-time. Get reading time and keyword density analysis."
-  },
-  "schema": {
-    "@type": "WebApplication",
-    "applicationCategory": "UtilityApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0"
-    }
-  },
-  "ads": {
-    "sidebar": {
-      "enabled": true,
-      "size": "336x280",
-      "minCpm": 0.2
-    }
-  },
-  "bundle": {
-    "lazyLoad": false
-  },
-  "relatedTools": [
-    "character-counter",
-    "case-converter",
-    "text-to-slug"
-  ]
+  "version": "1.0.0",
+  "author": "NovaTools MC",
+  "created": "2026-03-16",
+  "updated": "2026-03-16"
 }

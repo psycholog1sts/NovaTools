@@ -170,6 +170,10 @@ export default defineConfig({
         {
           src: 'admin/**/*',
           dest: 'admin'
+        },
+        {
+          src: 'categories/**/*',
+          dest: 'categories'
         }
       ]
     }),

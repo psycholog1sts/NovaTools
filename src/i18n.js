@@ -16,7 +16,7 @@
   let currentLanguage = DEFAULT_LANGUAGE;
   
   // Translations cache
-  let translations = {};
+  const translations = {};
   
   // Initialization state
   let isInitialized = false;
@@ -110,11 +110,11 @@
    * Flatten nested translation objects
    */
   function flattenTranslations(obj, prefix = '') {
-    let result = {};
+    const result = {};
     
     for (const key in obj) {
       if (typeof obj[key] === 'object' && obj[key] !== null) {
-        const nested = flattenTranslations(obj[key], prefix + key + '.');
+        const nested = flattenTranslations(obj[key], `${prefix + key  }.`);
         Object.assign(result, nested);
       } else {
         result[prefix + key] = obj[key];
