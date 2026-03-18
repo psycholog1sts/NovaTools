@@ -11,21 +11,18 @@
   },
   "hero": {
     "title": "Professionele Tools. Volledige Privacy.",
-    "subtitle": "Meer dan 100 gratis online tools. Geen registratie. Geen dataverzameling.",
+    "subtitle": "Meer dan 300 gratis online tools. Geen registratie. Geen dataverzameling.",
     "cta": "Tools Verkennen"
   },
   "footer": {
     "signature": "Metehan ÇETİN, LPC",
-    "title": "Licensed Professional Counselor",
+    "title": "Psychological Counselor and Founder",
+    "email": "psk.dan.metehancetin@mc-novatools.com",
     "copyright": "© 2026 MC NovaTools. Alle rechten voorbehouden."
   },
   "tools": {
     "categories": "Tool Categorieën",
-    "popular": "Populaire Tools",
-    "pdfMerge": "PDF Samenvoegen",
-    "pdfCompress": "PDF Comprimeren",
-    "imageCompress": "Afbeelding Comprimeren",
-    "wordCounter": "Woordenteller"
+    "popular": "Populaire Tools"
   },
   "privacy": {
     "badge": "Privacy Eerst",

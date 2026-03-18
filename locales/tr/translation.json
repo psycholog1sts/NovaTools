@@ -11,21 +11,18 @@
   },
   "hero": {
     "title": "Profesyonel Araçlar. Tam Gizlilik.",
-    "subtitle": "100+ ücretsiz çevrimiçi araç. Kayıt yok. Veri toplama yok.",
+    "subtitle": "300+ ücretsiz çevrimiçi araç. Kayıt yok. Veri toplama yok.",
     "cta": "Araçları Keşfet"
   },
   "footer": {
     "signature": "Metehan ÇETİN, LPC",
-    "title": "Licensed Professional Counselor",
+    "title": "Psychological Counselor and Founder",
+    "email": "psk.dan.metehancetin@mc-novatools.com",
     "copyright": "© 2026 MC NovaTools. Tüm hakları saklıdır."
   },
   "tools": {
     "categories": "Araç Kategorileri",
-    "popular": "Popüler Araçlar",
-    "pdfMerge": "PDF Birleştir",
-    "pdfCompress": "PDF Sıkıştır",
-    "imageCompress": "Görüntü Sıkıştır",
-    "wordCounter": "Kelime Sayacı"
+    "popular": "Popüler Araçlar"
   },
   "privacy": {
     "badge": "Gizlilik İlk",

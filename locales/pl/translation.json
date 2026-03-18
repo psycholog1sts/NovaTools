@@ -11,21 +11,18 @@
   },
   "hero": {
     "title": "Narzędzia Profesjonalne. Całkowita Prywatność.",
-    "subtitle": "Ponad 100 darmowych narzędzi online. Bez rejestracji. Bez zbierania danych.",
+    "subtitle": "Ponad 300 darmowych narzędzi online. Bez rejestracji. Bez zbierania danych.",
     "cta": "Przeglądaj Narzędzia"
   },
   "footer": {
     "signature": "Metehan ÇETİN, LPC",
-    "title": "Licensed Professional Counselor",
+    "title": "Psychological Counselor and Founder",
+    "email": "psk.dan.metehancetin@mc-novatools.com",
     "copyright": "© 2026 MC NovaTools. Wszelkie prawa zastrzeżone."
   },
   "tools": {
     "categories": "Kategorie Narzędzi",
-    "popular": "Popularne Narzędzia",
-    "pdfMerge": "Połącz PDF",
-    "pdfCompress": "Kompresuj PDF",
-    "imageCompress": "Kompresuj Obraz",
-    "wordCounter": "Licznik Słów"
+    "popular": "Popularne Narzędzia"
   },
   "privacy": {
     "badge": "Prywatność Przede Wszystkim",

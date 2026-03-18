@@ -11,21 +11,18 @@
   },
   "hero": {
     "title": "专业工具。完全隐私。",
-    "subtitle": "100多个免费在线工具。无需注册。不收集数据。",
+    "subtitle": "300多个免费在线工具。无需注册。不收集数据。",
     "cta": "探索工具"
   },
   "footer": {
     "signature": "Metehan ÇETİN, LPC",
-    "title": "Licensed Professional Counselor",
+    "title": "Psychological Counselor and Founder",
+    "email": "psk.dan.metehancetin@mc-novatools.com",
     "copyright": "© 2026 MC NovaTools。保留所有权利。"
   },
   "tools": {
     "categories": "工具分类",
-    "popular": "热门工具",
-    "pdfMerge": "合并PDF",
-    "pdfCompress": "压缩PDF",
-    "imageCompress": "压缩图像",
-    "wordCounter": "字数统计"
+    "popular": "热门工具"
   },
   "privacy": {
     "badge": "隐私优先",

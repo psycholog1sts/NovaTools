@@ -11,21 +11,18 @@
   },
   "hero": {
     "title": "전문 도구. 완전한 프라이버시.",
-    "subtitle": "100개 이상의 묣은 온라인 도구. 등록 불필요. 데이터 수집 없음.",
+    "subtitle": "300개 이상의 무료 온라인 도구. 등록 불필요. 데이터 수집 없음.",
     "cta": "도구 탐색"
   },
   "footer": {
     "signature": "Metehan ÇETİN, LPC",
-    "title": "Licensed Professional Counselor",
+    "title": "Psychological Counselor and Founder",
+    "email": "psk.dan.metehancetin@mc-novatools.com",
     "copyright": "© 2026 MC NovaTools. 모든 권리 보유."
   },
   "tools": {
     "categories": "도구 카테고리",
-    "popular": "인기 도구",
-    "pdfMerge": "PDF 병합",
-    "pdfCompress": "PDF 압축",
-    "imageCompress": "이미지 압축",
-    "wordCounter": "글자 수 세기"
+    "popular": "인기 도구"
   },
   "privacy": {
     "badge": "프라이버시 우선",

@@ -11,21 +11,18 @@
   },
   "hero": {
     "title": "プロフェッショナルツール。完全なプライバシー。",
-    "subtitle": "100以上の無料オンラインツール。登録不要。データ収集なし。",
+    "subtitle": "300以上の無料オンラインツール。登録不要。データ収集なし。",
     "cta": "ツールを探索"
   },
   "footer": {
     "signature": "Metehan ÇETİN, LPC",
-    "title": "Licensed Professional Counselor",
+    "title": "Psychological Counselor and Founder",
+    "email": "psk.dan.metehancetin@mc-novatools.com",
     "copyright": "© 2026 MC NovaTools. All rights reserved."
   },
   "tools": {
     "categories": "ツールカテゴリー",
-    "popular": "人気ツール",
-    "pdfMerge": "PDF結合",
-    "pdfCompress": "PDF圧縮",
-    "imageCompress": "画像圧縮",
-    "wordCounter": "文字数カウント"
+    "popular": "人気ツール"
   },
   "privacy": {
     "badge": "プライバシー優先",
