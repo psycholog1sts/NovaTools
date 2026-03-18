@@ -1,0 +1,34 @@
+{
+  "nav": {
+    "home": "Home",
+    "pdf": "PDF Tools",
+    "image": "Image Tools",
+    "finance": "Finance",
+    "developer": "Developer",
+    "text": "Text",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Professional Tools. Complete Privacy.",
+    "subtitle": "100+ free online tools. No registration. No data collection.",
+    "cta": "Explore Tools"
+  },
+  "footer": {
+    "signature": "Metehan ÇETİN, LPC",
+    "title": "Licensed Professional Counselor",
+    "copyright": "© 2026 MC NovaTools. All rights reserved."
+  },
+  "tools": {
+    "categories": "Tool Categories",
+    "popular": "Popular Tools",
+    "pdfMerge": "PDF Merge",
+    "pdfCompress": "PDF Compress",
+    "imageCompress": "Image Compress",
+    "wordCounter": "Word Counter"
+  },
+  "privacy": {
+    "badge": "Privacy First",
+    "description": "Your data never leaves your browser"
+  }
+}

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Request a Tool | MC NovaTools - Suggest New Features</title>
+  <meta name="description" content="Request a new tool or feature for MC NovaTools. We listen to user feedback and build tools you need.">
+  <meta name="author" content="Metehan ÇETİN, LPC">
+  <link rel="canonical" href="https://www.mc-novatools.com/request-tool.html">
+  <link rel="stylesheet" href="/src/styles/critical.css">
+  <link rel="stylesheet" href="/src/styles/main.css">
+</head>
+<body>
+  <header class="main-header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="/" class="logo"><span class="logo-text">MC <span class="logo-mc">NovaTools</span></span></a>
+        <nav class="nav-desktop">
+          <a href="/">Home</a>
+          <a href="/about-us.html">About</a>
+          <a href="/request-tool.html" class="active">Request Tool</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <section class="page-hero">
+      <div class="container">
+        <h1>Request a Tool</h1>
+        <p>Have an idea for a new tool? We'd love to hear it!</p>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <div class="request-intro">
+          <p>MC NovaTools is built on user feedback. Many of our most popular tools started as user suggestions. If you have an idea for a tool that would make your life easier, let us know!</p>
+        </div>
+        
+        <form class="request-form" action="#" method="POST">
+          <div class="form-group">
+            <label for="tool-name">Proposed Tool Name *</label>
+            <input type="text" id="tool-name" name="tool-name" placeholder="e.g., PDF to EPUB Converter" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="category">Category *</label>
+            <select id="category" name="category" required>
+              <option value="">Select category</option>
+              <option value="pdf">PDF Tools</option>
+              <option value="image">Image Tools</option>
+              <option value="finance">Finance Tools</option>
+              <option value="developer">Developer Tools</option>
+              <option value="text">Text & Writing</option>
+              <option value="converter">Converters</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="description">Tool Description *</label>
+            <textarea id="description" name="description" rows="4" placeholder="Describe what the tool should do and how it would work..." required></textarea>
+          </div>
+          
+          <div class="form-group">
+            <label for="use-case">Use Case</label>
+            <textarea id="use-case" name="use-case" rows="3" placeholder="How would you use this tool? What problem would it solve?"></textarea>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Your Email (optional)</label>
+            <input type="email" id="email" name="email" placeholder="So we can notify you if we build it">
+          </div>
+          
+          <button type="submit" class="btn btn-primary">Submit Request</button>
+        </form>
+        
+        <div class="popular-requests">
+          <h2>Most Requested Tools</h2>
+          <ul>
+            <li>🗳️ PDF Form Creator - <em>In Development</em></li>
+            <li>🎨 Color Palette Generator - <em>Coming Soon</em></li>
+            <li>📊 Data Visualization Tool - <em>Planned</em></li>
+            <li>🔐 Password Manager - <em>Under Review</em></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="main-footer">
+    <div class="container">
+      <p>&copy; 2026 MC NovaTools. Metehan ÇETİN, LPC</p>
+    </div>
+  </footer>
+</body>
+</html>
