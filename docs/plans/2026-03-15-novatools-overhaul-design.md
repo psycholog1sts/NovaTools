@@ -57,7 +57,7 @@ Dev extras (2): JSON Validator + Regex Tester
 - Background: #0A0A0C, Accent: #00D9FF, Success: #00FF88
 - Cards: rgba(15,15,20,0.7) + 1px rgba(0,217,255,0.15)
 - Ad placements: leaderboard above fold, MPU after first section, sticky mobile anchor
-- Footer: "Psychological Counselor Metehan CETIN | proside2026@gmail.com"
+- Footer: "Psychological Counselor Metehan CETIN | psk.dan.metehancetin@mc-novatools.com"
 
 ### Security
 - DOMPurify on all user-rendered content

@@ -245,7 +245,7 @@ Main footer 3 columns:
 
 Contact EXACT TEXT:
   Psk. Metehan CETIN
-  proside2026@gmail.com
+  psk.dan.metehancetin@mc-novatools.com
 
 Copyright: 2026 NovaTools MC — Psk. Metehan CETIN. All rights reserved.
 Disclaimer: All tools provide estimates only, not financial or professional advice.
@@ -256,7 +256,7 @@ Recommendations:
 3. Diversify: index funds, real estate, and liquid savings.
 
 Tool page footer compact:
-  2026 NovaTools MC — Psk. Metehan CETIN | proside2026@gmail.com
+  2026 NovaTools MC — Psk. Metehan CETIN | psk.dan.metehancetin@mc-novatools.com
   Estimates only — not financial, legal, or tax advice.
 
 Commit: feat(footer): professional Psk. Metehan CETIN footer across all pages

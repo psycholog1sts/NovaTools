@@ -3,7 +3,7 @@
 > **Sistem Manifestosu ve Bellek Yönetimi**  
 > Versiyon: 2.0.0  
 > Son Güncelleme: 2026-03-16  
-> Kurucu: Psk. Metehan CETIN | proside2026@gmail.com
+> Kurucu: Psk. Metehan CETIN | psk.dan.metehancetin@mc-novatools.com
 
 ---
 
@@ -354,7 +354,7 @@ Ad Slot Types:
 
 ### 8.2 Footer Standardı
 ```
-2026 NovaTools MC — Psk. Metehan CETIN | proside2026@gmail.com
+2026 NovaTools MC — Psk. Metehan CETIN | psk.dan.metehancetin@mc-novatools.com
 Estimates only — not financial, legal, or tax advice.
 ```
 
@@ -494,7 +494,7 @@ MAJOR.MINOR.PATCH
 
 ### Proje Sahibi
 - **İsim**: Psk. Metehan CETIN
-- **E-posta**: proside2026@gmail.com
+- **E-posta**: psk.dan.metehancetin@mc-novatools.com
 - **Website**: https://www.mc-novatools.com
 
 ### Lisans
