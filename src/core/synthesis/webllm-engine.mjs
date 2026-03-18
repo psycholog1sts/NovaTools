@@ -443,7 +443,7 @@ ${tests}
       await writable.close();
     }
 
-    console.log('[ToolBuilder] Saved to OPFS:', path);
+    // Tool saved to OPFS: path
   }
 
   /**

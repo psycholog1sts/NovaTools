@@ -3,7 +3,7 @@
  * Input validation with detailed error reporting
  */
 
-import { errorHandler } from './error-handler.mjs';
+// Error handler available for future error tracking integration
 
 class Validator {
   constructor() {

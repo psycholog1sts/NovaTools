@@ -3,7 +3,7 @@
  * Currency exchange rates with caching
  */
 
-import { apiClient } from '../core/api-client.mjs';
+// API client available for future standardized API calls
 import { getConfig } from '../core/config.mjs';
 import { stateManager } from '../core/state-manager.mjs';
 

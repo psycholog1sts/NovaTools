@@ -344,7 +344,7 @@ export function registerFinanceTools(controller) {
     ]
   }, refinanceCalculator);
 
-  console.log('✓ Finance tools registered');
+  // Finance tools registered successfully
 }
 
 export default registerFinanceTools;

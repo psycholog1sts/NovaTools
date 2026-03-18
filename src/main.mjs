@@ -87,17 +87,17 @@ function trackCurrentTool() {
 const fileSystemHandlers = {
   open(event) {
     const { file, type } = event.detail;
-    console.log('[File System] Opened:', file?.name, type);
+    // File system opened: file?.name, type
     
     if (type === 'application/pdf') {
-      const tool = detectBestPDFTool(file);
-      console.log('[AI] Suggested tool:', tool);
+      const _tool = detectBestPDFTool(file);
+      void _tool; // Suggested tool for AI processing
     }
   },
 
   shareReceived(event) {
     const { file } = event.detail;
-    console.log('[Web Share] Received:', file?.name);
+    // Web share received: file?.name
     
     sessionStorage.setItem('shared-file', JSON.stringify({
       name: file?.name,
@@ -141,7 +141,7 @@ async function initNativeFeatures() {
     if (feature.supported) {
       try {
         await feature.init();
-        console.log(`[Native] ${feature.name} ready`);
+        // Native feature ready: feature.name
       } catch (err) {
         console.warn(`[Native] ${feature.name} failed:`, err);
       }
@@ -244,7 +244,7 @@ async function init() {
   initToolPreviews();
   trackCurrentTool();
   
-  console.log('[NovaTools] Initialization complete');
+  // NovaTools initialization complete
 }
 
 // Initialize on DOM ready

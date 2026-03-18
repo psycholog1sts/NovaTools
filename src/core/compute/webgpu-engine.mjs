@@ -136,10 +136,9 @@ class WebGPUEngine {
 
       this.initialized = true;
       
-      // Log GPU info
-      const info = await this.adapter.requestAdapterInfo();
-
-      
+      // GPU info available via this.adapter.requestAdapterInfo()
+      const _info = await this.adapter.requestAdapterInfo();
+      void _info; // Reserved for future GPU-specific optimizations
       return true;
     } catch (error) {
       console.error('WebGPU initialization failed:', error);

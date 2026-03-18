@@ -38,7 +38,7 @@ export class WebXRLayer {
     return this.session;
   }
 
-  renderTool3D(toolData) {
+  renderTool3D(_toolData) {
     // Render calculator/data as 3D hologram
     const renderLoop = (time, frame) => {
       const pose = frame.getViewerPose(this.referenceSpace);
@@ -54,9 +54,9 @@ export class WebXRLayer {
     this.session.requestAnimationFrame(renderLoop);
   }
 
-  renderHolographicUI(position) {
+  renderHolographicUI(_position) {
     // Placeholder for actual WebGL rendering
-    console.log('[WebXR] Rendering at:', position);
+    // WebXR rendering at position
   }
 }
 
@@ -80,14 +80,14 @@ export class EyeTrackingLayer {
     this.tracker = window.webgazer;
     await this.tracker.begin();
     
-    this.tracker.setGazeListener((data, timestamp) => {
+    this.tracker.setGazeListener((data, _timestamp) => {
       if (data) {
-        this.recordGaze(data.x, data.y, timestamp);
+        this.recordGaze(data.x, data.y, _timestamp);
       }
     });
   }
 
-  recordGaze(x, y, timestamp) {
+  recordGaze(x, y, _timestamp) {
     // Create heatmap data
     const cellX = Math.floor(x / 100) * 100;
     const cellY = Math.floor(y / 100) * 100;
@@ -149,7 +149,7 @@ export class AmbientIntelligence {
   analyzeIntent(text) {
     for (const { pattern, action } of this.intentPatterns) {
       if (pattern.test(text)) {
-        console.log('[Ambient] Detected intent:', action, 'from:', text);
+        // Ambient intent detected: action from text
         this.triggerAction(action);
         break;
       }

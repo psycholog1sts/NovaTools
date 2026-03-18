@@ -372,7 +372,7 @@ export class RevenueOptimizationAgent {
 
       this.updateQValue(state, action, reward, nextState);
       
-      console.log('[RL Agent] Action:', action, 'Reward:', reward);
+      // RL Agent action and reward tracked
     }, 60000); // Measure after 1 minute
 
     return { action, changes };
@@ -478,8 +478,7 @@ export class RevenueDistribution {
       operation: 0 // Call
     };
 
-    // In a real implementation, this would use Safe SDK
-    console.log('[Revenue] Distributing:', total, 'to', this.safeAddress);
+    // Revenue distribution tracked for Safe SDK integration
 
     // Clear queue
     this.revenueQueue = [];

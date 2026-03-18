@@ -20,7 +20,7 @@ class CryptoService {
    * @returns {Promise<Object>} Price data
    */
   async getPrices(coins = ['bitcoin', 'ethereum'], currencies = ['usd']) {
-    const cacheKey = `crypto_prices_${coins.join('_')}_${currencies.join('_')}`;
+    // Cache key: `crypto_prices_${coins.join('_')}_${currencies.join('_')}`
     
     try {
       const data = await apiClient.get(

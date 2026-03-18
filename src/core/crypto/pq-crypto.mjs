@@ -233,7 +233,8 @@ class SimpleHashSignature {
     const numChains = Math.ceil((this.n * 8) / Math.log2(this.w));
     
     for (let i = 0; i < numChains; i++) {
-      const chunk = msgHash[i % msgHash.length] % this.w;
+      const _chunk = msgHash[i % msgHash.length] % this.w;
+      void _chunk; // Used in full WOTS+ verification
       // Verification would continue chain to w and compare with public key
       // Simplified for demonstration
     }

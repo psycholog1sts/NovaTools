@@ -345,7 +345,7 @@ export function initRoutes() {
   }, { title: 'Page Not Found' });
 }
 
-function loadTool(category, tool) {
+function loadTool(_category, _tool) {
   // Tool loading logic
 }
 

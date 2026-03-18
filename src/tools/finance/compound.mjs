@@ -24,7 +24,8 @@ export function compoundInterestCalculator(inputs) {
   };
   const n = frequencies[frequency] || 12;
   const ratePerPeriod = annualRate / n;
-  const totalPeriods = years * n;
+  const _totalPeriods = years * n; // Total periods for reference
+  void _totalPeriods;
   const contributionPerPeriod = monthlyContribution * (12 / n);
 
   let balance = principal;
