@@ -1,0 +1,17 @@
+name: Google Indexing
+on:
+  push:
+    branches: [ main ] # Sadece ana şubeye güncelleme gelince çalışır
+
+jobs:
+  index:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - run: npm install googleapis axios
+      - run: node indexing.js
+        env:
+          GOOGLE_INDEXING_KEY: ${{ secrets.GOOGLE_INDEXING_KEY }}
