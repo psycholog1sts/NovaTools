@@ -1,8 +1,13 @@
 import { google } from 'googleapis';
 import axios from 'axios';
 
-// GitHub Secret'tan gelen JSON anahtarı
-const key = JSON.parse(process.env.GOOGLE_INDEXING_KEY);
+// GitHub Secret'tan gelen veriyi oku
+const keyContent = process.env.GOOGLE_INDEXING_KEY;
+if (!keyContent) {
+  throw new Error("HATA: GOOGLE_INDEXING_KEY bulunamadı veya boş!");
+}
+
+const key = JSON.parse(keyContent);
 
 const jwtClient = new google.auth.JWT(
   key.client_email,
@@ -19,7 +24,7 @@ jwtClient.authorize(async (err, tokens) => {
   }
 
   try {
-    console.log("Google botuna sinyal gönderiliyor...");
+    console.log("Google botu yola çıktı...");
     const response = await axios.post('https://indexing.googleapis.com/v3/urlNotifications:publish', {
       url: 'https://mc-novatools.com/', 
       type: 'URL_UPDATED'
@@ -29,8 +34,8 @@ jwtClient.authorize(async (err, tokens) => {
         Authorization: `Bearer ${tokens.access_token}` 
       }
     });
-    console.log("Google'dan gelen cevap:", response.statusText);
+    console.log("Google'dan gelen cevap: OK");
   } catch (error) {
-    console.error("Hata oluştu:", error.response ? error.response.data : error.message);
+    console.error("Hata:", error.response ? error.response.data : error.message);
   }
 });
