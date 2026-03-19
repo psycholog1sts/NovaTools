@@ -214,8 +214,6 @@
     
     // Dispatch event for other scripts
     window.dispatchEvent(new CustomEvent('languageChanged', { detail: { language: lang } }));
-    
-    console.log('Language changed to:', lang);
   }
 
   /**
@@ -342,7 +340,6 @@
     updatePageTranslations();
     
     isInitialized = true;
-    console.log('i18n initialized with language:', currentLanguage);
   }
 
   // Expose global functions
