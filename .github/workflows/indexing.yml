@@ -12,6 +12,6 @@ jobs:
         with:
           node-version: '18'
       - run: npm install googleapis axios
-      - run: node indexing.js
+      - run: node indexing.cjs
         env:
           GOOGLE_INDEXING_KEY: ${{ secrets.GOOGLE_INDEXING_KEY }}
