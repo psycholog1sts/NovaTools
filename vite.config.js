@@ -154,7 +154,7 @@ export default defineConfig({
     }
   },
 
-  plugins: [
+plugins: [
     viteStaticCopy({
       targets: [
         {
@@ -184,6 +184,10 @@ export default defineConfig({
         {
           src: 'categories/**/*',
           dest: 'categories'
+        },
+        {
+          src: 'src/styles/**/*',
+          dest: 'src/styles'
         }
       ]
     }),
