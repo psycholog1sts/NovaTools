@@ -16,11 +16,6 @@ jobs:
         with:
           fetch-depth: 0
           
-      - name: Configure Git
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -33,3 +28,11 @@ jobs:
         run: node indexing.cjs
         env:
           GOOGLE_INDEXING_KEY: ${{ secrets.GOOGLE_INDEXING_KEY }}
+          
+      - name: Commit log if any
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add -A
+          git commit -m "chore: update indexing log" || exit 0
+          git push

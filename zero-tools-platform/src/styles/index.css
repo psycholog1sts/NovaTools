@@ -1,7 +1,0 @@
-/**
- * Styles Entry Point
- * Combines critical and main stylesheets
- */
-
-@import './critical.css';
-@import './main.css';
