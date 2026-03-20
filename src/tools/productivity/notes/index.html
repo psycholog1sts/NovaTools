@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="/src/styles/main.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <title>Free Online Notes | NovaTools MC</title>
+  <title data-i18n="tools.productivity.notes.meta.title">Free Online Notes | NovaTools MC</title>
   
   <!-- i18n Script -->
   <script src="/i18n.js"></script>
@@ -133,17 +133,17 @@
         <div class="header-inner">
           <a href="/" class="logo" aria-label="NovaTools MC Home">
             <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
-            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+            <span class="logo-text">NovaTools <span class="logo-mc" data-i18n="tools.productivity.notes.text.001">MC</span></span>
           </a>
           <nav class="nav-desktop" aria-label="Main navigation">
-            <a href="/#finance" class="nav-link">Finance</a>
-            <a href="/#pdf" class="nav-link">PDF Tools</a>
-            <a href="/#image" class="nav-link">Images</a>
-            <a href="/#dev" class="nav-link">Developers</a>
+            <a href="/#finance" class="nav-link" data-i18n="tools.productivity.notes.text.002">Finance</a>
+            <a href="/#pdf" class="nav-link" data-i18n="tools.productivity.notes.text.003">PDF Tools</a>
+            <a href="/#image" class="nav-link" data-i18n="tools.productivity.notes.text.004">Images</a>
+            <a href="/#dev" class="nav-link" data-i18n="tools.productivity.notes.text.005">Developers</a>
           </nav>
-          <div class="privacy-badge" title="Your data never leaves your browser">
+          <div class="privacy-badge" title="Your data never leaves your browser" data-i18n-title="tools.productivity.notes.title.001">
             <span class="privacy-badge-dot"></span>
-            <span>Privacy First</span>
+            <span data-i18n="tools.productivity.notes.text.006">Privacy First</span>
           </div>
           <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
             <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -154,10 +154,10 @@
           </button>
         </div>
         <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
-          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
-          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
-          <a href="/#image" class="mobile-nav-link">Image Tools</a>
-          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+          <a href="/#finance" class="mobile-nav-link" data-i18n="tools.productivity.notes.text.007">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link" data-i18n="tools.productivity.notes.text.008">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link" data-i18n="tools.productivity.notes.text.009">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link" data-i18n="tools.productivity.notes.text.010">Developer Tools</a>
         </nav>
       </div>
     </header>
@@ -166,13 +166,13 @@
       <div class="tool-wrapper">
         <div class="tool-hero">
           <div class="tool-hero-icon">&#128221;</div>
-          <h1>Notes</h1>
-          <p>A secure, private notepad that works entirely in your browser. Take notes, save them locally, and access them anytime. No account required, no data sent to servers.</p>
+          <h1 data-i18n="tools.productivity.notes.text.011">Notes</h1>
+          <p data-i18n="tools.productivity.notes.text.012">A secure, private notepad that works entirely in your browser. Take notes, save them locally, and access them anytime. No account required, no data sent to servers.</p>
         </div>
 
         <div class="card">
           <div class="notes-toolbar">
-            <input type="text" class="notes-title-input" id="noteTitle" placeholder="Note Title...">
+            <input type="text" class="notes-title-input" id="noteTitle" placeholder="Note Title..." data-i18n-placeholder="tools.productivity.notes.placeholder.001">
             <div class="toolbar-actions">
               <button class="btn btn-primary" id="btnSave">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M2 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H9.5a1 1 0 0 0-1 1v7.293l2.646-2.647a.5.5 0 0 1 .708.708l-3.5 3.5a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L7.5 9.293V2a2 2 0 0 1 2-2H14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h2.5a.5.5 0 0 1 0 1H2z"/></svg>
@@ -193,13 +193,13 @@
             </div>
           </div>
 
-          <textarea class="notes-textarea" id="noteContent" placeholder="Start typing your notes here..."></textarea>
+          <textarea class="notes-textarea" id="noteContent" placeholder="Start typing your notes here..." data-i18n-placeholder="tools.productivity.notes.placeholder.002"></textarea>
           <div class="char-count"><span id="charCount">0</span> characters</div>
 
           <div class="saved-notes-section">
             <div class="saved-notes-header">
-              <span class="saved-notes-title">Saved Notes</span>
-              <span class="saved-notes-count" id="savedCount">0 notes</span>
+              <span class="saved-notes-title" data-i18n="tools.productivity.notes.text.013">Saved Notes</span>
+              <span class="saved-notes-count" id="savedCount" data-i18n="tools.productivity.notes.text.014">0 notes</span>
             </div>
             <div class="notes-list" id="notesList">
               <div class="no-notes">No saved notes yet. Create a note and click Save to store it.</div>
@@ -213,52 +213,52 @@
       </div>
 
       <section class="seo-section" aria-label="About this tool">
-        <h2>About Notes</h2>
-        <p>Our Notes tool is a secure, browser-based notepad that lets you create and save text notes without creating an account or sending data to any server. All notes are stored locally in your browser, giving you complete privacy and control over your data.</p>
+        <h2 data-i18n="tools.productivity.notes.text.015">About Notes</h2>
+        <p data-i18n="tools.productivity.notes.text.016">Our Notes tool is a secure, browser-based notepad that lets you create and save text notes without creating an account or sending data to any server. All notes are stored locally in your browser, giving you complete privacy and control over your data.</p>
 
-        <h3>How to Use</h3>
+        <h3 data-i18n="tools.productivity.notes.text.017">How to Use</h3>
         <ol>
-          <li>Enter a title for your note in the title field.</li>
-          <li>Type your note content in the text area.</li>
+          <li data-i18n="tools.productivity.notes.text.018">Enter a title for your note in the title field.</li>
+          <li data-i18n="tools.productivity.notes.text.019">Type your note content in the text area.</li>
           <li>Click <strong>Save</strong> to store the note in your browser.</li>
-          <li>Click on any saved note in the list below to load it for editing.</li>
+          <li data-i18n="tools.productivity.notes.text.020">Click on any saved note in the list below to load it for editing.</li>
           <li>Use <strong>Download</strong> to save your note as a text file.</li>
           <li>Use <strong>New</strong> to clear the editor and start a fresh note.</li>
-          <li>Click the trash icon next to a saved note to delete it.</li>
+          <li data-i18n="tools.productivity.notes.text.021">Click the trash icon next to a saved note to delete it.</li>
         </ol>
 
-        <h3>Frequently Asked Questions</h3>
+        <h3 data-i18n="tools.productivity.notes.text.022">Frequently Asked Questions</h3>
 
         <details class="faq-item">
           <summary>Where are my notes stored?</summary>
-          <p>Your notes are stored locally in your browser's localStorage. They never leave your device or get transmitted to any server. This means your notes are completely private but will only be accessible on this device and browser.</p>
+          <p data-i18n="tools.productivity.notes.text.023">Your notes are stored locally in your browser's localStorage. They never leave your device or get transmitted to any server. This means your notes are completely private but will only be accessible on this device and browser.</p>
         </details>
 
         <details class="faq-item">
           <summary>Will I lose my notes if I clear my browser data?</summary>
-          <p>Yes, clearing your browser's cache, cookies, or site data will delete all saved notes. We recommend regularly downloading important notes as text files for backup.</p>
+          <p data-i18n="tools.productivity.notes.text.024">Yes, clearing your browser's cache, cookies, or site data will delete all saved notes. We recommend regularly downloading important notes as text files for backup.</p>
         </details>
 
         <details class="faq-item">
           <summary>Can I access my notes on another device?</summary>
-          <p>No, since notes are stored locally in your browser, they're only accessible on the device and browser where you created them. To transfer notes, use the Download feature to save them as files.</p>
+          <p data-i18n="tools.productivity.notes.text.025">No, since notes are stored locally in your browser, they're only accessible on the device and browser where you created them. To transfer notes, use the Download feature to save them as files.</p>
         </details>
 
         <details class="faq-item">
           <summary>Is there a limit to how many notes I can save?</summary>
-          <p>The number of notes you can save depends on your browser's localStorage limit, which is typically around 5-10 MB. This is usually enough for thousands of text notes.</p>
+          <p data-i18n="tools.productivity.notes.text.026">The number of notes you can save depends on your browser's localStorage limit, which is typically around 5-10 MB. This is usually enough for thousands of text notes.</p>
         </details>
 
         <details class="faq-item">
           <summary>Can I format my notes (bold, italics, etc.)?</summary>
-          <p>Currently, this is a plain text notepad. For rich text formatting, consider using a dedicated note-taking app. The simplicity of plain text ensures maximum compatibility and fast loading.</p>
+          <p data-i18n="tools.productivity.notes.text.027">Currently, this is a plain text notepad. For rich text formatting, consider using a dedicated note-taking app. The simplicity of plain text ensures maximum compatibility and fast loading.</p>
         </details>
       </section>
     </main>
 
     <footer class="tool-footer">
-      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
-      <p>Estimates only &mdash; not financial, legal, or tax advice.</p>
+      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com" data-i18n="tools.productivity.notes.text.028">psk.dan.metehancetin@mc-novatools.com</a></p>
+      <p data-i18n="tools.productivity.notes.text.029">Estimates only &mdash; not financial, legal, or tax advice.</p>
     </footer>
     <style>
       .tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }
@@ -308,7 +308,7 @@
               <div class="note-item-title">${note.title || 'Untitled Note'}</div>
               <div class="note-item-preview">${preview || 'No content'}</div>
             </div>
-            <span class="note-item-date">${dateStr}</span>
+            <span class="note-item-date" data-i18n="tools.productivity.notes.text.030">${dateStr}</span>
             <button class="note-item-delete" onclick="deleteNote('${note.id}')" aria-label="Delete note">&times;</button>
           </div>
         `;

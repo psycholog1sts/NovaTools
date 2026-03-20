@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="/src/styles/main.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <title>Free Text Diff Checker Online | NovaTools MC</title>
+  <title data-i18n="tools.text.text-diff.meta.title">Free Text Diff Checker Online | NovaTools MC</title>
   
   <!-- i18n Script -->
   <script src="/i18n.js"></script>
@@ -155,17 +155,17 @@
         <div class="header-inner">
           <a href="/" class="logo" aria-label="NovaTools MC Home">
             <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
-            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+            <span class="logo-text">NovaTools <span class="logo-mc" data-i18n="tools.text.text-diff.text.001">MC</span></span>
           </a>
           <nav class="nav-desktop" aria-label="Main navigation">
-            <a href="/#finance" class="nav-link">Finance</a>
-            <a href="/#pdf" class="nav-link">PDF Tools</a>
-            <a href="/#image" class="nav-link">Images</a>
-            <a href="/#dev" class="nav-link">Developers</a>
+            <a href="/#finance" class="nav-link" data-i18n="tools.text.text-diff.text.002">Finance</a>
+            <a href="/#pdf" class="nav-link" data-i18n="tools.text.text-diff.text.003">PDF Tools</a>
+            <a href="/#image" class="nav-link" data-i18n="tools.text.text-diff.text.004">Images</a>
+            <a href="/#dev" class="nav-link" data-i18n="tools.text.text-diff.text.005">Developers</a>
           </nav>
-          <div class="privacy-badge" title="Your data never leaves your browser">
+          <div class="privacy-badge" title="Your data never leaves your browser" data-i18n-title="tools.text.text-diff.title.001">
             <span class="privacy-badge-dot"></span>
-            <span>Privacy First</span>
+            <span data-i18n="tools.text.text-diff.text.006">Privacy First</span>
           </div>
           <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
             <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -176,10 +176,10 @@
           </button>
         </div>
         <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
-          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
-          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
-          <a href="/#image" class="mobile-nav-link">Image Tools</a>
-          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+          <a href="/#finance" class="mobile-nav-link" data-i18n="tools.text.text-diff.text.007">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link" data-i18n="tools.text.text-diff.text.008">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link" data-i18n="tools.text.text-diff.text.009">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link" data-i18n="tools.text.text-diff.text.010">Developer Tools</a>
         </nav>
       </div>
     </header>
@@ -188,8 +188,8 @@
       <div class="tool-wrapper">
         <div class="tool-hero">
           <div class="tool-hero-icon">&#128202;</div>
-          <h1>Text Diff Checker</h1>
-          <p>Compare two texts and find differences with line-by-line comparison. Perfect for code review, document comparison, and tracking changes.</p>
+          <h1 data-i18n="tools.text.text-diff.text.011">Text Diff Checker</h1>
+          <p data-i18n="tools.text.text-diff.text.012">Compare two texts and find differences with line-by-line comparison. Perfect for code review, document comparison, and tracking changes.</p>
         </div>
 
         <div class="card">
@@ -202,26 +202,26 @@
           <div class="diff-inputs">
             <div class="input-column">
               <div class="section-label">Original Text</div>
-              <textarea class="input-area" id="originalInput" placeholder="Paste original text here..." aria-label="Original text"></textarea>
+              <textarea class="input-area" id="originalInput" placeholder="Paste original text here..." data-i18n-placeholder="tools.text.text-diff.placeholder.001" aria-label="Original text"></textarea>
             </div>
             <div class="input-column">
               <div class="section-label">Modified Text</div>
-              <textarea class="input-area" id="modifiedInput" placeholder="Paste modified text here..." aria-label="Modified text"></textarea>
+              <textarea class="input-area" id="modifiedInput" placeholder="Paste modified text here..." data-i18n-placeholder="tools.text.text-diff.placeholder.002" aria-label="Modified text"></textarea>
             </div>
           </div>
 
           <div class="diff-options">
             <div class="checkbox-wrapper">
               <input type="checkbox" id="ignoreWhitespace" checked>
-              <label for="ignoreWhitespace">Ignore whitespace</label>
+              <label for="ignoreWhitespace" data-i18n="tools.text.text-diff.text.013">Ignore whitespace</label>
             </div>
             <div class="checkbox-wrapper">
               <input type="checkbox" id="ignoreCase">
-              <label for="ignoreCase">Ignore case</label>
+              <label for="ignoreCase" data-i18n="tools.text.text-diff.text.014">Ignore case</label>
             </div>
             <div class="checkbox-wrapper">
               <input type="checkbox" id="charDiff" checked>
-              <label for="charDiff">Character-level diff</label>
+              <label for="charDiff" data-i18n="tools.text.text-diff.text.015">Character-level diff</label>
             </div>
           </div>
 
@@ -251,7 +251,7 @@
 
           <div class="diff-result" id="diffResult">
             <div class="diff-header">
-              <span style="color: #A1A1AA; font-size: 0.875rem;">Diff Result</span>
+              <span style="color: #A1A1AA; font-size: 0.875rem;" data-i18n="tools.text.text-diff.text.016">Diff Result</span>
               <div class="diff-legend">
                 <span class="legend-item"><span class="legend-color legend-added"></span>Added</span>
                 <span class="legend-item"><span class="legend-color legend-removed"></span>Removed</span>
@@ -276,7 +276,7 @@
               <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor"><path d="M5.5 5.5A.5.5 0 016 6v6a.5.5 0 01-1 0V6a.5.5 0 01.5-.5zm2.5 0a.5.5 0 01.5.5v6a.5.5 0 01-1 0V6a.5.5 0 01.5-.5zm3 .5a.5.5 0 00-1 0v6a.5.5 0 001 0V6z"/><path fill-rule="evenodd" d="M14.5 3a1 1 0 01-1 1H13v9a2 2 0 01-2 2H5a2 2 0 01-2-2V4h-.5a1 1 0 01-1-1V2a1 1 0 011-1H6a1 1 0 011-1h2a1 1 0 011 1h3.5a1 1 0 011 1v1zM4.118 4L4 4.059V13a1 1 0 001 1h6a1 1 0 001-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/></svg>
               Clear
             </button>
-            <span class="copy-feedback" id="copyFeedback" aria-live="polite">Copied!</span>
+            <span class="copy-feedback" id="copyFeedback" aria-live="polite" data-i18n="tools.text.text-diff.text.017">Copied!</span>
           </div>
 
           <div class="legal-note">
@@ -286,65 +286,65 @@
       </div>
 
       <section class="seo-section" aria-label="About this tool">
-        <h2>About Text Diff Checker</h2>
-        <p>Our free Text Diff Checker helps you compare two versions of text and identify exactly what has changed. Whether you're reviewing code changes, comparing document versions, or tracking edits, this tool provides a clear visual diff with line-by-line comparison.</p>
+        <h2 data-i18n="tools.text.text-diff.text.018">About Text Diff Checker</h2>
+        <p data-i18n="tools.text.text-diff.text.019">Our free Text Diff Checker helps you compare two versions of text and identify exactly what has changed. Whether you're reviewing code changes, comparing document versions, or tracking edits, this tool provides a clear visual diff with line-by-line comparison.</p>
 
-        <h3>How to Use</h3>
+        <h3 data-i18n="tools.text.text-diff.text.020">How to Use</h3>
         <ol>
           <li>Paste your <strong>Original Text</strong> in the left input area.</li>
           <li>Paste your <strong>Modified Text</strong> in the right input area.</li>
-          <li>Choose comparison options: ignore whitespace, ignore case, or character-level diff.</li>
+          <li data-i18n="tools.text.text-diff.text.021">Choose comparison options: ignore whitespace, ignore case, or character-level diff.</li>
           <li>Click <strong>Compare Texts</strong> to generate the diff.</li>
-          <li>Review the statistics showing lines added, removed, changed, and unchanged.</li>
-          <li>Examine the highlighted differences in the result panel.</li>
+          <li data-i18n="tools.text.text-diff.text.022">Review the statistics showing lines added, removed, changed, and unchanged.</li>
+          <li data-i18n="tools.text.text-diff.text.023">Examine the highlighted differences in the result panel.</li>
           <li>Use <strong>Copy Diff Result</strong> to copy the comparison.</li>
         </ol>
 
-        <h3>Features Explained</h3>
+        <h3 data-i18n="tools.text.text-diff.text.024">Features Explained</h3>
         <p><strong>Line-by-Line Comparison:</strong> Each line is compared individually to identify additions, deletions, and modifications.<br>
         <strong>Character-Level Diff:</strong> When enabled, shows exactly which characters changed within modified lines.<br>
         <strong>Ignore Whitespace:</strong> Disregards spaces, tabs, and line breaks when comparing.<br>
         <strong>Ignore Case:</strong> Treats uppercase and lowercase letters as identical.<br>
         <strong>Statistics:</strong> Get a quick overview of how much content changed.</p>
 
-        <h3>Common Use Cases</h3>
+        <h3 data-i18n="tools.text.text-diff.text.025">Common Use Cases</h3>
         <p><strong>Code Review:</strong> Compare different versions of code to see what changed.<br>
         <strong>Document Tracking:</strong> Track edits in legal documents, contracts, or creative writing.<br>
         <strong>Content Management:</strong> Verify changes made by editors or collaborators.<br>
         <strong>Configuration Files:</strong> Compare before and after states of config files.</p>
 
-        <h3>Frequently Asked Questions</h3>
+        <h3 data-i18n="tools.text.text-diff.text.026">Frequently Asked Questions</h3>
 
         <details class="faq-item">
           <summary>Is my text sent to a server?</summary>
-          <p>No. All comparison happens entirely within your browser. Your text is never transmitted to our servers or stored anywhere.</p>
+          <p data-i18n="tools.text.text-diff.text.027">No. All comparison happens entirely within your browser. Your text is never transmitted to our servers or stored anywhere.</p>
         </details>
 
         <details class="faq-item">
           <summary>What's the maximum text size?</summary>
-          <p>The tool can handle thousands of lines of text. However, extremely large texts (100,000+ lines) may impact browser performance.</p>
+          <p data-i18n="tools.text.text-diff.text.028">The tool can handle thousands of lines of text. However, extremely large texts (100,000+ lines) may impact browser performance.</p>
         </details>
 
         <details class="faq-item">
           <summary>How does character-level diff work?</summary>
-          <p>When enabled and two lines differ, the tool highlights specific characters that were added (green) or removed (red with strikethrough) within those lines.</p>
+          <p data-i18n="tools.text.text-diff.text.029">When enabled and two lines differ, the tool highlights specific characters that were added (green) or removed (red with strikethrough) within those lines.</p>
         </details>
 
         <details class="faq-item">
           <summary>Can I compare binary files?</summary>
-          <p>No, this tool is designed for text comparison only. Binary files should use specialized binary diff tools.</p>
+          <p data-i18n="tools.text.text-diff.text.030">No, this tool is designed for text comparison only. Binary files should use specialized binary diff tools.</p>
         </details>
 
         <details class="faq-item">
           <summary>Does it support all Unicode characters?</summary>
-          <p>Yes! The diff tool fully supports Unicode text including special characters, emoji, and non-Latin scripts.</p>
+          <p data-i18n="tools.text.text-diff.text.031">Yes! The diff tool fully supports Unicode text including special characters, emoji, and non-Latin scripts.</p>
         </details>
       </section>
     </main>
 
     <footer class="tool-footer">
-      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
-      <p>Estimates only &mdash; not financial, legal, or tax advice.</p>
+      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com" data-i18n="tools.text.text-diff.text.032">psk.dan.metehancetin@mc-novatools.com</a></p>
+      <p data-i18n="tools.text.text-diff.text.033">Estimates only &mdash; not financial, legal, or tax advice.</p>
     </footer>
     <style>
       .tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }
@@ -427,8 +427,8 @@
             added += modified[i];
             i++;
           }
-          if (removed) html += `<span class="char-diff-removed">${escapeHtml(removed)}</span>`;
-          if (added) html += `<span class="char-diff-added">${escapeHtml(added)}</span>`;
+          if (removed) html += `<span class="char-diff-removed" data-i18n="tools.text.text-diff.text.034">${escapeHtml(removed)}</span>`;
+          if (added) html += `<span class="char-diff-added" data-i18n="tools.text.text-diff.text.035">${escapeHtml(added)}</span>`;
         }
       }
       return html || escapeHtml(modified);
@@ -459,16 +459,16 @@
       let html = '';
       result.forEach(item => {
         if (item.type === 'unchanged') {
-          html += `<div class="diff-line"><span class="diff-line-num">${item.lineNum}</span><span class="diff-line-marker"> </span><span class="diff-line-content">${escapeHtml(item.content)}</span></div>`;
+          html += `<div class="diff-line"><span class="diff-line-num" data-i18n="tools.text.text-diff.text.036">${item.lineNum}</span><span class="diff-line-marker"> </span><span class="diff-line-content" data-i18n="tools.text.text-diff.text.037">${escapeHtml(item.content)}</span></div>`;
         } else if (item.type === 'added') {
-          html += `<div class="diff-line diff-added"><span class="diff-line-num">${item.lineNum}</span><span class="diff-line-marker">+</span><span class="diff-line-content">${escapeHtml(item.content)}</span></div>`;
+          html += `<div class="diff-line diff-added"><span class="diff-line-num" data-i18n="tools.text.text-diff.text.038">${item.lineNum}</span><span class="diff-line-marker">+</span><span class="diff-line-content" data-i18n="tools.text.text-diff.text.039">${escapeHtml(item.content)}</span></div>`;
         } else if (item.type === 'removed') {
-          html += `<div class="diff-line diff-removed"><span class="diff-line-num">${item.lineNum}</span><span class="diff-line-marker">-</span><span class="diff-line-content">${escapeHtml(item.content)}</span></div>`;
+          html += `<div class="diff-line diff-removed"><span class="diff-line-num" data-i18n="tools.text.text-diff.text.040">${item.lineNum}</span><span class="diff-line-marker">-</span><span class="diff-line-content" data-i18n="tools.text.text-diff.text.041">${escapeHtml(item.content)}</span></div>`;
         } else if (item.type === 'changed') {
           const content = charDiff.checked 
             ? computeCharDiff(item.original, item.modified)
             : escapeHtml(item.modified);
-          html += `<div class="diff-line diff-changed"><span class="diff-line-num">${item.lineNum}</span><span class="diff-line-marker">~</span><span class="diff-line-content">${content}</span></div>`;
+          html += `<div class="diff-line diff-changed"><span class="diff-line-num" data-i18n="tools.text.text-diff.text.042">${item.lineNum}</span><span class="diff-line-marker">~</span><span class="diff-line-content" data-i18n="tools.text.text-diff.text.043">${content}</span></div>`;
         }
       });
 

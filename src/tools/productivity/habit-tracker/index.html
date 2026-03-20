@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="/src/styles/main.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <title>Free Habit Tracker | NovaTools MC</title>
+  <title data-i18n="tools.productivity.habit-tracker.meta.title">Free Habit Tracker | NovaTools MC</title>
   
   <!-- i18n Script -->
   <script src="/i18n.js"></script>
@@ -145,17 +145,17 @@
         <div class="header-inner">
           <a href="/" class="logo" aria-label="NovaTools MC Home">
             <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
-            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+            <span class="logo-text">NovaTools <span class="logo-mc" data-i18n="tools.productivity.habit-tracker.text.001">MC</span></span>
           </a>
           <nav class="nav-desktop" aria-label="Main navigation">
-            <a href="/#finance" class="nav-link">Finance</a>
-            <a href="/#pdf" class="nav-link">PDF Tools</a>
-            <a href="/#image" class="nav-link">Images</a>
-            <a href="/#dev" class="nav-link">Developers</a>
+            <a href="/#finance" class="nav-link" data-i18n="tools.productivity.habit-tracker.text.002">Finance</a>
+            <a href="/#pdf" class="nav-link" data-i18n="tools.productivity.habit-tracker.text.003">PDF Tools</a>
+            <a href="/#image" class="nav-link" data-i18n="tools.productivity.habit-tracker.text.004">Images</a>
+            <a href="/#dev" class="nav-link" data-i18n="tools.productivity.habit-tracker.text.005">Developers</a>
           </nav>
-          <div class="privacy-badge" title="Your data never leaves your browser">
+          <div class="privacy-badge" title="Your data never leaves your browser" data-i18n-title="tools.productivity.habit-tracker.title.001">
             <span class="privacy-badge-dot"></span>
-            <span>Privacy First</span>
+            <span data-i18n="tools.productivity.habit-tracker.text.006">Privacy First</span>
           </div>
           <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
             <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -166,10 +166,10 @@
           </button>
         </div>
         <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
-          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
-          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
-          <a href="/#image" class="mobile-nav-link">Image Tools</a>
-          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+          <a href="/#finance" class="mobile-nav-link" data-i18n="tools.productivity.habit-tracker.text.007">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link" data-i18n="tools.productivity.habit-tracker.text.008">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link" data-i18n="tools.productivity.habit-tracker.text.009">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link" data-i18n="tools.productivity.habit-tracker.text.010">Developer Tools</a>
         </nav>
       </div>
     </header>
@@ -178,8 +178,8 @@
       <div class="tool-wrapper">
         <div class="tool-hero">
           <div class="tool-hero-icon">&#128170;</div>
-          <h1>Habit Tracker</h1>
-          <p>Build better habits and track your daily progress. Visual calendars, streak counters, and completion statistics help you stay consistent and reach your goals.</p>
+          <h1 data-i18n="tools.productivity.habit-tracker.text.011">Habit Tracker</h1>
+          <p data-i18n="tools.productivity.habit-tracker.text.012">Build better habits and track your daily progress. Visual calendars, streak counters, and completion statistics help you stay consistent and reach your goals.</p>
         </div>
 
         <div class="card">
@@ -204,7 +204,7 @@
           </div>
 
           <div class="add-habit-form">
-            <input type="text" class="habit-input" id="habitInput" placeholder="Enter a new habit (e.g., Drink 8 glasses of water)">
+            <input type="text" class="habit-input" id="habitInput" placeholder="Enter a new habit (e.g., Drink 8 glasses of water)" data-i18n-placeholder="tools.productivity.habit-tracker.placeholder.001">
             <input type="text" class="habit-emoji" id="habitEmoji" placeholder="&#127812;" maxlength="2" value="&#9989;">
             <button class="btn btn-primary" id="btnAddHabit">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/></svg>
@@ -223,53 +223,53 @@
       </div>
 
       <section class="seo-section" aria-label="About this tool">
-        <h2>About Habit Tracker</h2>
-        <p>Building good habits is key to personal growth and achieving your goals. Our Habit Tracker helps you visualize your progress, maintain streaks, and stay accountable. Whether you want to exercise daily, read more books, drink more water, or any other habit, this tool makes tracking simple and rewarding.</p>
+        <h2 data-i18n="tools.productivity.habit-tracker.text.013">About Habit Tracker</h2>
+        <p data-i18n="tools.productivity.habit-tracker.text.014">Building good habits is key to personal growth and achieving your goals. Our Habit Tracker helps you visualize your progress, maintain streaks, and stay accountable. Whether you want to exercise daily, read more books, drink more water, or any other habit, this tool makes tracking simple and rewarding.</p>
 
-        <h3>How to Use</h3>
+        <h3 data-i18n="tools.productivity.habit-tracker.text.015">How to Use</h3>
         <ol>
-          <li>Enter a habit name in the input field (e.g., "Exercise for 30 minutes").</li>
-          <li>Optionally choose an emoji to represent your habit.</li>
+          <li data-i18n="tools.productivity.habit-tracker.text.016">Enter a habit name in the input field (e.g., "Exercise for 30 minutes").</li>
+          <li data-i18n="tools.productivity.habit-tracker.text.017">Optionally choose an emoji to represent your habit.</li>
           <li>Click <strong>Add Habit</strong> to create your tracker.</li>
-          <li>Each habit displays a monthly calendar view of your progress.</li>
-          <li>Click the checkmark button to mark today's habit as complete.</li>
-          <li>Watch your streak counter grow as you maintain consistency.</li>
-          <li>Use the delete button to remove habits you no longer want to track.</li>
-          <li>Monitor your overall progress with the statistics at the top.</li>
+          <li data-i18n="tools.productivity.habit-tracker.text.018">Each habit displays a monthly calendar view of your progress.</li>
+          <li data-i18n="tools.productivity.habit-tracker.text.019">Click the checkmark button to mark today's habit as complete.</li>
+          <li data-i18n="tools.productivity.habit-tracker.text.020">Watch your streak counter grow as you maintain consistency.</li>
+          <li data-i18n="tools.productivity.habit-tracker.text.021">Use the delete button to remove habits you no longer want to track.</li>
+          <li data-i18n="tools.productivity.habit-tracker.text.022">Monitor your overall progress with the statistics at the top.</li>
         </ol>
 
-        <h3>Frequently Asked Questions</h3>
+        <h3 data-i18n="tools.productivity.habit-tracker.text.023">Frequently Asked Questions</h3>
 
         <details class="faq-item">
           <summary>How is my streak calculated?</summary>
-          <p>Your streak counts consecutive days of completing a habit. If you miss a day, the streak resets to zero. The streak motivates you to maintain consistency and not break the chain.</p>
+          <p data-i18n="tools.productivity.habit-tracker.text.024">Your streak counts consecutive days of completing a habit. If you miss a day, the streak resets to zero. The streak motivates you to maintain consistency and not break the chain.</p>
         </details>
 
         <details class="faq-item">
           <summary>Can I track habits from previous days?</summary>
-          <p>Currently, you can only mark today's habit as complete. This encourages forming the habit of using the tracker daily. We may add backdating features in future updates.</p>
+          <p data-i18n="tools.productivity.habit-tracker.text.025">Currently, you can only mark today's habit as complete. This encourages forming the habit of using the tracker daily. We may add backdating features in future updates.</p>
         </details>
 
         <details class="faq-item">
           <summary>Is there a limit to how many habits I can track?</summary>
-          <p>There's no strict limit, but we recommend focusing on 3-5 habits at a time for better success rates. Too many habits can be overwhelming and harder to maintain.</p>
+          <p data-i18n="tools.productivity.habit-tracker.text.026">There's no strict limit, but we recommend focusing on 3-5 habits at a time for better success rates. Too many habits can be overwhelming and harder to maintain.</p>
         </details>
 
         <details class="faq-item">
           <summary>Will my habit data be lost if I clear my browser?</summary>
-          <p>Yes, clearing your browser data will delete all habit information. We recommend taking periodic screenshots of your progress as backup. Your data is never transmitted to our servers.</p>
+          <p data-i18n="tools.productivity.habit-tracker.text.027">Yes, clearing your browser data will delete all habit information. We recommend taking periodic screenshots of your progress as backup. Your data is never transmitted to our servers.</p>
         </details>
 
         <details class="faq-item">
           <summary>What's the best way to build a new habit?</summary>
-          <p>Start small, be consistent, and track your progress. Research suggests it takes about 21-66 days to form a habit. Use this tracker daily, celebrate small wins, and don't be too hard on yourself if you miss a day—just get back on track the next day.</p>
+          <p data-i18n="tools.productivity.habit-tracker.text.028">Start small, be consistent, and track your progress. Research suggests it takes about 21-66 days to form a habit. Use this tracker daily, celebrate small wins, and don't be too hard on yourself if you miss a day—just get back on track the next day.</p>
         </details>
       </section>
     </main>
 
     <footer class="tool-footer">
-      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
-      <p>Estimates only &mdash; not financial, legal, or tax advice.</p>
+      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com" data-i18n="tools.productivity.habit-tracker.text.029">psk.dan.metehancetin@mc-novatools.com</a></p>
+      <p data-i18n="tools.productivity.habit-tracker.text.030">Estimates only &mdash; not financial, legal, or tax advice.</p>
     </footer>
     <style>
       .tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }
@@ -384,14 +384,14 @@
           <div class="habit-item" data-id="${habit.id}">
             <div class="habit-header">
               <div class="habit-info">
-                <span class="habit-emoji-display">${habit.emoji}</span>
+                <span class="habit-emoji-display" data-i18n="tools.productivity.habit-tracker.text.031">${habit.emoji}</span>
                 <div>
                   <div class="habit-name">${habit.name}</div>
                   ${streak > 0 ? `<div class="habit-streak">&#128293; ${streak} day streak</div>` : ''}
                 </div>
               </div>
               <div class="habit-actions">
-                <button class="btn btn-primary btn-check ${isDoneToday ? 'completed' : ''}" onclick="toggleHabit('${habit.id}')">
+                <button class="btn btn-primary btn-check ${isDoneToday ? 'completed' : ''}" onclick="toggleHabit('${habit.id}')" data-i18n="tools.productivity.habit-tracker.text.032">
                   ${isDoneToday ? '&#10003;' : '&#10003;'}
                 </button>
                 <button class="btn btn-danger btn-delete" onclick="deleteHabit('${habit.id}')">&times;</button>

@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="/src/styles/main.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <title>Free Invoice Generator Online | Create PDF Invoices | NovaTools MC</title>
+  <title data-i18n="tools.design.invoice-generator.meta.title">Free Invoice Generator Online | Create PDF Invoices | NovaTools MC</title>
   
   <!-- i18n Script -->
   <script src="/i18n.js"></script>
@@ -149,17 +149,17 @@
         <div class="header-inner">
           <a href="/" class="logo" aria-label="NovaTools MC Home">
             <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
-            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+            <span class="logo-text">NovaTools <span class="logo-mc" data-i18n="tools.design.invoice-generator.text.001">MC</span></span>
           </a>
           <nav class="nav-desktop" aria-label="Main navigation">
-            <a href="/#finance" class="nav-link">Finance</a>
-            <a href="/#pdf" class="nav-link">PDF Tools</a>
-            <a href="/#image" class="nav-link">Images</a>
-            <a href="/#dev" class="nav-link">Developers</a>
+            <a href="/#finance" class="nav-link" data-i18n="tools.design.invoice-generator.text.002">Finance</a>
+            <a href="/#pdf" class="nav-link" data-i18n="tools.design.invoice-generator.text.003">PDF Tools</a>
+            <a href="/#image" class="nav-link" data-i18n="tools.design.invoice-generator.text.004">Images</a>
+            <a href="/#dev" class="nav-link" data-i18n="tools.design.invoice-generator.text.005">Developers</a>
           </nav>
-          <div class="privacy-badge" title="Your data never leaves your browser">
+          <div class="privacy-badge" title="Your data never leaves your browser" data-i18n-title="tools.design.invoice-generator.title.001">
             <span class="privacy-badge-dot"></span>
-            <span>Privacy First</span>
+            <span data-i18n="tools.design.invoice-generator.text.006">Privacy First</span>
           </div>
           <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
             <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -170,10 +170,10 @@
           </button>
         </div>
         <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
-          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
-          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
-          <a href="/#image" class="mobile-nav-link">Image Tools</a>
-          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+          <a href="/#finance" class="mobile-nav-link" data-i18n="tools.design.invoice-generator.text.007">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link" data-i18n="tools.design.invoice-generator.text.008">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link" data-i18n="tools.design.invoice-generator.text.009">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link" data-i18n="tools.design.invoice-generator.text.010">Developer Tools</a>
         </nav>
       </div>
     </header>
@@ -182,54 +182,54 @@
       <div class="tool-wrapper">
         <div class="tool-hero">
           <div class="tool-hero-icon">&#128179;</div>
-          <h1>Invoice Generator</h1>
-          <span class="sr-only">Free online invoice generator - create professional PDF invoices instantly</span>
-          <p>Create professional invoices with automatic calculations. Download as PDF or print for your records.</p>
+          <h1 data-i18n="tools.design.invoice-generator.text.011">Invoice Generator</h1>
+          <span class="sr-only" data-i18n="tools.design.invoice-generator.text.012">Free online invoice generator - create professional PDF invoices instantly</span>
+          <p data-i18n="tools.design.invoice-generator.text.013">Create professional invoices with automatic calculations. Download as PDF or print for your records.</p>
         </div>
 
         <div class="editor-grid">
           <div class="card">
             <div class="control-group">
-              <label>Your Company</label>
+              <label data-i18n="tools.design.invoice-generator.text.014">Your Company</label>
               <input type="text" id="invCompany" value="Your Company Name">
             </div>
             <div class="control-group">
-              <label>Your Email</label>
+              <label data-i18n="tools.design.invoice-generator.text.015">Your Email</label>
               <input type="email" id="invEmail" value="billing@yourcompany.com">
             </div>
             <div class="control-group">
-              <label>Your Address</label>
+              <label data-i18n="tools.design.invoice-generator.text.016">Your Address</label>
               <textarea id="invAddress">123 Business Street
 City, State 12345</textarea>
             </div>
             
             <div class="control-group">
-              <label>Client Name</label>
+              <label data-i18n="tools.design.invoice-generator.text.017">Client Name</label>
               <input type="text" id="invClient" value="Client Company Inc.">
             </div>
             <div class="control-group">
-              <label>Client Address</label>
+              <label data-i18n="tools.design.invoice-generator.text.018">Client Address</label>
               <textarea id="invClientAddress">456 Client Avenue
 Client City, ST 67890</textarea>
             </div>
             
             <div class="two-col">
               <div class="control-group">
-                <label>Invoice #</label>
+                <label data-i18n="tools.design.invoice-generator.text.019">Invoice #</label>
                 <input type="text" id="invNumber" value="INV-001">
               </div>
               <div class="control-group">
-                <label>Date</label>
+                <label data-i18n="tools.design.invoice-generator.text.020">Date</label>
                 <input type="date" id="invDate">
               </div>
             </div>
             <div class="two-col">
               <div class="control-group">
-                <label>Due Date</label>
+                <label data-i18n="tools.design.invoice-generator.text.021">Due Date</label>
                 <input type="date" id="invDueDate">
               </div>
               <div class="control-group">
-                <label>Currency</label>
+                <label data-i18n="tools.design.invoice-generator.text.022">Currency</label>
                 <select id="invCurrency">
                   <option value="$">USD ($)</option>
                   <option value="\u20ac">EUR (\u20ac)</option>
@@ -239,37 +239,37 @@ Client City, ST 67890</textarea>
             </div>
             
             <div class="control-group">
-              <label>Line Items</label>
+              <label data-i18n="tools.design.invoice-generator.text.023">Line Items</label>
               <div id="lineItems">
                 <div class="line-item">
-                  <input type="text" placeholder="Description" class="item-desc" value="Web Design Services">
-                  <input type="number" placeholder="Qty" class="item-qty" value="10" min="0">
-                  <input type="number" placeholder="Price" class="item-price" value="75" min="0" step="0.01">
-                  <button class="remove-line" onclick="removeLine(this)">\u00d7</button>
+                  <input type="text" placeholder="Description" data-i18n-placeholder="tools.design.invoice-generator.placeholder.001" class="item-desc" value="Web Design Services">
+                  <input type="number" placeholder="Qty" data-i18n-placeholder="tools.design.invoice-generator.placeholder.002" class="item-qty" value="10" min="0">
+                  <input type="number" placeholder="Price" data-i18n-placeholder="tools.design.invoice-generator.placeholder.003" class="item-price" value="75" min="0" step="0.01">
+                  <button class="remove-line" onclick="removeLine(this)" data-i18n="tools.design.invoice-generator.text.024">\u00d7</button>
                 </div>
                 <div class="line-item">
-                  <input type="text" placeholder="Description" class="item-desc" value="Logo Design">
-                  <input type="number" placeholder="Qty" class="item-qty" value="1" min="0">
-                  <input type="number" placeholder="Price" class="item-price" value="250" min="0" step="0.01">
-                  <button class="remove-line" onclick="removeLine(this)">\u00d7</button>
+                  <input type="text" placeholder="Description" data-i18n-placeholder="tools.design.invoice-generator.placeholder.004" class="item-desc" value="Logo Design">
+                  <input type="number" placeholder="Qty" data-i18n-placeholder="tools.design.invoice-generator.placeholder.005" class="item-qty" value="1" min="0">
+                  <input type="number" placeholder="Price" data-i18n-placeholder="tools.design.invoice-generator.placeholder.006" class="item-price" value="250" min="0" step="0.01">
+                  <button class="remove-line" onclick="removeLine(this)" data-i18n="tools.design.invoice-generator.text.025">\u00d7</button>
                 </div>
               </div>
-              <button class="add-line-btn" onclick="addLine()">+ Add Line Item</button>
+              <button class="add-line-btn" onclick="addLine()" data-i18n="tools.design.invoice-generator.text.026">+ Add Line Item</button>
             </div>
             
             <div class="two-col">
               <div class="control-group">
-                <label>Tax Rate (%)</label>
+                <label data-i18n="tools.design.invoice-generator.text.027">Tax Rate (%)</label>
                 <input type="number" id="invTax" value="10" min="0" max="100" step="0.01">
               </div>
               <div class="control-group">
-                <label>Discount (%)</label>
+                <label data-i18n="tools.design.invoice-generator.text.028">Discount (%)</label>
                 <input type="number" id="invDiscount" value="0" min="0" max="100" step="0.01">
               </div>
             </div>
             
             <div class="control-group">
-              <label>Notes / Terms</label>
+              <label data-i18n="tools.design.invoice-generator.text.029">Notes / Terms</label>
               <textarea id="invNotes">Payment due within 30 days. Thank you for your business!</textarea>
             </div>
           </div>
@@ -277,8 +277,8 @@ Client City, ST 67890</textarea>
           <div class="preview-panel">
             <div id="invoicePreview" class="invoice"></div>
             <div class="btn-bar">
-              <button class="btn btn-primary" id="downloadPdf">Download PDF</button>
-              <button class="btn btn-secondary" id="printInvoice">Print</button>
+              <button class="btn btn-primary" id="downloadPdf" data-i18n="tools.design.invoice-generator.text.030">Download PDF</button>
+              <button class="btn btn-secondary" id="printInvoice" data-i18n="tools.design.invoice-generator.text.031">Print</button>
             </div>
           </div>
         </div>
@@ -289,52 +289,52 @@ Client City, ST 67890</textarea>
       </div>
 
       <section class="seo-section" aria-label="About this tool">
-        <h2>About Invoice Generator</h2>
-        <p>Create professional, itemized invoices for your business or freelance work. Our invoice generator automatically calculates subtotals, taxes, and discounts. Export as PDF for email or print for physical records. Perfect for freelancers, small businesses, and contractors.</p>
+        <h2 data-i18n="tools.design.invoice-generator.text.032">About Invoice Generator</h2>
+        <p data-i18n="tools.design.invoice-generator.text.033">Create professional, itemized invoices for your business or freelance work. Our invoice generator automatically calculates subtotals, taxes, and discounts. Export as PDF for email or print for physical records. Perfect for freelancers, small businesses, and contractors.</p>
 
-        <h3>How to Use</h3>
+        <h3 data-i18n="tools.design.invoice-generator.text.034">How to Use</h3>
         <ol>
-          <li>Enter your company information including name, email, and address.</li>
-          <li>Add your client's information for proper billing.</li>
-          <li>Set the invoice number and dates (issue date and due date).</li>
-          <li>Add line items with descriptions, quantities, and prices.</li>
-          <li>Set tax rate and any discount if applicable.</li>
-          <li>Add payment terms or notes for the client.</li>
-          <li>Preview, then download as PDF or print.</li>
+          <li data-i18n="tools.design.invoice-generator.text.035">Enter your company information including name, email, and address.</li>
+          <li data-i18n="tools.design.invoice-generator.text.036">Add your client's information for proper billing.</li>
+          <li data-i18n="tools.design.invoice-generator.text.037">Set the invoice number and dates (issue date and due date).</li>
+          <li data-i18n="tools.design.invoice-generator.text.038">Add line items with descriptions, quantities, and prices.</li>
+          <li data-i18n="tools.design.invoice-generator.text.039">Set tax rate and any discount if applicable.</li>
+          <li data-i18n="tools.design.invoice-generator.text.040">Add payment terms or notes for the client.</li>
+          <li data-i18n="tools.design.invoice-generator.text.041">Preview, then download as PDF or print.</li>
         </ol>
 
-        <h3>Frequently Asked Questions</h3>
+        <h3 data-i18n="tools.design.invoice-generator.text.042">Frequently Asked Questions</h3>
 
         <details class="faq-item">
           <summary>Is this invoice legally binding?</summary>
-          <p>This tool creates invoices for record-keeping and documentation. For legally binding invoices, consult with a tax professional or accountant to ensure compliance with your local tax laws and regulations.</p>
+          <p data-i18n="tools.design.invoice-generator.text.043">This tool creates invoices for record-keeping and documentation. For legally binding invoices, consult with a tax professional or accountant to ensure compliance with your local tax laws and regulations.</p>
         </details>
 
         <details class="faq-item">
           <summary>Can I save my invoice data?</summary>
-          <p>Currently, invoice data is not saved between sessions. We recommend downloading the PDF immediately after creating your invoice. Your data never leaves your browser for privacy.</p>
+          <p data-i18n="tools.design.invoice-generator.text.044">Currently, invoice data is not saved between sessions. We recommend downloading the PDF immediately after creating your invoice. Your data never leaves your browser for privacy.</p>
         </details>
 
         <details class="faq-item">
           <summary>How are taxes calculated?</summary>
-          <p>Tax is calculated as a percentage of the subtotal (sum of all line items). The calculation is: Subtotal + Tax - Discount = Total. You can set the tax rate to 0 if not applicable.</p>
+          <p data-i18n="tools.design.invoice-generator.text.045">Tax is calculated as a percentage of the subtotal (sum of all line items). The calculation is: Subtotal + Tax - Discount = Total. You can set the tax rate to 0 if not applicable.</p>
         </details>
 
         <details class="faq-item">
           <summary>Can I customize the invoice template?</summary>
-          <p>The current version uses a professional, clean template optimized for readability. Future updates may include additional template options.</p>
+          <p data-i18n="tools.design.invoice-generator.text.046">The current version uses a professional, clean template optimized for readability. Future updates may include additional template options.</p>
         </details>
 
         <details class="faq-item">
           <summary>Is my invoice data secure?</summary>
-          <p>Yes, absolutely. All invoice processing happens entirely in your browser. Your business and client information is never sent to or stored on our servers.</p>
+          <p data-i18n="tools.design.invoice-generator.text.047">Yes, absolutely. All invoice processing happens entirely in your browser. Your business and client information is never sent to or stored on our servers.</p>
         </details>
       </section>
     </main>
 
     <footer class="tool-footer">
-      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
-      <p>Estimates only &mdash; not professional tax or accounting advice.</p>
+      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com" data-i18n="tools.design.invoice-generator.text.048">psk.dan.metehancetin@mc-novatools.com</a></p>
+      <p data-i18n="tools.design.invoice-generator.text.049">Estimates only &mdash; not professional tax or accounting advice.</p>
     </footer>
   </div>
 
@@ -399,13 +399,13 @@ Client City, ST 67890</textarea>
           </div>
           
           <div class="company-info">
-            <h3>${document.getElementById('invCompany').value}</h3>
+            <h3 data-i18n="tools.design.invoice-generator.text.050">${document.getElementById('invCompany').value}</h3>
             <div>${document.getElementById('invAddress').value.replace(/\n/g, '<br>')}</div>
             <div>${document.getElementById('invEmail').value}</div>
           </div>
           
           <div class="client-info">
-            <h4>Bill To:</h4>
+            <h4 data-i18n="tools.design.invoice-generator.text.051">Bill To:</h4>
             <div><strong>${document.getElementById('invClient').value}</strong></div>
             <div>${document.getElementById('invClientAddress').value.replace(/\n/g, '<br>')}</div>
           </div>
@@ -423,14 +423,14 @@ Client City, ST 67890</textarea>
           </table>
           
           <div class="invoice-totals">
-            <div class="row"><span>Subtotal:</span><span>${formatCurrency(totals.subtotal, currency)}</span></div>
-            ${totals.tax > 0 ? `<div class="row"><span>Tax:</span><span>${formatCurrency(totals.tax, currency)}</span></div>` : ''}
-            ${totals.discount > 0 ? `<div class="row"><span>Discount:</span><span>-${formatCurrency(totals.discount, currency)}</span></div>` : ''}
-            <div class="row total"><span>Total:</span><span>${formatCurrency(totals.total, currency)}</span></div>
+            <div class="row"><span data-i18n="tools.design.invoice-generator.text.052">Subtotal:</span><span data-i18n="tools.design.invoice-generator.text.053">${formatCurrency(totals.subtotal, currency)}</span></div>
+            ${totals.tax > 0 ? `<div class="row"><span data-i18n="tools.design.invoice-generator.text.054">Tax:</span><span data-i18n="tools.design.invoice-generator.text.055">${formatCurrency(totals.tax, currency)}</span></div>` : ''}
+            ${totals.discount > 0 ? `<div class="row"><span data-i18n="tools.design.invoice-generator.text.056">Discount:</span><span data-i18n="tools.design.invoice-generator.text.057">-${formatCurrency(totals.discount, currency)}</span></div>` : ''}
+            <div class="row total"><span data-i18n="tools.design.invoice-generator.text.058">Total:</span><span data-i18n="tools.design.invoice-generator.text.059">${formatCurrency(totals.total, currency)}</span></div>
           </div>
           
           <div class="invoice-notes">
-            <h4>Notes / Terms</h4>
+            <h4 data-i18n="tools.design.invoice-generator.text.060">Notes / Terms</h4>
             <div>${document.getElementById('invNotes').value.replace(/\n/g, '<br>')}</div>
           </div>
         </div>
@@ -442,10 +442,10 @@ Client City, ST 67890</textarea>
       const line = document.createElement('div');
       line.className = 'line-item';
       line.innerHTML = `
-        <input type="text" placeholder="Description" class="item-desc">
-        <input type="number" placeholder="Qty" class="item-qty" value="1" min="0">
-        <input type="number" placeholder="Price" class="item-price" value="0" min="0" step="0.01">
-        <button class="remove-line" onclick="removeLine(this)">\u00d7</button>
+        <input type="text" placeholder="Description" data-i18n-placeholder="tools.design.invoice-generator.placeholder.007" class="item-desc">
+        <input type="number" placeholder="Qty" data-i18n-placeholder="tools.design.invoice-generator.placeholder.008" class="item-qty" value="1" min="0">
+        <input type="number" placeholder="Price" data-i18n-placeholder="tools.design.invoice-generator.placeholder.009" class="item-price" value="0" min="0" step="0.01">
+        <button class="remove-line" onclick="removeLine(this)" data-i18n="tools.design.invoice-generator.text.061">\u00d7</button>
       `;
       container.appendChild(line);
       line.querySelectorAll('input').forEach(input => input.addEventListener('input', updateInvoice));

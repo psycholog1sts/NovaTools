@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="/src/styles/main.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <title>JSON to CSV Converter — Free Online Tool | NovaTools MC</title>
+  <title data-i18n="tools.data.json-to-csv.meta.title">JSON to CSV Converter — Free Online Tool | NovaTools MC</title>
   
   <!-- i18n Script -->
   <script src="/i18n.js"></script>
@@ -143,17 +143,17 @@
         <div class="header-inner">
           <a href="/" class="logo" aria-label="NovaTools MC Home">
             <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
-            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+            <span class="logo-text">NovaTools <span class="logo-mc" data-i18n="tools.data.json-to-csv.text.001">MC</span></span>
           </a>
           <nav class="nav-desktop" aria-label="Main navigation">
-            <a href="/#finance" class="nav-link">Finance</a>
-            <a href="/#pdf" class="nav-link">PDF Tools</a>
-            <a href="/#image" class="nav-link">Images</a>
-            <a href="/#dev" class="nav-link">Developers</a>
+            <a href="/#finance" class="nav-link" data-i18n="tools.data.json-to-csv.text.002">Finance</a>
+            <a href="/#pdf" class="nav-link" data-i18n="tools.data.json-to-csv.text.003">PDF Tools</a>
+            <a href="/#image" class="nav-link" data-i18n="tools.data.json-to-csv.text.004">Images</a>
+            <a href="/#dev" class="nav-link" data-i18n="tools.data.json-to-csv.text.005">Developers</a>
           </nav>
-          <div class="privacy-badge" title="Your data never leaves your browser">
+          <div class="privacy-badge" title="Your data never leaves your browser" data-i18n-title="tools.data.json-to-csv.title.001">
             <span class="privacy-badge-dot"></span>
-            <span>Privacy First</span>
+            <span data-i18n="tools.data.json-to-csv.text.006">Privacy First</span>
           </div>
           <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
             <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -164,10 +164,10 @@
           </button>
         </div>
         <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
-          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
-          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
-          <a href="/#image" class="mobile-nav-link">Image Tools</a>
-          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+          <a href="/#finance" class="mobile-nav-link" data-i18n="tools.data.json-to-csv.text.007">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link" data-i18n="tools.data.json-to-csv.text.008">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link" data-i18n="tools.data.json-to-csv.text.009">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link" data-i18n="tools.data.json-to-csv.text.010">Developer Tools</a>
         </nav>
       </div>
     </header>
@@ -176,13 +176,13 @@
       <div class="tool-wrapper">
         <div class="tool-hero">
           <div class="tool-hero-icon">🔄</div>
-          <h1>JSON to CSV Converter</h1>
-          <p>Convert JSON data to CSV format instantly. 100% client-side processing — your data never leaves your browser.</p>
+          <h1 data-i18n="tools.data.json-to-csv.text.011">JSON to CSV Converter</h1>
+          <p data-i18n="tools.data.json-to-csv.text.012">Convert JSON data to CSV format instantly. 100% client-side processing — your data never leaves your browser.</p>
         </div>
 
         <div class="card">
           <div class="upload-area" id="uploadArea">
-            <span>📁 Drop JSON file or click to upload</span>
+            <span data-i18n="tools.data.json-to-csv.text.013">📁 Drop JSON file or click to upload</span>
           </div>
           <input type="file" id="fileInput" accept=".json,application/json">
 
@@ -196,7 +196,7 @@
 
           <div class="options-row">
             <div class="option-group">
-              <label for="delimiterOut">Output delimiter:</label>
+              <label for="delimiterOut" data-i18n="tools.data.json-to-csv.text.014">Output delimiter:</label>
               <select id="delimiterOut">
                 <option value="," selected>Comma (,)</option>
                 <option value=";">Semicolon (;)</option>
@@ -228,7 +228,7 @@
               <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor"><path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/><path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/></svg>
               Clear
             </button>
-            <span class="copy-feedback" id="copyFeedback">Copied!</span>
+            <span class="copy-feedback" id="copyFeedback" data-i18n="tools.data.json-to-csv.text.015">Copied!</span>
           </div>
 
           <div class="error-banner" id="errorBanner">
@@ -254,48 +254,48 @@
       </div>
 
       <section class="seo-section" aria-label="About this tool">
-        <h2>About JSON to CSV Converter</h2>
-        <p>JSON (JavaScript Object Notation) is great for APIs and data exchange, but sometimes you need your data in CSV (Comma-Separated Values) format for spreadsheets, databases, or data analysis tools. This free online tool converts your JSON data to CSV format instantly without uploading anything to a server.</p>
+        <h2 data-i18n="tools.data.json-to-csv.text.016">About JSON to CSV Converter</h2>
+        <p data-i18n="tools.data.json-to-csv.text.017">JSON (JavaScript Object Notation) is great for APIs and data exchange, but sometimes you need your data in CSV (Comma-Separated Values) format for spreadsheets, databases, or data analysis tools. This free online tool converts your JSON data to CSV format instantly without uploading anything to a server.</p>
 
-        <h3>How to Use</h3>
+        <h3 data-i18n="tools.data.json-to-csv.text.018">How to Use</h3>
         <ol>
-          <li>Paste your JSON data into the input area, or upload a JSON file.</li>
-          <li>Configure options: choose your output delimiter, flatten nested objects, and include/exclude headers.</li>
+          <li data-i18n="tools.data.json-to-csv.text.019">Paste your JSON data into the input area, or upload a JSON file.</li>
+          <li data-i18n="tools.data.json-to-csv.text.020">Configure options: choose your output delimiter, flatten nested objects, and include/exclude headers.</li>
           <li>Click <strong>Convert to CSV</strong> to transform your data.</li>
-          <li>Copy the result to your clipboard or download it as a .csv file.</li>
+          <li data-i18n="tools.data.json-to-csv.text.021">Copy the result to your clipboard or download it as a .csv file.</li>
         </ol>
 
-        <h3>Frequently Asked Questions</h3>
+        <h3 data-i18n="tools.data.json-to-csv.text.022">Frequently Asked Questions</h3>
 
         <details class="faq-item">
           <summary>Is my JSON data kept private?</summary>
-          <p>Absolutely. All conversion happens entirely in your browser using JavaScript. No data is sent to any server, logged, or stored anywhere. You can safely use this tool with sensitive data.</p>
+          <p data-i18n="tools.data.json-to-csv.text.023">Absolutely. All conversion happens entirely in your browser using JavaScript. No data is sent to any server, logged, or stored anywhere. You can safely use this tool with sensitive data.</p>
         </details>
 
         <details class="faq-item">
           <summary>Can I convert nested JSON objects?</summary>
-          <p>Yes, the tool can flatten nested JSON objects. When the "Flatten nested objects" option is enabled, nested properties are converted to dot-notation column names (e.g., "user.name" becomes a column).</p>
+          <p data-i18n="tools.data.json-to-csv.text.024">Yes, the tool can flatten nested JSON objects. When the "Flatten nested objects" option is enabled, nested properties are converted to dot-notation column names (e.g., "user.name" becomes a column).</p>
         </details>
 
         <details class="faq-item">
           <summary>What if my JSON is not an array?</summary>
-          <p>The tool expects an array of objects as input. If your JSON is a single object, it will be treated as a single-row CSV. If your JSON has a different structure, you may need to preprocess it.</p>
+          <p data-i18n="tools.data.json-to-csv.text.025">The tool expects an array of objects as input. If your JSON is a single object, it will be treated as a single-row CSV. If your JSON has a different structure, you may need to preprocess it.</p>
         </details>
 
         <details class="faq-item">
           <summary>Can I convert CSV back to JSON?</summary>
-          <p>Yes! Check out our <a href="/tools/data/csv-to-json/">CSV to JSON Converter</a> tool for the reverse operation.</p>
+          <p>Yes! Check out our <a href="/tools/data/csv-to-json/" data-i18n="tools.data.json-to-csv.text.026">CSV to JSON Converter</a> tool for the reverse operation.</p>
         </details>
 
         <details class="faq-item">
           <summary>Are there any limits?</summary>
-          <p>The tool can handle JSON files up to 10MB. For very large datasets, consider processing them in chunks or using a dedicated data processing tool.</p>
+          <p data-i18n="tools.data.json-to-csv.text.027">The tool can handle JSON files up to 10MB. For very large datasets, consider processing them in chunks or using a dedicated data processing tool.</p>
         </details>
       </section>
 
       <footer class="tool-footer">
-        <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
-        <p>Estimates only &mdash; not financial, legal, or tax advice.</p>
+        <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com" data-i18n="tools.data.json-to-csv.text.028">psk.dan.metehancetin@mc-novatools.com</a></p>
+        <p data-i18n="tools.data.json-to-csv.text.029">Estimates only &mdash; not financial, legal, or tax advice.</p>
       </footer>
     </main>
   </div>

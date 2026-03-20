@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="/src/styles/main.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <title>Free Expense Tracker | NovaTools MC</title>
+  <title data-i18n="tools.productivity.expense-tracker.meta.title">Free Expense Tracker | NovaTools MC</title>
   
   <!-- i18n Script -->
   <script src="/i18n.js"></script>
@@ -147,17 +147,17 @@
         <div class="header-inner">
           <a href="/" class="logo" aria-label="NovaTools MC Home">
             <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
-            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+            <span class="logo-text">NovaTools <span class="logo-mc" data-i18n="tools.productivity.expense-tracker.text.001">MC</span></span>
           </a>
           <nav class="nav-desktop" aria-label="Main navigation">
-            <a href="/#finance" class="nav-link">Finance</a>
-            <a href="/#pdf" class="nav-link">PDF Tools</a>
-            <a href="/#image" class="nav-link">Images</a>
-            <a href="/#dev" class="nav-link">Developers</a>
+            <a href="/#finance" class="nav-link" data-i18n="tools.productivity.expense-tracker.text.002">Finance</a>
+            <a href="/#pdf" class="nav-link" data-i18n="tools.productivity.expense-tracker.text.003">PDF Tools</a>
+            <a href="/#image" class="nav-link" data-i18n="tools.productivity.expense-tracker.text.004">Images</a>
+            <a href="/#dev" class="nav-link" data-i18n="tools.productivity.expense-tracker.text.005">Developers</a>
           </nav>
-          <div class="privacy-badge" title="Your data never leaves your browser">
+          <div class="privacy-badge" title="Your data never leaves your browser" data-i18n-title="tools.productivity.expense-tracker.title.001">
             <span class="privacy-badge-dot"></span>
-            <span>Privacy First</span>
+            <span data-i18n="tools.productivity.expense-tracker.text.006">Privacy First</span>
           </div>
           <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
             <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -168,10 +168,10 @@
           </button>
         </div>
         <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
-          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
-          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
-          <a href="/#image" class="mobile-nav-link">Image Tools</a>
-          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+          <a href="/#finance" class="mobile-nav-link" data-i18n="tools.productivity.expense-tracker.text.007">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link" data-i18n="tools.productivity.expense-tracker.text.008">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link" data-i18n="tools.productivity.expense-tracker.text.009">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link" data-i18n="tools.productivity.expense-tracker.text.010">Developer Tools</a>
         </nav>
       </div>
     </header>
@@ -180,8 +180,8 @@
       <div class="tool-wrapper">
         <div class="tool-hero">
           <div class="tool-hero-icon">&#128176;</div>
-          <h1>Expense Tracker</h1>
-          <p>Track your daily expenses and income, categorize transactions, and monitor your financial health. All data stays private on your device.</p>
+          <h1 data-i18n="tools.productivity.expense-tracker.text.011">Expense Tracker</h1>
+          <p data-i18n="tools.productivity.expense-tracker.text.012">Track your daily expenses and income, categorize transactions, and monitor your financial health. All data stays private on your device.</p>
         </div>
 
         <div class="card">
@@ -203,8 +203,8 @@
 
           <div class="add-expense-form">
             <div class="form-row">
-              <input type="text" class="form-input" id="descInput" placeholder="Description">
-              <input type="number" class="form-input" id="amountInput" placeholder="Amount" step="0.01" min="0">
+              <input type="text" class="form-input" id="descInput" placeholder="Description" data-i18n-placeholder="tools.productivity.expense-tracker.placeholder.001">
+              <input type="number" class="form-input" id="amountInput" placeholder="Amount" data-i18n-placeholder="tools.productivity.expense-tracker.placeholder.002" step="0.01" min="0">
             </div>
             <div class="form-row">
               <select class="form-select" id="typeSelect">
@@ -230,7 +230,7 @@
 
           <div class="expenses-section">
             <div class="section-header">
-              <span class="section-title">Transactions</span>
+              <span class="section-title" data-i18n="tools.productivity.expense-tracker.text.013">Transactions</span>
               <select class="filter-select" id="filterSelect">
                 <option value="all">All</option>
                 <option value="expense">Expenses Only</option>
@@ -249,54 +249,54 @@
       </div>
 
       <section class="seo-section" aria-label="About this tool">
-        <h2>About Expense Tracker</h2>
-        <p>Our Expense Tracker helps you monitor your daily spending and income. By categorizing transactions and tracking your balance over time, you can better understand your financial habits and make informed decisions about your money. All data stays on your device for complete privacy.</p>
+        <h2 data-i18n="tools.productivity.expense-tracker.text.014">About Expense Tracker</h2>
+        <p data-i18n="tools.productivity.expense-tracker.text.015">Our Expense Tracker helps you monitor your daily spending and income. By categorizing transactions and tracking your balance over time, you can better understand your financial habits and make informed decisions about your money. All data stays on your device for complete privacy.</p>
 
-        <h3>How to Use</h3>
+        <h3 data-i18n="tools.productivity.expense-tracker.text.016">How to Use</h3>
         <ol>
-          <li>Enter a description for your transaction (e.g., "Grocery shopping").</li>
-          <li>Enter the amount.</li>
+          <li data-i18n="tools.productivity.expense-tracker.text.017">Enter a description for your transaction (e.g., "Grocery shopping").</li>
+          <li data-i18n="tools.productivity.expense-tracker.text.018">Enter the amount.</li>
           <li>Select whether it's an <strong>Expense</strong> or <strong>Income</strong>.</li>
-          <li>Choose a category that best fits the transaction.</li>
-          <li>Select the date (defaults to today).</li>
+          <li data-i18n="tools.productivity.expense-tracker.text.019">Choose a category that best fits the transaction.</li>
+          <li data-i18n="tools.productivity.expense-tracker.text.020">Select the date (defaults to today).</li>
           <li>Click <strong>Add</strong> to record the transaction.</li>
-          <li>Monitor your balance, total income, and total expenses at the top.</li>
-          <li>Use the filter dropdown to view only expenses or income.</li>
-          <li>Click the X button to delete any transaction.</li>
+          <li data-i18n="tools.productivity.expense-tracker.text.021">Monitor your balance, total income, and total expenses at the top.</li>
+          <li data-i18n="tools.productivity.expense-tracker.text.022">Use the filter dropdown to view only expenses or income.</li>
+          <li data-i18n="tools.productivity.expense-tracker.text.023">Click the X button to delete any transaction.</li>
         </ol>
 
-        <h3>Frequently Asked Questions</h3>
+        <h3 data-i18n="tools.productivity.expense-tracker.text.024">Frequently Asked Questions</h3>
 
         <details class="faq-item">
           <summary>Where is my financial data stored?</summary>
-          <p>All your transaction data is stored locally in your browser's localStorage. It never leaves your device or gets transmitted to any server. This ensures complete privacy but means your data is only available on this device.</p>
+          <p data-i18n="tools.productivity.expense-tracker.text.025">All your transaction data is stored locally in your browser's localStorage. It never leaves your device or gets transmitted to any server. This ensures complete privacy but means your data is only available on this device.</p>
         </details>
 
         <details class="faq-item">
           <summary>Can I export my expense data?</summary>
-          <p>Currently, direct export is not available. However, you can manually copy your transaction history. We recommend periodically recording important financial data in a separate secure location for backup.</p>
+          <p data-i18n="tools.productivity.expense-tracker.text.026">Currently, direct export is not available. However, you can manually copy your transaction history. We recommend periodically recording important financial data in a separate secure location for backup.</p>
         </details>
 
         <details class="faq-item">
           <summary>What categories are available?</summary>
-          <p>We provide common categories: Food & Dining, Transportation, Shopping, Entertainment, Bills & Utilities, Health & Medical, and Other. Choose the category that best describes your transaction for better tracking.</p>
+          <p data-i18n="tools.productivity.expense-tracker.text.027">We provide common categories: Food & Dining, Transportation, Shopping, Entertainment, Bills & Utilities, Health & Medical, and Other. Choose the category that best describes your transaction for better tracking.</p>
         </details>
 
         <details class="faq-item">
           <summary>Is this tool suitable for business accounting?</summary>
-          <p>This tool is designed for personal expense tracking. For business accounting, you should use dedicated accounting software that provides proper reporting, tax features, and data backup options.</p>
+          <p data-i18n="tools.productivity.expense-tracker.text.028">This tool is designed for personal expense tracking. For business accounting, you should use dedicated accounting software that provides proper reporting, tax features, and data backup options.</p>
         </details>
 
         <details class="faq-item">
           <summary>What happens if I clear my browser data?</summary>
-          <p>Clearing your browser data will permanently delete all your transactions and balance information. Make sure to record any important financial information elsewhere before clearing browser data.</p>
+          <p data-i18n="tools.productivity.expense-tracker.text.029">Clearing your browser data will permanently delete all your transactions and balance information. Make sure to record any important financial information elsewhere before clearing browser data.</p>
         </details>
       </section>
     </main>
 
     <footer class="tool-footer">
-      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
-      <p>Estimates only &mdash; not financial, legal, or tax advice.</p>
+      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com" data-i18n="tools.productivity.expense-tracker.text.030">psk.dan.metehancetin@mc-novatools.com</a></p>
+      <p data-i18n="tools.productivity.expense-tracker.text.031">Estimates only &mdash; not financial, legal, or tax advice.</p>
     </footer>
     <style>
       .tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }
@@ -371,8 +371,8 @@
           <div class="expense-info">
             <div class="expense-desc">${t.description}</div>
             <div class="expense-meta">
-              <span class="expense-category">${categories[t.category] || t.category}</span>
-              <span class="expense-date">${new Date(t.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+              <span class="expense-category" data-i18n="tools.productivity.expense-tracker.text.032">${categories[t.category] || t.category}</span>
+              <span class="expense-date" data-i18n="tools.productivity.expense-tracker.text.033">${new Date(t.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
             </div>
           </div>
           <div class="expense-amount ${t.type}">${t.type === 'income' ? '+' : '-'}${formatCurrency(t.amount)}</div>

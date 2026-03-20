@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="/src/styles/main.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <title>Free Percentage Calculator Online | NovaTools MC</title>
+  <title data-i18n="tools.converters.percentage-calculator.meta.title">Free Percentage Calculator Online | NovaTools MC</title>
   
   <!-- i18n Script -->
   <script src="/i18n.js"></script>
@@ -139,17 +139,17 @@
         <div class="header-inner">
           <a href="/" class="logo" aria-label="NovaTools MC Home">
             <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
-            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+            <span class="logo-text">NovaTools <span class="logo-mc" data-i18n="tools.converters.percentage-calculator.text.001">MC</span></span>
           </a>
           <nav class="nav-desktop" aria-label="Main navigation">
-            <a href="/#finance" class="nav-link">Finance</a>
-            <a href="/#pdf" class="nav-link">PDF Tools</a>
-            <a href="/#image" class="nav-link">Images</a>
-            <a href="/#dev" class="nav-link">Developers</a>
+            <a href="/#finance" class="nav-link" data-i18n="tools.converters.percentage-calculator.text.002">Finance</a>
+            <a href="/#pdf" class="nav-link" data-i18n="tools.converters.percentage-calculator.text.003">PDF Tools</a>
+            <a href="/#image" class="nav-link" data-i18n="tools.converters.percentage-calculator.text.004">Images</a>
+            <a href="/#dev" class="nav-link" data-i18n="tools.converters.percentage-calculator.text.005">Developers</a>
           </nav>
-          <div class="privacy-badge" title="Your data never leaves your browser">
+          <div class="privacy-badge" title="Your data never leaves your browser" data-i18n-title="tools.converters.percentage-calculator.title.001">
             <span class="privacy-badge-dot"></span>
-            <span>Privacy First</span>
+            <span data-i18n="tools.converters.percentage-calculator.text.006">Privacy First</span>
           </div>
           <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
             <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -160,10 +160,10 @@
           </button>
         </div>
         <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
-          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
-          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
-          <a href="/#image" class="mobile-nav-link">Image Tools</a>
-          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+          <a href="/#finance" class="mobile-nav-link" data-i18n="tools.converters.percentage-calculator.text.007">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link" data-i18n="tools.converters.percentage-calculator.text.008">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link" data-i18n="tools.converters.percentage-calculator.text.009">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link" data-i18n="tools.converters.percentage-calculator.text.010">Developer Tools</a>
         </nav>
       </div>
     </header>
@@ -172,8 +172,8 @@
       <div class="tool-wrapper">
         <div class="tool-hero">
           <div class="tool-hero-icon">&#128202;</div>
-          <h1>Percentage Calculator</h1>
-          <p>Calculate percentages, increases, decreases, and ratios instantly. Multiple calculation modes for all your percentage needs.</p>
+          <h1 data-i18n="tools.converters.percentage-calculator.text.011">Percentage Calculator</h1>
+          <p data-i18n="tools.converters.percentage-calculator.text.012">Calculate percentages, increases, decreases, and ratios instantly. Multiple calculation modes for all your percentage needs.</p>
         </div>
 
         <div class="card">
@@ -184,37 +184,37 @@
           </div>
 
           <div class="mode-tabs">
-            <button class="mode-tab active" data-mode="what-is">What is X% of Y?</button>
-            <button class="mode-tab" data-mode="x-is-what">X is what % of Y?</button>
-            <button class="mode-tab" data-mode="increase">% Increase</button>
-            <button class="mode-tab" data-mode="decrease">% Decrease</button>
-            <button class="mode-tab" data-mode="change">% Change</button>
+            <button class="mode-tab active" data-mode="what-is" data-i18n="tools.converters.percentage-calculator.text.013">What is X% of Y?</button>
+            <button class="mode-tab" data-mode="x-is-what" data-i18n="tools.converters.percentage-calculator.text.014">X is what % of Y?</button>
+            <button class="mode-tab" data-mode="increase" data-i18n="tools.converters.percentage-calculator.text.015">% Increase</button>
+            <button class="mode-tab" data-mode="decrease" data-i18n="tools.converters.percentage-calculator.text.016">% Decrease</button>
+            <button class="mode-tab" data-mode="change" data-i18n="tools.converters.percentage-calculator.text.017">% Change</button>
           </div>
 
           <div class="calc-section active" id="mode-what-is">
             <div class="input-row">
-              <span class="input-label">What is</span>
-              <input type="number" class="input-field" id="wi-percent" placeholder="X" step="0.01">
-              <span class="input-label">% of</span>
-              <input type="number" class="input-field" id="wi-value" placeholder="Y" step="0.01">
+              <span class="input-label" data-i18n="tools.converters.percentage-calculator.text.018">What is</span>
+              <input type="number" class="input-field" id="wi-percent" placeholder="X" data-i18n-placeholder="tools.converters.percentage-calculator.placeholder.001" step="0.01">
+              <span class="input-label" data-i18n="tools.converters.percentage-calculator.text.019">% of</span>
+              <input type="number" class="input-field" id="wi-value" placeholder="Y" data-i18n-placeholder="tools.converters.percentage-calculator.placeholder.002" step="0.01">
               <span class="input-label">?</span>
             </div>
           </div>
 
           <div class="calc-section" id="mode-x-is-what">
             <div class="input-row">
-              <input type="number" class="input-field" id="xw-value" placeholder="X" step="0.01">
-              <span class="input-label">is what % of</span>
-              <input type="number" class="input-field" id="xw-total" placeholder="Y" step="0.01">
+              <input type="number" class="input-field" id="xw-value" placeholder="X" data-i18n-placeholder="tools.converters.percentage-calculator.placeholder.003" step="0.01">
+              <span class="input-label" data-i18n="tools.converters.percentage-calculator.text.020">is what % of</span>
+              <input type="number" class="input-field" id="xw-total" placeholder="Y" data-i18n-placeholder="tools.converters.percentage-calculator.placeholder.004" step="0.01">
               <span class="input-label">?</span>
             </div>
           </div>
 
           <div class="calc-section" id="mode-increase">
             <div class="input-row">
-              <span class="input-label">Increase</span>
-              <input type="number" class="input-field" id="inc-value" placeholder="Value" step="0.01">
-              <span class="input-label">by</span>
+              <span class="input-label" data-i18n="tools.converters.percentage-calculator.text.021">Increase</span>
+              <input type="number" class="input-field" id="inc-value" placeholder="Value" data-i18n-placeholder="tools.converters.percentage-calculator.placeholder.005" step="0.01">
+              <span class="input-label" data-i18n="tools.converters.percentage-calculator.text.022">by</span>
               <input type="number" class="input-field" id="inc-percent" placeholder="%" step="0.01">
               <span class="input-label">%</span>
             </div>
@@ -222,9 +222,9 @@
 
           <div class="calc-section" id="mode-decrease">
             <div class="input-row">
-              <span class="input-label">Decrease</span>
-              <input type="number" class="input-field" id="dec-value" placeholder="Value" step="0.01">
-              <span class="input-label">by</span>
+              <span class="input-label" data-i18n="tools.converters.percentage-calculator.text.023">Decrease</span>
+              <input type="number" class="input-field" id="dec-value" placeholder="Value" data-i18n-placeholder="tools.converters.percentage-calculator.placeholder.006" step="0.01">
+              <span class="input-label" data-i18n="tools.converters.percentage-calculator.text.024">by</span>
               <input type="number" class="input-field" id="dec-percent" placeholder="%" step="0.01">
               <span class="input-label">%</span>
             </div>
@@ -232,10 +232,10 @@
 
           <div class="calc-section" id="mode-change">
             <div class="input-row">
-              <span class="input-label">From</span>
-              <input type="number" class="input-field" id="ch-from" placeholder="Original" step="0.01">
-              <span class="input-label">to</span>
-              <input type="number" class="input-field" id="ch-to" placeholder="New" step="0.01">
+              <span class="input-label" data-i18n="tools.converters.percentage-calculator.text.025">From</span>
+              <input type="number" class="input-field" id="ch-from" placeholder="Original" data-i18n-placeholder="tools.converters.percentage-calculator.placeholder.007" step="0.01">
+              <span class="input-label" data-i18n="tools.converters.percentage-calculator.text.026">to</span>
+              <input type="number" class="input-field" id="ch-to" placeholder="New" data-i18n-placeholder="tools.converters.percentage-calculator.placeholder.008" step="0.01">
               <span class="input-label">= ?%</span>
             </div>
           </div>
@@ -259,7 +259,7 @@
               <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor"><path d="M4 1.5H3a2 2 0 00-2 2V14a2 2 0 002 2h10a2 2 0 002-2V3.5a2 2 0 00-2-2h-1v1h1a1 1 0 011 1V14a1 1 0 01-1 1H3a1 1 0 01-1-1V3.5a1 1 0 011-1h1v-1z"/></svg>
               Copy
             </button>
-            <span class="copy-feedback" id="copyFeedback" aria-live="polite">Copied!</span>
+            <span class="copy-feedback" id="copyFeedback" aria-live="polite" data-i18n="tools.converters.percentage-calculator.text.027">Copied!</span>
           </div>
 
           <div class="quick-examples">
@@ -279,58 +279,58 @@
       </div>
 
       <section class="seo-section" aria-label="About this tool">
-        <h2>About Percentage Calculator</h2>
-        <p>Our free Percentage Calculator helps you solve various percentage problems quickly and accurately. Whether you need to calculate a percentage of a number, find what percentage one number is of another, or calculate percentage increases and decreases, this tool has you covered.</p>
+        <h2 data-i18n="tools.converters.percentage-calculator.text.028">About Percentage Calculator</h2>
+        <p data-i18n="tools.converters.percentage-calculator.text.029">Our free Percentage Calculator helps you solve various percentage problems quickly and accurately. Whether you need to calculate a percentage of a number, find what percentage one number is of another, or calculate percentage increases and decreases, this tool has you covered.</p>
 
-        <h3>How to Use</h3>
+        <h3 data-i18n="tools.converters.percentage-calculator.text.030">How to Use</h3>
         <ol>
-          <li>Select the calculation mode that matches your needs.</li>
-          <li>Enter the required values in the input fields.</li>
-          <li>Click Calculate to see the result.</li>
-          <li>The formula used for the calculation is displayed below the result.</li>
-          <li>Use Clear to reset all fields.</li>
-          <li>Click Copy to copy the result to your clipboard.</li>
+          <li data-i18n="tools.converters.percentage-calculator.text.031">Select the calculation mode that matches your needs.</li>
+          <li data-i18n="tools.converters.percentage-calculator.text.032">Enter the required values in the input fields.</li>
+          <li data-i18n="tools.converters.percentage-calculator.text.033">Click Calculate to see the result.</li>
+          <li data-i18n="tools.converters.percentage-calculator.text.034">The formula used for the calculation is displayed below the result.</li>
+          <li data-i18n="tools.converters.percentage-calculator.text.035">Use Clear to reset all fields.</li>
+          <li data-i18n="tools.converters.percentage-calculator.text.036">Click Copy to copy the result to your clipboard.</li>
         </ol>
 
-        <h3>Calculation Modes</h3>
+        <h3 data-i18n="tools.converters.percentage-calculator.text.037">Calculation Modes</h3>
         <p><strong>What is X% of Y?</strong> - Calculate a percentage of a number. Example: What is 20% of 100? = 20<br>
         <strong>X is what % of Y?</strong> - Find what percentage one number is of another. Example: 25 is what % of 200? = 12.5%<br>
         <strong>% Increase:</strong> Calculate the result after increasing a value by a percentage. Example: Increase 100 by 15% = 115<br>
         <strong>% Decrease:</strong> Calculate the result after decreasing a value by a percentage. Example: Decrease 100 by 10% = 90<br>
         <strong>% Change:</strong> Calculate the percentage change between two values. Example: From 50 to 75 = 50% increase</p>
 
-        <h3>Frequently Asked Questions</h3>
+        <h3 data-i18n="tools.converters.percentage-calculator.text.038">Frequently Asked Questions</h3>
 
         <details class="faq-item">
           <summary>How do I calculate a percentage?</summary>
-          <p>To calculate X% of Y, multiply Y by X and divide by 100. Formula: (X × Y) ÷ 100. Our calculator does this automatically when you select "What is X% of Y?" mode.</p>
+          <p data-i18n="tools.converters.percentage-calculator.text.039">To calculate X% of Y, multiply Y by X and divide by 100. Formula: (X × Y) ÷ 100. Our calculator does this automatically when you select "What is X% of Y?" mode.</p>
         </details>
 
         <details class="faq-item">
           <summary>How do I calculate percentage increase?</summary>
-          <p>To increase a number by a percentage, multiply the number by (1 + percentage/100). Example: 100 increased by 20% = 100 × 1.20 = 120.</p>
+          <p data-i18n="tools.converters.percentage-calculator.text.040">To increase a number by a percentage, multiply the number by (1 + percentage/100). Example: 100 increased by 20% = 100 × 1.20 = 120.</p>
         </details>
 
         <details class="faq-item">
           <summary>How do I calculate percentage decrease?</summary>
-          <p>To decrease a number by a percentage, multiply the number by (1 - percentage/100). Example: 100 decreased by 20% = 100 × 0.80 = 80.</p>
+          <p data-i18n="tools.converters.percentage-calculator.text.041">To decrease a number by a percentage, multiply the number by (1 - percentage/100). Example: 100 decreased by 20% = 100 × 0.80 = 80.</p>
         </details>
 
         <details class="faq-item">
           <summary>How do I find what percentage one number is of another?</summary>
-          <p>Divide the first number by the second and multiply by 100. Formula: (X ÷ Y) × 100. Example: 25 is what % of 200? = (25 ÷ 200) × 100 = 12.5%.</p>
+          <p data-i18n="tools.converters.percentage-calculator.text.042">Divide the first number by the second and multiply by 100. Formula: (X ÷ Y) × 100. Example: 25 is what % of 200? = (25 ÷ 200) × 100 = 12.5%.</p>
         </details>
 
         <details class="faq-item">
           <summary>Can I use this for financial calculations?</summary>
-          <p>Yes, this calculator is useful for many financial calculations like discounts, taxes, tips, and interest rates. However, for important financial decisions, always verify with a financial professional.</p>
+          <p data-i18n="tools.converters.percentage-calculator.text.043">Yes, this calculator is useful for many financial calculations like discounts, taxes, tips, and interest rates. However, for important financial decisions, always verify with a financial professional.</p>
         </details>
       </section>
     </main>
 
     <footer class="tool-footer">
-      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
-      <p>Estimates only &mdash; not financial, legal, or tax advice.</p>
+      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com" data-i18n="tools.converters.percentage-calculator.text.044">psk.dan.metehancetin@mc-novatools.com</a></p>
+      <p data-i18n="tools.converters.percentage-calculator.text.045">Estimates only &mdash; not financial, legal, or tax advice.</p>
     </footer>
     <style>
       .tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }

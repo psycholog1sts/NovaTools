@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="/src/styles/main.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <title>Free Password Strength Checker | NovaTools MC</title>
+  <title data-i18n="tools.security.password-strength.meta.title">Free Password Strength Checker | NovaTools MC</title>
   
   <!-- i18n Script -->
   <script src="/i18n.js"></script>
@@ -426,17 +426,17 @@
         <div class="header-inner">
           <a href="/" class="logo" aria-label="NovaTools MC Home">
             <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
-            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+            <span class="logo-text">NovaTools <span class="logo-mc" data-i18n="tools.security.password-strength.text.001">MC</span></span>
           </a>
           <nav class="nav-desktop" aria-label="Main navigation">
-            <a href="/#finance" class="nav-link">Finance</a>
-            <a href="/#pdf" class="nav-link">PDF Tools</a>
-            <a href="/#image" class="nav-link">Images</a>
-            <a href="/#dev" class="nav-link">Developers</a>
+            <a href="/#finance" class="nav-link" data-i18n="tools.security.password-strength.text.002">Finance</a>
+            <a href="/#pdf" class="nav-link" data-i18n="tools.security.password-strength.text.003">PDF Tools</a>
+            <a href="/#image" class="nav-link" data-i18n="tools.security.password-strength.text.004">Images</a>
+            <a href="/#dev" class="nav-link" data-i18n="tools.security.password-strength.text.005">Developers</a>
           </nav>
-          <div class="privacy-badge" title="Your data never leaves your browser">
+          <div class="privacy-badge" title="Your data never leaves your browser" data-i18n-title="tools.security.password-strength.title.001">
             <span class="privacy-badge-dot"></span>
-            <span>Privacy First</span>
+            <span data-i18n="tools.security.password-strength.text.006">Privacy First</span>
           </div>
           <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
             <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -447,10 +447,10 @@
           </button>
         </div>
         <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
-          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
-          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
-          <a href="/#image" class="mobile-nav-link">Image Tools</a>
-          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+          <a href="/#finance" class="mobile-nav-link" data-i18n="tools.security.password-strength.text.007">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link" data-i18n="tools.security.password-strength.text.008">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link" data-i18n="tools.security.password-strength.text.009">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link" data-i18n="tools.security.password-strength.text.010">Developer Tools</a>
         </nav>
       </div>
     </header>
@@ -459,8 +459,8 @@
       <div class="tool-wrapper">
         <div class="tool-hero">
           <div class="tool-hero-icon">&#128170;</div>
-          <h1>Password Strength Checker</h1>
-          <p>Analyze your password strength in real-time. Get crack time estimates and personalized improvement suggestions. All analysis happens locally in your browser.</p>
+          <h1 data-i18n="tools.security.password-strength.text.011">Password Strength Checker</h1>
+          <p data-i18n="tools.security.password-strength.text.012">Analyze your password strength in real-time. Get crack time estimates and personalized improvement suggestions. All analysis happens locally in your browser.</p>
         </div>
 
         <div class="card">
@@ -470,7 +470,7 @@
               Enter Password to Analyze
             </div>
             <div class="password-input-wrapper">
-              <input type="password" id="passwordInput" placeholder="Type or paste your password here..." autocomplete="off" spellcheck="false">
+              <input type="password" id="passwordInput" placeholder="Type or paste your password here..." data-i18n-placeholder="tools.security.password-strength.placeholder.001" autocomplete="off" spellcheck="false">
               <button type="button" class="toggle-visibility" id="toggleVisibility" aria-label="Toggle password visibility">
                 <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor" id="eyeIcon"><path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 011.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0114.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 011.172 8z"/><path d="M8 5.5a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM4.5 8a3.5 3.5 0 117 0 3.5 3.5 0 01-7 0z"/></svg>
                 <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor" id="eyeSlashIcon" style="display:none"><path d="M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7.028 7.028 0 00-2.79.588l.77.771A5.944 5.944 0 018 3.5c2.12 0 3.879 1.168 5.168 2.457A13.134 13.134 0 0114.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755-.165.165-.337.328-.517.486l.708.709z"/><path d="M11.297 9.176a3.5 3.5 0 00-4.474-4.474l.823.823a2.5 2.5 0 012.829 2.829l.822.822zm-2.943 1.299.822.822a3.5 3.5 0 01-4.474-4.474l.823.823a2.5 2.5 0 002.829 2.829z"/><path d="M3.35 5.47c-.18.16-.353.322-.518.487A13.134 13.134 0 001.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7.029 7.029 0 018 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884l-12-12 .708-.708 12 12-.708.708z"/></svg>
@@ -480,8 +480,8 @@
 
           <div class="strength-panel">
             <div class="strength-header">
-              <span class="strength-title">Password Strength</span>
-              <span class="strength-score" id="strengthScore">Empty</span>
+              <span class="strength-title" data-i18n="tools.security.password-strength.text.013">Password Strength</span>
+              <span class="strength-score" id="strengthScore" data-i18n="tools.security.password-strength.text.014">Empty</span>
             </div>
             <div class="strength-bar-container">
               <div class="strength-bar" id="strengthBar"></div>
@@ -492,37 +492,37 @@
                 <span class="checklist-icon">
                   <svg width="10" height="10" viewBox="0 0 16 16" fill="currentColor"><path d="M10.97 4.97a.75.75 0 011.07 1.05l-3.99 4.99a.75.75 0 01-1.08.02L4.324 8.384a.75.75 0 111.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 01.02-.022z"/></svg>
                 </span>
-                <span>At least 12 characters</span>
+                <span data-i18n="tools.security.password-strength.text.015">At least 12 characters</span>
               </div>
               <div class="checklist-item" id="checkUppercase">
                 <span class="checklist-icon">
                   <svg width="10" height="10" viewBox="0 0 16 16" fill="currentColor"><path d="M10.97 4.97a.75.75 0 011.07 1.05l-3.99 4.99a.75.75 0 01-1.08.02L4.324 8.384a.75.75 0 111.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 01.02-.022z"/></svg>
                 </span>
-                <span>Uppercase letters (A-Z)</span>
+                <span data-i18n="tools.security.password-strength.text.016">Uppercase letters (A-Z)</span>
               </div>
               <div class="checklist-item" id="checkLowercase">
                 <span class="checklist-icon">
                   <svg width="10" height="10" viewBox="0 0 16 16" fill="currentColor"><path d="M10.97 4.97a.75.75 0 011.07 1.05l-3.99 4.99a.75.75 0 01-1.08.02L4.324 8.384a.75.75 0 111.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 01.02-.022z"/></svg>
                 </span>
-                <span>Lowercase letters (a-z)</span>
+                <span data-i18n="tools.security.password-strength.text.017">Lowercase letters (a-z)</span>
               </div>
               <div class="checklist-item" id="checkNumbers">
                 <span class="checklist-icon">
                   <svg width="10" height="10" viewBox="0 0 16 16" fill="currentColor"><path d="M10.97 4.97a.75.75 0 011.07 1.05l-3.99 4.99a.75.75 0 01-1.08.02L4.324 8.384a.75.75 0 111.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 01.02-.022z"/></svg>
                 </span>
-                <span>Numbers (0-9)</span>
+                <span data-i18n="tools.security.password-strength.text.018">Numbers (0-9)</span>
               </div>
               <div class="checklist-item" id="checkSymbols">
                 <span class="checklist-icon">
                   <svg width="10" height="10" viewBox="0 0 16 16" fill="currentColor"><path d="M10.97 4.97a.75.75 0 011.07 1.05l-3.99 4.99a.75.75 0 01-1.08.02L4.324 8.384a.75.75 0 111.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 01.02-.022z"/></svg>
                 </span>
-                <span>Special characters (!@#$...)</span>
+                <span data-i18n="tools.security.password-strength.text.019">Special characters (!@#$...)</span>
               </div>
               <div class="checklist-item" id="checkNoPatterns">
                 <span class="checklist-icon">
                   <svg width="10" height="10" viewBox="0 0 16 16" fill="currentColor"><path d="M10.97 4.97a.75.75 0 011.07 1.05l-3.99 4.99a.75.75 0 01-1.08.02L4.324 8.384a.75.75 0 111.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 01.02-.022z"/></svg>
                 </span>
-                <span>No common patterns</span>
+                <span data-i18n="tools.security.password-strength.text.020">No common patterns</span>
               </div>
             </div>
 
@@ -563,52 +563,52 @@
       </div>
 
       <section class="seo-section" aria-label="About this tool">
-        <h2>About Password Strength Checker</h2>
-        <p>
+        <h2 data-i18n="tools.security.password-strength.text.021">About Password Strength Checker</h2>
+        <p data-i18n="tools.security.password-strength.text.022">
           Test the security of your passwords with our comprehensive strength analyzer. Get real-time feedback on password length, character variety, and common patterns. See how long it would take for an attacker to crack your password using brute-force methods.
         </p>
 
-        <h3>How to Use</h3>
+        <h3 data-i18n="tools.security.password-strength.text.023">How to Use</h3>
         <ol>
-          <li>Type or paste your password into the input field.</li>
-          <li>Watch the real-time strength meter update as you type.</li>
-          <li>Check the checklist to see which requirements your password meets.</li>
-          <li>Review the estimated crack time to understand your password's vulnerability.</li>
-          <li>Follow the improvement suggestions to create a stronger password.</li>
+          <li data-i18n="tools.security.password-strength.text.024">Type or paste your password into the input field.</li>
+          <li data-i18n="tools.security.password-strength.text.025">Watch the real-time strength meter update as you type.</li>
+          <li data-i18n="tools.security.password-strength.text.026">Check the checklist to see which requirements your password meets.</li>
+          <li data-i18n="tools.security.password-strength.text.027">Review the estimated crack time to understand your password's vulnerability.</li>
+          <li data-i18n="tools.security.password-strength.text.028">Follow the improvement suggestions to create a stronger password.</li>
         </ol>
 
-        <h3>Frequently Asked Questions</h3>
+        <h3 data-i18n="tools.security.password-strength.text.029">Frequently Asked Questions</h3>
 
         <details class="faq-item">
           <summary>How accurate is the crack time estimate?</summary>
-          <p>The crack time estimate assumes an attacker using specialized hardware capable of 100 billion guesses per second (distributed attack scenario). This represents a worst-case scenario with powerful resources. For most attackers with limited resources, the actual time would be significantly longer.</p>
+          <p data-i18n="tools.security.password-strength.text.030">The crack time estimate assumes an attacker using specialized hardware capable of 100 billion guesses per second (distributed attack scenario). This represents a worst-case scenario with powerful resources. For most attackers with limited resources, the actual time would be significantly longer.</p>
         </details>
 
         <details class="faq-item">
           <summary>Is my password safe when using this tool?</summary>
-          <p>Yes, completely. All analysis happens locally in your browser using JavaScript. Your password never leaves your device or is transmitted over the internet. You can safely test even your most sensitive passwords.</p>
+          <p data-i18n="tools.security.password-strength.text.031">Yes, completely. All analysis happens locally in your browser using JavaScript. Your password never leaves your device or is transmitted over the internet. You can safely test even your most sensitive passwords.</p>
         </details>
 
         <details class="faq-item">
           <summary>What does "entropy" mean?</summary>
-          <p>Entropy measures the amount of randomness or unpredictability in a password, expressed in bits. Higher entropy means more possible combinations an attacker would need to try. We recommend at least 60 bits for important accounts and 80+ bits for maximum security.</p>
+          <p data-i18n="tools.security.password-strength.text.032">Entropy measures the amount of randomness or unpredictability in a password, expressed in bits. Higher entropy means more possible combinations an attacker would need to try. We recommend at least 60 bits for important accounts and 80+ bits for maximum security.</p>
         </details>
 
         <details class="faq-item">
           <summary>What are common patterns to avoid?</summary>
-          <p>Common patterns include sequential characters (123, abc), repeated characters (aaa, 111), keyboard patterns (qwerty, asdf), dates, and common words. Our checker detects these patterns and suggests removing them for better security.</p>
+          <p data-i18n="tools.security.password-strength.text.033">Common patterns include sequential characters (123, abc), repeated characters (aaa, 111), keyboard patterns (qwerty, asdf), dates, and common words. Our checker detects these patterns and suggests removing them for better security.</p>
         </details>
 
         <details class="faq-item">
           <summary>What makes a password truly strong?</summary>
-          <p>A truly strong password is: at least 16 characters long, uses all character types (uppercase, lowercase, numbers, symbols), avoids dictionary words and personal information, has no predictable patterns, and has high entropy (80+ bits).</p>
+          <p data-i18n="tools.security.password-strength.text.034">A truly strong password is: at least 16 characters long, uses all character types (uppercase, lowercase, numbers, symbols), avoids dictionary words and personal information, has no predictable patterns, and has high entropy (80+ bits).</p>
         </details>
       </section>
     </main>
 
     <footer class="tool-footer">
-      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
-      <p>Estimates only &mdash; not financial, legal, or tax advice.</p>
+      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com" data-i18n="tools.security.password-strength.text.035">psk.dan.metehancetin@mc-novatools.com</a></p>
+      <p data-i18n="tools.security.password-strength.text.036">Estimates only &mdash; not financial, legal, or tax advice.</p>
     </footer>
     <style>
     .tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }
@@ -764,7 +764,7 @@
       const suggestions = getSuggestions(password, checks);
       if (suggestions.length > 0) {
         suggestionsSection.style.display = 'block';
-        suggestionsList.innerHTML = suggestions.map(s => '<li>' + s + '</li>').join('');
+        suggestionsList.innerHTML = suggestions.map(s => '<li data-i18n="tools.security.password-strength.text.037">' + s + '</li>').join('');
       } else {
         suggestionsSection.style.display = 'none';
       }

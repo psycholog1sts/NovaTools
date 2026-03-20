@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="/src/styles/main.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <title>Free Time Zone Converter Online | NovaTools MC</title>
+  <title data-i18n="tools.converters.timezone-converter.meta.title">Free Time Zone Converter Online | NovaTools MC</title>
   
   <!-- i18n Script -->
   <script src="/i18n.js"></script>
@@ -147,17 +147,17 @@
         <div class="header-inner">
           <a href="/" class="logo" aria-label="NovaTools MC Home">
             <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
-            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+            <span class="logo-text">NovaTools <span class="logo-mc" data-i18n="tools.converters.timezone-converter.text.001">MC</span></span>
           </a>
           <nav class="nav-desktop" aria-label="Main navigation">
-            <a href="/#finance" class="nav-link">Finance</a>
-            <a href="/#pdf" class="nav-link">PDF Tools</a>
-            <a href="/#image" class="nav-link">Images</a>
-            <a href="/#dev" class="nav-link">Developers</a>
+            <a href="/#finance" class="nav-link" data-i18n="tools.converters.timezone-converter.text.002">Finance</a>
+            <a href="/#pdf" class="nav-link" data-i18n="tools.converters.timezone-converter.text.003">PDF Tools</a>
+            <a href="/#image" class="nav-link" data-i18n="tools.converters.timezone-converter.text.004">Images</a>
+            <a href="/#dev" class="nav-link" data-i18n="tools.converters.timezone-converter.text.005">Developers</a>
           </nav>
-          <div class="privacy-badge" title="Your data never leaves your browser">
+          <div class="privacy-badge" title="Your data never leaves your browser" data-i18n-title="tools.converters.timezone-converter.title.001">
             <span class="privacy-badge-dot"></span>
-            <span>Privacy First</span>
+            <span data-i18n="tools.converters.timezone-converter.text.006">Privacy First</span>
           </div>
           <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
             <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -168,10 +168,10 @@
           </button>
         </div>
         <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
-          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
-          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
-          <a href="/#image" class="mobile-nav-link">Image Tools</a>
-          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+          <a href="/#finance" class="mobile-nav-link" data-i18n="tools.converters.timezone-converter.text.007">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link" data-i18n="tools.converters.timezone-converter.text.008">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link" data-i18n="tools.converters.timezone-converter.text.009">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link" data-i18n="tools.converters.timezone-converter.text.010">Developer Tools</a>
         </nav>
       </div>
     </header>
@@ -180,8 +180,8 @@
       <div class="tool-wrapper">
         <div class="tool-hero">
           <div class="tool-hero-icon">&#127757;</div>
-          <h1>Time Zone Converter</h1>
-          <p>Convert time between different time zones worldwide. Check current time in any timezone and plan meetings across the globe.</p>
+          <h1 data-i18n="tools.converters.timezone-converter.text.011">Time Zone Converter</h1>
+          <p data-i18n="tools.converters.timezone-converter.text.012">Convert time between different time zones worldwide. Check current time in any timezone and plan meetings across the globe.</p>
         </div>
 
         <div class="card">
@@ -204,7 +204,7 @@
 
           <div class="timezone-row">
             <div class="input-group">
-              <label class="input-label">From Time Zone</label>
+              <label class="input-label" data-i18n="tools.converters.timezone-converter.text.013">From Time Zone</label>
               <select class="timezone-select" id="fromTimezone">
                 <option value="UTC">UTC (Universal Time)</option>
                 <option value="America/New_York">New York (EST/EDT)</option>
@@ -230,7 +230,7 @@
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 16V4M7 4L3 8M7 4l4 4M17 8v12m0 0l4-4m-4 4l-4-4"/></svg>
             </button>
             <div class="input-group">
-              <label class="input-label">To Time Zone</label>
+              <label class="input-label" data-i18n="tools.converters.timezone-converter.text.014">To Time Zone</label>
               <select class="timezone-select" id="toTimezone">
                 <option value="UTC">UTC (Universal Time)</option>
                 <option value="America/New_York" selected>New York (EST/EDT)</option>
@@ -277,7 +277,7 @@
               <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor"><path d="M4 1.5H3a2 2 0 00-2 2V14a2 2 0 002 2h10a2 2 0 002-2V3.5a2 2 0 00-2-2h-1v1h1a1 1 0 011 1V14a1 1 0 01-1 1H3a1 1 0 01-1-1V3.5a1 1 0 011-1h1v-1z"/></svg>
               Copy Result
             </button>
-            <span class="copy-feedback" id="copyFeedback" aria-live="polite">Copied!</span>
+            <span class="copy-feedback" id="copyFeedback" aria-live="polite" data-i18n="tools.converters.timezone-converter.text.015">Copied!</span>
           </div>
 
           <div class="quick-zones">
@@ -294,59 +294,59 @@
       </div>
 
       <section class="seo-section" aria-label="About this tool">
-        <h2>About Time Zone Converter</h2>
-        <p>Our free Time Zone Converter helps you convert time between different time zones worldwide. Whether you're scheduling international meetings, traveling across time zones, or communicating with people around the globe, this tool makes it easy to find the right time.</p>
+        <h2 data-i18n="tools.converters.timezone-converter.text.016">About Time Zone Converter</h2>
+        <p data-i18n="tools.converters.timezone-converter.text.017">Our free Time Zone Converter helps you convert time between different time zones worldwide. Whether you're scheduling international meetings, traveling across time zones, or communicating with people around the globe, this tool makes it easy to find the right time.</p>
 
-        <h3>How to Use</h3>
+        <h3 data-i18n="tools.converters.timezone-converter.text.018">How to Use</h3>
         <ol>
-          <li>Select your source time zone from the "From Time Zone" dropdown.</li>
-          <li>Select your target time zone from the "To Time Zone" dropdown.</li>
-          <li>Enter the date and time you want to convert.</li>
-          <li>Click "Convert Time" to see the converted time.</li>
-          <li>View the time difference between the two zones.</li>
-          <li>Use "Use Current Time" to quickly convert the current time.</li>
-          <li>Click "Copy Result" to copy the converted time to your clipboard.</li>
+          <li data-i18n="tools.converters.timezone-converter.text.019">Select your source time zone from the "From Time Zone" dropdown.</li>
+          <li data-i18n="tools.converters.timezone-converter.text.020">Select your target time zone from the "To Time Zone" dropdown.</li>
+          <li data-i18n="tools.converters.timezone-converter.text.021">Enter the date and time you want to convert.</li>
+          <li data-i18n="tools.converters.timezone-converter.text.022">Click "Convert Time" to see the converted time.</li>
+          <li data-i18n="tools.converters.timezone-converter.text.023">View the time difference between the two zones.</li>
+          <li data-i18n="tools.converters.timezone-converter.text.024">Use "Use Current Time" to quickly convert the current time.</li>
+          <li data-i18n="tools.converters.timezone-converter.text.025">Click "Copy Result" to copy the converted time to your clipboard.</li>
         </ol>
 
-        <h3>Supported Time Zones</h3>
+        <h3 data-i18n="tools.converters.timezone-converter.text.026">Supported Time Zones</h3>
         <p><strong>North America:</strong> New York, Chicago, Denver, Los Angeles<br>
         <strong>Europe:</strong> London, Paris, Berlin, Moscow, Istanbul<br>
         <strong>Asia:</strong> Dubai, Mumbai, Shanghai, Tokyo, Seoul<br>
         <strong>Pacific:</strong> Sydney, Auckland<br>
         <strong>Universal:</strong> UTC</p>
 
-        <h3>Frequently Asked Questions</h3>
+        <h3 data-i18n="tools.converters.timezone-converter.text.027">Frequently Asked Questions</h3>
 
         <details class="faq-item">
           <summary>How does daylight saving time affect conversions?</summary>
-          <p>This converter automatically accounts for daylight saving time (DST) where applicable. The current time display shows whether DST is in effect for each time zone.</p>
+          <p data-i18n="tools.converters.timezone-converter.text.028">This converter automatically accounts for daylight saving time (DST) where applicable. The current time display shows whether DST is in effect for each time zone.</p>
         </details>
 
         <details class="faq-item">
           <summary>What is UTC?</summary>
-          <p>UTC (Coordinated Universal Time) is the primary time standard by which the world regulates clocks and time. It does not observe daylight saving time and serves as a reference point for all other time zones.</p>
+          <p data-i18n="tools.converters.timezone-converter.text.029">UTC (Coordinated Universal Time) is the primary time standard by which the world regulates clocks and time. It does not observe daylight saving time and serves as a reference point for all other time zones.</p>
         </details>
 
         <details class="faq-item">
           <summary>Can I convert dates in the past or future?</summary>
-          <p>Yes, you can enter any date and time for conversion. The tool will correctly calculate the time difference, including historical or future daylight saving time rules.</p>
+          <p data-i18n="tools.converters.timezone-converter.text.030">Yes, you can enter any date and time for conversion. The tool will correctly calculate the time difference, including historical or future daylight saving time rules.</p>
         </details>
 
         <details class="faq-item">
           <summary>Is my data stored?</summary>
-          <p>No. All conversions happen locally in your browser. No data is transmitted to our servers or stored anywhere.</p>
+          <p data-i18n="tools.converters.timezone-converter.text.031">No. All conversions happen locally in your browser. No data is transmitted to our servers or stored anywhere.</p>
         </details>
 
         <details class="faq-item">
           <summary>Why is the time difference not a whole number of hours?</summary>
-          <p>Some time zones use offsets that include minutes (e.g., India is UTC+5:30, Nepal is UTC+5:45). This converter handles all time zone offsets accurately.</p>
+          <p data-i18n="tools.converters.timezone-converter.text.032">Some time zones use offsets that include minutes (e.g., India is UTC+5:30, Nepal is UTC+5:45). This converter handles all time zone offsets accurately.</p>
         </details>
       </section>
     </main>
 
     <footer class="tool-footer">
-      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
-      <p>Estimates only &mdash; not financial, legal, or tax advice.</p>
+      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com" data-i18n="tools.converters.timezone-converter.text.033">psk.dan.metehancetin@mc-novatools.com</a></p>
+      <p data-i18n="tools.converters.timezone-converter.text.034">Estimates only &mdash; not financial, legal, or tax advice.</p>
     </footer>
     <style>
       .tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }
@@ -501,7 +501,7 @@
         const offset = getTimezoneOffset(tz, now);
         const tzTime = new Date(now.getTime() + offset * 60 * 60 * 1000);
         const label = timezones.find(t => t.name === tz)?.label || tz;
-        return `<div class="quick-zone-item" data-tz="${tz}">${label}<span class="quick-zone-time">${formatTime(tzTime)}</span></div>`;
+        return `<div class="quick-zone-item" data-tz="${tz}">${label}<span class="quick-zone-time" data-i18n="tools.converters.timezone-converter.text.035">${formatTime(tzTime)}</span></div>`;
       }).join('');
 
       grid.querySelectorAll('.quick-zone-item').forEach(item => {

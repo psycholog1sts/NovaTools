@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="/src/styles/main.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <title>Free SSL Checker - Certificate Verification | NovaTools MC</title>
+  <title data-i18n="tools.security.ssl-checker.meta.title">Free SSL Checker - Certificate Verification | NovaTools MC</title>
   
   <!-- i18n Script -->
   <script src="/i18n.js"></script>
@@ -490,17 +490,17 @@
         <div class="header-inner">
           <a href="/" class="logo" aria-label="NovaTools MC Home">
             <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
-            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+            <span class="logo-text">NovaTools <span class="logo-mc" data-i18n="tools.security.ssl-checker.text.001">MC</span></span>
           </a>
           <nav class="nav-desktop" aria-label="Main navigation">
-            <a href="/#finance" class="nav-link">Finance</a>
-            <a href="/#pdf" class="nav-link">PDF Tools</a>
-            <a href="/#image" class="nav-link">Images</a>
-            <a href="/#dev" class="nav-link">Developers</a>
+            <a href="/#finance" class="nav-link" data-i18n="tools.security.ssl-checker.text.002">Finance</a>
+            <a href="/#pdf" class="nav-link" data-i18n="tools.security.ssl-checker.text.003">PDF Tools</a>
+            <a href="/#image" class="nav-link" data-i18n="tools.security.ssl-checker.text.004">Images</a>
+            <a href="/#dev" class="nav-link" data-i18n="tools.security.ssl-checker.text.005">Developers</a>
           </nav>
-          <div class="privacy-badge" title="Your data never leaves your browser">
+          <div class="privacy-badge" title="Your data never leaves your browser" data-i18n-title="tools.security.ssl-checker.title.001">
             <span class="privacy-badge-dot"></span>
-            <span>Privacy First</span>
+            <span data-i18n="tools.security.ssl-checker.text.006">Privacy First</span>
           </div>
           <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
             <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -511,10 +511,10 @@
           </button>
         </div>
         <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
-          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
-          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
-          <a href="/#image" class="mobile-nav-link">Image Tools</a>
-          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+          <a href="/#finance" class="mobile-nav-link" data-i18n="tools.security.ssl-checker.text.007">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link" data-i18n="tools.security.ssl-checker.text.008">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link" data-i18n="tools.security.ssl-checker.text.009">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link" data-i18n="tools.security.ssl-checker.text.010">Developer Tools</a>
         </nav>
       </div>
     </header>
@@ -523,8 +523,8 @@
       <div class="tool-wrapper">
         <div class="tool-hero">
           <div class="tool-hero-icon">&#128272;</div>
-          <h1>SSL Checker</h1>
-          <p>Check SSL certificate information for any domain. View TLS version info, certificate details, and security recommendations. Educational tool for understanding SSL/TLS.</p>
+          <h1 data-i18n="tools.security.ssl-checker.text.011">SSL Checker</h1>
+          <p data-i18n="tools.security.ssl-checker.text.012">Check SSL certificate information for any domain. View TLS version info, certificate details, and security recommendations. Educational tool for understanding SSL/TLS.</p>
         </div>
 
         <!-- Ad Row -->
@@ -547,7 +547,7 @@
           </div>
 
           <div class="input-section">
-            <input type="text" class="domain-input" id="domainInput" placeholder="example.com (enter domain for simulation)" spellcheck="false">
+            <input type="text" class="domain-input" id="domainInput" placeholder="example.com (enter domain for simulation)" data-i18n-placeholder="tools.security.ssl-checker.placeholder.001" spellcheck="false">
             <button class="btn btn-primary" id="btnCheck" type="button">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M10.854 5.146a.5.5 0 010 .708l-3 3a.5.5 0 01-.708 0l-1.5-1.5a.5.5 0 01.708-.708L7.5 7.793l2.646-2.647a.5.5 0 01.708 0z"/><path d="M8 15A7 7 0 118 1a7 7 0 010 14zm0 1A8 8 0 108 0a8 8 0 000 16z"/></svg>
               Check SSL
@@ -558,7 +558,7 @@
             <div class="result-card">
               <div class="result-header">
                 <span class="result-icon">&#128274;</span>
-                <span class="result-title">HTTPS Status</span>
+                <span class="result-title" data-i18n="tools.security.ssl-checker.text.013">HTTPS Status</span>
               </div>
               <div class="result-value" id="httpsStatus">Enter a domain</div>
               <div class="result-detail">Check if the site supports HTTPS</div>
@@ -566,7 +566,7 @@
             <div class="result-card">
               <div class="result-header">
                 <span class="result-icon">&#128273;</span>
-                <span class="result-title">TLS Version</span>
+                <span class="result-title" data-i18n="tools.security.ssl-checker.text.014">TLS Version</span>
               </div>
               <div class="result-value" id="tlsVersion">-</div>
               <div class="result-detail">Transport Layer Security version</div>
@@ -574,7 +574,7 @@
             <div class="result-card">
               <div class="result-header">
                 <span class="result-icon">&#128221;</span>
-                <span class="result-title">Certificate</span>
+                <span class="result-title" data-i18n="tools.security.ssl-checker.text.015">Certificate</span>
               </div>
               <div class="result-value" id="certStatus">-</div>
               <div class="result-detail">Certificate validity status</div>
@@ -582,7 +582,7 @@
             <div class="result-card">
               <div class="result-header">
                 <span class="result-icon">&#128301;</span>
-                <span class="result-title">HSTS</span>
+                <span class="result-title" data-i18n="tools.security.ssl-checker.text.016">HSTS</span>
               </div>
               <div class="result-value" id="hstsStatus">-</div>
               <div class="result-detail">HTTP Strict Transport Security</div>
@@ -592,31 +592,31 @@
           <div class="cert-simulator">
             <div class="cert-header">
               <span class="result-icon">&#128196;</span>
-              <span class="cert-title">Certificate Details (Simulated)</span>
+              <span class="cert-title" data-i18n="tools.security.ssl-checker.text.017">Certificate Details (Simulated)</span>
             </div>
             <div class="cert-field">
-              <span class="cert-label">Subject</span>
+              <span class="cert-label" data-i18n="tools.security.ssl-checker.text.018">Subject</span>
               <span class="cert-value" id="certSubject">-</span>
             </div>
             <div class="cert-field">
-              <span class="cert-label">Issuer</span>
+              <span class="cert-label" data-i18n="tools.security.ssl-checker.text.019">Issuer</span>
               <span class="cert-value" id="certIssuer">-</span>
             </div>
             <div class="cert-field">
-              <span class="cert-label">Valid From</span>
+              <span class="cert-label" data-i18n="tools.security.ssl-checker.text.020">Valid From</span>
               <span class="cert-value" id="certFrom">-</span>
             </div>
             <div class="cert-field">
-              <span class="cert-label">Valid Until</span>
+              <span class="cert-label" data-i18n="tools.security.ssl-checker.text.021">Valid Until</span>
               <span class="cert-value" id="certUntil">-</span>
             </div>
             <div class="cert-field">
-              <span class="cert-label">Serial Number</span>
+              <span class="cert-label" data-i18n="tools.security.ssl-checker.text.022">Serial Number</span>
               <span class="cert-value" id="certSerial">-</span>
             </div>
             <div class="cert-field">
-              <span class="cert-label">Signature Algorithm</span>
-              <span class="cert-value" id="certAlgorithm">SHA-256 with RSA</span>
+              <span class="cert-label" data-i18n="tools.security.ssl-checker.text.023">Signature Algorithm</span>
+              <span class="cert-value" id="certAlgorithm" data-i18n="tools.security.ssl-checker.text.024">SHA-256 with RSA</span>
             </div>
           </div>
 
@@ -649,13 +649,13 @@
               SSL/TLS Security Best Practices
             </div>
             <ul class="tips-list">
-              <li>Always use TLS 1.2 or higher - disable older versions</li>
-              <li>Enable HSTS (HTTP Strict Transport Security) to force HTTPS</li>
-              <li>Use certificates with at least 2048-bit RSA keys</li>
-              <li>Keep certificates renewed before expiration</li>
-              <li>Implement OCSP Stapling for better performance</li>
-              <li>Use strong cipher suites and disable weak ones</li>
-              <li>Enable certificate transparency monitoring</li>
+              <li data-i18n="tools.security.ssl-checker.text.025">Always use TLS 1.2 or higher - disable older versions</li>
+              <li data-i18n="tools.security.ssl-checker.text.026">Enable HSTS (HTTP Strict Transport Security) to force HTTPS</li>
+              <li data-i18n="tools.security.ssl-checker.text.027">Use certificates with at least 2048-bit RSA keys</li>
+              <li data-i18n="tools.security.ssl-checker.text.028">Keep certificates renewed before expiration</li>
+              <li data-i18n="tools.security.ssl-checker.text.029">Implement OCSP Stapling for better performance</li>
+              <li data-i18n="tools.security.ssl-checker.text.030">Use strong cipher suites and disable weak ones</li>
+              <li data-i18n="tools.security.ssl-checker.text.031">Enable certificate transparency monitoring</li>
             </ul>
           </div>
 
@@ -667,54 +667,54 @@
       </div>
 
       <section class="seo-section" aria-label="About this tool">
-        <h2>About SSL Checker</h2>
-        <p>
+        <h2 data-i18n="tools.security.ssl-checker.text.032">About SSL Checker</h2>
+        <p data-i18n="tools.security.ssl-checker.text.033">
           This educational tool helps you understand SSL/TLS certificates and HTTPS configuration. SSL (Secure Sockets Layer) and its successor TLS (Transport Layer Security) 
           are cryptographic protocols that provide secure communication over a computer network. They are essential for protecting sensitive data transmitted between web browsers and servers.
         </p>
 
-        <h3>How to Use</h3>
+        <h3 data-i18n="tools.security.ssl-checker.text.034">How to Use</h3>
         <ol>
-          <li>Enter a domain name in the input field (e.g., "example.com").</li>
+          <li data-i18n="tools.security.ssl-checker.text.035">Enter a domain name in the input field (e.g., "example.com").</li>
           <li>Click <strong>Check SSL</strong> to simulate an SSL check.</li>
-          <li>Review the HTTPS status, TLS version, and certificate information.</li>
+          <li data-i18n="tools.security.ssl-checker.text.036">Review the HTTPS status, TLS version, and certificate information.</li>
           <li>Check the <strong>Certificate Details</strong> section for simulated certificate data.</li>
           <li>Review the <strong>TLS Versions</strong> to understand which versions are secure.</li>
           <li>Follow the <strong>Security Best Practices</strong> recommendations.</li>
         </ol>
 
-        <h3>Frequently Asked Questions</h3>
+        <h3 data-i18n="tools.security.ssl-checker.text.037">Frequently Asked Questions</h3>
 
         <details class="faq-item">
           <summary>What is the difference between SSL and TLS?</summary>
-          <p>SSL (Secure Sockets Layer) is the older protocol, with versions 1.0, 2.0, and 3.0. TLS (Transport Layer Security) is the newer, more secure successor with versions 1.0, 1.1, 1.2, and 1.3. TLS 1.3 is the current recommended version. The terms are often used interchangeably, but modern systems use TLS.</p>
+          <p data-i18n="tools.security.ssl-checker.text.038">SSL (Secure Sockets Layer) is the older protocol, with versions 1.0, 2.0, and 3.0. TLS (Transport Layer Security) is the newer, more secure successor with versions 1.0, 1.1, 1.2, and 1.3. TLS 1.3 is the current recommended version. The terms are often used interchangeably, but modern systems use TLS.</p>
         </details>
 
         <details class="faq-item">
           <summary>Why can't this tool perform full SSL checks?</summary>
-          <p>Browsers restrict JavaScript from directly accessing low-level SSL certificate information for security reasons. Full SSL testing requires server-side tools that can establish raw TLS connections and analyze certificate chains, cipher suites, and protocol versions at the network level.</p>
+          <p data-i18n="tools.security.ssl-checker.text.039">Browsers restrict JavaScript from directly accessing low-level SSL certificate information for security reasons. Full SSL testing requires server-side tools that can establish raw TLS connections and analyze certificate chains, cipher suites, and protocol versions at the network level.</p>
         </details>
 
         <details class="faq-item">
           <summary>What is HSTS and why is it important?</summary>
-          <p>HSTS (HTTP Strict Transport Security) is a security feature that tells browsers to always use HTTPS connections for a domain, preventing downgrade attacks and cookie hijacking. Once a browser receives an HSTS header, it will automatically upgrade HTTP requests to HTTPS for the specified duration.</p>
+          <p data-i18n="tools.security.ssl-checker.text.040">HSTS (HTTP Strict Transport Security) is a security feature that tells browsers to always use HTTPS connections for a domain, preventing downgrade attacks and cookie hijacking. Once a browser receives an HSTS header, it will automatically upgrade HTTP requests to HTTPS for the specified duration.</p>
         </details>
 
         <details class="faq-item">
           <summary>How often should SSL certificates be renewed?</summary>
-          <p>SSL certificates typically have validity periods ranging from 3 months to 2 years. Let's Encrypt certificates are valid for 90 days. It's recommended to automate renewal and monitor certificate expiration. Most CAs send renewal reminders 30, 14, and 7 days before expiration.</p>
+          <p data-i18n="tools.security.ssl-checker.text.041">SSL certificates typically have validity periods ranging from 3 months to 2 years. Let's Encrypt certificates are valid for 90 days. It's recommended to automate renewal and monitor certificate expiration. Most CAs send renewal reminders 30, 14, and 7 days before expiration.</p>
         </details>
 
         <details class="faq-item">
           <summary>What makes a certificate trustworthy?</summary>
-          <p>A certificate is trustworthy when it's issued by a trusted Certificate Authority (CA) that's included in major browser and operating system trust stores, hasn't expired, hasn't been revoked, is used on the correct domain, and has a valid certificate chain to a root CA.</p>
+          <p data-i18n="tools.security.ssl-checker.text.042">A certificate is trustworthy when it's issued by a trusted Certificate Authority (CA) that's included in major browser and operating system trust stores, hasn't expired, hasn't been revoked, is used on the correct domain, and has a valid certificate chain to a root CA.</p>
         </details>
       </section>
     </main>
 
     <footer class="tool-footer">
-      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
-      <p>Estimates only &mdash; not financial, legal, or tax advice.</p>
+      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com" data-i18n="tools.security.ssl-checker.text.043">psk.dan.metehancetin@mc-novatools.com</a></p>
+      <p data-i18n="tools.security.ssl-checker.text.044">Estimates only &mdash; not financial, legal, or tax advice.</p>
     </footer>
     <style>
     .tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }

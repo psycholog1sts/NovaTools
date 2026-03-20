@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="/src/styles/main.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <title>File Splitter — Free Online Tool | NovaTools MC</title>
+  <title data-i18n="tools.data.file-splitter.meta.title">File Splitter — Free Online Tool | NovaTools MC</title>
   
   <!-- i18n Script -->
   <script src="/i18n.js"></script>
@@ -149,17 +149,17 @@
         <div class="header-inner">
           <a href="/" class="logo" aria-label="NovaTools MC Home">
             <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
-            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+            <span class="logo-text">NovaTools <span class="logo-mc" data-i18n="tools.data.file-splitter.text.001">MC</span></span>
           </a>
           <nav class="nav-desktop" aria-label="Main navigation">
-            <a href="/#finance" class="nav-link">Finance</a>
-            <a href="/#pdf" class="nav-link">PDF Tools</a>
-            <a href="/#image" class="nav-link">Images</a>
-            <a href="/#dev" class="nav-link">Developers</a>
+            <a href="/#finance" class="nav-link" data-i18n="tools.data.file-splitter.text.002">Finance</a>
+            <a href="/#pdf" class="nav-link" data-i18n="tools.data.file-splitter.text.003">PDF Tools</a>
+            <a href="/#image" class="nav-link" data-i18n="tools.data.file-splitter.text.004">Images</a>
+            <a href="/#dev" class="nav-link" data-i18n="tools.data.file-splitter.text.005">Developers</a>
           </nav>
-          <div class="privacy-badge" title="Your data never leaves your browser">
+          <div class="privacy-badge" title="Your data never leaves your browser" data-i18n-title="tools.data.file-splitter.title.001">
             <span class="privacy-badge-dot"></span>
-            <span>Privacy First</span>
+            <span data-i18n="tools.data.file-splitter.text.006">Privacy First</span>
           </div>
           <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
             <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -170,10 +170,10 @@
           </button>
         </div>
         <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
-          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
-          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
-          <a href="/#image" class="mobile-nav-link">Image Tools</a>
-          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+          <a href="/#finance" class="mobile-nav-link" data-i18n="tools.data.file-splitter.text.007">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link" data-i18n="tools.data.file-splitter.text.008">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link" data-i18n="tools.data.file-splitter.text.009">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link" data-i18n="tools.data.file-splitter.text.010">Developer Tools</a>
         </nav>
       </div>
     </header>
@@ -182,8 +182,8 @@
       <div class="tool-wrapper">
         <div class="tool-hero">
           <div class="tool-hero-icon">✂️</div>
-          <h1>File Splitter</h1>
-          <p>Split large files into smaller chunks. Perfect for email attachments or storage limits. 100% client-side.</p>
+          <h1 data-i18n="tools.data.file-splitter.text.011">File Splitter</h1>
+          <p data-i18n="tools.data.file-splitter.text.012">Split large files into smaller chunks. Perfect for email attachments or storage limits. 100% client-side.</p>
         </div>
 
         <div class="card">
@@ -195,32 +195,32 @@
           <input type="file" id="fileInput">
 
           <div class="file-info" id="fileInfo">
-            <div class="file-info-row"><span class="file-info-label">File name:</span><span class="file-info-value" id="fileName">-</span></div>
-            <div class="file-info-row"><span class="file-info-label">Size:</span><span class="file-info-value" id="fileSize">-</span></div>
-            <div class="file-info-row"><span class="file-info-label">Type:</span><span class="file-info-value" id="fileType">-</span></div>
+            <div class="file-info-row"><span class="file-info-label" data-i18n="tools.data.file-splitter.text.013">File name:</span><span class="file-info-value" id="fileName">-</span></div>
+            <div class="file-info-row"><span class="file-info-label" data-i18n="tools.data.file-splitter.text.014">Size:</span><span class="file-info-value" id="fileSize">-</span></div>
+            <div class="file-info-row"><span class="file-info-label" data-i18n="tools.data.file-splitter.text.015">Type:</span><span class="file-info-value" id="fileType">-</span></div>
           </div>
 
           <div class="options-row">
             <div class="option-group">
-              <label for="splitMethod">Split by:</label>
+              <label for="splitMethod" data-i18n="tools.data.file-splitter.text.016">Split by:</label>
               <select id="splitMethod">
                 <option value="size">Part size</option>
                 <option value="parts">Number of parts</option>
               </select>
             </div>
             <div class="option-group" id="sizeGroup">
-              <label for="partSize">Part size (MB):</label>
+              <label for="partSize" data-i18n="tools.data.file-splitter.text.017">Part size (MB):</label>
               <input type="number" id="partSize" value="10" min="1" max="100">
             </div>
             <div class="option-group" id="partsGroup" style="display:none">
-              <label for="numParts">Number of parts:</label>
+              <label for="numParts" data-i18n="tools.data.file-splitter.text.018">Number of parts:</label>
               <input type="number" id="numParts" value="2" min="2" max="50">
             </div>
           </div>
 
           <div class="btn-bar">
-            <button class="btn btn-primary" id="btnSplit" disabled>Split File</button>
-            <button class="btn btn-danger" id="btnClear">Clear</button>
+            <button class="btn btn-primary" id="btnSplit" disabled data-i18n="tools.data.file-splitter.text.019">Split File</button>
+            <button class="btn btn-danger" id="btnClear" data-i18n="tools.data.file-splitter.text.020">Clear</button>
           </div>
 
           <div class="progress-bar" id="progressBar">
@@ -232,7 +232,7 @@
           </div>
 
           <div class="parts-list" id="partsList" style="display:none">
-            <h3>Generated Parts</h3>
+            <h3 data-i18n="tools.data.file-splitter.text.021">Generated Parts</h3>
             <div id="partsContainer"></div>
           </div>
         </div>
@@ -244,48 +244,48 @@
       </div>
 
       <section class="seo-section" aria-label="About this tool">
-        <h2>About File Splitter</h2>
-        <p>This free online tool helps you split large files into smaller, more manageable chunks. It's useful when you need to email large attachments, upload to services with size limits, or store files across multiple devices.</p>
+        <h2 data-i18n="tools.data.file-splitter.text.022">About File Splitter</h2>
+        <p data-i18n="tools.data.file-splitter.text.023">This free online tool helps you split large files into smaller, more manageable chunks. It's useful when you need to email large attachments, upload to services with size limits, or store files across multiple devices.</p>
 
-        <h3>How to Use</h3>
+        <h3 data-i18n="tools.data.file-splitter.text.024">How to Use</h3>
         <ol>
-          <li>Select your file by dropping it onto the upload area or clicking to browse.</li>
-          <li>Choose your split method: by part size (e.g., 10MB each) or by number of parts.</li>
+          <li data-i18n="tools.data.file-splitter.text.025">Select your file by dropping it onto the upload area or clicking to browse.</li>
+          <li data-i18n="tools.data.file-splitter.text.026">Choose your split method: by part size (e.g., 10MB each) or by number of parts.</li>
           <li>Click <strong>Split File</strong> to divide your file into chunks.</li>
-          <li>Download each part individually. All parts are needed to reconstruct the original file.</li>
+          <li data-i18n="tools.data.file-splitter.text.027">Download each part individually. All parts are needed to reconstruct the original file.</li>
         </ol>
 
-        <h3>Frequently Asked Questions</h3>
+        <h3 data-i18n="tools.data.file-splitter.text.028">Frequently Asked Questions</h3>
 
         <details class="faq-item">
           <summary>Is my file data kept private?</summary>
-          <p>Absolutely. All processing happens entirely in your browser. No file data is sent to any server, logged, or stored anywhere. Your files remain completely private.</p>
+          <p data-i18n="tools.data.file-splitter.text.029">Absolutely. All processing happens entirely in your browser. No file data is sent to any server, logged, or stored anywhere. Your files remain completely private.</p>
         </details>
 
         <details class="faq-item">
           <summary>What's the file size limit?</summary>
-          <p>The tool supports files up to 500MB. This limit ensures smooth performance in your browser. For larger files, consider using dedicated file splitting software.</p>
+          <p data-i18n="tools.data.file-splitter.text.030">The tool supports files up to 500MB. This limit ensures smooth performance in your browser. For larger files, consider using dedicated file splitting software.</p>
         </details>
 
         <details class="faq-item">
           <summary>How do I merge the parts back together?</summary>
-          <p>Use our <a href="/tools/data/file-merger/">File Merger</a> tool to combine the split parts back into the original file. Make sure to use all parts in the correct order.</p>
+          <p>Use our <a href="/tools/data/file-merger/" data-i18n="tools.data.file-splitter.text.031">File Merger</a> tool to combine the split parts back into the original file. Make sure to use all parts in the correct order.</p>
         </details>
 
         <details class="faq-item">
           <summary>Can I split any type of file?</summary>
-          <p>Yes, this tool works with any file type including documents, images, videos, archives, and more. The split is done at the binary level, preserving file integrity.</p>
+          <p data-i18n="tools.data.file-splitter.text.032">Yes, this tool works with any file type including documents, images, videos, archives, and more. The split is done at the binary level, preserving file integrity.</p>
         </details>
 
         <details class="faq-item">
           <summary>Are the split parts numbered?</summary>
-          <p>Yes, each part is automatically named with a sequence number (e.g., filename.part001, filename.part002) so you can easily identify and reorder them if needed.</p>
+          <p data-i18n="tools.data.file-splitter.text.033">Yes, each part is automatically named with a sequence number (e.g., filename.part001, filename.part002) so you can easily identify and reorder them if needed.</p>
         </details>
       </section>
 
       <footer class="tool-footer">
-        <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
-        <p>Estimates only &mdash; not financial, legal, or tax advice.</p>
+        <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com" data-i18n="tools.data.file-splitter.text.034">psk.dan.metehancetin@mc-novatools.com</a></p>
+        <p data-i18n="tools.data.file-splitter.text.035">Estimates only &mdash; not financial, legal, or tax advice.</p>
       </footer>
     </main>
   </div>
@@ -373,7 +373,7 @@
             <div class="part-name">${partName}</div>
             <div class="part-size">${formatBytes(chunk.size)}</div>
           </div>
-          <button class="part-download" data-index="${i}">Download</button>
+          <button class="part-download" data-index="${i}" data-i18n="tools.data.file-splitter.text.036">Download</button>
         `;
         partsContainer.appendChild(partItem);
         

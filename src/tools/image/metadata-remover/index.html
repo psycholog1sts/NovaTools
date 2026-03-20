@@ -21,7 +21,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <title>Image Metadata Remover - Remove EXIF Data | NovaTools</title>
+  <title data-i18n="tools.image.metadata-remover.meta.title">Image Metadata Remover - Remove EXIF Data | NovaTools</title>
   
   <!-- i18n Script -->
   <script src="/i18n.js"></script>
@@ -195,17 +195,17 @@
         <div class="header-inner">
           <a href="/" class="logo" aria-label="NovaTools MC Home">
             <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
-            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+            <span class="logo-text">NovaTools <span class="logo-mc" data-i18n="tools.image.metadata-remover.text.001">MC</span></span>
           </a>
           <nav class="nav-desktop" aria-label="Main navigation">
-            <a href="/#finance" class="nav-link">Finance</a>
-            <a href="/#pdf" class="nav-link">PDF Tools</a>
-            <a href="/#image" class="nav-link">Images</a>
-            <a href="/#dev" class="nav-link">Developers</a>
+            <a href="/#finance" class="nav-link" data-i18n="tools.image.metadata-remover.text.002">Finance</a>
+            <a href="/#pdf" class="nav-link" data-i18n="tools.image.metadata-remover.text.003">PDF Tools</a>
+            <a href="/#image" class="nav-link" data-i18n="tools.image.metadata-remover.text.004">Images</a>
+            <a href="/#dev" class="nav-link" data-i18n="tools.image.metadata-remover.text.005">Developers</a>
           </nav>
-          <div class="privacy-badge" title="Your data never leaves your browser">
+          <div class="privacy-badge" title="Your data never leaves your browser" data-i18n-title="tools.image.metadata-remover.title.001">
             <span class="privacy-badge-dot"></span>
-            <span>Privacy First</span>
+            <span data-i18n="tools.image.metadata-remover.text.006">Privacy First</span>
           </div>
           <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
             <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -216,10 +216,10 @@
           </button>
         </div>
         <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
-          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
-          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
-          <a href="/#image" class="mobile-nav-link">Image Tools</a>
-          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+          <a href="/#finance" class="mobile-nav-link" data-i18n="tools.image.metadata-remover.text.007">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link" data-i18n="tools.image.metadata-remover.text.008">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link" data-i18n="tools.image.metadata-remover.text.009">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link" data-i18n="tools.image.metadata-remover.text.010">Developer Tools</a>
         </nav>
       </div>
     </header>
@@ -229,9 +229,9 @@
       
       <div class="tool-container">
         <div class="tool-header">
-          <h1>🔒 Image Metadata Remover</h1>
-          <span class="sr-only">Free EXIF metadata remover - remove metadata from images for privacy. View and strip GPS, camera info, and dates.</span>
-          <p>Remove EXIF data from images for privacy. View metadata before cleaning.</p>
+          <h1 data-i18n="tools.image.metadata-remover.text.011">🔒 Image Metadata Remover</h1>
+          <span class="sr-only" data-i18n="tools.image.metadata-remover.text.012">Free EXIF metadata remover - remove metadata from images for privacy. View and strip GPS, camera info, and dates.</span>
+          <p data-i18n="tools.image.metadata-remover.text.013">Remove EXIF data from images for privacy. View metadata before cleaning.</p>
         </div>
         
         <div class="tool-layout">
@@ -250,32 +250,32 @@
                 <div class="controls-panel">
                   <div class="privacy-notice">
                     <strong>🔒 Privacy Protection</strong>
-                    <p>Your image contains metadata that may reveal sensitive information like location, camera model, and when the photo was taken.</p>
+                    <p data-i18n="tools.image.metadata-remover.text.014">Your image contains metadata that may reveal sensitive information like location, camera model, and when the photo was taken.</p>
                   </div>
                   
                   <div class="control-group">
-                    <label>Removal Options</label>
+                    <label data-i18n="tools.image.metadata-remover.text.015">Removal Options</label>
                     <div class="removal-options">
                       <label class="removal-option active" id="removeAllOption">
                         <input type="radio" name="removalType" value="all" checked>
                         <div class="text">
                           <strong>Remove All Metadata</strong>
-                          <span>Strip all EXIF data completely</span>
+                          <span data-i18n="tools.image.metadata-remover.text.016">Strip all EXIF data completely</span>
                         </div>
                       </label>
                       <label class="removal-option" id="removeGPSOption">
                         <input type="radio" name="removalType" value="gps">
                         <div class="text">
                           <strong>Remove GPS Only</strong>
-                          <span>Keep camera info, remove location</span>
+                          <span data-i18n="tools.image.metadata-remover.text.017">Keep camera info, remove location</span>
                         </div>
                       </label>
                     </div>
                   </div>
                   
                   <div class="action-buttons">
-                    <button type="button" id="cleanBtn" class="btn btn-primary">Clean Metadata</button>
-                    <button type="button" id="resetBtn" class="btn btn-secondary">Reset</button>
+                    <button type="button" id="cleanBtn" class="btn btn-primary" data-i18n="tools.image.metadata-remover.text.018">Clean Metadata</button>
+                    <button type="button" id="resetBtn" class="btn btn-secondary" data-i18n="tools.image.metadata-remover.text.019">Reset</button>
                   </div>
                   
                   <div id="progressContainer" class="progress-container">
@@ -307,7 +307,7 @@
                     </div>
                   </div>
                   
-                  <h3>📋 Metadata Information</h3>
+                  <h3 data-i18n="tools.image.metadata-remover.text.020">📋 Metadata Information</h3>
                   <div id="metadataDisplay" class="metadata-display">
                     <div class="metadata-empty">Upload an image to view its metadata</div>
                   </div>
@@ -317,8 +317,8 @@
             
             <div id="resultSection" class="result-section">
               <div class="clean-icon">🧹</div>
-              <h3 style="margin-bottom: 0.5rem;">Metadata Removed!</h3>
-              <p style="color: var(--text-secondary); margin-bottom: 1rem;">Your image has been cleaned and is ready for safe sharing.</p>
+              <h3 style="margin-bottom: 0.5rem;" data-i18n="tools.image.metadata-remover.text.021">Metadata Removed!</h3>
+              <p style="color: var(--text-secondary); margin-bottom: 1rem;" data-i18n="tools.image.metadata-remover.text.022">Your image has been cleaned and is ready for safe sharing.</p>
               <div style="background: rgba(255,255,255,0.1); border-radius: var(--radius-md); padding: 1rem; margin-bottom: 1rem; text-align: left;">
                 <div style="font-size: 0.875rem; color: var(--text-secondary);">
                   <div>✅ GPS location data removed</div>
@@ -339,37 +339,37 @@
             </div>
 
             <section class="how-to-use">
-              <h2>How to Remove Image Metadata</h2>
+              <h2 data-i18n="tools.image.metadata-remover.text.023">How to Remove Image Metadata</h2>
               <ol>
-                <li>Upload your image by dragging and dropping or clicking to browse.</li>
-                <li>Review the detected metadata including camera info, GPS coordinates, and timestamps.</li>
-                <li>Choose your removal option: "Remove All Metadata" or "Remove GPS Only".</li>
-                <li>Click "Clean Metadata" to process your image.</li>
-                <li>Download the clean image that's safe to share online.</li>
+                <li data-i18n="tools.image.metadata-remover.text.024">Upload your image by dragging and dropping or clicking to browse.</li>
+                <li data-i18n="tools.image.metadata-remover.text.025">Review the detected metadata including camera info, GPS coordinates, and timestamps.</li>
+                <li data-i18n="tools.image.metadata-remover.text.026">Choose your removal option: "Remove All Metadata" or "Remove GPS Only".</li>
+                <li data-i18n="tools.image.metadata-remover.text.027">Click "Clean Metadata" to process your image.</li>
+                <li data-i18n="tools.image.metadata-remover.text.028">Download the clean image that's safe to share online.</li>
               </ol>
             </section>
 
             <section class="faq-section">
-              <h2>Frequently Asked Questions</h2>
+              <h2 data-i18n="tools.image.metadata-remover.text.029">Frequently Asked Questions</h2>
               
               <details class="faq-item">
                 <summary>What is EXIF metadata?</summary>
-                <p>EXIF (Exchangeable Image File Format) is metadata embedded in image files that can include camera model, GPS coordinates, date/time the photo was taken, exposure settings, and more. This information can reveal sensitive details about where and when photos were taken.</p>
+                <p data-i18n="tools.image.metadata-remover.text.030">EXIF (Exchangeable Image File Format) is metadata embedded in image files that can include camera model, GPS coordinates, date/time the photo was taken, exposure settings, and more. This information can reveal sensitive details about where and when photos were taken.</p>
               </details>
               
               <details class="faq-item">
                 <summary>Why should I remove metadata?</summary>
-                <p>Removing metadata protects your privacy when sharing images online. GPS data can reveal your home address or locations you visit. Timestamps can show patterns in your activities. Camera information could be used for targeted attacks.</p>
+                <p data-i18n="tools.image.metadata-remover.text.031">Removing metadata protects your privacy when sharing images online. GPS data can reveal your home address or locations you visit. Timestamps can show patterns in your activities. Camera information could be used for targeted attacks.</p>
               </details>
               
               <details class="faq-item">
                 <summary>Does removing metadata affect image quality?</summary>
-                <p>No! Removing metadata only strips the extra information embedded in the file. The actual image pixels remain unchanged and at full quality. In fact, the file size may even decrease slightly.</p>
+                <p data-i18n="tools.image.metadata-remover.text.032">No! Removing metadata only strips the extra information embedded in the file. The actual image pixels remain unchanged and at full quality. In fact, the file size may even decrease slightly.</p>
               </details>
               
               <details class="faq-item">
                 <summary>Is my data secure?</summary>
-                <p>Absolutely! All processing happens entirely in your browser using the Canvas API. Your images are never uploaded to any server. Once you close the page, all data is cleared from your browser memory.</p>
+                <p data-i18n="tools.image.metadata-remover.text.033">Absolutely! All processing happens entirely in your browser using the Canvas API. Your images are never uploaded to any server. Once you close the page, all data is cleared from your browser memory.</p>
               </details>
             </section>
           </div>
@@ -380,8 +380,8 @@
     </main>
 
     <footer class="tool-footer">
-      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
-      <p>Estimates only &mdash; not professional image processing advice.</p>
+      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com" data-i18n="tools.image.metadata-remover.text.034">psk.dan.metehancetin@mc-novatools.com</a></p>
+      <p data-i18n="tools.image.metadata-remover.text.035">Estimates only &mdash; not professional image processing advice.</p>
     </footer>
   </div>
 
@@ -491,7 +491,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var allMetadata = metadata.concat(simulatedExif);
     
     metadataDisplay.innerHTML = allMetadata.map(function(item) {
-      return '<div class="metadata-item"><span class="label">' + item.label + '</span><span class="value">' + item.value + '</span></div>';
+      return '<div class="metadata-item"><span class="label" data-i18n="tools.image.metadata-remover.text.036">' + item.label + '</span><span class="value" data-i18n="tools.image.metadata-remover.text.037">' + item.value + '</span></div>';
     }).join('');
   }
   
@@ -541,7 +541,7 @@ document.addEventListener('DOMContentLoaded', function() {
           
           metadataStatus.textContent = 'Cleaned';
           metadataStatus.style.color = '#22C55E';
-          metadataDisplay.innerHTML = '<div class="metadata-item"><span class="label">Status</span><span class="value" style="color: #22C55E;">All metadata removed ✓</span></div>';
+          metadataDisplay.innerHTML = '<div class="metadata-item"><span class="label" data-i18n="tools.image.metadata-remover.text.038">Status</span><span class="value" style="color: #22C55E;" data-i18n="tools.image.metadata-remover.text.039">All metadata removed ✓</span></div>';
           
           resultSection.classList.add('visible');
           resultSection.scrollIntoView({ behavior: 'smooth' });

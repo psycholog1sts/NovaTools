@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="/src/styles/main.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <title>Batch File Renamer — Free Online Tool | NovaTools MC</title>
+  <title data-i18n="tools.data.file-renamer.meta.title">Batch File Renamer — Free Online Tool | NovaTools MC</title>
   
   <!-- i18n Script -->
   <script src="/i18n.js"></script>
@@ -149,17 +149,17 @@
         <div class="header-inner">
           <a href="/" class="logo" aria-label="NovaTools MC Home">
             <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
-            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+            <span class="logo-text">NovaTools <span class="logo-mc" data-i18n="tools.data.file-renamer.text.001">MC</span></span>
           </a>
           <nav class="nav-desktop" aria-label="Main navigation">
-            <a href="/#finance" class="nav-link">Finance</a>
-            <a href="/#pdf" class="nav-link">PDF Tools</a>
-            <a href="/#image" class="nav-link">Images</a>
-            <a href="/#dev" class="nav-link">Developers</a>
+            <a href="/#finance" class="nav-link" data-i18n="tools.data.file-renamer.text.002">Finance</a>
+            <a href="/#pdf" class="nav-link" data-i18n="tools.data.file-renamer.text.003">PDF Tools</a>
+            <a href="/#image" class="nav-link" data-i18n="tools.data.file-renamer.text.004">Images</a>
+            <a href="/#dev" class="nav-link" data-i18n="tools.data.file-renamer.text.005">Developers</a>
           </nav>
-          <div class="privacy-badge" title="Your data never leaves your browser">
+          <div class="privacy-badge" title="Your data never leaves your browser" data-i18n-title="tools.data.file-renamer.title.001">
             <span class="privacy-badge-dot"></span>
-            <span>Privacy First</span>
+            <span data-i18n="tools.data.file-renamer.text.006">Privacy First</span>
           </div>
           <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
             <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -170,10 +170,10 @@
           </button>
         </div>
         <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
-          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
-          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
-          <a href="/#image" class="mobile-nav-link">Image Tools</a>
-          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+          <a href="/#finance" class="mobile-nav-link" data-i18n="tools.data.file-renamer.text.007">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link" data-i18n="tools.data.file-renamer.text.008">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link" data-i18n="tools.data.file-renamer.text.009">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link" data-i18n="tools.data.file-renamer.text.010">Developer Tools</a>
         </nav>
       </div>
     </header>
@@ -182,8 +182,8 @@
       <div class="tool-wrapper">
         <div class="tool-hero">
           <div class="tool-hero-icon">🏷️</div>
-          <h1>Batch File Renamer</h1>
-          <p>Rename multiple files at once with patterns, find/replace, and auto-numbering. Preview changes before applying.</p>
+          <h1 data-i18n="tools.data.file-renamer.text.011">Batch File Renamer</h1>
+          <p data-i18n="tools.data.file-renamer.text.012">Rename multiple files at once with patterns, find/replace, and auto-numbering. Preview changes before applying.</p>
         </div>
 
         <div class="card">
@@ -195,25 +195,25 @@
           <input type="file" id="fileInput" multiple>
 
           <div class="options-panel">
-            <h3>Rename Options</h3>
+            <h3 data-i18n="tools.data.file-renamer.text.013">Rename Options</h3>
             <div class="option-row">
-              <span class="option-label">Find:</span>
-              <input type="text" class="option-input" id="findText" placeholder="Text to find (optional)">
+              <span class="option-label" data-i18n="tools.data.file-renamer.text.014">Find:</span>
+              <input type="text" class="option-input" id="findText" placeholder="Text to find (optional)" data-i18n-placeholder="tools.data.file-renamer.placeholder.001">
             </div>
             <div class="option-row">
-              <span class="option-label">Replace:</span>
-              <input type="text" class="option-input" id="replaceText" placeholder="Replacement text">
+              <span class="option-label" data-i18n="tools.data.file-renamer.text.015">Replace:</span>
+              <input type="text" class="option-input" id="replaceText" placeholder="Replacement text" data-i18n-placeholder="tools.data.file-renamer.placeholder.002">
             </div>
             <div class="option-row">
-              <span class="option-label">Prefix:</span>
-              <input type="text" class="option-input" id="prefixText" placeholder="Add to beginning">
+              <span class="option-label" data-i18n="tools.data.file-renamer.text.016">Prefix:</span>
+              <input type="text" class="option-input" id="prefixText" placeholder="Add to beginning" data-i18n-placeholder="tools.data.file-renamer.placeholder.003">
             </div>
             <div class="option-row">
-              <span class="option-label">Suffix:</span>
-              <input type="text" class="option-input" id="suffixText" placeholder="Add before extension">
+              <span class="option-label" data-i18n="tools.data.file-renamer.text.017">Suffix:</span>
+              <input type="text" class="option-input" id="suffixText" placeholder="Add before extension" data-i18n-placeholder="tools.data.file-renamer.placeholder.004">
             </div>
             <div class="option-row">
-              <span class="option-label">Numbering:</span>
+              <span class="option-label" data-i18n="tools.data.file-renamer.text.018">Numbering:</span>
               <select class="option-select" id="numberingMode">
                 <option value="none">None</option>
                 <option value="prefix">Prefix (001_filename)</option>
@@ -225,9 +225,9 @@
           </div>
 
           <div class="btn-bar">
-            <button class="btn btn-secondary" id="btnPreview" disabled>Preview Changes</button>
-            <button class="btn btn-primary" id="btnDownloadAll" disabled>Download All (ZIP)</button>
-            <button class="btn btn-danger" id="btnClear">Clear</button>
+            <button class="btn btn-secondary" id="btnPreview" disabled data-i18n="tools.data.file-renamer.text.019">Preview Changes</button>
+            <button class="btn btn-primary" id="btnDownloadAll" disabled data-i18n="tools.data.file-renamer.text.020">Download All (ZIP)</button>
+            <button class="btn btn-danger" id="btnClear" data-i18n="tools.data.file-renamer.text.021">Clear</button>
           </div>
 
           <div class="progress-bar" id="progressBar">
@@ -256,48 +256,48 @@
       </div>
 
       <section class="seo-section" aria-label="About this tool">
-        <h2>About Batch File Renamer</h2>
-        <p>This free online tool helps you rename multiple files at once according to custom rules. You can find and replace text, add prefixes or suffixes, apply auto-numbering, and more. All changes are previewed before you download the renamed files.</p>
+        <h2 data-i18n="tools.data.file-renamer.text.022">About Batch File Renamer</h2>
+        <p data-i18n="tools.data.file-renamer.text.023">This free online tool helps you rename multiple files at once according to custom rules. You can find and replace text, add prefixes or suffixes, apply auto-numbering, and more. All changes are previewed before you download the renamed files.</p>
 
-        <h3>How to Use</h3>
+        <h3 data-i18n="tools.data.file-renamer.text.024">How to Use</h3>
         <ol>
-          <li>Select files by dropping them onto the upload area or clicking to browse.</li>
-          <li>Configure rename options: find/replace, prefix/suffix, numbering, and case options.</li>
+          <li data-i18n="tools.data.file-renamer.text.025">Select files by dropping them onto the upload area or clicking to browse.</li>
+          <li data-i18n="tools.data.file-renamer.text.026">Configure rename options: find/replace, prefix/suffix, numbering, and case options.</li>
           <li>Click <strong>Preview Changes</strong> to see how files will be renamed.</li>
-          <li>Download all renamed files as a ZIP archive.</li>
+          <li data-i18n="tools.data.file-renamer.text.027">Download all renamed files as a ZIP archive.</li>
         </ol>
 
-        <h3>Frequently Asked Questions</h3>
+        <h3 data-i18n="tools.data.file-renamer.text.028">Frequently Asked Questions</h3>
 
         <details class="faq-item">
           <summary>Is my file data kept private?</summary>
-          <p>Absolutely. All processing happens entirely in your browser. No file data is sent to any server. Your files are only used to generate renamed copies.</p>
+          <p data-i18n="tools.data.file-renamer.text.029">Absolutely. All processing happens entirely in your browser. No file data is sent to any server. Your files are only used to generate renamed copies.</p>
         </details>
 
         <details class="faq-item">
           <summary>Are my original files modified?</summary>
-          <p>No, this tool cannot modify files on your system. It creates new copies with different names that you download as a ZIP file. Your original files remain unchanged.</p>
+          <p data-i18n="tools.data.file-renamer.text.030">No, this tool cannot modify files on your system. It creates new copies with different names that you download as a ZIP file. Your original files remain unchanged.</p>
         </details>
 
         <details class="faq-item">
           <summary>Can I rename files by their content?</summary>
-          <p>No, this tool renames based on the current filenames and your specified rules. It does not analyze file contents for renaming purposes.</p>
+          <p data-i18n="tools.data.file-renamer.text.031">No, this tool renames based on the current filenames and your specified rules. It does not analyze file contents for renaming purposes.</p>
         </details>
 
         <details class="faq-item">
           <summary>What file extensions are preserved?</summary>
-          <p>When "Keep extensions" is enabled (default), the last part after the final dot is preserved as the extension. This works for most common file types.</p>
+          <p data-i18n="tools.data.file-renamer.text.032">When "Keep extensions" is enabled (default), the last part after the final dot is preserved as the extension. This works for most common file types.</p>
         </details>
 
         <details class="faq-item">
           <summary>Is there a limit to how many files I can rename?</summary>
-          <p>There is no strict limit, but very large numbers of files (hundreds or more) may take longer to process and ZIP for download.</p>
+          <p data-i18n="tools.data.file-renamer.text.033">There is no strict limit, but very large numbers of files (hundreds or more) may take longer to process and ZIP for download.</p>
         </details>
       </section>
 
       <footer class="tool-footer">
-        <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
-        <p>Estimates only &mdash; not financial, legal, or tax advice.</p>
+        <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com" data-i18n="tools.data.file-renamer.text.034">psk.dan.metehancetin@mc-novatools.com</a></p>
+        <p data-i18n="tools.data.file-renamer.text.035">Estimates only &mdash; not financial, legal, or tax advice.</p>
       </footer>
     </main>
   </div>

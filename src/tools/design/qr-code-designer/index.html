@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="/src/styles/main.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <title>Free QR Code Designer | Custom Colors & Styles | NovaTools MC</title>
+  <title data-i18n="tools.design.qr-code-designer.meta.title">Free QR Code Designer | Custom Colors & Styles | NovaTools MC</title>
   
   <!-- i18n Script -->
   <script src="/i18n.js"></script>
@@ -126,17 +126,17 @@
         <div class="header-inner">
           <a href="/" class="logo" aria-label="NovaTools MC Home">
             <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
-            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+            <span class="logo-text">NovaTools <span class="logo-mc" data-i18n="tools.design.qr-code-designer.text.001">MC</span></span>
           </a>
           <nav class="nav-desktop" aria-label="Main navigation">
-            <a href="/#finance" class="nav-link">Finance</a>
-            <a href="/#pdf" class="nav-link">PDF Tools</a>
-            <a href="/#image" class="nav-link">Images</a>
-            <a href="/#dev" class="nav-link">Developers</a>
+            <a href="/#finance" class="nav-link" data-i18n="tools.design.qr-code-designer.text.002">Finance</a>
+            <a href="/#pdf" class="nav-link" data-i18n="tools.design.qr-code-designer.text.003">PDF Tools</a>
+            <a href="/#image" class="nav-link" data-i18n="tools.design.qr-code-designer.text.004">Images</a>
+            <a href="/#dev" class="nav-link" data-i18n="tools.design.qr-code-designer.text.005">Developers</a>
           </nav>
-          <div class="privacy-badge" title="Your data never leaves your browser">
+          <div class="privacy-badge" title="Your data never leaves your browser" data-i18n-title="tools.design.qr-code-designer.title.001">
             <span class="privacy-badge-dot"></span>
-            <span>Privacy First</span>
+            <span data-i18n="tools.design.qr-code-designer.text.006">Privacy First</span>
           </div>
           <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
             <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -147,10 +147,10 @@
           </button>
         </div>
         <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
-          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
-          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
-          <a href="/#image" class="mobile-nav-link">Image Tools</a>
-          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+          <a href="/#finance" class="mobile-nav-link" data-i18n="tools.design.qr-code-designer.text.007">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link" data-i18n="tools.design.qr-code-designer.text.008">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link" data-i18n="tools.design.qr-code-designer.text.009">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link" data-i18n="tools.design.qr-code-designer.text.010">Developer Tools</a>
         </nav>
       </div>
     </header>
@@ -159,52 +159,52 @@
       <div class="tool-wrapper">
         <div class="tool-hero">
           <div class="tool-hero-icon">&#128241;</div>
-          <h1>QR Code Designer</h1>
-          <span class="sr-only">Free QR code designer with custom colors - create branded QR codes</span>
-          <p>Design custom QR codes with your brand colors. Generate codes for URLs, text, WiFi, email, and more.</p>
+          <h1 data-i18n="tools.design.qr-code-designer.text.011">QR Code Designer</h1>
+          <span class="sr-only" data-i18n="tools.design.qr-code-designer.text.012">Free QR code designer with custom colors - create branded QR codes</span>
+          <p data-i18n="tools.design.qr-code-designer.text.013">Design custom QR codes with your brand colors. Generate codes for URLs, text, WiFi, email, and more.</p>
         </div>
 
         <div class="card">
           <div class="qr-grid">
             <div>
               <div class="type-tabs">
-                <button class="type-tab active" data-type="url">URL</button>
-                <button class="type-tab" data-type="text">Text</button>
-                <button class="type-tab" data-type="email">Email</button>
-                <button class="type-tab" data-type="wifi">WiFi</button>
-                <button class="type-tab" data-type="tel">Phone</button>
+                <button class="type-tab active" data-type="url" data-i18n="tools.design.qr-code-designer.text.014">URL</button>
+                <button class="type-tab" data-type="text" data-i18n="tools.design.qr-code-designer.text.015">Text</button>
+                <button class="type-tab" data-type="email" data-i18n="tools.design.qr-code-designer.text.016">Email</button>
+                <button class="type-tab" data-type="wifi" data-i18n="tools.design.qr-code-designer.text.017">WiFi</button>
+                <button class="type-tab" data-type="tel" data-i18n="tools.design.qr-code-designer.text.018">Phone</button>
               </div>
               
               <div class="input-group" id="urlInput">
-                <label>Website URL</label>
-                <input type="url" id="qrUrl" placeholder="https://example.com" value="https://www.mc-novatools.com">
+                <label data-i18n="tools.design.qr-code-designer.text.019">Website URL</label>
+                <input type="url" id="qrUrl" placeholder="https://example.com" data-i18n-placeholder="tools.design.qr-code-designer.placeholder.001" value="https://www.mc-novatools.com">
               </div>
               
               <div class="input-group" id="textInput" style="display:none">
-                <label>Text Message</label>
-                <textarea id="qrText" placeholder="Enter your text here...">Hello World! Scan this QR code.</textarea>
+                <label data-i18n="tools.design.qr-code-designer.text.020">Text Message</label>
+                <textarea id="qrText" placeholder="Enter your text here..." data-i18n-placeholder="tools.design.qr-code-designer.placeholder.002">Hello World! Scan this QR code.</textarea>
               </div>
               
               <div class="input-group" id="emailInput" style="display:none">
-                <label>Email Address</label>
-                <input type="email" id="qrEmail" placeholder="email@example.com" value="contact@example.com">
-                <label style="margin-top: 0.75rem;">Subject (optional)</label>
-                <input type="text" id="qrSubject" placeholder="Email subject">
-                <label style="margin-top: 0.75rem;">Body (optional)</label>
-                <textarea id="qrBody" placeholder="Email body text"></textarea>
+                <label data-i18n="tools.design.qr-code-designer.text.021">Email Address</label>
+                <input type="email" id="qrEmail" placeholder="email@example.com" data-i18n-placeholder="tools.design.qr-code-designer.placeholder.003" value="contact@example.com">
+                <label style="margin-top: 0.75rem;" data-i18n="tools.design.qr-code-designer.text.022">Subject (optional)</label>
+                <input type="text" id="qrSubject" placeholder="Email subject" data-i18n-placeholder="tools.design.qr-code-designer.placeholder.004">
+                <label style="margin-top: 0.75rem;" data-i18n="tools.design.qr-code-designer.text.023">Body (optional)</label>
+                <textarea id="qrBody" placeholder="Email body text" data-i18n-placeholder="tools.design.qr-code-designer.placeholder.005"></textarea>
               </div>
               
               <div id="wifiInput" style="display:none">
                 <div class="input-group">
-                  <label>Network Name (SSID)</label>
-                  <input type="text" id="qrWifiSsid" placeholder="WiFi Network Name">
+                  <label data-i18n="tools.design.qr-code-designer.text.024">Network Name (SSID)</label>
+                  <input type="text" id="qrWifiSsid" placeholder="WiFi Network Name" data-i18n-placeholder="tools.design.qr-code-designer.placeholder.006">
                 </div>
                 <div class="input-group">
-                  <label>Password</label>
-                  <input type="text" id="qrWifiPass" placeholder="WiFi Password">
+                  <label data-i18n="tools.design.qr-code-designer.text.025">Password</label>
+                  <input type="text" id="qrWifiPass" placeholder="WiFi Password" data-i18n-placeholder="tools.design.qr-code-designer.placeholder.007">
                 </div>
                 <div class="input-group">
-                  <label>Encryption</label>
+                  <label data-i18n="tools.design.qr-code-designer.text.026">Encryption</label>
                   <select id="qrWifiType">
                     <option value="WPA">WPA/WPA2</option>
                     <option value="WEP">WEP</option>
@@ -214,23 +214,23 @@
               </div>
               
               <div class="input-group" id="telInput" style="display:none">
-                <label>Phone Number</label>
+                <label data-i18n="tools.design.qr-code-designer.text.027">Phone Number</label>
                 <input type="text" id="qrTel" placeholder="+1234567890" value="+1234567890">
               </div>
               
               <div class="color-row">
                 <div class="input-group">
-                  <label>QR Color</label>
+                  <label data-i18n="tools.design.qr-code-designer.text.028">QR Color</label>
                   <input type="color" id="qrColor" value="#000000">
                 </div>
                 <div class="input-group">
-                  <label>Background</label>
+                  <label data-i18n="tools.design.qr-code-designer.text.029">Background</label>
                   <input type="color" id="qrBgColor" value="#FFFFFF">
                 </div>
               </div>
               
               <div class="input-group">
-                <label>Error Correction</label>
+                <label data-i18n="tools.design.qr-code-designer.text.030">Error Correction</label>
                 <select id="qrError">
                   <option value="L">Low (~7%)</option>
                   <option value="M" selected>Medium (~15%)</option>
@@ -245,8 +245,8 @@
                 <canvas id="qrCanvas" width="250" height="250"></canvas>
               </div>
               <div class="btn-bar">
-                <button class="btn btn-primary" id="downloadPng">Download PNG</button>
-                <button class="btn btn-secondary" id="downloadSvg">Download SVG</button>
+                <button class="btn btn-primary" id="downloadPng" data-i18n="tools.design.qr-code-designer.text.031">Download PNG</button>
+                <button class="btn btn-secondary" id="downloadSvg" data-i18n="tools.design.qr-code-designer.text.032">Download SVG</button>
               </div>
             </div>
           </div>
@@ -258,21 +258,21 @@
       </div>
 
       <section class="seo-section" aria-label="About this tool">
-        <h2>About QR Code Designer</h2>
-        <p>Create stunning, branded QR codes that match your visual identity. Our QR Code Designer lets you customize colors while maintaining scan reliability. Generate codes for websites, contact info, WiFi networks, plain text, and more. Perfect for marketing materials, business cards, and product packaging.</p>
+        <h2 data-i18n="tools.design.qr-code-designer.text.033">About QR Code Designer</h2>
+        <p data-i18n="tools.design.qr-code-designer.text.034">Create stunning, branded QR codes that match your visual identity. Our QR Code Designer lets you customize colors while maintaining scan reliability. Generate codes for websites, contact info, WiFi networks, plain text, and more. Perfect for marketing materials, business cards, and product packaging.</p>
 
-        <h3>How to Use</h3>
+        <h3 data-i18n="tools.design.qr-code-designer.text.035">How to Use</h3>
         <ol>
-          <li>Select the QR code type (URL, Text, Email, WiFi, or Phone).</li>
-          <li>Enter the data you want to encode based on the selected type.</li>
-          <li>Choose your QR code color to match your brand.</li>
-          <li>Set the background color (keep high contrast for best scanning).</li>
-          <li>Select error correction level (higher = more robust but larger code).</li>
-          <li>Preview and test the QR code with your phone.</li>
-          <li>Download as PNG for digital use or SVG for print.</li>
+          <li data-i18n="tools.design.qr-code-designer.text.036">Select the QR code type (URL, Text, Email, WiFi, or Phone).</li>
+          <li data-i18n="tools.design.qr-code-designer.text.037">Enter the data you want to encode based on the selected type.</li>
+          <li data-i18n="tools.design.qr-code-designer.text.038">Choose your QR code color to match your brand.</li>
+          <li data-i18n="tools.design.qr-code-designer.text.039">Set the background color (keep high contrast for best scanning).</li>
+          <li data-i18n="tools.design.qr-code-designer.text.040">Select error correction level (higher = more robust but larger code).</li>
+          <li data-i18n="tools.design.qr-code-designer.text.041">Preview and test the QR code with your phone.</li>
+          <li data-i18n="tools.design.qr-code-designer.text.042">Download as PNG for digital use or SVG for print.</li>
         </ol>
 
-        <h3>QR Code Type Guide</h3>
+        <h3 data-i18n="tools.design.qr-code-designer.text.043">QR Code Type Guide</h3>
         <ul>
           <li><strong>URL</strong> - Link to websites, landing pages, or specific web content.</li>
           <li><strong>Text</strong> - Display plain text messages when scanned.</li>
@@ -281,38 +281,38 @@
           <li><strong>Phone</strong> - Initiate phone calls when scanned.</li>
         </ul>
 
-        <h3>Frequently Asked Questions</h3>
+        <h3 data-i18n="tools.design.qr-code-designer.text.044">Frequently Asked Questions</h3>
 
         <details class="faq-item">
           <summary>Will custom colors affect scanning?</summary>
-          <p>Custom colors can affect scanning if there's not enough contrast. Keep the QR color dark and background light. Always test your custom-colored QR codes with multiple devices and lighting conditions before publishing.</p>
+          <p data-i18n="tools.design.qr-code-designer.text.045">Custom colors can affect scanning if there's not enough contrast. Keep the QR color dark and background light. Always test your custom-colored QR codes with multiple devices and lighting conditions before publishing.</p>
         </details>
 
         <details class="faq-item">
           <summary>What is error correction?</summary>
-          <p>Error correction allows QR codes to be readable even if partially damaged or obscured. Higher levels provide more redundancy but create denser codes. Use High (30%) for codes that will be displayed in harsh conditions or might get damaged.</p>
+          <p data-i18n="tools.design.qr-code-designer.text.046">Error correction allows QR codes to be readable even if partially damaged or obscured. Higher levels provide more redundancy but create denser codes. Use High (30%) for codes that will be displayed in harsh conditions or might get damaged.</p>
         </details>
 
         <details class="faq-item">
           <summary>Can I add a logo to my QR code?</summary>
-          <p>This version focuses on color customization. For logo integration, generate a high error correction QR code and overlay your logo in the center using image editing software.</p>
+          <p data-i18n="tools.design.qr-code-designer.text.047">This version focuses on color customization. For logo integration, generate a high error correction QR code and overlay your logo in the center using image editing software.</p>
         </details>
 
         <details class="faq-item">
           <summary>Are these QR codes permanent?</summary>
-          <p>QR codes encode static data directly. Once generated, they always contain the same information. For changeable QR codes (like for marketing campaigns), consider using a URL shortener service that allows redirect updates.</p>
+          <p data-i18n="tools.design.qr-code-designer.text.048">QR codes encode static data directly. Once generated, they always contain the same information. For changeable QR codes (like for marketing campaigns), consider using a URL shortener service that allows redirect updates.</p>
         </details>
 
         <details class="faq-item">
           <summary>Is my QR code data private?</summary>
-          <p>Yes! All QR code generation happens locally in your browser. Your URLs, WiFi passwords, and other data never leave your device or touch our servers.</p>
+          <p data-i18n="tools.design.qr-code-designer.text.049">Yes! All QR code generation happens locally in your browser. Your URLs, WiFi passwords, and other data never leave your device or touch our servers.</p>
         </details>
       </section>
     </main>
 
     <footer class="tool-footer">
-      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
-      <p>Estimates only &mdash; test QR codes before use.</p>
+      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com" data-i18n="tools.design.qr-code-designer.text.050">psk.dan.metehancetin@mc-novatools.com</a></p>
+      <p data-i18n="tools.design.qr-code-designer.text.051">Estimates only &mdash; test QR codes before use.</p>
     </footer>
   </div>
 

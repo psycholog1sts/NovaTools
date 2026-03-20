@@ -23,7 +23,7 @@
   <link rel="stylesheet" href="/src/styles/critical.css">
   <link rel="stylesheet" href="/src/styles/main.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <title>Free Student Loan Payoff Calculator US &amp; UK | NovaTools</title>
+  <title data-i18n="tools.finance.student-loan.meta.title">Free Student Loan Payoff Calculator US &amp; UK | NovaTools</title>
   
   <!-- i18n Script -->
   <script src="/i18n.js"></script>
@@ -93,17 +93,17 @@
         <div class="header-inner">
           <a href="/" class="logo" aria-label="NovaTools MC Home">
             <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
-            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+            <span class="logo-text">NovaTools <span class="logo-mc" data-i18n="tools.finance.student-loan.text.001">MC</span></span>
           </a>
           <nav class="nav-desktop" aria-label="Main navigation">
-            <a href="/#finance" class="nav-link">Finance</a>
-            <a href="/#pdf" class="nav-link">PDF Tools</a>
-            <a href="/#image" class="nav-link">Images</a>
-            <a href="/#dev" class="nav-link">Developers</a>
+            <a href="/#finance" class="nav-link" data-i18n="tools.finance.student-loan.text.002">Finance</a>
+            <a href="/#pdf" class="nav-link" data-i18n="tools.finance.student-loan.text.003">PDF Tools</a>
+            <a href="/#image" class="nav-link" data-i18n="tools.finance.student-loan.text.004">Images</a>
+            <a href="/#dev" class="nav-link" data-i18n="tools.finance.student-loan.text.005">Developers</a>
           </nav>
-          <div class="privacy-badge" title="Your data never leaves your browser">
+          <div class="privacy-badge" title="Your data never leaves your browser" data-i18n-title="tools.finance.student-loan.title.001">
             <span class="privacy-badge-dot"></span>
-            <span>Privacy First</span>
+            <span data-i18n="tools.finance.student-loan.text.006">Privacy First</span>
           </div>
           <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
             <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -114,10 +114,10 @@
           </button>
         </div>
         <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
-          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
-          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
-          <a href="/#image" class="mobile-nav-link">Image Tools</a>
-          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+          <a href="/#finance" class="mobile-nav-link" data-i18n="tools.finance.student-loan.text.007">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link" data-i18n="tools.finance.student-loan.text.008">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link" data-i18n="tools.finance.student-loan.text.009">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link" data-i18n="tools.finance.student-loan.text.010">Developer Tools</a>
         </nav>
       </div>
     </header>
@@ -126,22 +126,22 @@
         <div style="max-width: 900px; margin: 0 auto;">
           <div style="text-align: center; margin-bottom: 2rem;">
             <div style="font-size: 4rem; margin-bottom: 1rem;">🎓</div>
-            <h1 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem;">Student Loan Payoff Calculator</h1>
-            <span class="sr-only">Free student loan payoff calculator — free online tool to calculate loan payoff date and interest savings. No registration required. Free US federal loan and UK student loan calculator.</span>
-            <p style="color: var(--text-secondary);">Calculate your payoff date and see how extra payments can save you thousands in interest. Supports US Federal, Private, and UK Student Loans.</p>
+            <h1 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem;" data-i18n="tools.finance.student-loan.text.011">Student Loan Payoff Calculator</h1>
+            <span class="sr-only" data-i18n="tools.finance.student-loan.text.012">Free student loan payoff calculator — free online tool to calculate loan payoff date and interest savings. No registration required. Free US federal loan and UK student loan calculator.</span>
+            <p style="color: var(--text-secondary);" data-i18n="tools.finance.student-loan.text.013">Calculate your payoff date and see how extra payments can save you thousands in interest. Supports US Federal, Private, and UK Student Loans.</p>
           </div>
           
           <div class="calculator-form">
             <div class="form-row">
               <div class="form-group">
-                <label for="country">Country</label>
+                <label for="country" data-i18n="tools.finance.student-loan.text.014">Country</label>
                 <select id="country">
                   <option value="us">United States</option>
                   <option value="uk">United Kingdom</option>
                 </select>
               </div>
               <div class="form-group">
-                <label for="loanType">Loan Type</label>
+                <label for="loanType" data-i18n="tools.finance.student-loan.text.015">Loan Type</label>
                 <select id="loanType">
                   <option value="federal">US Federal Loan</option>
                   <option value="private">Private Loan</option>
@@ -153,27 +153,27 @@
             
             <div class="form-row">
               <div class="form-group">
-                <label for="balance">Current Balance ($)</label>
+                <label for="balance" data-i18n="tools.finance.student-loan.text.016">Current Balance ($)</label>
                 <input type="number" id="balance" placeholder="35000" min="0">
               </div>
               <div class="form-group">
-                <label for="interestRate">Interest Rate (%)</label>
+                <label for="interestRate" data-i18n="tools.finance.student-loan.text.017">Interest Rate (%)</label>
                 <input type="number" id="interestRate" placeholder="5.5" min="0" max="20" step="0.1">
               </div>
             </div>
             
             <div class="form-row">
               <div class="form-group">
-                <label for="monthlyPayment">Monthly Payment ($)</label>
+                <label for="monthlyPayment" data-i18n="tools.finance.student-loan.text.018">Monthly Payment ($)</label>
                 <input type="number" id="monthlyPayment" placeholder="400" min="0">
               </div>
               <div class="form-group">
-                <label for="extraPayment">Extra Monthly Payment ($)</label>
+                <label for="extraPayment" data-i18n="tools.finance.student-loan.text.019">Extra Monthly Payment ($)</label>
                 <input type="number" id="extraPayment" placeholder="100" min="0" value="0">
               </div>
             </div>
             
-            <button type="button" id="calculateBtn" class="btn btn-primary" style="width: 100%; margin-top: 1rem; height: 52px; font-size: 1rem;">
+            <button type="button" id="calculateBtn" class="btn btn-primary" style="width: 100%; margin-top: 1rem; height: 52px; font-size: 1rem;" data-i18n="tools.finance.student-loan.text.020">
               Calculate Payoff Plan
             </button>
           </div>
@@ -187,7 +187,7 @@
           </div>
           
           <div id="resultsPanel" class="results-panel">
-            <h2 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; text-align: center;">📊 Your Payoff Plan</h2>
+            <h2 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; text-align: center;" data-i18n="tools.finance.student-loan.text.021">📊 Your Payoff Plan</h2>
             
             <div class="result-grid">
               <div class="result-item">
@@ -211,7 +211,7 @@
             <div id="savingsPanel" class="savings-highlight" style="display: none;">
               <div style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 0.5rem;">💰 With Extra Payments, You'll Save</div>
               <div id="interestSaved" class="savings-value">$0</div>
-              <div style="font-size: 0.875rem; color: var(--text-secondary); margin-top: 0.5rem;">and pay off <span id="timeSaved" style="font-weight: 600; color: #22C55E;">0 months</span> earlier!</div>
+              <div style="font-size: 0.875rem; color: var(--text-secondary); margin-top: 0.5rem;">and pay off <span id="timeSaved" style="font-weight: 600; color: #22C55E;" data-i18n="tools.finance.student-loan.text.022">0 months</span> earlier!</div>
             </div>
             
             <div style="margin-top:1rem; margin-bottom:1rem; padding:0.75rem 1rem; background:rgba(255,255,255,0.04); border:1px solid var(--border-default); border-radius:8px; font-size:0.8125rem; color:var(--text-muted, #888);">
@@ -219,7 +219,7 @@
             </div>
 
             <div class="amortization-preview">
-              <h4 style="font-size: 1rem; font-weight: 600; margin-bottom: 1rem;">Payment Schedule (First 12 Months)</h4>
+              <h4 style="font-size: 1rem; font-weight: 600; margin-bottom: 1rem;" data-i18n="tools.finance.student-loan.text.023">Payment Schedule (First 12 Months)</h4>
               <table>
                 <thead>
                   <tr>
@@ -240,8 +240,8 @@
     </main>
 
     <footer class="tool-footer">
-  <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
-  <p>Estimates only &mdash; not financial, legal, or tax advice.</p>
+  <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com" data-i18n="tools.finance.student-loan.text.024">psk.dan.metehancetin@mc-novatools.com</a></p>
+  <p data-i18n="tools.finance.student-loan.text.025">Estimates only &mdash; not financial, legal, or tax advice.</p>
 </footer>
 <style>
 .tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }

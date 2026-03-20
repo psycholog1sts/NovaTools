@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="/src/styles/main.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <title>Free Barcode Generator Online | Create UPC, EAN, Code 128 | NovaTools MC</title>
+  <title data-i18n="tools.design.barcode-generator.meta.title">Free Barcode Generator Online | Create UPC, EAN, Code 128 | NovaTools MC</title>
   
   <!-- i18n Script -->
   <script src="/i18n.js"></script>
@@ -120,17 +120,17 @@
         <div class="header-inner">
           <a href="/" class="logo" aria-label="NovaTools MC Home">
             <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
-            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+            <span class="logo-text">NovaTools <span class="logo-mc" data-i18n="tools.design.barcode-generator.text.001">MC</span></span>
           </a>
           <nav class="nav-desktop" aria-label="Main navigation">
-            <a href="/#finance" class="nav-link">Finance</a>
-            <a href="/#pdf" class="nav-link">PDF Tools</a>
-            <a href="/#image" class="nav-link">Images</a>
-            <a href="/#dev" class="nav-link">Developers</a>
+            <a href="/#finance" class="nav-link" data-i18n="tools.design.barcode-generator.text.002">Finance</a>
+            <a href="/#pdf" class="nav-link" data-i18n="tools.design.barcode-generator.text.003">PDF Tools</a>
+            <a href="/#image" class="nav-link" data-i18n="tools.design.barcode-generator.text.004">Images</a>
+            <a href="/#dev" class="nav-link" data-i18n="tools.design.barcode-generator.text.005">Developers</a>
           </nav>
-          <div class="privacy-badge" title="Your data never leaves your browser">
+          <div class="privacy-badge" title="Your data never leaves your browser" data-i18n-title="tools.design.barcode-generator.title.001">
             <span class="privacy-badge-dot"></span>
-            <span>Privacy First</span>
+            <span data-i18n="tools.design.barcode-generator.text.006">Privacy First</span>
           </div>
           <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
             <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -141,10 +141,10 @@
           </button>
         </div>
         <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
-          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
-          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
-          <a href="/#image" class="mobile-nav-link">Image Tools</a>
-          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+          <a href="/#finance" class="mobile-nav-link" data-i18n="tools.design.barcode-generator.text.007">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link" data-i18n="tools.design.barcode-generator.text.008">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link" data-i18n="tools.design.barcode-generator.text.009">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link" data-i18n="tools.design.barcode-generator.text.010">Developer Tools</a>
         </nav>
       </div>
     </header>
@@ -153,19 +153,19 @@
       <div class="tool-wrapper">
         <div class="tool-hero">
           <div class="tool-hero-icon">&#128289;</div>
-          <h1>Barcode Generator</h1>
-          <span class="sr-only">Free online barcode generator - create UPC, EAN, Code 128 barcodes</span>
-          <p>Generate barcodes in multiple formats: Code 128, EAN-13, UPC-A, and Code 39. Download as PNG or SVG.</p>
+          <h1 data-i18n="tools.design.barcode-generator.text.011">Barcode Generator</h1>
+          <span class="sr-only" data-i18n="tools.design.barcode-generator.text.012">Free online barcode generator - create UPC, EAN, Code 128 barcodes</span>
+          <p data-i18n="tools.design.barcode-generator.text.013">Generate barcodes in multiple formats: Code 128, EAN-13, UPC-A, and Code 39. Download as PNG or SVG.</p>
         </div>
 
         <div class="card">
           <div class="input-grid">
             <div class="input-group">
-              <label class="input-label">Barcode Data</label>
-              <input type="text" class="input-field" id="barcodeData" value="123456789012" placeholder="Enter data to encode">
+              <label class="input-label" data-i18n="tools.design.barcode-generator.text.014">Barcode Data</label>
+              <input type="text" class="input-field" id="barcodeData" value="123456789012" placeholder="Enter data to encode" data-i18n-placeholder="tools.design.barcode-generator.placeholder.001">
             </div>
             <div class="input-group">
-              <label class="input-label">Barcode Type</label>
+              <label class="input-label" data-i18n="tools.design.barcode-generator.text.015">Barcode Type</label>
               <select class="input-field" id="barcodeType">
                 <option value="code128">Code 128 (Universal)</option>
                 <option value="ean13">EAN-13 (Retail)</option>
@@ -177,15 +177,15 @@
           
           <div class="settings-row">
             <div class="input-group">
-              <label class="input-label">Bar Color</label>
+              <label class="input-label" data-i18n="tools.design.barcode-generator.text.016">Bar Color</label>
               <input type="color" class="input-field" id="barColor" value="#000000" style="padding: 4px;">
             </div>
             <div class="input-group">
-              <label class="input-label">Background</label>
+              <label class="input-label" data-i18n="tools.design.barcode-generator.text.017">Background</label>
               <input type="color" class="input-field" id="bgColor" value="#FFFFFF" style="padding: 4px;">
             </div>
             <div class="input-group">
-              <label class="input-label">Show Text</label>
+              <label class="input-label" data-i18n="tools.design.barcode-generator.text.018">Show Text</label>
               <select class="input-field" id="showText">
                 <option value="true">Yes</option>
                 <option value="false">No</option>
@@ -198,8 +198,8 @@
           </div>
 
           <div class="btn-bar">
-            <button class="btn btn-primary" id="downloadSvg">Download SVG</button>
-            <button class="btn btn-secondary" id="downloadPng">Download PNG</button>
+            <button class="btn btn-primary" id="downloadSvg" data-i18n="tools.design.barcode-generator.text.019">Download SVG</button>
+            <button class="btn btn-secondary" id="downloadPng" data-i18n="tools.design.barcode-generator.text.020">Download PNG</button>
           </div>
 
           <div class="legal-note">
@@ -209,20 +209,20 @@
       </div>
 
       <section class="seo-section" aria-label="About this tool">
-        <h2>About Barcode Generator</h2>
-        <p>Generate professional barcodes instantly with our free online tool. Supports multiple barcode formats including Code 128 (universal alphanumeric), EAN-13 (European retail standard), UPC-A (North American retail), and Code 39 (industrial applications). Download your barcodes as high-quality PNG images or scalable SVG files.</p>
+        <h2 data-i18n="tools.design.barcode-generator.text.021">About Barcode Generator</h2>
+        <p data-i18n="tools.design.barcode-generator.text.022">Generate professional barcodes instantly with our free online tool. Supports multiple barcode formats including Code 128 (universal alphanumeric), EAN-13 (European retail standard), UPC-A (North American retail), and Code 39 (industrial applications). Download your barcodes as high-quality PNG images or scalable SVG files.</p>
 
-        <h3>How to Use</h3>
+        <h3 data-i18n="tools.design.barcode-generator.text.023">How to Use</h3>
         <ol>
-          <li>Enter the data you want to encode (numbers, letters, or both depending on format).</li>
-          <li>Select the appropriate barcode type for your use case.</li>
-          <li>Customize the bar color and background color if needed.</li>
-          <li>Choose whether to display the human-readable text below the barcode.</li>
-          <li>Preview the generated barcode.</li>
-          <li>Download as SVG for print or PNG for digital use.</li>
+          <li data-i18n="tools.design.barcode-generator.text.024">Enter the data you want to encode (numbers, letters, or both depending on format).</li>
+          <li data-i18n="tools.design.barcode-generator.text.025">Select the appropriate barcode type for your use case.</li>
+          <li data-i18n="tools.design.barcode-generator.text.026">Customize the bar color and background color if needed.</li>
+          <li data-i18n="tools.design.barcode-generator.text.027">Choose whether to display the human-readable text below the barcode.</li>
+          <li data-i18n="tools.design.barcode-generator.text.028">Preview the generated barcode.</li>
+          <li data-i18n="tools.design.barcode-generator.text.029">Download as SVG for print or PNG for digital use.</li>
         </ol>
 
-        <h3>Barcode Format Guide</h3>
+        <h3 data-i18n="tools.design.barcode-generator.text.030">Barcode Format Guide</h3>
         <ul>
           <li><strong>Code 128</strong> - Most versatile; supports letters, numbers, and symbols. Best for general use.</li>
           <li><strong>EAN-13</strong> - 13-digit retail barcode used worldwide (except North America).</li>
@@ -230,38 +230,38 @@
           <li><strong>Code 39</strong> - Industrial format; supports letters, numbers, and limited symbols.</li>
         </ul>
 
-        <h3>Frequently Asked Questions</h3>
+        <h3 data-i18n="tools.design.barcode-generator.text.031">Frequently Asked Questions</h3>
 
         <details class="faq-item">
           <summary>Which barcode format should I use?</summary>
-          <p>Use Code 128 for general purposes and inventory. Use EAN-13 or UPC-A for retail products (depending on your region). Use Code 39 for industrial or military applications.</p>
+          <p data-i18n="tools.design.barcode-generator.text.032">Use Code 128 for general purposes and inventory. Use EAN-13 or UPC-A for retail products (depending on your region). Use Code 39 for industrial or military applications.</p>
         </details>
 
         <details class="faq-item">
           <summary>Are these barcodes scannable?</summary>
-          <p>Yes, the generated barcodes follow standard encoding patterns and should be scannable by most barcode readers. However, always test with your specific scanning equipment before mass production.</p>
+          <p data-i18n="tools.design.barcode-generator.text.033">Yes, the generated barcodes follow standard encoding patterns and should be scannable by most barcode readers. However, always test with your specific scanning equipment before mass production.</p>
         </details>
 
         <details class="faq-item">
           <summary>What resolution should I use for printing?</summary>
-          <p>For best results, use the SVG format for print as it scales without quality loss. If using PNG, download at a larger size and ensure 300 DPI when printing.</p>
+          <p data-i18n="tools.design.barcode-generator.text.034">For best results, use the SVG format for print as it scales without quality loss. If using PNG, download at a larger size and ensure 300 DPI when printing.</p>
         </details>
 
         <details class="faq-item">
           <summary>Do I need to register my barcode?</summary>
-          <p>For retail sales (EAN/UPC), you typically need to purchase GS1-registered barcodes. Code 128 and Code 39 can be used internally without registration.</p>
+          <p data-i18n="tools.design.barcode-generator.text.035">For retail sales (EAN/UPC), you typically need to purchase GS1-registered barcodes. Code 128 and Code 39 can be used internally without registration.</p>
         </details>
 
         <details class="faq-item">
           <summary>Is my barcode data secure?</summary>
-          <p>Yes. All barcode generation happens locally in your browser. Your data is never sent to or stored on our servers.</p>
+          <p data-i18n="tools.design.barcode-generator.text.036">Yes. All barcode generation happens locally in your browser. Your data is never sent to or stored on our servers.</p>
         </details>
       </section>
     </main>
 
     <footer class="tool-footer">
-      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
-      <p>Estimates only &mdash; verify barcodes before commercial use.</p>
+      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com" data-i18n="tools.design.barcode-generator.text.037">psk.dan.metehancetin@mc-novatools.com</a></p>
+      <p data-i18n="tools.design.barcode-generator.text.038">Estimates only &mdash; verify barcodes before commercial use.</p>
     </footer>
   </div>
 

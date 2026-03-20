@@ -25,7 +25,7 @@
   <link rel="stylesheet" href="/src/styles/main.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <title>Free JSON Formatter &amp; Validator Online | NovaTools MC</title>
+  <title data-i18n="tools.dev.json-formatter.meta.title">Free JSON Formatter &amp; Validator Online | NovaTools MC</title>
   
   <!-- i18n Script -->
   <script src="/i18n.js"></script>
@@ -389,17 +389,17 @@
         <div class="header-inner">
           <a href="/" class="logo" aria-label="NovaTools MC Home">
             <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
-            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+            <span class="logo-text">NovaTools <span class="logo-mc" data-i18n="tools.dev.json-formatter.text.001">MC</span></span>
           </a>
           <nav class="nav-desktop" aria-label="Main navigation">
-            <a href="/#finance" class="nav-link">Finance</a>
-            <a href="/#pdf" class="nav-link">PDF Tools</a>
-            <a href="/#image" class="nav-link">Images</a>
-            <a href="/#dev" class="nav-link">Developers</a>
+            <a href="/#finance" class="nav-link" data-i18n="tools.dev.json-formatter.text.002">Finance</a>
+            <a href="/#pdf" class="nav-link" data-i18n="tools.dev.json-formatter.text.003">PDF Tools</a>
+            <a href="/#image" class="nav-link" data-i18n="tools.dev.json-formatter.text.004">Images</a>
+            <a href="/#dev" class="nav-link" data-i18n="tools.dev.json-formatter.text.005">Developers</a>
           </nav>
-          <div class="privacy-badge" title="Your data never leaves your browser">
+          <div class="privacy-badge" title="Your data never leaves your browser" data-i18n-title="tools.dev.json-formatter.title.001">
             <span class="privacy-badge-dot"></span>
-            <span>Privacy First</span>
+            <span data-i18n="tools.dev.json-formatter.text.006">Privacy First</span>
           </div>
           <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
             <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -410,10 +410,10 @@
           </button>
         </div>
         <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
-          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
-          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
-          <a href="/#image" class="mobile-nav-link">Image Tools</a>
-          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+          <a href="/#finance" class="mobile-nav-link" data-i18n="tools.dev.json-formatter.text.007">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link" data-i18n="tools.dev.json-formatter.text.008">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link" data-i18n="tools.dev.json-formatter.text.009">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link" data-i18n="tools.dev.json-formatter.text.010">Developer Tools</a>
         </nav>
       </div>
     </header>
@@ -423,9 +423,9 @@
         <!-- Hero -->
         <div class="tool-hero">
           <div class="tool-hero-icon">&#123;&#125;</div>
-          <h1>JSON Formatter &amp; Validator</h1>
-          <span class="sr-only">Free JSON formatter and validator — free online JSON beautifier, minifier and syntax validator. Format and validate JSON for free. No registration required. 100% free JSON developer tool.</span>
-          <p>Instantly format, validate, and minify JSON with full syntax highlighting. Works 100% in your browser — nothing is sent to any server.</p>
+          <h1 data-i18n="tools.dev.json-formatter.text.011">JSON Formatter &amp; Validator</h1>
+          <span class="sr-only" data-i18n="tools.dev.json-formatter.text.012">Free JSON formatter and validator — free online JSON beautifier, minifier and syntax validator. Format and validate JSON for free. No registration required. 100% free JSON developer tool.</span>
+          <p data-i18n="tools.dev.json-formatter.text.013">Instantly format, validate, and minify JSON with full syntax highlighting. Works 100% in your browser — nothing is sent to any server.</p>
         </div>
 
         <!-- Main Card -->
@@ -443,7 +443,7 @@
               autocomplete="off"
               autocorrect="off"
               autocapitalize="off"
-              placeholder="Paste your JSON here..."
+              placeholder="Paste your JSON here..." data-i18n-placeholder="tools.dev.json-formatter.placeholder.001"
               aria-label="JSON input"
             ></textarea>
           </div>
@@ -453,7 +453,7 @@
             <button class="btn btn-primary" id="btnFormat" type="button" aria-label="Format JSON (Ctrl+Enter)">
               <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M2 4h12v1.5H2V4zm2 3.25h8v1.5H4V7.25zm2 3.25h4v1.5H6V10.5z"/></svg>
               Format
-              <span class="kbd-hint">Ctrl+Enter</span>
+              <span class="kbd-hint" data-i18n="tools.dev.json-formatter.text.014">Ctrl+Enter</span>
             </button>
             <button class="btn btn-secondary" id="btnMinify" type="button" aria-label="Minify JSON">
               <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M1.5 3.5h13v1H1.5v-1zm0 4h13v1h-13v-1zm0 4h13v1h-13v-1z"/></svg>
@@ -467,7 +467,7 @@
               <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M5.5 5.5A.5.5 0 016 6v6a.5.5 0 01-1 0V6a.5.5 0 01.5-.5zm2.5 0a.5.5 0 01.5.5v6a.5.5 0 01-1 0V6a.5.5 0 01.5-.5zm3 .5a.5.5 0 00-1 0v6a.5.5 0 001 0V6z"/><path fill-rule="evenodd" d="M14.5 3a1 1 0 01-1 1H13v9a2 2 0 01-2 2H5a2 2 0 01-2-2V4h-.5a1 1 0 01-1-1V2a1 1 0 011-1H6a1 1 0 011-1h2a1 1 0 011 1h3.5a1 1 0 011 1v1zM4.118 4L4 4.059V13a1 1 0 001 1h6a1 1 0 001-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/></svg>
               Clear
             </button>
-            <span class="copy-feedback" id="copyFeedback" aria-live="polite">Copied!</span>
+            <span class="copy-feedback" id="copyFeedback" aria-live="polite" data-i18n="tools.dev.json-formatter.text.015">Copied!</span>
           </div>
 
           <!-- Stats Badge -->
@@ -505,51 +505,51 @@
 
       <!-- SEO Content -->
       <section class="seo-section" aria-label="About this tool">
-        <h2>About JSON Formatter &amp; Validator</h2>
-        <p>
+        <h2 data-i18n="tools.dev.json-formatter.text.016">About JSON Formatter &amp; Validator</h2>
+        <p data-i18n="tools.dev.json-formatter.text.017">
           JSON (JavaScript Object Notation) is the universal data interchange format for APIs, configuration files, and data storage. This free online tool lets you instantly format messy or minified JSON into readable, indented output and validates it at the same time. The syntax highlighter colour-codes keys, strings, numbers, booleans, and nulls so you can scan large payloads at a glance. Everything runs locally in your browser; your data is never transmitted to any server.
         </p>
 
-        <h3>How to Use</h3>
+        <h3 data-i18n="tools.dev.json-formatter.text.018">How to Use</h3>
         <ol>
-          <li>Paste your raw or minified JSON into the input area.</li>
+          <li data-i18n="tools.dev.json-formatter.text.019">Paste your raw or minified JSON into the input area.</li>
           <li>Click <strong>Format</strong> (or press <strong>Ctrl+Enter</strong>) to pretty-print with 2-space indentation.</li>
           <li>Click <strong>Minify</strong> to compress JSON by removing all whitespace.</li>
           <li>Use <strong>Copy</strong> to copy the output to your clipboard, then <strong>Clear</strong> to reset.</li>
         </ol>
 
-        <h3>Frequently Asked Questions</h3>
+        <h3 data-i18n="tools.dev.json-formatter.text.020">Frequently Asked Questions</h3>
 
         <details class="faq-item">
           <summary>What is JSON and why do I need a formatter?</summary>
-          <p>JSON is a lightweight text format for representing structured data. When JSON is minified (all whitespace removed) for transmission efficiency, it becomes unreadable by humans. A formatter re-adds indentation and line breaks so you can read, debug, or audit the structure easily.</p>
+          <p data-i18n="tools.dev.json-formatter.text.021">JSON is a lightweight text format for representing structured data. When JSON is minified (all whitespace removed) for transmission efficiency, it becomes unreadable by humans. A formatter re-adds indentation and line breaks so you can read, debug, or audit the structure easily.</p>
         </details>
 
         <details class="faq-item">
           <summary>Does this tool validate JSON?</summary>
-          <p>Yes. When you click Format or Minify, the tool attempts to parse your input using the native JSON.parse() function. If parsing fails, the exact error message is shown in red so you can fix it quickly.</p>
+          <p data-i18n="tools.dev.json-formatter.text.022">Yes. When you click Format or Minify, the tool attempts to parse your input using the native JSON.parse() function. If parsing fails, the exact error message is shown in red so you can fix it quickly.</p>
         </details>
 
         <details class="faq-item">
           <summary>Is my JSON data kept private?</summary>
-          <p>Absolutely. All processing happens entirely in your browser using JavaScript. No data is sent to any server, logged, or stored anywhere. You can use this tool safely with sensitive API responses or configuration files.</p>
+          <p data-i18n="tools.dev.json-formatter.text.023">Absolutely. All processing happens entirely in your browser using JavaScript. No data is sent to any server, logged, or stored anywhere. You can use this tool safely with sensitive API responses or configuration files.</p>
         </details>
 
         <details class="faq-item">
           <summary>What is the difference between Format and Minify?</summary>
-          <p>Format (also called "pretty print" or "beautify") adds indentation and newlines to make JSON human-readable. Minify strips all unnecessary whitespace to produce the smallest possible JSON string, which is ideal for sending over a network or storing in a database.</p>
+          <p data-i18n="tools.dev.json-formatter.text.024">Format (also called "pretty print" or "beautify") adds indentation and newlines to make JSON human-readable. Minify strips all unnecessary whitespace to produce the smallest possible JSON string, which is ideal for sending over a network or storing in a database.</p>
         </details>
 
         <details class="faq-item">
           <summary>What do the syntax highlight colours mean?</summary>
-          <p>Keys are shown in cyan, string values in green, numbers in orange, booleans (true/false) in purple, and null in red. These colours follow popular code-editor conventions for quick visual scanning.</p>
+          <p data-i18n="tools.dev.json-formatter.text.025">Keys are shown in cyan, string values in green, numbers in orange, booleans (true/false) in purple, and null in red. These colours follow popular code-editor conventions for quick visual scanning.</p>
         </details>
       </section>
     </main>
 
     <footer class="tool-footer">
-  <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
-  <p>Estimates only &mdash; not financial, legal, or tax advice.</p>
+  <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com" data-i18n="tools.dev.json-formatter.text.026">psk.dan.metehancetin@mc-novatools.com</a></p>
+  <p data-i18n="tools.dev.json-formatter.text.027">Estimates only &mdash; not financial, legal, or tax advice.</p>
 </footer>
 <style>
 .tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }
@@ -599,7 +599,7 @@
           } else if (/null/.test(match)) {
             cls = 'json-null';
           }
-          return '<span class="' + cls + '">' + match + '</span>';
+          return '<span class="' + cls + '" data-i18n="tools.dev.json-formatter.text.028">' + match + '</span>';
         }
       );
     }

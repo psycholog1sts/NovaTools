@@ -26,7 +26,7 @@
   <link rel="stylesheet" href="/src/styles/main.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   
-  <title>Free Compound Interest Calculator - Investment Growth</title>
+  <title data-i18n="tools.finance.compound-interest.meta.title">Free Compound Interest Calculator - Investment Growth</title>
   
   <!-- i18n Script -->
   <script src="/i18n.js"></script>
@@ -94,17 +94,17 @@
         <div class="header-inner">
           <a href="/" class="logo" aria-label="NovaTools MC Home">
             <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
-            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+            <span class="logo-text">NovaTools <span class="logo-mc" data-i18n="tools.finance.compound-interest.text.001">MC</span></span>
           </a>
           <nav class="nav-desktop" aria-label="Main navigation">
-            <a href="/#finance" class="nav-link">Finance</a>
-            <a href="/#pdf" class="nav-link">PDF Tools</a>
-            <a href="/#image" class="nav-link">Images</a>
-            <a href="/#dev" class="nav-link">Developers</a>
+            <a href="/#finance" class="nav-link" data-i18n="tools.finance.compound-interest.text.002">Finance</a>
+            <a href="/#pdf" class="nav-link" data-i18n="tools.finance.compound-interest.text.003">PDF Tools</a>
+            <a href="/#image" class="nav-link" data-i18n="tools.finance.compound-interest.text.004">Images</a>
+            <a href="/#dev" class="nav-link" data-i18n="tools.finance.compound-interest.text.005">Developers</a>
           </nav>
-          <div class="privacy-badge" title="Your data never leaves your browser">
+          <div class="privacy-badge" title="Your data never leaves your browser" data-i18n-title="tools.finance.compound-interest.title.001">
             <span class="privacy-badge-dot"></span>
-            <span>Privacy First</span>
+            <span data-i18n="tools.finance.compound-interest.text.006">Privacy First</span>
           </div>
           <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
             <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -115,10 +115,10 @@
           </button>
         </div>
         <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
-          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
-          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
-          <a href="/#image" class="mobile-nav-link">Image Tools</a>
-          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+          <a href="/#finance" class="mobile-nav-link" data-i18n="tools.finance.compound-interest.text.007">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link" data-i18n="tools.finance.compound-interest.text.008">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link" data-i18n="tools.finance.compound-interest.text.009">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link" data-i18n="tools.finance.compound-interest.text.010">Developer Tools</a>
         </nav>
       </div>
     </header>
@@ -127,36 +127,36 @@
         <div style="max-width: 800px; margin: 0 auto;">
           <div style="text-align: center; margin-bottom: 2rem;">
             <div style="font-size: 4rem; margin-bottom: 1rem;">📈</div>
-            <h1 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem;">Compound Interest Calculator</h1>
-            <span class="sr-only">Free compound interest calculator — free online investment growth calculator. Calculate compounding returns for free. No registration required. Free savings growth tool online.</span>
-            <p style="color: var(--text-secondary);">See how your investments grow over time with the power of compound interest. Plan your financial future.</p>
+            <h1 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem;" data-i18n="tools.finance.compound-interest.text.011">Compound Interest Calculator</h1>
+            <span class="sr-only" data-i18n="tools.finance.compound-interest.text.012">Free compound interest calculator — free online investment growth calculator. Calculate compounding returns for free. No registration required. Free savings growth tool online.</span>
+            <p style="color: var(--text-secondary);" data-i18n="tools.finance.compound-interest.text.013">See how your investments grow over time with the power of compound interest. Plan your financial future.</p>
           </div>
           
           <form class="calculator-form" data-tool="compound-interest" data-result=".results-panel">
             <div class="form-row">
               <div class="form-group">
-                <label for="principal">Initial Investment ($)</label>
+                <label for="principal" data-i18n="tools.finance.compound-interest.text.014">Initial Investment ($)</label>
                 <input type="number" id="principal" name="principal" placeholder="10000" min="0" value="10000" required>
               </div>
               <div class="form-group">
-                <label for="monthlyContribution">Monthly Contribution ($)</label>
+                <label for="monthlyContribution" data-i18n="tools.finance.compound-interest.text.015">Monthly Contribution ($)</label>
                 <input type="number" id="monthlyContribution" name="monthlyContribution" placeholder="500" min="0" value="500">
               </div>
             </div>
             
             <div class="form-row">
               <div class="form-group">
-                <label for="rate">Annual Interest Rate (%)</label>
+                <label for="rate" data-i18n="tools.finance.compound-interest.text.016">Annual Interest Rate (%)</label>
                 <input type="number" id="rate" name="rate" placeholder="7" min="0" max="100" step="0.1" value="7" required>
               </div>
               <div class="form-group">
-                <label for="years">Time Period (years)</label>
+                <label for="years" data-i18n="tools.finance.compound-interest.text.017">Time Period (years)</label>
                 <input type="number" id="years" name="years" placeholder="20" min="1" max="100" value="20" required>
               </div>
             </div>
             
             <div class="form-group">
-              <label for="compoundFrequency">Compound Frequency</label>
+              <label for="compoundFrequency" data-i18n="tools.finance.compound-interest.text.018">Compound Frequency</label>
               <select id="compoundFrequency" name="compoundFrequency" required>
                 <option value="daily">Daily</option>
                 <option value="monthly" selected>Monthly</option>
@@ -165,13 +165,13 @@
               </select>
             </div>
             
-            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem; height: 52px; font-size: 1rem;">
+            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem; height: 52px; font-size: 1rem;" data-i18n="tools.finance.compound-interest.text.019">
               Calculate Growth
             </button>
           </form>
           
           <div class="results-panel">
-            <h2 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; text-align: center;">Projected Growth</h2>
+            <h2 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; text-align: center;" data-i18n="tools.finance.compound-interest.text.020">Projected Growth</h2>
             
             <div class="result-grid">
               <div class="result-item">
@@ -193,7 +193,7 @@
             </div>
             
             <div class="chart-container">
-              <h4 style="margin-bottom: 1rem; color: var(--text-primary);">Year by Year Breakdown</h4>
+              <h4 style="margin-bottom: 1rem; color: var(--text-primary);" data-i18n="tools.finance.compound-interest.text.021">Year by Year Breakdown</h4>
               <div data-output="yearlyBreakdown" style="max-height: 300px; overflow-y: auto;">
                 <table style="width: 100%; font-size: 0.9375rem;">
                   <thead>
@@ -213,41 +213,41 @@
       
       <!-- SEO Content Section -->
       <section class="seo-content" style="max-width: 800px; margin: 3rem auto; padding: 0 1rem;">
-        <h2 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-primary);">About This Tool</h2>
+        <h2 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-primary);" data-i18n="tools.finance.compound-interest.text.022">About This Tool</h2>
         
-        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem;">
+        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem;" data-i18n="tools.finance.compound-interest.text.023">
           The Compound Interest Calculator demonstrates the remarkable power of compound interest—often called the eighth wonder of the world. Unlike simple interest, which only earns returns on your principal, compound interest generates earnings on both your initial investment and the accumulated interest from previous periods. This creates exponential growth over time, making it one of the most powerful tools for building wealth. Whether you're planning for retirement, saving for a down payment, or investing in the stock market, understanding how compound interest works can significantly impact your financial decisions. Our calculator shows you exactly how much your money can grow with regular contributions.
         </p>
         
-        <h3 style="font-size: 1.25rem; margin: 2rem 0 1rem; color: var(--text-primary);">How to Use</h3>
+        <h3 style="font-size: 1.25rem; margin: 2rem 0 1rem; color: var(--text-primary);" data-i18n="tools.finance.compound-interest.text.024">How to Use</h3>
         <ol style="color: var(--text-secondary); line-height: 1.8; padding-left: 1.5rem;">
-          <li>Enter your initial investment amount—the starting principal you plan to invest.</li>
-          <li>Set your monthly contribution to see how regular additions accelerate your growth.</li>
-          <li>Input your expected annual interest rate based on your investment type (stocks, bonds, savings).</li>
-          <li>Choose your time horizon and compound frequency, then click Calculate to see your projected wealth.</li>
+          <li data-i18n="tools.finance.compound-interest.text.025">Enter your initial investment amount—the starting principal you plan to invest.</li>
+          <li data-i18n="tools.finance.compound-interest.text.026">Set your monthly contribution to see how regular additions accelerate your growth.</li>
+          <li data-i18n="tools.finance.compound-interest.text.027">Input your expected annual interest rate based on your investment type (stocks, bonds, savings).</li>
+          <li data-i18n="tools.finance.compound-interest.text.028">Choose your time horizon and compound frequency, then click Calculate to see your projected wealth.</li>
         </ol>
         
-        <h3 style="font-size: 1.25rem; margin: 2rem 0 1rem; color: var(--text-primary);">Frequently Asked Questions</h3>
+        <h3 style="font-size: 1.25rem; margin: 2rem 0 1rem; color: var(--text-primary);" data-i18n="tools.finance.compound-interest.text.029">Frequently Asked Questions</h3>
         <div class="faq-section" style="margin-top: 1rem;">
           <details style="margin-bottom: 1rem; border: 1px solid var(--border-default); border-radius: var(--radius-md); padding: 1rem;">
             <summary style="font-weight: 600; color: var(--text-primary); cursor: pointer;">What is the difference between simple and compound interest?</summary>
-            <p style="margin-top: 0.5rem; color: var(--text-secondary); line-height: 1.6;">Simple interest is calculated only on the principal amount, while compound interest is calculated on the principal plus any interest that has accumulated. With compound interest, your money grows exponentially because you earn interest on your interest. Over long periods, this difference becomes dramatic—for example, $10,000 at 7% grows to about $38,700 in 20 years with annual compounding, versus just $24,000 with simple interest.</p>
+            <p style="margin-top: 0.5rem; color: var(--text-secondary); line-height: 1.6;" data-i18n="tools.finance.compound-interest.text.030">Simple interest is calculated only on the principal amount, while compound interest is calculated on the principal plus any interest that has accumulated. With compound interest, your money grows exponentially because you earn interest on your interest. Over long periods, this difference becomes dramatic—for example, $10,000 at 7% grows to about $38,700 in 20 years with annual compounding, versus just $24,000 with simple interest.</p>
           </details>
           <details style="margin-bottom: 1rem; border: 1px solid var(--border-default); border-radius: var(--radius-md); padding: 1rem;">
             <summary style="font-weight: 600; color: var(--text-primary); cursor: pointer;">How often should interest compound for maximum growth?</summary>
-            <p style="margin-top: 0.5rem; color: var(--text-secondary); line-height: 1.6;">The more frequently interest compounds, the faster your money grows. Daily compounding yields slightly more than monthly, which yields more than quarterly or annually. However, the difference between monthly and daily compounding is relatively small over most time periods. For practical purposes, monthly compounding is common for many investments and savings accounts.</p>
+            <p style="margin-top: 0.5rem; color: var(--text-secondary); line-height: 1.6;" data-i18n="tools.finance.compound-interest.text.031">The more frequently interest compounds, the faster your money grows. Daily compounding yields slightly more than monthly, which yields more than quarterly or annually. However, the difference between monthly and daily compounding is relatively small over most time periods. For practical purposes, monthly compounding is common for many investments and savings accounts.</p>
           </details>
           <details style="margin-bottom: 1rem; border: 1px solid var(--border-default); border-radius: var(--radius-md); padding: 1rem;">
             <summary style="font-weight: 600; color: var(--text-primary); cursor: pointer;">What is a realistic interest rate for long-term investing?</summary>
-            <p style="margin-top: 0.5rem; color: var(--text-secondary); line-height: 1.6;">Historical average annual returns vary by investment type: the S&P 500 has returned approximately 10% annually before inflation (7% real return), high-yield savings accounts currently offer 4-5%, bonds typically return 3-5%, and certificates of deposit (CDs) range from 3-6% depending on term length. Remember that higher returns usually come with higher risk and volatility.</p>
+            <p style="margin-top: 0.5rem; color: var(--text-secondary); line-height: 1.6;" data-i18n="tools.finance.compound-interest.text.032">Historical average annual returns vary by investment type: the S&P 500 has returned approximately 10% annually before inflation (7% real return), high-yield savings accounts currently offer 4-5%, bonds typically return 3-5%, and certificates of deposit (CDs) range from 3-6% depending on term length. Remember that higher returns usually come with higher risk and volatility.</p>
           </details>
         </div>
       </section>
     </main>
 
     <footer class="tool-footer">
-  <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
-  <p>Estimates only &mdash; not financial, legal, or tax advice.</p>
+  <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com" data-i18n="tools.finance.compound-interest.text.033">psk.dan.metehancetin@mc-novatools.com</a></p>
+  <p data-i18n="tools.finance.compound-interest.text.034">Estimates only &mdash; not financial, legal, or tax advice.</p>
 </footer>
 <style>
 .tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }

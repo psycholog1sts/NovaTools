@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="/src/styles/main.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <title>Free URL Shortener | NovaTools MC</title>
+  <title data-i18n="tools.social.url-shortener.meta.title">Free URL Shortener | NovaTools MC</title>
   
   <!-- i18n Script -->
   <script src="/i18n.js"></script>
@@ -122,17 +122,17 @@
         <div class="header-inner">
           <a href="/" class="logo" aria-label="NovaTools MC Home">
             <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
-            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+            <span class="logo-text">NovaTools <span class="logo-mc" data-i18n="tools.social.url-shortener.text.001">MC</span></span>
           </a>
           <nav class="nav-desktop" aria-label="Main navigation">
-            <a href="/#finance" class="nav-link">Finance</a>
-            <a href="/#pdf" class="nav-link">PDF Tools</a>
-            <a href="/#image" class="nav-link">Images</a>
-            <a href="/#dev" class="nav-link">Developers</a>
+            <a href="/#finance" class="nav-link" data-i18n="tools.social.url-shortener.text.002">Finance</a>
+            <a href="/#pdf" class="nav-link" data-i18n="tools.social.url-shortener.text.003">PDF Tools</a>
+            <a href="/#image" class="nav-link" data-i18n="tools.social.url-shortener.text.004">Images</a>
+            <a href="/#dev" class="nav-link" data-i18n="tools.social.url-shortener.text.005">Developers</a>
           </nav>
-          <div class="privacy-badge" title="Your data never leaves your browser">
+          <div class="privacy-badge" title="Your data never leaves your browser" data-i18n-title="tools.social.url-shortener.title.001">
             <span class="privacy-badge-dot"></span>
-            <span>Privacy First</span>
+            <span data-i18n="tools.social.url-shortener.text.006">Privacy First</span>
           </div>
           <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
             <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -143,10 +143,10 @@
           </button>
         </div>
         <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
-          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
-          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
-          <a href="/#image" class="mobile-nav-link">Image Tools</a>
-          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+          <a href="/#finance" class="mobile-nav-link" data-i18n="tools.social.url-shortener.text.007">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link" data-i18n="tools.social.url-shortener.text.008">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link" data-i18n="tools.social.url-shortener.text.009">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link" data-i18n="tools.social.url-shortener.text.010">Developer Tools</a>
         </nav>
       </div>
     </header>
@@ -155,14 +155,14 @@
       <div class="tool-wrapper">
         <div class="tool-hero">
           <div class="tool-hero-icon">&#128279;</div>
-          <h1>URL Shortener</h1>
-          <p>Create short, memorable links from long URLs. Client-side hash-based generation ensures complete privacy - your URLs never leave your browser.</p>
+          <h1 data-i18n="tools.social.url-shortener.text.011">URL Shortener</h1>
+          <p data-i18n="tools.social.url-shortener.text.012">Create short, memorable links from long URLs. Client-side hash-based generation ensures complete privacy - your URLs never leave your browser.</p>
         </div>
 
         <div class="card">
           <div class="input-group">
-            <label class="input-label" for="longUrl">Enter Long URL</label>
-            <input type="text" class="input-field" id="longUrl" placeholder="https://example.com/very/long/url/with/many/parameters">
+            <label class="input-label" for="longUrl" data-i18n="tools.social.url-shortener.text.013">Enter Long URL</label>
+            <input type="text" class="input-field" id="longUrl" placeholder="https://example.com/very/long/url/with/many/parameters" data-i18n-placeholder="tools.social.url-shortener.placeholder.001">
           </div>
           
           <button class="btn btn-primary" id="btnShorten" type="button">
@@ -173,7 +173,7 @@
           <div class="result-area" id="resultArea">
             <div class="short-url-box">
               <span class="short-url" id="shortUrl"></span>
-              <button class="btn btn-secondary" id="btnCopy">Copy</button>
+              <button class="btn btn-secondary" id="btnCopy" data-i18n="tools.social.url-shortener.text.014">Copy</button>
             </div>
             <div class="original-url" id="originalUrl"></div>
             <div class="stats-grid">
@@ -203,19 +203,19 @@
       </div>
 
       <section class="seo-section" aria-label="About this tool">
-        <h2>About URL Shortener</h2>
-        <p>URL Shortener is a privacy-focused tool that creates compact versions of long URLs. Unlike traditional URL shorteners that store mappings on servers (creating privacy concerns and single points of failure), our tool generates short identifiers using client-side hashing. This means your URLs never leave your browser, ensuring complete privacy.</p>
+        <h2 data-i18n="tools.social.url-shortener.text.015">About URL Shortener</h2>
+        <p data-i18n="tools.social.url-shortener.text.016">URL Shortener is a privacy-focused tool that creates compact versions of long URLs. Unlike traditional URL shorteners that store mappings on servers (creating privacy concerns and single points of failure), our tool generates short identifiers using client-side hashing. This means your URLs never leave your browser, ensuring complete privacy.</p>
 
-        <h3>How to Use</h3>
+        <h3 data-i18n="tools.social.url-shortener.text.017">How to Use</h3>
         <ol>
-          <li>Paste your long URL into the input field.</li>
-          <li>Click "Generate Short Link" to create a compact version.</li>
-          <li>Copy the short link using the Copy button.</li>
-          <li>Use the link in social media, emails, or documents.</li>
-          <li>Note: These short links are for local use - consider dedicated services for permanent links.</li>
+          <li data-i18n="tools.social.url-shortener.text.018">Paste your long URL into the input field.</li>
+          <li data-i18n="tools.social.url-shortener.text.019">Click "Generate Short Link" to create a compact version.</li>
+          <li data-i18n="tools.social.url-shortener.text.020">Copy the short link using the Copy button.</li>
+          <li data-i18n="tools.social.url-shortener.text.021">Use the link in social media, emails, or documents.</li>
+          <li data-i18n="tools.social.url-shortener.text.022">Note: These short links are for local use - consider dedicated services for permanent links.</li>
         </ol>
 
-        <h3>Important Limitations</h3>
+        <h3 data-i18n="tools.social.url-shortener.text.023">Important Limitations</h3>
         <ul style="color: #A1A1AA; line-height: 1.8; font-size: 0.9375rem; padding-left: 1.25rem;">
           <li><strong>Client-side only:</strong> Short links work in your current browser session</li>
           <li><strong>Not persistent:</strong> Links are not stored on any server</li>
@@ -224,38 +224,38 @@
           <li><strong>Bookmark solution:</strong> Save this page to regenerate the same short link</li>
         </ul>
 
-        <h3>Frequently Asked Questions</h3>
+        <h3 data-i18n="tools.social.url-shortener.text.024">Frequently Asked Questions</h3>
 
         <details class="faq-item">
           <summary>How is this different from Bitly or TinyURL?</summary>
-          <p>Traditional URL shorteners store your URL on their servers and provide a redirect. Our tool generates a hash locally in your browser without any server interaction. This provides maximum privacy but means the short link only works on your device.</p>
+          <p data-i18n="tools.social.url-shortener.text.025">Traditional URL shorteners store your URL on their servers and provide a redirect. Our tool generates a hash locally in your browser without any server interaction. This provides maximum privacy but means the short link only works on your device.</p>
         </details>
 
         <details class="faq-item">
           <summary>Will my short link work for other people?</summary>
-          <p>No. Since we don't store URL mappings on a server, short links generated by this tool only exist in your browser. Other people cannot use your short link. For shareable short links, you need a traditional URL shortening service.</p>
+          <p data-i18n="tools.social.url-shortener.text.026">No. Since we don't store URL mappings on a server, short links generated by this tool only exist in your browser. Other people cannot use your short link. For shareable short links, you need a traditional URL shortening service.</p>
         </details>
 
         <details class="faq-item">
           <summary>How long do short links last?</summary>
-          <p>Short links generated by this tool persist as long as you keep this browser tab open or bookmark the page with the generated link. We don't store any data on our servers, so closing the page without bookmarking will lose the short link.</p>
+          <p data-i18n="tools.social.url-shortener.text.027">Short links generated by this tool persist as long as you keep this browser tab open or bookmark the page with the generated link. We don't store any data on our servers, so closing the page without bookmarking will lose the short link.</p>
         </details>
 
         <details class="faq-item">
           <summary>Is this tool completely private?</summary>
-          <p>Yes. All processing happens in your browser using JavaScript. We never see, store, or transmit your URLs. This makes our tool ideal for sensitive URLs that you don't want to share with third-party services.</p>
+          <p data-i18n="tools.social.url-shortener.text.028">Yes. All processing happens in your browser using JavaScript. We never see, store, or transmit your URLs. This makes our tool ideal for sensitive URLs that you don't want to share with third-party services.</p>
         </details>
 
         <details class="faq-item">
           <summary>Can I customize my short link?</summary>
-          <p>Currently, this tool generates random hash-based short codes. Custom short links (like bit.ly/my-link) require server storage and are only available with traditional URL shortening services that store URL mappings.</p>
+          <p data-i18n="tools.social.url-shortener.text.029">Currently, this tool generates random hash-based short codes. Custom short links (like bit.ly/my-link) require server storage and are only available with traditional URL shortening services that store URL mappings.</p>
         </details>
       </section>
     </main>
 
     <footer class="tool-footer">
-      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
-      <p>Estimates only &mdash; not financial, legal, or tax advice.</p>
+      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com" data-i18n="tools.social.url-shortener.text.030">psk.dan.metehancetin@mc-novatools.com</a></p>
+      <p data-i18n="tools.social.url-shortener.text.031">Estimates only &mdash; not financial, legal, or tax advice.</p>
     </footer>
     <style>
       .tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }

@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="/src/styles/main.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <title>Daily Tech & Finance News Brief | AI Summarizer | NovaTools MC</title>
+  <title data-i18n="tools.news.summarizer.meta.title">Daily Tech & Finance News Brief | AI Summarizer | NovaTools MC</title>
   
   <!-- i18n Script -->
   <script src="/i18n.js"></script>
@@ -67,17 +67,17 @@
         <div class="header-inner">
           <a href="/" class="logo" aria-label="NovaTools MC Home">
             <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
-            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+            <span class="logo-text">NovaTools <span class="logo-mc" data-i18n="tools.news.summarizer.text.001">MC</span></span>
           </a>
           <nav class="nav-desktop" aria-label="Main navigation">
-            <a href="/#finance" class="nav-link">Finance</a>
-            <a href="/#pdf" class="nav-link">PDF Tools</a>
-            <a href="/#image" class="nav-link">Images</a>
-            <a href="/#dev" class="nav-link">Developers</a>
+            <a href="/#finance" class="nav-link" data-i18n="tools.news.summarizer.text.002">Finance</a>
+            <a href="/#pdf" class="nav-link" data-i18n="tools.news.summarizer.text.003">PDF Tools</a>
+            <a href="/#image" class="nav-link" data-i18n="tools.news.summarizer.text.004">Images</a>
+            <a href="/#dev" class="nav-link" data-i18n="tools.news.summarizer.text.005">Developers</a>
           </nav>
-          <div class="privacy-badge" title="Your data never leaves your browser">
+          <div class="privacy-badge" title="Your data never leaves your browser" data-i18n-title="tools.news.summarizer.title.001">
             <span class="privacy-badge-dot"></span>
-            <span>Privacy First</span>
+            <span data-i18n="tools.news.summarizer.text.006">Privacy First</span>
           </div>
           <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
             <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -88,10 +88,10 @@
           </button>
         </div>
         <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
-          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
-          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
-          <a href="/#image" class="mobile-nav-link">Image Tools</a>
-          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+          <a href="/#finance" class="mobile-nav-link" data-i18n="tools.news.summarizer.text.007">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link" data-i18n="tools.news.summarizer.text.008">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link" data-i18n="tools.news.summarizer.text.009">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link" data-i18n="tools.news.summarizer.text.010">Developer Tools</a>
         </nav>
       </div>
     </header>
@@ -99,8 +99,8 @@
       <div class="container" style="padding: 2rem 1rem;">
         <div class="news-hero">
           <div style="font-size: 3rem; margin-bottom: 1rem;">📰</div>
-          <h1 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem;">Tech & Finance News Brief</h1>
-          <p style="color: var(--text-secondary);">AI-curated summaries of market trends, crypto updates, and technology</p>
+          <h1 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem;" data-i18n="tools.news.summarizer.text.011">Tech & Finance News Brief</h1>
+          <p style="color: var(--text-secondary);" data-i18n="tools.news.summarizer.text.012">AI-curated summaries of market trends, crypto updates, and technology</p>
           <div class="last-updated">Last updated: <span id="lastUpdated">-</span></div>
           <button class="refresh-btn" id="refreshBtn" style="margin-top: 1rem;">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6M1 20v-6h6M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
@@ -109,11 +109,11 @@
         </div>
 
         <div class="news-categories">
-          <button class="category-btn active" data-category="all">All News</button>
-          <button class="category-btn" data-category="crypto">Crypto</button>
-          <button class="category-btn" data-category="stocks">Stocks</button>
-          <button class="category-btn" data-category="tech">Technology</button>
-          <button class="category-btn" data-category="finance">Finance</button>
+          <button class="category-btn active" data-category="all" data-i18n="tools.news.summarizer.text.013">All News</button>
+          <button class="category-btn" data-category="crypto" data-i18n="tools.news.summarizer.text.014">Crypto</button>
+          <button class="category-btn" data-category="stocks" data-i18n="tools.news.summarizer.text.015">Stocks</button>
+          <button class="category-btn" data-category="tech" data-i18n="tools.news.summarizer.text.016">Technology</button>
+          <button class="category-btn" data-category="finance" data-i18n="tools.news.summarizer.text.017">Finance</button>
         </div>
 
         <div class="news-grid">
@@ -142,8 +142,8 @@
     </main>
 
     <footer class="tool-footer">
-  <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
-  <p>Estimates only &mdash; not financial, legal, or tax advice.</p>
+  <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com" data-i18n="tools.news.summarizer.text.018">psk.dan.metehancetin@mc-novatools.com</a></p>
+  <p data-i18n="tools.news.summarizer.text.019">Estimates only &mdash; not financial, legal, or tax advice.</p>
 </footer>
 <style>
 .tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }
@@ -240,24 +240,24 @@
         container.innerHTML = news.map(item => `
           <article class="news-card ${item.featured ? 'featured' : ''}">
             <div class="news-source">
-              <span class="source-badge">${item.source}</span>
-              <span class="news-time">${item.time}</span>
+              <span class="source-badge" data-i18n="tools.news.summarizer.text.020">${item.source}</span>
+              <span class="news-time" data-i18n="tools.news.summarizer.text.021">${item.time}</span>
             </div>
-            <h3 class="news-title">${item.title}</h3>
-            <p class="news-summary">${item.summary}</p>
+            <h3 class="news-title" data-i18n="tools.news.summarizer.text.022">${item.title}</h3>
+            <p class="news-summary" data-i18n="tools.news.summarizer.text.023">${item.summary}</p>
             <div class="news-meta">
-              <span class="sentiment ${item.sentiment}">
+              <span class="sentiment ${item.sentiment}" data-i18n="tools.news.summarizer.text.024">
                 ${item.sentiment === 'positive' ? '🟢' : item.sentiment === 'negative' ? '🔴' : '🟡'}
                 ${item.sentiment.charAt(0).toUpperCase() + item.sentiment.slice(1)}
               </span>
-              <span>💬 AI Summary</span>
+              <span data-i18n="tools.news.summarizer.text.025">💬 AI Summary</span>
             </div>
           </article>
         `).join('');
         
         updateTimestamp();
       } catch (error) {
-        container.innerHTML = '<p style="text-align: center; color: var(--text-muted);">Failed to load news. Please try again.</p>';
+        container.innerHTML = '<p style="text-align: center; color: var(--text-muted);" data-i18n="tools.news.summarizer.text.026">Failed to load news. Please try again.</p>';
       }
     }
 
@@ -269,14 +269,14 @@
         container.innerHTML = trending.map((item, index) => `
           <div class="trending-item">
             <div class="trending-keyword">
-              <span style="color: var(--text-muted); font-size: 0.875rem;">#${index + 1}</span>
+              <span style="color: var(--text-muted); font-size: 0.875rem;" data-i18n="tools.news.summarizer.text.027">#${index + 1}</span>
               ${item.keyword}
             </div>
             <div class="trending-count">${item.count.toLocaleString()} mentions</div>
           </div>
         `).join('');
       } catch (error) {
-        container.innerHTML = '<p style="color: var(--text-muted);">Failed to load trending topics.</p>';
+        container.innerHTML = '<p style="color: var(--text-muted);" data-i18n="tools.news.summarizer.text.028">Failed to load trending topics.</p>';
       }
     }
 

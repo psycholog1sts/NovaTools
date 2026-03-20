@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="/src/styles/critical.css">
   <link rel="stylesheet" href="/src/styles/main.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <title>Free Life Insurance Calculator - Find Right Coverage</title>
+  <title data-i18n="tools.finance.life-insurance.meta.title">Free Life Insurance Calculator - Find Right Coverage</title>
   
   <!-- i18n Script -->
   <script src="/i18n.js"></script>
@@ -242,17 +242,17 @@
         <div class="header-inner">
           <a href="/" class="logo" aria-label="NovaTools MC Home">
             <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
-            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+            <span class="logo-text">NovaTools <span class="logo-mc" data-i18n="tools.finance.life-insurance.text.001">MC</span></span>
           </a>
           <nav class="nav-desktop" aria-label="Main navigation">
-            <a href="/#finance" class="nav-link">Finance</a>
-            <a href="/#pdf" class="nav-link">PDF Tools</a>
-            <a href="/#image" class="nav-link">Images</a>
-            <a href="/#dev" class="nav-link">Developers</a>
+            <a href="/#finance" class="nav-link" data-i18n="tools.finance.life-insurance.text.002">Finance</a>
+            <a href="/#pdf" class="nav-link" data-i18n="tools.finance.life-insurance.text.003">PDF Tools</a>
+            <a href="/#image" class="nav-link" data-i18n="tools.finance.life-insurance.text.004">Images</a>
+            <a href="/#dev" class="nav-link" data-i18n="tools.finance.life-insurance.text.005">Developers</a>
           </nav>
-          <div class="privacy-badge" title="Your data never leaves your browser">
+          <div class="privacy-badge" title="Your data never leaves your browser" data-i18n-title="tools.finance.life-insurance.title.001">
             <span class="privacy-badge-dot"></span>
-            <span>Privacy First</span>
+            <span data-i18n="tools.finance.life-insurance.text.006">Privacy First</span>
           </div>
           <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
             <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -263,64 +263,64 @@
           </button>
         </div>
         <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
-          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
-          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
-          <a href="/#image" class="mobile-nav-link">Image Tools</a>
-          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+          <a href="/#finance" class="mobile-nav-link" data-i18n="tools.finance.life-insurance.text.007">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link" data-i18n="tools.finance.life-insurance.text.008">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link" data-i18n="tools.finance.life-insurance.text.009">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link" data-i18n="tools.finance.life-insurance.text.010">Developer Tools</a>
         </nav>
       </div>
     </header>
 <main class="main-content">
       <div class="container" style="padding: 4rem 1rem;">
         <div style="max-width: 800px; margin: 0 auto;">
-          <h1 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; text-align: center;">Life Insurance Calculator</h1>
-          <span class="sr-only">Free life insurance calculator — free online tool to calculate how much life insurance you need. Protect your family with the right coverage. 100% free, no registration required.</span>
-          <p style="color: var(--text-secondary); text-align: center; margin-bottom: 2rem;">Calculate the right coverage amount to protect your family's financial future using the DIME method.</p>
+          <h1 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; text-align: center;" data-i18n="tools.finance.life-insurance.text.011">Life Insurance Calculator</h1>
+          <span class="sr-only" data-i18n="tools.finance.life-insurance.text.012">Free life insurance calculator — free online tool to calculate how much life insurance you need. Protect your family with the right coverage. 100% free, no registration required.</span>
+          <p style="color: var(--text-secondary); text-align: center; margin-bottom: 2rem;" data-i18n="tools.finance.life-insurance.text.013">Calculate the right coverage amount to protect your family's financial future using the DIME method.</p>
           
           <div class="calculator-form">
-            <h2 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1.5rem;">Your Information</h2>
+            <h2 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1.5rem;" data-i18n="tools.finance.life-insurance.text.014">Your Information</h2>
             
             <div class="form-row">
               <div class="form-group">
-                <label for="annualIncome">Annual Income ($)</label>
+                <label for="annualIncome" data-i18n="tools.finance.life-insurance.text.015">Annual Income ($)</label>
                 <input type="number" id="annualIncome" placeholder="75000" min="0">
               </div>
               <div class="form-group">
-                <label for="yearsReplace">Years to Replace Income</label>
+                <label for="yearsReplace" data-i18n="tools.finance.life-insurance.text.016">Years to Replace Income</label>
                 <input type="number" id="yearsReplace" placeholder="10" min="1" max="30" value="10">
               </div>
             </div>
             
-            <h2 style="font-size: 1.25rem; font-weight: 600; margin: 2rem 0 1.5rem;">Debts & Obligations</h2>
+            <h2 style="font-size: 1.25rem; font-weight: 600; margin: 2rem 0 1.5rem;" data-i18n="tools.finance.life-insurance.text.017">Debts & Obligations</h2>
             
             <div class="form-row">
               <div class="form-group">
-                <label for="mortgageBalance">Mortgage Balance ($)</label>
+                <label for="mortgageBalance" data-i18n="tools.finance.life-insurance.text.018">Mortgage Balance ($)</label>
                 <input type="number" id="mortgageBalance" placeholder="250000" min="0">
               </div>
               <div class="form-group">
-                <label for="otherDebts">Other Debts ($)</label>
+                <label for="otherDebts" data-i18n="tools.finance.life-insurance.text.019">Other Debts ($)</label>
                 <input type="number" id="otherDebts" placeholder="20000" min="0">
               </div>
             </div>
             
             <div class="form-row">
               <div class="form-group">
-                <label for="numChildren">Number of Children</label>
+                <label for="numChildren" data-i18n="tools.finance.life-insurance.text.020">Number of Children</label>
                 <input type="number" id="numChildren" placeholder="2" min="0" max="10">
               </div>
               <div class="form-group">
-                <label for="educationCost">Education Cost per Child ($)</label>
+                <label for="educationCost" data-i18n="tools.finance.life-insurance.text.021">Education Cost per Child ($)</label>
                 <input type="number" id="educationCost" placeholder="100000" min="0">
               </div>
             </div>
             
             <div class="form-group">
-              <label for="finalExpenses">Final Expenses ($)</label>
+              <label for="finalExpenses" data-i18n="tools.finance.life-insurance.text.022">Final Expenses ($)</label>
               <input type="number" id="finalExpenses" placeholder="15000" min="0">
             </div>
             
-            <button type="button" id="calculateBtn" class="btn btn-primary" style="width: 100%; margin-top: 1rem; height: 52px; font-size: 1rem;">
+            <button type="button" id="calculateBtn" class="btn btn-primary" style="width: 100%; margin-top: 1rem; height: 52px; font-size: 1rem;" data-i18n="tools.finance.life-insurance.text.023">
               Calculate Coverage Needs
             </button>
           </div>
@@ -334,33 +334,33 @@
           </div>
           
           <div id="resultsPanel" class="results-panel">
-            <h2 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; text-align: center;">Recommended Coverage</h2>
+            <h2 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; text-align: center;" data-i18n="tools.finance.life-insurance.text.024">Recommended Coverage</h2>
             
             <div class="coverage-display">
               <div id="totalCoverage" class="coverage-amount">$0</div>
-              <p style="color: var(--text-tertiary); margin-top: 0.5rem;">Total Coverage Needed</p>
+              <p style="color: var(--text-tertiary); margin-top: 0.5rem;" data-i18n="tools.finance.life-insurance.text.025">Total Coverage Needed</p>
             </div>
             
-            <h3 style="font-size: 1rem; font-weight: 600; margin-bottom: 1rem;">Coverage Breakdown (DIME Method)</h3>
+            <h3 style="font-size: 1rem; font-weight: 600; margin-bottom: 1rem;" data-i18n="tools.finance.life-insurance.text.026">Coverage Breakdown (DIME Method)</h3>
             <ul class="breakdown-list">
               <li class="breakdown-item">
-                <span>Debt (excluding mortgage)</span>
+                <span data-i18n="tools.finance.life-insurance.text.027">Debt (excluding mortgage)</span>
                 <span id="debtAmount">$0</span>
               </li>
               <li class="breakdown-item">
-                <span>Income Replacement</span>
+                <span data-i18n="tools.finance.life-insurance.text.028">Income Replacement</span>
                 <span id="incomeAmount">$0</span>
               </li>
               <li class="breakdown-item">
-                <span>Mortgage Payoff</span>
+                <span data-i18n="tools.finance.life-insurance.text.029">Mortgage Payoff</span>
                 <span id="mortgageAmount">$0</span>
               </li>
               <li class="breakdown-item">
-                <span>Education Fund</span>
+                <span data-i18n="tools.finance.life-insurance.text.030">Education Fund</span>
                 <span id="educationAmount">$0</span>
               </li>
               <li class="breakdown-item">
-                <span>Final Expenses</span>
+                <span data-i18n="tools.finance.life-insurance.text.031">Final Expenses</span>
                 <span id="finalAmount">$0</span>
               </li>
             </ul>
@@ -374,7 +374,7 @@
       <!-- SEO Content Section -->
       <article class="seo-content" style="max-width: 800px; margin: 3rem auto; padding: 0 1rem;">
         <header>
-          <h2 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-primary);">About This Life Insurance Calculator</h2>
+          <h2 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-primary);" data-i18n="tools.finance.life-insurance.text.032">About This Life Insurance Calculator</h2>
         </header>
 
         <section>
@@ -384,44 +384,44 @@
         </section>
 
         <section>
-          <h3 style="font-size: 1.25rem; margin: 2rem 0 1rem; color: var(--text-primary);">Key Features</h3>
+          <h3 style="font-size: 1.25rem; margin: 2rem 0 1rem; color: var(--text-primary);" data-i18n="tools.finance.life-insurance.text.033">Key Features</h3>
           <ul style="color: var(--text-secondary); line-height: 1.8; padding-left: 1.5rem; list-style: disc;">
-            <li>DIME method calculation — the most accurate free formula available</li>
-            <li>Income replacement estimator based on your income and dependency years</li>
-            <li>Mortgage and debt payoff coverage built in</li>
-            <li>Education fund estimator per child</li>
-            <li>100% client-side — no account, no data collection, instant results</li>
+            <li data-i18n="tools.finance.life-insurance.text.034">DIME method calculation — the most accurate free formula available</li>
+            <li data-i18n="tools.finance.life-insurance.text.035">Income replacement estimator based on your income and dependency years</li>
+            <li data-i18n="tools.finance.life-insurance.text.036">Mortgage and debt payoff coverage built in</li>
+            <li data-i18n="tools.finance.life-insurance.text.037">Education fund estimator per child</li>
+            <li data-i18n="tools.finance.life-insurance.text.038">100% client-side — no account, no data collection, instant results</li>
           </ul>
         </section>
 
         <section>
-          <h3 style="font-size: 1.25rem; margin: 2rem 0 1rem; color: var(--text-primary);">Why Use Our Life Insurance Calculator</h3>
-          <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem;">
+          <h3 style="font-size: 1.25rem; margin: 2rem 0 1rem; color: var(--text-primary);" data-i18n="tools.finance.life-insurance.text.039">Why Use Our Life Insurance Calculator</h3>
+          <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem;" data-i18n="tools.finance.life-insurance.text.040">
             Most online insurance calculators are lead-generation tools designed to hand your data to insurance agents. Ours is different — 100% client-side, privacy-first, and built purely to help you understand your coverage needs. The DIME method has been endorsed by certified financial planners (CFPs) as a reliable framework for estimating term life insurance needs. By entering your real financial obligations rather than guessing with a multiplier, you get a number you can actually defend when comparing policies.
           </p>
         </section>
 
         <section>
-          <h3 style="font-size: 1.25rem; margin: 2rem 0 1rem; color: var(--text-primary);">Understanding the Results</h3>
+          <h3 style="font-size: 1.25rem; margin: 2rem 0 1rem; color: var(--text-primary);" data-i18n="tools.finance.life-insurance.text.041">Understanding the Results</h3>
           <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem;">
             The calculator breaks down your recommended coverage into five components: <strong>Debt</strong> (all non-mortgage debts your family would inherit), <strong>Income Replacement</strong> (annual income × years dependents need support), <strong>Mortgage Payoff</strong> (the full remaining balance), <strong>Education Fund</strong> (estimated college costs per child), and <strong>Final Expenses</strong> (funeral and end-of-life costs, typically $10,000–$20,000). The sum of these components represents a well-reasoned minimum coverage target. Term life insurance is typically most cost-effective for coverage periods of 10–30 years, and rates are significantly lower for younger, healthier applicants — making this calculation especially valuable if you're under 45.
           </p>
         </section>
 
         <section>
-          <h3 style="font-size: 1.25rem; margin: 2rem 0 1rem; color: var(--text-primary);">Frequently Asked Questions</h3>
+          <h3 style="font-size: 1.25rem; margin: 2rem 0 1rem; color: var(--text-primary);" data-i18n="tools.finance.life-insurance.text.042">Frequently Asked Questions</h3>
           <div style="margin-top: 1rem;">
             <details style="margin-bottom: 1rem; border: 1px solid var(--border-default); border-radius: var(--radius-md); padding: 1rem;">
               <summary style="font-weight: 600; color: var(--text-primary); cursor: pointer;">What is the DIME method for life insurance?</summary>
-              <p style="margin-top: 0.5rem; color: var(--text-secondary); line-height: 1.6;">DIME stands for Debt, Income, Mortgage, Education. It's a structured formula that adds together your non-mortgage debts, years of income your family depends on, your mortgage balance, and education costs for each child. This gives a much more accurate coverage estimate than simple "10x income" rules of thumb.</p>
+              <p style="margin-top: 0.5rem; color: var(--text-secondary); line-height: 1.6;" data-i18n="tools.finance.life-insurance.text.043">DIME stands for Debt, Income, Mortgage, Education. It's a structured formula that adds together your non-mortgage debts, years of income your family depends on, your mortgage balance, and education costs for each child. This gives a much more accurate coverage estimate than simple "10x income" rules of thumb.</p>
             </details>
             <details style="margin-bottom: 1rem; border: 1px solid var(--border-default); border-radius: var(--radius-md); padding: 1rem;">
               <summary style="font-weight: 600; color: var(--text-primary); cursor: pointer;">How much life insurance does an average family need?</summary>
-              <p style="margin-top: 0.5rem; color: var(--text-secondary); line-height: 1.6;">The average American family needs between $500,000 and $1.5 million in term life insurance coverage, depending on income, mortgage, number of children, and debts. The DIME method accounts for all of these variables. A family with a $300,000 mortgage, two children, and a $75,000 annual income typically needs $800,000–$1.2 million in coverage.</p>
+              <p style="margin-top: 0.5rem; color: var(--text-secondary); line-height: 1.6;" data-i18n="tools.finance.life-insurance.text.044">The average American family needs between $500,000 and $1.5 million in term life insurance coverage, depending on income, mortgage, number of children, and debts. The DIME method accounts for all of these variables. A family with a $300,000 mortgage, two children, and a $75,000 annual income typically needs $800,000–$1.2 million in coverage.</p>
             </details>
             <details style="margin-bottom: 1rem; border: 1px solid var(--border-default); border-radius: var(--radius-md); padding: 1rem;">
               <summary style="font-weight: 600; color: var(--text-primary); cursor: pointer;">Is term life or whole life insurance better?</summary>
-              <p style="margin-top: 0.5rem; color: var(--text-secondary); line-height: 1.6;">For most families focused on income protection and debt coverage, term life insurance is the more cost-effective choice. A 20-year term policy provides coverage during the years your family is most financially vulnerable. Whole life insurance builds cash value but costs 5–15x more for the same death benefit. Most certified financial planners recommend term life for families with specific, time-limited coverage needs.</p>
+              <p style="margin-top: 0.5rem; color: var(--text-secondary); line-height: 1.6;" data-i18n="tools.finance.life-insurance.text.045">For most families focused on income protection and debt coverage, term life insurance is the more cost-effective choice. A 20-year term policy provides coverage during the years your family is most financially vulnerable. Whole life insurance builds cash value but costs 5–15x more for the same death benefit. Most certified financial planners recommend term life for families with specific, time-limited coverage needs.</p>
             </details>
           </div>
         </section>
@@ -429,8 +429,8 @@
     </main>
 
     <footer class="tool-footer">
-  <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
-  <p>Estimates only &mdash; not financial, legal, or tax advice.</p>
+  <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com" data-i18n="tools.finance.life-insurance.text.046">psk.dan.metehancetin@mc-novatools.com</a></p>
+  <p data-i18n="tools.finance.life-insurance.text.047">Estimates only &mdash; not financial, legal, or tax advice.</p>
 </footer>
 <style>
 .tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }

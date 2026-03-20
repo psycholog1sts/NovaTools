@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="/src/styles/main.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <title>Free Character Counter Online | NovaTools MC</title>
+  <title data-i18n="tools.text.character-counter.meta.title">Free Character Counter Online | NovaTools MC</title>
   
   <!-- i18n Script -->
   <script src="/i18n.js"></script>
@@ -132,17 +132,17 @@
         <div class="header-inner">
           <a href="/" class="logo" aria-label="NovaTools MC Home">
             <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
-            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+            <span class="logo-text">NovaTools <span class="logo-mc" data-i18n="tools.text.character-counter.text.001">MC</span></span>
           </a>
           <nav class="nav-desktop" aria-label="Main navigation">
-            <a href="/#finance" class="nav-link">Finance</a>
-            <a href="/#pdf" class="nav-link">PDF Tools</a>
-            <a href="/#image" class="nav-link">Images</a>
-            <a href="/#dev" class="nav-link">Developers</a>
+            <a href="/#finance" class="nav-link" data-i18n="tools.text.character-counter.text.002">Finance</a>
+            <a href="/#pdf" class="nav-link" data-i18n="tools.text.character-counter.text.003">PDF Tools</a>
+            <a href="/#image" class="nav-link" data-i18n="tools.text.character-counter.text.004">Images</a>
+            <a href="/#dev" class="nav-link" data-i18n="tools.text.character-counter.text.005">Developers</a>
           </nav>
-          <div class="privacy-badge" title="Your data never leaves your browser">
+          <div class="privacy-badge" title="Your data never leaves your browser" data-i18n-title="tools.text.character-counter.title.001">
             <span class="privacy-badge-dot"></span>
-            <span>Privacy First</span>
+            <span data-i18n="tools.text.character-counter.text.006">Privacy First</span>
           </div>
           <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
             <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -153,10 +153,10 @@
           </button>
         </div>
         <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
-          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
-          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
-          <a href="/#image" class="mobile-nav-link">Image Tools</a>
-          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+          <a href="/#finance" class="mobile-nav-link" data-i18n="tools.text.character-counter.text.007">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link" data-i18n="tools.text.character-counter.text.008">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link" data-i18n="tools.text.character-counter.text.009">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link" data-i18n="tools.text.character-counter.text.010">Developer Tools</a>
         </nav>
       </div>
     </header>
@@ -165,8 +165,8 @@
       <div class="tool-wrapper">
         <div class="tool-hero">
           <div class="tool-hero-icon">&#128292;</div>
-          <h1>Character Counter</h1>
-          <p>Count characters with detailed breakdown including spaces, letters, numbers, and special characters. Check social media limits in real-time. All processing happens in your browser.</p>
+          <h1 data-i18n="tools.text.character-counter.text.011">Character Counter</h1>
+          <p data-i18n="tools.text.character-counter.text.012">Count characters with detailed breakdown including spaces, letters, numbers, and special characters. Check social media limits in real-time. All processing happens in your browser.</p>
         </div>
 
         <div class="card">
@@ -209,7 +209,7 @@
           </div>
 
           <div class="textarea-wrapper">
-            <textarea class="input-area" id="textInput" placeholder="Type or paste your text here to count characters..." aria-label="Text input for character counting"></textarea>
+            <textarea class="input-area" id="textInput" placeholder="Type or paste your text here to count characters..." data-i18n-placeholder="tools.text.character-counter.placeholder.001" aria-label="Text input for character counting"></textarea>
           </div>
 
           <div class="btn-bar">
@@ -221,7 +221,7 @@
               <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor"><path d="M5.5 5.5A.5.5 0 016 6v6a.5.5 0 01-1 0V6a.5.5 0 01.5-.5zm2.5 0a.5.5 0 01.5.5v6a.5.5 0 01-1 0V6a.5.5 0 01.5-.5zm3 .5a.5.5 0 00-1 0v6a.5.5 0 001 0V6z"/><path fill-rule="evenodd" d="M14.5 3a1 1 0 01-1 1H13v9a2 2 0 01-2 2H5a2 2 0 01-2-2V4h-.5a1 1 0 01-1-1V2a1 1 0 011-1H6a1 1 0 011-1h2a1 1 0 011 1h3.5a1 1 0 011 1v1zM4.118 4L4 4.059V13a1 1 0 001 1h6a1 1 0 001-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/></svg>
               Clear
             </button>
-            <span class="copy-feedback" id="copyFeedback" aria-live="polite">Copied!</span>
+            <span class="copy-feedback" id="copyFeedback" aria-live="polite" data-i18n="tools.text.character-counter.text.013">Copied!</span>
           </div>
 
           <div class="limits-section">
@@ -232,7 +232,7 @@
             <div class="limits-grid">
               <div class="limit-item">
                 <div class="limit-header">
-                  <span class="limit-name">Twitter/X</span>
+                  <span class="limit-name" data-i18n="tools.text.character-counter.text.014">Twitter/X</span>
                   <span class="limit-value"><span id="twitterCount">0</span> / 280</span>
                 </div>
                 <div class="limit-bar">
@@ -241,7 +241,7 @@
               </div>
               <div class="limit-item">
                 <div class="limit-header">
-                  <span class="limit-name">Instagram Caption</span>
+                  <span class="limit-name" data-i18n="tools.text.character-counter.text.015">Instagram Caption</span>
                   <span class="limit-value"><span id="instagramCount">0</span> / 2,200</span>
                 </div>
                 <div class="limit-bar">
@@ -250,7 +250,7 @@
               </div>
               <div class="limit-item">
                 <div class="limit-header">
-                  <span class="limit-name">Facebook Post</span>
+                  <span class="limit-name" data-i18n="tools.text.character-counter.text.016">Facebook Post</span>
                   <span class="limit-value"><span id="facebookCount">0</span> / 63,206</span>
                 </div>
                 <div class="limit-bar">
@@ -259,7 +259,7 @@
               </div>
               <div class="limit-item">
                 <div class="limit-header">
-                  <span class="limit-name">LinkedIn Post</span>
+                  <span class="limit-name" data-i18n="tools.text.character-counter.text.017">LinkedIn Post</span>
                   <span class="limit-value"><span id="linkedinCount">0</span> / 3,000</span>
                 </div>
                 <div class="limit-bar">
@@ -268,7 +268,7 @@
               </div>
               <div class="limit-item">
                 <div class="limit-header">
-                  <span class="limit-name">YouTube Title</span>
+                  <span class="limit-name" data-i18n="tools.text.character-counter.text.018">YouTube Title</span>
                   <span class="limit-value"><span id="youtubeTitleCount">0</span> / 100</span>
                 </div>
                 <div class="limit-bar">
@@ -277,7 +277,7 @@
               </div>
               <div class="limit-item">
                 <div class="limit-header">
-                  <span class="limit-name">YouTube Description</span>
+                  <span class="limit-name" data-i18n="tools.text.character-counter.text.019">YouTube Description</span>
                   <span class="limit-value"><span id="youtubeDescCount">0</span> / 5,000</span>
                 </div>
                 <div class="limit-bar">
@@ -294,19 +294,19 @@
       </div>
 
       <section class="seo-section" aria-label="About this tool">
-        <h2>About Character Counter</h2>
-        <p>Our free Character Counter tool provides detailed text analysis with comprehensive character breakdowns. Whether you're crafting the perfect tweet, optimizing your Instagram caption, or checking content limits, this tool helps you track every character type and stay within platform limits.</p>
+        <h2 data-i18n="tools.text.character-counter.text.020">About Character Counter</h2>
+        <p data-i18n="tools.text.character-counter.text.021">Our free Character Counter tool provides detailed text analysis with comprehensive character breakdowns. Whether you're crafting the perfect tweet, optimizing your Instagram caption, or checking content limits, this tool helps you track every character type and stay within platform limits.</p>
 
-        <h3>How to Use</h3>
+        <h3 data-i18n="tools.text.character-counter.text.022">How to Use</h3>
         <ol>
-          <li>Type or paste your text into the textarea above.</li>
-          <li>View real-time statistics: total characters, letters, numbers, special characters, spaces, and lines.</li>
-          <li>Check social media limit progress bars for Twitter/X, Instagram, Facebook, LinkedIn, and YouTube.</li>
+          <li data-i18n="tools.text.character-counter.text.023">Type or paste your text into the textarea above.</li>
+          <li data-i18n="tools.text.character-counter.text.024">View real-time statistics: total characters, letters, numbers, special characters, spaces, and lines.</li>
+          <li data-i18n="tools.text.character-counter.text.025">Check social media limit progress bars for Twitter/X, Instagram, Facebook, LinkedIn, and YouTube.</li>
           <li>Use <strong>Copy</strong> to copy your text to clipboard.</li>
           <li>Click <strong>Clear</strong> to reset the textarea.</li>
         </ol>
 
-        <h3>Features Explained</h3>
+        <h3 data-i18n="tools.text.character-counter.text.026">Features Explained</h3>
         <p><strong>Total Characters:</strong> All characters including spaces and line breaks.<br>
         <strong>Without Spaces:</strong> Characters excluding whitespace.<br>
         <strong>Letters:</strong> Alphabetic characters (A-Z, a-z).<br>
@@ -315,7 +315,7 @@
         <strong>Spaces:</strong> Space, tab, and other whitespace characters.<br>
         <strong>Lines:</strong> Number of lines in the text.</p>
 
-        <h3>Social Media Limits</h3>
+        <h3 data-i18n="tools.text.character-counter.text.027">Social Media Limits</h3>
         <p><strong>Twitter/X:</strong> 280 characters per tweet<br>
         <strong>Instagram Caption:</strong> 2,200 characters<br>
         <strong>Facebook Post:</strong> 63,206 characters<br>
@@ -323,38 +323,38 @@
         <strong>YouTube Title:</strong> 100 characters<br>
         <strong>YouTube Description:</strong> 5,000 characters</p>
 
-        <h3>Frequently Asked Questions</h3>
+        <h3 data-i18n="tools.text.character-counter.text.028">Frequently Asked Questions</h3>
 
         <details class="faq-item">
           <summary>Is my text stored or sent to a server?</summary>
-          <p>No. All text processing happens entirely within your browser. Your text is never transmitted to our servers or stored anywhere.</p>
+          <p data-i18n="tools.text.character-counter.text.029">No. All text processing happens entirely within your browser. Your text is never transmitted to our servers or stored anywhere.</p>
         </details>
 
         <details class="faq-item">
           <summary>How do emoji count as characters?</summary>
-          <p>Emojis may count as 1 or 2 characters depending on the platform. This tool counts each Unicode code point. Some platforms treat certain emojis (like flags or skin tone modifiers) as multiple characters.</p>
+          <p data-i18n="tools.text.character-counter.text.030">Emojis may count as 1 or 2 characters depending on the platform. This tool counts each Unicode code point. Some platforms treat certain emojis (like flags or skin tone modifiers) as multiple characters.</p>
         </details>
 
         <details class="faq-item">
           <summary>What's the difference between with and without spaces?</summary>
-          <p>The "without spaces" count removes all whitespace characters (spaces, tabs, line breaks) from the total. This is useful for platforms that have different character counting rules.</p>
+          <p data-i18n="tools.text.character-counter.text.031">The "without spaces" count removes all whitespace characters (spaces, tabs, line breaks) from the total. This is useful for platforms that have different character counting rules.</p>
         </details>
 
         <details class="faq-item">
           <summary>Why are social media limits important?</summary>
-          <p>Each social platform has specific character limits for posts, captions, and descriptions. Exceeding these limits can result in truncated content or failed posts.</p>
+          <p data-i18n="tools.text.character-counter.text.032">Each social platform has specific character limits for posts, captions, and descriptions. Exceeding these limits can result in truncated content or failed posts.</p>
         </details>
 
         <details class="faq-item">
           <summary>Can I count characters for SMS text messages?</summary>
-          <p>Yes! Standard SMS messages are limited to 160 characters (GSM-7 encoding) or 70 characters (Unicode). Use the total character count and aim for under 160 characters for single SMS messages.</p>
+          <p data-i18n="tools.text.character-counter.text.033">Yes! Standard SMS messages are limited to 160 characters (GSM-7 encoding) or 70 characters (Unicode). Use the total character count and aim for under 160 characters for single SMS messages.</p>
         </details>
       </section>
     </main>
 
     <footer class="tool-footer">
-      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
-      <p>Estimates only &mdash; not financial, legal, or tax advice.</p>
+      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com" data-i18n="tools.text.character-counter.text.034">psk.dan.metehancetin@mc-novatools.com</a></p>
+      <p data-i18n="tools.text.character-counter.text.035">Estimates only &mdash; not financial, legal, or tax advice.</p>
     </footer>
     <style>
       .tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }

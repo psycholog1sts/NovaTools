@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="/src/styles/main.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <title>File Organizer — Free Online Tool | NovaTools MC</title>
+  <title data-i18n="tools.data.file-organizer.meta.title">File Organizer — Free Online Tool | NovaTools MC</title>
   
   <!-- i18n Script -->
   <script src="/i18n.js"></script>
@@ -146,17 +146,17 @@
         <div class="header-inner">
           <a href="/" class="logo" aria-label="NovaTools MC Home">
             <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
-            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+            <span class="logo-text">NovaTools <span class="logo-mc" data-i18n="tools.data.file-organizer.text.001">MC</span></span>
           </a>
           <nav class="nav-desktop" aria-label="Main navigation">
-            <a href="/#finance" class="nav-link">Finance</a>
-            <a href="/#pdf" class="nav-link">PDF Tools</a>
-            <a href="/#image" class="nav-link">Images</a>
-            <a href="/#dev" class="nav-link">Developers</a>
+            <a href="/#finance" class="nav-link" data-i18n="tools.data.file-organizer.text.002">Finance</a>
+            <a href="/#pdf" class="nav-link" data-i18n="tools.data.file-organizer.text.003">PDF Tools</a>
+            <a href="/#image" class="nav-link" data-i18n="tools.data.file-organizer.text.004">Images</a>
+            <a href="/#dev" class="nav-link" data-i18n="tools.data.file-organizer.text.005">Developers</a>
           </nav>
-          <div class="privacy-badge" title="Your data never leaves your browser">
+          <div class="privacy-badge" title="Your data never leaves your browser" data-i18n-title="tools.data.file-organizer.title.001">
             <span class="privacy-badge-dot"></span>
-            <span>Privacy First</span>
+            <span data-i18n="tools.data.file-organizer.text.006">Privacy First</span>
           </div>
           <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
             <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -167,10 +167,10 @@
           </button>
         </div>
         <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
-          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
-          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
-          <a href="/#image" class="mobile-nav-link">Image Tools</a>
-          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+          <a href="/#finance" class="mobile-nav-link" data-i18n="tools.data.file-organizer.text.007">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link" data-i18n="tools.data.file-organizer.text.008">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link" data-i18n="tools.data.file-organizer.text.009">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link" data-i18n="tools.data.file-organizer.text.010">Developer Tools</a>
         </nav>
       </div>
     </header>
@@ -179,8 +179,8 @@
       <div class="tool-wrapper">
         <div class="tool-hero">
           <div class="tool-hero-icon">📁</div>
-          <h1>File Organizer</h1>
-          <p>Automatically organize your files by type, date, or size. Get a clean ZIP with everything sorted into folders.</p>
+          <h1 data-i18n="tools.data.file-organizer.text.011">File Organizer</h1>
+          <p data-i18n="tools.data.file-organizer.text.012">Automatically organize your files by type, date, or size. Get a clean ZIP with everything sorted into folders.</p>
         </div>
 
         <div class="card">
@@ -221,8 +221,8 @@
           </div>
 
           <div class="btn-bar">
-            <button class="btn btn-primary" id="btnOrganize" disabled>Organize & Download ZIP</button>
-            <button class="btn btn-danger" id="btnClear">Clear</button>
+            <button class="btn btn-primary" id="btnOrganize" disabled data-i18n="tools.data.file-organizer.text.013">Organize & Download ZIP</button>
+            <button class="btn btn-danger" id="btnClear" data-i18n="tools.data.file-organizer.text.014">Clear</button>
           </div>
 
           <div class="progress-bar" id="progressBar">
@@ -234,7 +234,7 @@
           </div>
 
           <div class="results-section" id="resultsSection" style="display:none">
-            <h3>Organization Preview</h3>
+            <h3 data-i18n="tools.data.file-organizer.text.015">Organization Preview</h3>
             <div id="resultsContainer"></div>
           </div>
         </div>
@@ -246,48 +246,48 @@
       </div>
 
       <section class="seo-section" aria-label="About this tool">
-        <h2>About File Organizer</h2>
-        <p>This free online tool helps you automatically organize messy file collections. Whether you have a downloads folder full of random files or need to sort files for archiving, this tool creates a clean folder structure and packages everything into a downloadable ZIP.</p>
+        <h2 data-i18n="tools.data.file-organizer.text.016">About File Organizer</h2>
+        <p data-i18n="tools.data.file-organizer.text.017">This free online tool helps you automatically organize messy file collections. Whether you have a downloads folder full of random files or need to sort files for archiving, this tool creates a clean folder structure and packages everything into a downloadable ZIP.</p>
 
-        <h3>How to Use</h3>
+        <h3 data-i18n="tools.data.file-organizer.text.018">How to Use</h3>
         <ol>
-          <li>Select files by dropping them onto the upload area or clicking to browse.</li>
-          <li>Choose an organization method: by file type, date, size, or extension.</li>
-          <li>Preview how files will be organized into folders.</li>
+          <li data-i18n="tools.data.file-organizer.text.019">Select files by dropping them onto the upload area or clicking to browse.</li>
+          <li data-i18n="tools.data.file-organizer.text.020">Choose an organization method: by file type, date, size, or extension.</li>
+          <li data-i18n="tools.data.file-organizer.text.021">Preview how files will be organized into folders.</li>
           <li>Click <strong>Organize & Download ZIP</strong> to get your organized files.</li>
         </ol>
 
-        <h3>Frequently Asked Questions</h3>
+        <h3 data-i18n="tools.data.file-organizer.text.022">Frequently Asked Questions</h3>
 
         <details class="faq-item">
           <summary>Is my file data kept private?</summary>
-          <p>Absolutely. All organization happens entirely in your browser. No file data is sent to any server. Files are only processed locally to create the organized ZIP.</p>
+          <p data-i18n="tools.data.file-organizer.text.023">Absolutely. All organization happens entirely in your browser. No file data is sent to any server. Files are only processed locally to create the organized ZIP.</p>
         </details>
 
         <details class="faq-item">
           <summary>Are my original files modified?</summary>
-          <p>No, this tool cannot modify files on your system. It reads your selected files and creates a new organized ZIP file for download. Your originals remain untouched.</p>
+          <p data-i18n="tools.data.file-organizer.text.024">No, this tool cannot modify files on your system. It reads your selected files and creates a new organized ZIP file for download. Your originals remain untouched.</p>
         </details>
 
         <details class="faq-item">
           <summary>What are the file type categories?</summary>
-          <p>Files are grouped into common categories: Images (jpg, png, gif), Documents (pdf, doc, txt), Videos (mp4, avi), Audio (mp3, wav), Archives (zip, rar), and Others.</p>
+          <p data-i18n="tools.data.file-organizer.text.025">Files are grouped into common categories: Images (jpg, png, gif), Documents (pdf, doc, txt), Videos (mp4, avi), Audio (mp3, wav), Archives (zip, rar), and Others.</p>
         </details>
 
         <details class="faq-item">
           <summary>How does size-based organization work?</summary>
-          <p>Files are categorized as: Small (&lt; 1MB), Medium (1-100MB), Large (100MB-1GB), and Very Large (&gt; 1GB).</p>
+          <p data-i18n="tools.data.file-organizer.text.026">Files are categorized as: Small (&lt; 1MB), Medium (1-100MB), Large (100MB-1GB), and Very Large (&gt; 1GB).</p>
         </details>
 
         <details class="faq-item">
           <summary>Is there a file limit?</summary>
-          <p>There is no strict limit, but very large numbers of files or very large total size may cause browser performance issues. The tool works best with hundreds of files or less.</p>
+          <p data-i18n="tools.data.file-organizer.text.027">There is no strict limit, but very large numbers of files or very large total size may cause browser performance issues. The tool works best with hundreds of files or less.</p>
         </details>
       </section>
 
       <footer class="tool-footer">
-        <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
-        <p>Estimates only &mdash; not financial, legal, or tax advice.</p>
+        <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com" data-i18n="tools.data.file-organizer.text.028">psk.dan.metehancetin@mc-novatools.com</a></p>
+        <p data-i18n="tools.data.file-organizer.text.029">Estimates only &mdash; not financial, legal, or tax advice.</p>
       </footer>
     </main>
   </div>
@@ -361,11 +361,11 @@
         group.className = 'folder-group';
         group.innerHTML = `
           <div class="folder-header">
-            <span class="folder-name">📁 ${folder}</span>
-            <span class="folder-count">${files.length} file(s)</span>
+            <span class="folder-name" data-i18n="tools.data.file-organizer.text.030">📁 ${folder}</span>
+            <span class="folder-count" data-i18n="tools.data.file-organizer.text.031">${files.length} file(s)</span>
           </div>
           <div class="folder-files">
-            ${files.slice(0, 5).map(f => `<div class="folder-file"><span>${f.name}</span><span>${formatBytes(f.size)}</span></div>`).join('')}
+            ${files.slice(0, 5).map(f => `<div class="folder-file"><span data-i18n="tools.data.file-organizer.text.032">${f.name}</span><span data-i18n="tools.data.file-organizer.text.033">${formatBytes(f.size)}</span></div>`).join('')}
             ${files.length > 5 ? `<div class="folder-file" style="color:#71717A;font-style:italic;">... and ${files.length - 5} more</div>` : ''}
           </div>
         `;

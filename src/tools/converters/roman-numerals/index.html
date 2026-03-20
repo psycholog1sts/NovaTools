@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="/src/styles/main.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <title>Free Roman Numerals Converter Online | NovaTools MC</title>
+  <title data-i18n="tools.converters.roman-numerals.meta.title">Free Roman Numerals Converter Online | NovaTools MC</title>
   
   <!-- i18n Script -->
   <script src="/i18n.js"></script>
@@ -156,17 +156,17 @@
         <div class="header-inner">
           <a href="/" class="logo" aria-label="NovaTools MC Home">
             <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
-            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+            <span class="logo-text">NovaTools <span class="logo-mc" data-i18n="tools.converters.roman-numerals.text.001">MC</span></span>
           </a>
           <nav class="nav-desktop" aria-label="Main navigation">
-            <a href="/#finance" class="nav-link">Finance</a>
-            <a href="/#pdf" class="nav-link">PDF Tools</a>
-            <a href="/#image" class="nav-link">Images</a>
-            <a href="/#dev" class="nav-link">Developers</a>
+            <a href="/#finance" class="nav-link" data-i18n="tools.converters.roman-numerals.text.002">Finance</a>
+            <a href="/#pdf" class="nav-link" data-i18n="tools.converters.roman-numerals.text.003">PDF Tools</a>
+            <a href="/#image" class="nav-link" data-i18n="tools.converters.roman-numerals.text.004">Images</a>
+            <a href="/#dev" class="nav-link" data-i18n="tools.converters.roman-numerals.text.005">Developers</a>
           </nav>
-          <div class="privacy-badge" title="Your data never leaves your browser">
+          <div class="privacy-badge" title="Your data never leaves your browser" data-i18n-title="tools.converters.roman-numerals.title.001">
             <span class="privacy-badge-dot"></span>
-            <span>Privacy First</span>
+            <span data-i18n="tools.converters.roman-numerals.text.006">Privacy First</span>
           </div>
           <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
             <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -177,10 +177,10 @@
           </button>
         </div>
         <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
-          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
-          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
-          <a href="/#image" class="mobile-nav-link">Image Tools</a>
-          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+          <a href="/#finance" class="mobile-nav-link" data-i18n="tools.converters.roman-numerals.text.007">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link" data-i18n="tools.converters.roman-numerals.text.008">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link" data-i18n="tools.converters.roman-numerals.text.009">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link" data-i18n="tools.converters.roman-numerals.text.010">Developer Tools</a>
         </nav>
       </div>
     </header>
@@ -189,8 +189,8 @@
       <div class="tool-wrapper">
         <div class="tool-hero">
           <div class="tool-hero-icon">&#127963;</div>
-          <h1>Roman Numerals Converter</h1>
-          <p>Convert between Arabic numbers and Roman numerals. Supports numbers 1-3999 with validation and examples.</p>
+          <h1 data-i18n="tools.converters.roman-numerals.text.011">Roman Numerals Converter</h1>
+          <p data-i18n="tools.converters.roman-numerals.text.012">Convert between Arabic numbers and Roman numerals. Supports numbers 1-3999 with validation and examples.</p>
         </div>
 
         <div class="card">
@@ -201,13 +201,13 @@
           </div>
 
           <div class="converter-tabs">
-            <button class="tab-btn active" id="tabToRoman" data-mode="toRoman">Number to Roman</button>
-            <button class="tab-btn" id="tabToNumber" data-mode="toNumber">Roman to Number</button>
+            <button class="tab-btn active" id="tabToRoman" data-mode="toRoman" data-i18n="tools.converters.roman-numerals.text.013">Number to Roman</button>
+            <button class="tab-btn" id="tabToNumber" data-mode="toNumber" data-i18n="tools.converters.roman-numerals.text.014">Roman to Number</button>
           </div>
 
           <div class="input-group">
-            <label class="input-label" id="inputLabel">Enter a Number (1-3999)</label>
-            <input type="text" class="roman-input" id="inputField" placeholder="e.g., 2024">
+            <label class="input-label" id="inputLabel" data-i18n="tools.converters.roman-numerals.text.015">Enter a Number (1-3999)</label>
+            <input type="text" class="roman-input" id="inputField" placeholder="e.g., 2024" data-i18n-placeholder="tools.converters.roman-numerals.placeholder.001">
           </div>
 
           <div class="result-box">
@@ -225,7 +225,7 @@
               <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor"><path d="M4 1.5H3a2 2 0 00-2 2V14a2 2 0 002 2h10a2 2 0 002-2V3.5a2 2 0 00-2-2h-1v1h1a1 1 0 011 1V14a1 1 0 01-1 1H3a1 1 0 01-1-1V3.5a1 1 0 011-1h1v-1z"/></svg>
               Copy Result
             </button>
-            <span class="copy-feedback" id="copyFeedback" aria-live="polite">Copied!</span>
+            <span class="copy-feedback" id="copyFeedback" aria-live="polite" data-i18n="tools.converters.roman-numerals.text.016">Copied!</span>
           </div>
 
           <div class="rules-section">
@@ -259,8 +259,8 @@
           <div class="history-section">
             <div class="history-title">History of Roman Numerals</div>
             <div class="history-content">
-              <p>Roman numerals originated in ancient Rome around 500 BCE and remained the primary numeral system throughout the Roman Empire. The system uses combinations of letters from the Latin alphabet to represent values.</p>
-              <p>The subtractive notation (like IV for 4 instead of IIII) became popular during the Middle Ages to save space and make numbers easier to read. Today, Roman numerals are still used in various contexts including clock faces, book chapters, movie sequels, and formal names.</p>
+              <p data-i18n="tools.converters.roman-numerals.text.017">Roman numerals originated in ancient Rome around 500 BCE and remained the primary numeral system throughout the Roman Empire. The system uses combinations of letters from the Latin alphabet to represent values.</p>
+              <p data-i18n="tools.converters.roman-numerals.text.018">The subtractive notation (like IV for 4 instead of IIII) became popular during the Middle Ages to save space and make numbers easier to read. Today, Roman numerals are still used in various contexts including clock faces, book chapters, movie sequels, and formal names.</p>
             </div>
           </div>
 
@@ -271,57 +271,57 @@
       </div>
 
       <section class="seo-section" aria-label="About this tool">
-        <h2>About Roman Numerals Converter</h2>
-        <p>Our free Roman Numerals Converter helps you convert between Arabic numbers and Roman numerals instantly. Whether you're deciphering dates on monuments, writing formal documents, or simply learning about this ancient number system, this tool makes conversion easy.</p>
+        <h2 data-i18n="tools.converters.roman-numerals.text.019">About Roman Numerals Converter</h2>
+        <p data-i18n="tools.converters.roman-numerals.text.020">Our free Roman Numerals Converter helps you convert between Arabic numbers and Roman numerals instantly. Whether you're deciphering dates on monuments, writing formal documents, or simply learning about this ancient number system, this tool makes conversion easy.</p>
 
-        <h3>How to Use</h3>
+        <h3 data-i18n="tools.converters.roman-numerals.text.021">How to Use</h3>
         <ol>
-          <li>Choose your conversion direction: "Number to Roman" or "Roman to Number".</li>
-          <li>Enter the value you want to convert (numbers 1-3999 supported).</li>
-          <li>Click "Convert" or press Enter to see the result.</li>
-          <li>The result will display with validation feedback.</li>
-          <li>Click "Copy Result" to copy the converted value.</li>
-          <li>Use the Common Examples section for quick reference.</li>
+          <li data-i18n="tools.converters.roman-numerals.text.022">Choose your conversion direction: "Number to Roman" or "Roman to Number".</li>
+          <li data-i18n="tools.converters.roman-numerals.text.023">Enter the value you want to convert (numbers 1-3999 supported).</li>
+          <li data-i18n="tools.converters.roman-numerals.text.024">Click "Convert" or press Enter to see the result.</li>
+          <li data-i18n="tools.converters.roman-numerals.text.025">The result will display with validation feedback.</li>
+          <li data-i18n="tools.converters.roman-numerals.text.026">Click "Copy Result" to copy the converted value.</li>
+          <li data-i18n="tools.converters.roman-numerals.text.027">Use the Common Examples section for quick reference.</li>
         </ol>
 
-        <h3>Roman Numeral Rules</h3>
+        <h3 data-i18n="tools.converters.roman-numerals.text.028">Roman Numeral Rules</h3>
         <p><strong>Basic Symbols:</strong> I=1, V=5, X=10, L=50, C=100, D=500, M=1000<br>
         <strong>Repetition:</strong> Symbols I, X, C, M can be repeated up to 3 times.<br>
         <strong>Subtraction:</strong> I before V or X (IV=4, IX=9), X before L or C (XL=40, XC=90), C before D or M (CD=400, CM=900).<br>
         <strong>Addition:</strong> Symbols are added when a smaller value follows a larger one (VI=6, XI=11).</p>
 
-        <h3>Frequently Asked Questions</h3>
+        <h3 data-i18n="tools.converters.roman-numerals.text.029">Frequently Asked Questions</h3>
 
         <details class="faq-item">
           <summary>What is the largest number supported?</summary>
-          <p>This converter supports numbers from 1 to 3999 in standard Roman notation. Numbers larger than 3999 require special notation with overlines or additional symbols.</p>
+          <p data-i18n="tools.converters.roman-numerals.text.030">This converter supports numbers from 1 to 3999 in standard Roman notation. Numbers larger than 3999 require special notation with overlines or additional symbols.</p>
         </details>
 
         <details class="faq-item">
           <summary>Is there a zero in Roman numerals?</summary>
-          <p>No, the ancient Romans did not have a symbol for zero. The concept of zero as a number was introduced later from India via Arab mathematicians.</p>
+          <p data-i18n="tools.converters.roman-numerals.text.031">No, the ancient Romans did not have a symbol for zero. The concept of zero as a number was introduced later from India via Arab mathematicians.</p>
         </details>
 
         <details class="faq-item">
           <summary>Why are Roman numerals still used today?</summary>
-          <p>Roman numerals are used for their classic, formal appearance in contexts like clock faces, building cornerstones, book chapters, movie sequels, monarch names, and sporting events (like Super Bowl).</p>
+          <p data-i18n="tools.converters.roman-numerals.text.032">Roman numerals are used for their classic, formal appearance in contexts like clock faces, building cornerstones, book chapters, movie sequels, monarch names, and sporting events (like Super Bowl).</p>
         </details>
 
         <details class="faq-item">
           <summary>How do I validate a Roman numeral?</summary>
-          <p>Valid Roman numerals only use the letters I, V, X, L, C, D, M. Letters should generally appear in descending value order, with specific subtractive combinations allowed (IV, IX, XL, XC, CD, CM).</p>
+          <p data-i18n="tools.converters.roman-numerals.text.033">Valid Roman numerals only use the letters I, V, X, L, C, D, M. Letters should generally appear in descending value order, with specific subtractive combinations allowed (IV, IX, XL, XC, CD, CM).</p>
         </details>
 
         <details class="faq-item">
           <summary>Is my data stored?</summary>
-          <p>No. All conversions happen locally in your browser. No data is transmitted to our servers or stored anywhere.</p>
+          <p data-i18n="tools.converters.roman-numerals.text.034">No. All conversions happen locally in your browser. No data is transmitted to our servers or stored anywhere.</p>
         </details>
       </section>
     </main>
 
     <footer class="tool-footer">
-      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
-      <p>Estimates only &mdash; not financial, legal, or tax advice.</p>
+      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com" data-i18n="tools.converters.roman-numerals.text.035">psk.dan.metehancetin@mc-novatools.com</a></p>
+      <p data-i18n="tools.converters.roman-numerals.text.036">Estimates only &mdash; not financial, legal, or tax advice.</p>
     </footer>
     <style>
       .tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }

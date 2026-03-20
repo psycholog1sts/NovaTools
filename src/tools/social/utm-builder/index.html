@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="/src/styles/main.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <title>Free UTM Builder | NovaTools MC</title>
+  <title data-i18n="tools.social.utm-builder.meta.title">Free UTM Builder | NovaTools MC</title>
   
   <!-- i18n Script -->
   <script src="/i18n.js"></script>
@@ -128,17 +128,17 @@
         <div class="header-inner">
           <a href="/" class="logo" aria-label="NovaTools MC Home">
             <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
-            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+            <span class="logo-text">NovaTools <span class="logo-mc" data-i18n="tools.social.utm-builder.text.001">MC</span></span>
           </a>
           <nav class="nav-desktop" aria-label="Main navigation">
-            <a href="/#finance" class="nav-link">Finance</a>
-            <a href="/#pdf" class="nav-link">PDF Tools</a>
-            <a href="/#image" class="nav-link">Images</a>
-            <a href="/#dev" class="nav-link">Developers</a>
+            <a href="/#finance" class="nav-link" data-i18n="tools.social.utm-builder.text.002">Finance</a>
+            <a href="/#pdf" class="nav-link" data-i18n="tools.social.utm-builder.text.003">PDF Tools</a>
+            <a href="/#image" class="nav-link" data-i18n="tools.social.utm-builder.text.004">Images</a>
+            <a href="/#dev" class="nav-link" data-i18n="tools.social.utm-builder.text.005">Developers</a>
           </nav>
-          <div class="privacy-badge" title="Your data never leaves your browser">
+          <div class="privacy-badge" title="Your data never leaves your browser" data-i18n-title="tools.social.utm-builder.title.001">
             <span class="privacy-badge-dot"></span>
-            <span>Privacy First</span>
+            <span data-i18n="tools.social.utm-builder.text.006">Privacy First</span>
           </div>
           <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
             <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -149,10 +149,10 @@
           </button>
         </div>
         <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
-          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
-          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
-          <a href="/#image" class="mobile-nav-link">Image Tools</a>
-          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+          <a href="/#finance" class="mobile-nav-link" data-i18n="tools.social.utm-builder.text.007">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link" data-i18n="tools.social.utm-builder.text.008">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link" data-i18n="tools.social.utm-builder.text.009">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link" data-i18n="tools.social.utm-builder.text.010">Developer Tools</a>
         </nav>
       </div>
     </header>
@@ -161,66 +161,66 @@
       <div class="tool-wrapper">
         <div class="tool-hero">
           <div class="tool-hero-icon">&#128279;</div>
-          <h1>UTM Builder</h1>
-          <p>Create UTM tracking URLs for Google Analytics and marketing campaigns. Track where your traffic comes from with properly tagged links.</p>
+          <h1 data-i18n="tools.social.utm-builder.text.011">UTM Builder</h1>
+          <p data-i18n="tools.social.utm-builder.text.012">Create UTM tracking URLs for Google Analytics and marketing campaigns. Track where your traffic comes from with properly tagged links.</p>
         </div>
 
         <div class="card">
           <div class="input-group" style="margin-bottom: 1.25rem;">
             <label class="input-label" for="baseUrl">Website URL <span class="required">*</span></label>
-            <input type="text" class="input-field" id="baseUrl" placeholder="https://example.com/page">
+            <input type="text" class="input-field" id="baseUrl" placeholder="https://example.com/page" data-i18n-placeholder="tools.social.utm-builder.placeholder.001">
             <div class="input-hint">The full URL you want to track</div>
           </div>
 
           <div class="input-grid">
             <div class="input-group">
               <label class="input-label" for="utmSource">UTM Source <span class="required">*</span></label>
-              <input type="text" class="input-field" id="utmSource" placeholder="google, facebook, newsletter">
+              <input type="text" class="input-field" id="utmSource" placeholder="google, facebook, newsletter" data-i18n-placeholder="tools.social.utm-builder.placeholder.002">
               <div class="input-hint">Where traffic comes from</div>
             </div>
             <div class="input-group">
               <label class="input-label" for="utmMedium">UTM Medium <span class="required">*</span></label>
-              <input type="text" class="input-field" id="utmMedium" placeholder="cpc, email, social">
+              <input type="text" class="input-field" id="utmMedium" placeholder="cpc, email, social" data-i18n-placeholder="tools.social.utm-builder.placeholder.003">
               <div class="input-hint">Marketing medium</div>
             </div>
             <div class="input-group">
               <label class="input-label" for="utmCampaign">UTM Campaign <span class="required">*</span></label>
-              <input type="text" class="input-field" id="utmCampaign" placeholder="spring_sale, product_launch">
+              <input type="text" class="input-field" id="utmCampaign" placeholder="spring_sale, product_launch" data-i18n-placeholder="tools.social.utm-builder.placeholder.004">
               <div class="input-hint">Campaign name</div>
             </div>
             <div class="input-group">
-              <label class="input-label" for="utmTerm">UTM Term</label>
-              <input type="text" class="input-field" id="utmTerm" placeholder="keyword">
+              <label class="input-label" for="utmTerm" data-i18n="tools.social.utm-builder.text.013">UTM Term</label>
+              <input type="text" class="input-field" id="utmTerm" placeholder="keyword" data-i18n-placeholder="tools.social.utm-builder.placeholder.005">
               <div class="input-hint">Paid search keyword</div>
             </div>
             <div class="input-group">
-              <label class="input-label" for="utmContent">UTM Content</label>
-              <input type="text" class="input-field" id="utmContent" placeholder="banner_a, text_link">
+              <label class="input-label" for="utmContent" data-i18n="tools.social.utm-builder.text.014">UTM Content</label>
+              <input type="text" class="input-field" id="utmContent" placeholder="banner_a, text_link" data-i18n-placeholder="tools.social.utm-builder.placeholder.006">
               <div class="input-hint">Differentiate similar content</div>
             </div>
           </div>
 
           <div style="margin-bottom: 1rem;">
-            <label class="input-label">Quick Presets - Medium</label>
+            <label class="input-label" data-i18n="tools.social.utm-builder.text.015">Quick Presets - Medium</label>
             <div class="presets-grid">
-              <button class="preset-btn" data-field="medium" data-value="social">Social</button>
-              <button class="preset-btn" data-field="medium" data-value="email">Email</button>
-              <button class="preset-btn" data-field="medium" data-value="cpc">CPC</button>
-              <button class="preset-btn" data-field="medium" data-value="organic">Organic</button>
-              <button class="preset-btn" data-field="medium" data-value="referral">Referral</button>
-              <button class="preset-btn" data-field="medium" data-value="affiliate">Affiliate</button>
+              <button class="preset-btn" data-field="medium" data-value="social" data-i18n="tools.social.utm-builder.text.016">Social</button>
+              <button class="preset-btn" data-field="medium" data-value="email" data-i18n="tools.social.utm-builder.text.017">Email</button>
+              <button class="preset-btn" data-field="medium" data-value="cpc" data-i18n="tools.social.utm-builder.text.018">CPC</button>
+              <button class="preset-btn" data-field="medium" data-value="organic" data-i18n="tools.social.utm-builder.text.019">Organic</button>
+              <button class="preset-btn" data-field="medium" data-value="referral" data-i18n="tools.social.utm-builder.text.020">Referral</button>
+              <button class="preset-btn" data-field="medium" data-value="affiliate" data-i18n="tools.social.utm-builder.text.021">Affiliate</button>
             </div>
           </div>
 
           <div style="margin-bottom: 1.25rem;">
-            <label class="input-label">Quick Presets - Source</label>
+            <label class="input-label" data-i18n="tools.social.utm-builder.text.022">Quick Presets - Source</label>
             <div class="presets-grid">
-              <button class="preset-btn" data-field="source" data-value="google">Google</button>
-              <button class="preset-btn" data-field="source" data-value="facebook">Facebook</button>
-              <button class="preset-btn" data-field="source" data-value="instagram">Instagram</button>
-              <button class="preset-btn" data-field="source" data-value="twitter">Twitter</button>
-              <button class="preset-btn" data-field="source" data-value="linkedin">LinkedIn</button>
-              <button class="preset-btn" data-field="source" data-value="newsletter">Newsletter</button>
+              <button class="preset-btn" data-field="source" data-value="google" data-i18n="tools.social.utm-builder.text.023">Google</button>
+              <button class="preset-btn" data-field="source" data-value="facebook" data-i18n="tools.social.utm-builder.text.024">Facebook</button>
+              <button class="preset-btn" data-field="source" data-value="instagram" data-i18n="tools.social.utm-builder.text.025">Instagram</button>
+              <button class="preset-btn" data-field="source" data-value="twitter" data-i18n="tools.social.utm-builder.text.026">Twitter</button>
+              <button class="preset-btn" data-field="source" data-value="linkedin" data-i18n="tools.social.utm-builder.text.027">LinkedIn</button>
+              <button class="preset-btn" data-field="source" data-value="newsletter" data-i18n="tools.social.utm-builder.text.028">Newsletter</button>
             </div>
           </div>
 
@@ -237,8 +237,8 @@
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/></svg>
                 Copy URL
               </button>
-              <button class="btn btn-ghost" id="btnShorten">Create Short Link</button>
-              <button class="btn btn-ghost" id="btnReset">Reset Form</button>
+              <button class="btn btn-ghost" id="btnShorten" data-i18n="tools.social.utm-builder.text.029">Create Short Link</button>
+              <button class="btn btn-ghost" id="btnReset" data-i18n="tools.social.utm-builder.text.030">Reset Form</button>
             </div>
           </div>
 
@@ -249,19 +249,19 @@
       </div>
 
       <section class="seo-section" aria-label="About this tool">
-        <h2>About UTM Builder</h2>
-        <p>UTM (Urchin Tracking Module) Builder is a free tool that helps marketers create properly formatted tracking URLs for Google Analytics and other analytics platforms. UTM parameters allow you to track the effectiveness of your marketing campaigns by identifying exactly where your website traffic comes from.</p>
+        <h2 data-i18n="tools.social.utm-builder.text.031">About UTM Builder</h2>
+        <p data-i18n="tools.social.utm-builder.text.032">UTM (Urchin Tracking Module) Builder is a free tool that helps marketers create properly formatted tracking URLs for Google Analytics and other analytics platforms. UTM parameters allow you to track the effectiveness of your marketing campaigns by identifying exactly where your website traffic comes from.</p>
 
-        <h3>How to Use</h3>
+        <h3 data-i18n="tools.social.utm-builder.text.033">How to Use</h3>
         <ol>
-          <li>Enter your destination URL (the page you want to send traffic to).</li>
-          <li>Fill in the required UTM parameters: Source, Medium, and Campaign.</li>
-          <li>Optionally add Term (for paid search) and Content (for A/B testing).</li>
-          <li>Click "Generate UTM URL" to create your tracking link.</li>
-          <li>Copy and use the URL in your marketing campaigns.</li>
+          <li data-i18n="tools.social.utm-builder.text.034">Enter your destination URL (the page you want to send traffic to).</li>
+          <li data-i18n="tools.social.utm-builder.text.035">Fill in the required UTM parameters: Source, Medium, and Campaign.</li>
+          <li data-i18n="tools.social.utm-builder.text.036">Optionally add Term (for paid search) and Content (for A/B testing).</li>
+          <li data-i18n="tools.social.utm-builder.text.037">Click "Generate UTM URL" to create your tracking link.</li>
+          <li data-i18n="tools.social.utm-builder.text.038">Copy and use the URL in your marketing campaigns.</li>
         </ol>
 
-        <h3>UTM Parameter Reference</h3>
+        <h3 data-i18n="tools.social.utm-builder.text.039">UTM Parameter Reference</h3>
         <table class="utm-table">
           <thead>
             <tr><th>Parameter</th><th>Required</th><th>Description</th><th>Example</th></tr>
@@ -275,26 +275,26 @@
           </tbody>
         </table>
 
-        <h3>Frequently Asked Questions</h3>
+        <h3 data-i18n="tools.social.utm-builder.text.040">Frequently Asked Questions</h3>
 
         <details class="faq-item">
           <summary>What are UTM parameters used for?</summary>
-          <p>UTM parameters are tags added to URLs that help analytics platforms (like Google Analytics) track where website traffic comes from. They enable you to measure the effectiveness of different marketing campaigns, channels, and content pieces.</p>
+          <p data-i18n="tools.social.utm-builder.text.041">UTM parameters are tags added to URLs that help analytics platforms (like Google Analytics) track where website traffic comes from. They enable you to measure the effectiveness of different marketing campaigns, channels, and content pieces.</p>
         </details>
 
         <details class="faq-item">
           <summary>Which UTM parameters are required?</summary>
-          <p>The three required parameters are: utm_source (where traffic comes from), utm_medium (the marketing medium), and utm_campaign (the campaign name). The optional parameters utm_term and utm_content can provide additional granularity for tracking.</p>
+          <p data-i18n="tools.social.utm-builder.text.042">The three required parameters are: utm_source (where traffic comes from), utm_medium (the marketing medium), and utm_campaign (the campaign name). The optional parameters utm_term and utm_content can provide additional granularity for tracking.</p>
         </details>
 
         <details class="faq-item">
           <summary>Do UTM parameters affect SEO?</summary>
-          <p>No, UTM parameters don't directly affect SEO or search rankings. However, they can create duplicate content issues if not handled properly. Use canonical tags on your pages or configure Google Search Console to ignore UTM parameters.</p>
+          <p data-i18n="tools.social.utm-builder.text.043">No, UTM parameters don't directly affect SEO or search rankings. However, they can create duplicate content issues if not handled properly. Use canonical tags on your pages or configure Google Search Console to ignore UTM parameters.</p>
         </details>
 
         <details class="faq-item">
           <summary>Should I use UTM parameters for internal links?</summary>
-          <p>No, never use UTM parameters for internal links on your website. This will overwrite the original traffic source data and make your analytics inaccurate. UTM parameters should only be used for external links pointing to your site.</p>
+          <p data-i18n="tools.social.utm-builder.text.044">No, never use UTM parameters for internal links on your website. This will overwrite the original traffic source data and make your analytics inaccurate. UTM parameters should only be used for external links pointing to your site.</p>
         </details>
 
         <details class="faq-item">
@@ -305,8 +305,8 @@
     </main>
 
     <footer class="tool-footer">
-      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
-      <p>Estimates only &mdash; not financial, legal, or tax advice.</p>
+      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com" data-i18n="tools.social.utm-builder.text.045">psk.dan.metehancetin@mc-novatools.com</a></p>
+      <p data-i18n="tools.social.utm-builder.text.046">Estimates only &mdash; not financial, legal, or tax advice.</p>
     </footer>
     <style>
       .tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }

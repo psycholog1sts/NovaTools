@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="/src/styles/main.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <title>Free Unix Timestamp Converter Online | NovaTools MC</title>
+  <title data-i18n="tools.converters.unix-timestamp.meta.title">Free Unix Timestamp Converter Online | NovaTools MC</title>
   
   <!-- i18n Script -->
   <script src="/i18n.js"></script>
@@ -142,17 +142,17 @@
         <div class="header-inner">
           <a href="/" class="logo" aria-label="NovaTools MC Home">
             <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
-            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+            <span class="logo-text">NovaTools <span class="logo-mc" data-i18n="tools.converters.unix-timestamp.text.001">MC</span></span>
           </a>
           <nav class="nav-desktop" aria-label="Main navigation">
-            <a href="/#finance" class="nav-link">Finance</a>
-            <a href="/#pdf" class="nav-link">PDF Tools</a>
-            <a href="/#image" class="nav-link">Images</a>
-            <a href="/#dev" class="nav-link">Developers</a>
+            <a href="/#finance" class="nav-link" data-i18n="tools.converters.unix-timestamp.text.002">Finance</a>
+            <a href="/#pdf" class="nav-link" data-i18n="tools.converters.unix-timestamp.text.003">PDF Tools</a>
+            <a href="/#image" class="nav-link" data-i18n="tools.converters.unix-timestamp.text.004">Images</a>
+            <a href="/#dev" class="nav-link" data-i18n="tools.converters.unix-timestamp.text.005">Developers</a>
           </nav>
-          <div class="privacy-badge" title="Your data never leaves your browser">
+          <div class="privacy-badge" title="Your data never leaves your browser" data-i18n-title="tools.converters.unix-timestamp.title.001">
             <span class="privacy-badge-dot"></span>
-            <span>Privacy First</span>
+            <span data-i18n="tools.converters.unix-timestamp.text.006">Privacy First</span>
           </div>
           <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
             <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -163,10 +163,10 @@
           </button>
         </div>
         <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
-          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
-          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
-          <a href="/#image" class="mobile-nav-link">Image Tools</a>
-          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+          <a href="/#finance" class="mobile-nav-link" data-i18n="tools.converters.unix-timestamp.text.007">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link" data-i18n="tools.converters.unix-timestamp.text.008">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link" data-i18n="tools.converters.unix-timestamp.text.009">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link" data-i18n="tools.converters.unix-timestamp.text.010">Developer Tools</a>
         </nav>
       </div>
     </header>
@@ -175,8 +175,8 @@
       <div class="tool-wrapper">
         <div class="tool-hero">
           <div class="tool-hero-icon">&#9201;</div>
-          <h1>Unix Timestamp Converter</h1>
-          <p>Convert between Unix timestamps and human-readable dates. Get the current timestamp, convert timestamps to dates, and dates to timestamps instantly.</p>
+          <h1 data-i18n="tools.converters.unix-timestamp.text.011">Unix Timestamp Converter</h1>
+          <p data-i18n="tools.converters.unix-timestamp.text.012">Convert between Unix timestamps and human-readable dates. Get the current timestamp, convert timestamps to dates, and dates to timestamps instantly.</p>
         </div>
 
         <div class="card">
@@ -193,27 +193,27 @@
           </div>
 
           <div class="converter-tabs">
-            <button class="tab-btn active" id="tabToDate" data-mode="toDate">Timestamp to Date</button>
-            <button class="tab-btn" id="tabToTimestamp" data-mode="toTimestamp">Date to Timestamp</button>
+            <button class="tab-btn active" id="tabToDate" data-mode="toDate" data-i18n="tools.converters.unix-timestamp.text.013">Timestamp to Date</button>
+            <button class="tab-btn" id="tabToTimestamp" data-mode="toTimestamp" data-i18n="tools.converters.unix-timestamp.text.014">Date to Timestamp</button>
           </div>
 
           <div id="toDateSection">
             <div class="input-group">
-              <label class="input-label">Enter Unix Timestamp (seconds)</label>
-              <input type="number" class="timestamp-input" id="timestampInput" placeholder="e.g., 1704067200">
+              <label class="input-label" data-i18n="tools.converters.unix-timestamp.text.015">Enter Unix Timestamp (seconds)</label>
+              <input type="number" class="timestamp-input" id="timestampInput" placeholder="e.g., 1704067200" data-i18n-placeholder="tools.converters.unix-timestamp.placeholder.001">
             </div>
             
             <div class="result-box" id="dateResult" style="display: none;">
               <div class="result-item">
-                <span class="result-label">Local Date & Time</span>
+                <span class="result-label" data-i18n="tools.converters.unix-timestamp.text.016">Local Date & Time</span>
                 <span class="result-value" id="localDateTime">-</span>
               </div>
               <div class="result-item">
-                <span class="result-label">UTC Date & Time</span>
+                <span class="result-label" data-i18n="tools.converters.unix-timestamp.text.017">UTC Date & Time</span>
                 <span class="result-value" id="utcDateTime">-</span>
               </div>
               <div class="result-item">
-                <span class="result-label">Relative Time</span>
+                <span class="result-label" data-i18n="tools.converters.unix-timestamp.text.018">Relative Time</span>
                 <span class="result-value" id="relativeTime">-</span>
               </div>
             </div>
@@ -221,17 +221,17 @@
 
           <div id="toTimestampSection" style="display: none;">
             <div class="input-group">
-              <label class="input-label">Select Date & Time</label>
+              <label class="input-label" data-i18n="tools.converters.unix-timestamp.text.019">Select Date & Time</label>
               <input type="datetime-local" class="datetime-input" id="datetimeInput">
             </div>
             
             <div class="result-box" id="timestampResult" style="display: none;">
               <div class="result-item">
-                <span class="result-label">Unix Timestamp (seconds)</span>
+                <span class="result-label" data-i18n="tools.converters.unix-timestamp.text.020">Unix Timestamp (seconds)</span>
                 <span class="result-value" id="timestampSeconds">-</span>
               </div>
               <div class="result-item">
-                <span class="result-label">Unix Timestamp (milliseconds)</span>
+                <span class="result-label" data-i18n="tools.converters.unix-timestamp.text.021">Unix Timestamp (milliseconds)</span>
                 <span class="result-value" id="timestampMillis">-</span>
               </div>
             </div>
@@ -261,7 +261,7 @@
               <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor"><path d="M4 1.5H3a2 2 0 00-2 2V14a2 2 0 002 2h10a2 2 0 002-2V3.5a2 2 0 00-2-2h-1v1h1a1 1 0 011 1V14a1 1 0 01-1 1H3a1 1 0 01-1-1V3.5a1 1 0 011-1h1v-1z"/></svg>
               Copy Result
             </button>
-            <span class="copy-feedback" id="copyFeedback" aria-live="polite">Copied!</span>
+            <span class="copy-feedback" id="copyFeedback" aria-live="polite" data-i18n="tools.converters.unix-timestamp.text.022">Copied!</span>
           </div>
 
           <div class="legal-note">
@@ -271,60 +271,60 @@
       </div>
 
       <section class="seo-section" aria-label="About this tool">
-        <h2>About Unix Timestamp Converter</h2>
-        <p>Our free Unix Timestamp Converter helps developers and system administrators convert between Unix timestamps and human-readable dates. Unix time (also known as Epoch time) is a system for describing a point in time, defined as the number of seconds that have elapsed since 00:00:00 UTC on 1 January 1970.</p>
+        <h2 data-i18n="tools.converters.unix-timestamp.text.023">About Unix Timestamp Converter</h2>
+        <p data-i18n="tools.converters.unix-timestamp.text.024">Our free Unix Timestamp Converter helps developers and system administrators convert between Unix timestamps and human-readable dates. Unix time (also known as Epoch time) is a system for describing a point in time, defined as the number of seconds that have elapsed since 00:00:00 UTC on 1 January 1970.</p>
 
-        <h3>How to Use</h3>
+        <h3 data-i18n="tools.converters.unix-timestamp.text.025">How to Use</h3>
         <ol>
-          <li>Choose your conversion mode: "Timestamp to Date" or "Date to Timestamp".</li>
-          <li>For timestamp to date: Enter the Unix timestamp in seconds.</li>
-          <li>For date to timestamp: Select the date and time using the picker.</li>
-          <li>Click "Convert" to see the results.</li>
-          <li>Use "Get Current" to quickly get the current timestamp.</li>
-          <li>Click "Copy Result" to copy the converted value to your clipboard.</li>
+          <li data-i18n="tools.converters.unix-timestamp.text.026">Choose your conversion mode: "Timestamp to Date" or "Date to Timestamp".</li>
+          <li data-i18n="tools.converters.unix-timestamp.text.027">For timestamp to date: Enter the Unix timestamp in seconds.</li>
+          <li data-i18n="tools.converters.unix-timestamp.text.028">For date to timestamp: Select the date and time using the picker.</li>
+          <li data-i18n="tools.converters.unix-timestamp.text.029">Click "Convert" to see the results.</li>
+          <li data-i18n="tools.converters.unix-timestamp.text.030">Use "Get Current" to quickly get the current timestamp.</li>
+          <li data-i18n="tools.converters.unix-timestamp.text.031">Click "Copy Result" to copy the converted value to your clipboard.</li>
         </ol>
 
-        <h3>What is Unix Timestamp?</h3>
-        <p>Unix timestamp is a way to track time as a running total of seconds. This count starts at the Unix Epoch on January 1st, 1970 at UTC. Therefore, the Unix timestamp is merely the number of seconds between a particular date and the Unix Epoch. It should also be pointed out that this point in time technically does not change no matter where you are located on the globe.</p>
+        <h3 data-i18n="tools.converters.unix-timestamp.text.032">What is Unix Timestamp?</h3>
+        <p data-i18n="tools.converters.unix-timestamp.text.033">Unix timestamp is a way to track time as a running total of seconds. This count starts at the Unix Epoch on January 1st, 1970 at UTC. Therefore, the Unix timestamp is merely the number of seconds between a particular date and the Unix Epoch. It should also be pointed out that this point in time technically does not change no matter where you are located on the globe.</p>
 
-        <h3>Supported Formats</h3>
+        <h3 data-i18n="tools.converters.unix-timestamp.text.034">Supported Formats</h3>
         <p><strong>Seconds:</strong> Standard Unix timestamp (e.g., 1704067200)<br>
         <strong>Milliseconds:</strong> JavaScript-style timestamp (e.g., 1704067200000)<br>
         <strong>ISO 8601:</strong> International standard date format<br>
         <strong>RFC 2822:</strong> Email date format standard</p>
 
-        <h3>Frequently Asked Questions</h3>
+        <h3 data-i18n="tools.converters.unix-timestamp.text.035">Frequently Asked Questions</h3>
 
         <details class="faq-item">
           <summary>What is the Unix Epoch?</summary>
-          <p>The Unix Epoch is the starting point for Unix timestamps: 00:00:00 UTC on January 1, 1970. All Unix timestamps are calculated as seconds elapsed since this moment.</p>
+          <p data-i18n="tools.converters.unix-timestamp.text.036">The Unix Epoch is the starting point for Unix timestamps: 00:00:00 UTC on January 1, 1970. All Unix timestamps are calculated as seconds elapsed since this moment.</p>
         </details>
 
         <details class="faq-item">
           <summary>Why does my timestamp show 1970?</summary>
-          <p>If you see a date in 1970, you likely entered a timestamp with milliseconds instead of seconds. Try dividing your timestamp by 1000 before converting.</p>
+          <p data-i18n="tools.converters.unix-timestamp.text.037">If you see a date in 1970, you likely entered a timestamp with milliseconds instead of seconds. Try dividing your timestamp by 1000 before converting.</p>
         </details>
 
         <details class="faq-item">
           <summary>What is the maximum Unix timestamp?</summary>
-          <p>For 32-bit systems, the maximum Unix timestamp is 2,147,483,647 (January 19, 2038 - known as the Year 2038 problem). Modern 64-bit systems can handle timestamps far into the future.</p>
+          <p data-i18n="tools.converters.unix-timestamp.text.038">For 32-bit systems, the maximum Unix timestamp is 2,147,483,647 (January 19, 2038 - known as the Year 2038 problem). Modern 64-bit systems can handle timestamps far into the future.</p>
         </details>
 
         <details class="faq-item">
           <summary>Is my data stored?</summary>
-          <p>No. All conversions happen locally in your browser. No data is transmitted to our servers or stored anywhere.</p>
+          <p data-i18n="tools.converters.unix-timestamp.text.039">No. All conversions happen locally in your browser. No data is transmitted to our servers or stored anywhere.</p>
         </details>
 
         <details class="faq-item">
           <summary>Does this account for leap seconds?</summary>
-          <p>Unix timestamps do not account for leap seconds. They represent the number of seconds since the Epoch, ignoring leap second adjustments.</p>
+          <p data-i18n="tools.converters.unix-timestamp.text.040">Unix timestamps do not account for leap seconds. They represent the number of seconds since the Epoch, ignoring leap second adjustments.</p>
         </details>
       </section>
     </main>
 
     <footer class="tool-footer">
-      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
-      <p>Estimates only &mdash; not financial, legal, or tax advice.</p>
+      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com" data-i18n="tools.converters.unix-timestamp.text.041">psk.dan.metehancetin@mc-novatools.com</a></p>
+      <p data-i18n="tools.converters.unix-timestamp.text.042">Estimates only &mdash; not financial, legal, or tax advice.</p>
     </footer>
     <style>
       .tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }

@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="/src/styles/main.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <title>Free Text to ASCII/Unicode Converter Online | NovaTools MC</title>
+  <title data-i18n="tools.text.text-to-ascii.meta.title">Free Text to ASCII/Unicode Converter Online | NovaTools MC</title>
   
   <!-- i18n Script -->
   <script src="/i18n.js"></script>
@@ -133,17 +133,17 @@
         <div class="header-inner">
           <a href="/" class="logo" aria-label="NovaTools MC Home">
             <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
-            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+            <span class="logo-text">NovaTools <span class="logo-mc" data-i18n="tools.text.text-to-ascii.text.001">MC</span></span>
           </a>
           <nav class="nav-desktop" aria-label="Main navigation">
-            <a href="/#finance" class="nav-link">Finance</a>
-            <a href="/#pdf" class="nav-link">PDF Tools</a>
-            <a href="/#image" class="nav-link">Images</a>
-            <a href="/#dev" class="nav-link">Developers</a>
+            <a href="/#finance" class="nav-link" data-i18n="tools.text.text-to-ascii.text.002">Finance</a>
+            <a href="/#pdf" class="nav-link" data-i18n="tools.text.text-to-ascii.text.003">PDF Tools</a>
+            <a href="/#image" class="nav-link" data-i18n="tools.text.text-to-ascii.text.004">Images</a>
+            <a href="/#dev" class="nav-link" data-i18n="tools.text.text-to-ascii.text.005">Developers</a>
           </nav>
-          <div class="privacy-badge" title="Your data never leaves your browser">
+          <div class="privacy-badge" title="Your data never leaves your browser" data-i18n-title="tools.text.text-to-ascii.title.001">
             <span class="privacy-badge-dot"></span>
-            <span>Privacy First</span>
+            <span data-i18n="tools.text.text-to-ascii.text.006">Privacy First</span>
           </div>
           <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
             <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -154,10 +154,10 @@
           </button>
         </div>
         <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
-          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
-          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
-          <a href="/#image" class="mobile-nav-link">Image Tools</a>
-          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+          <a href="/#finance" class="mobile-nav-link" data-i18n="tools.text.text-to-ascii.text.007">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link" data-i18n="tools.text.text-to-ascii.text.008">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link" data-i18n="tools.text.text-to-ascii.text.009">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link" data-i18n="tools.text.text-to-ascii.text.010">Developer Tools</a>
         </nav>
       </div>
     </header>
@@ -166,8 +166,8 @@
       <div class="tool-wrapper">
         <div class="tool-hero">
           <div class="tool-hero-icon">&#128187;</div>
-          <h1>Text to ASCII/Unicode</h1>
-          <p>Convert text to ASCII codes, binary, hexadecimal, Base64, and Unicode code points. Download all formats in one file.</p>
+          <h1 data-i18n="tools.text.text-to-ascii.text.011">Text to ASCII/Unicode</h1>
+          <p data-i18n="tools.text.text-to-ascii.text.012">Convert text to ASCII codes, binary, hexadecimal, Base64, and Unicode code points. Download all formats in one file.</p>
         </div>
 
         <div class="card">
@@ -179,7 +179,7 @@
 
           <div class="section-label">Input Text</div>
           <div class="textarea-wrapper">
-            <textarea class="input-area" id="textInput" placeholder="Type or paste text to convert...&#10;&#10;Example: Hello World!" aria-label="Input text"></textarea>
+            <textarea class="input-area" id="textInput" placeholder="Type or paste text to convert...&#10;&#10;Example: Hello World!" data-i18n-placeholder="tools.text.text-to-ascii.placeholder.001" aria-label="Input text"></textarea>
           </div>
 
           <button class="convert-btn" id="btnConvert" type="button">
@@ -195,7 +195,7 @@
                   ASCII Codes (Decimal)
                 </span>
                 <div class="output-actions">
-                  <button class="icon-btn" data-target="ascii" title="Copy ASCII">
+                  <button class="icon-btn" data-target="ascii" title="Copy ASCII" data-i18n-title="tools.text.text-to-ascii.title.002">
                     <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M4 1.5H3a2 2 0 00-2 2V14a2 2 0 002 2h10a2 2 0 002-2V3.5a2 2 0 00-2-2h-1v1h1a1 1 0 011 1V14a1 1 0 01-1 1H3a1 1 0 01-1-1V3.5a1 1 0 011-1h1v-1z"/></svg>
                   </button>
                 </div>
@@ -210,7 +210,7 @@
                   Binary (8-bit)
                 </span>
                 <div class="output-actions">
-                  <button class="icon-btn" data-target="binary" title="Copy Binary">
+                  <button class="icon-btn" data-target="binary" title="Copy Binary" data-i18n-title="tools.text.text-to-ascii.title.003">
                     <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M4 1.5H3a2 2 0 00-2 2V14a2 2 0 002 2h10a2 2 0 002-2V3.5a2 2 0 00-2-2h-1v1h1a1 1 0 011 1V14a1 1 0 01-1 1H3a1 1 0 01-1-1V3.5a1 1 0 011-1h1v-1z"/></svg>
                   </button>
                 </div>
@@ -225,7 +225,7 @@
                   Hexadecimal
                 </span>
                 <div class="output-actions">
-                  <button class="icon-btn" data-target="hex" title="Copy Hex">
+                  <button class="icon-btn" data-target="hex" title="Copy Hex" data-i18n-title="tools.text.text-to-ascii.title.004">
                     <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M4 1.5H3a2 2 0 00-2 2V14a2 2 0 002 2h10a2 2 0 002-2V3.5a2 2 0 00-2-2h-1v1h1a1 1 0 011 1V14a1 1 0 01-1 1H3a1 1 0 01-1-1V3.5a1 1 0 011-1h1v-1z"/></svg>
                   </button>
                 </div>
@@ -240,7 +240,7 @@
                   Base64
                 </span>
                 <div class="output-actions">
-                  <button class="icon-btn" data-target="base64" title="Copy Base64">
+                  <button class="icon-btn" data-target="base64" title="Copy Base64" data-i18n-title="tools.text.text-to-ascii.title.005">
                     <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M4 1.5H3a2 2 0 00-2 2V14a2 2 0 002 2h10a2 2 0 002-2V3.5a2 2 0 00-2-2h-1v1h1a1 1 0 011 1V14a1 1 0 01-1 1H3a1 1 0 01-1-1V3.5a1 1 0 011-1h1v-1z"/></svg>
                   </button>
                 </div>
@@ -255,7 +255,7 @@
                   Unicode Code Points
                 </span>
                 <div class="output-actions">
-                  <button class="icon-btn" data-target="unicode" title="Copy Unicode">
+                  <button class="icon-btn" data-target="unicode" title="Copy Unicode" data-i18n-title="tools.text.text-to-ascii.title.006">
                     <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M4 1.5H3a2 2 0 00-2 2V14a2 2 0 002 2h10a2 2 0 002-2V3.5a2 2 0 00-2-2h-1v1h1a1 1 0 011 1V14a1 1 0 01-1 1H3a1 1 0 01-1-1V3.5a1 1 0 011-1h1v-1z"/></svg>
                   </button>
                 </div>
@@ -283,14 +283,14 @@
       </div>
 
       <section class="seo-section" aria-label="About this tool">
-        <h2>About Text to ASCII/Unicode Converter</h2>
-        <p>Our free Text to ASCII/Unicode Converter transforms text into multiple encoding formats commonly used in programming, data transmission, and character encoding. Get instant conversions to ASCII codes, binary, hexadecimal, Base64, and Unicode code points.</p>
+        <h2 data-i18n="tools.text.text-to-ascii.text.013">About Text to ASCII/Unicode Converter</h2>
+        <p data-i18n="tools.text.text-to-ascii.text.014">Our free Text to ASCII/Unicode Converter transforms text into multiple encoding formats commonly used in programming, data transmission, and character encoding. Get instant conversions to ASCII codes, binary, hexadecimal, Base64, and Unicode code points.</p>
 
-        <h3>How to Use</h3>
+        <h3 data-i18n="tools.text.text-to-ascii.text.015">How to Use</h3>
         <ol>
-          <li>Type or paste your text into the input area above.</li>
+          <li data-i18n="tools.text.text-to-ascii.text.016">Type or paste your text into the input area above.</li>
           <li>Click <strong>Convert to All Formats</strong> to generate all encodings.</li>
-          <li>View each format in its dedicated output box:</li>
+          <li data-i18n="tools.text.text-to-ascii.text.017">View each format in its dedicated output box:</li>
           <ul style="margin-left: 2rem; color: #A1A1AA;">
             <li><strong>ASCII Codes:</strong> Decimal values (e.g., 72 101 108 108 111)</li>
             <li><strong>Binary:</strong> 8-bit binary representation (e.g., 01001000 01100101)</li>
@@ -298,56 +298,56 @@
             <li><strong>Base64:</strong> Base64 encoded string</li>
             <li><strong>Unicode Code Points:</strong> Visual grid of characters with their codes</li>
           </ul>
-          <li>Click the copy icon to copy any individual format.</li>
+          <li data-i18n="tools.text.text-to-ascii.text.018">Click the copy icon to copy any individual format.</li>
           <li>Use <strong>Download All Formats</strong> to save everything as a text file.</li>
         </ol>
 
-        <h3>Format Descriptions</h3>
+        <h3 data-i18n="tools.text.text-to-ascii.text.019">Format Descriptions</h3>
         <p><strong>ASCII Codes:</strong> American Standard Code for Information Interchange. Each character is represented by a number from 0 to 127.<br>
         <strong>Binary:</strong> Base-2 representation using only 0s and 1s. Each ASCII character is represented by 8 bits (1 byte).<br>
         <strong>Hexadecimal:</strong> Base-16 representation using digits 0-9 and letters A-F. More compact than binary for representing bytes.<br>
         <strong>Base64:</strong> Binary-to-text encoding that represents binary data in ASCII string format. Commonly used in URLs, email, and data URIs.<br>
         <strong>Unicode:</strong> Universal character encoding standard that supports virtually all writing systems and symbols.</p>
 
-        <h3>Common Use Cases</h3>
+        <h3 data-i18n="tools.text.text-to-ascii.text.020">Common Use Cases</h3>
         <p><strong>Programming:</strong> Convert characters to their numeric values for low-level programming.<br>
         <strong>Data Encoding:</strong> Encode binary data as text for transmission over text-only channels.<br>
         <strong>Debugging:</strong> Inspect character codes to diagnose encoding issues.<br>
         <strong>Learning:</strong> Understand how computers represent text at the fundamental level.<br>
         <strong>Security:</strong> Encode data in various formats for obfuscation or compatibility.</p>
 
-        <h3>Frequently Asked Questions</h3>
+        <h3 data-i18n="tools.text.text-to-ascii.text.021">Frequently Asked Questions</h3>
 
         <details class="faq-item">
           <summary>Is my text sent to a server?</summary>
-          <p>No. All conversions happen entirely within your browser using JavaScript. Your text is never transmitted to our servers or stored anywhere.</p>
+          <p data-i18n="tools.text.text-to-ascii.text.022">No. All conversions happen entirely within your browser using JavaScript. Your text is never transmitted to our servers or stored anywhere.</p>
         </details>
 
         <details class="faq-item">
           <summary>What's the difference between ASCII and Unicode?</summary>
-          <p>ASCII supports 128 characters (English letters, digits, basic punctuation). Unicode supports over 140,000 characters including all world languages, symbols, and emoji.</p>
+          <p data-i18n="tools.text.text-to-ascii.text.023">ASCII supports 128 characters (English letters, digits, basic punctuation). Unicode supports over 140,000 characters including all world languages, symbols, and emoji.</p>
         </details>
 
         <details class="faq-item">
           <summary>Why does binary use 8 bits per character?</summary>
-          <p>A byte (8 bits) is the standard unit of digital information. With 8 bits, you can represent 256 different values (0-255), which covers extended ASCII.</p>
+          <p data-i18n="tools.text.text-to-ascii.text.024">A byte (8 bits) is the standard unit of digital information. With 8 bits, you can represent 256 different values (0-255), which covers extended ASCII.</p>
         </details>
 
         <details class="faq-item">
           <summary>What is Base64 used for?</summary>
-          <p>Base64 encodes binary data as ASCII text, making it safe to transmit through systems that only handle text (like email or URLs). It's commonly used for embedding images in CSS/HTML.</p>
+          <p data-i18n="tools.text.text-to-ascii.text.025">Base64 encodes binary data as ASCII text, making it safe to transmit through systems that only handle text (like email or URLs). It's commonly used for embedding images in CSS/HTML.</p>
         </details>
 
         <details class="faq-item">
           <summary>Does this work with emoji?</summary>
-          <p>Yes! Emoji and all Unicode characters are fully supported. They will show their proper Unicode code points and UTF-8 encoded values.</p>
+          <p data-i18n="tools.text.text-to-ascii.text.026">Yes! Emoji and all Unicode characters are fully supported. They will show their proper Unicode code points and UTF-8 encoded values.</p>
         </details>
       </section>
     </main>
 
     <footer class="tool-footer">
-      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
-      <p>Estimates only &mdash; not financial, legal, or tax advice.</p>
+      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com" data-i18n="tools.text.text-to-ascii.text.027">psk.dan.metehancetin@mc-novatools.com</a></p>
+      <p data-i18n="tools.text.text-to-ascii.text.028">Estimates only &mdash; not financial, legal, or tax advice.</p>
     </footer>
     <style>
       .tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }
@@ -394,7 +394,7 @@
       if (!text) return '';
       return Array.from(text).map(c => {
         const code = c.codePointAt(0).toString(16).toUpperCase().padStart(4, '0');
-        return `<div class="unicode-item"><span class="unicode-char">${c}</span><span class="unicode-code">U+${code}</span></div>`;
+        return `<div class="unicode-item"><span class="unicode-char" data-i18n="tools.text.text-to-ascii.text.029">${c}</span><span class="unicode-code" data-i18n="tools.text.text-to-ascii.text.030">U+${code}</span></div>`;
       }).join('');
     }
 

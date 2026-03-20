@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="/src/styles/main.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <title>Free Todo List | NovaTools MC</title>
+  <title data-i18n="tools.productivity.todo-list.meta.title">Free Todo List | NovaTools MC</title>
   
   <!-- i18n Script -->
   <script src="/i18n.js"></script>
@@ -144,17 +144,17 @@
         <div class="header-inner">
           <a href="/" class="logo" aria-label="NovaTools MC Home">
             <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
-            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+            <span class="logo-text">NovaTools <span class="logo-mc" data-i18n="tools.productivity.todo-list.text.001">MC</span></span>
           </a>
           <nav class="nav-desktop" aria-label="Main navigation">
-            <a href="/#finance" class="nav-link">Finance</a>
-            <a href="/#pdf" class="nav-link">PDF Tools</a>
-            <a href="/#image" class="nav-link">Images</a>
-            <a href="/#dev" class="nav-link">Developers</a>
+            <a href="/#finance" class="nav-link" data-i18n="tools.productivity.todo-list.text.002">Finance</a>
+            <a href="/#pdf" class="nav-link" data-i18n="tools.productivity.todo-list.text.003">PDF Tools</a>
+            <a href="/#image" class="nav-link" data-i18n="tools.productivity.todo-list.text.004">Images</a>
+            <a href="/#dev" class="nav-link" data-i18n="tools.productivity.todo-list.text.005">Developers</a>
           </nav>
-          <div class="privacy-badge" title="Your data never leaves your browser">
+          <div class="privacy-badge" title="Your data never leaves your browser" data-i18n-title="tools.productivity.todo-list.title.001">
             <span class="privacy-badge-dot"></span>
-            <span>Privacy First</span>
+            <span data-i18n="tools.productivity.todo-list.text.006">Privacy First</span>
           </div>
           <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
             <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -165,10 +165,10 @@
           </button>
         </div>
         <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
-          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
-          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
-          <a href="/#image" class="mobile-nav-link">Image Tools</a>
-          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+          <a href="/#finance" class="mobile-nav-link" data-i18n="tools.productivity.todo-list.text.007">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link" data-i18n="tools.productivity.todo-list.text.008">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link" data-i18n="tools.productivity.todo-list.text.009">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link" data-i18n="tools.productivity.todo-list.text.010">Developer Tools</a>
         </nav>
       </div>
     </header>
@@ -177,8 +177,8 @@
       <div class="tool-wrapper">
         <div class="tool-hero">
           <div class="tool-hero-icon">&#9989;</div>
-          <h1>Todo List</h1>
-          <p>Organize your tasks with priorities and due dates. Track your progress and stay productive with this simple, privacy-focused todo list.</p>
+          <h1 data-i18n="tools.productivity.todo-list.text.011">Todo List</h1>
+          <p data-i18n="tools.productivity.todo-list.text.012">Organize your tasks with priorities and due dates. Track your progress and stay productive with this simple, privacy-focused todo list.</p>
         </div>
 
         <div class="card">
@@ -202,7 +202,7 @@
           </div>
 
           <div class="add-task-form">
-            <input type="text" class="task-input" id="taskInput" placeholder="What needs to be done?">
+            <input type="text" class="task-input" id="taskInput" placeholder="What needs to be done?" data-i18n-placeholder="tools.productivity.todo-list.placeholder.001">
             <div class="form-row">
               <select class="priority-select" id="prioritySelect">
                 <option value="low">Low Priority</option>
@@ -218,10 +218,10 @@
           </div>
 
           <div class="filter-tabs">
-            <button class="filter-tab active" data-filter="all">All Tasks</button>
-            <button class="filter-tab" data-filter="active">Active</button>
-            <button class="filter-tab" data-filter="completed">Completed</button>
-            <button class="filter-tab" data-filter="high">High Priority</button>
+            <button class="filter-tab active" data-filter="all" data-i18n="tools.productivity.todo-list.text.013">All Tasks</button>
+            <button class="filter-tab" data-filter="active" data-i18n="tools.productivity.todo-list.text.014">Active</button>
+            <button class="filter-tab" data-filter="completed" data-i18n="tools.productivity.todo-list.text.015">Completed</button>
+            <button class="filter-tab" data-filter="high" data-i18n="tools.productivity.todo-list.text.016">High Priority</button>
           </div>
 
           <div class="task-list" id="taskList">
@@ -235,53 +235,53 @@
       </div>
 
       <section class="seo-section" aria-label="About this tool">
-        <h2>About Todo List</h2>
-        <p>Our Todo List app helps you organize tasks and stay productive. With features like priority levels, due dates, and filtering, you can easily manage your workload. All data is stored locally in your browser, ensuring complete privacy.</p>
+        <h2 data-i18n="tools.productivity.todo-list.text.017">About Todo List</h2>
+        <p data-i18n="tools.productivity.todo-list.text.018">Our Todo List app helps you organize tasks and stay productive. With features like priority levels, due dates, and filtering, you can easily manage your workload. All data is stored locally in your browser, ensuring complete privacy.</p>
 
-        <h3>How to Use</h3>
+        <h3 data-i18n="tools.productivity.todo-list.text.019">How to Use</h3>
         <ol>
-          <li>Enter a task description in the input field.</li>
-          <li>Select a priority level (Low, Medium, or High).</li>
-          <li>Optionally set a due date for the task.</li>
+          <li data-i18n="tools.productivity.todo-list.text.020">Enter a task description in the input field.</li>
+          <li data-i18n="tools.productivity.todo-list.text.021">Select a priority level (Low, Medium, or High).</li>
+          <li data-i18n="tools.productivity.todo-list.text.022">Optionally set a due date for the task.</li>
           <li>Click <strong>Add Task</strong> to add it to your list.</li>
-          <li>Click the checkbox to mark tasks as completed.</li>
-          <li>Use the filter tabs to view All, Active, Completed, or High Priority tasks.</li>
-          <li>Click the X button to delete a task.</li>
-          <li>Monitor your progress with the statistics at the top.</li>
+          <li data-i18n="tools.productivity.todo-list.text.023">Click the checkbox to mark tasks as completed.</li>
+          <li data-i18n="tools.productivity.todo-list.text.024">Use the filter tabs to view All, Active, Completed, or High Priority tasks.</li>
+          <li data-i18n="tools.productivity.todo-list.text.025">Click the X button to delete a task.</li>
+          <li data-i18n="tools.productivity.todo-list.text.026">Monitor your progress with the statistics at the top.</li>
         </ol>
 
-        <h3>Frequently Asked Questions</h3>
+        <h3 data-i18n="tools.productivity.todo-list.text.027">Frequently Asked Questions</h3>
 
         <details class="faq-item">
           <summary>Where are my tasks stored?</summary>
-          <p>Your tasks are stored locally in your browser's localStorage. They are never sent to any server, ensuring complete privacy. However, this means they're only accessible on this device and browser.</p>
+          <p data-i18n="tools.productivity.todo-list.text.028">Your tasks are stored locally in your browser's localStorage. They are never sent to any server, ensuring complete privacy. However, this means they're only accessible on this device and browser.</p>
         </details>
 
         <details class="faq-item">
           <summary>Will I lose my tasks if I close the browser?</summary>
-          <p>No, your tasks are saved in localStorage and will persist between browser sessions. However, if you clear your browser data or use private/incognito mode, your tasks will be deleted.</p>
+          <p data-i18n="tools.productivity.todo-list.text.029">No, your tasks are saved in localStorage and will persist between browser sessions. However, if you clear your browser data or use private/incognito mode, your tasks will be deleted.</p>
         </details>
 
         <details class="faq-item">
           <summary>Can I export my tasks?</summary>
-          <p>Currently, tasks cannot be exported directly from this tool. We recommend periodically copying important tasks to a separate document for backup purposes.</p>
+          <p data-i18n="tools.productivity.todo-list.text.030">Currently, tasks cannot be exported directly from this tool. We recommend periodically copying important tasks to a separate document for backup purposes.</p>
         </details>
 
         <details class="faq-item">
           <summary>How do I edit a task?</summary>
-          <p>To edit a task, delete the existing task and create a new one with the updated information. A direct edit feature may be added in future updates.</p>
+          <p data-i18n="tools.productivity.todo-list.text.031">To edit a task, delete the existing task and create a new one with the updated information. A direct edit feature may be added in future updates.</p>
         </details>
 
         <details class="faq-item">
           <summary>What happens when a task is overdue?</summary>
-          <p>Overdue tasks are highlighted with a red date indicator. You can still complete them or delete them as needed. The overdue status helps you identify tasks that need attention.</p>
+          <p data-i18n="tools.productivity.todo-list.text.032">Overdue tasks are highlighted with a red date indicator. You can still complete them or delete them as needed. The overdue status helps you identify tasks that need attention.</p>
         </details>
       </section>
     </main>
 
     <footer class="tool-footer">
-      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
-      <p>Estimates only &mdash; not financial, legal, or tax advice.</p>
+      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com" data-i18n="tools.productivity.todo-list.text.033">psk.dan.metehancetin@mc-novatools.com</a></p>
+      <p data-i18n="tools.productivity.todo-list.text.034">Estimates only &mdash; not financial, legal, or tax advice.</p>
     </footer>
     <style>
       .tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }
@@ -361,8 +361,8 @@
             <div class="task-content">
               <div class="task-text">${task.text}</div>
               <div class="task-meta">
-                <span class="task-priority ${task.priority}">${task.priority}</span>
-                ${dueDisplay ? `<span class="task-due ${overdue ? 'overdue' : ''}">${overdue ? '&#9888; Overdue: ' : ''}${dueDisplay}</span>` : ''}
+                <span class="task-priority ${task.priority}" data-i18n="tools.productivity.todo-list.text.035">${task.priority}</span>
+                ${dueDisplay ? `<span class="task-due ${overdue ? 'overdue' : ''}" data-i18n="tools.productivity.todo-list.text.036">${overdue ? '&#9888; Overdue: ' : ''}${dueDisplay}</span>` : ''}
               </div>
             </div>
             <button class="task-delete" onclick="deleteTask('${task.id}')" aria-label="Delete task">&times;</button>

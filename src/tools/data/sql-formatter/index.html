@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="/src/styles/main.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <title>SQL Formatter & Beautifier — Free Online Tool | NovaTools MC</title>
+  <title data-i18n="tools.data.sql-formatter.meta.title">SQL Formatter & Beautifier — Free Online Tool | NovaTools MC</title>
   
   <!-- i18n Script -->
   <script src="/i18n.js"></script>
@@ -141,17 +141,17 @@
         <div class="header-inner">
           <a href="/" class="logo" aria-label="NovaTools MC Home">
             <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
-            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+            <span class="logo-text">NovaTools <span class="logo-mc" data-i18n="tools.data.sql-formatter.text.001">MC</span></span>
           </a>
           <nav class="nav-desktop" aria-label="Main navigation">
-            <a href="/#finance" class="nav-link">Finance</a>
-            <a href="/#pdf" class="nav-link">PDF Tools</a>
-            <a href="/#image" class="nav-link">Images</a>
-            <a href="/#dev" class="nav-link">Developers</a>
+            <a href="/#finance" class="nav-link" data-i18n="tools.data.sql-formatter.text.002">Finance</a>
+            <a href="/#pdf" class="nav-link" data-i18n="tools.data.sql-formatter.text.003">PDF Tools</a>
+            <a href="/#image" class="nav-link" data-i18n="tools.data.sql-formatter.text.004">Images</a>
+            <a href="/#dev" class="nav-link" data-i18n="tools.data.sql-formatter.text.005">Developers</a>
           </nav>
-          <div class="privacy-badge" title="Your data never leaves your browser">
+          <div class="privacy-badge" title="Your data never leaves your browser" data-i18n-title="tools.data.sql-formatter.title.001">
             <span class="privacy-badge-dot"></span>
-            <span>Privacy First</span>
+            <span data-i18n="tools.data.sql-formatter.text.006">Privacy First</span>
           </div>
           <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
             <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -162,10 +162,10 @@
           </button>
         </div>
         <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
-          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
-          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
-          <a href="/#image" class="mobile-nav-link">Image Tools</a>
-          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+          <a href="/#finance" class="mobile-nav-link" data-i18n="tools.data.sql-formatter.text.007">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link" data-i18n="tools.data.sql-formatter.text.008">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link" data-i18n="tools.data.sql-formatter.text.009">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link" data-i18n="tools.data.sql-formatter.text.010">Developer Tools</a>
         </nav>
       </div>
     </header>
@@ -174,8 +174,8 @@
       <div class="tool-wrapper">
         <div class="tool-hero">
           <div class="tool-hero-icon">🗄️</div>
-          <h1>SQL Formatter & Beautifier</h1>
-          <p>Format and beautify your SQL queries instantly. Clean, readable SQL with proper indentation. 100% client-side.</p>
+          <h1 data-i18n="tools.data.sql-formatter.text.011">SQL Formatter & Beautifier</h1>
+          <p data-i18n="tools.data.sql-formatter.text.012">Format and beautify your SQL queries instantly. Clean, readable SQL with proper indentation. 100% client-side.</p>
         </div>
 
         <div class="card">
@@ -184,16 +184,16 @@
               <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M2 3.5A1.5 1.5 0 0 1 3.5 2h9A1.5 1.5 0 0 1 14 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 12.5v-9z"/></svg>
               SQL Input
             </div>
-            <textarea id="sqlInput" placeholder="SELECT id, name, email FROM users WHERE status = 'active' ORDER BY created_at DESC;"></textarea>
+            <textarea id="sqlInput" placeholder="SELECT id, name, email FROM users WHERE status = 'active' ORDER BY created_at DESC;" data-i18n-placeholder="tools.data.sql-formatter.placeholder.001"></textarea>
           </div>
 
           <div class="options-row">
             <div class="option-group">
-              <label for="indentSize">Indent size:</label>
+              <label for="indentSize" data-i18n="tools.data.sql-formatter.text.013">Indent size:</label>
               <input type="number" id="indentSize" value="2" min="1" max="8" style="width:60px">
             </div>
             <div class="option-group">
-              <label for="caseOption">Keyword case:</label>
+              <label for="caseOption" data-i18n="tools.data.sql-formatter.text.014">Keyword case:</label>
               <select id="caseOption">
                 <option value="upper">UPPERCASE</option>
                 <option value="lower">lowercase</option>
@@ -222,7 +222,7 @@
               <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor"><path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/><path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/></svg>
               Clear
             </button>
-            <span class="copy-feedback" id="copyFeedback">Copied!</span>
+            <span class="copy-feedback" id="copyFeedback" data-i18n="tools.data.sql-formatter.text.015">Copied!</span>
           </div>
 
           <div class="error-banner" id="errorBanner">
@@ -248,48 +248,48 @@
       </div>
 
       <section class="seo-section" aria-label="About this tool">
-        <h2>About SQL Formatter & Beautifier</h2>
-        <p>SQL (Structured Query Language) is the standard language for managing relational databases. This free online tool helps you format messy or minified SQL queries into clean, readable code with proper indentation and keyword casing.</p>
+        <h2 data-i18n="tools.data.sql-formatter.text.016">About SQL Formatter & Beautifier</h2>
+        <p data-i18n="tools.data.sql-formatter.text.017">SQL (Structured Query Language) is the standard language for managing relational databases. This free online tool helps you format messy or minified SQL queries into clean, readable code with proper indentation and keyword casing.</p>
 
-        <h3>How to Use</h3>
+        <h3 data-i18n="tools.data.sql-formatter.text.018">How to Use</h3>
         <ol>
-          <li>Paste your SQL query into the input area.</li>
-          <li>Configure formatting options: choose indent size, keyword case, and newline preferences.</li>
+          <li data-i18n="tools.data.sql-formatter.text.019">Paste your SQL query into the input area.</li>
+          <li data-i18n="tools.data.sql-formatter.text.020">Configure formatting options: choose indent size, keyword case, and newline preferences.</li>
           <li>Click <strong>Format SQL</strong> to beautify your query, or <strong>Minify</strong> to compress it.</li>
-          <li>Copy the result to your clipboard for use in your database client.</li>
+          <li data-i18n="tools.data.sql-formatter.text.021">Copy the result to your clipboard for use in your database client.</li>
         </ol>
 
-        <h3>Frequently Asked Questions</h3>
+        <h3 data-i18n="tools.data.sql-formatter.text.022">Frequently Asked Questions</h3>
 
         <details class="faq-item">
           <summary>Is my SQL kept private?</summary>
-          <p>Absolutely. All formatting happens entirely in your browser. No SQL is sent to any server, logged, or stored anywhere. You can safely use this tool with production queries.</p>
+          <p data-i18n="tools.data.sql-formatter.text.023">Absolutely. All formatting happens entirely in your browser. No SQL is sent to any server, logged, or stored anywhere. You can safely use this tool with production queries.</p>
         </details>
 
         <details class="faq-item">
           <summary>Which SQL dialects are supported?</summary>
-          <p>This formatter supports standard SQL and works with most popular database systems including MySQL, PostgreSQL, SQLite, SQL Server, and Oracle. It handles common SQL syntax elements like SELECT, INSERT, UPDATE, DELETE, JOIN, and more.</p>
+          <p data-i18n="tools.data.sql-formatter.text.024">This formatter supports standard SQL and works with most popular database systems including MySQL, PostgreSQL, SQLite, SQL Server, and Oracle. It handles common SQL syntax elements like SELECT, INSERT, UPDATE, DELETE, JOIN, and more.</p>
         </details>
 
         <details class="faq-item">
           <summary>What's the difference between Format and Minify?</summary>
-          <p>Format beautifies your SQL with proper indentation and line breaks for readability. Minify removes all unnecessary whitespace to create a single-line SQL string, useful for embedding in code or reducing network payload.</p>
+          <p data-i18n="tools.data.sql-formatter.text.025">Format beautifies your SQL with proper indentation and line breaks for readability. Minify removes all unnecessary whitespace to create a single-line SQL string, useful for embedding in code or reducing network payload.</p>
         </details>
 
         <details class="faq-item">
           <summary>Can I format very long queries?</summary>
-          <p>Yes, the tool can handle SQL queries of substantial length. There are no strict limits, but extremely large queries (tens of thousands of lines) may impact browser performance.</p>
+          <p data-i18n="tools.data.sql-formatter.text.026">Yes, the tool can handle SQL queries of substantial length. There are no strict limits, but extremely large queries (tens of thousands of lines) may impact browser performance.</p>
         </details>
 
         <details class="faq-item">
           <summary>Does this validate SQL syntax?</summary>
-          <p>This tool focuses on formatting, not validation. While it handles most standard SQL structures, it does not check if your SQL is syntactically valid for your specific database engine.</p>
+          <p data-i18n="tools.data.sql-formatter.text.027">This tool focuses on formatting, not validation. While it handles most standard SQL structures, it does not check if your SQL is syntactically valid for your specific database engine.</p>
         </details>
       </section>
 
       <footer class="tool-footer">
-        <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
-        <p>Estimates only &mdash; not financial, legal, or tax advice.</p>
+        <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com" data-i18n="tools.data.sql-formatter.text.028">psk.dan.metehancetin@mc-novatools.com</a></p>
+        <p data-i18n="tools.data.sql-formatter.text.029">Estimates only &mdash; not financial, legal, or tax advice.</p>
       </footer>
     </main>
   </div>

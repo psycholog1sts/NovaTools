@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="/src/styles/main.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <title>Free Kanban Board | NovaTools MC</title>
+  <title data-i18n="tools.productivity.kanban-board.meta.title">Free Kanban Board | NovaTools MC</title>
   
   <!-- i18n Script -->
   <script src="/i18n.js"></script>
@@ -139,17 +139,17 @@
         <div class="header-inner">
           <a href="/" class="logo" aria-label="NovaTools MC Home">
             <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
-            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+            <span class="logo-text">NovaTools <span class="logo-mc" data-i18n="tools.productivity.kanban-board.text.001">MC</span></span>
           </a>
           <nav class="nav-desktop" aria-label="Main navigation">
-            <a href="/#finance" class="nav-link">Finance</a>
-            <a href="/#pdf" class="nav-link">PDF Tools</a>
-            <a href="/#image" class="nav-link">Images</a>
-            <a href="/#dev" class="nav-link">Developers</a>
+            <a href="/#finance" class="nav-link" data-i18n="tools.productivity.kanban-board.text.002">Finance</a>
+            <a href="/#pdf" class="nav-link" data-i18n="tools.productivity.kanban-board.text.003">PDF Tools</a>
+            <a href="/#image" class="nav-link" data-i18n="tools.productivity.kanban-board.text.004">Images</a>
+            <a href="/#dev" class="nav-link" data-i18n="tools.productivity.kanban-board.text.005">Developers</a>
           </nav>
-          <div class="privacy-badge" title="Your data never leaves your browser">
+          <div class="privacy-badge" title="Your data never leaves your browser" data-i18n-title="tools.productivity.kanban-board.title.001">
             <span class="privacy-badge-dot"></span>
-            <span>Privacy First</span>
+            <span data-i18n="tools.productivity.kanban-board.text.006">Privacy First</span>
           </div>
           <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
             <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -160,10 +160,10 @@
           </button>
         </div>
         <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
-          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
-          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
-          <a href="/#image" class="mobile-nav-link">Image Tools</a>
-          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+          <a href="/#finance" class="mobile-nav-link" data-i18n="tools.productivity.kanban-board.text.007">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link" data-i18n="tools.productivity.kanban-board.text.008">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link" data-i18n="tools.productivity.kanban-board.text.009">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link" data-i18n="tools.productivity.kanban-board.text.010">Developer Tools</a>
         </nav>
       </div>
     </header>
@@ -172,13 +172,13 @@
       <div class="tool-wrapper">
         <div class="tool-hero">
           <div class="tool-hero-icon">&#128198;</div>
-          <h1>Kanban Board</h1>
-          <p>Visual project management with a Kanban board. Organize tasks into columns, track progress, and boost productivity with drag-and-drop simplicity.</p>
+          <h1 data-i18n="tools.productivity.kanban-board.text.011">Kanban Board</h1>
+          <p data-i18n="tools.productivity.kanban-board.text.012">Visual project management with a Kanban board. Organize tasks into columns, track progress, and boost productivity with drag-and-drop simplicity.</p>
         </div>
 
         <div class="card">
           <div class="board-controls">
-            <input type="text" class="project-input" id="projectName" placeholder="Project Name" value="My Project">
+            <input type="text" class="project-input" id="projectName" placeholder="Project Name" data-i18n-placeholder="tools.productivity.kanban-board.placeholder.001" value="My Project">
             <div>
               <button class="btn btn-secondary" id="btnClearBoard">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/><path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/></svg>
@@ -190,52 +190,52 @@
           <div class="kanban-board">
             <div class="kanban-column column-todo" data-status="todo">
               <div class="column-header">
-                <span class="column-title">&#128311; To Do</span>
+                <span class="column-title" data-i18n="tools.productivity.kanban-board.text.013">&#128311; To Do</span>
                 <span class="column-count" id="countTodo">0</span>
               </div>
               <div class="task-list" id="listTodo" data-status="todo"></div>
               <div class="add-task-form">
-                <input type="text" class="add-task-input" id="inputTodo" placeholder="Add a task...">
+                <input type="text" class="add-task-input" id="inputTodo" placeholder="Add a task..." data-i18n-placeholder="tools.productivity.kanban-board.placeholder.002">
                 <select class="add-task-select" id="priorityTodo">
                   <option value="low">Low Priority</option>
                   <option value="medium" selected>Medium Priority</option>
                   <option value="high">High Priority</option>
                 </select>
-                <button class="btn btn-primary add-task-btn" onclick="addTask('todo')">Add Task</button>
+                <button class="btn btn-primary add-task-btn" onclick="addTask('todo')" data-i18n="tools.productivity.kanban-board.text.014">Add Task</button>
               </div>
             </div>
 
             <div class="kanban-column column-inprogress" data-status="inprogress">
               <div class="column-header">
-                <span class="column-title">&#128310; In Progress</span>
+                <span class="column-title" data-i18n="tools.productivity.kanban-board.text.015">&#128310; In Progress</span>
                 <span class="column-count" id="countInProgress">0</span>
               </div>
               <div class="task-list" id="listInProgress" data-status="inprogress"></div>
               <div class="add-task-form">
-                <input type="text" class="add-task-input" id="inputInProgress" placeholder="Add a task...">
+                <input type="text" class="add-task-input" id="inputInProgress" placeholder="Add a task..." data-i18n-placeholder="tools.productivity.kanban-board.placeholder.003">
                 <select class="add-task-select" id="priorityInProgress">
                   <option value="low">Low Priority</option>
                   <option value="medium" selected>Medium Priority</option>
                   <option value="high">High Priority</option>
                 </select>
-                <button class="btn btn-primary add-task-btn" onclick="addTask('inprogress')">Add Task</button>
+                <button class="btn btn-primary add-task-btn" onclick="addTask('inprogress')" data-i18n="tools.productivity.kanban-board.text.016">Add Task</button>
               </div>
             </div>
 
             <div class="kanban-column column-done" data-status="done">
               <div class="column-header">
-                <span class="column-title">&#9989; Done</span>
+                <span class="column-title" data-i18n="tools.productivity.kanban-board.text.017">&#9989; Done</span>
                 <span class="column-count" id="countDone">0</span>
               </div>
               <div class="task-list" id="listDone" data-status="done"></div>
               <div class="add-task-form">
-                <input type="text" class="add-task-input" id="inputDone" placeholder="Add a task...">
+                <input type="text" class="add-task-input" id="inputDone" placeholder="Add a task..." data-i18n-placeholder="tools.productivity.kanban-board.placeholder.004">
                 <select class="add-task-select" id="priorityDone">
                   <option value="low">Low Priority</option>
                   <option value="medium" selected>Medium Priority</option>
                   <option value="high">High Priority</option>
                 </select>
-                <button class="btn btn-primary add-task-btn" onclick="addTask('done')">Add Task</button>
+                <button class="btn btn-primary add-task-btn" onclick="addTask('done')" data-i18n="tools.productivity.kanban-board.text.018">Add Task</button>
               </div>
             </div>
           </div>
@@ -247,52 +247,52 @@
       </div>
 
       <section class="seo-section" aria-label="About this tool">
-        <h2>About Kanban Board</h2>
-        <p>Kanban is a visual workflow management method that helps you organize and track work. Originally developed for manufacturing, it's now widely used in software development and project management. Our Kanban Board tool lets you create tasks, move them between columns, and visualize your progress—all within your browser.</p>
+        <h2 data-i18n="tools.productivity.kanban-board.text.019">About Kanban Board</h2>
+        <p data-i18n="tools.productivity.kanban-board.text.020">Kanban is a visual workflow management method that helps you organize and track work. Originally developed for manufacturing, it's now widely used in software development and project management. Our Kanban Board tool lets you create tasks, move them between columns, and visualize your progress—all within your browser.</p>
 
-        <h3>How to Use</h3>
+        <h3 data-i18n="tools.productivity.kanban-board.text.021">How to Use</h3>
         <ol>
-          <li>Enter a project name at the top of the board.</li>
-          <li>Add tasks to any column by typing in the input field and clicking "Add Task".</li>
-          <li>Set a priority level for each task (Low, Medium, or High).</li>
-          <li>Drag and drop tasks between columns to update their status.</li>
-          <li>Click the X button on a task to delete it.</li>
-          <li>Monitor your progress with the task counters on each column.</li>
-          <li>Use "Clear Board" to remove all tasks and start fresh.</li>
+          <li data-i18n="tools.productivity.kanban-board.text.022">Enter a project name at the top of the board.</li>
+          <li data-i18n="tools.productivity.kanban-board.text.023">Add tasks to any column by typing in the input field and clicking "Add Task".</li>
+          <li data-i18n="tools.productivity.kanban-board.text.024">Set a priority level for each task (Low, Medium, or High).</li>
+          <li data-i18n="tools.productivity.kanban-board.text.025">Drag and drop tasks between columns to update their status.</li>
+          <li data-i18n="tools.productivity.kanban-board.text.026">Click the X button on a task to delete it.</li>
+          <li data-i18n="tools.productivity.kanban-board.text.027">Monitor your progress with the task counters on each column.</li>
+          <li data-i18n="tools.productivity.kanban-board.text.028">Use "Clear Board" to remove all tasks and start fresh.</li>
         </ol>
 
-        <h3>Frequently Asked Questions</h3>
+        <h3 data-i18n="tools.productivity.kanban-board.text.029">Frequently Asked Questions</h3>
 
         <details class="faq-item">
           <summary>What is Kanban?</summary>
-          <p>Kanban is a visual workflow management method that originated in Japanese manufacturing. It uses a board with columns representing different stages of work (like To Do, In Progress, Done) and cards representing individual tasks. This visual approach helps teams see work in progress, identify bottlenecks, and improve efficiency.</p>
+          <p data-i18n="tools.productivity.kanban-board.text.030">Kanban is a visual workflow management method that originated in Japanese manufacturing. It uses a board with columns representing different stages of work (like To Do, In Progress, Done) and cards representing individual tasks. This visual approach helps teams see work in progress, identify bottlenecks, and improve efficiency.</p>
         </details>
 
         <details class="faq-item">
           <summary>Is the drag and drop feature supported on mobile?</summary>
-          <p>The drag and drop feature works best on desktop with a mouse. On mobile devices, you can still move tasks by using the add/remove functionality in each column, though direct dragging may be limited depending on your device.</p>
+          <p data-i18n="tools.productivity.kanban-board.text.031">The drag and drop feature works best on desktop with a mouse. On mobile devices, you can still move tasks by using the add/remove functionality in each column, though direct dragging may be limited depending on your device.</p>
         </details>
 
         <details class="faq-item">
           <summary>How many tasks can I add?</summary>
-          <p>You can add as many tasks as your browser's localStorage limit allows, which is typically several megabytes (enough for hundreds or thousands of tasks). Performance may degrade with extremely large numbers of tasks.</p>
+          <p data-i18n="tools.productivity.kanban-board.text.032">You can add as many tasks as your browser's localStorage limit allows, which is typically several megabytes (enough for hundreds or thousands of tasks). Performance may degrade with extremely large numbers of tasks.</p>
         </details>
 
         <details class="faq-item">
           <summary>Can I share my board with others?</summary>
-          <p>Currently, boards are stored locally and cannot be shared directly. To collaborate, you could export your tasks manually or share screenshots of your board. Future updates may include sharing features.</p>
+          <p data-i18n="tools.productivity.kanban-board.text.033">Currently, boards are stored locally and cannot be shared directly. To collaborate, you could export your tasks manually or share screenshots of your board. Future updates may include sharing features.</p>
         </details>
 
         <details class="faq-item">
           <summary>What happens to my data if I switch browsers?</summary>
-          <p>Since all data is stored in your browser's localStorage, switching to a different browser or device will not transfer your board. You'll need to recreate your tasks in the new browser.</p>
+          <p data-i18n="tools.productivity.kanban-board.text.034">Since all data is stored in your browser's localStorage, switching to a different browser or device will not transfer your board. You'll need to recreate your tasks in the new browser.</p>
         </details>
       </section>
     </main>
 
     <footer class="tool-footer">
-      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
-      <p>Estimates only &mdash; not financial, legal, or tax advice.</p>
+      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com" data-i18n="tools.productivity.kanban-board.text.035">psk.dan.metehancetin@mc-novatools.com</a></p>
+      <p data-i18n="tools.productivity.kanban-board.text.036">Estimates only &mdash; not financial, legal, or tax advice.</p>
     </footer>
     <style>
       .tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }
@@ -341,7 +341,7 @@
         <div class="kanban-task" draggable="true" data-id="${task.id}">
           <div class="kanban-task-title">${task.title}</div>
           <div class="kanban-task-meta">
-            <span class="task-tag ${task.priority}">${task.priority}</span>
+            <span class="task-tag ${task.priority}" data-i18n="tools.productivity.kanban-board.text.037">${task.priority}</span>
             <button class="task-delete" onclick="deleteTask('${task.id}')">&times;</button>
           </div>
         </div>

@@ -25,7 +25,7 @@
   <link rel="stylesheet" href="/src/styles/main.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <title>Free JSON Validator & Formatter Online | NovaTools MC</title>
+  <title data-i18n="tools.dev.json-validator.meta.title">Free JSON Validator & Formatter Online | NovaTools MC</title>
   
   <!-- i18n Script -->
   <script src="/i18n.js"></script>
@@ -147,17 +147,17 @@
         <div class="header-inner">
           <a href="/" class="logo" aria-label="NovaTools MC Home">
             <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
-            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+            <span class="logo-text">NovaTools <span class="logo-mc" data-i18n="tools.dev.json-validator.text.001">MC</span></span>
           </a>
           <nav class="nav-desktop" aria-label="Main navigation">
-            <a href="/#finance" class="nav-link">Finance</a>
-            <a href="/#pdf" class="nav-link">PDF Tools</a>
-            <a href="/#image" class="nav-link">Images</a>
-            <a href="/#dev" class="nav-link">Developers</a>
+            <a href="/#finance" class="nav-link" data-i18n="tools.dev.json-validator.text.002">Finance</a>
+            <a href="/#pdf" class="nav-link" data-i18n="tools.dev.json-validator.text.003">PDF Tools</a>
+            <a href="/#image" class="nav-link" data-i18n="tools.dev.json-validator.text.004">Images</a>
+            <a href="/#dev" class="nav-link" data-i18n="tools.dev.json-validator.text.005">Developers</a>
           </nav>
-          <div class="privacy-badge" title="Your data never leaves your browser">
+          <div class="privacy-badge" title="Your data never leaves your browser" data-i18n-title="tools.dev.json-validator.title.001">
             <span class="privacy-badge-dot"></span>
-            <span>Privacy First</span>
+            <span data-i18n="tools.dev.json-validator.text.006">Privacy First</span>
           </div>
           <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
             <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -168,10 +168,10 @@
           </button>
         </div>
         <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
-          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
-          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
-          <a href="/#image" class="mobile-nav-link">Image Tools</a>
-          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+          <a href="/#finance" class="mobile-nav-link" data-i18n="tools.dev.json-validator.text.007">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link" data-i18n="tools.dev.json-validator.text.008">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link" data-i18n="tools.dev.json-validator.text.009">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link" data-i18n="tools.dev.json-validator.text.010">Developer Tools</a>
         </nav>
       </div>
     </header>
@@ -180,9 +180,9 @@
       <div class="tool-wrapper">
         <div class="tool-hero">
           <div class="tool-hero-icon">&#128269;</div>
-          <h1>JSON Validator & Formatter</h1>
-          <span class="sr-only">Free JSON validator and formatter — validate JSON syntax with error highlighting. Free online JSON validation tool.</span>
-          <p>Validate and format JSON data with error highlighting. Pretty print and minify options. Works 100% in your browser.</p>
+          <h1 data-i18n="tools.dev.json-validator.text.011">JSON Validator & Formatter</h1>
+          <span class="sr-only" data-i18n="tools.dev.json-validator.text.012">Free JSON validator and formatter — validate JSON syntax with error highlighting. Free online JSON validation tool.</span>
+          <p data-i18n="tools.dev.json-validator.text.013">Validate and format JSON data with error highlighting. Pretty print and minify options. Works 100% in your browser.</p>
         </div>
 
         <div class="card">
@@ -191,7 +191,7 @@
               <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M2 3.5A1.5 1.5 0 013.5 2h9A1.5 1.5 0 0114 3.5v9a1.5 1.5 0 01-1.5 1.5h-9A1.5 1.5 0 012 12.5v-9zM3.5 3a.5.5 0 00-.5.5v9a.5.5 0 00.5.5h9a.5.5 0 00.5-.5v-9a.5.5 0 00-.5-.5h-9z"/></svg>
               JSON Input
             </div>
-            <textarea id="jsonInput" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="Paste your JSON here..." aria-label="JSON input"></textarea>
+            <textarea id="jsonInput" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="Paste your JSON here..." data-i18n-placeholder="tools.dev.json-validator.placeholder.001" aria-label="JSON input"></textarea>
           </div>
 
           <div class="btn-bar" role="toolbar" aria-label="JSON actions">
@@ -215,7 +215,7 @@
               <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M5.5 5.5A.5.5 0 016 6v6a.5.5 0 01-1 0V6a.5.5 0 01.5-.5zm2.5 0a.5.5 0 01.5.5v6a.5.5 0 01-1 0V6a.5.5 0 01.5-.5zm3 .5a.5.5 0 00-1 0v6a.5.5 0 001 0V6z"/><path fill-rule="evenodd" d="M14.5 3a1 1 0 01-1 1H13v9a2 2 0 01-2 2H5a2 2 0 01-2-2V4h-.5a1 1 0 01-1-1V2a1 1 0 011-1H6a1 1 0 011-1h2a1 1 0 011 1h3.5a1 1 0 011 1v1zM4.118 4L4 4.059V13a1 1 0 001 1h6a1 1 0 001-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/></svg>
               Clear
             </button>
-            <span class="copy-feedback" id="copyFeedback" aria-live="polite">Copied!</span>
+            <span class="copy-feedback" id="copyFeedback" aria-live="polite" data-i18n="tools.dev.json-validator.text.014">Copied!</span>
           </div>
 
           <div class="stats-row" aria-live="polite">
@@ -252,50 +252,50 @@
       </div>
 
       <section class="seo-section" aria-label="About this tool">
-        <h2>About JSON Validator & Formatter</h2>
-        <p>JSON (JavaScript Object Notation) is the de facto standard for data exchange on the web. This free online tool helps you validate JSON syntax and format it for readability. Whether you're debugging API responses, preparing configuration files, or cleaning up data, this validator provides instant feedback with precise error positioning and syntax highlighting.</p>
+        <h2 data-i18n="tools.dev.json-validator.text.015">About JSON Validator & Formatter</h2>
+        <p data-i18n="tools.dev.json-validator.text.016">JSON (JavaScript Object Notation) is the de facto standard for data exchange on the web. This free online tool helps you validate JSON syntax and format it for readability. Whether you're debugging API responses, preparing configuration files, or cleaning up data, this validator provides instant feedback with precise error positioning and syntax highlighting.</p>
 
-        <h3>How to Use</h3>
+        <h3 data-i18n="tools.dev.json-validator.text.017">How to Use</h3>
         <ol>
-          <li>Paste your JSON into the input area.</li>
+          <li data-i18n="tools.dev.json-validator.text.018">Paste your JSON into the input area.</li>
           <li>Click <strong>Pretty Print</strong> to format with indentation and syntax highlighting.</li>
           <li>Click <strong>Minify</strong> to compress JSON for transmission or storage.</li>
-          <li>If your JSON has errors, the tool will highlight the exact position and describe the issue.</li>
+          <li data-i18n="tools.dev.json-validator.text.019">If your JSON has errors, the tool will highlight the exact position and describe the issue.</li>
           <li>Use <strong>Copy</strong> or <strong>Download</strong> to save your formatted JSON.</li>
         </ol>
 
-        <h3>Frequently Asked Questions</h3>
+        <h3 data-i18n="tools.dev.json-validator.text.020">Frequently Asked Questions</h3>
 
         <details class="faq-item">
           <summary>How does the error position indicator work?</summary>
-          <p>When your JSON contains syntax errors, the validator uses JavaScript's native error parsing to extract the exact character position where the error occurred. This helps you quickly locate and fix issues in large JSON files.</p>
+          <p data-i18n="tools.dev.json-validator.text.021">When your JSON contains syntax errors, the validator uses JavaScript's native error parsing to extract the exact character position where the error occurred. This helps you quickly locate and fix issues in large JSON files.</p>
         </details>
 
         <details class="faq-item">
           <summary>Is my JSON data kept private?</summary>
-          <p>Absolutely. All validation and formatting happens entirely in your browser using JavaScript. No data is ever transmitted to any server, logged, or stored. You can safely use this tool with sensitive API responses or configuration files.</p>
+          <p data-i18n="tools.dev.json-validator.text.022">Absolutely. All validation and formatting happens entirely in your browser using JavaScript. No data is ever transmitted to any server, logged, or stored. You can safely use this tool with sensitive API responses or configuration files.</p>
         </details>
 
         <details class="faq-item">
           <summary>What's the difference between Pretty Print and Minify?</summary>
-          <p>Pretty Print adds line breaks and indentation to make JSON human-readable, ideal for debugging and editing. Minify removes all whitespace to produce the smallest possible JSON string, perfect for network transmission or storage optimization.</p>
+          <p data-i18n="tools.dev.json-validator.text.023">Pretty Print adds line breaks and indentation to make JSON human-readable, ideal for debugging and editing. Minify removes all whitespace to produce the smallest possible JSON string, perfect for network transmission or storage optimization.</p>
         </details>
 
         <details class="faq-item">
           <summary>What do the syntax highlight colors mean?</summary>
-          <p>Keys are shown in cyan, string values in green, numbers in orange, booleans (true/false) in purple, and null values in red. These colors follow popular code editor conventions for quick visual parsing.</p>
+          <p data-i18n="tools.dev.json-validator.text.024">Keys are shown in cyan, string values in green, numbers in orange, booleans (true/false) in purple, and null values in red. These colors follow popular code editor conventions for quick visual parsing.</p>
         </details>
 
         <details class="faq-item">
           <summary>Does this tool support large JSON files?</summary>
-          <p>Yes, the tool can handle JSON files of significant size, limited only by your browser's memory. However, extremely large files (tens of megabytes) may cause performance issues depending on your device.</p>
+          <p data-i18n="tools.dev.json-validator.text.025">Yes, the tool can handle JSON files of significant size, limited only by your browser's memory. However, extremely large files (tens of megabytes) may cause performance issues depending on your device.</p>
         </details>
       </section>
     </main>
 
     <footer class="tool-footer">
-      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
-      <p>Estimates only &mdash; not financial, legal, or tax advice.</p>
+      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com" data-i18n="tools.dev.json-validator.text.026">psk.dan.metehancetin@mc-novatools.com</a></p>
+      <p data-i18n="tools.dev.json-validator.text.027">Estimates only &mdash; not financial, legal, or tax advice.</p>
     </footer>
     <style>
       .tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }
@@ -318,7 +318,7 @@
         } else if (/null/.test(match)) {
           cls = 'json-null';
         }
-        return '<span class="' + cls + '">' + match + '</span>';
+        return '<span class="' + cls + '" data-i18n="tools.dev.json-validator.text.028">' + match + '</span>';
       });
     }
 

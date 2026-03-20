@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="/src/styles/main.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <title>Free BMI Calculator Online | NovaTools MC</title>
+  <title data-i18n="tools.converters.bmi-calculator.meta.title">Free BMI Calculator Online | NovaTools MC</title>
   
   <!-- i18n Script -->
   <script src="/i18n.js"></script>
@@ -175,17 +175,17 @@
         <div class="header-inner">
           <a href="/" class="logo" aria-label="NovaTools MC Home">
             <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
-            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+            <span class="logo-text">NovaTools <span class="logo-mc" data-i18n="tools.converters.bmi-calculator.text.001">MC</span></span>
           </a>
           <nav class="nav-desktop" aria-label="Main navigation">
-            <a href="/#finance" class="nav-link">Finance</a>
-            <a href="/#pdf" class="nav-link">PDF Tools</a>
-            <a href="/#image" class="nav-link">Images</a>
-            <a href="/#dev" class="nav-link">Developers</a>
+            <a href="/#finance" class="nav-link" data-i18n="tools.converters.bmi-calculator.text.002">Finance</a>
+            <a href="/#pdf" class="nav-link" data-i18n="tools.converters.bmi-calculator.text.003">PDF Tools</a>
+            <a href="/#image" class="nav-link" data-i18n="tools.converters.bmi-calculator.text.004">Images</a>
+            <a href="/#dev" class="nav-link" data-i18n="tools.converters.bmi-calculator.text.005">Developers</a>
           </nav>
-          <div class="privacy-badge" title="Your data never leaves your browser">
+          <div class="privacy-badge" title="Your data never leaves your browser" data-i18n-title="tools.converters.bmi-calculator.title.001">
             <span class="privacy-badge-dot"></span>
-            <span>Privacy First</span>
+            <span data-i18n="tools.converters.bmi-calculator.text.006">Privacy First</span>
           </div>
           <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
             <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -196,10 +196,10 @@
           </button>
         </div>
         <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
-          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
-          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
-          <a href="/#image" class="mobile-nav-link">Image Tools</a>
-          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+          <a href="/#finance" class="mobile-nav-link" data-i18n="tools.converters.bmi-calculator.text.007">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link" data-i18n="tools.converters.bmi-calculator.text.008">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link" data-i18n="tools.converters.bmi-calculator.text.009">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link" data-i18n="tools.converters.bmi-calculator.text.010">Developer Tools</a>
         </nav>
       </div>
     </header>
@@ -208,8 +208,8 @@
       <div class="tool-wrapper">
         <div class="tool-hero">
           <div class="tool-hero-icon">&#9878;</div>
-          <h1>BMI Calculator</h1>
-          <p>Calculate your Body Mass Index (BMI) and discover your health category. Get personalized health tips and ideal weight range based on your height.</p>
+          <h1 data-i18n="tools.converters.bmi-calculator.text.011">BMI Calculator</h1>
+          <p data-i18n="tools.converters.bmi-calculator.text.012">Calculate your Body Mass Index (BMI) and discover your health category. Get personalized health tips and ideal weight range based on your height.</p>
         </div>
 
         <div class="card">
@@ -220,31 +220,31 @@
           </div>
 
           <div class="unit-toggle">
-            <button class="unit-btn active" data-unit="metric">Metric (kg, cm)</button>
-            <button class="unit-btn" data-unit="imperial">Imperial (lbs, ft/in)</button>
+            <button class="unit-btn active" data-unit="metric" data-i18n="tools.converters.bmi-calculator.text.013">Metric (kg, cm)</button>
+            <button class="unit-btn" data-unit="imperial" data-i18n="tools.converters.bmi-calculator.text.014">Imperial (lbs, ft/in)</button>
           </div>
 
           <div class="input-grid" id="metricInputs">
             <div class="input-group">
-              <label class="input-label">Height <span class="input-unit">(cm)</span></label>
+              <label class="input-label">Height <span class="input-unit" data-i18n="tools.converters.bmi-calculator.text.015">(cm)</span></label>
               <input type="number" class="input-field" id="heightCm" placeholder="175" min="50" max="300">
             </div>
             <div class="input-group">
-              <label class="input-label">Weight <span class="input-unit">(kg)</span></label>
+              <label class="input-label">Weight <span class="input-unit" data-i18n="tools.converters.bmi-calculator.text.016">(kg)</span></label>
               <input type="number" class="input-field" id="weightKg" placeholder="70" min="2" max="500" step="0.1">
             </div>
           </div>
 
           <div class="input-grid" id="imperialInputs" style="display: none;">
             <div class="input-group">
-              <label class="input-label">Height <span class="input-unit">(ft/in)</span></label>
+              <label class="input-label">Height <span class="input-unit" data-i18n="tools.converters.bmi-calculator.text.017">(ft/in)</span></label>
               <div class="height-row">
-                <input type="number" class="input-field" id="heightFt" placeholder="ft" min="1" max="9">
-                <input type="number" class="input-field" id="heightIn" placeholder="in" min="0" max="11">
+                <input type="number" class="input-field" id="heightFt" placeholder="ft" data-i18n-placeholder="tools.converters.bmi-calculator.placeholder.001" min="1" max="9">
+                <input type="number" class="input-field" id="heightIn" placeholder="in" data-i18n-placeholder="tools.converters.bmi-calculator.placeholder.002" min="0" max="11">
               </div>
             </div>
             <div class="input-group">
-              <label class="input-label">Weight <span class="input-unit">(lbs)</span></label>
+              <label class="input-label">Weight <span class="input-unit" data-i18n="tools.converters.bmi-calculator.text.018">(lbs)</span></label>
               <input type="number" class="input-field" id="weightLbs" placeholder="154" min="5" max="1000" step="0.1">
             </div>
           </div>
@@ -258,7 +258,7 @@
               <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor"><path d="M5.5 5.5A.5.5 0 016 6v6a.5.5 0 01-1 0V6a.5.5 0 01.5-.5zm2.5 0a.5.5 0 01.5.5v6a.5.5 0 01-1 0V6a.5.5 0 01.5-.5zm3 .5a.5.5 0 00-1 0v6a.5.5 0 001 0V6z"/><path fill-rule="evenodd" d="M14.5 3a1 1 0 01-1 1H13v9a2 2 0 01-2 2H5a2 2 0 01-2-2V4h-.5a1 1 0 01-1-1V2a1 1 0 011-1H6a1 1 0 011-1h2a1 1 0 011 1h3.5a1 1 0 011 1v1zM4.118 4L4 4.059V13a1 1 0 001 1h6a1 1 0 001-1V4.059L11.882 4H4.118z"/></svg>
               Clear
             </button>
-            <span class="copy-feedback" id="copyFeedback" aria-live="polite">Copied!</span>
+            <span class="copy-feedback" id="copyFeedback" aria-live="polite" data-i18n="tools.converters.bmi-calculator.text.019">Copied!</span>
           </div>
 
           <div class="bmi-result" id="bmiResult">
@@ -291,20 +291,20 @@
             <div class="health-tips">
               <div class="health-tips-title" id="healthTipsTitle">Health Tips</div>
               <ul class="health-tips-list" id="healthTipsList">
-                <li>Maintain a balanced diet with plenty of fruits and vegetables</li>
-                <li>Engage in regular physical activity (at least 150 minutes per week)</li>
-                <li>Stay hydrated by drinking adequate water daily</li>
-                <li>Get 7-9 hours of quality sleep each night</li>
+                <li data-i18n="tools.converters.bmi-calculator.text.020">Maintain a balanced diet with plenty of fruits and vegetables</li>
+                <li data-i18n="tools.converters.bmi-calculator.text.021">Engage in regular physical activity (at least 150 minutes per week)</li>
+                <li data-i18n="tools.converters.bmi-calculator.text.022">Stay hydrated by drinking adequate water daily</li>
+                <li data-i18n="tools.converters.bmi-calculator.text.023">Get 7-9 hours of quality sleep each night</li>
               </ul>
             </div>
 
             <div class="bmi-chart">
               <div class="bmi-chart-title">BMI Categories</div>
               <div class="bmi-chart-grid">
-                <div class="bmi-chart-item"><span class="bmi-chart-category">Underweight</span><span class="bmi-chart-range underweight">Below 18.5</span></div>
-                <div class="bmi-chart-item"><span class="bmi-chart-category">Normal weight</span><span class="bmi-chart-range normal">18.5 - 24.9</span></div>
-                <div class="bmi-chart-item"><span class="bmi-chart-category">Overweight</span><span class="bmi-chart-range overweight">25.0 - 29.9</span></div>
-                <div class="bmi-chart-item"><span class="bmi-chart-category">Obese</span><span class="bmi-chart-range obese">30.0 and above</span></div>
+                <div class="bmi-chart-item"><span class="bmi-chart-category" data-i18n="tools.converters.bmi-calculator.text.024">Underweight</span><span class="bmi-chart-range underweight" data-i18n="tools.converters.bmi-calculator.text.025">Below 18.5</span></div>
+                <div class="bmi-chart-item"><span class="bmi-chart-category" data-i18n="tools.converters.bmi-calculator.text.026">Normal weight</span><span class="bmi-chart-range normal">18.5 - 24.9</span></div>
+                <div class="bmi-chart-item"><span class="bmi-chart-category" data-i18n="tools.converters.bmi-calculator.text.027">Overweight</span><span class="bmi-chart-range overweight">25.0 - 29.9</span></div>
+                <div class="bmi-chart-item"><span class="bmi-chart-category" data-i18n="tools.converters.bmi-calculator.text.028">Obese</span><span class="bmi-chart-range obese" data-i18n="tools.converters.bmi-calculator.text.029">30.0 and above</span></div>
               </div>
             </div>
           </div>
@@ -316,61 +316,61 @@
       </div>
 
       <section class="seo-section" aria-label="About this tool">
-        <h2>About BMI Calculator</h2>
-        <p>Body Mass Index (BMI) is a simple screening method that uses your height and weight to determine if you're at a healthy weight for your height. Our free BMI Calculator provides instant results along with your health category and personalized health tips.</p>
+        <h2 data-i18n="tools.converters.bmi-calculator.text.030">About BMI Calculator</h2>
+        <p data-i18n="tools.converters.bmi-calculator.text.031">Body Mass Index (BMI) is a simple screening method that uses your height and weight to determine if you're at a healthy weight for your height. Our free BMI Calculator provides instant results along with your health category and personalized health tips.</p>
 
-        <h3>How to Use</h3>
+        <h3 data-i18n="tools.converters.bmi-calculator.text.032">How to Use</h3>
         <ol>
-          <li>Select your preferred unit system (Metric or Imperial).</li>
-          <li>Enter your height (in cm or feet/inches).</li>
-          <li>Enter your weight (in kg or lbs).</li>
-          <li>Click "Calculate BMI" to see your results.</li>
-          <li>View your BMI value and corresponding health category.</li>
-          <li>Check the visual BMI scale to see where you fall.</li>
-          <li>Review your ideal weight range and health tips.</li>
+          <li data-i18n="tools.converters.bmi-calculator.text.033">Select your preferred unit system (Metric or Imperial).</li>
+          <li data-i18n="tools.converters.bmi-calculator.text.034">Enter your height (in cm or feet/inches).</li>
+          <li data-i18n="tools.converters.bmi-calculator.text.035">Enter your weight (in kg or lbs).</li>
+          <li data-i18n="tools.converters.bmi-calculator.text.036">Click "Calculate BMI" to see your results.</li>
+          <li data-i18n="tools.converters.bmi-calculator.text.037">View your BMI value and corresponding health category.</li>
+          <li data-i18n="tools.converters.bmi-calculator.text.038">Check the visual BMI scale to see where you fall.</li>
+          <li data-i18n="tools.converters.bmi-calculator.text.039">Review your ideal weight range and health tips.</li>
         </ol>
 
-        <h3>BMI Categories</h3>
+        <h3 data-i18n="tools.converters.bmi-calculator.text.040">BMI Categories</h3>
         <p><strong>Underweight (Below 18.5):</strong> May indicate malnutrition or other health issues. Consult a healthcare provider.<br>
         <strong>Normal Weight (18.5 - 24.9):</strong> Generally associated with the lowest health risks.<br>
         <strong>Overweight (25.0 - 29.9):</strong> May indicate increased risk for certain health conditions.<br>
         <strong>Obese (30.0 and above):</strong> Associated with higher risks for cardiovascular disease, diabetes, and other conditions.</p>
 
-        <h3>Limitations of BMI</h3>
-        <p>BMI does not directly measure body fat and doesn't account for factors like muscle mass, bone density, age, sex, and ethnicity. Athletes may have high BMIs due to muscle mass rather than fat. Always consult healthcare professionals for comprehensive health assessments.</p>
+        <h3 data-i18n="tools.converters.bmi-calculator.text.041">Limitations of BMI</h3>
+        <p data-i18n="tools.converters.bmi-calculator.text.042">BMI does not directly measure body fat and doesn't account for factors like muscle mass, bone density, age, sex, and ethnicity. Athletes may have high BMIs due to muscle mass rather than fat. Always consult healthcare professionals for comprehensive health assessments.</p>
 
-        <h3>Frequently Asked Questions</h3>
+        <h3 data-i18n="tools.converters.bmi-calculator.text.043">Frequently Asked Questions</h3>
 
         <details class="faq-item">
           <summary>What is a healthy BMI?</summary>
-          <p>A healthy BMI typically falls between 18.5 and 24.9. However, ideal BMI can vary based on factors like age, sex, muscle mass, and ethnicity. Consult your healthcare provider for personalized guidance.</p>
+          <p data-i18n="tools.converters.bmi-calculator.text.044">A healthy BMI typically falls between 18.5 and 24.9. However, ideal BMI can vary based on factors like age, sex, muscle mass, and ethnicity. Consult your healthcare provider for personalized guidance.</p>
         </details>
 
         <details class="faq-item">
           <summary>How is BMI calculated?</summary>
-          <p>BMI is calculated by dividing weight in kilograms by height in meters squared (kg/m²). For imperial units: (weight in lbs × 703) ÷ (height in inches)².</p>
+          <p data-i18n="tools.converters.bmi-calculator.text.045">BMI is calculated by dividing weight in kilograms by height in meters squared (kg/m²). For imperial units: (weight in lbs × 703) ÷ (height in inches)².</p>
         </details>
 
         <details class="faq-item">
           <summary>Can BMI be wrong for athletes?</summary>
-          <p>Yes. BMI doesn't distinguish between muscle and fat. Athletes with high muscle mass may have a high BMI while having low body fat. Other measurements like body fat percentage may be more appropriate.</p>
+          <p data-i18n="tools.converters.bmi-calculator.text.046">Yes. BMI doesn't distinguish between muscle and fat. Athletes with high muscle mass may have a high BMI while having low body fat. Other measurements like body fat percentage may be more appropriate.</p>
         </details>
 
         <details class="faq-item">
           <summary>What should I do if my BMI is high?</summary>
-          <p>If your BMI indicates overweight or obesity, consider consulting a healthcare provider. They can assess your overall health and recommend appropriate lifestyle changes including diet and exercise.</p>
+          <p data-i18n="tools.converters.bmi-calculator.text.047">If your BMI indicates overweight or obesity, consider consulting a healthcare provider. They can assess your overall health and recommend appropriate lifestyle changes including diet and exercise.</p>
         </details>
 
         <details class="faq-item">
           <summary>Is BMI different for children?</summary>
-          <p>Yes, BMI for children and teens is interpreted differently and uses age and sex-specific percentiles. This calculator is designed for adults aged 18 and older.</p>
+          <p data-i18n="tools.converters.bmi-calculator.text.048">Yes, BMI for children and teens is interpreted differently and uses age and sex-specific percentiles. This calculator is designed for adults aged 18 and older.</p>
         </details>
       </section>
     </main>
 
     <footer class="tool-footer">
-      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
-      <p>Estimates only &mdash; not financial, legal, or tax advice.</p>
+      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com" data-i18n="tools.converters.bmi-calculator.text.049">psk.dan.metehancetin@mc-novatools.com</a></p>
+      <p data-i18n="tools.converters.bmi-calculator.text.050">Estimates only &mdash; not financial, legal, or tax advice.</p>
     </footer>
     <style>
       .tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }
@@ -499,7 +499,7 @@
       }
 
       healthTipsTitle.textContent = `Health Tips for ${category}`;
-      healthTipsList.innerHTML = healthTips[tipsKey].map(tip => `<li>${tip}</li>`).join('');
+      healthTipsList.innerHTML = healthTips[tipsKey].map(tip => `<li data-i18n="tools.converters.bmi-calculator.text.051">${tip}</li>`).join('');
 
       resultDiv.classList.add('show');
     }

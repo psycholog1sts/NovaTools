@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="/src/styles/main.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <title>Free Twitter/X Video Downloader | NovaTools MC</title>
+  <title data-i18n="tools.social.twitter-video.meta.title">Free Twitter/X Video Downloader | NovaTools MC</title>
   
   <!-- i18n Script -->
   <script src="/i18n.js"></script>
@@ -120,17 +120,17 @@
         <div class="header-inner">
           <a href="/" class="logo" aria-label="NovaTools MC Home">
             <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
-            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+            <span class="logo-text">NovaTools <span class="logo-mc" data-i18n="tools.social.twitter-video.text.001">MC</span></span>
           </a>
           <nav class="nav-desktop" aria-label="Main navigation">
-            <a href="/#finance" class="nav-link">Finance</a>
-            <a href="/#pdf" class="nav-link">PDF Tools</a>
-            <a href="/#image" class="nav-link">Images</a>
-            <a href="/#dev" class="nav-link">Developers</a>
+            <a href="/#finance" class="nav-link" data-i18n="tools.social.twitter-video.text.002">Finance</a>
+            <a href="/#pdf" class="nav-link" data-i18n="tools.social.twitter-video.text.003">PDF Tools</a>
+            <a href="/#image" class="nav-link" data-i18n="tools.social.twitter-video.text.004">Images</a>
+            <a href="/#dev" class="nav-link" data-i18n="tools.social.twitter-video.text.005">Developers</a>
           </nav>
-          <div class="privacy-badge" title="Your data never leaves your browser">
+          <div class="privacy-badge" title="Your data never leaves your browser" data-i18n-title="tools.social.twitter-video.title.001">
             <span class="privacy-badge-dot"></span>
-            <span>Privacy First</span>
+            <span data-i18n="tools.social.twitter-video.text.006">Privacy First</span>
           </div>
           <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
             <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -141,10 +141,10 @@
           </button>
         </div>
         <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
-          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
-          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
-          <a href="/#image" class="mobile-nav-link">Image Tools</a>
-          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+          <a href="/#finance" class="mobile-nav-link" data-i18n="tools.social.twitter-video.text.007">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link" data-i18n="tools.social.twitter-video.text.008">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link" data-i18n="tools.social.twitter-video.text.009">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link" data-i18n="tools.social.twitter-video.text.010">Developer Tools</a>
         </nav>
       </div>
     </header>
@@ -153,14 +153,14 @@
       <div class="tool-wrapper">
         <div class="tool-hero">
           <div class="tool-hero-icon">&#128038;</div>
-          <h1>Twitter/X Video Downloader</h1>
-          <p>Download videos and media from Twitter/X posts. Extract media URLs from tweet links for offline viewing.</p>
+          <h1 data-i18n="tools.social.twitter-video.text.011">Twitter/X Video Downloader</h1>
+          <p data-i18n="tools.social.twitter-video.text.012">Download videos and media from Twitter/X posts. Extract media URLs from tweet links for offline viewing.</p>
         </div>
 
         <div class="card">
           <div class="input-group">
-            <label class="input-label" for="tweetUrl">Tweet URL</label>
-            <input type="text" class="input-field" id="tweetUrl" placeholder="https://twitter.com/username/status/1234567890...">
+            <label class="input-label" for="tweetUrl" data-i18n="tools.social.twitter-video.text.013">Tweet URL</label>
+            <input type="text" class="input-field" id="tweetUrl" placeholder="https://twitter.com/username/status/1234567890..." data-i18n-placeholder="tools.social.twitter-video.placeholder.001">
           </div>
           
           <button class="btn btn-primary" id="btnAnalyze" type="button">
@@ -183,19 +183,19 @@
       </div>
 
       <section class="seo-section" aria-label="About this tool">
-        <h2>About Twitter/X Video Downloader</h2>
-        <p>Twitter/X Video Downloader helps you access media content from Twitter/X posts for legitimate personal use. This tool provides guidance on extracting video and image URLs from tweet links. Please note that Twitter/X has implemented strict API restrictions and authentication requirements that may limit direct downloading capabilities.</p>
+        <h2 data-i18n="tools.social.twitter-video.text.014">About Twitter/X Video Downloader</h2>
+        <p data-i18n="tools.social.twitter-video.text.015">Twitter/X Video Downloader helps you access media content from Twitter/X posts for legitimate personal use. This tool provides guidance on extracting video and image URLs from tweet links. Please note that Twitter/X has implemented strict API restrictions and authentication requirements that may limit direct downloading capabilities.</p>
 
-        <h3>How to Use</h3>
+        <h3 data-i18n="tools.social.twitter-video.text.016">How to Use</h3>
         <ol>
-          <li>Copy the URL of the Twitter/X post containing the video or media.</li>
-          <li>Paste the URL into the input field above.</li>
-          <li>Click "Analyze Tweet" to extract media information.</li>
-          <li>Follow the provided instructions to download the media.</li>
-          <li>For videos, you may need to use browser developer tools or extensions.</li>
+          <li data-i18n="tools.social.twitter-video.text.017">Copy the URL of the Twitter/X post containing the video or media.</li>
+          <li data-i18n="tools.social.twitter-video.text.018">Paste the URL into the input field above.</li>
+          <li data-i18n="tools.social.twitter-video.text.019">Click "Analyze Tweet" to extract media information.</li>
+          <li data-i18n="tools.social.twitter-video.text.020">Follow the provided instructions to download the media.</li>
+          <li data-i18n="tools.social.twitter-video.text.021">For videos, you may need to use browser developer tools or extensions.</li>
         </ol>
 
-        <h3>Alternative Download Methods</h3>
+        <h3 data-i18n="tools.social.twitter-video.text.022">Alternative Download Methods</h3>
         <ul style="color: #A1A1AA; line-height: 1.8; font-size: 0.9375rem; padding-left: 1.25rem;">
           <li><strong>Browser Extensions:</strong> Install reputable Twitter video downloader extensions for Chrome/Firefox</li>
           <li><strong>Developer Tools:</strong> Right-click → Inspect → Network tab → play video → find media file</li>
@@ -203,38 +203,38 @@
           <li><strong>Screen Recording:</strong> Record the video playing on your screen as a last resort</li>
         </ul>
 
-        <h3>Frequently Asked Questions</h3>
+        <h3 data-i18n="tools.social.twitter-video.text.023">Frequently Asked Questions</h3>
 
         <details class="faq-item">
           <summary>Why can't I download Twitter/X videos directly?</summary>
-          <p>Twitter/X has implemented strict security measures including authentication tokens, rate limiting, and CORS policies that prevent browser-based tools from directly accessing media files. These protections are in place to prevent abuse and unauthorized content redistribution.</p>
+          <p data-i18n="tools.social.twitter-video.text.024">Twitter/X has implemented strict security measures including authentication tokens, rate limiting, and CORS policies that prevent browser-based tools from directly accessing media files. These protections are in place to prevent abuse and unauthorized content redistribution.</p>
         </details>
 
         <details class="faq-item">
           <summary>Is it legal to download Twitter/X videos?</summary>
-          <p>Twitter/X videos are protected by copyright. You should only download videos that you own, have explicit permission to use, or are downloading for personal reference/fair use. Commercial use, redistribution, or claiming ownership without permission violates copyright laws and Twitter's Terms of Service.</p>
+          <p data-i18n="tools.social.twitter-video.text.025">Twitter/X videos are protected by copyright. You should only download videos that you own, have explicit permission to use, or are downloading for personal reference/fair use. Commercial use, redistribution, or claiming ownership without permission violates copyright laws and Twitter's Terms of Service.</p>
         </details>
 
         <details class="faq-item">
           <summary>Does this tool store my data?</summary>
-          <p>No. This tool operates entirely in your browser. We do not store, log, or transmit any tweet URLs, usernames, or media content to our servers. Your privacy is completely protected.</p>
+          <p data-i18n="tools.social.twitter-video.text.026">No. This tool operates entirely in your browser. We do not store, log, or transmit any tweet URLs, usernames, or media content to our servers. Your privacy is completely protected.</p>
         </details>
 
         <details class="faq-item">
           <summary>Can I download videos from private accounts?</summary>
-          <p>No. Content from private Twitter/X accounts cannot be accessed through any external tools. Only public posts can be analyzed, and even then, downloading may require proper authentication.</p>
+          <p data-i18n="tools.social.twitter-video.text.027">No. Content from private Twitter/X accounts cannot be accessed through any external tools. Only public posts can be analyzed, and even then, downloading may require proper authentication.</p>
         </details>
 
         <details class="faq-item">
           <summary>What video qualities are available?</summary>
-          <p>Twitter/X typically provides videos in multiple resolutions (usually 240p, 480p, 720p, and sometimes 1080p). The available qualities depend on how the video was originally uploaded. Higher quality versions consume more bandwidth and storage.</p>
+          <p data-i18n="tools.social.twitter-video.text.028">Twitter/X typically provides videos in multiple resolutions (usually 240p, 480p, 720p, and sometimes 1080p). The available qualities depend on how the video was originally uploaded. Higher quality versions consume more bandwidth and storage.</p>
         </details>
       </section>
     </main>
 
     <footer class="tool-footer">
-      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
-      <p>Estimates only &mdash; not financial, legal, or tax advice.</p>
+      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com" data-i18n="tools.social.twitter-video.text.029">psk.dan.metehancetin@mc-novatools.com</a></p>
+      <p data-i18n="tools.social.twitter-video.text.030">Estimates only &mdash; not financial, legal, or tax advice.</p>
     </footer>
     <style>
       .tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }
@@ -258,19 +258,19 @@
       const tweetId = extractTweetId(url);
       
       if (!tweetId) {
-        resultContent.innerHTML = '<p style="color: #FF5555;">Invalid Twitter/X URL. Please check the format.</p>';
+        resultContent.innerHTML = '<p style="color: #FF5555;" data-i18n="tools.social.twitter-video.text.031">Invalid Twitter/X URL. Please check the format.</p>';
         resultArea.classList.add('show');
         return;
       }
 
       resultContent.innerHTML = `
         <div class="tweet-info">
-          <div class="tweet-author">Tweet ID: <span style="color: #00D9FF;">${tweetId}</span></div>
+          <div class="tweet-author">Tweet ID: <span style="color: #00D9FF;" data-i18n="tools.social.twitter-video.text.032">${tweetId}</span></div>
           <div class="tweet-text">Due to Twitter/X API restrictions, direct media extraction requires additional authentication.</div>
         </div>
         <div class="media-list">
           <div class="media-item">
-            <span class="media-type">Recommended Methods</span>
+            <span class="media-type" data-i18n="tools.social.twitter-video.text.033">Recommended Methods</span>
           </div>
           <div style="padding: 0.75rem; color: #A1A1AA; font-size: 0.875rem; line-height: 1.6;">
             <strong>1. Browser Developer Tools:</strong><br>

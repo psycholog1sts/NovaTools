@@ -23,7 +23,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <title>Free Image Compressor - Reduce JPG PNG WebP Size Online</title>
+  <title data-i18n="tools.image.compress.meta.title">Free Image Compressor - Reduce JPG PNG WebP Size Online</title>
   
   <!-- i18n Script -->
   <script src="/i18n.js"></script>
@@ -99,17 +99,17 @@
         <div class="header-inner">
           <a href="/" class="logo" aria-label="NovaTools MC Home">
             <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
-            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+            <span class="logo-text">NovaTools <span class="logo-mc" data-i18n="tools.image.compress.text.001">MC</span></span>
           </a>
           <nav class="nav-desktop" aria-label="Main navigation">
-            <a href="/#finance" class="nav-link">Finance</a>
-            <a href="/#pdf" class="nav-link">PDF Tools</a>
-            <a href="/#image" class="nav-link">Images</a>
-            <a href="/#dev" class="nav-link">Developers</a>
+            <a href="/#finance" class="nav-link" data-i18n="tools.image.compress.text.002">Finance</a>
+            <a href="/#pdf" class="nav-link" data-i18n="tools.image.compress.text.003">PDF Tools</a>
+            <a href="/#image" class="nav-link" data-i18n="tools.image.compress.text.004">Images</a>
+            <a href="/#dev" class="nav-link" data-i18n="tools.image.compress.text.005">Developers</a>
           </nav>
-          <div class="privacy-badge" title="Your data never leaves your browser">
+          <div class="privacy-badge" title="Your data never leaves your browser" data-i18n-title="tools.image.compress.title.001">
             <span class="privacy-badge-dot"></span>
-            <span>Privacy First</span>
+            <span data-i18n="tools.image.compress.text.006">Privacy First</span>
           </div>
           <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
             <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -120,19 +120,19 @@
           </button>
         </div>
         <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
-          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
-          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
-          <a href="/#image" class="mobile-nav-link">Image Tools</a>
-          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+          <a href="/#finance" class="mobile-nav-link" data-i18n="tools.image.compress.text.007">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link" data-i18n="tools.image.compress.text.008">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link" data-i18n="tools.image.compress.text.009">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link" data-i18n="tools.image.compress.text.010">Developer Tools</a>
         </nav>
       </div>
     </header>
 <main class="main-content">
       <div class="tool-container">
         <div class="tool-header">
-          <h1>🖼️ Image Compressor</h1>
-          <span class="sr-only">Free image compressor — free online JPG, PNG and WebP image compression tool. Reduce image file size for free without losing quality. No registration required. 100% free image optimizer.</span>
-          <p>Reduce image file size without losing quality. Supports JPEG, PNG, and WebP.</p>
+          <h1 data-i18n="tools.image.compress.text.011">🖼️ Image Compressor</h1>
+          <span class="sr-only" data-i18n="tools.image.compress.text.012">Free image compressor — free online JPG, PNG and WebP image compression tool. Reduce image file size for free without losing quality. No registration required. 100% free image optimizer.</span>
+          <p data-i18n="tools.image.compress.text.013">Reduce image file size without losing quality. Supports JPEG, PNG, and WebP.</p>
         </div>
         
         <form data-tool="image-compress" data-result=".results-panel">
@@ -147,7 +147,7 @@
             <label style="font-weight: 600;">Quality: <span id="qualityValue">80</span>%</label>
             <input type="range" name="quality" id="qualitySlider" class="quality-slider" min="1" max="100" value="80">
             
-            <label style="font-weight: 600; margin-top: 1rem; display: block;">Output Format</label>
+            <label style="font-weight: 600; margin-top: 1rem; display: block;" data-i18n="tools.image.compress.text.014">Output Format</label>
             <select name="format" id="formatSelect" style="width: 100%; height: 48px; margin-top: 0.5rem; padding: 0 1rem; background: var(--bg-tertiary); border: 1px solid var(--border-default); border-radius: var(--radius-md); color: var(--text-primary);">
               <option value="image/jpeg">JPEG</option>
               <option value="image/png">PNG</option>
@@ -156,36 +156,36 @@
             
             <div class="preview-grid">
               <div class="preview-box">
-                <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 0.5rem;">Original</p>
+                <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 0.5rem;" data-i18n="tools.image.compress.text.015">Original</p>
                 <img id="originalPreview" src="" alt="Original">
                 <p id="originalSize" style="font-size: 0.875rem; margin-top: 0.5rem;"></p>
               </div>
               <div class="preview-box">
-                <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 0.5rem;">Compressed</p>
+                <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 0.5rem;" data-i18n="tools.image.compress.text.016">Compressed</p>
                 <img id="compressedPreview" src="" alt="Compressed">
                 <p id="compressedSize" style="font-size: 0.875rem; margin-top: 0.5rem;"></p>
               </div>
             </div>
             
-            <button type="submit" id="compressBtn" class="btn btn-primary" style="width: 100%; height: 52px;">Compress Image</button>
+            <button type="submit" id="compressBtn" class="btn btn-primary" style="width: 100%; height: 52px;" data-i18n="tools.image.compress.text.017">Compress Image</button>
           </div>
         </form>
         
         <div class="results-panel">
           <div id="resultSection" class="result-section">
             <div style="font-size: 3rem; margin-bottom: 1rem;">✅</div>
-            <h3 style="margin-bottom: 0.5rem;">Image Compressed!</h3>
+            <h3 style="margin-bottom: 0.5rem;" data-i18n="tools.image.compress.text.018">Image Compressed!</h3>
             <p id="savingsText" style="color: var(--text-secondary); margin-bottom: 1.5rem;"></p>
-            <a id="downloadLink" href="#" class="download-btn" download>Download Compressed Image</a>
+            <a id="downloadLink" href="#" class="download-btn" download data-i18n="tools.image.compress.text.019">Download Compressed Image</a>
           </div>
         </div>
 
         <div class="seo-content">
-          <h2>Free Online Image Compressor Tool</h2>
+          <h2 data-i18n="tools.image.compress.text.020">Free Online Image Compressor Tool</h2>
           <p>Welcome to our free online image compressor - the fastest way to <strong>compress images</strong> and <strong>reduce image size</strong> without sacrificing visual quality. Whether you need to <strong>optimize images for web</strong> performance or simply free up storage space on your device, our powerful <strong>jpg compressor</strong> and image optimization tool delivers professional results instantly.</p>
-          <p>Large image files can significantly slow down your website's loading speed, negatively impact SEO rankings, and consume unnecessary bandwidth. Our browser-based compression technology processes your images locally, ensuring complete privacy while achieving file size reductions of up to 80%. Support for JPEG, PNG, and WebP formats means you can optimize any image for your specific needs.</p>
+          <p data-i18n="tools.image.compress.text.021">Large image files can significantly slow down your website's loading speed, negatively impact SEO rankings, and consume unnecessary bandwidth. Our browser-based compression technology processes your images locally, ensuring complete privacy while achieving file size reductions of up to 80%. Support for JPEG, PNG, and WebP formats means you can optimize any image for your specific needs.</p>
           
-          <h3>How to Use Our Image Compressor</h3>
+          <h3 data-i18n="tools.image.compress.text.022">How to Use Our Image Compressor</h3>
           <ol>
             <li><strong>Upload your image</strong> - Drag and drop your JPG, PNG, or WebP file into the upload area, or click to browse your device's files. We support images up to 10MB in size.</li>
             <li><strong>Adjust quality settings</strong> - Use the quality slider to find the perfect balance between file size and image clarity. A setting of 70-80% typically provides excellent results.</li>
@@ -194,26 +194,26 @@
             <li><strong>Download your optimized image</strong> - Click the download button to save your compressed image instantly. All processing happens in your browser for complete privacy.</li>
           </ol>
           
-          <h3>Frequently Asked Questions</h3>
+          <h3 data-i18n="tools.image.compress.text.023">Frequently Asked Questions</h3>
           <details class="faq-item">
             <summary>Will compressing images reduce their quality?</summary>
-            <p>Our smart compression algorithm minimizes quality loss while dramatically reducing file size. At 80% quality, most images retain visual clarity indistinguishable from the original to the human eye. You can adjust the quality slider to find your preferred balance between size and quality.</p>
+            <p data-i18n="tools.image.compress.text.024">Our smart compression algorithm minimizes quality loss while dramatically reducing file size. At 80% quality, most images retain visual clarity indistinguishable from the original to the human eye. You can adjust the quality slider to find your preferred balance between size and quality.</p>
           </details>
           <details class="faq-item">
             <summary>Is my data safe when using this tool?</summary>
-            <p>Absolutely! All image processing happens entirely within your browser using client-side JavaScript. Your images are never uploaded to any server, ensuring complete privacy and security. Once you close the page, all data is automatically cleared from your browser.</p>
+            <p data-i18n="tools.image.compress.text.025">Absolutely! All image processing happens entirely within your browser using client-side JavaScript. Your images are never uploaded to any server, ensuring complete privacy and security. Once you close the page, all data is automatically cleared from your browser.</p>
           </details>
           <details class="faq-item">
             <summary>What image formats are supported?</summary>
-            <p>Our compressor supports JPG/JPEG, PNG, and WebP formats for both input and output. WebP typically offers the best compression ratios, while PNG preserves transparency. JPEG is ideal for photographs and general use where transparency isn't needed.</p>
+            <p data-i18n="tools.image.compress.text.026">Our compressor supports JPG/JPEG, PNG, and WebP formats for both input and output. WebP typically offers the best compression ratios, while PNG preserves transparency. JPEG is ideal for photographs and general use where transparency isn't needed.</p>
           </details>
         </div>
       </div>
     </main>
 
     <footer class="tool-footer">
-  <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
-  <p>Estimates only &mdash; not financial, legal, or tax advice.</p>
+  <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com" data-i18n="tools.image.compress.text.027">psk.dan.metehancetin@mc-novatools.com</a></p>
+  <p data-i18n="tools.image.compress.text.028">Estimates only &mdash; not financial, legal, or tax advice.</p>
 </footer>
 <style>
 .tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }

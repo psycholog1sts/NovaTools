@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="/src/styles/main.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <title>Free Resume Builder Online | Create CV PDF | NovaTools MC</title>
+  <title data-i18n="tools.design.resume-builder.meta.title">Free Resume Builder Online | Create CV PDF | NovaTools MC</title>
   
   <!-- i18n Script -->
   <script src="/i18n.js"></script>
@@ -158,17 +158,17 @@
         <div class="header-inner">
           <a href="/" class="logo" aria-label="NovaTools MC Home">
             <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
-            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+            <span class="logo-text">NovaTools <span class="logo-mc" data-i18n="tools.design.resume-builder.text.001">MC</span></span>
           </a>
           <nav class="nav-desktop" aria-label="Main navigation">
-            <a href="/#finance" class="nav-link">Finance</a>
-            <a href="/#pdf" class="nav-link">PDF Tools</a>
-            <a href="/#image" class="nav-link">Images</a>
-            <a href="/#dev" class="nav-link">Developers</a>
+            <a href="/#finance" class="nav-link" data-i18n="tools.design.resume-builder.text.002">Finance</a>
+            <a href="/#pdf" class="nav-link" data-i18n="tools.design.resume-builder.text.003">PDF Tools</a>
+            <a href="/#image" class="nav-link" data-i18n="tools.design.resume-builder.text.004">Images</a>
+            <a href="/#dev" class="nav-link" data-i18n="tools.design.resume-builder.text.005">Developers</a>
           </nav>
-          <div class="privacy-badge" title="Your data never leaves your browser">
+          <div class="privacy-badge" title="Your data never leaves your browser" data-i18n-title="tools.design.resume-builder.title.001">
             <span class="privacy-badge-dot"></span>
-            <span>Privacy First</span>
+            <span data-i18n="tools.design.resume-builder.text.006">Privacy First</span>
           </div>
           <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
             <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -179,10 +179,10 @@
           </button>
         </div>
         <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
-          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
-          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
-          <a href="/#image" class="mobile-nav-link">Image Tools</a>
-          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+          <a href="/#finance" class="mobile-nav-link" data-i18n="tools.design.resume-builder.text.007">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link" data-i18n="tools.design.resume-builder.text.008">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link" data-i18n="tools.design.resume-builder.text.009">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link" data-i18n="tools.design.resume-builder.text.010">Developer Tools</a>
         </nav>
       </div>
     </header>
@@ -191,43 +191,43 @@
       <div class="tool-wrapper">
         <div class="tool-hero">
           <div class="tool-hero-icon">&#128196;</div>
-          <h1>Resume Builder</h1>
-          <span class="sr-only">Free online resume builder - create professional CVs instantly</span>
-          <p>Create professional, ATS-friendly resumes with customizable templates. Export as PDF for job applications.</p>
+          <h1 data-i18n="tools.design.resume-builder.text.011">Resume Builder</h1>
+          <span class="sr-only" data-i18n="tools.design.resume-builder.text.012">Free online resume builder - create professional CVs instantly</span>
+          <p data-i18n="tools.design.resume-builder.text.013">Create professional, ATS-friendly resumes with customizable templates. Export as PDF for job applications.</p>
         </div>
 
         <div class="editor-grid">
           <div class="card">
             <div class="section-title">Template</div>
             <div class="template-grid">
-              <button class="template-btn active" data-template="classic">Classic</button>
-              <button class="template-btn" data-template="modern">Modern</button>
-              <button class="template-btn" data-template="minimal">Minimal</button>
+              <button class="template-btn active" data-template="classic" data-i18n="tools.design.resume-builder.text.014">Classic</button>
+              <button class="template-btn" data-template="modern" data-i18n="tools.design.resume-builder.text.015">Modern</button>
+              <button class="template-btn" data-template="minimal" data-i18n="tools.design.resume-builder.text.016">Minimal</button>
             </div>
             
             <div class="section-title">Personal Information</div>
             <div class="control-group">
-              <label>Full Name</label>
+              <label data-i18n="tools.design.resume-builder.text.017">Full Name</label>
               <input type="text" id="rName" value="John Anderson">
             </div>
             <div class="control-group">
-              <label>Job Title</label>
+              <label data-i18n="tools.design.resume-builder.text.018">Job Title</label>
               <input type="text" id="rTitle" value="Senior Marketing Manager">
             </div>
             <div class="control-group">
-              <label>Email</label>
+              <label data-i18n="tools.design.resume-builder.text.019">Email</label>
               <input type="email" id="rEmail" value="john.anderson@email.com">
             </div>
             <div class="control-group">
-              <label>Phone</label>
+              <label data-i18n="tools.design.resume-builder.text.020">Phone</label>
               <input type="tel" id="rPhone" value="+1 (555) 123-4567">
             </div>
             <div class="control-group">
-              <label>Location</label>
+              <label data-i18n="tools.design.resume-builder.text.021">Location</label>
               <input type="text" id="rLocation" value="New York, NY">
             </div>
             <div class="control-group">
-              <label>LinkedIn</label>
+              <label data-i18n="tools.design.resume-builder.text.022">LinkedIn</label>
               <input type="url" id="rLinkedIn" value="linkedin.com/in/johnanderson">
             </div>
             
@@ -238,13 +238,13 @@
             
             <div class="section-title">Experience</div>
             <div class="control-group">
-              <label>Job 1 Title</label>
+              <label data-i18n="tools.design.resume-builder.text.023">Job 1 Title</label>
               <input type="text" id="rJob1Title" value="Senior Marketing Manager">
-              <label style="margin-top: 0.5rem;">Company</label>
+              <label style="margin-top: 0.5rem;" data-i18n="tools.design.resume-builder.text.024">Company</label>
               <input type="text" id="rJob1Company" value="Tech Solutions Inc.">
-              <label style="margin-top: 0.5rem;">Date</label>
+              <label style="margin-top: 0.5rem;" data-i18n="tools.design.resume-builder.text.025">Date</label>
               <input type="text" id="rJob1Date" value="2020 - Present">
-              <label style="margin-top: 0.5rem;">Description</label>
+              <label style="margin-top: 0.5rem;" data-i18n="tools.design.resume-builder.text.026">Description</label>
               <textarea id="rJob1Desc">- Led marketing team of 12 professionals
 - Increased lead generation by 45% through digital campaigns
 - Managed $2M annual marketing budget</textarea>
@@ -252,11 +252,11 @@
             
             <div class="section-title">Education</div>
             <div class="control-group">
-              <label>Degree</label>
+              <label data-i18n="tools.design.resume-builder.text.027">Degree</label>
               <input type="text" id="rDegree" value="MBA, Marketing">
-              <label style="margin-top: 0.5rem;">School</label>
+              <label style="margin-top: 0.5rem;" data-i18n="tools.design.resume-builder.text.028">School</label>
               <input type="text" id="rSchool" value="University of Pennsylvania">
-              <label style="margin-top: 0.5rem;">Year</label>
+              <label style="margin-top: 0.5rem;" data-i18n="tools.design.resume-builder.text.029">Year</label>
               <input type="text" id="rEduYear" value="2018">
             </div>
             
@@ -269,8 +269,8 @@
           <div class="preview-panel">
             <div id="resumePreview" class="resume-classic"></div>
             <div class="btn-bar">
-              <button class="btn btn-primary" id="downloadPdf">Download PDF</button>
-              <button class="btn btn-secondary" id="printResume">Print</button>
+              <button class="btn btn-primary" id="downloadPdf" data-i18n="tools.design.resume-builder.text.030">Download PDF</button>
+              <button class="btn btn-secondary" id="printResume" data-i18n="tools.design.resume-builder.text.031">Print</button>
             </div>
           </div>
         </div>
@@ -281,51 +281,51 @@
       </div>
 
       <section class="seo-section" aria-label="About this tool">
-        <h2>About Resume Builder</h2>
-        <p>Create professional, ATS-friendly resumes that help you stand out to employers. Our resume builder offers multiple templates designed to pass Applicant Tracking Systems while looking great to human recruiters. Export your resume as a PDF ready for job applications.</p>
+        <h2 data-i18n="tools.design.resume-builder.text.032">About Resume Builder</h2>
+        <p data-i18n="tools.design.resume-builder.text.033">Create professional, ATS-friendly resumes that help you stand out to employers. Our resume builder offers multiple templates designed to pass Applicant Tracking Systems while looking great to human recruiters. Export your resume as a PDF ready for job applications.</p>
 
-        <h3>How to Use</h3>
+        <h3 data-i18n="tools.design.resume-builder.text.034">How to Use</h3>
         <ol>
-          <li>Select a template style: Classic, Modern, or Minimal.</li>
-          <li>Fill in your personal information including name, contact details, and location.</li>
-          <li>Write a compelling professional summary highlighting your key achievements.</li>
-          <li>Add your work experience with job titles, companies, dates, and accomplishments.</li>
-          <li>Include your education history and relevant skills.</li>
-          <li>Preview your resume and download as PDF or print directly.</li>
+          <li data-i18n="tools.design.resume-builder.text.035">Select a template style: Classic, Modern, or Minimal.</li>
+          <li data-i18n="tools.design.resume-builder.text.036">Fill in your personal information including name, contact details, and location.</li>
+          <li data-i18n="tools.design.resume-builder.text.037">Write a compelling professional summary highlighting your key achievements.</li>
+          <li data-i18n="tools.design.resume-builder.text.038">Add your work experience with job titles, companies, dates, and accomplishments.</li>
+          <li data-i18n="tools.design.resume-builder.text.039">Include your education history and relevant skills.</li>
+          <li data-i18n="tools.design.resume-builder.text.040">Preview your resume and download as PDF or print directly.</li>
         </ol>
 
-        <h3>Frequently Asked Questions</h3>
+        <h3 data-i18n="tools.design.resume-builder.text.041">Frequently Asked Questions</h3>
 
         <details class="faq-item">
           <summary>What does ATS-friendly mean?</summary>
-          <p>ATS (Applicant Tracking System) friendly means the resume format is readable by automated systems that companies use to filter applications. Our templates use clean layouts and standard fonts that parse correctly.</p>
+          <p data-i18n="tools.design.resume-builder.text.042">ATS (Applicant Tracking System) friendly means the resume format is readable by automated systems that companies use to filter applications. Our templates use clean layouts and standard fonts that parse correctly.</p>
         </details>
 
         <details class="faq-item">
           <summary>Can I use this for free?</summary>
-          <p>Yes! The resume builder is completely free to use. Create and download as many resumes as you need without any charges.</p>
+          <p data-i18n="tools.design.resume-builder.text.043">Yes! The resume builder is completely free to use. Create and download as many resumes as you need without any charges.</p>
         </details>
 
         <details class="faq-item">
           <summary>Is my resume data stored?</summary>
-          <p>No. All your information is processed locally in your browser. Your resume data is never sent to or stored on our servers, ensuring complete privacy.</p>
+          <p data-i18n="tools.design.resume-builder.text.044">No. All your information is processed locally in your browser. Your resume data is never sent to or stored on our servers, ensuring complete privacy.</p>
         </details>
 
         <details class="faq-item">
           <summary>Which template should I choose?</summary>
-          <p>Choose Classic for traditional industries like finance or law, Modern for tech and creative fields, and Minimal for a clean, contemporary look that works across industries.</p>
+          <p data-i18n="tools.design.resume-builder.text.045">Choose Classic for traditional industries like finance or law, Modern for tech and creative fields, and Minimal for a clean, contemporary look that works across industries.</p>
         </details>
 
         <details class="faq-item">
           <summary>How do I make my resume stand out?</summary>
-          <p>Use action verbs, quantify achievements with numbers, tailor content to the job description, keep it concise (1-2 pages), and proofread carefully for errors.</p>
+          <p data-i18n="tools.design.resume-builder.text.046">Use action verbs, quantify achievements with numbers, tailor content to the job description, keep it concise (1-2 pages), and proofread carefully for errors.</p>
         </details>
       </section>
     </main>
 
     <footer class="tool-footer">
-      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
-      <p>Estimates only &mdash; not professional career advice.</p>
+      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com" data-i18n="tools.design.resume-builder.text.047">psk.dan.metehancetin@mc-novatools.com</a></p>
+      <p data-i18n="tools.design.resume-builder.text.048">Estimates only &mdash; not professional career advice.</p>
     </footer>
   </div>
 
@@ -335,81 +335,81 @@
     const templates = {
       classic: (data) => `
         <div class="resume-classic">
-          <h1>${data.name}</h1>
+          <h1 data-i18n="tools.design.resume-builder.text.049">${data.name}</h1>
           <div class="contact-info">${data.title} | ${data.email} | ${data.phone} | ${data.location} | ${data.linkedin}</div>
           
-          <h2>Professional Summary</h2>
-          <p>${data.summary}</p>
+          <h2 data-i18n="tools.design.resume-builder.text.050">Professional Summary</h2>
+          <p data-i18n="tools.design.resume-builder.text.051">${data.summary}</p>
           
-          <h2>Experience</h2>
+          <h2 data-i18n="tools.design.resume-builder.text.052">Experience</h2>
           <div class="job">
-            <span class="job-date">${data.job1Date}</span>
+            <span class="job-date" data-i18n="tools.design.resume-builder.text.053">${data.job1Date}</span>
             <div class="job-title">${data.job1Title}</div>
             <div class="job-company">${data.job1Company}</div>
-            <ul>${data.job1Desc.split('\n').map(l => l.trim() ? `<li>${l.replace(/^- /, '')}</li>` : '').join('')}</ul>
+            <ul>${data.job1Desc.split('\n').map(l => l.trim() ? `<li data-i18n="tools.design.resume-builder.text.054">${l.replace(/^- /, '')}</li>` : '').join('')}</ul>
           </div>
           
-          <h2>Education</h2>
+          <h2 data-i18n="tools.design.resume-builder.text.055">Education</h2>
           <div class="job">
             <div class="job-title">${data.degree}</div>
             <div class="job-company">${data.school}, ${data.eduYear}</div>
           </div>
           
-          <h2>Skills</h2>
-          <p>${data.skills}</p>
+          <h2 data-i18n="tools.design.resume-builder.text.056">Skills</h2>
+          <p data-i18n="tools.design.resume-builder.text.057">${data.skills}</p>
         </div>
       `,
       modern: (data) => `
         <div class="resume-modern">
           <div class="sidebar">
-            <h1>${data.name}</h1>
+            <h1 data-i18n="tools.design.resume-builder.text.058">${data.name}</h1>
             <div class="contact-info">${data.title}<br>${data.email}<br>${data.phone}<br>${data.location}<br>${data.linkedin}</div>
             
-            <h2>Education</h2>
+            <h2 data-i18n="tools.design.resume-builder.text.059">Education</h2>
             <div class="job-title">${data.degree}</div>
             <div class="job-date">${data.school}</div>
             <div class="job-date">${data.eduYear}</div>
             
-            <h2>Skills</h2>
+            <h2 data-i18n="tools.design.resume-builder.text.060">Skills</h2>
             <p style="font-size: 0.85rem; line-height: 1.8;">${data.skills.split(',').join('<br>')}</p>
           </div>
           <div class="main-content">
-            <h2>Professional Summary</h2>
-            <p>${data.summary}</p>
+            <h2 data-i18n="tools.design.resume-builder.text.061">Professional Summary</h2>
+            <p data-i18n="tools.design.resume-builder.text.062">${data.summary}</p>
             
-            <h2>Experience</h2>
+            <h2 data-i18n="tools.design.resume-builder.text.063">Experience</h2>
             <div class="job">
               <div class="job-title">${data.job1Title}</div>
               <div class="job-date">${data.job1Company} | ${data.job1Date}</div>
-              <ul>${data.job1Desc.split('\n').map(l => l.trim() ? `<li>${l.replace(/^- /, '')}</li>` : '').join('')}</ul>
+              <ul>${data.job1Desc.split('\n').map(l => l.trim() ? `<li data-i18n="tools.design.resume-builder.text.064">${l.replace(/^- /, '')}</li>` : '').join('')}</ul>
             </div>
           </div>
         </div>
       `,
       minimal: (data) => `
         <div class="resume-minimal">
-          <h1>${data.name}</h1>
+          <h1 data-i18n="tools.design.resume-builder.text.065">${data.name}</h1>
           <div class="contact-info">${data.title} &nbsp;&bull;&nbsp; ${data.email} &nbsp;&bull;&nbsp; ${data.phone} &nbsp;&bull;&nbsp; ${data.location}</div>
           
-          <h2>About</h2>
-          <p>${data.summary}</p>
+          <h2 data-i18n="tools.design.resume-builder.text.066">About</h2>
+          <p data-i18n="tools.design.resume-builder.text.067">${data.summary}</p>
           
-          <h2>Experience</h2>
+          <h2 data-i18n="tools.design.resume-builder.text.068">Experience</h2>
           <div class="job">
-            <div class="job-title">${data.job1Title} <span style="color:#999">at ${data.job1Company}</span></div>
+            <div class="job-title">${data.job1Title} <span style="color:#999" data-i18n="tools.design.resume-builder.text.069">at ${data.job1Company}</span></div>
             <div class="job-date">${data.job1Date}</div>
-            <p style="margin-top: 0.5rem; font-size: 0.9rem;">${data.job1Desc.replace(/\n- /g, ' ').replace(/^- /, '')}</p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem;" data-i18n="tools.design.resume-builder.text.070">${data.job1Desc.replace(/\n- /g, ' ').replace(/^- /, '')}</p>
           </div>
           
-          <h2>Education</h2>
+          <h2 data-i18n="tools.design.resume-builder.text.071">Education</h2>
           <div class="job">
             <div class="job-title">${data.degree}</div>
             <div class="job-company">${data.school}</div>
             <div class="job-date">${data.eduYear}</div>
           </div>
           
-          <h2>Skills</h2>
-          <p style="line-height: 2;">${data.skills.split(',').map(s => `<span style="background:#f0f0f0; padding: 4px 12px; border-radius: 12px; font-size: 0.85rem; display: inline-block; margin: 0 4px 4px 0;">${s.trim()}</span>`).join('')}</p>
+          <h2 data-i18n="tools.design.resume-builder.text.072">Skills</h2>
+          <p style="line-height: 2;">${data.skills.split(',').map(s => `<span style="background:#f0f0f0; padding: 4px 12px; border-radius: 12px; font-size: 0.85rem; display: inline-block; margin: 0 4px 4px 0;" data-i18n="tools.design.resume-builder.text.073">${s.trim()}</span>`).join('')}</p>
         </div>
       `
     };

@@ -29,7 +29,7 @@
   <link rel="stylesheet" href="/src/styles/main.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   
-  <title>Free Mortgage Refinance Calculator - Save Now | NovaTools</title>
+  <title data-i18n="tools.finance.mortgage-refinance.meta.title">Free Mortgage Refinance Calculator - Save Now | NovaTools</title>
   
   <!-- i18n Script -->
   <script src="/i18n.js"></script>
@@ -315,17 +315,17 @@
         <div class="header-inner">
           <a href="/" class="logo" aria-label="NovaTools MC Home">
             <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
-            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+            <span class="logo-text">NovaTools <span class="logo-mc" data-i18n="tools.finance.mortgage-refinance.text.001">MC</span></span>
           </a>
           <nav class="nav-desktop" aria-label="Main navigation">
-            <a href="/#finance" class="nav-link">Finance</a>
-            <a href="/#pdf" class="nav-link">PDF Tools</a>
-            <a href="/#image" class="nav-link">Images</a>
-            <a href="/#dev" class="nav-link">Developers</a>
+            <a href="/#finance" class="nav-link" data-i18n="tools.finance.mortgage-refinance.text.002">Finance</a>
+            <a href="/#pdf" class="nav-link" data-i18n="tools.finance.mortgage-refinance.text.003">PDF Tools</a>
+            <a href="/#image" class="nav-link" data-i18n="tools.finance.mortgage-refinance.text.004">Images</a>
+            <a href="/#dev" class="nav-link" data-i18n="tools.finance.mortgage-refinance.text.005">Developers</a>
           </nav>
-          <div class="privacy-badge" title="Your data never leaves your browser">
+          <div class="privacy-badge" title="Your data never leaves your browser" data-i18n-title="tools.finance.mortgage-refinance.title.001">
             <span class="privacy-badge-dot"></span>
-            <span>Privacy First</span>
+            <span data-i18n="tools.finance.mortgage-refinance.text.006">Privacy First</span>
           </div>
           <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
             <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -336,62 +336,62 @@
           </button>
         </div>
         <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
-          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
-          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
-          <a href="/#image" class="mobile-nav-link">Image Tools</a>
-          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+          <a href="/#finance" class="mobile-nav-link" data-i18n="tools.finance.mortgage-refinance.text.007">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link" data-i18n="tools.finance.mortgage-refinance.text.008">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link" data-i18n="tools.finance.mortgage-refinance.text.009">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link" data-i18n="tools.finance.mortgage-refinance.text.010">Developer Tools</a>
         </nav>
       </div>
     </header>
 <main class="main-content">
       <div class="container" style="padding: 4rem 1rem;">
         <div style="max-width: 800px; margin: 0 auto;">
-          <h1 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; text-align: center;">Mortgage Refinance Calculator</h1>
-          <span class="sr-only">Free mortgage refinance calculator — 100% free online tool, no registration required. Calculate how much you save by refinancing your mortgage. Free break-even point calculator, free monthly payment comparison.</span>
-          <p style="color: var(--text-secondary); text-align: center; margin-bottom: 2rem;">Calculate your potential savings by refinancing your mortgage. Compare rates and find your break-even point.</p>
+          <h1 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; text-align: center;" data-i18n="tools.finance.mortgage-refinance.text.011">Mortgage Refinance Calculator</h1>
+          <span class="sr-only" data-i18n="tools.finance.mortgage-refinance.text.012">Free mortgage refinance calculator — 100% free online tool, no registration required. Calculate how much you save by refinancing your mortgage. Free break-even point calculator, free monthly payment comparison.</span>
+          <p style="color: var(--text-secondary); text-align: center; margin-bottom: 2rem;" data-i18n="tools.finance.mortgage-refinance.text.013">Calculate your potential savings by refinancing your mortgage. Compare rates and find your break-even point.</p>
           
           <form class="calculator-form" data-tool="mortgage-refinance" data-result=".results-panel">
             <div class="form-section">
-              <h2 class="form-section-title">Current Loan</h2>
+              <h2 class="form-section-title" data-i18n="tools.finance.mortgage-refinance.text.014">Current Loan</h2>
               
               <div class="form-row">
                 <div class="form-group">
-                  <label for="balance">Current Balance ($)</label>
+                  <label for="balance" data-i18n="tools.finance.mortgage-refinance.text.015">Current Balance ($)</label>
                   <input type="number" id="balance" name="balance" placeholder="300000" min="1000" step="1000" required>
                 </div>
                 <div class="form-group">
-                  <label for="currentRate">Current Interest Rate (%)</label>
+                  <label for="currentRate" data-i18n="tools.finance.mortgage-refinance.text.016">Current Interest Rate (%)</label>
                   <input type="number" id="currentRate" name="currentRate" placeholder="6.5" min="0.01" max="20" step="0.01" required>
                 </div>
               </div>
               
               <div class="form-group">
-                <label for="yearsRemaining">Years Remaining</label>
+                <label for="yearsRemaining" data-i18n="tools.finance.mortgage-refinance.text.017">Years Remaining</label>
                 <input type="number" id="yearsRemaining" name="yearsRemaining" placeholder="25" min="1" max="30" step="1" required>
               </div>
             </div>
             
             <div class="form-section">
-              <h2 class="form-section-title">New Loan</h2>
+              <h2 class="form-section-title" data-i18n="tools.finance.mortgage-refinance.text.018">New Loan</h2>
               
               <div class="form-row">
                 <div class="form-group">
-                  <label for="newRate">New Interest Rate (%)</label>
+                  <label for="newRate" data-i18n="tools.finance.mortgage-refinance.text.019">New Interest Rate (%)</label>
                   <input type="number" id="newRate" name="newRate" placeholder="4.5" min="0.01" max="20" step="0.01" required>
                 </div>
                 <div class="form-group">
-                  <label for="newTerm">New Loan Term (Years)</label>
+                  <label for="newTerm" data-i18n="tools.finance.mortgage-refinance.text.020">New Loan Term (Years)</label>
                   <input type="number" id="newTerm" name="newTerm" placeholder="30" min="1" max="30" step="1" required>
                 </div>
               </div>
               
               <div class="form-group">
-                <label for="closingCosts">Closing Costs ($)</label>
+                <label for="closingCosts" data-i18n="tools.finance.mortgage-refinance.text.021">Closing Costs ($)</label>
                 <input type="number" id="closingCosts" name="closingCosts" placeholder="5000" min="0" step="500" value="5000">
               </div>
             </div>
             
-            <button type="submit" class="btn btn-primary calculate-btn" style="width: 100%; height: 52px; font-size: 1rem;">
+            <button type="submit" class="btn btn-primary calculate-btn" style="width: 100%; height: 52px; font-size: 1rem;" data-i18n="tools.finance.mortgage-refinance.text.022">
               Calculate Savings
             </button>
           </form>
@@ -404,41 +404,41 @@
       
       <!-- SEO Content Section -->
       <section class="seo-content" style="max-width: 800px; margin: 3rem auto; padding: 0 1rem;">
-        <h2 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-primary);">About This Tool</h2>
+        <h2 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-primary);" data-i18n="tools.finance.mortgage-refinance.text.023">About This Tool</h2>
         
-        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem;">
+        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem;" data-i18n="tools.finance.mortgage-refinance.text.024">
           Our Mortgage Refinance Calculator helps homeowners determine whether refinancing their home loan is financially beneficial. By comparing your current mortgage terms with potential new rates, you can quickly calculate your monthly savings, total interest savings over the life of the loan, and most importantly, your break-even point—the time it takes for the savings to offset the closing costs. Whether you're looking to lower your monthly payments, shorten your loan term, or tap into home equity, this calculator provides the insights you need to make an informed decision. Many homeowners save thousands of dollars by refinancing when rates drop, but timing and costs matter significantly.
         </p>
         
-        <h3 style="font-size: 1.25rem; margin: 2rem 0 1rem; color: var(--text-primary);">How to Use</h3>
+        <h3 style="font-size: 1.25rem; margin: 2rem 0 1rem; color: var(--text-primary);" data-i18n="tools.finance.mortgage-refinance.text.025">How to Use</h3>
         <ol style="color: var(--text-secondary); line-height: 1.8; padding-left: 1.5rem;">
-          <li>Enter your current loan balance, interest rate, and years remaining on your mortgage.</li>
-          <li>Input the new interest rate you're considering and your desired loan term.</li>
-          <li>Add estimated closing costs, which typically range from 2% to 5% of the loan amount.</li>
-          <li>Click "Calculate Savings" to see your monthly savings, break-even point, and total interest savings.</li>
+          <li data-i18n="tools.finance.mortgage-refinance.text.026">Enter your current loan balance, interest rate, and years remaining on your mortgage.</li>
+          <li data-i18n="tools.finance.mortgage-refinance.text.027">Input the new interest rate you're considering and your desired loan term.</li>
+          <li data-i18n="tools.finance.mortgage-refinance.text.028">Add estimated closing costs, which typically range from 2% to 5% of the loan amount.</li>
+          <li data-i18n="tools.finance.mortgage-refinance.text.029">Click "Calculate Savings" to see your monthly savings, break-even point, and total interest savings.</li>
         </ol>
         
-        <h3 style="font-size: 1.25rem; margin: 2rem 0 1rem; color: var(--text-primary);">Frequently Asked Questions</h3>
+        <h3 style="font-size: 1.25rem; margin: 2rem 0 1rem; color: var(--text-primary);" data-i18n="tools.finance.mortgage-refinance.text.030">Frequently Asked Questions</h3>
         <div class="faq-section" style="margin-top: 1rem;">
           <details style="margin-bottom: 1rem; border: 1px solid var(--border-default); border-radius: var(--radius-md); padding: 1rem;">
             <summary style="font-weight: 600; color: var(--text-primary); cursor: pointer;">What is a mortgage break-even point?</summary>
-            <p style="margin-top: 0.5rem; color: var(--text-secondary); line-height: 1.6;">The break-even point is the time it takes for your monthly savings from refinancing to equal the closing costs you paid. For example, if refinancing saves you $200 per month and costs $4,000 in closing costs, your break-even point is 20 months. If you plan to stay in your home longer than this period, refinancing makes financial sense.</p>
+            <p style="margin-top: 0.5rem; color: var(--text-secondary); line-height: 1.6;" data-i18n="tools.finance.mortgage-refinance.text.031">The break-even point is the time it takes for your monthly savings from refinancing to equal the closing costs you paid. For example, if refinancing saves you $200 per month and costs $4,000 in closing costs, your break-even point is 20 months. If you plan to stay in your home longer than this period, refinancing makes financial sense.</p>
           </details>
           <details style="margin-bottom: 1rem; border: 1px solid var(--border-default); border-radius: var(--radius-md); padding: 1rem;">
             <summary style="font-weight: 600; color: var(--text-primary); cursor: pointer;">How much can I save by refinancing my mortgage?</summary>
-            <p style="margin-top: 0.5rem; color: var(--text-secondary); line-height: 1.6;">Savings depend on your current rate, new rate, loan balance, and closing costs. A typical rule of thumb is that refinancing makes sense if you can reduce your interest rate by at least 0.5% to 1%. On a $300,000 loan, dropping from 6.5% to 5.5% could save you around $200 per month and over $70,000 in total interest over 30 years.</p>
+            <p style="margin-top: 0.5rem; color: var(--text-secondary); line-height: 1.6;" data-i18n="tools.finance.mortgage-refinance.text.032">Savings depend on your current rate, new rate, loan balance, and closing costs. A typical rule of thumb is that refinancing makes sense if you can reduce your interest rate by at least 0.5% to 1%. On a $300,000 loan, dropping from 6.5% to 5.5% could save you around $200 per month and over $70,000 in total interest over 30 years.</p>
           </details>
           <details style="margin-bottom: 1rem; border: 1px solid var(--border-default); border-radius: var(--radius-md); padding: 1rem;">
             <summary style="font-weight: 600; color: var(--text-primary); cursor: pointer;">When is the best time to refinance?</summary>
-            <p style="margin-top: 0.5rem; color: var(--text-secondary); line-height: 1.6;">The best time to refinance is when interest rates are significantly lower than your current rate (typically 0.5% or more), you have good credit to qualify for the best rates, and you plan to stay in your home long enough to reach the break-even point. Also consider refinancing if you want to switch from an ARM to a fixed-rate mortgage or eliminate PMI.</p>
+            <p style="margin-top: 0.5rem; color: var(--text-secondary); line-height: 1.6;" data-i18n="tools.finance.mortgage-refinance.text.033">The best time to refinance is when interest rates are significantly lower than your current rate (typically 0.5% or more), you have good credit to qualify for the best rates, and you plan to stay in your home long enough to reach the break-even point. Also consider refinancing if you want to switch from an ARM to a fixed-rate mortgage or eliminate PMI.</p>
           </details>
         </div>
       </section>
     </main>
 
     <footer class="tool-footer">
-  <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
-  <p>Estimates only &mdash; not financial, legal, or tax advice.</p>
+  <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com" data-i18n="tools.finance.mortgage-refinance.text.034">psk.dan.metehancetin@mc-novatools.com</a></p>
+  <p data-i18n="tools.finance.mortgage-refinance.text.035">Estimates only &mdash; not financial, legal, or tax advice.</p>
 </footer>
 <style>
 .tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }
@@ -475,7 +475,7 @@ if (form) {
       }
     } catch (err) {
       if (resultsPanel) {
-        resultsPanel.innerHTML = '<p style="color:#FF5555">Error: ' + err.message + '</p>';
+        resultsPanel.innerHTML = '<p style="color:#FF5555" data-i18n="tools.finance.mortgage-refinance.text.036">Error: ' + err.message + '</p>';
       }
     }
   });

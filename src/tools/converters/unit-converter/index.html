@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="/src/styles/main.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <title>Free Unit Converter Online | NovaTools MC</title>
+  <title data-i18n="tools.converters.unit-converter.meta.title">Free Unit Converter Online | NovaTools MC</title>
   
   <!-- i18n Script -->
   <script src="/i18n.js"></script>
@@ -144,17 +144,17 @@
         <div class="header-inner">
           <a href="/" class="logo" aria-label="NovaTools MC Home">
             <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
-            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+            <span class="logo-text">NovaTools <span class="logo-mc" data-i18n="tools.converters.unit-converter.text.001">MC</span></span>
           </a>
           <nav class="nav-desktop" aria-label="Main navigation">
-            <a href="/#finance" class="nav-link">Finance</a>
-            <a href="/#pdf" class="nav-link">PDF Tools</a>
-            <a href="/#image" class="nav-link">Images</a>
-            <a href="/#dev" class="nav-link">Developers</a>
+            <a href="/#finance" class="nav-link" data-i18n="tools.converters.unit-converter.text.002">Finance</a>
+            <a href="/#pdf" class="nav-link" data-i18n="tools.converters.unit-converter.text.003">PDF Tools</a>
+            <a href="/#image" class="nav-link" data-i18n="tools.converters.unit-converter.text.004">Images</a>
+            <a href="/#dev" class="nav-link" data-i18n="tools.converters.unit-converter.text.005">Developers</a>
           </nav>
-          <div class="privacy-badge" title="Your data never leaves your browser">
+          <div class="privacy-badge" title="Your data never leaves your browser" data-i18n-title="tools.converters.unit-converter.title.001">
             <span class="privacy-badge-dot"></span>
-            <span>Privacy First</span>
+            <span data-i18n="tools.converters.unit-converter.text.006">Privacy First</span>
           </div>
           <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
             <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -165,10 +165,10 @@
           </button>
         </div>
         <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
-          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
-          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
-          <a href="/#image" class="mobile-nav-link">Image Tools</a>
-          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+          <a href="/#finance" class="mobile-nav-link" data-i18n="tools.converters.unit-converter.text.007">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link" data-i18n="tools.converters.unit-converter.text.008">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link" data-i18n="tools.converters.unit-converter.text.009">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link" data-i18n="tools.converters.unit-converter.text.010">Developer Tools</a>
         </nav>
       </div>
     </header>
@@ -177,8 +177,8 @@
       <div class="tool-wrapper">
         <div class="tool-hero">
           <div class="tool-hero-icon">&#128207;</div>
-          <h1>Unit Converter</h1>
-          <p>Convert between different units of measurement instantly. Length, weight, temperature, volume, and area conversions with real-time results.</p>
+          <h1 data-i18n="tools.converters.unit-converter.text.011">Unit Converter</h1>
+          <p data-i18n="tools.converters.unit-converter.text.012">Convert between different units of measurement instantly. Length, weight, temperature, volume, and area conversions with real-time results.</p>
         </div>
 
         <div class="card">
@@ -189,17 +189,17 @@
           </div>
 
           <div class="category-tabs">
-            <button class="category-tab active" data-category="length">Length</button>
-            <button class="category-tab" data-category="weight">Weight</button>
-            <button class="category-tab" data-category="temperature">Temperature</button>
-            <button class="category-tab" data-category="volume">Volume</button>
-            <button class="category-tab" data-category="area">Area</button>
+            <button class="category-tab active" data-category="length" data-i18n="tools.converters.unit-converter.text.013">Length</button>
+            <button class="category-tab" data-category="weight" data-i18n="tools.converters.unit-converter.text.014">Weight</button>
+            <button class="category-tab" data-category="temperature" data-i18n="tools.converters.unit-converter.text.015">Temperature</button>
+            <button class="category-tab" data-category="volume" data-i18n="tools.converters.unit-converter.text.016">Volume</button>
+            <button class="category-tab" data-category="area" data-i18n="tools.converters.unit-converter.text.017">Area</button>
           </div>
 
           <div class="converter-grid">
             <div class="input-group">
-              <label class="input-label">From</label>
-              <input type="number" class="input-field" id="inputValue" placeholder="Enter value" step="any">
+              <label class="input-label" data-i18n="tools.converters.unit-converter.text.018">From</label>
+              <input type="number" class="input-field" id="inputValue" placeholder="Enter value" data-i18n-placeholder="tools.converters.unit-converter.placeholder.001" step="any">
               <select class="unit-select" id="fromUnit" style="margin-top: 0.5rem;">
                 <option value="m">Meters (m)</option>
                 <option value="km">Kilometers (km)</option>
@@ -215,8 +215,8 @@
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 16V4M7 4L3 8M7 4l4 4M17 8v12m0 0l4-4m-4 4l-4-4"/></svg>
             </button>
             <div class="input-group">
-              <label class="input-label">To</label>
-              <input type="number" class="input-field" id="outputValue" placeholder="Result" readonly style="background: rgba(0,217,255,0.05);">
+              <label class="input-label" data-i18n="tools.converters.unit-converter.text.019">To</label>
+              <input type="number" class="input-field" id="outputValue" placeholder="Result" data-i18n-placeholder="tools.converters.unit-converter.placeholder.002" readonly style="background: rgba(0,217,255,0.05);">
               <select class="unit-select" id="toUnit" style="margin-top: 0.5rem;">
                 <option value="m">Meters (m)</option>
                 <option value="km" selected>Kilometers (km)</option>
@@ -245,7 +245,7 @@
               <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor"><path d="M11.534 7h3.932a.25.25 0 00.192-.41l-1.966-2.36a.25.25 0 00-.384 0l-1.966 2.36a.25.25 0 00.192.41zm-11 2h3.932a.25.25 0 01.192.41l-1.966 2.36a.25.25 0 01-.384 0l-1.966-2.36a.25.25 0 01.192-.41zM4.5 2.5a.5.5 0 00-1 0v9.793l-1.146-1.147a.5.5 0 00-.708.708l2 2a.5.5 0 00.708 0l2-2a.5.5 0 00-.708-.708L4.5 12.293V2.5z"/></svg>
               Reset
             </button>
-            <span class="copy-feedback" id="copyFeedback" aria-live="polite">Copied!</span>
+            <span class="copy-feedback" id="copyFeedback" aria-live="polite" data-i18n="tools.converters.unit-converter.text.020">Copied!</span>
           </div>
 
           <div class="common-units">
@@ -265,59 +265,59 @@
       </div>
 
       <section class="seo-section" aria-label="About this tool">
-        <h2>About Unit Converter</h2>
-        <p>Our free Unit Converter tool helps you convert between different measurement units instantly. Whether you need to convert length, weight, temperature, volume, or area, this tool provides accurate conversions with real-time results.</p>
+        <h2 data-i18n="tools.converters.unit-converter.text.021">About Unit Converter</h2>
+        <p data-i18n="tools.converters.unit-converter.text.022">Our free Unit Converter tool helps you convert between different measurement units instantly. Whether you need to convert length, weight, temperature, volume, or area, this tool provides accurate conversions with real-time results.</p>
 
-        <h3>How to Use</h3>
+        <h3 data-i18n="tools.converters.unit-converter.text.023">How to Use</h3>
         <ol>
-          <li>Select the conversion category (Length, Weight, Temperature, Volume, or Area).</li>
-          <li>Enter the value you want to convert in the "From" field.</li>
-          <li>Select the source unit from the dropdown menu.</li>
-          <li>Select the target unit you want to convert to.</li>
-          <li>See the result instantly displayed below.</li>
-          <li>Use the Swap button to reverse the conversion direction.</li>
-          <li>Click Copy Result to copy the conversion to your clipboard.</li>
+          <li data-i18n="tools.converters.unit-converter.text.024">Select the conversion category (Length, Weight, Temperature, Volume, or Area).</li>
+          <li data-i18n="tools.converters.unit-converter.text.025">Enter the value you want to convert in the "From" field.</li>
+          <li data-i18n="tools.converters.unit-converter.text.026">Select the source unit from the dropdown menu.</li>
+          <li data-i18n="tools.converters.unit-converter.text.027">Select the target unit you want to convert to.</li>
+          <li data-i18n="tools.converters.unit-converter.text.028">See the result instantly displayed below.</li>
+          <li data-i18n="tools.converters.unit-converter.text.029">Use the Swap button to reverse the conversion direction.</li>
+          <li data-i18n="tools.converters.unit-converter.text.030">Click Copy Result to copy the conversion to your clipboard.</li>
         </ol>
 
-        <h3>Supported Unit Categories</h3>
+        <h3 data-i18n="tools.converters.unit-converter.text.031">Supported Unit Categories</h3>
         <p><strong>Length:</strong> Meters, Kilometers, Centimeters, Millimeters, Miles, Yards, Feet, Inches<br>
         <strong>Weight:</strong> Kilograms, Grams, Milligrams, Pounds, Ounces, Stones<br>
         <strong>Temperature:</strong> Celsius, Fahrenheit, Kelvin<br>
         <strong>Volume:</strong> Liters, Milliliters, Gallons, Quarts, Pints, Cups, Fluid Ounces<br>
         <strong>Area:</strong> Square Meters, Square Kilometers, Square Feet, Acres, Hectares</p>
 
-        <h3>Frequently Asked Questions</h3>
+        <h3 data-i18n="tools.converters.unit-converter.text.032">Frequently Asked Questions</h3>
 
         <details class="faq-item">
           <summary>How accurate are the conversions?</summary>
-          <p>Our conversions use standard international conversion factors and are accurate to multiple decimal places. For most practical purposes, the results are sufficiently precise.</p>
+          <p data-i18n="tools.converters.unit-converter.text.033">Our conversions use standard international conversion factors and are accurate to multiple decimal places. For most practical purposes, the results are sufficiently precise.</p>
         </details>
 
         <details class="faq-item">
           <summary>Can I convert between different categories?</summary>
-          <p>No, direct conversion between different categories (e.g., length to weight) is not possible as they measure different physical properties.</p>
+          <p data-i18n="tools.converters.unit-converter.text.034">No, direct conversion between different categories (e.g., length to weight) is not possible as they measure different physical properties.</p>
         </details>
 
         <details class="faq-item">
           <summary>Is my data stored or sent to servers?</summary>
-          <p>No. All calculations happen locally in your browser. No data is transmitted to our servers or stored anywhere.</p>
+          <p data-i18n="tools.converters.unit-converter.text.035">No. All calculations happen locally in your browser. No data is transmitted to our servers or stored anywhere.</p>
         </details>
 
         <details class="faq-item">
           <summary>What is the difference between US and UK gallons?</summary>
-          <p>This converter uses US customary units. A US gallon is approximately 3.785 liters, while an imperial (UK) gallon is approximately 4.546 liters.</p>
+          <p data-i18n="tools.converters.unit-converter.text.036">This converter uses US customary units. A US gallon is approximately 3.785 liters, while an imperial (UK) gallon is approximately 4.546 liters.</p>
         </details>
 
         <details class="faq-item">
           <summary>How do temperature conversions work?</summary>
-          <p>Temperature conversions use specific formulas: Celsius to Fahrenheit: (°C × 9/5) + 32 = °F, Fahrenheit to Celsius: (°F − 32) × 5/9 = °C, and Kelvin is Celsius + 273.15.</p>
+          <p data-i18n="tools.converters.unit-converter.text.037">Temperature conversions use specific formulas: Celsius to Fahrenheit: (°C × 9/5) + 32 = °F, Fahrenheit to Celsius: (°F − 32) × 5/9 = °C, and Kelvin is Celsius + 273.15.</p>
         </details>
       </section>
     </main>
 
     <footer class="tool-footer">
-      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
-      <p>Estimates only &mdash; not financial, legal, or tax advice.</p>
+      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com" data-i18n="tools.converters.unit-converter.text.038">psk.dan.metehancetin@mc-novatools.com</a></p>
+      <p data-i18n="tools.converters.unit-converter.text.039">Estimates only &mdash; not financial, legal, or tax advice.</p>
     </footer>
     <style>
       .tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }
