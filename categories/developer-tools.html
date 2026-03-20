@@ -1,38 +1,491 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Free Developer Tools Online | Best Dev Tools 2026 | MC NovaTools</title>
-  <meta name="description" content="Best free developer tools 2026. JSON formatter, Base64 converter, regex tester, code minifier. Essential tools for programmers.">
+  <title>Free Online PDF Tools | Merge, Split, Compress, Convert | MC NovaTools</title>
+  <meta name="description" content="Free online PDF tools for merge, split, compress, OCR, watermark, page numbering, and PDF conversion to Word, Excel, HTML, JPG, PNG, PowerPoint, and text.">
+  <meta name="keywords" content="free pdf tools, pdf merge, pdf split, pdf compress, pdf to word, pdf to excel, pdf watermark, pdf ocr">
   <meta name="author" content="Metehan ÇETİN, LPC">
-  <link rel="canonical" href="https://mc-novatools.com/categories/developer-tools.html">
-  <link rel="stylesheet" href="/src/styles/critical.css">
-  <link rel="stylesheet" href="/src/styles/main.css">
-  <script src="/i18n.js"></script>
-  
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#0A0A0C">
+
+  <meta property="og:title" content="Free Online PDF Tools | Merge, Split, Compress, Convert | MC NovaTools">
+  <meta property="og:description" content="Free online PDF tools for merge, split, compress, OCR, watermark, page numbering, and conversion.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mc-novatools.com/categories/pdf-tools">
+  <meta property="og:image" content="https://mc-novatools.com/og-pdf-tools.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free Online PDF Tools | MC NovaTools">
+  <meta name="twitter:description" content="Merge, split, compress, OCR, watermark, and convert PDF files in your browser.">
+
+  <link rel="canonical" href="https://mc-novatools.com/categories/pdf-tools">
+  <link rel="alternate" hreflang="en" href="https://mc-novatools.com/categories/pdf-tools">
+  <link rel="alternate" hreflang="x-default" href="https://mc-novatools.com/categories/pdf-tools">
+
+  <script src="/i18n.js" defer></script>
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    "name": "Free Developer Tools Online",
-    "description": "Best free developer tools 2026. JSON formatter, Base64 converter, regex tester.",
-    "url": "https://mc-novatools.com/categories/developer-tools.html"
+    "name": "Free Online PDF Tools",
+    "description": "Free online PDF tools for merge, split, compress, OCR, watermark, page numbering, and conversion.",
+    "url": "https://mc-novatools.com/categories/pdf-tools",
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://mc-novatools.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "PDF Tools",
+          "item": "https://mc-novatools.com/categories/pdf-tools"
+        }
+      ]
+    }
   }
   </script>
+
+  <style>
+    :root {
+      --bg: #06070b;
+      --bg-soft: #0d111a;
+      --panel: rgba(17, 24, 39, 0.72);
+      --panel-strong: rgba(15, 23, 42, 0.92);
+      --border: rgba(255, 255, 255, 0.08);
+      --text: #f8fafc;
+      --muted: #a5b4c7;
+      --primary: #22d3ee;
+      --primary-2: #8b5cf6;
+      --glow: 0 20px 60px rgba(34, 211, 238, 0.12);
+      --radius: 20px;
+      --container: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(239, 68, 68, 0.14), transparent 28%),
+        radial-gradient(circle at top right, rgba(34, 211, 238, 0.12), transparent 24%),
+        linear-gradient(180deg, #05060a 0%, #090b12 100%);
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(var(--container), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .main-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(14px);
+      background: rgba(6, 7, 11, 0.84);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-inner {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      font-size: 1.35rem;
+      white-space: nowrap;
+    }
+
+    .logo-mc {
+      color: #22c55e;
+    }
+
+    .nav-desktop {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .nav-desktop a {
+      color: var(--muted);
+      font-weight: 500;
+      transition: 0.2s ease;
+    }
+
+    .nav-desktop a:hover,
+    .nav-desktop a.active {
+      color: var(--text);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .language-selector {
+      min-width: 150px;
+      height: 42px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text);
+      padding: 0 12px;
+      outline: none;
+    }
+
+    .breadcrumb-nav {
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      background: rgba(255,255,255,0.01);
+    }
+
+    .breadcrumb {
+      list-style: none;
+      display: flex;
+      gap: 10px;
+      padding: 14px 0;
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .breadcrumb li + li::before {
+      content: "/";
+      margin-right: 10px;
+      color: rgba(255,255,255,0.22);
+    }
+
+    .main-content {
+      padding-bottom: 64px;
+    }
+
+    .category-hero {
+      padding: 72px 0 28px;
+    }
+
+    .hero-card {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at top left, rgba(239, 68, 68, 0.20), transparent 26%),
+        radial-gradient(circle at bottom right, rgba(34, 211, 238, 0.14), transparent 28%),
+        linear-gradient(180deg, rgba(15, 23, 42, 0.9), rgba(10, 14, 22, 0.96));
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 40px;
+      box-shadow: var(--glow);
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 34px;
+      padding: 0 14px;
+      border-radius: 999px;
+      background: rgba(239, 68, 68, 0.10);
+      border: 1px solid rgba(239, 68, 68, 0.22);
+      color: #ffd4d4;
+      font-size: 0.92rem;
+      font-weight: 600;
+      margin-bottom: 18px;
+    }
+
+    .category-title {
+      margin: 0 0 14px;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+    }
+
+    .category-description {
+      margin: 0;
+      max-width: 780px;
+      font-size: 1.08rem;
+      line-height: 1.75;
+      color: var(--muted);
+    }
+
+    .category-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .stat {
+      display: block;
+      padding: 18px;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.03);
+      font-weight: 700;
+      color: #eaf2ff;
+    }
+
+    .tools-section,
+    .content-section,
+    .faq-section {
+      padding: 24px 0;
+    }
+
+    .section-title,
+    .content-section h2,
+    .faq-section h2 {
+      margin: 0 0 18px;
+      font-size: 1.8rem;
+      letter-spacing: -0.03em;
+    }
+
+    .grid {
+      display: grid;
+      gap: 20px;
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .tool-card {
+      display: flex;
+      flex-direction: column;
+      padding: 24px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, rgba(17, 24, 39, 0.82), rgba(9, 13, 20, 0.96));
+      border: 1px solid var(--border);
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.22);
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      min-height: 100%;
+    }
+
+    .tool-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(239, 68, 68, 0.35);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+    }
+
+    .tool-icon {
+      width: 56px;
+      height: 56px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 16px;
+      font-size: 1.5rem;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, rgba(239, 68, 68, 0.16), rgba(34, 211, 238, 0.12));
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .tool-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.12rem;
+      line-height: 1.35;
+    }
+
+    .tool-card p {
+      margin: 0 0 16px;
+      color: var(--muted);
+      line-height: 1.65;
+      flex: 1;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0 16px;
+      border-radius: 12px;
+      font-weight: 700;
+      border: 1px solid transparent;
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      color: white;
+      background: linear-gradient(135deg, #ef4444, #8b5cf6);
+      box-shadow: 0 16px 40px rgba(239, 68, 68, 0.18);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.05);
+    }
+
+    .panel {
+      padding: 28px;
+      border-radius: 24px;
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(12, 18, 30, 0.9), rgba(8, 11, 18, 0.98));
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.22);
+    }
+
+    .content-section p,
+    .content-section li,
+    .faq-item p {
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .content-section ul,
+    .content-section ol {
+      padding-left: 20px;
+      margin-top: 10px;
+      margin-bottom: 18px;
+    }
+
+    .content-section h3 {
+      margin: 22px 0 10px;
+      font-size: 1.2rem;
+      letter-spacing: -0.02em;
+    }
+
+    .faq-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .faq-item {
+      padding: 22px;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .faq-item h3 {
+      margin: 0 0 10px;
+      font-size: 1.08rem;
+    }
+
+    .main-footer {
+      border-top: 1px solid var(--border);
+      background: rgba(6, 7, 11, 0.7);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 24px;
+      padding: 28px 0 20px;
+    }
+
+    .footer-col h4 {
+      margin: 0 0 12px;
+      font-size: 1rem;
+    }
+
+    .footer-col p,
+    .footer-col li,
+    .footer-bottom p {
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-col li + li {
+      margin-top: 8px;
+    }
+
+    .footer-col a {
+      color: #baf4ff;
+    }
+
+    .footer-bottom {
+      padding: 0 0 32px;
+    }
+
+    .footer-bottom p {
+      margin: 0;
+    }
+
+    @media (max-width: 980px) {
+      .header-inner {
+        min-height: auto;
+        padding: 14px 0;
+        flex-wrap: wrap;
+      }
+
+      .nav-desktop {
+        width: 100%;
+      }
+
+      .grid-3,
+      .category-stats,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero-card,
+      .panel {
+        padding: 22px;
+      }
+
+      .category-hero {
+        padding-top: 42px;
+      }
+
+      .language-selector,
+      .header-actions {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
   <header class="main-header">
     <div class="container">
       <div class="header-inner">
-        <a href="/" class="logo"><span class="logo-text">MC <span class="logo-mc">NovaTools</span></span></a>
-        <nav class="nav-desktop">
-          <a href="/categories/pdf-tools.html" data-i18n="nav.pdf">PDF</a>
-          <a href="/categories/image-tools.html" data-i18n="nav.image">Image</a>
-          <a href="/categories/finance-tools.html" data-i18n="nav.finance">Finance</a>
-          <a href="/categories/developer-tools.html" class="active" data-i18n="nav.developer">Developer</a>
-          <a href="/about-us.html" data-i18n="nav.about">About</a>
+        <a href="/" class="logo" aria-label="MC NovaTools Home">
+          <span class="logo-text">MC <span class="logo-mc">NovaTools</span></span>
+        </a>
+
+        <nav class="nav-desktop" aria-label="Main navigation">
+          <a href="/categories/pdf-tools" class="active">PDF</a>
+          <a href="/categories/image-tools">Image</a>
+          <a href="/categories/finance-tools">Finance</a>
+          <a href="/categories/developer-tools">Developer</a>
+          <a href="/categories/text-writing">Text</a>
+          <a href="/about-us">About</a>
         </nav>
+
         <div class="header-actions">
           <select id="language-selector" class="language-selector" aria-label="Select Language">
             <option value="en">🇬🇧 English</option>
@@ -56,32 +509,127 @@
     </div>
   </header>
 
+  <nav aria-label="Breadcrumb" class="breadcrumb-nav">
+    <div class="container">
+      <ol class="breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li aria-current="page">PDF Tools</li>
+      </ol>
+    </div>
+  </nav>
+
   <main class="main-content">
     <section class="category-hero">
       <div class="container">
-        <h1>Free Developer Tools Online</h1>
-        <p>Essential utilities for programmers.</p>
+        <div class="hero-card">
+          <div class="hero-badge">Free Online PDF Utilities</div>
+          <h1 class="category-title">PDF Tools for Merge, Split, Compression, OCR, and Conversion</h1>
+          <p class="category-description">
+            Open the live PDF tools directly from this page. Merge files, split pages, compress size, add watermarks,
+            insert page numbers, run OCR, and convert PDF files to Word, Excel, HTML, JPG, PNG, PowerPoint, and text.
+          </p>
+          <div class="category-stats">
+            <span class="stat">13 Live PDF Tools</span>
+            <span class="stat">Browser-based</span>
+            <span class="stat">No broken /src style dependency</span>
+          </div>
+        </div>
       </div>
     </section>
 
     <section class="tools-section">
       <div class="container">
-        <h2>Popular Developer Tools</h2>
+        <h2 class="section-title">PDF Tools</h2>
         <div class="grid grid-3">
           <article class="tool-card">
-            <div class="tool-icon">📝</div>
-            <h3><a href="/tools/dev/json-formatter/">JSON Formatter</a></h3>
-            <p>Format and validate JSON data.</p>
+            <div class="tool-icon">📎</div>
+            <h3><a href="/tools/pdf/merge/">PDF Merge</a></h3>
+            <p>Combine multiple PDF files into a single document quickly.</p>
+            <a href="/tools/pdf/merge/" class="btn btn-primary">Use Tool</a>
           </article>
+
           <article class="tool-card">
-            <div class="tool-icon">🔐</div>
-            <h3><a href="/tools/dev/base64-converter/">Base64 Converter</a></h3>
-            <p>Encode and decode Base64 strings.</p>
+            <div class="tool-icon">🗜️</div>
+            <h3><a href="/tools/pdf/compress/">PDF Compress</a></h3>
+            <p>Reduce PDF file size for sharing, upload, and storage.</p>
+            <a href="/tools/pdf/compress/" class="btn btn-primary">Use Tool</a>
           </article>
+
+          <article class="tool-card">
+            <div class="tool-icon">✂️</div>
+            <h3><a href="/tools/pdf/split/">PDF Split</a></h3>
+            <p>Extract or separate pages from large PDF documents.</p>
+            <a href="/tools/pdf/split/" class="btn btn-primary">Use Tool</a>
+          </article>
+
           <article class="tool-card">
             <div class="tool-icon">🔍</div>
-            <h3><a href="/tools/dev/regex-tester/">Regex Tester</a></h3>
-            <p>Test and debug regular expressions.</p>
+            <h3><a href="/tools/pdf/pdf-ocr/">PDF OCR</a></h3>
+            <p>Extract readable text from scanned or image-based PDF files.</p>
+            <a href="/tools/pdf/pdf-ocr/" class="btn btn-primary">Use Tool</a>
+          </article>
+
+          <article class="tool-card">
+            <div class="tool-icon">#️⃣</div>
+            <h3><a href="/tools/pdf/pdf-page-number/">PDF Page Number</a></h3>
+            <p>Insert page numbers into PDF documents with clean output.</p>
+            <a href="/tools/pdf/pdf-page-number/" class="btn btn-primary">Use Tool</a>
+          </article>
+
+          <article class="tool-card">
+            <div class="tool-icon">📄</div>
+            <h3><a href="/tools/pdf/pdf-to-word/">PDF to Word</a></h3>
+            <p>Convert PDF documents into editable Word format.</p>
+            <a href="/tools/pdf/pdf-to-word/" class="btn btn-primary">Use Tool</a>
+          </article>
+
+          <article class="tool-card">
+            <div class="tool-icon">📊</div>
+            <h3><a href="/tools/pdf/pdf-to-excel/">PDF to Excel</a></h3>
+            <p>Move PDF table content into spreadsheet-friendly format.</p>
+            <a href="/tools/pdf/pdf-to-excel/" class="btn btn-primary">Use Tool</a>
+          </article>
+
+          <article class="tool-card">
+            <div class="tool-icon">🎞️</div>
+            <h3><a href="/tools/pdf/pdf-to-powerpoint/">PDF to PowerPoint</a></h3>
+            <p>Convert PDF slides into editable PowerPoint presentation output.</p>
+            <a href="/tools/pdf/pdf-to-powerpoint/" class="btn btn-primary">Use Tool</a>
+          </article>
+
+          <article class="tool-card">
+            <div class="tool-icon">🌐</div>
+            <h3><a href="/tools/pdf/pdf-to-html/">PDF to HTML</a></h3>
+            <p>Convert PDF content into HTML output for web use.</p>
+            <a href="/tools/pdf/pdf-to-html/" class="btn btn-primary">Use Tool</a>
+          </article>
+
+          <article class="tool-card">
+            <div class="tool-icon">🖼️</div>
+            <h3><a href="/tools/pdf/pdf-to-jpg/">PDF to JPG</a></h3>
+            <p>Turn PDF pages into JPG images for quick export and sharing.</p>
+            <a href="/tools/pdf/pdf-to-jpg/" class="btn btn-primary">Use Tool</a>
+          </article>
+
+          <article class="tool-card">
+            <div class="tool-icon">🖼️</div>
+            <h3><a href="/tools/pdf/pdf-to-png/">PDF to PNG</a></h3>
+            <p>Convert PDF pages into PNG images with lossless output.</p>
+            <a href="/tools/pdf/pdf-to-png/" class="btn btn-primary">Use Tool</a>
+          </article>
+
+          <article class="tool-card">
+            <div class="tool-icon">📝</div>
+            <h3><a href="/tools/pdf/pdf-to-text/">PDF to Text</a></h3>
+            <p>Extract plain text content from PDF documents.</p>
+            <a href="/tools/pdf/pdf-to-text/" class="btn btn-primary">Use Tool</a>
+          </article>
+
+          <article class="tool-card">
+            <div class="tool-icon">💧</div>
+            <h3><a href="/tools/pdf/pdf-watermark/">PDF Watermark</a></h3>
+            <p>Add a visible watermark to protect or brand PDF files.</p>
+            <a href="/tools/pdf/pdf-watermark/" class="btn btn-primary">Use Tool</a>
           </article>
         </div>
       </div>
@@ -89,15 +637,102 @@
 
     <section class="content-section">
       <div class="container">
-        <h2>Essential Developer Tools</h2>
-        <p>All processing happens locally in your browser - your code never leaves your device.</p>
+        <div class="panel">
+          <h2>Why use this page?</h2>
+          <p>
+            This page is a stable category landing page for the live PDF tools already inside the project.
+            It removes the broken <strong>/src/...</strong> stylesheet dependency that caused the unstyled category screen.
+          </p>
+
+          <h3>What you get here</h3>
+          <ul>
+            <li>Direct links to live PDF tool routes</li>
+            <li>Static standalone HTML for Cloudflare deployment</li>
+            <li>No dependency on missing source CSS files</li>
+            <li>Clean entry point for PDF conversion and editing tools</li>
+          </ul>
+
+          <h3>Best use</h3>
+          <p>
+            Use this page as the category hub for PDF operations.
+            It keeps navigation simple and avoids the MIME and broken-style errors you were seeing before.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq-section">
+      <div class="container">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-list">
+          <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+            <h3 itemprop="name">Are these PDF tools free?</h3>
+            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">Yes. This category page links to the PDF tools included in your project and presents them in one stable place.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+            <h3 itemprop="name">Why was the old page broken?</h3>
+            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">Because the old page tried to load stylesheet files from /src/styles, and those source paths were not valid on the live site.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+            <h3 itemprop="name">What is fixed in this version?</h3>
+            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">This version uses self-contained styling and direct live tool links, so it no longer depends on broken source CSS paths.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
   <footer class="main-footer">
     <div class="container">
-      <p>&copy; 2026 MC NovaTools. Metehan ÇETİN, LPC. <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>MC NovaTools</h4>
+          <p>Professional online tools for PDF, image, finance, and development.</p>
+          <p>Metehan ÇETİN, LPC</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>PDF Tools</h4>
+          <ul>
+            <li><a href="/tools/pdf/merge/">PDF Merge</a></li>
+            <li><a href="/tools/pdf/compress/">PDF Compress</a></li>
+            <li><a href="/tools/pdf/split/">PDF Split</a></li>
+            <li><a href="/tools/pdf/pdf-to-word/">PDF to Word</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="/about-us">About Us</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/request-tool">Request Tool</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="/privacy-policy">Privacy Policy</a></li>
+            <li><a href="/terms-of-service">Terms of Service</a></li>
+            <li><a href="/cookie-policy">Cookie Policy</a></li>
+            <li><a href="/security">Security</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 MC NovaTools. All rights reserved.</p>
+      </div>
     </div>
   </footer>
 </body>

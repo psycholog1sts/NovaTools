@@ -1,37 +1,413 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Free Financial Calculator Tools | Best Finance Tools 2026 | MC NovaTools</title>
-  <meta name="description" content="Best free financial calculator tools 2026. Mortgage, compound interest, retirement, tax calculators. Professional-grade calculations.">
+  <title>Free Financial Calculator Tools | Mortgage, Interest, Retirement, Tax | MC NovaTools</title>
+  <meta name="description" content="Free online financial calculator tools for mortgage refinance, compound interest, retirement, crypto tax, student loans, insurance, and more.">
   <meta name="author" content="Metehan ÇETİN, LPC">
-  <link rel="canonical" href="https://mc-novatools.com/categories/finance-tools.html">
-  <link rel="stylesheet" href="/src/styles/critical.css">
-  <link rel="stylesheet" href="/src/styles/main.css">
-  <script src="/i18n.js"></script>
-  
+  <meta name="theme-color" content="#0A0A0C">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://mc-novatools.com/categories/finance-tools">
+  <script src="/i18n.js" defer></script>
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     "name": "Free Financial Calculator Tools",
-    "description": "Best free financial calculator tools 2026. Mortgage, compound interest, retirement calculators.",
-    "url": "https://mc-novatools.com/categories/finance-tools.html"
+    "description": "Free online financial calculator tools for mortgage refinance, compound interest, retirement, crypto tax, student loans, insurance, and more.",
+    "url": "https://mc-novatools.com/categories/finance-tools"
   }
   </script>
+
+  <style>
+    :root {
+      --bg: #06070b;
+      --bg-soft: #0d111a;
+      --panel: rgba(17, 24, 39, 0.72);
+      --panel-strong: rgba(15, 23, 42, 0.92);
+      --border: rgba(255, 255, 255, 0.08);
+      --text: #f8fafc;
+      --muted: #a5b4c7;
+      --primary: #22d3ee;
+      --primary-2: #8b5cf6;
+      --glow: 0 20px 60px rgba(34, 211, 238, 0.12);
+      --radius: 20px;
+      --container: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(34, 211, 238, 0.14), transparent 28%),
+        radial-gradient(circle at top right, rgba(16, 185, 129, 0.12), transparent 24%),
+        linear-gradient(180deg, #05060a 0%, #090b12 100%);
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(var(--container), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .main-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(14px);
+      background: rgba(6, 7, 11, 0.84);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-inner {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      font-size: 1.35rem;
+      white-space: nowrap;
+    }
+
+    .logo-mc {
+      color: #22c55e;
+    }
+
+    .nav-desktop {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .nav-desktop a {
+      color: var(--muted);
+      font-weight: 500;
+      transition: 0.2s ease;
+    }
+
+    .nav-desktop a:hover,
+    .nav-desktop a.active {
+      color: var(--text);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .language-selector {
+      min-width: 150px;
+      height: 42px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text);
+      padding: 0 12px;
+      outline: none;
+    }
+
+    .main-content {
+      padding-bottom: 64px;
+    }
+
+    .category-hero {
+      padding: 72px 0 28px;
+    }
+
+    .hero-card {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at top left, rgba(34, 211, 238, 0.18), transparent 26%),
+        radial-gradient(circle at bottom right, rgba(16, 185, 129, 0.16), transparent 28%),
+        linear-gradient(180deg, rgba(15, 23, 42, 0.9), rgba(10, 14, 22, 0.96));
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 40px;
+      box-shadow: var(--glow);
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 34px;
+      padding: 0 14px;
+      border-radius: 999px;
+      background: rgba(34, 211, 238, 0.10);
+      border: 1px solid rgba(34, 211, 238, 0.22);
+      color: #baf4ff;
+      font-size: 0.92rem;
+      font-weight: 600;
+      margin-bottom: 18px;
+    }
+
+    .category-hero h1 {
+      margin: 0 0 14px;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+    }
+
+    .category-hero p {
+      margin: 0;
+      max-width: 760px;
+      font-size: 1.08rem;
+      line-height: 1.75;
+      color: var(--muted);
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .hero-stat {
+      padding: 18px;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .hero-stat strong {
+      display: block;
+      font-size: 1.25rem;
+      margin-bottom: 6px;
+    }
+
+    .hero-stat span {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .tools-section,
+    .content-section {
+      padding: 24px 0;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 18px;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      font-size: 1.8rem;
+      letter-spacing: -0.03em;
+    }
+
+    .section-heading p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 620px;
+      line-height: 1.7;
+    }
+
+    .grid {
+      display: grid;
+      gap: 20px;
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .tool-card {
+      display: block;
+      padding: 24px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, rgba(17, 24, 39, 0.82), rgba(9, 13, 20, 0.96));
+      border: 1px solid var(--border);
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.22);
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      min-height: 100%;
+    }
+
+    .tool-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(34, 211, 238, 0.35);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+    }
+
+    .tool-icon {
+      width: 56px;
+      height: 56px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 16px;
+      font-size: 1.5rem;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, rgba(34, 211, 238, 0.16), rgba(16, 185, 129, 0.16));
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .tool-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.15rem;
+      line-height: 1.35;
+    }
+
+    .tool-card p {
+      margin: 0 0 16px;
+      color: var(--muted);
+      line-height: 1.65;
+      min-height: 52px;
+    }
+
+    .tool-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #baf4ff;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .content-panel {
+      padding: 28px;
+      border-radius: 24px;
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(12, 18, 30, 0.9), rgba(8, 11, 18, 0.98));
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.22);
+    }
+
+    .content-panel h2 {
+      margin: 0 0 14px;
+      font-size: 1.7rem;
+      letter-spacing: -0.03em;
+    }
+
+    .content-panel p {
+      margin: 0 0 16px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .feature-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .feature-item {
+      padding: 16px 18px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.03);
+      color: #d8e7f5;
+    }
+
+    .main-footer {
+      border-top: 1px solid var(--border);
+      background: rgba(6, 7, 11, 0.7);
+    }
+
+    .footer-inner {
+      padding: 26px 0 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-inner p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .footer-inner a {
+      color: #baf4ff;
+    }
+
+    @media (max-width: 980px) {
+      .header-inner {
+        min-height: auto;
+        padding: 14px 0;
+        flex-wrap: wrap;
+      }
+
+      .nav-desktop {
+        width: 100%;
+      }
+
+      .grid-3,
+      .feature-list,
+      .hero-stats {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero-card,
+      .content-panel {
+        padding: 22px;
+      }
+
+      .category-hero {
+        padding-top: 42px;
+      }
+
+      .language-selector {
+        width: 100%;
+      }
+
+      .header-actions {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
   <header class="main-header">
     <div class="container">
       <div class="header-inner">
-        <a href="/" class="logo"><span class="logo-text">MC <span class="logo-mc">NovaTools</span></span></a>
-        <nav class="nav-desktop">
-          <a href="/categories/pdf-tools.html" data-i18n="nav.pdf">PDF</a>
-          <a href="/categories/image-tools.html" data-i18n="nav.image">Image</a>
-          <a href="/categories/finance-tools.html" class="active" data-i18n="nav.finance">Finance</a>
-          <a href="/about-us.html" data-i18n="nav.about">About</a>
+        <a href="/" class="logo" aria-label="MC NovaTools Home">
+          <span class="logo-text">MC <span class="logo-mc">NovaTools</span></span>
+        </a>
+
+        <nav class="nav-desktop" aria-label="Main Navigation">
+          <a href="/categories/pdf-tools">PDF Araçları</a>
+          <a href="/categories/image-tools">Görüntü Araçları</a>
+          <a href="/categories/finance-tools" class="active">Finans</a>
+          <a href="/categories/developer-tools">Geliştirici</a>
+          <a href="/about-us">Hakkımızda</a>
         </nav>
+
         <div class="header-actions">
           <select id="language-selector" class="language-selector" aria-label="Select Language">
             <option value="en">🇬🇧 English</option>
@@ -58,45 +434,130 @@
   <main class="main-content">
     <section class="category-hero">
       <div class="container">
-        <h1>Free Financial Calculator Tools</h1>
-        <p>Professional-grade calculators for smart money decisions.</p>
+        <div class="hero-card">
+          <div class="hero-badge">Free Online Financial Calculators</div>
+          <h1>Finance Tools for Planning, Loans, Tax, and Long-Term Decisions</h1>
+          <p>
+            Open the live financial tools directly from this category page. Calculate mortgage refinance options,
+            compound growth, retirement projections, crypto tax, loan planning, and other personal finance scenarios.
+          </p>
+
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <strong>8</strong>
+              <span>Live finance tools</span>
+            </div>
+            <div class="hero-stat">
+              <strong>Browser-based</strong>
+              <span>No install required</span>
+            </div>
+            <div class="hero-stat">
+              <strong>Stable page</strong>
+              <span>No broken source stylesheet dependency</span>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
     <section class="tools-section">
       <div class="container">
-        <h2>Popular Financial Calculators</h2>
+        <div class="section-heading">
+          <h2>Financial Calculators</h2>
+          <p>Open the exact finance calculator you need from one clean category page.</p>
+        </div>
+
         <div class="grid grid-3">
-          <article class="tool-card">
+          <a class="tool-card" href="/tools/finance/mortgage-refinance/">
             <div class="tool-icon">🏠</div>
-            <h3><a href="/tools/finance/mortgage-refinance/">Mortgage Refinance</a></h3>
-            <p>Calculate refinance savings.</p>
-          </article>
-          <article class="tool-card">
+            <h3>Mortgage Refinance</h3>
+            <p>Estimate refinance savings, payment changes, and break-even points.</p>
+            <span class="tool-link">Open tool →</span>
+          </a>
+
+          <a class="tool-card" href="/tools/finance/compound-interest/">
             <div class="tool-icon">📈</div>
-            <h3><a href="/tools/finance/compound-interest/">Compound Interest</a></h3>
-            <p>Project investment growth.</p>
-          </article>
-          <article class="tool-card">
+            <h3>Compound Interest</h3>
+            <p>Project long-term savings and investment growth with compounding.</p>
+            <span class="tool-link">Open tool →</span>
+          </a>
+
+          <a class="tool-card" href="/tools/finance/retirement/">
             <div class="tool-icon">🏖️</div>
-            <h3><a href="/tools/finance/retirement/">Retirement Planner</a></h3>
-            <p>Plan your retirement goals.</p>
-          </article>
+            <h3>Retirement Planner</h3>
+            <p>Model future retirement needs, savings pace, and projected balances.</p>
+            <span class="tool-link">Open tool →</span>
+          </a>
+
+          <a class="tool-card" href="/tools/finance/crypto-tax/">
+            <div class="tool-icon">₿</div>
+            <h3>Crypto Tax Calculator</h3>
+            <p>Estimate crypto gains and tax exposure from digital asset activity.</p>
+            <span class="tool-link">Open tool →</span>
+          </a>
+
+          <a class="tool-card" href="/tools/finance/life-insurance/">
+            <div class="tool-icon">🛡️</div>
+            <h3>Life Insurance</h3>
+            <p>Estimate coverage needs and compare planning scenarios for protection.</p>
+            <span class="tool-link">Open tool →</span>
+          </a>
+
+          <a class="tool-card" href="/tools/finance/student-loan/">
+            <div class="tool-icon">🎓</div>
+            <h3>Student Loan Calculator</h3>
+            <p>Review repayment periods, payment amounts, and long-term borrowing cost.</p>
+            <span class="tool-link">Open tool →</span>
+          </a>
+
+          <a class="tool-card" href="/tools/finance/tax/">
+            <div class="tool-icon">🧾</div>
+            <h3>Tax Calculator</h3>
+            <p>Estimate tax obligations using a simplified planning interface.</p>
+            <span class="tool-link">Open tool →</span>
+          </a>
+
+          <a class="tool-card" href="/tools/finance/cloud-cost/">
+            <div class="tool-icon">☁️</div>
+            <h3>Cloud Cost Calculator</h3>
+            <p>Compare and estimate cloud-related infrastructure spending scenarios.</p>
+            <span class="tool-link">Open tool →</span>
+          </a>
         </div>
       </div>
     </section>
 
     <section class="content-section">
       <div class="container">
-        <h2>Professional Financial Planning</h2>
-        <p>Our financial tools use the same mathematical formulas employed by banks and financial advisors.</p>
+        <div class="content-panel">
+          <h2>Why use this page?</h2>
+          <p>
+            This page works as a clean finance category landing page for the live tools already inside the project.
+            It removes the broken `/src/...` stylesheet dependency that caused bare, unstyled pages.
+          </p>
+          <p>
+            Use it as the stable entry point for lending, savings, retirement, insurance, and tax-related tools.
+          </p>
+
+          <div class="feature-list">
+            <div class="feature-item">Direct links to live finance tool routes</div>
+            <div class="feature-item">No broken source stylesheet dependency</div>
+            <div class="feature-item">Fast standalone category layout</div>
+            <div class="feature-item">Cloudflare-friendly static HTML structure</div>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
   <footer class="main-footer">
     <div class="container">
-      <p>&copy; 2026 MC NovaTools. Metehan ÇETİN, LPC. <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
+      <div class="footer-inner">
+        <p>
+          © 2026 MC NovaTools. Metehan ÇETİN, LPC.
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a>
+        </p>
+      </div>
     </div>
   </footer>
 </body>
