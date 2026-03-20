@@ -567,45 +567,6 @@
       let retryCount = 0;
       const MAX_RETRIES = 3;
       
-<<<<<<< HEAD
-      // RTL support for Arabic
-      if (lang === 'ar') {
-        document.documentElement.dir = 'rtl';
-      } else {
-        document.documentElement.dir = 'ltr';
-      }
-    }
-    
-    // Initialize language on load
-    document.addEventListener('DOMContentLoaded', () => {
-      const lang = getInitialLanguage();
-      document.getElementById('language-selector').value = lang;
-      document.documentElement.lang = lang;
-      if (lang === 'ar') document.documentElement.dir = 'rtl';
-    });
-  </script>
-  
-  <!-- Radio Player Functions -->
-  <script>
-    (function() {
-      // Multiple stream sources for fallback
-      const STREAMS = [
-        { name: 'Groove Salad', url: 'https://ice4.somafm.com/groovesalad-128-mp3', genre: 'Ambient/Lo-Fi' },
-        { name: 'Drone Zone', url: 'https://ice4.somafm.com/dronezone-128-mp3', genre: 'Atmospheric' },
-        { name: 'Deep Space One', url: 'https://ice4.somafm.com/deepspaceone-128-mp3', genre: 'Deep Ambient' },
-        { name: 'Sonic Universe', url: 'https://ice4.somafm.com/sonicuniverse-128-mp3', genre: 'Jazz/Ambient' }
-      ];
-      
-      let radioAudio = null;
-      let isPlaying = false;
-      let isMuted = false;
-      let currentStreamIndex = 0;
-      let metadataInterval = null;
-      let retryCount = 0;
-      const MAX_RETRIES = 3;
-      
-=======
->>>>>>> 3a98dcb6bb05a27d5721a4cffc04ee044650a074
       // Initialize audio with current stream
       function initAudio() {
         if (radioAudio) {
@@ -616,11 +577,8 @@
         radioAudio = new Audio();
         radioAudio.crossOrigin = 'anonymous';
         radioAudio.src = STREAMS[currentStreamIndex].url;
-<<<<<<< HEAD
         radioAudio.volume = (document.getElementById('volume-control')?.value || 30) / 100;
-=======
         radioAudio.volume = (document.getElementById('volume-control').value || 30) / 100;
->>>>>>> 3a98dcb6bb05a27d5721a4cffc04ee044650a074
         
         // Event listeners
         radioAudio.addEventListener('playing', onAudioPlaying);
@@ -697,13 +655,10 @@
       // Fetch metadata from SomaFM
       function startMetadataFetch() {
         stopMetadataFetch();
-<<<<<<< HEAD
         fetchMetadata();
         metadataInterval = setInterval(fetchMetadata, 30000);
-=======
         fetchMetadata(); // Initial fetch
         metadataInterval = setInterval(fetchMetadata, 30000); // Every 30 seconds
->>>>>>> 3a98dcb6bb05a27d5721a4cffc04ee044650a074
       }
       
       function stopMetadataFetch() {
@@ -715,10 +670,7 @@
       
       function fetchMetadata() {
         const stream = STREAMS[currentStreamIndex];
-<<<<<<< HEAD
-=======
         // SomaFM songs endpoint
->>>>>>> 3a98dcb6bb05a27d5721a4cffc04ee044650a074
         fetch('https://api.somafm.com/songs/groovesalad.json', { 
           method: 'GET',
           mode: 'cors',
@@ -732,10 +684,7 @@
           }
         })
         .catch(() => {
-<<<<<<< HEAD
-=======
           // Silent fail - keep showing stream name
->>>>>>> 3a98dcb6bb05a27d5721a4cffc04ee044650a074
           updateStatus('Playing: ' + stream.name + ' (' + stream.genre + ')');
         });
       }
