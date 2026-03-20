@@ -8,29 +8,27 @@ import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
 import postcssImport from 'postcss-import';
 
-// Discover all tool entry points (exclude demo and experimental)
-// Use path structure (tools/finance/tax) for proper nested output in dist
+// Discover all tool entry points
 const toolEntries = globSync('src/tools/**/index.html', {
   ignore: ['**/demo-*/**', '**/experimental/**', '**/test/**']
 }).reduce((acc, file) => {
-  // Convert 'src/tools/finance/tax/index.html' -> 'tools/finance/tax'
-  // Handle both Windows (\) and Unix (/) path separators
   const name = file
-    .replace(/^src[/\\]/, '')  // Remove src/ or src\
-    .replace(/[/\\]index\.html$/, '')  // Remove /index.html or \index.html
-    .replace(/\\/g, '/');  // Normalize to forward slashes
+    .replace(/^src[/\\]/, '')
+    .replace(/[/\\]index\.html$/, '')
+    .replace(/\\/g, '/');
+
   acc[name] = resolve(__dirname, file);
   return acc;
 }, {});
 
-// Admin entry point (in root admin/ folder)
+// Admin entry point
 const adminEntry = {
-  'admin': resolve(__dirname, 'admin/index.html')
+  admin: resolve(__dirname, 'admin/index.html')
 };
 
 // Blog entry point
 const blogEntry = {
-  'blog': resolve(__dirname, 'src/blog/index.html')
+  blog: resolve(__dirname, 'src/blog/index.html')
 };
 
 // Categories entry points
@@ -38,17 +36,20 @@ const categoryEntries = globSync('categories/**/*.html').reduce((acc, file) => {
   const name = file
     .replace(/\\/g, '/')
     .replace(/\.html$/, '');
+
   acc[name] = resolve(__dirname, file);
   return acc;
 }, {});
 
 export default defineConfig({
   root: '.',
+  base: '/',
   publicDir: 'public',
-  
+
   build: {
     target: 'es2022',
     outDir: 'dist',
+    emptyOutDir: true,
     assetsDir: 'assets',
     sourcemap: false,
     cssCodeSplit: true,
@@ -57,7 +58,7 @@ export default defineConfig({
     modulePreload: {
       polyfill: true
     },
-    
+
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
@@ -66,10 +67,9 @@ export default defineConfig({
         ...categoryEntries,
         ...toolEntries
       },
-      
+
       output: {
         manualChunks: (id) => {
-          // Vendor chunks for better caching
           if (id.includes('node_modules')) {
             if (id.includes('pdf-lib') || id.includes('pdfjs') || id.includes('pdf')) {
               return 'vendor-pdf';
@@ -88,55 +88,56 @@ export default defineConfig({
             }
             return 'vendor-other';
           }
-          
-          // Application chunks
+
           if (id.includes('/src/core/')) {
             if (id.includes('ai')) return 'core-ai';
             if (id.includes('compute')) return 'core-compute';
             if (id.includes('security')) return 'core-security';
             return 'core';
           }
+
           if (id.includes('/src/components/')) {
             return 'components';
           }
         },
-        
+
         chunkFileNames: (chunkInfo) => {
-          const name = chunkInfo.name;
+          const name = chunkInfo.name || 'chunk';
           if (name.includes('vendor')) {
             return 'vendor/[name]-[hash].js';
           }
           return 'js/[name]-[hash].js';
         },
-        
-        entryFileNames: (chunkInfo) => {
-          const name = chunkInfo.name;
-          // All JS files go to js/ folder
-          // Name already contains full path like 'tools/finance/tax'
+
+        entryFileNames: () => {
           return 'js/[name]-[hash].js';
         },
-        
+
         assetFileNames: (assetInfo) => {
-          const info = assetInfo.name.split('.');
-          const ext = info[info.length - 1];
-          
+          const assetName = assetInfo.name || '';
+          const parts = assetName.split('.');
+          const ext = parts.length > 1 ? parts[parts.length - 1].toLowerCase() : '';
+
           if (ext === 'wasm') {
             return 'wasm/[name][extname]';
           }
+
           if (ext === 'css') {
             return 'css/[name]-[hash][extname]';
           }
-          if (['png', 'jpg', 'jpeg', 'gif', 'svg', 'webp'].includes(ext)) {
+
+          if (['png', 'jpg', 'jpeg', 'gif', 'svg', 'webp', 'avif'].includes(ext)) {
             return 'images/[name]-[hash][extname]';
           }
+
           return 'assets/[name]-[hash][extname]';
         }
       }
     },
-    
+
     reportCompressedSize: true,
     chunkSizeWarningLimit: 200,
-    
+
     minify: 'terser',
     terserOptions: {
       compress: {
@@ -154,7 +155,7 @@ export default defineConfig({
     }
   },
 
-plugins: [
+  plugins: [
     viteStaticCopy({
       targets: [
         {
@@ -176,31 +177,30 @@ plugins: [
         {
           src: 'src/blog/articles/**/*',
           dest: 'blog/articles'
-        },
-        {
-          src: 'admin/**/*',
-          dest: 'admin'
-        },
-        {
-          src: 'categories/**/*',
-          dest: 'categories'
-        },
-        {
-          src: 'src/styles/**/*',
-          dest: 'src/styles'
         }
       ]
     }),
-    
+
     VitePWA({
       registerType: 'autoUpdate',
+      injectRegister: 'auto',
+      manifestFilename: 'manifest.webmanifest',
+
       workbox: {
-        globPatterns: ['**/*.{js,css,html,ico,png,svg,wasm,json}'],
+        globPatterns: ['**/*.{js,css,html,ico,png,svg,webp,avif,wasm,json,webmanifest,txt,xml}'],
+        globIgnores: [
+          '**/node_modules/**/*',
+          '**/src/**/*',
+          '**/.git/**/*'
+        ],
+        cleanupOutdatedCaches: true,
+        skipWaiting: true,
+        clientsClaim: true,
         maximumFileSizeToCacheInBytes: 10 * 1024 * 1024,
-        
+
         runtimeCaching: [
           {
-            urlPattern: /\.wasm$/,
+            urlPattern: /\.wasm$/i,
             handler: 'CacheFirst',
             options: {
               cacheName: 'wasm-cache',
@@ -211,15 +211,12 @@ plugins: [
             }
           },
           {
-            urlPattern: /analytics\./,
+            urlPattern: /analytics\./i,
             handler: 'NetworkOnly'
           }
-        ],
-        
-        skipWaiting: true,
-        clientsClaim: true
+        ]
       },
-      
+
       manifest: {
         name: 'NovaTools MC - Professional Financial Tools',
         short_name: 'NovaTools',
@@ -266,12 +263,15 @@ plugins: [
         tailwindcss,
         autoprefixer,
         cssnano({
-          preset: ['default', { 
-            discardComments: { removeAll: true },
-            normalizeWhitespace: true,
-            minifyFontValues: true,
-            minifySelectors: true
-          }]
+          preset: [
+            'default',
+            {
+              discardComments: { removeAll: true },
+              normalizeWhitespace: true,
+              minifyFontValues: true,
+              minifySelectors: true
+            }
+          ]
         })
       ]
     },
@@ -315,6 +315,6 @@ plugins: [
 
   define: {
     __APP_VERSION__: JSON.stringify(process.env.npm_package_version || '1.0.0'),
-    __ADSENSE_CLIENT__: JSON.stringify(process.env.VITE_ADSENSE_CLIENT || 'ca-pub-XXXXXXXXXXXXXXXX'),
+    __ADSENSE_CLIENT__: JSON.stringify(process.env.VITE_ADSENSE_CLIENT || 'ca-pub-XXXXXXXXXXXXXXXX')
   }
 });
