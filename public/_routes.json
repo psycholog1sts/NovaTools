@@ -1,5 +1,15 @@
 {
   "version": 1,
   "include": ["/*"],
-  "exclude": ["/assets/*", "/css/*", "/js/*", "/vendor/*", "/images/*", "/wasm/*", "/icons/*", "/meta/*"]
+  "exclude": [
+    "/tools/*",
+    "/assets/*",
+    "/css/*",
+    "/js/*",
+    "/vendor/*",
+    "/images/*",
+    "/wasm/*",
+    "/icons/*",
+    "/meta/*"
+  ]
 }
