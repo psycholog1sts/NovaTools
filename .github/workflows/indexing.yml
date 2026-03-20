@@ -2,10 +2,10 @@ name: Google Indexing
 
 on:
   push:
-    branches: [ main ] # Sadece ana şubeye güncelleme gelince çalışır
+    branches: [ main ]
 
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+permissions:
+  contents: write  # Bu satır robotun yetki hatasını (128) çözer
 
 jobs:
   index:
@@ -14,12 +14,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # Git 128 hatasını kökten çözer
+          fetch-depth: 0
+          submodules: false # Hata veren submodule kısmını görmezden gelmesini sağlar
           
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '24' # En güncel ve uyarı vermeyen versiyon
+          node-version: '20'
           
       - name: Install dependencies
         run: npm install googleapis axios

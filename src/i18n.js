@@ -1,4 +1,4 @@
-/**
+  /**
  * MC NovaTools - Internationalization (i18n) System
  * Multi-language support for all pages
  */
