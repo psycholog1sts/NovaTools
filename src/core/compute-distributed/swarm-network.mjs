@@ -287,7 +287,9 @@ export class DistributedComputeNode {
   }
 
   async executeMLTraining(task) {
-    const { modelType: _modelType, dataset: _dataset, epochs } = task.data;
+    const { modelType, dataset, epochs } = task.data;
+    void modelType;
+    void dataset;
     
     // Use TensorFlow.js or custom WASM implementation
     // This is a placeholder - real implementation would use ML libraries
@@ -589,12 +591,11 @@ export class LightningPaymentHandler {
    * Pay node for computation contribution
    */
   async payForCompute(nodeId, amount, workProof) {
-    const _description = `Compute contribution: ${nodeId} (${workProof})`;
+    const description = `Compute contribution: ${nodeId} (${workProof})`;
+    void description;
     
     // In a real implementation, this would verify the work proof
     // and send payment via Lightning Network
-    
-
     
     return {
       paid: true,

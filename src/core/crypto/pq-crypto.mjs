@@ -205,7 +205,7 @@ class SimpleHashSignature {
     const msgHash = await this.hash(message);
     
     // Generate signature components
-    const signature = [];
+    const _signature = [];
     const _checksum = 0;
     
     // Split hash into n-bit chunks
@@ -214,11 +214,11 @@ class SimpleHashSignature {
     for (let i = 0; i < numChains; i++) {
       const _chunk = msgHash[i % msgHash.length] % this.w;
       const chainValue = await this.chain(secretKey.seed, 0, _chunk);
-      signature.push(chainValue);
+      _signature.push(chainValue);
     }
     
     return {
-      signature: new Uint8Array(signature.flat()),
+      signature: new Uint8Array(_signature.flat()),
       randomizer: await this.hash(secretKey.seed)
     };
   }
@@ -226,7 +226,9 @@ class SimpleHashSignature {
   /**
    * Verify signature
    */
-  async verify(message, _signature, _publicKey) {
+  async verify(message, signature, publicKey) {
+    void signature;
+    void publicKey;
     const msgHash = await this.hash(message);
     
     // Recompute and verify

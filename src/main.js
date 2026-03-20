@@ -3,7 +3,7 @@
  * Modern, modular JavaScript for the redesigned platform
  */
 
-import { categories, getFeaturedCategories } from './data/categories.js';
+import { getFeaturedCategories } from './data/categories.js';
 
 // ============================================
 // MOBILE MENU
@@ -307,6 +307,4 @@ document.addEventListener('DOMContentLoaded', () => {
   renderPopularTools();
   renderNewTools();
   initSearch();
-  
-  console.log('🚀 MC NovaTools initialized');
 });
