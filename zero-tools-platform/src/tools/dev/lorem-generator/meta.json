@@ -1,0 +1,41 @@
+{
+  "id": "lorem-generator",
+  "name": "Lorem Ipsum Generator",
+  "nameEn": "Lorem Ipsum Generator",
+  "category": "dev",
+  "tier": 1,
+  "cpc": {
+    "tr": 0.3,
+    "us": 0.6
+  },
+  "keywords": {
+    "tr": ["lorem ipsum", "yer tutucu metin", "dummy text", "metin oluşturucu"],
+    "en": ["lorem ipsum", "placeholder text", "dummy text", "text generator"]
+  },
+  "description": {
+    "tr": "Tasarım ve geliştirme için yer tutucu metin oluşturun. Paragraf ve kelime sayısı ayarlanabilir.",
+    "en": "Generate placeholder text for design and development. Customizable paragraph and word count."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "DeveloperApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.3
+    }
+  },
+  "bundle": {
+    "lazyLoad": false
+  },
+  "relatedTools": [
+    "html-to-markdown",
+    "markdown-to-html"
+  ]
+}

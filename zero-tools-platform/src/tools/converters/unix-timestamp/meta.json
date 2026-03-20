@@ -1,0 +1,41 @@
+{
+  "id": "unix-timestamp",
+  "name": "Unix Timestamp Converter",
+  "nameEn": "Unix Timestamp Converter",
+  "category": "converters",
+  "tier": 1,
+  "cpc": {
+    "tr": 0.35,
+    "us": 0.7
+  },
+  "keywords": {
+    "tr": ["unix timestamp", "epoch time", "timestamp dönüştürücü", "unix zaman", "zaman damgası"],
+    "en": ["unix timestamp", "epoch time", "timestamp converter", "unix time", "convert timestamp"]
+  },
+  "description": {
+    "tr": "Unix zaman damgaları ile insan tarafından okunabilir tarihler arasında dönüşüm yapın. Anlık timestamp alın.",
+    "en": "Convert between Unix timestamps and human-readable dates. Get current timestamp instantly."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "DeveloperApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.2
+    }
+  },
+  "bundle": {
+    "lazyLoad": false
+  },
+  "relatedTools": [
+    "timezone-converter",
+    "json-formatter"
+  ]
+}

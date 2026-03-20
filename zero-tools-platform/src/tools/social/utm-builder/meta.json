@@ -1,0 +1,42 @@
+{
+  "id": "utm-builder",
+  "name": "UTM Builder",
+  "nameEn": "UTM Builder",
+  "category": "social",
+  "tier": 1,
+  "cpc": {
+    "tr": 0.55,
+    "us": 1.1
+  },
+  "keywords": {
+    "tr": ["utm oluşturucu", "kampanya bağlantısı", "google analytics utm", "link takibi"],
+    "en": ["utm builder", "campaign url builder", "google analytics utm", "tracking link generator", "utm parameters"]
+  },
+  "description": {
+    "tr": "Google Analytics için UTM parametreleri ekleyerek kampanya bağlantıları oluşturun. Pazarlama performansını takip edin.",
+    "en": "Create campaign URLs with UTM parameters for Google Analytics. Track marketing performance effectively."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "BusinessApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.3
+    }
+  },
+  "bundle": {
+    "lazyLoad": false
+  },
+  "relatedTools": [
+    "url-shortener",
+    "hashtag-generator",
+    "website-screenshot"
+  ]
+}

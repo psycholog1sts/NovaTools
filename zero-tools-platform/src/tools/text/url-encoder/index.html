@@ -1,0 +1,404 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y896L63239"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Y896L63239');
+  </script>
+  <meta charset="UTF-8">
+  <script>(function(){var t=localStorage.getItem('novatools-theme');if(t)document.documentElement.setAttribute('data-theme',t);else{var d=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',d);document.documentElement.style.colorScheme=d;}})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/src/styles/critical.css">
+  <link rel="stylesheet" href="/src/styles/main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <title>Free URL Encoder/Decoder Online | NovaTools MC</title>
+  
+  <!-- i18n Script -->
+  <script src="/i18n.js"></script>
+  <meta name="description" content="Free online URL encoder and decoder. Encode and decode text for URLs and query strings with percent encoding. No signup required.">
+  <meta name="keywords" content="url encoder, url decoder, percent encoding, query string, url encode decode">
+  <meta name="theme-color" content="#0A0A0C">
+
+  <meta property="og:title" content="Free URL Encoder/Decoder Online | NovaTools MC">
+  <meta property="og:description" content="Encode and decode text for URLs and query strings with percent encoding.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.mc-novatools.com/tools/text/url-encoder/">
+  <meta property="og:image" content="https://www.mc-novatools.com/og-image.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free URL Encoder/Decoder Online | NovaTools MC">
+  <meta name="twitter:description" content="Encode and decode URLs with percent encoding.">
+
+  <link rel="canonical" href="https://www.mc-novatools.com/tools/text/url-encoder/">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [{
+      "@type": "WebApplication",
+      "name": "URL Encoder/Decoder",
+      "description": "Free online URL encoder and decoder. Encode and decode text for URLs and query strings with percent encoding.",
+      "url": "https://www.mc-novatools.com/tools/text/url-encoder/",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "Any",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+    }]
+  }
+  </script>
+
+  <style>
+    .tool-wrapper { max-width: 960px; margin: 0 auto; padding: 3rem 1rem 5rem; }
+    .tool-hero { text-align: center; margin-bottom: 2.5rem; }
+    .tool-hero-icon { font-size: 3.5rem; line-height: 1; margin-bottom: 1rem; }
+    .tool-hero h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; letter-spacing: -0.02em; color: #FAFAFA; margin-bottom: 0.75rem; }
+    .tool-hero p { color: #A1A1AA; font-size: 1.0625rem; max-width: 560px; margin: 0 auto; }
+    .card { background: rgba(15,15,20,0.7); border: 1px solid rgba(0,217,255,0.15); border-radius: 14px; padding: 1.75rem; backdrop-filter: blur(12px); }
+    .ads-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
+    .ad-box { background: rgba(255,255,255,0.03); border: 1px dashed rgba(0,217,255,0.2); border-radius: 8px; min-height: 90px; display: flex; align-items: center; justify-content: center; color: #52525B; font-size: 0.75rem; }
+    .mode-toggle { display: flex; gap: 0.5rem; margin-bottom: 1.25rem; padding: 0.5rem; background: rgba(0,0,0,0.3); border-radius: 10px; }
+    .mode-btn { flex: 1; padding: 0.625rem 1rem; border: 1px solid transparent; background: transparent; color: #A1A1AA; font-size: 0.875rem; font-weight: 600; border-radius: 8px; cursor: pointer; transition: all 0.2s; }
+    .mode-btn:hover { color: #FAFAFA; }
+    .mode-btn.active { background: rgba(0,217,255,0.15); border-color: rgba(0,217,255,0.4); color: #00D9FF; }
+    .textarea-wrapper { position: relative; margin-bottom: 1rem; }
+    .section-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #71717A; margin-bottom: 0.5rem; }
+    .input-area { width: 100%; min-height: 140px; padding: 1rem 1.125rem; background: #0F0F12; border: 1px solid rgba(0,217,255,0.12); border-radius: 10px; color: #FAFAFA; font-size: 0.9375rem; line-height: 1.7; resize: vertical; outline: none; box-sizing: border-box; font-family: 'JetBrains Mono', monospace; }
+    .input-area:focus { border-color: rgba(0,217,255,0.45); box-shadow: 0 0 0 3px rgba(0,217,255,0.08); }
+    .input-area::placeholder { color: #52525B; }
+    .output-area { width: 100%; min-height: 140px; padding: 1rem 1.125rem; background: #08080A; border: 1px solid rgba(0,217,255,0.15); border-radius: 10px; color: #00D9FF; font-size: 0.9375rem; line-height: 1.7; resize: vertical; outline: none; box-sizing: border-box; font-family: 'JetBrains Mono', monospace; }
+    .action-buttons { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; margin: 1.25rem 0; }
+    .action-btn { display: flex; align-items: center; justify-content: center; gap: 0.5rem; height: 48px; padding: 0 1.5rem; border: none; border-radius: 10px; font-size: 0.9375rem; font-weight: 600; cursor: pointer; transition: all 0.18s; outline: none; }
+    .action-btn:active { transform: scale(0.97); }
+    .btn-encode { background: linear-gradient(135deg, #00D9FF, #0099CC); color: #0A0A0C; }
+    .btn-encode:hover { background: linear-gradient(135deg, #1FE2FF, #00B8EE); }
+    .btn-decode { background: linear-gradient(135deg, #00FF88, #00CC6A); color: #0A0A0C; }
+    .btn-decode:hover { background: linear-gradient(135deg, #33FFA0, #00DD77); }
+    .btn-bar { display: flex; flex-wrap: wrap; gap: 0.625rem; margin-top: 1.25rem; }
+    .btn { display: inline-flex; align-items: center; gap: 0.4rem; height: 40px; padding: 0 1.125rem; border: none; border-radius: 8px; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: background 0.18s, transform 0.12s, opacity 0.18s; outline: none; user-select: none; }
+    .btn:active { transform: scale(0.97); }
+    .btn-secondary { background: rgba(0,217,255,0.1); border: 1px solid rgba(0,217,255,0.25); color: #00D9FF; }
+    .btn-secondary:hover { background: rgba(0,217,255,0.18); }
+    .btn-ghost { background: var(--surface-default); border: 1px solid var(--border-hover); color: #A1A1AA; }
+    .btn-ghost:hover { background: rgba(255,255,255,0.09); color: #FAFAFA; }
+    .legal-note { margin-top: 1.5rem; padding: 1rem 1.25rem; background: rgba(255,193,7,0.05); border: 1px solid rgba(255,193,7,0.15); border-radius: 10px; font-size: 0.8125rem; color: #A1A1AA; line-height: 1.6; }
+    .legal-note strong { color: #FFC107; }
+    .copy-feedback { font-size: 0.8rem; color: #00FF88; opacity: 0; transition: opacity 0.3s; pointer-events: none; margin-left: auto; align-self: center; }
+    .copy-feedback.show { opacity: 1; }
+    .safe-chars-section { margin-top: 1.5rem; padding: 1rem 1.25rem; background: rgba(0,217,255,0.05); border: 1px solid rgba(0,217,255,0.1); border-radius: 10px; }
+    .safe-chars-title { font-size: 0.875rem; font-weight: 600; color: #00D9FF; margin-bottom: 0.5rem; }
+    .safe-chars-list { font-size: 0.8125rem; color: #A1A1AA; font-family: 'JetBrains Mono', monospace; }
+    .options-row { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem; }
+    .checkbox-wrapper { display: flex; align-items: center; gap: 0.5rem; }
+    .checkbox-wrapper input[type="checkbox"] { width: 18px; height: 18px; accent-color: #00D9FF; cursor: pointer; }
+    .checkbox-wrapper label { color: #A1A1AA; font-size: 0.875rem; cursor: pointer; }
+    .seo-section { max-width: 960px; margin: 3.5rem auto 0; padding: 0 1rem; }
+    .seo-section h2 { font-size: 1.375rem; font-weight: 700; color: #FAFAFA; margin-bottom: 0.75rem; }
+    .seo-section h3 { font-size: 1.125rem; font-weight: 600; color: #FAFAFA; margin: 2rem 0 0.75rem; }
+    .seo-section p, .seo-section li { color: #A1A1AA; line-height: 1.8; font-size: 0.9375rem; }
+    .seo-section ol { padding-left: 1.25rem; }
+    .seo-section ol li { margin-bottom: 0.4rem; }
+    .faq-item { border: 1px solid rgba(0,217,255,0.1); border-radius: 10px; padding: 1rem 1.125rem; margin-bottom: 0.875rem; background: rgba(15,15,20,0.5); }
+    .faq-item summary { font-weight: 600; color: #FAFAFA; cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: '+'; color: #00D9FF; font-size: 1.25rem; flex-shrink: 0; transition: transform 0.2s; }
+    .faq-item[open] summary::after { content: '\2212'; }
+    .faq-item p { margin-top: 0.625rem; color: #A1A1AA; line-height: 1.7; }
+    @media (max-width: 768px) {
+      .ads-row { grid-template-columns: 1fr; }
+      .action-buttons { grid-template-columns: 1fr; }
+      .btn-bar { gap: 0.5rem; }
+      .btn { height: 38px; padding: 0 0.875rem; font-size: 0.85rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-ambient" aria-hidden="true"></div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <div id="app" class="app">
+    <header class="main-header">
+      <div class="container">
+        <div class="header-inner">
+          <a href="/" class="logo" aria-label="NovaTools MC Home">
+            <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
+            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+          </a>
+          <nav class="nav-desktop" aria-label="Main navigation">
+            <a href="/#finance" class="nav-link">Finance</a>
+            <a href="/#pdf" class="nav-link">PDF Tools</a>
+            <a href="/#image" class="nav-link">Images</a>
+            <a href="/#dev" class="nav-link">Developers</a>
+          </nav>
+          <div class="privacy-badge" title="Your data never leaves your browser">
+            <span class="privacy-badge-dot"></span>
+            <span>Privacy First</span>
+          </div>
+          <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+            <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+          <button type="button" id="mobileMenuBtn" class="menu-btn" aria-label="Toggle menu" aria-expanded="false">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+        </div>
+        <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
+          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <div class="tool-wrapper">
+        <div class="tool-hero">
+          <div class="tool-hero-icon">&#127760;</div>
+          <h1>URL Encoder/Decoder</h1>
+          <p>Encode and decode text for URLs and query strings using percent encoding. Perfect for web developers and handling special characters in URLs.</p>
+        </div>
+
+        <div class="card">
+          <div class="ads-row">
+            <div class="ad-box">Ad 336x280</div>
+            <div class="ad-box">Ad 336x280</div>
+            <div class="ad-box">Ad 336x280</div>
+          </div>
+
+          <div class="mode-toggle">
+            <button class="mode-btn active" data-mode="full" type="button">Full URL Mode</button>
+            <button class="mode-btn" data-mode="component" type="button">Component Mode</button>
+          </div>
+
+          <div class="section-label">Input Text</div>
+          <div class="textarea-wrapper">
+            <textarea class="input-area" id="textInput" placeholder="Type or paste text to encode or decode...&#10;&#10;Example: Hello World! or https://example.com/path?q=hello world" aria-label="Input text"></textarea>
+          </div>
+
+          <div class="action-buttons">
+            <button class="action-btn btn-encode" id="btnEncode" type="button">
+              <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.255 4.255l1.443-1.442a3.001 3.001 0 0 0-2.564-2.564l-1.762 1.762-.707-.707 1.762-1.762a3.001 3.001 0 0 0 2.564 2.564l1.443-1.442a3 3 0 1 0-4.255-4.255l-1.372 1.372a.5.5 0 0 0 .707.707l1.372-1.372z"/></svg>
+              Encode URL
+            </button>
+            <button class="action-btn btn-decode" id="btnDecode" type="button">
+              <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><path d="M12.146 4.146a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1 0 .708l-2 2a.5.5 0 0 1-.708-.708L13.793 6.5l-1.647-1.646a.5.5 0 0 1 0-.708zm0 5.708a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1 0 .708l-2 2a.5.5 0 0 1-.708-.708L13.793 12.5l-1.647-1.646a.5.5 0 0 1 0-.708zM6.5 4a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 1 0v-7a.5.5 0 0 0-.5-.5z"/></svg>
+              Decode URL
+            </button>
+          </div>
+
+          <div class="section-label">Result</div>
+          <div class="textarea-wrapper">
+            <textarea class="output-area" id="textOutput" readonly placeholder="Encoded or decoded result will appear here..." aria-label="Output result"></textarea>
+          </div>
+
+          <div class="btn-bar">
+            <button class="btn btn-secondary" id="btnCopy" type="button" aria-label="Copy result">
+              <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor"><path d="M4 1.5H3a2 2 0 00-2 2V14a2 2 0 002 2h10a2 2 0 002-2V3.5a2 2 0 00-2-2h-1v1h1a1 1 0 011 1V14a1 1 0 01-1 1H3a1 1 0 01-1-1V3.5a1 1 0 011-1h1v-1z"/></svg>
+              Copy Result
+            </button>
+            <button class="btn btn-ghost" id="btnClear" type="button" aria-label="Clear all">
+              <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor"><path d="M5.5 5.5A.5.5 0 016 6v6a.5.5 0 01-1 0V6a.5.5 0 01.5-.5zm2.5 0a.5.5 0 01.5.5v6a.5.5 0 01-1 0V6a.5.5 0 01.5-.5zm3 .5a.5.5 0 00-1 0v6a.5.5 0 001 0V6z"/><path fill-rule="evenodd" d="M14.5 3a1 1 0 01-1 1H13v9a2 2 0 01-2 2H5a2 2 0 01-2-2V4h-.5a1 1 0 01-1-1V2a1 1 0 011-1H6a1 1 0 011-1h2a1 1 0 011 1h3.5a1 1 0 011 1v1zM4.118 4L4 4.059V13a1 1 0 001 1h6a1 1 0 001-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/></svg>
+              Clear
+            </button>
+            <span class="copy-feedback" id="copyFeedback" aria-live="polite">Copied!</span>
+          </div>
+
+          <div class="safe-chars-section">
+            <div class="safe-chars-title">Safe Characters (Never Encoded)</div>
+            <div class="safe-chars-list">
+              <strong>Unreserved:</strong> A-Z a-z 0-9 - _ . ~<br>
+              <strong>Reserved (Full URL mode):</strong> : / ? # [ ] @ ! $ & ' ( ) * + , ; =
+            </div>
+          </div>
+
+          <div class="legal-note">
+            <strong>Legal Disclaimer / Yasal Uyar&#305;:</strong> This tool processes text locally in your browser using JavaScript's encodeURI/encodeURIComponent functions. No text is sent to any server. / Bu ara&#231; metni taray&#305;c&#305;n&#305;zda yerel olarak i&#351;ler. Hi&#231;bir metin sunucuya g&#246;nderilmez.
+          </div>
+        </div>
+      </div>
+
+      <section class="seo-section" aria-label="About this tool">
+        <h2>About URL Encoder/Decoder</h2>
+        <p>Our free URL Encoder/Decoder tool helps you convert text to and from URL-safe format using percent encoding. This is essential for web development when handling special characters in URLs, query strings, and form data.</p>
+
+        <h3>How to Use</h3>
+        <ol>
+          <li>Type or paste your text into the input area above.</li>
+          <li>Choose between <strong>Full URL Mode</strong> (preserves URL structure) or <strong>Component Mode</strong> (encodes everything for query parameters).</li>
+          <li>Click <strong>Encode URL</strong> to convert special characters to percent-encoded format.</li>
+          <li>Click <strong>Decode URL</strong> to convert percent-encoded text back to readable format.</li>
+          <li>Use <strong>Copy Result</strong> to copy the output to your clipboard.</li>
+          <li>Click <strong>Clear</strong> to reset both fields.</li>
+        </ol>
+
+        <h3>Encoding Modes Explained</h3>
+        <p><strong>Full URL Mode:</strong> Use this when encoding complete URLs. Preserves URL structure characters like : / ? # [ ] @ as they have special meaning in URLs.<br>
+        <strong>Component Mode:</strong> Use this for encoding query parameter values or path segments. Encodes all special characters including those reserved for URL structure.</p>
+
+        <h3>Common Use Cases</h3>
+        <p><strong>Query Parameters:</strong> Convert "hello world" to "hello%20world" for use in URLs.<br>
+        <strong>Special Characters:</strong> Encode symbols, spaces, and non-ASCII characters for web compatibility.<br>
+        <strong>API Requests:</strong> Properly format data for GET requests and REST APIs.<br>
+        <strong>Debugging:</strong> Decode encoded URLs to read and understand their structure.</p>
+
+        <h3>Frequently Asked Questions</h3>
+
+        <details class="faq-item">
+          <summary>Is my data sent to a server?</summary>
+          <p>No. All encoding and decoding happens entirely within your browser. Your text is never transmitted to our servers or stored anywhere.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>What's the difference between encodeURI and encodeURIComponent?</summary>
+          <p>encodeURI is designed for full URLs and preserves characters with structural meaning (: / ? # etc.). encodeURIComponent is for individual URL components and encodes all special characters.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>What characters get encoded?</summary>
+          <p>Characters outside the unreserved set (A-Z, a-z, 0-9, -, _, ., ~) are encoded as %XX where XX is the hexadecimal value. Spaces become %20 or + in form data.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Can I decode any percent-encoded string?</summary>
+          <p>Yes, as long as the encoding follows the standard format (%XX where XX are valid hex digits). Malformed encoded sequences will be preserved as-is.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Does this handle Unicode characters?</summary>
+          <p>Yes! Modern browsers encode Unicode characters using UTF-8 multi-byte sequences. For example, "&#199;" becomes "%C3%87".</p>
+        </details>
+      </section>
+    </main>
+
+    <footer class="tool-footer">
+      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
+      <p>Estimates only &mdash; not financial, legal, or tax advice.</p>
+    </footer>
+    <style>
+      .tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }
+      .tool-footer a { color: #00D9FF; text-decoration: none; }
+    </style>
+  </div>
+
+  <script type="module">
+    const textInput = document.getElementById('textInput');
+    const textOutput = document.getElementById('textOutput');
+    const modeButtons = document.querySelectorAll('.mode-btn');
+    const copyFeedback = document.getElementById('copyFeedback');
+
+    let currentMode = 'full';
+    let copyTimer = null;
+
+    function encode(text) {
+      if (!text) return '';
+      try {
+        return currentMode === 'full' ? encodeURI(text) : encodeURIComponent(text);
+      } catch (e) {
+        return 'Error: ' + e.message;
+      }
+    }
+
+    function decode(text) {
+      if (!text) return '';
+      try {
+        return decodeURIComponent(text);
+      } catch (e) {
+        try {
+          return decodeURI(text);
+        } catch (e2) {
+          return 'Error: Invalid encoded string';
+        }
+      }
+    }
+
+    modeButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        currentMode = btn.dataset.mode;
+        modeButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+
+    document.getElementById('btnEncode').addEventListener('click', () => {
+      textOutput.value = encode(textInput.value);
+    });
+
+    document.getElementById('btnDecode').addEventListener('click', () => {
+      textOutput.value = decode(textInput.value);
+    });
+
+    async function handleCopy() {
+      const text = textOutput.value;
+      if (!text) return;
+      try { await navigator.clipboard.writeText(text); } catch (_) {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.cssText = 'position:fixed;opacity:0;pointer-events:none;';
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+      }
+      copyFeedback.classList.add('show');
+      clearTimeout(copyTimer);
+      copyTimer = setTimeout(() => copyFeedback.classList.remove('show'), 1800);
+    }
+
+    function handleClear() {
+      textInput.value = '';
+      textOutput.value = '';
+      textInput.focus();
+    }
+
+    document.getElementById('btnCopy').addEventListener('click', handleCopy);
+    document.getElementById('btnClear').addEventListener('click', handleClear);
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var menuBtn = document.getElementById('mobileMenuBtn');
+      var mobileMenu = document.getElementById('mobileMenu');
+      if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener('click', function() {
+          var isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+          menuBtn.setAttribute('aria-expanded', !isExpanded);
+          mobileMenu.hidden = isExpanded;
+          mobileMenu.classList.toggle('active', !isExpanded);
+        });
+      }
+      var themeBtn = document.getElementById('themeToggle');
+      if (themeBtn) {
+        function getTheme() {
+          var s = localStorage.getItem('theme');
+          if (s) return s;
+          return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        }
+        function updateIcon() {
+          var t = getTheme();
+          themeBtn.querySelector('.icon-sun').style.display = t === 'light' ? 'none' : 'block';
+          themeBtn.querySelector('.icon-moon').style.display = t === 'dark' ? 'none' : 'block';
+        }
+        themeBtn.addEventListener('click', function() {
+          var next = getTheme() === 'dark' ? 'light' : 'dark';
+          document.documentElement.setAttribute('data-theme', next);
+          localStorage.setItem('theme', next);
+          updateIcon();
+        });
+        updateIcon();
+      }
+    });
+  </script>
+</body>
+</html>

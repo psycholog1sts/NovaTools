@@ -1,0 +1,37 @@
+{
+  "id": "cloud-cost",
+  "name": "Bulut Maliyet Hesaplama",
+  "nameEn": "Cloud Cost Calculator",
+  "category": "finance",
+  "tier": 3,
+  "cpc": {
+    "tr": 2.0,
+    "us": 4.5
+  },
+  "keywords": {
+    "tr": ["bulut maliyet", "aws fiyat", "gcp maliyet", "azure hesaplama"],
+    "en": ["cloud cost calculator", "aws pricing", "gcp pricing", "azure calculator"]
+  },
+  "description": {
+    "tr": "AWS, GCP ve Azure maliyet karşılaştırması. Türkiye'den erişim için optimal bulut seçimi.",
+    "en": "Compare AWS, GCP and Azure costs. Find optimal cloud choice for Turkish access."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "BusinessApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 1.0
+    }
+  },
+  "relatedTools": [
+    "finance/mortgage-tr"
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "id": "image-to-avif",
+  "name": "AVIF Dönüştürücü",
+  "nameEn": "Image to AVIF Converter",
+  "category": "image",
+  "tier": 2,
+  "complexity": 5,
+  "cpc": {
+    "tr": 0.9,
+    "us": 1.4
+  },
+  "keywords": {
+    "tr": ["avif dönüştürücü", "jpg avif çevirme", "png avif dönüştür", "yeni nesil görsel formatı"],
+    "en": ["image to avif", "avif converter", "next-gen image format", "png to avif", "webp to avif"]
+  },
+  "description": {
+    "tr": "Görselleri geleceğin AVIF formatına dönüştürün. Maksimum sıkıştırma, üstün kalite.",
+    "en": "Convert images to next-generation AVIF format for maximum compression and superior quality."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "DeveloperApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.4
+    },
+    "anchor": {
+      "enabled": true,
+      "size": "320x50",
+      "mobileOnly": true
+    }
+  },
+  "bundle": {
+    "lazyLoad": true
+  },
+  "relatedTools": [
+    "image-to-webp",
+    "image-compress",
+    "image-resizer"
+  ],
+  "memoryLimits": {
+    "maxFileSize": 20971520,
+    "maxFiles": 20,
+    "maxTotalSize": 104857600
+  },
+  "features": {
+    "qualitySlider": true,
+    "batchConversion": true,
+    "inputFormats": ["jpg", "jpeg", "png", "webp"],
+    "outputFormat": "avif"
+  }
+}

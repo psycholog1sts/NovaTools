@@ -1,0 +1,63 @@
+{
+  "id": "image-rotator",
+  "name": "Görsel Döndürücü",
+  "nameEn": "Image Rotator",
+  "category": "image",
+  "tier": 1,
+  "complexity": 3,
+  "cpc": {
+    "tr": 0.6,
+    "us": 1.0
+  },
+  "keywords": {
+    "tr": ["görsel döndürme", "resim çevirme", "fotoğraf döndürme", "görsel rotasyon"],
+    "en": ["rotate image", "flip image", "image rotation", "mirror image", "turn photo"]
+  },
+  "description": {
+    "tr": "Görselleri istediğiniz açıda döndürün veya yatay/dikey çevirin. 90° CW/CCW, 180° döndürme, özel açı girişi.",
+    "en": "Rotate images by any angle or flip horizontally/vertically. 90° CW/CCW, 180° flip, custom angle input."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "DeveloperApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.35
+    },
+    "anchor": {
+      "enabled": true,
+      "size": "320x50",
+      "mobileOnly": true
+    }
+  },
+  "bundle": {
+    "lazyLoad": true
+  },
+  "relatedTools": [
+    "image-flipper",
+    "image-cropper",
+    "image-resizer"
+  ],
+  "memoryLimits": {
+    "maxFileSize": 20971520,
+    "maxFiles": 1,
+    "maxTotalSize": 20971520
+  },
+  "features": {
+    "rotate90CW": true,
+    "rotate90CCW": true,
+    "rotate180": true,
+    "horizontalFlip": true,
+    "verticalFlip": true,
+    "customAngle": true,
+    "preview": true,
+    "download": true
+  }
+}

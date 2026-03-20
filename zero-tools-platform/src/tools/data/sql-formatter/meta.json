@@ -1,0 +1,41 @@
+{
+  "id": "sql-formatter",
+  "name": "SQL Formatter",
+  "nameEn": "SQL Formatter",
+  "category": "data",
+  "tier": 1,
+  "cpc": {
+    "tr": 0.6,
+    "us": 1.5
+  },
+  "keywords": {
+    "tr": ["sql formatlayıcı", "sql düzenleyici", "sql güzelleştirici", "sql kod formatı"],
+    "en": ["sql formatter", "sql beautifier", "format sql", "sql prettifier", "sql code formatter"]
+  },
+  "description": {
+    "tr": "SQL sorgularınızı anında formatlayın ve güzelleştirin. Ücretsiz, tarayıcı tabanlı SQL formatlayıcı.",
+    "en": "Format and beautify your SQL queries instantly. Free, browser-based SQL formatter."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "DeveloperApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.3
+    }
+  },
+  "bundle": {
+    "lazyLoad": false
+  },
+  "relatedTools": [
+    "json-formatter",
+    "code-formatter"
+  ]
+}

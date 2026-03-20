@@ -5,7 +5,7 @@ on:
     branches: [ main ]
 
 permissions:
-  contents: write  # Bu satır robotun yetki hatasını (128) çözer
+  contents: write
 
 jobs:
   index:
@@ -15,7 +15,11 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          submodules: false # Hata veren submodule kısmını görmezden gelmesini sağlar
+          
+      - name: Configure Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
           
       - name: Setup Node.js
         uses: actions/setup-node@v4

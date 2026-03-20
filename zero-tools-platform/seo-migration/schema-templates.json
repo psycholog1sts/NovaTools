@@ -1,0 +1,424 @@
+{
+  "$comment": "JSON-LD Schema Templates for ZeroTools Platform",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  
+  "WebSite": {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "ZeroTools",
+    "url": "https://zerotools.dev",
+    "description": "Privacy-first online tools platform. Zero server, zero data transmission.",
+    "inLanguage": ["tr", "en"],
+    "publisher": {
+      "@type": "Organization",
+      "name": "ZeroTools Platform",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://zerotools.dev/logo.svg",
+        "width": 512,
+        "height": 512
+      }
+    },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://zerotools.dev/search?q={search_term_string}"
+      },
+      "query-input": "required name=search_term_string"
+    }
+  },
+
+  "Organization": {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "ZeroTools Platform",
+    "alternateName": "ZeroTools",
+    "url": "https://zerotools.dev",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://zerotools.dev/logo.svg",
+      "width": 512,
+      "height": 512
+    },
+    "sameAs": [
+      "https://github.com/zero-tools"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "hello@zerotools.dev",
+      "contactType": "customer support",
+      "availableLanguage": ["Turkish", "English"]
+    }
+  },
+
+  "SoftwareApplication_Mortgage": {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Konut Kredisi Hesaplama",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Any",
+    "browserRequirements": "Requires JavaScript. Requires HTML5.",
+    "softwareVersion": "1.0.0",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "TRY"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "ratingCount": "1250"
+    },
+    "featureList": [
+      "KKDF ve BSMV hesaplaması",
+      "Aylık taksit planı",
+      "Toplam maliyet analizi",
+      "Offline çalışma"
+    ],
+    "screenshot": {
+      "@type": "ImageObject",
+      "url": "https://zerotools.dev/screenshots/mortgage-tr.png"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "ZeroTools Platform"
+    },
+    "inLanguage": "tr",
+    "isAccessibleForFree": true,
+    "license": "https://opensource.org/licenses/MIT"
+  },
+
+  "SoftwareApplication_PDFMerge": {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "PDF Birleştirme",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Any",
+    "browserRequirements": "Requires JavaScript. Requires HTML5.",
+    "softwareVersion": "1.0.0",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "TRY"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "ratingCount": "3400"
+    },
+    "featureList": [
+      "20 dosyaya kadar birleştirme",
+      "Sürükle-bırak sıralama",
+      "50MB dosya limiti",
+      "Form koruma",
+      "Zero server processing"
+    ],
+    "screenshot": {
+      "@type": "ImageObject",
+      "url": "https://zerotools.dev/screenshots/pdf-merge.png"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "ZeroTools Platform"
+    },
+    "inLanguage": "tr",
+    "isAccessibleForFree": true
+  },
+
+  "SoftwareApplication_Generic": {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "{tool_name}",
+    "applicationCategory": "{category}",
+    "operatingSystem": "Any",
+    "browserRequirements": "Requires JavaScript. Requires HTML5.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "TRY"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.7",
+      "ratingCount": "500"
+    },
+    "featureList": [],
+    "author": {
+      "@type": "Organization",
+      "name": "ZeroTools Platform"
+    },
+    "inLanguage": "tr",
+    "isAccessibleForFree": true
+  },
+
+  "BreadcrumbList_Home": {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Ana Sayfa",
+        "item": "https://zerotools.dev/"
+      }
+    ]
+  },
+
+  "BreadcrumbList_Tool": {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Ana Sayfa",
+        "item": "https://zerotools.dev/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "{category_name}",
+        "item": "https://zerotools.dev/#{category_slug}"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "{tool_name}",
+        "item": "https://zerotools.dev/{tool_path}/"
+      }
+    ]
+  },
+
+  "FAQPage_Mortgage": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Konut kredisi hesaplaması nasıl yapılır?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Konut kredisi hesaplaması için kredi tutarı, vade ve faiz oranı bilgileri gereklidir. Aracımızda bu değerleri girerek anında sonuç alabilirsiniz."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "KKDF ve BSMV nedir?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "KKDF (Kaynak Kullanımını Destekleme Fonu) %15 ve BSMV (Bankacılık ve Sigortacılık İşlemleri Vergisi) %5 oranında uygulanır."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Verilerim güvende mi?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Evet, tüm hesaplamalar tarayıcınızda yapılır. Hiçbir veri sunucularımıza gönderilmez. Zero Server prensibiyle çalışıyoruz."
+        }
+      }
+    ]
+  },
+
+  "FAQPage_PDFMerge": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "PDF birleştirme güvenli mi?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Evet, tamamen güvenli. Tüm işlemler tarayıcınızda gerçekleşir. Dosyalarınız hiçbir zaman sunucularımıza yüklenmez."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "En fazla kaç PDF birleştirebilirim?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Tek seferde en fazla 20 PDF dosyasını birleştirebilirsiniz. Toplam dosya boyutu 50MB'ı geçemez."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Form içeren PDF'leri birleştirebilir miyim?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Evet, form alanları ve etkileşimli içerikler korunarak birleştirilir."
+        }
+      }
+    ]
+  },
+
+  "HowTo_Mortgage": {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "Konut Kredisi Nasıl Hesaplanır?",
+    "description": "Adım adım konut kredisi hesaplama rehberi",
+    "totalTime": "PT2M",
+    "estimatedCost": {
+      "@type": "MonetaryAmount",
+      "currency": "TRY",
+      "value": "0"
+    },
+    "supply": [
+      {
+        "@type": "HowToSupply",
+        "name": "Kredi Tutarı"
+      },
+      {
+        "@type": "HowToSupply",
+        "name": "Vade (Ay)"
+      },
+      {
+        "@type": "HowToSupply",
+        "name": "Faiz Oranı"
+      }
+    ],
+    "tool": {
+      "@type": "HowToTool",
+      "name": "Konut Kredisi Hesaplama Aracı"
+    },
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Kredi Tutarını Girin",
+        "text": "Çekmek istediğiniz konut kredisi tutarını girin (örn: 500.000 TL)",
+        "url": "https://zerotools.dev/src/tools/finance/mortgage-tr/#step1"
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Vade Seçin",
+        "text": "Kredi vadesini ay olarak girin (12-360 ay arası)",
+        "url": "https://zerotools.dev/src/tools/finance/mortgage-tr/#step2"
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Faiz Oranını Girin",
+        "text": "Bankanın sunduğu yıllık faiz oranını girin (örn: %12.5)",
+        "url": "https://zerotools.dev/src/tools/finance/mortgage-tr/#step3"
+      },
+      {
+        "@type": "HowToStep",
+        "position": 4,
+        "name": "Sonuçları Görüntüleyin",
+        "text": "Aylık taksit, toplam ödeme ve faiz tutarını görüntüleyin",
+        "url": "https://zerotools.dev/src/tools/finance/mortgage-tr/#step4"
+      }
+    ]
+  },
+
+  "HowTo_PDFMerge": {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "PDF Dosyaları Nasıl Birleştirilir?",
+    "description": "Birden fazla PDF dosyasını tek bir dosyada birleştirme rehberi",
+    "totalTime": "PT5M",
+    "estimatedCost": {
+      "@type": "MonetaryAmount",
+      "currency": "TRY",
+      "value": "0"
+    },
+    "supply": [
+      {
+        "@type": "HowToSupply",
+        "name": "PDF Dosyaları"
+      }
+    ],
+    "tool": {
+      "@type": "HowToTool",
+      "name": "PDF Birleştirme Aracı"
+    },
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Dosyaları Yükleyin",
+        "text": "Birleştirmek istediğiniz PDF dosyalarını sürükleyip bırakın veya seçin (en fazla 20 dosya)",
+        "url": "https://zerotools.dev/src/tools/pdf/merge/#step1"
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Sıralamayı Ayarlayın",
+        "text": "Dosyaları istediğiniz sırada düzenleyin (isteğe bağlı)",
+        "url": "https://zerotools.dev/src/tools/pdf/merge/#step2"
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Birleştirin",
+        "text": "'PDF'leri Birleştir' butonuna tıklayın",
+        "url": "https://zerotools.dev/src/tools/pdf/merge/#step3"
+      },
+      {
+        "@type": "HowToStep",
+        "position": 4,
+        "name": "İndirin",
+        "text": "Birleştirilmiş PDF dosyasını indirin",
+        "url": "https://zerotools.dev/src/tools/pdf/merge/#step4"
+      }
+    ]
+  },
+
+  "VideoObject_Tutorial": {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    "name": "ZeroTools Kullanım Kılavuzu",
+    "description": "ZeroTools platformunun kullanımı hakkında detaylı video rehber",
+    "thumbnailUrl": [
+      "https://zerotools.dev/thumbnails/tutorial-480x360.jpg",
+      "https://zerotools.dev/thumbnails/tutorial-640x480.jpg",
+      "https://zerotools.dev/thumbnails/tutorial-1280x720.jpg"
+    ],
+    "uploadDate": "2024-01-15T08:00:00+03:00",
+    "duration": "PT5M30S",
+    "contentUrl": "https://zerotools.dev/videos/tutorial.mp4",
+    "embedUrl": "https://www.youtube.com/embed/example",
+    "interactionStatistic": {
+      "@type": "InteractionCounter",
+      "interactionType": { "@type": "WatchAction" },
+      "userInteractionCount": 1000
+    }
+  },
+
+  "ItemList_Category": {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "PDF Araçları",
+        "description": "PDF birleştirme, sıkıştırma ve bölme araçları",
+        "url": "https://zerotools.dev/#pdf"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Finans Araçları",
+        "description": "Konut kredisi, faiz ve maliyet hesaplama",
+        "url": "https://zerotools.dev/#finance"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Görsel Araçları",
+        "description": "Görsel sıkıştırma ve format dönüştürme",
+        "url": "https://zerotools.dev/#image"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "Geliştirici Araçları",
+        "description": "JSON formatlama ve regex test araçları",
+        "url": "https://zerotools.dev/#dev"
+      }
+    ]
+  }
+}

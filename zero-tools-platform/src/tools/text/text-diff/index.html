@@ -1,0 +1,561 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y896L63239"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Y896L63239');
+  </script>
+  <meta charset="UTF-8">
+  <script>(function(){var t=localStorage.getItem('novatools-theme');if(t)document.documentElement.setAttribute('data-theme',t);else{var d=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',d);document.documentElement.style.colorScheme=d;}})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/src/styles/critical.css">
+  <link rel="stylesheet" href="/src/styles/main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <title>Free Text Diff Checker Online | NovaTools MC</title>
+  
+  <!-- i18n Script -->
+  <script src="/i18n.js"></script>
+  <meta name="description" content="Free online text diff checker. Compare two texts and find differences with line by line comparison. Highlight added and removed content. No signup required.">
+  <meta name="keywords" content="text diff, compare text, difference checker, text comparison, diff tool">
+  <meta name="theme-color" content="#0A0A0C">
+
+  <meta property="og:title" content="Free Text Diff Checker Online | NovaTools MC">
+  <meta property="og:description" content="Compare two texts and find differences with line by line comparison.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.mc-novatools.com/tools/text/text-diff/">
+  <meta property="og:image" content="https://www.mc-novatools.com/og-image.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free Text Diff Checker Online | NovaTools MC">
+  <meta name="twitter:description" content="Compare two texts and find differences.">
+
+  <link rel="canonical" href="https://www.mc-novatools.com/tools/text/text-diff/">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [{
+      "@type": "WebApplication",
+      "name": "Text Diff Checker",
+      "description": "Free online text diff checker. Compare two texts and find differences with line by line comparison.",
+      "url": "https://www.mc-novatools.com/tools/text/text-diff/",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "Any",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+    }]
+  }
+  </script>
+
+  <style>
+    .tool-wrapper { max-width: 1200px; margin: 0 auto; padding: 3rem 1rem 5rem; }
+    .tool-hero { text-align: center; margin-bottom: 2.5rem; }
+    .tool-hero-icon { font-size: 3.5rem; line-height: 1; margin-bottom: 1rem; }
+    .tool-hero h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; letter-spacing: -0.02em; color: #FAFAFA; margin-bottom: 0.75rem; }
+    .tool-hero p { color: #A1A1AA; font-size: 1.0625rem; max-width: 560px; margin: 0 auto; }
+    .card { background: rgba(15,15,20,0.7); border: 1px solid rgba(0,217,255,0.15); border-radius: 14px; padding: 1.75rem; backdrop-filter: blur(12px); }
+    .ads-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
+    .ad-box { background: rgba(255,255,255,0.03); border: 1px dashed rgba(0,217,255,0.2); border-radius: 8px; min-height: 90px; display: flex; align-items: center; justify-content: center; color: #52525B; font-size: 0.75rem; }
+    .diff-inputs { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.25rem; }
+    .input-column { display: flex; flex-direction: column; }
+    .section-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #71717A; margin-bottom: 0.5rem; }
+    .input-area { width: 100%; min-height: 200px; padding: 1rem 1.125rem; background: #0F0F12; border: 1px solid rgba(0,217,255,0.12); border-radius: 10px; color: #FAFAFA; font-size: 0.9375rem; line-height: 1.6; resize: vertical; outline: none; box-sizing: border-box; font-family: 'JetBrains Mono', monospace; }
+    .input-area:focus { border-color: rgba(0,217,255,0.45); box-shadow: 0 0 0 3px rgba(0,217,255,0.08); }
+    .input-area::placeholder { color: #52525B; }
+    .diff-options { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; margin-bottom: 1.25rem; padding: 0.75rem 1rem; background: rgba(0,0,0,0.3); border-radius: 10px; }
+    .checkbox-wrapper { display: flex; align-items: center; gap: 0.5rem; }
+    .checkbox-wrapper input[type="checkbox"] { width: 18px; height: 18px; accent-color: #00D9FF; cursor: pointer; }
+    .checkbox-wrapper label { color: #A1A1AA; font-size: 0.875rem; cursor: pointer; }
+    .compare-btn { display: flex; align-items: center; justify-content: center; gap: 0.5rem; height: 48px; padding: 0 2rem; margin: 0 auto 1.5rem; border: none; border-radius: 10px; font-size: 1rem; font-weight: 600; cursor: pointer; background: linear-gradient(135deg, #00D9FF, #0099CC); color: #0A0A0C; transition: all 0.18s; }
+    .compare-btn:hover { background: linear-gradient(135deg, #1FE2FF, #00B8EE); }
+    .compare-btn:active { transform: scale(0.97); }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
+    .stat-box { background: rgba(0,217,255,0.05); border: 1px solid rgba(0,217,255,0.1); border-radius: 10px; padding: 1rem; text-align: center; }
+    .stat-box-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #71717A; margin-bottom: 0.5rem; }
+    .stat-box-value { font-size: 1.75rem; font-weight: 700; }
+    .stat-added { color: #00FF88; }
+    .stat-removed { color: #FF4444; }
+    .stat-changed { color: #00D9FF; }
+    .stat-unchanged { color: #A1A1AA; }
+    .diff-result { background: #08080A; border: 1px solid rgba(0,217,255,0.15); border-radius: 10px; overflow: hidden; }
+    .diff-header { display: flex; align-items: center; padding: 0.75rem 1rem; background: rgba(0,217,255,0.05); border-bottom: 1px solid rgba(0,217,255,0.1); }
+    .diff-legend { display: flex; gap: 1rem; margin-left: auto; font-size: 0.75rem; }
+    .legend-item { display: flex; align-items: center; gap: 0.375rem; }
+    .legend-color { width: 12px; height: 12px; border-radius: 3px; }
+    .legend-added { background: rgba(0,255,136,0.3); }
+    .legend-removed { background: rgba(255,68,68,0.3); }
+    .legend-changed { background: rgba(255,193,7,0.3); }
+    .diff-content { max-height: 400px; overflow-y: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; line-height: 1.6; }
+    .diff-line { display: flex; padding: 0.375rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.03); }
+    .diff-line:last-child { border-bottom: none; }
+    .diff-line-num { width: 40px; color: #52525B; text-align: right; padding-right: 1rem; flex-shrink: 0; }
+    .diff-line-marker { width: 20px; text-align: center; flex-shrink: 0; font-weight: 600; }
+    .diff-line-content { flex: 1; word-break: break-all; }
+    .diff-added { background: rgba(0,255,136,0.1); }
+    .diff-added .diff-line-marker { color: #00FF88; }
+    .diff-removed { background: rgba(255,68,68,0.1); }
+    .diff-removed .diff-line-marker { color: #FF4444; }
+    .diff-changed { background: rgba(255,193,7,0.1); }
+    .diff-changed .diff-line-marker { color: #FFC107; }
+    .char-diff-added { background: rgba(0,255,136,0.4); padding: 0 2px; border-radius: 2px; }
+    .char-diff-removed { background: rgba(255,68,68,0.4); text-decoration: line-through; padding: 0 2px; border-radius: 2px; }
+    .btn-bar { display: flex; flex-wrap: wrap; gap: 0.625rem; margin-top: 1.25rem; }
+    .btn { display: inline-flex; align-items: center; gap: 0.4rem; height: 40px; padding: 0 1.125rem; border: none; border-radius: 8px; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: background 0.18s, transform 0.12s, opacity 0.18s; outline: none; user-select: none; }
+    .btn:active { transform: scale(0.97); }
+    .btn-secondary { background: rgba(0,217,255,0.1); border: 1px solid rgba(0,217,255,0.25); color: #00D9FF; }
+    .btn-secondary:hover { background: rgba(0,217,255,0.18); }
+    .btn-ghost { background: var(--surface-default); border: 1px solid var(--border-hover); color: #A1A1AA; }
+    .btn-ghost:hover { background: rgba(255,255,255,0.09); color: #FAFAFA; }
+    .legal-note { margin-top: 1.5rem; padding: 1rem 1.25rem; background: rgba(255,193,7,0.05); border: 1px solid rgba(255,193,7,0.15); border-radius: 10px; font-size: 0.8125rem; color: #A1A1AA; line-height: 1.6; }
+    .legal-note strong { color: #FFC107; }
+    .copy-feedback { font-size: 0.8rem; color: #00FF88; opacity: 0; transition: opacity 0.3s; pointer-events: none; margin-left: auto; align-self: center; }
+    .copy-feedback.show { opacity: 1; }
+    .empty-state { padding: 3rem; text-align: center; color: #52525B; }
+    .seo-section { max-width: 960px; margin: 3.5rem auto 0; padding: 0 1rem; }
+    .seo-section h2 { font-size: 1.375rem; font-weight: 700; color: #FAFAFA; margin-bottom: 0.75rem; }
+    .seo-section h3 { font-size: 1.125rem; font-weight: 600; color: #FAFAFA; margin: 2rem 0 0.75rem; }
+    .seo-section p, .seo-section li { color: #A1A1AA; line-height: 1.8; font-size: 0.9375rem; }
+    .seo-section ol { padding-left: 1.25rem; }
+    .seo-section ol li { margin-bottom: 0.4rem; }
+    .faq-item { border: 1px solid rgba(0,217,255,0.1); border-radius: 10px; padding: 1rem 1.125rem; margin-bottom: 0.875rem; background: rgba(15,15,20,0.5); }
+    .faq-item summary { font-weight: 600; color: #FAFAFA; cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: '+'; color: #00D9FF; font-size: 1.25rem; flex-shrink: 0; transition: transform 0.2s; }
+    .faq-item[open] summary::after { content: '\2212'; }
+    .faq-item p { margin-top: 0.625rem; color: #A1A1AA; line-height: 1.7; }
+    @media (max-width: 768px) {
+      .ads-row { grid-template-columns: 1fr; }
+      .diff-inputs { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .diff-legend { display: none; }
+      .btn-bar { gap: 0.5rem; }
+      .btn { height: 38px; padding: 0 0.875rem; font-size: 0.85rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-ambient" aria-hidden="true"></div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <div id="app" class="app">
+    <header class="main-header">
+      <div class="container">
+        <div class="header-inner">
+          <a href="/" class="logo" aria-label="NovaTools MC Home">
+            <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
+            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+          </a>
+          <nav class="nav-desktop" aria-label="Main navigation">
+            <a href="/#finance" class="nav-link">Finance</a>
+            <a href="/#pdf" class="nav-link">PDF Tools</a>
+            <a href="/#image" class="nav-link">Images</a>
+            <a href="/#dev" class="nav-link">Developers</a>
+          </nav>
+          <div class="privacy-badge" title="Your data never leaves your browser">
+            <span class="privacy-badge-dot"></span>
+            <span>Privacy First</span>
+          </div>
+          <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+            <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+          <button type="button" id="mobileMenuBtn" class="menu-btn" aria-label="Toggle menu" aria-expanded="false">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+        </div>
+        <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
+          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <div class="tool-wrapper">
+        <div class="tool-hero">
+          <div class="tool-hero-icon">&#128202;</div>
+          <h1>Text Diff Checker</h1>
+          <p>Compare two texts and find differences with line-by-line comparison. Perfect for code review, document comparison, and tracking changes.</p>
+        </div>
+
+        <div class="card">
+          <div class="ads-row">
+            <div class="ad-box">Ad 336x280</div>
+            <div class="ad-box">Ad 336x280</div>
+            <div class="ad-box">Ad 336x280</div>
+          </div>
+
+          <div class="diff-inputs">
+            <div class="input-column">
+              <div class="section-label">Original Text</div>
+              <textarea class="input-area" id="originalInput" placeholder="Paste original text here..." aria-label="Original text"></textarea>
+            </div>
+            <div class="input-column">
+              <div class="section-label">Modified Text</div>
+              <textarea class="input-area" id="modifiedInput" placeholder="Paste modified text here..." aria-label="Modified text"></textarea>
+            </div>
+          </div>
+
+          <div class="diff-options">
+            <div class="checkbox-wrapper">
+              <input type="checkbox" id="ignoreWhitespace" checked>
+              <label for="ignoreWhitespace">Ignore whitespace</label>
+            </div>
+            <div class="checkbox-wrapper">
+              <input type="checkbox" id="ignoreCase">
+              <label for="ignoreCase">Ignore case</label>
+            </div>
+            <div class="checkbox-wrapper">
+              <input type="checkbox" id="charDiff" checked>
+              <label for="charDiff">Character-level diff</label>
+            </div>
+          </div>
+
+          <button class="compare-btn" id="btnCompare" type="button">
+            <svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor"><path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/></svg>
+            Compare Texts
+          </button>
+
+          <div class="stats-grid" id="statsGrid" style="display: none;">
+            <div class="stat-box">
+              <div class="stat-box-label">Lines Added</div>
+              <div class="stat-box-value stat-added" id="statAdded">0</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-box-label">Lines Removed</div>
+              <div class="stat-box-value stat-removed" id="statRemoved">0</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-box-label">Lines Changed</div>
+              <div class="stat-box-value stat-changed" id="statChanged">0</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-box-label">Unchanged</div>
+              <div class="stat-box-value stat-unchanged" id="statUnchanged">0</div>
+            </div>
+          </div>
+
+          <div class="diff-result" id="diffResult">
+            <div class="diff-header">
+              <span style="color: #A1A1AA; font-size: 0.875rem;">Diff Result</span>
+              <div class="diff-legend">
+                <span class="legend-item"><span class="legend-color legend-added"></span>Added</span>
+                <span class="legend-item"><span class="legend-color legend-removed"></span>Removed</span>
+                <span class="legend-item"><span class="legend-color legend-changed"></span>Changed</span>
+              </div>
+            </div>
+            <div class="diff-content" id="diffContent">
+              <div class="empty-state">Enter text in both fields and click Compare to see differences</div>
+            </div>
+          </div>
+
+          <div class="btn-bar">
+            <button class="btn btn-secondary" id="btnCopy" type="button" aria-label="Copy diff result">
+              <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor"><path d="M4 1.5H3a2 2 0 00-2 2V14a2 2 0 002 2h10a2 2 0 002-2V3.5a2 2 0 00-2-2h-1v1h1a1 1 0 011 1V14a1 1 0 01-1 1H3a1 1 0 01-1-1V3.5a1 1 0 011-1h1v-1z"/></svg>
+              Copy Diff Result
+            </button>
+            <button class="btn btn-ghost" id="btnSwap" type="button" aria-label="Swap texts">
+              <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor"><path d="M11.5 1a.5.5 0 0 1 .5.5v3.796l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L11 5.296V1.5a.5.5 0 0 1 .5-.5zm-5 7a.5.5 0 0 1 .5.5v3.796l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 .708-.708L6 12.296V8.5a.5.5 0 0 1 .5-.5z"/></svg>
+              Swap
+            </button>
+            <button class="btn btn-ghost" id="btnClear" type="button" aria-label="Clear all">
+              <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor"><path d="M5.5 5.5A.5.5 0 016 6v6a.5.5 0 01-1 0V6a.5.5 0 01.5-.5zm2.5 0a.5.5 0 01.5.5v6a.5.5 0 01-1 0V6a.5.5 0 01.5-.5zm3 .5a.5.5 0 00-1 0v6a.5.5 0 001 0V6z"/><path fill-rule="evenodd" d="M14.5 3a1 1 0 01-1 1H13v9a2 2 0 01-2 2H5a2 2 0 01-2-2V4h-.5a1 1 0 01-1-1V2a1 1 0 011-1H6a1 1 0 011-1h2a1 1 0 011 1h3.5a1 1 0 011 1v1zM4.118 4L4 4.059V13a1 1 0 001 1h6a1 1 0 001-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/></svg>
+              Clear
+            </button>
+            <span class="copy-feedback" id="copyFeedback" aria-live="polite">Copied!</span>
+          </div>
+
+          <div class="legal-note">
+            <strong>Legal Disclaimer / Yasal Uyar&#305;:</strong> This tool compares text locally in your browser. No text is sent to any server. / Bu ara&#231; metni taray&#305;c&#305;n&#305;zda yerel olarak kar&#351;&#305;la&#351;t&#305;r&#305;r. Hi&#231;bir metin sunucuya g&#246;nderilmez.
+          </div>
+        </div>
+      </div>
+
+      <section class="seo-section" aria-label="About this tool">
+        <h2>About Text Diff Checker</h2>
+        <p>Our free Text Diff Checker helps you compare two versions of text and identify exactly what has changed. Whether you're reviewing code changes, comparing document versions, or tracking edits, this tool provides a clear visual diff with line-by-line comparison.</p>
+
+        <h3>How to Use</h3>
+        <ol>
+          <li>Paste your <strong>Original Text</strong> in the left input area.</li>
+          <li>Paste your <strong>Modified Text</strong> in the right input area.</li>
+          <li>Choose comparison options: ignore whitespace, ignore case, or character-level diff.</li>
+          <li>Click <strong>Compare Texts</strong> to generate the diff.</li>
+          <li>Review the statistics showing lines added, removed, changed, and unchanged.</li>
+          <li>Examine the highlighted differences in the result panel.</li>
+          <li>Use <strong>Copy Diff Result</strong> to copy the comparison.</li>
+        </ol>
+
+        <h3>Features Explained</h3>
+        <p><strong>Line-by-Line Comparison:</strong> Each line is compared individually to identify additions, deletions, and modifications.<br>
+        <strong>Character-Level Diff:</strong> When enabled, shows exactly which characters changed within modified lines.<br>
+        <strong>Ignore Whitespace:</strong> Disregards spaces, tabs, and line breaks when comparing.<br>
+        <strong>Ignore Case:</strong> Treats uppercase and lowercase letters as identical.<br>
+        <strong>Statistics:</strong> Get a quick overview of how much content changed.</p>
+
+        <h3>Common Use Cases</h3>
+        <p><strong>Code Review:</strong> Compare different versions of code to see what changed.<br>
+        <strong>Document Tracking:</strong> Track edits in legal documents, contracts, or creative writing.<br>
+        <strong>Content Management:</strong> Verify changes made by editors or collaborators.<br>
+        <strong>Configuration Files:</strong> Compare before and after states of config files.</p>
+
+        <h3>Frequently Asked Questions</h3>
+
+        <details class="faq-item">
+          <summary>Is my text sent to a server?</summary>
+          <p>No. All comparison happens entirely within your browser. Your text is never transmitted to our servers or stored anywhere.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>What's the maximum text size?</summary>
+          <p>The tool can handle thousands of lines of text. However, extremely large texts (100,000+ lines) may impact browser performance.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>How does character-level diff work?</summary>
+          <p>When enabled and two lines differ, the tool highlights specific characters that were added (green) or removed (red with strikethrough) within those lines.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Can I compare binary files?</summary>
+          <p>No, this tool is designed for text comparison only. Binary files should use specialized binary diff tools.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Does it support all Unicode characters?</summary>
+          <p>Yes! The diff tool fully supports Unicode text including special characters, emoji, and non-Latin scripts.</p>
+        </details>
+      </section>
+    </main>
+
+    <footer class="tool-footer">
+      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
+      <p>Estimates only &mdash; not financial, legal, or tax advice.</p>
+    </footer>
+    <style>
+      .tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }
+      .tool-footer a { color: #00D9FF; text-decoration: none; }
+    </style>
+  </div>
+
+  <script type="module">
+    const originalInput = document.getElementById('originalInput');
+    const modifiedInput = document.getElementById('modifiedInput');
+    const diffContent = document.getElementById('diffContent');
+    const statsGrid = document.getElementById('statsGrid');
+    const copyFeedback = document.getElementById('copyFeedback');
+    const ignoreWhitespace = document.getElementById('ignoreWhitespace');
+    const ignoreCase = document.getElementById('ignoreCase');
+    const charDiff = document.getElementById('charDiff');
+
+    let copyTimer = null;
+
+    function normalizeLine(line) {
+      if (ignoreWhitespace.checked) {
+        line = line.replace(/\s+/g, ' ').trim();
+      }
+      if (ignoreCase.checked) {
+        line = line.toLowerCase();
+      }
+      return line;
+    }
+
+    function computeDiff(original, modified) {
+      const origLines = original.split('\n');
+      const modLines = modified.split('\n');
+      const result = [];
+      let added = 0, removed = 0, changed = 0, unchanged = 0;
+
+      const maxLen = Math.max(origLines.length, modLines.length);
+      
+      for (let i = 0; i < maxLen; i++) {
+        const orig = origLines[i] ?? '';
+        const mod = modLines[i] ?? '';
+        const normOrig = normalizeLine(orig);
+        const normMod = normalizeLine(mod);
+
+        if (i >= origLines.length) {
+          result.push({ type: 'added', lineNum: i + 1, content: mod });
+          added++;
+        } else if (i >= modLines.length) {
+          result.push({ type: 'removed', lineNum: i + 1, content: orig });
+          removed++;
+        } else if (normOrig === normMod) {
+          result.push({ type: 'unchanged', lineNum: i + 1, content: orig });
+          unchanged++;
+        } else {
+          result.push({ type: 'changed', lineNum: i + 1, original: orig, modified: mod });
+          changed++;
+        }
+      }
+
+      return { result, stats: { added, removed, changed, unchanged } };
+    }
+
+    function computeCharDiff(original, modified) {
+      const maxLen = Math.max(original.length, modified.length);
+      let html = '';
+      let i = 0;
+      
+      while (i < maxLen) {
+        if (i < original.length && i < modified.length && original[i] === modified[i]) {
+          html += escapeHtml(original[i]);
+          i++;
+        } else {
+          let removed = '';
+          let added = '';
+          while (i < original.length && (i >= modified.length || original[i] !== modified[i])) {
+            removed += original[i];
+            i++;
+          }
+          const start = i - removed.length;
+          while (i < modified.length && (start >= original.length || modified[i] !== original[start + (i - start)])) {
+            added += modified[i];
+            i++;
+          }
+          if (removed) html += `<span class="char-diff-removed">${escapeHtml(removed)}</span>`;
+          if (added) html += `<span class="char-diff-added">${escapeHtml(added)}</span>`;
+        }
+      }
+      return html || escapeHtml(modified);
+    }
+
+    function escapeHtml(text) {
+      return text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
+    function renderDiff() {
+      const original = originalInput.value;
+      const modified = modifiedInput.value;
+
+      if (!original && !modified) {
+        diffContent.innerHTML = '<div class="empty-state">Enter text in both fields and click Compare to see differences</div>';
+        statsGrid.style.display = 'none';
+        return;
+      }
+
+      const { result, stats } = computeDiff(original, modified);
+      
+      document.getElementById('statAdded').textContent = stats.added;
+      document.getElementById('statRemoved').textContent = stats.removed;
+      document.getElementById('statChanged').textContent = stats.changed;
+      document.getElementById('statUnchanged').textContent = stats.unchanged;
+      statsGrid.style.display = 'grid';
+
+      let html = '';
+      result.forEach(item => {
+        if (item.type === 'unchanged') {
+          html += `<div class="diff-line"><span class="diff-line-num">${item.lineNum}</span><span class="diff-line-marker"> </span><span class="diff-line-content">${escapeHtml(item.content)}</span></div>`;
+        } else if (item.type === 'added') {
+          html += `<div class="diff-line diff-added"><span class="diff-line-num">${item.lineNum}</span><span class="diff-line-marker">+</span><span class="diff-line-content">${escapeHtml(item.content)}</span></div>`;
+        } else if (item.type === 'removed') {
+          html += `<div class="diff-line diff-removed"><span class="diff-line-num">${item.lineNum}</span><span class="diff-line-marker">-</span><span class="diff-line-content">${escapeHtml(item.content)}</span></div>`;
+        } else if (item.type === 'changed') {
+          const content = charDiff.checked 
+            ? computeCharDiff(item.original, item.modified)
+            : escapeHtml(item.modified);
+          html += `<div class="diff-line diff-changed"><span class="diff-line-num">${item.lineNum}</span><span class="diff-line-marker">~</span><span class="diff-line-content">${content}</span></div>`;
+        }
+      });
+
+      diffContent.innerHTML = html;
+    }
+
+    async function handleCopy() {
+      const lines = diffContent.querySelectorAll('.diff-line');
+      if (lines.length === 0) return;
+      
+      let text = '';
+      lines.forEach(line => {
+        const marker = line.querySelector('.diff-line-marker').textContent;
+        const content = line.querySelector('.diff-line-content').textContent;
+        text += marker + content + '\n';
+      });
+
+      try { await navigator.clipboard.writeText(text); } catch (_) {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.cssText = 'position:fixed;opacity:0;pointer-events:none;';
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+      }
+      copyFeedback.classList.add('show');
+      clearTimeout(copyTimer);
+      copyTimer = setTimeout(() => copyFeedback.classList.remove('show'), 1800);
+    }
+
+    function handleSwap() {
+      const temp = originalInput.value;
+      originalInput.value = modifiedInput.value;
+      modifiedInput.value = temp;
+      if (diffContent.querySelector('.diff-line')) {
+        renderDiff();
+      }
+    }
+
+    function handleClear() {
+      originalInput.value = '';
+      modifiedInput.value = '';
+      diffContent.innerHTML = '<div class="empty-state">Enter text in both fields and click Compare to see differences</div>';
+      statsGrid.style.display = 'none';
+      originalInput.focus();
+    }
+
+    document.getElementById('btnCompare').addEventListener('click', renderDiff);
+    document.getElementById('btnCopy').addEventListener('click', handleCopy);
+    document.getElementById('btnSwap').addEventListener('click', handleSwap);
+    document.getElementById('btnClear').addEventListener('click', handleClear);
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var menuBtn = document.getElementById('mobileMenuBtn');
+      var mobileMenu = document.getElementById('mobileMenu');
+      if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener('click', function() {
+          var isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+          menuBtn.setAttribute('aria-expanded', !isExpanded);
+          mobileMenu.hidden = isExpanded;
+          mobileMenu.classList.toggle('active', !isExpanded);
+        });
+      }
+      var themeBtn = document.getElementById('themeToggle');
+      if (themeBtn) {
+        function getTheme() {
+          var s = localStorage.getItem('theme');
+          if (s) return s;
+          return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        }
+        function updateIcon() {
+          var t = getTheme();
+          themeBtn.querySelector('.icon-sun').style.display = t === 'light' ? 'none' : 'block';
+          themeBtn.querySelector('.icon-moon').style.display = t === 'dark' ? 'none' : 'block';
+        }
+        themeBtn.addEventListener('click', function() {
+          var next = getTheme() === 'dark' ? 'light' : 'dark';
+          document.documentElement.setAttribute('data-theme', next);
+          localStorage.setItem('theme', next);
+          updateIcon();
+        });
+        updateIcon();
+      }
+    });
+  </script>
+</body>
+</html>

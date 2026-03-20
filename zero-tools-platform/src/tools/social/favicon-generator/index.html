@@ -1,0 +1,394 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y896L63239"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Y896L63239');
+  </script>
+  <meta charset="UTF-8">
+  <script>(function(){var t=localStorage.getItem('novatools-theme');if(t)document.documentElement.setAttribute('data-theme',t);else{var d=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',d);document.documentElement.style.colorScheme=d;}})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/src/styles/critical.css">
+  <link rel="stylesheet" href="/src/styles/main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <title>Free Favicon Generator | NovaTools MC</title>
+  
+  <!-- i18n Script -->
+  <script src="/i18n.js"></script>
+  <meta name="description" content="Generate favicon sets in all sizes from your image. Create ICO, PNG favicons and get HTML code. Free client-side processing.">
+  <meta name="keywords" content="favicon generator, favicon maker, site icon creator, favicon from image, browser icon">
+  <meta name="theme-color" content="#0A0A0C">
+
+  <meta property="og:title" content="Free Favicon Generator | NovaTools MC">
+  <meta property="og:description" content="Generate favicon sets from your images. Free and private.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.mc-novatools.com/tools/social/favicon-generator/">
+  <meta property="og:image" content="https://www.mc-novatools.com/og-image.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free Favicon Generator | NovaTools MC">
+  <meta name="twitter:description" content="Generate favicon sets from your images. Free and private.">
+
+  <link rel="canonical" href="https://www.mc-novatools.com/tools/social/favicon-generator/">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [{
+      "@type": "WebApplication",
+      "name": "Favicon Generator",
+      "description": "Generate complete favicon sets in all sizes from your images.",
+      "url": "https://www.mc-novatools.com/tools/social/favicon-generator/",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+    }]
+  }
+  </script>
+
+  <style>
+    .tool-wrapper { max-width: 960px; margin: 0 auto; padding: 3rem 1rem 5rem; }
+    .tool-hero { text-align: center; margin-bottom: 2.5rem; }
+    .tool-hero-icon { font-size: 3.5rem; line-height: 1; margin-bottom: 1rem; }
+    .tool-hero h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; letter-spacing: -0.02em; color: #FAFAFA; margin-bottom: 0.75rem; }
+    .tool-hero p { color: #A1A1AA; font-size: 1.0625rem; max-width: 560px; margin: 0 auto; }
+    .card { background: rgba(15,15,20,0.7); border: 1px solid rgba(0,217,255,0.15); border-radius: 14px; padding: 1.75rem; backdrop-filter: blur(12px); }
+    
+    .upload-area { border: 2px dashed rgba(0,217,255,0.3); border-radius: 12px; padding: 2.5rem; text-align: center; transition: all 0.3s; cursor: pointer; margin-bottom: 1.5rem; }
+    .upload-area:hover { border-color: rgba(0,217,255,0.6); background: rgba(0,217,255,0.05); }
+    .upload-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .upload-text { color: #A1A1AA; font-size: 0.9375rem; }
+    .upload-text strong { color: #00D9FF; }
+    #fileInput { display: none; }
+    
+    .preview-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+    .preview-item { text-align: center; padding: 1rem; background: rgba(255,255,255,0.03); border-radius: 10px; }
+    .preview-item img { width: 64px; height: 64px; object-fit: contain; margin-bottom: 0.5rem; border-radius: 4px; }
+    .preview-size { font-size: 0.75rem; color: #71717A; }
+    
+    .btn { display: inline-flex; align-items: center; gap: 0.4rem; height: 44px; padding: 0 1.25rem; border: none; border-radius: 8px; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: background 0.18s, transform 0.12s, opacity 0.18s; outline: none; user-select: none; }
+    .btn:active { transform: scale(0.97); }
+    .btn-primary { background: linear-gradient(135deg, #00D9FF, #0099CC); color: #0A0A0C; }
+    .btn-primary:hover { background: linear-gradient(135deg, #1FE2FF, #00B8EE); }
+    .btn-secondary { background: rgba(0,217,255,0.1); border: 1px solid rgba(0,217,255,0.25); color: #00D9FF; }
+    .btn-secondary:hover { background: rgba(0,217,255,0.18); }
+    
+    .code-section { margin-top: 1.5rem; display: none; }
+    .code-section.show { display: block; }
+    .code-label { font-size: 0.75rem; color: #71717A; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
+    .code-block { background: #0A0A0C; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 1rem; font-family: 'JetBrains Mono', monospace; font-size: 0.8125rem; color: #A1A1AA; overflow-x: auto; line-height: 1.6; }
+    
+    .legal-note { margin-top: 1.5rem; padding: 1rem 1.25rem; background: rgba(255,193,7,0.05); border: 1px solid rgba(255,193,7,0.15); border-radius: 10px; font-size: 0.8125rem; color: #A1A1AA; line-height: 1.6; }
+    .legal-note strong { color: #FFC107; }
+    
+    .seo-section { max-width: 960px; margin: 3.5rem auto 0; padding: 0 1rem; }
+    .seo-section h2 { font-size: 1.375rem; font-weight: 700; color: #FAFAFA; margin-bottom: 0.75rem; }
+    .seo-section h3 { font-size: 1.125rem; font-weight: 600; color: #FAFAFA; margin: 2rem 0 0.75rem; }
+    .seo-section p, .seo-section li { color: #A1A1AA; line-height: 1.8; font-size: 0.9375rem; }
+    .seo-section ol { padding-left: 1.25rem; }
+    .seo-section ol li { margin-bottom: 0.4rem; }
+    .faq-item { border: 1px solid rgba(0,217,255,0.1); border-radius: 10px; padding: 1rem 1.125rem; margin-bottom: 0.875rem; background: rgba(15,15,20,0.5); }
+    .faq-item summary { font-weight: 600; color: #FAFAFA; cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: '+'; color: #00D9FF; font-size: 1.25rem; flex-shrink: 0; transition: transform 0.2s; }
+    .faq-item[open] summary::after { content: '\2212'; }
+    .faq-item p { margin-top: 0.625rem; color: #A1A1AA; line-height: 1.7; }
+    
+    .sizes-table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.875rem; }
+    .sizes-table th, .sizes-table td { padding: 0.75rem; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .sizes-table th { color: #00D9FF; font-weight: 600; }
+    .sizes-table td { color: #A1A1AA; }
+  </style>
+</head>
+<body>
+  <div class="bg-ambient" aria-hidden="true"></div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <div id="app" class="app">
+    <header class="main-header">
+      <div class="container">
+        <div class="header-inner">
+          <a href="/" class="logo" aria-label="NovaTools MC Home">
+            <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
+            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+          </a>
+          <nav class="nav-desktop" aria-label="Main navigation">
+            <a href="/#finance" class="nav-link">Finance</a>
+            <a href="/#pdf" class="nav-link">PDF Tools</a>
+            <a href="/#image" class="nav-link">Images</a>
+            <a href="/#dev" class="nav-link">Developers</a>
+          </nav>
+          <div class="privacy-badge" title="Your data never leaves your browser">
+            <span class="privacy-badge-dot"></span>
+            <span>Privacy First</span>
+          </div>
+          <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+            <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+          <button type="button" id="mobileMenuBtn" class="menu-btn" aria-label="Toggle menu" aria-expanded="false">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+        </div>
+        <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
+          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <div class="tool-wrapper">
+        <div class="tool-hero">
+          <div class="tool-hero-icon">&#127912;</div>
+          <h1>Favicon Generator</h1>
+          <p>Generate complete favicon sets from your image. Create all required sizes for browsers, devices, and platforms with HTML code ready to use.</p>
+        </div>
+
+        <div class="card">
+          <div class="upload-area" id="uploadArea">
+            <div class="upload-icon">&#128194;</div>
+            <div class="upload-text">
+              <strong>Click to upload</strong> or drag and drop<br>
+              Recommended: Square image, 512x512px or larger
+            </div>
+            <input type="file" id="fileInput" accept="image/*">
+          </div>
+
+          <div class="preview-grid" id="previewGrid"></div>
+
+          <div class="btn-bar" id="btnBar" style="display: none; gap: 0.75rem; flex-wrap: wrap;">
+            <button class="btn btn-primary" id="btnDownloadAll">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/><path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/></svg>
+              Download All (ZIP)
+            </button>
+            <button class="btn btn-secondary" id="btnDownloadIco">Download ICO</button>
+          </div>
+
+          <div class="code-section" id="codeSection">
+            <div class="code-label">HTML Code (Add to &lt;head&gt;)</div>
+            <div class="code-block" id="codeBlock"></div>
+            <button class="btn btn-secondary" id="btnCopyCode" style="margin-top: 0.75rem;">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/></svg>
+              Copy HTML Code
+            </button>
+          </div>
+
+          <div class="legal-note">
+            <strong>Legal Disclaimer / Yasal Uyar&#305;:</strong> This tool generates favicons entirely in your browser. No images are uploaded to our servers. Ensure you have rights to use and modify the uploaded image. / Bu ara&#231; faviconlar&#305; tamamen taray&#305;c&#305;n&#305;zda olu&#351;turur.
+          </div>
+        </div>
+      </div>
+
+      <section class="seo-section" aria-label="About this tool">
+        <h2>About Favicon Generator</h2>
+        <p>Favicon Generator is a free tool that creates complete favicon sets for your website from a single source image. Favicons are essential for brand recognition and appear in browser tabs, bookmarks, and mobile device home screens. Our tool generates all required sizes and formats, plus the HTML code you need to implement them.</p>
+
+        <h3>How to Use</h3>
+        <ol>
+          <li>Upload a square image (recommended: 512x512px or larger, PNG or JPG).</li>
+          <li>The tool automatically generates all required favicon sizes.</li>
+          <li>Preview each generated size to ensure quality.</li>
+          <li>Download individual files or all files as a ZIP.</li>
+          <li>Copy the HTML code and paste it into your website's &lt;head&gt; section.</li>
+        </ol>
+
+        <h3>Generated Favicon Sizes</h3>
+        <table class="sizes-table">
+          <thead>
+            <tr><th>Size</th><th>Format</th><th>Usage</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>16x16</td><td>PNG/ICO</td><td>Browser tabs, address bar</td></tr>
+            <tr><td>32x32</td><td>PNG/ICO</td><td>Taskbar, bookmarks</td></tr>
+            <tr><td>48x48</td><td>PNG</td><td>Windows taskbar</td></tr>
+            <tr><td>64x64</td><td>PNG</td><td>macOS Safari</td></tr>
+            <tr><td>128x128</td><td>PNG</td><td>Chrome Web Store</td></tr>
+            <tr><td>180x180</td><td>PNG</td><td>Apple touch icon</td></tr>
+            <tr><td>192x192</td><td>PNG</td><td>Android home screen</td></tr>
+            <tr><td>256x256</td><td>PNG</td><td>High resolution displays</td></tr>
+            <tr><td>512x512</td><td>PNG</td><td>PWA icon, maskable</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Frequently Asked Questions</h3>
+
+        <details class="faq-item">
+          <summary>What image format should I upload?</summary>
+          <p>We recommend uploading a PNG or JPG file with a square aspect ratio (1:1) and at least 512x512 pixels. The image should have a transparent or solid background. Avoid uploading ICO files as source - they often have limited resolution.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Do I really need all these sizes?</summary>
+          <p>Modern browsers are quite flexible, but providing multiple sizes ensures optimal display across all devices and platforms. At minimum, include 16x16 (for tabs), 32x32 (for bookmarks), and 180x180 (for Apple touch icons). The more sizes you provide, the better the user experience.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Where do I place the favicon files?</summary>
+          <p>Place all favicon files in your website's root directory (e.g., https://yoursite.com/favicon.ico). If you place them elsewhere, update the href paths in the HTML code. The browser automatically looks for favicon.ico in the root, so that's the most important location.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Are my images stored on your servers?</summary>
+          <p>No. All processing happens entirely in your browser using HTML5 Canvas. Your images are never uploaded to any server. This ensures complete privacy and security for your brand assets.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Why doesn't my favicon show immediately?</summary>
+          <p>Browsers cache favicons aggressively. After uploading new favicon files, you may need to clear your browser cache or hard refresh (Ctrl+F5 or Cmd+Shift+R) to see the changes. It can also take time for CDNs to propagate changes.</p>
+        </details>
+      </section>
+    </main>
+
+    <footer class="tool-footer">
+      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
+      <p>Estimates only &mdash; not financial, legal, or tax advice.</p>
+    </footer>
+    <style>
+      .tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }
+      .tool-footer a { color: #00D9FF; text-decoration: none; }
+    </style>
+  </div>
+
+  <script type="module">
+    const uploadArea = document.getElementById('uploadArea');
+    const fileInput = document.getElementById('fileInput');
+    const previewGrid = document.getElementById('previewGrid');
+    const btnBar = document.getElementById('btnBar');
+    const btnDownloadAll = document.getElementById('btnDownloadAll');
+    const codeSection = document.getElementById('codeSection');
+    const codeBlock = document.getElementById('codeBlock');
+    const btnCopyCode = document.getElementById('btnCopyCode');
+
+    const sizes = [16, 32, 48, 64, 128, 180, 192, 256, 512];
+    let generatedImages = {};
+
+    uploadArea.addEventListener('click', () => fileInput.click());
+    uploadArea.addEventListener('dragover', (e) => { e.preventDefault(); uploadArea.style.borderColor = '#00D9FF'; });
+    uploadArea.addEventListener('dragleave', () => uploadArea.style.borderColor = '');
+    uploadArea.addEventListener('drop', (e) => {
+      e.preventDefault();
+      uploadArea.style.borderColor = '';
+      if (e.dataTransfer.files.length) handleFile(e.dataTransfer.files[0]);
+    });
+    fileInput.addEventListener('change', () => { if (fileInput.files.length) handleFile(fileInput.files[0]); });
+
+    function handleFile(file) {
+      if (!file.type.startsWith('image/')) { alert('Please select an image file'); return; }
+      
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const img = new Image();
+        img.onload = () => generateFavicons(img);
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function generateFavicons(sourceImg) {
+      generatedImages = {};
+      previewGrid.innerHTML = '';
+      
+      sizes.forEach(size => {
+        const canvas = document.createElement('canvas');
+        canvas.width = size;
+        canvas.height = size;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(sourceImg, 0, 0, size, size);
+        
+        const dataUrl = canvas.toDataURL('image/png');
+        generatedImages[size] = dataUrl;
+        
+        const item = document.createElement('div');
+        item.className = 'preview-item';
+        item.innerHTML = `
+          <img src="${dataUrl}" alt="${size}x${size}">
+          <div class="preview-size">${size}x${size}</div>
+        `;
+        previewGrid.appendChild(item);
+      });
+      
+      const htmlCode = `<!-- Favicon -->
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512.png">`;
+      
+      codeBlock.textContent = htmlCode;
+      codeSection.classList.add('show');
+      btnBar.style.display = 'flex';
+    }
+
+    btnDownloadAll.addEventListener('click', () => {
+      Object.entries(generatedImages).forEach(([size, dataUrl]) => {
+        const link = document.createElement('a');
+        link.download = `favicon-${size}.png`;
+        link.href = dataUrl;
+        link.click();
+      });
+    });
+
+    btnCopyCode.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(codeBlock.textContent);
+        btnCopyCode.innerHTML = '<svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/></svg> Copied!';
+        setTimeout(() => {
+          btnCopyCode.innerHTML = '<svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/></svg> Copy HTML Code';
+        }, 1500);
+      } catch (e) {}
+    });
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var menuBtn = document.getElementById('mobileMenuBtn');
+      var mobileMenu = document.getElementById('mobileMenu');
+      if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener('click', function() {
+          var isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+          menuBtn.setAttribute('aria-expanded', !isExpanded);
+          mobileMenu.hidden = isExpanded;
+          mobileMenu.classList.toggle('active', !isExpanded);
+        });
+      }
+      var themeBtn = document.getElementById('themeToggle');
+      if (themeBtn) {
+        function getTheme() {
+          var s = localStorage.getItem('theme');
+          if (s) return s;
+          return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        }
+        function updateIcon() {
+          var t = getTheme();
+          themeBtn.querySelector('.icon-sun').style.display = t === 'light' ? 'none' : 'block';
+          themeBtn.querySelector('.icon-moon').style.display = t === 'dark' ? 'none' : 'block';
+        }
+        themeBtn.addEventListener('click', function() {
+          var next = getTheme() === 'dark' ? 'light' : 'dark';
+          document.documentElement.setAttribute('data-theme', next);
+          localStorage.setItem('theme', next);
+          updateIcon();
+        });
+        updateIcon();
+      }
+    });
+  </script>
+</body>
+</html>

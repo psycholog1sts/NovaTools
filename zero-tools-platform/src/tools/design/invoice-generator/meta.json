@@ -1,0 +1,41 @@
+{
+  "id": "invoice-generator",
+  "name": "Invoice Generator",
+  "nameEn": "Invoice Generator",
+  "category": "design",
+  "tier": 1,
+  "cpc": {
+    "tr": 0.5,
+    "us": 1.0
+  },
+  "keywords": {
+    "tr": ["fatura oluşturucu", "fatura yapıcı", "ücretsiz fatura", "pdf fatura"],
+    "en": ["invoice generator", "invoice maker", "free invoice", "PDF invoice"]
+  },
+  "description": {
+    "tr": "Otomatik hesaplamalı profesyonel faturalar oluşturun. PDF olarak indirin.",
+    "en": "Create professional invoices with automatic calculations. Download as PDF."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "BusinessApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.4
+    }
+  },
+  "bundle": {
+    "lazyLoad": false
+  },
+  "relatedTools": [
+    "resume-builder",
+    "business-card-maker"
+  ]
+}

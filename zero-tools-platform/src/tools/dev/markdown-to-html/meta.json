@@ -1,0 +1,41 @@
+{
+  "id": "markdown-to-html",
+  "name": "Markdown to HTML",
+  "nameEn": "Markdown to HTML",
+  "category": "dev",
+  "tier": 1,
+  "cpc": {
+    "tr": 0.6,
+    "us": 1.1
+  },
+  "keywords": {
+    "tr": ["markdown html", "md dönüştürücü", "markdown parser", "markdown önizleme"],
+    "en": ["markdown to html", "md converter", "markdown parser", "markdown preview"]
+  },
+  "description": {
+    "tr": "Markdown'ı HTML'ye dönüştürün. Canlı önizleme, GitHub-flavored Markdown desteği.",
+    "en": "Convert Markdown to HTML. Live preview with GitHub-flavored Markdown support."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "DeveloperApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.3
+    }
+  },
+  "bundle": {
+    "lazyLoad": false
+  },
+  "relatedTools": [
+    "code-formatter",
+    "json-validator"
+  ]
+}

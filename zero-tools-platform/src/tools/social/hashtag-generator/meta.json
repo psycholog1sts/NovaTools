@@ -1,0 +1,42 @@
+{
+  "id": "hashtag-generator",
+  "name": "Hashtag Generator",
+  "nameEn": "Hashtag Generator",
+  "category": "social",
+  "tier": 1,
+  "cpc": {
+    "tr": 0.5,
+    "us": 1.0
+  },
+  "keywords": {
+    "tr": ["hashtag oluşturucu", "etiket üretici", "instagram hashtag", "trend etiketler"],
+    "en": ["hashtag generator", "tag generator", "instagram hashtags", "trending tags", "social media tags"]
+  },
+  "description": {
+    "tr": "Sosyal medya gönderileriniz için ilgili ve trend hashtagler oluşturun. Erişimi ve etkileşimi artırın.",
+    "en": "Generate relevant and trending hashtags for your social media posts. Increase reach and engagement."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "UtilitiesApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.3
+    }
+  },
+  "bundle": {
+    "lazyLoad": false
+  },
+  "relatedTools": [
+    "social-image-resizer",
+    "utm-builder",
+    "url-shortener"
+  ]
+}

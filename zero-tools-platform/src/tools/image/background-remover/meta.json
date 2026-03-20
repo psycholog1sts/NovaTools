@@ -1,0 +1,59 @@
+{
+  "id": "background-remover",
+  "name": "Arka Plan Kaldırma",
+  "nameEn": "Background Remover",
+  "category": "image",
+  "tier": 3,
+  "complexity": 8,
+  "cpc": {
+    "tr": 1.5,
+    "us": 2.5
+  },
+  "keywords": {
+    "tr": ["arka plan kaldırma", "şeffaf arka plan", "fotoğraf arka planı silme", "arka plan temizleme"],
+    "en": ["remove background", "transparent background", "image background remover", "background eraser"]
+  },
+  "description": {
+    "tr": "Görsellerin arka planını otomatik olarak kaldırın. Şeffaf PNG oluşturun. Kenar hassasiyeti ayarlı.",
+    "en": "Remove backgrounds from images automatically. Create transparent PNGs with adjustable edge tolerance."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "DeveloperApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.6
+    },
+    "anchor": {
+      "enabled": true,
+      "size": "320x50",
+      "mobileOnly": true
+    }
+  },
+  "bundle": {
+    "lazyLoad": true
+  },
+  "relatedTools": [
+    "image-cropper",
+    "image-resizer",
+    "image-compress"
+  ],
+  "memoryLimits": {
+    "maxFileSize": 10485760,
+    "maxFiles": 1,
+    "maxTotalSize": 10485760
+  },
+  "features": {
+    "autoDetectSubject": true,
+    "toleranceSlider": true,
+    "previewTransparent": true,
+    "outputFormat": "png"
+  }
+}

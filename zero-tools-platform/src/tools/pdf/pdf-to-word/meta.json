@@ -1,0 +1,17 @@
+{
+  "id": "pdf-to-word",
+  "name": "PDF to Word Converter",
+  "description": "Convert PDF documents to editable Word format online for free",
+  "category": "pdf",
+  "icon": "📄",
+  "keywords": ["pdf to word", "pdf converter", "convert pdf", "docx", "document converter"],
+  "complexity": 6,
+  "hasClientSideProcessing": true,
+  "maxFileSize": 52428800,
+  "supportedFormats": ["pdf"],
+  "outputFormat": "docx",
+  "version": "1.0.0",
+  "author": "NovaTools MC",
+  "created": "2026-03-16",
+  "updated": "2026-03-16"
+}

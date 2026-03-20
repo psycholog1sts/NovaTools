@@ -1,0 +1,42 @@
+{
+  "id": "url-encoder",
+  "name": "URL Encoder/Decoder",
+  "nameEn": "URL Encoder/Decoder",
+  "category": "text",
+  "tier": 2,
+  "cpc": {
+    "tr": 0.15,
+    "us": 0.4
+  },
+  "keywords": {
+    "tr": ["url kodlayıcı", "url kod çözücü", "percent encoding", "sorgu dizisi"],
+    "en": ["url encoder", "url decoder", "percent encoding", "query string", "url encode decode"]
+  },
+  "description": {
+    "tr": "URL'ler ve sorgu dizileri için metni kodlayın ve kodunu çözün. Percent encoding desteği.",
+    "en": "Encode and decode text for URLs and query strings. Supports percent encoding."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "UtilityApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.15
+    }
+  },
+  "bundle": {
+    "lazyLoad": false
+  },
+  "relatedTools": [
+    "html-entity-encoder",
+    "text-to-ascii",
+    "case-converter"
+  ]
+}

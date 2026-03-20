@@ -1,0 +1,60 @@
+{
+  "id": "image-to-webp",
+  "name": "WebP Dönüştürücü",
+  "nameEn": "Image to WebP Converter",
+  "category": "image",
+  "tier": 2,
+  "complexity": 4,
+  "cpc": {
+    "tr": 0.8,
+    "us": 1.2
+  },
+  "keywords": {
+    "tr": ["webp dönüştürücü", "jpg webp çevirme", "png webp dönüştür", "görsel optimize"],
+    "en": ["image to webp", "webp converter", "optimize images", "jpg to webp", "png to webp"]
+  },
+  "description": {
+    "tr": "JPG, PNG görsellerini modern WebP formatına dönüştürün. Daha küçük dosya boyutları için toplu dönüştürme.",
+    "en": "Convert JPG, PNG images to modern WebP format for smaller file sizes. Batch conversion with quality control."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "DeveloperApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.4
+    },
+    "anchor": {
+      "enabled": true,
+      "size": "320x50",
+      "mobileOnly": true
+    }
+  },
+  "bundle": {
+    "lazyLoad": true
+  },
+  "relatedTools": [
+    "image-to-avif",
+    "image-compress",
+    "image-resizer"
+  ],
+  "memoryLimits": {
+    "maxFileSize": 20971520,
+    "maxFiles": 20,
+    "maxTotalSize": 104857600
+  },
+  "features": {
+    "qualitySlider": true,
+    "batchConversion": true,
+    "preview": true,
+    "inputFormats": ["jpg", "jpeg", "png", "gif", "bmp"],
+    "outputFormat": "webp"
+  }
+}

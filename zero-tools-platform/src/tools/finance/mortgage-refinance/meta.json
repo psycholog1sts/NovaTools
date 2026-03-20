@@ -1,0 +1,54 @@
+{
+  "id": "mortgage-tr",
+  "name": "Konut Kredisi Hesaplama",
+  "nameEn": "Mortgage Calculator Turkey",
+  "category": "finance",
+  "tier": 1,
+  "cpc": {
+    "tr": 2.5,
+    "us": 3.0
+  },
+  "keywords": {
+    "tr": ["konut kredisi hesaplama", "aylık taksit hesaplama", "faiz oranı", "kkdf bsmv hesaplama"],
+    "en": ["turkey mortgage calculator", "home loan calculator", "monthly payment", "kkdf bsmv"]
+  },
+  "description": {
+    "tr": "Ücretsiz konut kredisi hesaplama aracı. KKDF ve BSMV dahil aylık taksit, toplam geri ödeme ve faiz oranlarını hesaplayın.",
+    "en": "Free Turkish mortgage calculator with KKDF and BSMV tax calculations. Calculate monthly payments and total interest."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "FinanceApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.8
+    },
+    "banner": {
+      "enabled": true,
+      "size": "728x90"
+    },
+    "anchor": {
+      "enabled": true,
+      "size": "320x50",
+      "mobileOnly": true
+    }
+  },
+  "bundle": {
+    "vendor": "finance-vendor",
+    "lazyLoad": false
+  },
+  "relatedTools": [
+    "finance/compound-interest",
+    "finance/cloud-cost"
+  ],
+  "memoryLimits": {
+    "maxResults": 360
+  }
+}

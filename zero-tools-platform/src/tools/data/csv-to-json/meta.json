@@ -1,0 +1,41 @@
+{
+  "id": "csv-to-json",
+  "name": "CSV to JSON Converter",
+  "nameEn": "CSV to JSON Converter",
+  "category": "data",
+  "tier": 1,
+  "cpc": {
+    "tr": 0.5,
+    "us": 1.2
+  },
+  "keywords": {
+    "tr": ["csv json dönüştürücü", "csv json çevirici", "csv dosya dönüştürme"],
+    "en": ["csv to json", "csv converter", "convert csv to json", "csv json tool"]
+  },
+  "description": {
+    "tr": "CSV dosyalarınızı JSON formatına anında dönüştürün. Tamamen tarayıcı tabanlı, güvenli ve ücretsiz.",
+    "en": "Convert your CSV files to JSON format instantly. Completely browser-based, secure and free."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "DataConversionApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.3
+    }
+  },
+  "bundle": {
+    "lazyLoad": false
+  },
+  "relatedTools": [
+    "json-to-csv",
+    "csv-viewer"
+  ]
+}

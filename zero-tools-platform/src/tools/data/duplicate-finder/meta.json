@@ -1,0 +1,41 @@
+{
+  "id": "duplicate-finder",
+  "name": "Duplicate File Finder",
+  "nameEn": "Duplicate File Finder",
+  "category": "data",
+  "tier": 1,
+  "cpc": {
+    "tr": 0.5,
+    "us": 1.2
+  },
+  "keywords": {
+    "tr": ["kopya dosya bulucu", "tekrarlanan dosyalar", "benzer dosyalar", "dosya temizleyici"],
+    "en": ["duplicate finder", "find duplicates", "duplicate files", "remove duplicates", "file deduplicator"]
+  },
+  "description": {
+    "tr": "Kopya dosyaları bulun ve kaldırın. Hash tabanlı karşılaştırma ile kesin sonuçlar.",
+    "en": "Find and remove duplicate files. Hash-based comparison for accurate results."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "FileUtilityApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.3
+    }
+  },
+  "bundle": {
+    "lazyLoad": false
+  },
+  "relatedTools": [
+    "file-organizer",
+    "checksum-calculator"
+  ]
+}

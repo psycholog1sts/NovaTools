@@ -1,0 +1,544 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y896L63239"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Y896L63239');
+  </script>
+  <meta charset="UTF-8">
+  <script>(function(){var t=localStorage.getItem('novatools-theme');if(t)document.documentElement.setAttribute('data-theme',t);else{var d=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',d);document.documentElement.style.colorScheme=d;}})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/src/styles/critical.css">
+  <link rel="stylesheet" href="/src/styles/main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <title>Free Pomodoro Timer | NovaTools MC</title>
+  
+  <!-- i18n Script -->
+  <script src="/i18n.js"></script>
+  <meta name="description" content="Boost productivity with the Pomodoro Technique. 25-minute work sessions with 5-minute breaks. Free online timer with customizable intervals.">
+  <meta name="keywords" content="pomodoro timer, focus timer, productivity tool, work timer, time management">
+  <meta name="theme-color" content="#0A0A0C">
+
+  <meta property="og:title" content="Free Pomodoro Timer | NovaTools MC">
+  <meta property="og:description" content="Boost productivity with the Pomodoro Technique. 25-minute work sessions with breaks.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.mc-novatools.com/tools/productivity/pomodoro-timer/">
+  <meta property="og:image" content="https://www.mc-novatools.com/og-image.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free Pomodoro Timer | NovaTools MC">
+  <meta name="twitter:description" content="Boost productivity with the Pomodoro Technique.">
+
+  <link rel="canonical" href="https://www.mc-novatools.com/tools/productivity/pomodoro-timer/">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [{
+      "@type": "WebApplication",
+      "name": "Pomodoro Timer",
+      "description": "Boost productivity with the Pomodoro Technique. 25-minute work sessions with 5-minute breaks.",
+      "url": "https://www.mc-novatools.com/tools/productivity/pomodoro-timer/",
+      "applicationCategory": "ProductivityApplication",
+      "operatingSystem": "Any",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+    }]
+  }
+  </script>
+
+  <style>
+    .tool-wrapper { max-width: 960px; margin: 0 auto; padding: 3rem 1rem 5rem; }
+    .tool-hero { text-align: center; margin-bottom: 2.5rem; }
+    .tool-hero-icon { font-size: 3.5rem; line-height: 1; margin-bottom: 1rem; }
+    .tool-hero h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; letter-spacing: -0.02em; color: #FAFAFA; margin-bottom: 0.75rem; }
+    .tool-hero p { color: #A1A1AA; font-size: 1.0625rem; max-width: 560px; margin: 0 auto; }
+    .card { background: rgba(15,15,20,0.7); border: 1px solid rgba(0,217,255,0.15); border-radius: 14px; padding: 1.75rem; backdrop-filter: blur(12px); }
+    
+    .timer-display { text-align: center; margin-bottom: 2rem; }
+    .timer-circle { width: 280px; height: 280px; margin: 0 auto; position: relative; }
+    .timer-circle svg { transform: rotate(-90deg); }
+    .timer-circle-bg { fill: none; stroke: rgba(255,255,255,0.1); stroke-width: 8; }
+    .timer-circle-progress { fill: none; stroke: #00D9FF; stroke-width: 8; stroke-linecap: round; stroke-dasharray: 754; stroke-dashoffset: 0; transition: stroke-dashoffset 1s linear; }
+    .timer-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; }
+    .timer-time { font-size: 4rem; font-weight: 700; color: #FAFAFA; font-family: 'JetBrains Mono', monospace; }
+    .timer-label { font-size: 1rem; color: #A1A1AA; margin-top: 0.5rem; }
+    .timer-label.work { color: #00D9FF; }
+    .timer-label.break { color: #00FF88; }
+    .timer-label.longBreak { color: #FFC107; }
+    
+    .mode-tabs { display: flex; gap: 0.5rem; justify-content: center; margin-bottom: 1.5rem; }
+    .mode-tab { padding: 0.75rem 1.5rem; border: 1px solid rgba(0,217,255,0.2); border-radius: 8px; background: transparent; color: #A1A1AA; cursor: pointer; font-size: 0.9rem; font-weight: 500; transition: all 0.2s; }
+    .mode-tab:hover { border-color: rgba(0,217,255,0.4); color: #FAFAFA; }
+    .mode-tab.active { background: rgba(0,217,255,0.15); border-color: #00D9FF; color: #00D9FF; }
+    
+    .btn-bar { display: flex; justify-content: center; gap: 0.75rem; margin-bottom: 1.5rem; }
+    .btn { display: inline-flex; align-items: center; gap: 0.4rem; height: 48px; padding: 0 1.5rem; border: none; border-radius: 8px; font-size: 0.9375rem; font-weight: 600; cursor: pointer; transition: all 0.2s; outline: none; }
+    .btn:active { transform: scale(0.97); }
+    .btn-primary { background: linear-gradient(135deg, #00D9FF, #0099CC); color: #0A0A0C; }
+    .btn-primary:hover { background: linear-gradient(135deg, #1FE2FF, #00B8EE); }
+    .btn-secondary { background: rgba(0,217,255,0.1); border: 1px solid rgba(0,217,255,0.25); color: #00D9FF; }
+    .btn-secondary:hover { background: rgba(0,217,255,0.18); }
+    
+    .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
+    .stat-box { background: rgba(0,217,255,0.05); border: 1px solid rgba(0,217,255,0.1); border-radius: 10px; padding: 1rem; text-align: center; }
+    .stat-value { font-size: 1.5rem; font-weight: 700; color: #00D9FF; font-family: 'JetBrains Mono', monospace; }
+    .stat-label { font-size: 0.75rem; color: #71717A; text-transform: uppercase; letter-spacing: 0.06em; margin-top: 0.25rem; }
+    
+    .settings-section { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(0,217,255,0.1); }
+    .settings-title { font-size: 0.875rem; font-weight: 600; color: #A1A1AA; margin-bottom: 1rem; }
+    .setting-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem; }
+    .setting-label { font-size: 0.9rem; color: #FAFAFA; }
+    .setting-input { display: flex; align-items: center; gap: 0.5rem; }
+    .setting-input input { width: 60px; height: 36px; padding: 0 0.5rem; background: #0F0F12; border: 1px solid rgba(0,217,255,0.2); border-radius: 6px; color: #FAFAFA; text-align: center; font-family: 'JetBrains Mono', monospace; }
+    .setting-input span { font-size: 0.875rem; color: #71717A; }
+    
+    .legal-note { margin-top: 1.5rem; padding: 1rem 1.25rem; background: rgba(255,193,7,0.05); border: 1px solid rgba(255,193,7,0.15); border-radius: 10px; font-size: 0.8125rem; color: #A1A1AA; line-height: 1.6; }
+    .legal-note strong { color: #FFC107; }
+    
+    .seo-section { max-width: 960px; margin: 3.5rem auto 0; padding: 0 1rem; }
+    .seo-section h2 { font-size: 1.375rem; font-weight: 700; color: #FAFAFA; margin-bottom: 0.75rem; }
+    .seo-section h3 { font-size: 1.125rem; font-weight: 600; color: #FAFAFA; margin: 2rem 0 0.75rem; }
+    .seo-section p, .seo-section li { color: #A1A1AA; line-height: 1.8; font-size: 0.9375rem; }
+    .seo-section ol { padding-left: 1.25rem; }
+    .seo-section ol li { margin-bottom: 0.4rem; }
+    .faq-item { border: 1px solid rgba(0,217,255,0.1); border-radius: 10px; padding: 1rem 1.125rem; margin-bottom: 0.875rem; background: rgba(15,15,20,0.5); }
+    .faq-item summary { font-weight: 600; color: #FAFAFA; cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: '+'; color: #00D9FF; font-size: 1.25rem; flex-shrink: 0; transition: transform 0.2s; }
+    .faq-item[open] summary::after { content: '\2212'; }
+    .faq-item p { margin-top: 0.625rem; color: #A1A1AA; line-height: 1.7; }
+    
+    @media (max-width: 600px) {
+      .timer-circle { width: 240px; height: 240px; }
+      .timer-time { font-size: 3rem; }
+      .mode-tabs { flex-wrap: wrap; }
+      .mode-tab { padding: 0.6rem 1rem; font-size: 0.8rem; }
+      .stats-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-ambient" aria-hidden="true"></div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <div id="app" class="app">
+    <header class="main-header">
+      <div class="container">
+        <div class="header-inner">
+          <a href="/" class="logo" aria-label="NovaTools MC Home">
+            <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
+            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+          </a>
+          <nav class="nav-desktop" aria-label="Main navigation">
+            <a href="/#finance" class="nav-link">Finance</a>
+            <a href="/#pdf" class="nav-link">PDF Tools</a>
+            <a href="/#image" class="nav-link">Images</a>
+            <a href="/#dev" class="nav-link">Developers</a>
+          </nav>
+          <div class="privacy-badge" title="Your data never leaves your browser">
+            <span class="privacy-badge-dot"></span>
+            <span>Privacy First</span>
+          </div>
+          <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+            <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+          <button type="button" id="mobileMenuBtn" class="menu-btn" aria-label="Toggle menu" aria-expanded="false">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+        </div>
+        <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
+          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <div class="tool-wrapper">
+        <div class="tool-hero">
+          <div class="tool-hero-icon">&#127813;</div>
+          <h1>Pomodoro Timer</h1>
+          <p>Boost your productivity with the Pomodoro Technique. Work in focused 25-minute sessions with short breaks to maximize efficiency.</p>
+        </div>
+
+        <div class="card">
+          <div class="mode-tabs">
+            <button class="mode-tab active" data-mode="work">Work</button>
+            <button class="mode-tab" data-mode="shortBreak">Short Break</button>
+            <button class="mode-tab" data-mode="longBreak">Long Break</button>
+          </div>
+
+          <div class="timer-display">
+            <div class="timer-circle">
+              <svg width="280" height="280" viewBox="0 0 280 280">
+                <circle class="timer-circle-bg" cx="140" cy="140" r="120"></circle>
+                <circle class="timer-circle-progress" id="progressCircle" cx="140" cy="140" r="120"></circle>
+              </svg>
+              <div class="timer-text">
+                <div class="timer-time" id="timerDisplay">25:00</div>
+                <div class="timer-label work" id="timerLabel">Ready to Work</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="btn-bar">
+            <button class="btn btn-primary" id="btnStart">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/></svg>
+              Start
+            </button>
+            <button class="btn btn-secondary" id="btnPause" style="display: none;">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5zm5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5z"/></svg>
+              Pause
+            </button>
+            <button class="btn btn-secondary" id="btnReset">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/><path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/></svg>
+              Reset
+            </button>
+          </div>
+
+          <div class="stats-row">
+            <div class="stat-box">
+              <div class="stat-value" id="sessionsCompleted">0</div>
+              <div class="stat-label">Sessions</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="totalFocusTime">0</div>
+              <div class="stat-label">Minutes Focused</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="currentStreak">0</div>
+              <div class="stat-label">Streak</div>
+            </div>
+          </div>
+
+          <div class="settings-section">
+            <div class="settings-title">&#9881; Timer Settings (minutes)</div>
+            <div class="setting-row">
+              <span class="setting-label">Work Duration</span>
+              <div class="setting-input">
+                <input type="number" id="workDuration" value="25" min="1" max="60">
+                <span>min</span>
+              </div>
+            </div>
+            <div class="setting-row">
+              <span class="setting-label">Short Break</span>
+              <div class="setting-input">
+                <input type="number" id="shortBreakDuration" value="5" min="1" max="30">
+                <span>min</span>
+              </div>
+            </div>
+            <div class="setting-row">
+              <span class="setting-label">Long Break</span>
+              <div class="setting-input">
+                <input type="number" id="longBreakDuration" value="15" min="1" max="60">
+                <span>min</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="legal-note">
+            <strong>Legal Disclaimer / Yasal Uazr&#305;:</strong> This timer is for personal productivity purposes only. All timer data is stored locally in your browser and will be lost when you clear browser data. / Bu zamanlay&#305;c&#305; ki&#351;isel verimlilik amac&#305;ylad&#305;r. T&#252;m zamanlay&#305;c&#305; verileri taray&#305;c&#305;n&#305;zda yerel olarak saklan&#305;r ve taray&#305;c&#305; verilerini temizledi&#287;inizde kaybolur.
+          </div>
+        </div>
+      </div>
+
+      <section class="seo-section" aria-label="About this tool">
+        <h2>About Pomodoro Timer</h2>
+        <p>The Pomodoro Technique is a time management method developed by Francesco Cirillo in the late 1980s. It uses a timer to break work into intervals, traditionally 25 minutes in length, separated by short breaks. This technique helps improve focus, reduce mental fatigue, and increase productivity.</p>
+
+        <h3>How to Use</h3>
+        <ol>
+          <li>Select your timer mode: Work, Short Break, or Long Break.</li>
+          <li>Adjust the duration settings if needed (default: 25 min work, 5 min short break, 15 min long break).</li>
+          <li>Click <strong>Start</strong> to begin the timer.</li>
+          <li>Focus entirely on your task until the timer rings.</li>
+          <li>Take a break when the timer ends. Your browser will notify you.</li>
+          <li>After 4 work sessions, take a longer 15-30 minute break.</li>
+          <li>Track your progress with the session counter and total focus time.</li>
+        </ol>
+
+        <h3>Frequently Asked Questions</h3>
+
+        <details class="faq-item">
+          <summary>What is the Pomodoro Technique?</summary>
+          <p>The Pomodoro Technique is a time management method where you work in focused 25-minute intervals (called "pomodoros") followed by short 5-minute breaks. After completing 4 pomodoros, you take a longer break of 15-30 minutes. This helps maintain high concentration and prevents burnout.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Is my timer data saved?</summary>
+          <p>Yes, your session statistics are saved in your browser's localStorage, so they'll persist between visits. However, if you clear your browser data or use private/incognito mode, your statistics will be reset.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Can I customize the timer durations?</summary>
+          <p>Yes! You can adjust the work duration, short break, and long break times in the settings section. The changes will take effect immediately for your next timer session.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Will I get notifications when the timer ends?</summary>
+          <p>The timer will play a sound and show a browser notification when it completes. Make sure your browser permissions allow notifications from this site for the best experience.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>What are the benefits of using this technique?</summary>
+          <p>The Pomodoro Technique helps reduce distractions, improve focus, prevent burnout, and provide a sense of accomplishment. It also helps you estimate how long tasks take and identify time-wasting activities.</p>
+        </details>
+      </section>
+    </main>
+
+    <footer class="tool-footer">
+      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
+      <p>Estimates only &mdash; not financial, legal, or tax advice.</p>
+    </footer>
+    <style>
+      .tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }
+      .tool-footer a { color: #00D9FF; text-decoration: none; }
+    </style>
+  </div>
+
+  <script type="module">
+    const CIRCUMFERENCE = 2 * Math.PI * 120;
+    
+    let timerInterval = null;
+    let timeLeft = 25 * 60;
+    let totalTime = 25 * 60;
+    let isRunning = false;
+    let currentMode = 'work';
+    let sessionsCompleted = parseInt(localStorage.getItem('pomodoro_sessions') || '0');
+    let totalFocusTime = parseInt(localStorage.getItem('pomodoro_focusTime') || '0');
+    let currentStreak = parseInt(localStorage.getItem('pomodoro_streak') || '0');
+    
+    const timerDisplay = document.getElementById('timerDisplay');
+    const timerLabel = document.getElementById('timerLabel');
+    const progressCircle = document.getElementById('progressCircle');
+    const btnStart = document.getElementById('btnStart');
+    const btnPause = document.getElementById('btnPause');
+    const btnReset = document.getElementById('btnReset');
+    const modeTabs = document.querySelectorAll('.mode-tab');
+    const sessionsDisplay = document.getElementById('sessionsCompleted');
+    const focusTimeDisplay = document.getElementById('totalFocusTime');
+    const streakDisplay = document.getElementById('currentStreak');
+    
+    const settings = {
+      work: parseInt(localStorage.getItem('pomodoro_workDuration') || '25'),
+      shortBreak: parseInt(localStorage.getItem('pomodoro_shortBreakDuration') || '5'),
+      longBreak: parseInt(localStorage.getItem('pomodoro_longBreakDuration') || '15')
+    };
+    
+    document.getElementById('workDuration').value = settings.work;
+    document.getElementById('shortBreakDuration').value = settings.shortBreak;
+    document.getElementById('longBreakDuration').value = settings.longBreak;
+    
+    function updateStats() {
+      sessionsDisplay.textContent = sessionsCompleted;
+      focusTimeDisplay.textContent = totalFocusTime;
+      streakDisplay.textContent = currentStreak;
+    }
+    
+    function formatTime(seconds) {
+      const mins = Math.floor(seconds / 60);
+      const secs = seconds % 60;
+      return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+    }
+    
+    function updateDisplay() {
+      timerDisplay.textContent = formatTime(timeLeft);
+      const offset = CIRCUMFERENCE - (timeLeft / totalTime) * CIRCUMFERENCE;
+      progressCircle.style.strokeDashoffset = offset;
+    }
+    
+    function setMode(mode) {
+      currentMode = mode;
+      const duration = settings[mode] * 60;
+      timeLeft = duration;
+      totalTime = duration;
+      
+      const labels = {
+        work: 'Focus Time',
+        shortBreak: 'Short Break',
+        longBreak: 'Long Break'
+      };
+      
+      timerLabel.textContent = labels[mode];
+      timerLabel.className = 'timer-label ' + mode;
+      progressCircle.style.stroke = mode === 'work' ? '#00D9FF' : (mode === 'shortBreak' ? '#00FF88' : '#FFC107');
+      
+      modeTabs.forEach(tab => {
+        tab.classList.toggle('active', tab.dataset.mode === mode);
+      });
+      
+      updateDisplay();
+    }
+    
+    function playNotificationSound() {
+      const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      const oscillator = audioContext.createOscillator();
+      const gainNode = audioContext.createGain();
+      
+      oscillator.connect(gainNode);
+      gainNode.connect(audioContext.destination);
+      
+      oscillator.frequency.value = 800;
+      gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+      gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
+      
+      oscillator.start(audioContext.currentTime);
+      oscillator.stop(audioContext.currentTime + 0.5);
+    }
+    
+    function showNotification() {
+      if ('Notification' in window && Notification.permission === 'granted') {
+        const titles = {
+          work: 'Work Session Complete!',
+          shortBreak: 'Break Over!',
+          longBreak: 'Long Break Over!'
+        };
+        new Notification(titles[currentMode], {
+          body: currentMode === 'work' ? 'Time for a break!' : 'Ready to get back to work?',
+          icon: '/logo-bird.png'
+        });
+      }
+    }
+    
+    function onTimerComplete() {
+      playNotificationSound();
+      showNotification();
+      
+      if (currentMode === 'work') {
+        sessionsCompleted++;
+        totalFocusTime += settings.work;
+        currentStreak++;
+        localStorage.setItem('pomodoro_sessions', sessionsCompleted);
+        localStorage.setItem('pomodoro_focusTime', totalFocusTime);
+        localStorage.setItem('pomodoro_streak', currentStreak);
+        updateStats();
+      }
+      
+      pauseTimer();
+      btnStart.style.display = 'inline-flex';
+      btnPause.style.display = 'none';
+    }
+    
+    function startTimer() {
+      if (!isRunning) {
+        isRunning = true;
+        btnStart.style.display = 'none';
+        btnPause.style.display = 'inline-flex';
+        
+        if ('Notification' in window && Notification.permission === 'default') {
+          Notification.requestPermission();
+        }
+        
+        timerInterval = setInterval(() => {
+          if (timeLeft > 0) {
+            timeLeft--;
+            updateDisplay();
+          } else {
+            onTimerComplete();
+          }
+        }, 1000);
+      }
+    }
+    
+    function pauseTimer() {
+      isRunning = false;
+      clearInterval(timerInterval);
+      btnStart.style.display = 'inline-flex';
+      btnPause.style.display = 'none';
+    }
+    
+    function resetTimer() {
+      pauseTimer();
+      setMode(currentMode);
+      btnStart.style.display = 'inline-flex';
+      btnPause.style.display = 'none';
+    }
+    
+    function saveSettings() {
+      settings.work = parseInt(document.getElementById('workDuration').value) || 25;
+      settings.shortBreak = parseInt(document.getElementById('shortBreakDuration').value) || 5;
+      settings.longBreak = parseInt(document.getElementById('longBreakDuration').value) || 15;
+      
+      localStorage.setItem('pomodoro_workDuration', settings.work);
+      localStorage.setItem('pomodoro_shortBreakDuration', settings.shortBreak);
+      localStorage.setItem('pomodoro_longBreakDuration', settings.longBreak);
+      
+      if (!isRunning) {
+        setMode(currentMode);
+      }
+    }
+    
+    btnStart.addEventListener('click', startTimer);
+    btnPause.addEventListener('click', pauseTimer);
+    btnReset.addEventListener('click', resetTimer);
+    
+    modeTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        pauseTimer();
+        setMode(tab.dataset.mode);
+        btnStart.style.display = 'inline-flex';
+        btnPause.style.display = 'none';
+      });
+    });
+    
+    ['workDuration', 'shortBreakDuration', 'longBreakDuration'].forEach(id => {
+      document.getElementById(id).addEventListener('change', saveSettings);
+    });
+    
+    progressCircle.style.strokeDasharray = CIRCUMFERENCE;
+    updateStats();
+    updateDisplay();
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var menuBtn = document.getElementById('mobileMenuBtn');
+      var mobileMenu = document.getElementById('mobileMenu');
+      if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener('click', function() {
+          var isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+          menuBtn.setAttribute('aria-expanded', !isExpanded);
+          mobileMenu.hidden = isExpanded;
+          mobileMenu.classList.toggle('active', !isExpanded);
+        });
+      }
+      var themeBtn = document.getElementById('themeToggle');
+      if (themeBtn) {
+        function getTheme() {
+          var s = localStorage.getItem('theme');
+          if (s) return s;
+          return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        }
+        function updateIcon() {
+          var t = getTheme();
+          themeBtn.querySelector('.icon-sun').style.display = t === 'light' ? 'none' : 'block';
+          themeBtn.querySelector('.icon-moon').style.display = t === 'dark' ? 'none' : 'block';
+        }
+        themeBtn.addEventListener('click', function() {
+          var next = getTheme() === 'dark' ? 'light' : 'dark';
+          document.documentElement.setAttribute('data-theme', next);
+          localStorage.setItem('theme', next);
+          updateIcon();
+        });
+        updateIcon();
+      }
+    });
+  </script>
+</body>
+</html>

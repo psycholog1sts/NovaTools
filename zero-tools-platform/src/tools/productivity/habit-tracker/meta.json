@@ -1,0 +1,42 @@
+{
+  "id": "habit-tracker",
+  "name": "Habit Tracker",
+  "nameEn": "Habit Tracker",
+  "category": "productivity",
+  "tier": 1,
+  "cpc": {
+    "tr": 0.19,
+    "us": 0.43
+  },
+  "keywords": {
+    "tr": ["alışkanlık takibi", "habit tracker", "günlük rutin", "alışkanlık oluşturma", "davranış takibi"],
+    "en": ["habit tracker", "habit builder", "daily tracker", "routine tracker", "goal tracker"]
+  },
+  "description": {
+    "tr": "Günlük alışkanlıklarınızı takip edin ve hedeflerinize ulaşın. Görsel ilerleme takibi.",
+    "en": "Track daily habits and reach your goals. Visual progress tracking."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "ProductivityApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.15
+    }
+  },
+  "bundle": {
+    "lazyLoad": false
+  },
+  "relatedTools": [
+    "todo-list",
+    "time-tracker",
+    "notes"
+  ]
+}

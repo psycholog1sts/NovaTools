@@ -1,0 +1,39 @@
+{
+  "id": "image-convert",
+  "name": "Format Dönüştürme",
+  "nameEn": "Image Converter",
+  "category": "image",
+  "tier": 2,
+  "cpc": {
+    "tr": 0.9,
+    "us": 1.2
+  },
+  "keywords": {
+    "tr": ["resim formatı değiştirme", "jpeg png dönüştürme", "webp dönüştür", "fotoğraf formatı"],
+    "en": ["image converter", "convert jpeg png", "webp converter", "image format"]
+  },
+  "description": {
+    "tr": "JPEG, PNG, WebP, AVIF arasında format dönüştürme. Toplu dönüştürme desteği.",
+    "en": "Convert between JPEG, PNG, WebP, AVIF formats. Batch conversion support."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "DeveloperApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280"
+    }
+  },
+  "bundle": {
+    "lazyLoad": true
+  },
+  "relatedTools": [
+    "image/compress"
+  ]
+}

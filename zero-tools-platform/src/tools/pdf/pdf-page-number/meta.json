@@ -1,0 +1,22 @@
+{
+  "id": "pdf-page-number",
+  "name": "PDF Page Number Adder",
+  "description": "Add page numbers to PDF documents",
+  "category": "pdf",
+  "icon": "🔢",
+  "keywords": ["pdf page numbers", "add page numbers", "pdf numbering"],
+  "complexity": 5,
+  "hasClientSideProcessing": true,
+  "maxFileSize": 52428800,
+  "supportedFormats": ["pdf"],
+  "outputFormat": "pdf",
+  "options": {
+    "position": ["top", "bottom"],
+    "alignment": ["left", "center", "right"],
+    "startNumber": "number"
+  },
+  "version": "1.0.0",
+  "author": "NovaTools MC",
+  "created": "2026-03-16",
+  "updated": "2026-03-16"
+}

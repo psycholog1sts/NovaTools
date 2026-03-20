@@ -1,0 +1,81 @@
+{
+  "name": "novatools-mc",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "High-CPC utility tools platform. Privacy-first, AdSense optimized, Matrix themed.",
+  "packageManager": "npm@10.2.4",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && npm run build:fix-paths",
+    "build:fix-paths": "node scripts/post-build-fix.mjs",
+    "build:analyze": "vite build --mode analyze",
+    "preview": "vite preview",
+    "lint": "eslint src/",
+    "lint:fix": "eslint src/ --fix",
+    "test": "vitest run",
+    "test:unit": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "lighthouse": "lhci autorun",
+    "lighthouse:local": "lhci collect && lhci open",
+    "prettier": "prettier --write \"src/**/*.{js,mjs,css,html}\"",
+    "clean": "rimraf dist node_modules/.vite",
+    "postinstall": "node scripts/postinstall.mjs",
+    "prebuild": "node scripts/generate-icons.mjs"
+  },
+  "dependencies": {
+    "@vercel/speed-insights": "^2.0.0",
+    "decimal.js": "^10.4.3",
+    "pdf-lib": "^1.17.1",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@eslint/js": "^8.57.0",
+    "@lhci/cli": "^0.13.0",
+    "@types/node": "^20.0.0",
+    "autoprefixer": "^10.4.17",
+    "cssnano": "^6.0.3",
+    "eslint": "^8.56.0",
+    "glob": "^10.3.10",
+    "globals": "^14.0.0",
+    "jsdom": "^24.0.0",
+    "lightningcss": "^1.24.0",
+    "postcss": "^8.4.35",
+    "postcss-import": "^16.0.0",
+    "prettier": "^3.2.5",
+    "rimraf": "^5.0.5",
+    "sharp": "^0.34.5",
+    "tailwindcss": "^3.4.1",
+    "terser": "^5.27.0",
+    "typescript": "^5.3.3",
+    "vite": "^5.1.0",
+    "vite-plugin-pwa": "^0.19.0",
+    "vite-plugin-static-copy": "^1.0.1",
+    "vitest": "^1.2.0"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  },
+  "keywords": [
+    "online-tools",
+    "privacy",
+    "client-side",
+    "pdf-tools",
+    "financial-calculators",
+    "image-tools",
+    "developer-tools"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zero-tools/platform.git"
+  },
+  "license": "MIT",
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ]
+}

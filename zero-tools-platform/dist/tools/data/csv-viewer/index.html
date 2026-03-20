@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y896L63239"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Y896L63239');
+  </script>
+  <meta charset="UTF-8">
+  <script>(function(){var t=localStorage.getItem('novatools-theme');if(t)document.documentElement.setAttribute('data-theme',t);else{var d=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',d);document.documentElement.style.colorScheme=d;}})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <title>CSV Viewer & Editor — Free Online Tool | NovaTools MC</title>
+  
+  <!-- i18n Script -->
+  <script src="/i18n.js"></script>
+  <meta name="description" content="View and edit CSV files online. Free CSV viewer with sorting, filtering, and editing capabilities. 100% client-side processing.">
+  <meta name="keywords" content="CSV viewer, CSV editor, view CSV online, edit CSV, CSV tool">
+  <meta name="theme-color" content="#0A0A0C">
+
+  <meta property="og:title" content="CSV Viewer & Editor — Free Online Tool | NovaTools MC">
+  <meta property="og:description" content="View and edit CSV files online. Free CSV viewer with sorting and filtering.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.mc-novatools.com/tools/data/csv-viewer/">
+  <meta property="og:image" content="https://www.mc-novatools.com/og-image.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CSV Viewer & Editor | NovaTools MC">
+  <meta name="twitter:description" content="View and edit CSV files online. Free CSV viewer.">
+
+  <link rel="canonical" href="https://www.mc-novatools.com/tools/data/csv-viewer/">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [{
+      "@type": "WebApplication",
+      "name": "CSV Viewer & Editor",
+      "description": "View and edit CSV files online. Free CSV viewer with sorting, filtering, and editing capabilities.",
+      "url": "https://www.mc-novatools.com/tools/data/csv-viewer/",
+      "applicationCategory": "DataViewerApplication",
+      "operatingSystem": "Any",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+    }]
+  }
+  </script>
+
+  <style>.tool-wrapper{margin:0 auto;max-width:1100px;padding:3rem 1rem 5rem}.tool-hero{margin-bottom:2.5rem;text-align:center}.tool-hero-icon{font-size:3.5rem;line-height:1;margin-bottom:1rem}.tool-hero h1{color:#fafafa;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;letter-spacing:-.02em;margin-bottom:.75rem}.tool-hero p{color:#a1a1aa;font-size:1.0625rem;margin:0 auto;max-width:560px}.card{backdrop-filter:blur(12px);background:rgba(15,15,20,.7);border:1px solid rgba(0,217,255,.15);border-radius:14px;padding:1.75rem}.upload-area{border:2px dashed rgba(0,217,255,.3);border-radius:12px;cursor:pointer;margin-bottom:1.5rem;padding:2.5rem;text-align:center;transition:all .2s}.upload-area:hover{background:rgba(0,217,255,.05);border-color:rgba(0,217,255,.6)}.upload-area.dragover{background:rgba(0,217,255,.1);border-color:#00d9ff}.upload-icon{font-size:2.5rem;margin-bottom:1rem}.upload-text{color:#fafafa;font-weight:500;margin-bottom:.5rem}.upload-hint{color:#71717a;font-size:.875rem}#fileInput{display:none}.toolbar{align-items:center;display:flex;flex-wrap:wrap;gap:.75rem;margin-bottom:1rem}.toolbar-input{background:#0f0f12;border:1px solid rgba(0,217,255,.2);border-radius:6px;color:#fafafa;font-size:.875rem;padding:.5rem .75rem}.toolbar-input:focus{border-color:rgba(0,217,255,.5);outline:none}.btn{align-items:center;border:none;border-radius:6px;cursor:pointer;display:inline-flex;font-size:.875rem;font-weight:600;gap:.4rem;height:36px;padding:0 1rem;transition:all .18s}.btn:active{transform:scale(.97)}.btn-primary{background:linear-gradient(135deg,#00d9ff,#09c);color:#0a0a0c}.btn-primary:hover{background:linear-gradient(135deg,#1fe2ff,#00b8ee)}.btn-secondary{background:rgba(0,217,255,.1);border:1px solid rgba(0,217,255,.25);color:#00d9ff}.btn-secondary:hover{background:rgba(0,217,255,.18)}.btn-danger{background:rgba(255,85,85,.1);border:1px solid rgba(255,85,85,.25);color:#f55}.btn-danger:hover{background:rgba(255,85,85,.18)}.table-container{border:1px solid rgba(0,217,255,.1);border-radius:8px;max-height:500px;overflow-x:auto;overflow-y:auto}.csv-table{border-collapse:collapse;font-size:.875rem;width:100%}.csv-table th{background:rgba(0,217,255,.1);border-bottom:1px solid rgba(0,217,255,.2);color:#00d9ff;cursor:pointer;font-weight:600;padding:.75rem;position:sticky;text-align:left;top:0;-webkit-user-select:none;-moz-user-select:none;user-select:none}.csv-table th:hover{background:rgba(0,217,255,.15)}.csv-table th:after{content:" ⇅";font-size:.75rem;opacity:.5}.csv-table td{border-bottom:1px solid hsla(0,0%,100%,.05);color:#e4e4e7;padding:.625rem .75rem}.csv-table tr:hover td{background:hsla(0,0%,100%,.02)}.csv-table tr:nth-child(2n) td{background:hsla(0,0%,100%,.01)}.stats-bar{color:#a1a1aa;display:flex;font-size:.875rem;gap:1rem;margin-top:1rem}.stats-bar span{background:rgba(0,255,136,.08);border-radius:999px;padding:.375rem .75rem}.error-banner{align-items:flex-start;background:rgba(255,85,85,.08);border:1px solid rgba(255,85,85,.3);border-radius:10px;display:none;gap:.75rem;margin-bottom:1rem;padding:.875rem 1rem}.error-banner.visible{display:flex}.error-text{color:#f77;font-size:.875rem}.legal-disclaimer{background:rgba(255,193,7,.08);border-left:4px solid #ffc107;border-radius:0 8px 8px 0;margin-top:2rem;padding:1rem 1.25rem}.legal-disclaimer p{color:#a1a1aa;font-size:.875rem;line-height:1.6;margin:0}.legal-disclaimer strong{color:#ffc107}.seo-section{margin:3.5rem auto 0;max-width:960px;padding:0 1rem}.seo-section h2{color:#fafafa;font-size:1.375rem;font-weight:700;margin-bottom:.75rem}.seo-section h3{color:#fafafa;font-size:1.125rem;font-weight:600;margin:2rem 0 .75rem}.seo-section li,.seo-section p{color:#a1a1aa;font-size:.9375rem;line-height:1.8}.seo-section ol{padding-left:1.25rem}.seo-section ol li{margin-bottom:.4rem}.faq-item{background:rgba(15,15,20,.5);border:1px solid rgba(0,217,255,.1);border-radius:10px;margin-bottom:.875rem;padding:1rem 1.125rem}.faq-item summary{align-items:center;color:#fafafa;cursor:pointer;display:flex;font-weight:600;gap:1rem;justify-content:space-between;list-style:none}.faq-item summary::-webkit-details-marker{display:none}.faq-item summary:after{color:#00d9ff;content:"+";flex-shrink:0;font-size:1.25rem}.faq-item[open] summary:after{content:"−"}.faq-item p{color:#a1a1aa;line-height:1.7;margin-top:.625rem}.tool-footer{border-top:1px solid hsla(0,0%,100%,.1);color:#718096;font-size:.8rem;line-height:1.8;margin-top:3rem;padding:1.5rem 1rem;text-align:center}.tool-footer a{color:#00d9ff;text-decoration:none}@media (max-width:768px){.toolbar{align-items:stretch;flex-direction:column}.toolbar-input{width:100%}}</style>
+  <link rel="stylesheet" crossorigin href="/css/critical-D6EXev1O.css">
+  <link rel="stylesheet" crossorigin href="/css/main-C-2uV3x-.css">
+<link rel="manifest" href="/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/registerSW.js"></script></head>
+<body>
+  <div class="bg-ambient" aria-hidden="true"></div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <div id="app" class="app">
+    <header class="main-header">
+      <div class="container">
+        <div class="header-inner">
+          <a href="/" class="logo" aria-label="NovaTools MC Home">
+            <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
+            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+          </a>
+          <nav class="nav-desktop" aria-label="Main navigation">
+            <a href="/#finance" class="nav-link">Finance</a>
+            <a href="/#pdf" class="nav-link">PDF Tools</a>
+            <a href="/#image" class="nav-link">Images</a>
+            <a href="/#dev" class="nav-link">Developers</a>
+          </nav>
+          <div class="privacy-badge" title="Your data never leaves your browser">
+            <span class="privacy-badge-dot"></span>
+            <span>Privacy First</span>
+          </div>
+          <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+            <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+          <button type="button" id="mobileMenuBtn" class="menu-btn" aria-label="Toggle menu" aria-expanded="false">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+        </div>
+        <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
+          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <div class="tool-wrapper">
+        <div class="tool-hero">
+          <div class="tool-hero-icon">📋</div>
+          <h1>CSV Viewer & Editor</h1>
+          <p>View, sort, and filter CSV files online. No upload to servers — all processing happens in your browser.</p>
+        </div>
+
+        <div class="card">
+          <div class="upload-area" id="uploadArea">
+            <div class="upload-icon">📁</div>
+            <div class="upload-text">Drop your CSV file here or click to browse</div>
+            <div class="upload-hint">Supports .csv files up to 10MB</div>
+          </div>
+          <input type="file" id="fileInput" accept=".csv,text/csv">
+
+          <div class="toolbar" id="toolbar" style="display:none">
+            <input type="text" class="toolbar-input" id="filterInput" placeholder="Filter rows...">
+            <button class="btn btn-secondary" id="btnDownload">Download CSV</button>
+            <button class="btn btn-danger" id="btnClear">Clear</button>
+          </div>
+
+          <div class="error-banner" id="errorBanner">
+            <div class="error-text" id="errorText"></div>
+          </div>
+
+          <div class="table-container" id="tableContainer" style="display:none">
+            <table class="csv-table" id="csvTable">
+              <thead></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+
+          <div class="stats-bar" id="statsBar" style="display:none">
+            <span id="rowCount">0 rows</span>
+            <span id="colCount">0 columns</span>
+            <span id="filteredCount"></span>
+          </div>
+        </div>
+
+        <div class="legal-disclaimer">
+          <p><strong>Privacy & Security:</strong> This tool is for personal use. Your CSV files are not uploaded to any server. All processing happens client-side in your browser.</p>
+          <p style="margin-top: 0.5rem;"><strong>Disclaimer:</strong> This tool is provided as-is. Please verify data integrity when working with important files.</p>
+        </div>
+      </div>
+
+      <section class="seo-section" aria-label="About this tool">
+        <h2>About CSV Viewer & Editor</h2>
+        <p>This free online tool allows you to view, sort, and filter CSV files without installing any software or uploading your data to a server. It's perfect for quickly inspecting CSV data, checking file contents, or performing simple data analysis.</p>
+
+        <h3>How to Use</h3>
+        <ol>
+          <li>Drag and drop your CSV file onto the upload area, or click to browse.</li>
+          <li>Your data will be displayed in a sortable table format.</li>
+          <li>Click column headers to sort by that column.</li>
+          <li>Use the filter box to search for specific values across all columns.</li>
+          <li>Download the filtered/sorted data as a new CSV file if needed.</li>
+        </ol>
+
+        <h3>Frequently Asked Questions</h3>
+
+        <details class="faq-item">
+          <summary>Is my CSV data kept private?</summary>
+          <p>Absolutely. All processing happens entirely in your browser. No file data is sent to any server, logged, or stored anywhere. Your files remain completely private.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>What's the file size limit?</summary>
+          <p>The tool supports CSV files up to 10MB. For larger files, consider splitting them or using a dedicated spreadsheet application.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Can I edit the data?</summary>
+          <p>Currently, this tool is designed for viewing, sorting, and filtering. For editing, you can download the filtered/sorted data and edit it in your preferred spreadsheet application.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>What delimiters are supported?</summary>
+          <p>The tool automatically detects common delimiters including comma, semicolon, and tab. It works with most standard CSV formats.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Can I convert this data to other formats?</summary>
+          <p>Yes! Check out our <a href="/tools/data/csv-to-json/">CSV to JSON</a> converter for transforming your CSV data into JSON format.</p>
+        </details>
+      </section>
+
+      <footer class="tool-footer">
+        <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
+        <p>Estimates only &mdash; not financial, legal, or tax advice.</p>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    const uploadArea = document.getElementById('uploadArea');
+    const fileInput = document.getElementById('fileInput');
+    const toolbar = document.getElementById('toolbar');
+    const tableContainer = document.getElementById('tableContainer');
+    const csvTable = document.getElementById('csvTable');
+    const statsBar = document.getElementById('statsBar');
+    const rowCount = document.getElementById('rowCount');
+    const colCount = document.getElementById('colCount');
+    const filteredCount = document.getElementById('filteredCount');
+    const filterInput = document.getElementById('filterInput');
+    const btnDownload = document.getElementById('btnDownload');
+    const btnClear = document.getElementById('btnClear');
+    const errorBanner = document.getElementById('errorBanner');
+    const errorText = document.getElementById('errorText');
+
+    let originalData = { headers: [], rows: [] };
+    let currentData = { headers: [], rows: [] };
+    let sortCol = -1;
+    let sortAsc = true;
+
+    uploadArea.addEventListener('click', () => fileInput.click());
+    uploadArea.addEventListener('dragover', (e) => { e.preventDefault(); uploadArea.classList.add('dragover'); });
+    uploadArea.addEventListener('dragleave', () => uploadArea.classList.remove('dragover'));
+    uploadArea.addEventListener('drop', (e) => {
+      e.preventDefault();
+      uploadArea.classList.remove('dragover');
+      const file = e.dataTransfer.files[0];
+      if (file && file.name.endsWith('.csv')) loadFile(file);
+    });
+    fileInput.addEventListener('change', () => { if (fileInput.files[0]) loadFile(fileInput.files[0]); });
+
+    function loadFile(file) {
+      if (file.size > 10 * 1024 * 1024) { showError('File too large. Maximum size is 10MB.'); return; }
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        try {
+          parseCSV(e.target.result);
+          renderTable();
+          uploadArea.style.display = 'none';
+          toolbar.style.display = 'flex';
+          tableContainer.style.display = 'block';
+          statsBar.style.display = 'flex';
+          updateStats();
+          hideError();
+        } catch (err) { showError('Error parsing CSV: ' + err.message); }
+      };
+      reader.readAsText(file);
+    }
+
+    function parseCSV(text) {
+      const delimiter = detectDelimiter(text);
+      const lines = text.split(/\r?\n/).filter(l => l.trim());
+      if (lines.length === 0) throw new Error('Empty file');
+      
+      const parseLine = (line) => {
+        const result = [];
+        let inQuotes = false, current = '';
+        for (const char of line) {
+          if (char === '"') inQuotes = !inQuotes;
+          else if (char === delimiter && !inQuotes) { result.push(current.trim()); current = ''; }
+          else current += char;
+        }
+        result.push(current.trim());
+        return result.map(f => f.replace(/^"|"$/g, ''));
+      };
+
+      originalData.headers = parseLine(lines[0]);
+      originalData.rows = lines.slice(1).map(line => {
+        const values = parseLine(line);
+        const obj = {};
+        originalData.headers.forEach((h, i) => obj[h] = values[i] || '');
+        return obj;
+      });
+      currentData = { headers: [...originalData.headers], rows: [...originalData.rows] };
+    }
+
+    function detectDelimiter(text) {
+      const firstLine = text.split('\n')[0];
+      const delims = [',', ';', '\t'];
+      return delims.reduce((a, b) => firstLine.split(a).length > firstLine.split(b).length ? a : b);
+    }
+
+    function renderTable() {
+      const thead = csvTable.querySelector('thead');
+      const tbody = csvTable.querySelector('tbody');
+      thead.innerHTML = '<tr>' + currentData.headers.map((h, i) => `<th data-col="${i}">${escapeHtml(h)}</th>`).join('') + '</tr>';
+      tbody.innerHTML = currentData.rows.map(row => '<tr>' + currentData.headers.map(h => `<td>${escapeHtml(row[h] || '')}</td>`).join('') + '</tr>').join('');
+      
+      thead.querySelectorAll('th').forEach(th => {
+        th.addEventListener('click', () => {
+          const col = parseInt(th.dataset.col);
+          if (sortCol === col) sortAsc = !sortAsc;
+          else { sortCol = col; sortAsc = true; }
+          sortTable(col);
+        });
+      });
+    }
+
+    function sortTable(col) {
+      const key = currentData.headers[col];
+      currentData.rows.sort((a, b) => {
+        let av = a[key], bv = b[key];
+        if (!isNaN(av) && !isNaN(bv)) { av = parseFloat(av); bv = parseFloat(bv); }
+        if (av < bv) return sortAsc ? -1 : 1;
+        if (av > bv) return sortAsc ? 1 : -1;
+        return 0;
+      });
+      renderTable();
+    }
+
+    filterInput.addEventListener('input', () => {
+      const term = filterInput.value.toLowerCase();
+      if (!term) { currentData.rows = [...originalData.rows]; filteredCount.textContent = ''; }
+      else {
+        currentData.rows = originalData.rows.filter(row => Object.values(row).some(v => String(v).toLowerCase().includes(term)));
+        filteredCount.textContent = `${currentData.rows.length} filtered`;
+      }
+      renderTable();
+      rowCount.textContent = `${currentData.rows.length} rows`;
+    });
+
+    btnDownload.addEventListener('click', () => {
+      const lines = [currentData.headers.join(',')];
+      currentData.rows.forEach(row => lines.push(currentData.headers.map(h => `"${(row[h] || '').replace(/"/g, '""')}"`).join(',')));
+      const blob = new Blob([lines.join('\n')], { type: 'text/csv' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'filtered.csv';
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+
+    btnClear.addEventListener('click', () => {
+      originalData = { headers: [], rows: [] };
+      currentData = { headers: [], rows: [] };
+      uploadArea.style.display = 'block';
+      toolbar.style.display = 'none';
+      tableContainer.style.display = 'none';
+      statsBar.style.display = 'none';
+      filterInput.value = '';
+      fileInput.value = '';
+      hideError();
+    });
+
+    function updateStats() {
+      rowCount.textContent = `${currentData.rows.length} rows`;
+      colCount.textContent = `${currentData.headers.length} columns`;
+    }
+
+    function escapeHtml(str) {
+      const div = document.createElement('div');
+      div.textContent = str;
+      return div.innerHTML;
+    }
+
+    function showError(msg) { errorText.textContent = msg; errorBanner.classList.add('visible'); }
+    function hideError() { errorBanner.classList.remove('visible'); }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuBtn = document.getElementById('mobileMenuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener('click', function() {
+          const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+          menuBtn.setAttribute('aria-expanded', !isExpanded);
+          mobileMenu.hidden = isExpanded;
+          mobileMenu.classList.toggle('active', !isExpanded);
+        });
+      }
+      const themeBtn = document.getElementById('themeToggle');
+      if (themeBtn) {
+        function getTheme() { return localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'); }
+        function updateIcon() { const t = getTheme(); themeBtn.querySelector('.icon-sun').style.display = t === 'light' ? 'none' : 'block'; themeBtn.querySelector('.icon-moon').style.display = t === 'dark' ? 'none' : 'block'; }
+        themeBtn.addEventListener('click', function() { const next = getTheme() === 'dark' ? 'light' : 'dark'; document.documentElement.setAttribute('data-theme', next); localStorage.setItem('theme', next); updateIcon(); });
+        updateIcon();
+      }
+    });
+  </script>
+</body>
+</html>

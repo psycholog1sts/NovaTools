@@ -1,0 +1,426 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y896L63239"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Y896L63239');
+  </script>
+  <meta charset="UTF-8">
+  <script>(function(){var t=localStorage.getItem('novatools-theme');if(t)document.documentElement.setAttribute('data-theme',t);else{var d=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',d);document.documentElement.style.colorScheme=d;}})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/src/styles/critical.css">
+  <link rel="stylesheet" href="/src/styles/main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <title>Free Online Stopwatch | NovaTools MC</title>
+  
+  <!-- i18n Script -->
+  <script src="/i18n.js"></script>
+  <meta name="description" content="Free online stopwatch with lap time recording. Measure time precisely with milliseconds accuracy. Works offline, no data collected.">
+  <meta name="keywords" content="stopwatch, online stopwatch, timer, lap timer, chronometer">
+  <meta name="theme-color" content="#0A0A0C">
+
+  <meta property="og:title" content="Free Online Stopwatch | NovaTools MC">
+  <meta property="og:description" content="Free online stopwatch with lap time recording and millisecond precision.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.mc-novatools.com/tools/productivity/stopwatch/">
+  <meta property="og:image" content="https://www.mc-novatools.com/og-image.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free Online Stopwatch | NovaTools MC">
+  <meta name="twitter:description" content="Free online stopwatch with lap time recording.">
+
+  <link rel="canonical" href="https://www.mc-novatools.com/tools/productivity/stopwatch/">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [{
+      "@type": "WebApplication",
+      "name": "Stopwatch",
+      "description": "Free online stopwatch with lap time recording and millisecond precision.",
+      "url": "https://www.mc-novatools.com/tools/productivity/stopwatch/",
+      "applicationCategory": "ProductivityApplication",
+      "operatingSystem": "Any",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+    }]
+  }
+  </script>
+
+  <style>
+    .tool-wrapper { max-width: 960px; margin: 0 auto; padding: 3rem 1rem 5rem; }
+    .tool-hero { text-align: center; margin-bottom: 2.5rem; }
+    .tool-hero-icon { font-size: 3.5rem; line-height: 1; margin-bottom: 1rem; }
+    .tool-hero h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; letter-spacing: -0.02em; color: #FAFAFA; margin-bottom: 0.75rem; }
+    .tool-hero p { color: #A1A1AA; font-size: 1.0625rem; max-width: 560px; margin: 0 auto; }
+    .card { background: rgba(15,15,20,0.7); border: 1px solid rgba(0,217,255,0.15); border-radius: 14px; padding: 1.75rem; backdrop-filter: blur(12px); }
+    
+    .stopwatch-display { text-align: center; margin-bottom: 2rem; }
+    .stopwatch-time { font-size: clamp(3rem, 8vw, 5rem); font-weight: 700; color: #FAFAFA; font-family: 'JetBrains Mono', monospace; letter-spacing: -0.02em; }
+    .stopwatch-millis { font-size: clamp(1.5rem, 4vw, 2.5rem); color: #00D9FF; font-family: 'JetBrains Mono', monospace; }
+    
+    .btn-bar { display: flex; justify-content: center; gap: 0.75rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+    .btn { display: inline-flex; align-items: center; gap: 0.4rem; height: 48px; padding: 0 1.5rem; border: none; border-radius: 8px; font-size: 0.9375rem; font-weight: 600; cursor: pointer; transition: all 0.2s; outline: none; }
+    .btn:active { transform: scale(0.97); }
+    .btn-primary { background: linear-gradient(135deg, #00D9FF, #0099CC); color: #0A0A0C; }
+    .btn-primary:hover { background: linear-gradient(135deg, #1FE2FF, #00B8EE); }
+    .btn-secondary { background: rgba(0,217,255,0.1); border: 1px solid rgba(0,217,255,0.25); color: #00D9FF; }
+    .btn-secondary:hover { background: rgba(0,217,255,0.18); }
+    .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    
+    .laps-section { margin-top: 1.5rem; }
+    .laps-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+    .laps-title { font-size: 1rem; font-weight: 600; color: #FAFAFA; }
+    .laps-count { font-size: 0.875rem; color: #71717A; }
+    .laps-list { max-height: 300px; overflow-y: auto; border: 1px solid rgba(0,217,255,0.1); border-radius: 8px; }
+    .lap-item { display: flex; justify-content: space-between; padding: 0.75rem 1rem; border-bottom: 1px solid rgba(0,217,255,0.05); }
+    .lap-item:last-child { border-bottom: none; }
+    .lap-item:nth-child(odd) { background: rgba(0,217,255,0.03); }
+    .lap-number { font-size: 0.875rem; color: #71717A; }
+    .lap-time { font-family: 'JetBrains Mono', monospace; font-size: 0.9375rem; color: #FAFAFA; }
+    .lap-diff { font-family: 'JetBrains Mono', monospace; font-size: 0.8125rem; color: #00D9FF; }
+    .no-laps { text-align: center; padding: 2rem; color: #52525B; font-size: 0.875rem; }
+    
+    .legal-note { margin-top: 1.5rem; padding: 1rem 1.25rem; background: rgba(255,193,7,0.05); border: 1px solid rgba(255,193,7,0.15); border-radius: 10px; font-size: 0.8125rem; color: #A1A1AA; line-height: 1.6; }
+    .legal-note strong { color: #FFC107; }
+    
+    .seo-section { max-width: 960px; margin: 3.5rem auto 0; padding: 0 1rem; }
+    .seo-section h2 { font-size: 1.375rem; font-weight: 700; color: #FAFAFA; margin-bottom: 0.75rem; }
+    .seo-section h3 { font-size: 1.125rem; font-weight: 600; color: #FAFAFA; margin: 2rem 0 0.75rem; }
+    .seo-section p, .seo-section li { color: #A1A1AA; line-height: 1.8; font-size: 0.9375rem; }
+    .seo-section ol { padding-left: 1.25rem; }
+    .seo-section ol li { margin-bottom: 0.4rem; }
+    .faq-item { border: 1px solid rgba(0,217,255,0.1); border-radius: 10px; padding: 1rem 1.125rem; margin-bottom: 0.875rem; background: rgba(15,15,20,0.5); }
+    .faq-item summary { font-weight: 600; color: #FAFAFA; cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: '+'; color: #00D9FF; font-size: 1.25rem; flex-shrink: 0; transition: transform 0.2s; }
+    .faq-item[open] summary::after { content: '\2212'; }
+    .faq-item p { margin-top: 0.625rem; color: #A1A1AA; line-height: 1.7; }
+    
+    @media (max-width: 600px) {
+      .btn-bar { flex-direction: column; align-items: center; }
+      .btn { width: 200px; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-ambient" aria-hidden="true"></div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <div id="app" class="app">
+    <header class="main-header">
+      <div class="container">
+        <div class="header-inner">
+          <a href="/" class="logo" aria-label="NovaTools MC Home">
+            <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
+            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+          </a>
+          <nav class="nav-desktop" aria-label="Main navigation">
+            <a href="/#finance" class="nav-link">Finance</a>
+            <a href="/#pdf" class="nav-link">PDF Tools</a>
+            <a href="/#image" class="nav-link">Images</a>
+            <a href="/#dev" class="nav-link">Developers</a>
+          </nav>
+          <div class="privacy-badge" title="Your data never leaves your browser">
+            <span class="privacy-badge-dot"></span>
+            <span>Privacy First</span>
+          </div>
+          <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+            <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+          <button type="button" id="mobileMenuBtn" class="menu-btn" aria-label="Toggle menu" aria-expanded="false">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+        </div>
+        <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
+          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <div class="tool-wrapper">
+        <div class="tool-hero">
+          <div class="tool-hero-icon">&#9201;</div>
+          <h1>Stopwatch</h1>
+          <p>Measure time with precision using our free online stopwatch. Record lap times, track splits, and export your results. All processing happens in your browser.</p>
+        </div>
+
+        <div class="card">
+          <div class="stopwatch-display">
+            <span class="stopwatch-time" id="mainTime">00:00:00</span>
+            <span class="stopwatch-millis" id="millisTime">.00</span>
+          </div>
+
+          <div class="btn-bar">
+            <button class="btn btn-primary" id="btnStart">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/></svg>
+              Start
+            </button>
+            <button class="btn btn-secondary" id="btnStop" style="display: none;">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5zm5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5z"/></svg>
+              Stop
+            </button>
+            <button class="btn btn-secondary" id="btnLap" disabled>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/><path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/></svg>
+              Lap
+            </button>
+            <button class="btn btn-secondary" id="btnReset">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/><path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/></svg>
+              Reset
+            </button>
+          </div>
+
+          <div class="laps-section">
+            <div class="laps-header">
+              <span class="laps-title">Lap Times</span>
+              <span class="laps-count" id="lapsCount">0 laps</span>
+            </div>
+            <div class="laps-list" id="lapsList">
+              <div class="no-laps">No laps recorded yet. Click "Lap" while the stopwatch is running to record lap times.</div>
+            </div>
+          </div>
+
+          <div class="legal-note">
+            <strong>Legal Disclaimer / Yasal Uyar&#305;:</strong> This stopwatch is for personal timing purposes only. Lap times are not saved and will be lost when you refresh the page. All processing is done locally in your browser. / Bu kronometre ki&#351;isel zamanlama amac&#305;ylad&#305;r. Tur s&#252;releri kaydedilmez ve sayfa yenilendi&#287;inde kaybolur. T&#252;m i&#351;lemler taray&#305;c&#305;n&#305;zda yerel olarak yap&#305;l&#305;r.
+          </div>
+        </div>
+      </div>
+
+      <section class="seo-section" aria-label="About this tool">
+        <h2>About Stopwatch</h2>
+        <p>Our free online stopwatch is a precision timing tool that runs entirely in your browser. It features millisecond accuracy, lap time recording, and split time tracking. Whether you're timing workouts, cooking, presentations, or any other activity, this stopwatch provides reliable timing without the need to install any apps.</p>
+
+        <h3>How to Use</h3>
+        <ol>
+          <li>Click <strong>Start</strong> to begin the stopwatch.</li>
+          <li>Click <strong>Lap</strong> at any time to record a lap time while the stopwatch continues running.</li>
+          <li>Click <strong>Stop</strong> to pause the stopwatch.</li>
+          <li>Click <strong>Reset</strong> to clear all times and start over.</li>
+          <li>Review your lap times in the list below the stopwatch display.</li>
+        </ol>
+
+        <h3>Frequently Asked Questions</h3>
+
+        <details class="faq-item">
+          <summary>How accurate is the stopwatch?</summary>
+          <p>The stopwatch uses your device's system clock and JavaScript's high-resolution timing API, providing accuracy within milliseconds. However, actual precision may vary slightly depending on your device's performance and browser.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Are my lap times saved?</summary>
+          <p>No, lap times are not saved to any server or storage. They exist only in your browser's memory and will be lost when you refresh the page or navigate away. If you need to keep your times, write them down or screenshot the lap list.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Can I use this stopwatch offline?</summary>
+          <p>Yes! Once the page is loaded, the stopwatch will continue to work even if you lose internet connection. All timing functionality is handled locally by your browser.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>What is the difference between lap time and split time?</summary>
+          <p>Lap time shows the time elapsed since the last lap was recorded, while split time shows the total elapsed time since the stopwatch started. Our stopwatch displays both: the main time shows total elapsed time, and each lap entry shows the time for that specific lap.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Does the stopwatch work on mobile devices?</summary>
+          <p>Yes, the stopwatch is fully responsive and works on smartphones, tablets, and desktop computers. The interface automatically adapts to your screen size for the best experience.</p>
+        </details>
+      </section>
+    </main>
+
+    <footer class="tool-footer">
+      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
+      <p>Estimates only &mdash; not financial, legal, or tax advice.</p>
+    </footer>
+    <style>
+      .tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }
+      .tool-footer a { color: #00D9FF; text-decoration: none; }
+    </style>
+  </div>
+
+  <script type="module">
+    let startTime = 0;
+    let elapsedTime = 0;
+    let timerInterval = null;
+    let isRunning = false;
+    let laps = [];
+    let lastLapTime = 0;
+    
+    const mainTimeDisplay = document.getElementById('mainTime');
+    const millisDisplay = document.getElementById('millisTime');
+    const btnStart = document.getElementById('btnStart');
+    const btnStop = document.getElementById('btnStop');
+    const btnLap = document.getElementById('btnLap');
+    const btnReset = document.getElementById('btnReset');
+    const lapsList = document.getElementById('lapsList');
+    const lapsCount = document.getElementById('lapsCount');
+    
+    function formatTime(ms) {
+      const totalSeconds = Math.floor(ms / 1000);
+      const minutes = Math.floor(totalSeconds / 60);
+      const seconds = totalSeconds % 60;
+      const milliseconds = Math.floor((ms % 1000) / 10);
+      
+      return {
+        main: `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`,
+        millis: `.${milliseconds.toString().padStart(2, '0')}`
+      };
+    }
+    
+    function formatFullTime(ms) {
+      const totalSeconds = Math.floor(ms / 1000);
+      const hours = Math.floor(totalSeconds / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
+      const milliseconds = Math.floor((ms % 1000) / 10);
+      
+      if (hours > 0) {
+        return `${hours}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}.${milliseconds.toString().padStart(2, '0')}`;
+      }
+      return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}.${milliseconds.toString().padStart(2, '0')}`;
+    }
+    
+    function updateDisplay() {
+      const currentTime = Date.now();
+      const totalElapsed = elapsedTime + (isRunning ? currentTime - startTime : 0);
+      const formatted = formatTime(totalElapsed);
+      
+      mainTimeDisplay.textContent = formatted.main;
+      millisDisplay.textContent = formatted.millis;
+    }
+    
+    function start() {
+      if (!isRunning) {
+        isRunning = true;
+        startTime = Date.now();
+        timerInterval = setInterval(updateDisplay, 10);
+        
+        btnStart.style.display = 'none';
+        btnStop.style.display = 'inline-flex';
+        btnLap.disabled = false;
+      }
+    }
+    
+    function stop() {
+      if (isRunning) {
+        isRunning = false;
+        elapsedTime += Date.now() - startTime;
+        clearInterval(timerInterval);
+        
+        btnStart.style.display = 'inline-flex';
+        btnStop.style.display = 'none';
+        btnLap.disabled = true;
+      }
+    }
+    
+    function lap() {
+      if (isRunning) {
+        const currentTime = Date.now();
+        const totalElapsed = elapsedTime + (currentTime - startTime);
+        const lapTime = totalElapsed - lastLapTime;
+        
+        laps.push({
+          lapNumber: laps.length + 1,
+          lapTime: lapTime,
+          totalTime: totalElapsed
+        });
+        
+        lastLapTime = totalElapsed;
+        renderLaps();
+      }
+    }
+    
+    function reset() {
+      stop();
+      elapsedTime = 0;
+      lastLapTime = 0;
+      laps = [];
+      updateDisplay();
+      renderLaps();
+      
+      btnStart.style.display = 'inline-flex';
+      btnStop.style.display = 'none';
+      btnLap.disabled = true;
+    }
+    
+    function renderLaps() {
+      if (laps.length === 0) {
+        lapsList.innerHTML = '<div class="no-laps">No laps recorded yet. Click "Lap" while the stopwatch is running to record lap times.</div>';
+        lapsCount.textContent = '0 laps';
+        return;
+      }
+      
+      lapsCount.textContent = `${laps.length} lap${laps.length !== 1 ? 's' : ''}`;
+      
+      lapsList.innerHTML = laps.map(lap => `
+        <div class="lap-item">
+          <span class="lap-number">Lap ${lap.lapNumber}</span>
+          <div>
+            <span class="lap-time">${formatFullTime(lap.lapTime)}</span>
+            <span class="lap-diff"> (+${formatFullTime(lap.totalTime)})</span>
+          </div>
+        </div>
+      `).join('');
+      
+      lapsList.scrollTop = lapsList.scrollHeight;
+    }
+    
+    btnStart.addEventListener('click', start);
+    btnStop.addEventListener('click', stop);
+    btnLap.addEventListener('click', lap);
+    btnReset.addEventListener('click', reset);
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var menuBtn = document.getElementById('mobileMenuBtn');
+      var mobileMenu = document.getElementById('mobileMenu');
+      if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener('click', function() {
+          var isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+          menuBtn.setAttribute('aria-expanded', !isExpanded);
+          mobileMenu.hidden = isExpanded;
+          mobileMenu.classList.toggle('active', !isExpanded);
+        });
+      }
+      var themeBtn = document.getElementById('themeToggle');
+      if (themeBtn) {
+        function getTheme() {
+          var s = localStorage.getItem('theme');
+          if (s) return s;
+          return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        }
+        function updateIcon() {
+          var t = getTheme();
+          themeBtn.querySelector('.icon-sun').style.display = t === 'light' ? 'none' : 'block';
+          themeBtn.querySelector('.icon-moon').style.display = t === 'dark' ? 'none' : 'block';
+        }
+        themeBtn.addEventListener('click', function() {
+          var next = getTheme() === 'dark' ? 'light' : 'dark';
+          document.documentElement.setAttribute('data-theme', next);
+          localStorage.setItem('theme', next);
+          updateIcon();
+        });
+        updateIcon();
+      }
+    });
+  </script>
+</body>
+</html>

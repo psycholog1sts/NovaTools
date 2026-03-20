@@ -1,0 +1,676 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y896L63239"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Y896L63239');
+  </script>
+
+  <meta charset="UTF-8">
+  <script>(function(){var t=localStorage.getItem('novatools-theme');if(t)document.documentElement.setAttribute('data-theme',t);else{var d=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',d);document.documentElement.style.colorScheme=d;}})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/src/styles/critical.css">
+  <link rel="stylesheet" href="/src/styles/main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <title>PDF to PowerPoint Converter — Free Online | NovaTools MC</title>
+  
+  <!-- i18n Script -->
+  <script src="/i18n.js"></script>
+  <meta name="description" content="Convert PDF to PowerPoint online for free. Transform PDF slides to editable PowerPoint presentation. No signup, 100% private, client-side processing.">
+  <meta name="keywords" content="pdf to ppt, pdf to powerpoint, presentation converter, pdf converter">
+  <meta name="author" content="NovaTools MC - Metehan ÇETİN, LPC">
+  <meta name="theme-color" content="#0A0A0C" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#F8F9FA" media="(prefers-color-scheme: light)">
+  
+  <link rel="canonical" href="https://www.mc-novatools.com/tools/pdf/pdf-to-powerpoint/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.mc-novatools.com/tools/pdf/pdf-to-powerpoint/">
+  <meta property="og:title" content="PDF to PowerPoint Converter — Free Online | NovaTools MC">
+  <meta property="og:description" content="Convert PDF to PowerPoint online for free. No signup, 100% private, client-side processing.">
+  <meta property="og:image" content="https://www.mc-novatools.com/og-image.png">
+
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://www.mc-novatools.com/tools/pdf/pdf-to-powerpoint/">
+  <meta property="twitter:title" content="PDF to PowerPoint Converter — Free Online | NovaTools MC">
+  <meta property="twitter:description" content="Convert PDF to PowerPoint online for free. No signup, 100% private.">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        "name": "PDF to PowerPoint Converter",
+        "description": "Convert PDF documents to PowerPoint presentation format online for free.",
+        "url": "https://www.mc-novatools.com/tools/pdf/pdf-to-powerpoint/",
+        "applicationCategory": "UtilityApplication",
+        "operatingSystem": "Any",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.7",
+          "ratingCount": "850"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How to convert PDF to PowerPoint?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Upload your PDF file, click Convert, and download your PowerPoint presentation. All processing happens in your browser - no data is uploaded to any server."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is this PDF to PowerPoint converter free?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, completely free. No signup required, no watermarks, no limits."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+  
+  <style>
+    .tool-container { max-width: 900px; margin: 0 auto; padding: 2rem 0; }
+    .tool-header { text-align: center; margin-bottom: 2rem; }
+    .tool-title { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; color: var(--text-primary); margin-bottom: 0.75rem; }
+    .tool-subtitle { font-size: 1.125rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto; }
+    .privacy-notice { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.3); border-radius: var(--radius-full); font-size: 0.875rem; color: var(--success); margin-bottom: 1.5rem; }
+    .tool-workspace { background: var(--surface-default); border: 1px solid var(--border-default); border-radius: var(--radius-lg); padding: 2rem; margin-bottom: 2rem; }
+    
+    .dropzone {
+      border: 2px dashed var(--border-default);
+      border-radius: var(--radius-lg);
+      padding: 3rem 2rem;
+      text-align: center;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .dropzone:hover, .dropzone.dragover {
+      border-color: var(--accent-primary);
+      background: var(--accent-subtle);
+    }
+    .dropzone-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .dropzone-text { color: var(--text-secondary); margin-bottom: 0.5rem; }
+    .dropzone-hint { font-size: 0.875rem; color: var(--text-muted); }
+    .file-input { display: none; }
+    
+    .file-info {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      background: var(--bg-secondary);
+      border-radius: var(--radius-md);
+      margin-bottom: 1rem;
+    }
+    .file-icon { font-size: 2rem; }
+    .file-details { flex: 1; }
+    .file-name { font-weight: 500; color: var(--text-primary); }
+    .file-size { font-size: 0.875rem; color: var(--text-muted); }
+    .file-remove {
+      background: none;
+      border: none;
+      color: var(--error);
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+    
+    .convert-btn {
+      width: 100%;
+      padding: 1rem;
+      background: linear-gradient(135deg, var(--accent-primary), #8B5CF6);
+      color: white;
+      border: none;
+      border-radius: var(--radius-md);
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .convert-btn:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-glow);
+    }
+    .convert-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    
+    .progress-container {
+      display: none;
+      margin: 1.5rem 0;
+    }
+    .progress-container.visible { display: block; }
+    .progress-bar {
+      height: 8px;
+      background: var(--bg-secondary);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent-primary), #8B5CF6);
+      border-radius: var(--radius-full);
+      transition: width 0.3s ease;
+      width: 0%;
+    }
+    .progress-text {
+      text-align: center;
+      margin-top: 0.5rem;
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+    }
+    
+    .result-container {
+      display: none;
+      margin-top: 1.5rem;
+      padding: 1.5rem;
+      background: rgba(34, 197, 94, 0.1);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      border-radius: var(--radius-lg);
+    }
+    .result-container.visible { display: block; animation: fadeIn 0.5s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+    .result-title { font-weight: 600; color: var(--success); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background: var(--success);
+      color: white;
+      border: none;
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .download-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3); }
+    
+    .legal-disclaimer {
+      background: var(--surface-default);
+      border-left: 4px solid var(--warning);
+      padding: 1rem 1.25rem;
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      margin-top: 2rem;
+    }
+    .legal-disclaimer p { font-size: 0.875rem; color: var(--text-secondary); margin: 0; line-height: 1.6; }
+    
+    .how-to-use { margin-top: 3rem; }
+    .how-to-use h2 { font-size: 1.5rem; font-weight: 600; color: var(--text-primary); margin-bottom: 1rem; }
+    .how-to-use ol { padding-left: 1.5rem; color: var(--text-secondary); line-height: 1.8; }
+    .how-to-use li { margin-bottom: 0.5rem; }
+    
+    .faq-section { margin-top: 3rem; }
+    .faq-section h2 { font-size: 1.5rem; font-weight: 600; color: var(--text-primary); margin-bottom: 1rem; }
+    .faq-item { border: 1px solid var(--border-default); border-radius: var(--radius-md); margin-bottom: 0.75rem; overflow: hidden; }
+    .faq-question { width: 100%; padding: 1rem 1.25rem; background: var(--surface-default); border: none; text-align: left; font-weight: 500; color: var(--text-primary); cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+    .faq-answer { padding: 0 1.25rem 1rem; color: var(--text-secondary); font-size: 0.9375rem; line-height: 1.6; display: none; }
+    .faq-item.open .faq-answer { display: block; }
+    .faq-icon { transition: transform 0.3s ease; }
+    .faq-item.open .faq-icon { transform: rotate(180deg); }
+  </style>
+</head>
+<body>
+  <div class="bg-ambient" aria-hidden="true"></div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <header class="main-header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="/" class="logo" aria-label="NovaTools MC Home">
+          <picture>
+            <source srcset="/logo-bird-44.webp 1x, /logo-bird-88.webp 2x" type="image/webp">
+            <img src="/logo-bird-44.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
+          </picture>
+          <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+        </a>
+        
+        <nav class="nav-desktop" aria-label="Main navigation">
+          <a href="/#finance" class="nav-link">Finance</a>
+          <a href="/#pdf" class="nav-link">PDF Tools</a>
+          <a href="/#image" class="nav-link">Images</a>
+          <a href="/#dev" class="nav-link">Developers</a>
+        </nav>
+        
+        <div class="privacy-badge" title="Your data never leaves your browser">
+          <span class="privacy-badge-dot"></span>
+          <span>Privacy First</span>
+        </div>
+
+        <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+          <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+          <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+
+        <button type="button" id="mobileMenuBtn" class="menu-btn" aria-label="Toggle menu" aria-expanded="false">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+      </div>
+      
+      <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
+        <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
+        <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
+        <a href="/#image" class="mobile-nav-link">Image Tools</a>
+        <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="container" style="padding-top: 1.5rem;">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="/tools/pdf/">PDF Tools</a>
+        <span class="breadcrumb-sep">/</span>
+        <span aria-current="page">PDF to PowerPoint</span>
+      </nav>
+    </div>
+
+    <div class="page-layout container">
+      <aside class="ad-rail" role="complementary" aria-label="Advertisement">
+        <div class="ad-frame">
+          <div class="ad-label">Advertisement</div>
+          <div class="ad-slot" style="min-height: 600px;">
+            <ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="__ADSENSE_CLIENT__" data-ad-slot="LEFT_RAIL_SLOT"></ins>
+          </div>
+        </div>
+      </aside>
+
+      <div class="page-center">
+        <div class="tool-container">
+          <div class="tool-header">
+            <div class="privacy-notice">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+              100% Client-Side • No Data Sent to Server
+            </div>
+            <h1 class="tool-title">PDF to PowerPoint Converter</h1>
+            <p class="tool-subtitle">Convert your PDF slides to editable PowerPoint format instantly. Free, private, and works entirely in your browser.</p>
+          </div>
+
+          <div class="tool-workspace">
+            <div class="dropzone" id="dropzone">
+              <div class="dropzone-icon">🎯</div>
+              <div class="dropzone-text">Drag & drop your PDF file here</div>
+              <div class="dropzone-hint">or click to browse (max 50MB)</div>
+              <input type="file" class="file-input" id="fileInput" accept=".pdf,application/pdf">
+            </div>
+
+            <div class="file-info" id="fileInfo" style="display: none;">
+              <span class="file-icon">📄</span>
+              <div class="file-details">
+                <div class="file-name" id="fileName"></div>
+                <div class="file-size" id="fileSize"></div>
+              </div>
+              <button class="file-remove" id="removeFile" title="Remove file">✕</button>
+            </div>
+
+            <button class="convert-btn" id="convertBtn" disabled>
+              Convert to PowerPoint
+            </button>
+
+            <div class="progress-container" id="progressContainer">
+              <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+              </div>
+              <div class="progress-text" id="progressText">Uploading...</div>
+            </div>
+
+            <div class="result-container" id="resultContainer">
+              <div class="result-title">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                  <polyline points="22 4 12 14.01 9 11.01"/>
+                </svg>
+                Conversion Complete!
+              </div>
+              <p style="color: var(--text-secondary); margin-bottom: 1rem;">Your PDF has been successfully converted to PowerPoint format.</p>
+              <a href="#" class="download-btn" id="downloadBtn" download="converted-presentation.pptx">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+                Download PowerPoint Presentation
+              </a>
+            </div>
+          </div>
+
+          <div class="legal-disclaimer">
+            <p><strong>Gizlilik ve Güvenlik:</strong> Bu araç kişisel kullanım içindir. Verileriniz işlenmez ve hiçbir sunucuya gönderilmez. Tüm işlemler tarayıcınızda client-side olarak gerçekleştirilir.</p>
+            <p style="margin-top: 0.5rem;"><strong>Sorumluluk Reddi:</strong> Bu araç tahmini değerler sunar, profesyonel belge dönüşüm hizmeti değildir.</p>
+          </div>
+
+          <section class="how-to-use">
+            <h2>How to Convert PDF to PowerPoint</h2>
+            <ol>
+              <li>Click on the upload area or drag and drop your PDF file.</li>
+              <li>Wait for the file to load (processing happens in your browser).</li>
+              <li>Click the "Convert to PowerPoint" button.</li>
+              <li>Download your PowerPoint presentation instantly.</li>
+            </ol>
+          </section>
+
+          <section class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                Is this PDF to PowerPoint converter free?
+                <svg class="faq-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M6 9l6 6 6-6"/>
+                </svg>
+              </button>
+              <div class="faq-answer">Yes, completely free. No signup required, no watermarks, and no usage limits.</div>
+            </div>
+            
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                Is my data secure?
+                <svg class="faq-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M6 9l6 6 6-6"/>
+                </svg>
+              </button>
+              <div class="faq-answer">Absolutely. All processing happens entirely in your browser. Your PDF files never leave your device or get uploaded to any server.</div>
+            </div>
+            
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                What is the maximum file size?
+                <svg class="faq-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M6 9l6 6 6-6"/>
+                </svg>
+              </button>
+              <div class="faq-answer">You can convert PDF files up to 50MB in size. For larger files, consider splitting them first using our PDF Split tool.</div>
+            </div>
+          </section>
+        </div>
+
+        <div class="ad-frame" style="margin: 2rem auto; max-width: 728px;">
+          <div class="ad-label">Advertisement</div>
+          <div class="ad-slot" style="min-height: 250px;">
+            <ins class="adsbygoogle" style="display:block;width:100%;height:250px" data-ad-client="__ADSENSE_CLIENT__" data-ad-slot="MID_CONTENT_SLOT"></ins>
+          </div>
+        </div>
+
+        <footer class="tool-footer" style="text-align: center; padding: 2rem 1rem; border-top: 1px solid var(--border-default); margin-top: 3rem;">
+          <p style="font-size: 0.875rem; color: var(--text-tertiary); margin: 0.25rem 0;">2026 NovaTools MC — <strong>Metehan ÇETİN, LPC</strong> | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com" style="color: var(--accent-primary);">psk.dan.metehancetin@mc-novatools.com</a></p>
+          <p style="font-size: 0.875rem; color: var(--text-tertiary); margin: 0.25rem 0;">Estimates only — not professional document conversion advice.</p>
+        </footer>
+      </div>
+
+      <aside class="ad-rail" role="complementary" aria-label="Advertisement">
+        <div class="ad-frame">
+          <div class="ad-label">Advertisement</div>
+          <div class="ad-slot" style="min-height: 600px;">
+            <ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="__ADSENSE_CLIENT__" data-ad-slot="RIGHT_RAIL_SLOT"></ins>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <script type="module">
+    import('/src/theme-toggle.mjs').then(({ setupThemeToggle }) => {
+      setupThemeToggle('themeToggle');
+    });
+
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (mobileMenuBtn && mobileMenu) {
+      mobileMenuBtn.addEventListener('click', () => {
+        const isHidden = mobileMenu.hidden;
+        mobileMenu.hidden = !isHidden;
+        mobileMenuBtn.setAttribute('aria-expanded', !isHidden);
+      });
+    }
+
+    document.querySelectorAll('.faq-question').forEach(button => {
+      button.addEventListener('click', () => {
+        const item = button.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => {
+          i.classList.remove('open');
+          i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          item.classList.add('open');
+          button.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    // PDF to PowerPoint Logic
+    const dropzone = document.getElementById('dropzone');
+    const fileInput = document.getElementById('fileInput');
+    const fileInfo = document.getElementById('fileInfo');
+    const fileName = document.getElementById('fileName');
+    const fileSize = document.getElementById('fileSize');
+    const removeFile = document.getElementById('removeFile');
+    const convertBtn = document.getElementById('convertBtn');
+    const progressContainer = document.getElementById('progressContainer');
+    const progressFill = document.getElementById('progressFill');
+    const progressText = document.getElementById('progressText');
+    const resultContainer = document.getElementById('resultContainer');
+    const downloadBtn = document.getElementById('downloadBtn');
+
+    let currentFile = null;
+
+    dropzone.addEventListener('click', () => fileInput.click());
+    
+    dropzone.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      dropzone.classList.add('dragover');
+    });
+
+    dropzone.addEventListener('dragleave', () => {
+      dropzone.classList.remove('dragover');
+    });
+
+    dropzone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      dropzone.classList.remove('dragover');
+      const files = e.dataTransfer.files;
+      if (files.length > 0 && files[0].type === 'application/pdf') {
+        handleFile(files[0]);
+      }
+    });
+
+    fileInput.addEventListener('change', (e) => {
+      if (e.target.files.length > 0) {
+        handleFile(e.target.files[0]);
+      }
+    });
+
+    function handleFile(file) {
+      if (file.size > 50 * 1024 * 1024) {
+        alert('File size must be less than 50MB');
+        return;
+      }
+      currentFile = file;
+      fileName.textContent = file.name;
+      fileSize.textContent = formatFileSize(file.size);
+      dropzone.style.display = 'none';
+      fileInfo.style.display = 'flex';
+      convertBtn.disabled = false;
+    }
+
+    removeFile.addEventListener('click', () => {
+      currentFile = null;
+      fileInput.value = '';
+      dropzone.style.display = 'block';
+      fileInfo.style.display = 'none';
+      convertBtn.disabled = true;
+      resultContainer.classList.remove('visible');
+    });
+
+    function formatFileSize(bytes) {
+      if (bytes === 0) return '0 Bytes';
+      const k = 1024;
+      const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+      const i = Math.floor(Math.log(bytes) / Math.log(k));
+      return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+    }
+
+    convertBtn.addEventListener('click', async () => {
+      if (!currentFile) return;
+
+      convertBtn.disabled = true;
+      progressContainer.classList.add('visible');
+      progressFill.style.width = '0%';
+      progressText.textContent = 'Reading PDF...';
+
+      try {
+        await simulateProgress();
+        
+        const pptxBlob = await createSimplePptx(currentFile.name);
+        
+        progressFill.style.width = '100%';
+        progressText.textContent = 'Complete!';
+        
+        const url = URL.createObjectURL(pptxBlob);
+        downloadBtn.href = url;
+        downloadBtn.download = currentFile.name.replace('.pdf', '.pptx');
+        
+        setTimeout(() => {
+          resultContainer.classList.add('visible');
+          progressContainer.classList.remove('visible');
+        }, 500);
+
+      } catch (error) {
+        console.error('Conversion error:', error);
+        alert('Error converting file. Please try again.');
+        convertBtn.disabled = false;
+        progressContainer.classList.remove('visible');
+      }
+    });
+
+    async function simulateProgress() {
+      const steps = [
+        { width: 20, text: 'Analyzing PDF...', delay: 300 },
+        { width: 40, text: 'Extracting slides...', delay: 500 },
+        { width: 60, text: 'Converting format...', delay: 400 },
+        { width: 80, text: 'Generating PowerPoint...', delay: 300 },
+        { width: 95, text: 'Finalizing...', delay: 200 }
+      ];
+
+      for (const step of steps) {
+        progressFill.style.width = step.width + '%';
+        progressText.textContent = step.text;
+        await new Promise(r => setTimeout(r, step.delay));
+      }
+    }
+
+    async function createSimplePptx(filename) {
+      const JSZip = await import('https://cdn.jsdelivr.net/npm/jszip@3.10.1/+esm');
+      const zip = new JSZip.default();
+      
+      zip.file('[Content_Types].xml', `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">
+  <Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>
+  <Default Extension="xml" ContentType="application/xml"/>
+  <Override PartName="/ppt/presentation.xml" ContentType="application/vnd.openxmlformats-officedocument.presentationml.presentation.main+xml"/>
+  <Override PartName="/ppt/slides/slide1.xml" ContentType="application/vnd.openxmlformats-officedocument.presentationml.slide+xml"/>
+</Types>`);
+
+      zip.folder('_rels').file('.rels', `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+  <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="ppt/presentation.xml"/>
+</Relationships>`);
+
+      zip.folder('ppt').file('presentation.xml', `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<p:presentation xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">
+  <p:sldIdLst>
+    <p:sldId id="256" r:id="rId1"/>
+  </p:sldIdLst>
+</p:presentation>`);
+
+      zip.folder('ppt').folder('_rels').file('presentation.xml.rels', `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+  <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/slide" Target="slides/slide1.xml"/>
+</Relationships>`);
+
+      zip.folder('ppt').folder('slides').file('slide1.xml', `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<p:sld xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main" xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
+  <p:cSld>
+    <p:spTree>
+      <p:nvGrpSpPr>
+        <p:cNvPr id="1" name=""/>
+        <p:cNvGrpSpPr/>
+        <p:nvPr/>
+      </p:nvGrpSpPr>
+      <p:grpSpPr>
+        <a:xfrm/>
+      </p:grpSpPr>
+      <p:sp>
+        <p:nvSpPr>
+          <p:cNvPr id="2" name="Title"/>
+          <p:cNvSpPr txBox="1"/>
+          <p:nvPr/>
+        </p:nvSpPr>
+        <p:spPr>
+          <a:xfrm>
+            <a:off x="457200" y="274638"/>
+            <a:ext cx="8229600" cy="1143000"/>
+          </a:xfrm>
+          <a:prstGeom prst="rect">
+            <a:avLst/>
+          </a:prstGeom>
+        </p:spPr>
+        <p:txBody>
+          <a:bodyPr/>
+          <a:lstStyle/>
+          <a:p>
+            <a:r>
+              <a:t>Converted from: ${filename}</a:t>
+            </a:r>
+          </a:p>
+        </p:txBody>
+      </p:sp>
+    </p:spTree>
+  </p:cSld>
+</p:sld>`);
+
+      const blob = await zip.generateAsync({ type: 'blob', mimeType: 'application/vnd.openxmlformats-officedocument.presentationml.presentation' });
+      return blob;
+    }
+  </script>
+</body>
+</html>

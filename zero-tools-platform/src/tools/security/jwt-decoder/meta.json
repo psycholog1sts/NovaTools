@@ -1,0 +1,41 @@
+{
+  "id": "jwt-decoder",
+  "name": "JWT Decoder",
+  "nameEn": "JWT Decoder",
+  "category": "security",
+  "tier": 1,
+  "cpc": {
+    "tr": 0.65,
+    "us": 1.4
+  },
+  "keywords": {
+    "tr": ["jwt çözücü", "token decoder", "jwt parser", "json web token", "token analiz"],
+    "en": ["jwt decoder", "jwt parser", "token decoder", "json web token", "jwt verify"]
+  },
+  "description": {
+    "tr": "JSON Web Token çözümleme ve doğrulama aracı. Header, payload ve imza bilgilerini görüntüleyin, expiration kontrolü yapın.",
+    "en": "Decode and verify JSON Web Tokens. View header, payload, and signature info. Check token expiration."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "SecurityApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.3
+    }
+  },
+  "bundle": {
+    "lazyLoad": false
+  },
+  "relatedTools": [
+    "hash-generator",
+    "encrypt-decrypt"
+  ]
+}

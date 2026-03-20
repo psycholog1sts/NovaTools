@@ -1,0 +1,106 @@
+/**
+ * Footer Grid Layout Styles
+ * Modern, responsive grid-based footer
+ */
+
+.main-footer {
+  background: var(--surface-elevated, #0f0f1a);
+  border-top: 1px solid var(--border-default, #1e1e2e);
+  padding: 60px 0 0;
+  margin-top: 80px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 40px;
+  padding-bottom: 40px;
+}
+
+.footer-col h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary, #e4e4e7);
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.footer-col p {
+  font-size: 14px;
+  color: var(--text-secondary, #a1a1aa);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+  font-size: 14px;
+  color: var(--text-secondary, #a1a1aa);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-col ul li a:hover {
+  color: var(--accent-primary, #6366f1);
+}
+
+.footer-signature {
+  font-size: 13px;
+  color: var(--text-muted, #71717a);
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-default, #1e1e2e);
+}
+
+.footer-bottom {
+  border-top: 1px solid var(--border-default, #1e1e2e);
+  padding: 24px 0;
+  text-align: center;
+}
+
+.footer-bottom p {
+  font-size: 13px;
+  color: var(--text-muted, #71717a);
+  margin: 0;
+}
+
+/* Responsive Grid */
+@media (max-width: 1024px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+}
+
+@media (max-width: 640px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  
+  .main-footer {
+    padding: 40px 0 0;
+    margin-top: 60px;
+  }
+}
+
+/* Footer with Radio Player Integration */
+.footer-with-radio {
+  padding-bottom: 100px;
+}
+
+@media (max-width: 768px) {
+  .footer-with-radio {
+    padding-bottom: 120px;
+  }
+}

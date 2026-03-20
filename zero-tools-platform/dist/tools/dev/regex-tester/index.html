@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y896L63239"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Y896L63239');
+  </script>
+  <meta charset="UTF-8">
+  <script>(function(){var t=localStorage.getItem('novatools-theme');if(t)document.documentElement.setAttribute('data-theme',t);else{var d=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',d);document.documentElement.style.colorScheme=d;}})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <title>Free Regex Tester - Online Regular Expression Tool</title>
+  
+  <!-- i18n Script -->
+  <script src="/i18n.js"></script>
+  <meta name="description" content="Free online regex tester. Test regular expressions with live matching, syntax highlighting &amp; named group support. Common pattern presets included.">
+  <meta name="keywords" content="free regex tester, regular expression tester online, regex validator, regex debugger, free regex tool, test regex online">
+  <meta name="theme-color" content="#0A0A0C">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Free Regex Tester - Online Regular Expression Tool">
+  <meta property="og:description" content="Test regular expressions online for free. Live matching, syntax highlighting &amp; named group support. No signup required.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.mc-novatools.com/tools/dev/regex-tester/">
+  <meta property="og:image" content="https://www.mc-novatools.com/og-image.png">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free Regex Tester - Regular Expression Tool | NovaTools">
+  <meta name="twitter:description" content="Test regex patterns online for free. Live matching, named groups, pattern presets. No signup.">
+
+  <link rel="canonical" href="https://www.mc-novatools.com/tools/dev/regex-tester/">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [{
+      "@type": "WebApplication",
+      "name": "Regex Tester",
+      "description": "Test regular expressions online with live matching, syntax highlighting, and named group support. Free regex tester with common pattern presets.",
+      "url": "https://www.mc-novatools.com/tools/dev/regex-tester/",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+    }]
+  }
+  </script>
+  <style>.tool-wrapper{margin:0 auto;max-width:960px;padding:3rem 1rem 5rem}.tool-hero{margin-bottom:2.5rem;text-align:center}.tool-hero-icon{font-size:3.5rem;line-height:1;margin-bottom:1rem}.tool-hero h1{color:#fafafa;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;letter-spacing:-.02em;margin-bottom:.75rem}.tool-hero p{color:#a1a1aa;font-size:1.0625rem;margin:0 auto;max-width:560px}.card{backdrop-filter:blur(12px);background:rgba(15,15,20,.7);border:1px solid rgba(0,217,255,.15);border-radius:14px;margin-bottom:1.5rem;padding:1.75rem}.input-label{color:#71717a;font-size:.8125rem;font-weight:600;gap:.5rem;letter-spacing:.06em;margin-bottom:.625rem;text-transform:uppercase}.input-label,.pattern-row{align-items:center;display:flex}.pattern-row{background:#0f0f12;border:1px solid rgba(0,217,255,.12);border-radius:10px;margin-bottom:1rem;overflow:hidden;transition:border-color .2s,box-shadow .2s}.pattern-row:focus-within{border-color:rgba(0,217,255,.45);box-shadow:0 0 0 3px rgba(0,217,255,.08)}.pattern-slash{color:rgba(0,217,255,.5);font-family:JetBrains Mono,monospace;font-size:1.25rem;line-height:1;padding:0 .625rem;-webkit-user-select:none;-moz-user-select:none;user-select:none}#patternInput{background:transparent;border:none;color:#00d9ff;flex:1;font-family:JetBrains Mono,Fira Code,monospace;font-size:.9375rem;line-height:1.5;outline:none;padding:.75rem 0}#patternInput::-moz-placeholder{color:#3d3d4a}#patternInput::placeholder{color:#3d3d4a}.pattern-row--error{border-color:rgba(255,85,85,.55)!important;box-shadow:0 0 0 3px rgba(255,85,85,.1)!important}.flags-row{align-items:center;display:flex;flex-wrap:wrap;gap:.625rem;margin-bottom:1.25rem}.flags-label{color:#71717a;font-size:.8125rem;font-weight:600;letter-spacing:.05em;margin-right:.25rem;text-transform:uppercase}.flag-checkbox{display:none}.flag-label{align-items:center;background:hsla(0,0%,100%,.04);border:1px solid var(--border-hover);border-radius:7px;color:#71717a;cursor:pointer;display:inline-flex;font-family:JetBrains Mono,monospace;font-size:.875rem;font-weight:600;height:32px;justify-content:center;min-width:36px;padding:0 .625rem;transition:background .15s,border-color .15s,color .15s;-webkit-user-select:none;-moz-user-select:none;user-select:none}.flag-label:hover{background:rgba(0,217,255,.08);border-color:rgba(0,217,255,.3);color:#a1a1aa}.flag-checkbox:checked+.flag-label{background:rgba(0,217,255,.12);border-color:rgba(0,217,255,.45);color:#00d9ff}.quick-inserts{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem}.quick-label{align-self:center;font-size:.8125rem;letter-spacing:.05em;margin-right:.25rem;text-transform:uppercase}.btn-quick,.quick-label{color:#71717a;font-weight:600}.btn-quick{align-items:center;background:rgba(0,217,255,.06);border:1px solid rgba(0,217,255,.2);border-radius:6px;cursor:pointer;display:inline-flex;font-size:.8rem;height:30px;outline:none;padding:0 .875rem;transition:background .15s,border-color .15s,color .15s,transform .1s;-webkit-user-select:none;-moz-user-select:none;user-select:none}.btn-quick:hover{background:rgba(0,217,255,.12);border-color:rgba(0,217,255,.35);color:#00d9ff}.btn-quick:active{transform:scale(.96)}.input-section{margin-bottom:1.25rem}#testInput{background:#0f0f12;border:1px solid rgba(0,217,255,.12);border-radius:10px;box-sizing:border-box;color:#fafafa;font-family:JetBrains Mono,Fira Code,monospace;font-size:.875rem;line-height:1.7;min-height:160px;outline:none;padding:1rem 1.125rem;resize:vertical;transition:border-color .2s,box-shadow .2s;width:100%}#testInput::-moz-placeholder{color:#52525b}#testInput::placeholder{color:#52525b}#testInput:focus{border-color:rgba(0,217,255,.45);box-shadow:0 0 0 3px rgba(0,217,255,.08)}.stats-row{align-items:center;display:flex;gap:.75rem;margin-bottom:1rem;min-height:28px}.match-badge{align-items:center;animation:fadeSlideIn .25s ease;border-radius:999px;display:inline-flex;font-size:.8125rem;font-weight:600;gap:.4rem;height:28px;padding:0 .75rem}.match-badge-zero{background:var(--surface-default);border:1px solid var(--border-hover);color:#71717a}.match-badge-some{background:rgba(255,152,0,.12);border:1px solid rgba(255,152,0,.35);color:#ff9800}@keyframes fadeSlideIn{0%{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}.error-banner{align-items:flex-start;animation:fadeSlideIn .2s ease;background:rgba(255,85,85,.08);border:1px solid rgba(255,85,85,.3);border-radius:10px;display:none;gap:.75rem;margin-bottom:1rem;padding:.875rem 1rem}.error-banner.visible,.error-icon{display:flex}.error-icon{align-items:center;background:rgba(255,85,85,.2);border-radius:50%;color:#f55;flex-shrink:0;font-size:.75rem;height:20px;justify-content:center;margin-top:1px;width:20px}.error-text{color:#f77;font-family:JetBrains Mono,monospace;font-size:.8125rem;line-height:1.6;word-break:break-word}.output-wrap{background:#08080a;border:1px solid rgba(0,217,255,.1);border-radius:10px;margin-bottom:1.5rem;overflow:hidden}.output-placeholder{color:#52525b;font-size:.9375rem;padding:2rem 1.5rem;text-align:center}#highlightOutput{color:#fafafa;font-family:JetBrains Mono,Fira Code,monospace;font-size:.8125rem;line-height:1.85;margin:0;padding:1.125rem 1.25rem;-moz-tab-size:2;-o-tab-size:2;tab-size:2;white-space:pre-wrap;word-break:break-word}.match-highlight{background:rgba(255,152,0,.25);border-radius:3px;color:#ff9800;font-weight:600;outline:1px solid rgba(255,152,0,.45);padding:0 2px}.table-section{margin-top:.5rem}.table-label{color:#71717a;font-size:.8125rem;font-weight:600;letter-spacing:.06em;margin-bottom:.625rem;text-transform:uppercase}.table-wrap{border:1px solid rgba(0,217,255,.1);border-radius:10px;overflow-x:auto}.match-table{border-collapse:collapse;font-size:.8125rem;width:100%}.match-table thead tr{background:rgba(0,217,255,.05);border-bottom:1px solid rgba(0,217,255,.12)}.match-table th{color:#71717a;font-size:.75rem;font-weight:600;letter-spacing:.04em;padding:.625rem 1rem;text-align:left;text-transform:uppercase;white-space:nowrap}.match-table td{border-bottom:1px solid hsla(0,0%,100%,.04);color:#a1a1aa;font-family:JetBrains Mono,monospace;padding:.5rem 1rem;vertical-align:top}.match-table tbody tr:last-child td{border-bottom:none}.match-table tbody tr:hover td{background:hsla(0,0%,100%,.02)}.match-table td.col-num{color:#52525b;font-size:.75rem;text-align:right;width:2.5rem}.match-table td.col-index{color:#71717a}.match-table td.col-value{color:#ff9800}.match-table td.col-groups{color:#00d9ff;font-size:.75rem}.seo-section{margin:3.5rem auto 0;max-width:960px;padding:0 1rem}.seo-section h2{color:#fafafa;font-size:1.375rem;font-weight:700;margin-bottom:.75rem}.seo-section h3{color:#fafafa;font-size:1.125rem;font-weight:600;margin:2rem 0 .75rem}.seo-section li,.seo-section p{color:#a1a1aa;font-size:.9375rem;line-height:1.8}.seo-section ol{padding-left:1.25rem}.seo-section ol li{margin-bottom:.4rem}.faq-item{background:rgba(15,15,20,.5);border:1px solid rgba(0,217,255,.1);border-radius:10px;margin-bottom:.875rem;padding:1rem 1.125rem}.faq-item summary{align-items:center;color:#fafafa;cursor:pointer;display:flex;font-weight:600;gap:1rem;justify-content:space-between;list-style:none}.faq-item summary::-webkit-details-marker{display:none}.faq-item summary:after{color:#00d9ff;content:"+";flex-shrink:0;font-size:1.25rem;transition:transform .2s}.faq-item[open] summary:after{content:"−"}.faq-item p{color:#a1a1aa;line-height:1.7;margin-top:.625rem}@media (max-width:600px){.quick-inserts{gap:.375rem}.btn-quick{font-size:.75rem;padding:0 .625rem}.match-table td,.match-table th{padding:.5rem .625rem}}</style>
+  <script type="module" crossorigin src="/js/tools/dev/regex-tester-3hS8ehGM.js"></script>
+  <link rel="modulepreload" crossorigin href="/js/modulepreload-polyfill-YP0FEG5d.js">
+  <link rel="stylesheet" crossorigin href="/css/critical-D6EXev1O.css">
+  <link rel="stylesheet" crossorigin href="/css/main-C-2uV3x-.css">
+<link rel="manifest" href="/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/registerSW.js"></script></head>
+<body>
+  <div class="bg-ambient" aria-hidden="true"></div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+  <div id="app" class="app">
+        <header class="main-header">
+      <div class="container">
+        <div class="header-inner">
+          <a href="/" class="logo" aria-label="NovaTools MC Home">
+            <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
+            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+          </a>
+          <nav class="nav-desktop" aria-label="Main navigation">
+            <a href="/#finance" class="nav-link">Finance</a>
+            <a href="/#pdf" class="nav-link">PDF Tools</a>
+            <a href="/#image" class="nav-link">Images</a>
+            <a href="/#dev" class="nav-link">Developers</a>
+          </nav>
+          <div class="privacy-badge" title="Your data never leaves your browser">
+            <span class="privacy-badge-dot"></span>
+            <span>Privacy First</span>
+          </div>
+          <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+            <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+          <button type="button" id="mobileMenuBtn" class="menu-btn" aria-label="Toggle menu" aria-expanded="false">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+        </div>
+        <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
+          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+        </nav>
+      </div>
+    </header>
+<main class="main-content">
+      <div class="tool-wrapper">
+        <div class="tool-hero">
+          <div class="tool-hero-icon">&#9654;*</div>
+          <h1>Regex Tester</h1>
+          <span class="sr-only">Free regex tester — free online regular expression testing tool with live matching. Test regex patterns for free. No registration required. Free regex validator and debugger online.</span>
+          <p>Test and debug regular expressions with live matching, syntax highlighting, and named group support. Works entirely in your browser — nothing is sent to any server.</p>
+        </div>
+        <div class="card">
+          <div class="input-section" style="margin-bottom:1rem;">
+            <div class="input-label">
+              <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M5.854 4.146a.5.5 0 010 .708L3.707 7l2.147 2.146a.5.5 0 01-.708.708l-2.5-2.5a.5.5 0 010-.708l2.5-2.5a.5.5 0 01.708 0zm4.292 0a.5.5 0 000 .708L12.293 7l-2.147 2.146a.5.5 0 00.708.708l2.5-2.5a.5.5 0 000-.708l-2.5-2.5a.5.5 0 00-.708 0z"/></svg>
+              Pattern
+            </div>
+            <div class="pattern-row" role="group" aria-label="Regex pattern input">
+              <span class="pattern-slash" aria-hidden="true">/</span>
+              <input type="text" id="patternInput" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="Enter regex pattern..." aria-label="Regular expression pattern">
+              <span class="pattern-slash" aria-hidden="true">/</span>
+            </div>
+          </div>
+          <div class="flags-row" role="group" aria-label="Regex flags">
+            <span class="flags-label">Flags</span>
+            <input type="checkbox" class="flag-checkbox" id="flag-g" value="g" checked>
+            <label class="flag-label" for="flag-g" title="Global — find all matches">g</label>
+            <input type="checkbox" class="flag-checkbox" id="flag-i" value="i">
+            <label class="flag-label" for="flag-i" title="Case insensitive">i</label>
+            <input type="checkbox" class="flag-checkbox" id="flag-m" value="m">
+            <label class="flag-label" for="flag-m" title="Multiline — ^ and $ match line boundaries">m</label>
+            <input type="checkbox" class="flag-checkbox" id="flag-s" value="s">
+            <label class="flag-label" for="flag-s" title="Dot all — . matches newlines">s</label>
+          </div>
+          <div class="quick-inserts" role="group" aria-label="Quick pattern presets">
+            <span class="quick-label">Quick</span>
+            <button class="btn-quick" type="button" data-pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}">Email</button>
+            <button class="btn-quick" type="button" data-pattern="https?://[^\s/$.?#].[^\s]*">URL</button>
+            <button class="btn-quick" type="button" data-pattern="(?:\d{1,3}\.){3}\d{1,3}">IPv4</button>
+            <button class="btn-quick" type="button" data-pattern="\d{4}-\d{2}-\d{2}">Date</button>
+            <button class="btn-quick" type="button" data-pattern="[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}">Phone</button>
+          </div>
+          <div class="input-section">
+            <div class="input-label">
+              <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M2 3.5A1.5 1.5 0 013.5 2h9A1.5 1.5 0 0114 3.5v9a1.5 1.5 0 01-1.5 1.5h-9A1.5 1.5 0 012 12.5v-9zM3.5 3a.5.5 0 00-.5.5v9a.5.5 0 00.5.5h9a.5.5 0 00.5-.5v-9a.5.5 0 00-.5-.5h-9z"/></svg>
+              Test String
+            </div>
+            <textarea id="testInput" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="Enter text to test against your regex pattern..." aria-label="Test string input"></textarea>
+          </div>
+          <div class="stats-row" aria-live="polite">
+            <div id="matchBadge" style="display:none" class="match-badge match-badge-zero">
+              <span id="matchBadgeText"></span>
+            </div>
+          </div>
+          <div class="error-banner" id="errorBanner" role="alert">
+            <div class="error-icon">!</div>
+            <div class="error-text" id="errorText"></div>
+          </div>
+          <div>
+            <div class="input-label" style="margin-bottom:0.625rem;">
+              <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M0 2a2 2 0 012-2h12a2 2 0 012 2v12a2 2 0 01-2 2H2a2 2 0 01-2-2V2zm4.5 5.5a.5.5 0 000 1h5a.5.5 0 000-1h-5zm0-2a.5.5 0 000 1h7a.5.5 0 000-1h-7zm0 4a.5.5 0 000 1h3a.5.5 0 000-1h-3z"/></svg>
+              Match Highlight
+            </div>
+            <div class="output-wrap">
+              <div class="output-placeholder" id="outputPlaceholder">Matching results will appear here</div>
+              <pre id="highlightOutput" style="display:none;" aria-label="Highlighted match output" aria-live="polite"></pre>
+            </div>
+          </div>
+          <div class="table-section" id="tableSection" style="display:none; margin-top:1.5rem;">
+            <div class="table-label">
+              <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" style="display:inline;vertical-align:-1px;margin-right:4px"><path d="M0 2a2 2 0 012-2h12a2 2 0 012 2v12a2 2 0 01-2 2H2a2 2 0 01-2-2V2zm15 2H1v10h14V4zm-9 4H3V6h3v2zm0 3H3V9h3v2zm4-3H7V6h3v2zm0 3H7V9h3v2zm4-3h-3V6h3v2zm0 3h-3V9h3v2z"/></svg>
+              Matches
+            </div>
+            <div class="table-wrap">
+              <table class="match-table" aria-label="Match details table">
+                <thead><tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Index</th>
+                  <th scope="col">Match</th>
+                  <th scope="col">Named Groups</th>
+                </tr></thead>
+                <tbody id="matchTableBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <section class="seo-section" aria-label="About this tool">
+        <h2>About the Regex Tester</h2>
+        <p>Regular expressions (regex) are a powerful mini-language for matching, searching, and transforming text. This free online regex tester lets you write a pattern and instantly see all matches highlighted in amber inside your test string. Named capture groups are shown in a dedicated column so you can quickly verify complex patterns. Everything runs locally in your browser — no data ever leaves your machine.</p>
+        <h3>How to Use</h3>
+        <ol>
+          <li>Type your regex pattern into the <strong>Pattern</strong> field between the two slashes.</li>
+          <li>Toggle the <strong>g i m s</strong> flags as needed. The <strong>g</strong> flag is always active to find all matches.</li>
+          <li>Use the <strong>Quick</strong> presets to load common patterns for Email, URL, IPv4, Date, or Phone.</li>
+          <li>Paste or type text into the <strong>Test String</strong> area — results update live on every keystroke.</li>
+          <li>Scroll down to the <strong>Matches</strong> table to inspect each match's index, value, and any named groups.</li>
+        </ol>
+        <h3>Frequently Asked Questions</h3>
+        <details class="faq-item">
+          <summary>What regex flavour does this tester use?</summary>
+          <p>This tool uses JavaScript's built-in RegExp engine, which follows the ECMAScript specification. It supports character classes, quantifiers, lookaheads/lookbehinds, and named capture groups.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What does the "g" flag do?</summary>
+          <p>The global (g) flag tells the engine to find all matches rather than stopping after the first one. This tester always uses the g flag internally so the match count and table are always complete.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How do named capture groups appear?</summary>
+          <p>If your pattern includes named groups such as (?&lt;year&gt;\d{4}), the Named Groups column in the match table will show each group name paired with its captured value for every match.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Is my data kept private?</summary>
+          <p>Yes. All regex evaluation happens entirely in your browser using native JavaScript. No pattern, test string, or result is ever sent to any server or stored anywhere outside your current browser tab.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Why does my regex throw an error?</summary>
+          <p>A red error banner appears when the browser's RegExp constructor cannot parse your pattern. Common causes include unescaped special characters, mismatched parentheses, or unsupported syntax. The banner shows the exact error message to help you fix it quickly.</p>
+        </details>
+      </section>
+    </main>
+    <footer class="tool-footer">
+  <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
+  <p>Estimates only &mdash; not financial, legal, or tax advice.</p>
+</footer>
+<style>.tool-footer{border-top:1px solid var(--border-default);color:#718096;font-size:.8rem;line-height:1.8;margin-top:3rem;padding:1.5rem 1rem;text-align:center}.tool-footer a{color:#00d9ff;text-decoration:none}</style>
+  </div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var menuBtn = document.getElementById('mobileMenuBtn');
+  var mobileMenu = document.getElementById('mobileMenu');
+  if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener('click', function() {
+      var isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+      menuBtn.setAttribute('aria-expanded', !isExpanded);
+      mobileMenu.hidden = isExpanded;
+      mobileMenu.classList.toggle('active', !isExpanded);
+    });
+  }
+  var themeBtn = document.getElementById('themeToggle');
+  if (themeBtn) {
+    function getTheme() {
+      var s = localStorage.getItem('theme');
+      if (s) return s;
+      return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    }
+    function updateIcon() {
+      var t = getTheme();
+      themeBtn.querySelector('.icon-sun').style.display = t === 'light' ? 'none' : 'block';
+      themeBtn.querySelector('.icon-moon').style.display = t === 'dark' ? 'none' : 'block';
+    }
+    themeBtn.addEventListener('click', function() {
+      var next = getTheme() === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      updateIcon();
+    });
+    updateIcon();
+  }
+});
+</script>
+</body>
+</html>

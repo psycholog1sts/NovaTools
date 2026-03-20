@@ -1,0 +1,39 @@
+{
+  "id": "regex-tester",
+  "name": "Regex Tester",
+  "nameEn": "Regex Tester",
+  "category": "dev",
+  "tier": 1,
+  "cpc": {
+    "tr": 0.5,
+    "us": 1.0
+  },
+  "keywords": {
+    "tr": ["regex test", "regular expression", "düzenli ifade", "regex öğrenme"],
+    "en": ["regex tester", "regular expression", "regex debugger", "test regex"]
+  },
+  "description": {
+    "tr": "Düzenli ifadelerinizi test edin ve debug yapın. Gerçek zamanlı eşleşme ve açıklama.",
+    "en": "Test and debug your regular expressions. Real-time matching with explanations."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "DeveloperApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280"
+    }
+  },
+  "bundle": {
+    "lazyLoad": false
+  },
+  "relatedTools": [
+    "dev/json-formatter"
+  ]
+}

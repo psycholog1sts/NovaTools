@@ -1,0 +1,42 @@
+{
+  "id": "text-to-slug",
+  "name": "Text to Slug Converter",
+  "nameEn": "Text to Slug Converter",
+  "category": "text",
+  "tier": 1,
+  "cpc": {
+    "tr": 0.2,
+    "us": 0.45
+  },
+  "keywords": {
+    "tr": ["metin slug", "url slug", "permalink oluşturucu", "slugify", "seo url"],
+    "en": ["text to slug", "url slug", "permalink generator", "slugify", "url friendly", "seo slug"]
+  },
+  "description": {
+    "tr": "Metni URL dostu sluga dönüştürün. SEO uyumlu permalinkler için özelleştirilebilir seçenekler.",
+    "en": "Convert text to URL-friendly slugs. Customizable options for SEO-friendly permalinks."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "UtilityApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.2
+    }
+  },
+  "bundle": {
+    "lazyLoad": false
+  },
+  "relatedTools": [
+    "word-counter",
+    "character-counter",
+    "case-converter"
+  ]
+}

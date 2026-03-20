@@ -1,0 +1,42 @@
+{
+  "id": "url-shortener",
+  "name": "URL Shortener",
+  "nameEn": "URL Shortener",
+  "category": "social",
+  "tier": 1,
+  "cpc": {
+    "tr": 0.5,
+    "us": 1.0
+  },
+  "keywords": {
+    "tr": ["link kısaltıcı", "url kısaltma", "bağlantı kısalt", "kısa link oluştur"],
+    "en": ["url shortener", "link shortener", "short url generator", "compact links", "url shrink"]
+  },
+  "description": {
+    "tr": "Uzun bağlantıları kısa ve paylaşılabilir hale getirin. İstemci tarafında hash tabanlı kısaltma.",
+    "en": "Transform long URLs into short, shareable links. Client-side hash-based shortening for privacy."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "UtilitiesApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.3
+    }
+  },
+  "bundle": {
+    "lazyLoad": false
+  },
+  "relatedTools": [
+    "utm-builder",
+    "hashtag-generator",
+    "qr-generator"
+  ]
+}

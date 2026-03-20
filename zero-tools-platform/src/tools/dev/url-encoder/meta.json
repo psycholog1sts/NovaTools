@@ -1,0 +1,41 @@
+{
+  "id": "url-encoder",
+  "name": "URL Encoder/Decoder",
+  "nameEn": "URL Encoder/Decoder",
+  "category": "dev",
+  "tier": 1,
+  "cpc": {
+    "tr": 0.4,
+    "us": 0.8
+  },
+  "keywords": {
+    "tr": ["url encoder", "url decoder", "url kodlama", "percent encoding"],
+    "en": ["url encoder", "url decoder", "percent encoding", "url escape"]
+  },
+  "description": {
+    "tr": "URL'leri ve URL bileşenlerini encode/decode edin. Tam URL ve parça modu.",
+    "en": "Encode and decode URLs and URL components. Full URL or component mode."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "DeveloperApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.3
+    }
+  },
+  "bundle": {
+    "lazyLoad": false
+  },
+  "relatedTools": [
+    "base64-converter",
+    "json-validator"
+  ]
+}

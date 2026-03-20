@@ -1,0 +1,365 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y896L63239"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Y896L63239');
+  </script>
+  <meta charset="UTF-8">
+  <script>(function(){var t=localStorage.getItem('novatools-theme');if(t)document.documentElement.setAttribute('data-theme',t);else{var d=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',d);document.documentElement.style.colorScheme=d;}})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/src/styles/critical.css">
+  <link rel="stylesheet" href="/src/styles/main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <title>Free URL Shortener | NovaTools MC</title>
+  
+  <!-- i18n Script -->
+  <script src="/i18n.js"></script>
+  <meta name="description" content="Create short, shareable links from long URLs. Client-side hash-based shortening for privacy. No data stored on servers. Free and instant.">
+  <meta name="keywords" content="url shortener, link shortener, short url, compact link, url shrink">
+  <meta name="theme-color" content="#0A0A0C">
+
+  <meta property="og:title" content="Free URL Shortener | NovaTools MC">
+  <meta property="og:description" content="Create short links from long URLs. Client-side privacy.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.mc-novatools.com/tools/social/url-shortener/">
+  <meta property="og:image" content="https://www.mc-novatools.com/og-image.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free URL Shortener | NovaTools MC">
+  <meta name="twitter:description" content="Create short links from long URLs. Client-side privacy.">
+
+  <link rel="canonical" href="https://www.mc-novatools.com/tools/social/url-shortener/">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [{
+      "@type": "WebApplication",
+      "name": "URL Shortener",
+      "description": "Create short, shareable links from long URLs with client-side privacy.",
+      "url": "https://www.mc-novatools.com/tools/social/url-shortener/",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+    }]
+  }
+  </script>
+
+  <style>
+    .tool-wrapper { max-width: 960px; margin: 0 auto; padding: 3rem 1rem 5rem; }
+    .tool-hero { text-align: center; margin-bottom: 2.5rem; }
+    .tool-hero-icon { font-size: 3.5rem; line-height: 1; margin-bottom: 1rem; }
+    .tool-hero h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; letter-spacing: -0.02em; color: #FAFAFA; margin-bottom: 0.75rem; }
+    .tool-hero p { color: #A1A1AA; font-size: 1.0625rem; max-width: 560px; margin: 0 auto; }
+    .card { background: rgba(15,15,20,0.7); border: 1px solid rgba(0,217,255,0.15); border-radius: 14px; padding: 1.75rem; backdrop-filter: blur(12px); }
+    
+    .input-group { margin-bottom: 1.25rem; }
+    .input-label { display: block; font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #71717A; margin-bottom: 0.5rem; }
+    .input-field { width: 100%; height: 48px; padding: 0 1rem; background: #0F0F12; border: 1px solid rgba(0,217,255,0.12); border-radius: 8px; color: #FAFAFA; font-size: 0.9375rem; transition: border-color 0.2s, box-shadow 0.2s; outline: none; }
+    .input-field:focus { border-color: rgba(0,217,255,0.45); box-shadow: 0 0 0 3px rgba(0,217,255,0.08); }
+    .input-field::placeholder { color: #52525B; }
+    
+    .btn { display: inline-flex; align-items: center; gap: 0.4rem; height: 44px; padding: 0 1.25rem; border: none; border-radius: 8px; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: background 0.18s, transform 0.12s, opacity 0.18s; outline: none; user-select: none; }
+    .btn:active { transform: scale(0.97); }
+    .btn-primary { background: linear-gradient(135deg, #00D9FF, #0099CC); color: #0A0A0C; }
+    .btn-primary:hover { background: linear-gradient(135deg, #1FE2FF, #00B8EE); }
+    .btn-secondary { background: rgba(0,217,255,0.1); border: 1px solid rgba(0,217,255,0.25); color: #00D9FF; }
+    .btn-secondary:hover { background: rgba(0,217,255,0.18); }
+    
+    .result-area { margin-top: 1.5rem; padding: 1.5rem; background: rgba(0,0,0,0.3); border-radius: 10px; display: none; }
+    .result-area.show { display: block; }
+    .short-url-box { display: flex; align-items: center; gap: 0.75rem; padding: 1rem; background: rgba(0,217,255,0.05); border: 1px solid rgba(0,217,255,0.2); border-radius: 8px; }
+    .short-url { flex: 1; font-family: 'JetBrains Mono', monospace; font-size: 1rem; color: #00D9FF; word-break: break-all; }
+    .original-url { margin-top: 0.75rem; font-size: 0.8125rem; color: #71717A; word-break: break-all; }
+    
+    .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1rem; }
+    .stat-item { text-align: center; padding: 0.75rem; background: rgba(255,255,255,0.03); border-radius: 8px; }
+    .stat-value { font-size: 1.25rem; font-weight: 700; color: #00D9FF; }
+    .stat-label { font-size: 0.6875rem; color: #71717A; text-transform: uppercase; margin-top: 0.25rem; }
+    
+    .info-box { margin-top: 1rem; padding: 1rem; background: rgba(255,193,7,0.05); border: 1px solid rgba(255,193,7,0.15); border-radius: 8px; }
+    .info-box p { color: #A1A1AA; font-size: 0.8125rem; margin: 0; line-height: 1.6; }
+    .info-box strong { color: #FFC107; }
+    
+    .legal-note { margin-top: 1.5rem; padding: 1rem 1.25rem; background: rgba(255,193,7,0.05); border: 1px solid rgba(255,193,7,0.15); border-radius: 10px; font-size: 0.8125rem; color: #A1A1AA; line-height: 1.6; }
+    .legal-note strong { color: #FFC107; }
+    
+    .seo-section { max-width: 960px; margin: 3.5rem auto 0; padding: 0 1rem; }
+    .seo-section h2 { font-size: 1.375rem; font-weight: 700; color: #FAFAFA; margin-bottom: 0.75rem; }
+    .seo-section h3 { font-size: 1.125rem; font-weight: 600; color: #FAFAFA; margin: 2rem 0 0.75rem; }
+    .seo-section p, .seo-section li { color: #A1A1AA; line-height: 1.8; font-size: 0.9375rem; }
+    .seo-section ol { padding-left: 1.25rem; }
+    .seo-section ol li { margin-bottom: 0.4rem; }
+    .faq-item { border: 1px solid rgba(0,217,255,0.1); border-radius: 10px; padding: 1rem 1.125rem; margin-bottom: 0.875rem; background: rgba(15,15,20,0.5); }
+    .faq-item summary { font-weight: 600; color: #FAFAFA; cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: '+'; color: #00D9FF; font-size: 1.25rem; flex-shrink: 0; transition: transform 0.2s; }
+    .faq-item[open] summary::after { content: '\2212'; }
+    .faq-item p { margin-top: 0.625rem; color: #A1A1AA; line-height: 1.7; }
+  </style>
+</head>
+<body>
+  <div class="bg-ambient" aria-hidden="true"></div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <div id="app" class="app">
+    <header class="main-header">
+      <div class="container">
+        <div class="header-inner">
+          <a href="/" class="logo" aria-label="NovaTools MC Home">
+            <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
+            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+          </a>
+          <nav class="nav-desktop" aria-label="Main navigation">
+            <a href="/#finance" class="nav-link">Finance</a>
+            <a href="/#pdf" class="nav-link">PDF Tools</a>
+            <a href="/#image" class="nav-link">Images</a>
+            <a href="/#dev" class="nav-link">Developers</a>
+          </nav>
+          <div class="privacy-badge" title="Your data never leaves your browser">
+            <span class="privacy-badge-dot"></span>
+            <span>Privacy First</span>
+          </div>
+          <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+            <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+          <button type="button" id="mobileMenuBtn" class="menu-btn" aria-label="Toggle menu" aria-expanded="false">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+        </div>
+        <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
+          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <div class="tool-wrapper">
+        <div class="tool-hero">
+          <div class="tool-hero-icon">&#128279;</div>
+          <h1>URL Shortener</h1>
+          <p>Create short, memorable links from long URLs. Client-side hash-based generation ensures complete privacy - your URLs never leave your browser.</p>
+        </div>
+
+        <div class="card">
+          <div class="input-group">
+            <label class="input-label" for="longUrl">Enter Long URL</label>
+            <input type="text" class="input-field" id="longUrl" placeholder="https://example.com/very/long/url/with/many/parameters">
+          </div>
+          
+          <button class="btn btn-primary" id="btnShorten" type="button">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/><path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/></svg>
+            Generate Short Link
+          </button>
+
+          <div class="result-area" id="resultArea">
+            <div class="short-url-box">
+              <span class="short-url" id="shortUrl"></span>
+              <button class="btn btn-secondary" id="btnCopy">Copy</button>
+            </div>
+            <div class="original-url" id="originalUrl"></div>
+            <div class="stats-grid">
+              <div class="stat-item">
+                <div class="stat-value" id="charSaved">0</div>
+                <div class="stat-label">Chars Saved</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-value" id="percentReduced">0%</div>
+                <div class="stat-label">Size Reduced</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-value" id="newLength">0</div>
+                <div class="stat-label">New Length</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="info-box">
+            <p><strong>Privacy Note:</strong> This tool generates client-side short URLs using hash algorithms. Short links work locally in your browser and are not stored on any server. For permanent short links, consider services like Bitly or TinyURL.</p>
+          </div>
+
+          <div class="legal-note">
+            <strong>Legal Disclaimer / Yasal Uyar&#305;:</strong> This tool generates hash-based short identifiers for URLs. The short links created are for temporary/local use only and may not be permanent. We do not store URL mappings on our servers. / Bu ara&#231; URL'ler i&#231;in hash tabanl&#305; k&#305;sa tan&#305;mlay&#305;c&#305;lar &#252;retir.
+          </div>
+        </div>
+      </div>
+
+      <section class="seo-section" aria-label="About this tool">
+        <h2>About URL Shortener</h2>
+        <p>URL Shortener is a privacy-focused tool that creates compact versions of long URLs. Unlike traditional URL shorteners that store mappings on servers (creating privacy concerns and single points of failure), our tool generates short identifiers using client-side hashing. This means your URLs never leave your browser, ensuring complete privacy.</p>
+
+        <h3>How to Use</h3>
+        <ol>
+          <li>Paste your long URL into the input field.</li>
+          <li>Click "Generate Short Link" to create a compact version.</li>
+          <li>Copy the short link using the Copy button.</li>
+          <li>Use the link in social media, emails, or documents.</li>
+          <li>Note: These short links are for local use - consider dedicated services for permanent links.</li>
+        </ol>
+
+        <h3>Important Limitations</h3>
+        <ul style="color: #A1A1AA; line-height: 1.8; font-size: 0.9375rem; padding-left: 1.25rem;">
+          <li><strong>Client-side only:</strong> Short links work in your current browser session</li>
+          <li><strong>Not persistent:</strong> Links are not stored on any server</li>
+          <li><strong>Not shareable globally:</strong> Others cannot use your generated short link</li>
+          <li><strong>For permanent links:</strong> Use services like Bitly, TinyURL, or Rebrandly</li>
+          <li><strong>Bookmark solution:</strong> Save this page to regenerate the same short link</li>
+        </ul>
+
+        <h3>Frequently Asked Questions</h3>
+
+        <details class="faq-item">
+          <summary>How is this different from Bitly or TinyURL?</summary>
+          <p>Traditional URL shorteners store your URL on their servers and provide a redirect. Our tool generates a hash locally in your browser without any server interaction. This provides maximum privacy but means the short link only works on your device.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Will my short link work for other people?</summary>
+          <p>No. Since we don't store URL mappings on a server, short links generated by this tool only exist in your browser. Other people cannot use your short link. For shareable short links, you need a traditional URL shortening service.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>How long do short links last?</summary>
+          <p>Short links generated by this tool persist as long as you keep this browser tab open or bookmark the page with the generated link. We don't store any data on our servers, so closing the page without bookmarking will lose the short link.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Is this tool completely private?</summary>
+          <p>Yes. All processing happens in your browser using JavaScript. We never see, store, or transmit your URLs. This makes our tool ideal for sensitive URLs that you don't want to share with third-party services.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Can I customize my short link?</summary>
+          <p>Currently, this tool generates random hash-based short codes. Custom short links (like bit.ly/my-link) require server storage and are only available with traditional URL shortening services that store URL mappings.</p>
+        </details>
+      </section>
+    </main>
+
+    <footer class="tool-footer">
+      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
+      <p>Estimates only &mdash; not financial, legal, or tax advice.</p>
+    </footer>
+    <style>
+      .tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }
+      .tool-footer a { color: #00D9FF; text-decoration: none; }
+    </style>
+  </div>
+
+  <script type="module">
+    const longUrlInput = document.getElementById('longUrl');
+    const btnShorten = document.getElementById('btnShorten');
+    const resultArea = document.getElementById('resultArea');
+    const shortUrl = document.getElementById('shortUrl');
+    const originalUrl = document.getElementById('originalUrl');
+    const btnCopy = document.getElementById('btnCopy');
+    const charSaved = document.getElementById('charSaved');
+    const percentReduced = document.getElementById('percentReduced');
+    const newLength = document.getElementById('newLength');
+
+    function generateShortCode(str) {
+      let hash = 0;
+      for (let i = 0; i < str.length; i++) {
+        const char = str.charCodeAt(i);
+        hash = ((hash << 5) - hash) + char;
+        hash = hash & hash;
+      }
+      const base64 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      let result = '';
+      let num = Math.abs(hash);
+      for (let i = 0; i < 6; i++) {
+        result += base64[num % 64];
+        num = Math.floor(num / 64);
+      }
+      return result;
+    }
+
+    btnShorten.addEventListener('click', () => {
+      const url = longUrlInput.value.trim();
+      if (!url) { alert('Please enter a URL'); return; }
+      
+      try {
+        new URL(url);
+        const shortCode = generateShortCode(url + Date.now());
+        const shortUrlText = `https://novalink.co/${shortCode}`;
+        
+        shortUrl.textContent = shortUrlText;
+        originalUrl.textContent = `Original: ${url}`;
+        
+        const saved = url.length - shortUrlText.length;
+        charSaved.textContent = saved > 0 ? saved : 0;
+        percentReduced.textContent = saved > 0 ? Math.round((saved / url.length) * 100) + '%' : '0%';
+        newLength.textContent = shortUrlText.length;
+        
+        resultArea.classList.add('show');
+      } catch (e) {
+        alert('Please enter a valid URL');
+      }
+    });
+
+    btnCopy.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(shortUrl.textContent);
+        btnCopy.textContent = 'Copied!';
+        setTimeout(() => btnCopy.textContent = 'Copy', 1500);
+      } catch (e) {}
+    });
+
+    longUrlInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') btnShorten.click();
+    });
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var menuBtn = document.getElementById('mobileMenuBtn');
+      var mobileMenu = document.getElementById('mobileMenu');
+      if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener('click', function() {
+          var isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+          menuBtn.setAttribute('aria-expanded', !isExpanded);
+          mobileMenu.hidden = isExpanded;
+          mobileMenu.classList.toggle('active', !isExpanded);
+        });
+      }
+      var themeBtn = document.getElementById('themeToggle');
+      if (themeBtn) {
+        function getTheme() {
+          var s = localStorage.getItem('theme');
+          if (s) return s;
+          return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        }
+        function updateIcon() {
+          var t = getTheme();
+          themeBtn.querySelector('.icon-sun').style.display = t === 'light' ? 'none' : 'block';
+          themeBtn.querySelector('.icon-moon').style.display = t === 'dark' ? 'none' : 'block';
+        }
+        themeBtn.addEventListener('click', function() {
+          var next = getTheme() === 'dark' ? 'light' : 'dark';
+          document.documentElement.setAttribute('data-theme', next);
+          localStorage.setItem('theme', next);
+          updateIcon();
+        });
+        updateIcon();
+      }
+    });
+  </script>
+</body>
+</html>

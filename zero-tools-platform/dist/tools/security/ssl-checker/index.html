@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y896L63239"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Y896L63239');
+  </script>
+  <meta charset="UTF-8">
+  <script>(function(){var t=localStorage.getItem('novatools-theme');if(t)document.documentElement.setAttribute('data-theme',t);else{var d=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',d);document.documentElement.style.colorScheme=d;}})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <title>Free SSL Checker - Certificate Verification | NovaTools MC</title>
+  
+  <!-- i18n Script -->
+  <script src="/i18n.js"></script>
+  <meta name="description" content="Check SSL certificate information for any domain. View TLS version, certificate details, and security recommendations. Educational SSL verification tool.">
+  <meta name="keywords" content="ssl checker, certificate check, https checker, tls check, ssl verification">
+  <meta name="theme-color" content="#0A0A0C">
+
+  <meta property="og:title" content="Free SSL Checker - Certificate Verification | NovaTools MC">
+  <meta property="og:description" content="Check SSL certificate information for any domain. TLS version and security recommendations.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.mc-novatools.com/tools/security/ssl-checker/">
+  <meta property="og:image" content="https://www.mc-novatools.com/og-image.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free SSL Checker | NovaTools MC">
+  <meta name="twitter:description" content="Check SSL certificate information for any domain. Educational tool.">
+
+  <link rel="canonical" href="https://www.mc-novatools.com/tools/security/ssl-checker/">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [{
+      "@type": "WebApplication",
+      "name": "SSL Checker",
+      "description": "Check SSL certificate information for any domain. View TLS version, certificate details, and security recommendations.",
+      "url": "https://www.mc-novatools.com/tools/security/ssl-checker/",
+      "applicationCategory": "SecurityApplication",
+      "operatingSystem": "Any",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+    }]
+  }
+  </script>
+
+  <style>.tool-wrapper{margin:0 auto;max-width:960px;padding:3rem 1rem 5rem}.tool-hero{margin-bottom:2.5rem;text-align:center}.tool-hero-icon{font-size:3.5rem;line-height:1;margin-bottom:1rem}.tool-hero h1{color:#fafafa;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;letter-spacing:-.02em;margin-bottom:.75rem}.tool-hero p{color:#a1a1aa;font-size:1.0625rem;margin:0 auto;max-width:560px}.card{backdrop-filter:blur(12px);background:rgba(15,15,20,.7);border:1px solid rgba(0,217,255,.15);border-radius:14px;padding:1.75rem}.input-section{display:flex;gap:.75rem;margin-bottom:1.5rem}.domain-input{background:#0f0f12;border:1px solid rgba(0,217,255,.12);border-radius:10px;color:#fafafa;flex:1;font-family:JetBrains Mono,monospace;font-size:.9375rem;outline:none;padding:.875rem 1.125rem;transition:border-color .2s,box-shadow .2s}.domain-input:focus{border-color:rgba(0,217,255,.45);box-shadow:0 0 0 3px rgba(0,217,255,.08)}.domain-input::-moz-placeholder{color:#52525b}.domain-input::placeholder{color:#52525b}.btn{align-items:center;border:none;border-radius:8px;cursor:pointer;display:inline-flex;font-size:.95rem;font-weight:600;gap:.4rem;height:48px;outline:none;padding:0 1.5rem;transition:background .18s,transform .12s,opacity .18s;-webkit-user-select:none;-moz-user-select:none;user-select:none;white-space:nowrap}.btn:active{transform:scale(.97)}.btn-primary{background:linear-gradient(135deg,#00d9ff,#09c);color:#0a0a0c}.btn-primary:hover{background:linear-gradient(135deg,#1fe2ff,#00b8ee)}.btn-secondary{background:rgba(0,217,255,.1);border:1px solid rgba(0,217,255,.25);color:#00d9ff}.btn-secondary:hover{background:rgba(0,217,255,.18)}.warning-banner{align-items:flex-start;background:rgba(255,193,7,.1);border:1px solid rgba(255,193,7,.3);border-radius:10px;display:flex;gap:.75rem;margin-bottom:1.5rem;padding:1rem}.warning-icon{color:#ffc107;flex-shrink:0;font-size:1.25rem}.warning-title{color:#ffc107;font-size:.875rem;font-weight:600;margin-bottom:.25rem}.warning-text{color:#a1a1aa;font-size:.8125rem;line-height:1.6}.results-grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));margin-bottom:1.5rem}.result-card{background:hsla(0,0%,100%,.03);border:1px solid hsla(0,0%,100%,.08);border-radius:10px;padding:1.25rem}.result-card.status-good{background:rgba(0,255,136,.05);border-color:rgba(0,255,136,.3)}.result-card.status-warning{background:rgba(255,193,7,.05);border-color:rgba(255,193,7,.3)}.result-card.status-error{background:rgba(255,85,85,.05);border-color:rgba(255,85,85,.3)}.result-header{align-items:center;display:flex;gap:.625rem;margin-bottom:.75rem}.result-icon{font-size:1.5rem}.result-title{color:#fafafa;font-size:.875rem;font-weight:600}.result-value{color:#00d9ff;font-family:JetBrains Mono,monospace;font-size:1.125rem;font-weight:600;margin-bottom:.5rem}.result-value.good{color:#0f8}.result-value.warning{color:#ffc107}.result-value.error{color:#f55}.result-detail{color:#a1a1aa;font-size:.8125rem;line-height:1.5}.cert-simulator{background:#08080a;border:1px solid rgba(0,217,255,.1);border-radius:10px;margin-bottom:1.5rem;padding:1.25rem}.cert-header{align-items:center;border-bottom:1px solid hsla(0,0%,100%,.1);display:flex;gap:.625rem;margin-bottom:1rem;padding-bottom:.75rem}.cert-title{color:#fafafa;font-size:1rem;font-weight:600}.cert-field{border-bottom:1px solid hsla(0,0%,100%,.05);display:flex;justify-content:space-between;padding:.625rem 0}.cert-field:last-child{border-bottom:none}.cert-label{color:#71717a;font-size:.8125rem}.cert-value{color:#fafafa;font-family:JetBrains Mono,monospace;font-size:.8125rem}.security-tips{background:rgba(0,255,136,.05);border:1px solid rgba(0,255,136,.2);border-radius:10px;margin-bottom:1.5rem;padding:1.25rem}.tips-header{align-items:center;color:#0f8;display:flex;font-size:.9375rem;font-weight:600;gap:.5rem;margin-bottom:.875rem}.tips-list{list-style:none;margin:0;padding:0}.tips-list li{align-items:flex-start;color:#a1a1aa;display:flex;font-size:.8125rem;gap:.5rem;line-height:1.5;padding:.5rem 0}.tips-list li:before{color:#0f8;content:"✓";font-weight:600}.tls-versions{display:grid;gap:.75rem;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));margin-bottom:1.5rem}.tls-version{border-radius:8px;padding:.875rem;text-align:center}.tls-version.secure{background:rgba(0,255,136,.1);border:1px solid rgba(0,255,136,.3)}.tls-version.warning{background:rgba(255,193,7,.1);border:1px solid rgba(255,193,7,.3)}.tls-version.insecure{background:rgba(255,85,85,.1);border:1px solid rgba(255,85,85,.3)}.tls-name{font-size:.875rem;font-weight:600;margin-bottom:.25rem}.tls-version.secure .tls-name{color:#0f8}.tls-version.warning .tls-name{color:#ffc107}.tls-version.insecure .tls-name{color:#f55}.tls-status{color:#a1a1aa;font-size:.75rem}.disclaimer{align-items:flex-start;background:rgba(0,217,255,.05);border:1px solid rgba(0,217,255,.2);border-radius:8px;display:flex;gap:.75rem;padding:1rem}.disclaimer-icon{color:#00d9ff;flex-shrink:0;font-size:1.125rem}.disclaimer-text{color:#a1a1aa;font-size:.8125rem;line-height:1.6}.ad-row{display:grid;gap:1rem;grid-template-columns:repeat(3,1fr);margin-bottom:1.5rem}.ad-box{align-items:center;background:hsla(0,0%,100%,.03);border:1px solid hsla(0,0%,100%,.1);border-radius:8px;color:#52525b;display:flex;font-size:.75rem;justify-content:center;min-height:90px}.seo-section{margin:3.5rem auto 0;max-width:960px;padding:0 1rem}.seo-section h2{color:#fafafa;font-size:1.375rem;font-weight:700;margin-bottom:.75rem}.seo-section h3{color:#fafafa;font-size:1.125rem;font-weight:600;margin:2rem 0 .75rem}.seo-section li,.seo-section p{color:#a1a1aa;font-size:.9375rem;line-height:1.8}.seo-section ol{padding-left:1.25rem}.seo-section ol li{margin-bottom:.4rem}.faq-item{background:rgba(15,15,20,.5);border:1px solid rgba(0,217,255,.1);border-radius:10px;margin-bottom:.875rem;padding:1rem 1.125rem}.faq-item summary{align-items:center;color:#fafafa;cursor:pointer;display:flex;font-weight:600;gap:1rem;justify-content:space-between;list-style:none}.faq-item summary::-webkit-details-marker{display:none}.faq-item summary:after{color:#00d9ff;content:"+";flex-shrink:0;font-size:1.25rem;transition:transform .2s}.faq-item[open] summary:after{content:"\2212"}.faq-item p{color:#a1a1aa;line-height:1.7;margin-top:.625rem}@media (max-width:768px){.ad-row{grid-template-columns:1fr}.input-section{flex-direction:column}.results-grid{grid-template-columns:1fr}}</style>
+  <script type="module" crossorigin src="/js/tools/security/ssl-checker-CZ9A44wl.js"></script>
+  <link rel="modulepreload" crossorigin href="/js/modulepreload-polyfill-YP0FEG5d.js">
+  <link rel="stylesheet" crossorigin href="/css/critical-D6EXev1O.css">
+  <link rel="stylesheet" crossorigin href="/css/main-C-2uV3x-.css">
+<link rel="manifest" href="/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/registerSW.js"></script></head>
+<body>
+  <div class="bg-ambient" aria-hidden="true"></div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <div id="app" class="app">
+    <header class="main-header">
+      <div class="container">
+        <div class="header-inner">
+          <a href="/" class="logo" aria-label="NovaTools MC Home">
+            <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
+            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+          </a>
+          <nav class="nav-desktop" aria-label="Main navigation">
+            <a href="/#finance" class="nav-link">Finance</a>
+            <a href="/#pdf" class="nav-link">PDF Tools</a>
+            <a href="/#image" class="nav-link">Images</a>
+            <a href="/#dev" class="nav-link">Developers</a>
+          </nav>
+          <div class="privacy-badge" title="Your data never leaves your browser">
+            <span class="privacy-badge-dot"></span>
+            <span>Privacy First</span>
+          </div>
+          <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+            <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+          <button type="button" id="mobileMenuBtn" class="menu-btn" aria-label="Toggle menu" aria-expanded="false">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+        </div>
+        <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
+          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <div class="tool-wrapper">
+        <div class="tool-hero">
+          <div class="tool-hero-icon">&#128272;</div>
+          <h1>SSL Checker</h1>
+          <p>Check SSL certificate information for any domain. View TLS version info, certificate details, and security recommendations. Educational tool for understanding SSL/TLS.</p>
+        </div>
+
+        <!-- Ad Row -->
+        <div class="ad-row">
+          <div class="ad-box">Advertisement</div>
+          <div class="ad-box">Advertisement</div>
+          <div class="ad-box">Advertisement</div>
+        </div>
+
+        <div class="card">
+          <div class="warning-banner">
+            <span class="warning-icon">&#9888;</span>
+            <div>
+              <div class="warning-title">Browser Limitations Notice</div>
+              <div class="warning-text">
+                Due to browser security restrictions, this tool provides educational information about SSL/TLS and simulates certificate checks based on what can be detected client-side. 
+                For comprehensive SSL testing, use server-side tools like SSL Labs' SSL Test or OpenSSL commands.
+              </div>
+            </div>
+          </div>
+
+          <div class="input-section">
+            <input type="text" class="domain-input" id="domainInput" placeholder="example.com (enter domain for simulation)" spellcheck="false">
+            <button class="btn btn-primary" id="btnCheck" type="button">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M10.854 5.146a.5.5 0 010 .708l-3 3a.5.5 0 01-.708 0l-1.5-1.5a.5.5 0 01.708-.708L7.5 7.793l2.646-2.647a.5.5 0 01.708 0z"/><path d="M8 15A7 7 0 118 1a7 7 0 010 14zm0 1A8 8 0 108 0a8 8 0 000 16z"/></svg>
+              Check SSL
+            </button>
+          </div>
+
+          <div class="results-grid" id="resultsGrid">
+            <div class="result-card">
+              <div class="result-header">
+                <span class="result-icon">&#128274;</span>
+                <span class="result-title">HTTPS Status</span>
+              </div>
+              <div class="result-value" id="httpsStatus">Enter a domain</div>
+              <div class="result-detail">Check if the site supports HTTPS</div>
+            </div>
+            <div class="result-card">
+              <div class="result-header">
+                <span class="result-icon">&#128273;</span>
+                <span class="result-title">TLS Version</span>
+              </div>
+              <div class="result-value" id="tlsVersion">-</div>
+              <div class="result-detail">Transport Layer Security version</div>
+            </div>
+            <div class="result-card">
+              <div class="result-header">
+                <span class="result-icon">&#128221;</span>
+                <span class="result-title">Certificate</span>
+              </div>
+              <div class="result-value" id="certStatus">-</div>
+              <div class="result-detail">Certificate validity status</div>
+            </div>
+            <div class="result-card">
+              <div class="result-header">
+                <span class="result-icon">&#128301;</span>
+                <span class="result-title">HSTS</span>
+              </div>
+              <div class="result-value" id="hstsStatus">-</div>
+              <div class="result-detail">HTTP Strict Transport Security</div>
+            </div>
+          </div>
+
+          <div class="cert-simulator">
+            <div class="cert-header">
+              <span class="result-icon">&#128196;</span>
+              <span class="cert-title">Certificate Details (Simulated)</span>
+            </div>
+            <div class="cert-field">
+              <span class="cert-label">Subject</span>
+              <span class="cert-value" id="certSubject">-</span>
+            </div>
+            <div class="cert-field">
+              <span class="cert-label">Issuer</span>
+              <span class="cert-value" id="certIssuer">-</span>
+            </div>
+            <div class="cert-field">
+              <span class="cert-label">Valid From</span>
+              <span class="cert-value" id="certFrom">-</span>
+            </div>
+            <div class="cert-field">
+              <span class="cert-label">Valid Until</span>
+              <span class="cert-value" id="certUntil">-</span>
+            </div>
+            <div class="cert-field">
+              <span class="cert-label">Serial Number</span>
+              <span class="cert-value" id="certSerial">-</span>
+            </div>
+            <div class="cert-field">
+              <span class="cert-label">Signature Algorithm</span>
+              <span class="cert-value" id="certAlgorithm">SHA-256 with RSA</span>
+            </div>
+          </div>
+
+          <div class="tls-versions">
+            <div class="tls-version insecure">
+              <div class="tls-name">SSL 3.0</div>
+              <div class="tls-status">Deprecated</div>
+            </div>
+            <div class="tls-version insecure">
+              <div class="tls-name">TLS 1.0</div>
+              <div class="tls-status">Deprecated</div>
+            </div>
+            <div class="tls-version warning">
+              <div class="tls-name">TLS 1.1</div>
+              <div class="tls-status">Legacy</div>
+            </div>
+            <div class="tls-version secure">
+              <div class="tls-name">TLS 1.2</div>
+              <div class="tls-status">Secure</div>
+            </div>
+            <div class="tls-version secure">
+              <div class="tls-name">TLS 1.3</div>
+              <div class="tls-status">Recommended</div>
+            </div>
+          </div>
+
+          <div class="security-tips">
+            <div class="tips-header">
+              <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><path d="M8 15A7 7 0 118 1a7 7 0 010 14zm0 1A8 8 0 108 0a8 8 0 000 16z"/><path d="M8 4a.5.5 0 00-.5.5v3h-3a.5.5 0 000 1h3v3a.5.5 0 001 0v-3h3a.5.5 0 000-1h-3v-3A.5.5 0 008 4z"/></svg>
+              SSL/TLS Security Best Practices
+            </div>
+            <ul class="tips-list">
+              <li>Always use TLS 1.2 or higher - disable older versions</li>
+              <li>Enable HSTS (HTTP Strict Transport Security) to force HTTPS</li>
+              <li>Use certificates with at least 2048-bit RSA keys</li>
+              <li>Keep certificates renewed before expiration</li>
+              <li>Implement OCSP Stapling for better performance</li>
+              <li>Use strong cipher suites and disable weak ones</li>
+              <li>Enable certificate transparency monitoring</li>
+            </ul>
+          </div>
+
+          <div class="disclaimer">
+            <span class="disclaimer-icon">&#128712;</span>
+            <span class="disclaimer-text"><strong>Important:</strong> This tool provides educational information about SSL/TLS based on browser capabilities and simulated data. For comprehensive SSL testing including detailed cipher suite analysis, vulnerability scanning, and complete certificate chain validation, use server-side tools like Qualys SSL Labs or test from a server environment.</span>
+          </div>
+        </div>
+      </div>
+
+      <section class="seo-section" aria-label="About this tool">
+        <h2>About SSL Checker</h2>
+        <p>
+          This educational tool helps you understand SSL/TLS certificates and HTTPS configuration. SSL (Secure Sockets Layer) and its successor TLS (Transport Layer Security) 
+          are cryptographic protocols that provide secure communication over a computer network. They are essential for protecting sensitive data transmitted between web browsers and servers.
+        </p>
+
+        <h3>How to Use</h3>
+        <ol>
+          <li>Enter a domain name in the input field (e.g., "example.com").</li>
+          <li>Click <strong>Check SSL</strong> to simulate an SSL check.</li>
+          <li>Review the HTTPS status, TLS version, and certificate information.</li>
+          <li>Check the <strong>Certificate Details</strong> section for simulated certificate data.</li>
+          <li>Review the <strong>TLS Versions</strong> to understand which versions are secure.</li>
+          <li>Follow the <strong>Security Best Practices</strong> recommendations.</li>
+        </ol>
+
+        <h3>Frequently Asked Questions</h3>
+
+        <details class="faq-item">
+          <summary>What is the difference between SSL and TLS?</summary>
+          <p>SSL (Secure Sockets Layer) is the older protocol, with versions 1.0, 2.0, and 3.0. TLS (Transport Layer Security) is the newer, more secure successor with versions 1.0, 1.1, 1.2, and 1.3. TLS 1.3 is the current recommended version. The terms are often used interchangeably, but modern systems use TLS.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Why can't this tool perform full SSL checks?</summary>
+          <p>Browsers restrict JavaScript from directly accessing low-level SSL certificate information for security reasons. Full SSL testing requires server-side tools that can establish raw TLS connections and analyze certificate chains, cipher suites, and protocol versions at the network level.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>What is HSTS and why is it important?</summary>
+          <p>HSTS (HTTP Strict Transport Security) is a security feature that tells browsers to always use HTTPS connections for a domain, preventing downgrade attacks and cookie hijacking. Once a browser receives an HSTS header, it will automatically upgrade HTTP requests to HTTPS for the specified duration.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>How often should SSL certificates be renewed?</summary>
+          <p>SSL certificates typically have validity periods ranging from 3 months to 2 years. Let's Encrypt certificates are valid for 90 days. It's recommended to automate renewal and monitor certificate expiration. Most CAs send renewal reminders 30, 14, and 7 days before expiration.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>What makes a certificate trustworthy?</summary>
+          <p>A certificate is trustworthy when it's issued by a trusted Certificate Authority (CA) that's included in major browser and operating system trust stores, hasn't expired, hasn't been revoked, is used on the correct domain, and has a valid certificate chain to a root CA.</p>
+        </details>
+      </section>
+    </main>
+
+    <footer class="tool-footer">
+      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
+      <p>Estimates only &mdash; not financial, legal, or tax advice.</p>
+    </footer>
+    <style>.tool-footer{border-top:1px solid var(--border-default);color:#718096;font-size:.8rem;line-height:1.8;margin-top:3rem;padding:1.5rem 1rem;text-align:center}.tool-footer a{color:#00d9ff;text-decoration:none}</style>
+  </div>
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var menuBtn = document.getElementById('mobileMenuBtn');
+      var mobileMenu = document.getElementById('mobileMenu');
+      if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener('click', function() {
+          var isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+          menuBtn.setAttribute('aria-expanded', !isExpanded);
+          mobileMenu.hidden = isExpanded;
+          mobileMenu.classList.toggle('active', !isExpanded);
+        });
+      }
+      var themeBtn = document.getElementById('themeToggle');
+      if (themeBtn) {
+        function getTheme() {
+          var s = localStorage.getItem('theme');
+          if (s) return s;
+          return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        }
+        function updateIcon() {
+          var t = getTheme();
+          themeBtn.querySelector('.icon-sun').style.display = t === 'light' ? 'none' : 'block';
+          themeBtn.querySelector('.icon-moon').style.display = t === 'dark' ? 'none' : 'block';
+        }
+        themeBtn.addEventListener('click', function() {
+          var next = getTheme() === 'dark' ? 'light' : 'dark';
+          document.documentElement.setAttribute('data-theme', next);
+          localStorage.setItem('theme', next);
+          updateIcon();
+        });
+        updateIcon();
+      }
+    });
+  </script>
+</body>
+</html>

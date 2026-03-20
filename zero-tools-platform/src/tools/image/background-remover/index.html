@@ -1,0 +1,506 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y896L63239"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-Y896L63239');
+</script>
+  <meta charset="UTF-8">
+  <script>(function(){var t=localStorage.getItem('novatools-theme');if(t)document.documentElement.setAttribute('data-theme',t);else{var d=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',d);document.documentElement.style.colorScheme=d;}})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/src/styles/critical.css">
+  <link rel="stylesheet" href="/src/styles/main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <title>Background Remover - Remove Image Background Free | NovaTools</title>
+  
+  <!-- i18n Script -->
+  <script src="/i18n.js"></script>
+  <meta name="description" content="Remove background from images automatically. Create transparent backgrounds instantly. Free online background remover tool with preview.">
+  <meta name="keywords" content="remove background, transparent background, image background remover, background eraser">
+  <meta name="theme-color" content="#0A0A0C">
+
+  <meta property="og:title" content="Background Remover - Remove Image Background Free">
+  <meta property="og:description" content="Remove image backgrounds automatically. Create transparent PNGs. Free & private client-side processing.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.mc-novatools.com/tools/image/background-remover/">
+  <meta property="og:image" content="https://www.mc-novatools.com/og-image.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Background Remover | NovaTools MC">
+  <meta name="twitter:description" content="Remove image backgrounds automatically. Create transparent backgrounds. Free & private.">
+
+  <link rel="canonical" href="https://www.mc-novatools.com/tools/image/background-remover/">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [{
+      "@type": "WebApplication",
+      "name": "Background Remover",
+      "description": "Free online tool to remove image backgrounds and create transparent PNG images.",
+      "url": "https://www.mc-novatools.com/tools/image/background-remover/",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "Any",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+    }]
+  }
+  </script>
+  <style>
+    .tool-container { max-width: 900px; margin: 0 auto; padding: 2rem 1rem; }
+    .tool-header { text-align: center; margin-bottom: 2rem; }
+    .tool-header h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .tool-header p { color: var(--text-secondary); }
+    
+    .dropzone { border: 2px dashed var(--border-default); border-radius: 16px; padding: 3rem 2rem; text-align: center; background: var(--surface-default); transition: all 0.3s ease; cursor: pointer; }
+    .dropzone:hover { border-color: var(--border-accent); background: var(--border-default); }
+    .dropzone.drag-active { border-color: var(--accent-primary); background: var(--accent-subtle); transform: scale(1.02); }
+    
+    .editor-section { margin-top: 1.5rem; padding: 1.5rem; background: var(--surface-default); border: 1px solid var(--border-default); border-radius: var(--radius-lg); display: none; }
+    .editor-section.visible { display: block; }
+    
+    .tolerance-slider { width: 100%; margin: 1rem 0; }
+    .tolerance-label { display: flex; justify-content: space-between; font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 0.25rem; }
+    
+    .preview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
+    @media (max-width: 640px) { .preview-grid { grid-template-columns: 1fr; } }
+    
+    .preview-box { padding: 1rem; background: 
+      repeating-conic-gradient(var(--bg-tertiary) 0% 25%, transparent 0% 50%) 50% / 20px 20px;
+      border-radius: var(--radius-md); text-align: center;
+    }
+    .preview-box img, .preview-box canvas { max-width: 100%; max-height: 250px; border-radius: var(--radius-md); }
+    .preview-label { font-size: 0.875rem; color: var(--text-muted); margin-bottom: 0.5rem; }
+    
+    .bg-options { display: flex; gap: 0.5rem; margin: 1rem 0; flex-wrap: wrap; }
+    .bg-option {
+      width: 40px; height: 40px;
+      border: 2px solid var(--border-default);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      position: relative;
+    }
+    .bg-option.active { border-color: var(--accent-primary); }
+    .bg-option.transparent { background: repeating-conic-gradient(#ccc 0% 25%, #fff 0% 50%) 50% / 10px 10px; }
+    .bg-option.white { background: #fff; }
+    .bg-option.black { background: #000; }
+    .bg-option.gray { background: #808080; }
+    .bg-option.red { background: #ef4444; }
+    .bg-option.blue { background: #3b82f6; }
+    
+    .result-section { margin-top: 1.5rem; padding: 2rem; background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(34, 197, 94, 0.05)); border: 1px solid rgba(34, 197, 94, 0.3); border-radius: var(--radius-lg); text-align: center; display: none; }
+    .result-section.visible { display: block; }
+    
+    .download-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; background: linear-gradient(135deg, #22C55E, #16A34A); color: white; font-weight: 600; border-radius: var(--radius-md); text-decoration: none; }
+    .download-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(34, 197, 94, 0.3); }
+    
+    .info-box { padding: 1rem; background: var(--accent-subtle); border: 1px solid var(--accent-primary); border-radius: var(--radius-md); margin-bottom: 1rem; }
+    .info-box p { margin: 0; font-size: 0.875rem; color: var(--text-secondary); }
+    
+    .legal-disclaimer { background: var(--surface-default); border-left: 4px solid var(--warning); padding: 1rem 1.25rem; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin-top: 2rem; font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6; }
+    
+    .how-to-use { margin-top: 3rem; }
+    .how-to-use h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; }
+    .how-to-use ol { padding-left: 1.5rem; color: var(--text-secondary); line-height: 1.8; }
+    .how-to-use li { margin-bottom: 0.5rem; }
+    
+    .faq-section { margin-top: 3rem; }
+    .faq-section h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; }
+    .faq-item { border: 1px solid var(--border-hover); border-radius: var(--radius-md); overflow: hidden; margin-bottom: 0.75rem; }
+    .faq-item summary { padding: 1rem; background: var(--surface-default); cursor: pointer; font-weight: 500; }
+    .faq-item summary:hover { background: var(--border-default); }
+    .faq-item p { padding: 1rem; margin: 0; border-top: 1px solid var(--border-hover); color: var(--text-secondary); }
+    
+    .progress-section { margin-top: 1.5rem; padding: 1.5rem; background: var(--surface-default); border: 1px solid var(--border-default); border-radius: var(--radius-lg); display: none; }
+    .progress-section.visible { display: block; }
+    .progress-bar { height: 8px; background: var(--border-hover); border-radius: 4px; overflow: hidden; margin: 1rem 0; }
+    .progress-fill { height: 100%; background: linear-gradient(90deg, #6366F1, #8B5CF6); border-radius: 4px; transition: width 0.3s ease; }
+    .progress-text { text-align: center; font-size: 0.875rem; color: var(--text-secondary); }
+  </style>
+</head>
+<body>
+  <div class="bg-ambient" aria-hidden="true"></div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+  
+  <div id="app" class="app">
+    <header class="main-header">
+      <div class="container">
+        <div class="header-inner">
+          <a href="/" class="logo" aria-label="NovaTools MC Home">
+            <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
+            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+          </a>
+          <nav class="nav-desktop" aria-label="Main navigation">
+            <a href="/#finance" class="nav-link">Finance</a>
+            <a href="/#pdf" class="nav-link">PDF Tools</a>
+            <a href="/#image" class="nav-link">Images</a>
+            <a href="/#dev" class="nav-link">Developers</a>
+          </nav>
+          <div class="privacy-badge" title="Your data never leaves your browser">
+            <span class="privacy-badge-dot"></span>
+            <span>Privacy First</span>
+          </div>
+          <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+            <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+          <button type="button" id="mobileMenuBtn" class="menu-btn" aria-label="Toggle menu" aria-expanded="false">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+        </div>
+        <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
+          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <div class="tool-container">
+        <div class="tool-header">
+          <h1>🎭 Background Remover</h1>
+          <span class="sr-only">Free background remover - remove image backgrounds automatically and create transparent PNG images. Online background eraser tool with preview.</span>
+          <p>Remove backgrounds from images automatically. Create transparent PNGs for professional-looking results.</p>
+        </div>
+        
+        <div class="info-box">
+          <p>🎭 <strong>Note:</strong> This client-side tool uses color-based edge detection for background removal. For images with clear subject/background contrast, it works effectively. For complex images with similar colors, results may vary. Professional AI-based removal requires server-side processing.</p>
+        </div>
+        
+        <div id="dropzone" class="dropzone">
+          <div style="font-size: 3rem; margin-bottom: 1rem;">🎭</div>
+          <div style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem;">Drop image here or click to browse</div>
+          <div style="font-size: 0.875rem; color: var(--text-muted);">Supports all image formats • Max 10MB • Clear subject works best</div>
+          <input type="file" id="fileInput" accept="image/*" style="display: none;">
+        </div>
+        
+        <div id="editorSection" class="editor-section">
+          <div class="tolerance-label">
+            <span>Edge Tolerance (Sensitivity)</span>
+            <span id="toleranceValue">30</span>
+          </div>
+          <input type="range" id="toleranceSlider" class="tolerance-slider" min="5" max="100" value="30">
+          
+          <div class="preview-grid">
+            <div class="preview-box">
+              <div class="preview-label">Original</div>
+              <img id="originalPreview" src="" alt="Original">
+            </div>
+            <div class="preview-box">
+              <div class="preview-label">Result (Transparent)</div>
+              <canvas id="resultCanvas"></canvas>
+            </div>
+          </div>
+          
+          <label style="font-weight: 600;">Preview Background:</label>
+          <div class="bg-options">
+            <div class="bg-option transparent active" data-bg="transparent" title="Transparent"></div>
+            <div class="bg-option white" data-bg="white" title="White"></div>
+            <div class="bg-option black" data-bg="black" title="Black"></div>
+            <div class="bg-option gray" data-bg="gray" title="Gray"></div>
+            <div class="bg-option red" data-bg="red" title="Red"></div>
+            <div class="bg-option blue" data-bg="blue" title="Blue"></div>
+          </div>
+          
+          <div style="text-align: center; margin-top: 1rem;">
+            <button id="removeBtn" class="btn btn-primary" style="padding: 1rem 2rem;">Remove Background</button>
+          </div>
+        </div>
+        
+        <div id="progressSection" class="progress-section">
+          <div class="progress-text" id="progressText">Processing...</div>
+          <div class="progress-bar">
+            <div id="progressFill" class="progress-fill" style="width: 0%"></div>
+          </div>
+        </div>
+        
+        <div id="resultSection" class="result-section">
+          <div style="font-size: 3rem; margin-bottom: 1rem;">✅</div>
+          <h3 style="margin-bottom: 0.5rem;">Background Removed!</h3>
+          <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Your image with transparent background is ready.</p>
+          <a id="downloadLink" href="#" class="download-btn" download>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+            Download PNG with Transparency
+          </a>
+        </div>
+
+        <div class="legal-disclaimer">
+          <p><strong>Gizlilik ve Güvenlik:</strong> Bu araç kişisel kullanım içindir. Verileriniz işlenmez ve hiçbir sunucuya gönderilmez. Tüm işlemler tarayıcınızda client-side olarak gerçekleştirilir.</p>
+          <p style="margin-top: 0.5rem;"><strong>Sorumluluk Reddi:</strong> Bu araç tahmini değerler sunar, profesyonel görsel işleme hizmeti değildir. Karmaşık görsellerde sonuçlar değişkenlik gösterebilir.</p>
+        </div>
+
+        <section class="how-to-use">
+          <h2>How to Remove Image Background</h2>
+          <ol>
+            <li>Upload your image with a clear subject against a contrasting background.</li>
+            <li>Adjust the Edge Tolerance slider for better edge detection (higher for softer edges).</li>
+            <li>Choose a preview background color to better see the result.</li>
+            <li>Click "Remove Background" to process the image.</li>
+            <li>Preview the result and download your transparent PNG.</li>
+          </ol>
+        </section>
+
+        <section class="faq-section">
+          <h2>Frequently Asked Questions</h2>
+          
+          <details class="faq-item">
+            <summary>How does this background remover work?</summary>
+            <p>This tool uses color analysis and edge detection to identify the subject and remove the background. It works best with images that have clear contrast between the subject and background. It's client-side only, meaning your images never leave your browser.</p>
+          </details>
+          
+          <details class="faq-item">
+            <summary>What types of images work best?</summary>
+            <p>Images with a clear subject against a solid or contrasting background work best. Portraits with plain backgrounds, product photos on white backgrounds, and images with distinct color separation give the best results.</p>
+          </details>
+          
+          <details class="faq-item">
+            <summary>What is Edge Tolerance?</summary>
+            <p>Edge Tolerance controls how aggressively the tool detects edges. Higher values are more lenient with color variations, while lower values require stronger contrast. Adjust this slider if the edges of your subject are being cut off or if background remnants remain.</p>
+          </details>
+          
+          <details class="faq-item">
+            <summary>Is this as good as AI-based tools?</summary>
+            <p>Client-side tools have limitations compared to server-side AI. While effective for many images, complex scenes with similar colors or hair/fur details may not achieve the same precision as professional AI services. For best results, use images with good contrast.</p>
+          </details>
+          
+          <details class="faq-item">
+            <summary>Is my data secure?</summary>
+            <p>Absolutely! All processing happens entirely in your browser. Your images are never uploaded to any server, ensuring complete privacy and security.</p>
+          </details>
+        </section>
+      </div>
+    </main>
+
+    <footer class="tool-footer">
+      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
+      <p>Estimates only &mdash; not professional image processing advice.</p>
+    </footer>
+    <style>
+    .tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }
+    .tool-footer a { color: #00D9FF; text-decoration: none; }
+    </style>
+  </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Theme and menu toggle
+  var menuBtn = document.getElementById('mobileMenuBtn');
+  var mobileMenu = document.getElementById('mobileMenu');
+  if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener('click', function() {
+      var isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+      menuBtn.setAttribute('aria-expanded', !isExpanded);
+      mobileMenu.hidden = isExpanded;
+      mobileMenu.classList.toggle('active', !isExpanded);
+    });
+  }
+  
+  var themeBtn = document.getElementById('themeToggle');
+  if (themeBtn) {
+    function getTheme() {
+      var s = localStorage.getItem('theme');
+      if (s) return s;
+      return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    }
+    function updateIcon() {
+      var t = getTheme();
+      themeBtn.querySelector('.icon-sun').style.display = t === 'light' ? 'none' : 'block';
+      themeBtn.querySelector('.icon-moon').style.display = t === 'dark' ? 'none' : 'block';
+    }
+    themeBtn.addEventListener('click', function() {
+      var next = getTheme() === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      updateIcon();
+    });
+    updateIcon();
+  }
+
+  // Background Remover Logic
+  var dropzone = document.getElementById('dropzone');
+  var fileInput = document.getElementById('fileInput');
+  var editorSection = document.getElementById('editorSection');
+  var originalPreview = document.getElementById('originalPreview');
+  var resultCanvas = document.getElementById('resultCanvas');
+  var resultCtx = resultCanvas.getContext('2d');
+  var toleranceSlider = document.getElementById('toleranceSlider');
+  var toleranceValue = document.getElementById('toleranceValue');
+  var removeBtn = document.getElementById('removeBtn');
+  var progressSection = document.getElementById('progressSection');
+  var progressFill = document.getElementById('progressFill');
+  var progressText = document.getElementById('progressText');
+  var resultSection = document.getElementById('resultSection');
+  var downloadLink = document.getElementById('downloadLink');
+  var bgOptions = document.querySelectorAll('.bg-option');
+  
+  var originalImage = null;
+  var processedBlob = null;
+  var currentBg = 'transparent';
+  
+  function loadFile(file) {
+    if (file.size > 10 * 1024 * 1024) {
+      alert('File exceeds 10MB limit.');
+      return;
+    }
+    
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      originalImage = new Image();
+      originalImage.onload = function() {
+        originalPreview.src = e.target.result;
+        editorSection.classList.add('visible');
+        resultSection.classList.remove('visible');
+        
+        // Set canvas size
+        var maxSize = 800;
+        var scale = Math.min(1, maxSize / originalImage.width, maxSize / originalImage.height);
+        resultCanvas.width = originalImage.width * scale;
+        resultCanvas.height = originalImage.height * scale;
+      };
+      originalImage.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+  
+  if (dropzone && fileInput) {
+    dropzone.addEventListener('click', function(e) { if (e.target !== fileInput) fileInput.click(); });
+    fileInput.addEventListener('change', function() {
+      if (fileInput.files[0]) loadFile(fileInput.files[0]);
+    });
+    dropzone.addEventListener('dragover', function(e) { e.preventDefault(); dropzone.classList.add('drag-active'); });
+    dropzone.addEventListener('dragleave', function() { dropzone.classList.remove('drag-active'); });
+    dropzone.addEventListener('drop', function(e) {
+      e.preventDefault();
+      dropzone.classList.remove('drag-active');
+      if (e.dataTransfer.files[0]) loadFile(e.dataTransfer.files[0]);
+    });
+  }
+  
+  if (toleranceSlider && toleranceValue) {
+    toleranceSlider.addEventListener('input', function() { toleranceValue.textContent = toleranceSlider.value; });
+  }
+  
+  // Background preview options
+  bgOptions.forEach(function(opt) {
+    opt.addEventListener('click', function() {
+      bgOptions.forEach(function(o) { o.classList.remove('active'); });
+      opt.classList.add('active');
+      currentBg = opt.dataset.bg;
+      updateBgPreview();
+    });
+  });
+  
+  function updateBgPreview() {
+    var colors = {
+      transparent: 'transparent',
+      white: '#ffffff',
+      black: '#000000',
+      gray: '#808080',
+      red: '#ef4444',
+      blue: '#3b82f6'
+    };
+    if (currentBg === 'transparent') {
+      resultCanvas.style.background = 'repeating-conic-gradient(#ccc 0% 25%, #fff 0% 50%) 50% / 10px 10px';
+    } else {
+      resultCanvas.style.background = colors[currentBg];
+    }
+  }
+  
+  function removeBackground() {
+    if (!originalImage) return;
+    
+    progressSection.classList.add('visible');
+    resultSection.classList.remove('visible');
+    progressFill.style.width = '0%';
+    progressText.textContent = 'Analyzing image...';
+    
+    setTimeout(function() {
+      progressFill.style.width = '30%';
+      progressText.textContent = 'Detecting edges...';
+      
+      // Create temp canvas to process full image
+      var tempCanvas = document.createElement('canvas');
+      tempCanvas.width = originalImage.width;
+      tempCanvas.height = originalImage.height;
+      var tempCtx = tempCanvas.getContext('2d');
+      tempCtx.drawImage(originalImage, 0, 0);
+      
+      var imgData = tempCtx.getImageData(0, 0, tempCanvas.width, tempCanvas.height);
+      var data = imgData.data;
+      var tolerance = parseInt(toleranceSlider.value);
+      
+      progressFill.style.width = '60%';
+      progressText.textContent = 'Removing background...';
+      
+      // Sample background color from corners
+      var cornerPixels = [
+        { r: data[0], g: data[1], b: data[2] },
+        { r: data[(tempCanvas.width - 1) * 4], g: data[(tempCanvas.width - 1) * 4 + 1], b: data[(tempCanvas.width - 1) * 4 + 2] },
+        { r: data[(tempCanvas.height - 1) * tempCanvas.width * 4], g: data[(tempCanvas.height - 1) * tempCanvas.width * 4 + 1], b: data[(tempCanvas.height - 1) * tempCanvas.width * 4 + 2] },
+        { r: data[(tempCanvas.width * tempCanvas.height - 1) * 4], g: data[(tempCanvas.width * tempCanvas.height - 1) * 4 + 1], b: data[(tempCanvas.width * tempCanvas.height - 1) * 4 + 2] }
+      ];
+      
+      var bgColor = {
+        r: Math.round((cornerPixels[0].r + cornerPixels[1].r + cornerPixels[2].r + cornerPixels[3].r) / 4),
+        g: Math.round((cornerPixels[0].g + cornerPixels[1].g + cornerPixels[2].g + cornerPixels[3].g) / 4),
+        b: Math.round((cornerPixels[0].b + cornerPixels[1].b + cornerPixels[2].b + cornerPixels[3].b) / 4)
+      };
+      
+      // Process pixels
+      for (var i = 0; i < data.length; i += 4) {
+        var r = data[i], g = data[i + 1], b = data[i + 2];
+        var diff = Math.sqrt(Math.pow(r - bgColor.r, 2) + Math.pow(g - bgColor.g, 2) + Math.pow(b - bgColor.b, 2));
+        
+        if (diff < tolerance * 2.5) {
+          data[i + 3] = 0; // Make transparent
+        }
+      }
+      
+      tempCtx.putImageData(imgData, 0, 0);
+      
+      progressFill.style.width = '90%';
+      progressText.textContent = 'Finalizing...';
+      
+      // Draw to result canvas (scaled)
+      resultCtx.clearRect(0, 0, resultCanvas.width, resultCanvas.height);
+      resultCtx.drawImage(tempCanvas, 0, 0, resultCanvas.width, resultCanvas.height);
+      
+      // Create downloadable blob
+      resultCanvas.toBlob(function(blob) {
+        processedBlob = blob;
+        progressFill.style.width = '100%';
+        progressText.textContent = 'Complete!';
+        
+        setTimeout(function() {
+          progressSection.classList.remove('visible');
+          resultSection.classList.add('visible');
+          
+          var url = URL.createObjectURL(blob);
+          downloadLink.href = url;
+          downloadLink.download = 'background-removed.png';
+          resultSection.scrollIntoView({ behavior: 'smooth' });
+        }, 500);
+      }, 'image/png');
+    }, 100);
+  }
+  
+  if (removeBtn) {
+    removeBtn.addEventListener('click', removeBackground);
+  }
+  
+  updateBgPreview();
+});
+</script>
+</body>
+</html>

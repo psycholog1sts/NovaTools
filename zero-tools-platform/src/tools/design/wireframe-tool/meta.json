@@ -1,0 +1,41 @@
+{
+  "id": "wireframe-tool",
+  "name": "Wireframe Tool",
+  "nameEn": "Wireframe Tool",
+  "category": "design",
+  "tier": 1,
+  "cpc": {
+    "tr": 0.45,
+    "us": 0.9
+  },
+  "keywords": {
+    "tr": ["taslak aracı", "wireframe oluşturucu", "ui prototipleme", "ux tasarım"],
+    "en": ["wireframe tool", "wireframe maker", "UI prototyping", "UX design"]
+  },
+  "description": {
+    "tr": "Web ve uygulama taslakları oluşturun. Sürükle-bırak bileşenler, PNG/SVG dışa aktarma.",
+    "en": "Create website and app wireframes. Drag-and-drop components, PNG/SVG export."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "DesignApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.35
+    }
+  },
+  "bundle": {
+    "lazyLoad": false
+  },
+  "relatedTools": [
+    "diagram-maker",
+    "mockup-generator"
+  ]
+}

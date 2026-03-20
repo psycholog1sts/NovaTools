@@ -1,0 +1,42 @@
+{
+  "id": "app-icon-generator",
+  "name": "App Icon Generator",
+  "nameEn": "App Icon Generator",
+  "category": "social",
+  "tier": 1,
+  "cpc": {
+    "tr": 0.5,
+    "us": 1.0
+  },
+  "keywords": {
+    "tr": ["uygulama ikonu yapma", "app icon oluştur", "ios icon", "android icon", "app logo"],
+    "en": ["app icon generator", "mobile app icon maker", "ios icon generator", "android icon creator", "app logo maker"]
+  },
+  "description": {
+    "tr": "iOS ve Android uygulamaları için tüm boyutlarda uygulama ikonları oluşturun. Otomatik boyutlandırma ve optimize edilmiş çıktı.",
+    "en": "Generate app icons in all required sizes for iOS and Android. Automatic resizing and optimized output."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "DeveloperApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.3
+    }
+  },
+  "bundle": {
+    "lazyLoad": false
+  },
+  "relatedTools": [
+    "favicon-generator",
+    "social-image-resizer",
+    "image-to-png"
+  ]
+}

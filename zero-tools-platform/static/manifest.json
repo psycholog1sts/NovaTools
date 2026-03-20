@@ -1,0 +1,99 @@
+{
+  "name": "NovaTools MC - High-CPC Utility Tools",
+  "short_name": "NovaTools MC",
+  "description": "High-CPC utility tools for mortgage, insurance, and cloud costs. Privacy-first.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0a0a0a",
+  "theme_color": "#00FF41",
+  "categories": ["finance", "utilities", "productivity", "developer"],
+  "lang": "en",
+  "dir": "ltr",
+  
+  "icons": [
+    { "src": "/icons/icon-72x72.png", "sizes": "72x72", "type": "image/png" },
+    { "src": "/icons/icon-96x96.png", "sizes": "96x96", "type": "image/png" },
+    { "src": "/icons/icon-128x128.png", "sizes": "128x128", "type": "image/png" },
+    { "src": "/icons/icon-144x144.png", "sizes": "144x144", "type": "image/png" },
+    { "src": "/icons/icon-152x152.png", "sizes": "152x152", "type": "image/png" },
+    { "src": "/icons/icon-192x192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/icons/icon-384x384.png", "sizes": "384x384", "type": "image/png" },
+    { "src": "/icons/icon-512x512.png", "sizes": "512x512", "type": "image/png" }
+  ],
+  
+  "shortcuts": [
+    {
+      "name": "Mortgage Refinance",
+      "short_name": "Mortgage",
+      "description": "Calculate mortgage refinance savings",
+      "url": "/src/tools/finance/mortgage-refinance/",
+      "icons": [{ "src": "/icons/finance-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Life Insurance",
+      "short_name": "Insurance",
+      "description": "Estimate life insurance payouts",
+      "url": "/src/tools/finance/life-insurance/",
+      "icons": [{ "src": "/icons/finance-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "PDF Merger",
+      "short_name": "PDF Merge",
+      "description": "Merge PDF files",
+      "url": "/src/tools/pdf/merge/",
+      "icons": [{ "src": "/icons/pdf-192.png", "sizes": "192x192" }]
+    }
+  ],
+  
+  "share_target": {
+    "action": "/src/tools/pdf/merge/?share-target=true",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {
+      "title": "name",
+      "text": "description",
+      "url": "link",
+      "files": [
+        {
+          "name": "pdfFiles",
+          "accept": ["application/pdf", "image/*"]
+        }
+      ]
+    }
+  },
+  
+  "file_handlers": [
+    {
+      "action": "/src/tools/pdf/merge/?file-handler=true",
+      "accept": {
+        "application/pdf": [".pdf"]
+      }
+    },
+    {
+      "action": "/src/tools/image/compress/?file-handler=true",
+      "accept": {
+        "image/*": [".png", ".jpg", ".jpeg", ".webp"]
+      }
+    }
+  ],
+  
+  "protocol_handlers": [
+    {
+      "protocol": "web+pdfmerge",
+      "url": "/src/tools/pdf/merge/?source=%s"
+    },
+    {
+      "protocol": "web+pdfcompress",
+      "url": "/src/tools/pdf/compress/?source=%s"
+    },
+    {
+      "protocol": "web+mortgage",
+      "url": "/src/tools/finance/mortgage-refinance/?source=%s"
+    }
+  ],
+  
+  "scope_extensions": [
+    { "origin": "*.novatools.mc" }
+  ]
+}

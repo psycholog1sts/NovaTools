@@ -1,0 +1,366 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y896L63239"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Y896L63239');
+  </script>
+  <meta charset="UTF-8">
+  <script>(function(){var t=localStorage.getItem('novatools-theme');if(t)document.documentElement.setAttribute('data-theme',t);else{var d=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',d);document.documentElement.style.colorScheme=d;}})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/src/styles/critical.css">
+  <link rel="stylesheet" href="/src/styles/main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <title>Free Instagram Photo Downloader | NovaTools MC</title>
+  
+  <!-- i18n Script -->
+  <script src="/i18n.js"></script>
+  <meta name="description" content="Download Instagram photos and profile pictures in full resolution. Free online tool - no signup required. 100% client-side processing.">
+  <meta name="keywords" content="instagram photo downloader, instagram image download, ig photo saver, profile picture download">
+  <meta name="theme-color" content="#0A0A0C">
+
+  <meta property="og:title" content="Free Instagram Photo Downloader | NovaTools MC">
+  <meta property="og:description" content="Download Instagram photos in full resolution. Free and private.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.mc-novatools.com/tools/social/instagram-photo/">
+  <meta property="og:image" content="https://www.mc-novatools.com/og-image.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free Instagram Photo Downloader | NovaTools MC">
+  <meta name="twitter:description" content="Download Instagram photos in full resolution. Free and private.">
+
+  <link rel="canonical" href="https://www.mc-novatools.com/tools/social/instagram-photo/">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [{
+      "@type": "WebApplication",
+      "name": "Instagram Photo Downloader",
+      "description": "Download Instagram photos and profile pictures in full resolution.",
+      "url": "https://www.mc-novatools.com/tools/social/instagram-photo/",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+    }]
+  }
+  </script>
+
+  <style>
+    .tool-wrapper { max-width: 960px; margin: 0 auto; padding: 3rem 1rem 5rem; }
+    .tool-hero { text-align: center; margin-bottom: 2.5rem; }
+    .tool-hero-icon { font-size: 3.5rem; line-height: 1; margin-bottom: 1rem; }
+    .tool-hero h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; letter-spacing: -0.02em; color: #FAFAFA; margin-bottom: 0.75rem; }
+    .tool-hero p { color: #A1A1AA; font-size: 1.0625rem; max-width: 560px; margin: 0 auto; }
+    .card { background: rgba(15,15,20,0.7); border: 1px solid rgba(0,217,255,0.15); border-radius: 14px; padding: 1.75rem; backdrop-filter: blur(12px); }
+    
+    .tab-bar { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem; }
+    .tab-btn { padding: 0.5rem 1rem; background: transparent; border: none; color: #71717A; font-size: 0.875rem; font-weight: 600; cursor: pointer; border-radius: 6px; transition: all 0.2s; }
+    .tab-btn:hover { color: #A1A1AA; }
+    .tab-btn.active { color: #00D9FF; background: rgba(0,217,255,0.1); }
+    
+    .input-group { margin-bottom: 1.25rem; }
+    .input-label { display: block; font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #71717A; margin-bottom: 0.5rem; }
+    .input-field { width: 100%; height: 48px; padding: 0 1rem; background: #0F0F12; border: 1px solid rgba(0,217,255,0.12); border-radius: 8px; color: #FAFAFA; font-size: 0.9375rem; transition: border-color 0.2s, box-shadow 0.2s; outline: none; }
+    .input-field:focus { border-color: rgba(0,217,255,0.45); box-shadow: 0 0 0 3px rgba(0,217,255,0.08); }
+    .input-field::placeholder { color: #52525B; }
+    
+    .btn { display: inline-flex; align-items: center; gap: 0.4rem; height: 44px; padding: 0 1.25rem; border: none; border-radius: 8px; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: background 0.18s, transform 0.12s, opacity 0.18s; outline: none; user-select: none; }
+    .btn:active { transform: scale(0.97); }
+    .btn-primary { background: linear-gradient(135deg, #E4405F, #C13584); color: #FFFFFF; }
+    .btn-primary:hover { background: linear-gradient(135deg, #F56040, #D42C81); }
+    .btn-secondary { background: rgba(0,217,255,0.1); border: 1px solid rgba(0,217,255,0.25); color: #00D9FF; }
+    .btn-secondary:hover { background: rgba(0,217,255,0.18); }
+    
+    .result-area { margin-top: 1.5rem; padding: 1.5rem; background: rgba(0,0,0,0.3); border-radius: 10px; text-align: center; display: none; }
+    .result-area.show { display: block; }
+    .result-placeholder { color: #52525B; font-style: italic; padding: 2rem; }
+    
+    .info-box { margin-top: 1rem; padding: 1rem; background: rgba(0,217,255,0.05); border: 1px solid rgba(0,217,255,0.1); border-radius: 8px; }
+    .info-box p { color: #A1A1AA; font-size: 0.875rem; margin: 0; line-height: 1.6; }
+    .info-box strong { color: #00D9FF; }
+    
+    .legal-note { margin-top: 1.5rem; padding: 1rem 1.25rem; background: rgba(255,193,7,0.05); border: 1px solid rgba(255,193,7,0.15); border-radius: 10px; font-size: 0.8125rem; color: #A1A1AA; line-height: 1.6; }
+    .legal-note strong { color: #FFC107; }
+    
+    .seo-section { max-width: 960px; margin: 3.5rem auto 0; padding: 0 1rem; }
+    .seo-section h2 { font-size: 1.375rem; font-weight: 700; color: #FAFAFA; margin-bottom: 0.75rem; }
+    .seo-section h3 { font-size: 1.125rem; font-weight: 600; color: #FAFAFA; margin: 2rem 0 0.75rem; }
+    .seo-section p, .seo-section li { color: #A1A1AA; line-height: 1.8; font-size: 0.9375rem; }
+    .seo-section ol { padding-left: 1.25rem; }
+    .seo-section ol li { margin-bottom: 0.4rem; }
+    .faq-item { border: 1px solid rgba(0,217,255,0.1); border-radius: 10px; padding: 1rem 1.125rem; margin-bottom: 0.875rem; background: rgba(15,15,20,0.5); }
+    .faq-item summary { font-weight: 600; color: #FAFAFA; cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: '+'; color: #00D9FF; font-size: 1.25rem; flex-shrink: 0; transition: transform 0.2s; }
+    .faq-item[open] summary::after { content: '\2212'; }
+    .faq-item p { margin-top: 0.625rem; color: #A1A1AA; line-height: 1.7; }
+  </style>
+</head>
+<body>
+  <div class="bg-ambient" aria-hidden="true"></div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <div id="app" class="app">
+    <header class="main-header">
+      <div class="container">
+        <div class="header-inner">
+          <a href="/" class="logo" aria-label="NovaTools MC Home">
+            <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
+            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+          </a>
+          <nav class="nav-desktop" aria-label="Main navigation">
+            <a href="/#finance" class="nav-link">Finance</a>
+            <a href="/#pdf" class="nav-link">PDF Tools</a>
+            <a href="/#image" class="nav-link">Images</a>
+            <a href="/#dev" class="nav-link">Developers</a>
+          </nav>
+          <div class="privacy-badge" title="Your data never leaves your browser">
+            <span class="privacy-badge-dot"></span>
+            <span>Privacy First</span>
+          </div>
+          <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+            <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+          <button type="button" id="mobileMenuBtn" class="menu-btn" aria-label="Toggle menu" aria-expanded="false">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+        </div>
+        <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
+          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <div class="tool-wrapper">
+        <div class="tool-hero">
+          <div class="tool-hero-icon">&#128247;</div>
+          <h1>Instagram Photo Downloader</h1>
+          <p>Download Instagram photos and profile pictures in full resolution. Generate direct image links from post URLs.</p>
+        </div>
+
+        <div class="card">
+          <div class="tab-bar">
+            <button class="tab-btn active" data-tab="post">Post URL</button>
+            <button class="tab-btn" data-tab="profile">Username</button>
+          </div>
+          
+          <div id="postTab" class="tab-content">
+            <div class="input-group">
+              <label class="input-label" for="postUrl">Instagram Post URL</label>
+              <input type="text" class="input-field" id="postUrl" placeholder="https://www.instagram.com/p/ABC123...">
+            </div>
+            <button class="btn btn-primary" id="btnPost" type="button">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/></svg>
+              Generate Download Link
+            </button>
+          </div>
+          
+          <div id="profileTab" class="tab-content" style="display: none;">
+            <div class="input-group">
+              <label class="input-label" for="username">Instagram Username</label>
+              <input type="text" class="input-field" id="username" placeholder="username (without @)">
+            </div>
+            <button class="btn btn-primary" id="btnProfile" type="button">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/></svg>
+              Get Profile Picture
+            </button>
+          </div>
+
+          <div class="result-area" id="resultArea">
+            <div id="resultContent"></div>
+          </div>
+
+          <div class="info-box">
+            <p><strong>Note:</strong> Due to Instagram's privacy restrictions, this tool provides guidance on accessing publicly available content. For private accounts, you must be a follower to view content. Always respect copyright and Instagram's Terms of Service.</p>
+          </div>
+
+          <div class="legal-note">
+            <strong>Legal Disclaimer / Yasal Uyar&#305;:</strong> This tool is for educational purposes only. Instagram content is protected by copyright. You may only download content you own or have permission to use. Respect Instagram's Terms of Service and applicable copyright laws. / Bu ara&#231; yaln&#305;zca e&#287;itim ama&#231;l&#305;d&#305;r. Instagram i&#231;eri&#287;i telif hakk&#305; ile korunmaktad&#305;r. Yaln&#305;zca sahibi oldu&#287;unuz veya kullanma izniniz olan i&#231;eri&#287;i indirebilirsiniz.
+          </div>
+        </div>
+      </div>
+
+      <section class="seo-section" aria-label="About this tool">
+        <h2>About Instagram Photo Downloader</h2>
+        <p>Instagram Photo Downloader helps you access Instagram content for legitimate personal use. This tool works by analyzing Instagram post URLs and providing guidance on how to save images that are already publicly accessible. Please note that due to Instagram's API restrictions and privacy protections, direct downloading may require additional steps.</p>
+
+        <h3>How to Use</h3>
+        <ol>
+          <li>Copy the URL of the Instagram post you want to download.</li>
+          <li>Paste the URL into the input field above.</li>
+          <li>Click "Generate Download Link" to get instructions.</li>
+          <li>For profile pictures, enter the username (without @).</li>
+          <li>Follow the provided instructions to save the image.</li>
+        </ol>
+
+        <h3>Important Notes</h3>
+        <ul style="color: #A1A1AA; line-height: 1.8; font-size: 0.9375rem; padding-left: 1.25rem;">
+          <li>This tool only works with publicly accessible posts.</li>
+          <li>Private account content cannot be accessed.</li>
+          <li>Always respect copyright and creator rights.</li>
+          <li>Downloaded content should be for personal use only.</li>
+          <li>Commercial use requires permission from the content owner.</li>
+        </ul>
+
+        <h3>Frequently Asked Questions</h3>
+
+        <details class="faq-item">
+          <summary>Why can't I download some Instagram photos?</summary>
+          <p>Instagram has implemented various restrictions to protect user privacy and content. Private accounts, stories, and some posts may not be accessible through external tools. Additionally, Instagram frequently updates their systems to prevent unauthorized access.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Is it legal to download Instagram photos?</summary>
+          <p>Instagram photos are protected by copyright. You should only download photos that you own, have explicit permission to use, or are using for personal reference. Commercial use, redistribution, or claiming ownership of downloaded content without permission violates copyright laws and Instagram's Terms of Service.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Does this tool store my data?</summary>
+          <p>No. This tool operates entirely in your browser. We do not store, log, or transmit any URLs, usernames, or images to our servers. Your privacy is completely protected.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Can I download Instagram Stories or Reels?</summary>
+          <p>Instagram Stories and Reels have additional privacy protections and typically cannot be downloaded through browser-based tools. These ephemeral content types are designed to disappear and downloading them may violate privacy expectations.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>How do I download my own Instagram data?</summary>
+          <p>To download all your Instagram data including photos, videos, and account information, use Instagram's official "Download Your Information" feature in Settings > Privacy and Security > Data Download. This is the recommended method for backing up your own content.</p>
+        </details>
+      </section>
+    </main>
+
+    <footer class="tool-footer">
+      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
+      <p>Estimates only &mdash; not financial, legal, or tax advice.</p>
+    </footer>
+    <style>
+      .tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }
+      .tool-footer a { color: #00D9FF; text-decoration: none; }
+    </style>
+  </div>
+
+  <script type="module">
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const postTab = document.getElementById('postTab');
+    const profileTab = document.getElementById('profileTab');
+    const resultArea = document.getElementById('resultArea');
+    const resultContent = document.getElementById('resultContent');
+    const postUrlInput = document.getElementById('postUrl');
+    const usernameInput = document.getElementById('username');
+
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tabBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const tab = btn.dataset.tab;
+        postTab.style.display = tab === 'post' ? 'block' : 'none';
+        profileTab.style.display = tab === 'profile' ? 'block' : 'none';
+        resultArea.classList.remove('show');
+      });
+    });
+
+    document.getElementById('btnPost').addEventListener('click', () => {
+      const url = postUrlInput.value.trim();
+      if (!url) {
+        alert('Please enter an Instagram post URL');
+        return;
+      }
+      
+      const postId = url.match(/\/p\/([a-zA-Z0-9_-]+)/);
+      if (!postId) {
+        resultContent.innerHTML = '<p style="color: #FF5555;">Invalid Instagram URL. Please check the format.</p>';
+        resultArea.classList.add('show');
+        return;
+      }
+
+      resultContent.innerHTML = `
+        <p style="color: #A1A1AA; margin-bottom: 1rem;">Post ID detected: <strong style="color: #00D9FF;">${postId[1]}</strong></p>
+        <p style="color: #A1A1AA; line-height: 1.6;">
+          Due to Instagram's API restrictions, direct downloading requires browser extensions or manual methods:<br><br>
+          <strong>Method 1:</strong> Right-click on the image → "Open image in new tab" → Save from there<br>
+          <strong>Method 2:</strong> Use browser's Inspect Element → Find img tag → Copy image URL<br>
+          <strong>Method 3:</strong> Install a reputable browser extension for Instagram downloads
+        </p>
+      `;
+      resultArea.classList.add('show');
+    });
+
+    document.getElementById('btnProfile').addEventListener('click', () => {
+      const username = usernameInput.value.trim().replace('@', '');
+      if (!username) {
+        alert('Please enter a username');
+        return;
+      }
+
+      resultContent.innerHTML = `
+        <p style="color: #A1A1AA; margin-bottom: 1rem;">Username: <strong style="color: #00D9FF;">@${username}</strong></p>
+        <p style="color: #A1A1AA; line-height: 1.6;">
+          To view this profile's public picture in full resolution:<br><br>
+          1. Visit: <a href="https://www.instagram.com/${username}/" target="_blank" style="color: #00D9FF;">instagram.com/${username}</a><br>
+          2. Right-click on the profile picture<br>
+          3. Select "Open image in new tab"<br>
+          4. Save the image from the new tab<br><br>
+          <em>Note: Profile pictures from private accounts cannot be accessed unless you are a follower.</em>
+        </p>
+      `;
+      resultArea.classList.add('show');
+    });
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var menuBtn = document.getElementById('mobileMenuBtn');
+      var mobileMenu = document.getElementById('mobileMenu');
+      if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener('click', function() {
+          var isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+          menuBtn.setAttribute('aria-expanded', !isExpanded);
+          mobileMenu.hidden = isExpanded;
+          mobileMenu.classList.toggle('active', !isExpanded);
+        });
+      }
+      var themeBtn = document.getElementById('themeToggle');
+      if (themeBtn) {
+        function getTheme() {
+          var s = localStorage.getItem('theme');
+          if (s) return s;
+          return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        }
+        function updateIcon() {
+          var t = getTheme();
+          themeBtn.querySelector('.icon-sun').style.display = t === 'light' ? 'none' : 'block';
+          themeBtn.querySelector('.icon-moon').style.display = t === 'dark' ? 'none' : 'block';
+        }
+        themeBtn.addEventListener('click', function() {
+          var next = getTheme() === 'dark' ? 'light' : 'dark';
+          document.documentElement.setAttribute('data-theme', next);
+          localStorage.setItem('theme', next);
+          updateIcon();
+        });
+        updateIcon();
+      }
+    });
+  </script>
+</body>
+</html>

@@ -92,7 +92,7 @@
     }
     
     try {
-      const response = await fetch(`/locales/${lang}/translation.json`);
+      const response = await fetch(`./locales/${lang}/translation.json`);
       if (!response.ok) {
         throw new Error(`Failed to load translations for ${lang}`);
       }

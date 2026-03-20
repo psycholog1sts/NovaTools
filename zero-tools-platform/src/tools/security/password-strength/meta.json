@@ -1,0 +1,41 @@
+{
+  "id": "password-strength",
+  "name": "Password Strength Checker",
+  "nameEn": "Password Strength Checker",
+  "category": "security",
+  "tier": 1,
+  "cpc": {
+    "tr": 0.85,
+    "us": 1.8
+  },
+  "keywords": {
+    "tr": ["şifre gücü", "şifre kontrolü", "şifre güvenliği", "güçlü şifre testi"],
+    "en": ["password strength", "password checker", "password security", "strong password test"]
+  },
+  "description": {
+    "tr": "Şifrelerinizin gücünü ve güvenliğini kontrol edin. Gerçek zamanlı analiz, kırılma süresi tahmini ve iyileştirme önerileri.",
+    "en": "Check the strength and security of your passwords. Real-time analysis, crack time estimation and improvement suggestions."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "SecurityApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.3
+    }
+  },
+  "bundle": {
+    "lazyLoad": false
+  },
+  "relatedTools": [
+    "password-generator",
+    "hash-generator"
+  ]
+}

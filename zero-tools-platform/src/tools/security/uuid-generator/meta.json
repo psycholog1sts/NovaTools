@@ -1,0 +1,41 @@
+{
+  "id": "uuid-generator",
+  "name": "UUID Generator",
+  "nameEn": "UUID Generator",
+  "category": "security",
+  "tier": 1,
+  "cpc": {
+    "tr": 0.5,
+    "us": 1.2
+  },
+  "keywords": {
+    "tr": ["uuid oluşturucu", "guid oluşturucu", "benzersiz id", "rastgele uuid"],
+    "en": ["uuid generator", "guid generator", "unique id", "random uuid"]
+  },
+  "description": {
+    "tr": "Evrensel benzersiz tanımlayıcılar (UUID/GUID) oluşturun. Versiyon seçimi, format seçenekleri ve toplu oluşturma.",
+    "en": "Generate universally unique identifiers (UUID/GUID). Version selection, format options and bulk generation."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "SecurityApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.3
+    }
+  },
+  "bundle": {
+    "lazyLoad": false
+  },
+  "relatedTools": [
+    "password-generator",
+    "hash-generator"
+  ]
+}

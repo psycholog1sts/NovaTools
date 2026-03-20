@@ -1,0 +1,41 @@
+{
+  "id": "base64-converter",
+  "name": "Base64 Encoder/Decoder",
+  "nameEn": "Base64 Encoder/Decoder",
+  "category": "dev",
+  "tier": 1,
+  "cpc": {
+    "tr": 0.5,
+    "us": 1.0
+  },
+  "keywords": {
+    "tr": ["base64 encoder", "base64 decoder", "base64 dönüştürücü", "dosya base64"],
+    "en": ["base64 encoder", "base64 decoder", "base64 converter", "file to base64"]
+  },
+  "description": {
+    "tr": "Metin ve dosyalarınızı Base64'e encode/decode edin. Dosya yükleme ve indirme desteği.",
+    "en": "Encode and decode text and files to Base64. File upload and download support."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "DeveloperApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.3
+    }
+  },
+  "bundle": {
+    "lazyLoad": false
+  },
+  "relatedTools": [
+    "url-encoder",
+    "code-formatter"
+  ]
+}

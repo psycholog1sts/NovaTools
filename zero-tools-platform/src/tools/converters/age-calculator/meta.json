@@ -1,0 +1,41 @@
+{
+  "id": "age-calculator",
+  "name": "Age Calculator",
+  "nameEn": "Age Calculator",
+  "category": "converters",
+  "tier": 1,
+  "cpc": {
+    "tr": 0.2,
+    "us": 0.4
+  },
+  "keywords": {
+    "tr": ["yaş hesaplama", "doğum günü hesaplama", "kaç yaşındayım", "yaş hesaplayıcı"],
+    "en": ["age calculator", "birthday calculator", "how old am i", "calculate age", "birth date calculator"]
+  },
+  "description": {
+    "tr": "Doğum tarihinizden tam yaşınızı hesaplayın. Yıl, ay, gün ve bir sonraki doğum gününe kalan süre.",
+    "en": "Calculate exact age from birthdate. Years, months, days, and next birthday countdown."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "UtilityApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.15
+    }
+  },
+  "bundle": {
+    "lazyLoad": false
+  },
+  "relatedTools": [
+    "bmi-calculator",
+    "percentage-calculator"
+  ]
+}

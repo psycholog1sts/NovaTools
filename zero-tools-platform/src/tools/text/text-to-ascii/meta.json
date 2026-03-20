@@ -1,0 +1,42 @@
+{
+  "id": "text-to-ascii",
+  "name": "Text to ASCII/Unicode",
+  "nameEn": "Text to ASCII/Unicode",
+  "category": "text",
+  "tier": 2,
+  "cpc": {
+    "tr": 0.15,
+    "us": 0.4
+  },
+  "keywords": {
+    "tr": ["metin ascii", "metin ikili", "metin hex", "unicode dönüştürücü"],
+    "en": ["text to ascii", "text to binary", "text to hex", "unicode converter", "base64 encoder"]
+  },
+  "description": {
+    "tr": "Metni ASCII kodlarına, ikili, onaltılık, Base64 ve Unicode kod noktalarına dönüştürün.",
+    "en": "Convert text to ASCII codes, binary, hexadecimal, Base64, and Unicode code points."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "UtilityApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.15
+    }
+  },
+  "bundle": {
+    "lazyLoad": false
+  },
+  "relatedTools": [
+    "url-encoder",
+    "html-entity-encoder",
+    "palindrome-checker"
+  ]
+}

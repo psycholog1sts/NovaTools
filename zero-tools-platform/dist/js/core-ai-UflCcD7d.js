@@ -1,0 +1,1 @@
+const t={toolUsageCounts:new Map};function o(o,s={}){const e=t.toolUsageCounts.get(o)||0;t.toolUsageCounts.set(o,e+1);try{const t=JSON.parse(localStorage.getItem("zerotools_history")||"[]");t.push({tool:o,timestamp:Date.now(),metadata:s}),t.length>50&&t.shift(),localStorage.setItem("zerotools_history",JSON.stringify(t))}catch(a){}}export{o as t};

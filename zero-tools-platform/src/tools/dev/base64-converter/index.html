@@ -1,0 +1,560 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y896L63239"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Y896L63239');
+  </script>
+  <meta charset="UTF-8">
+  <script>(function(){var t=localStorage.getItem('novatools-theme');if(t)document.documentElement.setAttribute('data-theme',t);else{var d=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',d);document.documentElement.style.colorScheme=d;}})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/src/styles/critical.css">
+  <link rel="stylesheet" href="/src/styles/main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <title>Free Base64 Encoder/Decoder Online | NovaTools MC</title>
+  
+  <!-- i18n Script -->
+  <script src="/i18n.js"></script>
+  <meta name="description" content="Free online Base64 encoder and decoder. Convert text and files to Base64 and back. No signup required, works entirely in your browser.">
+  <meta name="keywords" content="free base64 encoder, base64 decoder online, base64 converter, file to base64, base64 to file">
+  <meta name="theme-color" content="#0A0A0C">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Free Base64 Encoder/Decoder Online | NovaTools MC">
+  <meta property="og:description" content="Encode and decode Base64 strings and files for free. No signup required.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.mc-novatools.com/tools/dev/base64-converter/">
+  <meta property="og:image" content="https://www.mc-novatools.com/og-image.png">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free Base64 Encoder/Decoder | NovaTools MC">
+  <meta name="twitter:description" content="Encode and decode Base64 text and files. No signup.">
+
+  <link rel="canonical" href="https://www.mc-novatools.com/tools/dev/base64-converter/">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [{
+      "@type": "WebApplication",
+      "name": "Base64 Encoder/Decoder",
+      "description": "Free online Base64 encoder and decoder for text and files.",
+      "url": "https://www.mc-novatools.com/tools/dev/base64-converter/",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+    }]
+  }
+  </script>
+
+  <style>
+    .tool-wrapper { max-width: 960px; margin: 0 auto; padding: 3rem 1rem 5rem; }
+    .tool-hero { text-align: center; margin-bottom: 2.5rem; }
+    .tool-hero-icon { font-size: 3.5rem; line-height: 1; margin-bottom: 1rem; }
+    .tool-hero h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; letter-spacing: -0.02em; color: #FAFAFA; margin-bottom: 0.75rem; }
+    .tool-hero p { color: #A1A1AA; font-size: 1.0625rem; max-width: 560px; margin: 0 auto; }
+    .card { background: rgba(15,15,20,0.7); border: 1px solid rgba(0,217,255,0.15); border-radius: 14px; padding: 1.75rem; backdrop-filter: blur(12px); margin-bottom: 1.5rem; }
+    
+    .mode-toggle { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; background: rgba(0,0,0,0.2); padding: 0.375rem; border-radius: 10px; }
+    .mode-btn { flex: 1; height: 40px; border: none; border-radius: 8px; font-size: 0.875rem; font-weight: 600; cursor: pointer; background: transparent; color: #71717A; transition: all 0.2s; }
+    .mode-btn.active { background: rgba(0,217,255,0.15); color: #00D9FF; }
+    .mode-btn:hover:not(.active) { color: #A1A1AA; }
+    
+    .input-section { margin-bottom: 1.25rem; }
+    .input-label { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #71717A; margin-bottom: 0.625rem; }
+    #textInput { width: 100%; min-height: 150px; padding: 1rem 1.125rem; background: #0F0F12; border: 1px solid rgba(0,217,255,0.12); border-radius: 10px; color: #FAFAFA; font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.875rem; line-height: 1.7; resize: vertical; transition: border-color 0.2s, box-shadow 0.2s; outline: none; box-sizing: border-box; }
+    #textInput::placeholder { color: #52525B; }
+    #textInput:focus { border-color: rgba(0,217,255,0.45); box-shadow: 0 0 0 3px rgba(0,217,255,0.08); }
+    
+    .file-section { margin-bottom: 1.25rem; }
+    .file-dropzone { border: 2px dashed rgba(0,217,255,0.25); border-radius: 10px; padding: 2rem; text-align: center; cursor: pointer; transition: all 0.2s; background: rgba(0,217,255,0.02); }
+    .file-dropzone:hover { border-color: rgba(0,217,255,0.5); background: rgba(0,217,255,0.05); }
+    .file-dropzone.dragover { border-color: #00D9FF; background: rgba(0,217,255,0.1); }
+    .file-dropzone-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+    .file-dropzone-text { color: #A1A1AA; font-size: 0.9375rem; }
+    .file-dropzone-hint { color: #52525B; font-size: 0.8125rem; margin-top: 0.25rem; }
+    #fileInput { display: none; }
+    .file-info { display: none; align-items: center; gap: 0.75rem; padding: 0.875rem 1rem; background: rgba(0,217,255,0.08); border: 1px solid rgba(0,217,255,0.2); border-radius: 10px; margin-top: 0.75rem; }
+    .file-info.visible { display: flex; }
+    .file-info-name { flex: 1; font-size: 0.875rem; color: #FAFAFA; }
+    .file-info-size { font-size: 0.75rem; color: #71717A; }
+    .file-info-remove { background: none; border: none; color: #FF5555; cursor: pointer; font-size: 1.25rem; line-height: 1; padding: 0; }
+    
+    .btn-bar { display: flex; flex-wrap: wrap; gap: 0.625rem; margin-bottom: 1.5rem; }
+    .btn { display: inline-flex; align-items: center; gap: 0.4rem; height: 40px; padding: 0 1.125rem; border: none; border-radius: 8px; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: background 0.18s, transform 0.12s, opacity 0.18s; outline: none; user-select: none; }
+    .btn:active { transform: scale(0.97); }
+    .btn-primary { background: linear-gradient(135deg, #00D9FF, #0099CC); color: #0A0A0C; }
+    .btn-primary:hover { background: linear-gradient(135deg, #1FE2FF, #00B8EE); }
+    .btn-secondary { background: rgba(0,217,255,0.1); border: 1px solid rgba(0,217,255,0.25); color: #00D9FF; }
+    .btn-secondary:hover { background: rgba(0,217,255,0.18); }
+    .btn-ghost { background: var(--surface-default); border: 1px solid var(--border-hover); color: #A1A1AA; }
+    .btn-ghost:hover { background: rgba(255,255,255,0.09); color: #FAFAFA; }
+    .btn-danger { background: rgba(255,85,85,0.1); border: 1px solid rgba(255,85,85,0.25); color: #FF5555; }
+    .btn-danger:hover { background: rgba(255,85,85,0.18); }
+    
+    .error-banner { display: none; align-items: flex-start; gap: 0.75rem; padding: 0.875rem 1rem; background: rgba(255,85,85,0.08); border: 1px solid rgba(255,85,85,0.3); border-radius: 10px; margin-bottom: 1rem; animation: fadeSlideIn 0.2s ease; }
+    .error-banner.visible { display: flex; }
+    .error-icon { flex-shrink: 0; width: 20px; height: 20px; background: rgba(255,85,85,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; color: #FF5555; margin-top: 1px; }
+    .error-text { font-family: 'JetBrains Mono', monospace; font-size: 0.8125rem; color: #FF7777; line-height: 1.6; }
+    @keyframes fadeSlideIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
+    
+    .output-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.625rem; }
+    .output-label { font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #71717A; }
+    .output-wrap { position: relative; background: #08080A; border: 1px solid rgba(0,217,255,0.1); border-radius: 10px; overflow: hidden; }
+    .output-placeholder { padding: 2rem 1.5rem; text-align: center; color: #52525B; font-size: 0.9375rem; }
+    #textOutput { display: none; width: 100%; min-height: 150px; margin: 0; padding: 1.125rem 1.25rem; background: transparent; border: none; color: #FAFAFA; font-family: 'JetBrains Mono', monospace; font-size: 0.8125rem; line-height: 1.75; resize: vertical; outline: none; box-sizing: border-box; }
+    
+    .copy-feedback { font-size: 0.8rem; color: #00FF88; opacity: 0; transition: opacity 0.3s; pointer-events: none; }
+    .copy-feedback.show { opacity: 1; }
+    
+    .legal-note { margin-top: 1.5rem; padding: 1rem 1.25rem; background: rgba(255,193,7,0.05); border: 1px solid rgba(255,193,7,0.15); border-radius: 10px; font-size: 0.8125rem; color: #A1A1AA; line-height: 1.6; }
+    .legal-note strong { color: #FFC107; }
+    
+    .seo-section { max-width: 960px; margin: 3.5rem auto 0; padding: 0 1rem; }
+    .seo-section h2 { font-size: 1.375rem; font-weight: 700; color: #FAFAFA; margin-bottom: 0.75rem; }
+    .seo-section h3 { font-size: 1.125rem; font-weight: 600; color: #FAFAFA; margin: 2rem 0 0.75rem; }
+    .seo-section p, .seo-section li { color: #A1A1AA; line-height: 1.8; font-size: 0.9375rem; }
+    .seo-section ol { padding-left: 1.25rem; }
+    .seo-section ol li { margin-bottom: 0.4rem; }
+    .faq-item { border: 1px solid rgba(0,217,255,0.1); border-radius: 10px; padding: 1rem 1.125rem; margin-bottom: 0.875rem; background: rgba(15,15,20,0.5); }
+    .faq-item summary { font-weight: 600; color: #FAFAFA; cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: '+'; color: #00D9FF; font-size: 1.25rem; flex-shrink: 0; transition: transform 0.2s; }
+    .faq-item[open] summary::after { content: '\2212'; }
+    .faq-item p { margin-top: 0.625rem; color: #A1A1AA; line-height: 1.7; }
+    
+    @media (max-width: 600px) {
+      .btn-bar { gap: 0.5rem; }
+      .btn { height: 38px; padding: 0 0.875rem; font-size: 0.85rem; }
+      .file-dropzone { padding: 1.5rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-ambient" aria-hidden="true"></div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <div id="app" class="app">
+    <header class="main-header">
+      <div class="container">
+        <div class="header-inner">
+          <a href="/" class="logo" aria-label="NovaTools MC Home">
+            <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
+            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+          </a>
+          <nav class="nav-desktop" aria-label="Main navigation">
+            <a href="/#finance" class="nav-link">Finance</a>
+            <a href="/#pdf" class="nav-link">PDF Tools</a>
+            <a href="/#image" class="nav-link">Images</a>
+            <a href="/#dev" class="nav-link">Developers</a>
+          </nav>
+          <div class="privacy-badge" title="Your data never leaves your browser">
+            <span class="privacy-badge-dot"></span>
+            <span>Privacy First</span>
+          </div>
+          <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+            <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+          <button type="button" id="mobileMenuBtn" class="menu-btn" aria-label="Toggle menu" aria-expanded="false">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+        </div>
+        <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
+          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <div class="tool-wrapper">
+        <div class="tool-hero">
+          <div class="tool-hero-icon">&#128260;</div>
+          <h1>Base64 Encoder/Decoder</h1>
+          <span class="sr-only">Free Base64 encoder and decoder — convert text and files to Base64 and back. Free online Base64 converter tool.</span>
+          <p>Encode and decode Base64 strings and files. Convert text to Base64, Base64 to text, or files to Base64. Works 100% in your browser.</p>
+        </div>
+
+        <div class="card">
+          <div class="mode-toggle" role="tablist" aria-label="Conversion mode">
+            <button class="mode-btn active" data-mode="encode-text" role="tab" aria-selected="true">Text to Base64</button>
+            <button class="mode-btn" data-mode="decode-text" role="tab" aria-selected="false">Base64 to Text</button>
+            <button class="mode-btn" data-mode="encode-file" role="tab" aria-selected="false">File to Base64</button>
+          </div>
+
+          <div id="textInputSection" class="input-section">
+            <div class="input-label" id="inputLabel">Input Text</div>
+            <textarea id="textInput" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="Enter text to encode..." aria-label="Text input"></textarea>
+          </div>
+
+          <div id="fileInputSection" class="file-section" style="display:none;">
+            <div class="input-label">Upload File</div>
+            <div class="file-dropzone" id="fileDropzone" role="button" tabindex="0" aria-label="Drop file here or click to browse">
+              <div class="file-dropzone-icon">&#128193;</div>
+              <div class="file-dropzone-text">Drop file here or click to browse</div>
+              <div class="file-dropzone-hint">Maximum file size: 10MB</div>
+            </div>
+            <input type="file" id="fileInput" aria-label="File input">
+            <div class="file-info" id="fileInfo">
+              <span class="file-info-name" id="fileName"></span>
+              <span class="file-info-size" id="fileSize"></span>
+              <button class="file-info-remove" id="fileRemove" aria-label="Remove file">&times;</button>
+            </div>
+          </div>
+
+          <div class="btn-bar" role="toolbar" aria-label="Base64 actions">
+            <button class="btn btn-primary" id="btnConvert" type="button" aria-label="Convert">
+              <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M11.534 7h3.932a.25.25 0 01.192.41l-1.966 2.36a.25.25 0 01-.384 0l-1.966-2.36a.25.25 0 01.192-.41zm-11 2h3.932a.25.25 0 00.192-.41L2.692 6.23a.25.25 0 00-.384 0L.342 8.59A.25.25 0 00.534 9z"/><path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 01-.771-.636A6.002 6.002 0 0113.917 7H12.9A5.002 5.002 0 008 3zM3.1 9a5.002 5.002 0 008.757 2.182.5.5 0 01.771.636A6.002 6.002 0 012.083 9H3.1z"/></svg>
+              Convert
+            </button>
+            <button class="btn btn-ghost" id="btnCopy" type="button" aria-label="Copy output to clipboard">
+              <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 1.5H3a2 2 0 00-2 2V14a2 2 0 002 2h10a2 2 0 002-2V3.5a2 2 0 00-2-2h-1v1h1a1 1 0 011 1V14a1 1 0 01-1 1H3a1 1 0 01-1-1V3.5a1 1 0 011-1h1v-1zM9.5 1a.5.5 0 01.5.5v1a.5.5 0 01-.5.5h-3a.5.5 0 01-.5-.5v-1a.5.5 0 01.5-.5h3z"/></svg>
+              Copy
+            </button>
+            <button class="btn btn-secondary" id="btnDownload" type="button" aria-label="Download result">
+              <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1a.5.5 0 01.5.5v8.793l3.146-3.147a.5.5 0 01.708.708l-4 4a.5.5 0 01-.708 0l-4-4a.5.5 0 01.708-.708L7.5 10.293V1.5A.5.5 0 018 1z"/><path d="M1.5 13.5A.5.5 0 012 13h12a.5.5 0 010 1H2a.5.5 0 01-.5-.5z"/></svg>
+              Download
+            </button>
+            <button class="btn btn-danger" id="btnClear" type="button" aria-label="Clear all">
+              <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M5.5 5.5A.5.5 0 016 6v6a.5.5 0 01-1 0V6a.5.5 0 01.5-.5zm2.5 0a.5.5 0 01.5.5v6a.5.5 0 01-1 0V6a.5.5 0 01.5-.5zm3 .5a.5.5 0 00-1 0v6a.5.5 0 001 0V6z"/><path fill-rule="evenodd" d="M14.5 3a1 1 0 01-1 1H13v9a2 2 0 01-2 2H5a2 2 0 01-2-2V4h-.5a1 1 0 01-1-1V2a1 1 0 011-1H6a1 1 0 011-1h2a1 1 0 011 1h3.5a1 1 0 011 1v1zM4.118 4L4 4.059V13a1 1 0 001 1h6a1 1 0 001-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/></svg>
+              Clear
+            </button>
+            <span class="copy-feedback" id="copyFeedback" aria-live="polite">Copied!</span>
+          </div>
+
+          <div class="error-banner" id="errorBanner" role="alert">
+            <div class="error-icon">!</div>
+            <div class="error-text" id="errorText"></div>
+          </div>
+
+          <div>
+            <div class="output-header">
+              <div class="output-label" id="outputLabel">Base64 Output</div>
+            </div>
+            <div class="output-wrap">
+              <div class="output-placeholder" id="outputPlaceholder">Result will appear here</div>
+              <textarea id="textOutput" spellcheck="false" aria-label="Output" readonly></textarea>
+            </div>
+          </div>
+
+          <div class="legal-note">
+            <strong>Disclaimer:</strong> This tool processes all data locally in your browser. No text or files are sent to any server. File conversion is limited to 10MB per file.
+          </div>
+        </div>
+      </div>
+
+      <section class="seo-section" aria-label="About this tool">
+        <h2>About Base64 Encoder/Decoder</h2>
+        <p>Base64 is a binary-to-text encoding scheme that represents binary data in an ASCII string format. It's commonly used for transmitting data over channels that only support text content, embedding images in HTML/CSS, storing binary data in JSON, and many other applications. This free online tool lets you encode text or files to Base64, or decode Base64 back to its original form.</p>
+
+        <h3>How to Use</h3>
+        <ol>
+          <li>Select your conversion mode: <strong>Text to Base64</strong>, <strong>Base64 to Text</strong>, or <strong>File to Base64</strong>.</li>
+          <li>Enter your text or upload a file (max 10MB).</li>
+          <li>Click <strong>Convert</strong> to perform the encoding/decoding.</li>
+          <li>Use <strong>Copy</strong> to copy the result or <strong>Download</strong> to save it.</li>
+        </ol>
+
+        <h3>Frequently Asked Questions</h3>
+
+        <details class="faq-item">
+          <summary>What is Base64 encoding used for?</summary>
+          <p>Base64 is used to encode binary data as text for transmission over text-based protocols, embedding images in HTML/CSS using data URIs, storing binary data in JSON or XML, email attachments (MIME), and URL parameters that need to handle special characters.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Is my data kept private?</summary>
+          <p>Yes, completely. All encoding and decoding happens locally in your browser using JavaScript. No data is ever transmitted to any server or stored anywhere.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>What's the maximum file size?</summary>
+          <p>The file upload is limited to 10MB per file to ensure smooth performance in your browser. For larger files, consider using command-line tools or desktop applications.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Can I decode Base64 back to a file?</summary>
+          <p>When you decode Base64 text, the result will appear in the output area. If the decoded content represents a file (like an image), you can copy the output and use it in data URIs or save it with the appropriate file extension.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Why does my Base64 look different on different systems?</summary>
+          <p>Base64 encoding is standardized (RFC 4648), so the encoded output should be consistent. However, line breaks and padding characters (=) might be handled differently by various systems. This tool produces standard Base64 without line breaks.</p>
+        </details>
+      </section>
+    </main>
+
+    <footer class="tool-footer">
+      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
+      <p>Estimates only &mdash; not financial, legal, or tax advice.</p>
+    </footer>
+    <style>
+      .tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }
+      .tool-footer a { color: #00D9FF; text-decoration: none; }
+    </style>
+  </div>
+
+  <script type="module">
+    const textInputSection = document.getElementById('textInputSection');
+    const fileInputSection = document.getElementById('fileInputSection');
+    const textInput = document.getElementById('textInput');
+    const fileInput = document.getElementById('fileInput');
+    const fileDropzone = document.getElementById('fileDropzone');
+    const fileInfo = document.getElementById('fileInfo');
+    const fileName = document.getElementById('fileName');
+    const fileSize = document.getElementById('fileSize');
+    const textOutput = document.getElementById('textOutput');
+    const outputPlaceholder = document.getElementById('outputPlaceholder');
+    const errorBanner = document.getElementById('errorBanner');
+    const errorText = document.getElementById('errorText');
+    const copyFeedback = document.getElementById('copyFeedback');
+    const inputLabel = document.getElementById('inputLabel');
+    const outputLabel = document.getElementById('outputLabel');
+
+    let currentMode = 'encode-text';
+    let currentFile = null;
+    let copyTimer = null;
+
+    function formatBytes(bytes) {
+      if (bytes === 0) return '0 Bytes';
+      const k = 1024;
+      const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+      const i = Math.floor(Math.log(bytes) / Math.log(k));
+      return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+    }
+
+    function showError(msg) {
+      errorText.textContent = msg;
+      errorBanner.classList.add('visible');
+    }
+
+    function hideError() {
+      errorBanner.classList.remove('visible');
+    }
+
+    function showOutput(text) {
+      textOutput.value = text;
+      textOutput.style.display = 'block';
+      outputPlaceholder.style.display = 'none';
+    }
+
+    function hideOutput() {
+      textOutput.value = '';
+      textOutput.style.display = 'none';
+      outputPlaceholder.style.display = 'block';
+    }
+
+    function setMode(mode) {
+      currentMode = mode;
+      document.querySelectorAll('.mode-btn').forEach(btn => {
+        const isActive = btn.dataset.mode === mode;
+        btn.classList.toggle('active', isActive);
+        btn.setAttribute('aria-selected', isActive);
+      });
+
+      if (mode === 'encode-file') {
+        textInputSection.style.display = 'none';
+        fileInputSection.style.display = 'block';
+        inputLabel.textContent = 'Upload File';
+        outputLabel.textContent = 'Base64 Output';
+      } else {
+        textInputSection.style.display = 'block';
+        fileInputSection.style.display = 'none';
+        inputLabel.textContent = mode === 'encode-text' ? 'Input Text' : 'Base64 Input';
+        outputLabel.textContent = mode === 'encode-text' ? 'Base64 Output' : 'Decoded Text';
+        textInput.placeholder = mode === 'encode-text' ? 'Enter text to encode...' : 'Enter Base64 to decode...';
+      }
+      hideOutput();
+      hideError();
+    }
+
+    function handleConvert() {
+      hideError();
+
+      if (currentMode === 'encode-text') {
+        const text = textInput.value;
+        if (!text) { hideOutput(); return; }
+        try {
+          const encoded = btoa(unescape(encodeURIComponent(text)));
+          showOutput(encoded);
+        } catch (e) {
+          showError('Error encoding text: ' + e.message);
+          hideOutput();
+        }
+      } else if (currentMode === 'decode-text') {
+        const base64 = textInput.value.trim();
+        if (!base64) { hideOutput(); return; }
+        try {
+          const decoded = decodeURIComponent(escape(atob(base64)));
+          showOutput(decoded);
+        } catch (e) {
+          showError('Invalid Base64 string: ' + e.message);
+          hideOutput();
+        }
+      } else if (currentMode === 'encode-file') {
+        if (!currentFile) { showError('Please select a file first'); hideOutput(); return; }
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const base64 = e.target.result.split(',')[1];
+          showOutput(base64);
+        };
+        reader.onerror = () => {
+          showError('Error reading file');
+          hideOutput();
+        };
+        reader.readAsDataURL(currentFile);
+      }
+    }
+
+    async function handleCopy() {
+      if (!textOutput.value) return;
+      try {
+        await navigator.clipboard.writeText(textOutput.value);
+      } catch (_) {
+        const ta = document.createElement('textarea');
+        ta.value = textOutput.value;
+        ta.style.cssText = 'position:fixed;opacity:0;pointer-events:none;';
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+      }
+      copyFeedback.classList.add('show');
+      clearTimeout(copyTimer);
+      copyTimer = setTimeout(() => copyFeedback.classList.remove('show'), 1800);
+    }
+
+    function handleDownload() {
+      if (!textOutput.value) return;
+      const blob = new Blob([textOutput.value], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = currentMode === 'decode-text' ? 'decoded.txt' : 'base64.txt';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    function handleClear() {
+      textInput.value = '';
+      currentFile = null;
+      fileInfo.classList.remove('visible');
+      fileInput.value = '';
+      hideOutput();
+      hideError();
+      textInput.focus();
+    }
+
+    function handleFileSelect(file) {
+      if (!file) return;
+      if (file.size > 10 * 1024 * 1024) {
+        showError('File size exceeds 10MB limit');
+        return;
+      }
+      currentFile = file;
+      fileName.textContent = file.name;
+      fileSize.textContent = formatBytes(file.size);
+      fileInfo.classList.add('visible');
+      hideError();
+    }
+
+    document.querySelectorAll('.mode-btn').forEach(btn => {
+      btn.addEventListener('click', () => setMode(btn.dataset.mode));
+    });
+
+    fileDropzone.addEventListener('click', () => fileInput.click());
+    fileDropzone.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') fileInput.click(); });
+    
+    fileDropzone.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      fileDropzone.classList.add('dragover');
+    });
+    
+    fileDropzone.addEventListener('dragleave', () => {
+      fileDropzone.classList.remove('dragover');
+    });
+    
+    fileDropzone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      fileDropzone.classList.remove('dragover');
+      const files = e.dataTransfer.files;
+      if (files.length > 0) handleFileSelect(files[0]);
+    });
+
+    fileInput.addEventListener('change', (e) => {
+      if (e.target.files.length > 0) handleFileSelect(e.target.files[0]);
+    });
+
+    document.getElementById('fileRemove').addEventListener('click', (e) => {
+      e.stopPropagation();
+      currentFile = null;
+      fileInfo.classList.remove('visible');
+      fileInput.value = '';
+    });
+
+    document.getElementById('btnConvert').addEventListener('click', handleConvert);
+    document.getElementById('btnCopy').addEventListener('click', handleCopy);
+    document.getElementById('btnDownload').addEventListener('click', handleDownload);
+    document.getElementById('btnClear').addEventListener('click', handleClear);
+
+    textInput.addEventListener('input', () => {
+      if (errorBanner.classList.contains('visible')) hideError();
+    });
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var menuBtn = document.getElementById('mobileMenuBtn');
+      var mobileMenu = document.getElementById('mobileMenu');
+      if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener('click', function() {
+          var isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+          menuBtn.setAttribute('aria-expanded', !isExpanded);
+          mobileMenu.hidden = isExpanded;
+          mobileMenu.classList.toggle('active', !isExpanded);
+        });
+      }
+      var themeBtn = document.getElementById('themeToggle');
+      if (themeBtn) {
+        function getTheme() {
+          var s = localStorage.getItem('theme');
+          if (s) return s;
+          return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        }
+        function updateIcon() {
+          var t = getTheme();
+          themeBtn.querySelector('.icon-sun').style.display = t === 'light' ? 'none' : 'block';
+          themeBtn.querySelector('.icon-moon').style.display = t === 'dark' ? 'none' : 'block';
+        }
+        themeBtn.addEventListener('click', function() {
+          var next = getTheme() === 'dark' ? 'light' : 'dark';
+          document.documentElement.setAttribute('data-theme', next);
+          localStorage.setItem('theme', next);
+          updateIcon();
+        });
+        updateIcon();
+      }
+    });
+  </script>
+</body>
+</html>
