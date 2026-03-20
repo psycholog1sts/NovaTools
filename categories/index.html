@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y896L63239"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -13,17 +12,14 @@
     gtag('config', 'G-Y896L63239');
   </script>
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   
-  <!-- Styles -->
-  <link rel="stylesheet" href="/src/styles/critical.css">
-  <link rel="stylesheet" href="/src/styles/design-system.css">
+  <link rel="stylesheet" href="/styles/critical.css">
+  <link rel="stylesheet" href="/styles/design-system.css">
   <script src="/i18n.js"></script>
   
-  <!-- Meta -->
   <title>All Tool Categories | MC NovaTools</title>
   <meta name="description" content="Browse all 12 tool categories. Find PDF tools, image converters, financial calculators, developer utilities and more.">
   <meta name="robots" content="index, follow">
@@ -33,7 +29,6 @@
 <body>
   <div id="app">
     
-    <!-- Header -->
     <header class="app-header">
       <div class="container">
         <div class="header-inner">
@@ -80,10 +75,8 @@
       </div>
     </header>
 
-    <!-- Main -->
     <main>
       
-      <!-- Page Header -->
       <section class="page-header">
         <div class="container">
           <nav class="breadcrumbs">
@@ -99,16 +92,13 @@
         </div>
       </section>
 
-      <!-- Categories Grid -->
       <section class="section section-categories">
         <div class="container">
           <div class="categories-grid" id="allCategories">
-            <!-- Categories injected by JS -->
-          </div>
+            </div>
         </div>
       </section>
 
-      <!-- CTA -->
       <section class="section section-cta">
         <div class="container">
           <div class="cta-box">
@@ -125,10 +115,8 @@
 
     </main>
 
-    <!-- Footer - Enhanced for Google Trust & Compliance -->
     <footer class="app-footer">
       
-      <!-- Trust Bar -->
       <div class="footer-trust-bar">
         <div class="container">
           <div class="trust-items">
@@ -183,12 +171,10 @@
         </div>
       </div>
 
-      <!-- Main Footer -->
       <div class="footer-main">
         <div class="container">
           <div class="footer-grid">
             
-            <!-- Brand Column -->
             <div class="footer-brand">
               <a href="/" class="footer-logo">
                 <span class="footer-logo-icon">
@@ -201,7 +187,6 @@
                 Fast, private, secure, and always free. Your data stays on your device.
               </p>
               
-              <!-- Owner Contact Card -->
               <div class="footer-contact">
                 <div class="contact-title">Site Owner & Contact</div>
                 <div class="contact-person">Metehan ÇETİN, LPC</div>
@@ -216,7 +201,6 @@
               </div>
             </div>
             
-            <!-- Links Columns -->
             <div class="footer-links">
               <div class="footer-column">
                 <h4 class="footer-column-title">Tool Categories</h4>
@@ -252,7 +236,6 @@
             </div>
           </div>
           
-          <!-- Owner Signature Section -->
           <div class="owner-signature">
             <div class="owner-avatar">MÇ</div>
             <div class="owner-info">
@@ -264,7 +247,6 @@
         </div>
       </div>
 
-      <!-- Legal Bar -->
       <div class="footer-legal-bar">
         <div class="container">
           <div class="legal-content">
@@ -291,7 +273,7 @@
   </div>
 
   <script type="module">
-    import { categories } from '../src/data/categories.js';
+    import { categories } from '/src/data/categories.js';
     
     // Render all categories
     const container = document.getElementById('allCategories');

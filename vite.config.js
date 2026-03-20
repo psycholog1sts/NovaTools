@@ -33,6 +33,15 @@ const blogEntry = {
   'blog': resolve(__dirname, 'src/blog/index.html')
 };
 
+// Categories entry points
+const categoryEntries = globSync('categories/**/*.html').reduce((acc, file) => {
+  const name = file
+    .replace(/\\/g, '/')
+    .replace(/\.html$/, '');
+  acc[name] = resolve(__dirname, file);
+  return acc;
+}, {});
+
 export default defineConfig({
   root: '.',
   publicDir: 'public',
@@ -54,6 +63,7 @@ export default defineConfig({
         main: resolve(__dirname, 'index.html'),
         ...adminEntry,
         ...blogEntry,
+        ...categoryEntries,
         ...toolEntries
       },
       
