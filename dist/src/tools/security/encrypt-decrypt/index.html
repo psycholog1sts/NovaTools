@@ -19,12 +19,13 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
   <title>Free AES Encryption/Decryption Tool | NovaTools MC</title>
+  
+  <!-- i18n Script -->
+  <script src="/i18n.js"></script>
   <meta name="description" content="Encrypt and decrypt text using AES-256-GCM encryption. Secure client-side encryption with password-based key derivation. 100% free and private.">
   <meta name="keywords" content="encryption tool, decrypt, aes encryption, text encryption">
   <meta name="theme-color" content="#0A0A0C">
@@ -57,10 +58,10 @@
   </script>
 
   <style>.tool-wrapper{margin:0 auto;max-width:960px;padding:3rem 1rem 5rem}.tool-hero{margin-bottom:2.5rem;text-align:center}.tool-hero-icon{font-size:3.5rem;line-height:1;margin-bottom:1rem}.tool-hero h1{color:#fafafa;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;letter-spacing:-.02em;margin-bottom:.75rem}.tool-hero p{color:#a1a1aa;font-size:1.0625rem;margin:0 auto;max-width:560px}.card{backdrop-filter:blur(12px);background:rgba(15,15,20,.7);border:1px solid rgba(0,217,255,.15);border-radius:14px;padding:1.75rem}.mode-tabs{margin-bottom:1.5rem}.mode-tabs,.tab-btn{display:flex;gap:.5rem}.tab-btn{align-items:center;background:hsla(0,0%,100%,.05);border:1px solid hsla(0,0%,100%,.1);border-radius:8px;color:#a1a1aa;cursor:pointer;flex:1;font-size:.9rem;font-weight:600;justify-content:center;padding:.75rem;transition:all .2s}.tab-btn:hover{background:rgba(0,217,255,.1);border-color:rgba(0,217,255,.2)}.tab-btn.active{background:rgba(0,217,255,.15);border-color:rgba(0,217,255,.4);color:#00d9ff}.input-section{margin-bottom:1.25rem}.input-label{align-items:center;color:#71717a;display:flex;font-size:.8125rem;font-weight:600;gap:.5rem;letter-spacing:.06em;margin-bottom:.625rem;text-transform:uppercase}.text-input{background:#0f0f12;border:1px solid rgba(0,217,255,.12);border-radius:10px;color:#fafafa;font-family:JetBrains Mono,monospace;font-size:.875rem;line-height:1.7;min-height:120px;outline:none;padding:1rem 1.125rem;resize:vertical;transition:border-color .2s,box-shadow .2s;width:100%}.text-input:focus{border-color:rgba(0,217,255,.45);box-shadow:0 0 0 3px rgba(0,217,255,.08)}.password-input-wrapper{position:relative}.password-input{background:#0f0f12;border:1px solid rgba(0,217,255,.12);border-radius:10px;color:#fafafa;font-family:JetBrains Mono,monospace;font-size:.875rem;outline:none;padding:1rem 3rem 1rem 1.125rem;transition:border-color .2s,box-shadow .2s;width:100%}.password-input:focus{border-color:rgba(0,217,255,.45);box-shadow:0 0 0 3px rgba(0,217,255,.08)}.toggle-visibility{align-items:center;background:none;border:none;color:#71717a;cursor:pointer;display:flex;justify-content:center;padding:.25rem;position:absolute;right:12px;top:50%;transform:translateY(-50%)}.toggle-visibility:hover{color:#fafafa}.btn-bar{display:flex;flex-wrap:wrap;gap:.625rem;margin-bottom:1.5rem}.btn{align-items:center;border:none;border-radius:8px;cursor:pointer;display:inline-flex;font-size:.95rem;font-weight:600;gap:.4rem;height:48px;outline:none;padding:0 1.5rem;transition:background .18s,transform .12s,opacity .18s;-webkit-user-select:none;-moz-user-select:none;user-select:none}.btn:active{transform:scale(.97)}.btn-primary{background:linear-gradient(135deg,#00d9ff,#09c);color:#0a0a0c}.btn-primary:hover{background:linear-gradient(135deg,#1fe2ff,#00b8ee)}.btn-secondary{background:rgba(0,217,255,.1);border:1px solid rgba(0,217,255,.25);color:#00d9ff}.btn-secondary:hover{background:rgba(0,217,255,.18)}.btn-ghost{background:hsla(0,0%,100%,.05);border:1px solid hsla(0,0%,100%,.1);color:#a1a1aa}.btn-ghost:hover{background:hsla(0,0%,100%,.1);color:#fafafa}.output-section{background:#08080a;border:1px solid rgba(0,217,255,.1);border-radius:10px;padding:1.25rem;position:relative}.output-header{align-items:center;display:flex;justify-content:space-between;margin-bottom:.75rem}.output-label{color:#71717a;font-size:.8125rem;font-weight:600}.output-actions{display:flex;gap:.5rem}.output-display{background:rgba(0,255,136,.05);border-radius:6px;color:#0f8;font-family:JetBrains Mono,monospace;font-size:.875rem;line-height:1.6;min-height:3rem;padding:.75rem;word-break:break-all}.output-display.placeholder{color:#52525b;font-style:italic}.output-display.error{background:rgba(255,85,85,.05);color:#f55}.warning-box{align-items:flex-start;background:rgba(255,193,7,.1);border:1px solid rgba(255,193,7,.3);border-radius:8px;display:flex;gap:.75rem;margin-top:1.5rem;padding:1rem}.warning-icon{color:#ffc107;flex-shrink:0;font-size:1.25rem}.warning-content{flex:1}.warning-title{color:#ffc107;font-size:.875rem;font-weight:600;margin-bottom:.25rem}.warning-text{color:#a1a1aa;font-size:.8125rem;line-height:1.6}.info-box{background:rgba(0,217,255,.05);border:1px solid rgba(0,217,255,.2);border-radius:8px;margin-bottom:1.5rem;padding:1rem}.info-title{align-items:center;color:#00d9ff;display:flex;font-size:.875rem;font-weight:600;gap:.5rem;margin-bottom:.5rem}.info-text{color:#a1a1aa;font-size:.8125rem;line-height:1.6}.tech-specs{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));margin-top:1rem}.tech-spec{background:hsla(0,0%,100%,.03);border:1px solid hsla(0,0%,100%,.08);border-radius:8px;padding:.875rem}.tech-spec-label{color:#71717a;font-size:.75rem;letter-spacing:.05em;margin-bottom:.25rem;text-transform:uppercase}.tech-spec-value{color:#fafafa;font-family:JetBrains Mono,monospace;font-size:.875rem}.copy-feedback{color:#0f8;font-size:.8rem;opacity:0;transition:opacity .3s}.copy-feedback.show{opacity:1}.seo-section{margin:3.5rem auto 0;max-width:960px;padding:0 1rem}.seo-section h2{color:#fafafa;font-size:1.375rem;font-weight:700;margin-bottom:.75rem}.seo-section h3{color:#fafafa;font-size:1.125rem;font-weight:600;margin:2rem 0 .75rem}.seo-section li,.seo-section p{color:#a1a1aa;font-size:.9375rem;line-height:1.8}.seo-section ol{padding-left:1.25rem}.seo-section ol li{margin-bottom:.4rem}.faq-item{background:rgba(15,15,20,.5);border:1px solid rgba(0,217,255,.1);border-radius:10px;margin-bottom:.875rem;padding:1rem 1.125rem}.faq-item summary{align-items:center;color:#fafafa;cursor:pointer;display:flex;font-weight:600;gap:1rem;justify-content:space-between;list-style:none}.faq-item summary::-webkit-details-marker{display:none}.faq-item summary:after{color:#00d9ff;content:"+";flex-shrink:0;font-size:1.25rem;transition:transform .2s}.faq-item[open] summary:after{content:"\2212"}.faq-item p{color:#a1a1aa;line-height:1.7;margin-top:.625rem}@media (max-width:600px){.tech-specs{grid-template-columns:1fr}.mode-tabs{flex-direction:column}}</style>
-  <script type="module" crossorigin src="/js/tools/security/encrypt-decrypt-7FGoA4iJ.js"></script>
+  <script type="module" crossorigin src="/js/tools/security/encrypt-decrypt-Can-2CyB.js"></script>
   <link rel="modulepreload" crossorigin href="/js/modulepreload-polyfill-YP0FEG5d.js">
   <link rel="stylesheet" crossorigin href="/css/critical-D6EXev1O.css">
-  <link rel="stylesheet" crossorigin href="/css/main-DhTT_MeI.css">
+  <link rel="stylesheet" crossorigin href="/css/main-C-2uV3x-.css">
 <link rel="manifest" href="/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/registerSW.js"></script></head>
 <body>
   <div class="bg-ambient" aria-hidden="true"></div>
@@ -257,13 +258,12 @@
     </main>
 
     <footer class="tool-footer">
-      <p>&copy; 2026 NovaTools MC &mdash; Psk. Metehan CETIN | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
+      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
       <p>Estimates only &mdash; not financial, legal, or tax advice.</p>
     </footer>
     <style>.tool-footer{border-top:1px solid var(--border-default);color:#718096;font-size:.8rem;line-height:1.8;margin-top:3rem;padding:1.5rem 1rem;text-align:center}.tool-footer a{color:#00d9ff;text-decoration:none}</style>
   </div>
-
-
+
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {

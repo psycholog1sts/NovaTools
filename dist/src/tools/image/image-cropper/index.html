@@ -12,9 +12,7 @@
   <script>(function(){var t=localStorage.getItem('novatools-theme');if(t)document.documentElement.setAttribute('data-theme',t);else{var d=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',d);document.documentElement.style.colorScheme=d;}})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
@@ -22,6 +20,9 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <title>Image Cropper - Crop Photos Online Free | NovaTools</title>
+  
+  <!-- i18n Script -->
+  <script src="/i18n.js"></script>
   <meta name="description" content="Crop images to desired aspect ratio or freehand selection. Fixed ratios (1:1, 16:9, 4:3) and custom cropping. Free online photo editor.">
   <meta name="keywords" content="image cropper, crop photo, aspect ratio, photo editor, online image crop">
   <meta name="theme-color" content="#0A0A0C">
@@ -54,7 +55,7 @@
   </script>
   <style>.tool-container{margin:0 auto;max-width:900px;padding:2rem 1rem}.tool-header{margin-bottom:2rem;text-align:center}.tool-header h1{font-size:2rem;font-weight:700;margin-bottom:.5rem}.tool-header p{color:var(--text-secondary)}.dropzone{background:var(--surface-default);border:2px dashed var(--border-default);border-radius:16px;cursor:pointer;padding:3rem 2rem;text-align:center;transition:all .3s ease}.dropzone:hover{background:var(--border-default);border-color:var(--border-accent)}.dropzone.drag-active{background:var(--accent-subtle);border-color:var(--accent-primary);transform:scale(1.02)}.editor-section{background:var(--surface-default);border:1px solid var(--border-default);border-radius:var(--radius-lg);display:none;margin-top:1.5rem;padding:1.5rem}.editor-section.visible{display:block}.ratio-buttons{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem}.ratio-btn{background:var(--bg-tertiary);border:1px solid var(--border-default);border-radius:var(--radius-md);color:var(--text-secondary);cursor:pointer;font-size:.875rem;padding:.5rem 1rem;transition:all .2s}.ratio-btn.active,.ratio-btn:hover{background:var(--accent-subtle);border-color:var(--accent-primary);color:var(--accent-primary)}.canvas-container{align-items:center;background:var(--bg-tertiary);border-radius:var(--radius-md);display:flex;justify-content:center;max-height:500px;overflow:auto;padding:1rem;position:relative}#cropCanvas,#sourceCanvas{border-radius:var(--radius-md);cursor:crosshair;max-width:100%}.crop-info{color:var(--text-secondary);display:flex;font-size:.875rem;gap:1rem;justify-content:center;margin-top:1rem}.result-section{background:linear-gradient(135deg,rgba(34,197,94,.1),rgba(34,197,94,.05));border:1px solid rgba(34,197,94,.3);border-radius:var(--radius-lg);display:none;margin-top:1.5rem;padding:2rem;text-align:center}.result-section.visible{display:block}.download-btn{align-items:center;background:linear-gradient(135deg,#22c55e,#16a34a);border-radius:var(--radius-md);color:#fff;display:inline-flex;font-weight:600;gap:.5rem;padding:1rem 2rem;text-decoration:none}.download-btn:hover{box-shadow:0 10px 20px rgba(34,197,94,.3);transform:translateY(-2px)}.legal-disclaimer{background:var(--surface-default);border-left:4px solid var(--warning);border-radius:0 var(--radius-md) var(--radius-md) 0;color:var(--text-secondary);font-size:.875rem;line-height:1.6;margin-top:2rem;padding:1rem 1.25rem}.how-to-use{margin-top:3rem}.how-to-use h2{font-size:1.5rem;font-weight:600;margin-bottom:1rem}.how-to-use ol{color:var(--text-secondary);line-height:1.8;padding-left:1.5rem}.how-to-use li{margin-bottom:.5rem}.faq-section{margin-top:3rem}.faq-section h2{font-size:1.5rem;font-weight:600;margin-bottom:1rem}.faq-item{border:1px solid var(--border-hover);border-radius:var(--radius-md);margin-bottom:.75rem;overflow:hidden}.faq-item summary{background:var(--surface-default);cursor:pointer;font-weight:500;padding:1rem}.faq-item summary:hover{background:var(--border-default)}.faq-item p{border-top:1px solid var(--border-hover);color:var(--text-secondary);margin:0;padding:1rem}</style>
   <link rel="stylesheet" crossorigin href="/css/critical-D6EXev1O.css">
-  <link rel="stylesheet" crossorigin href="/css/main-DhTT_MeI.css">
+  <link rel="stylesheet" crossorigin href="/css/main-C-2uV3x-.css">
 <link rel="manifest" href="/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/registerSW.js"></script></head>
 <body>
   <div class="bg-ambient" aria-hidden="true"></div>
@@ -192,7 +193,7 @@
     </main>
 
     <footer class="tool-footer">
-      <p>&copy; 2026 NovaTools MC &mdash; Psk. Metehan CETIN | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
+      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
       <p>Estimates only &mdash; not professional image processing advice.</p>
     </footer>
     <style>.tool-footer{border-top:1px solid var(--border-default);color:#718096;font-size:.8rem;line-height:1.8;margin-top:3rem;padding:1.5rem 1rem;text-align:center}.tool-footer a{color:#00d9ff;text-decoration:none}</style>

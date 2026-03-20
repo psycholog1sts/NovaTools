@@ -19,12 +19,13 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
   <title>Free Secure Password Generator | NovaTools MC</title>
+  
+  <!-- i18n Script -->
+  <script src="/i18n.js"></script>
   <meta name="description" content="Generate secure, random passwords with customizable options. Strong password generator with length control, character types, and strength indicator. 100% free and private.">
   <meta name="keywords" content="password generator, secure password, random password, strong password, free password tool">
   <meta name="theme-color" content="#0A0A0C">
@@ -57,10 +58,10 @@
   </script>
 
   <style>.tool-wrapper{margin:0 auto;max-width:960px;padding:3rem 1rem 5rem}.tool-hero{margin-bottom:2.5rem;text-align:center}.tool-hero-icon{font-size:3.5rem;line-height:1;margin-bottom:1rem}.tool-hero h1{color:#fafafa;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;letter-spacing:-.02em;margin-bottom:.75rem}.tool-hero p{color:#a1a1aa;font-size:1.0625rem;margin:0 auto;max-width:560px}.card{backdrop-filter:blur(12px);background:rgba(15,15,20,.7);border:1px solid rgba(0,217,255,.15);border-radius:14px;padding:1.75rem}.password-display{background:#08080a;border:1px solid rgba(0,217,255,.2);border-radius:12px;margin-bottom:1.5rem;padding:1.5rem;position:relative}#passwordOutput{color:#fafafa;font-family:JetBrains Mono,Fira Code,monospace;font-size:1.25rem;font-weight:500;min-height:2rem;text-align:center;word-break:break-all}.password-placeholder{color:#52525b;font-style:italic}.password-actions{display:flex;gap:.75rem;justify-content:center;margin-top:1rem}.btn{align-items:center;border:none;border-radius:8px;cursor:pointer;display:inline-flex;font-size:.9rem;font-weight:600;gap:.4rem;height:44px;outline:none;padding:0 1.25rem;transition:background .18s,transform .12s,opacity .18s;-webkit-user-select:none;-moz-user-select:none;user-select:none}.btn:active{transform:scale(.97)}.btn-primary{background:linear-gradient(135deg,#00d9ff,#09c);color:#0a0a0c}.btn-primary:hover{background:linear-gradient(135deg,#1fe2ff,#00b8ee)}.btn-secondary{background:rgba(0,217,255,.1);border:1px solid rgba(0,217,255,.25);color:#00d9ff}.btn-secondary:hover{background:rgba(0,217,255,.18)}.strength-meter{margin-bottom:1.5rem}.strength-bar-container{background:hsla(0,0%,100%,.1);border-radius:4px;height:8px;margin-bottom:.5rem;overflow:hidden}.strength-bar{border-radius:4px;height:100%;transition:width .3s ease,background-color .3s ease;width:0}.strength-bar.weak{background:linear-gradient(90deg,#f55,#f77)}.strength-bar.fair{background:linear-gradient(90deg,#ff9500,#ffb84d)}.strength-bar.good{background:linear-gradient(90deg,gold,#ffed4a)}.strength-bar.strong{background:linear-gradient(90deg,#0f8,#4dffb8)}.strength-label{color:#71717a;font-size:.875rem;font-weight:600;text-align:center}.options-section{display:grid;gap:1.25rem}.option-group{display:flex;flex-direction:column;gap:.75rem}.option-label{color:#a1a1aa;font-size:.875rem;font-weight:600;gap:.5rem}.length-control,.option-label{align-items:center;display:flex}.length-control{gap:1rem}#lengthSlider{-webkit-appearance:none;-moz-appearance:none;appearance:none;background:rgba(0,217,255,.2);border-radius:3px;flex:1;height:6px;outline:none}#lengthSlider::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;background:linear-gradient(135deg,#00d9ff,#09c);border-radius:50%;box-shadow:0 0 10px rgba(0,217,255,.3);cursor:pointer;height:20px;width:20px}#lengthSlider::-moz-range-thumb{background:linear-gradient(135deg,#00d9ff,#09c);border:none;border-radius:50%;box-shadow:0 0 10px rgba(0,217,255,.3);cursor:pointer;height:20px;width:20px}#lengthValue{background:rgba(0,217,255,.1);border-radius:6px;color:#00d9ff;font-family:JetBrains Mono,monospace;font-size:1.125rem;font-weight:600;min-width:3rem;padding:.375rem .75rem;text-align:center}.checkbox-group{display:grid;gap:.75rem;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}.checkbox-option{align-items:center;background:hsla(0,0%,100%,.03);border:1px solid hsla(0,0%,100%,.1);border-radius:8px;cursor:pointer;display:flex;gap:.75rem;padding:.75rem;transition:all .2s ease}.checkbox-option:hover{background:rgba(0,217,255,.05);border-color:rgba(0,217,255,.2)}.checkbox-option input[type=checkbox]{accent-color:#00d9ff;cursor:pointer;height:20px;width:20px}.checkbox-option span{color:#fafafa;font-size:.9rem}.generate-btn-container{display:flex;justify-content:center;margin-top:1.5rem}.btn-generate{font-size:1rem;height:52px;padding:0 2rem}.copy-feedback{background:rgba(0,255,136,.9);border-radius:6px;color:#0a0a0c;font-size:.875rem;font-weight:600;left:50%;opacity:0;padding:.5rem 1rem;pointer-events:none;position:absolute;top:50%;transform:translate(-50%,-50%);transition:opacity .3s}.copy-feedback.show{opacity:1}.disclaimer{align-items:flex-start;background:rgba(255,193,7,.1);border:1px solid rgba(255,193,7,.3);border-radius:8px;display:flex;gap:.75rem;margin-top:1.5rem;padding:1rem}.disclaimer-icon{color:#ffc107;flex-shrink:0;font-size:1.125rem}.disclaimer-text{color:#a1a1aa;font-size:.8125rem;line-height:1.6}.seo-section{margin:3.5rem auto 0;max-width:960px;padding:0 1rem}.seo-section h2{color:#fafafa;font-size:1.375rem;font-weight:700;margin-bottom:.75rem}.seo-section h3{color:#fafafa;font-size:1.125rem;font-weight:600;margin:2rem 0 .75rem}.seo-section li,.seo-section p{color:#a1a1aa;font-size:.9375rem;line-height:1.8}.seo-section ol{padding-left:1.25rem}.seo-section ol li{margin-bottom:.4rem}.faq-item{background:rgba(15,15,20,.5);border:1px solid rgba(0,217,255,.1);border-radius:10px;margin-bottom:.875rem;padding:1rem 1.125rem}.faq-item summary{align-items:center;color:#fafafa;cursor:pointer;display:flex;font-weight:600;gap:1rem;justify-content:space-between;list-style:none}.faq-item summary::-webkit-details-marker{display:none}.faq-item summary:after{color:#00d9ff;content:"+";flex-shrink:0;font-size:1.25rem;transition:transform .2s}.faq-item[open] summary:after{content:"\2212"}.faq-item p{color:#a1a1aa;line-height:1.7;margin-top:.625rem}@media (max-width:600px){.checkbox-group{grid-template-columns:1fr}.length-control{flex-wrap:wrap}#passwordOutput{font-size:1rem}}</style>
-  <script type="module" crossorigin src="/js/tools/security/password-generator-BVjfg99-.js"></script>
+  <script type="module" crossorigin src="/js/tools/security/password-generator--d6Xw6y9.js"></script>
   <link rel="modulepreload" crossorigin href="/js/modulepreload-polyfill-YP0FEG5d.js">
   <link rel="stylesheet" crossorigin href="/css/critical-D6EXev1O.css">
-  <link rel="stylesheet" crossorigin href="/css/main-DhTT_MeI.css">
+  <link rel="stylesheet" crossorigin href="/css/main-C-2uV3x-.css">
 <link rel="manifest" href="/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/registerSW.js"></script></head>
 <body>
   <div class="bg-ambient" aria-hidden="true"></div>
@@ -245,13 +246,12 @@
     </main>
 
     <footer class="tool-footer">
-      <p>&copy; 2026 NovaTools MC &mdash; Psk. Metehan CETIN | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
+      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
       <p>Estimates only &mdash; not financial, legal, or tax advice.</p>
     </footer>
     <style>.tool-footer{border-top:1px solid var(--border-default);color:#718096;font-size:.8rem;line-height:1.8;margin-top:3rem;padding:1.5rem 1rem;text-align:center}.tool-footer a{color:#00d9ff;text-decoration:none}</style>
   </div>
-
-
+
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {

@@ -19,12 +19,13 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
   <title>Free Text Diff Checker Online | NovaTools MC</title>
+  
+  <!-- i18n Script -->
+  <script src="/i18n.js"></script>
   <meta name="description" content="Free online text diff checker. Compare two texts and find differences with line by line comparison. Highlight added and removed content. No signup required.">
   <meta name="keywords" content="text diff, compare text, difference checker, text comparison, diff tool">
   <meta name="theme-color" content="#0A0A0C">
@@ -57,10 +58,10 @@
   </script>
 
   <style>.tool-wrapper{margin:0 auto;max-width:1200px;padding:3rem 1rem 5rem}.tool-hero{margin-bottom:2.5rem;text-align:center}.tool-hero-icon{font-size:3.5rem;line-height:1;margin-bottom:1rem}.tool-hero h1{color:#fafafa;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;letter-spacing:-.02em;margin-bottom:.75rem}.tool-hero p{color:#a1a1aa;font-size:1.0625rem;margin:0 auto;max-width:560px}.card{backdrop-filter:blur(12px);background:rgba(15,15,20,.7);border:1px solid rgba(0,217,255,.15);border-radius:14px;padding:1.75rem}.ads-row{display:grid;gap:1rem;grid-template-columns:repeat(3,1fr);margin-bottom:1.5rem}.ad-box{align-items:center;background:hsla(0,0%,100%,.03);border:1px dashed rgba(0,217,255,.2);border-radius:8px;color:#52525b;display:flex;font-size:.75rem;justify-content:center;min-height:90px}.diff-inputs{display:grid;gap:1rem;grid-template-columns:1fr 1fr;margin-bottom:1.25rem}.input-column{display:flex;flex-direction:column}.section-label{color:#71717a;font-size:.75rem;font-weight:600;letter-spacing:.06em;margin-bottom:.5rem;text-transform:uppercase}.input-area{background:#0f0f12;border:1px solid rgba(0,217,255,.12);border-radius:10px;box-sizing:border-box;color:#fafafa;font-family:JetBrains Mono,monospace;font-size:.9375rem;line-height:1.6;min-height:200px;outline:none;padding:1rem 1.125rem;resize:vertical;width:100%}.input-area:focus{border-color:rgba(0,217,255,.45);box-shadow:0 0 0 3px rgba(0,217,255,.08)}.input-area::-moz-placeholder{color:#52525b}.input-area::placeholder{color:#52525b}.diff-options{align-items:center;background:rgba(0,0,0,.3);border-radius:10px;display:flex;flex-wrap:wrap;gap:1rem;margin-bottom:1.25rem;padding:.75rem 1rem}.checkbox-wrapper{align-items:center;display:flex;gap:.5rem}.checkbox-wrapper input[type=checkbox]{accent-color:#00d9ff;cursor:pointer;height:18px;width:18px}.checkbox-wrapper label{color:#a1a1aa;cursor:pointer;font-size:.875rem}.compare-btn{align-items:center;background:linear-gradient(135deg,#00d9ff,#09c);border:none;border-radius:10px;color:#0a0a0c;cursor:pointer;display:flex;font-size:1rem;font-weight:600;gap:.5rem;height:48px;justify-content:center;margin:0 auto 1.5rem;padding:0 2rem;transition:all .18s}.compare-btn:hover{background:linear-gradient(135deg,#1fe2ff,#00b8ee)}.compare-btn:active{transform:scale(.97)}.stats-grid{display:grid;gap:1rem;grid-template-columns:repeat(4,1fr);margin-bottom:1.5rem}.stat-box{background:rgba(0,217,255,.05);border:1px solid rgba(0,217,255,.1);border-radius:10px;padding:1rem;text-align:center}.stat-box-label{color:#71717a;font-size:.75rem;font-weight:600;letter-spacing:.06em;margin-bottom:.5rem;text-transform:uppercase}.stat-box-value{font-size:1.75rem;font-weight:700}.stat-added{color:#0f8}.stat-removed{color:#f44}.stat-changed{color:#00d9ff}.stat-unchanged{color:#a1a1aa}.diff-result{background:#08080a;border:1px solid rgba(0,217,255,.15);border-radius:10px;overflow:hidden}.diff-header{align-items:center;background:rgba(0,217,255,.05);border-bottom:1px solid rgba(0,217,255,.1);display:flex;padding:.75rem 1rem}.diff-legend{display:flex;font-size:.75rem;gap:1rem;margin-left:auto}.legend-item{align-items:center;display:flex;gap:.375rem}.legend-color{border-radius:3px;height:12px;width:12px}.legend-added{background:rgba(0,255,136,.3)}.legend-removed{background:rgba(255,68,68,.3)}.legend-changed{background:rgba(255,193,7,.3)}.diff-content{font-family:JetBrains Mono,monospace;font-size:.875rem;line-height:1.6;max-height:400px;overflow-y:auto}.diff-line{border-bottom:1px solid hsla(0,0%,100%,.03);display:flex;padding:.375rem 1rem}.diff-line:last-child{border-bottom:none}.diff-line-num{color:#52525b;flex-shrink:0;padding-right:1rem;text-align:right;width:40px}.diff-line-marker{flex-shrink:0;font-weight:600;text-align:center;width:20px}.diff-line-content{flex:1;word-break:break-all}.diff-added{background:rgba(0,255,136,.1)}.diff-added .diff-line-marker{color:#0f8}.diff-removed{background:rgba(255,68,68,.1)}.diff-removed .diff-line-marker{color:#f44}.diff-changed{background:rgba(255,193,7,.1)}.diff-changed .diff-line-marker{color:#ffc107}.char-diff-added{background:rgba(0,255,136,.4);border-radius:2px;padding:0 2px}.char-diff-removed{background:rgba(255,68,68,.4);border-radius:2px;padding:0 2px;text-decoration:line-through}.btn-bar{display:flex;flex-wrap:wrap;gap:.625rem;margin-top:1.25rem}.btn{align-items:center;border:none;border-radius:8px;cursor:pointer;display:inline-flex;font-size:.9rem;font-weight:600;gap:.4rem;height:40px;outline:none;padding:0 1.125rem;transition:background .18s,transform .12s,opacity .18s;-webkit-user-select:none;-moz-user-select:none;user-select:none}.btn:active{transform:scale(.97)}.btn-secondary{background:rgba(0,217,255,.1);border:1px solid rgba(0,217,255,.25);color:#00d9ff}.btn-secondary:hover{background:rgba(0,217,255,.18)}.btn-ghost{background:var(--surface-default);border:1px solid var(--border-hover);color:#a1a1aa}.btn-ghost:hover{background:hsla(0,0%,100%,.09);color:#fafafa}.legal-note{background:rgba(255,193,7,.05);border:1px solid rgba(255,193,7,.15);border-radius:10px;color:#a1a1aa;font-size:.8125rem;line-height:1.6;margin-top:1.5rem;padding:1rem 1.25rem}.legal-note strong{color:#ffc107}.copy-feedback{align-self:center;color:#0f8;font-size:.8rem;margin-left:auto;opacity:0;pointer-events:none;transition:opacity .3s}.copy-feedback.show{opacity:1}.empty-state{color:#52525b;padding:3rem;text-align:center}.seo-section{margin:3.5rem auto 0;max-width:960px;padding:0 1rem}.seo-section h2{color:#fafafa;font-size:1.375rem;font-weight:700;margin-bottom:.75rem}.seo-section h3{color:#fafafa;font-size:1.125rem;font-weight:600;margin:2rem 0 .75rem}.seo-section li,.seo-section p{color:#a1a1aa;font-size:.9375rem;line-height:1.8}.seo-section ol{padding-left:1.25rem}.seo-section ol li{margin-bottom:.4rem}.faq-item{background:rgba(15,15,20,.5);border:1px solid rgba(0,217,255,.1);border-radius:10px;margin-bottom:.875rem;padding:1rem 1.125rem}.faq-item summary{align-items:center;color:#fafafa;cursor:pointer;display:flex;font-weight:600;gap:1rem;justify-content:space-between;list-style:none}.faq-item summary::-webkit-details-marker{display:none}.faq-item summary:after{color:#00d9ff;content:"+";flex-shrink:0;font-size:1.25rem;transition:transform .2s}.faq-item[open] summary:after{content:"\2212"}.faq-item p{color:#a1a1aa;line-height:1.7;margin-top:.625rem}@media (max-width:768px){.ads-row,.diff-inputs{grid-template-columns:1fr}.stats-grid{grid-template-columns:repeat(2,1fr)}.diff-legend{display:none}.btn-bar{gap:.5rem}.btn{font-size:.85rem;height:38px;padding:0 .875rem}}</style>
-  <script type="module" crossorigin src="/js/tools/text/text-diff-DpIQJtlM.js"></script>
+  <script type="module" crossorigin src="/js/tools/text/text-diff-CwxnNaC9.js"></script>
   <link rel="modulepreload" crossorigin href="/js/modulepreload-polyfill-YP0FEG5d.js">
   <link rel="stylesheet" crossorigin href="/css/critical-D6EXev1O.css">
-  <link rel="stylesheet" crossorigin href="/css/main-DhTT_MeI.css">
+  <link rel="stylesheet" crossorigin href="/css/main-C-2uV3x-.css">
 <link rel="manifest" href="/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/registerSW.js"></script></head>
 <body>
   <div class="bg-ambient" aria-hidden="true"></div>
@@ -260,13 +261,12 @@
     </main>
 
     <footer class="tool-footer">
-      <p>&copy; 2026 NovaTools MC &mdash; Psk. Metehan CETIN | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
+      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
       <p>Estimates only &mdash; not financial, legal, or tax advice.</p>
     </footer>
     <style>.tool-footer{border-top:1px solid var(--border-default);color:#718096;font-size:.8rem;line-height:1.8;margin-top:3rem;padding:1.5rem 1rem;text-align:center}.tool-footer a{color:#00d9ff;text-decoration:none}</style>
   </div>
-
-
+
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
