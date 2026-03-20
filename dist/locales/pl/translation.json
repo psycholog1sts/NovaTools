@@ -1,0 +1,67 @@
+{
+  "nav": {
+    "home": "Strona Główna",
+    "pdf": "Narzędzia PDF",
+    "image": "Narzędzia Obrazów",
+    "finance": "Finanse",
+    "developer": "Deweloper",
+    "text": "Tekst",
+    "about": "O Nas",
+    "contact": "Kontakt",
+    "blog": "Blog",
+    "request": "Poproś o Narzędzie",
+    "security": "Bezpieczeństwo",
+    "privacy": "Prywatność",
+    "terms": "Warunki",
+    "cookies": "Ciasteczka",
+    "converters": "Konwertery"
+  },
+  "hero": {
+    "title": "Wszystko-w-Jednym Narzędzia dla Plików, Finansów i Kodu",
+    "subtitle": "Używaj MC NovaTools do konwersji, obliczeń, tworzenia i optymalizacji za pomocą szybkiego, czystego i skupionego na prywatności zestawu narzędzi. Ponad 300 darmowych narzędzi, bez rejestracji.",
+    "cta": "Przeglądaj Narzędzia",
+    "browse": "Przeglądaj Kategorie",
+    "freeTools": "Darmowe Narzędzia",
+    "categories": "Kategorie",
+    "private": "Prywatne"
+  },
+  "footer": {
+    "signature": "Metehan ÇETİN, LPC",
+    "title": "Psychological Counselor and Founder",
+    "email": "psk.dan.metehancetin@mc-novatools.com",
+    "copyright": "© 2026 MC NovaTools. Wszelkie prawa zastrzeżone."
+  },
+  "tools": {
+    "categories": "Przeglądaj według Kategorii",
+    "categoriesDesc": "Zorganizowane kolekcje narzędzi dla każdej potrzeby. Kliknij kategorię, aby eksplorować.",
+    "popular": "Popularne Narzędzia",
+    "new": "Nowe Narzędzia"
+  },
+  "privacy": {
+    "badge": "Prywatność Przede Wszystkim",
+    "description": "Twoje dane nigdy nie opuszczają Twojej przeglądarki"
+  },
+  "common": {
+    "loading": "Ładowanie...",
+    "error": "Wystąpił błąd",
+    "success": "Sukces!",
+    "save": "Zapisz",
+    "cancel": "Anuluj",
+    "delete": "Usuń",
+    "edit": "Edytuj",
+    "close": "Zamknij",
+    "open": "Otwórz",
+    "search": "Szukaj",
+    "download": "Pobierz",
+    "upload": "Prześlij",
+    "copy": "Kopiuj",
+    "paste": "Wklej",
+    "cut": "Wytnij",
+    "select": "Wybierz",
+    "clear": "Wyczyść",
+    "reset": "Resetuj",
+    "apply": "Zastosuj",
+    "filter": "Filtruj",
+    "sort": "Sortuj"
+  }
+}

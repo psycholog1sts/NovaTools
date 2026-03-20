@@ -1,0 +1,67 @@
+{
+  "nav": {
+    "home": "الرئيسية",
+    "pdf": "أدوات PDF",
+    "image": "أدوات الصور",
+    "finance": "المالية",
+    "developer": "المطور",
+    "text": "النص",
+    "about": "من نحن",
+    "contact": "اتصل بنا",
+    "blog": "المدونة",
+    "request": "طلب أداة",
+    "security": "الأمان",
+    "privacy": "الخصوصية",
+    "terms": "الشروط",
+    "cookies": "ملفات تعريف الارتباط",
+    "converters": "محولات"
+  },
+  "hero": {
+    "title": "أدوات الكل في واحد للملفات والمالية والبرمجة",
+    "subtitle": "استخدم MC NovaTools للتحويل والحساب والإنشاء والتحسين باستخدام مجموعة أدوات سريعة ونظيفة وتركز على الخصوصية. أكثر من 300 أداة مجانية، بدون تسجيل.",
+    "cta": "استكشف الأدوات",
+    "browse": "تصفح الفئات",
+    "freeTools": "أدوات مجانية",
+    "categories": "الفئات",
+    "private": "خاص"
+  },
+  "footer": {
+    "signature": "Metehan ÇETİN, LPC",
+    "title": "Psychological Counselor and Founder",
+    "email": "psk.dan.metehancetin@mc-novatools.com",
+    "copyright": "© 2026 MC NovaTools. جميع الحقوق محفوظة."
+  },
+  "tools": {
+    "categories": "تصفح حسب الفئة",
+    "categoriesDesc": "مجموعات منظمة من الأدوات لكل حاجة. انقر على فئة للاستكشاف.",
+    "popular": "الأدوات الشائعة",
+    "new": "أدوات جديدة"
+  },
+  "privacy": {
+    "badge": "الخصوصية أولاً",
+    "description": "بياناتك لا تغادر متصفحك أبداً"
+  },
+  "common": {
+    "loading": "جاري التحميل...",
+    "error": "حدث خطأ",
+    "success": "نجاح!",
+    "save": "حفظ",
+    "cancel": "إلغاء",
+    "delete": "حذف",
+    "edit": "تحرير",
+    "close": "إغلاق",
+    "open": "فتح",
+    "search": "بحث",
+    "download": "تحميل",
+    "upload": "رفع",
+    "copy": "نسخ",
+    "paste": "لصق",
+    "cut": "قص",
+    "select": "تحديد",
+    "clear": "مسح",
+    "reset": "إعادة تعيين",
+    "apply": "تطبيق",
+    "filter": "تصفية",
+    "sort": "ترتيب"
+  }
+}

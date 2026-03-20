@@ -1,0 +1,67 @@
+{
+  "nav": {
+    "home": "Home",
+    "pdf": "PDF Tools",
+    "image": "Image Tools",
+    "finance": "Finance",
+    "developer": "Developer",
+    "text": "Text",
+    "about": "About",
+    "contact": "Contact",
+    "blog": "Blog",
+    "request": "Request Tool",
+    "security": "Security",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "cookies": "Cookies",
+    "converters": "Converters"
+  },
+  "hero": {
+    "title": "All-in-One Tools for Files, Finance & Code",
+    "subtitle": "Use MC NovaTools to convert, calculate, create, optimize and streamline work with a fast, clean and privacy-focused toolkit. 300+ free tools, no signup required.",
+    "cta": "Explore Tools",
+    "browse": "Browse Categories",
+    "freeTools": "Free Tools",
+    "categories": "Categories",
+    "private": "Private"
+  },
+  "footer": {
+    "signature": "Metehan ÇETİN, LPC",
+    "title": "Psychological Counselor and Founder",
+    "email": "psk.dan.metehancetin@mc-novatools.com",
+    "copyright": "© 2026 MC NovaTools. All rights reserved."
+  },
+  "tools": {
+    "categories": "Browse by Category",
+    "categoriesDesc": "Organized collections of tools for every need. Click a category to explore.",
+    "popular": "Popular Tools",
+    "new": "New Tools"
+  },
+  "privacy": {
+    "badge": "Privacy First",
+    "description": "Your data never leaves your browser"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "success": "Success!",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "close": "Close",
+    "open": "Open",
+    "search": "Search",
+    "download": "Download",
+    "upload": "Upload",
+    "copy": "Copy",
+    "paste": "Paste",
+    "cut": "Cut",
+    "select": "Select",
+    "clear": "Clear",
+    "reset": "Reset",
+    "apply": "Apply",
+    "filter": "Filter",
+    "sort": "Sort"
+  }
+}
