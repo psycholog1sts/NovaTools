@@ -2,7 +2,6 @@ import { defineConfig } from 'vite';
 import { resolve } from 'path';
 import { globSync } from 'glob';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
-import { VitePWA } from 'vite-plugin-pwa';
 import tailwindcss from 'tailwindcss';
 import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
@@ -45,6 +44,7 @@ export default defineConfig({
   root: '.',
   base: '/',
   publicDir: 'public',
+  appType: 'mpa',
 
   build: {
     target: 'es2022',
@@ -179,68 +179,6 @@ export default defineConfig({
           dest: 'blog/articles'
         }
       ]
-    }),
-
-    VitePWA({
-      registerType: 'autoUpdate',
-      injectRegister: 'auto',
-      manifestFilename: 'manifest.webmanifest',
-
-      workbox: {
-        globPatterns: ['**/*.{js,css,html,ico,png,svg,webp,avif,wasm,json,webmanifest,txt,xml}'],
-        globIgnores: [
-          '**/node_modules/**/*',
-          '**/src/**/*',
-          '**/.git/**/*'
-        ],
-        cleanupOutdatedCaches: true,
-        skipWaiting: true,
-        clientsClaim: true,
-        maximumFileSizeToCacheInBytes: 10 * 1024 * 1024,
-
-        runtimeCaching: [
-          {
-            urlPattern: /\.wasm$/i,
-            handler: 'CacheFirst',
-            options: {
-              cacheName: 'wasm-cache',
-              expiration: {
-                maxEntries: 10,
-                maxAgeSeconds: 30 * 24 * 60 * 60
-              }
-            }
-          },
-          {
-            urlPattern: /analytics\./i,
-            handler: 'NetworkOnly'
-          }
-        ]
-      },
-
-      manifest: {
-        name: 'NovaTools MC - Professional Financial Tools',
-        short_name: 'NovaTools',
-        description: 'Professional-grade financial calculators and privacy-first utilities. Your data never leaves your browser.',
-        theme_color: '#0A0A0C',
-        background_color: '#0A0A0C',
-        display: 'standalone',
-        orientation: 'portrait',
-        scope: '/',
-        start_url: '/',
-        icons: [
-          { src: '/icons/icon-72x72.png', sizes: '72x72', type: 'image/png' },
-          { src: '/icons/icon-96x96.png', sizes: '96x96', type: 'image/png' },
-          { src: '/icons/icon-128x128.png', sizes: '128x128', type: 'image/png' },
-          { src: '/icons/icon-144x144.png', sizes: '144x144', type: 'image/png' },
-          { src: '/icons/icon-152x152.png', sizes: '152x152', type: 'image/png' },
-          { src: '/icons/icon-192x192.png', sizes: '192x192', type: 'image/png', purpose: 'any maskable' },
-          { src: '/icons/icon-384x384.png', sizes: '384x384', type: 'image/png' },
-          { src: '/icons/icon-512x512.png', sizes: '512x512', type: 'image/png' }
-        ],
-        categories: ['finance', 'utilities', 'productivity'],
-        lang: 'en',
-        dir: 'ltr'
-      }
     })
   ],
 
