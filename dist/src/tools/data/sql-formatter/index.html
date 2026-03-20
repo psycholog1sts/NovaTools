@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y896L63239"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Y896L63239');
+  </script>
+  <meta charset="UTF-8">
+  <script>(function(){var t=localStorage.getItem('novatools-theme');if(t)document.documentElement.setAttribute('data-theme',t);else{var d=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',d);document.documentElement.style.colorScheme=d;}})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <title>SQL Formatter & Beautifier — Free Online Tool | NovaTools MC</title>
+  <meta name="description" content="Format and beautify SQL queries instantly. Free online SQL formatter with syntax highlighting. Supports MySQL, PostgreSQL, SQLite, and more.">
+  <meta name="keywords" content="SQL formatter, SQL beautifier, format SQL, SQL prettifier, SQL syntax highlighter">
+  <meta name="theme-color" content="#0A0A0C">
+
+  <meta property="og:title" content="SQL Formatter & Beautifier — Free Online Tool | NovaTools MC">
+  <meta property="og:description" content="Format and beautify SQL queries instantly. Free online SQL formatter with syntax highlighting.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.mc-novatools.com/tools/data/sql-formatter/">
+  <meta property="og:image" content="https://www.mc-novatools.com/og-image.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SQL Formatter & Beautifier | NovaTools MC">
+  <meta name="twitter:description" content="Format and beautify SQL queries instantly. Free online SQL formatter.">
+
+  <link rel="canonical" href="https://www.mc-novatools.com/tools/data/sql-formatter/">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [{
+      "@type": "WebApplication",
+      "name": "SQL Formatter & Beautifier",
+      "description": "Format and beautify SQL queries instantly. Free online SQL formatter with syntax highlighting.",
+      "url": "https://www.mc-novatools.com/tools/data/sql-formatter/",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+    }]
+  }
+  </script>
+
+  <style>.tool-wrapper{margin:0 auto;max-width:960px;padding:3rem 1rem 5rem}.tool-hero{margin-bottom:2.5rem;text-align:center}.tool-hero-icon{font-size:3.5rem;line-height:1;margin-bottom:1rem}.tool-hero h1{color:#fafafa;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;letter-spacing:-.02em;margin-bottom:.75rem}.tool-hero p{color:#a1a1aa;font-size:1.0625rem;margin:0 auto;max-width:560px}.card{backdrop-filter:blur(12px);background:rgba(15,15,20,.7);border:1px solid rgba(0,217,255,.15);border-radius:14px;padding:1.75rem}.input-section{margin-bottom:1.25rem}.input-label{align-items:center;color:#71717a;display:flex;font-size:.8125rem;font-weight:600;gap:.5rem;letter-spacing:.06em;margin-bottom:.625rem;text-transform:uppercase}#sqlInput{background:#0f0f12;border:1px solid rgba(0,217,255,.12);border-radius:10px;color:#fafafa;font-family:JetBrains Mono,monospace;font-size:.875rem;line-height:1.7;min-height:180px;outline:none;padding:1rem 1.125rem;resize:vertical;width:100%}#sqlInput:focus{border-color:rgba(0,217,255,.45);box-shadow:0 0 0 3px rgba(0,217,255,.08)}#sqlInput::-moz-placeholder{color:#52525b}#sqlInput::placeholder{color:#52525b}.options-row{display:flex;flex-wrap:wrap;gap:1rem;margin-bottom:1.5rem}.option-group{align-items:center;display:flex;gap:.5rem}.option-group label{color:#a1a1aa;font-size:.875rem}.option-group input[type=number],.option-group select{background:#0f0f12;border:1px solid rgba(0,217,255,.2);border-radius:6px;color:#fafafa;padding:.5rem}.btn-bar{display:flex;flex-wrap:wrap;gap:.625rem;margin-bottom:1.5rem}.btn{align-items:center;border:none;border-radius:8px;cursor:pointer;display:inline-flex;font-size:.9rem;font-weight:600;gap:.4rem;height:40px;padding:0 1.125rem;transition:all .18s}.btn:active{transform:scale(.97)}.btn-primary{background:linear-gradient(135deg,#00d9ff,#09c);color:#0a0a0c}.btn-primary:hover{background:linear-gradient(135deg,#1fe2ff,#00b8ee)}.btn-secondary{background:rgba(0,217,255,.1);border:1px solid rgba(0,217,255,.25);color:#00d9ff}.btn-secondary:hover{background:rgba(0,217,255,.18)}.btn-ghost{background:transparent;border:1px solid hsla(0,0%,100%,.2);color:#a1a1aa}.btn-ghost:hover{background:hsla(0,0%,100%,.05);color:#fafafa}.btn-danger{background:rgba(255,85,85,.1);border:1px solid rgba(255,85,85,.25);color:#f55}.btn-danger:hover{background:rgba(255,85,85,.18)}.copy-feedback{color:#0f8;font-size:.8rem;opacity:0;transition:opacity .3s}.copy-feedback.show{opacity:1}.output-section{margin-top:1.5rem}.output-header{align-items:center;display:flex;justify-content:space-between;margin-bottom:.625rem}.output-label{color:#71717a;font-size:.8125rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase}.output-wrap{background:#08080a;border:1px solid rgba(0,217,255,.1);border-radius:10px;overflow:hidden;position:relative}#sqlOutput{background:transparent;border:none;color:#fafafa;font-family:JetBrains Mono,monospace;font-size:.8125rem;line-height:1.75;min-height:250px;overflow-x:auto;padding:1.125rem 1.25rem;resize:vertical;white-space:pre;width:100%}.output-placeholder{color:#52525b;font-size:.9375rem;padding:3rem 1.5rem;text-align:center}.stats-badge{align-items:center;background:rgba(0,255,136,.08);border:1px solid rgba(0,255,136,.25);border-radius:999px;color:#0f8;display:inline-flex;font-size:.8125rem;font-weight:600;gap:.4rem;height:28px;padding:0 .75rem}.error-banner{align-items:flex-start;background:rgba(255,85,85,.08);border:1px solid rgba(255,85,85,.3);border-radius:10px;display:none;gap:.75rem;margin-bottom:1rem;padding:.875rem 1rem}.error-banner.visible{display:flex}.error-text{color:#f77;font-size:.875rem}.legal-disclaimer{background:rgba(255,193,7,.08);border-left:4px solid #ffc107;border-radius:0 8px 8px 0;margin-top:2rem;padding:1rem 1.25rem}.legal-disclaimer p{color:#a1a1aa;font-size:.875rem;line-height:1.6;margin:0}.legal-disclaimer strong{color:#ffc107}.seo-section{margin:3.5rem auto 0;max-width:960px;padding:0 1rem}.seo-section h2{color:#fafafa;font-size:1.375rem;font-weight:700;margin-bottom:.75rem}.seo-section h3{color:#fafafa;font-size:1.125rem;font-weight:600;margin:2rem 0 .75rem}.seo-section li,.seo-section p{color:#a1a1aa;font-size:.9375rem;line-height:1.8}.seo-section ol{padding-left:1.25rem}.seo-section ol li{margin-bottom:.4rem}.faq-item{background:rgba(15,15,20,.5);border:1px solid rgba(0,217,255,.1);border-radius:10px;margin-bottom:.875rem;padding:1rem 1.125rem}.faq-item summary{align-items:center;color:#fafafa;cursor:pointer;display:flex;font-weight:600;gap:1rem;justify-content:space-between;list-style:none}.faq-item summary::-webkit-details-marker{display:none}.faq-item summary:after{color:#00d9ff;content:"+";flex-shrink:0;font-size:1.25rem}.faq-item[open] summary:after{content:"−"}.faq-item p{color:#a1a1aa;line-height:1.7;margin-top:.625rem}.tool-footer{border-top:1px solid hsla(0,0%,100%,.1);color:#718096;font-size:.8rem;line-height:1.8;margin-top:3rem;padding:1.5rem 1rem;text-align:center}.tool-footer a{color:#00d9ff;text-decoration:none}@media (max-width:600px){.btn-bar{gap:.5rem}.btn{font-size:.85rem;height:38px;padding:0 .875rem}}</style>
+  <link rel="stylesheet" crossorigin href="/css/critical-D6EXev1O.css">
+  <link rel="stylesheet" crossorigin href="/css/main-DhTT_MeI.css">
+<link rel="manifest" href="/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/registerSW.js"></script></head>
+<body>
+  <div class="bg-ambient" aria-hidden="true"></div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <div id="app" class="app">
+    <header class="main-header">
+      <div class="container">
+        <div class="header-inner">
+          <a href="/" class="logo" aria-label="NovaTools MC Home">
+            <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
+            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+          </a>
+          <nav class="nav-desktop" aria-label="Main navigation">
+            <a href="/#finance" class="nav-link">Finance</a>
+            <a href="/#pdf" class="nav-link">PDF Tools</a>
+            <a href="/#image" class="nav-link">Images</a>
+            <a href="/#dev" class="nav-link">Developers</a>
+          </nav>
+          <div class="privacy-badge" title="Your data never leaves your browser">
+            <span class="privacy-badge-dot"></span>
+            <span>Privacy First</span>
+          </div>
+          <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+            <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+          <button type="button" id="mobileMenuBtn" class="menu-btn" aria-label="Toggle menu" aria-expanded="false">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+        </div>
+        <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
+          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <div class="tool-wrapper">
+        <div class="tool-hero">
+          <div class="tool-hero-icon">🗄️</div>
+          <h1>SQL Formatter & Beautifier</h1>
+          <p>Format and beautify your SQL queries instantly. Clean, readable SQL with proper indentation. 100% client-side.</p>
+        </div>
+
+        <div class="card">
+          <div class="input-section">
+            <div class="input-label">
+              <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M2 3.5A1.5 1.5 0 0 1 3.5 2h9A1.5 1.5 0 0 1 14 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 12.5v-9z"/></svg>
+              SQL Input
+            </div>
+            <textarea id="sqlInput" placeholder="SELECT id, name, email FROM users WHERE status = 'active' ORDER BY created_at DESC;"></textarea>
+          </div>
+
+          <div class="options-row">
+            <div class="option-group">
+              <label for="indentSize">Indent size:</label>
+              <input type="number" id="indentSize" value="2" min="1" max="8" style="width:60px">
+            </div>
+            <div class="option-group">
+              <label for="caseOption">Keyword case:</label>
+              <select id="caseOption">
+                <option value="upper">UPPERCASE</option>
+                <option value="lower">lowercase</option>
+                <option value="preserve">Preserve</option>
+              </select>
+            </div>
+            <div class="option-group">
+              <label><input type="checkbox" id="newlineAfterSelect" checked> Newline after SELECT</label>
+            </div>
+          </div>
+
+          <div class="btn-bar" role="toolbar">
+            <button class="btn btn-primary" id="btnFormat" type="button">
+              <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor"><path d="M2 4h12v1.5H2V4zm2 3.25h8v1.5H4V7.25zm2 3.25h4v1.5H6V10.5z"/></svg>
+              Format SQL
+            </button>
+            <button class="btn btn-ghost" id="btnMinify" type="button">
+              <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor"><path d="M1.5 3.5h13v1H1.5v-1zm0 4h13v1h-13v-1zm0 4h13v1h-13v-1z"/></svg>
+              Minify
+            </button>
+            <button class="btn btn-secondary" id="btnCopy" type="button" disabled>
+              <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor"><path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/></svg>
+              Copy
+            </button>
+            <button class="btn btn-danger" id="btnClear" type="button">
+              <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor"><path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/><path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/></svg>
+              Clear
+            </button>
+            <span class="copy-feedback" id="copyFeedback">Copied!</span>
+          </div>
+
+          <div class="error-banner" id="errorBanner">
+            <div class="error-text" id="errorText"></div>
+          </div>
+
+          <div class="output-section">
+            <div class="output-header">
+              <div class="output-label">Formatted SQL</div>
+              <div class="stats-badge" id="statsBadge" style="display:none">Ready</div>
+            </div>
+            <div class="output-wrap">
+              <div class="output-placeholder" id="outputPlaceholder">Formatted SQL will appear here</div>
+              <textarea id="sqlOutput" readonly style="display:none"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="legal-disclaimer">
+          <p><strong>Privacy & Security:</strong> This tool is for personal use. Your SQL queries are not processed and are never sent to any server. All formatting happens client-side in your browser.</p>
+          <p style="margin-top: 0.5rem;"><strong>Disclaimer:</strong> This tool is provided as-is. Please verify the formatted output before using it in production systems.</p>
+        </div>
+      </div>
+
+      <section class="seo-section" aria-label="About this tool">
+        <h2>About SQL Formatter & Beautifier</h2>
+        <p>SQL (Structured Query Language) is the standard language for managing relational databases. This free online tool helps you format messy or minified SQL queries into clean, readable code with proper indentation and keyword casing.</p>
+
+        <h3>How to Use</h3>
+        <ol>
+          <li>Paste your SQL query into the input area.</li>
+          <li>Configure formatting options: choose indent size, keyword case, and newline preferences.</li>
+          <li>Click <strong>Format SQL</strong> to beautify your query, or <strong>Minify</strong> to compress it.</li>
+          <li>Copy the result to your clipboard for use in your database client.</li>
+        </ol>
+
+        <h3>Frequently Asked Questions</h3>
+
+        <details class="faq-item">
+          <summary>Is my SQL kept private?</summary>
+          <p>Absolutely. All formatting happens entirely in your browser. No SQL is sent to any server, logged, or stored anywhere. You can safely use this tool with production queries.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Which SQL dialects are supported?</summary>
+          <p>This formatter supports standard SQL and works with most popular database systems including MySQL, PostgreSQL, SQLite, SQL Server, and Oracle. It handles common SQL syntax elements like SELECT, INSERT, UPDATE, DELETE, JOIN, and more.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>What's the difference between Format and Minify?</summary>
+          <p>Format beautifies your SQL with proper indentation and line breaks for readability. Minify removes all unnecessary whitespace to create a single-line SQL string, useful for embedding in code or reducing network payload.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Can I format very long queries?</summary>
+          <p>Yes, the tool can handle SQL queries of substantial length. There are no strict limits, but extremely large queries (tens of thousands of lines) may impact browser performance.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Does this validate SQL syntax?</summary>
+          <p>This tool focuses on formatting, not validation. While it handles most standard SQL structures, it does not check if your SQL is syntactically valid for your specific database engine.</p>
+        </details>
+      </section>
+
+      <footer class="tool-footer">
+        <p>&copy; 2026 NovaTools MC &mdash; Psk. Metehan CETIN | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
+        <p>Estimates only &mdash; not financial, legal, or tax advice.</p>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    const sqlInput = document.getElementById('sqlInput');
+    const sqlOutput = document.getElementById('sqlOutput');
+    const btnFormat = document.getElementById('btnFormat');
+    const btnMinify = document.getElementById('btnMinify');
+    const btnCopy = document.getElementById('btnCopy');
+    const btnClear = document.getElementById('btnClear');
+    const outputPlaceholder = document.getElementById('outputPlaceholder');
+    const statsBadge = document.getElementById('statsBadge');
+    const copyFeedback = document.getElementById('copyFeedback');
+    const indentSize = document.getElementById('indentSize');
+    const caseOption = document.getElementById('caseOption');
+    const newlineAfterSelect = document.getElementById('newlineAfterSelect');
+
+    const keywords = ['SELECT', 'FROM', 'WHERE', 'AND', 'OR', 'INSERT', 'UPDATE', 'DELETE', 'JOIN', 'INNER', 'LEFT', 'RIGHT', 'OUTER', 'FULL', 'ON', 'GROUP', 'BY', 'ORDER', 'HAVING', 'LIMIT', 'OFFSET', 'UNION', 'ALL', 'DISTINCT', 'AS', 'CREATE', 'TABLE', 'ALTER', 'DROP', 'INDEX', 'VALUES', 'SET', 'INTO', 'CASE', 'WHEN', 'THEN', 'ELSE', 'END', 'IF', 'EXISTS', 'BETWEEN', 'LIKE', 'IN', 'IS', 'NULL', 'NOT', 'ASC', 'DESC'];
+
+    btnFormat.addEventListener('click', () => {
+      const input = sqlInput.value.trim();
+      if (!input) return;
+      const formatted = formatSQL(input);
+      sqlOutput.value = formatted;
+      outputPlaceholder.style.display = 'none';
+      sqlOutput.style.display = 'block';
+      statsBadge.style.display = 'inline-flex';
+      statsBadge.textContent = `${input.split('\n').length} lines → ${formatted.split('\n').length} lines`;
+      btnCopy.disabled = false;
+    });
+
+    btnMinify.addEventListener('click', () => {
+      const input = sqlInput.value.trim();
+      if (!input) return;
+      const minified = input.replace(/\s+/g, ' ').trim();
+      sqlOutput.value = minified;
+      outputPlaceholder.style.display = 'none';
+      sqlOutput.style.display = 'block';
+      statsBadge.style.display = 'inline-flex';
+      statsBadge.textContent = 'Minified';
+      btnCopy.disabled = false;
+    });
+
+    function formatSQL(sql) {
+      let result = sql;
+      const indent = ' '.repeat(parseInt(indentSize.value) || 2);
+      const uppercase = caseOption.value === 'upper';
+      const lowercase = caseOption.value === 'lower';
+      
+      result = result.replace(/\s+/g, ' ').trim();
+      
+      keywords.forEach(kw => {
+        const regex = new RegExp('\\b' + kw + '\\b', 'gi');
+        if (uppercase) result = result.replace(regex, kw.toUpperCase());
+        else if (lowercase) result = result.replace(regex, kw.toLowerCase());
+      });
+      
+      const majorKeywords = ['SELECT', 'FROM', 'WHERE', 'GROUP BY', 'ORDER BY', 'HAVING', 'LIMIT', 'UNION', 'JOIN', 'INNER JOIN', 'LEFT JOIN', 'RIGHT JOIN', 'FULL JOIN', 'OUTER JOIN'];
+      majorKeywords.forEach(kw => {
+        const upperKw = uppercase ? kw.toUpperCase() : lowercase ? kw.toLowerCase() : kw;
+        const regex = new RegExp('\\s*' + kw.replace(/\s/g, '\\s+') + '\\s*', 'gi');
+        result = result.replace(regex, '\n' + upperKw + ' ');
+      });
+      
+      if (newlineAfterSelect.checked && result.toUpperCase().includes('SELECT')) {
+        result = result.replace(/SELECT\s+/i, 'SELECT\n' + indent);
+        const lines = result.split('\n');
+        result = lines.map((line, i) => {
+          if (i > 0 && line.trim().startsWith(',')) return indent + line.trim();
+          return line;
+        }).join('\n');
+      }
+      
+      result = result.replace(/\s*,\s*/g, ',\n' + indent);
+      result = result.replace(/\s+AND\s+/gi, '\n' + indent + 'AND ');
+      result = result.replace(/\s+OR\s+/gi, '\n' + indent + 'OR ');
+      
+      return result.trim();
+    }
+
+    btnCopy.addEventListener('click', async () => {
+      if (!sqlOutput.value) return;
+      try {
+        await navigator.clipboard.writeText(sqlOutput.value);
+        copyFeedback.classList.add('show');
+        setTimeout(() => copyFeedback.classList.remove('show'), 1800);
+      } catch (e) { alert('Failed to copy'); }
+    });
+
+    btnClear.addEventListener('click', () => {
+      sqlInput.value = '';
+      sqlOutput.value = '';
+      outputPlaceholder.style.display = 'block';
+      sqlOutput.style.display = 'none';
+      statsBadge.style.display = 'none';
+      btnCopy.disabled = true;
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuBtn = document.getElementById('mobileMenuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener('click', function() {
+          const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+          menuBtn.setAttribute('aria-expanded', !isExpanded);
+          mobileMenu.hidden = isExpanded;
+          mobileMenu.classList.toggle('active', !isExpanded);
+        });
+      }
+      const themeBtn = document.getElementById('themeToggle');
+      if (themeBtn) {
+        function getTheme() { return localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'); }
+        function updateIcon() { const t = getTheme(); themeBtn.querySelector('.icon-sun').style.display = t === 'light' ? 'none' : 'block'; themeBtn.querySelector('.icon-moon').style.display = t === 'dark' ? 'none' : 'block'; }
+        themeBtn.addEventListener('click', function() { const next = getTheme() === 'dark' ? 'light' : 'dark'; document.documentElement.setAttribute('data-theme', next); localStorage.setItem('theme', next); updateIcon(); });
+        updateIcon();
+      }
+    });
+  </script>
+</body>
+</html>
