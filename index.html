@@ -154,10 +154,10 @@
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
       <nav class="mobile-nav">
-        <a href="/categories" class="mobile-nav-link">Categories</a>
-        <a href="#popular" class="mobile-nav-link">Popular Tools</a>
-        <a href="#new" class="mobile-nav-link">New Tools</a>
-        <a href="/blog" class="mobile-nav-link">Blog</a>
+        <a href="/categories" class="mobile-nav-link" data-i18n="tools.categories">Categories</a>
+        <a href="#popular" class="mobile-nav-link" data-i18n="home.sections.popularTitle">Popular Tools</a>
+        <a href="#new" class="mobile-nav-link" data-i18n="home.sections.newTitle">New Tools</a>
+        <a href="/blog" class="mobile-nav-link" data-i18n="nav.blog">Blog</a>
       </nav>
     </div>
 
@@ -264,8 +264,8 @@
       <section class="section section-popular" id="popular">
         <div class="container">
           <div class="section-header">
-            <h2 class="section-title">Popular Tools</h2>
-            <p class="section-description">Most used tools by our community this week</p>
+            <h2 class="section-title" data-i18n="home.sections.popularTitle">Popular Tools</h2>
+            <p class="section-description" data-i18n="home.sections.popularDesc">Most used tools by our community this week</p>
           </div>
           <div class="tools-grid" id="popularTools">
             <!-- Tools injected by JS -->
@@ -277,8 +277,8 @@
       <section class="section section-new" id="new">
         <div class="container">
           <div class="section-header">
-            <h2 class="section-title">New & Trending</h2>
-            <p class="section-description">Recently added tools and updates</p>
+            <h2 class="section-title" data-i18n="home.sections.newTitle">New & Trending</h2>
+            <p class="section-description" data-i18n="home.sections.newDesc">Recently added tools and updates</p>
           </div>
           <div class="tools-grid" id="newTools">
             <!-- Tools injected by JS -->
@@ -296,8 +296,8 @@
                   <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
                 </svg>
               </div>
-              <h3 class="feature-title">Lightning Fast</h3>
-              <p class="feature-description">All tools run in your browser. No server uploads, instant results.</p>
+              <h3 class="feature-title" data-i18n="home.features.fastTitle">Lightning Fast</h3>
+              <p class="feature-description" data-i18n="home.features.fastDesc">All tools run in your browser. No server uploads, instant results.</p>
             </div>
             <div class="feature">
               <div class="feature-icon">
@@ -305,8 +305,8 @@
                   <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                 </svg>
               </div>
-              <h3 class="feature-title">100% Private</h3>
-              <p class="feature-description">Your files never leave your device. Zero data collection, GDPR compliant.</p>
+              <h3 class="feature-title" data-i18n="home.features.privateTitle">100% Private</h3>
+              <p class="feature-description" data-i18n="home.features.privateDesc">Your files never leave your device. Zero data collection, GDPR compliant.</p>
             </div>
             <div class="feature">
               <div class="feature-icon">
@@ -314,8 +314,8 @@
                   <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
                 </svg>
               </div>
-              <h3 class="feature-title">Completely Free</h3>
-              <p class="feature-description">All tools are free to use. No hidden fees, no signup required.</p>
+              <h3 class="feature-title" data-i18n="home.features.freeTitle">Completely Free</h3>
+              <p class="feature-description" data-i18n="home.features.freeDesc">All tools are free to use. No hidden fees, no signup required.</p>
             </div>
             <div class="feature">
               <div class="feature-icon">
@@ -325,8 +325,8 @@
                   <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
                 </svg>
               </div>
-              <h3 class="feature-title">Multi-Language</h3>
-              <p class="feature-description">Tools available in multiple languages. Accessible worldwide.</p>
+              <h3 class="feature-title" data-i18n="home.features.multiLangTitle">Multi-Language</h3>
+              <p class="feature-description" data-i18n="home.features.multiLangDesc">Tools available in multiple languages. Accessible worldwide.</p>
             </div>
           </div>
         </div>
@@ -336,12 +336,12 @@
       <section class="section section-cta">
         <div class="container">
           <div class="cta-box">
-            <h2 class="cta-title">Need a specific tool?</h2>
-            <p class="cta-description">
+            <h2 class="cta-title" data-i18n="home.cta.title">Need a specific tool?</h2>
+            <p class="cta-description" data-i18n="home.viewAllDesc">
               Browse our complete collection of 300+ tools organized by category.
             </p>
             <a href="/categories" class="btn btn-primary btn-lg">
-              View All Categories
+              <span data-i18n="home.viewAllCategories">View All Categories</span>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M5 12h14M12 5l7 7-7 7"/>
               </svg>
@@ -366,8 +366,8 @@
                 </svg>
               </div>
               <div class="trust-content">
-                <h4>Secure & Private</h4>
-                <p>Your data never leaves your browser</p>
+                <h4 data-i18n="home.trust.secureTitle">Secure & Private</h4>
+                <p data-i18n="home.trust.secureDesc">Your data never leaves your browser</p>
               </div>
             </div>
             <div class="trust-item">
@@ -380,8 +380,8 @@
                 </svg>
               </div>
               <div class="trust-content">
-                <h4>Transparent</h4>
-                <p>Clear privacy policy & terms</p>
+                <h4 data-i18n="home.trust.transparentTitle">Transparent</h4>
+                <p data-i18n="home.trust.transparentDesc">Clear privacy policy & terms</p>
               </div>
             </div>
             <div class="trust-item">
@@ -391,8 +391,8 @@
                 </svg>
               </div>
               <div class="trust-content">
-                <h4>Support</h4>
-                <p>Contact us for any questions</p>
+                <h4 data-i18n="home.trust.supportTitle">Support</h4>
+                <p data-i18n="home.trust.supportDesc">Contact us for any questions</p>
               </div>
             </div>
             <div class="trust-item">
@@ -404,8 +404,8 @@
                 </svg>
               </div>
               <div class="trust-content">
-                <h4>Verified</h4>
-                <p>Google AdSense compliant</p>
+                <h4 data-i18n="home.trust.verifiedTitle">Verified</h4>
+                <p data-i18n="home.trust.verifiedDesc">Google AdSense compliant</p>
               </div>
             </div>
           </div>
@@ -425,16 +425,16 @@
                 </span>
                 <span class="footer-logo-text">MC NovaTools</span>
               </a>
-              <p class="footer-description">
-                300+ free online tools for files, finance, code and creativity. 
+              <p class="footer-description" data-i18n="home.footer.brandDesc">
+                300+ free online tools for files, finance, code and creativity.
                 Fast, private, secure, and always free. Your data stays on your device.
               </p>
               
               <!-- Owner Contact Card -->
               <div class="footer-contact">
-                <div class="contact-title">Site Owner & Contact</div>
+                <div class="contact-title" data-i18n="home.footer.ownerTitle">Site Owner & Contact</div>
                 <div class="contact-person">Metehan ÇETİN, LPC</div>
-                <div class="contact-role">Psychological Counselor and Founder</div>
+                <div class="contact-role" data-i18n="home.footer.ownerRole">Psychological Counselor and Founder</div>
                 <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com" class="contact-email">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
@@ -448,34 +448,34 @@
             <!-- Links Columns -->
             <div class="footer-links">
               <div class="footer-column">
-                <h4 class="footer-column-title">Tool Categories</h4>
+                <h4 class="footer-column-title" data-i18n="home.footer.toolCategoriesTitle">Tool Categories</h4>
                 <ul class="footer-column-list">
-                  <li><a href="/categories/pdf-tools.html">PDF Tools</a></li>
-                  <li><a href="/categories/image-tools.html">Image Tools</a></li>
-                  <li><a href="/categories/finance-tools.html">Finance Tools</a></li>
-                  <li><a href="/categories/developer-tools.html">Developer Tools</a></li>
-                  <li><a href="/categories/text-writing.html">Text & Writing</a></li>
-                  <li><a href="/categories/converters.html">Converters</a></li>
+                  <li><a href="/categories/pdf-tools.html" data-i18n="nav.pdf">PDF Tools</a></li>
+                  <li><a href="/categories/image-tools.html" data-i18n="nav.image">Image Tools</a></li>
+                  <li><a href="/categories/finance-tools.html" data-i18n="nav.finance">Finance Tools</a></li>
+                  <li><a href="/categories/developer-tools.html" data-i18n="nav.developer">Developer Tools</a></li>
+                  <li><a href="/categories/text-writing.html" data-i18n="nav.text">Text & Writing</a></li>
+                  <li><a href="/categories/converters.html" data-i18n="nav.converters">Converters</a></li>
                 </ul>
               </div>
               
               <div class="footer-column">
-                <h4 class="footer-column-title">Company</h4>
+                <h4 class="footer-column-title" data-i18n="home.footer.companyTitle">Company</h4>
                 <ul class="footer-column-list">
-                  <li><a href="/about-us.html">About Us</a></li>
-                  <li><a href="/blog/index.html">Blog</a></li>
-                  <li><a href="/contact.html">Contact</a></li>
-                  <li><a href="/request-tool.html">Request a Tool</a></li>
+                  <li><a href="/about-us.html" data-i18n="nav.about">About Us</a></li>
+                  <li><a href="/blog/index.html" data-i18n="nav.blog">Blog</a></li>
+                  <li><a href="/contact.html" data-i18n="nav.contact">Contact</a></li>
+                  <li><a href="/request-tool.html" data-i18n="nav.request">Request a Tool</a></li>
                 </ul>
               </div>
               
               <div class="footer-column">
-                <h4 class="footer-column-title">Legal & Privacy</h4>
+                <h4 class="footer-column-title" data-i18n="home.footer.legalTitle">Legal & Privacy</h4>
                 <ul class="footer-column-list">
-                  <li><a href="/privacy-policy.html">Privacy Policy</a></li>
-                  <li><a href="/terms-of-service.html">Terms of Service</a></li>
-                  <li><a href="/cookie-policy.html">Cookie Policy</a></li>
-                  <li><a href="/security.html">Security</a></li>
+                  <li><a href="/privacy-policy.html" data-i18n="nav.privacy">Privacy Policy</a></li>
+                  <li><a href="/terms-of-service.html" data-i18n="nav.terms">Terms of Service</a></li>
+                  <li><a href="/cookie-policy.html" data-i18n="nav.cookies">Cookie Policy</a></li>
+                  <li><a href="/security.html" data-i18n="nav.security">Security</a></li>
                 </ul>
               </div>
             </div>
@@ -486,7 +486,7 @@
             <div class="owner-avatar">MÇ</div>
             <div class="owner-info">
               <h4>Metehan ÇETİN, LPC</h4>
-              <p>Licensed Professional Counselor</p>
+              <p data-i18n="home.footer.ownerRole">Licensed Professional Counselor</p>
               <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a>
             </div>
           </div>
@@ -504,11 +504,11 @@
               <span class="legal-divider">|</span>
               <a href="/cookie-policy.html">Cookie Settings</a>
               <span class="legal-divider">|</span>
-              <a href="/contact.html">Contact Support</a>
+              <a href="/contact.html" data-i18n="home.footer.legalBarContact">Contact Support</a>
               <span class="legal-divider">|</span>
-              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">Report Issue</a>
+              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com" data-i18n="home.footer.legalBarIssue">Report Issue</a>
             </div>
-            <p class="copyright">
+            <p class="copyright" data-i18n="footer.copyright">
               © 2026 MC NovaTools. Owned and operated by Metehan ÇETİN, LPC. All rights reserved.
             </p>
           </div>

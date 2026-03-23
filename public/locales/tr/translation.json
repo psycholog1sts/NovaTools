@@ -5772,6 +5772,84 @@
     "socialMedia": "Sosyal Medya",
     "openTool": "Aracı Aç",
     "noResults": "Hiçbir araç bulunamadı",
-    "toolsGeneric": "Aletler"
+    "toolsGeneric": "Aletler",
+    "viewAllCategories": "Tüm Kategorileri Gör",
+    "viewAllDesc": "300+ araçtan oluşan koleksiyonumuzu kategorilere göre keşfedin.",
+    "searchPlaceholder": "300+ araç içinde ara...",
+    "popularLabel": "Popüler:"
+  },
+  "common": {
+    "loading": "Yükleniyor...",
+    "error": "Bir hata oluştu",
+    "success": "Başarılı!",
+    "save": "Kaydet",
+    "cancel": "İptal",
+    "delete": "Sil",
+    "edit": "Düzenle",
+    "close": "Kapat",
+    "open": "Aç",
+    "search": "Ara",
+    "download": "İndir",
+    "upload": "Yükle",
+    "copy": "Kopyala",
+    "paste": "Yapıştır",
+    "cut": "Kes",
+    "select": "Seç",
+    "clear": "Temizle",
+    "reset": "Sıfırla",
+    "apply": "Uygula",
+    "filter": "Filtrele",
+    "sort": "Sırala",
+    "useTool": "Aracı Kullan",
+    "legal": "Yasal",
+    "company": "Şirket",
+    "footerDesc": "PDF, görsel, finans ve geliştirici için profesyonel çevrimiçi araçlar.",
+    "browserBased": "Tarayıcı tabanlı",
+    "aboutUs": "Hakkımızda",
+    "allRightsReserved": "Tüm hakları saklıdır."
+  },
+  "categories": {
+    "pdf": {
+      "badge": "Ücretsiz Çevrimiçi PDF Araçları",
+      "title": "PDF Araçları: Birleştirme, Bölme, Sıkıştırma, OCR ve Dönüştürme",
+      "description": "Canlı PDF araçlarını doğrudan bu sayfadan açın. Dosyaları birleştirin, sayfaları bölün, boyutu sıkıştırın, filigran ekleyin, sayfa numarası ekleyin, OCR çalıştırın ve PDF dosyalarını Word, Excel, HTML, JPG, PNG, PowerPoint ve metne dönüştürün.",
+      "sectionTitle": "PDF Araçları"
+    },
+    "image": {
+      "badge": "Ücretsiz Çevrimiçi Görüntü Araçları",
+      "title": "Görüntü Araçları: Sıkıştırma, Dönüştürme, Düzenleme ve Temizleme",
+      "description": "Canlı görüntü araçlarını doğrudan bu kategori sayfasından açın. Dosyaları sıkıştırın, formatları dönüştürün, yeniden boyutlandırın, kırpın, çevirin, döndürün, meta verileri kaldırın, filigran ekleyin ve optimize edilmiş AVIF veya WebP çıktısı oluşturun.",
+      "sectionTitle": "Görüntü Araçları"
+    },
+    "finance": {
+      "badge": "Ücretsiz Çevrimiçi Finansal Hesaplayıcılar",
+      "title": "Finans Araçları: Planlama, Krediler, Vergi ve Uzun Vadeli Kararlar",
+      "description": "Canlı finansal araçları doğrudan bu kategori sayfasından açın. Mortgage refinansman seçeneklerini, bileşik büyümeyi, emeklilik projeksiyonlarını, kripto vergisini, kredi planlamasını ve diğer kişisel finans senaryolarını hesaplayın.",
+      "sectionTitle": "Finans Araçları"
+    },
+    "developer": {
+      "badge": "Ücretsiz Çevrimiçi Geliştirici Araçları",
+      "title": "Geliştirici Araçları: Biçimlendirme, Test ve Kod Yardımcıları",
+      "description": "Canlı geliştirici araçlarını doğrudan bu kategori sayfasından açın. JSON biçimlendirin, regex test edin, CSS ve JS küçültün, Base64 dönüştürün, UUID oluşturun, JSON doğrulayın ve daha fazlasını yapın.",
+      "sectionTitle": "Geliştirici Araçları"
+    },
+    "text": {
+      "badge": "Ücretsiz Çevrimiçi Metin Araçları",
+      "title": "Metin Araçları: Sayma, Biçimlendirme, Dönüştürme ve Temizleme",
+      "description": "Canlı metin araçlarını doğrudan bu kategori sayfasından açın. Kelime ve karakter sayın, metin büyüklüğünü dönüştürün, lorem ipsum oluşturun, varlıkları kodlayın, slug oluşturun, metin karşılaştırın ve URL güvenli çıktı alın.",
+      "sectionTitle": "Metin ve Yazma"
+    },
+    "converters": {
+      "badge": "Ücretsiz Çevrimiçi Dönüştürücüler",
+      "title": "Dönüştürücüler: Birimler, Sayılar ve Veri Formatları",
+      "description": "Canlı dönüştürücü araçlarını doğrudan bu kategori sayfasından açın. Birimler, sayı tabanları, para birimleri, saat dilimleri ve veri formatları arasında dönüştürme yapın.",
+      "sectionTitle": "Dönüştürücüler"
+    },
+    "all": {
+      "badge": "Tüm Araçlara Göz Atın",
+      "title": "Tüm Araçlar — 300+ Ücretsiz Çevrimiçi Yardımcı",
+      "description": "Kategorilere göre düzenlenmiş tüm araçları keşfedin. PDF araçları, görüntü araçları, finans hesaplayıcıları, geliştirici yardımcıları, metin araçları ve dönüştürücüler — hepsi ücretsiz, hepsi tarayıcı tabanlı.",
+      "sectionTitle": "Tüm Kategoriler"
+    }
   }
 }

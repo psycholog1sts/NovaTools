@@ -88,14 +88,32 @@ export function createFooter() {
   footer.className = 'border-t mt-12';
   footer.style.cssText = 'background: var(--bg-secondary); border-color: var(--border-default);';
   footer.setAttribute('role', 'contentinfo');
-  footer.innerHTML = `
-    <div class="container py-8">
-      <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-        <p class="text-sm" style="color: var(--text-tertiary);">© ${new Date().getFullYear()} NovaTools. Tüm hakları saklıdır.</p>
-        <p class="text-sm" style="color: var(--text-tertiary);">Verileriniz tarayıcınızda kalır. 🔒</p>
-      </div>
-    </div>
-  `;
+
+  const container = document.createElement('div');
+  container.className = 'container py-8';
+
+  const row = document.createElement('div');
+  row.className = 'flex flex-col md:flex-row justify-between items-center gap-4';
+
+  const copyright = document.createElement('p');
+  copyright.className = 'text-sm';
+  copyright.style.color = 'var(--text-tertiary)';
+  copyright.setAttribute('data-i18n', 'footer.copyright');
+  copyright.textContent = `© ${new Date().getFullYear()} MC NovaTools. All rights reserved.`;
+
+  const privacy = document.createElement('p');
+  privacy.className = 'text-sm';
+  privacy.style.color = 'var(--text-tertiary)';
+  privacy.setAttribute('data-i18n', 'privacy.description');
+  privacy.textContent = 'Your data never leaves your browser. 🔒';
+
+  row.appendChild(copyright);
+  row.appendChild(privacy);
+  container.appendChild(row);
+  footer.appendChild(container);
+
+  // Apply translations after DOM insertion
+  setTimeout(() => window.i18n?.refresh(), 50);
   return footer;
 }
 
