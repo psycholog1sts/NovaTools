@@ -15,13 +15,6 @@ function t(key, fallback) {
   return fallback;
 }
 
-function getCurrentLanguage() {
-  if (window.i18n && typeof window.i18n.getCurrentLanguage === 'function') {
-    return window.i18n.getCurrentLanguage();
-  }
-  return document.documentElement.lang || 'en';
-}
-
 function getCategoryLabel(categoryName) {
   const map = {
     'PDF Tools': t('nav.pdf', 'PDF Tools'),
@@ -29,16 +22,37 @@ function getCategoryLabel(categoryName) {
     'Finance Tools': t('nav.finance', 'Finance Tools'),
     'Developer Tools': t('nav.developer', 'Developer Tools'),
     'Text & Writing': t('nav.text', 'Text & Writing'),
-    'Converters': t('nav.converters', 'Converters'),
+    Converters: t('nav.converters', 'Converters'),
     'Security Tools': t('nav.security', 'Security Tools'),
-    'Productivity': t('home.productivity', 'Productivity'),
+    Productivity: t('home.productivity', 'Productivity'),
     'Data Tools': t('home.dataTools', 'Data Tools'),
     'Design Tools': t('home.designTools', 'Design Tools'),
-    'Calculators': t('home.calculators', 'Calculators'),
+    Calculators: t('home.calculators', 'Calculators'),
     'Social Media': t('home.socialMedia', 'Social Media')
   };
 
   return map[categoryName] || categoryName;
+}
+
+function getCategoryName(category) {
+  return t(`home.categories.${category.slug}.name`, getCategoryLabel(category.name));
+}
+
+function getCategoryDescription(category) {
+  return t(
+    `home.categories.${category.slug}.description`,
+    category.shortDescription || category.description || ''
+  );
+}
+
+function getCategoryCountLabel(category) {
+  const count = Number(category.toolCount) || 0;
+
+  if (count > 0) {
+    return `${count}+ ${t('home.toolsGeneric', 'Tools')}`;
+  }
+
+  return t('home.toolsGeneric', 'Tools');
 }
 
 // ============================================
@@ -75,13 +89,22 @@ document.addEventListener('keydown', (e) => {
 // HOMEPAGE STATS
 // ============================================
 function updateHomepageStats() {
-  const categoryStatLabel = document.querySelector('.stat-label[data-i18n="hero.categories"]');
-  if (categoryStatLabel) {
-    const stat = categoryStatLabel.closest('.stat');
-    const value = stat?.querySelector('.stat-value');
-    if (value) {
-      value.textContent = String(categories.length);
-    }
+  const statValues = document.querySelectorAll('.hero-stats .stat .stat-value');
+  if (!statValues.length) return;
+
+  // 2. kutu: kategori sayısı
+  if (statValues[1]) {
+    statValues[1].textContent = String(categories.length);
+  }
+
+  // 1. kutu: toplam araç sayısı (sadece gerçekten doluysa güncelle)
+  const totalTools = categories.reduce((sum, category) => {
+    const count = Number(category.toolCount) || 0;
+    return sum + count;
+  }, 0);
+
+  if (totalTools > 0 && statValues[0]) {
+    statValues[0].textContent = `${totalTools}+`;
   }
 }
 
@@ -92,17 +115,21 @@ function renderCategories() {
   const container = document.getElementById('categoriesGrid');
   if (!container) return;
 
-  container.innerHTML = categories.map(cat => `
-    <a href="/categories/${cat.slug}" class="category-card">
-      <div class="category-icon" style="background: linear-gradient(135deg, ${cat.color}20, ${cat.color}10); color: ${cat.color}">
+  // Kullanıcı 12 kategori görsün diye tamamını basıyoruz
+  container.innerHTML = categories.map((category) => `
+    <a href="/categories/${category.slug}" class="category-card">
+      <div
+        class="category-icon"
+        style="background: linear-gradient(135deg, ${category.color}20, ${category.color}10); color: ${category.color}"
+      >
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          ${getIconPath(cat.icon)}
+          ${getIconPath(category.icon)}
         </svg>
       </div>
-      <h3 class="category-name">${getCategoryLabel(cat.name)}</h3>
-      <p class="category-description">${cat.shortDescription}</p>
+      <h3 class="category-name">${getCategoryName(category)}</h3>
+      <p class="category-description">${getCategoryDescription(category)}</p>
       <div class="category-meta">
-        <span class="category-count">${t('home.toolsGeneric', 'Tools')}</span>
+        <span class="category-count">${getCategoryCountLabel(category)}</span>
         <span>→</span>
       </div>
     </a>
@@ -206,7 +233,7 @@ function renderPopularTools() {
 
   const popularTools = getPopularTools();
 
-  container.innerHTML = popularTools.map(tool => `
+  container.innerHTML = popularTools.map((tool) => `
     <div class="tool-card">
       <div class="tool-header">
         <div class="tool-icon">
@@ -290,7 +317,7 @@ function renderNewTools() {
 
   const newTools = getNewTools();
 
-  container.innerHTML = newTools.map(tool => `
+  container.innerHTML = newTools.map((tool) => `
     <div class="tool-card">
       <div class="tool-header">
         <div class="tool-icon">
@@ -349,16 +376,56 @@ function initSearch() {
   if (!searchInput || !searchResults) return;
 
   const allTools = [
-    { name: t('home.popularCards.pdfMerge.name', 'PDF Merge'), slug: 'pdf/merge', category: getCategoryLabel('PDF Tools') },
-    { name: 'PDF Split', slug: 'pdf/split', category: getCategoryLabel('PDF Tools') },
-    { name: t('home.popularCards.pdfCompress.name', 'PDF Compressor'), slug: 'pdf/compress', category: getCategoryLabel('PDF Tools') },
-    { name: t('home.popularCards.imageCompress.name', 'Image Compressor'), slug: 'image/compress', category: getCategoryLabel('Image Tools') },
-    { name: 'Image Converter', slug: 'image/convert', category: getCategoryLabel('Image Tools') },
-    { name: t('home.popularCards.mortgage.name', 'Mortgage Calculator'), slug: 'finance/mortgage-refinance', category: getCategoryLabel('Finance Tools') },
-    { name: 'Tax Estimator', slug: 'finance/tax', category: getCategoryLabel('Finance Tools') },
-    { name: t('home.popularCards.json.name', 'JSON Formatter'), slug: 'dev/json-formatter', category: getCategoryLabel('Developer Tools') },
-    { name: t('home.newCards.regex.name', 'Regex Tester'), slug: 'dev/regex-tester', category: getCategoryLabel('Developer Tools') },
-    { name: t('home.popularCards.wordCounter.name', 'Word Counter'), slug: 'text/word-counter', category: getCategoryLabel('Text & Writing') }
+    {
+      name: t('home.popularCards.pdfMerge.name', 'PDF Merge'),
+      slug: 'pdf/merge',
+      category: getCategoryLabel('PDF Tools')
+    },
+    {
+      name: t('home.searchTools.pdfSplit.name', 'PDF Split'),
+      slug: 'pdf/split',
+      category: getCategoryLabel('PDF Tools')
+    },
+    {
+      name: t('home.popularCards.pdfCompress.name', 'PDF Compressor'),
+      slug: 'pdf/compress',
+      category: getCategoryLabel('PDF Tools')
+    },
+    {
+      name: t('home.popularCards.imageCompress.name', 'Image Compressor'),
+      slug: 'image/compress',
+      category: getCategoryLabel('Image Tools')
+    },
+    {
+      name: t('home.searchTools.imageConverter.name', 'Image Converter'),
+      slug: 'image/convert',
+      category: getCategoryLabel('Image Tools')
+    },
+    {
+      name: t('home.popularCards.mortgage.name', 'Mortgage Calculator'),
+      slug: 'finance/mortgage-refinance',
+      category: getCategoryLabel('Finance Tools')
+    },
+    {
+      name: t('home.searchTools.taxEstimator.name', 'Tax Estimator'),
+      slug: 'finance/tax',
+      category: getCategoryLabel('Finance Tools')
+    },
+    {
+      name: t('home.popularCards.json.name', 'JSON Formatter'),
+      slug: 'dev/json-formatter',
+      category: getCategoryLabel('Developer Tools')
+    },
+    {
+      name: t('home.newCards.regex.name', 'Regex Tester'),
+      slug: 'dev/regex-tester',
+      category: getCategoryLabel('Developer Tools')
+    },
+    {
+      name: t('home.popularCards.wordCounter.name', 'Word Counter'),
+      slug: 'text/word-counter',
+      category: getCategoryLabel('Text & Writing')
+    }
   ];
 
   searchInput.oninput = (e) => {
@@ -369,12 +436,12 @@ function initSearch() {
       return;
     }
 
-    const results = allTools.filter(tool =>
+    const results = allTools.filter((tool) =>
       tool.name.toLowerCase().includes(query) ||
       tool.category.toLowerCase().includes(query)
     ).slice(0, 5);
 
-    searchResults.innerHTML = results.map(tool => `
+    searchResults.innerHTML = results.map((tool) => `
       <a href="/tools/${tool.slug}" class="search-result-item">
         <span class="search-result-name">${tool.name}</span>
         <span class="search-result-category">${tool.category}</span>
