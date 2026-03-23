@@ -25,6 +25,172 @@
     "categories": "Categories",
     "private": "Private"
   },
+  "home": {
+    "sections": {
+      "popularTitle": "Popular Tools",
+      "popularDesc": "Most-used tools picked by users.",
+      "newTitle": "New & Trending",
+      "newDesc": "Fresh tools and recently added utilities.",
+      "categoriesTitle": "Browse by Category",
+      "categoriesDesc": "Organized collections of tools for every need. Click a category to explore."
+    },
+    "features": {
+      "fastTitle": "Lightning Fast",
+      "fastDesc": "Tools open quickly and work directly in your browser.",
+      "privateTitle": "100% Private",
+      "privateDesc": "Your files and inputs stay on your device whenever possible.",
+      "freeTitle": "Completely Free",
+      "freeDesc": "Use the core tools without signup or hidden paywalls.",
+      "multiLangTitle": "Multi-Language",
+      "multiLangDesc": "Use the site in multiple languages with the same tool experience."
+    },
+    "cta": {
+      "title": "Need a specific tool?",
+      "desc": "Tell us what you need and we may add it next.",
+      "button": "Request a Tool"
+    },
+    "trust": {
+      "secureTitle": "Secure & Private",
+      "secureDesc": "Your data never leaves your browser",
+      "transparentTitle": "Transparent",
+      "transparentDesc": "Clear privacy policy & terms",
+      "supportTitle": "Support",
+      "supportDesc": "Contact us for any questions",
+      "verifiedTitle": "Verified",
+      "verifiedDesc": "Google AdSense compliant"
+    },
+    "footer": {
+      "brandDesc": "300+ free online tools for files, finance, code and creativity. Fast, private, secure, and always free. Your data stays on your device.",
+      "ownerTitle": "Site Owner & Contact",
+      "toolCategoriesTitle": "Tool Categories",
+      "companyTitle": "Company",
+      "legalTitle": "Legal & Privacy",
+      "ownerRole": "Licensed Professional Counselor & Founder",
+      "legalBarContact": "Contact Support",
+      "legalBarIssue": "Report Issue"
+    },
+    "popularCards": {
+      "pdfMerge": {
+        "name": "PDF Merge",
+        "description": "Combine multiple PDF files into one document quickly and easily."
+      },
+      "imageCompress": {
+        "name": "Image Compressor",
+        "description": "Reduce image file size without losing quality. WebP, PNG, JPG support."
+      },
+      "mortgage": {
+        "name": "Mortgage Calculator",
+        "description": "Calculate mortgage payments, compare rates and estimate savings."
+      },
+      "json": {
+        "name": "JSON Formatter",
+        "description": "Format, validate and beautify JSON data with syntax highlighting."
+      },
+      "wordCounter": {
+        "name": "Word Counter",
+        "description": "Count words, characters, sentences and paragraphs in your text."
+      },
+      "unitConverter": {
+        "name": "Unit Converter",
+        "description": "Convert between different units of measurement easily."
+      },
+      "password": {
+        "name": "Password Generator",
+        "description": "Generate strong, secure passwords with customizable options."
+      },
+      "pdfCompress": {
+        "name": "PDF Compressor",
+        "description": "Reduce PDF file size while maintaining document quality."
+      }
+    },
+    "newCards": {
+      "backgroundRemover": {
+        "name": "Background Remover",
+        "description": "Remove backgrounds from images automatically using AI."
+      },
+      "cryptoTax": {
+        "name": "Crypto Tax Calculator",
+        "description": "Calculate your cryptocurrency gains and tax obligations."
+      },
+      "textDiff": {
+        "name": "Text Diff Checker",
+        "description": "Compare two texts and see the differences highlighted."
+      },
+      "regex": {
+        "name": "Regex Tester",
+        "description": "Test and debug regular expressions with real-time matching."
+      }
+    },
+    "searchTools": {
+      "pdfSplit": {
+        "name": "PDF Split"
+      },
+      "imageConverter": {
+        "name": "Image Converter"
+      },
+      "taxEstimator": {
+        "name": "Tax Estimator"
+      }
+    },
+    "categories": {
+      "pdf-tools": {
+        "name": "PDF Tools",
+        "description": "Edit and convert PDFs"
+      },
+      "image-tools": {
+        "name": "Image Tools",
+        "description": "Optimize and edit images"
+      },
+      "finance-tools": {
+        "name": "Finance Tools",
+        "description": "Calculators for your money"
+      },
+      "text-tools": {
+        "name": "Text & Writing",
+        "description": "Writing and text utilities"
+      },
+      "developer-tools": {
+        "name": "Developer Tools",
+        "description": "Tools for developers"
+      },
+      "converter-tools": {
+        "name": "Converters",
+        "description": "Convert anything"
+      },
+      "calculator-tools": {
+        "name": "Calculators",
+        "description": "All types of calculators"
+      },
+      "security-tools": {
+        "name": "Security Tools",
+        "description": "Protect your data"
+      },
+      "social-media-tools": {
+        "name": "Social Media",
+        "description": "Tools for social platforms"
+      },
+      "productivity-tools": {
+        "name": "Productivity",
+        "description": "Boost your productivity"
+      },
+      "data-tools": {
+        "name": "Data Tools",
+        "description": "Work with data"
+      },
+      "design-tools": {
+        "name": "Design Tools",
+        "description": "Create visuals"
+      }
+    },
+    "productivity": "Productivity",
+    "dataTools": "Data Tools",
+    "designTools": "Design Tools",
+    "calculators": "Calculators",
+    "socialMedia": "Social Media",
+    "openTool": "Open Tool",
+    "noResults": "No tools found",
+    "toolsGeneric": "Tools"
+  },
   "footer": {
     "signature": "Metehan ÇETİN, LPC",
     "title": "Psychological Counselor and Founder",

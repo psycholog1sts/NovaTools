@@ -4727,7 +4727,7 @@
           "013": "Platformu Seçin",
           "014": "instagram",
           "015": "Twitter/X",
-          "016": "TikTok",
+          "016": "Tiktok",
           "017": "LinkedIn",
           "018": "Facebook",
           "019": "Konuyu veya Anahtar Kelimeleri Girin",
@@ -5607,5 +5607,171 @@
     "apply": "Uygula",
     "filter": "Filtrele",
     "sort": "Sırala"
+  },
+  "home": {
+    "sections": {
+      "popularTitle": "Popüler Araçlar",
+      "popularDesc": "Kullanıcılar tarafından seçilen en çok kullanılan araçlar.",
+      "newTitle": "Yeni ve Trend",
+      "newDesc": "Yeni araçlar ve yakın zamanda eklenen yardımcı programlar.",
+      "categoriesTitle": "Kategoriye Göre Gözat",
+      "categoriesDesc": "Her ihtiyaca yönelik organize araç koleksiyonları. Keşfetmek için bir kategoriye tıklayın."
+    },
+    "features": {
+      "fastTitle": "Yıldırım Hızında",
+      "fastDesc": "Araçlar hızla açılır ve doğrudan tarayıcınızda çalışır.",
+      "privateTitle": "%100 Özel",
+      "privateDesc": "Dosyalarınız ve girişleriniz mümkün olduğunca cihazınızda kalır.",
+      "freeTitle": "Tamamen Ücretsiz",
+      "freeDesc": "Temel araçları kaydolmadan veya gizli ödeme duvarları olmadan kullanın.",
+      "multiLangTitle": "Çoklu Dil",
+      "multiLangDesc": "Siteyi aynı araç deneyimiyle birden çok dilde kullanın."
+    },
+    "cta": {
+      "title": "Belirli bir araca mı ihtiyacınız var?",
+      "desc": "Bize neye ihtiyacınız olduğunu söyleyin, sonra onu ekleyebiliriz.",
+      "button": "Araç Talep Et"
+    },
+    "trust": {
+      "secureTitle": "Güvenli ve Özel",
+      "secureDesc": "Verileriniz tarayıcınızdan asla ayrılmaz",
+      "transparentTitle": "Şeffaf",
+      "transparentDesc": "Açık gizlilik politikası ve şartları",
+      "supportTitle": "Destek",
+      "supportDesc": "Sorularınız için bizimle iletişime geçin",
+      "verifiedTitle": "Doğrulandı",
+      "verifiedDesc": "Google AdSense uyumlu"
+    },
+    "footer": {
+      "brandDesc": "Dosyalar, finans, kod ve yaratıcılık için 300'den fazla ücretsiz çevrimiçi araç. Hızlı, özel, güvenli ve her zaman ücretsiz. Verileriniz cihazınızda kalır.",
+      "ownerTitle": "Site Sahibi ve İletişim",
+      "toolCategoriesTitle": "Araç Kategorileri",
+      "companyTitle": "Şirket",
+      "legalTitle": "Yasal ve Gizlilik",
+      "ownerRole": "Lisanslı Profesyonel Danışman ve Kurucu",
+      "legalBarContact": "Destek Ekibiyle İletişime Geçin",
+      "legalBarIssue": "Sorunu Bildir"
+    },
+    "popularCards": {
+      "pdfMerge": {
+        "name": "PDF Birleştir",
+        "description": "Birden fazla PDF dosyasını hızlı ve kolay bir şekilde tek bir belgede birleştirin."
+      },
+      "imageCompress": {
+        "name": "Görüntü Sıkıştırıcı",
+        "description": "Kaliteyi kaybetmeden görüntü dosyası boyutunu azaltın. WebP, PNG, JPG desteği."
+      },
+      "mortgage": {
+        "name": "İpotek Hesaplayıcı",
+        "description": "İpotek ödemelerini hesaplayın, oranları karşılaştırın ve tasarrufları tahmin edin."
+      },
+      "json": {
+        "name": "JSON Biçimlendirici",
+        "description": "JSON verilerini sözdizimi vurgulamayla biçimlendirin, doğrulayın ve güzelleştirin."
+      },
+      "wordCounter": {
+        "name": "Word Sayaç",
+        "description": "Metninizdeki kelimeleri, karakterleri, cümleleri ve paragrafları sayın."
+      },
+      "unitConverter": {
+        "name": "Birim Dönüştürücü",
+        "description": "Farklı ölçü birimleri arasında kolayca dönüşüm yapın."
+      },
+      "password": {
+        "name": "Şifre Oluşturucu",
+        "description": "Özelleştirilebilir seçeneklerle güçlü, güvenli şifreler oluşturun."
+      },
+      "pdfCompress": {
+        "name": "PDF Kompresör",
+        "description": "Belge kalitesini korurken PDF dosya boyutunu azaltın."
+      }
+    },
+    "newCards": {
+      "backgroundRemover": {
+        "name": "Arka Plan Sökücü",
+        "description": "Yapay zekayı kullanarak görüntülerden arka planları otomatik olarak kaldırın."
+      },
+      "cryptoTax": {
+        "name": "Kripto Vergi Hesaplayıcı",
+        "description": "Kripto para birimi kazançlarınızı ve vergi yükümlülüklerinizi hesaplayın."
+      },
+      "textDiff": {
+        "name": "Metin Farkı Denetleyicisi",
+        "description": "İki metni karşılaştırın ve vurgulanan farkları görün."
+      },
+      "regex": {
+        "name": "Regex Test Cihazı",
+        "description": "Gerçek zamanlı eşleştirmeyle normal ifadeleri test edin ve hatalarını ayıklayın."
+      }
+    },
+    "searchTools": {
+      "pdfSplit": {
+        "name": "PDF Böl"
+      },
+      "imageConverter": {
+        "name": "Görüntü Dönüştürücü"
+      },
+      "taxEstimator": {
+        "name": "Vergi Tahmincisi"
+      }
+    },
+    "categories": {
+      "pdf-tools": {
+        "name": "PDF Araçlar",
+        "description": "PDFs'yi düzenleyin ve dönüştürün"
+      },
+      "image-tools": {
+        "name": "Görüntü Araçları",
+        "description": "Resimleri optimize edin ve düzenleyin"
+      },
+      "finance-tools": {
+        "name": "Finans Araçları",
+        "description": "Paranız için hesap makineleri"
+      },
+      "text-tools": {
+        "name": "Metin ve Yazma",
+        "description": "Yazma ve metin yardımcı programları"
+      },
+      "developer-tools": {
+        "name": "Geliştirici Araçları",
+        "description": "Geliştiriciler için araçlar"
+      },
+      "converter-tools": {
+        "name": "Dönüştürücüler",
+        "description": "Her şeyi dönüştürün"
+      },
+      "calculator-tools": {
+        "name": "Hesap makineleri",
+        "description": "Her türlü hesap makinesi"
+      },
+      "security-tools": {
+        "name": "Güvenlik Araçları",
+        "description": "Verilerinizi koruyun"
+      },
+      "social-media-tools": {
+        "name": "Sosyal Medya",
+        "description": "Sosyal platformlar için araçlar"
+      },
+      "productivity-tools": {
+        "name": "Verimlilik",
+        "description": "Üretkenliğinizi artırın"
+      },
+      "data-tools": {
+        "name": "Veri Araçları",
+        "description": "Verilerle çalışma"
+      },
+      "design-tools": {
+        "name": "Tasarım Araçları",
+        "description": "Görseller oluşturun"
+      }
+    },
+    "productivity": "Verimlilik",
+    "dataTools": "Veri Araçları",
+    "designTools": "Tasarım Araçları",
+    "calculators": "Hesap makineleri",
+    "socialMedia": "Sosyal Medya",
+    "openTool": "Aracı Aç",
+    "noResults": "Hiçbir araç bulunamadı",
+    "toolsGeneric": "Aletler"
   }
 }
