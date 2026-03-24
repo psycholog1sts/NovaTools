@@ -25,6 +25,177 @@
     "categories": "카테고리",
     "private": "비공개"
   },
+  "home": {
+    "sections": {
+      "popularTitle": "인기 도구",
+      "popularDesc": "사용자들이 가장 많이 사용하는 도구.",
+      "newTitle": "새로운 & 트렌딩",
+      "newDesc": "최근 추가된 도구 및 업데이트.",
+      "categoriesTitle": "카테고리별 찾기",
+      "categoriesDesc": "모든 필요에 맞는 체계적인 도구 모음."
+    },
+    "features": {
+      "fastTitle": "초고속",
+      "fastDesc": "도구가 빠르게 열리고 브라우저에서 직접 작동합니다.",
+      "privateTitle": "100% 프라이빗",
+      "privateDesc": "파일과 데이터는 기기에서 유지됩니다.",
+      "freeTitle": "완전 무료",
+      "freeDesc": "가입이나 숨겨진 비용 없이 도구를 사용하세요.",
+      "multiLangTitle": "다국어",
+      "multiLangDesc": "여러 언어로 사이트를 이용하세요."
+    },
+    "cta": {
+      "title": "특정 도구가 필요하신가요?",
+      "desc": "필요한 것을 알려주시면 추가하겠습니다.",
+      "button": "도구 요청"
+    },
+    "trust": {
+      "secureTitle": "안전 & 프라이빗",
+      "secureDesc": "데이터가 브라우저를 떠나지 않습니다",
+      "transparentTitle": "투명함",
+      "transparentDesc": "명확한 개인정보 보호정책",
+      "supportTitle": "지원",
+      "supportDesc": "질문이 있으시면 연락주세요",
+      "verifiedTitle": "인증됨",
+      "verifiedDesc": "Google AdSense 준수"
+    },
+    "footer": {
+      "brandDesc": "파일, 금융, 코드, 창의성을 위한 300개 이상의 무료 온라인 도구.",
+      "ownerTitle": "사이트 소유자 & 연락처",
+      "toolCategoriesTitle": "도구 카테고리",
+      "companyTitle": "회사",
+      "legalTitle": "법적 정보 & 개인정보",
+      "ownerRole": "심리 상담사 & 설립자",
+      "legalBarContact": "지원팀에 연락",
+      "legalBarIssue": "문제 신고"
+    },
+    "popularCards": {
+      "pdfMerge": {
+        "name": "PDF 병합",
+        "description": "여러 PDF 파일을 빠르고 쉽게 하나의 문서로 결합."
+      },
+      "imageCompress": {
+        "name": "이미지 압축기",
+        "description": "품질 손실 없이 이미지 파일 크기를 줄입니다. WebP, PNG, JPG 지원."
+      },
+      "mortgage": {
+        "name": "모기지 계산기",
+        "description": "모기지 지불액 계산, 금리 비교 및 절감액 추정."
+      },
+      "json": {
+        "name": "JSON 포맷터",
+        "description": "구문 강조 표시로 JSON 데이터를 포맷, 검증 및 정렬."
+      },
+      "wordCounter": {
+        "name": "단어 카운터",
+        "description": "텍스트의 단어, 문자, 문장 및 단락을 계산."
+      },
+      "unitConverter": {
+        "name": "단위 변환기",
+        "description": "다양한 측정 단위 간 쉽게 변환."
+      },
+      "password": {
+        "name": "비밀번호 생성기",
+        "description": "사용자 정의 옵션으로 강력하고 안전한 비밀번호 생성."
+      },
+      "pdfCompress": {
+        "name": "PDF 압축기",
+        "description": "문서 품질을 유지하면서 PDF 파일 크기를 줄입니다."
+      }
+    },
+    "newCards": {
+      "backgroundRemover": {
+        "name": "배경 제거기",
+        "description": "AI를 사용하여 이미지에서 자동으로 배경을 제거."
+      },
+      "cryptoTax": {
+        "name": "암호화폐 세금 계산기",
+        "description": "암호화폐 수익과 세금 의무를 계산."
+      },
+      "textDiff": {
+        "name": "텍스트 차이 비교기",
+        "description": "두 텍스트를 비교하고 강조된 차이점을 확인."
+      },
+      "regex": {
+        "name": "정규식 테스터",
+        "description": "실시간 매칭으로 정규 표현식을 테스트 및 디버그."
+      }
+    },
+    "searchTools": {
+      "pdfSplit": {
+        "name": "PDF 분할"
+      },
+      "imageConverter": {
+        "name": "이미지 변환기"
+      },
+      "taxEstimator": {
+        "name": "세금 추정기"
+      }
+    },
+    "categories": {
+      "pdf-tools": {
+        "name": "PDF 도구",
+        "description": "PDF 편집 및 변환"
+      },
+      "image-tools": {
+        "name": "이미지 도구",
+        "description": "이미지 최적화 및 편집"
+      },
+      "finance-tools": {
+        "name": "금융 도구",
+        "description": "금융 계산기"
+      },
+      "text-tools": {
+        "name": "텍스트 & 글쓰기",
+        "description": "텍스트 및 글쓰기 도구"
+      },
+      "developer-tools": {
+        "name": "개발자 도구",
+        "description": "개발자를 위한 도구"
+      },
+      "converter-tools": {
+        "name": "변환기",
+        "description": "모든 것을 변환"
+      },
+      "calculator-tools": {
+        "name": "계산기",
+        "description": "모든 종류의 계산기"
+      },
+      "security-tools": {
+        "name": "보안 도구",
+        "description": "데이터를 보호"
+      },
+      "social-media-tools": {
+        "name": "소셜 미디어",
+        "description": "소셜 플랫폼 도구"
+      },
+      "productivity-tools": {
+        "name": "생산성",
+        "description": "생산성을 높이세요"
+      },
+      "data-tools": {
+        "name": "데이터 도구",
+        "description": "데이터 작업"
+      },
+      "design-tools": {
+        "name": "디자인 도구",
+        "description": "비주얼 제작"
+      }
+    },
+    "productivity": "생산성",
+    "dataTools": "데이터 도구",
+    "designTools": "디자인 도구",
+    "calculators": "계산기",
+    "socialMedia": "소셜 미디어",
+    "openTool": "도구 열기",
+    "noResults": "도구를 찾을 수 없습니다",
+    "toolsGeneric": "도구",
+    "viewAllCategories": "전체 카테고리 보기",
+    "viewAllDesc": "300개 이상의 도구를 카테고리별로 둘러보세요.",
+    "searchPlaceholder": "300개 이상의 도구 검색...",
+    "popularLabel": "인기:",
+    "newBadge": "새로운"
+  },
   "footer": {
     "signature": "Metehan ÇETİN, LPC",
     "title": "심리 상담사 겸 창립자",

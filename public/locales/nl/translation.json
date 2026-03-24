@@ -25,6 +25,177 @@
     "categories": "Categorieën",
     "private": "Privé"
   },
+  "home": {
+    "sections": {
+      "popularTitle": "Populaire Tools",
+      "popularDesc": "Meest gebruikte tools door onze gebruikers.",
+      "newTitle": "Nieuw & Trending",
+      "newDesc": "Nieuw toegevoegde tools en updates.",
+      "categoriesTitle": "Blader per Categorie",
+      "categoriesDesc": "Georganiseerde collecties van tools voor elke behoefte. Klik op een categorie om te verkennen."
+    },
+    "features": {
+      "fastTitle": "Razendsnel",
+      "fastDesc": "Tools openen snel en werken direct in je browser.",
+      "privateTitle": "100% Privé",
+      "privateDesc": "Je bestanden en invoer blijven op je apparaat.",
+      "freeTitle": "Volledig Gratis",
+      "freeDesc": "Gebruik de tools zonder registratie of verborgen kosten.",
+      "multiLangTitle": "Meertalig",
+      "multiLangDesc": "Gebruik de site in meerdere talen met dezelfde ervaring."
+    },
+    "cta": {
+      "title": "Een specifiek tool nodig?",
+      "desc": "Vertel ons wat je nodig hebt en we voegen het toe.",
+      "button": "Tool Aanvragen"
+    },
+    "trust": {
+      "secureTitle": "Veilig & Privé",
+      "secureDesc": "Je gegevens verlaten nooit je browser",
+      "transparentTitle": "Transparant",
+      "transparentDesc": "Duidelijk privacybeleid & voorwaarden",
+      "supportTitle": "Ondersteuning",
+      "supportDesc": "Neem contact op voor vragen",
+      "verifiedTitle": "Geverifieerd",
+      "verifiedDesc": "Google AdSense conform"
+    },
+    "footer": {
+      "brandDesc": "300+ gratis online tools voor bestanden, financiën, code en creativiteit. Snel, privé, veilig en altijd gratis.",
+      "ownerTitle": "Site-eigenaar & Contact",
+      "toolCategoriesTitle": "Tool Categorieën",
+      "companyTitle": "Bedrijf",
+      "legalTitle": "Juridisch & Privacy",
+      "ownerRole": "Psychologisch Counselor & Oprichter",
+      "legalBarContact": "Contact Ondersteuning",
+      "legalBarIssue": "Probleem Melden"
+    },
+    "popularCards": {
+      "pdfMerge": {
+        "name": "PDF Samenvoegen",
+        "description": "Combineer snel en eenvoudig meerdere PDF-bestanden in één document."
+      },
+      "imageCompress": {
+        "name": "Afbeelding Compressor",
+        "description": "Verklein afbeeldingsbestanden zonder kwaliteitsverlies. WebP, PNG, JPG ondersteuning."
+      },
+      "mortgage": {
+        "name": "Hypotheek Calculator",
+        "description": "Bereken hypotheekbetalingen, vergelijk tarieven en schat besparingen."
+      },
+      "json": {
+        "name": "JSON Formatter",
+        "description": "Formatteer, valideer en verfraai JSON-gegevens met syntaxismarkering."
+      },
+      "wordCounter": {
+        "name": "Woordenteller",
+        "description": "Tel woorden, tekens, zinnen en alinea's in je tekst."
+      },
+      "unitConverter": {
+        "name": "Eenhedenconverter",
+        "description": "Converteer eenvoudig tussen verschillende meeteenheden."
+      },
+      "password": {
+        "name": "Wachtwoord Generator",
+        "description": "Genereer sterke, veilige wachtwoorden met aanpasbare opties."
+      },
+      "pdfCompress": {
+        "name": "PDF Compressor",
+        "description": "Verklein PDF-bestanden met behoud van documentkwaliteit."
+      }
+    },
+    "newCards": {
+      "backgroundRemover": {
+        "name": "Achtergrond Verwijderaar",
+        "description": "Verwijder automatisch achtergronden uit afbeeldingen met AI."
+      },
+      "cryptoTax": {
+        "name": "Crypto Belasting Calculator",
+        "description": "Bereken je cryptocurrency winsten en belastingverplichtingen."
+      },
+      "textDiff": {
+        "name": "Tekst Vergelijker",
+        "description": "Vergelijk twee teksten en bekijk de gemarkeerde verschillen."
+      },
+      "regex": {
+        "name": "Regex Tester",
+        "description": "Test en debug reguliere expressies met real-time matching."
+      }
+    },
+    "searchTools": {
+      "pdfSplit": {
+        "name": "PDF Splitsen"
+      },
+      "imageConverter": {
+        "name": "Afbeelding Converter"
+      },
+      "taxEstimator": {
+        "name": "Belasting Schatter"
+      }
+    },
+    "categories": {
+      "pdf-tools": {
+        "name": "PDF Tools",
+        "description": "PDFs bewerken en converteren"
+      },
+      "image-tools": {
+        "name": "Afbeelding Tools",
+        "description": "Afbeeldingen optimaliseren en bewerken"
+      },
+      "finance-tools": {
+        "name": "Financiële Tools",
+        "description": "Financiële calculators"
+      },
+      "text-tools": {
+        "name": "Tekst & Schrijven",
+        "description": "Tekst- en schrijftools"
+      },
+      "developer-tools": {
+        "name": "Ontwikkelaar Tools",
+        "description": "Tools voor ontwikkelaars"
+      },
+      "converter-tools": {
+        "name": "Converters",
+        "description": "Alles converteren"
+      },
+      "calculator-tools": {
+        "name": "Calculators",
+        "description": "Alle soorten calculators"
+      },
+      "security-tools": {
+        "name": "Beveiligingstools",
+        "description": "Bescherm je gegevens"
+      },
+      "social-media-tools": {
+        "name": "Social Media",
+        "description": "Tools voor sociale platforms"
+      },
+      "productivity-tools": {
+        "name": "Productiviteit",
+        "description": "Verhoog je productiviteit"
+      },
+      "data-tools": {
+        "name": "Data Tools",
+        "description": "Werken met data"
+      },
+      "design-tools": {
+        "name": "Design Tools",
+        "description": "Visuals maken"
+      }
+    },
+    "productivity": "Productiviteit",
+    "dataTools": "Data Tools",
+    "designTools": "Design Tools",
+    "calculators": "Calculators",
+    "socialMedia": "Social Media",
+    "openTool": "Tool Openen",
+    "noResults": "Geen tools gevonden",
+    "toolsGeneric": "Tools",
+    "viewAllCategories": "Alle Categorieën Bekijken",
+    "viewAllDesc": "Blader door onze complete collectie van 300+ tools per categorie.",
+    "searchPlaceholder": "Zoek 300+ tools...",
+    "popularLabel": "Populair:",
+    "newBadge": "Nieuw"
+  },
   "footer": {
     "signature": "Metehan ÇETİN, LPC",
     "title": "Psychological Counselor and Founder",

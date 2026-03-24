@@ -25,6 +25,177 @@
     "categories": "श्रेणियाँ",
     "private": "निजी"
   },
+  "home": {
+    "sections": {
+      "popularTitle": "लोकप्रिय उपकरण",
+      "popularDesc": "उपयोगकर्ताओं द्वारा सबसे अधिक उपयोग किए जाने वाले उपकरण।",
+      "newTitle": "नए और ट्रेंडिंग",
+      "newDesc": "हाल ही में जोड़े गए उपकरण और अपडेट।",
+      "categoriesTitle": "श्रेणी के अनुसार ब्राउज़ करें",
+      "categoriesDesc": "हर ज़रूरत के लिए व्यवस्थित उपकरणों का संग्रह।"
+    },
+    "features": {
+      "fastTitle": "अत्यंत तेज़",
+      "fastDesc": "उपकरण तेज़ी से खुलते हैं और सीधे ब्राउज़र में काम करते हैं।",
+      "privateTitle": "100% निजी",
+      "privateDesc": "आपकी फ़ाइलें और डेटा आपके डिवाइस पर रहती हैं।",
+      "freeTitle": "पूरी तरह मुफ़्त",
+      "freeDesc": "बिना पंजीकरण या छिपी लागत के उपकरण उपयोग करें।",
+      "multiLangTitle": "बहुभाषी",
+      "multiLangDesc": "कई भाषाओं में साइट का उपयोग करें।"
+    },
+    "cta": {
+      "title": "किसी विशेष उपकरण की आवश्यकता है?",
+      "desc": "हमें बताएं कि आपको क्या चाहिए और हम जोड़ देंगे।",
+      "button": "उपकरण का अनुरोध करें"
+    },
+    "trust": {
+      "secureTitle": "सुरक्षित और निजी",
+      "secureDesc": "आपका डेटा कभी ब्राउज़र नहीं छोड़ता",
+      "transparentTitle": "पारदर्शी",
+      "transparentDesc": "स्पष्ट गोपनीयता नीति और शर्तें",
+      "supportTitle": "सहायता",
+      "supportDesc": "किसी भी प्रश्न के लिए संपर्क करें",
+      "verifiedTitle": "सत्यापित",
+      "verifiedDesc": "Google AdSense अनुरूप"
+    },
+    "footer": {
+      "brandDesc": "फ़ाइलों, वित्त, कोड और रचनात्मकता के लिए 300+ मुफ़्त ऑनलाइन उपकरण।",
+      "ownerTitle": "साइट मालिक और संपर्क",
+      "toolCategoriesTitle": "उपकरण श्रेणियाँ",
+      "companyTitle": "कंपनी",
+      "legalTitle": "कानूनी और गोपनीयता",
+      "ownerRole": "मनोवैज्ञानिक परामर्शदाता और संस्थापक",
+      "legalBarContact": "सहायता से संपर्क करें",
+      "legalBarIssue": "समस्या की रिपोर्ट करें"
+    },
+    "popularCards": {
+      "pdfMerge": {
+        "name": "PDF मर्ज",
+        "description": "कई PDF फ़ाइलों को तेज़ी से और आसानी से एक दस्तावेज़ में संयोजित करें।"
+      },
+      "imageCompress": {
+        "name": "छवि संपीड़क",
+        "description": "गुणवत्ता खोए बिना छवि फ़ाइल का आकार कम करें। WebP, PNG, JPG समर्थन।"
+      },
+      "mortgage": {
+        "name": "बंधक कैलकुलेटर",
+        "description": "बंधक भुगतान की गणना करें, दरों की तुलना करें और बचत का अनुमान लगाएं।"
+      },
+      "json": {
+        "name": "JSON फ़ॉर्मेटर",
+        "description": "सिंटैक्स हाइलाइटिंग के साथ JSON डेटा को फ़ॉर्मेट, मान्य और सुंदर बनाएं।"
+      },
+      "wordCounter": {
+        "name": "शब्द गणक",
+        "description": "अपने पाठ में शब्द, अक्षर, वाक्य और अनुच्छेद गिनें।"
+      },
+      "unitConverter": {
+        "name": "इकाई कनवर्टर",
+        "description": "विभिन्न माप इकाइयों के बीच आसानी से रूपांतरित करें।"
+      },
+      "password": {
+        "name": "पासवर्ड जनरेटर",
+        "description": "अनुकूलन योग्य विकल्पों के साथ मजबूत, सुरक्षित पासवर्ड बनाएं।"
+      },
+      "pdfCompress": {
+        "name": "PDF संपीड़क",
+        "description": "दस्तावेज़ की गुणवत्ता बनाए रखते हुए PDF फ़ाइल का आकार कम करें।"
+      }
+    },
+    "newCards": {
+      "backgroundRemover": {
+        "name": "पृष्ठभूमि हटाने वाला",
+        "description": "AI का उपयोग करके छवियों से स्वचालित रूप से पृष्ठभूमि हटाएं।"
+      },
+      "cryptoTax": {
+        "name": "क्रिप्टो कर कैलकुलेटर",
+        "description": "अपनी क्रिप्टोकरेंसी लाभ और कर दायित्वों की गणना करें।"
+      },
+      "textDiff": {
+        "name": "पाठ अंतर जाँचकर्ता",
+        "description": "दो पाठों की तुलना करें और हाइलाइट किए गए अंतर देखें।"
+      },
+      "regex": {
+        "name": "Regex परीक्षक",
+        "description": "रियल-टाइम मिलान के साथ नियमित अभिव्यक्तियों का परीक्षण और डीबग करें।"
+      }
+    },
+    "searchTools": {
+      "pdfSplit": {
+        "name": "PDF विभाजन"
+      },
+      "imageConverter": {
+        "name": "छवि कनवर्टर"
+      },
+      "taxEstimator": {
+        "name": "कर अनुमानक"
+      }
+    },
+    "categories": {
+      "pdf-tools": {
+        "name": "PDF उपकरण",
+        "description": "PDF संपादित और रूपांतरित करें"
+      },
+      "image-tools": {
+        "name": "छवि उपकरण",
+        "description": "छवियों को अनुकूलित और संपादित करें"
+      },
+      "finance-tools": {
+        "name": "वित्तीय उपकरण",
+        "description": "वित्तीय कैलकुलेटर"
+      },
+      "text-tools": {
+        "name": "पाठ और लेखन",
+        "description": "पाठ और लेखन उपकरण"
+      },
+      "developer-tools": {
+        "name": "डेवलपर उपकरण",
+        "description": "डेवलपर्स के लिए उपकरण"
+      },
+      "converter-tools": {
+        "name": "कनवर्टर",
+        "description": "कुछ भी रूपांतरित करें"
+      },
+      "calculator-tools": {
+        "name": "कैलकुलेटर",
+        "description": "सभी प्रकार के कैलकुलेटर"
+      },
+      "security-tools": {
+        "name": "सुरक्षा उपकरण",
+        "description": "अपना डेटा सुरक्षित करें"
+      },
+      "social-media-tools": {
+        "name": "सोशल मीडिया",
+        "description": "सोशल प्लेटफ़ॉर्म उपकरण"
+      },
+      "productivity-tools": {
+        "name": "उत्पादकता",
+        "description": "उत्पादकता बढ़ाएं"
+      },
+      "data-tools": {
+        "name": "डेटा उपकरण",
+        "description": "डेटा के साथ काम करें"
+      },
+      "design-tools": {
+        "name": "डिज़ाइन उपकरण",
+        "description": "विज़ुअल बनाएं"
+      }
+    },
+    "productivity": "उत्पादकता",
+    "dataTools": "डेटा उपकरण",
+    "designTools": "डिज़ाइन उपकरण",
+    "calculators": "कैलकुलेटर",
+    "socialMedia": "सोशल मीडिया",
+    "openTool": "उपकरण खोलें",
+    "noResults": "कोई उपकरण नहीं मिला",
+    "toolsGeneric": "उपकरण",
+    "viewAllCategories": "सभी श्रेणियाँ देखें",
+    "viewAllDesc": "हमारे 300+ उपकरणों का पूरा संग्रह श्रेणी के अनुसार देखें।",
+    "searchPlaceholder": "300+ उपकरण खोजें...",
+    "popularLabel": "लोकप्रिय:",
+    "newBadge": "नया"
+  },
   "footer": {
     "signature": "Metehan ÇETİN, LPC",
     "title": "Psychological Counselor and Founder",

@@ -25,6 +25,177 @@
     "categories": "分类",
     "private": "私密"
   },
+  "home": {
+    "sections": {
+      "popularTitle": "热门工具",
+      "popularDesc": "用户最常使用的工具。",
+      "newTitle": "最新和趋势",
+      "newDesc": "最近添加的工具和更新。",
+      "categoriesTitle": "按类别浏览",
+      "categoriesDesc": "为每种需求组织的工具集合。点击类别进行探索。"
+    },
+    "features": {
+      "fastTitle": "闪电般快速",
+      "fastDesc": "工具快速打开，直接在浏览器中运行。",
+      "privateTitle": "100% 隐私",
+      "privateDesc": "您的文件和数据保留在您的设备上。",
+      "freeTitle": "完全免费",
+      "freeDesc": "无需注册或隐藏费用即可使用工具。",
+      "multiLangTitle": "多语言",
+      "multiLangDesc": "以多种语言使用网站。"
+    },
+    "cta": {
+      "title": "需要特定工具？",
+      "desc": "告诉我们您需要什么，我们会添加。",
+      "button": "请求工具"
+    },
+    "trust": {
+      "secureTitle": "安全和隐私",
+      "secureDesc": "您的数据永远不会离开浏览器",
+      "transparentTitle": "透明",
+      "transparentDesc": "明确的隐私政策和条款",
+      "supportTitle": "支持",
+      "supportDesc": "如有任何问题请联系我们",
+      "verifiedTitle": "已验证",
+      "verifiedDesc": "符合Google AdSense标准"
+    },
+    "footer": {
+      "brandDesc": "300+免费在线工具，用于文件、财务、代码和创意。快速、私密、安全且永远免费。",
+      "ownerTitle": "网站所有者和联系方式",
+      "toolCategoriesTitle": "工具类别",
+      "companyTitle": "公司",
+      "legalTitle": "法律和隐私",
+      "ownerRole": "心理咨询师和创始人",
+      "legalBarContact": "联系支持",
+      "legalBarIssue": "报告问题"
+    },
+    "popularCards": {
+      "pdfMerge": {
+        "name": "PDF合并",
+        "description": "快速轻松地将多个PDF文件合并为一个文档。"
+      },
+      "imageCompress": {
+        "name": "图片压缩器",
+        "description": "在不损失质量的情况下减小图片文件大小。支持WebP、PNG、JPG。"
+      },
+      "mortgage": {
+        "name": "按揭计算器",
+        "description": "计算按揭付款，比较利率并估算节省金额。"
+      },
+      "json": {
+        "name": "JSON格式化器",
+        "description": "使用语法高亮格式化、验证和美化JSON数据。"
+      },
+      "wordCounter": {
+        "name": "字数统计器",
+        "description": "统计文本中的字词、字符、句子和段落。"
+      },
+      "unitConverter": {
+        "name": "单位转换器",
+        "description": "轻松在不同测量单位之间转换。"
+      },
+      "password": {
+        "name": "密码生成器",
+        "description": "生成具有可自定义选项的强大安全密码。"
+      },
+      "pdfCompress": {
+        "name": "PDF压缩器",
+        "description": "在保持文档质量的同时减小PDF文件大小。"
+      }
+    },
+    "newCards": {
+      "backgroundRemover": {
+        "name": "背景移除器",
+        "description": "使用AI自动从图片中移除背景。"
+      },
+      "cryptoTax": {
+        "name": "加密货币税务计算器",
+        "description": "计算您的加密货币收益和税务义务。"
+      },
+      "textDiff": {
+        "name": "文本差异比较",
+        "description": "比较两段文本并查看高亮显示的差异。"
+      },
+      "regex": {
+        "name": "正则表达式测试器",
+        "description": "实时测试和调试正则表达式。"
+      }
+    },
+    "searchTools": {
+      "pdfSplit": {
+        "name": "PDF拆分"
+      },
+      "imageConverter": {
+        "name": "图片转换器"
+      },
+      "taxEstimator": {
+        "name": "税务估算器"
+      }
+    },
+    "categories": {
+      "pdf-tools": {
+        "name": "PDF工具",
+        "description": "编辑和转换PDF"
+      },
+      "image-tools": {
+        "name": "图片工具",
+        "description": "优化和编辑图片"
+      },
+      "finance-tools": {
+        "name": "金融工具",
+        "description": "财务计算器"
+      },
+      "text-tools": {
+        "name": "文本和写作",
+        "description": "文本和写作工具"
+      },
+      "developer-tools": {
+        "name": "开发者工具",
+        "description": "开发者工具"
+      },
+      "converter-tools": {
+        "name": "转换器",
+        "description": "转换一切"
+      },
+      "calculator-tools": {
+        "name": "计算器",
+        "description": "各种计算器"
+      },
+      "security-tools": {
+        "name": "安全工具",
+        "description": "保护您的数据"
+      },
+      "social-media-tools": {
+        "name": "社交媒体",
+        "description": "社交平台工具"
+      },
+      "productivity-tools": {
+        "name": "生产力",
+        "description": "提高生产力"
+      },
+      "data-tools": {
+        "name": "数据工具",
+        "description": "处理数据"
+      },
+      "design-tools": {
+        "name": "设计工具",
+        "description": "创建视觉内容"
+      }
+    },
+    "productivity": "生产力",
+    "dataTools": "数据工具",
+    "designTools": "设计工具",
+    "calculators": "计算器",
+    "socialMedia": "社交媒体",
+    "openTool": "打开工具",
+    "noResults": "未找到工具",
+    "toolsGeneric": "工具",
+    "viewAllCategories": "查看所有类别",
+    "viewAllDesc": "按类别浏览我们完整的300+工具集合。",
+    "searchPlaceholder": "搜索300+工具...",
+    "popularLabel": "热门：",
+    "newBadge": "新"
+  },
   "footer": {
     "signature": "梅特汉·切坦 (Metehan ÇETIN)，LPC",
     "title": "心理咨询师及创始人",

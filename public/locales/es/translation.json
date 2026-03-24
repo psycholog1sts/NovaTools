@@ -25,6 +25,177 @@
     "categories": "Categorías",
     "private": "Privado"
   },
+  "home": {
+    "sections": {
+      "popularTitle": "Herramientas Populares",
+      "popularDesc": "Las herramientas más utilizadas por nuestros usuarios.",
+      "newTitle": "Nuevos & Tendencias",
+      "newDesc": "Herramientas añadidas recientemente y actualizaciones.",
+      "categoriesTitle": "Explorar por Categoría",
+      "categoriesDesc": "Colecciones organizadas de herramientas para cada necesidad."
+    },
+    "features": {
+      "fastTitle": "Ultrarrápido",
+      "fastDesc": "Las herramientas se abren rápido y funcionan en tu navegador.",
+      "privateTitle": "100% Privado",
+      "privateDesc": "Tus archivos y datos permanecen en tu dispositivo.",
+      "freeTitle": "Completamente Gratis",
+      "freeDesc": "Usa las herramientas sin registro ni costos ocultos.",
+      "multiLangTitle": "Multiidioma",
+      "multiLangDesc": "Usa el sitio en múltiples idiomas."
+    },
+    "cta": {
+      "title": "¿Necesitas una herramienta específica?",
+      "desc": "Dinos qué necesitas y lo añadiremos.",
+      "button": "Solicitar Herramienta"
+    },
+    "trust": {
+      "secureTitle": "Seguro & Privado",
+      "secureDesc": "Tus datos nunca salen de tu navegador",
+      "transparentTitle": "Transparente",
+      "transparentDesc": "Política de privacidad clara",
+      "supportTitle": "Soporte",
+      "supportDesc": "Contáctanos para cualquier pregunta",
+      "verifiedTitle": "Verificado",
+      "verifiedDesc": "Conforme con Google AdSense"
+    },
+    "footer": {
+      "brandDesc": "300+ herramientas en línea gratuitas para archivos, finanzas, código y creatividad. Rápido, privado, seguro y siempre gratis.",
+      "ownerTitle": "Propietario & Contacto",
+      "toolCategoriesTitle": "Categorías de Herramientas",
+      "companyTitle": "Empresa",
+      "legalTitle": "Legal & Privacidad",
+      "ownerRole": "Consejero Psicológico & Fundador",
+      "legalBarContact": "Contactar Soporte",
+      "legalBarIssue": "Reportar Problema"
+    },
+    "popularCards": {
+      "pdfMerge": {
+        "name": "Fusionar PDF",
+        "description": "Combina múltiples archivos PDF en un solo documento rápida y fácilmente."
+      },
+      "imageCompress": {
+        "name": "Compresor de Imágenes",
+        "description": "Reduce el tamaño de imagen sin perder calidad. Soporte WebP, PNG, JPG."
+      },
+      "mortgage": {
+        "name": "Calculadora Hipotecaria",
+        "description": "Calcula pagos hipotecarios, compara tasas y estima ahorros."
+      },
+      "json": {
+        "name": "Formateador JSON",
+        "description": "Formatea, valida y embellece datos JSON con resaltado de sintaxis."
+      },
+      "wordCounter": {
+        "name": "Contador de Palabras",
+        "description": "Cuenta palabras, caracteres, oraciones y párrafos en tu texto."
+      },
+      "unitConverter": {
+        "name": "Conversor de Unidades",
+        "description": "Convierte fácilmente entre diferentes unidades de medida."
+      },
+      "password": {
+        "name": "Generador de Contraseñas",
+        "description": "Genera contraseñas fuertes y seguras con opciones personalizables."
+      },
+      "pdfCompress": {
+        "name": "Compresor PDF",
+        "description": "Reduce el tamaño de archivo PDF manteniendo la calidad del documento."
+      }
+    },
+    "newCards": {
+      "backgroundRemover": {
+        "name": "Eliminador de Fondo",
+        "description": "Elimina fondos de imágenes automáticamente usando IA."
+      },
+      "cryptoTax": {
+        "name": "Calculadora de Impuestos Crypto",
+        "description": "Calcula tus ganancias en criptomonedas y obligaciones fiscales."
+      },
+      "textDiff": {
+        "name": "Comparador de Texto",
+        "description": "Compara dos textos y ve las diferencias resaltadas."
+      },
+      "regex": {
+        "name": "Probador de Regex",
+        "description": "Prueba y depura expresiones regulares con coincidencia en tiempo real."
+      }
+    },
+    "searchTools": {
+      "pdfSplit": {
+        "name": "Dividir PDF"
+      },
+      "imageConverter": {
+        "name": "Conversor de Imágenes"
+      },
+      "taxEstimator": {
+        "name": "Estimador de Impuestos"
+      }
+    },
+    "categories": {
+      "pdf-tools": {
+        "name": "Herramientas PDF",
+        "description": "Editar y convertir PDFs"
+      },
+      "image-tools": {
+        "name": "Herramientas de Imagen",
+        "description": "Optimizar y editar imágenes"
+      },
+      "finance-tools": {
+        "name": "Herramientas Financieras",
+        "description": "Calculadoras para tu dinero"
+      },
+      "text-tools": {
+        "name": "Texto & Escritura",
+        "description": "Utilidades de texto y escritura"
+      },
+      "developer-tools": {
+        "name": "Herramientas de Desarrollo",
+        "description": "Herramientas para desarrolladores"
+      },
+      "converter-tools": {
+        "name": "Conversores",
+        "description": "Convertir cualquier cosa"
+      },
+      "calculator-tools": {
+        "name": "Calculadoras",
+        "description": "Todo tipo de calculadoras"
+      },
+      "security-tools": {
+        "name": "Herramientas de Seguridad",
+        "description": "Protege tus datos"
+      },
+      "social-media-tools": {
+        "name": "Redes Sociales",
+        "description": "Herramientas para redes sociales"
+      },
+      "productivity-tools": {
+        "name": "Productividad",
+        "description": "Aumenta tu productividad"
+      },
+      "data-tools": {
+        "name": "Herramientas de Datos",
+        "description": "Trabajar con datos"
+      },
+      "design-tools": {
+        "name": "Herramientas de Diseño",
+        "description": "Crear contenido visual"
+      }
+    },
+    "productivity": "Productividad",
+    "dataTools": "Herramientas de Datos",
+    "designTools": "Herramientas de Diseño",
+    "calculators": "Calculadoras",
+    "socialMedia": "Redes Sociales",
+    "openTool": "Abrir Herramienta",
+    "noResults": "No se encontraron herramientas",
+    "toolsGeneric": "Herramientas",
+    "viewAllCategories": "Ver Todas las Categorías",
+    "viewAllDesc": "Explora nuestra colección completa de 300+ herramientas por categoría.",
+    "searchPlaceholder": "Buscar 300+ herramientas...",
+    "popularLabel": "Popular:",
+    "newBadge": "Nuevo"
+  },
   "footer": {
     "signature": "Metehan ÇETİN, LPC",
     "title": "Consejero Psicológico y Fundador",

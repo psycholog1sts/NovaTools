@@ -25,6 +25,177 @@
     "categories": "الفئات",
     "private": "خاص"
   },
+  "home": {
+    "sections": {
+      "popularTitle": "الأدوات الشائعة",
+      "popularDesc": "الأدوات الأكثر استخداماً من قبل مستخدمينا.",
+      "newTitle": "جديد ورائج",
+      "newDesc": "أدوات مضافة حديثاً وتحديثات.",
+      "categoriesTitle": "تصفح حسب الفئة",
+      "categoriesDesc": "مجموعات منظمة من الأدوات لكل حاجة."
+    },
+    "features": {
+      "fastTitle": "سريع للغاية",
+      "fastDesc": "الأدوات تفتح بسرعة وتعمل مباشرة في متصفحك.",
+      "privateTitle": "خاص 100%",
+      "privateDesc": "ملفاتك وبياناتك تبقى على جهازك.",
+      "freeTitle": "مجاني بالكامل",
+      "freeDesc": "استخدم الأدوات بدون تسجيل أو رسوم مخفية.",
+      "multiLangTitle": "متعدد اللغات",
+      "multiLangDesc": "استخدم الموقع بعدة لغات."
+    },
+    "cta": {
+      "title": "هل تحتاج أداة محددة؟",
+      "desc": "أخبرنا بما تحتاج وسنضيفه.",
+      "button": "طلب أداة"
+    },
+    "trust": {
+      "secureTitle": "آمن وخاص",
+      "secureDesc": "بياناتك لا تغادر متصفحك أبداً",
+      "transparentTitle": "شفاف",
+      "transparentDesc": "سياسة خصوصية واضحة",
+      "supportTitle": "الدعم",
+      "supportDesc": "تواصل معنا لأي استفسار",
+      "verifiedTitle": "موثق",
+      "verifiedDesc": "متوافق مع Google AdSense"
+    },
+    "footer": {
+      "brandDesc": "أكثر من 300 أداة مجانية عبر الإنترنت للملفات والمال والبرمجة والإبداع.",
+      "ownerTitle": "مالك الموقع والتواصل",
+      "toolCategoriesTitle": "فئات الأدوات",
+      "companyTitle": "الشركة",
+      "legalTitle": "القانوني والخصوصية",
+      "ownerRole": "مستشار نفسي ومؤسس",
+      "legalBarContact": "اتصل بالدعم",
+      "legalBarIssue": "الإبلاغ عن مشكلة"
+    },
+    "popularCards": {
+      "pdfMerge": {
+        "name": "دمج PDF",
+        "description": "ادمج عدة ملفات PDF في مستند واحد بسرعة وسهولة."
+      },
+      "imageCompress": {
+        "name": "ضاغط الصور",
+        "description": "قلل حجم ملف الصورة دون فقدان الجودة. دعم WebP وPNG وJPG."
+      },
+      "mortgage": {
+        "name": "حاسبة الرهن العقاري",
+        "description": "احسب أقساط الرهن العقاري، قارن الأسعار وقدّر المدخرات."
+      },
+      "json": {
+        "name": "منسق JSON",
+        "description": "نسّق وتحقق من بيانات JSON مع تمييز بناء الجملة."
+      },
+      "wordCounter": {
+        "name": "عدّاد الكلمات",
+        "description": "عدّ الكلمات والأحرف والجمل والفقرات في نصك."
+      },
+      "unitConverter": {
+        "name": "محوّل الوحدات",
+        "description": "حوّل بسهولة بين وحدات القياس المختلفة."
+      },
+      "password": {
+        "name": "مولّد كلمات المرور",
+        "description": "أنشئ كلمات مرور قوية وآمنة مع خيارات قابلة للتخصيص."
+      },
+      "pdfCompress": {
+        "name": "ضاغط PDF",
+        "description": "قلل حجم ملف PDF مع الحفاظ على جودة المستند."
+      }
+    },
+    "newCards": {
+      "backgroundRemover": {
+        "name": "مزيل الخلفية",
+        "description": "أزل الخلفيات من الصور تلقائياً باستخدام الذكاء الاصطناعي."
+      },
+      "cryptoTax": {
+        "name": "حاسبة ضرائب العملات الرقمية",
+        "description": "احسب أرباح العملات الرقمية والتزاماتك الضريبية."
+      },
+      "textDiff": {
+        "name": "مقارن النصوص",
+        "description": "قارن بين نصين وشاهد الاختلافات المميزة."
+      },
+      "regex": {
+        "name": "اختبار التعبيرات النمطية",
+        "description": "اختبر وصحح التعبيرات النمطية مع المطابقة الفورية."
+      }
+    },
+    "searchTools": {
+      "pdfSplit": {
+        "name": "تقسيم PDF"
+      },
+      "imageConverter": {
+        "name": "محوّل الصور"
+      },
+      "taxEstimator": {
+        "name": "مقدّر الضرائب"
+      }
+    },
+    "categories": {
+      "pdf-tools": {
+        "name": "أدوات PDF",
+        "description": "تعديل وتحويل PDF"
+      },
+      "image-tools": {
+        "name": "أدوات الصور",
+        "description": "تحسين وتعديل الصور"
+      },
+      "finance-tools": {
+        "name": "أدوات مالية",
+        "description": "حاسبات مالية"
+      },
+      "text-tools": {
+        "name": "نص وكتابة",
+        "description": "أدوات النص والكتابة"
+      },
+      "developer-tools": {
+        "name": "أدوات المطورين",
+        "description": "أدوات للمطورين"
+      },
+      "converter-tools": {
+        "name": "محوّلات",
+        "description": "حوّل أي شيء"
+      },
+      "calculator-tools": {
+        "name": "حاسبات",
+        "description": "جميع أنواع الحاسبات"
+      },
+      "security-tools": {
+        "name": "أدوات الأمان",
+        "description": "احمِ بياناتك"
+      },
+      "social-media-tools": {
+        "name": "وسائل التواصل",
+        "description": "أدوات لمنصات التواصل"
+      },
+      "productivity-tools": {
+        "name": "الإنتاجية",
+        "description": "عزز إنتاجيتك"
+      },
+      "data-tools": {
+        "name": "أدوات البيانات",
+        "description": "العمل مع البيانات"
+      },
+      "design-tools": {
+        "name": "أدوات التصميم",
+        "description": "إنشاء المرئيات"
+      }
+    },
+    "productivity": "الإنتاجية",
+    "dataTools": "أدوات البيانات",
+    "designTools": "أدوات التصميم",
+    "calculators": "حاسبات",
+    "socialMedia": "وسائل التواصل",
+    "openTool": "فتح الأداة",
+    "noResults": "لم يتم العثور على أدوات",
+    "toolsGeneric": "أدوات",
+    "viewAllCategories": "عرض جميع الفئات",
+    "viewAllDesc": "تصفح مجموعتنا الكاملة من أكثر من 300 أداة حسب الفئة.",
+    "searchPlaceholder": "ابحث في أكثر من 300 أداة...",
+    "popularLabel": "شائع:",
+    "newBadge": "جديد"
+  },
   "footer": {
     "signature": "Metehan ÇETİN, LPC",
     "title": "Psychological Counselor and Founder",

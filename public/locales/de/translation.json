@@ -25,6 +25,177 @@
     "categories": "Kategorien",
     "private": "Privat"
   },
+  "home": {
+    "sections": {
+      "popularTitle": "Beliebte Tools",
+      "popularDesc": "Die meistgenutzten Tools unserer Nutzer.",
+      "newTitle": "Neu & Trending",
+      "newDesc": "Neu hinzugefügte Tools und Updates.",
+      "categoriesTitle": "Nach Kategorie durchsuchen",
+      "categoriesDesc": "Organisierte Sammlungen von Tools für jeden Bedarf. Klicken Sie auf eine Kategorie."
+    },
+    "features": {
+      "fastTitle": "Blitzschnell",
+      "fastDesc": "Tools öffnen schnell und arbeiten direkt in Ihrem Browser.",
+      "privateTitle": "100% Privat",
+      "privateDesc": "Ihre Dateien und Eingaben bleiben auf Ihrem Gerät.",
+      "freeTitle": "Komplett Kostenlos",
+      "freeDesc": "Nutzen Sie die Tools ohne Anmeldung oder versteckte Kosten.",
+      "multiLangTitle": "Mehrsprachig",
+      "multiLangDesc": "Nutzen Sie die Seite in mehreren Sprachen."
+    },
+    "cta": {
+      "title": "Ein bestimmtes Tool benötigt?",
+      "desc": "Sagen Sie uns, was Sie brauchen, und wir fügen es hinzu.",
+      "button": "Tool Anfragen"
+    },
+    "trust": {
+      "secureTitle": "Sicher & Privat",
+      "secureDesc": "Ihre Daten verlassen niemals Ihren Browser",
+      "transparentTitle": "Transparent",
+      "transparentDesc": "Klare Datenschutzrichtlinie & Bedingungen",
+      "supportTitle": "Support",
+      "supportDesc": "Kontaktieren Sie uns bei Fragen",
+      "verifiedTitle": "Verifiziert",
+      "verifiedDesc": "Google AdSense konform"
+    },
+    "footer": {
+      "brandDesc": "300+ kostenlose Online-Tools für Dateien, Finanzen, Code und Kreativität. Schnell, privat, sicher und immer kostenlos.",
+      "ownerTitle": "Seitenbetreiber & Kontakt",
+      "toolCategoriesTitle": "Tool-Kategorien",
+      "companyTitle": "Unternehmen",
+      "legalTitle": "Rechtliches & Datenschutz",
+      "ownerRole": "Psychologischer Berater & Gründer",
+      "legalBarContact": "Support kontaktieren",
+      "legalBarIssue": "Problem melden"
+    },
+    "popularCards": {
+      "pdfMerge": {
+        "name": "PDF Zusammenführen",
+        "description": "Kombinieren Sie mehrere PDF-Dateien schnell und einfach zu einem Dokument."
+      },
+      "imageCompress": {
+        "name": "Bildkomprimierer",
+        "description": "Reduzieren Sie die Bilddateigröße ohne Qualitätsverlust. WebP, PNG, JPG Unterstützung."
+      },
+      "mortgage": {
+        "name": "Hypothekenrechner",
+        "description": "Berechnen Sie Hypothekenzahlungen, vergleichen Sie Zinssätze und schätzen Sie Einsparungen."
+      },
+      "json": {
+        "name": "JSON Formatierer",
+        "description": "Formatieren, validieren und verschönern Sie JSON-Daten mit Syntaxhervorhebung."
+      },
+      "wordCounter": {
+        "name": "Wortzähler",
+        "description": "Zählen Sie Wörter, Zeichen, Sätze und Absätze in Ihrem Text."
+      },
+      "unitConverter": {
+        "name": "Einheitenumrechner",
+        "description": "Konvertieren Sie einfach zwischen verschiedenen Maßeinheiten."
+      },
+      "password": {
+        "name": "Passwort-Generator",
+        "description": "Generieren Sie starke, sichere Passwörter mit anpassbaren Optionen."
+      },
+      "pdfCompress": {
+        "name": "PDF Komprimierer",
+        "description": "Reduzieren Sie die PDF-Dateigröße bei gleichbleibender Qualität."
+      }
+    },
+    "newCards": {
+      "backgroundRemover": {
+        "name": "Hintergrund Entferner",
+        "description": "Entfernen Sie Hintergründe automatisch mit KI aus Bildern."
+      },
+      "cryptoTax": {
+        "name": "Krypto-Steuerrechner",
+        "description": "Berechnen Sie Ihre Kryptowährungsgewinne und Steuerpflichten."
+      },
+      "textDiff": {
+        "name": "Text-Vergleicher",
+        "description": "Vergleichen Sie zwei Texte und sehen Sie die hervorgehobenen Unterschiede."
+      },
+      "regex": {
+        "name": "Regex Tester",
+        "description": "Testen und debuggen Sie reguläre Ausdrücke mit Echtzeit-Matching."
+      }
+    },
+    "searchTools": {
+      "pdfSplit": {
+        "name": "PDF Teilen"
+      },
+      "imageConverter": {
+        "name": "Bildkonverter"
+      },
+      "taxEstimator": {
+        "name": "Steuerschätzer"
+      }
+    },
+    "categories": {
+      "pdf-tools": {
+        "name": "PDF-Tools",
+        "description": "PDFs bearbeiten und konvertieren"
+      },
+      "image-tools": {
+        "name": "Bild-Tools",
+        "description": "Bilder optimieren und bearbeiten"
+      },
+      "finance-tools": {
+        "name": "Finanz-Tools",
+        "description": "Rechner für Ihre Finanzen"
+      },
+      "text-tools": {
+        "name": "Text & Schreiben",
+        "description": "Schreib- und Texttools"
+      },
+      "developer-tools": {
+        "name": "Entwickler-Tools",
+        "description": "Tools für Entwickler"
+      },
+      "converter-tools": {
+        "name": "Konverter",
+        "description": "Alles konvertieren"
+      },
+      "calculator-tools": {
+        "name": "Rechner",
+        "description": "Alle Arten von Rechnern"
+      },
+      "security-tools": {
+        "name": "Sicherheits-Tools",
+        "description": "Schützen Sie Ihre Daten"
+      },
+      "social-media-tools": {
+        "name": "Soziale Medien",
+        "description": "Tools für soziale Plattformen"
+      },
+      "productivity-tools": {
+        "name": "Produktivität",
+        "description": "Steigern Sie Ihre Produktivität"
+      },
+      "data-tools": {
+        "name": "Daten-Tools",
+        "description": "Mit Daten arbeiten"
+      },
+      "design-tools": {
+        "name": "Design-Tools",
+        "description": "Visuelle Inhalte erstellen"
+      }
+    },
+    "productivity": "Produktivität",
+    "dataTools": "Daten-Tools",
+    "designTools": "Design-Tools",
+    "calculators": "Rechner",
+    "socialMedia": "Soziale Medien",
+    "openTool": "Tool öffnen",
+    "noResults": "Keine Tools gefunden",
+    "toolsGeneric": "Tools",
+    "viewAllCategories": "Alle Kategorien anzeigen",
+    "viewAllDesc": "Durchsuchen Sie unsere komplette Sammlung von 300+ Tools nach Kategorie.",
+    "searchPlaceholder": "300+ Tools durchsuchen...",
+    "popularLabel": "Beliebt:",
+    "newBadge": "Neu"
+  },
   "footer": {
     "signature": "Metehan ÇETİN, LPC",
     "title": "Psychologischer Berater und Gründer",

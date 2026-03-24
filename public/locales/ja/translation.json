@@ -25,6 +25,177 @@
     "categories": "カテゴリー",
     "private": "プライベート"
   },
+  "home": {
+    "sections": {
+      "popularTitle": "人気ツール",
+      "popularDesc": "ユーザーに最も使われているツール。",
+      "newTitle": "新着＆トレンド",
+      "newDesc": "最近追加されたツールとアップデート。",
+      "categoriesTitle": "カテゴリーで閲覧",
+      "categoriesDesc": "あらゆるニーズに対応したツールコレクション。"
+    },
+    "features": {
+      "fastTitle": "超高速",
+      "fastDesc": "ツールは素早く開き、ブラウザで直接動作します。",
+      "privateTitle": "100% プライベート",
+      "privateDesc": "ファイルとデータはお使いのデバイスに残ります。",
+      "freeTitle": "完全無料",
+      "freeDesc": "登録不要、隠れた費用なしでツールを使用。",
+      "multiLangTitle": "多言語",
+      "multiLangDesc": "複数の言語でサイトを利用できます。"
+    },
+    "cta": {
+      "title": "特定のツールが必要ですか？",
+      "desc": "必要なものを教えてください。追加します。",
+      "button": "ツールをリクエスト"
+    },
+    "trust": {
+      "secureTitle": "安全＆プライベート",
+      "secureDesc": "データはブラウザから出ません",
+      "transparentTitle": "透明性",
+      "transparentDesc": "明確なプライバシーポリシーと利用規約",
+      "supportTitle": "サポート",
+      "supportDesc": "ご質問はお気軽にどうぞ",
+      "verifiedTitle": "認証済み",
+      "verifiedDesc": "Google AdSense準拠"
+    },
+    "footer": {
+      "brandDesc": "ファイル、金融、コード、クリエイティブのための300以上の無料オンラインツール。",
+      "ownerTitle": "サイト所有者＆連絡先",
+      "toolCategoriesTitle": "ツールカテゴリー",
+      "companyTitle": "会社",
+      "legalTitle": "法的情報＆プライバシー",
+      "ownerRole": "心理カウンセラー＆創設者",
+      "legalBarContact": "サポートに連絡",
+      "legalBarIssue": "問題を報告"
+    },
+    "popularCards": {
+      "pdfMerge": {
+        "name": "PDF結合",
+        "description": "複数のPDFファイルを素早く簡単に1つのドキュメントに結合。"
+      },
+      "imageCompress": {
+        "name": "画像圧縮",
+        "description": "品質を損なわずに画像ファイルサイズを削減。WebP、PNG、JPG対応。"
+      },
+      "mortgage": {
+        "name": "住宅ローン計算機",
+        "description": "住宅ローンの支払い計算、金利比較、節約額の見積もり。"
+      },
+      "json": {
+        "name": "JSONフォーマッター",
+        "description": "シンタックスハイライト付きでJSONデータを整形、検証、美化。"
+      },
+      "wordCounter": {
+        "name": "文字数カウンター",
+        "description": "テキスト内の単語、文字、文、段落をカウント。"
+      },
+      "unitConverter": {
+        "name": "単位変換器",
+        "description": "さまざまな測定単位間を簡単に変換。"
+      },
+      "password": {
+        "name": "パスワード生成器",
+        "description": "カスタマイズ可能なオプションで強力なパスワードを生成。"
+      },
+      "pdfCompress": {
+        "name": "PDF圧縮",
+        "description": "ドキュメント品質を維持しながらPDFファイルサイズを削減。"
+      }
+    },
+    "newCards": {
+      "backgroundRemover": {
+        "name": "背景除去",
+        "description": "AIを使用して画像から背景を自動的に除去。"
+      },
+      "cryptoTax": {
+        "name": "暗号資産税計算機",
+        "description": "暗号資産の利益と税金の義務を計算。"
+      },
+      "textDiff": {
+        "name": "テキスト差分チェッカー",
+        "description": "2つのテキストを比較し、差分をハイライト表示。"
+      },
+      "regex": {
+        "name": "正規表現テスター",
+        "description": "リアルタイムマッチングで正規表現をテスト＆デバッグ。"
+      }
+    },
+    "searchTools": {
+      "pdfSplit": {
+        "name": "PDF分割"
+      },
+      "imageConverter": {
+        "name": "画像コンバーター"
+      },
+      "taxEstimator": {
+        "name": "税金見積もり"
+      }
+    },
+    "categories": {
+      "pdf-tools": {
+        "name": "PDFツール",
+        "description": "PDFの編集と変換"
+      },
+      "image-tools": {
+        "name": "画像ツール",
+        "description": "画像の最適化と編集"
+      },
+      "finance-tools": {
+        "name": "金融ツール",
+        "description": "お金のための計算機"
+      },
+      "text-tools": {
+        "name": "テキスト＆ライティング",
+        "description": "テキストとライティングツール"
+      },
+      "developer-tools": {
+        "name": "開発者ツール",
+        "description": "開発者向けツール"
+      },
+      "converter-tools": {
+        "name": "コンバーター",
+        "description": "何でも変換"
+      },
+      "calculator-tools": {
+        "name": "計算機",
+        "description": "あらゆる種類の計算機"
+      },
+      "security-tools": {
+        "name": "セキュリティツール",
+        "description": "データを保護"
+      },
+      "social-media-tools": {
+        "name": "ソーシャルメディア",
+        "description": "SNSツール"
+      },
+      "productivity-tools": {
+        "name": "生産性",
+        "description": "生産性を向上"
+      },
+      "data-tools": {
+        "name": "データツール",
+        "description": "データを扱う"
+      },
+      "design-tools": {
+        "name": "デザインツール",
+        "description": "ビジュアルを作成"
+      }
+    },
+    "productivity": "生産性",
+    "dataTools": "データツール",
+    "designTools": "デザインツール",
+    "calculators": "計算機",
+    "socialMedia": "ソーシャルメディア",
+    "openTool": "ツールを開く",
+    "noResults": "ツールが見つかりません",
+    "toolsGeneric": "ツール",
+    "viewAllCategories": "全カテゴリーを表示",
+    "viewAllDesc": "300以上のツールをカテゴリー別にご覧ください。",
+    "searchPlaceholder": "300以上のツールを検索...",
+    "popularLabel": "人気：",
+    "newBadge": "新着"
+  },
   "footer": {
     "signature": "メテハン・チェティン、LPC",
     "title": "心理カウンセラー兼創設者",

@@ -25,6 +25,177 @@
     "categories": "Kategorie",
     "private": "Prywatne"
   },
+  "home": {
+    "sections": {
+      "popularTitle": "Popularne Narzędzia",
+      "popularDesc": "Najczęściej używane narzędzia przez naszych użytkowników.",
+      "newTitle": "Nowe & Trendujące",
+      "newDesc": "Ostatnio dodane narzędzia i aktualizacje.",
+      "categoriesTitle": "Przeglądaj wg Kategorii",
+      "categoriesDesc": "Zorganizowane kolekcje narzędzi na każdą potrzebę."
+    },
+    "features": {
+      "fastTitle": "Błyskawicznie",
+      "fastDesc": "Narzędzia otwierają się szybko i działają w przeglądarce.",
+      "privateTitle": "100% Prywatne",
+      "privateDesc": "Twoje pliki i dane pozostają na Twoim urządzeniu.",
+      "freeTitle": "Całkowicie Darmowe",
+      "freeDesc": "Używaj narzędzi bez rejestracji i ukrytych opłat.",
+      "multiLangTitle": "Wielojęzyczne",
+      "multiLangDesc": "Korzystaj ze strony w wielu językach."
+    },
+    "cta": {
+      "title": "Potrzebujesz konkretnego narzędzia?",
+      "desc": "Powiedz nam, czego potrzebujesz, a dodamy.",
+      "button": "Zamów Narzędzie"
+    },
+    "trust": {
+      "secureTitle": "Bezpieczne & Prywatne",
+      "secureDesc": "Twoje dane nigdy nie opuszczają przeglądarki",
+      "transparentTitle": "Transparentne",
+      "transparentDesc": "Jasna polityka prywatności",
+      "supportTitle": "Wsparcie",
+      "supportDesc": "Skontaktuj się z nami w razie pytań",
+      "verifiedTitle": "Zweryfikowane",
+      "verifiedDesc": "Zgodne z Google AdSense"
+    },
+    "footer": {
+      "brandDesc": "300+ darmowych narzędzi online do plików, finansów, kodu i kreatywności.",
+      "ownerTitle": "Właściciel & Kontakt",
+      "toolCategoriesTitle": "Kategorie Narzędzi",
+      "companyTitle": "Firma",
+      "legalTitle": "Prawo & Prywatność",
+      "ownerRole": "Doradca Psychologiczny & Założyciel",
+      "legalBarContact": "Skontaktuj się z Pomocą",
+      "legalBarIssue": "Zgłoś Problem"
+    },
+    "popularCards": {
+      "pdfMerge": {
+        "name": "Łączenie PDF",
+        "description": "Szybko i łatwo połącz wiele plików PDF w jeden dokument."
+      },
+      "imageCompress": {
+        "name": "Kompresor Obrazów",
+        "description": "Zmniejsz rozmiar pliku obrazu bez utraty jakości. Obsługa WebP, PNG, JPG."
+      },
+      "mortgage": {
+        "name": "Kalkulator Hipoteczny",
+        "description": "Oblicz raty kredytu hipotecznego, porównaj stawki i oszacuj oszczędności."
+      },
+      "json": {
+        "name": "Formatowanie JSON",
+        "description": "Formatuj, waliduj i upiększaj dane JSON z podświetlaniem składni."
+      },
+      "wordCounter": {
+        "name": "Licznik Słów",
+        "description": "Licz słowa, znaki, zdania i akapity w tekście."
+      },
+      "unitConverter": {
+        "name": "Konwerter Jednostek",
+        "description": "Łatwo przeliczaj między różnymi jednostkami miary."
+      },
+      "password": {
+        "name": "Generator Haseł",
+        "description": "Generuj silne, bezpieczne hasła z konfigurowalnymi opcjami."
+      },
+      "pdfCompress": {
+        "name": "Kompresor PDF",
+        "description": "Zmniejsz rozmiar pliku PDF zachowując jakość dokumentu."
+      }
+    },
+    "newCards": {
+      "backgroundRemover": {
+        "name": "Usuwanie Tła",
+        "description": "Automatycznie usuń tło ze zdjęć za pomocą AI."
+      },
+      "cryptoTax": {
+        "name": "Kalkulator Podatku Krypto",
+        "description": "Oblicz zyski z kryptowalut i zobowiązania podatkowe."
+      },
+      "textDiff": {
+        "name": "Porównanie Tekstów",
+        "description": "Porównaj dwa teksty i zobacz podświetlone różnice."
+      },
+      "regex": {
+        "name": "Tester Regex",
+        "description": "Testuj i debuguj wyrażenia regularne z dopasowaniem w czasie rzeczywistym."
+      }
+    },
+    "searchTools": {
+      "pdfSplit": {
+        "name": "Podział PDF"
+      },
+      "imageConverter": {
+        "name": "Konwerter Obrazów"
+      },
+      "taxEstimator": {
+        "name": "Szacowanie Podatków"
+      }
+    },
+    "categories": {
+      "pdf-tools": {
+        "name": "Narzędzia PDF",
+        "description": "Edytuj i konwertuj PDF"
+      },
+      "image-tools": {
+        "name": "Narzędzia Obrazów",
+        "description": "Optymalizuj i edytuj obrazy"
+      },
+      "finance-tools": {
+        "name": "Narzędzia Finansowe",
+        "description": "Kalkulatory finansowe"
+      },
+      "text-tools": {
+        "name": "Tekst & Pisanie",
+        "description": "Narzędzia tekstowe i do pisania"
+      },
+      "developer-tools": {
+        "name": "Narzędzia Programisty",
+        "description": "Narzędzia dla programistów"
+      },
+      "converter-tools": {
+        "name": "Konwertery",
+        "description": "Konwertuj cokolwiek"
+      },
+      "calculator-tools": {
+        "name": "Kalkulatory",
+        "description": "Wszystkie rodzaje kalkulatorów"
+      },
+      "security-tools": {
+        "name": "Narzędzia Bezpieczeństwa",
+        "description": "Chroń swoje dane"
+      },
+      "social-media-tools": {
+        "name": "Media Społecznościowe",
+        "description": "Narzędzia do mediów społecznościowych"
+      },
+      "productivity-tools": {
+        "name": "Produktywność",
+        "description": "Zwiększ produktywność"
+      },
+      "data-tools": {
+        "name": "Narzędzia Danych",
+        "description": "Praca z danymi"
+      },
+      "design-tools": {
+        "name": "Narzędzia Projektowe",
+        "description": "Twórz wizualizacje"
+      }
+    },
+    "productivity": "Produktywność",
+    "dataTools": "Narzędzia Danych",
+    "designTools": "Narzędzia Projektowe",
+    "calculators": "Kalkulatory",
+    "socialMedia": "Media Społecznościowe",
+    "openTool": "Otwórz Narzędzie",
+    "noResults": "Nie znaleziono narzędzi",
+    "toolsGeneric": "Narzędzia",
+    "viewAllCategories": "Zobacz Wszystkie Kategorie",
+    "viewAllDesc": "Przeglądaj naszą kolekcję 300+ narzędzi wg kategorii.",
+    "searchPlaceholder": "Szukaj 300+ narzędzi...",
+    "popularLabel": "Popularne:",
+    "newBadge": "Nowe"
+  },
   "footer": {
     "signature": "Metehan ÇETİN, LPC",
     "title": "Psychological Counselor and Founder",
