@@ -19,10 +19,10 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <title>Free Pomodoro Timer | NovaTools MC</title>
+  <title data-i18n="tools.productivity.pomodoro-timer.meta.title">Free Pomodoro Timer | NovaTools MC</title>
   
   <!-- i18n Script -->
   <script src="/i18n.js"></script>
@@ -62,7 +62,7 @@
   <link rel="modulepreload" crossorigin href="/js/modulepreload-polyfill-YP0FEG5d.js">
   <link rel="stylesheet" crossorigin href="/css/critical-D6EXev1O.css">
   <link rel="stylesheet" crossorigin href="/css/main-C-2uV3x-.css">
-<link rel="manifest" href="/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/registerSW.js"></script></head>
+</head>
 <body>
   <div class="bg-ambient" aria-hidden="true"></div>
   <div class="noise-overlay" aria-hidden="true"></div>
@@ -73,17 +73,17 @@
         <div class="header-inner">
           <a href="/" class="logo" aria-label="NovaTools MC Home">
             <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
-            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+            <span class="logo-text">NovaTools <span class="logo-mc" data-i18n="tools.productivity.pomodoro-timer.text.001">MC</span></span>
           </a>
           <nav class="nav-desktop" aria-label="Main navigation">
-            <a href="/#finance" class="nav-link">Finance</a>
-            <a href="/#pdf" class="nav-link">PDF Tools</a>
-            <a href="/#image" class="nav-link">Images</a>
-            <a href="/#dev" class="nav-link">Developers</a>
+            <a href="/#finance" class="nav-link" data-i18n="tools.productivity.pomodoro-timer.text.002">Finance</a>
+            <a href="/#pdf" class="nav-link" data-i18n="tools.productivity.pomodoro-timer.text.003">PDF Tools</a>
+            <a href="/#image" class="nav-link" data-i18n="tools.productivity.pomodoro-timer.text.004">Images</a>
+            <a href="/#dev" class="nav-link" data-i18n="tools.productivity.pomodoro-timer.text.005">Developers</a>
           </nav>
-          <div class="privacy-badge" title="Your data never leaves your browser">
+          <div class="privacy-badge" title="Your data never leaves your browser" data-i18n-title="tools.productivity.pomodoro-timer.title.001">
             <span class="privacy-badge-dot"></span>
-            <span>Privacy First</span>
+            <span data-i18n="tools.productivity.pomodoro-timer.text.006">Privacy First</span>
           </div>
           <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
             <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -94,10 +94,10 @@
           </button>
         </div>
         <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
-          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
-          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
-          <a href="/#image" class="mobile-nav-link">Image Tools</a>
-          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+          <a href="/#finance" class="mobile-nav-link" data-i18n="tools.productivity.pomodoro-timer.text.007">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link" data-i18n="tools.productivity.pomodoro-timer.text.008">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link" data-i18n="tools.productivity.pomodoro-timer.text.009">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link" data-i18n="tools.productivity.pomodoro-timer.text.010">Developer Tools</a>
         </nav>
       </div>
     </header>
@@ -106,15 +106,15 @@
       <div class="tool-wrapper">
         <div class="tool-hero">
           <div class="tool-hero-icon">&#127813;</div>
-          <h1>Pomodoro Timer</h1>
-          <p>Boost your productivity with the Pomodoro Technique. Work in focused 25-minute sessions with short breaks to maximize efficiency.</p>
+          <h1 data-i18n="tools.productivity.pomodoro-timer.text.011">Pomodoro Timer</h1>
+          <p data-i18n="tools.productivity.pomodoro-timer.text.012">Boost your productivity with the Pomodoro Technique. Work in focused 25-minute sessions with short breaks to maximize efficiency.</p>
         </div>
 
         <div class="card">
           <div class="mode-tabs">
-            <button class="mode-tab active" data-mode="work">Work</button>
-            <button class="mode-tab" data-mode="shortBreak">Short Break</button>
-            <button class="mode-tab" data-mode="longBreak">Long Break</button>
+            <button class="mode-tab active" data-mode="work" data-i18n="tools.productivity.pomodoro-timer.text.013">Work</button>
+            <button class="mode-tab" data-mode="shortBreak" data-i18n="tools.productivity.pomodoro-timer.text.014">Short Break</button>
+            <button class="mode-tab" data-mode="longBreak" data-i18n="tools.productivity.pomodoro-timer.text.015">Long Break</button>
           </div>
 
           <div class="timer-display">
@@ -163,24 +163,24 @@
           <div class="settings-section">
             <div class="settings-title">&#9881; Timer Settings (minutes)</div>
             <div class="setting-row">
-              <span class="setting-label">Work Duration</span>
+              <span class="setting-label" data-i18n="tools.productivity.pomodoro-timer.text.016">Work Duration</span>
               <div class="setting-input">
                 <input type="number" id="workDuration" value="25" min="1" max="60">
-                <span>min</span>
+                <span data-i18n="tools.productivity.pomodoro-timer.text.017">min</span>
               </div>
             </div>
             <div class="setting-row">
-              <span class="setting-label">Short Break</span>
+              <span class="setting-label" data-i18n="tools.productivity.pomodoro-timer.text.018">Short Break</span>
               <div class="setting-input">
                 <input type="number" id="shortBreakDuration" value="5" min="1" max="30">
-                <span>min</span>
+                <span data-i18n="tools.productivity.pomodoro-timer.text.019">min</span>
               </div>
             </div>
             <div class="setting-row">
-              <span class="setting-label">Long Break</span>
+              <span class="setting-label" data-i18n="tools.productivity.pomodoro-timer.text.020">Long Break</span>
               <div class="setting-input">
                 <input type="number" id="longBreakDuration" value="15" min="1" max="60">
-                <span>min</span>
+                <span data-i18n="tools.productivity.pomodoro-timer.text.021">min</span>
               </div>
             </div>
           </div>
@@ -192,56 +192,56 @@
       </div>
 
       <section class="seo-section" aria-label="About this tool">
-        <h2>About Pomodoro Timer</h2>
-        <p>The Pomodoro Technique is a time management method developed by Francesco Cirillo in the late 1980s. It uses a timer to break work into intervals, traditionally 25 minutes in length, separated by short breaks. This technique helps improve focus, reduce mental fatigue, and increase productivity.</p>
+        <h2 data-i18n="tools.productivity.pomodoro-timer.text.022">About Pomodoro Timer</h2>
+        <p data-i18n="tools.productivity.pomodoro-timer.text.023">The Pomodoro Technique is a time management method developed by Francesco Cirillo in the late 1980s. It uses a timer to break work into intervals, traditionally 25 minutes in length, separated by short breaks. This technique helps improve focus, reduce mental fatigue, and increase productivity.</p>
 
-        <h3>How to Use</h3>
+        <h3 data-i18n="tools.productivity.pomodoro-timer.text.024">How to Use</h3>
         <ol>
-          <li>Select your timer mode: Work, Short Break, or Long Break.</li>
-          <li>Adjust the duration settings if needed (default: 25 min work, 5 min short break, 15 min long break).</li>
+          <li data-i18n="tools.productivity.pomodoro-timer.text.025">Select your timer mode: Work, Short Break, or Long Break.</li>
+          <li data-i18n="tools.productivity.pomodoro-timer.text.026">Adjust the duration settings if needed (default: 25 min work, 5 min short break, 15 min long break).</li>
           <li>Click <strong>Start</strong> to begin the timer.</li>
-          <li>Focus entirely on your task until the timer rings.</li>
-          <li>Take a break when the timer ends. Your browser will notify you.</li>
-          <li>After 4 work sessions, take a longer 15-30 minute break.</li>
-          <li>Track your progress with the session counter and total focus time.</li>
+          <li data-i18n="tools.productivity.pomodoro-timer.text.027">Focus entirely on your task until the timer rings.</li>
+          <li data-i18n="tools.productivity.pomodoro-timer.text.028">Take a break when the timer ends. Your browser will notify you.</li>
+          <li data-i18n="tools.productivity.pomodoro-timer.text.029">After 4 work sessions, take a longer 15-30 minute break.</li>
+          <li data-i18n="tools.productivity.pomodoro-timer.text.030">Track your progress with the session counter and total focus time.</li>
         </ol>
 
-        <h3>Frequently Asked Questions</h3>
+        <h3 data-i18n="tools.productivity.pomodoro-timer.text.031">Frequently Asked Questions</h3>
 
         <details class="faq-item">
           <summary>What is the Pomodoro Technique?</summary>
-          <p>The Pomodoro Technique is a time management method where you work in focused 25-minute intervals (called "pomodoros") followed by short 5-minute breaks. After completing 4 pomodoros, you take a longer break of 15-30 minutes. This helps maintain high concentration and prevents burnout.</p>
+          <p data-i18n="tools.productivity.pomodoro-timer.text.032">The Pomodoro Technique is a time management method where you work in focused 25-minute intervals (called "pomodoros") followed by short 5-minute breaks. After completing 4 pomodoros, you take a longer break of 15-30 minutes. This helps maintain high concentration and prevents burnout.</p>
         </details>
 
         <details class="faq-item">
           <summary>Is my timer data saved?</summary>
-          <p>Yes, your session statistics are saved in your browser's localStorage, so they'll persist between visits. However, if you clear your browser data or use private/incognito mode, your statistics will be reset.</p>
+          <p data-i18n="tools.productivity.pomodoro-timer.text.033">Yes, your session statistics are saved in your browser's localStorage, so they'll persist between visits. However, if you clear your browser data or use private/incognito mode, your statistics will be reset.</p>
         </details>
 
         <details class="faq-item">
           <summary>Can I customize the timer durations?</summary>
-          <p>Yes! You can adjust the work duration, short break, and long break times in the settings section. The changes will take effect immediately for your next timer session.</p>
+          <p data-i18n="tools.productivity.pomodoro-timer.text.034">Yes! You can adjust the work duration, short break, and long break times in the settings section. The changes will take effect immediately for your next timer session.</p>
         </details>
 
         <details class="faq-item">
           <summary>Will I get notifications when the timer ends?</summary>
-          <p>The timer will play a sound and show a browser notification when it completes. Make sure your browser permissions allow notifications from this site for the best experience.</p>
+          <p data-i18n="tools.productivity.pomodoro-timer.text.035">The timer will play a sound and show a browser notification when it completes. Make sure your browser permissions allow notifications from this site for the best experience.</p>
         </details>
 
         <details class="faq-item">
           <summary>What are the benefits of using this technique?</summary>
-          <p>The Pomodoro Technique helps reduce distractions, improve focus, prevent burnout, and provide a sense of accomplishment. It also helps you estimate how long tasks take and identify time-wasting activities.</p>
+          <p data-i18n="tools.productivity.pomodoro-timer.text.036">The Pomodoro Technique helps reduce distractions, improve focus, prevent burnout, and provide a sense of accomplishment. It also helps you estimate how long tasks take and identify time-wasting activities.</p>
         </details>
       </section>
     </main>
 
     <footer class="tool-footer">
-      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
-      <p>Estimates only &mdash; not financial, legal, or tax advice.</p>
+      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com" data-i18n="tools.productivity.pomodoro-timer.text.037">psk.dan.metehancetin@mc-novatools.com</a></p>
+      <p data-i18n="tools.productivity.pomodoro-timer.text.038">Estimates only &mdash; not financial, legal, or tax advice.</p>
     </footer>
     <style>.tool-footer{border-top:1px solid var(--border-default);color:#718096;font-size:.8rem;line-height:1.8;margin-top:3rem;padding:1.5rem 1rem;text-align:center}.tool-footer a{color:#00d9ff;text-decoration:none}</style>
   </div>
-
+
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {

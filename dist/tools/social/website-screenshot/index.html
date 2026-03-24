@@ -19,10 +19,10 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <title>Free Website Screenshot Tool | NovaTools MC</title>
+  <title data-i18n="tools.social.website-screenshot.meta.title">Free Website Screenshot Tool | NovaTools MC</title>
   
   <!-- i18n Script -->
   <script src="/i18n.js"></script>
@@ -62,7 +62,7 @@
   <link rel="modulepreload" crossorigin href="/js/modulepreload-polyfill-YP0FEG5d.js">
   <link rel="stylesheet" crossorigin href="/css/critical-D6EXev1O.css">
   <link rel="stylesheet" crossorigin href="/css/main-C-2uV3x-.css">
-<link rel="manifest" href="/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/registerSW.js"></script></head>
+</head>
 <body>
   <div class="bg-ambient" aria-hidden="true"></div>
   <div class="noise-overlay" aria-hidden="true"></div>
@@ -73,17 +73,17 @@
         <div class="header-inner">
           <a href="/" class="logo" aria-label="NovaTools MC Home">
             <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
-            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+            <span class="logo-text">NovaTools <span class="logo-mc" data-i18n="tools.social.website-screenshot.text.001">MC</span></span>
           </a>
           <nav class="nav-desktop" aria-label="Main navigation">
-            <a href="/#finance" class="nav-link">Finance</a>
-            <a href="/#pdf" class="nav-link">PDF Tools</a>
-            <a href="/#image" class="nav-link">Images</a>
-            <a href="/#dev" class="nav-link">Developers</a>
+            <a href="/#finance" class="nav-link" data-i18n="tools.social.website-screenshot.text.002">Finance</a>
+            <a href="/#pdf" class="nav-link" data-i18n="tools.social.website-screenshot.text.003">PDF Tools</a>
+            <a href="/#image" class="nav-link" data-i18n="tools.social.website-screenshot.text.004">Images</a>
+            <a href="/#dev" class="nav-link" data-i18n="tools.social.website-screenshot.text.005">Developers</a>
           </nav>
-          <div class="privacy-badge" title="Your data never leaves your browser">
+          <div class="privacy-badge" title="Your data never leaves your browser" data-i18n-title="tools.social.website-screenshot.title.001">
             <span class="privacy-badge-dot"></span>
-            <span>Privacy First</span>
+            <span data-i18n="tools.social.website-screenshot.text.006">Privacy First</span>
           </div>
           <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
             <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -94,10 +94,10 @@
           </button>
         </div>
         <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
-          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
-          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
-          <a href="/#image" class="mobile-nav-link">Image Tools</a>
-          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+          <a href="/#finance" class="mobile-nav-link" data-i18n="tools.social.website-screenshot.text.007">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link" data-i18n="tools.social.website-screenshot.text.008">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link" data-i18n="tools.social.website-screenshot.text.009">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link" data-i18n="tools.social.website-screenshot.text.010">Developer Tools</a>
         </nav>
       </div>
     </header>
@@ -106,19 +106,19 @@
       <div class="tool-wrapper">
         <div class="tool-hero">
           <div class="tool-hero-icon">&#128247;</div>
-          <h1>Website Screenshot</h1>
-          <p>Capture screenshots of websites directly in your browser using html2canvas. Client-side processing ensures complete privacy - no data sent to servers.</p>
+          <h1 data-i18n="tools.social.website-screenshot.text.011">Website Screenshot</h1>
+          <p data-i18n="tools.social.website-screenshot.text.012">Capture screenshots of websites directly in your browser using html2canvas. Client-side processing ensures complete privacy - no data sent to servers.</p>
         </div>
 
         <div class="card">
           <div class="input-group">
-            <label class="input-label" for="websiteUrl">Website URL</label>
-            <input type="text" class="input-field" id="websiteUrl" placeholder="https://example.com">
+            <label class="input-label" for="websiteUrl" data-i18n="tools.social.website-screenshot.text.013">Website URL</label>
+            <input type="text" class="input-field" id="websiteUrl" placeholder="https://example.com" data-i18n-placeholder="tools.social.website-screenshot.placeholder.001">
           </div>
 
           <div class="options-row">
             <div class="option-group">
-              <label class="input-label">Viewport Width</label>
+              <label class="input-label" data-i18n="tools.social.website-screenshot.text.014">Viewport Width</label>
               <select id="viewportWidth">
                 <option value="1920">Desktop (1920px)</option>
                 <option value="1366">Laptop (1366px)</option>
@@ -128,14 +128,14 @@
               </select>
             </div>
             <div class="option-group">
-              <label class="input-label">Format</label>
+              <label class="input-label" data-i18n="tools.social.website-screenshot.text.015">Format</label>
               <select id="imageFormat">
                 <option value="png">PNG</option>
                 <option value="jpeg">JPEG</option>
               </select>
             </div>
             <div class="option-group">
-              <label class="input-label">Quality</label>
+              <label class="input-label" data-i18n="tools.social.website-screenshot.text.016">Quality</label>
               <select id="imageQuality">
                 <option value="1">High (100%)</option>
                 <option value="0.8">Medium (80%)</option>
@@ -159,7 +159,7 @@
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/><path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/></svg>
                 Download Screenshot
               </button>
-              <button class="btn btn-secondary" id="btnNewCapture">New Capture</button>
+              <button class="btn btn-secondary" id="btnNewCapture" data-i18n="tools.social.website-screenshot.text.017">New Capture</button>
             </div>
           </div>
 
@@ -174,19 +174,19 @@
       </div>
 
       <section class="seo-section" aria-label="About this tool">
-        <h2>About Website Screenshot Tool</h2>
-        <p>Website Screenshot Tool is a privacy-focused utility that captures webpage screenshots directly in your browser. Unlike server-based screenshot services that require sending URLs to third parties, our tool uses html2canvas to render pages client-side. This means your browsing data never leaves your device, ensuring complete privacy.</p>
+        <h2 data-i18n="tools.social.website-screenshot.text.018">About Website Screenshot Tool</h2>
+        <p data-i18n="tools.social.website-screenshot.text.019">Website Screenshot Tool is a privacy-focused utility that captures webpage screenshots directly in your browser. Unlike server-based screenshot services that require sending URLs to third parties, our tool uses html2canvas to render pages client-side. This means your browsing data never leaves your device, ensuring complete privacy.</p>
 
-        <h3>How to Use</h3>
+        <h3 data-i18n="tools.social.website-screenshot.text.020">How to Use</h3>
         <ol>
-          <li>Enter the URL of the website you want to capture.</li>
-          <li>Select your preferred viewport width (desktop, tablet, or mobile).</li>
-          <li>Choose image format (PNG for quality, JPEG for smaller files).</li>
-          <li>Click "Capture Screenshot" to generate the image.</li>
-          <li>Download the screenshot or capture a new one.</li>
+          <li data-i18n="tools.social.website-screenshot.text.021">Enter the URL of the website you want to capture.</li>
+          <li data-i18n="tools.social.website-screenshot.text.022">Select your preferred viewport width (desktop, tablet, or mobile).</li>
+          <li data-i18n="tools.social.website-screenshot.text.023">Choose image format (PNG for quality, JPEG for smaller files).</li>
+          <li data-i18n="tools.social.website-screenshot.text.024">Click "Capture Screenshot" to generate the image.</li>
+          <li data-i18n="tools.social.website-screenshot.text.025">Download the screenshot or capture a new one.</li>
         </ol>
 
-        <h3>Limitations</h3>
+        <h3 data-i18n="tools.social.website-screenshot.text.026">Limitations</h3>
         <ul style="color: #A1A1AA; line-height: 1.8; font-size: 0.9375rem; padding-left: 1.25rem;">
           <li><strong>CORS Restrictions:</strong> Many websites block cross-origin access for security</li>
           <li><strong>Dynamic Content:</strong> JavaScript-heavy sites may not render correctly</li>
@@ -195,42 +195,42 @@
           <li><strong>Browser Support:</strong> Best results in Chrome, Firefox, and Edge</li>
         </ul>
 
-        <h3>Frequently Asked Questions</h3>
+        <h3 data-i18n="tools.social.website-screenshot.text.027">Frequently Asked Questions</h3>
 
         <details class="faq-item">
           <summary>Why doesn't this work with some websites?</summary>
-          <p>Due to browser security policies (CORS - Cross-Origin Resource Sharing), websites can restrict how their content is accessed by scripts from other domains. Major sites like Google, Facebook, and banking sites typically block screenshot attempts for security and privacy reasons.</p>
+          <p data-i18n="tools.social.website-screenshot.text.028">Due to browser security policies (CORS - Cross-Origin Resource Sharing), websites can restrict how their content is accessed by scripts from other domains. Major sites like Google, Facebook, and banking sites typically block screenshot attempts for security and privacy reasons.</p>
         </details>
 
         <details class="faq-item">
           <summary>Is this tool completely private?</summary>
-          <p>Yes. All screenshot processing happens in your browser. We never see, store, or transmit the URLs you enter or the screenshots you generate. Your data stays entirely on your device.</p>
+          <p data-i18n="tools.social.website-screenshot.text.029">Yes. All screenshot processing happens in your browser. We never see, store, or transmit the URLs you enter or the screenshots you generate. Your data stays entirely on your device.</p>
         </details>
 
         <details class="faq-item">
           <summary>Can I capture full-page screenshots?</summary>
-          <p>Currently, this tool captures the visible viewport only. Full-page screenshots require scrolling and stitching multiple captures together, which has limited browser support. For full-page captures, consider using browser extensions like GoFullPage or desktop tools.</p>
+          <p data-i18n="tools.social.website-screenshot.text.030">Currently, this tool captures the visible viewport only. Full-page screenshots require scrolling and stitching multiple captures together, which has limited browser support. For full-page captures, consider using browser extensions like GoFullPage or desktop tools.</p>
         </details>
 
         <details class="faq-item">
           <summary>What's the difference between PNG and JPEG?</summary>
-          <p>PNG provides lossless compression with transparency support, best for screenshots with text or UI elements. JPEG uses lossy compression for smaller file sizes, better for photographs. For most website screenshots, PNG is recommended for clarity.</p>
+          <p data-i18n="tools.social.website-screenshot.text.031">PNG provides lossless compression with transparency support, best for screenshots with text or UI elements. JPEG uses lossy compression for smaller file sizes, better for photographs. For most website screenshots, PNG is recommended for clarity.</p>
         </details>
 
         <details class="faq-item">
           <summary>Can I screenshot pages behind login?</summary>
-          <p>No. This tool cannot access pages that require authentication because it operates from our domain, not yours. To capture logged-in pages, use your browser's built-in screenshot tools (Ctrl+Shift+S in Firefox, DevTools in Chrome) or desktop applications.</p>
+          <p data-i18n="tools.social.website-screenshot.text.032">No. This tool cannot access pages that require authentication because it operates from our domain, not yours. To capture logged-in pages, use your browser's built-in screenshot tools (Ctrl+Shift+S in Firefox, DevTools in Chrome) or desktop applications.</p>
         </details>
       </section>
     </main>
 
     <footer class="tool-footer">
-      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
-      <p>Estimates only &mdash; not financial, legal, or tax advice.</p>
+      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com" data-i18n="tools.social.website-screenshot.text.033">psk.dan.metehancetin@mc-novatools.com</a></p>
+      <p data-i18n="tools.social.website-screenshot.text.034">Estimates only &mdash; not financial, legal, or tax advice.</p>
     </footer>
     <style>.tool-footer{border-top:1px solid var(--border-default);color:#718096;font-size:.8rem;line-height:1.8;margin-top:3rem;padding:1.5rem 1rem;text-align:center}.tool-footer a{color:#00d9ff;text-decoration:none}</style>
   </div>
-
+
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {

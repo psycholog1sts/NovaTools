@@ -19,9 +19,9 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <title>Free Tax Calculator - Estimate Federal &amp; State Tax 2026</title>
+  <title data-i18n="tools.finance.tax.meta.title">Free Tax Calculator - Estimate Federal &amp; State Tax 2026</title>
   
   <!-- i18n Script -->
   <script src="/i18n.js"></script>
@@ -61,7 +61,7 @@
   <style>.calculator-form{background:var(--surface-default);border:1px solid var(--border-default);border-radius:var(--radius-lg);margin:2rem 0;padding:2rem}.form-group{margin-bottom:1.5rem}.form-group label{color:var(--text-secondary);display:block;font-size:.9375rem;font-weight:500;margin-bottom:.5rem}.form-group input,.form-group select{background:var(--bg-tertiary);border:1px solid var(--border-default);border-radius:var(--radius-md);color:var(--text-primary);font-size:1rem;height:48px;padding:0 1rem;width:100%}.form-group input:focus,.form-group select:focus{border-color:var(--accent-primary);box-shadow:0 0 0 3px var(--accent-glow);outline:none}.form-row{display:grid;gap:1rem;grid-template-columns:1fr 1fr}@media (max-width:640px){.form-row{grid-template-columns:1fr}}.results-panel{background:linear-gradient(135deg,var(--accent-subtle),rgba(139,92,246,.05));border:1px solid var(--accent-glow);border-radius:var(--radius-lg);display:none;margin-top:2rem;padding:2rem}.results-panel.visible{animation:fadeIn .3s ease;display:block}@keyframes fadeIn{0%{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}</style>
   <link rel="stylesheet" crossorigin href="/css/critical-D6EXev1O.css">
   <link rel="stylesheet" crossorigin href="/css/main-C-2uV3x-.css">
-<link rel="manifest" href="/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/registerSW.js"></script></head>
+</head>
 <body>
   <div class="bg-ambient" aria-hidden="true"></div>
   <div class="noise-overlay" aria-hidden="true"></div>
@@ -71,17 +71,17 @@
         <div class="header-inner">
           <a href="/" class="logo" aria-label="NovaTools MC Home">
             <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
-            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+            <span class="logo-text">NovaTools <span class="logo-mc" data-i18n="tools.finance.tax.text.001">MC</span></span>
           </a>
           <nav class="nav-desktop" aria-label="Main navigation">
-            <a href="/#finance" class="nav-link">Finance</a>
-            <a href="/#pdf" class="nav-link">PDF Tools</a>
-            <a href="/#image" class="nav-link">Images</a>
-            <a href="/#dev" class="nav-link">Developers</a>
+            <a href="/#finance" class="nav-link" data-i18n="tools.finance.tax.text.002">Finance</a>
+            <a href="/#pdf" class="nav-link" data-i18n="tools.finance.tax.text.003">PDF Tools</a>
+            <a href="/#image" class="nav-link" data-i18n="tools.finance.tax.text.004">Images</a>
+            <a href="/#dev" class="nav-link" data-i18n="tools.finance.tax.text.005">Developers</a>
           </nav>
-          <div class="privacy-badge" title="Your data never leaves your browser">
+          <div class="privacy-badge" title="Your data never leaves your browser" data-i18n-title="tools.finance.tax.title.001">
             <span class="privacy-badge-dot"></span>
-            <span>Privacy First</span>
+            <span data-i18n="tools.finance.tax.text.006">Privacy First</span>
           </div>
           <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
             <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -92,29 +92,29 @@
           </button>
         </div>
         <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
-          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
-          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
-          <a href="/#image" class="mobile-nav-link">Image Tools</a>
-          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+          <a href="/#finance" class="mobile-nav-link" data-i18n="tools.finance.tax.text.007">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link" data-i18n="tools.finance.tax.text.008">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link" data-i18n="tools.finance.tax.text.009">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link" data-i18n="tools.finance.tax.text.010">Developer Tools</a>
         </nav>
       </div>
     </header>
 <main class="main-content">
       <div class="container" style="padding: 4rem 1rem;">
         <div style="max-width: 800px; margin: 0 auto;">
-          <h1 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; text-align: center;">Tax Estimator</h1>
-          <span class="sr-only">Free tax calculator — free federal and state income tax estimator for 2026. Calculate your tax liability based on income, deductions, and filing status. 100% free online tax tool, no registration required.</span>
-          <p style="color: var(--text-secondary); text-align: center; margin-bottom: 2rem;">Estimate your tax liability based on income, deductions, and filing status.</p>
+          <h1 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; text-align: center;" data-i18n="tools.finance.tax.text.011">Tax Estimator</h1>
+          <span class="sr-only" data-i18n="tools.finance.tax.text.012">Free tax calculator — free federal and state income tax estimator for 2026. Calculate your tax liability based on income, deductions, and filing status. 100% free online tax tool, no registration required.</span>
+          <p style="color: var(--text-secondary); text-align: center; margin-bottom: 2rem;" data-i18n="tools.finance.tax.text.013">Estimate your tax liability based on income, deductions, and filing status.</p>
           <div class="calculator-form">
             <div class="form-row">
-              <div class="form-group"><label>Filing Status</label><select id="filingStatus"><option value="single">Single</option><option value="married">Married Filing Jointly</option><option value="head">Head of Household</option></select></div>
-              <div class="form-group"><label>Gross Income ($)</label><input type="number" id="grossIncome" placeholder="75000" min="0"></div>
+              <div class="form-group"><label data-i18n="tools.finance.tax.text.014">Filing Status</label><select id="filingStatus"><option value="single">Single</option><option value="married">Married Filing Jointly</option><option value="head">Head of Household</option></select></div>
+              <div class="form-group"><label data-i18n="tools.finance.tax.text.015">Gross Income ($)</label><input type="number" id="grossIncome" placeholder="75000" min="0"></div>
             </div>
             <div class="form-row">
-              <div class="form-group"><label>Itemized Deductions ($) <span style="font-size:0.8em;color:var(--text-muted,#888)">(leave 0 to use standard deduction)</span></label><input type="number" id="deductions" placeholder="0" min="0" value="0"></div>
-              <div class="form-group"><label>Tax Credits ($)</label><input type="number" id="taxCredits" placeholder="0" min="0"></div>
+              <div class="form-group"><label>Itemized Deductions ($) <span style="font-size:0.8em;color:var(--text-muted,#888)" data-i18n="tools.finance.tax.text.016">(leave 0 to use standard deduction)</span></label><input type="number" id="deductions" placeholder="0" min="0" value="0"></div>
+              <div class="form-group"><label data-i18n="tools.finance.tax.text.017">Tax Credits ($)</label><input type="number" id="taxCredits" placeholder="0" min="0"></div>
             </div>
-            <button type="button" id="calcBtn" class="btn btn-primary" style="width: 100%; margin-top: 1rem; height: 52px;">Calculate Tax Estimate</button>
+            <button type="button" id="calcBtn" class="btn btn-primary" style="width: 100%; margin-top: 1rem; height: 52px;" data-i18n="tools.finance.tax.text.018">Calculate Tax Estimate</button>
           </div>
           
           <!-- In-Tool Rectangle Ad (300x250) -->
@@ -126,7 +126,7 @@
           </div>
           
           <div id="results" class="results-panel">
-            <h2 style="text-align: center; margin-bottom: 1.5rem;">Tax Estimate</h2>
+            <h2 style="text-align: center; margin-bottom: 1.5rem;" data-i18n="tools.finance.tax.text.019">Tax Estimate</h2>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
               <div style="text-align: center; padding: 1.5rem; background: var(--surface-default); border-radius: var(--radius-md);">
                 <div id="taxableIncome" style="font-size: 1.5rem; font-weight: 700; color: var(--text-primary);">$0</div>
@@ -149,8 +149,8 @@
       </div>
     </main>
     <footer class="tool-footer">
-  <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
-  <p>Estimates only &mdash; not financial, legal, or tax advice.</p>
+  <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com" data-i18n="tools.finance.tax.text.020">psk.dan.metehancetin@mc-novatools.com</a></p>
+  <p data-i18n="tools.finance.tax.text.021">Estimates only &mdash; not financial, legal, or tax advice.</p>
 </footer>
 <style>.tool-footer{border-top:1px solid var(--border-default);color:#718096;font-size:.8rem;line-height:1.8;margin-top:3rem;padding:1.5rem 1rem;text-align:center}.tool-footer a{color:#00d9ff;text-decoration:none}</style>
   </div>

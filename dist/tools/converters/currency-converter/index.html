@@ -19,10 +19,10 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <title>Free Currency Converter Online | NovaTools MC</title>
+  <title data-i18n="tools.converters.currency-converter.meta.title">Free Currency Converter Online | NovaTools MC</title>
   
   <!-- i18n Script -->
   <script src="/i18n.js"></script>
@@ -62,7 +62,7 @@
   <link rel="modulepreload" crossorigin href="/js/modulepreload-polyfill-YP0FEG5d.js">
   <link rel="stylesheet" crossorigin href="/css/critical-D6EXev1O.css">
   <link rel="stylesheet" crossorigin href="/css/main-C-2uV3x-.css">
-<link rel="manifest" href="/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/registerSW.js"></script></head>
+</head>
 <body>
   <div class="bg-ambient" aria-hidden="true"></div>
   <div class="noise-overlay" aria-hidden="true"></div>
@@ -73,17 +73,17 @@
         <div class="header-inner">
           <a href="/" class="logo" aria-label="NovaTools MC Home">
             <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
-            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+            <span class="logo-text">NovaTools <span class="logo-mc" data-i18n="tools.converters.currency-converter.text.001">MC</span></span>
           </a>
           <nav class="nav-desktop" aria-label="Main navigation">
-            <a href="/#finance" class="nav-link">Finance</a>
-            <a href="/#pdf" class="nav-link">PDF Tools</a>
-            <a href="/#image" class="nav-link">Images</a>
-            <a href="/#dev" class="nav-link">Developers</a>
+            <a href="/#finance" class="nav-link" data-i18n="tools.converters.currency-converter.text.002">Finance</a>
+            <a href="/#pdf" class="nav-link" data-i18n="tools.converters.currency-converter.text.003">PDF Tools</a>
+            <a href="/#image" class="nav-link" data-i18n="tools.converters.currency-converter.text.004">Images</a>
+            <a href="/#dev" class="nav-link" data-i18n="tools.converters.currency-converter.text.005">Developers</a>
           </nav>
-          <div class="privacy-badge" title="Your data never leaves your browser">
+          <div class="privacy-badge" title="Your data never leaves your browser" data-i18n-title="tools.converters.currency-converter.title.001">
             <span class="privacy-badge-dot"></span>
-            <span>Privacy First</span>
+            <span data-i18n="tools.converters.currency-converter.text.006">Privacy First</span>
           </div>
           <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
             <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -94,10 +94,10 @@
           </button>
         </div>
         <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
-          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
-          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
-          <a href="/#image" class="mobile-nav-link">Image Tools</a>
-          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+          <a href="/#finance" class="mobile-nav-link" data-i18n="tools.converters.currency-converter.text.007">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link" data-i18n="tools.converters.currency-converter.text.008">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link" data-i18n="tools.converters.currency-converter.text.009">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link" data-i18n="tools.converters.currency-converter.text.010">Developer Tools</a>
         </nav>
       </div>
     </header>
@@ -106,8 +106,8 @@
       <div class="tool-wrapper">
         <div class="tool-hero">
           <div class="tool-hero-icon">&#128177;</div>
-          <h1>Currency Converter</h1>
-          <p>Convert between currencies with exchange rates. Check real-time rates for USD, EUR, GBP, JPY, TRY and many more currencies.</p>
+          <h1 data-i18n="tools.converters.currency-converter.text.011">Currency Converter</h1>
+          <p data-i18n="tools.converters.currency-converter.text.012">Convert between currencies with exchange rates. Check real-time rates for USD, EUR, GBP, JPY, TRY and many more currencies.</p>
         </div>
 
         <div class="card">
@@ -119,14 +119,14 @@
 
           <div class="amount-row">
             <div class="amount-input-wrapper">
-              <label class="input-label">Amount</label>
+              <label class="input-label" data-i18n="tools.converters.currency-converter.text.013">Amount</label>
               <input type="number" class="amount-input" id="amountInput" placeholder="0.00" value="100" step="0.01" min="0">
             </div>
           </div>
 
           <div class="currency-row">
             <div class="currency-select-wrapper">
-              <label class="input-label">From</label>
+              <label class="input-label" data-i18n="tools.converters.currency-converter.text.014">From</label>
               <select class="currency-select" id="fromCurrency">
                 <option value="USD" selected>🇺🇸 USD - US Dollar</option>
                 <option value="EUR">🇪🇺 EUR - Euro</option>
@@ -149,7 +149,7 @@
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 16V4M7 4L3 8M7 4l4 4M17 8v12m0 0l4-4m-4 4l-4-4"/></svg>
             </button>
             <div class="currency-select-wrapper">
-              <label class="input-label">To</label>
+              <label class="input-label" data-i18n="tools.converters.currency-converter.text.015">To</label>
               <select class="currency-select" id="toCurrency">
                 <option value="USD">🇺🇸 USD - US Dollar</option>
                 <option value="EUR" selected>🇪🇺 EUR - Euro</option>
@@ -171,7 +171,7 @@
           </div>
 
           <div class="rate-info">
-            <div class="rate-text">Exchange Rate: <span class="rate-value" id="exchangeRate">1 USD = 0.85 EUR</span></div>
+            <div class="rate-text">Exchange Rate: <span class="rate-value" id="exchangeRate" data-i18n="tools.converters.currency-converter.text.016">1 USD = 0.85 EUR</span></div>
             <div class="last-updated" id="lastUpdated">Updated: Just now</div>
           </div>
 
@@ -190,7 +190,7 @@
               <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor"><path d="M11.534 7h3.932a.25.25 0 00.192-.41l-1.966-2.36a.25.25 0 00-.384 0l-1.966 2.36a.25.25 0 00.192.41zm-11 2h3.932a.25.25 0 01.192.41l-1.966 2.36a.25.25 0 01-.384 0l-1.966-2.36a.25.25 0 01.192-.41z"/></svg>
               Refresh Rates
             </button>
-            <span class="copy-feedback" id="copyFeedback" aria-live="polite">Copied!</span>
+            <span class="copy-feedback" id="copyFeedback" aria-live="polite" data-i18n="tools.converters.currency-converter.text.017">Copied!</span>
           </div>
 
           <div class="popular-conversions">
@@ -212,61 +212,61 @@
       </div>
 
       <section class="seo-section" aria-label="About this tool">
-        <h2>About Currency Converter</h2>
-        <p>Our free Currency Converter helps you convert between 150+ world currencies instantly. Whether you're traveling abroad, shopping online, or managing international finances, this tool provides quick and easy currency conversions with current exchange rates.</p>
+        <h2 data-i18n="tools.converters.currency-converter.text.018">About Currency Converter</h2>
+        <p data-i18n="tools.converters.currency-converter.text.019">Our free Currency Converter helps you convert between 150+ world currencies instantly. Whether you're traveling abroad, shopping online, or managing international finances, this tool provides quick and easy currency conversions with current exchange rates.</p>
 
-        <h3>How to Use</h3>
+        <h3 data-i18n="tools.converters.currency-converter.text.020">How to Use</h3>
         <ol>
-          <li>Enter the amount you want to convert in the Amount field.</li>
-          <li>Select the source currency (the currency you have) from the "From" dropdown.</li>
-          <li>Select the target currency (the currency you want) from the "To" dropdown.</li>
-          <li>The converted amount appears instantly below.</li>
-          <li>The current exchange rate is displayed for your reference.</li>
-          <li>Use the Swap button to quickly reverse the conversion direction.</li>
-          <li>Click Copy Result to copy the conversion to your clipboard.</li>
+          <li data-i18n="tools.converters.currency-converter.text.021">Enter the amount you want to convert in the Amount field.</li>
+          <li data-i18n="tools.converters.currency-converter.text.022">Select the source currency (the currency you have) from the "From" dropdown.</li>
+          <li data-i18n="tools.converters.currency-converter.text.023">Select the target currency (the currency you want) from the "To" dropdown.</li>
+          <li data-i18n="tools.converters.currency-converter.text.024">The converted amount appears instantly below.</li>
+          <li data-i18n="tools.converters.currency-converter.text.025">The current exchange rate is displayed for your reference.</li>
+          <li data-i18n="tools.converters.currency-converter.text.026">Use the Swap button to quickly reverse the conversion direction.</li>
+          <li data-i18n="tools.converters.currency-converter.text.027">Click Copy Result to copy the conversion to your clipboard.</li>
         </ol>
 
-        <h3>Supported Currencies</h3>
+        <h3 data-i18n="tools.converters.currency-converter.text.028">Supported Currencies</h3>
         <p><strong>Major Currencies:</strong> US Dollar (USD), Euro (EUR), British Pound (GBP), Japanese Yen (JPY), Swiss Franc (CHF), Canadian Dollar (CAD), Australian Dollar (AUD)<br>
         <strong>Asian Currencies:</strong> Chinese Yuan (CNY), Indian Rupee (INR), Singapore Dollar (SGD), South Korean Won (KRW)<br>
         <strong>Other Popular:</strong> Turkish Lira (TRY), Brazilian Real (BRL), Mexican Peso (MXN), Russian Ruble (RUB)</p>
 
-        <h3>Frequently Asked Questions</h3>
+        <h3 data-i18n="tools.converters.currency-converter.text.029">Frequently Asked Questions</h3>
 
         <details class="faq-item">
           <summary>How accurate are the exchange rates?</summary>
-          <p>The exchange rates displayed are for informational purposes and updated periodically. They are approximate rates and may differ from the actual rates offered by banks and forex providers. For financial transactions, always confirm rates with your bank.</p>
+          <p data-i18n="tools.converters.currency-converter.text.030">The exchange rates displayed are for informational purposes and updated periodically. They are approximate rates and may differ from the actual rates offered by banks and forex providers. For financial transactions, always confirm rates with your bank.</p>
         </details>
 
         <details class="faq-item">
           <summary>How often are rates updated?</summary>
-          <p>Rates are typically updated once per day. For the most current market rates, please consult a financial service provider or your bank.</p>
+          <p data-i18n="tools.converters.currency-converter.text.031">Rates are typically updated once per day. For the most current market rates, please consult a financial service provider or your bank.</p>
         </details>
 
         <details class="faq-item">
           <summary>Is there a limit on conversion amounts?</summary>
-          <p>No, you can enter any amount for conversion. The tool handles both small and large numbers accurately.</p>
+          <p data-i18n="tools.converters.currency-converter.text.032">No, you can enter any amount for conversion. The tool handles both small and large numbers accurately.</p>
         </details>
 
         <details class="faq-item">
           <summary>Can I see historical exchange rates?</summary>
-          <p>This tool shows current exchange rates only. For historical rate data, please consult a financial data provider.</p>
+          <p data-i18n="tools.converters.currency-converter.text.033">This tool shows current exchange rates only. For historical rate data, please consult a financial data provider.</p>
         </details>
 
         <details class="faq-item">
           <summary>Is my conversion data stored?</summary>
-          <p>No. All calculations happen locally in your browser. No data is transmitted to our servers or stored anywhere.</p>
+          <p data-i18n="tools.converters.currency-converter.text.034">No. All calculations happen locally in your browser. No data is transmitted to our servers or stored anywhere.</p>
         </details>
       </section>
     </main>
 
     <footer class="tool-footer">
-      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
-      <p>Estimates only &mdash; not financial, legal, or tax advice.</p>
+      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com" data-i18n="tools.converters.currency-converter.text.035">psk.dan.metehancetin@mc-novatools.com</a></p>
+      <p data-i18n="tools.converters.currency-converter.text.036">Estimates only &mdash; not financial, legal, or tax advice.</p>
     </footer>
     <style>.tool-footer{border-top:1px solid var(--border-default);color:#718096;font-size:.8rem;line-height:1.8;margin-top:3rem;padding:1.5rem 1rem;text-align:center}.tool-footer a{color:#00d9ff;text-decoration:none}</style>
   </div>
-
+
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {

@@ -13,7 +13,7 @@
   <script>(function(){var t=localStorage.getItem('novatools-theme');if(t)document.documentElement.setAttribute('data-theme',t);else{var d=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',d);document.documentElement.style.colorScheme=d;}})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <!-- Favicon - Required by Google Search -->
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -21,7 +21,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <title>Free Image Converter - JPG to PNG, WebP Online | NovaTools</title>
+  <title data-i18n="tools.image.convert.meta.title">Free Image Converter - JPG to PNG, WebP Online | NovaTools</title>
   
   <!-- i18n Script -->
   <script src="/i18n.js"></script>
@@ -61,7 +61,7 @@
   <style>.tool-container{margin:0 auto;max-width:900px;padding:2rem 1rem}.tool-header{margin-bottom:2rem;text-align:center}.tool-header h1{font-size:2rem;font-weight:700;margin-bottom:.5rem}.dropzone{background:var(--surface-default);border:2px dashed var(--border-default);border-radius:16px;cursor:pointer;padding:3rem 2rem;text-align:center;transition:all .3s ease}.dropzone:hover{background:var(--border-default);border-color:var(--border-accent)}.dropzone.drag-active{background:var(--accent-subtle);border-color:var(--accent-primary);transform:scale(1.02)}.controls{background:var(--surface-default);border:1px solid var(--border-default);border-radius:var(--radius-lg);display:none;margin-top:1.5rem;padding:1.5rem}.controls.visible{display:block}.form-select{background:var(--bg-tertiary);border:1px solid var(--border-default);color:var(--text-primary);height:48px;margin-top:.5rem;padding:0 1rem;width:100%}.form-select,.preview-box{border-radius:var(--radius-md)}.preview-box{background:var(--surface-default);margin:1.5rem 0;padding:1rem;text-align:center}.preview-box img{border-radius:var(--radius-md);max-height:200px;max-width:100%}.result-section{background:linear-gradient(135deg,var(--accent-subtle),rgba(99,102,241,.05));border:1px solid rgba(99,102,241,.3);border-radius:var(--radius-lg);display:none;margin-top:1.5rem;padding:2rem;text-align:center}.result-section.visible{display:block}.download-btn{align-items:center;background:linear-gradient(135deg,#6366f1,#4f46e5);border-radius:var(--radius-md);color:#fff;display:inline-flex;font-weight:600;gap:.5rem;padding:1rem 2rem;text-decoration:none}.quality-slider{margin:1rem 0;width:100%}.seo-content{background:hsla(0,0%,100%,.02);border:1px solid var(--surface-default);border-radius:var(--radius-lg);margin-top:3rem;padding:2rem}.seo-content h2{font-size:1.5rem;margin-bottom:1rem}.seo-content h3{font-size:1.125rem;margin-bottom:.75rem;margin-top:1.5rem}.seo-content p{color:var(--text-secondary);line-height:1.7;margin-bottom:1rem}.seo-content ol{margin-bottom:1rem;padding-left:1.5rem}.seo-content li{color:var(--text-secondary);margin-bottom:.5rem}.faq-item{border:1px solid var(--border-hover);border-radius:var(--radius-md);margin-bottom:.75rem;overflow:hidden}.faq-item summary{background:var(--surface-default);cursor:pointer;font-weight:500;padding:1rem}.faq-item summary:hover{background:var(--border-default)}.faq-item p{border-top:1px solid var(--border-hover);margin:0;padding:1rem}</style>
   <link rel="stylesheet" crossorigin href="/css/critical-D6EXev1O.css">
   <link rel="stylesheet" crossorigin href="/css/main-C-2uV3x-.css">
-<link rel="manifest" href="/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/registerSW.js"></script></head>
+</head>
 <body>
   <div class="bg-ambient" aria-hidden="true"></div>
   <div class="noise-overlay" aria-hidden="true"></div>
@@ -72,17 +72,17 @@
         <div class="header-inner">
           <a href="/" class="logo" aria-label="NovaTools MC Home">
             <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
-            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+            <span class="logo-text">NovaTools <span class="logo-mc" data-i18n="tools.image.convert.text.001">MC</span></span>
           </a>
           <nav class="nav-desktop" aria-label="Main navigation">
-            <a href="/#finance" class="nav-link">Finance</a>
-            <a href="/#pdf" class="nav-link">PDF Tools</a>
-            <a href="/#image" class="nav-link">Images</a>
-            <a href="/#dev" class="nav-link">Developers</a>
+            <a href="/#finance" class="nav-link" data-i18n="tools.image.convert.text.002">Finance</a>
+            <a href="/#pdf" class="nav-link" data-i18n="tools.image.convert.text.003">PDF Tools</a>
+            <a href="/#image" class="nav-link" data-i18n="tools.image.convert.text.004">Images</a>
+            <a href="/#dev" class="nav-link" data-i18n="tools.image.convert.text.005">Developers</a>
           </nav>
-          <div class="privacy-badge" title="Your data never leaves your browser">
+          <div class="privacy-badge" title="Your data never leaves your browser" data-i18n-title="tools.image.convert.title.001">
             <span class="privacy-badge-dot"></span>
-            <span>Privacy First</span>
+            <span data-i18n="tools.image.convert.text.006">Privacy First</span>
           </div>
           <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
             <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -93,19 +93,19 @@
           </button>
         </div>
         <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
-          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
-          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
-          <a href="/#image" class="mobile-nav-link">Image Tools</a>
-          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+          <a href="/#finance" class="mobile-nav-link" data-i18n="tools.image.convert.text.007">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link" data-i18n="tools.image.convert.text.008">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link" data-i18n="tools.image.convert.text.009">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link" data-i18n="tools.image.convert.text.010">Developer Tools</a>
         </nav>
       </div>
     </header>
 <main class="main-content">
       <div class="tool-container">
         <div class="tool-header">
-          <h1>🔄 Image Converter</h1>
-          <span class="sr-only">Free image converter — free online JPG to PNG, PNG to WebP, and image format converter tool. Convert image formats for free. No registration required. 100% free online image conversion.</span>
-          <p>Convert images between different formats. Supports JPEG, PNG, WebP, and GIF.</p>
+          <h1 data-i18n="tools.image.convert.text.011">🔄 Image Converter</h1>
+          <span class="sr-only" data-i18n="tools.image.convert.text.012">Free image converter — free online JPG to PNG, PNG to WebP, and image format converter tool. Convert image formats for free. No registration required. 100% free online image conversion.</span>
+          <p data-i18n="tools.image.convert.text.013">Convert images between different formats. Supports JPEG, PNG, WebP, and GIF.</p>
         </div>
         
         <form data-tool="image-convert" data-result=".results-panel">
@@ -117,7 +117,7 @@
           </div>
           
           <div id="controls" class="controls">
-            <label style="font-weight: 600; display: block; margin-bottom: 0.5rem;">Output Format</label>
+            <label style="font-weight: 600; display: block; margin-bottom: 0.5rem;" data-i18n="tools.image.convert.text.014">Output Format</label>
             <select name="format" id="formatSelect" class="form-select">
               <option value="png">PNG</option>
               <option value="jpeg">JPEG</option>
@@ -131,30 +131,30 @@
             </div>
             
             <div class="preview-box">
-              <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 0.5rem;">Preview</p>
+              <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 0.5rem;" data-i18n="tools.image.convert.text.015">Preview</p>
               <img id="previewImage" src="" alt="Preview">
               <p id="fileInfo" style="font-size: 0.875rem; margin-top: 0.5rem; color: var(--text-muted);"></p>
             </div>
             
-            <button type="submit" id="convertBtn" class="btn btn-primary" style="width: 100%; height: 52px;">Convert Image</button>
+            <button type="submit" id="convertBtn" class="btn btn-primary" style="width: 100%; height: 52px;" data-i18n="tools.image.convert.text.016">Convert Image</button>
           </div>
         </form>
         
         <div class="results-panel">
           <div id="resultSection" class="result-section">
             <div style="font-size: 3rem; margin-bottom: 1rem;">✅</div>
-            <h3 style="margin-bottom: 0.5rem;">Image Converted!</h3>
+            <h3 style="margin-bottom: 0.5rem;" data-i18n="tools.image.convert.text.017">Image Converted!</h3>
             <p id="resultText" style="color: var(--text-secondary); margin-bottom: 1.5rem;"></p>
-            <a id="downloadLink" href="#" class="download-btn" download>Download Converted Image</a>
+            <a id="downloadLink" href="#" class="download-btn" download data-i18n="tools.image.convert.text.018">Download Converted Image</a>
           </div>
         </div>
 
         <div class="seo-content">
-          <h2>Free Online Image Format Converter</h2>
+          <h2 data-i18n="tools.image.convert.text.019">Free Online Image Format Converter</h2>
           <p>Welcome to our free online <strong>image format converter</strong> - the ultimate tool to <strong>convert image to PNG</strong>, JPEG, WebP, or GIF formats instantly. Whether you need to <strong>convert JPG to WebP</strong> for better web performance or switch to PNG for transparent backgrounds, our powerful converter delivers high-quality results without any software installation.</p>
-          <p>Different image formats serve different purposes. PNG provides lossless quality and transparency support, making it perfect for logos and graphics. JPEG offers excellent compression for photographs. WebP delivers superior compression while maintaining quality, ideal for modern websites. GIF supports simple animations and transparency. Our converter makes it easy to switch between formats while preserving the best possible quality for your specific use case.</p>
+          <p data-i18n="tools.image.convert.text.020">Different image formats serve different purposes. PNG provides lossless quality and transparency support, making it perfect for logos and graphics. JPEG offers excellent compression for photographs. WebP delivers superior compression while maintaining quality, ideal for modern websites. GIF supports simple animations and transparency. Our converter makes it easy to switch between formats while preserving the best possible quality for your specific use case.</p>
           
-          <h3>How to Use Our Image Converter</h3>
+          <h3 data-i18n="tools.image.convert.text.021">How to Use Our Image Converter</h3>
           <ol>
             <li><strong>Upload your image</strong> - Drag and drop any image file into the upload area, or click to browse your device. We support all major formats including JPG, PNG, WebP, GIF, BMP, and TIFF up to 20MB.</li>
             <li><strong>Select output format</strong> - Choose your desired output format from the dropdown menu. Options include PNG (for transparency), JPEG (for photos), WebP (for web optimization), and GIF (for simple animations).</li>
@@ -163,26 +163,26 @@
             <li><strong>Download converted image</strong> - Click the convert button and download your newly formatted image instantly. All conversions happen locally in your browser for complete privacy.</li>
           </ol>
           
-          <h3>Frequently Asked Questions</h3>
+          <h3 data-i18n="tools.image.convert.text.022">Frequently Asked Questions</h3>
           <details class="faq-item">
             <summary>Will converting images affect their quality?</summary>
-            <p>Converting between lossless formats (PNG to WebP) maintains perfect quality. Converting to lossy formats (JPEG) involves some compression, but our tool lets you control the quality setting. Converting from a lossy format to another lossy format is generally not recommended as quality loss compounds.</p>
+            <p data-i18n="tools.image.convert.text.023">Converting between lossless formats (PNG to WebP) maintains perfect quality. Converting to lossy formats (JPEG) involves some compression, but our tool lets you control the quality setting. Converting from a lossy format to another lossy format is generally not recommended as quality loss compounds.</p>
           </details>
           <details class="faq-item">
             <summary>Which image format should I choose?</summary>
-            <p>Choose PNG for graphics with transparency, JPEG for photographs where small file size matters, WebP for modern websites needing optimal compression with quality, and GIF for simple animations. For most web use today, WebP offers the best balance of quality and file size.</p>
+            <p data-i18n="tools.image.convert.text.024">Choose PNG for graphics with transparency, JPEG for photographs where small file size matters, WebP for modern websites needing optimal compression with quality, and GIF for simple animations. For most web use today, WebP offers the best balance of quality and file size.</p>
           </details>
           <details class="faq-item">
             <summary>Is there a file size limit for conversion?</summary>
-            <p>Yes, our converter supports images up to 20MB in size. This limit ensures fast, reliable conversion while handling most common image files. All processing occurs in your browser, meaning your images never leave your device, ensuring complete privacy and security.</p>
+            <p data-i18n="tools.image.convert.text.025">Yes, our converter supports images up to 20MB in size. This limit ensures fast, reliable conversion while handling most common image files. All processing occurs in your browser, meaning your images never leave your device, ensuring complete privacy and security.</p>
           </details>
         </div>
       </div>
     </main>
 
     <footer class="tool-footer">
-  <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
-  <p>Estimates only &mdash; not financial, legal, or tax advice.</p>
+  <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com" data-i18n="tools.image.convert.text.026">psk.dan.metehancetin@mc-novatools.com</a></p>
+  <p data-i18n="tools.image.convert.text.027">Estimates only &mdash; not financial, legal, or tax advice.</p>
 </footer>
 <style>.tool-footer{border-top:1px solid var(--border-default);color:#718096;font-size:.8rem;line-height:1.8;margin-top:3rem;padding:1.5rem 1rem;text-align:center}.tool-footer a{color:#00d9ff;text-decoration:none}</style>
   </div>

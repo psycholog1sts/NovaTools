@@ -19,10 +19,10 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <title>Checksum Calculator (MD5, SHA) — Free Online Tool | NovaTools MC</title>
+  <title data-i18n="tools.data.checksum-calculator.meta.title">Checksum Calculator (MD5, SHA) — Free Online Tool | NovaTools MC</title>
   
   <!-- i18n Script -->
   <script src="/i18n.js"></script>
@@ -60,7 +60,7 @@
   <style>.tool-wrapper{margin:0 auto;max-width:960px;padding:3rem 1rem 5rem}.tool-hero{margin-bottom:2.5rem;text-align:center}.tool-hero-icon{font-size:3.5rem;line-height:1;margin-bottom:1rem}.tool-hero h1{color:#fafafa;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;letter-spacing:-.02em;margin-bottom:.75rem}.tool-hero p{color:#a1a1aa;font-size:1.0625rem;margin:0 auto;max-width:560px}.card{backdrop-filter:blur(12px);background:rgba(15,15,20,.7);border:1px solid rgba(0,217,255,.15);border-radius:14px;padding:1.75rem}.upload-area{border:2px dashed rgba(0,217,255,.3);border-radius:12px;cursor:pointer;margin-bottom:1.5rem;padding:2.5rem;text-align:center;transition:all .2s}.upload-area:hover{background:rgba(0,217,255,.05);border-color:rgba(0,217,255,.6)}.upload-area.dragover{background:rgba(0,217,255,.1);border-color:#00d9ff}.upload-icon{font-size:2.5rem;margin-bottom:1rem}.upload-text{color:#fafafa;font-weight:500;margin-bottom:.5rem}.upload-hint{color:#71717a;font-size:.875rem}#fileInput,.file-info{display:none}.file-info{background:rgba(0,217,255,.05);border:1px solid rgba(0,217,255,.1);border-radius:8px;margin-bottom:1.5rem;padding:1rem}.file-info.visible{display:block}.file-info-row{color:#a1a1aa;display:flex;font-size:.875rem;justify-content:space-between;margin-bottom:.5rem}.file-info-row:last-child{margin-bottom:0}.file-info-label{color:#71717a}.file-info-value{color:#fafafa;font-weight:500}.hash-algorithms{display:grid;gap:.75rem;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));margin-bottom:1.5rem}.algo-option{align-items:center;background:rgba(0,217,255,.05);border:1px solid rgba(0,217,255,.1);border-radius:8px;cursor:pointer;display:flex;gap:.5rem;padding:.75rem;transition:all .2s}.algo-option:hover{background:rgba(0,217,255,.1)}.algo-option input[type=checkbox]{accent-color:#00d9ff;height:18px;width:18px}.algo-option label{color:#e4e4e7;cursor:pointer;flex:1;font-size:.875rem}.algo-desc{color:#71717a;font-size:.75rem}.btn-bar{display:flex;flex-wrap:wrap;gap:.625rem;margin-bottom:1.5rem}.btn{align-items:center;border:none;border-radius:8px;cursor:pointer;display:inline-flex;font-size:.9rem;font-weight:600;gap:.4rem;height:40px;padding:0 1.125rem;transition:all .18s}.btn:active{transform:scale(.97)}.btn-primary{background:linear-gradient(135deg,#00d9ff,#09c);color:#0a0a0c}.btn-primary:hover{background:linear-gradient(135deg,#1fe2ff,#00b8ee)}.btn-primary:disabled{cursor:not-allowed;opacity:.5}.btn-secondary{background:rgba(0,217,255,.1);border:1px solid rgba(0,217,255,.25);color:#00d9ff}.btn-secondary:hover{background:rgba(0,217,255,.18)}.btn-danger{background:rgba(255,85,85,.1);border:1px solid rgba(255,85,85,.25);color:#f55}.btn-danger:hover{background:rgba(255,85,85,.18)}.results-section{margin-top:1.5rem}.results-section h3{color:#fafafa;font-size:1rem;margin-bottom:1rem}.hash-result{background:rgba(0,0,0,.2);border:1px solid rgba(0,217,255,.1);border-radius:8px;margin-bottom:1rem;padding:1rem}.hash-header{align-items:center;display:flex;justify-content:space-between;margin-bottom:.75rem}.hash-name{color:#00d9ff;font-size:.875rem;font-weight:600}.hash-time{color:#71717a;font-size:.75rem}.hash-value{background:rgba(0,0,0,.3);border-radius:6px;color:#fafafa;font-family:JetBrains Mono,monospace;font-size:.8125rem;padding:.75rem;word-break:break-all}.hash-actions{display:flex;gap:.5rem;margin-top:.75rem}.hash-btn{background:rgba(0,217,255,.1);border:1px solid rgba(0,217,255,.2);border-radius:4px;color:#00d9ff;cursor:pointer;font-size:.75rem;padding:.375rem .75rem;transition:all .2s}.hash-btn:hover{background:rgba(0,217,255,.2)}.copy-feedback{color:#0f8;font-size:.75rem;margin-left:.5rem;opacity:0;transition:opacity .3s}.copy-feedback.show{opacity:1}.verify-section{background:rgba(0,255,136,.05);border:1px solid rgba(0,255,136,.1);border-radius:8px;margin-top:1.5rem;padding:1rem}.verify-section h4{color:#0f8;font-size:.875rem;margin-bottom:.75rem}.verify-input{background:#0f0f12;border:1px solid rgba(0,255,136,.2);color:#fafafa;font-family:JetBrains Mono,monospace;font-size:.8125rem;margin-bottom:.75rem;width:100%}.verify-input,.verify-result{border-radius:6px;padding:.75rem}.verify-result{display:none;font-size:.875rem}.verify-result.match{background:rgba(0,255,136,.1);border:1px solid rgba(0,255,136,.3);color:#0f8;display:block}.verify-result.mismatch{background:rgba(255,85,85,.1);border:1px solid rgba(255,85,85,.3);color:#f77;display:block}.progress-bar{background:hsla(0,0%,100%,.1);border-radius:4px;display:none;height:8px;margin-top:1rem;overflow:hidden}.progress-bar.visible{display:block}.progress-fill{background:linear-gradient(90deg,#00d9ff,#0f8);height:100%;transition:width .3s;width:0}.error-banner{align-items:flex-start;background:rgba(255,85,85,.08);border:1px solid rgba(255,85,85,.3);border-radius:10px;display:none;gap:.75rem;margin-bottom:1rem;padding:.875rem 1rem}.error-banner.visible{display:flex}.error-text{color:#f77;font-size:.875rem}.legal-disclaimer{background:rgba(255,193,7,.08);border-left:4px solid #ffc107;border-radius:0 8px 8px 0;margin-top:2rem;padding:1rem 1.25rem}.legal-disclaimer p{color:#a1a1aa;font-size:.875rem;line-height:1.6;margin:0}.legal-disclaimer strong{color:#ffc107}.seo-section{margin:3.5rem auto 0;max-width:960px;padding:0 1rem}.seo-section h2{color:#fafafa;font-size:1.375rem;font-weight:700;margin-bottom:.75rem}.seo-section h3{color:#fafafa;font-size:1.125rem;font-weight:600;margin:2rem 0 .75rem}.seo-section li,.seo-section p{color:#a1a1aa;font-size:.9375rem;line-height:1.8}.seo-section ol{padding-left:1.25rem}.seo-section ol li{margin-bottom:.4rem}.faq-item{background:rgba(15,15,20,.5);border:1px solid rgba(0,217,255,.1);border-radius:10px;margin-bottom:.875rem;padding:1rem 1.125rem}.faq-item summary{align-items:center;color:#fafafa;cursor:pointer;display:flex;font-weight:600;gap:1rem;justify-content:space-between;list-style:none}.faq-item summary::-webkit-details-marker{display:none}.faq-item summary:after{color:#00d9ff;content:"+";flex-shrink:0;font-size:1.25rem}.faq-item[open] summary:after{content:"−"}.faq-item p{color:#a1a1aa;line-height:1.7;margin-top:.625rem}.tool-footer{border-top:1px solid hsla(0,0%,100%,.1);color:#718096;font-size:.8rem;line-height:1.8;margin-top:3rem;padding:1.5rem 1rem;text-align:center}.tool-footer a{color:#00d9ff;text-decoration:none}</style>
   <link rel="stylesheet" crossorigin href="/css/critical-D6EXev1O.css">
   <link rel="stylesheet" crossorigin href="/css/main-C-2uV3x-.css">
-<link rel="manifest" href="/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/registerSW.js"></script></head>
+</head>
 <body>
   <div class="bg-ambient" aria-hidden="true"></div>
   <div class="noise-overlay" aria-hidden="true"></div>
@@ -71,17 +71,17 @@
         <div class="header-inner">
           <a href="/" class="logo" aria-label="NovaTools MC Home">
             <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
-            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+            <span class="logo-text">NovaTools <span class="logo-mc" data-i18n="tools.data.checksum-calculator.text.001">MC</span></span>
           </a>
           <nav class="nav-desktop" aria-label="Main navigation">
-            <a href="/#finance" class="nav-link">Finance</a>
-            <a href="/#pdf" class="nav-link">PDF Tools</a>
-            <a href="/#image" class="nav-link">Images</a>
-            <a href="/#dev" class="nav-link">Developers</a>
+            <a href="/#finance" class="nav-link" data-i18n="tools.data.checksum-calculator.text.002">Finance</a>
+            <a href="/#pdf" class="nav-link" data-i18n="tools.data.checksum-calculator.text.003">PDF Tools</a>
+            <a href="/#image" class="nav-link" data-i18n="tools.data.checksum-calculator.text.004">Images</a>
+            <a href="/#dev" class="nav-link" data-i18n="tools.data.checksum-calculator.text.005">Developers</a>
           </nav>
-          <div class="privacy-badge" title="Your data never leaves your browser">
+          <div class="privacy-badge" title="Your data never leaves your browser" data-i18n-title="tools.data.checksum-calculator.title.001">
             <span class="privacy-badge-dot"></span>
-            <span>Privacy First</span>
+            <span data-i18n="tools.data.checksum-calculator.text.006">Privacy First</span>
           </div>
           <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
             <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -92,10 +92,10 @@
           </button>
         </div>
         <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
-          <a href="/#finance" class="mobile-nav-link">Finance Tools</a>
-          <a href="/#pdf" class="mobile-nav-link">PDF Tools</a>
-          <a href="/#image" class="mobile-nav-link">Image Tools</a>
-          <a href="/#dev" class="mobile-nav-link">Developer Tools</a>
+          <a href="/#finance" class="mobile-nav-link" data-i18n="tools.data.checksum-calculator.text.007">Finance Tools</a>
+          <a href="/#pdf" class="mobile-nav-link" data-i18n="tools.data.checksum-calculator.text.008">PDF Tools</a>
+          <a href="/#image" class="mobile-nav-link" data-i18n="tools.data.checksum-calculator.text.009">Image Tools</a>
+          <a href="/#dev" class="mobile-nav-link" data-i18n="tools.data.checksum-calculator.text.010">Developer Tools</a>
         </nav>
       </div>
     </header>
@@ -104,8 +104,8 @@
       <div class="tool-wrapper">
         <div class="tool-hero">
           <div class="tool-hero-icon">🔐</div>
-          <h1>Checksum Calculator</h1>
-          <p>Calculate MD5, SHA-1, SHA-256, and SHA-512 checksums. Verify file integrity with multiple hash algorithms.</p>
+          <h1 data-i18n="tools.data.checksum-calculator.text.011">Checksum Calculator</h1>
+          <p data-i18n="tools.data.checksum-calculator.text.012">Calculate MD5, SHA-1, SHA-256, and SHA-512 checksums. Verify file integrity with multiple hash algorithms.</p>
         </div>
 
         <div class="card">
@@ -117,20 +117,20 @@
           <input type="file" id="fileInput">
 
           <div class="file-info" id="fileInfo">
-            <div class="file-info-row"><span class="file-info-label">File name:</span><span class="file-info-value" id="fileName">-</span></div>
-            <div class="file-info-row"><span class="file-info-label">Size:</span><span class="file-info-value" id="fileSize">-</span></div>
+            <div class="file-info-row"><span class="file-info-label" data-i18n="tools.data.checksum-calculator.text.013">File name:</span><span class="file-info-value" id="fileName">-</span></div>
+            <div class="file-info-row"><span class="file-info-label" data-i18n="tools.data.checksum-calculator.text.014">Size:</span><span class="file-info-value" id="fileSize">-</span></div>
           </div>
 
           <div class="hash-algorithms">
-            <label class="algo-option"><input type="checkbox" id="md5" checked><span><span class="algo-name">MD5</span><span class="algo-desc">128-bit, fast</span></span></label>
-            <label class="algo-option"><input type="checkbox" id="sha1"><span><span class="algo-name">SHA-1</span><span class="algo-desc">160-bit</span></span></label>
-            <label class="algo-option"><input type="checkbox" id="sha256" checked><span><span class="algo-name">SHA-256</span><span class="algo-desc">256-bit, secure</span></span></label>
-            <label class="algo-option"><input type="checkbox" id="sha512"><span><span class="algo-name">SHA-512</span><span class="algo-desc">512-bit, most secure</span></span></label>
+            <label class="algo-option"><input type="checkbox" id="md5" checked><span><span class="algo-name" data-i18n="tools.data.checksum-calculator.text.015">MD5</span><span class="algo-desc" data-i18n="tools.data.checksum-calculator.text.016">128-bit, fast</span></span></label>
+            <label class="algo-option"><input type="checkbox" id="sha1"><span><span class="algo-name" data-i18n="tools.data.checksum-calculator.text.017">SHA-1</span><span class="algo-desc" data-i18n="tools.data.checksum-calculator.text.018">160-bit</span></span></label>
+            <label class="algo-option"><input type="checkbox" id="sha256" checked><span><span class="algo-name" data-i18n="tools.data.checksum-calculator.text.019">SHA-256</span><span class="algo-desc" data-i18n="tools.data.checksum-calculator.text.020">256-bit, secure</span></span></label>
+            <label class="algo-option"><input type="checkbox" id="sha512"><span><span class="algo-name" data-i18n="tools.data.checksum-calculator.text.021">SHA-512</span><span class="algo-desc" data-i18n="tools.data.checksum-calculator.text.022">512-bit, most secure</span></span></label>
           </div>
 
           <div class="btn-bar">
-            <button class="btn btn-primary" id="btnCalculate" disabled>Calculate Checksums</button>
-            <button class="btn btn-danger" id="btnClear">Clear</button>
+            <button class="btn btn-primary" id="btnCalculate" disabled data-i18n="tools.data.checksum-calculator.text.023">Calculate Checksums</button>
+            <button class="btn btn-danger" id="btnClear" data-i18n="tools.data.checksum-calculator.text.024">Clear</button>
           </div>
 
           <div class="progress-bar" id="progressBar">
@@ -142,13 +142,13 @@
           </div>
 
           <div class="results-section" id="resultsSection" style="display:none">
-            <h3>Checksum Results</h3>
+            <h3 data-i18n="tools.data.checksum-calculator.text.025">Checksum Results</h3>
             <div id="resultsContainer"></div>
           </div>
 
           <div class="verify-section" id="verifySection" style="display:none">
-            <h4>Verify Checksum</h4>
-            <input type="text" class="verify-input" id="verifyInput" placeholder="Paste expected hash here to verify...">
+            <h4 data-i18n="tools.data.checksum-calculator.text.026">Verify Checksum</h4>
+            <input type="text" class="verify-input" id="verifyInput" placeholder="Paste expected hash here to verify..." data-i18n-placeholder="tools.data.checksum-calculator.placeholder.001">
             <div class="verify-result" id="verifyResult"></div>
           </div>
         </div>
@@ -160,48 +160,48 @@
       </div>
 
       <section class="seo-section" aria-label="About this tool">
-        <h2>About Checksum Calculator</h2>
-        <p>A checksum is a digital fingerprint of a file. By calculating and comparing checksums, you can verify that a file hasn't been corrupted or tampered with during transfer or storage. This free online tool calculates multiple hash types for comprehensive file verification.</p>
+        <h2 data-i18n="tools.data.checksum-calculator.text.027">About Checksum Calculator</h2>
+        <p data-i18n="tools.data.checksum-calculator.text.028">A checksum is a digital fingerprint of a file. By calculating and comparing checksums, you can verify that a file hasn't been corrupted or tampered with during transfer or storage. This free online tool calculates multiple hash types for comprehensive file verification.</p>
 
-        <h3>How to Use</h3>
+        <h3 data-i18n="tools.data.checksum-calculator.text.029">How to Use</h3>
         <ol>
-          <li>Select a file by dropping it onto the upload area or clicking to browse.</li>
-          <li>Choose which hash algorithms to calculate (MD5, SHA-1, SHA-256, SHA-512).</li>
+          <li data-i18n="tools.data.checksum-calculator.text.030">Select a file by dropping it onto the upload area or clicking to browse.</li>
+          <li data-i18n="tools.data.checksum-calculator.text.031">Choose which hash algorithms to calculate (MD5, SHA-1, SHA-256, SHA-512).</li>
           <li>Click <strong>Calculate Checksums</strong> to generate the hashes.</li>
-          <li>Copy any hash value or use the verify section to compare against a known checksum.</li>
+          <li data-i18n="tools.data.checksum-calculator.text.032">Copy any hash value or use the verify section to compare against a known checksum.</li>
         </ol>
 
-        <h3>Frequently Asked Questions</h3>
+        <h3 data-i18n="tools.data.checksum-calculator.text.033">Frequently Asked Questions</h3>
 
         <details class="faq-item">
           <summary>Is my file data kept private?</summary>
-          <p>Absolutely. All hash calculations happen entirely in your browser using the Web Crypto API. No file data is sent to any server, logged, or stored anywhere.</p>
+          <p data-i18n="tools.data.checksum-calculator.text.034">Absolutely. All hash calculations happen entirely in your browser using the Web Crypto API. No file data is sent to any server, logged, or stored anywhere.</p>
         </details>
 
         <details class="faq-item">
           <summary>Which hash algorithm should I use?</summary>
-          <p>SHA-256 is recommended for most purposes as it offers a good balance of security and speed. MD5 is fast but cryptographically broken. SHA-512 provides the highest security but is slower.</p>
+          <p data-i18n="tools.data.checksum-calculator.text.035">SHA-256 is recommended for most purposes as it offers a good balance of security and speed. MD5 is fast but cryptographically broken. SHA-512 provides the highest security but is slower.</p>
         </details>
 
         <details class="faq-item">
           <summary>What's the file size limit?</summary>
-          <p>The tool supports files up to 2GB. Larger files may cause browser memory issues. For very large files, consider using command-line tools.</p>
+          <p data-i18n="tools.data.checksum-calculator.text.036">The tool supports files up to 2GB. Larger files may cause browser memory issues. For very large files, consider using command-line tools.</p>
         </details>
 
         <details class="faq-item">
           <summary>How do I verify a downloaded file?</summary>
-          <p>Calculate the checksum of your downloaded file and compare it with the checksum provided by the source. If they match, the file is intact and unmodified.</p>
+          <p data-i18n="tools.data.checksum-calculator.text.037">Calculate the checksum of your downloaded file and compare it with the checksum provided by the source. If they match, the file is intact and unmodified.</p>
         </details>
 
         <details class="faq-item">
           <summary>Can two different files have the same checksum?</summary>
-          <p>Technically possible (called a hash collision), but extremely unlikely with SHA-256 or SHA-512. MD5 and SHA-1 have known vulnerabilities and should not be used for security purposes.</p>
+          <p data-i18n="tools.data.checksum-calculator.text.038">Technically possible (called a hash collision), but extremely unlikely with SHA-256 or SHA-512. MD5 and SHA-1 have known vulnerabilities and should not be used for security purposes.</p>
         </details>
       </section>
 
       <footer class="tool-footer">
-        <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
-        <p>Estimates only &mdash; not financial, legal, or tax advice.</p>
+        <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com" data-i18n="tools.data.checksum-calculator.text.039">psk.dan.metehancetin@mc-novatools.com</a></p>
+        <p data-i18n="tools.data.checksum-calculator.text.040">Estimates only &mdash; not financial, legal, or tax advice.</p>
       </footer>
     </main>
   </div>
@@ -285,13 +285,13 @@
         resultDiv.className = 'hash-result';
         resultDiv.innerHTML = `
           <div class="hash-header">
-            <span class="hash-name">${algos[i]}</span>
-            <span class="hash-time">${time}s</span>
+            <span class="hash-name" data-i18n="tools.data.checksum-calculator.text.041">${algos[i]}</span>
+            <span class="hash-time" data-i18n="tools.data.checksum-calculator.text.042">${time}s</span>
           </div>
           <div class="hash-value">${hash}</div>
           <div class="hash-actions">
-            <button class="hash-btn" onclick="copyHash('${hash}', this)">Copy</button>
-            <span class="copy-feedback">Copied!</span>
+            <button class="hash-btn" onclick="copyHash('${hash}', this)" data-i18n="tools.data.checksum-calculator.text.043">Copy</button>
+            <span class="copy-feedback" data-i18n="tools.data.checksum-calculator.text.044">Copied!</span>
           </div>
         `;
         resultsContainer.appendChild(resultDiv);
