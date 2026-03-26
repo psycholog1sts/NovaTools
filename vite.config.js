@@ -20,6 +20,18 @@ const toolEntries = globSync('src/tools/**/index.html', {
   return acc;
 }, {});
 
+// Root standalone HTML pages
+const rootHtmlEntries = globSync('*.html', {
+  ignore: ['index.html']
+}).reduce((acc, file) => {
+  const name = file
+    .replace(/\\/g, '/')
+    .replace(/\.html$/, '');
+
+  acc[name] = resolve(__dirname, file);
+  return acc;
+}, {});
+
 // Admin entry point
 const adminEntry = {
   admin: resolve(__dirname, 'admin/index.html')
@@ -62,6 +74,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
+        ...rootHtmlEntries,
         ...adminEntry,
         ...blogEntry,
         ...categoryEntries,
