@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Data Tools | CSV, JSON, SQL, Checksums, File Split & Data Utilities | MC NovaTools</title>
+  <meta name="description" content="Free data tools for CSV to JSON, JSON to CSV, SQL formatting, CSV viewing, file splitting, file merging, duplicate finding, renaming, checksum generation, and file organization.">
+  <meta name="keywords" content="data tools, csv to json, json to csv, sql formatter, csv viewer, file splitter, file merger, checksum calculator, duplicate finder, file organizer">
+  <meta name="author" content="Metehan ÇETİN, LPC">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#0A0A0C">
+
+  <meta property="og:title" content="Free Data Tools | CSV, JSON, SQL, Checksums & File Utilities | MC NovaTools">
+  <meta property="og:description" content="Use free browser-based data tools for CSV, JSON, SQL, checksums, file splitting, merging, renaming, and cleanup workflows.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mc-novatools.com/categories/data-tools.html">
+  <meta property="og:image" content="https://mc-novatools.com/og-data-tools.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free Data Tools | MC NovaTools">
+  <meta name="twitter:description" content="Use practical browser-based data tools for CSV, JSON, SQL, checksums, and file-processing workflows.">
+
+  <link rel="canonical" href="https://mc-novatools.com/categories/data-tools.html">
+  <link rel="alternate" hreflang="en" href="https://mc-novatools.com/categories/data-tools.html">
+  <link rel="alternate" hreflang="x-default" href="https://mc-novatools.com/categories/data-tools.html">
+
+  <script src="/i18n.js" defer></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Free Data Tools",
+    "description": "Free data tools for CSV to JSON, JSON to CSV, SQL formatting, CSV viewing, file splitting, file merging, duplicate finding, renaming, checksum generation, and file organization.",
+    "url": "https://mc-novatools.com/categories/data-tools.html",
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://mc-novatools.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Data Tools",
+          "item": "https://mc-novatools.com/categories/data-tools.html"
+        }
+      ]
+    }
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg: #06070b;
+      --panel: rgba(17, 24, 39, 0.72);
+      --border: rgba(255, 255, 255, 0.08);
+      --text: #f8fafc;
+      --muted: #a5b4c7;
+      --primary: #14b8a6;
+      --primary-2: #22d3ee;
+      --glow: 0 20px 60px rgba(20, 184, 166, 0.12);
+      --container: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(20, 184, 166, 0.16), transparent 28%),
+        radial-gradient(circle at top right, rgba(34, 211, 238, 0.10), transparent 24%),
+        linear-gradient(180deg, #05060a 0%, #090b12 100%);
+      min-height: 100vh;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(var(--container), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .main-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(14px);
+      background: rgba(6, 7, 11, 0.84);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-inner {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      font-size: 1.35rem;
+      white-space: nowrap;
+    }
+
+    .logo-mc { color: #22c55e; }
+
+    .nav-desktop {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .nav-desktop a {
+      color: var(--muted);
+      font-weight: 500;
+      transition: 0.2s ease;
+    }
+
+    .nav-desktop a:hover,
+    .nav-desktop a.active {
+      color: var(--text);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .language-selector {
+      min-width: 150px;
+      height: 42px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text);
+      padding: 0 12px;
+      outline: none;
+    }
+
+    .breadcrumb-nav {
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      background: rgba(255,255,255,0.01);
+    }
+
+    .breadcrumb {
+      list-style: none;
+      display: flex;
+      gap: 10px;
+      padding: 14px 0;
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .breadcrumb li + li::before {
+      content: "/";
+      margin-right: 10px;
+      color: rgba(255,255,255,0.22);
+    }
+
+    .main-content { padding-bottom: 64px; }
+
+    .category-hero {
+      padding: 72px 0 28px;
+    }
+
+    .hero-card {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at top left, rgba(20, 184, 166, 0.18), transparent 26%),
+        radial-gradient(circle at bottom right, rgba(34, 211, 238, 0.12), transparent 28%),
+        linear-gradient(180deg, rgba(15, 23, 42, 0.9), rgba(10, 14, 22, 0.96));
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 40px;
+      box-shadow: var(--glow);
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 34px;
+      padding: 0 14px;
+      border-radius: 999px;
+      background: rgba(20, 184, 166, 0.10);
+      border: 1px solid rgba(20, 184, 166, 0.22);
+      color: #d5fff8;
+      font-size: 0.92rem;
+      font-weight: 600;
+      margin-bottom: 18px;
+    }
+
+    .category-title {
+      margin: 0 0 14px;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+    }
+
+    .category-description {
+      margin: 0;
+      max-width: 780px;
+      font-size: 1.08rem;
+      line-height: 1.75;
+      color: var(--muted);
+    }
+
+    .category-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .stat {
+      display: block;
+      padding: 18px;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.03);
+      font-weight: 700;
+      color: #eaf2ff;
+    }
+
+    .tools-section,
+    .content-section,
+    .faq-section {
+      padding: 24px 0;
+    }
+
+    .section-title,
+    .content-section h2,
+    .faq-section h2 {
+      margin: 0 0 18px;
+      font-size: 1.8rem;
+      letter-spacing: -0.03em;
+    }
+
+    .grid {
+      display: grid;
+      gap: 20px;
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .tool-card {
+      display: flex;
+      flex-direction: column;
+      padding: 24px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, rgba(17, 24, 39, 0.82), rgba(9, 13, 20, 0.96));
+      border: 1px solid var(--border);
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.22);
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      min-height: 100%;
+    }
+
+    .tool-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(20, 184, 166, 0.35);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+    }
+
+    .tool-icon {
+      width: 56px;
+      height: 56px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 16px;
+      font-size: 1.5rem;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, rgba(20, 184, 166, 0.16), rgba(34, 211, 238, 0.10));
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .tool-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.12rem;
+      line-height: 1.35;
+    }
+
+    .tool-card p {
+      margin: 0 0 16px;
+      color: var(--muted);
+      line-height: 1.65;
+      flex: 1;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0 16px;
+      border-radius: 12px;
+      font-weight: 700;
+      border: 1px solid transparent;
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      color: white;
+      background: linear-gradient(135deg, #14b8a6, #22d3ee);
+      box-shadow: 0 16px 40px rgba(20, 184, 166, 0.18);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.05);
+    }
+
+    .panel {
+      padding: 28px;
+      border-radius: 24px;
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(12, 18, 30, 0.9), rgba(8, 11, 18, 0.98));
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.22);
+    }
+
+    .content-section p,
+    .content-section li,
+    .faq-item p {
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .content-section ul {
+      padding-left: 20px;
+      margin-top: 10px;
+      margin-bottom: 18px;
+    }
+
+    .content-section h3 {
+      margin: 22px 0 10px;
+      font-size: 1.2rem;
+      letter-spacing: -0.02em;
+    }
+
+    .faq-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .faq-item {
+      padding: 22px;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .faq-item h3 {
+      margin: 0 0 10px;
+      font-size: 1.08rem;
+    }
+
+    .main-footer {
+      border-top: 1px solid var(--border);
+      background: rgba(6, 7, 11, 0.7);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 24px;
+      padding: 28px 0 20px;
+    }
+
+    .footer-col h4 {
+      margin: 0 0 12px;
+      font-size: 1rem;
+    }
+
+    .footer-col p,
+    .footer-col li,
+    .footer-bottom p {
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-col li + li {
+      margin-top: 8px;
+    }
+
+    .footer-col a {
+      color: #cffff7;
+    }
+
+    .footer-bottom {
+      padding: 0 0 32px;
+    }
+
+    .footer-bottom p {
+      margin: 0;
+    }
+
+    @media (max-width: 980px) {
+      .header-inner {
+        min-height: auto;
+        padding: 14px 0;
+        flex-wrap: wrap;
+      }
+
+      .nav-desktop {
+        width: 100%;
+      }
+
+      .grid-3,
+      .category-stats,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero-card,
+      .panel {
+        padding: 22px;
+      }
+
+      .category-hero {
+        padding-top: 42px;
+      }
+
+      .language-selector,
+      .header-actions {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="main-header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="/" class="logo" aria-label="MC NovaTools Home">
+          <span class="logo-text">MC <span class="logo-mc">NovaTools</span></span>
+        </a>
+
+        <nav class="nav-desktop" aria-label="Main navigation">
+          <a href="/categories/pdf-tools.html" data-i18n="nav.pdf">PDF</a>
+          <a href="/categories/image-tools.html" data-i18n="nav.image">Image</a>
+          <a href="/categories/finance-tools.html" data-i18n="nav.finance">Finance</a>
+          <a href="/categories/developer-tools.html" data-i18n="nav.developer">Developer</a>
+          <a href="/categories/text-writing.html" data-i18n="nav.text">Text</a>
+          <a href="/categories/data-tools.html" class="active">Data Tools</a>
+          <a href="/about-us.html" data-i18n="nav.about">About</a>
+        </nav>
+
+        <div class="header-actions">
+          <select id="language-selector" class="language-selector" aria-label="Select Language">
+            <option value="en">🇬🇧 English</option>
+            <option value="tr">🇹🇷 Türkçe</option>
+            <option value="de">🇩🇪 Deutsch</option>
+            <option value="fr">🇫🇷 Français</option>
+            <option value="es">🇪🇸 Español</option>
+            <option value="pt">🇵🇹 Português</option>
+            <option value="ru">🇷🇺 Русский</option>
+            <option value="zh">🇨🇳 中文</option>
+            <option value="ja">🇯🇵 日本語</option>
+            <option value="ko">🇰🇷 한국어</option>
+            <option value="ar">🇸🇦 العربية</option>
+            <option value="hi">🇮🇳 हिंदी</option>
+            <option value="it">🇮🇹 Italiano</option>
+            <option value="pl">🇵🇱 Polski</option>
+            <option value="nl">🇳🇱 Nederlands</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav aria-label="Breadcrumb" class="breadcrumb-nav">
+    <div class="container">
+      <ol class="breadcrumb">
+        <li><a href="/" data-i18n="nav.home">Home</a></li>
+        <li aria-current="page">Data Tools</li>
+      </ol>
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <section class="category-hero">
+      <div class="container">
+        <div class="hero-card">
+          <div class="hero-badge">Free Online Data Utilities</div>
+          <h1 class="category-title">Data Tools for CSV, JSON, SQL, Checksums, and File Processing Workflows</h1>
+          <p class="category-description">
+            Open practical data utilities from one central page. Convert CSV and JSON, format SQL, inspect CSV files,
+            split and merge data files, find duplicates, rename batches, generate checksums, and organize files more cleanly.
+          </p>
+          <div class="category-stats">
+            <span class="stat">10 Data Utilities</span>
+            <span class="stat">Browser-based workflows</span>
+            <span class="stat">Clear data-processing hub</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="tools-section">
+      <div class="container">
+        <h2 class="section-title">Data Tools</h2>
+        <div class="grid grid-3">
+          <article class="tool-card">
+            <div class="tool-icon">📄</div>
+            <h3><a href="/tools/data/csv-to-json/">CSV to JSON</a></h3>
+            <p>Convert CSV datasets into structured JSON format for development and automation workflows.</p>
+            <a href="/tools/data/csv-to-json/" class="btn btn-primary" data-i18n="home.openTool">Use Tool</a>
+          </article>
+
+          <article class="tool-card">
+            <div class="tool-icon">{ }</div>
+            <h3><a href="/tools/data/json-to-csv/">JSON to CSV</a></h3>
+            <p>Turn JSON content into CSV output for spreadsheets, exports, and tabular review.</p>
+            <a href="/tools/data/json-to-csv/" class="btn btn-primary" data-i18n="home.openTool">Use Tool</a>
+          </article>
+
+          <article class="tool-card">
+            <div class="tool-icon">SQL</div>
+            <h3><a href="/tools/data/sql-formatter/">SQL Formatter</a></h3>
+            <p>Format SQL queries for cleaner reading, debugging, collaboration, and documentation.</p>
+            <a href="/tools/data/sql-formatter/" class="btn btn-primary" data-i18n="home.openTool">Use Tool</a>
+          </article>
+
+          <article class="tool-card">
+            <div class="tool-icon">📊</div>
+            <h3><a href="/tools/data/csv-viewer/">CSV Viewer</a></h3>
+            <p>Inspect CSV files in a simpler browser-based view for quick review and cleanup.</p>
+            <a href="/tools/data/csv-viewer/" class="btn btn-primary" data-i18n="home.openTool">Use Tool</a>
+          </article>
+
+          <article class="tool-card">
+            <div class="tool-icon">✂️</div>
+            <h3><a href="/tools/data/file-splitter/">File Splitter</a></h3>
+            <p>Split large files into smaller parts for sharing, transfer, and processing control.</p>
+            <a href="/tools/data/file-splitter/" class="btn btn-primary" data-i18n="home.openTool">Use Tool</a>
+          </article>
+
+          <article class="tool-card">
+            <div class="tool-icon">🔗</div>
+            <h3><a href="/tools/data/file-merger/">File Merger</a></h3>
+            <p>Merge separate file parts back into one cleaner output file when needed.</p>
+            <a href="/tools/data/file-merger/" class="btn btn-primary" data-i18n="home.openTool">Use Tool</a>
+          </article>
+
+          <article class="tool-card">
+            <div class="tool-icon">🧬</div>
+            <h3><a href="/tools/data/duplicate-finder/">Duplicate Finder</a></h3>
+            <p>Find duplicate items or repeated file content more easily during cleanup workflows.</p>
+            <a href="/tools/data/duplicate-finder/" class="btn btn-primary" data-i18n="home.openTool">Use Tool</a>
+          </article>
+
+          <article class="tool-card">
+            <div class="tool-icon">🏷️</div>
+            <h3><a href="/tools/data/file-renamer/">File Renamer</a></h3>
+            <p>Rename files in a more systematic way for consistency and better organization.</p>
+            <a href="/tools/data/file-renamer/" class="btn btn-primary" data-i18n="home.openTool">Use Tool</a>
+          </article>
+
+          <article class="tool-card">
+            <div class="tool-icon">#️⃣</div>
+            <h3><a href="/tools/data/checksum-calculator/">Checksum Calculator</a></h3>
+            <p>Generate checksums to verify file integrity and compare file states more reliably.</p>
+            <a href="/tools/data/checksum-calculator/" class="btn btn-primary" data-i18n="home.openTool">Use Tool</a>
+          </article>
+
+          <article class="tool-card">
+            <div class="tool-icon">🗂️</div>
+            <h3><a href="/tools/data/file-organizer/">File Organizer</a></h3>
+            <p>Organize file sets more clearly with a browser-based utility for simple structure cleanup.</p>
+            <a href="/tools/data/file-organizer/" class="btn btn-primary" data-i18n="home.openTool">Use Tool</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <div class="panel">
+          <h2>Why use this page?</h2>
+          <p>
+            This page gives your data category a proper landing page instead of a broken route.
+            It groups practical file and data-processing utilities into one stable hub and makes the category easier to navigate and trust.
+          </p>
+
+          <h3>What you get here</h3>
+          <ul>
+            <li>Direct links to live data-related tool routes</li>
+            <li>Cleaner landing page for conversion, formatting, and file-processing tasks</li>
+            <li>Better internal linking for the data category</li>
+            <li>Stronger category-level trust and SEO alignment</li>
+          </ul>
+
+          <h3>Best use</h3>
+          <p>
+            Use this page as the central entry point for lightweight data workflows,
+            from CSV and JSON conversion to SQL formatting, checksums, and file organization.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq-section">
+      <div class="container">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-list">
+          <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+            <h3 itemprop="name">Why was the data tools category giving 404?</h3>
+            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">Because the data tools category existed in the category system, but its landing page file had not been created yet. This version adds the missing category page.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+            <h3 itemprop="name">What kinds of tools are included here?</h3>
+            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">This category includes practical tools such as CSV to JSON, JSON to CSV, SQL formatting, CSV viewing, file splitting, file merging, duplicate finding, file renaming, checksum calculation, and file organization.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+            <h3 itemprop="name">Is this a category hub or a single tool?</h3>
+            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">It is a category hub page. It helps users discover and access the live data-related tools already present in the project.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>MC NovaTools</h4>
+          <p data-i18n="common.footerDesc">Practical online tools for PDF, image, finance, text, converters, and development.</p>
+          <p>Metehan ÇETİN, LPC</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Data Tools</h4>
+          <ul>
+            <li><a href="/tools/data/csv-to-json/">CSV to JSON</a></li>
+            <li><a href="/tools/data/json-to-csv/">JSON to CSV</a></li>
+            <li><a href="/tools/data/sql-formatter/">SQL Formatter</a></li>
+            <li><a href="/tools/data/checksum-calculator/">Checksum Calculator</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="common.company">Company</h4>
+          <ul>
+            <li><a href="/about-us.html" data-i18n="common.aboutUs">About Us</a></li>
+            <li><a href="/blog/index.html" data-i18n="nav.blog">Blog</a></li>
+            <li><a href="/contact.html" data-i18n="nav.contact">Contact</a></li>
+            <li><a href="/request-tool.html" data-i18n="nav.request">Request Tool</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="common.legal">Legal</h4>
+          <ul>
+            <li><a href="/privacy-policy.html" data-i18n="nav.privacy">Privacy Policy</a></li>
+            <li><a href="/terms-of-service.html" data-i18n="nav.terms">Terms of Service</a></li>
+            <li><a href="/cookie-policy.html" data-i18n="nav.cookies">Cookie Policy</a></li>
+            <li><a href="/security.html" data-i18n="nav.security">Security</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p data-i18n="footer.copyright">© 2026 MC NovaTools. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
