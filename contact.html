@@ -1,58 +1,469 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Us | MC NovaTools - Get in Touch</title>
-  <meta name="description" content="Contact MC NovaTools for support, feedback, or business inquiries. Reach Metehan ÇETİN, LPC, founder and Psychological Counselor.">
+  <title>Contact | MC NovaTools</title>
+  <meta name="description" content="Contact MC NovaTools for support, feedback, tool requests, or business inquiries. Reach Metehan ÇETİN, LPC through the official contact page.">
   <meta name="author" content="Metehan ÇETİN, LPC">
-  <meta name="robots" content="index, follow">
-  
-  <!-- Open Graph -->
-  <meta property="og:title" content="Contact Us | MC NovaTools">
-  <meta property="og:description" content="Get in touch with MC NovaTools. We'd love to hear from you.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#0A0A0C">
+  <link rel="canonical" href="https://mc-novatools.com/contact.html">
+
+  <meta property="og:title" content="Contact | MC NovaTools">
+  <meta property="og:description" content="Get in touch with MC NovaTools for support, feedback, tool requests, and business inquiries.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://mc-novatools.com/contact.html">
-  
-  <!-- Canonical -->
-  <link rel="canonical" href="https://mc-novatools.com/contact.html">
-  
-  <!-- Styles -->
+  <meta property="og:site_name" content="MC NovaTools">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Contact | MC NovaTools">
+  <meta name="twitter:description" content="Official contact page for MC NovaTools.">
+
   <link rel="stylesheet" href="/src/styles/critical.css">
-  <link rel="stylesheet" href="/src/styles/main.css">
-  <script src="/i18n.js"></script>
-  
-  <!-- Schema.org -->
+  <link rel="stylesheet" href="/src/styles/design-system.css">
+  <script src="/i18n.js" defer></script>
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "ContactPage",
     "name": "Contact MC NovaTools",
-    "description": "Contact us for support, feedback, or business inquiries.",
+    "description": "Contact page for MC NovaTools support, feedback, and business inquiries.",
     "url": "https://mc-novatools.com/contact.html",
     "mainEntity": {
       "@type": "Person",
-      "name": "Metehan ÇETİN",
-      "jobTitle": "Psychological Counselor and Founder",
+      "name": "Metehan ÇETİN, LPC",
+      "jobTitle": "Founder",
       "email": "psk.dan.metehancetin@mc-novatools.com"
     }
   }
   </script>
+
+  <style>
+    :root {
+      --bg: #07080b;
+      --panel: rgba(17, 24, 39, 0.82);
+      --panel-strong: rgba(15, 23, 42, 0.92);
+      --border: rgba(255, 255, 255, 0.08);
+      --text: #f8fafc;
+      --muted: #a5b4c7;
+      --primary: #8b5cf6;
+      --primary-2: #22d3ee;
+      --glow: 0 20px 60px rgba(139, 92, 246, 0.12);
+      --container: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(139, 92, 246, 0.14), transparent 28%),
+        radial-gradient(circle at top right, rgba(34, 211, 238, 0.10), transparent 24%),
+        linear-gradient(180deg, #05060a 0%, #090b12 100%);
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(var(--container), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .main-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(14px);
+      background: rgba(6, 7, 11, 0.84);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-inner {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      font-size: 1.35rem;
+      white-space: nowrap;
+    }
+
+    .logo-mc {
+      color: #22c55e;
+    }
+
+    .nav-desktop {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .nav-desktop a {
+      color: var(--muted);
+      font-weight: 500;
+      transition: 0.2s ease;
+    }
+
+    .nav-desktop a:hover,
+    .nav-desktop a.active {
+      color: var(--text);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .language-selector {
+      min-width: 150px;
+      height: 42px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+      padding: 0 12px;
+      outline: none;
+    }
+
+    .breadcrumb-nav {
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      background: rgba(255,255,255,0.01);
+    }
+
+    .breadcrumb {
+      list-style: none;
+      display: flex;
+      gap: 10px;
+      padding: 14px 0;
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+      flex-wrap: wrap;
+    }
+
+    .breadcrumb li + li::before {
+      content: "/";
+      margin-right: 10px;
+      color: rgba(255,255,255,0.22);
+    }
+
+    .main-content {
+      padding-bottom: 64px;
+    }
+
+    .page-hero {
+      padding: 62px 0 24px;
+    }
+
+    .hero-card {
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 36px;
+      background:
+        radial-gradient(circle at top left, rgba(139, 92, 246, 0.18), transparent 26%),
+        radial-gradient(circle at bottom right, rgba(34, 211, 238, 0.14), transparent 28%),
+        linear-gradient(180deg, rgba(15, 23, 42, 0.92), rgba(10, 14, 22, 0.97));
+      box-shadow: var(--glow);
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 0 14px;
+      border-radius: 999px;
+      background: rgba(139, 92, 246, 0.10);
+      border: 1px solid rgba(139, 92, 246, 0.22);
+      color: #e9ddff;
+      font-size: 0.92rem;
+      font-weight: 600;
+      margin-bottom: 18px;
+    }
+
+    .hero-card h1 {
+      margin: 0 0 12px;
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      line-height: 1.03;
+      letter-spacing: -0.04em;
+    }
+
+    .hero-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.75;
+      max-width: 760px;
+    }
+
+    .contact-section {
+      padding: 24px 0 0;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      gap: 24px;
+    }
+
+    .contact-card,
+    .form-card {
+      background: linear-gradient(180deg, rgba(17, 24, 39, 0.82), rgba(9, 13, 20, 0.96));
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.22);
+    }
+
+    .contact-card h2,
+    .form-card h2 {
+      margin: 0 0 14px;
+      font-size: 1.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .contact-card h3 {
+      margin: 22px 0 10px;
+      font-size: 1.08rem;
+    }
+
+    .contact-card p,
+    .contact-card li,
+    .form-note,
+    .success-note {
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .contact-card ul {
+      padding-left: 20px;
+      margin: 10px 0 18px;
+    }
+
+    .contact-box {
+      margin-top: 18px;
+      padding: 18px;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .contact-box a {
+      color: #d9ccff;
+      word-break: break-word;
+    }
+
+    .quick-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 18px;
+      border-radius: 12px;
+      font-weight: 700;
+      border: 1px solid transparent;
+      transition: 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      color: white;
+      background: linear-gradient(135deg, #8b5cf6, #22d3ee);
+      box-shadow: 0 16px 40px rgba(139, 92, 246, 0.18);
+    }
+
+    .btn-secondary {
+      color: #e9ddff;
+      border-color: rgba(139, 92, 246, 0.25);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.04);
+    }
+
+    .form-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .form-group {
+      display: grid;
+      gap: 8px;
+    }
+
+    .form-group label {
+      font-weight: 600;
+      color: #e8eef9;
+      font-size: 0.95rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+      color: var(--text);
+      padding: 14px 14px;
+      font: inherit;
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: rgba(139, 92, 246, 0.45);
+      box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.12);
+    }
+
+    .form-group textarea {
+      min-height: 160px;
+      resize: vertical;
+    }
+
+    .form-note {
+      margin: 0;
+      font-size: 0.94rem;
+    }
+
+    .success-note {
+      display: none;
+      margin-top: 14px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(34, 197, 94, 0.2);
+      background: rgba(34, 197, 94, 0.06);
+      color: #c8f7d0;
+    }
+
+    .success-note.visible {
+      display: block;
+    }
+
+    .main-footer {
+      margin-top: 42px;
+      border-top: 1px solid var(--border);
+      background: rgba(6, 7, 11, 0.7);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 24px;
+      padding: 28px 0 20px;
+    }
+
+    .footer-col h4 {
+      margin: 0 0 12px;
+      font-size: 1rem;
+    }
+
+    .footer-col p,
+    .footer-col li,
+    .footer-bottom p {
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-col li + li {
+      margin-top: 8px;
+    }
+
+    .footer-col a {
+      color: #d9ccff;
+    }
+
+    .footer-bottom {
+      padding: 0 0 32px;
+    }
+
+    .footer-bottom p {
+      margin: 0;
+    }
+
+    @media (max-width: 980px) {
+      .header-inner {
+        min-height: auto;
+        padding: 14px 0;
+        flex-wrap: wrap;
+      }
+
+      .nav-desktop,
+      .footer-grid,
+      .contact-grid {
+        width: 100%;
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero-card,
+      .contact-card,
+      .form-card {
+        padding: 22px;
+      }
+
+      .page-hero {
+        padding-top: 40px;
+      }
+
+      .language-selector,
+      .header-actions {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
   <header class="main-header">
     <div class="container">
       <div class="header-inner">
-        <a href="/" class="logo">
+        <a href="/" class="logo" aria-label="MC NovaTools Home">
           <span class="logo-text">MC <span class="logo-mc">NovaTools</span></span>
         </a>
-        <nav class="nav-desktop">
-          <a href="/categories/pdf-tools.html" data-i18n="nav.pdf">PDF</a>
-          <a href="/categories/image-tools.html" data-i18n="nav.image">Image</a>
-          <a href="/categories/finance-tools.html" data-i18n="nav.finance">Finance</a>
+
+        <nav class="nav-desktop" aria-label="Main navigation">
+          <a href="/" data-i18n="nav.home">Home</a>
+          <a href="/categories/index.html" data-i18n="tools.categories">Categories</a>
+          <a href="/blog/index.html" data-i18n="nav.blog">Blog</a>
           <a href="/about-us.html" data-i18n="nav.about">About</a>
           <a href="/contact.html" class="active" data-i18n="nav.contact">Contact</a>
         </nav>
+
         <div class="header-actions">
           <select id="language-selector" class="language-selector" aria-label="Select Language">
             <option value="en">🇬🇧 English</option>
@@ -76,60 +487,90 @@
     </div>
   </header>
 
+  <nav aria-label="Breadcrumb" class="breadcrumb-nav">
+    <div class="container">
+      <ol class="breadcrumb">
+        <li><a href="/" data-i18n="nav.home">Home</a></li>
+        <li aria-current="page" data-i18n="nav.contact">Contact</li>
+      </ol>
+    </div>
+  </nav>
+
   <main class="main-content">
     <section class="page-hero">
       <div class="container">
-        <h1>Contact Us</h1>
-        <p>We'd love to hear from you</p>
+        <div class="hero-card">
+          <div class="hero-badge">Official Contact</div>
+          <h1>Contact MC NovaTools</h1>
+          <p>Use this page for support, feedback, tool requests, business inquiries, or bug reports. This contact flow opens your email client directly; it is not a backend submission form.</p>
+        </div>
       </div>
     </section>
 
-    <section class="content-section">
+    <section class="contact-section">
       <div class="container">
         <div class="contact-grid">
-          <div class="contact-info">
+          <div class="contact-card">
             <h2>Get in Touch</h2>
-            <p>Have a question, suggestion, or just want to say hello? Fill out the form and we'll get back to you as soon as possible.</p>
-            
+            <p>If you want to report an issue, suggest a tool, ask a question, or discuss collaboration, this page gives you the direct contact path.</p>
+
             <h3>Contact Information</h3>
-            <p><strong>Founder:</strong> Metehan ÇETİN, LPC<br>
-            <strong>Title:</strong> Psychological Counselor and Founder<br>
-            <strong>Email:</strong> <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
-            
-            <h3>Response Time</h3>
-            <p>We typically respond within 24-48 hours during business days.</p>
+            <div class="contact-box">
+              <p><strong>Metehan ÇETİN, LPC</strong><br>Founder, MC NovaTools</p>
+              <p>Email: <a href="mailto:psk.dan.metehancetin@mc-novatools.com?subject=MC%20NovaTools%20Support">psk.dan.metehancetin@mc-novatools.com</a></p>
+            </div>
+
+            <h3>Best reasons to contact us</h3>
+            <ul>
+              <li>Bug reports or broken page links</li>
+              <li>Tool requests or feature ideas</li>
+              <li>Business or partnership inquiries</li>
+              <li>Privacy, legal, or support questions</li>
+            </ul>
+
+            <h3>Response expectation</h3>
+            <p>Response timing can vary. For urgent issues, use a clear subject line and include the page URL plus a short description of the problem.</p>
+
+            <div class="quick-actions">
+              <a class="btn btn-secondary" href="mailto:psk.dan.metehancetin@mc-novatools.com?subject=MC%20NovaTools%20Support">Email Support</a>
+              <a class="btn btn-secondary" href="/request-tool.html">Request a Tool</a>
+            </div>
           </div>
-          
-          <div class="contact-form-wrapper">
-            <form class="contact-form" action="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com" method="post" enctype="text/plain">
+
+          <div class="form-card">
+            <h2>Create an Email Draft</h2>
+            <p class="form-note">This helper builds a message in your email client. It does not send anything through a site backend.</p>
+
+            <form class="form-grid" id="contactForm">
               <div class="form-group">
                 <label for="name">Your Name *</label>
                 <input type="text" id="name" name="name" required>
               </div>
-              
+
               <div class="form-group">
                 <label for="email">Email Address *</label>
                 <input type="email" id="email" name="email" required>
               </div>
-              
+
               <div class="form-group">
                 <label for="subject">Subject *</label>
                 <select id="subject" name="subject" required>
                   <option value="">Select a subject</option>
-                  <option value="general">General Inquiry</option>
-                  <option value="support">Technical Support</option>
-                  <option value="feature">Feature Request</option>
-                  <option value="business">Business Partnership</option>
-                  <option value="bug">Bug Report</option>
+                  <option value="General Inquiry">General Inquiry</option>
+                  <option value="Technical Support">Technical Support</option>
+                  <option value="Feature Request">Feature Request</option>
+                  <option value="Business Partnership">Business Partnership</option>
+                  <option value="Bug Report">Bug Report</option>
                 </select>
               </div>
-              
+
               <div class="form-group">
                 <label for="message">Message *</label>
-                <textarea id="message" name="message" rows="5" required></textarea>
+                <textarea id="message" name="message" required></textarea>
               </div>
-              
-              <button type="submit" class="btn btn-primary">Send Message</button>
+
+              <button type="submit" class="btn btn-primary">Open Email Draft</button>
+              <div id="successNote" class="success-note">Your email client should open with a prefilled draft.</div>
             </form>
           </div>
         </div>
@@ -142,11 +583,12 @@
       <div class="footer-grid">
         <div class="footer-col">
           <h4>MC NovaTools</h4>
-          <p>300+ free online tools for files, finance, code and creativity.</p>
-          <p class="footer-signature">Metehan ÇETİN, LPC<br>Psychological Counselor and Founder<br><a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
+          <p>Practical online tools for files, finance, code, text, and everyday digital workflows.</p>
+          <p>Metehan ÇETİN, LPC</p>
         </div>
+
         <div class="footer-col">
-          <h4>Tool Categories</h4>
+          <h4>Categories</h4>
           <ul>
             <li><a href="/categories/pdf-tools.html">PDF Tools</a></li>
             <li><a href="/categories/image-tools.html">Image Tools</a></li>
@@ -154,6 +596,7 @@
             <li><a href="/categories/developer-tools.html">Developer Tools</a></li>
           </ul>
         </div>
+
         <div class="footer-col">
           <h4>Company</h4>
           <ul>
@@ -163,6 +606,7 @@
             <li><a href="/request-tool.html">Request Tool</a></li>
           </ul>
         </div>
+
         <div class="footer-col">
           <h4>Legal</h4>
           <ul>
@@ -173,10 +617,51 @@
           </ul>
         </div>
       </div>
+
       <div class="footer-bottom">
-        <p>&copy; 2026 MC NovaTools. Metehan ÇETİN, LPC. All rights reserved.</p>
+        <p>© 2026 MC NovaTools. Metehan ÇETİN, LPC. <a href="mailto:psk.dan.metehancetin@mc-novatools.com?subject=MC%20NovaTools%20Support">psk.dan.metehancetin@mc-novatools.com</a></p>
       </div>
     </div>
   </footer>
+
+  <script>
+    (function () {
+      const form = document.getElementById('contactForm');
+      const successNote = document.getElementById('successNote');
+
+      if (!form) return;
+
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const subject = document.getElementById('subject').value.trim();
+        const message = document.getElementById('message').value.trim();
+
+        if (!name || !email || !subject || !message) {
+          form.reportValidity();
+          return;
+        }
+
+        const mailSubject = encodeURIComponent(`MC NovaTools - ${subject}`);
+        const mailBody = encodeURIComponent(
+`Name: ${name}
+Email: ${email}
+Subject: ${subject}
+
+Message:
+${message}`
+        );
+
+        const mailtoUrl = `mailto:psk.dan.metehancetin@mc-novatools.com?subject=${mailSubject}&body=${mailBody}`;
+        window.location.href = mailtoUrl;
+
+        if (successNote) {
+          successNote.classList.add('visible');
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
