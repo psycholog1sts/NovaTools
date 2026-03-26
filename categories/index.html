@@ -18,11 +18,55 @@
 
   <script src="/i18n.js" defer></script>
 
-  <title>All Tool Categories | MC NovaTools</title>
-  <meta name="description" content="Browse all tool categories on MC NovaTools. Find PDF tools, image converters, financial calculators, developer utilities and more.">
-  <meta name="robots" content="index, follow">
+  <title>Browse All Tool Categories | PDF, Image, Finance, Developer, Text & Converters | MC NovaTools</title>
+  <meta name="description" content="Browse all MC NovaTools categories in one place. Explore PDF tools, image tools, financial calculators, developer utilities, text tools, and practical online converters.">
+  <meta name="keywords" content="tool categories, pdf tools, image tools, finance tools, developer tools, text tools, converters">
+  <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="theme-color" content="#0A0A0C">
   <meta name="author" content="Metehan ÇETİN, LPC">
+
+  <link rel="canonical" href="https://mc-novatools.com/categories/index.html">
+
+  <meta property="og:title" content="Browse All Tool Categories | MC NovaTools">
+  <meta property="og:description" content="Explore all major MC NovaTools categories from one central hub: PDF, image, finance, developer, text, and converters.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mc-novatools.com/categories/index.html">
+  <meta property="og:site_name" content="MC NovaTools">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Browse All Tool Categories | MC NovaTools">
+  <meta name="twitter:description" content="Find the right category faster with a clean central hub for PDF, image, finance, developer, text, and converter tools.">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "CollectionPage",
+        "name": "All Tool Categories",
+        "description": "Browse all MC NovaTools categories including PDF tools, image tools, finance tools, developer tools, text tools, and converters.",
+        "url": "https://mc-novatools.com/categories/index.html"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://mc-novatools.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Categories",
+            "item": "https://mc-novatools.com/categories/index.html"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 
   <style>
     :root {
@@ -33,7 +77,7 @@
       --text: #f5f7fb;
       --muted: #aab4c8;
       --border: rgba(255, 255, 255, 0.09);
-      --primary: #6c63ff;
+      --primary: #8b5cf6;
       --primary-2: #22d3ee;
       --success: #10b981;
       --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
@@ -54,7 +98,7 @@
       font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at top left, rgba(108, 99, 255, 0.18), transparent 35%),
+        radial-gradient(circle at top left, rgba(139, 92, 246, 0.18), transparent 35%),
         radial-gradient(circle at top right, rgba(34, 211, 238, 0.10), transparent 28%),
         linear-gradient(180deg, #05060a 0%, #090b12 100%);
       min-height: 100vh;
@@ -211,13 +255,13 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, rgba(108, 99, 255, 0.10), transparent 55%);
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.10), transparent 55%);
       pointer-events: none;
     }
 
     .category-card:hover {
       transform: translateY(-4px);
-      border-color: rgba(108, 99, 255, 0.45);
+      border-color: rgba(139, 92, 246, 0.45);
       box-shadow: 0 28px 70px rgba(0, 0, 0, 0.42);
     }
 
@@ -264,7 +308,7 @@
       padding: 32px;
       border-radius: 24px;
       background:
-        radial-gradient(circle at top left, rgba(108, 99, 255, 0.22), transparent 30%),
+        radial-gradient(circle at top left, rgba(139, 92, 246, 0.22), transparent 30%),
         linear-gradient(180deg, rgba(17, 21, 34, 0.96), rgba(12, 15, 24, 0.98));
       border: 1px solid var(--border);
       box-shadow: var(--shadow);
@@ -299,7 +343,7 @@
     .btn-primary {
       color: white;
       background: linear-gradient(135deg, var(--primary), var(--primary-2));
-      box-shadow: 0 16px 40px rgba(108, 99, 255, 0.34);
+      box-shadow: 0 16px 40px rgba(139, 92, 246, 0.28);
     }
 
     .btn-primary:hover {
@@ -347,8 +391,8 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      background: rgba(108, 99, 255, 0.12);
-      color: #cbd5ff;
+      background: rgba(139, 92, 246, 0.12);
+      color: #d9ccff;
     }
 
     .trust-content h4 {
@@ -573,10 +617,10 @@
           </a>
 
           <nav class="main-nav" aria-label="Main navigation">
-            <a href="/categories" class="nav-link active" data-i18n="categories.all.sectionTitle">Categories</a>
+            <a href="/categories/index.html" class="nav-link active" data-i18n="categories.all.sectionTitle">Categories</a>
             <a href="/#popular" class="nav-link">Popular</a>
             <a href="/#new" class="nav-link">New</a>
-            <a href="/blog" class="nav-link" data-i18n="nav.blog">Blog</a>
+            <a href="/blog/index.html" class="nav-link" data-i18n="nav.blog">Blog</a>
           </nav>
 
           <div class="header-actions">
@@ -621,7 +665,7 @@
           <h1 class="page-title" data-i18n="categories.all.title">All Categories</h1>
 
           <p class="page-description" data-i18n="categories.all.description">
-            Browse our available category pages and jump directly to the tool collections that are already live.
+            Browse category hubs and jump directly into the live tool collections already available on MC NovaTools.
           </p>
         </div>
       </section>
@@ -635,11 +679,11 @@
       <section class="section section-cta">
         <div class="container">
           <div class="cta-box">
-            <h2 class="cta-title">Can't find what you need?</h2>
+            <h2 class="cta-title">Need a tool that is not here yet?</h2>
             <p class="cta-description">
-              We keep adding new tools. Send your request and we can prioritize the next category or utility.
+              Send your request and help prioritize the next category page or practical utility.
             </p>
-            <a href="/request-tool" class="btn btn-primary btn-lg">Request a Tool</a>
+            <a href="/request-tool.html" class="btn btn-primary btn-lg">Request a Tool</a>
           </div>
         </div>
       </section>
@@ -657,7 +701,7 @@
               </div>
               <div class="trust-content">
                 <h4>Secure & Private</h4>
-                <p>Your data never leaves your browser.</p>
+                <p>Your data stays in your browser whenever possible.</p>
               </div>
             </div>
 
@@ -670,7 +714,7 @@
               </div>
               <div class="trust-content">
                 <h4>Transparent</h4>
-                <p>Clear privacy policy and terms.</p>
+                <p>Clear privacy, terms, and contact access.</p>
               </div>
             </div>
 
@@ -682,7 +726,7 @@
               </div>
               <div class="trust-content">
                 <h4>Support</h4>
-                <p>Contact us for any questions.</p>
+                <p>Contact us when you need help or want to request a tool.</p>
               </div>
             </div>
 
@@ -695,8 +739,8 @@
                 </svg>
               </div>
               <div class="trust-content">
-                <h4>Verified</h4>
-                <p>Google AdSense compliant.</p>
+                <h4>Clear Ownership</h4>
+                <p>Real identity and direct contact information are visible on the site.</p>
               </div>
             </div>
           </div>
@@ -715,14 +759,14 @@
               </a>
 
               <p class="footer-description" data-i18n="common.footerDesc">
-                300+ free online tools for files, finance, code and creativity. Fast, private, secure, and always free.
-                Your data stays on your device.
+                Practical online tools for files, finance, code, text, and everyday digital workflows.
+                Fast, private, secure, and easier to use.
               </p>
 
               <div class="footer-contact">
                 <div class="contact-title">Site Owner & Contact</div>
                 <div class="contact-person">Metehan ÇETİN, LPC</div>
-                <div class="contact-role">Licensed Professional Counselor</div>
+                <div class="contact-role">Founder</div>
                 <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com" class="contact-email">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
@@ -737,32 +781,32 @@
               <div class="footer-column">
                 <h4 class="footer-column-title">Tool Categories</h4>
                 <ul class="footer-column-list">
-                  <li><a href="/categories/pdf-tools">PDF Tools</a></li>
-                  <li><a href="/categories/image-tools">Image Tools</a></li>
-                  <li><a href="/categories/finance-tools">Finance Tools</a></li>
-                  <li><a href="/categories/developer-tools">Developer Tools</a></li>
-                  <li><a href="/categories/text-writing">Text & Writing</a></li>
-                  <li><a href="/categories/converters">Converters</a></li>
+                  <li><a href="/categories/pdf-tools.html">PDF Tools</a></li>
+                  <li><a href="/categories/image-tools.html">Image Tools</a></li>
+                  <li><a href="/categories/finance-tools.html">Finance Tools</a></li>
+                  <li><a href="/categories/developer-tools.html">Developer Tools</a></li>
+                  <li><a href="/categories/text-writing.html">Text & Writing</a></li>
+                  <li><a href="/categories/converters.html">Converters</a></li>
                 </ul>
               </div>
 
               <div class="footer-column">
                 <h4 class="footer-column-title" data-i18n="common.company">Company</h4>
                 <ul class="footer-column-list">
-                  <li><a href="/about-us" data-i18n="common.aboutUs">About Us</a></li>
-                  <li><a href="/blog" data-i18n="nav.blog">Blog</a></li>
-                  <li><a href="/contact" data-i18n="nav.contact">Contact</a></li>
-                  <li><a href="/request-tool" data-i18n="nav.request">Request a Tool</a></li>
+                  <li><a href="/about-us.html" data-i18n="common.aboutUs">About Us</a></li>
+                  <li><a href="/blog/index.html" data-i18n="nav.blog">Blog</a></li>
+                  <li><a href="/contact.html" data-i18n="nav.contact">Contact</a></li>
+                  <li><a href="/request-tool.html" data-i18n="nav.request">Request a Tool</a></li>
                 </ul>
               </div>
 
               <div class="footer-column">
                 <h4 class="footer-column-title" data-i18n="common.legal">Legal & Privacy</h4>
                 <ul class="footer-column-list">
-                  <li><a href="/privacy-policy" data-i18n="nav.privacy">Privacy Policy</a></li>
-                  <li><a href="/terms-of-service" data-i18n="nav.terms">Terms of Service</a></li>
-                  <li><a href="/cookie-policy" data-i18n="nav.cookies">Cookie Policy</a></li>
-                  <li><a href="/security" data-i18n="nav.security">Security</a></li>
+                  <li><a href="/privacy-policy.html" data-i18n="nav.privacy">Privacy Policy</a></li>
+                  <li><a href="/terms-of-service.html" data-i18n="nav.terms">Terms of Service</a></li>
+                  <li><a href="/cookie-policy.html" data-i18n="nav.cookies">Cookie Policy</a></li>
+                  <li><a href="/security.html" data-i18n="nav.security">Security</a></li>
                 </ul>
               </div>
             </div>
@@ -772,7 +816,7 @@
             <div class="owner-avatar">MÇ</div>
             <div class="owner-info">
               <h4>Metehan ÇETİN, LPC</h4>
-              <p>Licensed Professional Counselor & Founder</p>
+              <p>Founder</p>
               <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a>
             </div>
           </div>
@@ -783,13 +827,13 @@
         <div class="container">
           <div class="legal-content">
             <div class="legal-links">
-              <a href="/privacy-policy" data-i18n="nav.privacy">Privacy Policy</a>
+              <a href="/privacy-policy.html" data-i18n="nav.privacy">Privacy Policy</a>
               <span class="legal-divider">|</span>
-              <a href="/terms-of-service" data-i18n="nav.terms">Terms of Service</a>
+              <a href="/terms-of-service.html" data-i18n="nav.terms">Terms of Service</a>
               <span class="legal-divider">|</span>
-              <a href="/cookie-policy" data-i18n="nav.cookies">Cookie Settings</a>
+              <a href="/cookie-policy.html" data-i18n="nav.cookies">Cookie Settings</a>
               <span class="legal-divider">|</span>
-              <a href="/contact" data-i18n="nav.contact">Contact Support</a>
+              <a href="/contact.html" data-i18n="nav.contact">Contact Support</a>
               <span class="legal-divider">|</span>
               <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">Report Issue</a>
             </div>
@@ -816,7 +860,7 @@
       {
         slug: 'image-tools',
         name: 'Image Tools',
-        description: 'Resize, crop, compress, convert, remove backgrounds, and optimize images without uploads.',
+        description: 'Resize, crop, compress, convert, remove backgrounds, and optimize images without heavy workflows.',
         toolCount: 12,
         color: '#22c55e',
         icon: 'image'
@@ -872,7 +916,7 @@
       if (!container) return;
 
       container.innerHTML = categories.map(cat => `
-        <a href="/categories/${cat.slug}" class="category-card">
+        <a href="/categories/${cat.slug}.html" class="category-card">
           <div class="category-icon" style="background: linear-gradient(135deg, ${cat.color}26, ${cat.color}10); color: ${cat.color};">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               ${getIconPath(cat.icon)}

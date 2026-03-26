@@ -3,21 +3,54 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Free Online Image Tools | Compress, Convert, Resize, Crop | MC NovaTools</title>
-  <meta name="description" content="Free online image tools for compression, conversion, resizing, cropping, watermarking, AVIF/WebP conversion, metadata removal, and more.">
+  <title>Free Image Tools | Compress, Convert, Resize, Crop & Optimize | MC NovaTools</title>
+  <meta name="description" content="Free image tools for compression, conversion, resizing, cropping, background removal, watermarking, metadata cleanup, AVIF and WebP optimization.">
+  <meta name="keywords" content="image tools, image compressor, image converter, resize image, crop image, background remover, webp converter, avif converter, metadata remover">
   <meta name="author" content="Metehan ÇETİN, LPC">
   <meta name="theme-color" content="#0A0A0C">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://mc-novatools.com/categories/image-tools">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://mc-novatools.com/categories/image-tools.html">
+
+  <meta property="og:title" content="Free Image Tools | Compress, Convert, Resize, Crop & Optimize | MC NovaTools">
+  <meta property="og:description" content="Use free browser-based image tools for compression, conversion, resizing, cropping, cleanup, and modern format optimization.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mc-novatools.com/categories/image-tools.html">
+  <meta property="og:site_name" content="MC NovaTools">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free Image Tools | MC NovaTools">
+  <meta name="twitter:description" content="Compress, convert, resize, crop, clean and optimize images with practical browser-first tools.">
+
   <script src="/i18n.js" defer></script>
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    "name": "Free Online Image Tools",
-    "description": "Free online image tools for compression, conversion, resizing, cropping, watermarking, AVIF/WebP conversion, metadata removal, and more.",
-    "url": "https://mc-novatools.com/categories/image-tools"
+    "@graph": [
+      {
+        "@type": "CollectionPage",
+        "name": "Free Image Tools",
+        "description": "Free image tools for compression, conversion, resizing, cropping, background removal, watermarking, metadata cleanup, and modern image optimization.",
+        "url": "https://mc-novatools.com/categories/image-tools.html"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://mc-novatools.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Image Tools",
+            "item": "https://mc-novatools.com/categories/image-tools.html"
+          }
+        ]
+      }
+    ]
   }
   </script>
 
@@ -132,6 +165,27 @@
       outline: none;
     }
 
+    .breadcrumb-nav {
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      background: rgba(255,255,255,0.01);
+    }
+
+    .breadcrumb {
+      list-style: none;
+      display: flex;
+      gap: 10px;
+      padding: 14px 0;
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .breadcrumb li + li::before {
+      content: "/";
+      margin-right: 10px;
+      color: rgba(255,255,255,0.22);
+    }
+
     .main-content {
       padding-bottom: 64px;
     }
@@ -168,14 +222,14 @@
       margin-bottom: 18px;
     }
 
-    .category-hero h1 {
+    .category-title {
       margin: 0 0 14px;
       font-size: clamp(2.2rem, 5vw, 4rem);
       line-height: 1.02;
       letter-spacing: -0.04em;
     }
 
-    .category-hero p {
+    .category-description {
       margin: 0;
       max-width: 760px;
       font-size: 1.08rem;
@@ -209,7 +263,8 @@
     }
 
     .tools-section,
-    .content-section {
+    .content-section,
+    .faq-section {
       padding: 24px 0;
     }
 
@@ -221,7 +276,8 @@
       margin-bottom: 18px;
     }
 
-    .section-heading h2 {
+    .section-heading h2,
+    .faq-section h2 {
       margin: 0;
       font-size: 1.8rem;
       letter-spacing: -0.03em;
@@ -309,10 +365,22 @@
       letter-spacing: -0.03em;
     }
 
-    .content-panel p {
-      margin: 0 0 16px;
+    .content-panel h3 {
+      margin: 22px 0 10px;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+    }
+
+    .content-panel p,
+    .content-panel li,
+    .faq-item p {
       color: var(--muted);
       line-height: 1.8;
+    }
+
+    .content-panel ul {
+      padding-left: 20px;
+      margin: 12px 0 18px;
     }
 
     .feature-list {
@@ -328,6 +396,23 @@
       border: 1px solid var(--border);
       background: rgba(255, 255, 255, 0.03);
       color: #d8e7f5;
+    }
+
+    .faq-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .faq-item {
+      padding: 22px;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .faq-item h3 {
+      margin: 0 0 10px;
+      font-size: 1.08rem;
     }
 
     .main-footer {
@@ -374,7 +459,8 @@
 
     @media (max-width: 640px) {
       .hero-card,
-      .content-panel {
+      .content-panel,
+      .faq-item {
         padding: 22px;
       }
 
@@ -382,12 +468,13 @@
         padding-top: 42px;
       }
 
-      .language-selector {
+      .language-selector,
+      .header-actions {
         width: 100%;
       }
 
-      .header-actions {
-        width: 100%;
+      .breadcrumb {
+        flex-wrap: wrap;
       }
     }
   </style>
@@ -401,11 +488,11 @@
         </a>
 
         <nav class="nav-desktop" aria-label="Main Navigation">
-          <a href="/categories/pdf-tools" data-i18n="nav.pdf">PDF Araçları</a>
-          <a href="/categories/image-tools" class="active" data-i18n="nav.image">Görüntü Araçları</a>
-          <a href="/categories/finance-tools" data-i18n="nav.finance">Finans</a>
-          <a href="/categories/developer-tools" data-i18n="nav.developer">Geliştirici</a>
-          <a href="/about-us" data-i18n="nav.about">Hakkımızda</a>
+          <a href="/categories/pdf-tools.html" data-i18n="nav.pdf">PDF</a>
+          <a href="/categories/image-tools.html" class="active" data-i18n="nav.image">Image</a>
+          <a href="/categories/finance-tools.html" data-i18n="nav.finance">Finance</a>
+          <a href="/categories/developer-tools.html" data-i18n="nav.developer">Developer</a>
+          <a href="/about-us.html" data-i18n="nav.about">About</a>
         </nav>
 
         <div class="header-actions">
@@ -431,29 +518,38 @@
     </div>
   </header>
 
+  <nav aria-label="Breadcrumb" class="breadcrumb-nav">
+    <div class="container">
+      <ol class="breadcrumb">
+        <li><a href="/" data-i18n="nav.home">Home</a></li>
+        <li aria-current="page" data-i18n="categories.image.sectionTitle">Image Tools</li>
+      </ol>
+    </div>
+  </nav>
+
   <main class="main-content">
     <section class="category-hero">
       <div class="container">
         <div class="hero-card">
           <div class="hero-badge" data-i18n="categories.image.badge">Free Online Image Utilities</div>
-          <h1 data-i18n="categories.image.title">Image Tools for Compression, Conversion, Editing, and Cleanup</h1>
-          <p data-i18n="categories.image.description">
-            Open the live image tools directly from this category page. Compress files, convert formats,
-            resize, crop, flip, rotate, remove metadata, add watermarks, and generate optimized AVIF or WebP output.
+          <h1 class="category-title" data-i18n="categories.image.title">Image Tools for Compression, Conversion, Editing, and Cleanup</h1>
+          <p class="category-description" data-i18n="categories.image.description">
+            Open the image workflow you need from one category page. Compress files, convert formats,
+            resize, crop, flip, rotate, remove metadata, add watermarks, and optimize exports for modern web delivery.
           </p>
 
           <div class="hero-stats">
             <div class="hero-stat">
               <strong>12</strong>
-              <span>Live image tools</span>
+              <span>Practical image tools</span>
             </div>
             <div class="hero-stat">
-              <strong>Browser-based</strong>
-              <span>No upload-heavy dependency required</span>
+              <strong>Browser-first</strong>
+              <span>Fast workflows without heavy complexity</span>
             </div>
             <div class="hero-stat">
-              <strong>Stable page</strong>
-              <span>No broken source stylesheet dependency</span>
+              <strong>Clean output</strong>
+              <span>Built for simple optimization and editing tasks</span>
             </div>
           </div>
         </div>
@@ -464,56 +560,56 @@
       <div class="container">
         <div class="section-heading">
           <h2 data-i18n="categories.image.sectionTitle">Image Tools</h2>
-          <p>Open the exact image utility you need from one clean category page.</p>
+          <p>Open the exact image utility you need from one clear category hub.</p>
         </div>
 
         <div class="grid grid-3">
           <a class="tool-card" href="/tools/image/compress/">
             <div class="tool-icon">🗜️</div>
             <h3>Image Compress</h3>
-            <p>Reduce image size while keeping visual quality suitable for web delivery.</p>
+            <p>Reduce image size while keeping visual quality suitable for websites, uploads, and sharing.</p>
             <span class="tool-link" data-i18n="home.openTool">Open tool →</span>
           </a>
 
           <a class="tool-card" href="/tools/image/convert/">
             <div class="tool-icon">🔄</div>
             <h3>Format Convert</h3>
-            <p>Convert image files between common formats with a fast browser interface.</p>
+            <p>Convert image files between common formats with a fast browser-based workflow.</p>
             <span class="tool-link" data-i18n="home.openTool">Open tool →</span>
           </a>
 
           <a class="tool-card" href="/tools/image/image-resizer/">
             <div class="tool-icon">📐</div>
             <h3>Image Resizer</h3>
-            <p>Resize images to exact dimensions for social, web, and content publishing.</p>
+            <p>Resize images to exact dimensions for social content, product pages, and publishing tasks.</p>
             <span class="tool-link" data-i18n="home.openTool">Open tool →</span>
           </a>
 
           <a class="tool-card" href="/tools/image/image-cropper/">
             <div class="tool-icon">✂️</div>
             <h3>Image Cropper</h3>
-            <p>Crop unwanted edges and focus on the part of the image you actually need.</p>
+            <p>Crop away distractions and keep only the visual area that matters.</p>
             <span class="tool-link" data-i18n="home.openTool">Open tool →</span>
           </a>
 
           <a class="tool-card" href="/tools/image/image-flipper/">
             <div class="tool-icon">↔️</div>
             <h3>Image Flipper</h3>
-            <p>Flip images horizontally or vertically in a simple editing interface.</p>
+            <p>Flip images horizontally or vertically for quick correction and alternate layouts.</p>
             <span class="tool-link" data-i18n="home.openTool">Open tool →</span>
           </a>
 
           <a class="tool-card" href="/tools/image/image-rotator/">
             <div class="tool-icon">🔃</div>
             <h3>Image Rotator</h3>
-            <p>Rotate images quickly for alignment, orientation fixes, and exports.</p>
+            <p>Rotate images quickly for alignment fixes, uploads, and cleaner presentation.</p>
             <span class="tool-link" data-i18n="home.openTool">Open tool →</span>
           </a>
 
           <a class="tool-card" href="/tools/image/image-to-avif/">
             <div class="tool-icon">🧊</div>
             <h3>Image to AVIF</h3>
-            <p>Convert image files into AVIF format for modern high-efficiency delivery.</p>
+            <p>Convert images into AVIF format for modern high-efficiency delivery.</p>
             <span class="tool-link" data-i18n="home.openTool">Open tool →</span>
           </a>
 
@@ -527,28 +623,28 @@
           <a class="tool-card" href="/tools/image/image-watermark/">
             <div class="tool-icon">💧</div>
             <h3>Image Watermark</h3>
-            <p>Add visible branding or protection marks to exported images.</p>
+            <p>Add branding, signatures, or visible protection marks before publishing images.</p>
             <span class="tool-link" data-i18n="home.openTool">Open tool →</span>
           </a>
 
           <a class="tool-card" href="/tools/image/metadata-remover/">
             <div class="tool-icon">🧹</div>
             <h3>Metadata Remover</h3>
-            <p>Strip metadata from images before sharing or publishing them online.</p>
+            <p>Strip image metadata before sharing, sending, or publishing files online.</p>
             <span class="tool-link" data-i18n="home.openTool">Open tool →</span>
           </a>
 
           <a class="tool-card" href="/tools/image/background-remover/">
             <div class="tool-icon">🪄</div>
             <h3>Background Remover</h3>
-            <p>Remove image backgrounds for product photos, graphics, and quick cutouts.</p>
+            <p>Remove image backgrounds for product photos, cutouts, and clean visual assets.</p>
             <span class="tool-link" data-i18n="home.openTool">Open tool →</span>
           </a>
 
           <a class="tool-card" href="/tools/image/collage-maker/">
             <div class="tool-icon">🧩</div>
             <h3>Collage Maker</h3>
-            <p>Combine multiple images into one composed layout for sharing or presentations.</p>
+            <p>Combine multiple images into a single composition for sharing and presentation use.</p>
             <span class="tool-link" data-i18n="home.openTool">Open tool →</span>
           </a>
         </div>
@@ -560,18 +656,52 @@
         <div class="content-panel">
           <h2>Why use this page?</h2>
           <p>
-            This page works as a stable image-tools category landing page for the live utilities already in the project.
-            It removes the broken `/src/...` stylesheet dependency that caused unstyled category screens.
+            This category hub makes image workflows easier to discover and easier to trust. Instead of sending users
+            through scattered routes, it gives them a clear starting point for compression, cleanup, resizing, conversion,
+            and modern image export tasks.
           </p>
-          <p>
-            Use it as the clean entry point for image compression, conversion, editing, cleanup, and format optimization.
-          </p>
+
+          <h3>What this category helps with</h3>
+          <ul>
+            <li>Reducing image size for faster websites and uploads</li>
+            <li>Converting images into modern formats like WebP and AVIF</li>
+            <li>Cleaning metadata before sharing files publicly</li>
+            <li>Handling quick editing tasks without opening heavy software</li>
+          </ul>
 
           <div class="feature-list">
             <div class="feature-item">Direct links to live image tool routes</div>
-            <div class="feature-item">No broken source stylesheet dependency</div>
-            <div class="feature-item">Fast standalone category layout</div>
-            <div class="feature-item">Cloudflare-friendly static HTML structure</div>
+            <div class="feature-item">Fast static category structure</div>
+            <div class="feature-item">Cleaner information architecture</div>
+            <div class="feature-item">Better trust and category-level SEO signals</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq-section">
+      <div class="container">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-list">
+          <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+            <h3 itemprop="name">What kind of image tasks can I do here?</h3>
+            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">This category focuses on practical image tasks such as compression, format conversion, resizing, cropping, rotating, watermarking, metadata cleanup, background removal, and collage creation.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+            <h3 itemprop="name">Why does this category page matter?</h3>
+            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">A good category page helps users understand what tools are available, choose the right workflow faster, and trust the site more easily. It also gives search engines clearer topical signals.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+            <h3 itemprop="name">Which tools are most useful for website optimization?</h3>
+            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">Image compression, WebP conversion, AVIF conversion, resizing, and metadata removal are usually the most useful tools for improving delivery speed, reducing file weight, and preparing images for modern websites.</p>
+            </div>
           </div>
         </div>
       </div>

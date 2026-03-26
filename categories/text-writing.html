@@ -3,21 +3,54 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Free Text Writing Tools | Word Counter, Case Converter, Text Utilities | MC NovaTools</title>
-  <meta name="description" content="Free online text writing tools for word counting, case conversion, lorem ipsum generation, slug conversion, ASCII text, URL encoding, and more.">
+  <title>Free Text & Writing Tools | Word Counter, Case Converter, Slug, Diff & Text Utilities | MC NovaTools</title>
+  <meta name="description" content="Free text and writing tools for word counting, character counting, case conversion, lorem ipsum generation, slug creation, text diff, ASCII conversion, HTML entity encoding, and URL-safe text workflows.">
+  <meta name="keywords" content="text tools, writing tools, word counter, character counter, case converter, text diff, lorem ipsum generator, slug generator, url encoder">
   <meta name="author" content="Metehan ÇETİN, LPC">
   <meta name="theme-color" content="#0A0A0C">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://mc-novatools.com/categories/text-writing">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://mc-novatools.com/categories/text-writing.html">
+
+  <meta property="og:title" content="Free Text & Writing Tools | Word Counter, Case Converter, Slug & Text Utilities | MC NovaTools">
+  <meta property="og:description" content="Use free browser-based text tools for counting, formatting, comparison, cleanup, encoding, slug creation, and writing support workflows.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mc-novatools.com/categories/text-writing.html">
+  <meta property="og:site_name" content="MC NovaTools">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free Text & Writing Tools | MC NovaTools">
+  <meta name="twitter:description" content="Practical browser-based text tools for writing, formatting, comparison, encoding, and text cleanup tasks.">
+
   <script src="/i18n.js" defer></script>
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    "name": "Free Text Writing Tools",
-    "description": "Free online text writing tools for word counting, case conversion, lorem ipsum generation, slug conversion, ASCII text, URL encoding, and more.",
-    "url": "https://mc-novatools.com/categories/text-writing"
+    "@graph": [
+      {
+        "@type": "CollectionPage",
+        "name": "Free Text & Writing Tools",
+        "description": "Free text and writing tools for word counting, character counting, case conversion, lorem ipsum generation, slug creation, text diff, ASCII conversion, HTML entity encoding, and URL-safe text workflows.",
+        "url": "https://mc-novatools.com/categories/text-writing.html"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://mc-novatools.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Text & Writing",
+            "item": "https://mc-novatools.com/categories/text-writing.html"
+          }
+        ]
+      }
+    ]
   }
   </script>
 
@@ -30,9 +63,9 @@
       --border: rgba(255, 255, 255, 0.08);
       --text: #f8fafc;
       --muted: #a5b4c7;
-      --primary: #22d3ee;
-      --primary-2: #8b5cf6;
-      --glow: 0 20px 60px rgba(34, 211, 238, 0.12);
+      --primary: #8b5cf6;
+      --primary-2: #22d3ee;
+      --glow: 0 20px 60px rgba(139, 92, 246, 0.12);
       --radius: 20px;
       --container: 1180px;
     }
@@ -132,6 +165,27 @@
       outline: none;
     }
 
+    .breadcrumb-nav {
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      background: rgba(255,255,255,0.01);
+    }
+
+    .breadcrumb {
+      list-style: none;
+      display: flex;
+      gap: 10px;
+      padding: 14px 0;
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .breadcrumb li + li::before {
+      content: "/";
+      margin-right: 10px;
+      color: rgba(255,255,255,0.22);
+    }
+
     .main-content {
       padding-bottom: 64px;
     }
@@ -168,14 +222,14 @@
       margin-bottom: 18px;
     }
 
-    .category-hero h1 {
+    .category-title {
       margin: 0 0 14px;
       font-size: clamp(2.2rem, 5vw, 4rem);
       line-height: 1.02;
       letter-spacing: -0.04em;
     }
 
-    .category-hero p {
+    .category-description {
       margin: 0;
       max-width: 760px;
       font-size: 1.08rem;
@@ -209,7 +263,8 @@
     }
 
     .tools-section,
-    .content-section {
+    .content-section,
+    .faq-section {
       padding: 24px 0;
     }
 
@@ -221,7 +276,8 @@
       margin-bottom: 18px;
     }
 
-    .section-heading h2 {
+    .section-heading h2,
+    .faq-section h2 {
       margin: 0;
       font-size: 1.8rem;
       letter-spacing: -0.03em;
@@ -309,10 +365,23 @@
       letter-spacing: -0.03em;
     }
 
-    .content-panel p {
+    .content-panel h3 {
+      margin: 22px 0 10px;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+    }
+
+    .content-panel p,
+    .content-panel li,
+    .faq-item p {
       margin: 0 0 16px;
       color: var(--muted);
       line-height: 1.8;
+    }
+
+    .content-panel ul {
+      padding-left: 20px;
+      margin: 12px 0 18px;
     }
 
     .feature-list {
@@ -328,6 +397,23 @@
       border: 1px solid var(--border);
       background: rgba(255, 255, 255, 0.03);
       color: #d8e7f5;
+    }
+
+    .faq-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .faq-item {
+      padding: 22px;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .faq-item h3 {
+      margin: 0 0 10px;
+      font-size: 1.08rem;
     }
 
     .main-footer {
@@ -374,7 +460,8 @@
 
     @media (max-width: 640px) {
       .hero-card,
-      .content-panel {
+      .content-panel,
+      .faq-item {
         padding: 22px;
       }
 
@@ -382,12 +469,13 @@
         padding-top: 42px;
       }
 
-      .language-selector {
+      .language-selector,
+      .header-actions {
         width: 100%;
       }
 
-      .header-actions {
-        width: 100%;
+      .breadcrumb {
+        flex-wrap: wrap;
       }
     }
   </style>
@@ -401,11 +489,11 @@
         </a>
 
         <nav class="nav-desktop" aria-label="Main Navigation">
-          <a href="/categories/pdf-tools" data-i18n="nav.pdf">PDF</a>
-          <a href="/categories/image-tools" data-i18n="nav.image">Image</a>
-          <a href="/categories/finance-tools" data-i18n="nav.finance">Finance</a>
-          <a href="/categories/text-writing" class="active" data-i18n="nav.text">Text</a>
-          <a href="/about-us" data-i18n="nav.about">About</a>
+          <a href="/categories/pdf-tools.html" data-i18n="nav.pdf">PDF</a>
+          <a href="/categories/image-tools.html" data-i18n="nav.image">Image</a>
+          <a href="/categories/finance-tools.html" data-i18n="nav.finance">Finance</a>
+          <a href="/categories/text-writing.html" class="active" data-i18n="nav.text">Text</a>
+          <a href="/about-us.html" data-i18n="nav.about">About</a>
         </nav>
 
         <div class="header-actions">
@@ -431,30 +519,38 @@
     </div>
   </header>
 
+  <nav aria-label="Breadcrumb" class="breadcrumb-nav">
+    <div class="container">
+      <ol class="breadcrumb">
+        <li><a href="/" data-i18n="nav.home">Home</a></li>
+        <li aria-current="page" data-i18n="categories.text.sectionTitle">Text & Writing</li>
+      </ol>
+    </div>
+  </nav>
+
   <main class="main-content">
     <section class="category-hero">
       <div class="container">
         <div class="hero-card">
           <div class="hero-badge" data-i18n="categories.text.badge">Free Online Text Utilities</div>
-          <h1 data-i18n="categories.text.title">Text Tools for Counting, Formatting, Converting, and Cleanup</h1>
-          <p data-i18n="categories.text.description">
-            Open the live text tools directly from this category page. Count words and characters,
-            convert text case, generate lorem ipsum, encode entities, create slugs, compare text,
-            transform text to ASCII, and handle URL-safe output.
+          <h1 class="category-title" data-i18n="categories.text.title">Text Tools for Counting, Formatting, Converting, and Cleanup</h1>
+          <p class="category-description" data-i18n="categories.text.description">
+            Open practical writing and text-processing tools from one clean category page. Count words and characters,
+            convert text case, generate placeholder copy, compare text, create slugs, encode output safely, and clean text for publishing.
           </p>
 
           <div class="hero-stats">
             <div class="hero-stat">
               <strong>10</strong>
-              <span>Live text tools</span>
+              <span>Practical text tools</span>
             </div>
             <div class="hero-stat">
-              <strong>Browser-based</strong>
-              <span>No install required</span>
+              <strong>Browser-first</strong>
+              <span>Fast workflows without heavy setup</span>
             </div>
             <div class="hero-stat">
-              <strong>Stable page</strong>
-              <span>No broken source stylesheet dependency</span>
+              <strong>Clean output</strong>
+              <span>Built for writing, formatting, and text utility tasks</span>
             </div>
           </div>
         </div>
@@ -465,77 +561,77 @@
       <div class="container">
         <div class="section-heading">
           <h2 data-i18n="categories.text.sectionTitle">Text Tools</h2>
-          <p>Open the exact writing or text-processing utility you need from one clean category page.</p>
+          <p>Open the exact writing or text-processing utility you need from one clear category hub.</p>
         </div>
 
         <div class="grid grid-3">
           <a class="tool-card" href="/tools/text/word-counter/">
             <div class="tool-icon">🔢</div>
             <h3>Word Counter</h3>
-            <p>Count words, characters, sentences, and paragraphs instantly.</p>
+            <p>Count words, characters, sentences, and paragraphs quickly for writing, editing, and publishing tasks.</p>
             <span class="tool-link" data-i18n="home.openTool">Open tool →</span>
           </a>
 
           <a class="tool-card" href="/tools/text/character-counter/">
             <div class="tool-icon">📏</div>
             <h3>Character Counter</h3>
-            <p>Measure total characters quickly for forms, bios, posts, and limits.</p>
+            <p>Measure total characters instantly for bios, post limits, forms, and tighter copy requirements.</p>
             <span class="tool-link" data-i18n="home.openTool">Open tool →</span>
           </a>
 
           <a class="tool-card" href="/tools/text/case-converter/">
             <div class="tool-icon">🔄</div>
             <h3>Case Converter</h3>
-            <p>Convert text between uppercase, lowercase, title case, and more.</p>
+            <p>Convert text between uppercase, lowercase, sentence case, title case, and other writing formats.</p>
             <span class="tool-link" data-i18n="home.openTool">Open tool →</span>
           </a>
 
           <a class="tool-card" href="/tools/text/lorem-ipsum-generator/">
             <div class="tool-icon">📃</div>
             <h3>Lorem Ipsum Generator</h3>
-            <p>Create placeholder text for layouts, content drafts, and mockups.</p>
+            <p>Create placeholder text for interface layouts, design drafts, landing pages, and content mockups.</p>
             <span class="tool-link" data-i18n="home.openTool">Open tool →</span>
           </a>
 
           <a class="tool-card" href="/tools/text/html-entity-encoder/">
             <div class="tool-icon">🧩</div>
             <h3>HTML Entity Encoder</h3>
-            <p>Encode special characters safely for HTML output and publishing.</p>
+            <p>Encode special characters safely for HTML output, publishing workflows, and content cleanup.</p>
             <span class="tool-link" data-i18n="home.openTool">Open tool →</span>
           </a>
 
           <a class="tool-card" href="/tools/text/palindrome-checker/">
             <div class="tool-icon">🪞</div>
             <h3>Palindrome Checker</h3>
-            <p>Check whether text reads the same forward and backward.</p>
+            <p>Check whether a word or phrase reads the same forward and backward with simple input handling.</p>
             <span class="tool-link" data-i18n="home.openTool">Open tool →</span>
           </a>
 
           <a class="tool-card" href="/tools/text/text-diff/">
             <div class="tool-icon">🆚</div>
             <h3>Text Diff</h3>
-            <p>Compare two text blocks and spot differences quickly.</p>
+            <p>Compare two text blocks quickly and spot changes, edits, or removed lines more easily.</p>
             <span class="tool-link" data-i18n="home.openTool">Open tool →</span>
           </a>
 
           <a class="tool-card" href="/tools/text/text-to-ascii/">
             <div class="tool-icon">⌨️</div>
             <h3>Text to ASCII</h3>
-            <p>Convert normal text into ASCII-based output for simple formatting tasks.</p>
+            <p>Convert normal text into ASCII-based output for formatting, experiments, and simple transformation tasks.</p>
             <span class="tool-link" data-i18n="home.openTool">Open tool →</span>
           </a>
 
           <a class="tool-card" href="/tools/text/text-to-slug/">
             <div class="tool-icon">🔗</div>
             <h3>Text to Slug</h3>
-            <p>Turn titles and phrases into clean, URL-friendly slugs.</p>
+            <p>Turn titles and phrases into clean, URL-friendly slugs for posts, pages, and publishing systems.</p>
             <span class="tool-link" data-i18n="home.openTool">Open tool →</span>
           </a>
 
           <a class="tool-card" href="/tools/text/url-encoder/">
             <div class="tool-icon">🌐</div>
             <h3>URL Encoder</h3>
-            <p>Encode and decode text for safe use inside URLs and query strings.</p>
+            <p>Encode and decode text safely for use inside links, parameters, query strings, and web forms.</p>
             <span class="tool-link" data-i18n="home.openTool">Open tool →</span>
           </a>
         </div>
@@ -547,18 +643,51 @@
         <div class="content-panel">
           <h2>Why use this page?</h2>
           <p>
-            This page works as a stable text-tools category landing page for the live utilities already in the project.
-            It removes the broken <strong>/src/...</strong> stylesheet dependency that caused unstyled category pages.
+            This category page gives your writing and text utilities a stable entry point instead of sending users through scattered routes.
+            It helps people find the right text tool faster and makes the category itself easier to understand and trust.
           </p>
-          <p>
-            Use it as the clean entry point for writing support, text formatting, comparison, conversion, and utility tasks.
-          </p>
+
+          <h3>What this category helps with</h3>
+          <ul>
+            <li>Counting and measuring text for content, forms, and social publishing</li>
+            <li>Cleaning and converting text into safer or more usable output formats</li>
+            <li>Comparing text blocks and generating placeholder writing quickly</li>
+            <li>Improving category-level clarity for both users and search engines</li>
+          </ul>
 
           <div class="feature-list">
             <div class="feature-item">Direct links to live text tool routes</div>
-            <div class="feature-item">No broken source stylesheet dependency</div>
-            <div class="feature-item">Fast standalone category layout</div>
-            <div class="feature-item">Cloudflare-friendly static HTML structure</div>
+            <div class="feature-item">Cleaner category structure for writing workflows</div>
+            <div class="feature-item">Static page setup with stronger trust signals</div>
+            <div class="feature-item">Better SEO alignment for text utility intent</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq-section">
+      <div class="container">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-list">
+          <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+            <h3 itemprop="name">What kinds of tools are included here?</h3>
+            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">This category includes text and writing utilities such as word counters, character counters, case converters, slug generators, diff tools, encoding helpers, lorem ipsum generators, and related cleanup tools.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+            <h3 itemprop="name">Who is this page useful for?</h3>
+            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">It is useful for writers, editors, marketers, students, developers, and anyone who needs quick browser-based text utilities for formatting, checking, counting, or transforming text.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+            <h3 itemprop="name">Why does a dedicated text tools category page matter?</h3>
+            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">A dedicated category page makes it easier to discover the right tool, improves navigation, strengthens topical relevance, and gives search engines clearer signals about the type of utilities grouped here.</p>
+            </div>
           </div>
         </div>
       </div>
