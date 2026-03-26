@@ -30,7 +30,7 @@
   <link rel="stylesheet" href="/src/styles/design-system.css">
   
   <!-- i18n Script -->
-  <script src="/i18n.js"></script>
+  <script src="/i18n.js" defer></script>
   
   <!-- Meta -->
   <title>Free Online Tools for PDF, Image, Finance & Developer Work | MC NovaTools</title>
@@ -116,6 +116,7 @@
           
           <!-- Desktop Nav -->
           <nav class="main-nav" aria-label="Main navigation">
+            <a href="/categories/index.html" class="nav-link" data-i18n="tools.categories">Categories</a>
             <a href="/categories/pdf-tools.html" class="nav-link" data-i18n="nav.pdf">PDF</a>
             <a href="/categories/image-tools.html" class="nav-link" data-i18n="nav.image">Image</a>
             <a href="/categories/finance-tools.html" class="nav-link" data-i18n="nav.finance">Finance</a>
@@ -166,10 +167,10 @@
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
       <nav class="mobile-nav">
-        <a href="/categories" class="mobile-nav-link" data-i18n="tools.categories">Categories</a>
+        <a href="/categories/index.html" class="mobile-nav-link" data-i18n="tools.categories">Categories</a>
         <a href="#popular" class="mobile-nav-link" data-i18n="home.sections.popularTitle">Popular Tools</a>
         <a href="#new" class="mobile-nav-link" data-i18n="home.sections.newTitle">New Tools</a>
-        <a href="/blog" class="mobile-nav-link" data-i18n="nav.blog">Blog</a>
+        <a href="/blog/index.html" class="mobile-nav-link" data-i18n="nav.blog">Blog</a>
       </nav>
     </div>
 
@@ -209,13 +210,13 @@
               privacy-conscious utilities. Clear workflows, no forced signup, and a cleaner user experience.
             </p>
             <div class="hero-actions">
-              <a href="/categories" class="btn btn-primary btn-lg">
+              <a href="/categories/index.html" class="btn btn-primary btn-lg">
                 <span data-i18n="hero.cta">Explore Tools</span>
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M5 12h14M12 5l7 7-7 7"/>
                 </svg>
               </a>
-              <a href="#categories" class="btn btn-secondary btn-lg" data-i18n="hero.browse">Browse Categories</a>
+              <a href="/categories/index.html" class="btn btn-secondary btn-lg" data-i18n="hero.browse">Browse Categories</a>
             </div>
             <div class="hero-stats">
               <div class="stat">
@@ -352,7 +353,7 @@
             <p class="cta-description" data-i18n="home.viewAllDesc">
               Browse category hubs for PDF, image, finance, text, converter, security, and developer workflows.
             </p>
-            <a href="/categories" class="btn btn-primary btn-lg">
+            <a href="/categories/index.html" class="btn btn-primary btn-lg">
               <span data-i18n="home.viewAllCategories">View All Categories</span>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -447,7 +448,7 @@
                 <div class="contact-title" data-i18n="home.footer.ownerTitle">Site Owner & Contact</div>
                 <div class="contact-person">Metehan ÇETİN, LPC</div>
                 <div class="contact-role">Founder</div>
-                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com" class="contact-email">
+                <a href="mailto:psk.dan.metehancetin@mc-novatools.com?subject=MC%20NovaTools%20Support" class="contact-email">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
                     <polyline points="22,6 12,13 2,6"/>
@@ -499,7 +500,7 @@
             <div class="owner-info">
               <h4>Metehan ÇETİN, LPC</h4>
               <p>Founder</p>
-              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a>
+              <a href="mailto:psk.dan.metehancetin@mc-novatools.com?subject=MC%20NovaTools%20Support">psk.dan.metehancetin@mc-novatools.com</a>
             </div>
           </div>
         </div>
@@ -516,9 +517,9 @@
               <span class="legal-divider">|</span>
               <a href="/cookie-policy.html">Cookie Settings</a>
               <span class="legal-divider">|</span>
-              <a href="/contact.html" data-i18n="home.footer.legalBarContact">Contact Support</a>
+              <a href="mailto:psk.dan.metehancetin@mc-novatools.com?subject=MC%20NovaTools%20Support" data-i18n="home.footer.legalBarContact">Contact Support</a>
               <span class="legal-divider">|</span>
-              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=psk.dan.metehancetin@mc-novatools.com" data-i18n="home.footer.legalBarIssue">Report Issue</a>
+              <a href="mailto:psk.dan.metehancetin@mc-novatools.com?subject=MC%20NovaTools%20Issue%20Report" data-i18n="home.footer.legalBarIssue">Report Issue</a>
             </div>
             <p class="copyright" data-i18n="footer.copyright">
               © 2026 MC NovaTools. Owned and operated by Metehan ÇETİN. All rights reserved.
