@@ -55,6 +55,10 @@ function getCategoryCountLabel(category) {
   return t('home.toolsGeneric', 'Tools');
 }
 
+function getCategoryHref(category) {
+  return `/categories/${category.slug}.html`;
+}
+
 // ============================================
 // MOBILE MENU
 // ============================================
@@ -92,12 +96,10 @@ function updateHomepageStats() {
   const statValues = document.querySelectorAll('.hero-stats .stat .stat-value');
   if (!statValues.length) return;
 
-  // 2. kutu: kategori sayısı
   if (statValues[1]) {
     statValues[1].textContent = String(categories.length);
   }
 
-  // 1. kutu: toplam araç sayısı (sadece gerçekten doluysa güncelle)
   const totalTools = categories.reduce((sum, category) => {
     const count = Number(category.toolCount) || 0;
     return sum + count;
@@ -115,9 +117,8 @@ function renderCategories() {
   const container = document.getElementById('categoriesGrid');
   if (!container) return;
 
-  // Kullanıcı 12 kategori görsün diye tamamını basıyoruz
   container.innerHTML = categories.map((category) => `
-    <a href="/categories/${category.slug}" class="category-card">
+    <a href="${getCategoryHref(category)}" class="category-card">
       <div
         class="category-icon"
         style="background: linear-gradient(135deg, ${category.color}20, ${category.color}10); color: ${category.color}"
@@ -429,7 +430,7 @@ function initSearch() {
   ];
 
   searchInput.oninput = (e) => {
-    const query = e.target.value.toLowerCase();
+    const query = e.target.value.toLowerCase().trim();
 
     if (query.length < 2) {
       searchResults.innerHTML = '';
