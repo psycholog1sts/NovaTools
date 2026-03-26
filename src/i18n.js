@@ -1,27 +1,18 @@
-  /**
+/**
  * MC NovaTools - Internationalization (i18n) System
  * Multi-language support for all pages
  */
 
-(function() {
+(function () {
   'use strict';
 
-  // Supported languages
   const SUPPORTED_LANGUAGES = ['en', 'tr', 'de', 'fr', 'es', 'pt', 'ru', 'zh', 'ja', 'ko', 'ar', 'hi', 'it', 'pl', 'nl'];
-  
-  // Default language
   const DEFAULT_LANGUAGE = 'en';
-  
-  // Current language
+
   let currentLanguage = DEFAULT_LANGUAGE;
-  
-  // Translations cache
   const translations = {};
-  
-  // Initialization state
   let isInitialized = false;
-  
-  // Language names for display
+
   const LANGUAGE_NAMES = {
     en: 'English',
     tr: 'Türkçe',
@@ -40,7 +31,6 @@
     nl: 'Nederlands'
   };
 
-  // Language flags
   const LANGUAGE_FLAGS = {
     en: '🇬🇧',
     tr: '🇹🇷',
@@ -59,9 +49,6 @@
     nl: '🇳🇱'
   };
 
-  /**
-   * Get saved language from localStorage or detect browser language
-   */
   function getInitialLanguage() {
     try {
       const saved = localStorage.getItem('mc-novatools-language');
@@ -71,214 +58,211 @@
     } catch (e) {
       console.warn('localStorage not available');
     }
-    
-    // Detect browser language
-    const browserLang = navigator.language || navigator.userLanguage;
-    const langCode = browserLang.split('-')[0];
-    
+
+    const browserLang = navigator.language || navigator.userLanguage || DEFAULT_LANGUAGE;
+    const langCode = String(browserLang).split('-')[0].toLowerCase();
+
     if (SUPPORTED_LANGUAGES.includes(langCode)) {
       return langCode;
     }
-    
+
     return DEFAULT_LANGUAGE;
   }
 
-  /**
-   * Load translations for a language
-   */
+  function getTranslationUrl(lang) {
+    return `/locales/${lang}/translation.json`;
+  }
+
   async function loadTranslations(lang) {
     if (translations[lang]) {
       return translations[lang];
     }
-    
+
     try {
-      const response = await fetch(`./locales/${lang}/translation.json`);
+      const response = await fetch(getTranslationUrl(lang), {
+        cache: 'no-cache',
+        credentials: 'same-origin'
+      });
+
       if (!response.ok) {
         throw new Error(`Failed to load translations for ${lang}`);
       }
+
       const data = await response.json();
       translations[lang] = flattenTranslations(data);
       return translations[lang];
     } catch (error) {
       console.error('Error loading translations:', error);
-      // Return empty object, will fall back to default text
-      return {};
+      translations[lang] = {};
+      return translations[lang];
     }
   }
 
-  /**
-   * Flatten nested translation objects
-   */
   function flattenTranslations(obj, prefix = '') {
     const result = {};
-    
+
     for (const key in obj) {
-      if (typeof obj[key] === 'object' && obj[key] !== null) {
-        const nested = flattenTranslations(obj[key], `${prefix + key  }.`);
-        Object.assign(result, nested);
+      if (!Object.prototype.hasOwnProperty.call(obj, key)) continue;
+
+      if (typeof obj[key] === 'object' && obj[key] !== null && !Array.isArray(obj[key])) {
+        Object.assign(result, flattenTranslations(obj[key], `${prefix}${key}.`));
       } else {
-        result[prefix + key] = obj[key];
+        result[`${prefix}${key}`] = obj[key];
       }
     }
-    
+
     return result;
   }
 
-  /**
-   * Get translation for a key
-   */
   function t(key, fallback = null) {
     const translation = translations[currentLanguage];
-    if (translation && translation[key]) {
+    if (translation && Object.prototype.hasOwnProperty.call(translation, key)) {
       return translation[key];
     }
     return fallback !== null ? fallback : key;
   }
 
-  /**
-   * Update all elements with data-i18n attribute
-   */
+  function storeOriginalContent(el, attrName, value) {
+    const storageKey = `data-i18n-original-${attrName}`;
+    if (!el.hasAttribute(storageKey)) {
+      el.setAttribute(storageKey, value ?? '');
+    }
+    return el.getAttribute(storageKey) || '';
+  }
+
   function updatePageTranslations() {
-    // Update elements with data-i18n attribute
-    document.querySelectorAll('[data-i18n]').forEach(el => {
+    document.querySelectorAll('[data-i18n]').forEach((el) => {
       const key = el.getAttribute('data-i18n');
-      const translation = t(key);
-      if (translation !== key) {
+      const original = storeOriginalContent(el, 'text', el.textContent);
+      const translation = t(key, original);
+
+      if (typeof translation === 'string') {
         el.textContent = translation;
       }
     });
-    
-    // Update elements with data-i18n-placeholder attribute
-    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+
+    document.querySelectorAll('[data-i18n-placeholder]').forEach((el) => {
       const key = el.getAttribute('data-i18n-placeholder');
-      const translation = t(key);
-      if (translation !== key) {
-        el.placeholder = translation;
+      const original = storeOriginalContent(el, 'placeholder', el.getAttribute('placeholder') || '');
+      const translation = t(key, original);
+
+      if (typeof translation === 'string') {
+        el.setAttribute('placeholder', translation);
       }
     });
-    
-    // Update elements with data-i18n-title attribute
-    document.querySelectorAll('[data-i18n-title]').forEach(el => {
+
+    document.querySelectorAll('[data-i18n-title]').forEach((el) => {
       const key = el.getAttribute('data-i18n-title');
-      const translation = t(key);
-      if (translation !== key) {
-        el.title = translation;
+      const original = storeOriginalContent(el, 'title', el.getAttribute('title') || '');
+      const translation = t(key, original);
+
+      if (typeof translation === 'string') {
+        el.setAttribute('title', translation);
       }
     });
-    
-    // Update elements with data-i18n-html attribute
-    document.querySelectorAll('[data-i18n-html]').forEach(el => {
+
+    document.querySelectorAll('[data-i18n-html]').forEach((el) => {
       const key = el.getAttribute('data-i18n-html');
-      const translation = t(key);
-      if (translation !== key) {
+      const original = storeOriginalContent(el, 'html', el.innerHTML);
+      const translation = t(key, original);
+
+      if (typeof translation === 'string') {
         el.innerHTML = translation;
       }
     });
+
+    const docTitleEl = document.querySelector('[data-i18n-document-title]');
+    if (docTitleEl) {
+      const key = docTitleEl.getAttribute('data-i18n-document-title');
+      const original = document.title;
+      document.title = t(key, original);
+    }
   }
 
-  /**
-   * Change language
-   */
   async function changeLanguage(lang) {
     if (!SUPPORTED_LANGUAGES.includes(lang)) {
       console.error('Unsupported language:', lang);
       return;
     }
-    
-    if (lang === currentLanguage) {
-      return; // No change needed
-    }
-    
+
     currentLanguage = lang;
-    
-    // Save to localStorage
+
     try {
       localStorage.setItem('mc-novatools-language', lang);
     } catch (e) {
       console.warn('Could not save language preference');
     }
-    
-    // Update HTML attributes
+
     document.documentElement.lang = lang;
     document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
-    
-    // Update language selector without triggering event
+
     const selector = document.getElementById('language-selector');
-    if (selector) {
+    if (selector && selector.value !== lang) {
       selector.value = lang;
     }
-    
-    // Load translations and update page
+
     await loadTranslations(lang);
     updatePageTranslations();
-    
-    // Dispatch event for other scripts
-    window.dispatchEvent(new CustomEvent('languageChanged', { detail: { language: lang } }));
+
+    window.dispatchEvent(
+      new CustomEvent('languageChanged', {
+        detail: { language: lang }
+      })
+    );
   }
 
-  /**
-   * Create language selector dropdown
-   */
   function createLanguageSelector() {
     const container = document.createElement('div');
     container.className = 'language-selector-wrapper';
-    
+
     const select = document.createElement('select');
     select.id = 'language-selector';
     select.className = 'language-selector';
     select.setAttribute('aria-label', 'Select Language');
-    
-    SUPPORTED_LANGUAGES.forEach(lang => {
+
+    SUPPORTED_LANGUAGES.forEach((lang) => {
       const option = document.createElement('option');
       option.value = lang;
       option.textContent = `${LANGUAGE_FLAGS[lang]} ${LANGUAGE_NAMES[lang]}`;
       select.appendChild(option);
     });
-    
-    // Use 'change' event for select element
+
     select.addEventListener('change', (e) => {
       e.preventDefault();
       e.stopPropagation();
       changeLanguage(e.target.value);
     });
-    
+
     container.appendChild(select);
     return container;
   }
 
-  /**
-   * Inject language selector into header
-   */
   function injectLanguageSelector() {
-    // Check if already exists
     if (document.getElementById('language-selector')) {
       return;
     }
-    
-    // Try to find header actions or similar container
+
     const headerActions = document.querySelector('.header-actions');
     const headerInner = document.querySelector('.header-inner');
     const nav = document.querySelector('.main-nav, .nav-desktop, nav');
     const header = document.querySelector('header, .main-header, .app-header');
-    
+
     const selector = createLanguageSelector();
-    
+
     if (headerActions) {
       headerActions.insertBefore(selector, headerActions.firstChild);
     } else if (headerInner) {
-      // Tool pages have .header-inner - insert before mobile menu button
-      const mobileBtn = headerInner.querySelector('#mobileMenuBtn, .menu-btn');
+      const mobileBtn = headerInner.querySelector('#mobileMenuBtn, .menu-btn, .mobile-menu-toggle');
       if (mobileBtn) {
         headerInner.insertBefore(selector, mobileBtn);
       } else {
         headerInner.appendChild(selector);
       }
-    } else if (nav) {
+    } else if (nav && nav.parentNode) {
       nav.parentNode.insertBefore(selector, nav.nextSibling);
     } else if (header) {
       header.appendChild(selector);
     } else {
-      // Add to body as floating element
       const floating = document.createElement('div');
       floating.className = 'language-selector-floating';
       floating.appendChild(selector);
@@ -286,91 +270,72 @@
     }
   }
 
-  /**
-   * Setup existing language selector
-   */
   function setupExistingSelector() {
     const selector = document.getElementById('language-selector');
     if (!selector) return false;
-    
-    // Set current value
-    selector.value = currentLanguage;
-    
-    // Remove old listeners by cloning
+
     const newSelector = selector.cloneNode(true);
     selector.parentNode.replaceChild(newSelector, selector);
-    
-    // Add change listener
+
+    newSelector.value = currentLanguage;
     newSelector.addEventListener('change', (e) => {
       e.preventDefault();
+      e.stopPropagation();
       changeLanguage(e.target.value);
     });
-    
+
     return true;
   }
 
-  /**
-   * Initialize i18n system
-   */
   async function init() {
     if (isInitialized) {
       return;
     }
-    
-    // Set initial language
+
     currentLanguage = getInitialLanguage();
     document.documentElement.lang = currentLanguage;
     document.documentElement.dir = currentLanguage === 'ar' ? 'rtl' : 'ltr';
-    
-    // Load translations
+
     await loadTranslations(currentLanguage);
-    
-    // Setup language selector
+
     if (!setupExistingSelector()) {
       injectLanguageSelector();
     }
-    
-    // Update selector value
+
     const selector = document.getElementById('language-selector');
     if (selector) {
       selector.value = currentLanguage;
     }
-    
-    // Apply translations
+
     updatePageTranslations();
-    
     isInitialized = true;
   }
 
-  // Expose global functions
   window.i18n = {
     changeLanguage,
     t,
     getCurrentLanguage: () => currentLanguage,
     getSupportedLanguages: () => SUPPORTED_LANGUAGES,
+    refresh: updatePageTranslations,
     SUPPORTED_LANGUAGES,
     LANGUAGE_NAMES,
-    LANGUAGE_FLAGS,
-    refresh: updatePageTranslations
+    LANGUAGE_FLAGS
   };
 
-  // Global changeLanguage function for onclick handlers
   window.changeLanguage = changeLanguage;
 
-  // Initialize when DOM is ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {
     init();
   }
 
-  // Add default styles
   const styles = document.createElement('style');
   styles.textContent = `
     .language-selector-wrapper {
       display: inline-block;
     }
-    
+
     .language-selector {
       background: rgba(255,255,255,0.1);
       border: 1px solid rgba(255,255,255,0.2);
@@ -382,32 +347,30 @@
       outline: none;
       appearance: auto;
     }
-    
+
     .language-selector:hover {
       background: rgba(255,255,255,0.15);
       border-color: rgba(255,255,255,0.3);
     }
-    
+
     .language-selector option {
       background: #1a1a2e;
       color: #fff;
       padding: 8px;
     }
-    
+
     .language-selector-floating {
       position: fixed;
       top: 20px;
       right: 20px;
       z-index: 9999;
     }
-    
-    /* RTL Support */
+
     [dir="rtl"] .language-selector-floating {
       right: auto;
       left: 20px;
     }
-    
-    /* Mobile adjustments */
+
     @media (max-width: 768px) {
       .language-selector {
         font-size: 12px;
@@ -416,5 +379,4 @@
     }
   `;
   document.head.appendChild(styles);
-
 })();
