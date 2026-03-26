@@ -59,7 +59,7 @@ export const categories = [
     }
   },
   {
-    slug: 'text-tools',
+    slug: 'text-writing',
     name: 'Text & Writing',
     shortName: 'Text',
     description: 'Word counter, case converter, text diff, Lorem ipsum generator and other writing utilities.',
@@ -95,7 +95,7 @@ export const categories = [
     }
   },
   {
-    slug: 'converter-tools',
+    slug: 'converters',
     name: 'Converters',
     shortName: 'Convert',
     description: 'Unit converter, currency converter, time converter, number base converter and more.',
