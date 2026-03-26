@@ -3,26 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Free Online PDF Tools | Merge, Split, Compress, Convert | MC NovaTools</title>
-  <meta name="description" content="Free online PDF tools for merge, split, compress, OCR, watermark, page numbering, and PDF conversion to Word, Excel, HTML, JPG, PNG, PowerPoint, and text.">
-  <meta name="keywords" content="free pdf tools, pdf merge, pdf split, pdf compress, pdf to word, pdf to excel, pdf watermark, pdf ocr">
+  <title>Free Developer Tools | JSON, Regex, Base64, Formatters | MC NovaTools</title>
+  <meta name="description" content="Free developer tools for JSON formatting, regex testing, code formatting, JSON validation, Base64 conversion, URL encoding, Markdown conversion, CSS/JS minification, and more.">
+  <meta name="keywords" content="developer tools, json formatter, regex tester, base64 converter, json validator, code formatter, css minifier, js minifier, url encoder">
   <meta name="author" content="Metehan ÇETİN, LPC">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="theme-color" content="#0A0A0C">
 
-  <meta property="og:title" content="Free Online PDF Tools | Merge, Split, Compress, Convert | MC NovaTools">
-  <meta property="og:description" content="Free online PDF tools for merge, split, compress, OCR, watermark, page numbering, and conversion.">
+  <meta property="og:title" content="Free Developer Tools | JSON, Regex, Base64, Formatters | MC NovaTools">
+  <meta property="og:description" content="Free developer tools for JSON formatting, regex testing, encoding, validation, minification, and quick browser-based workflows.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://mc-novatools.com/categories/pdf-tools">
-  <meta property="og:image" content="https://mc-novatools.com/og-pdf-tools.png">
+  <meta property="og:url" content="https://mc-novatools.com/categories/developer-tools">
+  <meta property="og:image" content="https://mc-novatools.com/og-developer-tools.png">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Free Online PDF Tools | MC NovaTools">
-  <meta name="twitter:description" content="Merge, split, compress, OCR, watermark, and convert PDF files in your browser.">
+  <meta name="twitter:title" content="Free Developer Tools | MC NovaTools">
+  <meta name="twitter:description" content="Use free developer utilities for JSON, regex, Base64, formatting, encoding, conversion, and debugging.">
 
-  <link rel="canonical" href="https://mc-novatools.com/categories/pdf-tools">
-  <link rel="alternate" hreflang="en" href="https://mc-novatools.com/categories/pdf-tools">
-  <link rel="alternate" hreflang="x-default" href="https://mc-novatools.com/categories/pdf-tools">
+  <link rel="canonical" href="https://mc-novatools.com/categories/developer-tools">
+  <link rel="alternate" hreflang="en" href="https://mc-novatools.com/categories/developer-tools">
+  <link rel="alternate" hreflang="x-default" href="https://mc-novatools.com/categories/developer-tools">
 
   <script src="/i18n.js" defer></script>
 
@@ -30,9 +30,9 @@
   {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    "name": "Free Online PDF Tools",
-    "description": "Free online PDF tools for merge, split, compress, OCR, watermark, page numbering, and conversion.",
-    "url": "https://mc-novatools.com/categories/pdf-tools",
+    "name": "Free Developer Tools",
+    "description": "Free developer tools for JSON formatting, regex testing, code formatting, validation, encoding, conversion, and minification.",
+    "url": "https://mc-novatools.com/categories/developer-tools",
     "breadcrumb": {
       "@type": "BreadcrumbList",
       "itemListElement": [
@@ -45,8 +45,8 @@
         {
           "@type": "ListItem",
           "position": 2,
-          "name": "PDF Tools",
-          "item": "https://mc-novatools.com/categories/pdf-tools"
+          "name": "Developer Tools",
+          "item": "https://mc-novatools.com/categories/developer-tools"
         }
       ]
     }
@@ -64,6 +64,7 @@
       --muted: #a5b4c7;
       --primary: #22d3ee;
       --primary-2: #8b5cf6;
+      --accent: #f59e0b;
       --glow: 0 20px 60px rgba(34, 211, 238, 0.12);
       --radius: 20px;
       --container: 1180px;
@@ -82,7 +83,7 @@
       color: var(--text);
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background:
-        radial-gradient(circle at top left, rgba(239, 68, 68, 0.14), transparent 28%),
+        radial-gradient(circle at top left, rgba(245, 158, 11, 0.16), transparent 28%),
         radial-gradient(circle at top right, rgba(34, 211, 238, 0.12), transparent 24%),
         linear-gradient(180deg, #05060a 0%, #090b12 100%);
       min-height: 100vh;
@@ -197,7 +198,7 @@
       position: relative;
       overflow: hidden;
       background:
-        radial-gradient(circle at top left, rgba(239, 68, 68, 0.20), transparent 26%),
+        radial-gradient(circle at top left, rgba(245, 158, 11, 0.20), transparent 26%),
         radial-gradient(circle at bottom right, rgba(34, 211, 238, 0.14), transparent 28%),
         linear-gradient(180deg, rgba(15, 23, 42, 0.9), rgba(10, 14, 22, 0.96));
       border: 1px solid var(--border);
@@ -213,9 +214,9 @@
       min-height: 34px;
       padding: 0 14px;
       border-radius: 999px;
-      background: rgba(239, 68, 68, 0.10);
-      border: 1px solid rgba(239, 68, 68, 0.22);
-      color: #ffd4d4;
+      background: rgba(245, 158, 11, 0.10);
+      border: 1px solid rgba(245, 158, 11, 0.22);
+      color: #ffe4b0;
       font-size: 0.92rem;
       font-weight: 600;
       margin-bottom: 18px;
@@ -290,7 +291,7 @@
 
     .tool-card:hover {
       transform: translateY(-4px);
-      border-color: rgba(239, 68, 68, 0.35);
+      border-color: rgba(245, 158, 11, 0.35);
       box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
     }
 
@@ -303,7 +304,7 @@
       border-radius: 16px;
       font-size: 1.5rem;
       margin-bottom: 16px;
-      background: linear-gradient(135deg, rgba(239, 68, 68, 0.16), rgba(34, 211, 238, 0.12));
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.16), rgba(34, 211, 238, 0.12));
       border: 1px solid rgba(255, 255, 255, 0.08);
     }
 
@@ -334,8 +335,8 @@
 
     .btn-primary {
       color: white;
-      background: linear-gradient(135deg, #ef4444, #8b5cf6);
-      box-shadow: 0 16px 40px rgba(239, 68, 68, 0.18);
+      background: linear-gradient(135deg, #f59e0b, #8b5cf6);
+      box-shadow: 0 16px 40px rgba(245, 158, 11, 0.18);
     }
 
     .btn-primary:hover {
@@ -478,10 +479,10 @@
         </a>
 
         <nav class="nav-desktop" aria-label="Main navigation">
-          <a href="/categories/pdf-tools" class="active" data-i18n="nav.pdf">PDF</a>
+          <a href="/categories/pdf-tools" data-i18n="nav.pdf">PDF</a>
           <a href="/categories/image-tools" data-i18n="nav.image">Image</a>
           <a href="/categories/finance-tools" data-i18n="nav.finance">Finance</a>
-          <a href="/categories/developer-tools" data-i18n="nav.developer">Developer</a>
+          <a href="/categories/developer-tools" class="active" data-i18n="nav.developer">Developer</a>
           <a href="/categories/text-writing" data-i18n="nav.text">Text</a>
           <a href="/about-us" data-i18n="nav.about">About</a>
         </nav>
@@ -513,7 +514,7 @@
     <div class="container">
       <ol class="breadcrumb">
         <li><a href="/" data-i18n="nav.home">Home</a></li>
-        <li aria-current="page" data-i18n="categories.developer.sectionTitle">PDF Tools</li>
+        <li aria-current="page" data-i18n="categories.developer.sectionTitle">Developer Tools</li>
       </ol>
     </div>
   </nav>
@@ -522,16 +523,16 @@
     <section class="category-hero">
       <div class="container">
         <div class="hero-card">
-          <div class="hero-badge" data-i18n="categories.developer.badge">Free Online PDF Utilities</div>
-          <h1 class="category-title" data-i18n="categories.developer.title">PDF Tools for Merge, Split, Compression, OCR, and Conversion</h1>
+          <div class="hero-badge" data-i18n="categories.developer.badge">Free Browser-Based Developer Utilities</div>
+          <h1 class="category-title" data-i18n="categories.developer.title">Developer Tools for JSON, Regex, Encoding, Formatting, and Quick Debug Work</h1>
           <p class="category-description" data-i18n="categories.developer.description">
-            Open the live PDF tools directly from this page. Merge files, split pages, compress size, add watermarks,
-            insert page numbers, run OCR, and convert PDF files to Word, Excel, HTML, JPG, PNG, PowerPoint, and text.
+            Open fast developer utilities from one place. Format JSON, test regex patterns, validate payloads,
+            encode and decode data, convert Markdown and HTML, and minify front-end code for cleaner workflows.
           </p>
           <div class="category-stats">
-            <span class="stat">13 Live PDF Tools</span>
-            <span class="stat">Browser-based</span>
-            <span class="stat">No broken /src style dependency</span>
+            <span class="stat">12 Practical Dev Tools</span>
+            <span class="stat">Fast browser-first workflows</span>
+            <span class="stat">Built for clean utility use</span>
           </div>
         </div>
       </div>
@@ -539,97 +540,90 @@
 
     <section class="tools-section">
       <div class="container">
-        <h2 class="section-title" data-i18n="categories.developer.sectionTitle">PDF Tools</h2>
+        <h2 class="section-title" data-i18n="categories.developer.sectionTitle">Developer Tools</h2>
         <div class="grid grid-3">
           <article class="tool-card">
-            <div class="tool-icon">📎</div>
-            <h3><a href="/tools/pdf/merge/">PDF Merge</a></h3>
-            <p>Combine multiple PDF files into a single document quickly.</p>
-            <a href="/tools/pdf/merge/" class="btn btn-primary" data-i18n="home.openTool">Use Tool</a>
+            <div class="tool-icon">{ }</div>
+            <h3><a href="/tools/dev/json-formatter/">JSON Formatter</a></h3>
+            <p>Format, beautify, and inspect JSON payloads for faster debugging and cleaner reading.</p>
+            <a href="/tools/dev/json-formatter/" class="btn btn-primary" data-i18n="home.openTool">Use Tool</a>
           </article>
 
           <article class="tool-card">
-            <div class="tool-icon">🗜️</div>
-            <h3><a href="/tools/pdf/compress/">PDF Compress</a></h3>
-            <p>Reduce PDF file size for sharing, upload, and storage.</p>
-            <a href="/tools/pdf/compress/" class="btn btn-primary" data-i18n="home.openTool">Use Tool</a>
+            <div class="tool-icon">.*</div>
+            <h3><a href="/tools/dev/regex-tester/">Regex Tester</a></h3>
+            <p>Test regular expressions, validate matches, and iterate on patterns with fewer mistakes.</p>
+            <a href="/tools/dev/regex-tester/" class="btn btn-primary" data-i18n="home.openTool">Use Tool</a>
           </article>
 
           <article class="tool-card">
-            <div class="tool-icon">✂️</div>
-            <h3><a href="/tools/pdf/split/">PDF Split</a></h3>
-            <p>Extract or separate pages from large PDF documents.</p>
-            <a href="/tools/pdf/split/" class="btn btn-primary" data-i18n="home.openTool">Use Tool</a>
+            <div class="tool-icon">&lt;/&gt;</div>
+            <h3><a href="/tools/dev/code-formatter/">Code Formatter</a></h3>
+            <p>Clean up messy snippets and improve readability before sharing, debugging, or reviewing code.</p>
+            <a href="/tools/dev/code-formatter/" class="btn btn-primary" data-i18n="home.openTool">Use Tool</a>
           </article>
 
           <article class="tool-card">
-            <div class="tool-icon">🔍</div>
-            <h3><a href="/tools/pdf/pdf-ocr/">PDF OCR</a></h3>
-            <p>Extract readable text from scanned or image-based PDF files.</p>
-            <a href="/tools/pdf/pdf-ocr/" class="btn btn-primary" data-i18n="home.openTool">Use Tool</a>
+            <div class="tool-icon">✓</div>
+            <h3><a href="/tools/dev/json-validator/">JSON Validator</a></h3>
+            <p>Check whether JSON input is valid and catch structural errors before they reach production.</p>
+            <a href="/tools/dev/json-validator/" class="btn btn-primary" data-i18n="home.openTool">Use Tool</a>
           </article>
 
           <article class="tool-card">
-            <div class="tool-icon">#️⃣</div>
-            <h3><a href="/tools/pdf/pdf-page-number/">PDF Page Number</a></h3>
-            <p>Insert page numbers into PDF documents with clean output.</p>
-            <a href="/tools/pdf/pdf-page-number/" class="btn btn-primary" data-i18n="home.openTool">Use Tool</a>
+            <div class="tool-icon">64</div>
+            <h3><a href="/tools/dev/base64-converter/">Base64 Converter</a></h3>
+            <p>Encode and decode Base64 strings quickly for testing APIs, tokens, and transport data.</p>
+            <a href="/tools/dev/base64-converter/" class="btn btn-primary" data-i18n="home.openTool">Use Tool</a>
           </article>
 
           <article class="tool-card">
-            <div class="tool-icon">📄</div>
-            <h3><a href="/tools/pdf/pdf-to-word/">PDF to Word</a></h3>
-            <p>Convert PDF documents into editable Word format.</p>
-            <a href="/tools/pdf/pdf-to-word/" class="btn btn-primary" data-i18n="home.openTool">Use Tool</a>
+            <div class="tool-icon">%</div>
+            <h3><a href="/tools/dev/url-encoder/">URL Encoder</a></h3>
+            <p>Encode and decode URLs safely when working with query strings, APIs, and web integrations.</p>
+            <a href="/tools/dev/url-encoder/" class="btn btn-primary" data-i18n="home.openTool">Use Tool</a>
           </article>
 
           <article class="tool-card">
-            <div class="tool-icon">📊</div>
-            <h3><a href="/tools/pdf/pdf-to-excel/">PDF to Excel</a></h3>
-            <p>Move PDF table content into spreadsheet-friendly format.</p>
-            <a href="/tools/pdf/pdf-to-excel/" class="btn btn-primary" data-i18n="home.openTool">Use Tool</a>
+            <div class="tool-icon">MD</div>
+            <h3><a href="/tools/dev/markdown-to-html/">Markdown to HTML</a></h3>
+            <p>Convert Markdown into HTML markup for docs, blogs, notes, and content publishing workflows.</p>
+            <a href="/tools/dev/markdown-to-html/" class="btn btn-primary" data-i18n="home.openTool">Use Tool</a>
           </article>
 
           <article class="tool-card">
-            <div class="tool-icon">🎞️</div>
-            <h3><a href="/tools/pdf/pdf-to-powerpoint/">PDF to PowerPoint</a></h3>
-            <p>Convert PDF slides into editable PowerPoint presentation output.</p>
-            <a href="/tools/pdf/pdf-to-powerpoint/" class="btn btn-primary" data-i18n="home.openTool">Use Tool</a>
+            <div class="tool-icon">HTML</div>
+            <h3><a href="/tools/dev/html-to-markdown/">HTML to Markdown</a></h3>
+            <p>Turn HTML into readable Markdown when cleaning content or migrating documentation.</p>
+            <a href="/tools/dev/html-to-markdown/" class="btn btn-primary" data-i18n="home.openTool">Use Tool</a>
           </article>
 
           <article class="tool-card">
-            <div class="tool-icon">🌐</div>
-            <h3><a href="/tools/pdf/pdf-to-html/">PDF to HTML</a></h3>
-            <p>Convert PDF content into HTML output for web use.</p>
-            <a href="/tools/pdf/pdf-to-html/" class="btn btn-primary" data-i18n="home.openTool">Use Tool</a>
+            <div class="tool-icon">CSS</div>
+            <h3><a href="/tools/dev/css-minifier/">CSS Minifier</a></h3>
+            <p>Minify CSS files and remove unnecessary whitespace for lighter payloads and cleaner delivery.</p>
+            <a href="/tools/dev/css-minifier/" class="btn btn-primary" data-i18n="home.openTool">Use Tool</a>
           </article>
 
           <article class="tool-card">
-            <div class="tool-icon">🖼️</div>
-            <h3><a href="/tools/pdf/pdf-to-jpg/">PDF to JPG</a></h3>
-            <p>Turn PDF pages into JPG images for quick export and sharing.</p>
-            <a href="/tools/pdf/pdf-to-jpg/" class="btn btn-primary" data-i18n="home.openTool">Use Tool</a>
+            <div class="tool-icon">JS</div>
+            <h3><a href="/tools/dev/js-minifier/">JS Minifier</a></h3>
+            <p>Reduce JavaScript file size for faster transfer and more compact production-ready output.</p>
+            <a href="/tools/dev/js-minifier/" class="btn btn-primary" data-i18n="home.openTool">Use Tool</a>
           </article>
 
           <article class="tool-card">
-            <div class="tool-icon">🖼️</div>
-            <h3><a href="/tools/pdf/pdf-to-png/">PDF to PNG</a></h3>
-            <p>Convert PDF pages into PNG images with lossless output.</p>
-            <a href="/tools/pdf/pdf-to-png/" class="btn btn-primary" data-i18n="home.openTool">Use Tool</a>
+            <div class="tool-icon">#</div>
+            <h3><a href="/tools/dev/color-converter/">Color Converter</a></h3>
+            <p>Convert HEX, RGB, and related color values during UI work, prototyping, and front-end polish.</p>
+            <a href="/tools/dev/color-converter/" class="btn btn-primary" data-i18n="home.openTool">Use Tool</a>
           </article>
 
           <article class="tool-card">
-            <div class="tool-icon">📝</div>
-            <h3><a href="/tools/pdf/pdf-to-text/">PDF to Text</a></h3>
-            <p>Extract plain text content from PDF documents.</p>
-            <a href="/tools/pdf/pdf-to-text/" class="btn btn-primary" data-i18n="home.openTool">Use Tool</a>
-          </article>
-
-          <article class="tool-card">
-            <div class="tool-icon">💧</div>
-            <h3><a href="/tools/pdf/pdf-watermark/">PDF Watermark</a></h3>
-            <p>Add a visible watermark to protect or brand PDF files.</p>
-            <a href="/tools/pdf/pdf-watermark/" class="btn btn-primary" data-i18n="home.openTool">Use Tool</a>
+            <div class="tool-icon">Aa</div>
+            <h3><a href="/tools/dev/lorem-generator/">Lorem Generator</a></h3>
+            <p>Generate placeholder copy for interface mockups, content blocks, and quick design testing.</p>
+            <a href="/tools/dev/lorem-generator/" class="btn btn-primary" data-i18n="home.openTool">Use Tool</a>
           </article>
         </div>
       </div>
@@ -640,22 +634,22 @@
         <div class="panel">
           <h2>Why use this page?</h2>
           <p>
-            This page is a stable category landing page for the live PDF tools already inside the project.
-            It removes the broken <strong>/src/...</strong> stylesheet dependency that caused the unstyled category screen.
+            This page gives developer-focused tools a proper home instead of mixing them into unrelated categories.
+            It is designed to make common utility tasks faster to find, easier to trust, and simpler to use.
           </p>
 
           <h3>What you get here</h3>
           <ul>
-            <li>Direct links to live PDF tool routes</li>
-            <li>Static standalone HTML for Cloudflare deployment</li>
-            <li>No dependency on missing source CSS files</li>
-            <li>Clean entry point for PDF conversion and editing tools</li>
+            <li>Quick access to practical developer utilities in one category hub</li>
+            <li>Cleaner information architecture for JSON, encoding, formatting, and debugging tools</li>
+            <li>Standalone category structure that fits the current site design language</li>
+            <li>Better category-level SEO alignment for developer-intent searches</li>
           </ul>
 
           <h3>Best use</h3>
           <p>
-            Use this page as the category hub for PDF operations.
-            It keeps navigation simple and avoids the MIME and broken-style errors you were seeing before.
+            Use this page as the central entry point for lightweight dev tasks: inspecting payloads,
+            testing patterns, converting formats, and cleaning snippets without hunting through unrelated tools.
           </p>
         </div>
       </div>
@@ -666,23 +660,23 @@
         <h2>Frequently Asked Questions</h2>
         <div class="faq-list">
           <div class="faq-item" itemscope itemtype="https://schema.org/Question">
-            <h3 itemprop="name">Are these PDF tools free?</h3>
+            <h3 itemprop="name">What kind of tools are included here?</h3>
             <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text">Yes. This category page links to the PDF tools included in your project and presents them in one stable place.</p>
+              <p itemprop="text">This category focuses on utility tools commonly used by developers, such as JSON formatters, regex testers, validators, encoders, converters, and minifiers.</p>
             </div>
           </div>
 
           <div class="faq-item" itemscope itemtype="https://schema.org/Question">
-            <h3 itemprop="name">Why was the old page broken?</h3>
+            <h3 itemprop="name">Why was the old developer page wrong?</h3>
             <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text">Because the old page tried to load stylesheet files from /src/styles, and those source paths were not valid on the live site.</p>
+              <p itemprop="text">Because the old page still used PDF-specific metadata, headings, cards, and copy, so it did not represent the actual developer tools category correctly.</p>
             </div>
           </div>
 
           <div class="faq-item" itemscope itemtype="https://schema.org/Question">
-            <h3 itemprop="name">What is fixed in this version?</h3>
+            <h3 itemprop="name">What is improved in this version?</h3>
             <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text">This version uses self-contained styling and direct live tool links, so it no longer depends on broken source CSS paths.</p>
+              <p itemprop="text">This version aligns the page with the developer category itself: title, SEO metadata, breadcrumb, hero section, linked tools, and supporting copy are all now developer-focused.</p>
             </div>
           </div>
         </div>
@@ -700,12 +694,12 @@
         </div>
 
         <div class="footer-col">
-          <h4 data-i18n="categories.pdf.sectionTitle">PDF Tools</h4>
+          <h4 data-i18n="categories.developer.sectionTitle">Developer Tools</h4>
           <ul>
-            <li><a href="/tools/pdf/merge/">PDF Merge</a></li>
-            <li><a href="/tools/pdf/compress/">PDF Compress</a></li>
-            <li><a href="/tools/pdf/split/">PDF Split</a></li>
-            <li><a href="/tools/pdf/pdf-to-word/">PDF to Word</a></li>
+            <li><a href="/tools/dev/json-formatter/">JSON Formatter</a></li>
+            <li><a href="/tools/dev/regex-tester/">Regex Tester</a></li>
+            <li><a href="/tools/dev/code-formatter/">Code Formatter</a></li>
+            <li><a href="/tools/dev/base64-converter/">Base64 Converter</a></li>
           </ul>
         </div>
 
