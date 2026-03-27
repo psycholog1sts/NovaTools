@@ -1,106 +1,204 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-  <!-- Main Pages -->
+  <!-- Homepage -->
   <url>
-    <loc>https://www.mc-novatools.com/</loc>
-    <lastmod>2026-03-15</lastmod>
+    <loc>https://mc-novatools.com/</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
-  <!-- Finance Tools -->
+  <!-- Root legal/company pages -->
   <url>
-    <loc>https://www.mc-novatools.com/tools/finance/mortgage-refinance/</loc>
-    <lastmod>2026-03-15</lastmod>
+    <loc>https://mc-novatools.com/about-us.html</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.mc-novatools.com/tools/finance/life-insurance/</loc>
-    <lastmod>2026-03-15</lastmod>
+    <loc>https://mc-novatools.com/contact.html</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.mc-novatools.com/tools/finance/cloud-cost/</loc>
-    <lastmod>2026-03-15</lastmod>
+    <loc>https://mc-novatools.com/request-tool.html</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.mc-novatools.com/tools/finance/compound-interest/</loc>
-    <lastmod>2026-03-15</lastmod>
-    <priority>0.8</priority>
+    <loc>https://mc-novatools.com/privacy-policy.html</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.mc-novatools.com/tools/finance/retirement/</loc>
-    <lastmod>2026-03-15</lastmod>
-    <priority>0.8</priority>
+    <loc>https://mc-novatools.com/terms-of-service.html</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.mc-novatools.com/tools/finance/tax/</loc>
-    <lastmod>2026-03-15</lastmod>
+    <loc>https://mc-novatools.com/cookie-policy.html</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://mc-novatools.com/security.html</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Blog -->
+  <url>
+    <loc>https://mc-novatools.com/blog/index.html</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- PDF Tools -->
+  <!-- Categories -->
   <url>
-    <loc>https://www.mc-novatools.com/tools/pdf/merge/</loc>
-    <lastmod>2026-03-15</lastmod>
+    <loc>https://mc-novatools.com/categories/index.html</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://mc-novatools.com/categories/pdf-tools.html</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.mc-novatools.com/tools/pdf/compress/</loc>
-    <lastmod>2026-03-15</lastmod>
+    <loc>https://mc-novatools.com/categories/image-tools.html</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.mc-novatools.com/tools/pdf/split/</loc>
-    <lastmod>2026-03-15</lastmod>
+    <loc>https://mc-novatools.com/categories/finance-tools.html</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mc-novatools.com/categories/developer-tools.html</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mc-novatools.com/categories/text-writing.html</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mc-novatools.com/categories/converters.html</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mc-novatools.com/categories/calculator-tools.html</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mc-novatools.com/categories/security-tools.html</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mc-novatools.com/categories/social-media-tools.html</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mc-novatools.com/categories/productivity-tools.html</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mc-novatools.com/categories/data-tools.html</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mc-novatools.com/categories/design-tools.html</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- Image Tools -->
+  <!-- Important live tools -->
   <url>
-    <loc>https://www.mc-novatools.com/tools/image/compress/</loc>
-    <lastmod>2026-03-15</lastmod>
+    <loc>https://mc-novatools.com/tools/finance/mortgage-refinance/</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://mc-novatools.com/tools/finance/compound-interest/</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://mc-novatools.com/tools/finance/tax/</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://mc-novatools.com/tools/pdf/merge/</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://mc-novatools.com/tools/pdf/compress/</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://mc-novatools.com/tools/pdf/split/</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://mc-novatools.com/tools/image/compress/</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://mc-novatools.com/tools/image/convert/</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://mc-novatools.com/tools/dev/json-formatter/</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.mc-novatools.com/tools/image/convert/</loc>
-    <lastmod>2026-03-15</lastmod>
+    <loc>https://mc-novatools.com/tools/dev/regex-tester/</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
-  <!-- Dev Tools -->
-  <url>
-    <loc>https://www.mc-novatools.com/tools/dev/json-formatter/</loc>
-    <lastmod>2026-03-15</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.mc-novatools.com/tools/dev/regex-tester/</loc>
-    <lastmod>2026-03-15</lastmod>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Legal Pages -->
-  <url>
-    <loc>https://www.mc-novatools.com/privacy/</loc>
-    <lastmod>2026-03-15</lastmod>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://www.mc-novatools.com/terms/</loc>
-    <lastmod>2026-03-15</lastmod>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://www.mc-novatools.com/disclaimer/</loc>
-    <lastmod>2026-03-15</lastmod>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://www.mc-novatools.com/feedback/</loc>
-    <lastmod>2026-03-15</lastmod>
-    <priority>0.5</priority>
-  </url>
-
 </urlset>

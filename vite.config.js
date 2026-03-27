@@ -180,10 +180,6 @@ export default defineConfig({
           dest: 'icons'
         },
         {
-          src: 'static/sitemap*.xml',
-          dest: '.'
-        },
-        {
           src: 'src/tools/**/meta.json',
           dest: 'meta'
         },

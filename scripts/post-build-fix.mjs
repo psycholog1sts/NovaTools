@@ -100,6 +100,13 @@ if (fs.existsSync(categoriesSrcDir) && !fs.existsSync(categoriesDstDir)) {
 // Verify key files exist
 const keyFiles = [
   'index.html',
+  'about-us.html',
+  'contact.html',
+  'request-tool.html',
+  'privacy-policy.html',
+  'terms-of-service.html',
+  'cookie-policy.html',
+  'security.html',
   'admin/index.html',
   'blog/index.html',
   'tools/finance/tax/index.html',
