@@ -495,7 +495,7 @@
       <div class="container">
         <div class="hero-card">
           <div class="hero-badge">Tool Suggestions</div>
-          <h1>Request a Tool</h1>
+          <h1 data-i18n="nav.request">Request a Tool</h1>
           <p>Have an idea for a new utility, calculator, converter, or workflow helper? Use this page to prepare a tool request email draft. This is not a backend submission form.</p>
         </div>
       </div>
@@ -538,7 +538,7 @@
             <form class="form-grid" id="toolRequestForm">
               <div class="form-group">
                 <label for="tool-name">Proposed Tool Name *</label>
-                <input type="text" id="tool-name" name="tool-name" placeholder="e.g., PDF to EPUB Converter" required>
+                <input type="text" id="tool-name" name="tool-name" placeholder="e.g., PDF to EPUB Converter" data-i18n-placeholder="tools.request.placeholder.002" required>
               </div>
 
               <div class="form-group">
@@ -563,17 +563,17 @@
 
               <div class="form-group">
                 <label for="description">Tool Description *</label>
-                <textarea id="description" name="description" placeholder="Describe what the tool should do, who it helps, and what input/output you expect..." required></textarea>
+                <textarea id="description" name="description" placeholder="Describe what the tool should do, who it helps, and what input/output you expect..." data-i18n-placeholder="tools.request.placeholder.003" required></textarea>
               </div>
 
               <div class="form-group">
                 <label for="example">Example or Similar Tool (optional)</label>
-                <input type="text" id="example" name="example" placeholder="e.g., similar to ...">
+                <input type="text" id="example" name="example" placeholder="e.g., similar to ..." data-i18n-placeholder="tools.request.placeholder.002">
               </div>
 
               <div class="form-group">
                 <label for="email">Your Email (optional)</label>
-                <input type="email" id="email" name="email" placeholder="So we can reply to you">
+                <input type="email" id="email" name="email" placeholder="So we can reply to you" data-i18n-placeholder="tools.request.placeholder.001">
               </div>
 
               <button type="submit" class="btn btn-primary">Open Request Draft</button>
