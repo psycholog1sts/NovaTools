@@ -18,7 +18,7 @@
   },
   "hero": {
     "title": "Dosyalar, Finans ve Kod için Her Şey Dahil Araçlar",
-    "subtitle": "MC NovaTools ile hızlı, temiz ve gizlilik odaklı araç setimizle dönüştürün, hesaplayın, oluşturun ve optimize edin. 300+ ücretsiz araç, kayıt gerekmez.",
+    "subtitle": "Use MC NovaTools to convert, calculate, create, and streamline practical workflows with a fast, clear, browser-based toolkit.",
     "cta": "Araçları Keşfet",
     "browse": "Kategorileri Görüntüle",
     "freeTools": "Ücretsiz Araçlar",
@@ -5606,7 +5606,14 @@
     "reset": "Sıfırla",
     "apply": "Uygula",
     "filter": "Filtrele",
-    "sort": "Sırala"
+    "sort": "Sırala",
+    "useTool": "Aracı Kullan",
+    "legal": "Yasal",
+    "company": "Şirket",
+    "footerDesc": "PDF, görsel, finans ve geliştirici için profesyonel çevrimiçi araçlar.",
+    "browserBased": "Tarayıcı tabanlı",
+    "aboutUs": "Hakkımızda",
+    "allRightsReserved": "Tüm hakları saklıdır."
   },
   "home": {
     "sections": {
@@ -5634,16 +5641,16 @@
     },
     "trust": {
       "secureTitle": "Güvenli ve Özel",
-      "secureDesc": "Verileriniz tarayıcınızdan asla ayrılmaz",
+      "secureDesc": "Many tools process data locally in your browser.",
       "transparentTitle": "Şeffaf",
       "transparentDesc": "Açık gizlilik politikası ve şartları",
       "supportTitle": "Destek",
       "supportDesc": "Sorularınız için bizimle iletişime geçin",
-      "verifiedTitle": "Doğrulandı",
-      "verifiedDesc": "Google AdSense uyumlu"
+      "verifiedTitle": "Clear Ownership",
+      "verifiedDesc": "Site ownership, policy pages, and contact details are clearly available."
     },
     "footer": {
-      "brandDesc": "Dosyalar, finans, kod ve yaratıcılık için 300'den fazla ücretsiz çevrimiçi araç. Hızlı, özel, güvenli ve her zaman ücretsiz. Verileriniz cihazınızda kalır.",
+      "brandDesc": "Browser-based tools for files, finance, code, and everyday workflows. Built for clarity, practical use, and privacy-conscious operation.",
       "ownerTitle": "Site Sahibi ve İletişim",
       "toolCategoriesTitle": "Araç Kategorileri",
       "companyTitle": "Şirket",
@@ -5774,39 +5781,9 @@
     "noResults": "Hiçbir araç bulunamadı",
     "toolsGeneric": "Aletler",
     "viewAllCategories": "Tüm Kategorileri Gör",
-    "viewAllDesc": "300+ araçtan oluşan koleksiyonumuzu kategorilere göre keşfedin.",
-    "searchPlaceholder": "300+ araç içinde ara...",
+    "viewAllDesc": "Browse our tool collection by category.",
+    "searchPlaceholder": "Search tools...",
     "popularLabel": "Popüler:"
-  },
-  "common": {
-    "loading": "Yükleniyor...",
-    "error": "Bir hata oluştu",
-    "success": "Başarılı!",
-    "save": "Kaydet",
-    "cancel": "İptal",
-    "delete": "Sil",
-    "edit": "Düzenle",
-    "close": "Kapat",
-    "open": "Aç",
-    "search": "Ara",
-    "download": "İndir",
-    "upload": "Yükle",
-    "copy": "Kopyala",
-    "paste": "Yapıştır",
-    "cut": "Kes",
-    "select": "Seç",
-    "clear": "Temizle",
-    "reset": "Sıfırla",
-    "apply": "Uygula",
-    "filter": "Filtrele",
-    "sort": "Sırala",
-    "useTool": "Aracı Kullan",
-    "legal": "Yasal",
-    "company": "Şirket",
-    "footerDesc": "PDF, görsel, finans ve geliştirici için profesyonel çevrimiçi araçlar.",
-    "browserBased": "Tarayıcı tabanlı",
-    "aboutUs": "Hakkımızda",
-    "allRightsReserved": "Tüm hakları saklıdır."
   },
   "categories": {
     "pdf": {
@@ -5847,8 +5824,8 @@
     },
     "all": {
       "badge": "Tüm Araçlara Göz Atın",
-      "title": "Tüm Araçlar — 300+ Ücretsiz Çevrimiçi Yardımcı",
-      "description": "Kategorilere göre düzenlenmiş tüm araçları keşfedin. PDF araçları, görüntü araçları, finans hesaplayıcıları, geliştirici yardımcıları, metin araçları ve dönüştürücüler — hepsi ücretsiz, hepsi tarayıcı tabanlı.",
+      "title": "All Tools — Online Utilities by Category",
+      "description": "Explore available tools organized by category, including PDF, image, finance, developer, text, and converters.",
       "sectionTitle": "Tüm Kategoriler"
     }
   }
