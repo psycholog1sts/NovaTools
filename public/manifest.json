@@ -27,27 +27,27 @@
       "name": "Mortgage Refinance",
       "short_name": "Mortgage",
       "description": "Calculate mortgage refinance savings",
-      "url": "/src/tools/finance/mortgage-refinance/",
+      "url": "/tools/finance/mortgage-refinance/",
       "icons": [{ "src": "/icons/finance-192.png", "sizes": "192x192" }]
     },
     {
       "name": "Life Insurance",
       "short_name": "Insurance",
       "description": "Estimate life insurance payouts",
-      "url": "/src/tools/finance/life-insurance/",
+      "url": "/tools/finance/life-insurance/",
       "icons": [{ "src": "/icons/finance-192.png", "sizes": "192x192" }]
     },
     {
       "name": "PDF Merger",
       "short_name": "PDF Merge",
       "description": "Merge PDF files",
-      "url": "/src/tools/pdf/merge/",
+      "url": "/tools/pdf/merge/",
       "icons": [{ "src": "/icons/pdf-192.png", "sizes": "192x192" }]
     }
   ],
   
   "share_target": {
-    "action": "/src/tools/pdf/merge/?share-target=true",
+    "action": "/tools/pdf/merge/?share-target=true",
     "method": "POST",
     "enctype": "multipart/form-data",
     "params": {
@@ -65,13 +65,13 @@
   
   "file_handlers": [
     {
-      "action": "/src/tools/pdf/merge/?file-handler=true",
+      "action": "/tools/pdf/merge/?file-handler=true",
       "accept": {
         "application/pdf": [".pdf"]
       }
     },
     {
-      "action": "/src/tools/image/compress/?file-handler=true",
+      "action": "/tools/image/compress/?file-handler=true",
       "accept": {
         "image/*": [".png", ".jpg", ".jpeg", ".webp"]
       }
@@ -81,15 +81,15 @@
   "protocol_handlers": [
     {
       "protocol": "web+pdfmerge",
-      "url": "/src/tools/pdf/merge/?source=%s"
+      "url": "/tools/pdf/merge/?source=%s"
     },
     {
       "protocol": "web+pdfcompress",
-      "url": "/src/tools/pdf/compress/?source=%s"
+      "url": "/tools/pdf/compress/?source=%s"
     },
     {
       "protocol": "web+mortgage",
-      "url": "/src/tools/finance/mortgage-refinance/?source=%s"
+      "url": "/tools/finance/mortgage-refinance/?source=%s"
     }
   ],
   
