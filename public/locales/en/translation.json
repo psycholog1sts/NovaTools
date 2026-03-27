@@ -5823,10 +5823,37 @@
       "sectionTitle": "Converters"
     },
     "all": {
-      "badge": "Browse All Tools",
-      "title": "All Tools — Online Utilities by Category",
-      "description": "Explore available tools organized by category, including PDF, image, finance, developer, text, and converters.",
-      "sectionTitle": "All Categories"
+      "badge": "Category Index",
+      "title": "Browse Categories",
+      "description": "Use this category index to open the right category page for PDF, image, finance, developer, text, and converters.",
+      "sectionTitle": "All Categories",
+      "toolCountSuffix": "tools",
+      "cards": {
+        "pdf-tools": {
+          "name": "PDF Tools",
+          "description": "Find PDF category pages for merging, splitting, OCR, compression, and conversion workflows."
+        },
+        "image-tools": {
+          "name": "Image Tools",
+          "description": "Find image category pages for compression, conversion, resizing, cleanup, and optimization."
+        },
+        "finance-tools": {
+          "name": "Finance Tools",
+          "description": "Find finance category pages for planning calculators, projections, and estimate tools."
+        },
+        "developer-tools": {
+          "name": "Developer Tools",
+          "description": "Find developer category pages for formatting, validation, encoding, and code utilities."
+        },
+        "text-writing": {
+          "name": "Text & Writing",
+          "description": "Find text and writing category pages for counting, formatting, comparison, and cleanup."
+        },
+        "converters": {
+          "name": "Converters",
+          "description": "Find converter category pages for units, currencies, percentages, and data formats."
+        }
+      }
     }
   }
 }

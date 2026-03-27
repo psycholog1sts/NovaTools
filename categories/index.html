@@ -662,11 +662,9 @@
             <span data-i18n="categories.all.sectionTitle">Categories</span>
           </nav>
 
-          <h1 class="page-title" data-i18n="categories.all.title">All Categories</h1>
+          <h1 class="page-title" data-i18n="categories.all.title">Browse Categories</h1>
 
-          <p class="page-description" data-i18n="categories.all.description">
-            Browse category hubs and jump directly into the live tool collections already available on MC NovaTools.
-          </p>
+          <p class="page-description" data-i18n="categories.all.description">Browse category index pages and open the category that matches what you need.</p>
         </div>
       </section>
 
@@ -852,7 +850,7 @@
       {
         slug: 'pdf-tools',
         name: 'PDF Tools',
-        description: 'Compress, merge, split, watermark, OCR, and convert PDF files directly in your browser.',
+        description: 'Find PDF category pages for merging, splitting, OCR, compression, and conversion workflows.',
         toolCount: 13,
         color: '#ef4444',
         icon: 'file-text'
@@ -860,7 +858,7 @@
       {
         slug: 'image-tools',
         name: 'Image Tools',
-        description: 'Resize, crop, compress, convert, remove backgrounds, and optimize images without heavy workflows.',
+        description: 'Find image category pages for compression, conversion, resizing, cleanup, and optimization.',
         toolCount: 12,
         color: '#22c55e',
         icon: 'image'
@@ -868,7 +866,7 @@
       {
         slug: 'finance-tools',
         name: 'Finance Tools',
-        description: 'Use calculators for loans, retirement, compound interest, tax planning, and financial estimates.',
+        description: 'Find finance category pages for planning calculators, projections, and estimate tools.',
         toolCount: 8,
         color: '#f59e0b',
         icon: 'trending-up'
@@ -876,7 +874,7 @@
       {
         slug: 'developer-tools',
         name: 'Developer Tools',
-        description: 'Format code, validate JSON, minify CSS and JS, test regex, and encode URLs quickly.',
+        description: 'Find developer category pages for formatting, validation, encoding, and code utilities.',
         toolCount: 12,
         color: '#06b6d4',
         icon: 'code'
@@ -884,7 +882,7 @@
       {
         slug: 'text-writing',
         name: 'Text & Writing',
-        description: 'Count words, compare text, transform case, generate lorem ipsum, and process plain text.',
+        description: 'Find text and writing category pages for counting, formatting, comparison, and cleanup.',
         toolCount: 10,
         color: '#8b5cf6',
         icon: 'type'
@@ -892,12 +890,19 @@
       {
         slug: 'converters',
         name: 'Converters',
-        description: 'Convert units, BMI, timestamps, percentages, currencies, number bases, and more.',
+        description: 'Find converter category pages for units, currencies, percentages, and data formats.',
         toolCount: 10,
         color: '#ec4899',
         icon: 'repeat'
       }
     ];
+
+    function t(key, fallback) {
+      if (window.i18n && typeof window.i18n.t === 'function') {
+        return window.i18n.t(key, fallback);
+      }
+      return fallback;
+    }
 
     function getIconPath(name) {
       const icons = {
@@ -915,24 +920,31 @@
       const container = document.getElementById('allCategories');
       if (!container) return;
 
-      container.innerHTML = categories.map(cat => `
+      const countSuffix = t('categories.all.toolCountSuffix', 'tools');
+
+      container.innerHTML = categories.map(cat => {
+        const localizedName = t(`categories.all.cards.${cat.slug}.name`, cat.name);
+        const localizedDescription = t(`categories.all.cards.${cat.slug}.description`, cat.description);
+        return `
         <a href="/categories/${cat.slug}.html" class="category-card">
           <div class="category-icon" style="background: linear-gradient(135deg, ${cat.color}26, ${cat.color}10); color: ${cat.color};">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               ${getIconPath(cat.icon)}
             </svg>
           </div>
-          <h3 class="category-name">${cat.name}</h3>
-          <p class="category-description">${cat.description}</p>
+          <h3 class="category-name">${localizedName}</h3>
+          <p class="category-description">${localizedDescription}</p>
           <div class="category-meta">
-            <span class="category-count">${cat.toolCount}+ tools</span>
+            <span class="category-count">${cat.toolCount}+ ${countSuffix}</span>
             <span aria-hidden="true">→</span>
           </div>
         </a>
-      `).join('');
+      `;
+      }).join('');
     }
 
     renderCategories();
+    window.addEventListener('languageChanged', renderCategories);
   </script>
 </body>
 </html>

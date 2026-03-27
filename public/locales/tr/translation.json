@@ -5823,10 +5823,37 @@
       "sectionTitle": "Dönüştürücüler"
     },
     "all": {
-      "badge": "Tüm Araçlara Göz Atın",
-      "title": "All Tools — Online Utilities by Category",
-      "description": "Explore available tools organized by category, including PDF, image, finance, developer, text, and converters.",
-      "sectionTitle": "Tüm Kategoriler"
+      "badge": "Kategori Dizini",
+      "title": "Kategorilere Göz Atın",
+      "description": "PDF, görüntü, finans, geliştirici, metin ve dönüştürücüler için doğru kategori sayfasını bu dizinden açın.",
+      "sectionTitle": "Tüm Kategoriler",
+      "toolCountSuffix": "araç",
+      "cards": {
+        "pdf-tools": {
+          "name": "PDF Araçları",
+          "description": "Birleştirme, bölme, OCR, sıkıştırma ve dönüştürme için PDF kategori sayfalarını açın."
+        },
+        "image-tools": {
+          "name": "Görüntü Araçları",
+          "description": "Sıkıştırma, dönüştürme, yeniden boyutlandırma, temizleme ve optimizasyon için görüntü kategori sayfalarını açın."
+        },
+        "finance-tools": {
+          "name": "Finans Araçları",
+          "description": "Planlama hesaplayıcıları, projeksiyonlar ve tahmin araçları için finans kategori sayfalarını açın."
+        },
+        "developer-tools": {
+          "name": "Geliştirici Araçları",
+          "description": "Biçimlendirme, doğrulama, kodlama ve yardımcı araçlar için geliştirici kategori sayfalarını açın."
+        },
+        "text-writing": {
+          "name": "Metin ve Yazma",
+          "description": "Sayma, biçimlendirme, karşılaştırma ve temizleme için metin-yazma kategori sayfalarını açın."
+        },
+        "converters": {
+          "name": "Dönüştürücüler",
+          "description": "Birim, para birimi, yüzde ve veri formatları için dönüştürücü kategori sayfalarını açın."
+        }
+      }
     }
   }
 }
