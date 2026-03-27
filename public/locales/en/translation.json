@@ -5824,8 +5824,8 @@
     },
     "all": {
       "badge": "Browse All Tools",
-      "title": "All Tools — Online Utilities by Category",
-      "description": "Explore available tools organized by category, including PDF, image, finance, developer, text, and converters.",
+      "title": "Browse Categories Across NovaTools",
+      "description": "Explore all live NovaTools categories and open the tools you need in one click.",
       "sectionTitle": "All Categories"
     }
   }

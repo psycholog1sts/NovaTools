@@ -847,57 +847,52 @@
     </footer>
   </div>
 
-  <script>
-    const categories = [
-      {
-        slug: 'pdf-tools',
-        name: 'PDF Tools',
-        description: 'Compress, merge, split, watermark, OCR, and convert PDF files directly in your browser.',
-        toolCount: 13,
-        color: '#ef4444',
-        icon: 'file-text'
-      },
-      {
-        slug: 'image-tools',
-        name: 'Image Tools',
-        description: 'Resize, crop, compress, convert, remove backgrounds, and optimize images without heavy workflows.',
-        toolCount: 12,
-        color: '#22c55e',
-        icon: 'image'
-      },
-      {
-        slug: 'finance-tools',
-        name: 'Finance Tools',
-        description: 'Use calculators for loans, retirement, compound interest, tax planning, and financial estimates.',
-        toolCount: 8,
-        color: '#f59e0b',
-        icon: 'trending-up'
-      },
-      {
-        slug: 'developer-tools',
-        name: 'Developer Tools',
-        description: 'Format code, validate JSON, minify CSS and JS, test regex, and encode URLs quickly.',
-        toolCount: 12,
-        color: '#06b6d4',
-        icon: 'code'
-      },
-      {
-        slug: 'text-writing',
-        name: 'Text & Writing',
-        description: 'Count words, compare text, transform case, generate lorem ipsum, and process plain text.',
-        toolCount: 10,
-        color: '#8b5cf6',
-        icon: 'type'
-      },
-      {
-        slug: 'converters',
-        name: 'Converters',
-        description: 'Convert units, BMI, timestamps, percentages, currencies, number bases, and more.',
-        toolCount: 10,
-        color: '#ec4899',
-        icon: 'repeat'
+  <script type="module">
+    import categories from '../src/data/categories.js';
+
+    function t(key, fallback) {
+      if (window.i18n && typeof window.i18n.t === 'function') {
+        return window.i18n.t(key, fallback);
       }
-    ];
+      return fallback;
+    }
+
+    function getCategoryLabel(categoryName) {
+      const map = {
+        'PDF Tools': t('nav.pdf', 'PDF Tools'),
+        'Image Tools': t('nav.image', 'Image Tools'),
+        'Finance Tools': t('nav.finance', 'Finance Tools'),
+        'Developer Tools': t('nav.developer', 'Developer Tools'),
+        'Text & Writing': t('nav.text', 'Text & Writing'),
+        Converters: t('nav.converters', 'Converters'),
+        'Security Tools': t('nav.security', 'Security Tools'),
+        Productivity: t('home.productivity', 'Productivity'),
+        'Data Tools': t('home.dataTools', 'Data Tools'),
+        'Design Tools': t('home.designTools', 'Design Tools'),
+        Calculators: t('home.calculators', 'Calculators'),
+        'Social Media': t('home.socialMedia', 'Social Media')
+      };
+      return map[categoryName] || categoryName;
+    }
+
+    function getCategoryName(category) {
+      return t(`home.categories.${category.slug}.name`, getCategoryLabel(category.name));
+    }
+
+    function getCategoryDescription(category) {
+      return t(
+        `home.categories.${category.slug}.description`,
+        category.shortDescription || category.description || ''
+      );
+    }
+
+    function getCategoryCountLabel(category) {
+      const count = Number(category.toolCount) || 0;
+      if (count > 0) {
+        return `${count}+ ${t('home.toolsGeneric', 'Tools')}`;
+      }
+      return t('home.toolsGeneric', 'Tools');
+    }
 
     function getIconPath(name) {
       const icons = {
@@ -906,7 +901,13 @@
         'trending-up': '<polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline>',
         'type': '<polyline points="4 7 4 4 20 4 20 7"></polyline><line x1="9" y1="20" x2="15" y2="20"></line><line x1="12" y1="4" x2="12" y2="20"></line>',
         'code': '<polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline>',
-        'repeat': '<polyline points="17 1 21 5 17 9"></polyline><path d="M3 11V9a4 4 0 0 1 4-4h14"></path><polyline points="7 23 3 19 7 15"></polyline><path d="M21 13v2a4 4 0 0 1-4 4H3"></path>'
+        'repeat': '<polyline points="17 1 21 5 17 9"></polyline><path d="M3 11V9a4 4 0 0 1 4-4h14"></path><polyline points="7 23 3 19 7 15"></polyline><path d="M21 13v2a4 4 0 0 1-4 4H3"></path>',
+        'calculator': '<rect x="4" y="2" width="16" height="20" rx="2"></rect><line x1="8" y1="6" x2="16" y2="6"></line><line x1="16" y1="14" x2="16" y2="14"></line><line x1="12" y1="14" x2="12" y2="14"></line><line x1="8" y1="14" x2="8" y2="14"></line><line x1="12" y1="18" x2="12" y2="18"></line><line x1="8" y1="18" x2="8" y2="18"></line><line x1="16" y1="18" x2="16" y2="18"></line>',
+        'shield': '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>',
+        'share-2': '<circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>',
+        'zap': '<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>',
+        'database': '<ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>',
+        'palette': '<circle cx="13.5" cy="6.5" r=".5"></circle><circle cx="17.5" cy="10.5" r=".5"></circle><circle cx="8.5" cy="7.5" r=".5"></circle><circle cx="6.5" cy="12.5" r=".5"></circle><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.01 17.461 2 12 2z"></path>'
       };
       return icons[name] || icons['file-text'];
     }
@@ -922,10 +923,10 @@
               ${getIconPath(cat.icon)}
             </svg>
           </div>
-          <h3 class="category-name">${cat.name}</h3>
-          <p class="category-description">${cat.description}</p>
+          <h3 class="category-name">${getCategoryName(cat)}</h3>
+          <p class="category-description">${getCategoryDescription(cat)}</p>
           <div class="category-meta">
-            <span class="category-count">${cat.toolCount}+ tools</span>
+            <span class="category-count">${getCategoryCountLabel(cat)}</span>
             <span aria-hidden="true">→</span>
           </div>
         </a>
@@ -933,6 +934,7 @@
     }
 
     renderCategories();
+    window.addEventListener('languageChanged', renderCategories);
   </script>
 </body>
 </html>
