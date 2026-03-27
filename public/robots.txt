@@ -1,4 +1,9 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.mc-novatools.com/sitemap.xml
+# Disallow admin and private areas
+Disallow: /admin/
+Disallow: /private/
+Disallow: /api/
+
+Sitemap: https://mc-novatools.com/sitemap.xml
