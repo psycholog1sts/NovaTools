@@ -18,7 +18,7 @@
   },
   "hero": {
     "title": "文件、财务和代码的一体化工具",
-    "subtitle": "使用MC NovaTools进行转换、计算、创建和优化，拥有快速、简洁且注重隐私的工具包。300多个免费工具，无需注册。",
+    "subtitle": "Use MC NovaTools to convert, calculate, create, and streamline practical workflows with a fast, clear, browser-based toolkit.",
     "cta": "探索工具",
     "browse": "浏览分类",
     "freeTools": "免费工具",
@@ -51,16 +51,16 @@
     },
     "trust": {
       "secureTitle": "安全和隐私",
-      "secureDesc": "您的数据永远不会离开浏览器",
+      "secureDesc": "Many tools process data locally in your browser.",
       "transparentTitle": "透明",
       "transparentDesc": "明确的隐私政策和条款",
       "supportTitle": "支持",
       "supportDesc": "如有任何问题请联系我们",
-      "verifiedTitle": "已验证",
-      "verifiedDesc": "符合Google AdSense标准"
+      "verifiedTitle": "Clear Ownership",
+      "verifiedDesc": "Site ownership, policy pages, and contact details are clearly available."
     },
     "footer": {
-      "brandDesc": "300+免费在线工具，用于文件、财务、代码和创意。快速、私密、安全且永远免费。",
+      "brandDesc": "Browser-based tools for files, finance, code, and everyday workflows. Built for clarity, practical use, and privacy-conscious operation.",
       "ownerTitle": "网站所有者和联系方式",
       "toolCategoriesTitle": "工具类别",
       "companyTitle": "公司",
@@ -191,8 +191,8 @@
     "noResults": "未找到工具",
     "toolsGeneric": "工具",
     "viewAllCategories": "查看所有类别",
-    "viewAllDesc": "按类别浏览我们完整的300+工具集合。",
-    "searchPlaceholder": "搜索300+工具...",
+    "viewAllDesc": "Browse our tool collection by category.",
+    "searchPlaceholder": "Search tools...",
     "popularLabel": "热门：",
     "newBadge": "新"
   },
@@ -5825,8 +5825,8 @@
     },
     "all": {
       "badge": "Browse All Tools",
-      "title": "All Tools — 300+ Free Online Utilities",
-      "description": "Explore all available tools organized by category. PDF tools, image tools, finance calculators, developer utilities, text tools, and converters — all free, all browser-based.",
+      "title": "All Tools — Online Utilities by Category",
+      "description": "Explore available tools organized by category, including PDF, image, finance, developer, text, and converters.",
       "sectionTitle": "All Categories"
     }
   }

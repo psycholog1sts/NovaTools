@@ -18,7 +18,7 @@
   },
   "hero": {
     "title": "ファイル、ファイナンス、コードのオールインワンツール",
-    "subtitle": "高速でクリーン、プライバシー重視のツールキットで変換、計算、作成、最適化を行います。300以上の無料ツール、登録不要。",
+    "subtitle": "Use MC NovaTools to convert, calculate, create, and streamline practical workflows with a fast, clear, browser-based toolkit.",
     "cta": "ツールを探索",
     "browse": "カテゴリーを閲覧",
     "freeTools": "無料ツール",
@@ -51,16 +51,16 @@
     },
     "trust": {
       "secureTitle": "安全＆プライベート",
-      "secureDesc": "データはブラウザから出ません",
+      "secureDesc": "Many tools process data locally in your browser.",
       "transparentTitle": "透明性",
       "transparentDesc": "明確なプライバシーポリシーと利用規約",
       "supportTitle": "サポート",
       "supportDesc": "ご質問はお気軽にどうぞ",
-      "verifiedTitle": "認証済み",
-      "verifiedDesc": "Google AdSense準拠"
+      "verifiedTitle": "Clear Ownership",
+      "verifiedDesc": "Site ownership, policy pages, and contact details are clearly available."
     },
     "footer": {
-      "brandDesc": "ファイル、金融、コード、クリエイティブのための300以上の無料オンラインツール。",
+      "brandDesc": "Browser-based tools for files, finance, code, and everyday workflows. Built for clarity, practical use, and privacy-conscious operation.",
       "ownerTitle": "サイト所有者＆連絡先",
       "toolCategoriesTitle": "ツールカテゴリー",
       "companyTitle": "会社",
@@ -191,8 +191,8 @@
     "noResults": "ツールが見つかりません",
     "toolsGeneric": "ツール",
     "viewAllCategories": "全カテゴリーを表示",
-    "viewAllDesc": "300以上のツールをカテゴリー別にご覧ください。",
-    "searchPlaceholder": "300以上のツールを検索...",
+    "viewAllDesc": "Browse our tool collection by category.",
+    "searchPlaceholder": "Search tools...",
     "popularLabel": "人気：",
     "newBadge": "新着"
   },
@@ -5825,8 +5825,8 @@
     },
     "all": {
       "badge": "Browse All Tools",
-      "title": "All Tools — 300+ Free Online Utilities",
-      "description": "Explore all available tools organized by category. PDF tools, image tools, finance calculators, developer utilities, text tools, and converters — all free, all browser-based.",
+      "title": "All Tools — Online Utilities by Category",
+      "description": "Explore available tools organized by category, including PDF, image, finance, developer, text, and converters.",
       "sectionTitle": "All Categories"
     }
   }

@@ -18,7 +18,7 @@
   },
   "hero": {
     "title": "फाइलों, वित्त और कोड के लिए ऑल-इन-वन टूल्स",
-    "subtitle": "तेज़, साफ़ और गोपनीयता-केंद्रित टूलकिट के साथ परिवर्तित करें, गणना करें, बनाएं और अनुकूलित करें। 300+ मुफ्त ऑनलाइन टूल्स, कोई पंजीकरण नहीं।",
+    "subtitle": "Use MC NovaTools to convert, calculate, create, and streamline practical workflows with a fast, clear, browser-based toolkit.",
     "cta": "टूल्स देखें",
     "browse": "श्रेणियाँ देखें",
     "freeTools": "मुफ्त टूल्स",
@@ -51,16 +51,16 @@
     },
     "trust": {
       "secureTitle": "सुरक्षित और निजी",
-      "secureDesc": "आपका डेटा कभी ब्राउज़र नहीं छोड़ता",
+      "secureDesc": "Many tools process data locally in your browser.",
       "transparentTitle": "पारदर्शी",
       "transparentDesc": "स्पष्ट गोपनीयता नीति और शर्तें",
       "supportTitle": "सहायता",
       "supportDesc": "किसी भी प्रश्न के लिए संपर्क करें",
-      "verifiedTitle": "सत्यापित",
-      "verifiedDesc": "Google AdSense अनुरूप"
+      "verifiedTitle": "Clear Ownership",
+      "verifiedDesc": "Site ownership, policy pages, and contact details are clearly available."
     },
     "footer": {
-      "brandDesc": "फ़ाइलों, वित्त, कोड और रचनात्मकता के लिए 300+ मुफ़्त ऑनलाइन उपकरण।",
+      "brandDesc": "Browser-based tools for files, finance, code, and everyday workflows. Built for clarity, practical use, and privacy-conscious operation.",
       "ownerTitle": "साइट मालिक और संपर्क",
       "toolCategoriesTitle": "उपकरण श्रेणियाँ",
       "companyTitle": "कंपनी",
@@ -191,8 +191,8 @@
     "noResults": "कोई उपकरण नहीं मिला",
     "toolsGeneric": "उपकरण",
     "viewAllCategories": "सभी श्रेणियाँ देखें",
-    "viewAllDesc": "हमारे 300+ उपकरणों का पूरा संग्रह श्रेणी के अनुसार देखें।",
-    "searchPlaceholder": "300+ उपकरण खोजें...",
+    "viewAllDesc": "Browse our tool collection by category.",
+    "searchPlaceholder": "Search tools...",
     "popularLabel": "लोकप्रिय:",
     "newBadge": "नया"
   },
@@ -5825,8 +5825,8 @@
     },
     "all": {
       "badge": "Browse All Tools",
-      "title": "All Tools — 300+ Free Online Utilities",
-      "description": "Explore all available tools organized by category. PDF tools, image tools, finance calculators, developer utilities, text tools, and converters — all free, all browser-based.",
+      "title": "All Tools — Online Utilities by Category",
+      "description": "Explore available tools organized by category, including PDF, image, finance, developer, text, and converters.",
       "sectionTitle": "All Categories"
     }
   }
