@@ -83,8 +83,12 @@
     return DEFAULT_LANGUAGE;
   }
 
+  function getTranslationUrl(lang) {
+    return '/locales/' + lang + '/translation.json';
+  }
+
   /**
-   * Load translations for a language with fallback URLs
+   * Load translations for a language
    */
   async function loadTranslations(lang) {
     if (translations[lang]) {
@@ -92,31 +96,25 @@
       return translations[lang];
     }
 
-    const urls = [
-      '/locales/' + lang + '/translation.json',
-      './locales/' + lang + '/translation.json',
-      '../public/locales/' + lang + '/translation.json'
-    ];
-
-    for (var i = 0; i < urls.length; i++) {
-      try {
-        var response = await fetch(urls[i]);
-        if (!response.ok) {
-          throw new Error('HTTP ' + response.status + ' for ' + urls[i]);
-        }
-        var data = await response.json();
-        translations[lang] = flattenTranslations(data);
-        console.warn('[i18n] Translations loaded for "' + lang + '" from:', urls[i]);
-        return translations[lang];
-      } catch (error) {
-        console.warn('[i18n] Fetch attempt ' + (i + 1) + '/' + urls.length + ' failed for "' + lang + '":', urls[i], error.message);
-        // Continue to next fallback URL
+    try {
+      var response = await fetch(getTranslationUrl(lang), {
+        cache: 'no-cache',
+        credentials: 'same-origin'
+      });
+      if (!response.ok) {
+        throw new Error('HTTP ' + response.status + ' for ' + getTranslationUrl(lang));
       }
+      var data = await response.json();
+      translations[lang] = flattenTranslations(data);
+      console.warn('[i18n] Translations loaded for "' + lang + '"');
+      return translations[lang];
+    } catch (error) {
+      console.warn('[i18n] Translation load failed for "' + lang + '":', error.message);
     }
 
-    console.error('[i18n] All fetch attempts failed for language:', lang);
-    // Return empty object, will fall back to default text
-    return {};
+    console.error('[i18n] Translation fetch failed for language:', lang);
+    translations[lang] = {};
+    return translations[lang];
   }
 
   /**
@@ -144,10 +142,18 @@
   function t(key, fallback) {
     fallback = arguments.length > 1 ? fallback : null;
     var translation = translations[currentLanguage];
-    if (translation && translation[key]) {
+    if (translation && Object.prototype.hasOwnProperty.call(translation, key)) {
       return translation[key];
     }
     return fallback !== null ? fallback : key;
+  }
+
+  function storeOriginalContent(el, attrName, value) {
+    var storageKey = 'data-i18n-original-' + attrName;
+    if (!el.hasAttribute(storageKey)) {
+      el.setAttribute(storageKey, value || '');
+    }
+    return el.getAttribute(storageKey) || '';
   }
 
   /**
@@ -158,8 +164,9 @@
 
     if (el.hasAttribute('data-i18n')) {
       var key = el.getAttribute('data-i18n');
-      var val = t(key);
-      if (val !== key) {
+      var originalText = storeOriginalContent(el, 'text', el.textContent);
+      var val = t(key, originalText);
+      if (typeof val === 'string') {
         el.textContent = val;
         translated = true;
       }
@@ -167,8 +174,9 @@
 
     if (el.hasAttribute('data-i18n-placeholder')) {
       var pKey = el.getAttribute('data-i18n-placeholder');
-      var pVal = t(pKey);
-      if (pVal !== pKey) {
+      var originalPlaceholder = storeOriginalContent(el, 'placeholder', el.getAttribute('placeholder') || '');
+      var pVal = t(pKey, originalPlaceholder);
+      if (typeof pVal === 'string') {
         el.placeholder = pVal;
         translated = true;
       }
@@ -176,8 +184,9 @@
 
     if (el.hasAttribute('data-i18n-title')) {
       var tKey = el.getAttribute('data-i18n-title');
-      var tVal = t(tKey);
-      if (tVal !== tKey) {
+      var originalTitle = storeOriginalContent(el, 'title', el.getAttribute('title') || '');
+      var tVal = t(tKey, originalTitle);
+      if (typeof tVal === 'string') {
         el.title = tVal;
         translated = true;
       }
@@ -185,8 +194,9 @@
 
     if (el.hasAttribute('data-i18n-html')) {
       var hKey = el.getAttribute('data-i18n-html');
-      var hVal = t(hKey);
-      if (hVal !== hKey) {
+      var originalHtml = storeOriginalContent(el, 'html', el.innerHTML);
+      var hVal = t(hKey, originalHtml);
+      if (typeof hVal === 'string') {
         el.innerHTML = hVal;
         translated = true;
       }
@@ -206,8 +216,9 @@
     root.querySelectorAll('[data-i18n]').forEach(function(el) {
       totalFound++;
       var key = el.getAttribute('data-i18n');
-      var val = t(key);
-      if (val !== key) {
+      var originalText = storeOriginalContent(el, 'text', el.textContent);
+      var val = t(key, originalText);
+      if (typeof val === 'string') {
         el.textContent = val;
         totalTranslated++;
       }
@@ -217,8 +228,9 @@
     root.querySelectorAll('[data-i18n-placeholder]').forEach(function(el) {
       totalFound++;
       var key = el.getAttribute('data-i18n-placeholder');
-      var val = t(key);
-      if (val !== key) {
+      var originalPlaceholder = storeOriginalContent(el, 'placeholder', el.getAttribute('placeholder') || '');
+      var val = t(key, originalPlaceholder);
+      if (typeof val === 'string') {
         el.placeholder = val;
         totalTranslated++;
       }
@@ -228,8 +240,9 @@
     root.querySelectorAll('[data-i18n-title]').forEach(function(el) {
       totalFound++;
       var key = el.getAttribute('data-i18n-title');
-      var val = t(key);
-      if (val !== key) {
+      var originalTitle = storeOriginalContent(el, 'title', el.getAttribute('title') || '');
+      var val = t(key, originalTitle);
+      if (typeof val === 'string') {
         el.title = val;
         totalTranslated++;
       }
@@ -239,8 +252,9 @@
     root.querySelectorAll('[data-i18n-html]').forEach(function(el) {
       totalFound++;
       var key = el.getAttribute('data-i18n-html');
-      var val = t(key);
-      if (val !== key) {
+      var originalHtml = storeOriginalContent(el, 'html', el.innerHTML);
+      var val = t(key, originalHtml);
+      if (typeof val === 'string') {
         el.innerHTML = val;
         totalTranslated++;
       }
