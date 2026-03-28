@@ -3395,7 +3395,20 @@
           "045": "Related PDF Tools",
           "046": "PDF Merger",
           "047": "PDF Splitter",
-          "048": "PDF OCR"
+          "048": "PDF OCR",
+          "049": "Upload PDF file",
+          "050": "Sponsored",
+          "051": "<strong>Upload your PDF:</strong> Drag and drop your PDF file into the upload area, or click to browse and select from your device. Maximum file size is 50MB.",
+          "052": "<strong>Choose compression level:</strong> Select High Quality for minimal compression, Balanced for a good size-to-quality ratio, or Maximum for the smallest file size.",
+          "053": "<strong>Compress:</strong> Click the \"Compress PDF\" button and let our tool optimize your document instantly.",
+          "054": "<strong>Download:</strong> Review the compression statistics showing original size, new size, and percentage saved, then download your optimized PDF.",
+          "055": "Will compressing my PDF reduce its quality?",
+          "056": "The quality impact depends on your chosen compression level. \"High Quality\" mode reduces file size by 10-20% with virtually no visible quality loss. \"Balanced\" mode (30-50% reduction) maintains good readability, while \"Maximum\" mode (50-80% reduction) is best for documents where file size matters more than visual fidelity.",
+          "057": "Is my data safe when compressing PDFs online?",
+          "058": "Yes, your files are completely secure. Our PDF compressor works entirely in your browser using client-side technology. Your documents are never uploaded to our servers or stored anywhere, ensuring maximum privacy for your sensitive information.",
+          "059": "What is the maximum file size I can compress?",
+          "060": "You can compress PDF files up to 50MB in size. This limit accommodates most documents including large reports, presentations, and scanned files while ensuring fast processing directly in your browser.",
+          "061": "Need to <strong>compress PDF</strong> files and <strong>reduce PDF size</strong> for email attachments or web uploads? Our free PDF optimizer helps you shrink document sizes without compromising quality. Whether you're dealing with large scanned documents, high-resolution PDFs, or bulky presentations, our <strong>PDF compressor</strong> delivers practical results. Choose from three compression levels: High Quality (10-20% reduction) for professional documents, Balanced (30-50% reduction) for everyday use, or Maximum (50-80% reduction) when file size is critical. All processing happens securely in your browser—your files are never uploaded to any server. This makes the tool suitable for sensitive business documents, legal contracts, or personal files that require confidentiality."
         }
       },
       "merge": {

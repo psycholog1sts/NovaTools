@@ -4,7 +4,7 @@
  */
 
 import { PDFDocument } from 'pdf-lib';
-import { initToolPage } from '../../../core/router.mjs';
+import { loadToolMeta } from '../../../core/router.mjs';
 import { generateToolPageSchemas, injectMultipleSchemas } from '../../../core/seo/schema-generator.mjs';
 import { formatBytes, trackEvent, preventDefaults } from '../../../core/utils/index.mjs';
 
@@ -26,38 +26,84 @@ const state = {
 const elements = {};
 
 async function init() {
-  const meta = await initToolPage('pdf/compress');
-  injectToolSchemas(meta);
+  const meta = await loadToolMeta('pdf/compress');
+  if (meta) {
+    injectToolSchemas(meta);
+  }
   cacheElements();
+  bindAliases();
   setupEventListeners();
   setupDragAndDrop();
+  setupQualityOptions();
+  setState('empty');
+  updateUIState();
 }
 
 function cacheElements() {
-  const ids = ['dropzone', 'fileInput', 'fileInfoSection', 'fileName', 'fileSize', 
-    'removeFileBtn', 'compressBtn', 'compressBtnText', 'compressBtnLoading', 'clearBtn',
-    'progressSection', 'progressBar', 'progressText', 'progressPercent', 'progressDetail',
+  const ids = ['compressForm', 'dropzone', 'fileInput', 'fileInfoSection', 'fileInfoCard', 'fileName', 'fileSize',
+    'removeFileBtn', 'compressBtn', 'compressBtnText', 'compressBtnLoading', 'clearBtn', 'compressAnother',
+    'progressSection', 'progressBar', 'progressFill', 'progressText', 'progressPercent', 'progressDetail',
     'resultSection', 'originalSize', 'compressedSize', 'savingsPercent', 'downloadLink',
-    'errorSection', 'errorMessage'];
-  
+    'errorSection', 'errorMessage', 'qualityInput', 'compressStatusRegion',
+    'emptyState', 'loadingState', 'successState'];
+
+  elements.compressForm = document.querySelector('form[data-tool="pdf-compress"]');
   ids.forEach(id => elements[id] = document.getElementById(id));
+}
+
+function bindAliases() {
+  elements.fileInfoSection = elements.fileInfoSection || elements.fileInfoCard;
+  elements.progressBar = elements.progressBar || elements.progressFill;
 }
 
 function setupEventListeners() {
   elements.fileInput?.addEventListener('change', handleFileSelect);
   elements.removeFileBtn?.addEventListener('click', clearFile);
-  elements.compressBtn?.addEventListener('click', handleCompress);
+  if (elements.compressForm) {
+    elements.compressForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      handleCompress();
+    });
+  } else {
+    elements.compressBtn?.addEventListener('click', handleCompress);
+  }
   elements.clearBtn?.addEventListener('click', clearAll);
+  elements.compressAnother?.addEventListener('click', clearAll);
 }
 
 function setupDragAndDrop() {
   const dz = elements.dropzone;
-  if (!dz) return;
+  const fileInput = elements.fileInput;
+  if (!dz || !fileInput) return;
+
+  dz.addEventListener('click', (e) => {
+    if (e.target !== fileInput) fileInput.click();
+  });
+
+  dz.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      fileInput.click();
+    }
+  });
   
   ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(e => dz.addEventListener(e, preventDefaults));
   ['dragenter', 'dragover'].forEach(e => dz.addEventListener(e, () => dz.classList.add('border-primary-500', 'bg-blue-50')));
   ['dragleave', 'drop'].forEach(e => dz.addEventListener(e, () => dz.classList.remove('border-primary-500', 'bg-blue-50')));
   dz.addEventListener('drop', (e) => processFile(e.dataTransfer.files[0]));
+}
+
+function setupQualityOptions() {
+  const qualityInput = elements.qualityInput;
+  document.querySelectorAll('.quality-option').forEach(option => {
+    option.addEventListener('click', () => {
+      document.querySelectorAll('.quality-option').forEach(el => el.classList.remove('selected'));
+      option.classList.add('selected');
+      if (qualityInput) {
+        qualityInput.value = option.getAttribute('data-quality') || 'balanced';
+      }
+    });
+  });
 }
 
 function handleFileSelect(e) {
@@ -80,10 +126,12 @@ function processFile(file) {
   if (elements.fileName) elements.fileName.textContent = file.name;
   if (elements.fileSize) elements.fileSize.textContent = formatBytes(file.size);
   elements.fileInfoSection?.classList.remove('hidden');
+  elements.fileInfoSection?.classList.add('visible');
   elements.dropzone?.classList.add('hidden');
   
   updateUIState();
   hideError();
+  setState('empty');
   trackEvent('pdf-compress-file-selected', { size: file.size });
 }
 
@@ -91,8 +139,10 @@ function clearFile() {
   state.file = null;
   if (elements.fileInput) elements.fileInput.value = '';
   elements.fileInfoSection?.classList.add('hidden');
+  elements.fileInfoSection?.classList.remove('visible');
   elements.dropzone?.classList.remove('hidden');
   updateUIState();
+  setState('empty');
 }
 
 function clearAll() {
@@ -106,12 +156,14 @@ function clearAll() {
   
   if (elements.fileInput) elements.fileInput.value = '';
   elements.fileInfoSection?.classList.add('hidden');
+  elements.fileInfoSection?.classList.remove('visible');
   elements.dropzone?.classList.remove('hidden');
   elements.resultSection?.classList.add('hidden');
-  elements.progressSection?.classList.add('hidden');
-  elements.errorSection?.classList.add('hidden');
+  hideProgress();
+  hideError();
   
   updateUIState();
+  setState('empty');
 }
 
 function updateUIState() {
@@ -131,10 +183,13 @@ function updateUIState() {
 async function handleCompress() {
   if (!state.file) return;
   
-  const level = document.querySelector('input[name="compressionLevel"]:checked')?.value || 'medium';
+  const selected = elements.qualityInput?.value || 'balanced';
+  const levelMap = { high: 'low', balanced: 'medium', maximum: 'high' };
+  const level = levelMap[selected] || 'medium';
   
   state.isProcessing = true;
   updateUIState();
+  setState('loading');
   showProgress();
   hideError();
   hideResult();
@@ -148,9 +203,11 @@ async function handleCompress() {
     const savings = ((state.file.size - result.bytes.length) / state.file.size * 100).toFixed(1);
     
     showResult(url, state.file.size, result.bytes.length, savings);
+    setState('success');
     trackEvent('pdf-compress-success', { originalSize: state.file.size, compressedSize: result.bytes.length, savings, level });
   } catch (error) {
     showError(`Sıkıştırma sırasında hata oluştu: ${error.message}`);
+    setState('error');
     trackEvent('pdf-compress-error', { error: error.message });
   } finally {
     state.isProcessing = false;
@@ -200,11 +257,13 @@ async function compressPDF(level) {
 }
 
 function showProgress() {
+  elements.progressSection?.classList.add('visible');
   elements.progressSection?.classList.remove('hidden');
   updateProgress(0, 'Hazırlanıyor...', '');
 }
 
 function hideProgress() {
+  elements.progressSection?.classList.remove('visible');
   elements.progressSection?.classList.add('hidden');
 }
 
@@ -229,10 +288,12 @@ function showResult(url, originalSize, compressedSize, savings) {
     elements.downloadLink.download = `${fileName}-compressed.pdf`;
   }
   
+  elements.resultSection?.classList.add('visible');
   elements.resultSection?.classList.remove('hidden');
 }
 
 function hideResult() {
+  elements.resultSection?.classList.remove('visible');
   elements.resultSection?.classList.add('hidden');
   if (elements.downloadLink?.href?.startsWith('blob:')) {
     URL.revokeObjectURL(elements.downloadLink.href);
@@ -242,11 +303,37 @@ function hideResult() {
 
 function showError(message) {
   if (elements.errorMessage) elements.errorMessage.textContent = message;
+  else if (elements.errorSection) elements.errorSection.textContent = message;
+  elements.errorSection?.classList.add('visible');
   elements.errorSection?.classList.remove('hidden');
 }
 
 function hideError() {
+  if (elements.errorMessage) elements.errorMessage.textContent = '';
+  else if (elements.errorSection) elements.errorSection.textContent = '';
+  elements.errorSection?.classList.remove('visible');
   elements.errorSection?.classList.add('hidden');
+}
+
+function setState(next) {
+  const states = {
+    empty: elements.emptyState,
+    loading: elements.loadingState,
+    success: elements.successState
+  };
+
+  Object.values(states).forEach(el => el?.classList.remove('visible'));
+  if (states[next]) states[next].classList.add('visible');
+
+  if (elements.compressStatusRegion) {
+    const messageMap = {
+      empty: elements.emptyState?.textContent?.trim() || 'Ready for one PDF file.',
+      loading: elements.loadingState?.textContent?.trim() || 'Compression is in progress.',
+      success: elements.successState?.textContent?.trim() || 'Compression completed successfully.',
+      error: 'Compression failed. Please check the error details.'
+    };
+    elements.compressStatusRegion.textContent = messageMap[next] || '';
+  }
 }
 
 function injectToolSchemas(meta) {
