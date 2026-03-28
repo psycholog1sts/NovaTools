@@ -23,25 +23,25 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <title data-i18n="tools.pdf.compress.meta.title">Free PDF Compressor - Reduce PDF Size Online | NovaTools</title>
+  <title data-i18n="tools.pdf.compress.meta.title">Free PDF Compressor - Reduce PDF Size Online | NovaTools MC</title>
   
   <!-- i18n Script -->
   <script src="/i18n.js"></script>
-  <meta name="description" content="Free PDF compressor. Reduce file size up to 90% without quality loss. Optimize PDFs for email &amp; web. 100% secure, no files uploaded to servers.">
+  <meta name="description" content="Compress PDF files in your browser with clear quality presets and private client-side processing. No signup required.">
   <meta name="keywords" content="free PDF compressor, compress PDF online, reduce PDF size, PDF optimizer, free PDF size reducer">
   <meta name="theme-color" content="#0A0A0C">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Free PDF Compressor - Reduce PDF File Size Online">
-  <meta property="og:description" content="Compress PDFs for free without quality loss. Optimize PDFs for email &amp; web. 100% secure client-side processing.">
+  <meta property="og:title" content="Free PDF Compressor - Reduce PDF File Size Online | NovaTools MC">
+  <meta property="og:description" content="Reduce PDF file size with practical quality presets and private in-browser processing.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.mc-novatools.com/tools/pdf/compress/">
   <meta property="og:image" content="https://www.mc-novatools.com/og-image.png">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Free PDF Compressor - Reduce PDF Size | NovaTools MC">
-  <meta name="twitter:description" content="Reduce PDF file size for free. Up to 90% compression, no quality loss. 100% private.">
+  <meta name="twitter:title" content="Free PDF Compressor - Reduce PDF File Size Online | NovaTools MC">
+  <meta name="twitter:description" content="Compress PDF files with clear quality presets and in-browser processing.">
 
   <!-- Canonical -->
   <link rel="canonical" href="https://www.mc-novatools.com/tools/pdf/compress/">
@@ -51,8 +51,8 @@
     "@context": "https://schema.org",
     "@graph": [{
       "@type": "WebApplication",
-      "name": "Free PDF Compressor",
-      "description": "Free PDF compressor to reduce file size without losing quality. Optimize PDFs for email, web upload, or storage.",
+      "name": "PDF Compressor",
+      "description": "Compress PDF files in your browser with practical quality presets for email, upload, and storage needs.",
       "url": "https://www.mc-novatools.com/tools/pdf/compress/",
       "applicationCategory": "UtilityApplication",
       "operatingSystem": "Any",
@@ -65,6 +65,11 @@
     .tool-header { text-align: center; margin-bottom: 2rem; }
     .tool-header h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; }
     .tool-header p { color: var(--text-secondary); }
+    .hero-note {
+      margin-top: 0.75rem;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
     
     .dropzone {
       border: 2px dashed var(--border-default);
@@ -225,6 +230,76 @@
       display: none;
     }
     .error-message.visible { display: block; }
+
+    .state-section {
+      margin-top: 1rem;
+      padding: 1rem 1.25rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-default);
+      background: var(--surface-default);
+      font-size: 0.9375rem;
+      color: var(--text-secondary);
+      display: none;
+    }
+    .state-section.visible { display: block; }
+    .state-section[data-state="loading"] {
+      border-color: rgba(99, 102, 241, 0.45);
+      background: rgba(99, 102, 241, 0.08);
+    }
+    .state-section[data-state="success"] {
+      border-color: rgba(34, 197, 94, 0.35);
+      background: rgba(34, 197, 94, 0.08);
+      color: #4ade80;
+      font-weight: 600;
+    }
+
+    .trust-help,
+    .related-tools {
+      margin-top: 1.5rem;
+      padding: 1.5rem;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-default);
+      background: var(--surface-default);
+    }
+    .trust-help h2,
+    .related-tools h2 {
+      margin: 0 0 0.75rem;
+      font-size: 1.125rem;
+      font-weight: 600;
+    }
+    .trust-help ul {
+      margin: 0;
+      padding-left: 1.125rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+    .related-tools-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.75rem;
+    }
+    .related-tool-link {
+      display: block;
+      padding: 0.85rem 1rem;
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-md);
+      color: var(--text-primary);
+      text-decoration: none;
+      font-weight: 500;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+    .related-tool-link:hover,
+    .related-tool-link:focus-visible {
+      border-color: var(--border-accent);
+      transform: translateY(-1px);
+    }
+
+    @media (max-width: 768px) {
+      .tool-header h1 { font-size: 1.75rem; }
+      .compression-stats { grid-template-columns: 1fr; }
+      .related-tools-grid { grid-template-columns: 1fr; }
+      .download-btn { width: 100%; justify-content: center; }
+    }
     
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
@@ -276,15 +351,17 @@
           <h1 data-i18n="tools.pdf.compress.text.011">🗜️ PDF Compressor</h1>
           <span class="sr-only" data-i18n="tools.pdf.compress.text.012">Free PDF compressor — free online PDF size reducer tool. Compress PDF files for free without losing quality. No registration, no file uploads to servers. 100% free PDF optimization.</span>
           <p data-i18n="tools.pdf.compress.text.013">Reduce PDF file size without losing quality. Your files never leave your browser.</p>
+          <p class="hero-note" data-i18n="tools.pdf.compress.text.022">Choose a quality preset based on your size target. Actual reduction depends on your source PDF.</p>
         </div>
         
         <form data-tool="pdf-compress" data-result=".results-panel">
-          <div id="dropzone" class="dropzone">
+          <div id="dropzone" class="dropzone" role="button" tabindex="0" aria-label="Upload PDF file">
             <div class="dropzone-icon">📄</div>
-            <div class="dropzone-title">Drop PDF file here or click to browse</div>
-            <div class="dropzone-hint">Max 50MB • PDF format only</div>
+            <div class="dropzone-title" data-i18n="tools.pdf.compress.text.023">Drop PDF file here or click to browse</div>
+            <div class="dropzone-hint" data-i18n="tools.pdf.compress.text.024">Max 50MB • PDF format only</div>
             <input type="file" name="file" id="fileInput" accept=".pdf,application/pdf" style="display: none;">
           </div>
+          <p id="compressFormHelp" class="hero-note" data-i18n="tools.pdf.compress.text.025">Upload one PDF, pick a quality mode, then compress.</p>
           
           <div id="fileInfoCard" class="file-info-card">
             <div class="file-details">
@@ -301,34 +378,48 @@
             <div class="quality-options">
               <div class="quality-option" data-quality="high">
                 <div class="icon">🏆</div>
-                <div class="label">High Quality</div>
-                <div class="desc">Best quality • 10-20% smaller</div>
+                <div class="label" data-i18n="tools.pdf.compress.text.026">High Quality</div>
+                <div class="desc" data-i18n="tools.pdf.compress.text.027">Best quality • 10-20% smaller</div>
               </div>
               <div class="quality-option selected" data-quality="balanced">
                 <div class="icon">⚖️</div>
-                <div class="label">Balanced</div>
-                <div class="desc">Good quality • 30-50% smaller</div>
+                <div class="label" data-i18n="tools.pdf.compress.text.028">Balanced</div>
+                <div class="desc" data-i18n="tools.pdf.compress.text.029">Good quality • 30-50% smaller</div>
               </div>
               <div class="quality-option" data-quality="maximum">
                 <div class="icon">🚀</div>
-                <div class="label">Maximum</div>
-                <div class="desc">Smaller size • 50-80% smaller</div>
+                <div class="label" data-i18n="tools.pdf.compress.text.030">Maximum</div>
+                <div class="desc" data-i18n="tools.pdf.compress.text.031">Smaller size • 50-80% smaller</div>
               </div>
             </div>
             <input type="hidden" name="quality" id="qualityInput" value="balanced">
             
-            <button type="submit" id="compressBtn" class="btn btn-primary">
+            <button type="submit" id="compressBtn" class="btn btn-primary" aria-describedby="compressFormHelp compressStatusRegion">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
               </svg>
-              Compress PDF
+              <span data-i18n="tools.pdf.compress.text.032">Compress PDF</span>
             </button>
           </div>
         </form>
         
         <div class="results-panel">
+          <div id="emptyState" class="state-section visible" data-state="empty">
+            <span data-i18n="tools.pdf.compress.text.033">Empty state: waiting for one PDF file.</span>
+          </div>
+
+          <div id="loadingState" class="state-section" data-state="loading">
+            <span data-i18n="tools.pdf.compress.text.034">Loading state: compression is in progress.</span>
+          </div>
+
+          <div id="successState" class="state-section" data-state="success">
+            <span data-i18n="tools.pdf.compress.text.035">Success state: your compressed PDF is ready.</span>
+          </div>
+
+          <div id="compressStatusRegion" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
+
           <div id="progressSection" class="progress-section">
-            <div class="progress-text" id="progressText">Analyzing PDF...</div>
+            <div class="progress-text" id="progressText" data-i18n="tools.pdf.compress.text.036">Analyzing PDF...</div>
             <div class="progress-bar">
               <div id="progressFill" class="progress-fill" style="width: 0%"></div>
             </div>
@@ -341,15 +432,15 @@
             <div class="compression-stats">
               <div class="stat-box">
                 <div id="originalSize" class="stat-value"></div>
-                <div class="stat-label">Original</div>
+                <div class="stat-label" data-i18n="tools.pdf.compress.text.037">Original</div>
               </div>
               <div class="stat-box">
                 <div id="compressedSize" class="stat-value"></div>
-                <div class="stat-label">Compressed</div>
+                <div class="stat-label" data-i18n="tools.pdf.compress.text.038">Compressed</div>
               </div>
               <div class="stat-box">
                 <div id="savingsPercent" class="stat-value savings"></div>
-                <div class="stat-label">Saved</div>
+                <div class="stat-label" data-i18n="tools.pdf.compress.text.039">Saved</div>
               </div>
             </div>
             
@@ -357,7 +448,7 @@
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
               </svg>
-              Download Compressed PDF
+              <span data-i18n="tools.pdf.compress.text.040">Download Compressed PDF</span>
             </a>
             
             <button type="button" id="compressAnother" class="btn btn-secondary" style="margin-top: 1rem;" data-i18n="tools.pdf.compress.text.016">
@@ -366,7 +457,25 @@
           </div>
         </div>
         
-        <div id="errorSection" class="error-message"></div>
+        <div id="errorSection" class="error-message" role="alert" aria-live="assertive"></div>
+
+        <section class="trust-help" aria-labelledby="compressTrustHeading">
+          <h2 id="compressTrustHeading" data-i18n="tools.pdf.compress.text.041">Trust & Help</h2>
+          <ul>
+            <li data-i18n="tools.pdf.compress.text.042">Compression runs in your browser. Files are not uploaded to our servers.</li>
+            <li data-i18n="tools.pdf.compress.text.043">Compression results vary by PDF content. Image-heavy files usually shrink more than text-only files.</li>
+            <li data-i18n="tools.pdf.compress.text.044">Use High Quality for readability-first documents, Balanced for general sharing, and Maximum for strict size limits.</li>
+          </ul>
+        </section>
+
+        <section class="related-tools" aria-labelledby="compressRelatedHeading">
+          <h2 id="compressRelatedHeading" data-i18n="tools.pdf.compress.text.045">Related PDF Tools</h2>
+          <div class="related-tools-grid">
+            <a class="related-tool-link" href="/tools/pdf/merge/" data-i18n="tools.pdf.compress.text.046">PDF Merger</a>
+            <a class="related-tool-link" href="/tools/pdf/split/" data-i18n="tools.pdf.compress.text.047">PDF Splitter</a>
+            <a class="related-tool-link" href="/tools/pdf/pdf-ocr/" data-i18n="tools.pdf.compress.text.048">PDF OCR</a>
+          </div>
+        </section>
         
         <!-- In-Tool Ad -->
         <div style="margin-top: 2rem; text-align: center;">
@@ -435,6 +544,68 @@
   </div>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+  var dropzone = document.getElementById('dropzone');
+  var fileInput = document.getElementById('fileInput');
+  var fileInfoCard = document.getElementById('fileInfoCard');
+  var fileName = document.getElementById('fileName');
+  var fileSize = document.getElementById('fileSize');
+  var qualitySelector = document.getElementById('qualitySelector');
+  var compressStatusRegion = document.getElementById('compressStatusRegion');
+  var emptyState = document.getElementById('emptyState');
+
+  function announce(msg) {
+    if (compressStatusRegion) compressStatusRegion.textContent = msg;
+  }
+
+  function formatSize(bytes) {
+    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+    return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+  }
+
+  function showSelectedFile(file) {
+    if (!file) return;
+    if (fileName) fileName.textContent = file.name;
+    if (fileSize) fileSize.textContent = formatSize(file.size);
+    if (fileInfoCard) fileInfoCard.classList.add('visible');
+    if (qualitySelector) qualitySelector.classList.add('visible');
+    if (emptyState) emptyState.classList.remove('visible');
+    announce(file.name + ' selected. Choose quality and start compression.');
+  }
+
+  if (dropzone && fileInput) {
+    dropzone.addEventListener('click', function(e) {
+      if (e.target !== fileInput) fileInput.click();
+    });
+    dropzone.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        fileInput.click();
+      }
+    });
+    fileInput.addEventListener('change', function() {
+      if (fileInput.files && fileInput.files[0]) showSelectedFile(fileInput.files[0]);
+    });
+    dropzone.addEventListener('dragover', function(e) { e.preventDefault(); dropzone.classList.add('drag-active'); });
+    dropzone.addEventListener('dragleave', function() { dropzone.classList.remove('drag-active'); });
+    dropzone.addEventListener('drop', function(e) {
+      e.preventDefault();
+      dropzone.classList.remove('drag-active');
+      var dropped = e.dataTransfer && e.dataTransfer.files ? e.dataTransfer.files[0] : null;
+      if (!dropped) return;
+      fileInput.files = e.dataTransfer.files;
+      showSelectedFile(dropped);
+    });
+  }
+
+  var qualityInput = document.getElementById('qualityInput');
+  document.querySelectorAll('.quality-option').forEach(function(option) {
+    option.addEventListener('click', function() {
+      document.querySelectorAll('.quality-option').forEach(function(el) { el.classList.remove('selected'); });
+      option.classList.add('selected');
+      if (qualityInput) qualityInput.value = option.getAttribute('data-quality') || 'balanced';
+    });
+  });
+
   var menuBtn = document.getElementById('mobileMenuBtn');
   var mobileMenu = document.getElementById('mobileMenu');
   if (menuBtn && mobileMenu) {
