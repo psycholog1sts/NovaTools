@@ -18,7 +18,7 @@
   },
   "schema": {
     "@type": "WebApplication",
-    "applicationCategory": "DeveloperApplication",
+    "applicationCategory": "UtilityApplication",
     "offers": {
       "@type": "Offer",
       "price": "0"
@@ -41,8 +41,9 @@
     "lazyLoad": true
   },
   "relatedTools": [
-    "pdf/merge",
-    "pdf/split"
+    "pdf-merge",
+    "pdf-split",
+    "pdf-ocr"
   ],
   "memoryLimits": {
     "maxFileSize": 52428800,
