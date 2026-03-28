@@ -3342,7 +3342,7 @@
     "pdf": {
       "compress": {
         "meta": {
-          "title": "Free PDF Compressor - Reduce PDF Size Online | NovaTools"
+          "title": "Free PDF Compressor - Reduce PDF Size Online | NovaTools MC"
         },
         "title": {
           "001": "Your data never leaves your browser"
@@ -3368,7 +3368,34 @@
           "018": "How to Use Our PDF Compressor",
           "019": "Frequently Asked Questions",
           "020": "psk.dan.metehancetin@mc-novatools.com",
-          "021": "Estimates only — not financial, legal, or tax advice."
+          "021": "Estimates only — not financial, legal, or tax advice.",
+          "022": "Choose a quality preset based on your size target. Actual reduction depends on your source PDF.",
+          "023": "Drop PDF file here or click to browse",
+          "024": "Max 50MB • PDF format only",
+          "025": "Upload one PDF, pick a quality mode, then compress.",
+          "026": "High Quality",
+          "027": "Best quality • 10-20% smaller",
+          "028": "Balanced",
+          "029": "Good quality • 30-50% smaller",
+          "030": "Maximum",
+          "031": "Smaller size • 50-80% smaller",
+          "032": "Compress PDF",
+          "033": "Empty state: waiting for one PDF file.",
+          "034": "Loading state: compression is in progress.",
+          "035": "Success state: your compressed PDF is ready.",
+          "036": "Analyzing PDF...",
+          "037": "Original",
+          "038": "Compressed",
+          "039": "Saved",
+          "040": "Download Compressed PDF",
+          "041": "Trust & Help",
+          "042": "Compression runs in your browser. Files are not uploaded to our servers.",
+          "043": "Compression results vary by PDF content. Image-heavy files usually shrink more than text-only files.",
+          "044": "Use High Quality for readability-first documents, Balanced for general sharing, and Maximum for strict size limits.",
+          "045": "Related PDF Tools",
+          "046": "PDF Merger",
+          "047": "PDF Splitter",
+          "048": "PDF OCR"
         }
       },
       "merge": {
