@@ -55,6 +55,11 @@ function bindAliases() {
   elements.progressBar = elements.progressBar || elements.progressFill;
 }
 
+function bindAliases() {
+  elements.fileInfoSection = elements.fileInfoSection || elements.fileInfoCard;
+  elements.progressBar = elements.progressBar || elements.progressFill;
+}
+
 function setupEventListeners() {
   elements.fileInput?.addEventListener('change', handleFileSelect);
   elements.removeFileBtn?.addEventListener('click', clearFile);

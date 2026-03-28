@@ -3413,7 +3413,7 @@
       },
       "merge": {
         "meta": {
-          "title": "Free PDF Merger - Combine PDF Files Online | NovaTools"
+          "title": "Free PDF Merger - Combine PDF Files Online | NovaTools MC"
         },
         "placeholder": {
           "001": "merged-document"
@@ -3443,7 +3443,28 @@
           "019": "How to Use Our PDF Merge Tool",
           "020": "Frequently Asked Questions",
           "021": "psk.dan.metehancetin@mc-novatools.com",
-          "022": "Estimates only — not financial, legal, or tax advice."
+          "022": "Estimates only — not financial, legal, or tax advice.",
+          "023": "Supports up to 20 files and 50MB total per merge operation.",
+          "024": "Drop PDF files here or click to browse",
+          "025": "Max 20 files • 50MB total • PDF format only",
+          "026": "Add at least two PDF files, choose output options, then merge.",
+          "027": "Manual Order",
+          "028": "By Name (A-Z)",
+          "029": "By Size (Largest First)",
+          "030": "Merge PDFs",
+          "031": "Empty state: waiting for PDF files. Add at least two files to continue.",
+          "032": "Loading state: preparing merge process. Please wait.",
+          "033": "Success state: your merged PDF is ready to download.",
+          "034": "Processing...",
+          "035": "Download Merged PDF",
+          "036": "Trust & Help",
+          "037": "All merging runs locally in your browser. Files are not uploaded to our server.",
+          "038": "If a file is encrypted or corrupted, remove it and try again.",
+          "039": "For large jobs, merge in smaller batches to avoid browser memory limits.",
+          "040": "Related PDF Tools",
+          "041": "PDF Compressor",
+          "042": "PDF Splitter",
+          "043": "PDF OCR"
         }
       },
       "pdf-ocr": {
