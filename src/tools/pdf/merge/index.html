@@ -23,25 +23,25 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <title data-i18n="tools.pdf.merge.meta.title">Free PDF Merger - Combine PDF Files Online | NovaTools</title>
+  <title data-i18n="tools.pdf.merge.meta.title">Free PDF Merger - Combine PDF Files Online | NovaTools MC</title>
   
   <!-- i18n Script -->
   <script src="/i18n.js"></script>
-  <meta name="description" content="Free online PDF merger. Combine multiple PDFs into one in seconds. No watermarks, no signup. 100% secure client-side processing. Try free now!">
+  <meta name="description" content="Merge multiple PDF files into one document in your browser. No signup, no watermarks, and no server upload required.">
   <meta name="keywords" content="free PDF merger, merge PDF online, combine PDF files, free PDF combiner, join PDF documents">
   <meta name="theme-color" content="#0A0A0C">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Free PDF Merger - Combine PDF Files Online">
-  <meta property="og:description" content="Merge multiple PDFs into one for free. No watermarks, no signup, instant results. 100% secure.">
+  <meta property="og:title" content="Free PDF Merger - Combine PDF Files Online | NovaTools MC">
+  <meta property="og:description" content="Combine multiple PDF files into one document with in-browser processing. No signup and no server upload required.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.mc-novatools.com/tools/pdf/merge/">
   <meta property="og:image" content="https://www.mc-novatools.com/og-image.png">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Free PDF Merger - Combine PDFs Online | NovaTools MC">
-  <meta name="twitter:description" content="Merge PDF files for free. No watermarks, no signup. Instant client-side processing.">
+  <meta name="twitter:title" content="Free PDF Merger - Combine PDF Files Online | NovaTools MC">
+  <meta name="twitter:description" content="Merge PDF files directly in your browser. No signup, no watermarks, and no server upload required.">
 
   <!-- Canonical -->
   <link rel="canonical" href="https://www.mc-novatools.com/tools/pdf/merge/">
@@ -51,8 +51,8 @@
     "@context": "https://schema.org",
     "@graph": [{
       "@type": "WebApplication",
-      "name": "Free PDF Merger",
-      "description": "Free online PDF merger to combine multiple PDF files into one document instantly. No registration, no watermarks.",
+      "name": "PDF Merger",
+      "description": "Merge multiple PDF files into one document with in-browser processing. No registration or server upload required.",
       "url": "https://www.mc-novatools.com/tools/pdf/merge/",
       "applicationCategory": "UtilityApplication",
       "operatingSystem": "Any",
@@ -65,6 +65,11 @@
     .tool-header { text-align: center; margin-bottom: 2rem; }
     .tool-header h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; }
     .tool-header p { color: var(--text-secondary); }
+    .hero-note {
+      margin-top: 0.75rem;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
     
     .dropzone {
       border: 2px dashed var(--border-default);
@@ -207,6 +212,93 @@
       display: none;
     }
     .error-message.visible { display: block; }
+
+    .state-section {
+      margin-top: 1rem;
+      padding: 1rem 1.25rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-default);
+      background: var(--surface-default);
+      font-size: 0.9375rem;
+      color: var(--text-secondary);
+      display: none;
+    }
+    .state-section.visible { display: block; }
+    .state-section[data-state="empty"] {
+      border-color: var(--border-default);
+    }
+    .state-section[data-state="loading"] {
+      border-color: rgba(99, 102, 241, 0.45);
+      background: rgba(99, 102, 241, 0.08);
+    }
+    .state-section[data-state="success"] {
+      border-color: rgba(34, 197, 94, 0.35);
+      background: rgba(34, 197, 94, 0.08);
+      color: #4ade80;
+      font-weight: 600;
+    }
+
+    .trust-help,
+    .related-tools {
+      margin-top: 1.5rem;
+      padding: 1.5rem;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-default);
+      background: var(--surface-default);
+    }
+    .trust-help h2,
+    .related-tools h2 {
+      margin: 0 0 0.75rem;
+      font-size: 1.125rem;
+      font-weight: 600;
+    }
+    .trust-help ul {
+      margin: 0;
+      padding-left: 1.125rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+    .related-tools-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.75rem;
+    }
+    .related-tool-link {
+      display: block;
+      padding: 0.85rem 1rem;
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-md);
+      color: var(--text-primary);
+      text-decoration: none;
+      font-weight: 500;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+    .related-tool-link:hover,
+    .related-tool-link:focus-visible {
+      border-color: var(--border-accent);
+      transform: translateY(-1px);
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    @media (max-width: 768px) {
+      .tool-header h1 { font-size: 1.75rem; }
+      .controls { padding: 1rem; }
+      .file-item { flex-wrap: wrap; align-items: flex-start; }
+      .file-info { min-width: 0; width: calc(100% - 3.5rem); }
+      .related-tools-grid { grid-template-columns: 1fr; }
+      .download-btn { width: 100%; justify-content: center; }
+    }
     
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
@@ -258,15 +350,17 @@
           <h1 data-i18n="tools.pdf.merge.text.011">📎 PDF Merge Tool</h1>
           <span class="sr-only" data-i18n="tools.pdf.merge.text.012">Free PDF merger — free online tool to combine multiple PDF files into one. Merge PDFs for free with no watermarks and no registration. 100% free PDF combiner.</span>
           <p data-i18n="tools.pdf.merge.text.013">Combine multiple PDF files into one document instantly. Your files never leave your browser.</p>
+          <p class="hero-note" data-i18n="tools.pdf.merge.text.023">Supports up to 20 files and 50MB total per merge operation.</p>
         </div>
         
         <form data-tool="pdf-merge" data-result=".results-panel">
-          <div id="dropzone" class="dropzone">
+          <div id="dropzone" class="dropzone" role="button" tabindex="0" aria-label="Upload PDF files">
             <div class="dropzone-icon">📁</div>
-            <div class="dropzone-title">Drop PDF files here or click to browse</div>
-            <div class="dropzone-hint">Max 20 files • 50MB total • PDF format only</div>
+            <div class="dropzone-title" data-i18n="tools.pdf.merge.text.024">Drop PDF files here or click to browse</div>
+            <div class="dropzone-hint" data-i18n="tools.pdf.merge.text.025">Max 20 files • 50MB total • PDF format only</div>
             <input type="file" name="files" id="fileInput" accept=".pdf,application/pdf" multiple style="display: none;">
           </div>
+          <p id="formHelpText" class="hero-note" data-i18n="tools.pdf.merge.text.026">Add at least two PDF files, choose output options, then merge.</p>
           
           <div id="fileList" class="file-list"></div>
           
@@ -279,17 +373,17 @@
             <div class="control-group">
               <label for="sortOrder" data-i18n="tools.pdf.merge.text.015">Sort Order</label>
               <select id="sortOrder" name="sortOrder">
-                <option value="manual">Manual Order</option>
-                <option value="name">By Name (A-Z)</option>
-                <option value="size">By Size (Largest First)</option>
+                <option value="manual" data-i18n="tools.pdf.merge.text.027">Manual Order</option>
+                <option value="name" data-i18n="tools.pdf.merge.text.028">By Name (A-Z)</option>
+                <option value="size" data-i18n="tools.pdf.merge.text.029">By Size (Largest First)</option>
               </select>
             </div>
             
-            <button type="submit" id="mergeBtn" class="btn btn-primary" disabled>
+            <button type="submit" id="mergeBtn" class="btn btn-primary" disabled aria-describedby="formHelpText mergeStatusRegion">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M12 4v16m-8-8h16"/>
               </svg>
-              Merge PDFs
+              <span data-i18n="tools.pdf.merge.text.030">Merge PDFs</span>
             </button>
             
             <button type="button" id="clearBtn" class="btn btn-secondary" style="width: 100%; margin-top: 0.75rem;" data-i18n="tools.pdf.merge.text.016">
@@ -299,8 +393,22 @@
         </form>
         
         <div class="results-panel">
+          <div id="emptyState" class="state-section visible" data-state="empty">
+            <span data-i18n="tools.pdf.merge.text.031">Empty state: waiting for PDF files. Add at least two files to continue.</span>
+          </div>
+
+          <div id="loadingState" class="state-section" data-state="loading">
+            <span data-i18n="tools.pdf.merge.text.032">Loading state: preparing merge process. Please wait.</span>
+          </div>
+
+          <div id="successState" class="state-section" data-state="success">
+            <span data-i18n="tools.pdf.merge.text.033">Success state: your merged PDF is ready to download.</span>
+          </div>
+
+          <div id="mergeStatusRegion" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
+
           <div id="progressSection" class="progress-section">
-            <div class="progress-text" id="progressText">Processing...</div>
+            <div class="progress-text" id="progressText" data-i18n="tools.pdf.merge.text.034">Processing...</div>
             <div class="progress-bar">
               <div id="progressFill" class="progress-fill" style="width: 0%"></div>
             </div>
@@ -315,12 +423,30 @@
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
               </svg>
-              Download Merged PDF
+              <span data-i18n="tools.pdf.merge.text.035">Download Merged PDF</span>
             </a>
           </div>
         </div>
         
-        <div id="errorSection" class="error-message"></div>
+        <div id="errorSection" class="error-message" role="alert" aria-live="assertive"></div>
+
+        <section class="trust-help" aria-labelledby="trustHelpHeading">
+          <h2 id="trustHelpHeading" data-i18n="tools.pdf.merge.text.036">Trust & Help</h2>
+          <ul>
+            <li data-i18n="tools.pdf.merge.text.037">All merging runs locally in your browser. Files are not uploaded to our server.</li>
+            <li data-i18n="tools.pdf.merge.text.038">If a file is encrypted or corrupted, remove it and try again.</li>
+            <li data-i18n="tools.pdf.merge.text.039">For large jobs, merge in smaller batches to avoid browser memory limits.</li>
+          </ul>
+        </section>
+
+        <section class="related-tools" aria-labelledby="relatedToolsHeading">
+          <h2 id="relatedToolsHeading" data-i18n="tools.pdf.merge.text.040">Related PDF Tools</h2>
+          <div class="related-tools-grid">
+            <a class="related-tool-link" href="/tools/pdf/compress/" data-i18n="tools.pdf.merge.text.041">PDF Compressor</a>
+            <a class="related-tool-link" href="/tools/pdf/split/" data-i18n="tools.pdf.merge.text.042">PDF Splitter</a>
+            <a class="related-tool-link" href="/tools/pdf/pdf-ocr/" data-i18n="tools.pdf.merge.text.043">PDF OCR</a>
+          </div>
+        </section>
         
         <!-- In-Tool Ad -->
         <div style="margin-top: 2rem; text-align: center;">
@@ -394,9 +520,29 @@ document.addEventListener('DOMContentLoaded', function() {
   var fileInput = document.getElementById('fileInput');
   var fileListEl = document.getElementById('fileList');
   var mergeBtn = document.getElementById('mergeBtn');
+  var controls = document.getElementById('controls');
+  var emptyState = document.getElementById('emptyState');
+  var loadingState = document.getElementById('loadingState');
+  var successState = document.getElementById('successState');
+  var statusRegion = document.getElementById('mergeStatusRegion');
   var files = [];
 
   function fmt(b) { return b < 1048576 ? (b/1024).toFixed(1)+' KB' : (b/1048576).toFixed(1)+' MB'; }
+
+  function announce(msg) {
+    if (statusRegion) statusRegion.textContent = msg;
+  }
+
+  function setState(next) {
+    if (emptyState) emptyState.classList.toggle('visible', next === 'empty');
+    if (loadingState) loadingState.classList.toggle('visible', next === 'loading');
+    if (successState) successState.classList.toggle('visible', next === 'success');
+  }
+
+  function hideError() {
+    var e = document.getElementById('errorSection');
+    if (e) { e.style.display = 'none'; e.textContent = ''; }
+  }
 
   function renderList() {
     if (!fileListEl) return;
@@ -413,7 +559,16 @@ document.addEventListener('DOMContentLoaded', function() {
       item.appendChild(icon); item.appendChild(info); item.appendChild(rm);
       fileListEl.appendChild(item);
     });
+    if (controls) controls.style.display = files.length ? 'block' : 'none';
     if (mergeBtn) mergeBtn.disabled = files.length < 2;
+    if (files.length < 2) {
+      setState('empty');
+      announce('Waiting for at least two PDF files.');
+    } else {
+      setState('empty');
+      announce(files.length + ' PDF files selected. Ready to merge.');
+    }
+    hideError();
   }
 
   function addFiles(list) {
@@ -425,6 +580,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
   if (dropzone && fileInput) {
     dropzone.addEventListener('click', function(e){ if (e.target !== fileInput) fileInput.click(); });
+    dropzone.addEventListener('keydown', function(e){
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        fileInput.click();
+      }
+    });
     fileInput.addEventListener('change', function(){ addFiles(fileInput.files); fileInput.value = ''; });
     dropzone.addEventListener('dragover', function(e){ e.preventDefault(); dropzone.classList.add('drag-active'); });
     dropzone.addEventListener('dragleave', function(){ dropzone.classList.remove('drag-active'); });
@@ -438,7 +599,12 @@ document.addEventListener('DOMContentLoaded', function() {
   if (form) {
     form.addEventListener('submit', function(e) {
       e.preventDefault();
-      if (files.length < 2) return;
+      if (files.length < 2) {
+        showErr('Add at least two PDF files before merging.');
+        return;
+      }
+      setState('loading');
+      announce('Loading merge library and preparing files.');
       var prog = document.getElementById('progressSection');
       var progText = document.getElementById('progressText');
       if (prog) prog.style.display = 'block';
@@ -459,6 +625,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var dlLink = document.getElementById('downloadLink');
     try {
       if (progText) progText.textContent = 'Merging ' + files.length + ' PDFs...';
+      announce('Merging ' + files.length + ' PDF files.');
       var merged = await window.PDFLib.PDFDocument.create();
       var total = 0;
       for (var i = 0; i < files.length; i++) {
@@ -479,6 +646,9 @@ document.addEventListener('DOMContentLoaded', function() {
       if (dlSection) dlSection.style.display = 'block';
       var prog = document.getElementById('progressSection');
       if (prog) prog.style.display = 'none';
+      setState('success');
+      announce('Merge complete. Your merged PDF is ready for download.');
+      if (dlLink) dlLink.focus();
     } catch(err) { showErr('Merge failed: ' + (err.message || err)); }
   }
 
@@ -487,6 +657,8 @@ document.addEventListener('DOMContentLoaded', function() {
     if (e) { e.textContent = msg; e.style.display = 'block'; }
     var prog = document.getElementById('progressSection');
     if (prog) prog.style.display = 'none';
+    setState(files.length >= 2 ? 'empty' : 'empty');
+    announce(msg);
   }
   // ──────────────────────────────────────────────────────────
 
@@ -520,6 +692,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     updateIcon();
   }
+  renderList();
 });
 </script>
 </body>
