@@ -4,7 +4,7 @@
  */
 
 import { PDFDocument } from 'pdf-lib';
-import { initToolPage } from '../../../core/router.mjs';
+import { loadToolMeta } from '../../../core/router.mjs';
 import { generateToolPageSchemas, injectMultipleSchemas } from '../../../core/seo/schema-generator.mjs';
 import { formatBytes, trackEvent, preventDefaults } from '../../../core/utils/index.mjs';
 
@@ -26,8 +26,10 @@ const state = {
 const elements = {};
 
 async function init() {
-  const meta = await initToolPage('pdf/compress');
-  injectToolSchemas(meta);
+  const meta = await loadToolMeta('pdf/compress');
+  if (meta) {
+    injectToolSchemas(meta);
+  }
   cacheElements();
   bindAliases();
   setupEventListeners();
