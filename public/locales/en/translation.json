@@ -3373,7 +3373,7 @@
       },
       "merge": {
         "meta": {
-          "title": "Free PDF Merger - Combine PDF Files Online | NovaTools"
+          "title": "Free PDF Merger - Combine PDF Files Online | NovaTools MC"
         },
         "placeholder": {
           "001": "merged-document"
@@ -3403,7 +3403,52 @@
           "019": "How to Use Our PDF Merge Tool",
           "020": "Frequently Asked Questions",
           "021": "psk.dan.metehancetin@mc-novatools.com",
-          "022": "Estimates only — not financial, legal, or tax advice."
+          "022": "Estimates only — not financial, legal, or tax advice.",
+          "023": "Supports up to 20 files and 50MB total per merge operation.",
+          "024": "Drop PDF files here or click to browse",
+          "025": "Max 20 files • 50MB total • PDF format only",
+          "026": "Add at least two PDF files, choose output options, then merge.",
+          "027": "Manual Order",
+          "028": "By Name (A-Z)",
+          "029": "By Size (Largest First)",
+          "030": "Merge PDFs",
+          "031": "Empty state: waiting for PDF files. Add at least two files to continue.",
+          "032": "Loading state: preparing merge process. Please wait.",
+          "033": "Success state: your merged PDF is ready to download.",
+          "034": "Processing...",
+          "035": "Download Merged PDF",
+          "036": "Trust & Help",
+          "037": "All merging runs locally in your browser. Files are not uploaded to our server.",
+          "038": "If a file is encrypted or corrupted, remove it and try again.",
+          "039": "For large jobs, merge in smaller batches to avoid browser memory limits.",
+          "040": "Related PDF Tools",
+          "041": "PDF Compressor",
+          "042": "PDF Splitter",
+          "043": "PDF OCR",
+          "044": "Sponsored",
+          "045": "Looking for the easiest way to <strong>merge PDF online</strong> and <strong>combine PDF files</strong> into a single document? Our free PDF merger tool lets you <strong>join PDF documents</strong> instantly without any software installation. Whether you need to merge multiple reports, combine scanned documents, or consolidate invoices, our browser-based tool handles it all. With 100% client-side processing, your sensitive documents never leave your computer, ensuring complete privacy and security. Simply drag and drop your files, arrange them in your preferred order, and download your merged PDF in seconds. No registration required, no watermarks added, and no file size limits within reasonable bounds. Perfect for students, professionals, and businesses who need a reliable way to combine multiple PDFs quickly and securely.",
+          "046": "<strong>Upload your PDFs:</strong> Drag and drop up to 20 PDF files into the upload area, or click to browse and select files from your device.",
+          "047": "<strong>Arrange the order:</strong> Use manual sorting, sort by filename, or arrange by file size to organize your documents in the desired sequence.",
+          "048": "<strong>Customize output:</strong> Enter your preferred filename for the merged document, or keep the default \"merged-document\" name.",
+          "049": "<strong>Merge and download:</strong> Click the \"Merge PDFs\" button and download your combined PDF file instantly.",
+          "050": "Is this PDF merger completely free to use?",
+          "051": "Yes, our PDF merge tool is free to use with no hidden fees, no registration required, and no watermarks added to your documents. You can combine PDF files as often as you need.",
+          "052": "Are my PDF files secure when merging online?",
+          "053": "Yes. All processing happens directly in your browser using client-side technology. Your PDFs are not uploaded to our servers.",
+          "054": "How many PDF files can I merge at once?",
+          "055": "You can merge up to 20 PDF files in one operation, with a combined total size limit of 50MB.",
+          "056": "Waiting for at least two PDF files.",
+          "057": "{{count}} PDF files selected. Ready to merge.",
+          "058": "Add at least two PDF files before merging.",
+          "059": "Loading merge library and preparing files.",
+          "060": "Loading PDF library...",
+          "061": "PDF library unavailable. Please check your connection and retry.",
+          "062": "Merging {{count}} PDFs...",
+          "063": "Merging {{count}} PDF files.",
+          "064": "{{files}} files merged • {{pages}} pages",
+          "065": "Merge complete. Your merged PDF is ready for download.",
+          "066": "Remove file",
+          "067": "Merge failed: {{error}}"
         }
       },
       "pdf-ocr": {
