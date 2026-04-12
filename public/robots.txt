@@ -1,9 +1,14 @@
 User-agent: *
 Allow: /
-
-# Disallow admin and private areas
 Disallow: /admin/
 Disallow: /private/
 Disallow: /api/
 
+User-agent: Googlebot
+Allow: /
+
+User-agent: AdsBot-Google
+Allow: /
+
+Host: mc-novatools.com
 Sitemap: https://mc-novatools.com/sitemap.xml

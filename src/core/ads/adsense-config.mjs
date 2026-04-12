@@ -5,7 +5,7 @@
  */
 
 const ADSENSE_CONFIG = {
-  publisherId: 'ca-pub-XXXXXXXXXXXXXXXX',
+  publisherId: 'ca-pub-5738022526587953',
   
   adUnits: {
     sidebar: {

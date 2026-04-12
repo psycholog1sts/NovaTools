@@ -59,6 +59,25 @@
     nl: '🇳🇱'
   };
 
+  const ADSENSE_CLIENT = 'ca-pub-5738022526587953';
+
+  function ensureAdSenseBootstrap() {
+    if (window.__mcAdSenseLoaded) return;
+    if (!document.head) return;
+    if (document.querySelector('script[data-adsense-bootstrap="true"]')) {
+      window.__mcAdSenseLoaded = true;
+      return;
+    }
+
+    const script = document.createElement('script');
+    script.async = true;
+    script.crossOrigin = 'anonymous';
+    script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=' + ADSENSE_CLIENT;
+    script.setAttribute('data-adsense-bootstrap', 'true');
+    document.head.appendChild(script);
+    window.__mcAdSenseLoaded = true;
+  }
+
   /**
    * Get saved language from localStorage or detect browser language
    */
@@ -522,6 +541,7 @@
   window.changeLanguage = changeLanguage;
 
   // Initialize when DOM is ready
+  ensureAdSenseBootstrap();
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {
