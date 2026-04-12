@@ -57,7 +57,7 @@ export const AdSizes = {
  */
 export function createAdSlot({
   size = 'RECTANGLE',
-  adClient = 'ca-pub-XXXXXXXXXXXXXXXX',
+  adClient = 'ca-pub-5738022526587953',
   adSlot = null,
   showLabel = true,
   labelText = 'Sponsored',
@@ -291,7 +291,7 @@ export function createInContentAd(options = {}) {
  */
 export function initializeAds(config = {}) {
   const defaultConfig = {
-    adClient: 'ca-pub-XXXXXXXXXXXXXXXX',
+    adClient: 'ca-pub-5738022526587953',
     header: true,
     sidebars: true,
     mobileAnchor: true,
