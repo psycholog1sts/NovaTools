@@ -16,11 +16,21 @@
   
   <!-- i18n Script -->
   <script src="/i18n.js"></script>
-  <meta name="description" content="Suggest a new tool for NovaTools MC. Share your ideas and help us build better utilities.">
+  <meta name="description" content="NovaTools için yeni araç önerisi göndermenizi sağlayan form. İhtiyacı netleştirip uygulanabilir özellik isteği oluşturmanıza yardımcı olur.">
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
   <link rel="stylesheet" href="/src/styles/critical.css">
   <link rel="stylesheet" href="/src/styles/main.css">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="canonical" href="https://novatools.mc/tools/request/">
+  <link rel="canonical" href="https://mc-novatools.com/tools/request/">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Request a Tool",
+    "url": "https://mc-novatools.com/tools/request/",
+    "description": "Structured request form for suggesting new productivity tools for NovaTools users."
+  }
+  </script>
 </head>
 <body>
   <div class="bg-ambient" aria-hidden="true"></div>
@@ -112,11 +122,43 @@
             </form>
           </div>
         </article>
+
+        <section class="card" style="margin-top: 1.5rem;">
+          <div class="card-body" style="padding: 1.5rem;">
+            <h2 style="font-size:1.35rem; margin-bottom:0.75rem;">Bu sayfa ne işe yarar?</h2>
+            <p>Request a Tool sayfası, kullanıcı ihtiyaçlarını rastgele mesajlar yerine yapılandırılmış bir formatta toplamak için hazırlanmıştır. Böylece “hangi araca ihtiyaç var, hangi problemi çözecek, kim kullanacak?” soruları daha net cevaplanır ve geliştirme önceliği objektif biçimde belirlenir.</p>
+            <p>Çözdüğü temel problem, eksik veya belirsiz isteklerin ürünleştirilememesidir. Kısa bir “şöyle bir tool yapın” talebi çoğu zaman uygulanabilir olmaz. Bu form; kategori, kullanım senaryosu ve detay açıklama alanlarıyla teknik ekibin gereksinimi daha doğru okumasını sağlar.</p>
+            <h3 style="font-size:1.1rem; margin-top:1rem;">Nasıl kullanılır? (adım adım)</h3>
+            <ol style="padding-left:1.25rem; color:var(--text-secondary);">
+              <li>Önce araç adını, gerçek kullanım amacını anlatacak şekilde yazın.</li>
+              <li>Kategori seçimini ihtiyaca en yakın alanda yapın (Finance, PDF, Image, Dev vb.).</li>
+              <li>Açıklama bölümünde probleminizi, giriş/çıktı beklentinizi ve örnek veriyi belirtin.</li>
+              <li>İsterseniz geri dönüş için e-posta ekleyin.</li>
+              <li>Gizlilik kutusunu onaylayıp formu gönderin.</li>
+            </ol>
+            <h3 style="font-size:1.1rem; margin-top:1rem;">Kimler için uygundur?</h3>
+            <p>Tekrarlayan bir işi otomasyona dönüştürmek isteyen bireysel kullanıcılar, ekip içinde belli bir format dönüştürme ihtiyacı yaşayan profesyoneller ve özel hesaplama mantığı isteyen niş kullanıcı grupları için uygundur.</p>
+            <h3 style="font-size:1.1rem; margin-top:1rem;">Sık sorulan sorular</h3>
+            <details><summary>1) Her gönderilen istek kesin geliştirilir mi?</summary><p>Hayır. Talepler teknik uygulanabilirlik, güvenlik ve talep yoğunluğuna göre değerlendirilir.</p></details>
+            <details><summary>2) Ne kadar detay vermeliyim?</summary><p>Ne kadar net problem tanımı verirseniz, doğru çözüm üretme olasılığı o kadar artar. Kısa örnek veri faydalıdır.</p></details>
+            <details><summary>3) E-posta zorunlu mu?</summary><p>Hayır, opsiyoneldir. Ancak takip soruları gerekirse iletişim için e-posta fayda sağlar.</p></details>
+            <details><summary>4) Form gönderimi güvenli mi?</summary><p>Gönderim Formspree üzerinden yapılır; hassas kişisel veri veya gizli kurum bilgisini paylaşmamanız önerilir.</p></details>
+            <h3 style="font-size:1.1rem; margin-top:1rem;">Benzer sayfalardan farkı</h3>
+            <p>Bu sayfa yalnızca geri bildirim kutusu değil, ürün gereksinimi toplama akışıdır. Kategori + açıklama yapısı sayesinde geliştirilebilirlik değerlendirmesi daha şeffaf olur.</p>
+            <h3 style="font-size:1.1rem; margin-top:1rem;">İlgili araçlar / linkler</h3>
+            <p><a href="/categories/index.html">Tüm kategoriler</a>, <a href="/categories/finance-tools.html">Finance tools</a>, <a href="/blog/index.html">Blog</a> ve <a href="/contact.html">Contact</a> sayfaları üzerinden ek bağlam paylaşabilirsiniz.</p>
+            <p><strong>Uyarı / kapsam dışı:</strong> Bu form destek bileti, acil teknik müdahale kanalı veya hukuki bildirim kanalı değildir. Acil ve resmi durumlar için iletişim sayfasını kullanın.</p>
+            <p><strong>Kaliteli talep yazma ipucu:</strong> “X dosyasını Y çıktısına dönüştürmek istiyorum” biçiminde net giriş/çıkış yazmak, sadece fikir cümlesi yazmaktan çok daha etkilidir. Mümkünse örnek bir iş akışı ekleyin: hangi adımda zaman kaybı yaşandığı, mevcut alternatiflerin neden yetersiz kaldığı gibi bilgiler değerlendirmeyi hızlandırır.</p>
+            <p><strong>Önceliklendirme şeffaflığı:</strong> Benzer ihtiyaçlar birikirse aynı tema altında tek bir güçlü araç geliştirilebilir. Bu nedenle talebinizin iş etkisini (zaman tasarrufu, hata azaltma, tekrar eden iş yükü) kısa ve ölçülebilir şekilde belirtmeniz, ürün yol haritasında doğru sıraya alınmasını kolaylaştırır.</p>
+            <p><strong>Yaygın hata:</strong> Sadece araç adı yazıp kullanım koşulunu belirtmemek, talebin beklemede kalmasına neden olabilir. Minimum gereksinim, beklenen çıktı ve örnek bir kullanım anı eklemek değerlendirme kalitesini belirgin şekilde artırır.</p>
+          </div>
+        </section>
       </div>
     </div>
   </main>
 
   <footer class="tool-footer">
+  <p><a href="/about-us.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy-policy.html">Privacy Policy</a> · <a href="/terms-of-service.html">Terms</a> · <a href="/categories/index.html">Category Hub</a></p>
   <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="mailto:psk.dan.metehancetin@mc-novatools.com" data-i18n="tools.request.text.017">psk.dan.metehancetin@mc-novatools.com</a></p>
   <p data-i18n="tools.request.text.018">Estimates only &mdash; not financial, legal, or tax advice.</p>
 </footer>
