@@ -103,6 +103,7 @@ export default defineConfig({
           }
 
           if (id.includes('/src/core/')) {
+            if (id.includes('/src/core/native/')) return 'core-native';
             if (id.includes('ai')) return 'core-ai';
             if (id.includes('compute')) return 'core-compute';
             if (id.includes('security')) return 'core-security';

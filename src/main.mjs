@@ -11,23 +11,6 @@ import { registerSW } from './core/pwa.mjs';
 import { initAdSense } from './core/ads/index.mjs';
 import { injectHreflangTags } from './i18n/config.mjs';
 import { initCommonUI } from './components/layout/index.mjs';
-import { trackToolUsage } from './core/ai/recommendation-engine.mjs';
-
-// Native features
-import { 
-  registerAsFileHandler, 
-  isFileSystemAccessSupported 
-} from './core/native/file-system-api.mjs';
-import { initWebShareTarget } from './core/native/web-share-target.mjs';
-import { 
-  initOfflineQueue, 
-  isBackgroundSyncSupported 
-} from './core/native/background-sync.mjs';
-import { 
-  registerProtocolHandlers, 
-  handleProtocolUrl, 
-  isProtocolHandlerSupported 
-} from './core/native/protocol-handlers.mjs';
 
 // Initialize Vercel Speed Insights immediately
 injectSpeedInsights();
@@ -67,18 +50,23 @@ export function detectBestPDFTool(file) {
  * @returns {string|null}
  */
 export function getCurrentToolId() {
-  const match = window.location.pathname.match(/\/src\/tools\/(.+)\//);
+  const match = window.location.pathname.match(/\/(?:src\/)?tools\/(.+?)\/?$/);
   return match?.[1] || null;
+}
+
+function isToolPage() {
+  return getCurrentToolId() !== null;
 }
 
 /**
  * Track current tool usage for AI recommendations
  */
-function trackCurrentTool() {
+async function trackCurrentTool() {
   const toolId = getCurrentToolId();
-  if (toolId) {
-    trackToolUsage(toolId);
-  }
+  if (!toolId) return;
+
+  const { trackToolUsage } = await import('./core/ai/recommendation-engine.mjs');
+  trackToolUsage(toolId);
 }
 
 /**
@@ -111,28 +99,35 @@ const fileSystemHandlers = {
  * Initialize native OS features
  */
 async function initNativeFeatures() {
+  const [fileSystemApi, webShareTarget, backgroundSync, protocolHandlers] = await Promise.all([
+    import('./core/native/file-system-api.mjs'),
+    import('./core/native/web-share-target.mjs'),
+    import('./core/native/background-sync.mjs'),
+    import('./core/native/protocol-handlers.mjs')
+  ]);
+
   const features = [
-    { 
-      name: 'File System Access', 
-      supported: isFileSystemAccessSupported(), 
-      init: registerAsFileHandler 
+    {
+      name: 'File System Access',
+      supported: fileSystemApi.isFileSystemAccessSupported(),
+      init: fileSystemApi.registerAsFileHandler
     },
-    { 
-      name: 'Web Share Target', 
-      supported: true, 
-      init: initWebShareTarget 
+    {
+      name: 'Web Share Target',
+      supported: true,
+      init: webShareTarget.initWebShareTarget
     },
-    { 
-      name: 'Background Sync', 
-      supported: isBackgroundSyncSupported(), 
-      init: initOfflineQueue 
+    {
+      name: 'Background Sync',
+      supported: backgroundSync.isBackgroundSyncSupported(),
+      init: backgroundSync.initOfflineQueue
     },
-    { 
-      name: 'Protocol Handlers', 
-      supported: isProtocolHandlerSupported(), 
+    {
+      name: 'Protocol Handlers',
+      supported: protocolHandlers.isProtocolHandlerSupported(),
       init: () => {
-        registerProtocolHandlers();
-        handleProtocolUrl();
+        protocolHandlers.registerProtocolHandlers();
+        protocolHandlers.handleProtocolUrl();
       }
     }
   ];
@@ -235,14 +230,14 @@ async function init() {
   await Promise.all([
     initAnalytics(),
     initAdSense(),
-    initNativeFeatures()
+    isToolPage() ? initNativeFeatures() : Promise.resolve()
   ]);
 
   injectHreflangTags(window.location.pathname);
   initCommonUI();
   initMobileMenu();
   initToolPreviews();
-  trackCurrentTool();
+  await trackCurrentTool();
   
   // NovaTools initialization complete
 }
@@ -256,9 +251,9 @@ document.readyState === 'loading'
 window.NovaTools = {
   version: typeof __APP_VERSION__ !== 'undefined' ? __APP_VERSION__ : '2.0.0',
   native: {
-    fileSystemSupported: isFileSystemAccessSupported(),
-    backgroundSyncSupported: isBackgroundSyncSupported(),
-    protocolHandlerSupported: isProtocolHandlerSupported()
+    fileSystemSupported: 'showOpenFilePicker' in window,
+    backgroundSyncSupported: 'serviceWorker' in navigator && 'SyncManager' in window,
+    protocolHandlerSupported: 'registerProtocolHandler' in navigator
   },
   utils: {
     detectBestPDFTool,

@@ -205,9 +205,4 @@ export default {
     spacing: true,
     colors: true,
   },
-  
-  // Experimental features
-  experimental: {
-    optimizeUniversalDefaults: true,
-  },
 };
