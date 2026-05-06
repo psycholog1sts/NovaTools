@@ -412,21 +412,160 @@
       updateDisplay();
     }
 
+    function tokenizeExpression(expr) {
+      const normalized = expr
+        .replace(/&#215;|×/g, '*')
+        .replace(/&#247;|÷/g, '/')
+        .replace(/&#960;|π/g, 'pi')
+        .replace(/√/g, 'sqrt');
+      const tokens = [];
+      let index = 0;
+
+      while (index < normalized.length) {
+        const char = normalized[index];
+        if (/\s/.test(char)) {
+          index += 1;
+          continue;
+        }
+        if (/\d|\./.test(char)) {
+          let value = '';
+          while (index < normalized.length && /\d|\./.test(normalized[index])) {
+            value += normalized[index];
+            index += 1;
+          }
+          if (!/^\d*\.?\d+$/.test(value)) {
+            throw new Error('Invalid number');
+          }
+          tokens.push({ type: 'number', value: Number(value) });
+          continue;
+        }
+        if (/[a-z]/i.test(char)) {
+          let value = '';
+          while (index < normalized.length && /[a-z]/i.test(normalized[index])) {
+            value += normalized[index];
+            index += 1;
+          }
+          tokens.push({ type: 'identifier', value: value.toLowerCase() });
+          continue;
+        }
+        if (char === '*' && normalized[index + 1] === '*') {
+          tokens.push({ type: 'operator', value: '**' });
+          index += 2;
+          continue;
+        }
+        if ('+-*/()'.includes(char)) {
+          tokens.push({ type: char === '(' || char === ')' ? 'paren' : 'operator', value: char });
+          index += 1;
+          continue;
+        }
+        throw new Error('Unsupported character');
+      }
+
+      return tokens;
+    }
+
+    function evaluateExpression(expr) {
+      const tokens = tokenizeExpression(expr);
+      let position = 0;
+
+      function peek() {
+        return tokens[position];
+      }
+
+      function consume(value) {
+        if (peek() && peek().value === value) {
+          position += 1;
+          return true;
+        }
+        return false;
+      }
+
+      function parsePrimary() {
+        const token = peek();
+        if (!token) {
+          throw new Error('Unexpected end');
+        }
+        if (token.type === 'number') {
+          position += 1;
+          return token.value;
+        }
+        if (token.type === 'identifier') {
+          position += 1;
+          if (token.value === 'pi') return Math.PI;
+          if (token.value === 'e') return Math.E;
+          if (!consume('(')) {
+            throw new Error('Expected function argument');
+          }
+          const argument = parseAdditive();
+          if (!consume(')')) {
+            throw new Error('Expected closing parenthesis');
+          }
+          switch (token.value) {
+            case 'sin': return isRadians ? Math.sin(argument) : Math.sin(argument * Math.PI / 180);
+            case 'cos': return isRadians ? Math.cos(argument) : Math.cos(argument * Math.PI / 180);
+            case 'tan': return isRadians ? Math.tan(argument) : Math.tan(argument * Math.PI / 180);
+            case 'log': return Math.log10(argument);
+            case 'ln': return Math.log(argument);
+            case 'sqrt': return Math.sqrt(argument);
+            default: throw new Error('Unsupported function');
+          }
+        }
+        if (consume('(')) {
+          const value = parseAdditive();
+          if (!consume(')')) {
+            throw new Error('Expected closing parenthesis');
+          }
+          return value;
+        }
+        throw new Error('Unexpected token');
+      }
+
+      function parseUnary() {
+        if (consume('+')) return parseUnary();
+        if (consume('-')) return -parseUnary();
+        return parsePrimary();
+      }
+
+      function parsePower() {
+        const base = parseUnary();
+        if (consume('**')) {
+          return Math.pow(base, parsePower());
+        }
+        return base;
+      }
+
+      function parseMultiplicative() {
+        let value = parsePower();
+        while (peek() && (peek().value === '*' || peek().value === '/')) {
+          const operator = peek().value;
+          position += 1;
+          const right = parsePower();
+          value = operator === '*' ? value * right : value / right;
+        }
+        return value;
+      }
+
+      function parseAdditive() {
+        let value = parseMultiplicative();
+        while (peek() && (peek().value === '+' || peek().value === '-')) {
+          const operator = peek().value;
+          position += 1;
+          const right = parseMultiplicative();
+          value = operator === '+' ? value + right : value - right;
+        }
+        return value;
+      }
+
+      const result = parseAdditive();
+      if (position !== tokens.length) {
+        throw new Error('Unexpected token');
+      }
+      return result;
+    }
+
     function calculate() {
       try {
-        let expr = currentInput
-          .replace(/&#215;/g, '*')
-          .replace(/&#247;/g, '/')
-          .replace(/&#8730;(\d+)/g, 'Math.sqrt($1)')
-          .replace(/sin\(/g, isRadians ? 'Math.sin(' : 'Math.sin(Math.PI/180*')
-          .replace(/cos\(/g, isRadians ? 'Math.cos(' : 'Math.cos(Math.PI/180*')
-          .replace(/tan\(/g, isRadians ? 'Math.tan(' : 'Math.tan(Math.PI/180*')
-          .replace(/log\(/g, 'Math.log10(')
-          .replace(/ln\(/g, 'Math.log(')
-          .replace(/&#960;/g, 'Math.PI')
-          .replace(/e(?!\w)/g, 'Math.E');
-
-        const result = eval(expr);
+        const result = evaluateExpression(currentInput);
         
         if (!isFinite(result) || isNaN(result)) {
           throw new Error('Invalid result');
