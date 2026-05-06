@@ -467,7 +467,32 @@
         width: 100%;
       }
     }
-  </style>
+
+
+    .guide-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .guide-grid > div {
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+    }
+
+    .guide-grid ul {
+      padding-left: 1.25rem;
+      margin-bottom: 0;
+    }
+
+    .category-guide-note {
+      margin-top: 1rem;
+      color: var(--muted);
+    }
+</style>
 </head>
 <body>
   <header class="main-header">
@@ -637,6 +662,40 @@
             Use this page as the central hub for fast conversions and lightweight calculations,
             from measurement units and currencies to timestamps, number bases, and percentages.
           </p>
+        </div>
+      </div>
+    </section>
+
+
+
+    <section class="content-section category-guide-standard" aria-labelledby="categoryGuideTitle">
+      <div class="container">
+        <div class="content-panel">
+          <h2 id="categoryGuideTitle">Converter workflow guide</h2>
+          <p>Use this category when you need to convert measurements, dates, number systems, currencies, health estimates, or calculator-style values.</p>
+          <div class="guide-grid">
+            <div>
+              <h3>Who this category is for</h3>
+              <p>Students, travelers, developers, writers, and everyday users who need fast conversion support for non-critical planning.</p>
+            </div>
+            <div>
+              <h3>Most common tasks</h3>
+              <ul>
+              <li>Convert units, percentages, ages, BMI, and timestamps.</li>
+              <li>Switch between number bases or Roman numerals.</li>
+              <li>Check timezone and currency values for planning.</li>
+              <li>Use scientific calculations for study or estimates.</li>
+              <li>Choose the specific converter that matches the input format.</li>
+              </ul>
+            </div>
+            <div>
+              <h3>Which tool should you choose?</h3>
+              <p>Start with the tool that matches your input format and desired output. If the result feeds another workflow, use the related tool link after checking the output.</p>
+              <p><a href="/tools/converters/unit-converter/">Open recommended starter tool →</a></p>
+              <p><a href="/tools/converters/timezone-converter/">Open related follow-up tool →</a></p>
+            </div>
+          </div>
+          <p class="category-guide-note">These tools are intended for practical browser workflows and quick estimates. Review outputs before using them in sensitive, financial, legal, medical, or production-critical contexts.</p>
         </div>
       </div>
     </section>

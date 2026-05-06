@@ -12,21 +12,21 @@
   <meta charset="UTF-8">
   <script>(function(){var t=localStorage.getItem('novatools-theme');if(t)document.documentElement.setAttribute('data-theme',t);else{var d=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',d);document.documentElement.style.colorScheme=d;}})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="/src/styles/critical.css">
   <link rel="stylesheet" href="/src/styles/main.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
+
   <title data-i18n="tools.pdf.pdf-to-text.meta.title">PDF to Text Converter — Free Online | NovaTools MC</title>
-  
+
   <!-- i18n Script -->
   <script src="/i18n.js"></script>
   <meta name="description" content="Extract plain text from PDF documents online for free. Convert PDF to TXT instantly. No signup, 100% private, client-side processing.">
@@ -34,7 +34,7 @@
   <meta name="author" content="NovaTools MC - Metehan ÇETİN, LPC">
   <meta name="theme-color" content="#0A0A0C" media="(prefers-color-scheme: dark)">
   <meta name="theme-color" content="#F8F9FA" media="(prefers-color-scheme: light)">
-  
+
   <link rel="canonical" href="https://www.mc-novatools.com/tools/pdf/pdf-to-text/">
 
   <meta property="og:type" content="website">
@@ -94,7 +94,7 @@
     ]
   }
   </script>
-  
+
   <style>
     .tool-container { max-width: 900px; margin: 0 auto; padding: 2rem 0; }
     .tool-header { text-align: center; margin-bottom: 2rem; }
@@ -102,7 +102,7 @@
     .tool-subtitle { font-size: 1.125rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto; }
     .privacy-notice { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.3); border-radius: var(--radius-full); font-size: 0.875rem; color: var(--success); margin-bottom: 1.5rem; }
     .tool-workspace { background: var(--surface-default); border: 1px solid var(--border-default); border-radius: var(--radius-lg); padding: 2rem; margin-bottom: 2rem; }
-    
+
     .dropzone {
       border: 2px dashed var(--border-default);
       border-radius: var(--radius-lg);
@@ -119,7 +119,7 @@
     .dropzone-text { color: var(--text-secondary); margin-bottom: 0.5rem; }
     .dropzone-hint { font-size: 0.875rem; color: var(--text-muted); }
     .file-input { display: none; }
-    
+
     .file-info {
       display: flex;
       align-items: center;
@@ -140,7 +140,7 @@
       cursor: pointer;
       padding: 0.5rem;
     }
-    
+
     .convert-btn {
       width: 100%;
       padding: 1rem;
@@ -161,7 +161,7 @@
       opacity: 0.6;
       cursor: not-allowed;
     }
-    
+
     .progress-container {
       display: none;
       margin: 1.5rem 0;
@@ -186,7 +186,7 @@
       font-size: 0.875rem;
       color: var(--text-secondary);
     }
-    
+
     .result-container {
       display: none;
       margin-top: 1.5rem;
@@ -213,7 +213,7 @@
       transition: all 0.2s ease;
     }
     .download-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3); }
-    
+
     .text-preview {
       margin-top: 1rem;
       padding: 1rem;
@@ -227,7 +227,7 @@
       word-wrap: break-word;
       color: var(--text-primary);
     }
-    
+
     .legal-disclaimer {
       background: var(--surface-default);
       border-left: 4px solid var(--warning);
@@ -236,12 +236,12 @@
       margin-top: 2rem;
     }
     .legal-disclaimer p { font-size: 0.875rem; color: var(--text-secondary); margin: 0; line-height: 1.6; }
-    
+
     .how-to-use { margin-top: 3rem; }
     .how-to-use h2 { font-size: 1.5rem; font-weight: 600; color: var(--text-primary); margin-bottom: 1rem; }
     .how-to-use ol { padding-left: 1.5rem; color: var(--text-secondary); line-height: 1.8; }
     .how-to-use li { margin-bottom: 0.5rem; }
-    
+
     .faq-section { margin-top: 3rem; }
     .faq-section h2 { font-size: 1.5rem; font-weight: 600; color: var(--text-primary); margin-bottom: 1rem; }
     .faq-item { border: 1px solid var(--border-default); border-radius: var(--radius-md); margin-bottom: 0.75rem; overflow: hidden; }
@@ -266,14 +266,14 @@
           </picture>
           <span class="logo-text">NovaTools <span class="logo-mc" data-i18n="tools.pdf.pdf-to-text.text.001">MC</span></span>
         </a>
-        
+
         <nav class="nav-desktop" aria-label="Main navigation">
           <a href="/#finance" class="nav-link" data-i18n="tools.pdf.pdf-to-text.text.002">Finance</a>
           <a href="/#pdf" class="nav-link" data-i18n="tools.pdf.pdf-to-text.text.003">PDF Tools</a>
           <a href="/#image" class="nav-link" data-i18n="tools.pdf.pdf-to-text.text.004">Images</a>
           <a href="/#dev" class="nav-link" data-i18n="tools.pdf.pdf-to-text.text.005">Developers</a>
         </nav>
-        
+
         <div class="privacy-badge" title="Your data never leaves your browser" data-i18n-title="tools.pdf.pdf-to-text.title.001">
           <span class="privacy-badge-dot"></span>
           <span data-i18n="tools.pdf.pdf-to-text.text.006">Privacy First</span>
@@ -297,7 +297,7 @@
           </svg>
         </button>
       </div>
-      
+
       <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
         <a href="/#finance" class="mobile-nav-link" data-i18n="tools.pdf.pdf-to-text.text.007">Finance Tools</a>
         <a href="/#pdf" class="mobile-nav-link" data-i18n="tools.pdf.pdf-to-text.text.008">PDF Tools</a>
@@ -323,7 +323,7 @@
         <div class="ad-frame">
           <div class="ad-label">Advertisement</div>
           <div class="ad-slot" style="min-height: 600px;">
-            <ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="__ADSENSE_CLIENT__" data-ad-slot="LEFT_RAIL_SLOT"></ins>
+            <div class="ad-slot-disabled" data-ad-disabled="missing-ad-slot" aria-hidden="true"></div>
           </div>
         </div>
       </aside>
@@ -378,9 +378,9 @@
                 Text Extraction Complete!
               </div>
               <p style="color: var(--text-secondary); margin-bottom: 1rem;" data-i18n="tools.pdf.pdf-to-text.text.017">Text has been successfully extracted from your PDF.</p>
-              
+
               <div class="text-preview" id="textPreview"></div>
-              
+
               <a href="#" class="download-btn" id="downloadBtn" download="extracted-text.txt" style="margin-top: 1rem;">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
@@ -407,7 +407,7 @@
 
           <section class="faq-section">
             <h2 data-i18n="tools.pdf.pdf-to-text.text.023">Frequently Asked Questions</h2>
-            
+
             <div class="faq-item">
               <button class="faq-question" aria-expanded="false">
                 Is this PDF to Text converter free?
@@ -417,7 +417,7 @@
               </button>
               <div class="faq-answer">Yes, completely free. No signup required, no watermarks, and no usage limits.</div>
             </div>
-            
+
             <div class="faq-item">
               <button class="faq-question" aria-expanded="false">
                 Is my data secure?
@@ -427,7 +427,7 @@
               </button>
               <div class="faq-answer">Absolutely. All processing happens entirely in your browser. Your PDF files never leave your device or get uploaded to any server.</div>
             </div>
-            
+
             <div class="faq-item">
               <button class="faq-question" aria-expanded="false">
                 Can I extract text from scanned PDFs?
@@ -437,7 +437,7 @@
               </button>
               <div class="faq-answer">This tool extracts text from searchable PDFs. For scanned documents or images within PDFs, please use our PDF OCR tool which uses optical character recognition technology.</div>
             </div>
-            
+
             <div class="faq-item">
               <button class="faq-question" aria-expanded="false">
                 What is the maximum file size?
@@ -453,7 +453,7 @@
         <div class="ad-frame" style="margin: 2rem auto; max-width: 728px;">
           <div class="ad-label">Advertisement</div>
           <div class="ad-slot" style="min-height: 250px;">
-            <ins class="adsbygoogle" style="display:block;width:100%;height:250px" data-ad-client="__ADSENSE_CLIENT__" data-ad-slot="MID_CONTENT_SLOT"></ins>
+            <div class="ad-slot-disabled" data-ad-disabled="missing-ad-slot" aria-hidden="true"></div>
           </div>
         </div>
 
@@ -467,12 +467,46 @@
         <div class="ad-frame">
           <div class="ad-label">Advertisement</div>
           <div class="ad-slot" style="min-height: 600px;">
-            <ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="__ADSENSE_CLIENT__" data-ad-slot="RIGHT_RAIL_SLOT"></ins>
+            <div class="ad-slot-disabled" data-ad-disabled="missing-ad-slot" aria-hidden="true"></div>
           </div>
         </div>
       </aside>
     </div>
-  </main>
+
+
+        <section class="tool-support-content" aria-labelledby="toolSupportTitle">
+          <div>
+            <h2 id="toolSupportTitle">PDF to Text workflow guide</h2>
+            <p>This tool extracts readable text from PDFs for quoting, cleanup, indexing, notes, and lightweight content migration.</p>
+          </div>
+          <div class="tool-support-grid">
+            <div class="tool-support-card">
+              <h3>How to use it</h3>
+              <ol>
+              <li>Upload a text-based PDF.</li>
+              <li>Extract text and scan the output for missing sections.</li>
+              <li>Copy or download the text for your next workflow.</li>
+              </ol>
+            </div>
+            <div class="tool-support-card">
+              <h3>Privacy and trust note</h3>
+              <p>Extracted text can include private document content. Do not paste sensitive output into third-party systems unless you have reviewed what was extracted.</p>
+            </div>
+            <div class="tool-support-card">
+              <h3>Common mistakes</h3>
+              <ul>
+              <li>Expecting scanned PDFs to produce text without OCR.</li>
+              <li>Assuming tables and columns will keep their original layout.</li>
+              <li>Copying extracted text without checking headers, footers, and page breaks.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="tool-next-step">
+            <span>Need to measure the extracted copy? Open Word Counter next.</span>
+            <a href="/tools/text/word-counter/">Open related tool →</a>
+          </div>
+        </section>
+    </main>
 
   <script type="module">
     import('/src/theme-toggle.mjs').then(({ setupThemeToggle }) => {
@@ -523,7 +557,7 @@
     let extractedText = '';
 
     dropzone.addEventListener('click', () => fileInput.click());
-    
+
     dropzone.addEventListener('dragover', (e) => {
       e.preventDefault();
       dropzone.classList.add('dragover');
@@ -588,23 +622,23 @@
 
       try {
         await simulateProgress();
-        
+
         // Extract text using PDF.js
         const arrayBuffer = await currentFile.arrayBuffer();
         extractedText = await extractTextFromPdf(arrayBuffer);
-        
+
         progressFill.style.width = '100%';
         progressText.textContent = 'Complete!';
-        
+
         // Show preview
         textPreview.textContent = extractedText.substring(0, 2000) + (extractedText.length > 2000 ? '\n\n... (text truncated in preview)' : '');
-        
+
         // Setup download
         const textBlob = new Blob([extractedText], { type: 'text/plain' });
         const url = URL.createObjectURL(textBlob);
         downloadBtn.href = url;
         downloadBtn.download = currentFile.name.replace('.pdf', '.txt');
-        
+
         setTimeout(() => {
           resultContainer.classList.add('visible');
           progressContainer.classList.remove('visible');
@@ -637,17 +671,17 @@
     async function extractTextFromPdf(arrayBuffer) {
       const pdfjsLib = await import('https://cdn.jsdelivr.net/npm/pdfjs-dist@4.0.379/+esm');
       pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.0.379/build/pdf.worker.min.mjs';
-      
+
       const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
       let fullText = '';
-      
+
       for (let i = 1; i <= pdf.numPages; i++) {
         const page = await pdf.getPage(i);
         const textContent = await page.getTextContent();
         const pageText = textContent.items.map(item => item.str).join(' ');
         fullText += `--- Page ${i} ---\n${pageText}\n\n`;
       }
-      
+
       return fullText.trim();
     }
   </script>

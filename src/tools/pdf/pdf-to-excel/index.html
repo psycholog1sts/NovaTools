@@ -12,21 +12,21 @@
   <meta charset="UTF-8">
   <script>(function(){var t=localStorage.getItem('novatools-theme');if(t)document.documentElement.setAttribute('data-theme',t);else{var d=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',d);document.documentElement.style.colorScheme=d;}})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="/src/styles/critical.css">
   <link rel="stylesheet" href="/src/styles/main.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
+
   <title data-i18n="tools.pdf.pdf-to-excel.meta.title">PDF to Excel Converter — Free Online | NovaTools MC</title>
-  
+
   <!-- i18n Script -->
   <script src="/i18n.js"></script>
   <meta name="description" content="Convert PDF to Excel online for free. Extract tables from PDF and download as Excel spreadsheet. No signup, 100% private, client-side processing.">
@@ -34,7 +34,7 @@
   <meta name="author" content="NovaTools MC - Metehan ÇETİN, LPC">
   <meta name="theme-color" content="#0A0A0C" media="(prefers-color-scheme: dark)">
   <meta name="theme-color" content="#F8F9FA" media="(prefers-color-scheme: light)">
-  
+
   <link rel="canonical" href="https://www.mc-novatools.com/tools/pdf/pdf-to-excel/">
 
   <meta property="og:type" content="website">
@@ -94,7 +94,7 @@
     ]
   }
   </script>
-  
+
   <style>
     .tool-container { max-width: 900px; margin: 0 auto; padding: 2rem 0; }
     .tool-header { text-align: center; margin-bottom: 2rem; }
@@ -102,7 +102,7 @@
     .tool-subtitle { font-size: 1.125rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto; }
     .privacy-notice { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.3); border-radius: var(--radius-full); font-size: 0.875rem; color: var(--success); margin-bottom: 1.5rem; }
     .tool-workspace { background: var(--surface-default); border: 1px solid var(--border-default); border-radius: var(--radius-lg); padding: 2rem; margin-bottom: 2rem; }
-    
+
     .dropzone {
       border: 2px dashed var(--border-default);
       border-radius: var(--radius-lg);
@@ -119,7 +119,7 @@
     .dropzone-text { color: var(--text-secondary); margin-bottom: 0.5rem; }
     .dropzone-hint { font-size: 0.875rem; color: var(--text-muted); }
     .file-input { display: none; }
-    
+
     .file-info {
       display: flex;
       align-items: center;
@@ -140,7 +140,7 @@
       cursor: pointer;
       padding: 0.5rem;
     }
-    
+
     .convert-btn {
       width: 100%;
       padding: 1rem;
@@ -161,7 +161,7 @@
       opacity: 0.6;
       cursor: not-allowed;
     }
-    
+
     .progress-container {
       display: none;
       margin: 1.5rem 0;
@@ -186,7 +186,7 @@
       font-size: 0.875rem;
       color: var(--text-secondary);
     }
-    
+
     .result-container {
       display: none;
       margin-top: 1.5rem;
@@ -213,7 +213,7 @@
       transition: all 0.2s ease;
     }
     .download-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3); }
-    
+
     .legal-disclaimer {
       background: var(--surface-default);
       border-left: 4px solid var(--warning);
@@ -222,12 +222,12 @@
       margin-top: 2rem;
     }
     .legal-disclaimer p { font-size: 0.875rem; color: var(--text-secondary); margin: 0; line-height: 1.6; }
-    
+
     .how-to-use { margin-top: 3rem; }
     .how-to-use h2 { font-size: 1.5rem; font-weight: 600; color: var(--text-primary); margin-bottom: 1rem; }
     .how-to-use ol { padding-left: 1.5rem; color: var(--text-secondary); line-height: 1.8; }
     .how-to-use li { margin-bottom: 0.5rem; }
-    
+
     .faq-section { margin-top: 3rem; }
     .faq-section h2 { font-size: 1.5rem; font-weight: 600; color: var(--text-primary); margin-bottom: 1rem; }
     .faq-item { border: 1px solid var(--border-default); border-radius: var(--radius-md); margin-bottom: 0.75rem; overflow: hidden; }
@@ -252,14 +252,14 @@
           </picture>
           <span class="logo-text">NovaTools <span class="logo-mc" data-i18n="tools.pdf.pdf-to-excel.text.001">MC</span></span>
         </a>
-        
+
         <nav class="nav-desktop" aria-label="Main navigation">
           <a href="/#finance" class="nav-link" data-i18n="tools.pdf.pdf-to-excel.text.002">Finance</a>
           <a href="/#pdf" class="nav-link" data-i18n="tools.pdf.pdf-to-excel.text.003">PDF Tools</a>
           <a href="/#image" class="nav-link" data-i18n="tools.pdf.pdf-to-excel.text.004">Images</a>
           <a href="/#dev" class="nav-link" data-i18n="tools.pdf.pdf-to-excel.text.005">Developers</a>
         </nav>
-        
+
         <div class="privacy-badge" title="Your data never leaves your browser" data-i18n-title="tools.pdf.pdf-to-excel.title.001">
           <span class="privacy-badge-dot"></span>
           <span data-i18n="tools.pdf.pdf-to-excel.text.006">Privacy First</span>
@@ -283,7 +283,7 @@
           </svg>
         </button>
       </div>
-      
+
       <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
         <a href="/#finance" class="mobile-nav-link" data-i18n="tools.pdf.pdf-to-excel.text.007">Finance Tools</a>
         <a href="/#pdf" class="mobile-nav-link" data-i18n="tools.pdf.pdf-to-excel.text.008">PDF Tools</a>
@@ -309,7 +309,7 @@
         <div class="ad-frame">
           <div class="ad-label">Advertisement</div>
           <div class="ad-slot" style="min-height: 600px;">
-            <ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="__ADSENSE_CLIENT__" data-ad-slot="LEFT_RAIL_SLOT"></ins>
+            <div class="ad-slot-disabled" data-ad-disabled="missing-ad-slot" aria-hidden="true"></div>
           </div>
         </div>
       </aside>
@@ -390,7 +390,7 @@
 
           <section class="faq-section">
             <h2 data-i18n="tools.pdf.pdf-to-excel.text.023">Frequently Asked Questions</h2>
-            
+
             <div class="faq-item">
               <button class="faq-question" aria-expanded="false">
                 Is this PDF to Excel converter free?
@@ -400,7 +400,7 @@
               </button>
               <div class="faq-answer">Yes, completely free. No signup required, no watermarks, and no usage limits.</div>
             </div>
-            
+
             <div class="faq-item">
               <button class="faq-question" aria-expanded="false">
                 Is my data secure?
@@ -410,7 +410,7 @@
               </button>
               <div class="faq-answer">Absolutely. All processing happens entirely in your browser. Your PDF files never leave your device or get uploaded to any server.</div>
             </div>
-            
+
             <div class="faq-item">
               <button class="faq-question" aria-expanded="false">
                 What is the maximum file size?
@@ -426,7 +426,7 @@
         <div class="ad-frame" style="margin: 2rem auto; max-width: 728px;">
           <div class="ad-label">Advertisement</div>
           <div class="ad-slot" style="min-height: 250px;">
-            <ins class="adsbygoogle" style="display:block;width:100%;height:250px" data-ad-client="__ADSENSE_CLIENT__" data-ad-slot="MID_CONTENT_SLOT"></ins>
+            <div class="ad-slot-disabled" data-ad-disabled="missing-ad-slot" aria-hidden="true"></div>
           </div>
         </div>
 
@@ -440,12 +440,46 @@
         <div class="ad-frame">
           <div class="ad-label">Advertisement</div>
           <div class="ad-slot" style="min-height: 600px;">
-            <ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="__ADSENSE_CLIENT__" data-ad-slot="RIGHT_RAIL_SLOT"></ins>
+            <div class="ad-slot-disabled" data-ad-disabled="missing-ad-slot" aria-hidden="true"></div>
           </div>
         </div>
       </aside>
     </div>
-  </main>
+
+
+        <section class="tool-support-content" aria-labelledby="toolSupportTitle">
+          <div>
+            <h2 id="toolSupportTitle">PDF to Excel workflow guide</h2>
+            <p>This tool helps extract table-like PDF content into spreadsheet-friendly output for review, cleanup, or analysis.</p>
+          </div>
+          <div class="tool-support-grid">
+            <div class="tool-support-card">
+              <h3>How to use it</h3>
+              <ol>
+              <li>Upload a PDF that contains tables or structured rows.</li>
+              <li>Convert the file, then inspect columns and row breaks.</li>
+              <li>Clean up the spreadsheet before calculations or reporting.</li>
+              </ol>
+            </div>
+            <div class="tool-support-card">
+              <h3>Privacy and trust note</h3>
+              <p>Treat financial, payroll, invoice, or customer PDFs as sensitive. Review the converted spreadsheet locally before using it for decisions.</p>
+            </div>
+            <div class="tool-support-card">
+              <h3>Common mistakes</h3>
+              <ul>
+              <li>Expecting scanned tables to extract cleanly without OCR.</li>
+              <li>Trusting totals before checking merged cells, headers, and missing rows.</li>
+              <li>Using the output for tax, legal, or accounting decisions without verification.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="tool-next-step">
+            <span>If table extraction is messy, extract text first and review the source structure.</span>
+            <a href="/tools/pdf/pdf-to-text/">Open related tool →</a>
+          </div>
+        </section>
+    </main>
 
   <script type="module">
     import('/src/theme-toggle.mjs').then(({ setupThemeToggle }) => {
@@ -494,7 +528,7 @@
     let currentFile = null;
 
     dropzone.addEventListener('click', () => fileInput.click());
-    
+
     dropzone.addEventListener('dragover', (e) => {
       e.preventDefault();
       dropzone.classList.add('dragover');
@@ -559,16 +593,16 @@
 
       try {
         await simulateProgress();
-        
+
         const xlsxBlob = await createSimpleXlsx(currentFile.name);
-        
+
         progressFill.style.width = '100%';
         progressText.textContent = 'Complete!';
-        
+
         const url = URL.createObjectURL(xlsxBlob);
         downloadBtn.href = url;
         downloadBtn.download = currentFile.name.replace('.pdf', '.xlsx');
-        
+
         setTimeout(() => {
           resultContainer.classList.add('visible');
           progressContainer.classList.remove('visible');
@@ -619,7 +653,7 @@
 
       const JSZip = await import('https://cdn.jsdelivr.net/npm/jszip@3.10.1/+esm');
       const zip = new JSZip.default();
-      
+
       zip.file('[Content_Types].xml', `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">
   <Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>

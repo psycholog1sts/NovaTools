@@ -451,7 +451,32 @@
         width: 100%;
       }
     }
-  </style>
+
+
+    .guide-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .guide-grid > div {
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+    }
+
+    .guide-grid ul {
+      padding-left: 1.25rem;
+      margin-bottom: 0;
+    }
+
+    .category-guide-note {
+      margin-top: 1rem;
+      color: var(--muted);
+    }
+</style>
 </head>
 <body>
   <header class="main-header">
@@ -621,6 +646,40 @@
             Use this page as the central entry point for lightweight data workflows,
             from CSV and JSON conversion to SQL formatting, checksums, and file organization.
           </p>
+        </div>
+      </div>
+    </section>
+
+
+
+    <section class="content-section category-guide-standard" aria-labelledby="categoryGuideTitle">
+      <div class="container">
+        <div class="content-panel">
+          <h2 id="categoryGuideTitle">Data and file workflow guide</h2>
+          <p>Use this category when you need to inspect, convert, split, merge, rename, organize, or verify files and structured data.</p>
+          <div class="guide-grid">
+            <div>
+              <h3>Who this category is for</h3>
+              <p>Analysts, operations teams, developers, students, and anyone preparing local files for import, review, or handoff.</p>
+            </div>
+            <div>
+              <h3>Most common tasks</h3>
+              <ul>
+              <li>Convert CSV and JSON between common formats.</li>
+              <li>Preview or clean CSV files before import.</li>
+              <li>Find duplicate records or files.</li>
+              <li>Split, merge, rename, or organize file sets.</li>
+              <li>Calculate checksums before sharing files.</li>
+              </ul>
+            </div>
+            <div>
+              <h3>Which tool should you choose?</h3>
+              <p>Start with the tool that matches your input format and desired output. If the result feeds another workflow, use the related tool link after checking the output.</p>
+              <p><a href="/tools/data/csv-to-json/">Open recommended starter tool →</a></p>
+              <p><a href="/tools/data/checksum-calculator/">Open related follow-up tool →</a></p>
+            </div>
+          </div>
+          <p class="category-guide-note">These tools are intended for practical browser workflows and quick estimates. Review outputs before using them in sensitive, financial, legal, medical, or production-critical contexts.</p>
         </div>
       </div>
     </section>

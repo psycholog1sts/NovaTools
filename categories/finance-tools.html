@@ -478,7 +478,32 @@
         flex-wrap: wrap;
       }
     }
-  </style>
+
+
+    .guide-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .guide-grid > div {
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+    }
+
+    .guide-grid ul {
+      padding-left: 1.25rem;
+      margin-bottom: 0;
+    }
+
+    .category-guide-note {
+      margin-top: 1rem;
+      color: var(--muted);
+    }
+</style>
 </head>
 <body>
   <header class="main-header">

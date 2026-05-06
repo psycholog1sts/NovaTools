@@ -478,7 +478,32 @@
         flex-wrap: wrap;
       }
     }
-  </style>
+
+
+    .guide-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .guide-grid > div {
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+    }
+
+    .guide-grid ul {
+      padding-left: 1.25rem;
+      margin-bottom: 0;
+    }
+
+    .category-guide-note {
+      margin-top: 1rem;
+      color: var(--muted);
+    }
+</style>
 </head>
 <body>
   <header class="main-header">
@@ -661,6 +686,40 @@
             <div class="feature-item">Static page setup with stronger trust signals</div>
             <div class="feature-item">Better SEO alignment for text utility intent</div>
           </div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <section class="content-section category-guide-standard" aria-labelledby="categoryGuideTitle">
+      <div class="container">
+        <div class="content-panel">
+          <h2 id="categoryGuideTitle">Text and writing workflow guide</h2>
+          <p>Use this category when you need to count, clean, compare, encode, or reshape text before publishing or sharing.</p>
+          <div class="guide-grid">
+            <div>
+              <h3>Who this category is for</h3>
+              <p>Writers, editors, students, developers, marketers, and anyone preparing copy for websites, forms, documents, or social posts.</p>
+            </div>
+            <div>
+              <h3>Most common tasks</h3>
+              <ul>
+              <li>Count words or characters before submitting content.</li>
+              <li>Convert case, slugs, or encoded characters for web publishing.</li>
+              <li>Compare drafts and spot text changes.</li>
+              <li>Generate placeholder copy for design drafts.</li>
+              <li>Prepare plain text before moving it into another tool.</li>
+              </ul>
+            </div>
+            <div>
+              <h3>Which tool should you choose?</h3>
+              <p>Start with the tool that matches your input format and desired output. If the result feeds another workflow, use the related tool link after checking the output.</p>
+              <p><a href="/tools/text/word-counter/">Open recommended starter tool →</a></p>
+              <p><a href="/tools/text/text-diff/">Open related follow-up tool →</a></p>
+            </div>
+          </div>
+          <p class="category-guide-note">These tools are intended for practical browser workflows and quick estimates. Review outputs before using them in sensitive, financial, legal, medical, or production-critical contexts.</p>
         </div>
       </div>
     </section>

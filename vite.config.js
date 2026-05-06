@@ -65,7 +65,7 @@ export default defineConfig({
     assetsDir: 'assets',
     sourcemap: false,
     cssCodeSplit: true,
-    cssMinify: 'lightningcss',
+    cssMinify: 'esbuild',
     assetsInlineLimit: 4096,
     modulePreload: {
       polyfill: true

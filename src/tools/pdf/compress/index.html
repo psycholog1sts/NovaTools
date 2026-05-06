@@ -24,7 +24,7 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <title data-i18n="tools.pdf.compress.meta.title">Free PDF Compressor - Reduce PDF Size Online | NovaTools MC</title>
-  
+
   <!-- i18n Script -->
   <script src="/i18n.js"></script>
   <meta name="description" content="Compress PDF files in your browser with clear quality presets and private client-side processing. No signup required.">
@@ -70,7 +70,7 @@
       font-size: 0.875rem;
       color: var(--text-muted);
     }
-    
+
     .dropzone {
       border: 2px dashed var(--border-default);
       border-radius: 16px;
@@ -92,7 +92,7 @@
     .dropzone-icon { font-size: 3rem; margin-bottom: 1rem; }
     .dropzone-title { font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; }
     .dropzone-hint { font-size: 0.875rem; color: var(--text-muted); }
-    
+
     .file-info-card {
       display: none;
       margin-top: 1.5rem;
@@ -107,7 +107,7 @@
     .file-meta { flex: 1; }
     .file-name-large { font-weight: 600; font-size: 1.125rem; }
     .file-size-large { color: var(--text-muted); }
-    
+
     .quality-selector {
       margin-top: 1.5rem;
       padding: 1.5rem;
@@ -117,18 +117,18 @@
       display: none;
     }
     .quality-selector.visible { display: block; }
-    
+
     .quality-options {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1rem;
       margin-top: 1rem;
     }
-    
+
     @media (max-width: 640px) {
       .quality-options { grid-template-columns: 1fr; }
     }
-    
+
     .quality-option {
       padding: 1rem;
       background: var(--surface-default);
@@ -149,14 +149,14 @@
     .quality-option .icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
     .quality-option .label { font-weight: 600; }
     .quality-option .desc { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem; }
-    
-    .btn-primary { 
-      width: 100%; 
-      height: 52px; 
+
+    .btn-primary {
+      width: 100%;
+      height: 52px;
       margin-top: 1.5rem;
     }
     .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
-    
+
     .progress-section {
       margin-top: 1.5rem;
       padding: 1.5rem;
@@ -179,7 +179,7 @@
       border-radius: 4px;
       transition: width 0.3s ease;
     }
-    
+
     .result-section {
       margin-top: 1.5rem;
       padding: 2rem;
@@ -190,7 +190,7 @@
       display: none;
     }
     .result-section.visible { display: block; animation: fadeIn 0.3s ease; }
-    
+
     .compression-stats {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -205,7 +205,7 @@
     .stat-value { font-size: 1.25rem; font-weight: 700; }
     .stat-label { font-size: 0.75rem; color: var(--text-muted); }
     .stat-value.savings { color: #22C55E; }
-    
+
     .download-btn {
       display: inline-flex;
       align-items: center;
@@ -219,7 +219,7 @@
       transition: all 0.2s;
     }
     .download-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(34, 197, 94, 0.3); }
-    
+
     .error-message {
       margin-top: 1rem;
       padding: 1rem;
@@ -300,7 +300,7 @@
       .related-tools-grid { grid-template-columns: 1fr; }
       .download-btn { width: 100%; justify-content: center; }
     }
-    
+
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
@@ -310,7 +310,7 @@
 <body>
   <div class="bg-ambient" aria-hidden="true"></div>
   <div class="noise-overlay" aria-hidden="true"></div>
-  
+
   <div id="app" class="app">
         <header class="main-header">
       <div class="container">
@@ -353,7 +353,7 @@
           <p data-i18n="tools.pdf.compress.text.013">Reduce PDF file size without losing quality. Your files never leave your browser.</p>
           <p class="hero-note" data-i18n="tools.pdf.compress.text.022">Choose a quality preset based on your size target. Actual reduction depends on your source PDF.</p>
         </div>
-        
+
         <form data-tool="pdf-compress" data-result=".results-panel">
           <div id="dropzone" class="dropzone" role="button" tabindex="0" aria-label="Upload PDF file" data-i18n-attr="aria-label:tools.pdf.compress.text.049">
             <div class="dropzone-icon">📄</div>
@@ -362,7 +362,7 @@
             <input type="file" name="file" id="fileInput" accept=".pdf,application/pdf" style="display: none;">
           </div>
           <p id="compressFormHelp" class="hero-note" data-i18n="tools.pdf.compress.text.025">Upload one PDF, pick a quality mode, then compress.</p>
-          
+
           <div id="fileInfoCard" class="file-info-card">
             <div class="file-details">
               <span class="file-icon-large">📄</span>
@@ -372,7 +372,7 @@
               </div>
             </div>
           </div>
-          
+
           <div id="qualitySelector" class="quality-selector">
             <label style="font-weight: 600; margin-bottom: 0.5rem; display: block;" data-i18n="tools.pdf.compress.text.014">Select Compression Level</label>
             <div class="quality-options">
@@ -393,7 +393,7 @@
               </div>
             </div>
             <input type="hidden" name="quality" id="qualityInput" value="balanced">
-            
+
             <button type="submit" id="compressBtn" class="btn btn-primary" aria-describedby="compressFormHelp compressStatusRegion">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
@@ -402,7 +402,7 @@
             </button>
           </div>
         </form>
-        
+
         <div class="results-panel">
           <div id="emptyState" class="state-section visible" data-state="empty">
             <span data-i18n="tools.pdf.compress.text.033">Empty state: waiting for one PDF file.</span>
@@ -424,11 +424,11 @@
               <div id="progressFill" class="progress-fill" style="width: 0%"></div>
             </div>
           </div>
-          
+
           <div id="resultSection" class="result-section">
             <div style="font-size: 3rem; margin-bottom: 1rem;">✅</div>
             <h3 style="margin-bottom: 0.5rem;" data-i18n="tools.pdf.compress.text.015">Compression Complete!</h3>
-            
+
             <div class="compression-stats">
               <div class="stat-box">
                 <div id="originalSize" class="stat-value"></div>
@@ -443,20 +443,20 @@
                 <div class="stat-label" data-i18n="tools.pdf.compress.text.039">Saved</div>
               </div>
             </div>
-            
+
             <a id="downloadLink" href="#" class="download-btn" download>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
               </svg>
               <span data-i18n="tools.pdf.compress.text.040">Download Compressed PDF</span>
             </a>
-            
+
             <button type="button" id="compressAnother" class="btn btn-secondary" style="margin-top: 1rem;" data-i18n="tools.pdf.compress.text.016">
               Compress Another File
             </button>
           </div>
         </div>
-        
+
         <div id="errorSection" class="error-message" role="alert" aria-live="assertive"></div>
 
         <section class="trust-help" aria-labelledby="compressTrustHeading">
@@ -476,29 +476,29 @@
             <a class="related-tool-link" href="/tools/pdf/pdf-ocr/" data-i18n="tools.pdf.compress.text.048">PDF OCR</a>
           </div>
         </section>
-        
+
         <!-- In-Tool Ad -->
         <div style="margin-top: 2rem; text-align: center;">
           <div style="font-size: 0.6875rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 0.5rem;" data-i18n="tools.pdf.compress.text.050">Sponsored</div>
           <div style="display: inline-flex; background: var(--surface-default); border: 1px solid var(--border-default); border-radius: 12px; padding: 0.75rem;">
-            <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-5738022526587953" data-ad-slot="PDF_COMPRESS_SLOT"></ins>
+            <div class="ad-slot-disabled" data-ad-disabled="missing-ad-slot" aria-hidden="true"></div>
           </div>
         </div>
-        
+
         <!-- SEO Content Block -->
         <article class="seo-content" style="margin-top: 3rem; padding: 2rem; background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-default); border-radius: var(--radius-lg);">
           <h2 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem;" data-i18n="tools.pdf.compress.text.017">Compress PDF Online - Free PDF Optimizer</h2>
           <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;" data-i18n="tools.pdf.compress.text.061">
-            Need to <strong>compress PDF</strong> files and <strong>reduce PDF size</strong> for email attachments or web uploads? 
-            Our free PDF optimizer helps you shrink document sizes without compromising quality. Whether you're dealing with 
-            large scanned documents, high-resolution PDFs, or bulky presentations, our <strong>PDF compressor</strong> delivers 
-            impressive results. Choose from three compression levels: High Quality (10-20% reduction) for professional documents, 
-            Balanced (30-50% reduction) for everyday use, or Maximum (50-80% reduction) when file size is critical. All 
-            processing happens securely in your browser - your files are never uploaded to any server. This makes our tool 
-            perfect for compressing sensitive business documents, legal contracts, or personal files that require confidentiality. 
+            Need to <strong>compress PDF</strong> files and <strong>reduce PDF size</strong> for email attachments or web uploads?
+            Our free PDF optimizer helps you shrink document sizes without compromising quality. Whether you're dealing with
+            large scanned documents, high-resolution PDFs, or bulky presentations, our <strong>PDF compressor</strong> delivers
+            impressive results. Choose from three compression levels: High Quality (10-20% reduction) for professional documents,
+            Balanced (30-50% reduction) for everyday use, or Maximum (50-80% reduction) when file size is critical. All
+            processing happens securely in your browser - your files are never uploaded to any server. This makes our tool
+            perfect for compressing sensitive business documents, legal contracts, or personal files that require confidentiality.
             Reduce PDF file size quickly and easily with no registration required.
           </p>
-          
+
           <h3 style="font-size: 1.25rem; font-weight: 600; margin: 1.5rem 0 1rem;" data-i18n="tools.pdf.compress.text.018">How to Use Our PDF Compressor</h3>
           <ol style="color: var(--text-secondary); line-height: 1.8; margin-left: 1.5rem; margin-bottom: 1.5rem;">
             <li data-i18n="tools.pdf.compress.text.051"><strong>Upload your PDF:</strong> Drag and drop your PDF file into the upload area, or click to browse and select from your device. Maximum file size is 50MB.</li>
@@ -506,23 +506,23 @@
             <li data-i18n="tools.pdf.compress.text.053"><strong>Compress:</strong> Click the "Compress PDF" button and let our tool optimize your document instantly.</li>
             <li data-i18n="tools.pdf.compress.text.054"><strong>Download:</strong> Review the compression statistics showing original size, new size, and percentage saved, then download your optimized PDF.</li>
           </ol>
-          
+
           <h3 style="font-size: 1.25rem; font-weight: 600; margin: 1.5rem 0 1rem;" data-i18n="tools.pdf.compress.text.019">Frequently Asked Questions</h3>
-          
+
           <details style="margin-bottom: 0.75rem; background: var(--surface-default); border-radius: var(--radius-md);">
             <summary style="padding: 1rem; cursor: pointer; font-weight: 500; color: var(--text-primary);" data-i18n="tools.pdf.compress.text.055">Will compressing my PDF reduce its quality?</summary>
             <div style="padding: 0 1rem 1rem; color: var(--text-secondary); line-height: 1.6;" data-i18n="tools.pdf.compress.text.056">
               The quality impact depends on your chosen compression level. "High Quality" mode reduces file size by 10-20% with virtually no visible quality loss. "Balanced" mode (30-50% reduction) maintains good readability, while "Maximum" mode (50-80% reduction) is best for documents where file size matters more than visual fidelity.
             </div>
           </details>
-          
+
           <details style="margin-bottom: 0.75rem; background: var(--surface-default); border-radius: var(--radius-md);">
             <summary style="padding: 1rem; cursor: pointer; font-weight: 500; color: var(--text-primary);" data-i18n="tools.pdf.compress.text.057">Is my data safe when compressing PDFs online?</summary>
             <div style="padding: 0 1rem 1rem; color: var(--text-secondary); line-height: 1.6;" data-i18n="tools.pdf.compress.text.058">
               Yes, your files are completely secure. Our PDF compressor works entirely in your browser using client-side technology. Your documents are never uploaded to our servers or stored anywhere, ensuring maximum privacy for your sensitive information.
             </div>
           </details>
-          
+
           <details style="margin-bottom: 0.75rem; background: var(--surface-default); border-radius: var(--radius-md);">
             <summary style="padding: 1rem; cursor: pointer; font-weight: 500; color: var(--text-primary);" data-i18n="tools.pdf.compress.text.059">What is the maximum file size I can compress?</summary>
             <div style="padding: 0 1rem 1rem; color: var(--text-secondary); line-height: 1.6;" data-i18n="tools.pdf.compress.text.060">
@@ -531,6 +531,40 @@
           </details>
         </article>
       </div>
+
+
+        <section class="tool-support-content" aria-labelledby="toolSupportTitle">
+          <div>
+            <h2 id="toolSupportTitle">PDF compression workflow guide</h2>
+            <p>This tool helps reduce a PDF file size for email, uploads, archiving, or sharing when the original document is larger than needed.</p>
+          </div>
+          <div class="tool-support-grid">
+            <div class="tool-support-card">
+              <h3>How to use it</h3>
+              <ol>
+              <li>Upload one PDF and confirm it is the right file.</li>
+              <li>Choose a quality level based on your size target.</li>
+              <li>Run compression, compare the result, then download the new file.</li>
+              </ol>
+            </div>
+            <div class="tool-support-card">
+              <h3>Privacy and trust note</h3>
+              <p>The page is intended for browser-based file handling. For sensitive contracts, IDs, medical, or legal files, test with a non-sensitive copy first and review the downloaded result before sharing.</p>
+            </div>
+            <div class="tool-support-card">
+              <h3>Common mistakes</h3>
+              <ul>
+              <li>Expecting large scanned PDFs to shrink like text-based PDFs; scanned images may need OCR or image optimization first.</li>
+              <li>Choosing maximum compression when readability matters.</li>
+              <li>Sharing the compressed file without opening it once to check page order and visual quality.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="tool-next-step">
+            <span>Need searchable text next? Try PDF to Text after compression.</span>
+            <a href="/tools/pdf/pdf-to-text/">Open related tool →</a>
+          </div>
+        </section>
     </main>
 
     <footer class="tool-footer">
