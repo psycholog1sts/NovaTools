@@ -7,6 +7,11 @@ import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
 import postcssImport from 'postcss-import';
 
+const devCorsOrigins = (process.env.VITE_DEV_CORS_ORIGINS || 'http://localhost:3000,http://127.0.0.1:3000')
+  .split(',')
+  .map((origin) => origin.trim())
+  .filter(Boolean);
+
 // Discover all tool entry points
 const toolEntries = globSync('src/tools/**/index.html', {
   ignore: ['**/demo-*/**', '**/experimental/**', '**/test/**']
@@ -246,7 +251,9 @@ export default defineConfig({
   server: {
     port: 3000,
     open: true,
-    cors: true,
+    cors: {
+      origin: devCorsOrigins
+    },
     headers: {
       'X-Frame-Options': 'DENY',
       'X-Content-Type-Options': 'nosniff',
