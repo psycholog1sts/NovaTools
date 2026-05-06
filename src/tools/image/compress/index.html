@@ -24,7 +24,7 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <title data-i18n="tools.image.compress.meta.title">Free Image Compressor - Reduce JPG PNG WebP Size Online</title>
-  
+
   <!-- i18n Script -->
   <script src="/i18n.js"></script>
   <meta name="description" content="Free online image compressor. Reduce JPG, PNG &amp; WebP sizes up to 80% without quality loss. Optimize images for web, social media &amp; email. Try free!">
@@ -92,7 +92,7 @@
 <body>
   <div class="bg-ambient" aria-hidden="true"></div>
   <div class="noise-overlay" aria-hidden="true"></div>
-  
+
   <div id="app" class="app">
         <header class="main-header">
       <div class="container">
@@ -134,7 +134,7 @@
           <span class="sr-only" data-i18n="tools.image.compress.text.012">Free image compressor — free online JPG, PNG and WebP image compression tool. Reduce image file size for free without losing quality. No registration required. 100% free image optimizer.</span>
           <p data-i18n="tools.image.compress.text.013">Reduce image file size without losing quality. Supports JPEG, PNG, and WebP.</p>
         </div>
-        
+
         <form data-tool="image-compress" data-result=".results-panel">
           <div id="dropzone" class="dropzone">
             <div style="font-size: 3rem; margin-bottom: 1rem;">🖼️</div>
@@ -142,18 +142,18 @@
             <div style="font-size: 0.875rem; color: var(--text-muted);">Supports JPG, PNG, WebP • Max 10MB</div>
             <input type="file" name="file" id="fileInput" accept="image/*" style="display: none;">
           </div>
-          
+
           <div id="controls" class="controls">
             <label style="font-weight: 600;">Quality: <span id="qualityValue">80</span>%</label>
             <input type="range" name="quality" id="qualitySlider" class="quality-slider" min="1" max="100" value="80">
-            
+
             <label style="font-weight: 600; margin-top: 1rem; display: block;" data-i18n="tools.image.compress.text.014">Output Format</label>
             <select name="format" id="formatSelect" style="width: 100%; height: 48px; margin-top: 0.5rem; padding: 0 1rem; background: var(--bg-tertiary); border: 1px solid var(--border-default); border-radius: var(--radius-md); color: var(--text-primary);">
               <option value="image/jpeg">JPEG</option>
               <option value="image/png">PNG</option>
               <option value="image/webp">WebP</option>
             </select>
-            
+
             <div class="preview-grid">
               <div class="preview-box">
                 <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 0.5rem;" data-i18n="tools.image.compress.text.015">Original</p>
@@ -166,11 +166,11 @@
                 <p id="compressedSize" style="font-size: 0.875rem; margin-top: 0.5rem;"></p>
               </div>
             </div>
-            
+
             <button type="submit" id="compressBtn" class="btn btn-primary" style="width: 100%; height: 52px;" data-i18n="tools.image.compress.text.017">Compress Image</button>
           </div>
         </form>
-        
+
         <div class="results-panel">
           <div id="resultSection" class="result-section">
             <div style="font-size: 3rem; margin-bottom: 1rem;">✅</div>
@@ -184,7 +184,7 @@
           <h2 data-i18n="tools.image.compress.text.020">Free Online Image Compressor Tool</h2>
           <p>Welcome to our free online image compressor - the fastest way to <strong>compress images</strong> and <strong>reduce image size</strong> without sacrificing visual quality. Whether you need to <strong>optimize images for web</strong> performance or simply free up storage space on your device, our powerful <strong>jpg compressor</strong> and image optimization tool delivers professional results instantly.</p>
           <p data-i18n="tools.image.compress.text.021">Large image files can significantly slow down your website's loading speed, negatively impact SEO rankings, and consume unnecessary bandwidth. Our browser-based compression technology processes your images locally, ensuring complete privacy while achieving file size reductions of up to 80%. Support for JPEG, PNG, and WebP formats means you can optimize any image for your specific needs.</p>
-          
+
           <h3 data-i18n="tools.image.compress.text.022">How to Use Our Image Compressor</h3>
           <ol>
             <li><strong>Upload your image</strong> - Drag and drop your JPG, PNG, or WebP file into the upload area, or click to browse your device's files. We support images up to 10MB in size.</li>
@@ -193,7 +193,7 @@
             <li><strong>Preview and compare</strong> - View side-by-side comparisons of the original and compressed versions before downloading.</li>
             <li><strong>Download your optimized image</strong> - Click the download button to save your compressed image instantly. All processing happens in your browser for complete privacy.</li>
           </ol>
-          
+
           <h3 data-i18n="tools.image.compress.text.023">Frequently Asked Questions</h3>
           <details class="faq-item">
             <summary>Will compressing images reduce their quality?</summary>
@@ -209,6 +209,40 @@
           </details>
         </div>
       </div>
+
+
+        <section class="tool-support-content" aria-labelledby="toolSupportTitle">
+          <div>
+            <h2 id="toolSupportTitle">Image compression workflow guide</h2>
+            <p>This tool reduces image file size for web publishing, email, CMS uploads, and faster sharing while letting you choose a quality level.</p>
+          </div>
+          <div class="tool-support-grid">
+            <div class="tool-support-card">
+              <h3>How to use it</h3>
+              <ol>
+              <li>Upload a JPG, PNG, or WebP image.</li>
+              <li>Set the quality and output format.</li>
+              <li>Preview the result, compare file size, then download.</li>
+              </ol>
+            </div>
+            <div class="tool-support-card">
+              <h3>Privacy and trust note</h3>
+              <p>Image previews and generated downloads are handled on the current device. Avoid using personal IDs, private screenshots, or client images on shared computers.</p>
+            </div>
+            <div class="tool-support-card">
+              <h3>Common mistakes</h3>
+              <ul>
+              <li>Setting quality too low for images with text.</li>
+              <li>Converting transparency-heavy PNGs to JPG and losing transparent areas.</li>
+              <li>Publishing without checking the downloaded image on the target page.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="tool-next-step">
+            <span>Need exact dimensions too? Resize the image after compression.</span>
+            <a href="/tools/image/image-resizer/">Open related tool →</a>
+          </div>
+        </section>
     </main>
 
     <footer class="tool-footer">

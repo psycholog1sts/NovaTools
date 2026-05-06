@@ -22,7 +22,7 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <title data-i18n="tools.image.image-resizer.meta.title">Image Resizer - Resize Photos Online Free | NovaTools</title>
-  
+
   <!-- i18n Script -->
   <script src="/i18n.js"></script>
   <meta name="description" content="Resize images to exact dimensions. Batch resize multiple photos for Instagram, Facebook, Twitter. Free online image resizer with preset sizes.">
@@ -60,17 +60,17 @@
     .tool-header { text-align: center; margin-bottom: 2rem; }
     .tool-header h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; }
     .tool-header p { color: var(--text-secondary); }
-    
+
     .dropzone { border: 2px dashed var(--border-default); border-radius: 16px; padding: 3rem 2rem; text-align: center; background: var(--surface-default); transition: all 0.3s ease; cursor: pointer; }
     .dropzone:hover { border-color: var(--border-accent); background: var(--border-default); }
     .dropzone.drag-active { border-color: var(--accent-primary); background: var(--accent-subtle); transform: scale(1.02); }
-    
+
     .controls { margin-top: 1.5rem; padding: 1.5rem; background: var(--surface-default); border: 1px solid var(--border-default); border-radius: var(--radius-lg); display: none; }
     .controls.visible { display: block; }
-    
+
     .dimension-inputs { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0; }
     @media (max-width: 480px) { .dimension-inputs { grid-template-columns: 1fr; } }
-    
+
     .input-group { display: flex; flex-direction: column; }
     .input-group label { font-size: 0.875rem; font-weight: 500; margin-bottom: 0.25rem; color: var(--text-secondary); }
     .input-group input, .input-group select {
@@ -81,7 +81,7 @@
       border-radius: var(--radius-md);
       color: var(--text-primary);
     }
-    
+
     .preset-buttons { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0; }
     .preset-btn {
       padding: 0.5rem 1rem;
@@ -94,41 +94,41 @@
       transition: all 0.2s;
     }
     .preset-btn:hover { border-color: var(--accent-primary); color: var(--accent-primary); }
-    
+
     .checkbox-group { display: flex; align-items: center; gap: 0.5rem; margin: 1rem 0; }
     .checkbox-group input[type="checkbox"] { width: 18px; height: 18px; }
-    
+
     .preview-box { padding: 1rem; background: var(--bg-tertiary); border-radius: var(--radius-md); text-align: center; margin: 1.5rem 0; }
     .preview-box img { max-width: 100%; max-height: 250px; border-radius: var(--radius-md); }
     .preview-dimensions { font-size: 0.875rem; color: var(--text-muted); margin-top: 0.5rem; }
-    
+
     .file-list { margin-top: 1rem; }
     .file-item { display: flex; align-items: center; gap: 1rem; padding: 0.75rem; background: var(--bg-tertiary); border-radius: var(--radius-md); margin-bottom: 0.5rem; }
     .file-item .file-name { flex: 1; font-size: 0.875rem; }
     .file-item .file-status { font-size: 0.75rem; padding: 0.25rem 0.5rem; border-radius: var(--radius-sm); }
     .file-item .status-pending { background: var(--warning-subtle); color: var(--warning); }
     .file-item .status-done { background: var(--success-subtle); color: var(--success); }
-    
+
     .result-section { margin-top: 1.5rem; padding: 2rem; background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(34, 197, 94, 0.05)); border: 1px solid rgba(34, 197, 94, 0.3); border-radius: var(--radius-lg); text-align: center; display: none; }
     .result-section.visible { display: block; }
-    
+
     .download-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; background: linear-gradient(135deg, #22C55E, #16A34A); color: white; font-weight: 600; border-radius: var(--radius-md); text-decoration: none; margin: 0.25rem; }
     .download-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(34, 197, 94, 0.3); }
-    
+
     .legal-disclaimer { background: var(--surface-default); border-left: 4px solid var(--warning); padding: 1rem 1.25rem; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin-top: 2rem; font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6; }
-    
+
     .how-to-use { margin-top: 3rem; }
     .how-to-use h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; }
     .how-to-use ol { padding-left: 1.5rem; color: var(--text-secondary); line-height: 1.8; }
     .how-to-use li { margin-bottom: 0.5rem; }
-    
+
     .faq-section { margin-top: 3rem; }
     .faq-section h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; }
     .faq-item { border: 1px solid var(--border-hover); border-radius: var(--radius-md); overflow: hidden; margin-bottom: 0.75rem; }
     .faq-item summary { padding: 1rem; background: var(--surface-default); cursor: pointer; font-weight: 500; }
     .faq-item summary:hover { background: var(--border-default); }
     .faq-item p { padding: 1rem; margin: 0; border-top: 1px solid var(--border-hover); color: var(--text-secondary); }
-    
+
     .progress-section { margin-top: 1.5rem; padding: 1.5rem; background: var(--surface-default); border: 1px solid var(--border-default); border-radius: var(--radius-lg); display: none; }
     .progress-section.visible { display: block; }
     .progress-bar { height: 8px; background: var(--border-hover); border-radius: 4px; overflow: hidden; margin: 1rem 0; }
@@ -139,7 +139,7 @@
 <body>
   <div class="bg-ambient" aria-hidden="true"></div>
   <div class="noise-overlay" aria-hidden="true"></div>
-  
+
   <div id="app" class="app">
     <header class="main-header">
       <div class="container">
@@ -182,14 +182,14 @@
           <span class="sr-only" data-i18n="tools.image.image-resizer.text.012">Free image resizer - resize photos online to exact dimensions. Batch resize multiple images for Instagram, Facebook, Twitter. Social media presets included.</span>
           <p data-i18n="tools.image.image-resizer.text.013">Resize images to exact dimensions. Batch resize for Instagram, Facebook, Twitter, and more. Maintain aspect ratio or set custom sizes.</p>
         </div>
-        
+
         <div id="dropzone" class="dropzone">
           <div style="font-size: 3rem; margin-bottom: 1rem;">📐</div>
           <div style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem;">Drop images here or click to browse</div>
           <div style="font-size: 0.875rem; color: var(--text-muted);">Supports all image formats • Max 30MB per file</div>
           <input type="file" id="fileInput" accept="image/*" multiple style="display: none;">
         </div>
-        
+
         <div id="controls" class="controls">
           <label style="font-weight: 600;" data-i18n="tools.image.image-resizer.text.014">Quick Presets:</label>
           <div class="preset-buttons">
@@ -202,7 +202,7 @@
             <button type="button" class="preset-btn" data-w="800" data-h="600" data-i18n="tools.image.image-resizer.text.021">Standard</button>
             <button type="button" class="preset-btn" data-w="300" data-h="250" data-i18n="tools.image.image-resizer.text.022">Small Banner</button>
           </div>
-          
+
           <div class="dimension-inputs">
             <div class="input-group">
               <label for="widthInput" data-i18n="tools.image.image-resizer.text.023">Width (px)</label>
@@ -213,12 +213,12 @@
               <input type="number" id="heightInput" value="600" min="1" max="10000">
             </div>
           </div>
-          
+
           <div class="checkbox-group">
             <input type="checkbox" id="maintainRatio" checked>
             <label for="maintainRatio" style="margin: 0; cursor: pointer;" data-i18n="tools.image.image-resizer.text.025">Maintain aspect ratio</label>
           </div>
-          
+
           <div class="input-group" style="margin-top: 1rem;">
             <label for="outputFormat" data-i18n="tools.image.image-resizer.text.026">Output Format</label>
             <select id="outputFormat">
@@ -227,25 +227,25 @@
               <option value="image/webp">WebP</option>
             </select>
           </div>
-          
+
           <div class="preview-box" id="previewBox" style="display: none;">
             <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 0.5rem;" data-i18n="tools.image.image-resizer.text.027">Preview</p>
             <img id="previewImage" src="" alt="Preview">
             <p id="previewDimensions" class="preview-dimensions"></p>
           </div>
-          
+
           <div id="fileList" class="file-list"></div>
-          
+
           <button id="resizeBtn" class="btn btn-primary" style="width: 100%; height: 52px; margin-top: 1rem;" data-i18n="tools.image.image-resizer.text.028">Resize Images</button>
         </div>
-        
+
         <div id="progressSection" class="progress-section">
           <div class="progress-text" id="progressText">Resizing...</div>
           <div class="progress-bar">
             <div id="progressFill" class="progress-fill" style="width: 0%"></div>
           </div>
         </div>
-        
+
         <div id="resultSection" class="result-section">
           <div style="font-size: 3rem; margin-bottom: 1rem;">✅</div>
           <h3 style="margin-bottom: 0.5rem;" data-i18n="tools.image.image-resizer.text.029">Resize Complete!</h3>
@@ -272,33 +272,67 @@
 
         <section class="faq-section">
           <h2 data-i18n="tools.image.image-resizer.text.037">Frequently Asked Questions</h2>
-          
+
           <details class="faq-item">
             <summary>Will resizing reduce image quality?</summary>
             <p data-i18n="tools.image.image-resizer.text.038">Resizing to smaller dimensions typically maintains good quality. When enlarging images, some quality loss may occur as the image is being stretched. For best results, resize to dimensions smaller than or equal to the original.</p>
           </details>
-          
+
           <details class="faq-item">
             <summary>What does "maintain aspect ratio" mean?</summary>
             <p data-i18n="tools.image.image-resizer.text.039">Aspect ratio is the proportional relationship between width and height. When enabled, the image maintains its original proportions, preventing distortion. The tool automatically adjusts the other dimension to preserve the ratio.</p>
           </details>
-          
+
           <details class="faq-item">
             <summary>Can I resize multiple images at once?</summary>
             <p data-i18n="tools.image.image-resizer.text.040">Yes! Our tool supports batch processing. Upload multiple images and they'll all be resized to the same dimensions in one operation.</p>
           </details>
-          
+
           <details class="faq-item">
             <summary>Which output format should I choose?</summary>
             <p data-i18n="tools.image.image-resizer.text.041">Choose JPEG for photographs and general use, PNG for images requiring transparency, and WebP for best compression and web use. WebP files are smaller but may not be supported by older software.</p>
           </details>
-          
+
           <details class="faq-item">
             <summary>Is my data secure?</summary>
             <p data-i18n="tools.image.image-resizer.text.042">Absolutely. All image processing happens entirely in your browser. Your images are never uploaded to any server, ensuring complete privacy and security.</p>
           </details>
         </section>
       </div>
+
+
+        <section class="tool-support-content" aria-labelledby="toolSupportTitle">
+          <div>
+            <h2 id="toolSupportTitle">Image resize workflow guide</h2>
+            <p>This tool changes image dimensions for websites, social previews, uploads, profile images, and layout-ready assets.</p>
+          </div>
+          <div class="tool-support-grid">
+            <div class="tool-support-card">
+              <h3>How to use it</h3>
+              <ol>
+              <li>Upload an image.</li>
+              <li>Enter the target width and height or keep the aspect ratio.</li>
+              <li>Generate and download the resized image, then test it where it will be used.</li>
+              </ol>
+            </div>
+            <div class="tool-support-card">
+              <h3>Privacy and trust note</h3>
+              <p>Resizing can reveal or preserve private image content in downloaded files. Remove metadata first if location or device details matter.</p>
+            </div>
+            <div class="tool-support-card">
+              <h3>Common mistakes</h3>
+              <ul>
+              <li>Stretching images by changing width and height without preserving aspect ratio.</li>
+              <li>Upscaling small images and expecting sharper detail.</li>
+              <li>Forgetting to compress large resized images before uploading.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="tool-next-step">
+            <span>Need a smaller file after resizing? Compress the image next.</span>
+            <a href="/tools/image/compress/">Open related tool →</a>
+          </div>
+        </section>
     </main>
 
     <footer class="tool-footer">
@@ -324,7 +358,7 @@ document.addEventListener('DOMContentLoaded', function() {
       mobileMenu.classList.toggle('active', !isExpanded);
     });
   }
-  
+
   var themeBtn = document.getElementById('themeToggle');
   if (themeBtn) {
     function getTheme() {
@@ -366,10 +400,10 @@ document.addEventListener('DOMContentLoaded', function() {
   var resultText = document.getElementById('resultText');
   var downloadLinks = document.getElementById('downloadLinks');
   var presetBtns = document.querySelectorAll('.preset-btn');
-  
+
   var files = [];
   var originalDimensions = null;
-  
+
   function formatBytes(bytes) {
     if (bytes === 0) return '0 Bytes';
     var k = 1024;
@@ -377,7 +411,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var i = Math.floor(Math.log(bytes) / Math.log(k));
     return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
   }
-  
+
   // Preset buttons
   presetBtns.forEach(function(btn) {
     btn.addEventListener('click', function() {
@@ -386,7 +420,7 @@ document.addEventListener('DOMContentLoaded', function() {
       updatePreview();
     });
   });
-  
+
   function renderFileList() {
     fileList.innerHTML = '';
     files.forEach(function(file, index) {
@@ -397,7 +431,7 @@ document.addEventListener('DOMContentLoaded', function() {
       fileList.appendChild(item);
     });
   }
-  
+
   function loadFile(file) {
     if (file.size > 30 * 1024 * 1024) {
       alert('File "' + file.name + '" exceeds 30MB limit and will be skipped.');
@@ -406,7 +440,7 @@ document.addEventListener('DOMContentLoaded', function() {
     files.push(file);
     controls.classList.add('visible');
     renderFileList();
-    
+
     // Load first image for preview
     if (files.length === 1) {
       var reader = new FileReader();
@@ -423,12 +457,12 @@ document.addEventListener('DOMContentLoaded', function() {
       reader.readAsDataURL(file);
     }
   }
-  
+
   function updatePreviewDimensions() {
     if (!originalDimensions) return;
     var w = parseInt(widthInput.value) || originalDimensions.width;
     var h = parseInt(heightInput.value) || originalDimensions.height;
-    
+
     if (maintainRatio.checked) {
       var ratio = originalDimensions.width / originalDimensions.height;
       if (document.activeElement === widthInput) {
@@ -441,11 +475,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     previewDimensions.textContent = 'Original: ' + originalDimensions.width + '×' + originalDimensions.height + ' → New: ' + w + '×' + h;
   }
-  
+
   function updatePreview() {
     updatePreviewDimensions();
   }
-  
+
   if (dropzone && fileInput) {
     dropzone.addEventListener('click', function(e) { if (e.target !== fileInput) fileInput.click(); });
     fileInput.addEventListener('change', function() {
@@ -460,11 +494,11 @@ document.addEventListener('DOMContentLoaded', function() {
       Array.from(e.dataTransfer.files).forEach(loadFile);
     });
   }
-  
+
   widthInput.addEventListener('input', updatePreview);
   heightInput.addEventListener('input', updatePreview);
   maintainRatio.addEventListener('change', updatePreview);
-  
+
   function resizeImage(file, targetWidth, targetHeight, format) {
     return new Promise(function(resolve, reject) {
       var reader = new FileReader();
@@ -478,7 +512,7 @@ document.addEventListener('DOMContentLoaded', function() {
           ctx.imageSmoothingEnabled = true;
           ctx.imageSmoothingQuality = 'high';
           ctx.drawImage(img, 0, 0, targetWidth, targetHeight);
-          
+
           var mimeType = format;
           var quality = format === 'image/png' ? undefined : 0.9;
           canvas.toBlob(function(blob) {
@@ -492,24 +526,24 @@ document.addEventListener('DOMContentLoaded', function() {
       reader.readAsDataURL(file);
     });
   }
-  
+
   if (resizeBtn) {
     resizeBtn.addEventListener('click', async function() {
       if (files.length === 0) return;
-      
+
       var targetW = parseInt(widthInput.value) || 800;
       var targetH = parseInt(heightInput.value) || 600;
       var format = outputFormat.value;
-      
+
       resizeBtn.disabled = true;
       progressSection.classList.add('visible');
       resultSection.classList.remove('visible');
       downloadLinks.innerHTML = '';
-      
+
       for (var i = 0; i < files.length; i++) {
         progressText.textContent = 'Resizing ' + (i + 1) + ' of ' + files.length + '...';
         progressFill.style.width = Math.round((i / files.length) * 100) + '%';
-        
+
         try {
           var ext = format.split('/')[1];
           var result = await resizeImage(files[i], targetW, targetH, format);
@@ -520,17 +554,17 @@ document.addEventListener('DOMContentLoaded', function() {
           btn.className = 'download-btn';
           btn.innerHTML = files.length === 1 ? '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg> Download Resized' : 'Download ' + (i + 1);
           downloadLinks.appendChild(btn);
-          
+
           var statusEl = document.getElementById('status-' + i);
           if (statusEl) { statusEl.textContent = 'Done'; statusEl.className = 'file-status status-done'; }
         } catch (err) {
           console.error('Resize error:', err);
         }
       }
-      
+
       progressFill.style.width = '100%';
       progressText.textContent = 'Complete!';
-      
+
       setTimeout(function() {
         progressSection.classList.remove('visible');
         resultSection.classList.add('visible');

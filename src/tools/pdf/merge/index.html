@@ -24,7 +24,7 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <title data-i18n="tools.pdf.merge.meta.title">Free PDF Merger - Combine PDF Files Online | NovaTools MC</title>
-  
+
   <!-- i18n Script -->
   <script src="/i18n.js"></script>
   <meta name="description" content="Merge multiple PDF files into one document in your browser. No signup, no watermarks, and no server upload required.">
@@ -70,7 +70,7 @@
       font-size: 0.875rem;
       color: var(--text-muted);
     }
-    
+
     .dropzone {
       border: 2px dashed var(--border-default);
       border-radius: 16px;
@@ -92,7 +92,7 @@
     .dropzone-icon { font-size: 3rem; margin-bottom: 1rem; }
     .dropzone-title { font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; }
     .dropzone-hint { font-size: 0.875rem; color: var(--text-muted); }
-    
+
     .file-list { margin-top: 1.5rem; }
     .file-item {
       display: flex;
@@ -120,9 +120,9 @@
       transition: all 0.2s;
     }
     .file-remove:hover { background: rgba(239, 68, 68, 0.2); }
-    
-    .controls { 
-      margin-top: 1.5rem; 
+
+    .controls {
+      margin-top: 1.5rem;
       padding: 1.5rem;
       background: var(--surface-default);
       border: 1px solid var(--border-default);
@@ -139,10 +139,10 @@
       border-radius: var(--radius-md);
       color: var(--text-primary);
     }
-    
-    .btn-primary { 
-      width: 100%; 
-      height: 52px; 
+
+    .btn-primary {
+      width: 100%;
+      height: 52px;
       margin-top: 1rem;
       display: flex;
       align-items: center;
@@ -153,7 +153,7 @@
       opacity: 0.5;
       cursor: not-allowed;
     }
-    
+
     .progress-section {
       margin-top: 1.5rem;
       padding: 1.5rem;
@@ -177,7 +177,7 @@
       transition: width 0.3s ease;
     }
     .progress-text { text-align: center; font-size: 0.875rem; color: var(--text-secondary); }
-    
+
     .download-section {
       margin-top: 1.5rem;
       padding: 2rem;
@@ -201,7 +201,7 @@
       transition: all 0.2s;
     }
     .download-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(34, 197, 94, 0.3); }
-    
+
     .error-message {
       margin-top: 1rem;
       padding: 1rem;
@@ -299,7 +299,7 @@
       .related-tools-grid { grid-template-columns: 1fr; }
       .download-btn { width: 100%; justify-content: center; }
     }
-    
+
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
@@ -309,7 +309,7 @@
 <body>
   <div class="bg-ambient" aria-hidden="true"></div>
   <div class="noise-overlay" aria-hidden="true"></div>
-  
+
   <div id="app" class="app">
         <header class="main-header">
       <div class="container">
@@ -352,7 +352,7 @@
           <p data-i18n="tools.pdf.merge.text.013">Combine multiple PDF files into one document instantly. Your files never leave your browser.</p>
           <p class="hero-note" data-i18n="tools.pdf.merge.text.023">Supports up to 20 files and 50MB total per merge operation.</p>
         </div>
-        
+
         <form data-tool="pdf-merge" data-result=".results-panel">
           <div id="dropzone" class="dropzone" role="button" tabindex="0" aria-label="Upload PDF files">
             <div class="dropzone-icon">📁</div>
@@ -361,15 +361,15 @@
             <input type="file" name="files" id="fileInput" accept=".pdf,application/pdf" multiple style="display: none;">
           </div>
           <p id="formHelpText" class="hero-note" data-i18n="tools.pdf.merge.text.026">Add at least two PDF files, choose output options, then merge.</p>
-          
+
           <div id="fileList" class="file-list"></div>
-          
+
           <div id="controls" class="controls" style="display: none;">
             <div class="control-group">
               <label for="outputName" data-i18n="tools.pdf.merge.text.014">Output Filename</label>
               <input type="text" id="outputName" value="merged-document" placeholder="merged-document" data-i18n-placeholder="tools.pdf.merge.placeholder.001">
             </div>
-            
+
             <div class="control-group">
               <label for="sortOrder" data-i18n="tools.pdf.merge.text.015">Sort Order</label>
               <select id="sortOrder" name="sortOrder">
@@ -378,20 +378,20 @@
                 <option value="size" data-i18n="tools.pdf.merge.text.029">By Size (Largest First)</option>
               </select>
             </div>
-            
+
             <button type="submit" id="mergeBtn" class="btn btn-primary" disabled aria-describedby="formHelpText mergeStatusRegion">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M12 4v16m-8-8h16"/>
               </svg>
               <span data-i18n="tools.pdf.merge.text.030">Merge PDFs</span>
             </button>
-            
+
             <button type="button" id="clearBtn" class="btn btn-secondary" style="width: 100%; margin-top: 0.75rem;" data-i18n="tools.pdf.merge.text.016">
               Clear All
             </button>
           </div>
         </form>
-        
+
         <div class="results-panel">
           <div id="emptyState" class="state-section visible" data-state="empty">
             <span data-i18n="tools.pdf.merge.text.031">Empty state: waiting for PDF files. Add at least two files to continue.</span>
@@ -414,7 +414,7 @@
             </div>
             <div class="progress-text" id="progressDetail"></div>
           </div>
-          
+
           <div id="downloadSection" class="download-section">
             <div style="font-size: 3rem; margin-bottom: 1rem;">✅</div>
             <h3 style="margin-bottom: 0.5rem;" data-i18n="tools.pdf.merge.text.017">PDFs Merged Successfully!</h3>
@@ -427,7 +427,7 @@
             </a>
           </div>
         </div>
-        
+
         <div id="errorSection" class="error-message" role="alert" aria-live="assertive"></div>
 
         <section class="trust-help" aria-labelledby="trustHelpHeading">
@@ -447,29 +447,29 @@
             <a class="related-tool-link" href="/tools/pdf/pdf-ocr/" data-i18n="tools.pdf.merge.text.043">PDF OCR</a>
           </div>
         </section>
-        
+
         <!-- In-Tool Ad -->
         <div style="margin-top: 2rem; text-align: center;">
           <div style="font-size: 0.6875rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 0.5rem;" data-i18n="tools.pdf.merge.text.044">Sponsored</div>
           <div style="display: inline-flex; background: var(--surface-default); border: 1px solid var(--border-default); border-radius: 12px; padding: 0.75rem;">
-            <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-5738022526587953" data-ad-slot="PDF_MERGE_SLOT"></ins>
+            <div class="ad-slot-disabled" data-ad-disabled="missing-ad-slot" aria-hidden="true"></div>
           </div>
         </div>
-        
+
         <!-- SEO Content Block -->
         <article class="seo-content" style="margin-top: 3rem; padding: 2rem; background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-default); border-radius: var(--radius-lg);">
           <h2 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem;" data-i18n="tools.pdf.merge.text.018">Merge PDF Files Online - Free PDF Combiner</h2>
           <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;" data-i18n-html="tools.pdf.merge.text.045">
-            Looking for the easiest way to <strong>merge PDF online</strong> and <strong>combine PDF files</strong> into a single document? 
-            Our free PDF merger tool lets you <strong>join PDF documents</strong> instantly without any software installation. 
-            Whether you need to merge multiple reports, combine scanned documents, or consolidate invoices, our browser-based 
-            tool handles it all. With 100% client-side processing, your sensitive documents never leave your computer, 
-            ensuring complete privacy and security. Simply drag and drop your files, arrange them in your preferred order, 
-            and download your merged PDF in seconds. No registration required, no watermarks added, and no file size limits 
-            within reasonable bounds. Perfect for students, professionals, and businesses who need a reliable way to 
+            Looking for the easiest way to <strong>merge PDF online</strong> and <strong>combine PDF files</strong> into a single document?
+            Our free PDF merger tool lets you <strong>join PDF documents</strong> instantly without any software installation.
+            Whether you need to merge multiple reports, combine scanned documents, or consolidate invoices, our browser-based
+            tool handles it all. With 100% client-side processing, your sensitive documents never leave your computer,
+            ensuring complete privacy and security. Simply drag and drop your files, arrange them in your preferred order,
+            and download your merged PDF in seconds. No registration required, no watermarks added, and no file size limits
+            within reasonable bounds. Perfect for students, professionals, and businesses who need a reliable way to
             combine multiple PDFs quickly and securely.
           </p>
-          
+
           <h3 style="font-size: 1.25rem; font-weight: 600; margin: 1.5rem 0 1rem;" data-i18n="tools.pdf.merge.text.019">How to Use Our PDF Merge Tool</h3>
           <ol style="color: var(--text-secondary); line-height: 1.8; margin-left: 1.5rem; margin-bottom: 1.5rem;">
             <li data-i18n-html="tools.pdf.merge.text.046"><strong>Upload your PDFs:</strong> Drag and drop up to 20 PDF files into the upload area, or click to browse and select files from your device.</li>
@@ -477,7 +477,7 @@
             <li data-i18n-html="tools.pdf.merge.text.048"><strong>Customize output:</strong> Enter your preferred filename for the merged document, or keep the default "merged-document" name.</li>
             <li data-i18n-html="tools.pdf.merge.text.049"><strong>Merge and download:</strong> Click the "Merge PDFs" button and download your combined PDF file instantly.</li>
           </ol>
-          
+
           <h3 style="font-size: 1.25rem; font-weight: 600; margin: 1.5rem 0 1rem;" data-i18n="tools.pdf.merge.text.020">Frequently Asked Questions</h3>
 
           <h3 style="font-size: 1.25rem; font-weight: 600; margin: 1.5rem 0 1rem;">Who is this tool for?</h3>
@@ -491,21 +491,21 @@
             MC NovaTools prioritizes browser-side processing and clear workflow states (empty, processing, success).
             Instead of hidden queues or account walls, you get transparent limits, explicit privacy notes, and direct links to related PDF tools for the next task.
           </p>
-          
+
           <details style="margin-bottom: 0.75rem; background: var(--surface-default); border-radius: var(--radius-md);">
             <summary style="padding: 1rem; cursor: pointer; font-weight: 500; color: var(--text-primary);" data-i18n="tools.pdf.merge.text.050">Is this PDF merger completely free to use?</summary>
             <div style="padding: 0 1rem 1rem; color: var(--text-secondary); line-height: 1.6;" data-i18n="tools.pdf.merge.text.051">
               Yes, our PDF merge tool is 100% free to use with no hidden fees, no registration required, and no watermarks added to your documents. You can combine PDF files as often as you need.
             </div>
           </details>
-          
+
           <details style="margin-bottom: 0.75rem; background: var(--surface-default); border-radius: var(--radius-md);">
             <summary style="padding: 1rem; cursor: pointer; font-weight: 500; color: var(--text-primary);" data-i18n="tools.pdf.merge.text.052">Are my PDF files secure when merging online?</summary>
             <div style="padding: 0 1rem 1rem; color: var(--text-secondary); line-height: 1.6;" data-i18n="tools.pdf.merge.text.053">
               Absolutely! All processing happens directly in your browser using client-side technology. Your PDFs are never uploaded to our servers, ensuring complete privacy and security for your sensitive documents.
             </div>
           </details>
-          
+
           <details style="margin-bottom: 0.75rem; background: var(--surface-default); border-radius: var(--radius-md);">
             <summary style="padding: 1rem; cursor: pointer; font-weight: 500; color: var(--text-primary);" data-i18n="tools.pdf.merge.text.054">How many PDF files can I merge at once?</summary>
             <div style="padding: 0 1rem 1rem; color: var(--text-secondary); line-height: 1.6;" data-i18n="tools.pdf.merge.text.055">
@@ -514,6 +514,40 @@
           </details>
         </article>
       </div>
+
+
+        <section class="tool-support-content" aria-labelledby="toolSupportTitle">
+          <div>
+            <h2 id="toolSupportTitle">PDF merge workflow guide</h2>
+            <p>This tool combines multiple PDF files into one document for packets, applications, records, or client handoffs.</p>
+          </div>
+          <div class="tool-support-grid">
+            <div class="tool-support-card">
+              <h3>How to use it</h3>
+              <ol>
+              <li>Add the PDFs in the order you want them to appear.</li>
+              <li>Reorder or remove files before merging.</li>
+              <li>Generate the combined PDF and open it once before sending.</li>
+              </ol>
+            </div>
+            <div class="tool-support-card">
+              <h3>Privacy and trust note</h3>
+              <p>Keep confidential documents out of shared devices. If a PDF contains private identifiers, verify the file list and final output before download or distribution.</p>
+            </div>
+            <div class="tool-support-card">
+              <h3>Common mistakes</h3>
+              <ul>
+              <li>Uploading files in the wrong order.</li>
+              <li>Merging password-protected or corrupted PDFs without checking each source file first.</li>
+              <li>Assuming bookmarks, forms, or signatures will always survive every merge workflow.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="tool-next-step">
+            <span>Merged file too large? Compress the combined PDF next.</span>
+            <a href="/tools/pdf/compress/">Open related tool →</a>
+          </div>
+        </section>
     </main>
 
 <footer class="tool-footer">

@@ -61,10 +61,22 @@
 
   const ADSENSE_CLIENT = 'ca-pub-5738022526587953';
 
+  function isProductionHost() {
+    return /(^|\.)mc-novatools\.com$/i.test(window.location.hostname);
+  }
+
+  function hasValidAdSlot() {
+    return Array.from(document.querySelectorAll('ins.adsbygoogle')).some(function(el) {
+      var slot = el.getAttribute('data-ad-slot') || '';
+      return /^\d{8,20}$/.test(slot.trim());
+    });
+  }
+
   function ensureAdSenseBootstrap() {
     if (window.__mcAdSenseLoaded) return;
-    if (!document.head) return;
-    if (document.querySelector('script[data-adsense-bootstrap="true"]')) {
+    if (!document.head || !isProductionHost() || !hasValidAdSlot()) return;
+    if (navigator.doNotTrack === '1' || navigator.globalPrivacyControl) return;
+    if (document.querySelector('script[data-adsense-bootstrap="true"], script[data-adsense="true"]')) {
       window.__mcAdSenseLoaded = true;
       return;
     }
@@ -76,6 +88,16 @@
     script.setAttribute('data-adsense-bootstrap', 'true');
     document.head.appendChild(script);
     window.__mcAdSenseLoaded = true;
+  }
+
+  function initAdSlotState() {
+    document.querySelectorAll('ins.adsbygoogle').forEach(function(el) {
+      el.classList.add('ad-slot-reserved');
+      if (!/^\d{8,20}$/.test((el.getAttribute('data-ad-slot') || '').trim())) {
+        el.setAttribute('data-ad-status', 'disabled-missing-slot');
+        el.setAttribute('aria-hidden', 'true');
+      }
+    });
   }
 
   /**
@@ -540,12 +562,17 @@
   // Global changeLanguage function for onclick handlers
   window.changeLanguage = changeLanguage;
 
-  // Initialize when DOM is ready
-  ensureAdSenseBootstrap();
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
+  function boot() {
     init();
+    initAdSlotState();
+    ensureAdSenseBootstrap();
+  }
+
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', boot);
+  } else {
+    boot();
   }
 
   // Add default styles
@@ -591,7 +618,7 @@
       left: 20px;\
     }\
     \
-    /* Mobile adjustments */\
+    .ad-slot-reserved {      min-height: 250px;      background: rgba(15, 23, 42, 0.38);      border-radius: 12px;    }    .ad-slot-disabled {      display: none !important;    }        /* Mobile adjustments */\
     @media (max-width: 768px) {\
       .language-selector {\
         font-size: 12px;\

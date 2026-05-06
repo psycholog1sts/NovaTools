@@ -468,7 +468,32 @@
         width: 100%;
       }
     }
-  </style>
+
+
+    .guide-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .guide-grid > div {
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+    }
+
+    .guide-grid ul {
+      padding-left: 1.25rem;
+      margin-bottom: 0;
+    }
+
+    .category-guide-note {
+      margin-top: 1rem;
+      color: var(--muted);
+    }
+</style>
 </head>
 <body>
   <header class="main-header">
@@ -651,6 +676,40 @@
             Use this page as the central entry point for lightweight dev tasks: inspecting payloads,
             testing patterns, converting formats, and cleaning snippets without hunting through unrelated tools.
           </p>
+        </div>
+      </div>
+    </section>
+
+
+
+    <section class="content-section category-guide-standard" aria-labelledby="categoryGuideTitle">
+      <div class="container">
+        <div class="content-panel">
+          <h2 id="categoryGuideTitle">Developer workflow guide</h2>
+          <p>Use this category for formatting, validating, encoding, minifying, and converting code or structured text during everyday development work.</p>
+          <div class="guide-grid">
+            <div>
+              <h3>Who this category is for</h3>
+              <p>Developers, technical writers, QA testers, students, and site owners who need quick browser utilities for code-adjacent tasks.</p>
+            </div>
+            <div>
+              <h3>Most common tasks</h3>
+              <ul>
+              <li>Format JSON or code before review.</li>
+              <li>Validate JSON before passing it to an API.</li>
+              <li>Encode URLs or Base64 strings.</li>
+              <li>Convert Markdown and HTML snippets.</li>
+              <li>Minify CSS or JavaScript for lightweight delivery.</li>
+              </ul>
+            </div>
+            <div>
+              <h3>Which tool should you choose?</h3>
+              <p>Start with the tool that matches your input format and desired output. If the result feeds another workflow, use the related tool link after checking the output.</p>
+              <p><a href="/tools/dev/json-formatter/">Open recommended starter tool →</a></p>
+              <p><a href="/tools/dev/json-validator/">Open related follow-up tool →</a></p>
+            </div>
+          </div>
+          <p class="category-guide-note">These tools are intended for practical browser workflows and quick estimates. Review outputs before using them in sensitive, financial, legal, medical, or production-critical contexts.</p>
         </div>
       </div>
     </section>

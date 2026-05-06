@@ -13,16 +13,17 @@
     "preview": "node ./node_modules/vite/bin/vite.js preview",
     "lint": "eslint src/",
     "lint:fix": "eslint src/ --fix",
-    "test": "vitest run",
-    "test:unit": "vitest run",
-    "test:watch": "vitest",
-    "test:coverage": "vitest run --coverage",
+    "test": "node tests/tool-validation.mjs",
+    "test:unit": "node tests/tool-validation.mjs",
+    "test:watch": "node tests/tool-validation.mjs",
+    "test:coverage": "node tests/tool-validation.mjs",
     "lighthouse": "lhci autorun",
     "lighthouse:local": "lhci collect && lhci open",
     "prettier": "prettier --write \"src/**/*.{js,mjs,css,html}\"",
     "clean": "rimraf dist node_modules/.vite",
     "postinstall": "node scripts/postinstall.mjs",
-    "prebuild": "node scripts/generate-icons.mjs"
+    "prebuild": "node scripts/generate-icons.mjs",
+    "audit:adsense": "node scripts/adsense-readiness-audit.mjs"
   },
   "dependencies": {
     "@vercel/speed-insights": "^2.0.0",

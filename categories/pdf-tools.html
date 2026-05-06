@@ -467,7 +467,32 @@
         width: 100%;
       }
     }
-  </style>
+
+
+    .guide-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .guide-grid > div {
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+    }
+
+    .guide-grid ul {
+      padding-left: 1.25rem;
+      margin-bottom: 0;
+    }
+
+    .category-guide-note {
+      margin-top: 1rem;
+      color: var(--muted);
+    }
+</style>
 </head>
 <body>
   <header class="main-header">
@@ -533,6 +558,26 @@
             <span class="stat">Browser-first workflows</span>
             <span class="stat">Clean static category page</span>
           </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="content-section category-guide-standard" aria-labelledby="categoryGuideTitle">
+      <div class="container">
+        <div class="panel">
+          <h2 id="categoryGuideTitle">PDF workflow guide</h2>
+          <p>This category is organized around common user intent, not just a list of links. Start with the task below, then open the tool that best matches the output you need.</p>
+          <h3>Five common tasks</h3>
+          <ul>
+            <li><strong>Combine documents:</strong> use merge when files belong in one packet.</li>
+            <li><strong>Reduce size:</strong> compress before email or upload, then review readability.</li>
+            <li><strong>Extract pages:</strong> split when only selected pages should be shared.</li>
+            <li><strong>Convert carefully:</strong> use Word, Excel, image, HTML, or text output depending on what you need to edit.</li>
+            <li><strong>Protect context:</strong> add watermark or page numbers when recipients need source cues.</li>
+          </ul>
+          <h3>Which tool should you choose?</h3>
+          <p>Choose merge for packets, split for selected pages, compress for delivery, OCR for scanned text, and conversion tools when the next step requires editing outside a PDF reader.</p>
         </div>
       </div>
     </section>

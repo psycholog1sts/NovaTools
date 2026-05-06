@@ -311,6 +311,46 @@
     isInitialized = true;
   }
 
+
+  function isProductionHost() {
+    return /(^|\.)mc-novatools\.com$/i.test(window.location.hostname);
+  }
+
+  function hasValidAdSlot() {
+    return Array.from(document.querySelectorAll('ins.adsbygoogle')).some((el) => {
+      const slot = el.getAttribute('data-ad-slot') || '';
+      return /^\d{8,20}$/.test(slot.trim());
+    });
+  }
+
+  function ensureAdSenseBootstrap() {
+    if (window.__mcAdSenseLoaded) return;
+    if (!document.head || !isProductionHost() || !hasValidAdSlot()) return;
+    if (navigator.doNotTrack === '1' || navigator.globalPrivacyControl) return;
+    if (document.querySelector('script[data-adsense-bootstrap="true"], script[data-adsense="true"]')) {
+      window.__mcAdSenseLoaded = true;
+      return;
+    }
+
+    const script = document.createElement('script');
+    script.async = true;
+    script.crossOrigin = 'anonymous';
+    script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5738022526587953';
+    script.setAttribute('data-adsense-bootstrap', 'true');
+    document.head.appendChild(script);
+    window.__mcAdSenseLoaded = true;
+  }
+
+  function initAdSlotState() {
+    document.querySelectorAll('ins.adsbygoogle').forEach((el) => {
+      el.classList.add('ad-slot-reserved');
+      if (!/^\d{8,20}$/.test((el.getAttribute('data-ad-slot') || '').trim())) {
+        el.setAttribute('data-ad-status', 'disabled-missing-slot');
+        el.setAttribute('aria-hidden', 'true');
+      }
+    });
+  }
+
   window.i18n = {
     changeLanguage,
     t,
@@ -324,10 +364,16 @@
 
   window.changeLanguage = changeLanguage;
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
+  function boot() {
     init();
+    initAdSlotState();
+    ensureAdSenseBootstrap();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', boot);
+  } else {
+    boot();
   }
 
   const styles = document.createElement('style');
@@ -369,6 +415,17 @@
     [dir="rtl"] .language-selector-floating {
       right: auto;
       left: 20px;
+    }
+
+
+    .ad-slot-reserved {
+      min-height: 250px;
+      background: rgba(15, 23, 42, 0.38);
+      border-radius: 12px;
+    }
+
+    .ad-slot-disabled {
+      display: none !important;
     }
 
     @media (max-width: 768px) {

@@ -477,7 +477,32 @@
         flex-wrap: wrap;
       }
     }
-  </style>
+
+
+    .guide-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .guide-grid > div {
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+    }
+
+    .guide-grid ul {
+      padding-left: 1.25rem;
+      margin-bottom: 0;
+    }
+
+    .category-guide-note {
+      margin-top: 1rem;
+      color: var(--muted);
+    }
+</style>
 </head>
 <body>
   <header class="main-header">
@@ -552,6 +577,26 @@
               <span>Built for simple optimization and editing tasks</span>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="content-section category-guide-standard" aria-labelledby="categoryGuideTitle">
+      <div class="container">
+        <div class="panel">
+          <h2 id="categoryGuideTitle">Image workflow guide</h2>
+          <p>This category is organized around common user intent, not just a list of links. Start with the task below, then open the tool that best matches the output you need.</p>
+          <h3>Five common tasks</h3>
+          <ul>
+            <li><strong>Make files lighter:</strong> compress images before web upload or email.</li>
+            <li><strong>Change format:</strong> convert to WebP/AVIF for web delivery or PNG/JPG for compatibility.</li>
+            <li><strong>Resize first:</strong> set dimensions before compression to avoid quality surprises.</li>
+            <li><strong>Prepare branded assets:</strong> watermark when attribution or reuse control matters.</li>
+            <li><strong>Check metadata:</strong> remove metadata before sharing sensitive images publicly.</li>
+          </ul>
+          <h3>Which tool should you choose?</h3>
+          <p>Choose compress for smaller files, convert for compatibility, resize/crop for layout, watermark for branding, and metadata tools for safer sharing.</p>
         </div>
       </div>
     </section>

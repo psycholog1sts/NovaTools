@@ -451,7 +451,32 @@
         width: 100%;
       }
     }
-  </style>
+
+
+    .guide-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .guide-grid > div {
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+    }
+
+    .guide-grid ul {
+      padding-left: 1.25rem;
+      margin-bottom: 0;
+    }
+
+    .category-guide-note {
+      margin-top: 1rem;
+      color: var(--muted);
+    }
+</style>
 </head>
 <body>
   <header class="main-header">
@@ -621,6 +646,40 @@
             Use this page as the central entry point for daily workflow support,
             from focus timers and task boards to notes, tracking, and routine management.
           </p>
+        </div>
+      </div>
+    </section>
+
+
+
+    <section class="content-section category-guide-standard" aria-labelledby="categoryGuideTitle">
+      <div class="container">
+        <div class="content-panel">
+          <h2 id="categoryGuideTitle">Productivity workflow guide</h2>
+          <p>Use this category to plan tasks, track time, focus sessions, habits, notes, expenses, and lightweight personal workflows.</p>
+          <div class="guide-grid">
+            <div>
+              <h3>Who this category is for</h3>
+              <p>Students, freelancers, remote workers, creators, and teams that need lightweight planning tools without a full project-management system.</p>
+            </div>
+            <div>
+              <h3>Most common tasks</h3>
+              <ul>
+              <li>Run focus timers or stopwatches.</li>
+              <li>Track tasks, habits, notes, and boards.</li>
+              <li>Estimate time spent on work blocks.</li>
+              <li>Monitor expenses in simple workflows.</li>
+              <li>Check world time or countdowns for scheduling.</li>
+              </ul>
+            </div>
+            <div>
+              <h3>Which tool should you choose?</h3>
+              <p>Start with the tool that matches your input format and desired output. If the result feeds another workflow, use the related tool link after checking the output.</p>
+              <p><a href="/tools/productivity/pomodoro-timer/">Open recommended starter tool →</a></p>
+              <p><a href="/tools/productivity/todo-list/">Open related follow-up tool →</a></p>
+            </div>
+          </div>
+          <p class="category-guide-note">These tools are intended for practical browser workflows and quick estimates. Review outputs before using them in sensitive, financial, legal, medical, or production-critical contexts.</p>
         </div>
       </div>
     </section>
