@@ -22,7 +22,8 @@
     "prettier": "prettier --write \"src/**/*.{js,mjs,css,html}\"",
     "clean": "rimraf dist node_modules/.vite",
     "postinstall": "node scripts/postinstall.mjs",
-    "prebuild": "node scripts/generate-icons.mjs"
+    "prebuild": "node scripts/generate-icons.mjs",
+    "audit:adsense": "node scripts/adsense-readiness-audit.mjs"
   },
   "dependencies": {
     "@vercel/speed-insights": "^2.0.0",

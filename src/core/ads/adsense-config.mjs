@@ -7,20 +7,7 @@
 const ADSENSE_CONFIG = {
   publisherId: 'ca-pub-5738022526587953',
   
-  adUnits: {
-    sidebar: {
-      slot: '1234567890',
-      format: 'auto',
-      responsive: true,
-      style: { minHeight: '280px', minWidth: '300px' }
-    },
-    anchor: {
-      slot: '0987654321',
-      format: 'anchor',
-      position: 'bottom',
-      style: { minHeight: '50px', width: '100%' }
-    }
-  },
+  adUnits: {},
   
   privacy: {
     personalizedAds: false,
@@ -37,16 +24,19 @@ const ADSENSE_CONFIG = {
 };
 
 export function initAdSense() {
-  if (shouldBlockAds()) {
+  if (shouldBlockAds() || !hasValidAdSlots()) {
+    reserveAdSlotSpace();
     return;
   }
-  
+
   configureAdPrivacy();
+  reserveAdSlotSpace();
   loadAdSenseScript();
   initializeAdSlots();
 }
 
 function shouldBlockAds() {
+  if (!/(^|\.)mc-novatools\.com$/i.test(window.location.hostname)) return true;
   if (navigator.doNotTrack === '1') return true;
   if (navigator.globalPrivacyControl) return true;
   try {
@@ -77,71 +67,23 @@ function loadAdSenseScript() {
 }
 
 function initializeAdSlots() {
-  initSidebarAd();
-  initAnchorAd();
   setupLazyLoading();
 }
 
-function initSidebarAd() {
-  const container = document.getElementById('ad-sidebar');
-  if (!container || window.innerWidth < 1024) return;
-  
-  const adElement = createAdElement({
-    slot: ADSENSE_CONFIG.adUnits.sidebar.slot,
-    format: 'auto',
-    responsive: true,
-    style: ADSENSE_CONFIG.adUnits.sidebar.style
+function hasValidAdSlots() {
+  return Array.from(document.querySelectorAll('ins.adsbygoogle')).some((el) => {
+    const slot = el.getAttribute('data-ad-slot') || '';
+    return /^\d{8,20}$/.test(slot.trim());
   });
-  
-  container.appendChild(adElement);
-  
-  try {
-    (window.adsbygoogle = window.adsbygoogle || []).push({});
-  } catch (_e) {
-    // Storage/ad operation may fail in restricted environments
-    void _e;
-  }
 }
 
-function initAnchorAd() {
-  const container = document.getElementById('ad-anchor');
-  if (!container || window.innerWidth >= 1024) return;
-  
-  const skeleton = container.querySelector('.skeleton');
-  if (skeleton) skeleton.remove();
-  
-  const adElement = createAdElement({
-    slot: ADSENSE_CONFIG.adUnits.anchor.slot,
-    format: 'anchor',
-    style: ADSENSE_CONFIG.adUnits.anchor.style
+function reserveAdSlotSpace() {
+  document.querySelectorAll('ins.adsbygoogle').forEach((el) => {
+    el.classList.add('ad-slot-reserved');
+    if (!/^\d{8,20}$/.test((el.getAttribute('data-ad-slot') || '').trim())) {
+      el.setAttribute('data-ad-status', 'pending-valid-slot');
+    }
   });
-  
-  container.innerHTML = '';
-  container.appendChild(adElement);
-  
-  try {
-    (window.adsbygoogle = window.adsbygoogle || []).push({ overlays: { bottom: true } });
-  } catch (_e) {
-    // Storage/ad operation may fail in restricted environments
-    void _e;
-  }
-}
-
-function createAdElement({ slot, format, responsive, style }) {
-  const ins = document.createElement('ins');
-  ins.className = 'adsbygoogle';
-  ins.style.display = 'block';
-  ins.setAttribute('data-ad-client', ADSENSE_CONFIG.publisherId);
-  ins.setAttribute('data-ad-slot', slot);
-  ins.setAttribute('data-ad-format', format);
-  ins.setAttribute('data-full-width-responsive', responsive ? 'true' : 'false');
-  
-  if (style) {
-    ins.style.minHeight = style.minHeight || 'auto';
-    ins.style.minWidth = style.minWidth || 'auto';
-  }
-  
-  return ins;
 }
 
 function setupLazyLoading() {
@@ -159,16 +101,17 @@ function setupLazyLoading() {
     });
   }, { rootMargin: '100%' });
   
-  document.querySelectorAll('[id^="ad-"]').forEach(container => {
-    observer.observe(container);
+  document.querySelectorAll('ins.adsbygoogle').forEach((container) => {
+    if (/^\d{8,20}$/.test((container.getAttribute('data-ad-slot') || '').trim())) {
+      observer.observe(container);
+    }
   });
 }
 
 function showAdFallbacks() {
-  const container = document.getElementById('ad-sidebar');
-  if (container) {
-    container.innerHTML = '<div class="text-center text-gray-400 text-sm p-4">Premium Araçlar Yakında</div>';
-  }
+  document.querySelectorAll('ins.adsbygoogle').forEach((el) => {
+    el.setAttribute('data-ad-status', 'fallback');
+  });
 }
 
 export function refreshAds() {
@@ -187,9 +130,3 @@ export function disableAds() {
 }
 
 export { ADSENSE_CONFIG };
-
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initAdSense);
-} else {
-  initAdSense();
-}
