@@ -34,7 +34,9 @@ jobs:
         
       - name: Run tests
         run: npm run test
-        continue-on-error: true
+
+      - name: Run dependency security audit
+        run: npm audit --audit-level=high
         
       - name: Build
         run: npm run build
