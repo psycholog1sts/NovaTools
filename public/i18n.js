@@ -90,14 +90,32 @@
     window.__mcAdSenseLoaded = true;
   }
 
-  function initAdSlotState() {
+  function initQualityEnhancements() {
     document.querySelectorAll('ins.adsbygoogle').forEach(function(el) {
       el.classList.add('ad-slot-reserved');
       if (!/^\d{8,20}$/.test((el.getAttribute('data-ad-slot') || '').trim())) {
-        el.setAttribute('data-ad-status', 'disabled-missing-slot');
-        el.setAttribute('aria-hidden', 'true');
+        el.setAttribute('data-ad-status', 'pending-valid-slot');
       }
     });
+
+    if (!/\/tools\//.test(window.location.pathname)) return;
+
+    var main = document.querySelector('main, .main-content, .tool-wrapper');
+    var hero = document.querySelector('.tool-hero, .hero, h1');
+    if (!main || !hero || document.querySelector('.tool-quality-panel')) return;
+
+    var panel = document.createElement('section');
+    panel.className = 'tool-quality-panel';
+    panel.setAttribute('aria-label', 'Tool workflow and privacy notes');
+    panel.innerHTML = '<div><strong>Workflow:</strong> add input, review settings, run the tool, then check the result before download or copy.</div>' +
+      '<div><strong>Privacy:</strong> tools are designed to process in the browser where practical; pages that rely on external data or third-party services should state that in context.</div>' +
+      '<div><strong>Support:</strong> review the <a href="/privacy-policy.html">Privacy Policy</a>, <a href="/security.html">Security</a>, or <a href="/contact.html">Contact</a> pages if a workflow handles sensitive files.</div>';
+
+    if (hero.parentElement) {
+      hero.parentElement.insertAdjacentElement('afterend', panel);
+    } else {
+      main.insertAdjacentElement('afterbegin', panel);
+    }
   }
 
   /**
@@ -564,7 +582,7 @@
 
   function boot() {
     init();
-    initAdSlotState();
+    initQualityEnhancements();
     ensureAdSenseBootstrap();
   }
 
@@ -618,7 +636,7 @@
       left: 20px;\
     }\
     \
-    .ad-slot-reserved {      min-height: 250px;      background: rgba(15, 23, 42, 0.38);      border-radius: 12px;    }    .ad-slot-disabled {      display: none !important;    }        /* Mobile adjustments */\
+    .ad-slot-reserved {      min-height: 250px;      background: rgba(15, 23, 42, 0.38);      border-radius: 12px;    }    .tool-quality-panel {      width: min(960px, calc(100% - 32px));      margin: 1rem auto 2rem;      padding: 1rem;      display: grid;      gap: 0.75rem;      color: #cbd5e1;      background: rgba(15, 23, 42, 0.72);      border: 1px solid rgba(148, 163, 184, 0.22);      border-radius: 16px;      line-height: 1.65;    }    .tool-quality-panel strong { color: #f8fafc; }    .tool-quality-panel a { color: #22d3ee; }        /* Mobile adjustments */\
     @media (max-width: 768px) {\
       .language-selector {\
         font-size: 12px;\
