@@ -5889,5 +5889,23 @@
       "description": "Explore all live NovaTools categories and open the tools you need in one click.",
       "sectionTitle": "All Categories"
     }
+  },
+  "blog": {
+    "hero": {
+      "title": "Financial Insights & Money Tips",
+      "description": "Practical guides for financial planning, document workflows, insurance choices, investing basics, and responsible money decisions."
+    },
+    "filters": {
+      "all": "All Articles",
+      "mortgage": "Mortgage",
+      "insurance": "Insurance",
+      "investing": "Investing",
+      "credit": "Credit",
+      "crypto": "Crypto"
+    },
+    "sections": {
+      "featured": "Featured post",
+      "latest": "Latest posts"
+    }
   }
 }
