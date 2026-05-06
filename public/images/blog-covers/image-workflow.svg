@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="title desc">
+  <title id="title">IMG guide cover</title>
+  <desc id="desc">Abstract img workflow illustration for MC NovaTools blog guides.</desc>
+  <defs>
+    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#34d399"/><stop offset="1" stop-color="#06b6d4"/></linearGradient>
+    <radialGradient id="r" cx="74%" cy="22%" r="70%"><stop stop-color="rgba(255,255,255,.35)"/><stop offset="1" stop-color="rgba(255,255,255,0)"/></radialGradient>
+  </defs>
+  <rect width="640" height="360" rx="36" fill="#07111f"/>
+  <rect x="24" y="24" width="592" height="312" rx="30" fill="url(#g)" opacity=".9"/>
+  <rect x="24" y="24" width="592" height="312" rx="30" fill="url(#r)"/>
+  <g opacity=".22"><path d="M40 95h560M40 180h560M40 265h560M120 35v290M245 35v290M370 35v290M495 35v290" stroke="#fff" stroke-width="2"/></g>
+  <path d="M150 110h340v250H150z" fill="none" stroke="rgba(255,255,255,.86)" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M190 300l80-90 65 65 45-50 70 75" fill="none" stroke="rgba(255,255,255,.86)" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M380 170a35 35 0 1 0 1 0" fill="none" stroke="rgba(255,255,255,.86)" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="48" y="312" fill="rgba(255,255,255,.92)" font-family="Inter,Arial,sans-serif" font-size="34" font-weight="800" letter-spacing="3">IMG</text>
+</svg>

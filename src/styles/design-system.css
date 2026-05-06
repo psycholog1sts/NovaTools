@@ -1448,3 +1448,29 @@ body {
   font-size: var(--font-size-xs);
   line-height: var(--line-height-relaxed);
 }
+
+/* Public editorial layout helpers shared by generated blog pages. */
+.article-shell .main-header,
+.blog-hub .main-header {
+  backdrop-filter: blur(18px);
+}
+
+.article-shell .summary-box strong,
+.blog-card h3,
+.related-panel h3 {
+  color: var(--text-primary);
+}
+
+.blog-card-image img {
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+.blog-card:hover .blog-card-image img {
+  transform: scale(1.035);
+  filter: saturate(1.08);
+}
+
+.article-faq[open] {
+  border-color: rgba(34, 211, 238, 0.26);
+  background: rgba(15, 23, 42, 0.88);
+}
