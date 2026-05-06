@@ -49,10 +49,20 @@ const adminEntry = {
   admin: resolve(__dirname, 'admin/index.html')
 };
 
-// Blog entry point
+// Blog entry points
 const blogEntry = {
   blog: resolve(__dirname, 'src/blog/index.html')
 };
+
+const blogArticleEntries = globSync('src/blog/articles/**/*.html').reduce((acc, file) => {
+  const name = file
+    .replace(/^src[/\\]/, '')
+    .replace(/\.html$/, '')
+    .replace(/\\/g, '/');
+
+  acc[name] = resolve(__dirname, file);
+  return acc;
+}, {});
 
 // Categories entry points
 const categoryEntries = globSync('categories/**/*.html').reduce((acc, file) => {
@@ -89,6 +99,7 @@ export default defineConfig({
         ...rootHtmlEntries,
         ...adminEntry,
         ...blogEntry,
+        ...blogArticleEntries,
         ...categoryEntries,
         ...toolEntries
       },
@@ -197,8 +208,12 @@ export default defineConfig({
           dest: 'meta'
         },
         {
-          src: 'src/blog/articles/**/*',
-          dest: 'blog/articles'
+          src: 'src/styles/critical.css',
+          dest: 'styles'
+        },
+        {
+          src: 'src/styles/design-system.css',
+          dest: 'styles'
         }
       ]
     })

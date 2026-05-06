@@ -146,6 +146,81 @@ const faqs = [
   ['What should I do after finishing?', 'Move to the next related step: share the file, copy the cleaned text, import the data, compare another format, or open the relevant category hub for adjacent tools.']
 ];
 
+
+const coverThemes = {
+  pdf: { file: '/images/blog-covers/pdf-workflow.svg', label: 'PDF workflow', accent: 'Document review' },
+  image: { file: '/images/blog-covers/image-workflow.svg', label: 'Image workflow', accent: 'Visual optimization' },
+  text: { file: '/images/blog-covers/text-writing.svg', label: 'Text workflow', accent: 'Writing cleanup' },
+  developer: { file: '/images/blog-covers/developer-utilities.svg', label: 'Developer workflow', accent: 'Code and data review' },
+  converter: { file: '/images/blog-covers/converter-workflow.svg', label: 'Converter workflow', accent: 'Format decisions' },
+  finance: { file: '/images/blog-covers/finance-calculators.svg', label: 'Finance workflow', accent: 'Planning assumptions' },
+  data: { file: '/images/blog-covers/data-cleanup.svg', label: 'Data workflow', accent: 'Import readiness' },
+  workflow: { file: '/images/blog-covers/workflow-planning.svg', label: 'Workflow planning', accent: 'Repeatable process' },
+  privacy: { file: '/images/blog-covers/browser-privacy.svg', label: 'Browser-first workflow', accent: 'Private review' },
+  comparison: { file: '/images/blog-covers/comparison-guide.svg', label: 'Comparison guide', accent: 'Decision support' }
+};
+
+const weakRewriteSlugs = new Set(topics.slice(0, 30).map((topic) => topic[1]));
+
+const categoryExamples = {
+  pdf: ['page order', 'small text', 'signatures', 'email attachment limits'],
+  image: ['crop boundaries', 'text overlays', 'transparent areas', 'mobile previews'],
+  text: ['headings', 'word counts', 'copied punctuation', 'publishing fields'],
+  developer: ['sample payloads', 'nested values', 'escaped characters', 'review comments'],
+  converter: ['source units', 'target format', 'rounding', 'downstream imports'],
+  finance: ['assumptions', 'dates', 'fees', 'scenario notes'],
+  data: ['headers', 'empty cells', 'delimiters', 'sample rows'],
+  workflow: ['owner', 'deadline', 'handoff notes', 'next action'],
+  privacy: ['local files', 'metadata', 'recipient need', 'sharing boundary'],
+  comparison: ['trade-offs', 'constraints', 'recipient expectations', 'next tool choice']
+};
+
+function getCover(categoryKey) {
+  return coverThemes[categoryKey] || coverThemes.workflow;
+}
+
+function topicPlainName(title) {
+  return title
+    .replace(/:.*$/, '')
+    .replace(/\b(How to|A|An|The)\b/gi, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function topicDetailParagraph(categoryKey, title, sectionIndex) {
+  const examples = categoryExamples[categoryKey] || categoryExamples.workflow;
+  const first = examples[sectionIndex % examples.length];
+  const second = examples[(sectionIndex + 1) % examples.length];
+  const third = examples[(sectionIndex + 2) % examples.length];
+  const topicName = topicPlainName(title).toLowerCase();
+  const openings = [
+    `For ${topicName}, make the check concrete by looking at ${first} before you change anything.`,
+    `A useful ${topicName} pass usually starts with ${first}, then compares it with ${second}.`,
+    `The practical detail in ${topicName} is not the button you press; it is whether ${first} and ${second} still make sense after the output is created.`,
+    `When ${topicName} is part of a real handoff, ${first} should be checked early instead of treated as a final-minute cleanup step.`
+  ];
+  return `${openings[sectionIndex % openings.length]} Keep ${third} visible while you review the result, because that is where small utility tasks often become confusing for the next person. If the output is going into an email, dashboard, support ticket, client packet, or published page, open that destination and verify the result in context. This topic-specific review keeps the guide tied to the actual tool path instead of repeating a generic productivity checklist.`;
+}
+
+function buildFocusedSections(topic, index) {
+  const [categoryKey, slug, title, description] = topic;
+  const examples = categoryExamples[categoryKey] || categoryExamples.workflow;
+  const topicName = topicPlainName(title);
+  const concrete = examples.join(', ');
+  return [
+    ['Start with the file or input you actually have', `${description} Before choosing settings, identify the current source and the exact place where the result will be used. For ${topicName.toLowerCase()}, that means checking ${concrete} rather than assuming a default workflow will fit every case. This first pass should be short and practical: keep the original, note the intended recipient, and decide whether the output needs to be smaller, clearer, easier to copy, easier to import, or easier to discuss.`],
+    ['Make one reversible change at a time', `The safest workflow changes one variable, reviews the result, and only then moves to the next step. If the task involves ${examples[0]}, do not combine aggressive cleanup with format changes until you know the source behaves normally. A reversible sequence is slower by a few seconds but faster than rebuilding a packet, image set, spreadsheet, code sample, or estimate after the wrong output has already been shared.`],
+    ['Use settings that match the destination', `A destination-aware setting is more useful than the most extreme setting. Email, publishing, review, import, and support workflows each have different tolerance for size, readability, structure, and detail. In ${topicName.toLowerCase()}, the best setting is the one that preserves ${examples[1]} while still solving the practical problem. If you cannot explain why a setting helps the recipient, use the balanced option and inspect the output before going further.`],
+    ['Check the part most likely to break', `Every category has a predictable weak spot. For this article, watch ${examples[2]} and compare the beginning, middle, and end of the output. A PDF can lose page context, an image can lose important edge detail, text can pick up odd breaks, code can hide escaped characters, data can shift columns, and finance estimates can look more certain than the assumptions allow. The review is not busywork; it protects the usefulness of the result.`],
+    ['Name the result so the next action is obvious', `Clear names reduce follow-up questions. Include the task, date, and meaningful setting when the output may be reused. For example, a compressed client packet, resized product image, cleaned CSV, formatted JSON sample, or comparison estimate should be recognizable without opening three similar files. This habit matters for ${topicName.toLowerCase()} because the output often becomes one step in a larger chain, not the final destination.`],
+    ['Keep context with the output', `A tool can produce a technically valid result that still lacks enough context. Add a note, heading, folder name, or short message that explains what changed and what should happen next. When ${examples[3]} matters, context prevents a recipient from guessing whether the file is draft, final, compressed, converted, estimated, or prepared only for review. The goal is a result that can stand on its own when it reaches another person.`],
+    ['Use the related tool only when it advances the job', `Related tools are helpful when they solve the next visible problem, not when they create another detour. After finishing ${topicName.toLowerCase()}, decide whether the next action is sharing, copying, importing, comparing, archiving, or opening a neighboring tool. If there is no next action, stop and keep the clean result. A professional workflow is measured by fewer errors and clearer handoffs, not by using every available utility.`],
+    ['Know when a browser utility is enough', `A browser-first utility is a good fit when the input is understandable, the output can be checked, and the decision does not require specialized review. It is not a replacement for legal, accounting, design production, or engineering release processes when those processes are required. For ${topicName.toLowerCase()}, use the lightweight path for routine preparation and use a specialist workflow when the source is damaged, disputed, regulated, or too complex to verify visually.`],
+    ['Turn the result into a repeatable habit', `The value of a guide is not one successful conversion or calculation; it is the habit you can repeat under time pressure. Keep a small routine: source check, setting choice, output review, clear naming, and next-step decision. Applied to ${topicName.toLowerCase()}, that routine covers ${concrete} without turning a simple utility into a heavy project. It also makes the process easier to teach to teammates.`],
+    ['Finish with a destination review', `Before closing the tab, open the output where it will actually be used. Attach it to a draft email, paste it into the target document, preview it on the page, import a small sample, or compare the estimate with your notes. This destination review catches mismatches that a standalone download cannot reveal. It is the final quality gate for ${topicName.toLowerCase()} and the reason the workflow feels deliberate instead of improvised.`]
+  ];
+}
+
 function escapeHtml(value) {
   return String(value)
     .replaceAll('&', '&amp;')
@@ -178,13 +253,20 @@ function buildArticle(topic, index) {
   const related = topics
     .filter((candidate) => candidate[1] !== slug && (candidate[0] === categoryKey || candidate[0] === 'workflow' || categoryKey === 'workflow'))
     .slice(0, 4);
-  const intro = `${description} This guide is intentionally practical: it starts with the job the user is trying to finish, then moves through source preparation, setting choices, review, and follow-up. The goal is not to make a simple task feel complicated. The goal is to make a common online-tool workflow feel reliable, readable, and repeatable. If you use MC NovaTools as a tool surface and an editorial guide, this article shows how to combine both layers without losing focus.`;
-  const summary = `Use this guide when you need a focused ${category.label.toLowerCase()} workflow. Keep the original, pick settings based on the recipient, review the result, and move into a related tool or category when the next task is clear.`;
-  const sections = rotated.map(([heading, body], sectionIndex) => `
+  const cover = getCover(categoryKey);
+  const isRewritten = weakRewriteSlugs.has(slug);
+  const intro = isRewritten
+    ? `${description} This guide focuses on the exact review habits that make ${topicPlainName(title).toLowerCase()} easier to trust in a real handoff. It keeps the original input visible, explains what to check before and after using the related tool, and shows where a quick browser workflow is enough versus where a heavier specialist workflow is safer.`
+    : `${description} The useful workflow starts with the source, the destination, and the person who needs the result. Use the related MC NovaTools category to finish the specific task, then review the output in context before you share, import, publish, or archive it.`;
+  const summary = isRewritten
+    ? `A focused ${category.label.toLowerCase()} workflow for ${topicPlainName(title).toLowerCase()}: verify the source, choose one reversible setting, inspect the weak spots, name the result clearly, and confirm the next action.`
+    : `Use this ${category.label.toLowerCase()} guide to connect the tool, the review step, and the next handoff without relying on a generic checklist.`;
+  const sectionSource = isRewritten ? buildFocusedSections(topic, index) : rotated;
+  const sections = sectionSource.map(([heading, body], sectionIndex) => `
             <section>
               <h2>${escapeHtml(heading)}</h2>
               <p>${escapeHtml(body)}</p>
-              <p>${escapeHtml(`For this specific topic, ${title.toLowerCase()}, the same principle becomes more concrete. Start by identifying whether you are reducing size, changing format, cleaning structure, estimating a number, or preparing material for another person. Then choose the smallest action that creates a usable output. If the result will be published, attached, imported, or copied into another workflow, review that destination before you decide the task is finished. This keeps the tool from becoming an isolated step and turns it into part of a complete workflow.`)}</p>
+              <p>${escapeHtml(topicDetailParagraph(categoryKey, title, sectionIndex))}</p>
             </section>`).join('\n');
   const relatedHtml = related.map((item) => `<li><a href="/blog/articles/${item[1]}.html">${escapeHtml(item[2])}</a></li>`).join('\n');
   const faqHtml = faqs.map(([q, a]) => `<details class="article-faq"><summary>${escapeHtml(q)}</summary><p>${escapeHtml(a)}</p></details>`).join('\n');
@@ -199,10 +281,10 @@ function buildArticle(topic, index) {
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="theme-color" content="#0A0A0C">
   <link rel="canonical" href="https://mc-novatools.com/blog/articles/${slug}.html">
-  <link rel="stylesheet" href="/src/styles/critical.css">
-  <link rel="stylesheet" href="/src/styles/design-system.css">
+  <link rel="stylesheet" href="/styles/critical.css">
+  <link rel="stylesheet" href="/styles/design-system.css">
   <script src="/i18n.js" defer></script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":${JSON.stringify(title)},"description":${JSON.stringify(description)},"datePublished":"${date}","dateModified":"${date}","author":{"@type":"Organization","name":"MC NovaTools"},"publisher":{"@type":"Organization","name":"MC NovaTools"},"mainEntityOfPage":"https://mc-novatools.com/blog/articles/${slug}.html","articleSection":${JSON.stringify(category.label)}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":${JSON.stringify(title)},"description":${JSON.stringify(description)},"datePublished":"${date}","dateModified":"${date}","author":{"@type":"Organization","name":"MC NovaTools"},"publisher":{"@type":"Organization","name":"MC NovaTools"},"mainEntityOfPage":"https://mc-novatools.com/blog/articles/${slug}.html","articleSection":${JSON.stringify(category.label)},"image":"https://mc-novatools.com${cover.file}"}</script>
 </head>
 <body class="article-shell">
   <div class="bg-ambient" aria-hidden="true"></div>
@@ -220,9 +302,8 @@ function buildArticle(topic, index) {
       <div class="container article-layout">
         <header class="article-hero-card">
           <a class="article-back" href="/blog/index.html">← Blog hub</a>
-          <div class="article-meta"><span class="tag tag-accent">${escapeHtml(category.label)}</span><time datetime="${date}">${date}</time><span>${category.emoji} Guide</span></div>
-          <h1>${escapeHtml(title)}</h1>
-          <p class="article-lede">${escapeHtml(intro)}</p>
+          <div class="article-meta"><span class="tag tag-accent">${escapeHtml(category.label)}</span><time datetime="${date}">${date}</time><span>${escapeHtml(cover.label)}</span><span>${Math.ceil(wordCount(sections) / 220) + 2} min read</span></div>
+          <div class="article-hero-grid"><div><h1>${escapeHtml(title)}</h1><p class="article-lede">${escapeHtml(intro)}</p></div><figure class="article-visual"><img src="${cover.file}" alt="${escapeHtml(`${cover.label} cover for ${title}`)}" width="640" height="360" loading="eager"><figcaption>${escapeHtml(cover.accent)}</figcaption></figure></div>
           <div class="summary-box"><strong>Quick summary:</strong> ${escapeHtml(summary)}</div>
           <div class="article-cta-row"><a class="btn btn-primary" href="${category.tool}">Open ${escapeHtml(category.toolLabel)}</a><a class="btn btn-secondary" href="${category.hub}">View related category</a></div>
         </header>
@@ -247,6 +328,32 @@ function buildArticle(topic, index) {
     </article>
   </main>
   <footer class="main-footer"><div class="container"><div class="footer-bottom"><p>© 2026 MC NovaTools. Practical online tools and guides.</p><p><a href="/privacy-policy.html">Privacy</a> · <a href="/terms-of-service.html">Terms</a> · <a href="/contact.html">Contact</a></p></div></div></footer>
+
+  <script>
+    (function(){
+      function lang(){ try { return localStorage.getItem('mc-novatools-language') || document.documentElement.lang || 'en'; } catch (_) { return document.documentElement.lang || 'en'; } }
+      function apply(){
+        if (lang() !== 'tr') return;
+        document.documentElement.lang = 'tr';
+        var back = document.querySelector('.article-back'); if (back) back.textContent = '← Blog merkezi';
+        var summary = document.querySelector('.summary-box strong'); if (summary) summary.textContent = 'Kısa özet:';
+        var ctas = document.querySelectorAll('.article-cta-row .btn');
+        if (ctas[0]) ctas[0].textContent = ctas[0].textContent.replace(/^Open /, 'Aç: ');
+        if (ctas[1]) ctas[1].textContent = 'İlgili kategoriyi görüntüle';
+        document.querySelectorAll('.article-meta span').forEach(function(el){ el.textContent = el.textContent.replace('workflow', 'iş akışı').replace('Guide', 'Rehber'); });
+        document.querySelectorAll('.premium-copy h2').forEach(function(el){
+          el.textContent = el.textContent
+            .replace('Related tools and reading paths', 'İlgili araçlar ve okuma yolları')
+            .replace('Frequently asked questions', 'Sık sorulan sorular')
+            .replace('Conclusion', 'Sonuç');
+        });
+        document.querySelectorAll('.related-panel h3').forEach(function(el){
+          el.textContent = el.textContent.replace('Open a tool', 'Aracı aç').replace('Open a category', 'Kategoriyi aç');
+        });
+      }
+      apply(); window.addEventListener('languageChanged', apply);
+    })();
+  </script>
 </body>
 </html>
 `;
@@ -261,7 +368,8 @@ for (let i = 0; i < topics.length; i += 1) {
   const count = wordCount(html);
   if (count < 1000) throw new Error(`${slug} is below 1000 words: ${count}`);
   fs.writeFileSync(path.join(articlesDir, `${slug}.html`), html);
-  articles.push({ id: i + 1, slug, title, excerpt: description, category: categoryKey, categoryLabel: category.label, date, readTime: `${Math.ceil(count / 220)} min read`, emoji: category.emoji, url: `/blog/articles/${slug}.html`, wordCount: count });
+  const cover = getCover(categoryKey);
+  articles.push({ id: i + 1, slug, title, excerpt: description, category: categoryKey, categoryLabel: category.label, date, readTime: `${Math.ceil(count / 220)} min read`, cover: cover.file, coverAlt: `${cover.label} cover for ${title}`, coverLabel: cover.label, coverAccent: cover.accent, rewritten: weakRewriteSlugs.has(slug), url: `/blog/articles/${slug}.html`, wordCount: count });
   counts.push({ slug, title, wordCount: count });
 }
 
@@ -274,8 +382,8 @@ const indexHtml = `<!DOCTYPE html>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="/src/styles/critical.css">
-  <link rel="stylesheet" href="/src/styles/design-system.css">
+  <link rel="stylesheet" href="/styles/critical.css">
+  <link rel="stylesheet" href="/styles/design-system.css">
   <script src="/i18n.js" defer></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -324,13 +432,19 @@ const indexHtml = `<!DOCTYPE html>
   <script>
     const articles = ${JSON.stringify(articles)};
     const labels = ${JSON.stringify(Object.fromEntries(Object.entries(categories).map(([key, value]) => [key, value.label])))};
-    function labelFor(category) { return labels[category] || category; }
-    function card(article, featured) { return '<a href="' + article.url + '" class="blog-card ' + (featured ? 'featured-card' : '') + '" data-category="' + article.category + '"><div class="blog-card-image" aria-hidden="true">' + article.emoji + '</div><div class="blog-card-content"><span class="blog-category">' + labelFor(article.category) + '</span><h3>' + article.title + '</h3><p>' + article.excerpt + '</p><p class="blog-card-support">Best for readers who want a workflow, decision points, common mistakes, and a next tool to open.</p><div class="blog-meta"><span>' + article.date + '</span><span>•</span><span>' + article.readTime + '</span><span>•</span><span>' + article.wordCount + ' words</span></div></div></a>'; }
+    const trLabels = { all: 'Tüm rehberler', pdf: 'PDF iş akışları', image: 'Görsel optimizasyonu', text: 'Metin ve yazım', developer: 'Geliştirici araçları', converter: 'Dönüştürücüler', finance: 'Finans hesaplayıcıları', data: 'Veri araçları', workflow: 'İş akışı rehberleri', privacy: 'Tarayıcı öncelikli işlem', comparison: 'Araç karşılaştırmaları' };
+    function currentLang() { try { return localStorage.getItem('mc-novatools-language') || document.documentElement.lang || 'en'; } catch (_) { return document.documentElement.lang || 'en'; } }
+    function labelFor(category) { return currentLang() === 'tr' ? (trLabels[category] || labels[category] || category) : (labels[category] || category); }
+    function escapeAttr(value) { return String(value).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;'); }
+    function localizedSupport(article) { return currentLang() === 'tr' ? article.coverAccent + ' için pratik kontroller, yaygın hatalar ve ilgili araç yolu.' : article.coverAccent + ' with practical checks, common mistakes, and a related tool path.'; }
+    function readTime(text) { return currentLang() === 'tr' ? text.replace('min read', 'dk okuma') : text; }
+    function card(article, featured) { return '<a href="' + article.url + '" class="blog-card ' + (featured ? 'featured-card' : '') + '" data-category="' + article.category + '"><div class="blog-card-image"><img src="' + article.cover + '" alt="' + escapeAttr(article.coverAlt) + '" loading="lazy" width="640" height="360"><span>' + article.coverLabel + '</span></div><div class="blog-card-content"><span class="blog-category">' + labelFor(article.category) + '</span><h3>' + article.title + '</h3><p>' + article.excerpt + '</p><p class="blog-card-support">' + localizedSupport(article) + '</p><div class="blog-meta"><span>' + article.date + '</span><span>•</span><span>' + readTime(article.readTime) + '</span><span>•</span><span>' + article.wordCount + (currentLang() === 'tr' ? ' kelime' : ' words') + '</span></div></div></a>'; }
     function render(category) { const source = category === 'all' ? articles : articles.filter((article) => article.category === category); document.getElementById('featuredPost').innerHTML = card(source[0] || articles[0], true); document.getElementById('blogGrid').innerHTML = source.slice(0, 12).map((article) => card(article, false)).join(''); renderSections(); }
-    function renderSections() { const container = document.getElementById('blogCategorySections'); container.innerHTML = Object.keys(labels).map((category) => { const posts = articles.filter((article) => article.category === category).slice(0, 4); if (!posts.length) return ''; return '<section class="category-section"><div class="category-section-header"><h2>' + labelFor(category) + '</h2><span>' + posts.length + ' highlighted guides</span></div><div class="blog-grid">' + posts.map((article) => card(article, false)).join('') + '</div></section>'; }).join(''); }
+    function renderSections() { const container = document.getElementById('blogCategorySections'); container.innerHTML = Object.keys(labels).map((category) => { const posts = articles.filter((article) => article.category === category).slice(0, 4); if (!posts.length) return ''; const countText = currentLang() === 'tr' ? posts.length + ' öne çıkan rehber' : posts.length + ' highlighted guides'; return '<section class="category-section"><div class="category-section-header"><h2>' + labelFor(category) + '</h2><span>' + countText + '</span></div><div class="blog-grid">' + posts.map((article) => card(article, false)).join('') + '</div></section>'; }).join(''); }
     document.querySelectorAll('.filter-btn').forEach((button) => button.addEventListener('click', () => { document.querySelectorAll('.filter-btn').forEach((item) => item.classList.remove('active')); button.classList.add('active'); render(button.dataset.category); }));
     const menuBtn = document.getElementById('mobileMenuBtn'); const mobileMenu = document.getElementById('mobileMenu'); if (menuBtn && mobileMenu) menuBtn.addEventListener('click', () => { const expanded = menuBtn.getAttribute('aria-expanded') === 'true'; menuBtn.setAttribute('aria-expanded', String(!expanded)); mobileMenu.hidden = expanded; mobileMenu.classList.toggle('active', !expanded); });
-    render('all');
+    function applyBlogLocale() { if (currentLang() !== 'tr') return; document.documentElement.lang = 'tr'; const pairs = [['.hero-badge','Editoryal iş akışı kütüphanesi'], ['.blog-hero h1','İnsanların gerçekten açtığı araçlara bağlı pratik rehberler'], ['.blog-hero p','PDF işleri, görsel optimizasyonu, yazım temizliği, geliştirici araçları, dönüştürücüler, finans hesaplayıcıları, veri iş akışları ve tarayıcı öncelikli dosya işlemleri için karar katmanı olarak blogu kullanın.'], ['#featuredGuideTitle','Öne çıkan rehber'], ['#latestGuides','Son pratik rehberler']]; pairs.forEach(function(pair){ const el = document.querySelector(pair[0]); if (el) el.textContent = pair[1]; }); document.querySelectorAll('.filter-btn').forEach(function(btn){ const key = btn.dataset.category; btn.textContent = key === 'all' ? trLabels.all : labelFor(key); }); }
+    render('all'); applyBlogLocale(); window.addEventListener('languageChanged', function(){ render(document.querySelector('.filter-btn.active')?.dataset.category || 'all'); applyBlogLocale(); });
   </script>
 </body>
 </html>

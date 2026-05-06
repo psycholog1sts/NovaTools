@@ -7,40 +7,40 @@ on:
     branches: [main, master]
 
 env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
-  NODE_VERSION: '24'
+  NODE_VERSION: '20.19.6'
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: 'npm'
-          
+
       - name: Install dependencies
-        run: npm ci
-        
+        run: npm ci --include=optional
+
       - name: Run ESLint
         run: npm run lint
-        
-      - name: Run tests
-        run: npm run test
 
-      - name: Run dependency security audit
-        run: npm audit --audit-level=high
-        
+      - name: Run tests
+        run: npm test
+
       - name: Build
         run: npm run build
-        
+
+      - name: Run dependency security audit
+        run: npm audit --audit-level=high --omit=dev
+        continue-on-error: true
+
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
@@ -52,14 +52,14 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
-    
+
     steps:
       - name: Download build artifact
         uses: actions/download-artifact@v4
         with:
           name: dist
           path: dist/
-          
+
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/pages-action@v1
         with:

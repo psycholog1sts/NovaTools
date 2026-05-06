@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "High-CPC utility tools platform. Privacy-first, AdSense optimized, Matrix themed.",
+  "description": "Privacy-aware utility tools platform with practical public guides for PDFs, images, finance, developer workflows, and file preparation.",
   "packageManager": "npm@10.2.4",
   "scripts": {
     "dev": "node ./node_modules/vite/bin/vite.js",
@@ -56,7 +56,7 @@
     "vitest": "^1.2.0"
   },
   "engines": {
-    "node": ">=20.0.0",
+    "node": "20.19.x",
     "npm": ">=10.0.0"
   },
   "keywords": [

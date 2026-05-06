@@ -2321,3 +2321,111 @@ input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):hover {
   .category-section-header { align-items: flex-start; flex-direction: column; }
   .tool-card p::after { display: block; margin-top: 0.75rem; }
 }
+
+/* Blog production shell and editorial cover system */
+.blog-card-image {
+  position: relative;
+  min-height: 172px;
+  overflow: hidden;
+  background: rgba(8, 13, 24, 0.74);
+}
+
+.blog-card-image img,
+.article-visual img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.blog-card-image span {
+  position: absolute;
+  left: 1rem;
+  bottom: 1rem;
+  padding: 0.4rem 0.7rem;
+  border-radius: 999px;
+  color: #fff;
+  background: rgba(5, 8, 15, 0.62);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(10px);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.featured-card .blog-card-image {
+  min-height: 100%;
+}
+
+.article-shell .main-content {
+  padding-bottom: clamp(2rem, 5vw, 5rem);
+}
+
+.article-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+  gap: clamp(1.25rem, 4vw, 2.25rem);
+  align-items: center;
+}
+
+.article-visual {
+  margin: 0;
+  overflow: hidden;
+  border-radius: 24px;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  background: rgba(8, 13, 24, 0.74);
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.28);
+}
+
+.article-visual img {
+  aspect-ratio: 16 / 9;
+}
+
+.article-visual figcaption {
+  padding: 0.75rem 1rem;
+  color: var(--text-tertiary);
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
+.premium-copy section {
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.08);
+}
+
+.premium-copy section:last-child {
+  border-bottom: 0;
+}
+
+.related-panel > div {
+  padding: 1rem;
+  border-radius: 16px;
+  background: rgba(15, 23, 42, 0.58);
+  border: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+.tool-card p::after,
+.category-guide-standard .panel::after,
+.tools-section .tool-card::after {
+  content: none !important;
+}
+
+.category-guide-standard .panel,
+.tool-support-card,
+.related-tools,
+.blog-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+@media (max-width: 860px) {
+  .article-hero-grid,
+  .featured-card {
+    grid-template-columns: 1fr;
+  }
+
+  .featured-card .blog-card-image {
+    min-height: 180px;
+  }
+}
