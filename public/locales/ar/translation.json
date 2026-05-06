@@ -5829,5 +5829,23 @@
       "description": "Explore available tools organized by category, including PDF, image, finance, developer, text, and converters.",
       "sectionTitle": "All Categories"
     }
+  },
+  "blog": {
+    "hero": {
+      "title": "رؤى مالية ونصائح لإدارة المال",
+      "description": "أدلة عملية للتخطيط المالي وسير عمل المستندات وخيارات التأمين وأساسيات الاستثمار واتخاذ قرارات مالية مسؤولة."
+    },
+    "filters": {
+      "all": "كل المقالات",
+      "mortgage": "الرهن العقاري",
+      "insurance": "التأمين",
+      "investing": "الاستثمار",
+      "credit": "الائتمان",
+      "crypto": "العملات الرقمية"
+    },
+    "sections": {
+      "featured": "مقال مميز",
+      "latest": "أحدث المقالات"
+    }
   }
 }

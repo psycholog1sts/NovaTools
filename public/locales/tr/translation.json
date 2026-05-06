@@ -5913,5 +5913,23 @@
       "description": "Tüm canlı NovaTools kategorilerini keşfedin ve ihtiyacınız olan aracı tek tıkla açın.",
       "sectionTitle": "Tüm Kategoriler"
     }
+  },
+  "blog": {
+    "hero": {
+      "title": "Finans Rehberleri ve Para İpuçları",
+      "description": "Finansal planlama, belge iş akışları, sigorta seçimleri, yatırım temelleri ve sorumlu para kararları için pratik rehberler."
+    },
+    "filters": {
+      "all": "Tüm yazılar",
+      "mortgage": "Konut kredisi",
+      "insurance": "Sigorta",
+      "investing": "Yatırım",
+      "credit": "Kredi",
+      "crypto": "Kripto"
+    },
+    "sections": {
+      "featured": "Öne çıkan yazı",
+      "latest": "Son yazılar"
+    }
   }
 }
