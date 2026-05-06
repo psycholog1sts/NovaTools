@@ -129,6 +129,7 @@ function renderCategories() {
       </div>
       <h3 class="category-name">${getCategoryName(category)}</h3>
       <p class="category-description">${getCategoryDescription(category)}</p>
+      <p class="category-decision-note">${t('home.categoryDecisionNote', 'Includes common tasks, decision guidance, and related workflows.')}</p>
       <div class="category-meta">
         <span class="category-count">${getCategoryCountLabel(category)}</span>
         <span>→</span>
@@ -248,6 +249,7 @@ function renderPopularTools() {
       </div>
       <h3 class="tool-name">${t(tool.nameKey, tool.name)}</h3>
       <p class="tool-description">${t(tool.descriptionKey, tool.description)}</p>
+      <p class="tool-decision-note">${t('home.toolDecisionNote', 'Fast workflow · no forced signup · privacy notes on tool pages')}</p>
       <div class="tool-footer">
         <span class="tool-category">${getCategoryLabel(tool.category)}</span>
         <a href="/tools/${tool.slug}" class="tool-link">
@@ -332,6 +334,7 @@ function renderNewTools() {
       </div>
       <h3 class="tool-name">${t(tool.nameKey, tool.name)}</h3>
       <p class="tool-description">${t(tool.descriptionKey, tool.description)}</p>
+      <p class="tool-decision-note">${t('home.toolDecisionNote', 'Fast workflow · no forced signup · privacy notes on tool pages')}</p>
       <div class="tool-footer">
         <span class="tool-category">${getCategoryLabel(tool.category)}</span>
         <a href="/tools/${tool.slug}" class="tool-link">

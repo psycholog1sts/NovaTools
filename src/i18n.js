@@ -311,6 +311,64 @@
     isInitialized = true;
   }
 
+
+  function isProductionHost() {
+    return /(^|\.)mc-novatools\.com$/i.test(window.location.hostname);
+  }
+
+  function hasValidAdSlot() {
+    return Array.from(document.querySelectorAll('ins.adsbygoogle')).some((el) => {
+      const slot = el.getAttribute('data-ad-slot') || '';
+      return /^\d{8,20}$/.test(slot.trim());
+    });
+  }
+
+  function ensureAdSenseBootstrap() {
+    if (window.__mcAdSenseLoaded) return;
+    if (!document.head || !isProductionHost() || !hasValidAdSlot()) return;
+    if (navigator.doNotTrack === '1' || navigator.globalPrivacyControl) return;
+    if (document.querySelector('script[data-adsense-bootstrap="true"], script[data-adsense="true"]')) {
+      window.__mcAdSenseLoaded = true;
+      return;
+    }
+
+    const script = document.createElement('script');
+    script.async = true;
+    script.crossOrigin = 'anonymous';
+    script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5738022526587953';
+    script.setAttribute('data-adsense-bootstrap', 'true');
+    document.head.appendChild(script);
+    window.__mcAdSenseLoaded = true;
+  }
+
+  function initQualityEnhancements() {
+    document.querySelectorAll('ins.adsbygoogle').forEach((el) => {
+      el.classList.add('ad-slot-reserved');
+      if (!/^\d{8,20}$/.test((el.getAttribute('data-ad-slot') || '').trim())) {
+        el.setAttribute('data-ad-status', 'pending-valid-slot');
+      }
+    });
+
+    if (!/\/tools\//.test(window.location.pathname)) return;
+
+    const main = document.querySelector('main, .main-content, .tool-wrapper');
+    const hero = document.querySelector('.tool-hero, .hero, h1');
+    if (!main || !hero || document.querySelector('.tool-quality-panel')) return;
+
+    const panel = document.createElement('section');
+    panel.className = 'tool-quality-panel';
+    panel.setAttribute('aria-label', 'Tool workflow and privacy notes');
+    panel.innerHTML = '<div><strong>Workflow:</strong> add input, review settings, run the tool, then check the result before download or copy.</div>' +
+      '<div><strong>Privacy:</strong> tools are designed to process in the browser where practical; pages that rely on external data or third-party services should state that in context.</div>' +
+      '<div><strong>Support:</strong> review the <a href="/privacy-policy.html">Privacy Policy</a>, <a href="/security.html">Security</a>, or <a href="/contact.html">Contact</a> pages if a workflow handles sensitive files.</div>';
+
+    if (hero.parentElement) {
+      hero.parentElement.insertAdjacentElement('afterend', panel);
+    } else {
+      main.insertAdjacentElement('afterbegin', panel);
+    }
+  }
+
   window.i18n = {
     changeLanguage,
     t,
@@ -324,10 +382,16 @@
 
   window.changeLanguage = changeLanguage;
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
+  function boot() {
     init();
+    initQualityEnhancements();
+    ensureAdSenseBootstrap();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', boot);
+  } else {
+    boot();
   }
 
   const styles = document.createElement('style');
@@ -370,6 +434,29 @@
       right: auto;
       left: 20px;
     }
+
+
+    .ad-slot-reserved {
+      min-height: 250px;
+      background: rgba(15, 23, 42, 0.38);
+      border-radius: 12px;
+    }
+
+    .tool-quality-panel {
+      width: min(960px, calc(100% - 32px));
+      margin: 1rem auto 2rem;
+      padding: 1rem;
+      display: grid;
+      gap: 0.75rem;
+      color: #cbd5e1;
+      background: rgba(15, 23, 42, 0.72);
+      border: 1px solid rgba(148, 163, 184, 0.22);
+      border-radius: 16px;
+      line-height: 1.65;
+    }
+
+    .tool-quality-panel strong { color: #f8fafc; }
+    .tool-quality-panel a { color: #22d3ee; }
 
     @media (max-width: 768px) {
       .language-selector {
