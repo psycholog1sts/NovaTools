@@ -1,0 +1,502 @@
+[
+  {
+    "slug": "compress-pdf-for-email-without-ruining-readability",
+    "title": "How to Compress a PDF for Email Without Ruining Readability",
+    "wordCount": 2313
+  },
+  {
+    "slug": "merge-pdf-files-client-documents-checklist",
+    "title": "Merge PDF Files for Client Documents: A Practical Checklist",
+    "wordCount": 2297
+  },
+  {
+    "slug": "split-pdf-pages-before-sharing-sensitive-sections",
+    "title": "Split PDF Pages Before Sharing Only the Sections Someone Needs",
+    "wordCount": 2309
+  },
+  {
+    "slug": "pdf-to-word-when-to-convert-and-when-not-to",
+    "title": "PDF to Word: When to Convert and When Not To",
+    "wordCount": 2310
+  },
+  {
+    "slug": "pdf-to-text-clean-extraction-workflow",
+    "title": "PDF to Text: A Clean Extraction Workflow for Reusable Copy",
+    "wordCount": 2310
+  },
+  {
+    "slug": "pdf-watermark-before-client-review",
+    "title": "PDF Watermarks Before Client Review: What to Add and What to Avoid",
+    "wordCount": 2333
+  },
+  {
+    "slug": "pdf-page-numbers-for-long-reports",
+    "title": "Add Page Numbers to Long PDFs Without Creating Confusion",
+    "wordCount": 2295
+  },
+  {
+    "slug": "ocr-scanned-pdf-troubleshooting-guide",
+    "title": "OCR for Scanned PDFs: Troubleshooting Poor Text Recognition",
+    "wordCount": 2282
+  },
+  {
+    "slug": "pdf-to-jpg-vs-pdf-to-png",
+    "title": "PDF to JPG vs PDF to PNG: Which Export Should You Use?",
+    "wordCount": 2336
+  },
+  {
+    "slug": "prepare-pdf-records-for-tax-season",
+    "title": "Prepare PDF Records for Tax Season Without a Last-Minute Mess",
+    "wordCount": 2307
+  },
+  {
+    "slug": "compress-images-for-web-quality-checklist",
+    "title": "Compress Images for the Web: A Quality Checklist That Works",
+    "wordCount": 2308
+  },
+  {
+    "slug": "resize-images-for-social-platforms",
+    "title": "Resize Images for Social Platforms Without Cropping Important Details",
+    "wordCount": 2297
+  },
+  {
+    "slug": "convert-png-to-jpg-when-file-size-matters",
+    "title": "Convert PNG to JPG When File Size Matters: Practical Rules",
+    "wordCount": 2310
+  },
+  {
+    "slug": "jpg-vs-webp-for-small-websites",
+    "title": "JPG vs WebP for Small Websites: A Practical Decision Guide",
+    "wordCount": 2310
+  },
+  {
+    "slug": "image-metadata-before-sharing-guide",
+    "title": "Image Metadata Before Sharing: What to Check in a Browser-First Workflow",
+    "wordCount": 2320
+  },
+  {
+    "slug": "batch-image-resize-workflow",
+    "title": "Batch Image Resize Workflow for Product Pages and Blog Posts",
+    "wordCount": 2308
+  },
+  {
+    "slug": "reduce-screenshot-size-for-support-tickets",
+    "title": "Reduce Screenshot Size for Support Tickets Without Losing the Problem",
+    "wordCount": 2307
+  },
+  {
+    "slug": "optimize-images-for-email-newsletters",
+    "title": "Optimize Images for Email Newsletters: Size, Clarity, and Layout",
+    "wordCount": 2294
+  },
+  {
+    "slug": "transparent-background-image-workflow",
+    "title": "Transparent Background Images: When PNG Still Makes Sense",
+    "wordCount": 2281
+  },
+  {
+    "slug": "image-alt-text-and-file-names-workflow",
+    "title": "Image File Names and Alt Text: A Practical Publishing Workflow",
+    "wordCount": 2306
+  },
+  {
+    "slug": "word-counter-for-editing-client-copy",
+    "title": "Use a Word Counter to Edit Client Copy Without Guesswork",
+    "wordCount": 2311
+  },
+  {
+    "slug": "case-converter-cleanup-workflow",
+    "title": "Case Converter Cleanup Workflow for Titles, Labels, and Data",
+    "wordCount": 2295
+  },
+  {
+    "slug": "slug-generator-url-cleanup-guide",
+    "title": "Slug Generator Guide: Clean URLs for Tools, Blogs, and Landing Pages",
+    "wordCount": 2321
+  },
+  {
+    "slug": "text-diff-for-reviewing-edits",
+    "title": "Text Diff for Reviewing Edits: A Practical Non-Developer Guide",
+    "wordCount": 2297
+  },
+  {
+    "slug": "html-entity-encoder-publishing-guide",
+    "title": "HTML Entity Encoding for Publishing: When It Solves Broken Characters",
+    "wordCount": 2310
+  },
+  {
+    "slug": "lorem-ipsum-with-real-layout-checks",
+    "title": "Lorem Ipsum With Real Layout Checks: How to Use Placeholder Text Wisely",
+    "wordCount": 2337
+  },
+  {
+    "slug": "character-counter-for-meta-descriptions",
+    "title": "Character Counter for Meta Descriptions, Headlines, and Snippets",
+    "wordCount": 2286
+  },
+  {
+    "slug": "palindrome-checker-teaching-string-logic",
+    "title": "Palindrome Checker as a Simple Way to Teach String Logic",
+    "wordCount": 2311
+  },
+  {
+    "slug": "clean-text-before-spreadsheet-import",
+    "title": "Clean Text Before Spreadsheet Import: A Practical Checklist",
+    "wordCount": 2284
+  },
+  {
+    "slug": "writing-tool-stack-for-small-teams",
+    "title": "A Practical Writing Tool Stack for Small Teams",
+    "wordCount": 2284
+  },
+  {
+    "slug": "json-formatter-debugging-api-responses",
+    "title": "JSON Formatter for Debugging API Responses Without Losing Context",
+    "wordCount": 2289
+  },
+  {
+    "slug": "regex-tester-safe-review-workflow",
+    "title": "Regex Tester Workflow: Build Patterns Without Breaking Real Data",
+    "wordCount": 2287
+  },
+  {
+    "slug": "base64-converter-common-use-cases",
+    "title": "Base64 Converter Common Use Cases and Common Misreads",
+    "wordCount": 2278
+  },
+  {
+    "slug": "url-encoder-query-string-guide",
+    "title": "URL Encoder Guide for Query Strings, UTMs, and Redirects",
+    "wordCount": 2286
+  },
+  {
+    "slug": "css-minifier-before-production",
+    "title": "CSS Minifier Before Production: What to Check First",
+    "wordCount": 2276
+  },
+  {
+    "slug": "js-minifier-practical-release-checks",
+    "title": "JavaScript Minifier Practical Release Checks for Small Sites",
+    "wordCount": 2274
+  },
+  {
+    "slug": "html-to-markdown-content-migration",
+    "title": "HTML to Markdown for Content Migration: A Clean Review Workflow",
+    "wordCount": 2303
+  },
+  {
+    "slug": "markdown-to-html-publishing-workflow",
+    "title": "Markdown to HTML Publishing Workflow for Guides and Notes",
+    "wordCount": 2290
+  },
+  {
+    "slug": "color-converter-design-token-workflow",
+    "title": "Color Converter Workflow for Design Tokens and CSS Reviews",
+    "wordCount": 2289
+  },
+  {
+    "slug": "code-formatter-review-before-sharing",
+    "title": "Code Formatter Review Before Sharing Snippets",
+    "wordCount": 2252
+  },
+  {
+    "slug": "unit-converter-for-project-planning",
+    "title": "Unit Converter for Project Planning: Avoid Small Measurement Mistakes",
+    "wordCount": 2290
+  },
+  {
+    "slug": "currency-converter-for-estimates-not-final-prices",
+    "title": "Currency Converter for Estimates, Not Final Prices: A Practical Guide",
+    "wordCount": 2299
+  },
+  {
+    "slug": "timezone-converter-meeting-workflow",
+    "title": "Timezone Converter Meeting Workflow for Distributed Teams",
+    "wordCount": 2263
+  },
+  {
+    "slug": "unix-timestamp-human-date-debugging",
+    "title": "Unix Timestamp to Human Date: Debugging Logs and Exports",
+    "wordCount": 2287
+  },
+  {
+    "slug": "number-base-converter-learning-guide",
+    "title": "Number Base Converter Learning Guide for Binary, Decimal, and Hex",
+    "wordCount": 2298
+  },
+  {
+    "slug": "roman-numerals-conversion-checklist",
+    "title": "Roman Numerals Conversion Checklist for Design and Publishing",
+    "wordCount": 2273
+  },
+  {
+    "slug": "percentage-calculator-business-copy",
+    "title": "Percentage Calculator for Business Copy and Quick Estimates",
+    "wordCount": 2272
+  },
+  {
+    "slug": "bmi-calculator-result-context",
+    "title": "BMI Calculator Result Context: How to Read the Number Carefully",
+    "wordCount": 2303
+  },
+  {
+    "slug": "age-calculator-for-forms-and-records",
+    "title": "Age Calculator for Forms, Records, and Eligibility Checks",
+    "wordCount": 2272
+  },
+  {
+    "slug": "scientific-calculator-browser-workflow",
+    "title": "Scientific Calculator Browser Workflow for Quick Technical Math",
+    "wordCount": 2272
+  },
+  {
+    "slug": "mortgage-refinance-break-even-guide",
+    "title": "Mortgage Refinance Break-Even Guide for Practical Decisions",
+    "wordCount": 2261
+  },
+  {
+    "slug": "compound-interest-scenarios-guide",
+    "title": "Compound Interest Scenarios: Compare Contributions, Rates, and Time",
+    "wordCount": 2271
+  },
+  {
+    "slug": "student-loan-payment-estimate-workflow",
+    "title": "Student Loan Payment Estimate Workflow for Budget Planning",
+    "wordCount": 2273
+  },
+  {
+    "slug": "retirement-calculator-inputs-that-matter",
+    "title": "Retirement Calculator Inputs That Matter Most",
+    "wordCount": 2248
+  },
+  {
+    "slug": "tax-estimator-organize-documents-first",
+    "title": "Tax Estimator Workflow: Organize Documents Before Estimating",
+    "wordCount": 2259
+  },
+  {
+    "slug": "cloud-cost-calculator-small-team-guide",
+    "title": "Cloud Cost Calculator Guide for Small Teams",
+    "wordCount": 2260
+  },
+  {
+    "slug": "crypto-tax-records-prep-workflow",
+    "title": "Crypto Tax Records Prep Workflow Before Calculations",
+    "wordCount": 2259
+  },
+  {
+    "slug": "life-insurance-estimate-context",
+    "title": "Life Insurance Estimate Context: Inputs to Review Carefully",
+    "wordCount": 2273
+  },
+  {
+    "slug": "budget-before-large-purchase-workflow",
+    "title": "Budget Before a Large Purchase: Calculator Workflow",
+    "wordCount": 2259
+  },
+  {
+    "slug": "compare-loan-options-with-clear-assumptions",
+    "title": "Compare Loan Options With Clear Assumptions Instead of Guesswork",
+    "wordCount": 2287
+  },
+  {
+    "slug": "csv-to-json-clean-conversion-guide",
+    "title": "CSV to JSON Clean Conversion Guide for Small Data Sets",
+    "wordCount": 2301
+  },
+  {
+    "slug": "json-to-csv-export-workflow",
+    "title": "JSON to CSV Export Workflow for Reports and Review",
+    "wordCount": 2288
+  },
+  {
+    "slug": "csv-viewer-before-import-checklist",
+    "title": "CSV Viewer Checklist Before Importing Data Anywhere",
+    "wordCount": 2267
+  },
+  {
+    "slug": "sql-formatter-query-review-guide",
+    "title": "SQL Formatter Query Review Guide for Readable Statements",
+    "wordCount": 2277
+  },
+  {
+    "slug": "checksum-calculator-file-verification",
+    "title": "Checksum Calculator for File Verification: Practical Uses",
+    "wordCount": 2264
+  },
+  {
+    "slug": "duplicate-finder-digital-cleanup-workflow",
+    "title": "Duplicate Finder Digital Cleanup Workflow for Safer Deletion",
+    "wordCount": 2279
+  },
+  {
+    "slug": "file-renamer-consistent-naming-system",
+    "title": "File Renamer Workflow for a Consistent Naming System",
+    "wordCount": 2276
+  },
+  {
+    "slug": "file-splitter-large-upload-workflow",
+    "title": "File Splitter Workflow for Large Upload Limits",
+    "wordCount": 2266
+  },
+  {
+    "slug": "file-merger-recombine-export-parts",
+    "title": "File Merger Workflow to Recombine Export Parts Cleanly",
+    "wordCount": 2277
+  },
+  {
+    "slug": "file-organizer-folder-architecture",
+    "title": "File Organizer Folder Architecture for Repeatable Work",
+    "wordCount": 2263
+  },
+  {
+    "slug": "browser-first-tools-what-it-means",
+    "title": "Browser-First Tools: What It Means for Everyday File Work",
+    "wordCount": 2289
+  },
+  {
+    "slug": "share-files-with-less-metadata-risk",
+    "title": "Share Files With Less Metadata Risk: A Practical Visible Checklist",
+    "wordCount": 2299
+  },
+  {
+    "slug": "private-document-workflow-without-signup",
+    "title": "Private Document Workflow Without Forced Signup",
+    "wordCount": 2252
+  },
+  {
+    "slug": "metadata-cleanup-before-publishing",
+    "title": "Metadata Cleanup Before Publishing: What Non-Experts Can Check",
+    "wordCount": 2276
+  },
+  {
+    "slug": "local-processing-vs-upload-tools-comparison",
+    "title": "Local Processing vs Upload Tools: A Practical Comparison",
+    "wordCount": 2276
+  },
+  {
+    "slug": "client-side-pdf-workflow-limits",
+    "title": "Client-Side PDF Workflow Limits: When to Use a Desktop App",
+    "wordCount": 2303
+  },
+  {
+    "slug": "safe-sharing-checklist-for-small-teams",
+    "title": "Safe Sharing Checklist for Small Teams Using Online Utilities",
+    "wordCount": 2287
+  },
+  {
+    "slug": "sensitive-spreadsheet-cleanup-before-conversion",
+    "title": "Sensitive Spreadsheet Cleanup Before Conversion",
+    "wordCount": 2236
+  },
+  {
+    "slug": "public-link-review-workflow",
+    "title": "Public Link Review Workflow Before You Send Anything",
+    "wordCount": 2275
+  },
+  {
+    "slug": "browser-tool-empty-state-loading-success",
+    "title": "Why Empty, Loading, and Success States Matter in Browser Tools",
+    "wordCount": 2302
+  },
+  {
+    "slug": "pdf-merge-vs-pdf-split",
+    "title": "PDF Merge vs PDF Split: Which Tool Should You Open First?",
+    "wordCount": 2319
+  },
+  {
+    "slug": "word-counter-vs-character-counter",
+    "title": "Word Counter vs Character Counter for Editing Decisions",
+    "wordCount": 2280
+  },
+  {
+    "slug": "json-formatter-vs-json-validator",
+    "title": "JSON Formatter vs JSON Validator: Different Jobs, Better Debugging",
+    "wordCount": 2289
+  },
+  {
+    "slug": "image-compressor-vs-image-resizer",
+    "title": "Image Compressor vs Image Resizer: Which Fixes Your Problem?",
+    "wordCount": 2291
+  },
+  {
+    "slug": "unit-converter-vs-scientific-calculator",
+    "title": "Unit Converter vs Scientific Calculator for Technical Work",
+    "wordCount": 2280
+  },
+  {
+    "slug": "csv-to-json-vs-json-to-csv",
+    "title": "CSV to JSON vs JSON to CSV: Choose the Right Direction",
+    "wordCount": 2318
+  },
+  {
+    "slug": "base64-vs-url-encoding",
+    "title": "Base64 vs URL Encoding: Similar Looking Tools, Different Purposes",
+    "wordCount": 2290
+  },
+  {
+    "slug": "mortgage-calculator-vs-refinance-calculator",
+    "title": "Mortgage Calculator vs Refinance Calculator: Which Estimate Do You Need?",
+    "wordCount": 2304
+  },
+  {
+    "slug": "markdown-to-html-vs-html-to-markdown",
+    "title": "Markdown to HTML vs HTML to Markdown for Publishing Workflows",
+    "wordCount": 2307
+  },
+  {
+    "slug": "duplicate-finder-vs-file-organizer",
+    "title": "Duplicate Finder vs File Organizer for Digital Cleanup",
+    "wordCount": 2280
+  },
+  {
+    "slug": "five-minute-pdf-cleanup-workflow",
+    "title": "A Five-Minute PDF Cleanup Workflow Before Sending Documents",
+    "wordCount": 2282
+  },
+  {
+    "slug": "blog-publishing-tool-workflow",
+    "title": "Blog Publishing Tool Workflow From Draft to Clean Assets",
+    "wordCount": 2294
+  },
+  {
+    "slug": "developer-debugging-tool-chain",
+    "title": "Developer Debugging Tool Chain for Small Front-End Issues",
+    "wordCount": 2280
+  },
+  {
+    "slug": "remote-team-meeting-and-file-workflow",
+    "title": "Remote Team Meeting and File Workflow",
+    "wordCount": 2255
+  },
+  {
+    "slug": "monthly-finance-document-routine",
+    "title": "Monthly Finance Document Routine With Browser Utilities",
+    "wordCount": 2267
+  },
+  {
+    "slug": "content-review-before-client-delivery",
+    "title": "Content Review Before Client Delivery: Text, PDF, and Image Checks",
+    "wordCount": 2308
+  },
+  {
+    "slug": "data-cleanup-before-dashboard-import",
+    "title": "Data Cleanup Before Dashboard Import: A Lightweight Workflow",
+    "wordCount": 2281
+  },
+  {
+    "slug": "tool-selection-map-for-new-users",
+    "title": "Tool Selection Map for New Users: Start With the Task",
+    "wordCount": 2306
+  },
+  {
+    "slug": "small-business-file-prep-stack",
+    "title": "Small Business File Prep Stack for Invoices, Images, and Reports",
+    "wordCount": 2308
+  },
+  {
+    "slug": "support-ticket-evidence-prep",
+    "title": "Support Ticket Evidence Prep With Screenshots, PDFs, and Text",
+    "wordCount": 2294
+  }
+]

@@ -1,14 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y896L63239"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-Y896L63239');
-</script>
   <meta charset="UTF-8">
   <script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,418 +9,60 @@
   <link rel="stylesheet" href="/src/styles/critical.css">
   <link rel="stylesheet" href="/src/styles/design-system.css">
   <script src="/i18n.js" defer></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <title>Blog | Financial Insights & Money Tips | NovaTools MC</title>
-  <meta name="description" content="Expert financial advice, mortgage guides, insurance tips, and money management strategies. Make smarter financial decisions with NovaTools MC.">
+  <title>Guides for PDF, Image, Text, Data, Finance and Developer Tools | MC NovaTools</title>
+  <meta name="description" content="Practical guides for online tool workflows: PDF tasks, image optimization, writing utilities, developer helpers, converters, finance calculators, data cleanup and browser-first processing.">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="theme-color" content="#0A0A0C">
   <link rel="canonical" href="https://mc-novatools.com/blog/index.html">
-  
-  <!-- Open Graph -->
-  <meta property="og:title" content="NovaTools MC Blog | Financial Insights">
-  <meta property="og:description" content="Expert financial advice and money management strategies.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://mc-novatools.com/blog/index.html">
-  
-  <!-- Schema.org Blog -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Blog",
-    "name": "NovaTools MC Financial Blog",
-    "url": "https://mc-novatools.com/blog/index.html",
-    "description": "Expert financial advice, mortgage guides, and money management strategies",
-    "publisher": {
-      "@type": "Organization",
-      "name": "NovaTools MC",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://mc-novatools.com/logo-brand-260.webp"
-      }
-    }
-  }
-  </script>
-  
-  <style>
-    .blog-hero {
-      text-align: center;
-      padding: 4rem 1rem;
-      background: linear-gradient(135deg, var(--accent-subtle), rgba(139, 92, 246, 0.05));
-      border-bottom: 1px solid var(--border-default);
-    }
-    .blog-hero h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; }
-    .blog-hero p { color: var(--text-secondary); max-width: 600px; margin: 0 auto; }
-    
-    .blog-container { max-width: 1200px; margin: 0 auto; padding: 3rem 1rem; }
-    
-    .blog-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-      gap: 2rem;
-    }
-    
-    @media (max-width: 768px) {
-      .blog-grid { grid-template-columns: 1fr; }
-    }
-    
-    .blog-card {
-      background: var(--surface-default);
-      border: 1px solid var(--border-default);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      transition: all 0.3s ease;
-      text-decoration: none;
-      color: inherit;
-      display: flex;
-      flex-direction: column;
-    }
-    .blog-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(99, 102, 241, 0.3);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-    }
-    
-    .blog-card-image {
-      height: 180px;
-      background: linear-gradient(135deg, var(--accent-glow), rgba(139, 92, 246, 0.1));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 3rem;
-    }
-    
-    .blog-card-content {
-      padding: 1.5rem;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-    
-    .blog-category {
-      display: inline-block;
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--accent-hover);
-      margin-bottom: 0.75rem;
-    }
-    
-    .blog-card h3 {
-      font-size: 1.25rem;
-      font-weight: 600;
-      margin-bottom: 0.75rem;
-      line-height: 1.4;
-    }
-    
-    .blog-card p {
-      color: var(--text-secondary);
-      font-size: 0.9375rem;
-      line-height: 1.6;
-      flex: 1;
-    }
-    
-    .blog-meta {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-top: 1.5rem;
-      font-size: 0.8125rem;
-      color: var(--text-muted);
-    }
-    
-    .category-filter {
-      display: flex;
-      gap: 0.75rem;
-      margin-bottom: 2rem;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    
-    .filter-btn {
-      padding: 0.5rem 1.25rem;
-      background: var(--surface-default);
-      border: 1px solid var(--border-default);
-      border-radius: 9999px;
-      color: var(--text-secondary);
-      font-size: 0.875rem;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .filter-btn:hover, .filter-btn.active {
-      background: var(--accent-primary);
-      color: white;
-      border-color: var(--accent-primary);
-    }
-
-    .blog-section-title { margin: 0 0 1rem; font-size: 1.45rem; }
-    .featured-post { margin-bottom: 2.5rem; }
-    .featured-card { display: grid; grid-template-columns: 180px 1fr; min-height: 220px; }
-    .featured-card .blog-card-image { height: 100%; min-height: 220px; }
-    .blog-sections { display: grid; gap: 2rem; margin-top: 2.5rem; }
-    .category-section { border: 1px solid var(--border-default); border-radius: var(--radius-lg); padding: 1.25rem; background: rgba(255,255,255,0.02); }
-    .category-section-header { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; margin-bottom: 1rem; }
-    .category-section-header h2 { margin: 0; font-size: 1.15rem; text-transform: capitalize; }
-    .category-section-header span { color: var(--text-muted); font-size: 0.875rem; }
-    .empty-blog-state { padding: 2rem; border: 1px dashed var(--border-default); border-radius: var(--radius-lg); text-align: center; color: var(--text-secondary); background: var(--surface-default); }
-    .blog-card:focus-visible, .filter-btn:focus-visible { outline: 3px solid var(--accent-primary); outline-offset: 3px; }
-    @media (max-width: 768px) { .featured-card { grid-template-columns: 1fr; } .featured-card .blog-card-image { height: 180px; min-height: 180px; } }
-  </style>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Blog","name":"MC NovaTools Guides","url":"https://mc-novatools.com/blog/index.html","description":"Practical online-tool guides connected to MC NovaTools categories and tools."}</script>
 </head>
 <body>
   <div class="bg-ambient" aria-hidden="true"></div>
   <div class="noise-overlay" aria-hidden="true"></div>
-  
   <div id="app" class="app">
-        <header class="main-header">
+    <header class="main-header">
       <div class="container">
         <div class="header-inner">
-          <a href="/" class="logo" aria-label="NovaTools MC Home">
-            <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
-            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
-          </a>
-          <nav class="nav-desktop" aria-label="Main navigation">
-            <a href="/categories/index.html" class="nav-link" data-i18n="tools.categories">Categories</a>
-            <a href="/categories/finance-tools.html" class="nav-link" data-i18n="nav.finance">Finance</a>
-            <a href="/categories/pdf-tools.html" class="nav-link" data-i18n="nav.pdf">PDF Tools</a>
-            <a href="/categories/image-tools.html" class="nav-link" data-i18n="nav.image">Image Tools</a>
-            <a href="/about-us.html" class="nav-link" data-i18n="nav.about">About</a>
-            <a href="/contact.html" class="nav-link" data-i18n="nav.contact">Contact</a>
-            <a href="/request-tool.html" class="nav-link" data-i18n="nav.request">Request Tool</a>
-          </nav>
-          <div class="privacy-badge" title="Your data never leaves your browser" data-i18n-title="home.trust.secureDesc">
-            <span class="privacy-badge-dot"></span>
-            <span data-i18n="home.features.privateTitle">Privacy First</span>
-          </div>
-          <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
-            <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-            <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-          </button>
-          <button type="button" id="mobileMenuBtn" class="menu-btn" aria-label="Toggle menu" aria-expanded="false">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-          </button>
+          <a href="/" class="logo" aria-label="MC NovaTools Home"><img src="/logo-bird.png" alt="MC NovaTools" class="header-logo-img" width="44" height="44"><span class="logo-text">NovaTools <span class="logo-mc">MC</span></span></a>
+          <nav class="nav-desktop" aria-label="Main navigation"><a href="/categories/index.html" class="nav-link">Categories</a><a href="/categories/pdf-tools.html" class="nav-link">PDF</a><a href="/categories/image-tools.html" class="nav-link">Image</a><a href="/categories/finance-tools.html" class="nav-link">Finance</a><a href="/categories/developer-tools.html" class="nav-link">Developer</a><a href="/blog/index.html" class="nav-link active">Blog</a></nav>
+          <button type="button" id="mobileMenuBtn" class="menu-btn" aria-label="Toggle menu" aria-expanded="false">☰</button>
         </div>
-        <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
-          <a href="/categories/index.html" class="mobile-nav-link" data-i18n="tools.categories">Categories</a>
-          <a href="/categories/finance-tools.html" class="mobile-nav-link" data-i18n="nav.finance">Finance Tools</a>
-          <a href="/categories/pdf-tools.html" class="mobile-nav-link" data-i18n="nav.pdf">PDF Tools</a>
-          <a href="/categories/image-tools.html" class="mobile-nav-link" data-i18n="nav.image">Image Tools</a>
-          <a href="/about-us.html" class="mobile-nav-link" data-i18n="nav.about">About</a>
-          <a href="/contact.html" class="mobile-nav-link" data-i18n="nav.contact">Contact</a>
-          <a href="/request-tool.html" class="mobile-nav-link" data-i18n="nav.request">Request Tool</a>
-        </nav>
+        <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden><a href="/categories/index.html" class="mobile-nav-link">Categories</a><a href="/blog/index.html" class="mobile-nav-link">Blog</a><a href="/contact.html" class="mobile-nav-link">Contact</a></nav>
       </div>
     </header>
-
-    <main>
-      <section class="blog-hero">
-        <h1 data-i18n="blog.hero.title">Financial Insights & Money Tips</h1>
-        <p data-i18n="blog.hero.description">Practical guides for financial planning, document workflows, insurance choices, investing basics, and responsible money decisions.</p>
-      </section>
-
-      <div class="blog-container">
-        <div class="category-filter" id="blogFilters" aria-label="Blog category filters">
-          <button class="filter-btn active" type="button" data-category="all" data-i18n="blog.filters.all">All Articles</button>
-          <button class="filter-btn" type="button" data-category="mortgage" data-i18n="blog.filters.mortgage">Mortgage</button>
-          <button class="filter-btn" type="button" data-category="insurance" data-i18n="blog.filters.insurance">Insurance</button>
-          <button class="filter-btn" type="button" data-category="investing" data-i18n="blog.filters.investing">Investing</button>
-          <button class="filter-btn" type="button" data-category="credit" data-i18n="blog.filters.credit">Credit</button>
-          <button class="filter-btn" type="button" data-category="crypto" data-i18n="blog.filters.crypto">Crypto</button>
-        </div>
-
-        <section class="featured-post" aria-labelledby="featuredPostTitle">
-          <h2 id="featuredPostTitle" class="blog-section-title" data-i18n="blog.sections.featured">Featured post</h2>
-          <div id="featuredPost"></div>
-        </section>
-
-        <section aria-labelledby="latestPostsTitle">
-          <h2 id="latestPostsTitle" class="blog-section-title" data-i18n="blog.sections.latest">Latest posts</h2>
-          <div class="blog-grid" id="blogGrid"></div>
-        </section>
-
-        <section class="blog-sections" id="blogCategorySections" aria-label="Category sections"></section>
-      </div>
-    </main>
-
-    <footer class="tool-footer">
-  <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="mailto:psk.dan.metehancetin@mc-novatools.com?subject=MC%20NovaTools%20Support">psk.dan.metehancetin@mc-novatools.com</a></p>
-  <p>
-    <a href="/privacy-policy.html" data-i18n="nav.privacy">Privacy Policy</a> |
-    <a href="/terms-of-service.html" data-i18n="nav.terms">Terms of Service</a> |
-    <a href="/cookie-policy.html" data-i18n="nav.cookies">Cookie Policy</a> |
-    <a href="/security.html" data-i18n="nav.security">Security</a> |
-    <a href="mailto:psk.dan.metehancetin@mc-novatools.com?subject=MC%20NovaTools%20Support" data-i18n="home.footer.legalBarContact">Contact Support</a> |
-    <a href="mailto:psk.dan.metehancetin@mc-novatools.com?subject=MC%20NovaTools%20Issue%20Report" data-i18n="home.footer.legalBarIssue">Report Issue</a>
-  </p>
-</footer>
-<style>
-.tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }
-.tool-footer a { color: #00D9FF; text-decoration: none; }
-</style>
-  </div>
-
-  <script>
-    const articles = [
-      { id: 1, title: "Complete Guide to Mortgage Refinancing in 2026", excerpt: "Learn when and how to refinance your mortgage to save thousands. Understand rates, closing costs, and break-even points.", category: "mortgage", date: "Mar 12, 2026", readTime: "8 min read", emoji: "🏠", url: "/blog/articles/mortgage-refinancing-guide.html" },
-      { id: 2, title: "How Much Life Insurance Do You Really Need?", excerpt: "Discover the DIME method and other strategies to calculate the right life insurance coverage for your family's protection.", category: "insurance", date: "Mar 11, 2026", readTime: "7 min read", emoji: "🛡️", url: "/blog/articles/life-insurance-coverage-guide.html" },
-      { id: 3, title: "Best Credit Cards for Rewards in 2026", excerpt: "Compare top credit cards for cash back, travel rewards, and points. Maximize your spending with the right card strategy.", category: "credit", date: "Mar 10, 2026", readTime: "10 min read", emoji: "💳", url: "/blog/articles/best-credit-cards-2026.html" },
-      { id: 4, title: "AWS vs Azure vs GCP: Cloud Cost Comparison", excerpt: "Detailed pricing analysis of major cloud providers. Learn how to estimate and optimize your cloud infrastructure costs.", category: "cloud", date: "Mar 9, 2026", readTime: "12 min read", emoji: "☁️", url: "/blog/articles/cloud-cost-comparison.html" },
-      { id: 5, title: "Crypto Tax Guide: Everything You Need to Know", excerpt: "Understanding capital gains, FIFO vs LIFO, and tax strategies for cryptocurrency investors in 2026.", category: "crypto", date: "Mar 8, 2026", readTime: "9 min read", emoji: "₿", url: "/blog/articles/crypto-tax-guide.html" },
-      { id: 6, title: "Student Loan Repayment Strategies That Work", excerpt: "Federal vs private loans, refinancing options, and payoff strategies to eliminate student debt faster.", category: "credit", date: "Mar 7, 2026", readTime: "8 min read", emoji: "🎓", url: "/blog/articles/student-loan-repayment.html" },
-      { id: 7, title: "Islamic Finance Principles for Modern Investing", excerpt: "Understanding Shariah-compliant investments, avoiding riba, and ethical wealth building in Islamic finance.", category: "investing", date: "Mar 6, 2026", readTime: "10 min read", emoji: "🌙", url: "/blog/articles/islamic-finance-investing.html" },
-      { id: 8, title: "First-Time Home Buyer's Complete Checklist", excerpt: "Everything you need to know before buying your first home. From pre-approval to closing day.", category: "mortgage", date: "Mar 5, 2026", readTime: "11 min read", emoji: "🔑", url: "/blog/articles/first-time-home-buyer.html" },
-      { id: 9, title: "Term vs Whole Life Insurance: Which is Better?", excerpt: "Compare term life and whole life insurance policies. Understand costs, benefits, and which fits your needs.", category: "insurance", date: "Mar 4, 2026", readTime: "8 min read", emoji: "⚖️", url: "/blog/articles/term-vs-whole-life.html" },
-      { id: 10, title: "Building an Emergency Fund: The 2026 Guide", excerpt: "How much to save, where to keep it, and strategies to build your financial safety net quickly.", category: "investing", date: "Mar 3, 2026", readTime: "6 min read", emoji: "🚨", url: "/blog/articles/emergency-fund-guide.html" },
-      { id: 11, title: "Credit Score Hacks: Boost Your FICO Fast", excerpt: "Proven strategies to improve your credit score. From credit utilization to dispute techniques.", category: "credit", date: "Mar 2, 2026", readTime: "7 min read", emoji: "📈", url: "/blog/articles/credit-score-hacks.html" },
-      { id: 12, title: "Retirement Planning for Millennials & Gen Z", excerpt: "Start early, compound interest, 401k matching, and building wealth for a comfortable retirement.", category: "investing", date: "Mar 1, 2026", readTime: "9 min read", emoji: "🏖️", url: "/blog/articles/retirement-planning-millennials.html" },
-      { id: 13, title: "Halal Mortgage Alternatives in the USA", excerpt: "Murabaha, Ijara, and Musharaka home financing options for Muslims seeking Shariah-compliant mortgages.", category: "mortgage", date: "Feb 28, 2026", readTime: "10 min read", emoji: "🏡", url: "/blog/articles/halal-mortgage-usa.html" },
-      { id: 14, title: "Understanding Zakat on Investments", excerpt: "Calculate zakat on stocks, crypto, real estate, and business assets. Complete guide to purifying your wealth.", category: "investing", date: "Feb 27, 2026", readTime: "8 min read", emoji: "🤲", url: "/blog/articles/zakat-investments-guide.html" },
-      { id: 15, title: "Debt Consolidation: Is It Right for You?", excerpt: "Pros and cons of consolidating debt. Compare personal loans, balance transfers, and HELOC options.", category: "credit", date: "Feb 26, 2026", readTime: "7 min read", emoji: "🔄", url: "/blog/articles/debt-consolidation-guide.html" },
-      { id: 16, title: "Tax Deductions Homeowners Forget to Claim", excerpt: "Maximize your tax refund with these often-overlooked homeowner deductions and credits.", category: "mortgage", date: "Feb 25, 2026", readTime: "6 min read", emoji: "📝", url: "/blog/articles/tax-deductions-homeowners.html" },
-      { id: 17, title: "NFT Taxes: What Crypto Investors Must Know", excerpt: "Tax implications of buying, selling, and creating NFTs. Understand capital gains on digital collectibles.", category: "crypto", date: "Feb 24, 2026", readTime: "8 min read", emoji: "🎨", url: "/blog/articles/nft-tax-guide.html" },
-      { id: 18, title: "Private Mortgage Insurance (PMI) Removal Guide", excerpt: "How to eliminate PMI payments early. Save hundreds monthly by reaching 20% equity faster.", category: "mortgage", date: "Feb 23, 2026", readTime: "7 min read", emoji: "💰", url: "/blog/articles/pmi-removal-guide.html" },
-      { id: 19, title: "Index Funds vs ETFs: Beginner's Guide", excerpt: "Understanding passive investing. Compare costs, liquidity, and tax efficiency of index funds and ETFs.", category: "investing", date: "Feb 22, 2026", readTime: "9 min read", emoji: "📊", url: "/blog/articles/index-funds-vs-etfs.html" },
-      { id: 20, title: "Managing PDF Documents for Financial Records", excerpt: "Best practices for organizing, compressing, and securing financial PDF documents and tax records.", category: "finance", date: "Feb 21, 2026", readTime: "5 min read", emoji: "📄", url: "/blog/articles/pdf-financial-records.html" },
-      { id: 21, title: "Auto Insurance Savings Guide 2026", excerpt: "Cut your car insurance premium by up to 40%. Learn comparison shopping, discounts, and coverage optimization.", category: "insurance", date: "Mar 12, 2026", readTime: "12 min read", emoji: "🚗", url: "/blog/articles/auto-insurance-savings.html" },
-      { id: 22, title: "Best High-Yield Savings Accounts 2026", excerpt: "Maximize your emergency fund with rates up to 5.5% APY. Compare top accounts and earn hundreds more annually.", category: "banking", date: "Mar 12, 2026", readTime: "10 min read", emoji: "💵", url: "/blog/articles/high-yield-savings-guide.html" },
-      { id: 23, title: "Personal Loan vs Credit Card: Which is Better?", excerpt: "Compare personal loans and credit cards for debt consolidation. Learn when to use each and save thousands.", category: "credit", date: "Mar 12, 2026", readTime: "11 min read", emoji: "💳", url: "/blog/articles/personal-loan-vs-credit-card.html" },
-      { id: 24, title: "401k Rollover Guide 2026", excerpt: "Learn how to roll over your 401k without taxes or penalties. Direct vs indirect rollovers explained.", category: "retirement", date: "Mar 12, 2026", readTime: "13 min read", emoji: "🏦", url: "/blog/articles/401k-rollover-guide.html" },
-      { id: 25, title: "Health Insurance Marketplace Guide 2026", excerpt: "Navigate ACA Marketplace, qualify for subsidies, compare plans, and save thousands on health insurance.", category: "insurance", date: "Mar 12, 2026", readTime: "12 min read", emoji: "🏥", url: "/blog/articles/health-insurance-marketplace.html" }
-    ];
-
-    const articleFallback = {
-      title: 'Editorial queue is being organized',
-      excerpt: 'No posts are available for this filter yet. Use All Articles or choose another category to keep browsing practical guides.',
-      category: 'status',
-      date: 'Updated regularly',
-      readTime: 'Short note',
-      emoji: '🧭',
-      url: '/blog/index.html'
-    };
-
-    function getCategoryLabel(category) {
-      const labels = {
-        all: 'All Articles',
-        mortgage: 'Mortgage',
-        insurance: 'Insurance',
-        investing: 'Investing',
-        credit: 'Credit',
-        crypto: 'Crypto',
-        finance: 'Finance',
-        banking: 'Banking',
-        retirement: 'Retirement',
-        status: 'Status'
-      };
-      return labels[category] || category;
-    }
-
-    function createArticleCard(article, featured) {
-      const cardClass = featured ? 'blog-card featured-card' : 'blog-card';
-      return `
-        <a href="${article.url}" class="${cardClass}" data-category="${article.category}">
-          <div class="blog-card-image" aria-hidden="true">${article.emoji}</div>
-          <div class="blog-card-content">
-            <span class="blog-category">${getCategoryLabel(article.category)}</span>
-            <h3>${article.title}</h3>
-            <p>${article.excerpt}</p>
-            <div class="blog-meta">
-              <span>${article.date}</span>
-              <span>•</span>
-              <span>${article.readTime}</span>
-            </div>
+    <main class="main-content blog-hub">
+      <section class="blog-hero premium-hero">
+        <div class="container">
+          <div class="hero-card editorial-hero-card">
+            <span class="hero-badge">Editorial workflow library</span>
+            <h1>Practical guides connected to the tools people actually open</h1>
+            <p>Use the blog as a decision layer for PDF work, image optimization, writing cleanup, developer utilities, converters, finance calculators, data workflows and browser-first file handling.</p>
+            <div class="hero-actions"><a class="btn btn-primary btn-lg" href="#latestGuides">Read latest guides</a><a class="btn btn-secondary btn-lg" href="/categories/index.html">Browse tool categories</a></div>
           </div>
-        </a>
-      `;
-    }
-
-    function renderFeatured(source) {
-      const target = document.getElementById('featuredPost');
-      if (!target) return;
-      const featured = source[0] || articleFallback;
-      target.innerHTML = createArticleCard(featured, true);
-    }
-
-    function renderCategorySections(source) {
-      const target = document.getElementById('blogCategorySections');
-      if (!target) return;
-      if (!source.length) {
-        target.innerHTML = '<div class="empty-blog-state">Article sections are being prepared. Please check All Articles for currently available posts.</div>';
-        return;
-      }
-      const categories = ['mortgage', 'insurance', 'investing', 'credit', 'crypto', 'finance'];
-      target.innerHTML = categories.map(category => {
-        const posts = source.filter(article => article.category === category).slice(0, 3);
-        if (!posts.length) return '';
-        return `
-          <section class="category-section" aria-label="${getCategoryLabel(category)} articles">
-            <div class="category-section-header">
-              <h2>${getCategoryLabel(category)}</h2>
-              <span>${posts.length} posts</span>
-            </div>
-            <div class="blog-grid">${posts.map(article => createArticleCard(article, false)).join('')}</div>
-          </section>
-        `;
-      }).join('') || '<div class="empty-blog-state">Category sections are being organized from the current article list.</div>';
-    }
-
-    function renderArticles(category = 'all') {
-      const grid = document.getElementById('blogGrid');
-      if (!grid) return;
-      const source = Array.isArray(articles) ? articles.filter(article => article && article.url && article.title) : [];
-      const filtered = category === 'all' ? source : source.filter(a => a.category === category);
-      const visible = filtered.length ? filtered : [articleFallback];
-
-      grid.innerHTML = visible.slice(0, 9).map(article => createArticleCard(article, false)).join('');
-      renderFeatured(category === 'all' ? source : filtered);
-      renderCategorySections(source);
-    }
-
-    // Filter buttons
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        renderArticles(btn.dataset.category);
-      });
-    });
-
-    // Initial render
-    renderArticles();
+        </div>
+      </section>
+      <section class="blog-container" aria-labelledby="featuredGuideTitle">
+        <div class="featured-post"><h2 id="featuredGuideTitle" class="blog-section-title">Featured guide</h2><div id="featuredPost"></div></div>
+        <div class="category-filter" role="list" aria-label="Filter guides by topic"><button class="filter-btn active" data-category="all">All guides</button><button class="filter-btn" data-category="pdf">PDF workflows</button><button class="filter-btn" data-category="image">Image optimization</button><button class="filter-btn" data-category="text">Text and writing</button><button class="filter-btn" data-category="developer">Developer utilities</button><button class="filter-btn" data-category="converter">Converters</button><button class="filter-btn" data-category="finance">Finance calculators</button><button class="filter-btn" data-category="data">Data tools</button><button class="filter-btn" data-category="workflow">Workflow guides</button><button class="filter-btn" data-category="privacy">Browser-first processing</button><button class="filter-btn" data-category="comparison">Tool comparisons</button></div>
+        <h2 id="latestGuides" class="blog-section-title">Latest practical guides</h2>
+        <div id="blogGrid" class="blog-grid"></div>
+        <div id="blogCategorySections" class="blog-sections"></div>
+      </section>
+    </main>
+    <footer class="main-footer"><div class="container"><div class="footer-grid"><div class="footer-col"><h4>MC NovaTools</h4><p>Professional online tools supported by practical, connected guides.</p></div><div class="footer-col"><h4>Start</h4><ul><li><a href="/categories/index.html">Categories</a></li><li><a href="/blog/index.html">Blog</a></li><li><a href="/request-tool.html">Request a tool</a></li></ul></div><div class="footer-col"><h4>Company</h4><ul><li><a href="/about-us.html">About</a></li><li><a href="/contact.html">Contact</a></li><li><a href="/privacy-policy.html">Privacy</a></li></ul></div></div><div class="footer-bottom"><p>© 2026 MC NovaTools. All rights reserved.</p></div></div></footer>
+  </div>
+  <script>
+    const articles = [{"id":1,"slug":"compress-pdf-for-email-without-ruining-readability","title":"How to Compress a PDF for Email Without Ruining Readability","excerpt":"Make a PDF smaller for email while keeping text, scans, and signatures readable enough for real review.","category":"pdf","categoryLabel":"PDF workflows","date":"2026-04-01","readTime":"11 min read","emoji":"📄","url":"/blog/articles/compress-pdf-for-email-without-ruining-readability.html","wordCount":2313},{"id":2,"slug":"merge-pdf-files-client-documents-checklist","title":"Merge PDF Files for Client Documents: A Practical Checklist","excerpt":"Turn scattered forms, scans, and exports into one clean packet with fewer mistakes.","category":"pdf","categoryLabel":"PDF workflows","date":"2026-04-02","readTime":"11 min read","emoji":"📄","url":"/blog/articles/merge-pdf-files-client-documents-checklist.html","wordCount":2297},{"id":3,"slug":"split-pdf-pages-before-sharing-sensitive-sections","title":"Split PDF Pages Before Sharing Only the Sections Someone Needs","excerpt":"Learn a safe workflow for extracting the exact pages a recipient should receive.","category":"pdf","categoryLabel":"PDF workflows","date":"2026-04-03","readTime":"11 min read","emoji":"📄","url":"/blog/articles/split-pdf-pages-before-sharing-sensitive-sections.html","wordCount":2309},{"id":4,"slug":"pdf-to-word-when-to-convert-and-when-not-to","title":"PDF to Word: When to Convert and When Not To","excerpt":"Decide whether editable Word output is useful or whether it will create cleanup work.","category":"pdf","categoryLabel":"PDF workflows","date":"2026-04-04","readTime":"11 min read","emoji":"📄","url":"/blog/articles/pdf-to-word-when-to-convert-and-when-not-to.html","wordCount":2310},{"id":5,"slug":"pdf-to-text-clean-extraction-workflow","title":"PDF to Text: A Clean Extraction Workflow for Reusable Copy","excerpt":"Extract text from PDFs, clean it, and prepare it for notes, spreadsheets, or publishing.","category":"pdf","categoryLabel":"PDF workflows","date":"2026-04-05","readTime":"11 min read","emoji":"📄","url":"/blog/articles/pdf-to-text-clean-extraction-workflow.html","wordCount":2310},{"id":6,"slug":"pdf-watermark-before-client-review","title":"PDF Watermarks Before Client Review: What to Add and What to Avoid","excerpt":"Use visible context cues without making your PDF hard to read.","category":"pdf","categoryLabel":"PDF workflows","date":"2026-04-06","readTime":"11 min read","emoji":"📄","url":"/blog/articles/pdf-watermark-before-client-review.html","wordCount":2333},{"id":7,"slug":"pdf-page-numbers-for-long-reports","title":"Add Page Numbers to Long PDFs Without Creating Confusion","excerpt":"Make long packets easier to discuss, cite, and review across email threads.","category":"pdf","categoryLabel":"PDF workflows","date":"2026-04-07","readTime":"11 min read","emoji":"📄","url":"/blog/articles/pdf-page-numbers-for-long-reports.html","wordCount":2295},{"id":8,"slug":"ocr-scanned-pdf-troubleshooting-guide","title":"OCR for Scanned PDFs: Troubleshooting Poor Text Recognition","excerpt":"Improve scan quality, expectations, and review habits before relying on OCR output.","category":"pdf","categoryLabel":"PDF workflows","date":"2026-04-08","readTime":"11 min read","emoji":"📄","url":"/blog/articles/ocr-scanned-pdf-troubleshooting-guide.html","wordCount":2282},{"id":9,"slug":"pdf-to-jpg-vs-pdf-to-png","title":"PDF to JPG vs PDF to PNG: Which Export Should You Use?","excerpt":"Choose the right image output when exporting PDF pages for web, review, or records.","category":"pdf","categoryLabel":"PDF workflows","date":"2026-04-09","readTime":"11 min read","emoji":"📄","url":"/blog/articles/pdf-to-jpg-vs-pdf-to-png.html","wordCount":2336},{"id":10,"slug":"prepare-pdf-records-for-tax-season","title":"Prepare PDF Records for Tax Season Without a Last-Minute Mess","excerpt":"A practical document workflow for receipts, statements, summaries, and review notes.","category":"pdf","categoryLabel":"PDF workflows","date":"2026-04-10","readTime":"11 min read","emoji":"📄","url":"/blog/articles/prepare-pdf-records-for-tax-season.html","wordCount":2307},{"id":11,"slug":"compress-images-for-web-quality-checklist","title":"Compress Images for the Web: A Quality Checklist That Works","excerpt":"Reduce image weight while keeping product shots, diagrams, and screenshots trustworthy.","category":"image","categoryLabel":"Image optimization","date":"2026-04-11","readTime":"11 min read","emoji":"🖼️","url":"/blog/articles/compress-images-for-web-quality-checklist.html","wordCount":2308},{"id":12,"slug":"resize-images-for-social-platforms","title":"Resize Images for Social Platforms Without Cropping Important Details","excerpt":"Prepare social images with safe spacing, consistent ratios, and fewer last-minute edits.","category":"image","categoryLabel":"Image optimization","date":"2026-04-12","readTime":"11 min read","emoji":"🖼️","url":"/blog/articles/resize-images-for-social-platforms.html","wordCount":2297},{"id":13,"slug":"convert-png-to-jpg-when-file-size-matters","title":"Convert PNG to JPG When File Size Matters: Practical Rules","excerpt":"Know when JPG is the better export and when PNG should stay untouched.","category":"image","categoryLabel":"Image optimization","date":"2026-04-13","readTime":"11 min read","emoji":"🖼️","url":"/blog/articles/convert-png-to-jpg-when-file-size-matters.html","wordCount":2310},{"id":14,"slug":"jpg-vs-webp-for-small-websites","title":"JPG vs WebP for Small Websites: A Practical Decision Guide","excerpt":"Pick image formats based on quality, browser support, editing needs, and workflow friction.","category":"image","categoryLabel":"Image optimization","date":"2026-04-14","readTime":"11 min read","emoji":"🖼️","url":"/blog/articles/jpg-vs-webp-for-small-websites.html","wordCount":2310},{"id":15,"slug":"image-metadata-before-sharing-guide","title":"Image Metadata Before Sharing: What to Check in a Browser-First Workflow","excerpt":"Understand visible and hidden image details before publishing or forwarding files.","category":"image","categoryLabel":"Image optimization","date":"2026-04-15","readTime":"11 min read","emoji":"🖼️","url":"/blog/articles/image-metadata-before-sharing-guide.html","wordCount":2320},{"id":16,"slug":"batch-image-resize-workflow","title":"Batch Image Resize Workflow for Product Pages and Blog Posts","excerpt":"Create repeatable resize rules for consistent pages, faster uploads, and cleaner cards.","category":"image","categoryLabel":"Image optimization","date":"2026-04-16","readTime":"11 min read","emoji":"🖼️","url":"/blog/articles/batch-image-resize-workflow.html","wordCount":2308},{"id":17,"slug":"reduce-screenshot-size-for-support-tickets","title":"Reduce Screenshot Size for Support Tickets Without Losing the Problem","excerpt":"Share readable screenshots that show the issue clearly without massive uploads.","category":"image","categoryLabel":"Image optimization","date":"2026-04-17","readTime":"11 min read","emoji":"🖼️","url":"/blog/articles/reduce-screenshot-size-for-support-tickets.html","wordCount":2307},{"id":18,"slug":"optimize-images-for-email-newsletters","title":"Optimize Images for Email Newsletters: Size, Clarity, and Layout","excerpt":"Prepare newsletter visuals that load reliably and remain readable on mobile.","category":"image","categoryLabel":"Image optimization","date":"2026-04-18","readTime":"11 min read","emoji":"🖼️","url":"/blog/articles/optimize-images-for-email-newsletters.html","wordCount":2294},{"id":19,"slug":"transparent-background-image-workflow","title":"Transparent Background Images: When PNG Still Makes Sense","excerpt":"Use transparent assets correctly instead of converting everything to smaller formats.","category":"image","categoryLabel":"Image optimization","date":"2026-04-19","readTime":"11 min read","emoji":"🖼️","url":"/blog/articles/transparent-background-image-workflow.html","wordCount":2281},{"id":20,"slug":"image-alt-text-and-file-names-workflow","title":"Image File Names and Alt Text: A Practical Publishing Workflow","excerpt":"Keep image assets organized while making pages easier to understand.","category":"image","categoryLabel":"Image optimization","date":"2026-04-20","readTime":"11 min read","emoji":"🖼️","url":"/blog/articles/image-alt-text-and-file-names-workflow.html","wordCount":2306},{"id":21,"slug":"word-counter-for-editing-client-copy","title":"Use a Word Counter to Edit Client Copy Without Guesswork","excerpt":"Control length, headings, and scannability before publishing or sending copy for review.","category":"text","categoryLabel":"Text and writing","date":"2026-04-21","readTime":"11 min read","emoji":"✍️","url":"/blog/articles/word-counter-for-editing-client-copy.html","wordCount":2311},{"id":22,"slug":"case-converter-cleanup-workflow","title":"Case Converter Cleanup Workflow for Titles, Labels, and Data","excerpt":"Fix inconsistent capitalization without manually editing every field.","category":"text","categoryLabel":"Text and writing","date":"2026-04-22","readTime":"11 min read","emoji":"✍️","url":"/blog/articles/case-converter-cleanup-workflow.html","wordCount":2295},{"id":23,"slug":"slug-generator-url-cleanup-guide","title":"Slug Generator Guide: Clean URLs for Tools, Blogs, and Landing Pages","excerpt":"Create readable slugs that stay stable and avoid awkward punctuation.","category":"text","categoryLabel":"Text and writing","date":"2026-04-23","readTime":"11 min read","emoji":"✍️","url":"/blog/articles/slug-generator-url-cleanup-guide.html","wordCount":2321},{"id":24,"slug":"text-diff-for-reviewing-edits","title":"Text Diff for Reviewing Edits: A Practical Non-Developer Guide","excerpt":"Compare two versions of text and spot meaningful changes faster.","category":"text","categoryLabel":"Text and writing","date":"2026-04-24","readTime":"11 min read","emoji":"✍️","url":"/blog/articles/text-diff-for-reviewing-edits.html","wordCount":2297},{"id":25,"slug":"html-entity-encoder-publishing-guide","title":"HTML Entity Encoding for Publishing: When It Solves Broken Characters","excerpt":"Prevent symbols and markup from rendering incorrectly in simple content workflows.","category":"text","categoryLabel":"Text and writing","date":"2026-04-25","readTime":"11 min read","emoji":"✍️","url":"/blog/articles/html-entity-encoder-publishing-guide.html","wordCount":2310},{"id":26,"slug":"lorem-ipsum-with-real-layout-checks","title":"Lorem Ipsum With Real Layout Checks: How to Use Placeholder Text Wisely","excerpt":"Use dummy content to test spacing without letting placeholder copy reach production.","category":"text","categoryLabel":"Text and writing","date":"2026-04-26","readTime":"11 min read","emoji":"✍️","url":"/blog/articles/lorem-ipsum-with-real-layout-checks.html","wordCount":2337},{"id":27,"slug":"character-counter-for-meta-descriptions","title":"Character Counter for Meta Descriptions, Headlines, and Snippets","excerpt":"Write concise visible text without treating character limits as the only quality signal.","category":"text","categoryLabel":"Text and writing","date":"2026-04-27","readTime":"11 min read","emoji":"✍️","url":"/blog/articles/character-counter-for-meta-descriptions.html","wordCount":2286},{"id":28,"slug":"palindrome-checker-teaching-string-logic","title":"Palindrome Checker as a Simple Way to Teach String Logic","excerpt":"Use a small text tool to explain normalization, casing, spaces, and comparison.","category":"text","categoryLabel":"Text and writing","date":"2026-04-01","readTime":"11 min read","emoji":"✍️","url":"/blog/articles/palindrome-checker-teaching-string-logic.html","wordCount":2311},{"id":29,"slug":"clean-text-before-spreadsheet-import","title":"Clean Text Before Spreadsheet Import: A Practical Checklist","excerpt":"Reduce broken rows, hidden spaces, and inconsistent labels before data cleanup.","category":"text","categoryLabel":"Text and writing","date":"2026-04-02","readTime":"11 min read","emoji":"✍️","url":"/blog/articles/clean-text-before-spreadsheet-import.html","wordCount":2284},{"id":30,"slug":"writing-tool-stack-for-small-teams","title":"A Practical Writing Tool Stack for Small Teams","excerpt":"Combine counting, diffing, slugging, and formatting into a lightweight editorial flow.","category":"text","categoryLabel":"Text and writing","date":"2026-04-03","readTime":"11 min read","emoji":"✍️","url":"/blog/articles/writing-tool-stack-for-small-teams.html","wordCount":2284},{"id":31,"slug":"json-formatter-debugging-api-responses","title":"JSON Formatter for Debugging API Responses Without Losing Context","excerpt":"Format responses, inspect nesting, and preserve the original payload while debugging.","category":"developer","categoryLabel":"Developer utilities","date":"2026-04-04","readTime":"11 min read","emoji":"🧑‍💻","url":"/blog/articles/json-formatter-debugging-api-responses.html","wordCount":2289},{"id":32,"slug":"regex-tester-safe-review-workflow","title":"Regex Tester Workflow: Build Patterns Without Breaking Real Data","excerpt":"Test matches gradually, document assumptions, and avoid overbroad replacements.","category":"developer","categoryLabel":"Developer utilities","date":"2026-04-05","readTime":"11 min read","emoji":"🧑‍💻","url":"/blog/articles/regex-tester-safe-review-workflow.html","wordCount":2287},{"id":33,"slug":"base64-converter-common-use-cases","title":"Base64 Converter Common Use Cases and Common Misreads","excerpt":"Understand encoding, decoding, and when Base64 is not the same as encryption.","category":"developer","categoryLabel":"Developer utilities","date":"2026-04-06","readTime":"11 min read","emoji":"🧑‍💻","url":"/blog/articles/base64-converter-common-use-cases.html","wordCount":2278},{"id":34,"slug":"url-encoder-query-string-guide","title":"URL Encoder Guide for Query Strings, UTMs, and Redirects","excerpt":"Encode special characters correctly before sharing complex URLs.","category":"developer","categoryLabel":"Developer utilities","date":"2026-04-07","readTime":"11 min read","emoji":"🧑‍💻","url":"/blog/articles/url-encoder-query-string-guide.html","wordCount":2286},{"id":35,"slug":"css-minifier-before-production","title":"CSS Minifier Before Production: What to Check First","excerpt":"Minify safely after reviewing source files, comments, and rollback needs.","category":"developer","categoryLabel":"Developer utilities","date":"2026-04-08","readTime":"11 min read","emoji":"🧑‍💻","url":"/blog/articles/css-minifier-before-production.html","wordCount":2276},{"id":36,"slug":"js-minifier-practical-release-checks","title":"JavaScript Minifier Practical Release Checks for Small Sites","excerpt":"Reduce script size without hiding source-of-truth review steps.","category":"developer","categoryLabel":"Developer utilities","date":"2026-04-09","readTime":"11 min read","emoji":"🧑‍💻","url":"/blog/articles/js-minifier-practical-release-checks.html","wordCount":2274},{"id":37,"slug":"html-to-markdown-content-migration","title":"HTML to Markdown for Content Migration: A Clean Review Workflow","excerpt":"Convert markup into editable text while checking links, headings, and lists.","category":"developer","categoryLabel":"Developer utilities","date":"2026-04-10","readTime":"11 min read","emoji":"🧑‍💻","url":"/blog/articles/html-to-markdown-content-migration.html","wordCount":2303},{"id":38,"slug":"markdown-to-html-publishing-workflow","title":"Markdown to HTML Publishing Workflow for Guides and Notes","excerpt":"Turn structured notes into HTML while preserving hierarchy and readable output.","category":"developer","categoryLabel":"Developer utilities","date":"2026-04-11","readTime":"11 min read","emoji":"🧑‍💻","url":"/blog/articles/markdown-to-html-publishing-workflow.html","wordCount":2290},{"id":39,"slug":"color-converter-design-token-workflow","title":"Color Converter Workflow for Design Tokens and CSS Reviews","excerpt":"Move between hex, RGB, and HSL without losing contrast decisions.","category":"developer","categoryLabel":"Developer utilities","date":"2026-04-12","readTime":"11 min read","emoji":"🧑‍💻","url":"/blog/articles/color-converter-design-token-workflow.html","wordCount":2289},{"id":40,"slug":"code-formatter-review-before-sharing","title":"Code Formatter Review Before Sharing Snippets","excerpt":"Format snippets for readability before pasting them into issues, docs, or chat.","category":"developer","categoryLabel":"Developer utilities","date":"2026-04-13","readTime":"11 min read","emoji":"🧑‍💻","url":"/blog/articles/code-formatter-review-before-sharing.html","wordCount":2252},{"id":41,"slug":"unit-converter-for-project-planning","title":"Unit Converter for Project Planning: Avoid Small Measurement Mistakes","excerpt":"Convert dimensions, weights, and distances with a review habit that catches bad assumptions.","category":"converter","categoryLabel":"Converters","date":"2026-04-14","readTime":"11 min read","emoji":"🔁","url":"/blog/articles/unit-converter-for-project-planning.html","wordCount":2290},{"id":42,"slug":"currency-converter-for-estimates-not-final-prices","title":"Currency Converter for Estimates, Not Final Prices: A Practical Guide","excerpt":"Use exchange-rate conversions responsibly for planning, quoting, and travel estimates.","category":"converter","categoryLabel":"Converters","date":"2026-04-15","readTime":"11 min read","emoji":"🔁","url":"/blog/articles/currency-converter-for-estimates-not-final-prices.html","wordCount":2299},{"id":43,"slug":"timezone-converter-meeting-workflow","title":"Timezone Converter Meeting Workflow for Distributed Teams","excerpt":"Plan meetings with fewer calendar mistakes and clearer local-time notes.","category":"converter","categoryLabel":"Converters","date":"2026-04-16","readTime":"11 min read","emoji":"🔁","url":"/blog/articles/timezone-converter-meeting-workflow.html","wordCount":2263},{"id":44,"slug":"unix-timestamp-human-date-debugging","title":"Unix Timestamp to Human Date: Debugging Logs and Exports","excerpt":"Translate timestamps into readable context during support and data review.","category":"converter","categoryLabel":"Converters","date":"2026-04-17","readTime":"11 min read","emoji":"🔁","url":"/blog/articles/unix-timestamp-human-date-debugging.html","wordCount":2287},{"id":45,"slug":"number-base-converter-learning-guide","title":"Number Base Converter Learning Guide for Binary, Decimal, and Hex","excerpt":"Understand base conversion through practical debugging and teaching examples.","category":"converter","categoryLabel":"Converters","date":"2026-04-18","readTime":"11 min read","emoji":"🔁","url":"/blog/articles/number-base-converter-learning-guide.html","wordCount":2298},{"id":46,"slug":"roman-numerals-conversion-checklist","title":"Roman Numerals Conversion Checklist for Design and Publishing","excerpt":"Use Roman numerals consistently in outlines, clocks, and decorative content.","category":"converter","categoryLabel":"Converters","date":"2026-04-19","readTime":"11 min read","emoji":"🔁","url":"/blog/articles/roman-numerals-conversion-checklist.html","wordCount":2273},{"id":47,"slug":"percentage-calculator-business-copy","title":"Percentage Calculator for Business Copy and Quick Estimates","excerpt":"Calculate increases, discounts, margins, and differences without spreadsheet overhead.","category":"converter","categoryLabel":"Converters","date":"2026-04-20","readTime":"11 min read","emoji":"🔁","url":"/blog/articles/percentage-calculator-business-copy.html","wordCount":2272},{"id":48,"slug":"bmi-calculator-result-context","title":"BMI Calculator Result Context: How to Read the Number Carefully","excerpt":"Use BMI as a general screening estimate without turning it into personal medical advice.","category":"converter","categoryLabel":"Converters","date":"2026-04-21","readTime":"11 min read","emoji":"🔁","url":"/blog/articles/bmi-calculator-result-context.html","wordCount":2303},{"id":49,"slug":"age-calculator-for-forms-and-records","title":"Age Calculator for Forms, Records, and Eligibility Checks","excerpt":"Calculate ages consistently when dates, cutoffs, and birthdays matter.","category":"converter","categoryLabel":"Converters","date":"2026-04-22","readTime":"11 min read","emoji":"🔁","url":"/blog/articles/age-calculator-for-forms-and-records.html","wordCount":2272},{"id":50,"slug":"scientific-calculator-browser-workflow","title":"Scientific Calculator Browser Workflow for Quick Technical Math","excerpt":"Handle common calculations without opening a heavy desktop application.","category":"converter","categoryLabel":"Converters","date":"2026-04-23","readTime":"11 min read","emoji":"🔁","url":"/blog/articles/scientific-calculator-browser-workflow.html","wordCount":2272},{"id":51,"slug":"mortgage-refinance-break-even-guide","title":"Mortgage Refinance Break-Even Guide for Practical Decisions","excerpt":"Estimate how long savings may take to outweigh closing costs before refinancing.","category":"finance","categoryLabel":"Finance calculators","date":"2026-04-24","readTime":"11 min read","emoji":"💳","url":"/blog/articles/mortgage-refinance-break-even-guide.html","wordCount":2261},{"id":52,"slug":"compound-interest-scenarios-guide","title":"Compound Interest Scenarios: Compare Contributions, Rates, and Time","excerpt":"Use compounding estimates to understand tradeoffs before making planning decisions.","category":"finance","categoryLabel":"Finance calculators","date":"2026-04-25","readTime":"11 min read","emoji":"💳","url":"/blog/articles/compound-interest-scenarios-guide.html","wordCount":2271},{"id":53,"slug":"student-loan-payment-estimate-workflow","title":"Student Loan Payment Estimate Workflow for Budget Planning","excerpt":"Model payment scenarios and identify questions to verify with your loan servicer.","category":"finance","categoryLabel":"Finance calculators","date":"2026-04-26","readTime":"11 min read","emoji":"💳","url":"/blog/articles/student-loan-payment-estimate-workflow.html","wordCount":2273},{"id":54,"slug":"retirement-calculator-inputs-that-matter","title":"Retirement Calculator Inputs That Matter Most","excerpt":"Focus on assumptions that drive estimates instead of chasing false precision.","category":"finance","categoryLabel":"Finance calculators","date":"2026-04-27","readTime":"11 min read","emoji":"💳","url":"/blog/articles/retirement-calculator-inputs-that-matter.html","wordCount":2248},{"id":55,"slug":"tax-estimator-organize-documents-first","title":"Tax Estimator Workflow: Organize Documents Before Estimating","excerpt":"Prepare income, deductions, credits, and records before running rough calculations.","category":"finance","categoryLabel":"Finance calculators","date":"2026-04-01","readTime":"11 min read","emoji":"💳","url":"/blog/articles/tax-estimator-organize-documents-first.html","wordCount":2259},{"id":56,"slug":"cloud-cost-calculator-small-team-guide","title":"Cloud Cost Calculator Guide for Small Teams","excerpt":"Estimate cloud spending before committing to services, regions, and storage choices.","category":"finance","categoryLabel":"Finance calculators","date":"2026-04-02","readTime":"11 min read","emoji":"💳","url":"/blog/articles/cloud-cost-calculator-small-team-guide.html","wordCount":2260},{"id":57,"slug":"crypto-tax-records-prep-workflow","title":"Crypto Tax Records Prep Workflow Before Calculations","excerpt":"Organize trades, transfers, fees, and wallets before estimating taxable events.","category":"finance","categoryLabel":"Finance calculators","date":"2026-04-03","readTime":"11 min read","emoji":"💳","url":"/blog/articles/crypto-tax-records-prep-workflow.html","wordCount":2259},{"id":58,"slug":"life-insurance-estimate-context","title":"Life Insurance Estimate Context: Inputs to Review Carefully","excerpt":"Use estimates to frame questions before speaking with a licensed professional.","category":"finance","categoryLabel":"Finance calculators","date":"2026-04-04","readTime":"11 min read","emoji":"💳","url":"/blog/articles/life-insurance-estimate-context.html","wordCount":2273},{"id":59,"slug":"budget-before-large-purchase-workflow","title":"Budget Before a Large Purchase: Calculator Workflow","excerpt":"Estimate total cost, monthly impact, and opportunity tradeoffs before buying.","category":"finance","categoryLabel":"Finance calculators","date":"2026-04-05","readTime":"11 min read","emoji":"💳","url":"/blog/articles/budget-before-large-purchase-workflow.html","wordCount":2259},{"id":60,"slug":"compare-loan-options-with-clear-assumptions","title":"Compare Loan Options With Clear Assumptions Instead of Guesswork","excerpt":"Use consistent inputs when comparing term length, rate, fees, and payment size.","category":"finance","categoryLabel":"Finance calculators","date":"2026-04-06","readTime":"11 min read","emoji":"💳","url":"/blog/articles/compare-loan-options-with-clear-assumptions.html","wordCount":2287},{"id":61,"slug":"csv-to-json-clean-conversion-guide","title":"CSV to JSON Clean Conversion Guide for Small Data Sets","excerpt":"Prepare headers, delimiters, and values before turning spreadsheet rows into JSON.","category":"data","categoryLabel":"Data tools","date":"2026-04-07","readTime":"11 min read","emoji":"🧾","url":"/blog/articles/csv-to-json-clean-conversion-guide.html","wordCount":2301},{"id":62,"slug":"json-to-csv-export-workflow","title":"JSON to CSV Export Workflow for Reports and Review","excerpt":"Flatten data carefully and avoid losing nested context during export.","category":"data","categoryLabel":"Data tools","date":"2026-04-08","readTime":"11 min read","emoji":"🧾","url":"/blog/articles/json-to-csv-export-workflow.html","wordCount":2288},{"id":63,"slug":"csv-viewer-before-import-checklist","title":"CSV Viewer Checklist Before Importing Data Anywhere","excerpt":"Inspect columns, encodings, and sample rows before uploading a file into another system.","category":"data","categoryLabel":"Data tools","date":"2026-04-09","readTime":"11 min read","emoji":"🧾","url":"/blog/articles/csv-viewer-before-import-checklist.html","wordCount":2267},{"id":64,"slug":"sql-formatter-query-review-guide","title":"SQL Formatter Query Review Guide for Readable Statements","excerpt":"Format long queries to review joins, filters, and conditions more confidently.","category":"data","categoryLabel":"Data tools","date":"2026-04-10","readTime":"11 min read","emoji":"🧾","url":"/blog/articles/sql-formatter-query-review-guide.html","wordCount":2277},{"id":65,"slug":"checksum-calculator-file-verification","title":"Checksum Calculator for File Verification: Practical Uses","excerpt":"Confirm whether two files match after transfer, backup, or download.","category":"data","categoryLabel":"Data tools","date":"2026-04-11","readTime":"11 min read","emoji":"🧾","url":"/blog/articles/checksum-calculator-file-verification.html","wordCount":2264},{"id":66,"slug":"duplicate-finder-digital-cleanup-workflow","title":"Duplicate Finder Digital Cleanup Workflow for Safer Deletion","excerpt":"Find repeated files while avoiding accidental removal of the version you need.","category":"data","categoryLabel":"Data tools","date":"2026-04-12","readTime":"11 min read","emoji":"🧾","url":"/blog/articles/duplicate-finder-digital-cleanup-workflow.html","wordCount":2279},{"id":67,"slug":"file-renamer-consistent-naming-system","title":"File Renamer Workflow for a Consistent Naming System","excerpt":"Create predictable names for documents, images, exports, and archives.","category":"data","categoryLabel":"Data tools","date":"2026-04-13","readTime":"11 min read","emoji":"🧾","url":"/blog/articles/file-renamer-consistent-naming-system.html","wordCount":2276},{"id":68,"slug":"file-splitter-large-upload-workflow","title":"File Splitter Workflow for Large Upload Limits","excerpt":"Break large files into manageable parts while documenting how to restore them.","category":"data","categoryLabel":"Data tools","date":"2026-04-14","readTime":"11 min read","emoji":"🧾","url":"/blog/articles/file-splitter-large-upload-workflow.html","wordCount":2266},{"id":69,"slug":"file-merger-recombine-export-parts","title":"File Merger Workflow to Recombine Export Parts Cleanly","excerpt":"Rejoin split files while checking order, naming, and final integrity.","category":"data","categoryLabel":"Data tools","date":"2026-04-15","readTime":"11 min read","emoji":"🧾","url":"/blog/articles/file-merger-recombine-export-parts.html","wordCount":2277},{"id":70,"slug":"file-organizer-folder-architecture","title":"File Organizer Folder Architecture for Repeatable Work","excerpt":"Design folders and names around retrieval, not just storage.","category":"data","categoryLabel":"Data tools","date":"2026-04-16","readTime":"11 min read","emoji":"🧾","url":"/blog/articles/file-organizer-folder-architecture.html","wordCount":2263},{"id":71,"slug":"browser-first-tools-what-it-means","title":"Browser-First Tools: What It Means for Everyday File Work","excerpt":"Understand the visible workflow benefits and limits of processing files in your browser.","category":"privacy","categoryLabel":"Browser-first processing","date":"2026-04-17","readTime":"11 min read","emoji":"🛡️","url":"/blog/articles/browser-first-tools-what-it-means.html","wordCount":2289},{"id":72,"slug":"share-files-with-less-metadata-risk","title":"Share Files With Less Metadata Risk: A Practical Visible Checklist","excerpt":"Review file names, visible fields, export settings, and context before sharing.","category":"privacy","categoryLabel":"Browser-first processing","date":"2026-04-18","readTime":"11 min read","emoji":"🛡️","url":"/blog/articles/share-files-with-less-metadata-risk.html","wordCount":2299},{"id":73,"slug":"private-document-workflow-without-signup","title":"Private Document Workflow Without Forced Signup","excerpt":"Complete quick document tasks with fewer account steps and clearer review points.","category":"privacy","categoryLabel":"Browser-first processing","date":"2026-04-19","readTime":"11 min read","emoji":"🛡️","url":"/blog/articles/private-document-workflow-without-signup.html","wordCount":2252},{"id":74,"slug":"metadata-cleanup-before-publishing","title":"Metadata Cleanup Before Publishing: What Non-Experts Can Check","excerpt":"Check common visible and embedded details before documents or images go public.","category":"privacy","categoryLabel":"Browser-first processing","date":"2026-04-20","readTime":"11 min read","emoji":"🛡️","url":"/blog/articles/metadata-cleanup-before-publishing.html","wordCount":2276},{"id":75,"slug":"local-processing-vs-upload-tools-comparison","title":"Local Processing vs Upload Tools: A Practical Comparison","excerpt":"Decide which kind of tool fits the file, task, and collaboration need.","category":"privacy","categoryLabel":"Browser-first processing","date":"2026-04-21","readTime":"11 min read","emoji":"🛡️","url":"/blog/articles/local-processing-vs-upload-tools-comparison.html","wordCount":2276},{"id":76,"slug":"client-side-pdf-workflow-limits","title":"Client-Side PDF Workflow Limits: When to Use a Desktop App","excerpt":"Know when browser utilities are enough and when complex files need specialist software.","category":"privacy","categoryLabel":"Browser-first processing","date":"2026-04-22","readTime":"11 min read","emoji":"🛡️","url":"/blog/articles/client-side-pdf-workflow-limits.html","wordCount":2303},{"id":77,"slug":"safe-sharing-checklist-for-small-teams","title":"Safe Sharing Checklist for Small Teams Using Online Utilities","excerpt":"Create a simple visible review process before sending files externally.","category":"privacy","categoryLabel":"Browser-first processing","date":"2026-04-23","readTime":"11 min read","emoji":"🛡️","url":"/blog/articles/safe-sharing-checklist-for-small-teams.html","wordCount":2287},{"id":78,"slug":"sensitive-spreadsheet-cleanup-before-conversion","title":"Sensitive Spreadsheet Cleanup Before Conversion","excerpt":"Remove unnecessary columns and context before converting or sharing data files.","category":"privacy","categoryLabel":"Browser-first processing","date":"2026-04-24","readTime":"11 min read","emoji":"🛡️","url":"/blog/articles/sensitive-spreadsheet-cleanup-before-conversion.html","wordCount":2236},{"id":79,"slug":"public-link-review-workflow","title":"Public Link Review Workflow Before You Send Anything","excerpt":"Review destination, file contents, title, and recipient needs before sharing links.","category":"privacy","categoryLabel":"Browser-first processing","date":"2026-04-25","readTime":"11 min read","emoji":"🛡️","url":"/blog/articles/public-link-review-workflow.html","wordCount":2275},{"id":80,"slug":"browser-tool-empty-state-loading-success","title":"Why Empty, Loading, and Success States Matter in Browser Tools","excerpt":"Understand how product states reduce mistakes and help users trust the workflow.","category":"privacy","categoryLabel":"Browser-first processing","date":"2026-04-26","readTime":"11 min read","emoji":"🛡️","url":"/blog/articles/browser-tool-empty-state-loading-success.html","wordCount":2302},{"id":81,"slug":"pdf-merge-vs-pdf-split","title":"PDF Merge vs PDF Split: Which Tool Should You Open First?","excerpt":"Choose the right PDF operation based on whether you are combining or narrowing a packet.","category":"comparison","categoryLabel":"Tool comparisons","date":"2026-04-27","readTime":"11 min read","emoji":"⚖️","url":"/blog/articles/pdf-merge-vs-pdf-split.html","wordCount":2319},{"id":82,"slug":"word-counter-vs-character-counter","title":"Word Counter vs Character Counter for Editing Decisions","excerpt":"Use the right measurement for essays, metadata, social posts, and interface labels.","category":"comparison","categoryLabel":"Tool comparisons","date":"2026-04-01","readTime":"11 min read","emoji":"⚖️","url":"/blog/articles/word-counter-vs-character-counter.html","wordCount":2280},{"id":83,"slug":"json-formatter-vs-json-validator","title":"JSON Formatter vs JSON Validator: Different Jobs, Better Debugging","excerpt":"Separate readability from correctness when working with structured data.","category":"comparison","categoryLabel":"Tool comparisons","date":"2026-04-02","readTime":"11 min read","emoji":"⚖️","url":"/blog/articles/json-formatter-vs-json-validator.html","wordCount":2289},{"id":84,"slug":"image-compressor-vs-image-resizer","title":"Image Compressor vs Image Resizer: Which Fixes Your Problem?","excerpt":"Know whether your issue is pixel dimensions, byte size, or both.","category":"comparison","categoryLabel":"Tool comparisons","date":"2026-04-03","readTime":"11 min read","emoji":"⚖️","url":"/blog/articles/image-compressor-vs-image-resizer.html","wordCount":2291},{"id":85,"slug":"unit-converter-vs-scientific-calculator","title":"Unit Converter vs Scientific Calculator for Technical Work","excerpt":"Pick conversion tools for units and calculators for formulas to reduce errors.","category":"comparison","categoryLabel":"Tool comparisons","date":"2026-04-04","readTime":"11 min read","emoji":"⚖️","url":"/blog/articles/unit-converter-vs-scientific-calculator.html","wordCount":2280},{"id":86,"slug":"csv-to-json-vs-json-to-csv","title":"CSV to JSON vs JSON to CSV: Choose the Right Direction","excerpt":"Understand source format, destination format, and what structure may be lost.","category":"comparison","categoryLabel":"Tool comparisons","date":"2026-04-05","readTime":"11 min read","emoji":"⚖️","url":"/blog/articles/csv-to-json-vs-json-to-csv.html","wordCount":2318},{"id":87,"slug":"base64-vs-url-encoding","title":"Base64 vs URL Encoding: Similar Looking Tools, Different Purposes","excerpt":"Avoid mixing up payload encoding and URL-safe character encoding.","category":"comparison","categoryLabel":"Tool comparisons","date":"2026-04-06","readTime":"11 min read","emoji":"⚖️","url":"/blog/articles/base64-vs-url-encoding.html","wordCount":2290},{"id":88,"slug":"mortgage-calculator-vs-refinance-calculator","title":"Mortgage Calculator vs Refinance Calculator: Which Estimate Do You Need?","excerpt":"Use purchase estimates and refinance estimates for different financial questions.","category":"comparison","categoryLabel":"Tool comparisons","date":"2026-04-07","readTime":"11 min read","emoji":"⚖️","url":"/blog/articles/mortgage-calculator-vs-refinance-calculator.html","wordCount":2304},{"id":89,"slug":"markdown-to-html-vs-html-to-markdown","title":"Markdown to HTML vs HTML to Markdown for Publishing Workflows","excerpt":"Choose the direction based on whether you are drafting or cleaning existing content.","category":"comparison","categoryLabel":"Tool comparisons","date":"2026-04-08","readTime":"11 min read","emoji":"⚖️","url":"/blog/articles/markdown-to-html-vs-html-to-markdown.html","wordCount":2307},{"id":90,"slug":"duplicate-finder-vs-file-organizer","title":"Duplicate Finder vs File Organizer for Digital Cleanup","excerpt":"Remove redundant files and structure the files that remain with different workflows.","category":"comparison","categoryLabel":"Tool comparisons","date":"2026-04-09","readTime":"11 min read","emoji":"⚖️","url":"/blog/articles/duplicate-finder-vs-file-organizer.html","wordCount":2280},{"id":91,"slug":"five-minute-pdf-cleanup-workflow","title":"A Five-Minute PDF Cleanup Workflow Before Sending Documents","excerpt":"Run a fast review of size, page order, names, and next actions.","category":"workflow","categoryLabel":"Workflow guides","date":"2026-04-10","readTime":"11 min read","emoji":"🧭","url":"/blog/articles/five-minute-pdf-cleanup-workflow.html","wordCount":2282},{"id":92,"slug":"blog-publishing-tool-workflow","title":"Blog Publishing Tool Workflow From Draft to Clean Assets","excerpt":"Prepare text, images, slugs, and links before publishing a practical guide.","category":"workflow","categoryLabel":"Workflow guides","date":"2026-04-11","readTime":"11 min read","emoji":"🧭","url":"/blog/articles/blog-publishing-tool-workflow.html","wordCount":2294},{"id":93,"slug":"developer-debugging-tool-chain","title":"Developer Debugging Tool Chain for Small Front-End Issues","excerpt":"Combine formatters, encoders, and converters in a focused troubleshooting path.","category":"workflow","categoryLabel":"Workflow guides","date":"2026-04-12","readTime":"11 min read","emoji":"🧭","url":"/blog/articles/developer-debugging-tool-chain.html","wordCount":2280},{"id":94,"slug":"remote-team-meeting-and-file-workflow","title":"Remote Team Meeting and File Workflow","excerpt":"Prepare time zones, files, notes, and follow-up actions for distributed work.","category":"workflow","categoryLabel":"Workflow guides","date":"2026-04-13","readTime":"11 min read","emoji":"🧭","url":"/blog/articles/remote-team-meeting-and-file-workflow.html","wordCount":2255},{"id":95,"slug":"monthly-finance-document-routine","title":"Monthly Finance Document Routine With Browser Utilities","excerpt":"Keep statements, receipts, calculators, and exports organized through the month.","category":"workflow","categoryLabel":"Workflow guides","date":"2026-04-14","readTime":"11 min read","emoji":"🧭","url":"/blog/articles/monthly-finance-document-routine.html","wordCount":2267},{"id":96,"slug":"content-review-before-client-delivery","title":"Content Review Before Client Delivery: Text, PDF, and Image Checks","excerpt":"Review copy, document format, and visuals before sending work to a client.","category":"workflow","categoryLabel":"Workflow guides","date":"2026-04-15","readTime":"11 min read","emoji":"🧭","url":"/blog/articles/content-review-before-client-delivery.html","wordCount":2308},{"id":97,"slug":"data-cleanup-before-dashboard-import","title":"Data Cleanup Before Dashboard Import: A Lightweight Workflow","excerpt":"Check CSV, JSON, naming, and duplicates before data reaches a dashboard.","category":"workflow","categoryLabel":"Workflow guides","date":"2026-04-16","readTime":"11 min read","emoji":"🧭","url":"/blog/articles/data-cleanup-before-dashboard-import.html","wordCount":2281},{"id":98,"slug":"tool-selection-map-for-new-users","title":"Tool Selection Map for New Users: Start With the Task","excerpt":"Navigate categories by intent instead of scanning every tool link.","category":"workflow","categoryLabel":"Workflow guides","date":"2026-04-17","readTime":"11 min read","emoji":"🧭","url":"/blog/articles/tool-selection-map-for-new-users.html","wordCount":2306},{"id":99,"slug":"small-business-file-prep-stack","title":"Small Business File Prep Stack for Invoices, Images, and Reports","excerpt":"Use a repeatable stack for everyday admin files without adding heavy software.","category":"workflow","categoryLabel":"Workflow guides","date":"2026-04-18","readTime":"11 min read","emoji":"🧭","url":"/blog/articles/small-business-file-prep-stack.html","wordCount":2308},{"id":100,"slug":"support-ticket-evidence-prep","title":"Support Ticket Evidence Prep With Screenshots, PDFs, and Text","excerpt":"Prepare clear evidence that helps support teams understand and reproduce issues.","category":"workflow","categoryLabel":"Workflow guides","date":"2026-04-19","readTime":"11 min read","emoji":"🧭","url":"/blog/articles/support-ticket-evidence-prep.html","wordCount":2294}];
+    const labels = {"pdf":"PDF workflows","image":"Image optimization","text":"Text and writing","developer":"Developer utilities","converter":"Converters","finance":"Finance calculators","data":"Data tools","workflow":"Workflow guides","privacy":"Browser-first processing","comparison":"Tool comparisons"};
+    function labelFor(category) { return labels[category] || category; }
+    function card(article, featured) { return '<a href="' + article.url + '" class="blog-card ' + (featured ? 'featured-card' : '') + '" data-category="' + article.category + '"><div class="blog-card-image" aria-hidden="true">' + article.emoji + '</div><div class="blog-card-content"><span class="blog-category">' + labelFor(article.category) + '</span><h3>' + article.title + '</h3><p>' + article.excerpt + '</p><p class="blog-card-support">Best for readers who want a workflow, decision points, common mistakes, and a next tool to open.</p><div class="blog-meta"><span>' + article.date + '</span><span>•</span><span>' + article.readTime + '</span><span>•</span><span>' + article.wordCount + ' words</span></div></div></a>'; }
+    function render(category) { const source = category === 'all' ? articles : articles.filter((article) => article.category === category); document.getElementById('featuredPost').innerHTML = card(source[0] || articles[0], true); document.getElementById('blogGrid').innerHTML = source.slice(0, 12).map((article) => card(article, false)).join(''); renderSections(); }
+    function renderSections() { const container = document.getElementById('blogCategorySections'); container.innerHTML = Object.keys(labels).map((category) => { const posts = articles.filter((article) => article.category === category).slice(0, 4); if (!posts.length) return ''; return '<section class="category-section"><div class="category-section-header"><h2>' + labelFor(category) + '</h2><span>' + posts.length + ' highlighted guides</span></div><div class="blog-grid">' + posts.map((article) => card(article, false)).join('') + '</div></section>'; }).join(''); }
+    document.querySelectorAll('.filter-btn').forEach((button) => button.addEventListener('click', () => { document.querySelectorAll('.filter-btn').forEach((item) => item.classList.remove('active')); button.classList.add('active'); render(button.dataset.category); }));
+    const menuBtn = document.getElementById('mobileMenuBtn'); const mobileMenu = document.getElementById('mobileMenu'); if (menuBtn && mobileMenu) menuBtn.addEventListener('click', () => { const expanded = menuBtn.getAttribute('aria-expanded') === 'true'; menuBtn.setAttribute('aria-expanded', String(!expanded)); mobileMenu.hidden = expanded; mobileMenu.classList.toggle('active', !expanded); });
+    render('all');
   </script>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  var menuBtn = document.getElementById('mobileMenuBtn');
-  var mobileMenu = document.getElementById('mobileMenu');
-  if (menuBtn && mobileMenu) {
-    menuBtn.addEventListener('click', function() {
-      var isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
-      menuBtn.setAttribute('aria-expanded', !isExpanded);
-      mobileMenu.hidden = isExpanded;
-      mobileMenu.classList.toggle('active', !isExpanded);
-    });
-  }
-  var themeBtn = document.getElementById('themeToggle');
-  if (themeBtn) {
-    function getTheme() {
-      var s = localStorage.getItem('theme');
-      if (s) return s;
-      return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-    }
-    function updateIcon() {
-      var t = getTheme();
-      themeBtn.querySelector('.icon-sun').style.display = t === 'light' ? 'none' : 'block';
-      themeBtn.querySelector('.icon-moon').style.display = t === 'dark' ? 'none' : 'block';
-    }
-    themeBtn.addEventListener('click', function() {
-      var next = getTheme() === 'dark' ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', next);
-      localStorage.setItem('theme', next);
-      updateIcon();
-    });
-    updateIcon();
-  }
-});
-</script>
 </body>
 </html>
