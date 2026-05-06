@@ -12,6 +12,13 @@ const devCorsOrigins = (process.env.VITE_DEV_CORS_ORIGINS || 'http://localhost:3
   .map((origin) => origin.trim())
   .filter(Boolean);
 
+const securityHeaders = {
+  'X-Frame-Options': 'DENY',
+  'X-Content-Type-Options': 'nosniff',
+  'Referrer-Policy': 'strict-origin-when-cross-origin',
+  'Permissions-Policy': 'camera=(), microphone=(), geolocation=()'
+};
+
 // Discover all tool entry points
 const toolEntries = globSync('src/tools/**/index.html', {
   ignore: ['**/demo-*/**', '**/experimental/**', '**/test/**']
@@ -254,17 +261,14 @@ export default defineConfig({
     cors: {
       origin: devCorsOrigins
     },
-    headers: {
-      'X-Frame-Options': 'DENY',
-      'X-Content-Type-Options': 'nosniff',
-      'Referrer-Policy': 'strict-origin-when-cross-origin'
-    }
+    headers: securityHeaders
   },
 
   preview: {
     port: 4173,
     headers: {
-      'Cache-Control': 'public, max-age=31536000, immutable'
+      ...securityHeaders,
+      'Cache-Control': 'no-cache'
     }
   },
 
