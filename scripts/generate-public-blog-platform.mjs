@@ -6,7 +6,37 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const repoRoot = path.resolve(__dirname, '..');
 const articlesDir = path.join(repoRoot, 'src', 'blog', 'articles');
+const localesDir = path.join(repoRoot, 'public', 'locales');
 fs.mkdirSync(articlesDir, { recursive: true });
+
+const blogLocaleCodes = ['en', 'tr', 'ar'];
+
+function readBlogLocale(locale) {
+  const localePath = path.join(localesDir, locale, 'translation.json');
+  if (!fs.existsSync(localePath)) return {};
+  const data = JSON.parse(fs.readFileSync(localePath, 'utf8'));
+  return data.blog?.generator || {};
+}
+
+const blogLocales = Object.fromEntries(blogLocaleCodes.map((locale) => [locale, readBlogLocale(locale)]));
+
+function getArticleLocale(slug, locale = 'en') {
+  return blogLocales[locale]?.articles?.[slug] || {};
+}
+
+function buildArticleLocaleMap(slug, fallback) {
+  return Object.fromEntries(blogLocaleCodes.map((locale) => {
+    const article = getArticleLocale(slug, locale);
+    return [locale, {
+      title: article.title || fallback.title,
+      excerpt: article.excerpt || fallback.excerpt,
+      summary: article.summary || fallback.summary,
+      cta: article.cta || fallback.cta,
+      sections: article.sections || [],
+      faq: article.faq || []
+    }];
+  }));
+}
 
 const categories = {
   pdf: { label: 'PDF workflows', emoji: '📄', hub: '/categories/pdf-tools.html', tool: '/tools/pdf/compress/', toolLabel: 'PDF Compressor' },
@@ -246,7 +276,10 @@ function wordCount(html) {
 }
 
 function buildArticle(topic, index) {
-  const [categoryKey, slug, title, description] = topic;
+  const [categoryKey, slug, fallbackTitle, fallbackDescription] = topic;
+  const articleLocale = getArticleLocale(slug, 'en');
+  const title = articleLocale.title || fallbackTitle;
+  const description = articleLocale.excerpt || fallbackDescription;
   const category = categories[categoryKey];
   const date = slugToDate(index);
   const rotated = sectionThemes.map((_, i) => sectionThemes[(i + index) % sectionThemes.length]);
@@ -258,18 +291,23 @@ function buildArticle(topic, index) {
   const intro = isRewritten
     ? `${description} This guide focuses on the exact review habits that make ${topicPlainName(title).toLowerCase()} easier to trust in a real handoff. It keeps the original input visible, explains what to check before and after using the related tool, and shows where a quick browser workflow is enough versus where a heavier specialist workflow is safer.`
     : `${description} The useful workflow starts with the source, the destination, and the person who needs the result. Use the related MC NovaTools category to finish the specific task, then review the output in context before you share, import, publish, or archive it.`;
-  const summary = isRewritten
+  const summary = articleLocale.summary || (isRewritten
     ? `A focused ${category.label.toLowerCase()} workflow for ${topicPlainName(title).toLowerCase()}: verify the source, choose one reversible setting, inspect the weak spots, name the result clearly, and confirm the next action.`
-    : `Use this ${category.label.toLowerCase()} guide to connect the tool, the review step, and the next handoff without relying on a generic checklist.`;
+    : `Use this ${category.label.toLowerCase()} guide to connect the tool, the review step, and the next handoff without relying on a generic checklist.`);
+  const localeMap = buildArticleLocaleMap(slug, { title, excerpt: description, summary, cta: { primary: `Open ${category.toolLabel}`, secondary: 'View related category' } });
   const sectionSource = isRewritten ? buildFocusedSections(topic, index) : rotated;
-  const sections = sectionSource.map(([heading, body], sectionIndex) => `
+  const sections = sectionSource.map(([fallbackHeading, body], sectionIndex) => {
+    const heading = articleLocale.sections?.[sectionIndex]?.heading || fallbackHeading;
+    return `
             <section>
-              <h2>${escapeHtml(heading)}</h2>
+              <h2 data-locale-section="${sectionIndex}">${escapeHtml(heading)}</h2>
               <p>${escapeHtml(body)}</p>
               <p>${escapeHtml(topicDetailParagraph(categoryKey, title, sectionIndex))}</p>
-            </section>`).join('\n');
-  const relatedHtml = related.map((item) => `<li><a href="/blog/articles/${item[1]}.html">${escapeHtml(item[2])}</a></li>`).join('\n');
-  const faqHtml = faqs.map(([q, a]) => `<details class="article-faq"><summary>${escapeHtml(q)}</summary><p>${escapeHtml(a)}</p></details>`).join('\n');
+            </section>`;
+  }).join('\n');
+  const relatedHtml = related.map((item) => `<li><a href="/blog/articles/${item[1]}.html">${escapeHtml(getArticleLocale(item[1], 'en').title || item[2])}</a></li>`).join('\n');
+  const faqSource = articleLocale.faq?.length ? articleLocale.faq.map((item) => [item.question, item.answer]) : faqs;
+  const faqHtml = faqSource.map(([q, a], faqIndex) => `<details class="article-faq" data-locale-faq="${faqIndex}"><summary>${escapeHtml(q)}</summary><p>${escapeHtml(a)}</p></details>`).join('\n');
   const html = `<!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
@@ -303,9 +341,9 @@ function buildArticle(topic, index) {
         <header class="article-hero-card">
           <a class="article-back" href="/blog/index.html">← Blog hub</a>
           <div class="article-meta"><span class="tag tag-accent">${escapeHtml(category.label)}</span><time datetime="${date}">${date}</time><span>${escapeHtml(cover.label)}</span><span>${Math.ceil(wordCount(sections) / 220) + 2} min read</span></div>
-          <div class="article-hero-grid"><div><h1>${escapeHtml(title)}</h1><p class="article-lede">${escapeHtml(intro)}</p></div><figure class="article-visual"><img src="${cover.file}" alt="${escapeHtml(`${cover.label} cover for ${title}`)}" width="640" height="360" loading="eager"><figcaption>${escapeHtml(cover.accent)}</figcaption></figure></div>
-          <div class="summary-box"><strong>Quick summary:</strong> ${escapeHtml(summary)}</div>
-          <div class="article-cta-row"><a class="btn btn-primary" href="${category.tool}">Open ${escapeHtml(category.toolLabel)}</a><a class="btn btn-secondary" href="${category.hub}">View related category</a></div>
+          <div class="article-hero-grid"><div><h1 data-locale-field="title">${escapeHtml(title)}</h1><p class="article-lede" data-locale-field="excerpt">${escapeHtml(intro)}</p></div><figure class="article-visual"><img src="${cover.file}" alt="${escapeHtml(`${cover.label} cover for ${title}`)}" width="640" height="360" loading="eager"><figcaption>${escapeHtml(cover.accent)}</figcaption></figure></div>
+          <div class="summary-box"><strong>Quick summary:</strong> <span data-locale-field="summary">${escapeHtml(summary)}</span></div>
+          <div class="article-cta-row"><a class="btn btn-primary" href="${category.tool}" data-locale-field="cta.primary">${escapeHtml(articleLocale.cta?.primary || `Open ${category.toolLabel}`)}</a><a class="btn btn-secondary" href="${category.hub}" data-locale-field="cta.secondary">${escapeHtml(articleLocale.cta?.secondary || 'View related category')}</a></div>
         </header>
         <div class="article-content premium-copy">
           ${sections}
@@ -331,8 +369,18 @@ function buildArticle(topic, index) {
 
   <script>
     (function(){
+      var articleLocales = ${JSON.stringify(localeMap)};
       function lang(){ try { return localStorage.getItem('mc-novatools-language') || document.documentElement.lang || 'en'; } catch (_) { return document.documentElement.lang || 'en'; } }
+      function valueAt(source, path){ return path.split('.').reduce(function(value, key){ return value && value[key]; }, source); }
+      function applyLocalizedArticle(){
+        var data = articleLocales[lang()] || articleLocales.en;
+        if (!data) return;
+        document.querySelectorAll('[data-locale-field]').forEach(function(el){ var value = valueAt(data, el.dataset.localeField); if (value) el.textContent = value; });
+        document.querySelectorAll('[data-locale-section]').forEach(function(el){ var section = data.sections && data.sections[Number(el.dataset.localeSection)]; if (section && section.heading) el.textContent = section.heading; });
+        document.querySelectorAll('[data-locale-faq]').forEach(function(el){ var faq = data.faq && data.faq[Number(el.dataset.localeFaq)]; if (!faq) return; var summary = el.querySelector('summary'); var answer = el.querySelector('p'); if (summary && faq.question) summary.textContent = faq.question; if (answer && faq.answer) answer.textContent = faq.answer; });
+      }
       function apply(){
+        applyLocalizedArticle();
         if (lang() !== 'tr') return;
         document.documentElement.lang = 'tr';
         var back = document.querySelector('.article-back'); if (back) back.textContent = '← Blog merkezi';
@@ -369,8 +417,11 @@ for (let i = 0; i < topics.length; i += 1) {
   if (count < 1000) throw new Error(`${slug} is below 1000 words: ${count}`);
   fs.writeFileSync(path.join(articlesDir, `${slug}.html`), html);
   const cover = getCover(categoryKey);
-  articles.push({ id: i + 1, slug, title, excerpt: description, category: categoryKey, categoryLabel: category.label, date, readTime: `${Math.ceil(count / 220)} min read`, cover: cover.file, coverAlt: `${cover.label} cover for ${title}`, coverLabel: cover.label, coverAccent: cover.accent, rewritten: weakRewriteSlugs.has(slug), url: `/blog/articles/${slug}.html`, wordCount: count });
-  counts.push({ slug, title, wordCount: count });
+  const enArticle = getArticleLocale(slug, 'en');
+  const articleTitle = enArticle.title || title;
+  const articleExcerpt = enArticle.excerpt || description;
+  articles.push({ id: i + 1, slug, title: articleTitle, excerpt: articleExcerpt, locales: buildArticleLocaleMap(slug, { title: articleTitle, excerpt: articleExcerpt }), category: categoryKey, categoryLabel: category.label, date, readTime: `${Math.ceil(count / 220)} min read`, cover: cover.file, coverAlt: `${cover.label} cover for ${articleTitle}`, coverLabel: cover.label, coverAccent: cover.accent, rewritten: weakRewriteSlugs.has(slug), url: `/blog/articles/${slug}.html`, wordCount: count });
+  counts.push({ slug, title: articleTitle, wordCount: count });
 }
 
 const filters = ['all', ...Object.keys(categories)];
@@ -438,7 +489,8 @@ const indexHtml = `<!DOCTYPE html>
     function escapeAttr(value) { return String(value).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;'); }
     function localizedSupport(article) { return currentLang() === 'tr' ? article.coverAccent + ' için pratik kontroller, yaygın hatalar ve ilgili araç yolu.' : article.coverAccent + ' with practical checks, common mistakes, and a related tool path.'; }
     function readTime(text) { return currentLang() === 'tr' ? text.replace('min read', 'dk okuma') : text; }
-    function card(article, featured) { return '<a href="' + article.url + '" class="blog-card ' + (featured ? 'featured-card' : '') + '" data-category="' + article.category + '"><div class="blog-card-image"><img src="' + article.cover + '" alt="' + escapeAttr(article.coverAlt) + '" loading="lazy" width="640" height="360"><span>' + article.coverLabel + '</span></div><div class="blog-card-content"><span class="blog-category">' + labelFor(article.category) + '</span><h3>' + article.title + '</h3><p>' + article.excerpt + '</p><p class="blog-card-support">' + localizedSupport(article) + '</p><div class="blog-meta"><span>' + article.date + '</span><span>•</span><span>' + readTime(article.readTime) + '</span><span>•</span><span>' + article.wordCount + (currentLang() === 'tr' ? ' kelime' : ' words') + '</span></div></div></a>'; }
+    function articleText(article) { return article.locales?.[currentLang()] || article.locales?.en || article; }
+    function card(article, featured) { const text = articleText(article); return '<a href="' + article.url + '" class="blog-card ' + (featured ? 'featured-card' : '') + '" data-category="' + article.category + '"><div class="blog-card-image"><img src="' + article.cover + '" alt="' + escapeAttr(article.coverAlt) + '" loading="lazy" width="640" height="360"><span>' + article.coverLabel + '</span></div><div class="blog-card-content"><span class="blog-category">' + labelFor(article.category) + '</span><h3>' + text.title + '</h3><p>' + text.excerpt + '</p><p class="blog-card-support">' + localizedSupport(article) + '</p><div class="blog-meta"><span>' + article.date + '</span><span>•</span><span>' + readTime(article.readTime) + '</span><span>•</span><span>' + article.wordCount + (currentLang() === 'tr' ? ' kelime' : ' words') + '</span></div></div></a>'; }
     function render(category) { const source = category === 'all' ? articles : articles.filter((article) => article.category === category); document.getElementById('featuredPost').innerHTML = card(source[0] || articles[0], true); document.getElementById('blogGrid').innerHTML = source.slice(0, 12).map((article) => card(article, false)).join(''); renderSections(); }
     function renderSections() { const container = document.getElementById('blogCategorySections'); container.innerHTML = Object.keys(labels).map((category) => { const posts = articles.filter((article) => article.category === category).slice(0, 4); if (!posts.length) return ''; const countText = currentLang() === 'tr' ? posts.length + ' öne çıkan rehber' : posts.length + ' highlighted guides'; return '<section class="category-section"><div class="category-section-header"><h2>' + labelFor(category) + '</h2><span>' + countText + '</span></div><div class="blog-grid">' + posts.map((article) => card(article, false)).join('') + '</div></section>'; }).join(''); }
     document.querySelectorAll('.filter-btn').forEach((button) => button.addEventListener('click', () => { document.querySelectorAll('.filter-btn').forEach((item) => item.classList.remove('active')); button.classList.add('active'); render(button.dataset.category); }));

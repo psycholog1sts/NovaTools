@@ -5930,6 +5930,51 @@
     "sections": {
       "featured": "Öne çıkan yazı",
       "latest": "Son yazılar"
+    },
+    "generator": {
+      "modelVersion": 1,
+      "fields": [
+        "title",
+        "excerpt",
+        "summary",
+        "sections.heading",
+        "faq.question",
+        "faq.answer",
+        "cta.primary",
+        "cta.secondary"
+      ],
+      "articles": {
+        "compress-pdf-for-email-without-ruining-readability": {
+          "title": "Okunabilirliği Bozmadan E-posta İçin PDF Sıkıştırma",
+          "excerpt": "Metinleri, taramaları ve imzaları gerçek inceleme için okunabilir tutarken PDF dosyasını e-posta için küçültün.",
+          "summary": "Yerelleştirmeye hazır PDF sıkıştırma akışı: orijinali saklayın, dengeli bir boyut hedefi seçin, okunabilir ayrıntıları kontrol edin ve e-postadaki dosyanın alıcı için hâlâ işe yaradığını doğrulayın.",
+          "sections": [
+            {
+              "heading": "E-posta sınırı ve okuyucu ihtiyacıyla başlayın"
+            },
+            {
+              "heading": "Sıkıştırmadan önce orijinali koruyun"
+            },
+            {
+              "heading": "Her dışa aktarımdan sonra okunabilirliği kontrol edin"
+            }
+          ],
+          "faq": [
+            {
+              "question": "Her PDF e-posta öncesi sıkıştırılmalı mı?",
+              "answer": "Hayır. Dosya hedef için çok büyükse sıkıştırın; göndermeden önce metinleri, taramaları, imzaları ve sayfa sırasını kontrol edin."
+            },
+            {
+              "question": "En güvenli sıkıştırma ayarı nedir?",
+              "answer": "Küçük metinleri, tabloları veya taranmış sayfaları zor okunur yapmadan boyutu azaltan dengeli bir ayarla başlayın."
+            }
+          ],
+          "cta": {
+            "primary": "PDF Sıkıştırıcıyı Aç",
+            "secondary": "PDF araçlarını görüntüle"
+          }
+        }
+      }
     }
   }
 }
