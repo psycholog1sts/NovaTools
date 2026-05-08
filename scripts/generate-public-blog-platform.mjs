@@ -9,7 +9,7 @@ const articlesDir = path.join(repoRoot, 'src', 'blog', 'articles');
 const localesDir = path.join(repoRoot, 'public', 'locales');
 fs.mkdirSync(articlesDir, { recursive: true });
 
-const blogLocaleCodes = ['en', 'tr', 'ar'];
+const blogLocaleCodes = ['en', 'tr', 'de', 'fr', 'es', 'pt', 'ru', 'zh', 'ja', 'ko', 'ar', 'hi', 'it', 'pl', 'nl'];
 
 function readBlogLocale(locale) {
   const localePath = path.join(localesDir, locale, 'translation.json');
@@ -19,6 +19,225 @@ function readBlogLocale(locale) {
 }
 
 const blogLocales = Object.fromEntries(blogLocaleCodes.map((locale) => [locale, readBlogLocale(locale)]));
+
+
+const rtlLocales = new Set(['ar']);
+
+const blogIndexLocales = {
+  en: {
+    all: 'All guides',
+    heroBadge: 'Editorial workflow library',
+    heroTitle: 'Practical guides connected to the tools people actually open',
+    heroDescription: 'Use the blog as a decision layer for PDF work, image optimization, writing cleanup, developer utilities, converters, finance calculators, data workflows, and browser-first file handling.',
+    featuredGuideTitle: 'Featured guide',
+    latestGuides: 'Latest practical guides',
+    highlightedGuides: 'highlighted guides',
+    supportSuffix: 'with practical checks, common mistakes, and a related tool path.',
+    words: 'words',
+    minuteRead: 'min read',
+    categories: {}
+  },
+  tr: {
+    all: 'Tüm rehberler',
+    heroBadge: 'Editoryal iş akışı kütüphanesi',
+    heroTitle: 'İnsanların gerçekten açtığı araçlara bağlı pratik rehberler',
+    heroDescription: 'PDF işleri, görsel optimizasyonu, yazım temizliği, geliştirici araçları, dönüştürücüler, finans hesaplayıcıları, veri iş akışları ve tarayıcı öncelikli dosya işlemleri için karar katmanı olarak blogu kullanın.',
+    featuredGuideTitle: 'Öne çıkan rehber',
+    latestGuides: 'Son pratik rehberler',
+    highlightedGuides: 'öne çıkan rehber',
+    supportSuffix: 'için pratik kontroller, yaygın hatalar ve ilgili araç yolu.',
+    words: 'kelime',
+    minuteRead: 'dk okuma',
+    categories: { pdf: 'PDF iş akışları', image: 'Görsel optimizasyonu', text: 'Metin ve yazım', developer: 'Geliştirici araçları', converter: 'Dönüştürücüler', finance: 'Finans hesaplayıcıları', data: 'Veri araçları', workflow: 'İş akışı rehberleri', privacy: 'Tarayıcı öncelikli işlem', comparison: 'Araç karşılaştırmaları' }
+  },
+  de: {
+    all: 'Alle Leitfäden',
+    heroBadge: 'Bibliothek für redaktionelle Workflows',
+    heroTitle: 'Praxisleitfäden zu den Tools, die Menschen wirklich öffnen',
+    heroDescription: 'Nutzen Sie den Blog als Entscheidungsebene für PDF-Arbeiten, Bildoptimierung, Textbereinigung, Entwicklerwerkzeuge, Konverter, Finanzrechner, Daten-Workflows und browserbasierte Dateiverarbeitung.',
+    featuredGuideTitle: 'Empfohlener Leitfaden',
+    latestGuides: 'Neueste Praxisleitfäden',
+    highlightedGuides: 'hervorgehobene Leitfäden',
+    supportSuffix: 'mit praktischen Prüfungen, typischen Fehlern und einem passenden Tool-Pfad.',
+    words: 'Wörter',
+    minuteRead: 'Min. Lesezeit',
+    categories: { pdf: 'PDF-Workflows', image: 'Bildoptimierung', text: 'Text und Schreiben', developer: 'Entwicklerwerkzeuge', converter: 'Konverter', finance: 'Finanzrechner', data: 'Datentools', workflow: 'Workflow-Leitfäden', privacy: 'Browserbasierte Verarbeitung', comparison: 'Tool-Vergleiche' }
+  },
+  fr: {
+    all: 'Tous les guides',
+    heroBadge: 'Bibliothèque de flux éditoriaux',
+    heroTitle: 'Guides pratiques liés aux outils que les gens ouvrent vraiment',
+    heroDescription: 'Utilisez le blog comme couche de décision pour les PDF, l’optimisation d’images, le nettoyage de texte, les outils développeur, les convertisseurs, les calculateurs financiers, les flux de données et le traitement de fichiers dans le navigateur.',
+    featuredGuideTitle: 'Guide à la une',
+    latestGuides: 'Derniers guides pratiques',
+    highlightedGuides: 'guides sélectionnés',
+    supportSuffix: 'avec des contrôles pratiques, des erreurs courantes et un chemin d’outil lié.',
+    words: 'mots',
+    minuteRead: 'min de lecture',
+    categories: { pdf: 'Flux PDF', image: 'Optimisation d’images', text: 'Texte et rédaction', developer: 'Outils développeur', converter: 'Convertisseurs', finance: 'Calculateurs financiers', data: 'Outils de données', workflow: 'Guides de workflow', privacy: 'Traitement dans le navigateur', comparison: 'Comparatifs d’outils' }
+  },
+  es: {
+    all: 'Todas las guías',
+    heroBadge: 'Biblioteca de flujos editoriales',
+    heroTitle: 'Guías prácticas conectadas con herramientas que la gente realmente abre',
+    heroDescription: 'Use el blog como capa de decisión para trabajos con PDF, optimización de imágenes, limpieza de texto, utilidades para desarrolladores, conversores, calculadoras financieras, flujos de datos y manejo de archivos en el navegador.',
+    featuredGuideTitle: 'Guía destacada',
+    latestGuides: 'Últimas guías prácticas',
+    highlightedGuides: 'guías destacadas',
+    supportSuffix: 'con comprobaciones prácticas, errores comunes y una ruta de herramienta relacionada.',
+    words: 'palabras',
+    minuteRead: 'min de lectura',
+    categories: { pdf: 'Flujos PDF', image: 'Optimización de imágenes', text: 'Texto y escritura', developer: 'Herramientas para desarrolladores', converter: 'Conversores', finance: 'Calculadoras financieras', data: 'Herramientas de datos', workflow: 'Guías de flujo de trabajo', privacy: 'Procesamiento en el navegador', comparison: 'Comparativas de herramientas' }
+  },
+  pt: {
+    all: 'Todos os guias',
+    heroBadge: 'Biblioteca de fluxos editoriais',
+    heroTitle: 'Guias práticos ligados às ferramentas que as pessoas realmente abrem',
+    heroDescription: 'Use o blog como camada de decisão para PDFs, otimização de imagens, limpeza de texto, utilitários de desenvolvimento, conversores, calculadoras financeiras, fluxos de dados e processamento de arquivos no navegador.',
+    featuredGuideTitle: 'Guia em destaque',
+    latestGuides: 'Guias práticos mais recentes',
+    highlightedGuides: 'guias em destaque',
+    supportSuffix: 'com verificações práticas, erros comuns e um caminho de ferramenta relacionado.',
+    words: 'palavras',
+    minuteRead: 'min de leitura',
+    categories: { pdf: 'Fluxos de PDF', image: 'Otimização de imagens', text: 'Texto e escrita', developer: 'Ferramentas para desenvolvedores', converter: 'Conversores', finance: 'Calculadoras financeiras', data: 'Ferramentas de dados', workflow: 'Guias de fluxo de trabalho', privacy: 'Processamento no navegador', comparison: 'Comparações de ferramentas' }
+  },
+  ru: {
+    all: 'Все руководства',
+    heroBadge: 'Библиотека редакционных процессов',
+    heroTitle: 'Практические руководства для инструментов, которыми действительно пользуются',
+    heroDescription: 'Используйте блог как слой принятия решений для PDF, оптимизации изображений, очистки текста, инструментов разработчика, конвертеров, финансовых калькуляторов, рабочих процессов с данными и обработки файлов в браузере.',
+    featuredGuideTitle: 'Избранное руководство',
+    latestGuides: 'Новые практические руководства',
+    highlightedGuides: 'избранных руководства',
+    supportSuffix: 'с практическими проверками, типичными ошибками и связанным путем к инструменту.',
+    words: 'слов',
+    minuteRead: 'мин чтения',
+    categories: { pdf: 'PDF-процессы', image: 'Оптимизация изображений', text: 'Текст и письмо', developer: 'Инструменты разработчика', converter: 'Конвертеры', finance: 'Финансовые калькуляторы', data: 'Инструменты данных', workflow: 'Руководства по процессам', privacy: 'Обработка в браузере', comparison: 'Сравнения инструментов' }
+  },
+  zh: {
+    all: '所有指南',
+    heroBadge: '编辑工作流资料库',
+    heroTitle: '连接到真实常用工具的实用指南',
+    heroDescription: '将博客用作 PDF 处理、图像优化、文本清理、开发者工具、转换器、财务计算器、数据工作流和浏览器优先文件处理的决策层。',
+    featuredGuideTitle: '精选指南',
+    latestGuides: '最新实用指南',
+    highlightedGuides: '篇精选指南',
+    supportSuffix: '包含实用检查、常见错误和相关工具路径。',
+    words: '字',
+    minuteRead: '分钟阅读',
+    categories: { pdf: 'PDF 工作流', image: '图像优化', text: '文本与写作', developer: '开发者工具', converter: '转换器', finance: '财务计算器', data: '数据工具', workflow: '工作流指南', privacy: '浏览器优先处理', comparison: '工具对比' }
+  },
+  ja: {
+    all: 'すべてのガイド',
+    heroBadge: '編集ワークフローライブラリ',
+    heroTitle: '実際に使われるツールにつながる実用ガイド',
+    heroDescription: 'PDF 作業、画像最適化、文章整理、開発者ユーティリティ、変換ツール、金融計算、データワークフロー、ブラウザ中心のファイル処理の判断レイヤーとしてブログを活用してください。',
+    featuredGuideTitle: '注目ガイド',
+    latestGuides: '最新の実用ガイド',
+    highlightedGuides: '件の注目ガイド',
+    supportSuffix: 'の実用チェック、よくあるミス、関連ツールへの導線。',
+    words: '語',
+    minuteRead: '分で読めます',
+    categories: { pdf: 'PDF ワークフロー', image: '画像最適化', text: 'テキストと文章', developer: '開発者ツール', converter: '変換ツール', finance: '金融計算ツール', data: 'データツール', workflow: 'ワークフローガイド', privacy: 'ブラウザ中心の処理', comparison: 'ツール比較' }
+  },
+  ko: {
+    all: '모든 가이드',
+    heroBadge: '편집 워크플로 라이브러리',
+    heroTitle: '사람들이 실제로 여는 도구와 연결된 실용 가이드',
+    heroDescription: 'PDF 작업, 이미지 최적화, 글 정리, 개발자 유틸리티, 변환기, 금융 계산기, 데이터 워크플로, 브라우저 우선 파일 처리를 위한 의사결정 계층으로 블로그를 활용하세요.',
+    featuredGuideTitle: '추천 가이드',
+    latestGuides: '최신 실용 가이드',
+    highlightedGuides: '개의 추천 가이드',
+    supportSuffix: '에 대한 실용 점검, 흔한 실수, 관련 도구 경로.',
+    words: '단어',
+    minuteRead: '분 읽기',
+    categories: { pdf: 'PDF 워크플로', image: '이미지 최적화', text: '텍스트와 글쓰기', developer: '개발자 도구', converter: '변환기', finance: '금융 계산기', data: '데이터 도구', workflow: '워크플로 가이드', privacy: '브라우저 우선 처리', comparison: '도구 비교' }
+  },
+  ar: {
+    all: 'كل الأدلة',
+    heroBadge: 'مكتبة سير عمل تحريرية',
+    heroTitle: 'أدلة عملية مرتبطة بالأدوات التي يفتحها الناس فعلًا',
+    heroDescription: 'استخدم المدونة كطبقة قرار لمهام PDF وتحسين الصور وتنظيف الكتابة وأدوات المطورين والمحوّلات والحاسبات المالية وسير عمل البيانات ومعالجة الملفات داخل المتصفح.',
+    featuredGuideTitle: 'الدليل المميز',
+    latestGuides: 'أحدث الأدلة العملية',
+    highlightedGuides: 'أدلة مختارة',
+    supportSuffix: 'مع فحوصات عملية وأخطاء شائعة ومسار أداة مرتبط.',
+    words: 'كلمة',
+    minuteRead: 'دقيقة قراءة',
+    categories: { pdf: 'سير عمل PDF', image: 'تحسين الصور', text: 'النص والكتابة', developer: 'أدوات المطورين', converter: 'المحوّلات', finance: 'الحاسبات المالية', data: 'أدوات البيانات', workflow: 'أدلة سير العمل', privacy: 'معالجة داخل المتصفح', comparison: 'مقارنات الأدوات' }
+  },
+  hi: {
+    all: 'सभी गाइड',
+    heroBadge: 'संपादकीय वर्कफ़्लो लाइब्रेरी',
+    heroTitle: 'उन टूल से जुड़े व्यावहारिक गाइड जिन्हें लोग सच में खोलते हैं',
+    heroDescription: 'PDF कार्य, इमेज ऑप्टिमाइज़ेशन, लेखन सफ़ाई, डेवलपर यूटिलिटी, कन्वर्टर, वित्तीय कैलकुलेटर, डेटा वर्कफ़्लो और ब्राउज़र-आधारित फ़ाइल हैंडलिंग के लिए ब्लॉग को निर्णय परत की तरह उपयोग करें।',
+    featuredGuideTitle: 'विशेष गाइड',
+    latestGuides: 'नवीनतम व्यावहारिक गाइड',
+    highlightedGuides: 'चयनित गाइड',
+    supportSuffix: 'के लिए व्यावहारिक जाँच, आम गलतियाँ और संबंधित टूल पथ।',
+    words: 'शब्द',
+    minuteRead: 'मिनट पढ़ें',
+    categories: { pdf: 'PDF वर्कफ़्लो', image: 'इमेज ऑप्टिमाइज़ेशन', text: 'टेक्स्ट और लेखन', developer: 'डेवलपर टूल', converter: 'कन्वर्टर', finance: 'वित्तीय कैलकुलेटर', data: 'डेटा टूल', workflow: 'वर्कफ़्लो गाइड', privacy: 'ब्राउज़र-आधारित प्रोसेसिंग', comparison: 'टूल तुलना' }
+  },
+  it: {
+    all: 'Tutte le guide',
+    heroBadge: 'Libreria di workflow editoriali',
+    heroTitle: 'Guide pratiche collegate agli strumenti che le persone aprono davvero',
+    heroDescription: 'Usa il blog come livello decisionale per PDF, ottimizzazione immagini, pulizia del testo, utility per sviluppatori, convertitori, calcolatori finanziari, flussi dati e gestione dei file nel browser.',
+    featuredGuideTitle: 'Guida in evidenza',
+    latestGuides: 'Ultime guide pratiche',
+    highlightedGuides: 'guide in evidenza',
+    supportSuffix: 'con controlli pratici, errori comuni e un percorso strumento correlato.',
+    words: 'parole',
+    minuteRead: 'min di lettura',
+    categories: { pdf: 'Workflow PDF', image: 'Ottimizzazione immagini', text: 'Testo e scrittura', developer: 'Strumenti per sviluppatori', converter: 'Convertitori', finance: 'Calcolatori finanziari', data: 'Strumenti dati', workflow: 'Guide workflow', privacy: 'Elaborazione nel browser', comparison: 'Confronti tra strumenti' }
+  },
+  pl: {
+    all: 'Wszystkie poradniki',
+    heroBadge: 'Biblioteka redakcyjnych przepływów pracy',
+    heroTitle: 'Praktyczne poradniki połączone z narzędziami, które ludzie naprawdę otwierają',
+    heroDescription: 'Używaj bloga jako warstwy decyzyjnej dla PDF-ów, optymalizacji obrazów, porządkowania tekstu, narzędzi deweloperskich, konwerterów, kalkulatorów finansowych, pracy z danymi i obsługi plików w przeglądarce.',
+    featuredGuideTitle: 'Wyróżniony poradnik',
+    latestGuides: 'Najnowsze praktyczne poradniki',
+    highlightedGuides: 'wyróżnione poradniki',
+    supportSuffix: 'z praktycznymi kontrolami, typowymi błędami i powiązaną ścieżką narzędzia.',
+    words: 'słów',
+    minuteRead: 'min czytania',
+    categories: { pdf: 'Przepływy PDF', image: 'Optymalizacja obrazów', text: 'Tekst i pisanie', developer: 'Narzędzia deweloperskie', converter: 'Konwertery', finance: 'Kalkulatory finansowe', data: 'Narzędzia danych', workflow: 'Poradniki workflow', privacy: 'Przetwarzanie w przeglądarce', comparison: 'Porównania narzędzi' }
+  },
+  nl: {
+    all: 'Alle gidsen',
+    heroBadge: 'Bibliotheek voor redactionele workflows',
+    heroTitle: 'Praktische gidsen gekoppeld aan tools die mensen echt openen',
+    heroDescription: 'Gebruik de blog als beslislaag voor PDF-werk, beeldoptimalisatie, tekstopschoning, ontwikkelaarstools, converters, financiële calculators, dataworkflows en bestandsverwerking in de browser.',
+    featuredGuideTitle: 'Uitgelichte gids',
+    latestGuides: 'Nieuwste praktische gidsen',
+    highlightedGuides: 'uitgelichte gidsen',
+    supportSuffix: 'met praktische controles, veelgemaakte fouten en een gerelateerd toolpad.',
+    words: 'woorden',
+    minuteRead: 'min lezen',
+    categories: { pdf: 'PDF-workflows', image: 'Beeldoptimalisatie', text: 'Tekst en schrijven', developer: 'Ontwikkelaarstools', converter: 'Converters', finance: 'Financiële calculators', data: 'Datatools', workflow: 'Workflowgidsen', privacy: 'Browsergerichte verwerking', comparison: 'Toolvergelijkingen' }
+  }
+};
+
+const articleUiLocales = {
+  en: { back: '← Blog hub', summaryLabel: 'Quick summary:', relatedHeading: 'Related tools and reading paths', relatedParagraph: 'The most useful next step depends on the output you created. If you still need to choose a tool, open the category hub. If the current result is ready, move into the related guides below and compare the workflow with similar tasks.', openTool: 'Open a tool', openCategory: 'Open a category', faqHeading: 'Frequently asked questions', conclusionHeading: 'Conclusion', ctaSecondary: 'View related category' },
+  tr: { back: '← Blog merkezi', summaryLabel: 'Kısa özet:', relatedHeading: 'İlgili araçlar ve okuma yolları', relatedParagraph: 'En yararlı sonraki adım, oluşturduğunuz çıktıya bağlıdır. Hâlâ araç seçmeniz gerekiyorsa kategori merkezini açın. Sonuç hazırsa aşağıdaki ilgili rehberlere geçin ve iş akışını benzer görevlerle karşılaştırın.', openTool: 'Aracı aç', openCategory: 'Kategoriyi aç', faqHeading: 'Sık sorulan sorular', conclusionHeading: 'Sonuç', ctaSecondary: 'İlgili kategoriyi görüntüle' },
+  de: { back: '← Blog-Zentrale', summaryLabel: 'Kurzzusammenfassung:', relatedHeading: 'Verwandte Tools und Lesepfade', relatedParagraph: 'Der sinnvollste nächste Schritt hängt von der erstellten Ausgabe ab. Wenn Sie noch ein Tool auswählen müssen, öffnen Sie den Kategorie-Hub. Wenn das Ergebnis bereit ist, nutzen Sie die verwandten Leitfäden unten und vergleichen Sie den Workflow mit ähnlichen Aufgaben.', openTool: 'Tool öffnen', openCategory: 'Kategorie öffnen', faqHeading: 'Häufig gestellte Fragen', conclusionHeading: 'Fazit', ctaSecondary: 'Verwandte Kategorie anzeigen' },
+  fr: { back: '← Centre du blog', summaryLabel: 'Résumé rapide :', relatedHeading: 'Outils liés et parcours de lecture', relatedParagraph: 'La prochaine étape la plus utile dépend de la sortie créée. Si vous devez encore choisir un outil, ouvrez le hub de catégorie. Si le résultat est prêt, consultez les guides liés ci-dessous et comparez le flux avec des tâches similaires.', openTool: 'Ouvrir un outil', openCategory: 'Ouvrir une catégorie', faqHeading: 'Questions fréquentes', conclusionHeading: 'Conclusion', ctaSecondary: 'Voir la catégorie liée' },
+  es: { back: '← Centro del blog', summaryLabel: 'Resumen rápido:', relatedHeading: 'Herramientas relacionadas y rutas de lectura', relatedParagraph: 'El siguiente paso más útil depende del resultado que creó. Si aún necesita elegir una herramienta, abra el centro de la categoría. Si el resultado está listo, pase a las guías relacionadas y compare el flujo con tareas similares.', openTool: 'Abrir una herramienta', openCategory: 'Abrir una categoría', faqHeading: 'Preguntas frecuentes', conclusionHeading: 'Conclusión', ctaSecondary: 'Ver categoría relacionada' },
+  pt: { back: '← Central do blog', summaryLabel: 'Resumo rápido:', relatedHeading: 'Ferramentas relacionadas e caminhos de leitura', relatedParagraph: 'O próximo passo mais útil depende do resultado que você criou. Se ainda precisa escolher uma ferramenta, abra o hub da categoria. Se o resultado está pronto, veja os guias relacionados abaixo e compare o fluxo com tarefas parecidas.', openTool: 'Abrir uma ferramenta', openCategory: 'Abrir uma categoria', faqHeading: 'Perguntas frequentes', conclusionHeading: 'Conclusão', ctaSecondary: 'Ver categoria relacionada' },
+  ru: { back: '← Центр блога', summaryLabel: 'Краткое резюме:', relatedHeading: 'Связанные инструменты и маршруты чтения', relatedParagraph: 'Самый полезный следующий шаг зависит от созданного результата. Если вам еще нужно выбрать инструмент, откройте раздел категории. Если результат готов, перейдите к связанным руководствам ниже и сравните процесс с похожими задачами.', openTool: 'Открыть инструмент', openCategory: 'Открыть категорию', faqHeading: 'Частые вопросы', conclusionHeading: 'Итог', ctaSecondary: 'Посмотреть связанную категорию' },
+  zh: { back: '← 博客中心', summaryLabel: '快速摘要：', relatedHeading: '相关工具和阅读路径', relatedParagraph: '最有用的下一步取决于你创建的输出。如果仍需选择工具，请打开分类中心。如果当前结果已准备好，请继续阅读下面的相关指南，并将该工作流与类似任务进行比较。', openTool: '打开工具', openCategory: '打开分类', faqHeading: '常见问题', conclusionHeading: '结论', ctaSecondary: '查看相关分类' },
+  ja: { back: '← ブログハブ', summaryLabel: 'クイック要約:', relatedHeading: '関連ツールと読む順序', relatedParagraph: '次に役立つ操作は、作成した出力によって変わります。まだツールを選ぶ必要がある場合はカテゴリーハブを開いてください。結果が準備できている場合は、下の関連ガイドに進み、似た作業とワークフローを比較してください。', openTool: 'ツールを開く', openCategory: 'カテゴリーを開く', faqHeading: 'よくある質問', conclusionHeading: 'まとめ', ctaSecondary: '関連カテゴリーを見る' },
+  ko: { back: '← 블로그 허브', summaryLabel: '빠른 요약:', relatedHeading: '관련 도구와 읽기 경로', relatedParagraph: '가장 유용한 다음 단계는 만든 결과물에 따라 달라집니다. 아직 도구를 선택해야 한다면 카테고리 허브를 여세요. 현재 결과가 준비되었다면 아래 관련 가이드로 이동해 비슷한 작업과 워크플로를 비교하세요.', openTool: '도구 열기', openCategory: '카테고리 열기', faqHeading: '자주 묻는 질문', conclusionHeading: '결론', ctaSecondary: '관련 카테고리 보기' },
+  ar: { back: '← مركز المدونة', summaryLabel: 'ملخص سريع:', relatedHeading: 'أدوات ومسارات قراءة ذات صلة', relatedParagraph: 'تعتمد الخطوة التالية الأكثر فائدة على الناتج الذي أنشأته. إذا كنت لا تزال بحاجة إلى اختيار أداة، فافتح مركز الفئة. وإذا كانت النتيجة جاهزة، فانتقل إلى الأدلة المرتبطة أدناه وقارن سير العمل بمهام مشابهة.', openTool: 'افتح أداة', openCategory: 'افتح فئة', faqHeading: 'الأسئلة الشائعة', conclusionHeading: 'الخلاصة', ctaSecondary: 'عرض الفئة المرتبطة' },
+  hi: { back: '← ब्लॉग केंद्र', summaryLabel: 'त्वरित सारांश:', relatedHeading: 'संबंधित टूल और पढ़ने के रास्ते', relatedParagraph: 'सबसे उपयोगी अगला कदम आपके बनाए आउटपुट पर निर्भर करता है। यदि अभी भी टूल चुनना है, तो श्रेणी केंद्र खोलें। यदि परिणाम तैयार है, तो नीचे दिए गए संबंधित गाइड देखें और वर्कफ़्लो की समान कार्यों से तुलना करें।', openTool: 'टूल खोलें', openCategory: 'श्रेणी खोलें', faqHeading: 'अक्सर पूछे जाने वाले प्रश्न', conclusionHeading: 'निष्कर्ष', ctaSecondary: 'संबंधित श्रेणी देखें' },
+  it: { back: '← Hub del blog', summaryLabel: 'Riepilogo rapido:', relatedHeading: 'Strumenti correlati e percorsi di lettura', relatedParagraph: 'Il prossimo passo più utile dipende dall’output creato. Se devi ancora scegliere uno strumento, apri l’hub della categoria. Se il risultato è pronto, passa alle guide correlate qui sotto e confronta il workflow con attività simili.', openTool: 'Apri uno strumento', openCategory: 'Apri una categoria', faqHeading: 'Domande frequenti', conclusionHeading: 'Conclusione', ctaSecondary: 'Vedi categoria correlata' },
+  pl: { back: '← Centrum bloga', summaryLabel: 'Krótkie podsumowanie:', relatedHeading: 'Powiązane narzędzia i ścieżki czytania', relatedParagraph: 'Najbardziej przydatny kolejny krok zależy od utworzonego wyniku. Jeśli nadal musisz wybrać narzędzie, otwórz centrum kategorii. Jeśli wynik jest gotowy, przejdź do powiązanych poradników poniżej i porównaj workflow z podobnymi zadaniami.', openTool: 'Otwórz narzędzie', openCategory: 'Otwórz kategorię', faqHeading: 'Często zadawane pytania', conclusionHeading: 'Wniosek', ctaSecondary: 'Zobacz powiązaną kategorię' },
+  nl: { back: '← Bloghub', summaryLabel: 'Korte samenvatting:', relatedHeading: 'Gerelateerde tools en leesroutes', relatedParagraph: 'De nuttigste volgende stap hangt af van de uitvoer die u hebt gemaakt. Als u nog een tool moet kiezen, open dan de categoriehub. Als het resultaat klaar is, ga dan naar de gerelateerde gidsen hieronder en vergelijk de workflow met soortgelijke taken.', openTool: 'Open een tool', openCategory: 'Open een categorie', faqHeading: 'Veelgestelde vragen', conclusionHeading: 'Conclusie', ctaSecondary: 'Gerelateerde categorie bekijken' }
+};
 
 function getArticleLocale(slug, locale = 'en') {
   return blogLocales[locale]?.articles?.[slug] || {};
@@ -346,19 +565,19 @@ function buildArticle(topic, index) {
           <div class="article-cta-row"><a class="btn btn-primary" href="${category.tool}" data-locale-field="cta.primary">${escapeHtml(articleLocale.cta?.primary || `Open ${category.toolLabel}`)}</a><a class="btn btn-secondary" href="${category.hub}" data-locale-field="cta.secondary">${escapeHtml(articleLocale.cta?.secondary || 'View related category')}</a></div>
         </header>
         <div class="article-content premium-copy">
-          ${sections}
+${sections}
           <section>
-            <h2>Related tools and reading paths</h2>
-            <p>The most useful next step depends on the output you created. If you still need to choose a tool, open the category hub. If the current result is ready, move into the related guides below and compare the workflow with similar tasks.</p>
-            <div class="related-panel"><div><h3>Open a tool</h3><p><a href="${category.tool}">${escapeHtml(category.toolLabel)}</a></p></div><div><h3>Open a category</h3><p><a href="${category.hub}">${escapeHtml(category.label)}</a></p></div></div>
+            <h2 data-article-ui="relatedHeading">Related tools and reading paths</h2>
+            <p data-article-ui="relatedParagraph">The most useful next step depends on the output you created. If you still need to choose a tool, open the category hub. If the current result is ready, move into the related guides below and compare the workflow with similar tasks.</p>
+            <div class="related-panel"><div><h3 data-article-ui="openTool">Open a tool</h3><p><a href="${category.tool}">${escapeHtml(category.toolLabel)}</a></p></div><div><h3 data-article-ui="openCategory">Open a category</h3><p><a href="${category.hub}">${escapeHtml(category.label)}</a></p></div></div>
             <ul class="related-post-list">${relatedHtml}</ul>
           </section>
           <section>
-            <h2>Frequently asked questions</h2>
+            <h2 data-article-ui="faqHeading">Frequently asked questions</h2>
             ${faqHtml}
           </section>
           <section>
-            <h2>Conclusion</h2>
+            <h2 data-article-ui="conclusionHeading">Conclusion</h2>
             <p>${escapeHtml(`${title} is easiest to handle when the workflow is visible. Keep the original, prepare the input, choose settings for the actual recipient, review the output, and connect the next step. That small discipline is what makes simple browser tools feel professional instead of improvised.`)}</p>
           </section>
         </div>
@@ -370,8 +589,11 @@ function buildArticle(topic, index) {
   <script>
     (function(){
       var articleLocales = ${JSON.stringify(localeMap)};
+      var articleUiLocales = ${JSON.stringify(articleUiLocales)};
+      var rtlLocales = ${JSON.stringify(Array.from(rtlLocales))};
       function lang(){ try { return localStorage.getItem('mc-novatools-language') || document.documentElement.lang || 'en'; } catch (_) { return document.documentElement.lang || 'en'; } }
       function valueAt(source, path){ return path.split('.').reduce(function(value, key){ return value && value[key]; }, source); }
+      function setText(selector, value){ var el = document.querySelector(selector); if (el && value) el.textContent = value; }
       function applyLocalizedArticle(){
         var data = articleLocales[lang()] || articleLocales.en;
         if (!data) return;
@@ -379,26 +601,23 @@ function buildArticle(topic, index) {
         document.querySelectorAll('[data-locale-section]').forEach(function(el){ var section = data.sections && data.sections[Number(el.dataset.localeSection)]; if (section && section.heading) el.textContent = section.heading; });
         document.querySelectorAll('[data-locale-faq]').forEach(function(el){ var faq = data.faq && data.faq[Number(el.dataset.localeFaq)]; if (!faq) return; var summary = el.querySelector('summary'); var answer = el.querySelector('p'); if (summary && faq.question) summary.textContent = faq.question; if (answer && faq.answer) answer.textContent = faq.answer; });
       }
-      function apply(){
-        applyLocalizedArticle();
-        if (lang() !== 'tr') return;
-        document.documentElement.lang = 'tr';
-        var back = document.querySelector('.article-back'); if (back) back.textContent = '← Blog merkezi';
-        var summary = document.querySelector('.summary-box strong'); if (summary) summary.textContent = 'Kısa özet:';
+      function applyArticleUi(){
+        var current = lang();
+        var ui = articleUiLocales[current] || articleUiLocales.en;
+        document.documentElement.lang = current;
+        document.documentElement.dir = rtlLocales.indexOf(current) >= 0 ? 'rtl' : 'ltr';
+        setText('.article-back', ui.back);
+        setText('.summary-box strong', ui.summaryLabel);
+        setText('[data-article-ui="relatedHeading"]', ui.relatedHeading);
+        setText('[data-article-ui="relatedParagraph"]', ui.relatedParagraph);
+        setText('[data-article-ui="openTool"]', ui.openTool);
+        setText('[data-article-ui="openCategory"]', ui.openCategory);
+        setText('[data-article-ui="faqHeading"]', ui.faqHeading);
+        setText('[data-article-ui="conclusionHeading"]', ui.conclusionHeading);
         var ctas = document.querySelectorAll('.article-cta-row .btn');
-        if (ctas[0]) ctas[0].textContent = ctas[0].textContent.replace(/^Open /, 'Aç: ');
-        if (ctas[1]) ctas[1].textContent = 'İlgili kategoriyi görüntüle';
-        document.querySelectorAll('.article-meta span').forEach(function(el){ el.textContent = el.textContent.replace('workflow', 'iş akışı').replace('Guide', 'Rehber'); });
-        document.querySelectorAll('.premium-copy h2').forEach(function(el){
-          el.textContent = el.textContent
-            .replace('Related tools and reading paths', 'İlgili araçlar ve okuma yolları')
-            .replace('Frequently asked questions', 'Sık sorulan sorular')
-            .replace('Conclusion', 'Sonuç');
-        });
-        document.querySelectorAll('.related-panel h3').forEach(function(el){
-          el.textContent = el.textContent.replace('Open a tool', 'Aracı aç').replace('Open a category', 'Kategoriyi aç');
-        });
+        if (ctas[1] && ui.ctaSecondary) ctas[1].textContent = ui.ctaSecondary;
       }
+      function apply(){ applyLocalizedArticle(); applyArticleUi(); }
       apply(); window.addEventListener('languageChanged', apply);
     })();
   </script>
@@ -483,19 +702,22 @@ const indexHtml = `<!DOCTYPE html>
   <script>
     const articles = ${JSON.stringify(articles)};
     const labels = ${JSON.stringify(Object.fromEntries(Object.entries(categories).map(([key, value]) => [key, value.label])))};
-    const trLabels = { all: 'Tüm rehberler', pdf: 'PDF iş akışları', image: 'Görsel optimizasyonu', text: 'Metin ve yazım', developer: 'Geliştirici araçları', converter: 'Dönüştürücüler', finance: 'Finans hesaplayıcıları', data: 'Veri araçları', workflow: 'İş akışı rehberleri', privacy: 'Tarayıcı öncelikli işlem', comparison: 'Araç karşılaştırmaları' };
+    const blogIndexLocales = ${JSON.stringify(blogIndexLocales)};
+    const rtlLocales = ${JSON.stringify(Array.from(rtlLocales))};
     function currentLang() { try { return localStorage.getItem('mc-novatools-language') || document.documentElement.lang || 'en'; } catch (_) { return document.documentElement.lang || 'en'; } }
-    function labelFor(category) { return currentLang() === 'tr' ? (trLabels[category] || labels[category] || category) : (labels[category] || category); }
+    function localeData() { return blogIndexLocales[currentLang()] || blogIndexLocales.en; }
+    function labelFor(category) { const locale = localeData(); return category === 'all' ? locale.all : (locale.categories?.[category] || labels[category] || category); }
     function escapeAttr(value) { return String(value).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;'); }
-    function localizedSupport(article) { return currentLang() === 'tr' ? article.coverAccent + ' için pratik kontroller, yaygın hatalar ve ilgili araç yolu.' : article.coverAccent + ' with practical checks, common mistakes, and a related tool path.'; }
-    function readTime(text) { return currentLang() === 'tr' ? text.replace('min read', 'dk okuma') : text; }
+    function localizedSupport(article) { const locale = localeData(); return article.coverAccent + ' ' + locale.supportSuffix; }
+    function readTime(text) { const locale = localeData(); return text.replace('min read', locale.minuteRead); }
+    function wordLabel() { return localeData().words; }
     function articleText(article) { return article.locales?.[currentLang()] || article.locales?.en || article; }
-    function card(article, featured) { const text = articleText(article); return '<a href="' + article.url + '" class="blog-card ' + (featured ? 'featured-card' : '') + '" data-category="' + article.category + '"><div class="blog-card-image"><img src="' + article.cover + '" alt="' + escapeAttr(article.coverAlt) + '" loading="lazy" width="640" height="360"><span>' + article.coverLabel + '</span></div><div class="blog-card-content"><span class="blog-category">' + labelFor(article.category) + '</span><h3>' + text.title + '</h3><p>' + text.excerpt + '</p><p class="blog-card-support">' + localizedSupport(article) + '</p><div class="blog-meta"><span>' + article.date + '</span><span>•</span><span>' + readTime(article.readTime) + '</span><span>•</span><span>' + article.wordCount + (currentLang() === 'tr' ? ' kelime' : ' words') + '</span></div></div></a>'; }
+    function card(article, featured) { const text = articleText(article); return '<a href="' + article.url + '" class="blog-card ' + (featured ? 'featured-card' : '') + '" data-category="' + article.category + '"><div class="blog-card-image"><img src="' + article.cover + '" alt="' + escapeAttr(article.coverAlt) + '" loading="lazy" width="640" height="360"><span>' + article.coverLabel + '</span></div><div class="blog-card-content"><span class="blog-category">' + labelFor(article.category) + '</span><h3>' + text.title + '</h3><p>' + text.excerpt + '</p><p class="blog-card-support">' + localizedSupport(article) + '</p><div class="blog-meta"><span>' + article.date + '</span><span>•</span><span>' + readTime(article.readTime) + '</span><span>•</span><span>' + article.wordCount + ' ' + wordLabel() + '</span></div></div></a>'; }
     function render(category) { const source = category === 'all' ? articles : articles.filter((article) => article.category === category); document.getElementById('featuredPost').innerHTML = card(source[0] || articles[0], true); document.getElementById('blogGrid').innerHTML = source.slice(0, 12).map((article) => card(article, false)).join(''); renderSections(); }
-    function renderSections() { const container = document.getElementById('blogCategorySections'); container.innerHTML = Object.keys(labels).map((category) => { const posts = articles.filter((article) => article.category === category).slice(0, 4); if (!posts.length) return ''; const countText = currentLang() === 'tr' ? posts.length + ' öne çıkan rehber' : posts.length + ' highlighted guides'; return '<section class="category-section"><div class="category-section-header"><h2>' + labelFor(category) + '</h2><span>' + countText + '</span></div><div class="blog-grid">' + posts.map((article) => card(article, false)).join('') + '</div></section>'; }).join(''); }
+    function renderSections() { const container = document.getElementById('blogCategorySections'); container.innerHTML = Object.keys(labels).map((category) => { const posts = articles.filter((article) => article.category === category).slice(0, 4); if (!posts.length) return ''; const countText = posts.length + ' ' + localeData().highlightedGuides; return '<section class="category-section"><div class="category-section-header"><h2>' + labelFor(category) + '</h2><span>' + countText + '</span></div><div class="blog-grid">' + posts.map((article) => card(article, false)).join('') + '</div></section>'; }).join(''); }
     document.querySelectorAll('.filter-btn').forEach((button) => button.addEventListener('click', () => { document.querySelectorAll('.filter-btn').forEach((item) => item.classList.remove('active')); button.classList.add('active'); render(button.dataset.category); }));
     const menuBtn = document.getElementById('mobileMenuBtn'); const mobileMenu = document.getElementById('mobileMenu'); if (menuBtn && mobileMenu) menuBtn.addEventListener('click', () => { const expanded = menuBtn.getAttribute('aria-expanded') === 'true'; menuBtn.setAttribute('aria-expanded', String(!expanded)); mobileMenu.hidden = expanded; mobileMenu.classList.toggle('active', !expanded); });
-    function applyBlogLocale() { if (currentLang() !== 'tr') return; document.documentElement.lang = 'tr'; const pairs = [['.hero-badge','Editoryal iş akışı kütüphanesi'], ['.blog-hero h1','İnsanların gerçekten açtığı araçlara bağlı pratik rehberler'], ['.blog-hero p','PDF işleri, görsel optimizasyonu, yazım temizliği, geliştirici araçları, dönüştürücüler, finans hesaplayıcıları, veri iş akışları ve tarayıcı öncelikli dosya işlemleri için karar katmanı olarak blogu kullanın.'], ['#featuredGuideTitle','Öne çıkan rehber'], ['#latestGuides','Son pratik rehberler']]; pairs.forEach(function(pair){ const el = document.querySelector(pair[0]); if (el) el.textContent = pair[1]; }); document.querySelectorAll('.filter-btn').forEach(function(btn){ const key = btn.dataset.category; btn.textContent = key === 'all' ? trLabels.all : labelFor(key); }); }
+    function applyBlogLocale() { const locale = localeData(); const language = currentLang(); document.documentElement.lang = language; document.documentElement.dir = rtlLocales.indexOf(language) >= 0 ? 'rtl' : 'ltr'; [['.hero-badge', locale.heroBadge], ['.blog-hero h1', locale.heroTitle], ['.blog-hero p', locale.heroDescription], ['#featuredGuideTitle', locale.featuredGuideTitle], ['#latestGuides', locale.latestGuides]].forEach(function(pair){ const el = document.querySelector(pair[0]); if (el) el.textContent = pair[1]; }); document.querySelectorAll('.filter-btn').forEach(function(btn){ btn.textContent = labelFor(btn.dataset.category); }); }
     render('all'); applyBlogLocale(); window.addEventListener('languageChanged', function(){ render(document.querySelector('.filter-btn.active')?.dataset.category || 'all'); applyBlogLocale(); });
   </script>
 </body>
