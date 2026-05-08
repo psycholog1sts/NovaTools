@@ -5906,6 +5906,51 @@
     "sections": {
       "featured": "Featured post",
       "latest": "Latest posts"
+    },
+    "generator": {
+      "modelVersion": 1,
+      "fields": [
+        "title",
+        "excerpt",
+        "summary",
+        "sections.heading",
+        "faq.question",
+        "faq.answer",
+        "cta.primary",
+        "cta.secondary"
+      ],
+      "articles": {
+        "compress-pdf-for-email-without-ruining-readability": {
+          "title": "How to Compress a PDF for Email Without Ruining Readability",
+          "excerpt": "Make a PDF smaller for email while keeping text, scans, and signatures readable enough for real review.",
+          "summary": "A locale-ready PDF compression workflow: keep the original, choose a balanced size target, inspect readable details, and confirm the emailed file still works for the recipient.",
+          "sections": [
+            {
+              "heading": "Start with the email limit and reader needs"
+            },
+            {
+              "heading": "Preserve the original before compression"
+            },
+            {
+              "heading": "Check readability after every export"
+            }
+          ],
+          "faq": [
+            {
+              "question": "Should I compress every PDF before emailing it?",
+              "answer": "No. Compress when the file is too large for the destination, then review text, scans, signatures, and page order before sending."
+            },
+            {
+              "question": "What is the safest compression setting?",
+              "answer": "Start with a balanced setting that reduces size without making small text, tables, or scanned pages hard to read."
+            }
+          ],
+          "cta": {
+            "primary": "Open PDF Compressor",
+            "secondary": "View PDF tools"
+          }
+        }
+      }
     }
   }
 }
