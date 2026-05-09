@@ -914,6 +914,7 @@
     if (!match) return;
     var isPhase2Blog = Object.prototype.hasOwnProperty.call(PHASE2_BLOG_SLUGS, match[1]);
     var topicKey = PHASE1_BLOG_SLUGS[match[1]] || PHASE2_BLOG_SLUGS[match[1]];
+    var topicKey = PHASE1_BLOG_SLUGS[match[1]];
     if (!topicKey) return;
 
     var originals = document.querySelectorAll('[data-phase1-original-text]');
@@ -928,6 +929,7 @@
       originals.forEach(phase1RestoreText);
       var englishTitles = isPhase2Blog ? PHASE2_TOPIC_TITLES.en : PHASE1_TOPIC_TITLES.en;
       document.title = document.documentElement.getAttribute('data-phase1-original-title') || englishTitles[topicKey] + ' | MC NovaTools Guides';
+      document.title = document.documentElement.getAttribute('data-phase1-original-title') || PHASE1_TOPIC_TITLES.en[topicKey] + ' | MC NovaTools Guides';
       if (description) description.setAttribute('content', description.getAttribute('data-phase1-original-content') || '');
       document.documentElement.dir = 'ltr';
       return;
@@ -941,6 +943,9 @@
       copy = Object.assign({}, copy, PHASE2_IMAGE_COPY[currentLanguage]);
     }
     var topic = titles[topicKey] || titlesByLanguage.en[topicKey];
+    var titles = PHASE1_TOPIC_TITLES[currentLanguage] || PHASE1_TOPIC_TITLES.en;
+    if (!copy || !titles) return;
+    var topic = titles[topicKey] || PHASE1_TOPIC_TITLES.en[topicKey];
 
     document.title = topic + ' | MC NovaTools Guides';
     if (description) description.setAttribute('content', phase1Format(copy.summaryText, topic));
@@ -954,6 +959,7 @@
     phase1Text(document.querySelector('[data-locale-field="cta.secondary"]'), copy.viewTools);
     phase1Text(document.querySelector('.article-back'), (articleUiLocalesForCurrent() || {}).back || copy.nav[4]);
     phase1Text(document.querySelector('.article-meta .tag'), copy.category || copy.pdf);
+    phase1Text(document.querySelector('.article-meta .tag'), copy.pdf);
     phase1Text(document.querySelector('.article-meta span:nth-of-type(2)'), copy.cover);
     phase1Text(document.querySelector('.article-meta span:nth-of-type(3)'), copy.read);
     phase1Text(document.querySelector('.article-visual figcaption'), copy.cover);
