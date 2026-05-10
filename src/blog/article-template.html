@@ -152,6 +152,8 @@ const ready = checklist.every((step) => step.length > 0);</code></pre></div></se
       return String(value).replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]);
     }
 
+    const inlineImg = ({ src, alt = '', width, height }) => '<img ' + `src="${escapeHtml(src)}" alt="${escapeHtml(alt)}" width="${width}" height="${height}">`;
+
     function renderFaq(faq) {
       return `<section aria-labelledby="sss"><h2 id="sss"><a href="#sss">FAQ</a></h2><div class="faq-list">${faq.map((item) => `<details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"><summary itemprop="name">${escapeHtml(item.question)}</summary><p itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><span itemprop="text">${escapeHtml(item.answer)}</span></p></details>`).join('')}</div></section>`;
     }
@@ -174,7 +176,7 @@ const ready = checklist.every((step) => step.length > 0);</code></pre></div></se
       const heading = document.querySelector('.article-hero h1');
       if (heading) heading.textContent = post.title;
       const meta = document.querySelector('.article-meta');
-      if (meta) meta.innerHTML = `<span class="article-meta__author"><img src="${post.author.avatar}" alt="" width="48" height="48"><span><strong>${escapeHtml(post.author.name)}</strong><br>${escapeHtml(post.author.title)}</span></span><time datetime="${post.datePublished}">${post.datePublished}</time><span class="updated-badge">${post.dateModified}</span><span>⏱ ${post.readTime} min</span>`;
+      if (meta) meta.innerHTML = `<span class="article-meta__author">${inlineImg({ src: post.author.avatar, width: 48, height: 48 })}<span><strong>${escapeHtml(post.author.name)}</strong><br>${escapeHtml(post.author.title)}</span></span><time datetime="${post.datePublished}">${post.datePublished}</time><span class="updated-badge">${post.dateModified}</span><span>⏱ ${post.readTime} min</span>`;
 
       const body = document.querySelector('.article-body');
       if (!body) return;
@@ -183,7 +185,7 @@ const ready = checklist.every((step) => step.length > 0);</code></pre></div></se
       const cta = `<section aria-labelledby="sonuc-cta"><div class="article-cta"><h3 id="sonuc-cta">${escapeHtml(ui.loadMore === 'Daha Fazla Yükle' ? 'Bu aracı hemen deneyin' : ui.loadMore === 'تحميل المزيد' ? 'جرّب الأداة المرتبطة الآن' : 'Try the related tool now')}</h3><p>${escapeHtml(post.excerpt)}</p><a class="btn btn-primary" rel="noopener" href="${post.relatedToolLinks?.[0] || '/categories/index.html'}">${locale === 'tr' ? 'Hemen Kullan' : locale === 'ar' ? 'ابدأ الآن' : 'Open Tool'}</a></div></section>`;
       const relatedPosts = getBlogPostsForLocale(locale).filter((item) => item.slug !== post.slug && item.category === post.category).slice(0, 3);
       const related = `<section aria-labelledby="ilgili"><h2 id="ilgili"><a href="#ilgili">${locale === 'tr' ? 'İlgili Yazılar ve Araçlar' : locale === 'ar' ? 'مقالات وأدوات ذات صلة' : 'Related Articles and Tools'}</a></h2><div class="mini-card-grid">${relatedPosts.map((item) => `<a class="related-post" rel="noopener" href="${getCleanBlogUrl(item.slug, locale).replace('https://mc-novatools.com', '')}">${renderBlogPicture(item, 'card', { width: 800, height: 450, alt: `${item.title} cover image` })}<span><strong>${escapeHtml(item.title)}</strong><br>${item.datePublished}</span></a>`).join('')}</div><p><a rel="noopener" href="/blog/index.html?category=${encodeURIComponent(post.category)}">${escapeHtml(categoryLabel)}</a></p></section>`;
-      const author = `<aside class="author-box" aria-label="Author"><img src="${post.author.avatar}" alt="${escapeHtml(post.author.name)} avatar" width="80" height="80"><div><h4>${escapeHtml(post.author.name)}</h4><p><strong>${escapeHtml(post.author.title)}</strong></p><p>${escapeHtml(post.author.bio)}</p></div></aside>`;
+      const author = `<aside class="author-box" aria-label="Author">${inlineImg({ src: post.author.avatar, alt: `${post.author.name} avatar`, width: 80, height: 80 })}<div><h4>${escapeHtml(post.author.name)}</h4><p><strong>${escapeHtml(post.author.title)}</strong></p><p>${escapeHtml(post.author.bio)}</p></div></aside>`;
       body.innerHTML = summary + blocks + renderFaq(post.faq) + renderInContentAd() + cta + related + author;
       applyToolAdSlots(body);
     }

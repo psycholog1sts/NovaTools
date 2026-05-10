@@ -17,8 +17,8 @@
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="theme-color" content="#0A0A0C">
   <link rel="canonical" href="https://mc-novatools.com/blog/index.html">
-  <link rel="prev" href="?page=1">
-  <link rel="next" href="?page=2">
+  <link rel="prev" href="https://mc-novatools.com/blog/index.html?page=1">
+  <link rel="next" href="https://mc-novatools.com/blog/index.html?page=2">
   <meta property="og:title" content="NovaTools Blog – Improve Your Digital Productivity">
   <meta property="og:description" content="In-depth guides on AI, data privacy, fintech, education technology, developer automation, and remote productivity.">
   <meta property="og:type" content="website">
@@ -160,6 +160,7 @@
     const articleUrl = (article) => getCleanBlogUrl(article.slug, locale).replace('https://mc-novatools.com', '');
     const formattedDate = (date) => new Intl.DateTimeFormat(localeCode(), { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(`${date}T00:00:00`));
     const escapeHtml = (value) => String(value).replace(/[&<>'"]/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' })[char]);
+    const inlineImg = ({ src, alt = '', width, height }) => '<img ' + `src="${escapeHtml(src)}" alt="${escapeHtml(alt)}" width="${width}" height="${height}">`;
     const categories = () => ['all', ...new Set(articles.map((article) => article.category))];
     const categoryLabel = (category) => category === 'all' ? ui.all : (ui.categories[category] || category);
 
@@ -194,7 +195,7 @@
       featuredArticle.innerHTML = `<a class="featured-article" href="${articleUrl(article)}">
         <figure class="featured-article__media">${renderBlogPicture(article, 'featured', { width: 1200, height: 675, loading: 'eager', alt: `${article.title} cover image` })}</figure>
         <div><span class="category-badge">${escapeHtml(categoryLabel(article.category))}</span><h2>${escapeHtml(article.title)}</h2><p>${escapeHtml(article.excerpt)}</p>
-        <div class="article-meta-row"><span class="author-chip"><img src="${article.author.avatar}" alt="" width="40" height="40">${escapeHtml(article.author.name)}</span><time datetime="${article.datePublished}">${formattedDate(article.datePublished)}</time><span aria-label="Read time">⏱ ${article.readTime} min</span></div></div>
+        <div class="article-meta-row"><span class="author-chip">${inlineImg({ src: article.author.avatar, width: 40, height: 40 })}${escapeHtml(article.author.name)}</span><time datetime="${article.datePublished}">${formattedDate(article.datePublished)}</time><span aria-label="Read time">⏱ ${article.readTime} min</span></div></div>
       </a>`;
     }
 
@@ -206,7 +207,7 @@
       return `<a href="${articleUrl(article)}" class="nt-card nt-card--blog editorial-card" data-category="${escapeHtml(article.category)}">
         <div class="editorial-card__media">${renderBlogPicture(article, 'card', { width: 800, height: 450, alt: `${article.title} cover image` })}</div>
         <div class="editorial-card__body"><span class="category-badge">${escapeHtml(categoryLabel(article.category))}</span><h3>${escapeHtml(article.title)}</h3><p>${escapeHtml(article.excerpt)}</p>
-        <div class="editorial-card__footer"><img src="${article.author.avatar}" alt="" width="32" height="32"><strong>${escapeHtml(article.author.name)}</strong><span>${formattedDate(article.datePublished)} · ${article.readTime} min</span></div></div>
+        <div class="editorial-card__footer">${inlineImg({ src: article.author.avatar, width: 32, height: 32 })}<strong>${escapeHtml(article.author.name)}</strong><span>${formattedDate(article.datePublished)} · ${article.readTime} min</span></div></div>
       </a>`;
     }
 

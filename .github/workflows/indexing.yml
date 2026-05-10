@@ -12,17 +12,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
           
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: '20'
+          node-version-file: '.nvmrc'
+          cache: 'npm'
           
       - name: Install dependencies
-        run: npm install googleapis axios
+        run: npm install --no-save googleapis axios
         
       - name: Run Indexing Script
         run: node indexing.cjs

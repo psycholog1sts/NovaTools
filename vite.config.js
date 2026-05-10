@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 import { dirname, resolve } from 'path';
 import { fileURLToPath } from 'url';
-import { readFileSync } from 'fs';
+import { readFileSync, statSync } from 'fs';
 import { globSync } from 'glob';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
 import tailwindcss from 'tailwindcss';
@@ -11,6 +11,31 @@ import postcssImport from 'postcss-import';
 import liveDataHandler from './api/live-data.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
+
+const resolveHtmlEntry = (file) => {
+  const absolutePath = resolve(__dirname, file);
+  const stats = statSync(absolutePath);
+  if (!stats.isFile()) {
+    throw new Error(`Vite HTML input must be a file: ${file}`);
+  }
+  return absolutePath;
+};
+
+const googleSiteVerification = process.env.VITE_GOOGLE_SITE_VERIFICATION || '';
+
+const optionalHtmlEnv = {
+  name: 'novatools-optional-html-env',
+  enforce: 'pre',
+  transformIndexHtml(html) {
+    return html.replace(
+      /<meta name="google-site-verification" content="[^"]*"\s*>/,
+      googleSiteVerification
+        ? `<meta name="google-site-verification" content="${googleSiteVerification.replace(/&/g, '&amp;').replace(/"/g, '&quot;')}">`
+        : ''
+    );
+  }
+};
+
 
 const devCorsOrigins = (process.env.VITE_DEV_CORS_ORIGINS || 'http://localhost:3000,http://127.0.0.1:3000')
   .split(',')
@@ -53,7 +78,7 @@ const toolEntries = globSync('src/tools/**/index.html', {
     .replace(/[/\\]index\.html$/, '')
     .replace(/\\/g, '/');
 
-  acc[name] = resolve(__dirname, file);
+  acc[name] = resolveHtmlEntry(file);
   return acc;
 }, {});
 
@@ -65,21 +90,21 @@ const rootHtmlEntries = globSync('*.html', {
     .replace(/\\/g, '/')
     .replace(/\.html$/, '');
 
-  acc[name] = resolve(__dirname, file);
+  acc[name] = resolveHtmlEntry(file);
   return acc;
 }, {});
 
 // Admin entry point
 const adminEntry = {
-  admin: resolve(__dirname, 'admin/index.html'),
-  'admin/dashboard': resolve(__dirname, 'admin/dashboard.html')
+  admin: resolveHtmlEntry('admin/index.html'),
+  'admin/dashboard': resolveHtmlEntry('admin/dashboard.html')
 };
 
 
 // Localized duplicate entries keep /tr/ and /ar/ public routes buildable while
 // retaining the existing static HTML sources and runtime localization.
 const localizedRootHtmlEntries = ['tr', 'ar'].reduce((acc, locale) => {
-  acc[`${locale}/index`] = resolve(__dirname, 'index.html');
+  acc[`${locale}/index`] = resolveHtmlEntry('index.html');
   Object.keys(rootHtmlEntries).forEach((name) => {
     acc[`${locale}/${name}`] = rootHtmlEntries[name];
   });
@@ -102,15 +127,15 @@ const translatedBlogSlugsByLocale = (() => {
 const localizedBlogArticleEntries = Object.entries(translatedBlogSlugsByLocale).reduce((acc, [locale, slugs]) => {
   slugs.forEach((slug) => {
     const route = locale === 'en' ? `blog/${slug}` : `${locale}/blog/${slug}`;
-    acc[route] = resolve(__dirname, 'src/blog/article-template.html');
+    acc[route] = resolveHtmlEntry('src/blog/article-template.html');
   });
   return acc;
 }, {});
 
 // Blog entry points
 const blogEntry = {
-  blog: resolve(__dirname, 'src/blog/index.html'),
-  'blog/article-template': resolve(__dirname, 'src/blog/article-template.html')
+  'blog/index': resolveHtmlEntry('src/blog/index.html'),
+  'blog/article-template': resolveHtmlEntry('src/blog/article-template.html')
 };
 
 const blogArticleEntries = globSync('src/blog/articles/**/*.html').reduce((acc, file) => {
@@ -119,7 +144,7 @@ const blogArticleEntries = globSync('src/blog/articles/**/*.html').reduce((acc, 
     .replace(/\.html$/, '')
     .replace(/\\/g, '/');
 
-  acc[name] = resolve(__dirname, file);
+  acc[name] = resolveHtmlEntry(file);
   return acc;
 }, {});
 
@@ -129,7 +154,7 @@ const categoryEntries = globSync('categories/**/*.html').reduce((acc, file) => {
     .replace(/\\/g, '/')
     .replace(/\.html$/, '');
 
-  acc[name] = resolve(__dirname, file);
+  acc[name] = resolveHtmlEntry(file);
   return acc;
 }, {});
 
@@ -168,13 +193,13 @@ export default defineConfig({
 
     rollupOptions: {
       input: {
-        main: resolve(__dirname, 'index.html'),
+        main: resolveHtmlEntry('index.html'),
         ...rootHtmlEntries,
         ...localizedRootHtmlEntries,
         ...adminEntry,
         ...blogEntry,
-        'tr/blog/index': resolve(__dirname, 'src/blog/index.html'),
-        'ar/blog/index': resolve(__dirname, 'src/blog/index.html'),
+        'tr/blog/index': resolveHtmlEntry('src/blog/index.html'),
+        'ar/blog/index': resolveHtmlEntry('src/blog/index.html'),
         ...localizedBlogArticleEntries,
         ...blogArticleEntries,
         ...categoryEntries,
@@ -252,7 +277,7 @@ export default defineConfig({
     },
 
     reportCompressedSize: true,
-    chunkSizeWarningLimit: 200,
+    chunkSizeWarningLimit: 800,
 
     minify: 'terser',
     terserOptions: {
@@ -272,6 +297,7 @@ export default defineConfig({
   },
 
   plugins: [
+    optionalHtmlEnv,
     liveDataDevProxy,
     viteStaticCopy({
       targets: [

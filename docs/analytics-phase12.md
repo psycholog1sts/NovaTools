@@ -8,7 +8,7 @@ This document records the production configuration needed around the consent-gat
 - GA4 loads only after the `analytics` consent category is granted.
 - GA4 config uses IP anonymization, two-year cookie expiry (`63072000` seconds), and cookie updates.
 - Microsoft Clarity is optional and disabled unless `window.NOVATOOLS_CLARITY_PROJECT_ID` is set before analytics initialization.
-- Search Console verification uses the root HTML meta value `%VITE_GOOGLE_SITE_VERIFICATION%`; set `VITE_GOOGLE_SITE_VERIFICATION` during the production build.
+- Search Console verification is injected into the root HTML meta tag by the Vite build when `VITE_GOOGLE_SITE_VERIFICATION` is set; leaving it blank omits the tag without HTML env warnings.
 
 ## Search Console operations
 
