@@ -17,15 +17,16 @@
     "test:unit": "node tests/tool-validation.mjs",
     "test:watch": "node tests/tool-validation.mjs",
     "test:coverage": "node tests/tool-validation.mjs",
-    "lighthouse": "lhci autorun",
-    "lighthouse:local": "lhci collect && lhci open",
+    "lighthouse": "node ./node_modules/@lhci/cli/src/cli.js autorun --config=./lighthouserc.cjs",
+    "lighthouse:local": "node ./node_modules/@lhci/cli/src/cli.js autorun --config=./lighthouserc.cjs && node ./node_modules/@lhci/cli/src/cli.js open --config=./lighthouserc.cjs",
     "prettier": "prettier --write \"src/**/*.{js,mjs,css,html}\"",
     "clean": "rimraf dist node_modules/.vite",
     "postinstall": "node scripts/postinstall.mjs",
     "prebuild": "npm run lint:i18n && npm run build:sitemap && node scripts/generate-icons.mjs",
     "audit:adsense": "node scripts/adsense-readiness-audit.mjs",
     "lint:i18n": "node scripts/lint-i18n.mjs",
-    "build:sitemap": "node scripts/generate-localized-sitemap.mjs"
+    "build:sitemap": "node scripts/generate-localized-sitemap.mjs",
+    "lighthouse:ci": "node ./node_modules/@lhci/cli/src/cli.js autorun --config=./lighthouserc.cjs"
   },
   "dependencies": {
     "@vercel/speed-insights": "^2.0.0",
@@ -61,7 +62,7 @@
     "@rollup/rollup-linux-x64-gnu": "^4.59.0"
   },
   "engines": {
-    "node": ">=20.19 <25",
+    "node": ">=22 <23",
     "npm": ">=10.0.0"
   },
   "keywords": [

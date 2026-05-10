@@ -3,7 +3,7 @@
 
 > High-CPC Utility Tools Platform. Privacy-first. USD Optimized. AdSense Ready.
 
-[![Lighthouse](https://img.shields.io/badge/Lighthouse-95+-brightgreen)](./lighthouserc.js)
+[![Lighthouse](https://img.shields.io/badge/Lighthouse-CI%20local-brightgreen)](./lighthouserc.cjs)
 [![Zero Server](https://img.shields.io/badge/Server-Zero%20Processing-blue)](https://novatools.mc)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 [![AdSense](https://img.shields.io/badge/AdSense-Optimized-green)](https://novatools.mc)
