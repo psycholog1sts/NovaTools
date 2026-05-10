@@ -5,7 +5,6 @@
 
 import categories from './data/categories.js';
 import { setupThemeToggle } from './theme-toggle.mjs';
-import { initHomeSearch } from './js/home-search.js';
 
 // ============================================
 // I18N HELPERS
@@ -54,6 +53,25 @@ function getCategoryHref(category) {
 function getToolHref(slug) {
   return `/tools/${slug}/`;
 }
+
+// ============================================
+// DESIGN SYSTEM INTERACTIONS
+// ============================================
+function initDesignSystemInteractions() {
+  setupThemeToggle('themeToggle');
+
+  const header = document.querySelector('.app-header');
+  let lastScrollY = window.scrollY;
+
+  window.addEventListener('scroll', () => {
+    if (!header) return;
+    const currentScrollY = window.scrollY;
+    const shouldHide = currentScrollY > lastScrollY && currentScrollY > 96;
+    header.classList.toggle('is-hidden', shouldHide);
+    lastScrollY = currentScrollY;
+  }, { passive: true });
+}
+
 
 // ============================================
 // DESIGN SYSTEM INTERACTIONS
