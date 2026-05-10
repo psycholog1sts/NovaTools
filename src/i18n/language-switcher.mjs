@@ -102,13 +102,8 @@ function getLocaleUrl(locale) {
   const newPath = I18N_CONFIG.pathPrefixLocales.includes(locale)
     ? `/${locale}${pathWithoutLocale}`
     : pathWithoutLocale;
-  const params = new URLSearchParams(currentSearch || '');
-  params.delete('lang');
-  if (locale !== I18N_CONFIG.defaultLocale && !I18N_CONFIG.pathPrefixLocales.includes(locale)) {
-    params.set('lang', locale);
-  }
-  const nextSearch = params.toString();
-  return `${newPath}${nextSearch ? `?${nextSearch}` : ''}`;
+  
+  return `${newPath}${currentSearch}`;
 }
 
 /**

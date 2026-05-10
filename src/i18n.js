@@ -244,20 +244,6 @@
     return PATH_PREFIX_LANGUAGES.includes(lang) ? `/${lang}${basePath === '/' ? '/' : basePath}` : basePath;
   }
 
-  function localizedSearch(lang, search = window.location.search) {
-    const params = new URLSearchParams(search || '');
-    params.delete('lang');
-    if (lang !== DEFAULT_LANGUAGE && !PATH_PREFIX_LANGUAGES.includes(lang)) {
-      params.set('lang', lang);
-    }
-    const query = params.toString();
-    return query ? `?${query}` : '';
-  }
-
-  function localizedHref(lang, pathname = window.location.pathname, search = window.location.search) {
-    return `${localizedPath(lang, pathname)}${localizedSearch(lang, search)}`;
-  }
-
   function absoluteUrl(pathname) {
     return `${SITE_ORIGIN}${pathname}`;
   }
@@ -286,8 +272,8 @@
   function pageContentAvailability() {
     const path = stripLocalePrefix(window.location.pathname).replace(/\/$/, '');
     const blogMatch = path.match(/^\/blog\/(?:articles\/)?([^/.]+)(?:\.html)?$/);
-    if (blogMatch) return SUPPORTED_LANGUAGES;
-    if (/^\/blog(?:\/index\.html)?$/.test(path)) return SUPPORTED_LANGUAGES;
+    if (blogMatch) return contentAvailability.blog[blogMatch[1]] || ['en'];
+    if (/^\/blog(?:\/index\.html)?$/.test(path)) return ['en', 'tr', 'ar'];
     const categoryMatch = path.match(/^\/categories\/([^/.]+)(?:\.html)?$/);
     if (categoryMatch) return contentAvailability.categories[categoryMatch[1]] || SUPPORTED_LANGUAGES;
     const toolMatch = path.match(/^\/tools\/(.+)$/);
@@ -298,7 +284,7 @@
   function applyLocaleSeo(lang) {
     const canonicalPath = localizedPath(lang);
     document.querySelectorAll('link[rel="alternate"][hreflang]').forEach((el) => el.remove());
-    [...SUPPORTED_LANGUAGES.map((code) => [code, localizedHref(code)]), ['x-default', localizedHref('en')]].forEach(([hreflang, href]) => {
+    [...SUPPORTED_LANGUAGES.map((code) => [code, localizedPath(code)]), ['x-default', localizedPath('en')]].forEach(([hreflang, href]) => {
       const link = document.createElement('link');
       link.rel = 'alternate';
       link.hreflang = hreflang;

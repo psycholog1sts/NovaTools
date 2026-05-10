@@ -96,7 +96,6 @@ export function generateHreflangTags(currentPath) {
     const path = I18N_CONFIG.pathPrefixLocales.includes(locale)
       ? `/${locale}${currentPath}`
       : currentPath;
-    const query = locale !== I18N_CONFIG.defaultLocale && !I18N_CONFIG.pathPrefixLocales.includes(locale) ? `?lang=${locale}` : '';
     
     tags.push(
       `<link rel="alternate" hreflang="${I18N_CONFIG.metadata[locale].hreflang}" href="${baseUrl}${path}${query}">`
