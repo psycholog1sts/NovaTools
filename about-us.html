@@ -3,522 +3,56 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us | MC NovaTools</title>
-  <meta name="description" content="Learn about MC NovaTools, founded by Metehan ÇETİN, LPC. Read about the platform mission, privacy-conscious approach, and practical online tool philosophy.">
-  <meta name="keywords" content="about MC NovaTools, Metehan ÇETİN, privacy first tools, online tools platform, founder">
+  <title>About MC NovaTools | Practical browser-first tools</title>
+  <meta name="description" content="Learn about MC NovaTools, our browser-first utility mission, privacy principles, contact details, and why we build practical online tools.">
   <meta name="author" content="Metehan ÇETİN, LPC">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="theme-color" content="#0A0A0C">
-
-  <meta property="og:title" content="About Us | MC NovaTools">
-  <meta property="og:description" content="Learn about MC NovaTools, the platform vision, and its privacy-conscious approach to practical online tools.">
+  <link rel="canonical" href="https://mc-novatools.com/about-us.html">
+  <meta property="og:title" content="About MC NovaTools | Practical browser-first tools">
+  <meta property="og:description" content="Learn about MC NovaTools, our browser-first utility mission, privacy principles, contact details, and why we build practical online tools.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://mc-novatools.com/about-us.html">
   <meta property="og:site_name" content="MC NovaTools">
-
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="About Us | MC NovaTools">
-  <meta name="twitter:description" content="Read the story, mission, and platform approach behind MC NovaTools.">
-
-  <link rel="canonical" href="https://mc-novatools.com/about-us.html">
+  <meta name="twitter:title" content="About MC NovaTools | Practical browser-first tools">
+  <meta name="twitter:description" content="Learn about MC NovaTools, our browser-first utility mission, privacy principles, contact details, and why we build practical online tools.">
   <link rel="stylesheet" href="/src/styles/critical.css">
   <link rel="stylesheet" href="/src/styles/design-system.css">
+  <link rel="stylesheet" href="/src/styles/legal-pages.css">
   <script src="/i18n.js" defer></script>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "AboutPage",
-    "name": "About MC NovaTools",
-    "description": "Learn about MC NovaTools and its mission to provide practical, privacy-conscious online tools.",
-    "url": "https://mc-novatools.com/about-us.html",
-    "mainEntity": {
-      "@type": "Person",
-      "name": "Metehan ÇETİN, LPC",
-      "jobTitle": "Founder"
-    }
-  }
-  </script>
-
-  <style>
-    :root {
-      --bg: #07080b;
-      --panel: rgba(17, 24, 39, 0.82);
-      --panel-strong: rgba(15, 23, 42, 0.92);
-      --border: rgba(255, 255, 255, 0.08);
-      --text: #f8fafc;
-      --muted: #a5b4c7;
-      --primary: #8b5cf6;
-      --primary-2: #22d3ee;
-      --glow: 0 20px 60px rgba(139, 92, 246, 0.12);
-      --container: 1120px;
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      margin: 0;
-      color: var(--text);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(139, 92, 246, 0.14), transparent 28%),
-        radial-gradient(circle at top right, rgba(34, 211, 238, 0.10), transparent 24%),
-        linear-gradient(180deg, #05060a 0%, #090b12 100%);
-      min-height: 100vh;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .container {
-      width: min(var(--container), calc(100% - 32px));
-      margin: 0 auto;
-    }
-
-    .main-header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      backdrop-filter: blur(14px);
-      background: rgba(6, 7, 11, 0.84);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .header-inner {
-      min-height: 78px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .logo {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      font-size: 1.35rem;
-      white-space: nowrap;
-    }
-
-    .logo-mc {
-      color: #22c55e;
-    }
-
-    .nav-desktop {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
-
-    .nav-desktop a {
-      color: var(--muted);
-      font-weight: 500;
-      transition: 0.2s ease;
-    }
-
-    .nav-desktop a:hover,
-    .nav-desktop a.active {
-      color: var(--text);
-    }
-
-    .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .language-selector {
-      min-width: 150px;
-      height: 42px;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.04);
-      color: var(--text);
-      padding: 0 12px;
-      outline: none;
-    }
-
-    .breadcrumb-nav {
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-      background: rgba(255,255,255,0.01);
-    }
-
-    .breadcrumb {
-      list-style: none;
-      display: flex;
-      gap: 10px;
-      padding: 14px 0;
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.95rem;
-      flex-wrap: wrap;
-    }
-
-    .breadcrumb li + li::before {
-      content: "/";
-      margin-right: 10px;
-      color: rgba(255,255,255,0.22);
-    }
-
-    .main-content {
-      padding-bottom: 64px;
-    }
-
-    .page-hero {
-      padding: 62px 0 24px;
-    }
-
-    .hero-card {
-      border: 1px solid var(--border);
-      border-radius: 28px;
-      padding: 36px;
-      background:
-        radial-gradient(circle at top left, rgba(139, 92, 246, 0.18), transparent 26%),
-        radial-gradient(circle at bottom right, rgba(34, 211, 238, 0.14), transparent 28%),
-        linear-gradient(180deg, rgba(15, 23, 42, 0.92), rgba(10, 14, 22, 0.97));
-      box-shadow: var(--glow);
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      min-height: 34px;
-      padding: 0 14px;
-      border-radius: 999px;
-      background: rgba(139, 92, 246, 0.10);
-      border: 1px solid rgba(139, 92, 246, 0.22);
-      color: #e9ddff;
-      font-size: 0.92rem;
-      font-weight: 600;
-      margin-bottom: 18px;
-    }
-
-    .hero-card h1 {
-      margin: 0 0 12px;
-      font-size: clamp(2.2rem, 4vw, 3.4rem);
-      line-height: 1.03;
-      letter-spacing: -0.04em;
-    }
-
-    .hero-card p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 1.05rem;
-      line-height: 1.75;
-      max-width: 760px;
-    }
-
-    .about-section {
-      padding: 24px 0 0;
-    }
-
-    .about-card {
-      background: linear-gradient(180deg, rgba(17, 24, 39, 0.82), rgba(9, 13, 20, 0.96));
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 30px;
-      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.22);
-    }
-
-    .about-card h2 {
-      margin: 26px 0 12px;
-      font-size: 1.35rem;
-      letter-spacing: -0.02em;
-    }
-
-    .about-card h2:first-of-type {
-      margin-top: 0;
-    }
-
-    .about-card h3 {
-      margin: 22px 0 10px;
-      font-size: 1.08rem;
-      letter-spacing: -0.01em;
-    }
-
-    .about-card p,
-    .about-card li {
-      color: var(--muted);
-      line-height: 1.85;
-    }
-
-    .about-card ul {
-      margin: 10px 0 18px;
-      padding-left: 20px;
-    }
-
-    .founder-profile,
-    .contact-box {
-      margin-top: 20px;
-      padding: 20px;
-      border-radius: 18px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.03);
-    }
-
-    .founder-profile h3 {
-      margin-top: 0;
-      color: var(--text);
-    }
-
-    .job-title {
-      color: #d9ccff;
-      font-weight: 600;
-      margin-bottom: 10px;
-    }
-
-    .contact-box a {
-      color: #d9ccff;
-      word-break: break-word;
-    }
-
-    .main-footer {
-      margin-top: 42px;
-      border-top: 1px solid var(--border);
-      background: rgba(6, 7, 11, 0.7);
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 24px;
-      padding: 28px 0 20px;
-    }
-
-    .footer-col h4 {
-      margin: 0 0 12px;
-      font-size: 1rem;
-    }
-
-    .footer-col p,
-    .footer-col li,
-    .footer-bottom p {
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    .footer-col ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .footer-col li + li {
-      margin-top: 8px;
-    }
-
-    .footer-col a {
-      color: #d9ccff;
-    }
-
-    .footer-bottom {
-      padding: 0 0 32px;
-    }
-
-    .footer-bottom p {
-      margin: 0;
-    }
-
-    @media (max-width: 980px) {
-      .header-inner {
-        min-height: auto;
-        padding: 14px 0;
-        flex-wrap: wrap;
-      }
-
-      .nav-desktop,
-      .footer-grid {
-        width: 100%;
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .hero-card,
-      .about-card {
-        padding: 22px;
-      }
-
-      .page-hero {
-        padding-top: 40px;
-      }
-
-      .language-selector,
-      .header-actions {
-        width: 100%;
-      }
-    }
-  </style>
+  <script type="module" src="/src/legal-pages.mjs"></script>
+  <script type="application/ld+json" data-legal-schema>{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "name": "MC NovaTools", "url": "https://mc-novatools.com/", "email": "psk.dan.metehancetin@mc-novatools.com", "founder": {"@type": "Person", "name": "Metehan ÇETİN, LPC"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://mc-novatools.com/"}, {"@type": "ListItem", "position": 2, "name": "About MC NovaTools", "item": "https://mc-novatools.com/about-us.html"}]}, {"@type": "WebPage", "name": "About MC NovaTools", "url": "https://mc-novatools.com/about-us.html", "description": "Learn about MC NovaTools, our browser-first utility mission, privacy principles, contact details, and why we build practical online tools."}]}</script>
 </head>
-<body>
-  <header class="main-header">
-    <div class="container">
-      <div class="header-inner">
-        <a href="/" class="logo" aria-label="MC NovaTools Home">
-          <span class="logo-text">MC <span class="logo-mc">NovaTools</span></span>
-        </a>
-
-        <nav class="nav-desktop" aria-label="Main navigation">
-          <a href="/categories/pdf-tools.html" data-i18n="nav.pdf">PDF</a>
-          <a href="/categories/image-tools.html" data-i18n="nav.image">Image</a>
-          <a href="/categories/finance-tools.html" data-i18n="nav.finance">Finance</a>
-          <a href="/about-us.html" class="active" data-i18n="nav.about">About</a>
-          <a href="/contact.html" data-i18n="nav.contact">Contact</a>
-        </nav>
-
-        <div class="header-actions">
-          <select id="language-selector" class="language-selector" aria-label="Select Language">
-            <option value="en">🇬🇧 English</option>
-            <option value="tr">🇹🇷 Türkçe</option>
-            <option value="de">🇩🇪 Deutsch</option>
-            <option value="fr">🇫🇷 Français</option>
-            <option value="es">🇪🇸 Español</option>
-            <option value="pt">🇵🇹 Português</option>
-            <option value="ru">🇷🇺 Русский</option>
-            <option value="zh">🇨🇳 中文</option>
-            <option value="ja">🇯🇵 日本語</option>
-            <option value="ko">🇰🇷 한국어</option>
-            <option value="ar">🇸🇦 العربية</option>
-            <option value="hi">🇮🇳 हिंदी</option>
-            <option value="it">🇮🇹 Italiano</option>
-            <option value="pl">🇵🇱 Polski</option>
-            <option value="nl">🇳🇱 Nederlands</option>
-          </select>
-        </div>
-      </div>
+<body data-legal-page="about">
+  <header class="legal-header">
+    <div class="legal-shell legal-header__inner">
+      <a href="/" class="legal-logo" aria-label="MC NovaTools home"><span class="legal-logo__mark">MC</span><span>NovaTools</span></a>
+      <nav class="legal-topnav" aria-label="Primary">
+        <a href="/about-us.html">About</a>
+        <a href="/privacy-policy.html">Privacy</a>
+        <a href="/cookie-policy.html">Cookies</a>
+        <a href="/terms-of-service.html">Terms</a>
+        <a href="/contact.html">Contact</a>
+      </nav>
+      <div class="header-actions"><select id="language-selector" class="language-selector" aria-label="Language"></select></div>
     </div>
   </header>
-
-  <nav aria-label="Breadcrumb" class="breadcrumb-nav">
-    <div class="container">
-      <ol class="breadcrumb">
-        <li><a href="/" data-i18n="nav.home">Home</a></li>
-        <li aria-current="page" data-i18n="nav.about">About Us</li>
-      </ol>
-    </div>
-  </nav>
-
-  <main class="main-content">
-    <section class="page-hero">
-      <div class="container">
-        <div class="hero-card">
-          <div class="hero-badge">About the Platform</div>
-          <h1 data-i18n="nav.about">About MC NovaTools</h1>
-          <p>MC NovaTools is built around practical online utilities, clearer workflows, and a privacy-conscious product philosophy. The goal is simple: make useful tools easier to access and easier to trust.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="about-section">
-      <div class="container">
-        <div class="about-card">
-          <h2>Our Story</h2>
-          <p>MC NovaTools was founded by <strong>Metehan ÇETİN, LPC</strong> with a practical vision: provide useful online tools without turning the product into a heavy, account-driven, data-first platform. The site is being shaped around usability, transparency, and cleaner browser-based workflows.</p>
-
-          <p>What began as a focused tool collection has expanded into a broader platform direction covering files, images, finance, development, text, converters, and other practical digital tasks.</p>
-
-          <h2>Our Mission</h2>
-          <p>The platform mission is to make helpful tools accessible while keeping the experience straightforward and respectful of user trust.</p>
-          <ul>
-            <li><strong>Privacy-conscious design:</strong> reduce unnecessary data handling wherever practical</li>
-            <li><strong>Useful access:</strong> make tools easy to find and simple to use</li>
-            <li><strong>Practical quality:</strong> prioritize workflows that solve real everyday problems</li>
-          </ul>
-
-          <h2>Meet the Founder</h2>
-          <div class="founder-profile">
-            <h3>Metehan ÇETİN, LPC</h3>
-            <p class="job-title">Founder</p>
-            <p>Metehan brings a user-centered perspective to product decisions, with an emphasis on reducing friction, improving clarity, and building experiences that feel trustworthy instead of overwhelming.</p>
-            <p>The platform direction reflects a preference for simplicity, accessibility, and better user experience rather than unnecessary complexity.</p>
-          </div>
-
-          <h2>What Makes MC NovaTools Different</h2>
-          <h3>Browser-first thinking</h3>
-          <p>Where practical, tools are designed around browser-based workflows. This helps reduce unnecessary upload friction and keeps the platform lighter and easier to use.</p>
-          <ul>
-            <li>Cleaner task flows for common operations</li>
-            <li>Less dependence on forced account systems</li>
-            <li>A stronger emphasis on direct utility and user control</li>
-          </ul>
-
-          <h3>No forced registration for basic use</h3>
-          <p>MC NovaTools is intended to be accessible without making ordinary tool usage depend on signups, complicated onboarding, or unnecessary user friction.</p>
-
-          <h2>Our Platform Areas</h2>
-          <p>The site currently organizes tools across multiple category areas, including:</p>
-          <ul>
-            <li><strong>PDF Tools:</strong> document workflows such as merge, split, compression, and conversion</li>
-            <li><strong>Image Tools:</strong> resize, optimize, convert, and image-related utilities</li>
-            <li><strong>Finance Tools:</strong> planning calculators and estimation workflows</li>
-            <li><strong>Developer Tools:</strong> formatters, encoders, testers, and coding helpers</li>
-            <li><strong>Text & Writing:</strong> content utilities and plain-text workflows</li>
-            <li><strong>Converters and related utilities:</strong> practical transformation and calculation tasks</li>
-          </ul>
-
-          <h2>Looking Forward</h2>
-          <p>MC NovaTools is still being improved. Ongoing work includes category expansion, better navigation, stronger legal and trust pages, cleaner UX, and broader platform consistency.</p>
-
-          <h2>Get in Touch</h2>
-          <p>Questions, suggestions, or feedback are welcome. You can use the contact page or reach out directly through the official site email.</p>
-
-          <div class="contact-box">
-            <p><strong>Metehan ÇETİN, LPC</strong><br>Founder, MC NovaTools</p>
-            <p>Email: <a href="mailto:psk.dan.metehancetin@mc-novatools.com?subject=MC%20NovaTools%20About%20Page%20Question">psk.dan.metehancetin@mc-novatools.com</a></p>
-          </div>
-        </div>
-      </div>
-    </section>
+  <nav class="legal-shell legal-breadcrumb" aria-label="Breadcrumb" data-legal-breadcrumb></nav>
+  <main class="legal-shell legal-page" id="main-content">
+    <aside class="legal-sidebar" aria-label="Page sections"><nav data-legal-sidebar></nav></aside>
+    <article class="legal-content" data-legal-content>
+      <p class="legal-eyebrow">About</p>
+      <h1>About MC NovaTools</h1>
+      <p class="legal-lede">A practical, privacy-conscious tool workspace for everyday file, finance, code, text, and productivity workflows.</p>
+      <p class="legal-updated">Last updated: 2026-05-10</p>
+    </article>
   </main>
-
-  <footer class="main-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-col">
-          <h4>MC NovaTools</h4>
-          <p>Practical online tools for files, finance, code, text, and everyday digital workflows.</p>
-          <p>Metehan ÇETİN, LPC</p>
-        </div>
-
-        <div class="footer-col">
-          <h4>Quick Links</h4>
-          <ul>
-            <li><a href="/about-us.html">About Us</a></li>
-            <li><a href="/contact.html">Contact</a></li>
-            <li><a href="/blog/index.html">Blog</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4>Tool Categories</h4>
-          <ul>
-            <li><a href="/categories/pdf-tools.html">PDF Tools</a></li>
-            <li><a href="/categories/image-tools.html">Image Tools</a></li>
-            <li><a href="/categories/finance-tools.html">Finance Tools</a></li>
-            <li><a href="/categories/developer-tools.html">Developer Tools</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4>Legal</h4>
-          <ul>
-            <li><a href="/privacy-policy.html">Privacy Policy</a></li>
-            <li><a href="/terms-of-service.html">Terms of Service</a></li>
-            <li><a href="/cookie-policy.html">Cookie Policy</a></li>
-            <li><a href="/security.html">Security</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <p>© 2026 MC NovaTools. All rights reserved. <a href="mailto:psk.dan.metehancetin@mc-novatools.com?subject=MC%20NovaTools%20Support">psk.dan.metehancetin@mc-novatools.com</a></p>
-      </div>
+  <footer class="legal-footer">
+    <div class="legal-shell legal-footer__grid">
+      <div><strong>MC NovaTools</strong><p>Practical online tools with privacy-conscious workflows.</p><p>Metehan ÇETİN, LPC</p></div>
+      <nav aria-label="Company"><strong>Company</strong><a href="/about-us.html">About Us</a><a href="/contact.html">Contact</a><a href="/blog/index.html">Blog</a></nav>
+      <nav aria-label="Legal"><strong>Legal</strong><a href="/privacy-policy.html">Privacy Policy</a><a href="/terms-of-service.html">Terms of Service</a><a href="/cookie-policy.html">Cookie Policy</a><button type="button" class="legal-footer__button" data-cookie-settings>Cookie settings</button></nav>
     </div>
   </footer>
 </body>

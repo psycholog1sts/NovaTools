@@ -1,0 +1,1130 @@
+{
+  "en": {
+    "common": {
+      "brand": "MC NovaTools",
+      "home": "Home",
+      "company": "Company",
+      "legal": "Legal",
+      "categories": "Categories",
+      "settings": "Cookie settings",
+      "updated": "Last updated: 2026-05-10",
+      "email": "psk.dan.metehancetin@mc-novatools.com",
+      "address": "Remote-first project. Legal correspondence may be sent by email.",
+      "phone": "Phone support is not currently offered.",
+      "social": "Social links are published only from official MC NovaTools profiles.",
+      "onThisPage": "On this page"
+    },
+    "pages": {
+      "about": {
+        "title": "About MC NovaTools",
+        "metaTitle": "About MC NovaTools | Practical browser-first tools",
+        "metaDescription": "Learn about MC NovaTools, our browser-first utility mission, privacy principles, contact details, and why we build practical online tools.",
+        "badge": "About",
+        "intro": "A practical, privacy-conscious tool workspace for everyday file, finance, code, text, and productivity workflows.",
+        "sections": [
+          {
+            "id": "mission",
+            "title": "Mission",
+            "body": [
+              "MC NovaTools exists to make common digital tasks easier without forcing users into unnecessary accounts, uploads, or complicated dashboards. The project focuses on practical utilities that help people prepare files, check calculations, clean text, and complete browser-based workflows with clear instructions.",
+              "Where possible, tools are designed to run in the browser so users stay in control of their inputs and outputs. Some pages may rely on third-party services for analytics, advertising, or externally sourced data; those uses are disclosed in the legal pages and controlled through consent settings."
+            ]
+          },
+          {
+            "id": "vision",
+            "title": "Vision",
+            "body": [
+              "Our vision is a trustworthy library of small, focused tools that saves time while respecting user choice. We prefer simple interfaces, transparent assumptions, and honest limitations over inflated claims.",
+              "NovaTools is intended for general informational and productivity use. It is not a substitute for professional legal, financial, medical, or technical advice when a decision has material consequences."
+            ]
+          },
+          {
+            "id": "team",
+            "title": "Team",
+            "cards": [
+              {
+                "name": "Metehan ÇETİN, LPC",
+                "role": "Founder and editor",
+                "bio": "Responsible for product direction, content standards, privacy-first positioning, and public support channels."
+              }
+            ]
+          },
+          {
+            "id": "why",
+            "title": "Why NovaTools?",
+            "list": [
+              "Browser-first workflows where practical.",
+              "No forced account for standard public tools.",
+              "Clear legal, privacy, cookie, and security disclosures.",
+              "Tool pages designed around practical review steps rather than black-box promises."
+            ]
+          },
+          {
+            "id": "contact-details",
+            "title": "Contact details",
+            "body": [
+              "Email: psk.dan.metehancetin@mc-novatools.com",
+              "Address: Remote-first project. Legal correspondence may be sent by email.",
+              "Phone: Phone support is not currently offered.",
+              "Social media: Official links are added only when they are maintained and monitored."
+            ]
+          }
+        ]
+      },
+      "privacy": {
+        "title": "Privacy Policy",
+        "metaTitle": "Privacy Policy | MC NovaTools",
+        "metaDescription": "Read how MC NovaTools handles IP data, browser information, cookies, analytics, advertising, user rights, retention, and data-controller contact details.",
+        "badge": "Privacy",
+        "intro": "This Privacy Policy explains what data may be processed when you use MC NovaTools and how you can control non-essential technologies.",
+        "sections": [
+          {
+            "id": "data-controller",
+            "title": "Data controller and contact",
+            "body": [
+              "MC NovaTools is operated by Metehan ÇETİN, LPC for this public website and its browser-based utility pages. Privacy questions and rights requests can be sent to psk.dan.metehancetin@mc-novatools.com.",
+              "This policy is written for a general international audience, including visitors from the European Economic Area, the United Kingdom, and Türkiye. It is intended to be transparent, but it is not legal advice."
+            ]
+          },
+          {
+            "id": "data-we-collect",
+            "title": "Data we collect",
+            "list": [
+              "IP address and approximate network information received by hosting, security, analytics, and advertising systems.",
+              "Browser, device, language, referrer, page URL, and technical log information.",
+              "Cookie and localStorage preferences, including language, theme, and consent choices.",
+              "Usage events such as page views or tool interactions when analytics consent is granted.",
+              "Contact form fields you choose to submit, such as name, email address, subject, and message.",
+              "Advertising interaction data if advertising consent is granted and Google advertising services are available."
+            ]
+          },
+          {
+            "id": "how-we-use-data",
+            "title": "How we use data",
+            "list": [
+              "Operate, secure, troubleshoot, and improve the website.",
+              "Remember language, theme, and cookie choices.",
+              "Measure aggregate usage and performance when analytics consent is granted.",
+              "Display and measure contextual advertising when advertising consent is granted.",
+              "Respond to support, feedback, business, or legal messages.",
+              "Comply with legal obligations and protect the service from abuse."
+            ]
+          },
+          {
+            "id": "third-parties",
+            "title": "Third-party sharing",
+            "body": [
+              "We do not sell personal information. Limited data may be processed by infrastructure, analytics, advertising, and form-handling providers that support the website.",
+              "Google Analytics and Google AdSense are loaded only after the relevant consent category is granted. Google may process data under its own terms when those services are enabled. Hosting, security, and email providers may process technical logs or submitted messages as necessary to provide the service."
+            ]
+          },
+          {
+            "id": "legal-bases",
+            "title": "Legal bases and KVKK grounds",
+            "list": [
+              "Consent for analytics, advertising, and optional functional storage.",
+              "Legitimate interests for security, abuse prevention, debugging, and basic website operation.",
+              "Contract or pre-contract steps when you contact us with a request.",
+              "Legal obligation where recordkeeping or lawful response is required."
+            ]
+          },
+          {
+            "id": "user-rights",
+            "title": "User rights",
+            "body": [
+              "Depending on your location, you may have rights to access, correct, delete, restrict, object to, or receive a copy of personal data. You may also withdraw consent at any time from Cookie Settings in the footer.",
+              "For KVKK-related requests, include enough information for us to identify the request and the relevant interaction. We may need to verify ownership of the email address before acting on a request."
+            ]
+          },
+          {
+            "id": "retention",
+            "title": "Retention",
+            "list": [
+              "Consent preferences: until you change them or clear browser storage.",
+              "Contact messages: only as long as needed to respond and keep reasonable support records.",
+              "Security and hosting logs: retained according to provider schedules and operational needs.",
+              "Analytics and advertising data: retained according to the settings and policies of the relevant third-party service."
+            ]
+          },
+          {
+            "id": "children",
+            "title": "Children",
+            "body": [
+              "MC NovaTools is not directed to children under 13 and should not be used to submit children’s personal data. If you believe a child submitted personal data, contact us so we can review and delete it where appropriate."
+            ]
+          }
+        ]
+      },
+      "cookies": {
+        "title": "Cookie Policy",
+        "metaTitle": "Cookie Policy | MC NovaTools",
+        "metaDescription": "Learn about necessary, analytics, advertising, and functional cookies/localStorage used by MC NovaTools and how to manage consent.",
+        "badge": "Cookies",
+        "intro": "This Cookie Policy explains how MC NovaTools uses cookies and similar technologies such as localStorage. Non-essential categories are disabled until you grant consent.",
+        "sections": [
+          {
+            "id": "overview",
+            "title": "Overview",
+            "body": [
+              "Cookies and browser storage help websites remember choices, measure usage, or support advertising. MC NovaTools separates storage into Necessary, Analytics, Advertising, and Functional categories.",
+              "You can accept all, reject non-essential categories, or choose categories in Cookie Settings. Necessary storage is always enabled because it supports security and core preferences."
+            ]
+          },
+          {
+            "id": "cookie-table",
+            "title": "Cookie and storage table",
+            "table": {
+              "headers": [
+                "Name",
+                "Provider",
+                "Purpose",
+                "Duration",
+                "Category"
+              ],
+              "rows": [
+                [
+                  "cookie_consent / novatools_cookie_consent",
+                  "MC NovaTools",
+                  "Stores your consent choices for necessary, analytics, advertising, and functional categories.",
+                  "Until changed or browser storage is cleared",
+                  "Necessary"
+                ],
+                [
+                  "mc-novatools-language",
+                  "MC NovaTools",
+                  "Remembers selected language.",
+                  "Until changed or browser storage is cleared",
+                  "Necessary"
+                ],
+                [
+                  "theme",
+                  "MC NovaTools",
+                  "Remembers light or dark theme selection.",
+                  "Until changed or browser storage is cleared",
+                  "Functional"
+                ],
+                [
+                  "_ga / Google Analytics storage",
+                  "Google",
+                  "Measures usage and page performance when analytics consent is granted.",
+                  "Set by Google according to service configuration",
+                  "Analytics"
+                ],
+                [
+                  "adsbygoogle / advertising identifiers",
+                  "Google AdSense",
+                  "Supports contextual advertising, ad delivery, fraud prevention, and measurement when advertising consent is granted.",
+                  "Set by Google according to service configuration",
+                  "Advertising"
+                ],
+                [
+                  "tool preferences",
+                  "MC NovaTools",
+                  "Stores optional user settings for individual tools where implemented.",
+                  "Varies by tool or until cleared",
+                  "Functional"
+                ]
+              ]
+            }
+          },
+          {
+            "id": "categories",
+            "title": "Consent categories",
+            "list": [
+              "Necessary: session, security, consent, and language storage needed for basic operation.",
+              "Analytics: Google Analytics or similar measurement loaded only after analytics consent.",
+              "Advertising: Google AdSense and ad measurement loaded only after advertising consent.",
+              "Functional: theme and user settings that improve convenience but are not strictly required."
+            ]
+          },
+          {
+            "id": "manage",
+            "title": "How to manage cookies",
+            "body": [
+              "Use the Cookie Settings link in the footer to change or withdraw consent at any time. You can also delete cookies and localStorage in your browser settings.",
+              "Withdrawing consent stops future loading of non-essential scripts from this site, but it does not automatically delete data already processed by a third-party provider. Review the relevant provider controls for additional deletion options."
+            ]
+          }
+        ]
+      },
+      "terms": {
+        "title": "Terms of Service",
+        "metaTitle": "Terms of Service | MC NovaTools",
+        "metaDescription": "Review MC NovaTools terms covering acceptable use, disclaimers, intellectual property, user obligations, prohibited uses, liability limits, governing law, and disputes.",
+        "badge": "Terms",
+        "intro": "These Terms of Service govern your use of MC NovaTools. If you do not agree, do not use the website.",
+        "sections": [
+          {
+            "id": "use-of-service",
+            "title": "Use of the service",
+            "body": [
+              "MC NovaTools provides browser-based utilities, calculators, converters, guides, and related content for general informational and productivity purposes. You are responsible for reviewing inputs, settings, assumptions, and outputs before relying on any result.",
+              "The service may change, pause, or remove tools or content when needed for maintenance, accuracy, security, or product reasons."
+            ]
+          },
+          {
+            "id": "disclaimers",
+            "title": "Disclaimers",
+            "body": [
+              "Tools and content are provided “as is” without warranties of accuracy, availability, fitness for a particular purpose, or uninterrupted operation. Financial, legal, medical, tax, insurance, and technical outputs are informational and should be checked with qualified professionals where appropriate.",
+              "Browser-based processing can still be affected by device limits, browser bugs, file corruption, user settings, or third-party service availability."
+            ]
+          },
+          {
+            "id": "intellectual-property",
+            "title": "Intellectual property",
+            "body": [
+              "The MC NovaTools name, site design, text, and original assets are protected by applicable intellectual-property rules unless otherwise stated. You may use tool outputs you create with your own inputs, subject to rights you already have in those inputs.",
+              "Do not copy, scrape, repackage, or resell substantial parts of the website in a way that misrepresents source, ownership, or endorsement."
+            ]
+          },
+          {
+            "id": "user-obligations",
+            "title": "User obligations",
+            "list": [
+              "Use the website lawfully and respectfully.",
+              "Do not upload or process content you do not have the right to use.",
+              "Review outputs before taking action.",
+              "Keep backups of important files and data.",
+              "Do not attempt to bypass security, overload infrastructure, or interfere with other users."
+            ]
+          },
+          {
+            "id": "prohibited-uses",
+            "title": "Prohibited uses",
+            "list": [
+              "Malware, phishing, spam, fraud, credential theft, or unauthorized access.",
+              "Processing illegal, harmful, or rights-infringing content.",
+              "Automated scraping or high-volume requests that degrade service availability.",
+              "Reverse engineering or abuse of APIs, scripts, or ad systems beyond lawful interoperability."
+            ]
+          },
+          {
+            "id": "liability",
+            "title": "Limitation of liability",
+            "body": [
+              "To the maximum extent permitted by law, MC NovaTools and its operator will not be liable for indirect, incidental, consequential, special, punitive, or lost-profit damages arising from use of the website. Your exclusive remedy is to stop using the service.",
+              "Some jurisdictions do not allow certain limitations, so parts of this section may not apply to you."
+            ]
+          },
+          {
+            "id": "law-disputes",
+            "title": "Governing law and disputes",
+            "body": [
+              "These terms are interpreted under applicable laws for the operator’s place of establishment unless mandatory consumer-protection rules require otherwise. Before filing a formal claim, please contact us at the email address listed on the Contact page so we can try to resolve the issue informally."
+            ]
+          },
+          {
+            "id": "changes",
+            "title": "Changes to these terms",
+            "body": [
+              "We may update these terms to reflect service, legal, or operational changes. The updated date shows when the latest version took effect. Continued use after changes means you accept the updated terms."
+            ]
+          }
+        ]
+      },
+      "contact": {
+        "title": "Contact MC NovaTools",
+        "metaTitle": "Contact MC NovaTools | Support, feedback, and legal requests",
+        "metaDescription": "Contact MC NovaTools for support, feedback, privacy requests, business inquiries, or tool suggestions using the validated contact form or email link.",
+        "badge": "Contact",
+        "intro": "Use this page for support, feedback, privacy requests, tool suggestions, and business inquiries.",
+        "sections": [
+          {
+            "id": "contact-form",
+            "title": "Contact form",
+            "form": true
+          },
+          {
+            "id": "alternative-contact",
+            "title": "Alternative contact",
+            "body": [
+              "Email: psk.dan.metehancetin@mc-novatools.com",
+              "Suggested subjects: support, privacy request, bug report, business inquiry, tool request.",
+              "Phone: Phone support is not currently offered.",
+              "Address: Remote-first project. Legal correspondence may be sent by email."
+            ]
+          },
+          {
+            "id": "response-expectations",
+            "title": "Response expectations",
+            "body": [
+              "Please avoid sending sensitive files unless we specifically request them. Include the page URL, browser, device, and steps to reproduce when reporting a technical issue.",
+              "The form opens your email client with a prepared draft; no message is silently sent to a third-party form backend from this static page."
+            ]
+          }
+        ]
+      }
+    },
+    "form": {
+      "name": "Name",
+      "email": "Email address",
+      "subject": "Subject",
+      "message": "Message",
+      "select": "Select a subject",
+      "subjects": [
+        "General inquiry",
+        "Technical support",
+        "Privacy request",
+        "Business partnership",
+        "Bug report",
+        "Tool request"
+      ],
+      "submit": "Open email draft",
+      "success": "Your email client should open with a prefilled draft.",
+      "error": "Please complete all required fields with a valid email address."
+    }
+  },
+  "tr": {
+    "common": {
+      "brand": "MC NovaTools",
+      "home": "Ana sayfa",
+      "company": "Kurumsal",
+      "legal": "Yasal",
+      "categories": "Kategoriler",
+      "settings": "Çerez ayarları",
+      "updated": "Son güncelleme: 2026-05-10",
+      "email": "psk.dan.metehancetin@mc-novatools.com",
+      "address": "Uzaktan çalışan proje. Yasal yazışmalar e-posta ile gönderilebilir.",
+      "phone": "Telefon desteği şu anda sunulmamaktadır.",
+      "social": "Sosyal medya bağlantıları yalnızca resmi ve takip edilen profillerden yayınlanır.",
+      "onThisPage": "Bu sayfada"
+    },
+    "pages": {
+      "about": {
+        "title": "MC NovaTools Hakkında",
+        "metaTitle": "MC NovaTools Hakkında | Pratik tarayıcı öncelikli araçlar",
+        "metaDescription": "MC NovaTools misyonu, gizlilik ilkeleri, iletişim bilgileri ve pratik çevrimiçi araç yaklaşımı hakkında bilgi edinin.",
+        "badge": "Hakkımızda",
+        "intro": "Dosya, finans, kod, metin ve üretkenlik iş akışları için pratik ve gizlilik bilincine sahip araç alanı.",
+        "sections": [
+          {
+            "id": "mission",
+            "title": "Misyon",
+            "body": [
+              "MC NovaTools, kullanıcıları gereksiz hesaplara, yüklemelere veya karmaşık panellere zorlamadan yaygın dijital işleri kolaylaştırmak için vardır. Proje; dosya hazırlama, hesap kontrolü, metin temizleme ve tarayıcı tabanlı iş akışları için pratik yardımcılar sunar.",
+              "Mümkün olduğunda araçlar tarayıcı içinde çalışacak şekilde tasarlanır. Analiz, reklam veya dış veri gerektiren sayfalar yasal sayfalarda açıklanır ve çerez tercihleriyle kontrol edilir."
+            ]
+          },
+          {
+            "id": "vision",
+            "title": "Vizyon",
+            "body": [
+              "Vizyonumuz, kullanıcı seçimine saygı duyan küçük ve odaklı araçlardan oluşan güvenilir bir kütüphane sunmaktır. Abartılı iddialar yerine basit arayüzleri, açık varsayımları ve dürüst sınırlamaları tercih ederiz.",
+              "NovaTools genel bilgilendirme ve üretkenlik amaçlıdır; önemli kararlar için profesyonel danışmanlığın yerine geçmez."
+            ]
+          },
+          {
+            "id": "team",
+            "title": "Ekip",
+            "cards": [
+              {
+                "name": "Metehan ÇETİN, LPC",
+                "role": "Founder and editor",
+                "bio": "Responsible for product direction, content standards, privacy-first positioning, and public support channels."
+              }
+            ]
+          },
+          {
+            "id": "why",
+            "title": "Neden NovaTools?",
+            "list": [
+              "Mümkün olduğunda tarayıcı öncelikli iş akışları.",
+              "Standart herkese açık araçlar için zorunlu hesap yok.",
+              "Açık yasal, gizlilik, çerez ve güvenlik açıklamaları.",
+              "Kara kutu vaatler yerine pratik kontrol adımlarına dayalı araç sayfaları."
+            ]
+          },
+          {
+            "id": "contact-details",
+            "title": "İletişim bilgileri",
+            "body": [
+              "E-posta: psk.dan.metehancetin@mc-novatools.com",
+              "Adres: Uzaktan çalışan proje. Yasal yazışmalar e-posta ile gönderilebilir.",
+              "Telefon: Telefon desteği şu anda sunulmamaktadır.",
+              "Sosyal medya: Resmi bağlantılar yalnızca yönetilen profiller için eklenir."
+            ]
+          }
+        ]
+      },
+      "privacy": {
+        "title": "Gizlilik Politikası",
+        "metaTitle": "Gizlilik Politikası | MC NovaTools",
+        "metaDescription": "MC NovaTools’un IP, tarayıcı bilgisi, çerezler, analiz, reklam, kullanıcı hakları ve saklama süreleri yaklaşımını okuyun.",
+        "badge": "Gizlilik",
+        "intro": "Bu politika, MC NovaTools’u kullandığınızda hangi verilerin işlenebileceğini ve zorunlu olmayan teknolojileri nasıl kontrol edebileceğinizi açıklar.",
+        "sections": [
+          {
+            "id": "data-controller",
+            "title": "Veri sorumlusu ve iletişim",
+            "body": [
+              "MC NovaTools, bu web sitesi ve tarayıcı tabanlı araçlar için Metehan ÇETİN, LPC tarafından işletilir. Gizlilik soruları ve hak talepleri psk.dan.metehancetin@mc-novatools.com adresine gönderilebilir.",
+              "Bu politika Avrupa Ekonomik Alanı, Birleşik Krallık ve Türkiye dahil genel uluslararası ziyaretçiler için şeffaflık amacıyla hazırlanmıştır; hukuki danışmanlık değildir."
+            ]
+          },
+          {
+            "id": "data-we-collect",
+            "title": "Topladığımız veriler",
+            "list": [
+              "Barındırma, güvenlik, analiz ve reklam sistemleri tarafından alınabilen IP adresi ve yaklaşık ağ bilgileri.",
+              "Tarayıcı, cihaz, dil, yönlendiren sayfa, sayfa URL’si ve teknik günlük bilgileri.",
+              "Dil, tema ve onay tercihleri dahil çerez ve localStorage kayıtları.",
+              "Analiz onayı verildiğinde sayfa görüntülemeleri veya araç etkileşimleri gibi kullanım olayları.",
+              "İletişim formuna sizin yazdığınız ad, e-posta, konu ve mesaj bilgileri.",
+              "Reklam onayı verildiğinde reklam etkileşimi ve ölçüm verileri."
+            ]
+          },
+          {
+            "id": "how-we-use-data",
+            "title": "Verileri kullanım amaçlarımız",
+            "list": [
+              "Web sitesini işletmek, güvenliğini sağlamak, sorun gidermek ve geliştirmek.",
+              "Dil, tema ve çerez tercihlerini hatırlamak.",
+              "Analiz onayı verildiğinde toplu kullanım ve performansı ölçmek.",
+              "Reklam onayı verildiğinde bağlamsal reklam göstermek ve ölçmek.",
+              "Destek, geri bildirim, iş veya yasal mesajlara yanıt vermek.",
+              "Yasal yükümlülüklere uymak ve hizmeti kötüye kullanımdan korumak."
+            ]
+          },
+          {
+            "id": "third-parties",
+            "title": "Üçüncü taraf paylaşımı",
+            "body": [
+              "Kişisel bilgileri satmayız. Sınırlı veriler; barındırma, analiz, reklam ve form/eposta hizmet sağlayıcıları tarafından siteyi işletmek için işlenebilir.",
+              "Google Analytics ve Google AdSense yalnızca ilgili onay kategorisi verildikten sonra yüklenir. Etkinleştirildiğinde Google kendi şartları kapsamında veri işleyebilir."
+            ]
+          },
+          {
+            "id": "legal-bases",
+            "title": "Hukuki sebepler ve KVKK dayanakları",
+            "list": [
+              "Analiz, reklam ve isteğe bağlı fonksiyonel depolama için açık rıza.",
+              "Güvenlik, kötüye kullanım önleme, hata ayıklama ve temel işletim için meşru menfaat.",
+              "Bir talep ilettiğinizde sözleşme veya sözleşme öncesi adımlar.",
+              "Kayıt tutma veya hukuka uygun yanıt gerektiğinde yasal yükümlülük."
+            ]
+          },
+          {
+            "id": "user-rights",
+            "title": "Kullanıcı hakları",
+            "body": [
+              "Bulunduğunuz yere bağlı olarak erişim, düzeltme, silme, kısıtlama, itiraz ve veri taşınabilirliği haklarınız olabilir. Footer’daki Çerez Ayarları bağlantısıyla onayı her zaman geri çekebilirsiniz.",
+              "KVKK talepleri için ilgili etkileşimi belirlemeye yetecek bilgi ekleyin. İşlem yapmadan önce e-posta sahipliğini doğrulamamız gerekebilir."
+            ]
+          },
+          {
+            "id": "retention",
+            "title": "Saklama süreleri",
+            "list": [
+              "Onay tercihleri: siz değiştirene veya tarayıcı depolamasını temizleyene kadar.",
+              "İletişim mesajları: yanıt vermek ve makul destek kayıtları tutmak için gerekli olduğu sürece.",
+              "Güvenlik ve barındırma günlükleri: sağlayıcı takvimleri ve operasyonel ihtiyaçlara göre.",
+              "Analiz ve reklam verileri: ilgili üçüncü taraf hizmet ayarları ve politikalarına göre."
+            ]
+          },
+          {
+            "id": "children",
+            "title": "Çocuklar",
+            "body": [
+              "MC NovaTools 13 yaş altı çocuklara yönelik değildir ve çocukların kişisel verilerini göndermek için kullanılmamalıdır. Böyle bir veri gönderildiğini düşünüyorsanız inceleme ve uygun silme için bize yazın."
+            ]
+          }
+        ]
+      },
+      "cookies": {
+        "title": "Çerez Politikası",
+        "metaTitle": "Çerez Politikası | MC NovaTools",
+        "metaDescription": "MC NovaTools tarafından kullanılan zorunlu, analiz, reklam ve fonksiyonel çerezler/localStorage hakkında bilgi edinin.",
+        "badge": "Çerezler",
+        "intro": "Bu politika, MC NovaTools’un çerezleri ve localStorage gibi benzer teknolojileri nasıl kullandığını açıklar. Zorunlu olmayan kategoriler onay verilene kadar devre dışıdır.",
+        "sections": [
+          {
+            "id": "overview",
+            "title": "Genel bakış",
+            "body": [
+              "Çerezler ve tarayıcı depolaması; tercihleri hatırlama, kullanımı ölçme veya reklam desteği için kullanılır. MC NovaTools depolamayı Zorunlu, Analiz, Reklam ve Fonksiyonel kategorilerine ayırır.",
+              "Tümünü kabul edebilir, zorunlu olmayanları reddedebilir veya Çerez Ayarları üzerinden kategori seçebilirsiniz. Zorunlu depolama temel çalışmayı desteklediği için her zaman açıktır."
+            ]
+          },
+          {
+            "id": "cookie-table",
+            "title": "Çerez ve depolama tablosu",
+            "table": {
+              "headers": [
+                "Name",
+                "Provider",
+                "Purpose",
+                "Duration",
+                "Category"
+              ],
+              "rows": [
+                [
+                  "cookie_consent / novatools_cookie_consent",
+                  "MC NovaTools",
+                  "Stores your consent choices for necessary, analytics, advertising, and functional categories.",
+                  "Until changed or browser storage is cleared",
+                  "Necessary"
+                ],
+                [
+                  "mc-novatools-language",
+                  "MC NovaTools",
+                  "Remembers selected language.",
+                  "Until changed or browser storage is cleared",
+                  "Necessary"
+                ],
+                [
+                  "theme",
+                  "MC NovaTools",
+                  "Remembers light or dark theme selection.",
+                  "Until changed or browser storage is cleared",
+                  "Functional"
+                ],
+                [
+                  "_ga / Google Analytics storage",
+                  "Google",
+                  "Measures usage and page performance when analytics consent is granted.",
+                  "Set by Google according to service configuration",
+                  "Analytics"
+                ],
+                [
+                  "adsbygoogle / advertising identifiers",
+                  "Google AdSense",
+                  "Supports contextual advertising, ad delivery, fraud prevention, and measurement when advertising consent is granted.",
+                  "Set by Google according to service configuration",
+                  "Advertising"
+                ],
+                [
+                  "tool preferences",
+                  "MC NovaTools",
+                  "Stores optional user settings for individual tools where implemented.",
+                  "Varies by tool or until cleared",
+                  "Functional"
+                ]
+              ]
+            }
+          },
+          {
+            "id": "categories",
+            "title": "Onay kategorileri",
+            "list": [
+              "Zorunlu: temel çalışma için gerekli oturum, güvenlik, onay ve dil depolaması.",
+              "Analiz: Google Analytics veya benzeri ölçüm yalnızca analiz onayından sonra yüklenir.",
+              "Reklam: Google AdSense ve reklam ölçümü yalnızca reklam onayından sonra yüklenir.",
+              "Fonksiyonel: kullanım kolaylığı sağlayan tema ve kullanıcı ayarları."
+            ]
+          },
+          {
+            "id": "manage",
+            "title": "Çerezleri yönetme",
+            "body": [
+              "Footer’daki Çerez Ayarları bağlantısını kullanarak onayınızı istediğiniz zaman değiştirebilir veya geri çekebilirsiniz. Tarayıcı ayarlarınızdan çerezleri ve localStorage’ı da silebilirsiniz.",
+              "Onayı geri çekmek gelecekteki zorunlu olmayan script yüklemelerini durdurur; ancak üçüncü taraflarda daha önce işlenen verileri otomatik silmez. Ek silme seçenekleri için ilgili sağlayıcı kontrollerini inceleyin."
+            ]
+          }
+        ]
+      },
+      "terms": {
+        "title": "Hizmet Şartları",
+        "metaTitle": "Hizmet Şartları | MC NovaTools",
+        "metaDescription": "Kullanım koşulları, sorumluluk reddi, fikri mülkiyet, kullanıcı yükümlülükleri, yasaklı kullanımlar ve uyuşmazlık şartlarını inceleyin.",
+        "badge": "Şartlar",
+        "intro": "Bu Hizmet Şartları MC NovaTools kullanımınızı düzenler. Kabul etmiyorsanız siteyi kullanmayın.",
+        "sections": [
+          {
+            "id": "use-of-service",
+            "title": "Hizmetin kullanımı",
+            "body": [
+              "MC NovaTools genel bilgilendirme ve üretkenlik için tarayıcı tabanlı yardımcılar, hesaplayıcılar, dönüştürücüler ve rehberler sunar. Sonuçlara güvenmeden önce girdileri, ayarları, varsayımları ve çıktıları kontrol etmek sizin sorumluluğunuzdadır.",
+              "Hizmet; bakım, doğruluk, güvenlik veya ürün gerekçeleriyle değiştirilebilir, duraklatılabilir veya kaldırılabilir."
+            ]
+          },
+          {
+            "id": "disclaimers",
+            "title": "Sorumluluk reddi",
+            "body": [
+              "Araçlar ve içerik doğruluk, erişilebilirlik veya belirli amaca uygunluk garantisi olmadan “olduğu gibi” sunulur. Finansal, hukuki, tıbbi, vergi, sigorta ve teknik çıktılar bilgilendirme amaçlıdır ve gerektiğinde uzmanlarla doğrulanmalıdır.",
+              "Tarayıcı tabanlı işlemler cihaz sınırları, tarayıcı hataları, bozuk dosyalar, kullanıcı ayarları veya üçüncü taraf erişilebilirliğinden etkilenebilir."
+            ]
+          },
+          {
+            "id": "intellectual-property",
+            "title": "Fikri mülkiyet",
+            "body": [
+              "MC NovaTools adı, site tasarımı, metinleri ve özgün varlıkları aksi belirtilmedikçe fikri mülkiyet kurallarıyla korunur. Kendi girdilerinizle oluşturduğunuz çıktıları, o girdiler üzerindeki haklarınıza bağlı olarak kullanabilirsiniz.",
+              "Kaynağı, mülkiyeti veya onayı yanlış gösterecek biçimde sitenin önemli bölümlerini kopyalamayın, kazımayın, paketlemeyin veya yeniden satmayın."
+            ]
+          },
+          {
+            "id": "user-obligations",
+            "title": "Kullanıcı yükümlülükleri",
+            "list": [
+              "Web sitesini hukuka uygun ve saygılı şekilde kullanın.",
+              "Kullanma hakkınız olmayan içerikleri yüklemeyin veya işlemeyin.",
+              "Eyleme geçmeden önce çıktıları gözden geçirin.",
+              "Önemli dosya ve verilerin yedeklerini saklayın.",
+              "Güvenliği aşmaya, altyapıyı zorlamaya veya diğer kullanıcıları engellemeye çalışmayın."
+            ]
+          },
+          {
+            "id": "prohibited-uses",
+            "title": "Yasaklı kullanımlar",
+            "list": [
+              "Kötü amaçlı yazılım, kimlik avı, spam, dolandırıcılık, kimlik bilgisi hırsızlığı veya yetkisiz erişim.",
+              "Yasa dışı, zararlı veya hak ihlal eden içeriklerin işlenmesi.",
+              "Hizmet erişilebilirliğini bozan otomatik kazıma veya yüksek hacimli istekler.",
+              "Hukuka uygun birlikte çalışabilirlik dışında API, script veya reklam sistemlerinin tersine mühendisliği ya da kötüye kullanımı."
+            ]
+          },
+          {
+            "id": "liability",
+            "title": "Sorumluluk sınırlaması",
+            "body": [
+              "Kanunun izin verdiği azami ölçüde MC NovaTools ve işletmecisi; dolaylı, arızi, sonuçsal, özel, cezai veya kâr kaybı zararlarından sorumlu değildir. Münhasır çözümünüz hizmeti kullanmayı bırakmaktır.",
+              "Bazı yargı alanları belirli sınırlamalara izin vermeyebilir; bu bölümün bazı kısımları size uygulanmayabilir."
+            ]
+          },
+          {
+            "id": "law-disputes",
+            "title": "Yürürlükteki hukuk ve uyuşmazlıklar",
+            "body": [
+              "Bu şartlar, zorunlu tüketici koruma kuralları aksini gerektirmedikçe işletmecinin bulunduğu yer için geçerli kanunlara göre yorumlanır. Resmi talep öncesinde sorunu dostane çözmeye çalışmak için lütfen İletişim sayfasındaki e-posta adresinden bize ulaşın."
+            ]
+          },
+          {
+            "id": "changes",
+            "title": "Şart değişiklikleri",
+            "body": [
+              "Bu şartları hizmet, hukuk veya operasyon değişikliklerini yansıtmak için güncelleyebiliriz. Güncelleme tarihi son sürümün ne zaman yürürlüğe girdiğini gösterir. Değişikliklerden sonra kullanmaya devam etmeniz güncel şartları kabul ettiğiniz anlamına gelir."
+            ]
+          }
+        ]
+      },
+      "contact": {
+        "title": "MC NovaTools ile İletişim",
+        "metaTitle": "MC NovaTools İletişim | Destek ve geri bildirim",
+        "metaDescription": "Destek, geri bildirim, gizlilik talepleri, iş birlikleri veya araç önerileri için MC NovaTools ile iletişime geçin.",
+        "badge": "İletişim",
+        "intro": "Destek, geri bildirim, gizlilik talepleri, araç önerileri ve iş birlikleri için bu sayfayı kullanın.",
+        "sections": [
+          {
+            "id": "contact-form",
+            "title": "İletişim formu",
+            "form": true
+          },
+          {
+            "id": "alternative-contact",
+            "title": "Alternatif iletişim",
+            "body": [
+              "E-posta: psk.dan.metehancetin@mc-novatools.com",
+              "Önerilen konular: destek, gizlilik talebi, hata bildirimi, iş birliği, araç talebi.",
+              "Telefon: Telefon desteği şu anda sunulmamaktadır.",
+              "Adres: Uzaktan çalışan proje. Yasal yazışmalar e-posta ile gönderilebilir."
+            ]
+          },
+          {
+            "id": "response-expectations",
+            "title": "Yanıt beklentileri",
+            "body": [
+              "Özellikle talep etmediğimiz sürece hassas dosya göndermeyin. Teknik sorun bildirirken sayfa URL’si, tarayıcı, cihaz ve yeniden üretme adımlarını ekleyin.",
+              "Form, e-posta istemcinizde hazırlanmış bir taslak açar; bu statik sayfadan üçüncü taraf bir form arka ucuna sessiz gönderim yapılmaz."
+            ]
+          }
+        ]
+      }
+    },
+    "form": {
+      "name": "Ad",
+      "email": "E-posta adresi",
+      "subject": "Konu",
+      "message": "Mesaj",
+      "select": "Konu seçin",
+      "subjects": [
+        "Genel soru",
+        "Teknik destek",
+        "Gizlilik talebi",
+        "İş ortaklığı",
+        "Hata bildirimi",
+        "Araç talebi"
+      ],
+      "submit": "E-posta taslağı aç",
+      "success": "E-posta istemcinizde doldurulmuş bir taslak açılmalıdır.",
+      "error": "Lütfen tüm zorunlu alanları geçerli bir e-posta adresiyle doldurun."
+    }
+  },
+  "ar": {
+    "common": {
+      "brand": "MC NovaTools",
+      "home": "الرئيسية",
+      "company": "الشركة",
+      "legal": "قانوني",
+      "categories": "الفئات",
+      "settings": "إعدادات ملفات تعريف الارتباط",
+      "updated": "آخر تحديث: 2026-05-10",
+      "email": "psk.dan.metehancetin@mc-novatools.com",
+      "address": "مشروع يعمل عن بُعد. يمكن إرسال المراسلات القانونية عبر البريد الإلكتروني.",
+      "phone": "الدعم الهاتفي غير متاح حالياً.",
+      "social": "تُنشر روابط التواصل الاجتماعي الرسمية فقط عندما تكون مُدارة ومتابعة.",
+      "onThisPage": "في هذه الصفحة"
+    },
+    "pages": {
+      "about": {
+        "title": "حول MC NovaTools",
+        "metaTitle": "حول MC NovaTools | أدوات عملية تعمل من المتصفح",
+        "metaDescription": "تعرّف إلى رسالة MC NovaTools ومبادئ الخصوصية ومعلومات التواصل وسبب بناء أدوات عملية على الويب.",
+        "badge": "من نحن",
+        "intro": "مساحة أدوات عملية تراعي الخصوصية لملفاتك وحساباتك ونصوصك ومهامك اليومية.",
+        "sections": [
+          {
+            "id": "mission",
+            "title": "الرسالة",
+            "body": [
+              "توجد MC NovaTools لتسهيل المهام الرقمية الشائعة دون فرض حسابات أو رفع ملفات أو لوحات معقدة غير ضرورية. يركز المشروع على أدوات عملية لإعداد الملفات ومراجعة الحسابات وتنظيف النصوص وسير العمل داخل المتصفح.",
+              "كلما أمكن، صُممت الأدوات لتعمل داخل المتصفح حتى يحافظ المستخدم على التحكم في مدخلاته ومخرجاته. أي استخدام للتحليلات أو الإعلانات أو البيانات الخارجية موضح في الصفحات القانونية ويُدار عبر إعدادات الموافقة."
+            ]
+          },
+          {
+            "id": "vision",
+            "title": "الرؤية",
+            "body": [
+              "رؤيتنا هي مكتبة موثوقة من أدوات صغيرة ومركزة توفر الوقت وتحترم اختيار المستخدم. نفضّل الواجهات البسيطة والافتراضات الواضحة والقيود الصادقة على الوعود المبالغ فيها.",
+              "NovaTools مخصص للاستخدام المعلوماتي والإنتاجي العام وليس بديلاً عن المشورة المهنية عند اتخاذ قرارات مهمة."
+            ]
+          },
+          {
+            "id": "team",
+            "title": "الفريق",
+            "cards": [
+              {
+                "name": "Metehan ÇETİN, LPC",
+                "role": "Founder and editor",
+                "bio": "Responsible for product direction, content standards, privacy-first positioning, and public support channels."
+              }
+            ]
+          },
+          {
+            "id": "why",
+            "title": "لماذا NovaTools؟",
+            "list": [
+              "سير عمل داخل المتصفح كلما أمكن.",
+              "لا يوجد حساب إلزامي للأدوات العامة القياسية.",
+              "إفصاحات واضحة للخصوصية والملفات والشروط والأمان.",
+              "صفحات أدوات تركز على خطوات مراجعة عملية بدلاً من وعود غامضة."
+            ]
+          },
+          {
+            "id": "contact-details",
+            "title": "معلومات التواصل",
+            "body": [
+              "البريد الإلكتروني: psk.dan.metehancetin@mc-novatools.com",
+              "العنوان: مشروع يعمل عن بُعد. يمكن إرسال المراسلات القانونية عبر البريد الإلكتروني.",
+              "الهاتف: الدعم الهاتفي غير متاح حالياً.",
+              "التواصل الاجتماعي: تُضاف الروابط الرسمية فقط عندما تكون مُدارة."
+            ]
+          }
+        ]
+      },
+      "privacy": {
+        "title": "سياسة الخصوصية",
+        "metaTitle": "سياسة الخصوصية | MC NovaTools",
+        "metaDescription": "اقرأ كيف يتعامل MC NovaTools مع عنوان IP ومعلومات المتصفح وملفات تعريف الارتباط والتحليلات والإعلانات وحقوق المستخدم.",
+        "badge": "الخصوصية",
+        "intro": "توضح هذه السياسة البيانات التي قد تتم معالجتها عند استخدام MC NovaTools وكيف يمكنك التحكم في التقنيات غير الضرورية.",
+        "sections": [
+          {
+            "id": "data-controller",
+            "title": "مسؤول البيانات والتواصل",
+            "body": [
+              "تُدار MC NovaTools بواسطة Metehan ÇETİN, LPC لهذا الموقع وأدواته العاملة في المتصفح. يمكن إرسال أسئلة الخصوصية وطلبات الحقوق إلى psk.dan.metehancetin@mc-novatools.com.",
+              "أُعدت هذه السياسة لجمهور دولي عام، بما في ذلك زوار المنطقة الاقتصادية الأوروبية والمملكة المتحدة وتركيا، بهدف الشفافية وليست مشورة قانونية."
+            ]
+          },
+          {
+            "id": "data-we-collect",
+            "title": "البيانات التي نجمعها",
+            "list": [
+              "عنوان IP ومعلومات الشبكة التقريبية التي تتلقاها أنظمة الاستضافة والأمان والتحليلات والإعلانات.",
+              "معلومات المتصفح والجهاز واللغة والمُحيل ورابط الصفحة والسجلات التقنية.",
+              "تفضيلات ملفات تعريف الارتباط والتخزين المحلي، بما في ذلك اللغة والسمة وخيارات الموافقة.",
+              "أحداث الاستخدام مثل مشاهدات الصفحات أو تفاعلات الأدوات عند منح موافقة التحليلات.",
+              "حقول نموذج التواصل التي تختار إرسالها، مثل الاسم والبريد الإلكتروني والموضوع والرسالة.",
+              "بيانات تفاعل الإعلانات إذا مُنحت موافقة الإعلانات وكانت خدمات Google الإعلانية متاحة."
+            ]
+          },
+          {
+            "id": "how-we-use-data",
+            "title": "أغراض استخدام البيانات",
+            "list": [
+              "تشغيل الموقع وتأمينه واستكشاف المشكلات وتحسينه.",
+              "تذكر اختيارات اللغة والسمة وملفات تعريف الارتباط.",
+              "قياس الاستخدام والأداء بشكل إجمالي عند منح موافقة التحليلات.",
+              "عرض وقياس الإعلانات السياقية عند منح موافقة الإعلانات.",
+              "الرد على رسائل الدعم والملاحظات والأعمال والرسائل القانونية.",
+              "الامتثال للالتزامات القانونية وحماية الخدمة من إساءة الاستخدام."
+            ]
+          },
+          {
+            "id": "third-parties",
+            "title": "المشاركة مع أطراف ثالثة",
+            "body": [
+              "لا نبيع المعلومات الشخصية. قد تعالج جهات الاستضافة والتحليلات والإعلانات والبريد بيانات محدودة لتشغيل الموقع.",
+              "لا يتم تحميل Google Analytics وGoogle AdSense إلا بعد منح الموافقة للفئة المناسبة. عند التفعيل، قد تعالج Google البيانات وفق شروطها الخاصة."
+            ]
+          },
+          {
+            "id": "legal-bases",
+            "title": "الأسس القانونية",
+            "list": [
+              "الموافقة للتحليلات والإعلانات والتخزين الوظيفي الاختياري.",
+              "المصالح المشروعة للأمان ومنع إساءة الاستخدام وتصحيح الأخطاء وتشغيل الموقع الأساسي.",
+              "العقد أو الخطوات السابقة للعقد عندما تتواصل معنا بطلب.",
+              "الالتزام القانوني عندما يكون حفظ السجلات أو الرد القانوني مطلوباً."
+            ]
+          },
+          {
+            "id": "user-rights",
+            "title": "حقوق المستخدم",
+            "body": [
+              "بحسب موقعك، قد تكون لديك حقوق الوصول أو التصحيح أو الحذف أو التقييد أو الاعتراض أو الحصول على نسخة من البيانات. يمكنك سحب الموافقة في أي وقت من إعدادات ملفات تعريف الارتباط في التذييل.",
+              "لطلبات KVKK، أرسل معلومات كافية لتحديد الطلب والتفاعل المعني. قد نحتاج إلى التحقق من ملكية البريد الإلكتروني قبل التنفيذ."
+            ]
+          },
+          {
+            "id": "retention",
+            "title": "مدد الاحتفاظ",
+            "list": [
+              "تفضيلات الموافقة: حتى تغيرها أو تمسح تخزين المتصفح.",
+              "رسائل التواصل: للمدة اللازمة للرد والاحتفاظ بسجلات دعم معقولة.",
+              "سجلات الأمان والاستضافة: وفق جداول المزودين والاحتياجات التشغيلية.",
+              "بيانات التحليلات والإعلانات: وفق إعدادات وسياسات الخدمة الخارجية المعنية."
+            ]
+          },
+          {
+            "id": "children",
+            "title": "الأطفال",
+            "body": [
+              "MC NovaTools غير موجه للأطفال دون 13 عاماً ولا ينبغي استخدامه لإرسال بيانات شخصية للأطفال. إذا كنت تعتقد أن طفلاً أرسل بيانات، فتواصل معنا لمراجعتها وحذفها عند الاقتضاء."
+            ]
+          }
+        ]
+      },
+      "cookies": {
+        "title": "سياسة ملفات تعريف الارتباط",
+        "metaTitle": "سياسة ملفات تعريف الارتباط | MC NovaTools",
+        "metaDescription": "تعرّف إلى ملفات تعريف الارتباط والتخزين المحلي الضروري والتحليلي والإعلاني والوظيفي في MC NovaTools.",
+        "badge": "ملفات الارتباط",
+        "intro": "توضح هذه السياسة كيف يستخدم MC NovaTools ملفات تعريف الارتباط وتقنيات مشابهة مثل التخزين المحلي. تبقى الفئات غير الضرورية معطلة حتى تمنح الموافقة.",
+        "sections": [
+          {
+            "id": "overview",
+            "title": "نظرة عامة",
+            "body": [
+              "تساعد ملفات تعريف الارتباط والتخزين في المتصفح على تذكر الخيارات أو قياس الاستخدام أو دعم الإعلانات. تقسم MC NovaTools التخزين إلى ضروري وتحليلي وإعلاني ووظيفي.",
+              "يمكنك قبول الكل أو رفض الفئات غير الضرورية أو اختيار الفئات من إعدادات ملفات تعريف الارتباط. يبقى التخزين الضروري مفعلاً لأنه يدعم التشغيل الأساسي."
+            ]
+          },
+          {
+            "id": "cookie-table",
+            "title": "جدول ملفات تعريف الارتباط والتخزين",
+            "table": {
+              "headers": [
+                "Name",
+                "Provider",
+                "Purpose",
+                "Duration",
+                "Category"
+              ],
+              "rows": [
+                [
+                  "cookie_consent / novatools_cookie_consent",
+                  "MC NovaTools",
+                  "Stores your consent choices for necessary, analytics, advertising, and functional categories.",
+                  "Until changed or browser storage is cleared",
+                  "Necessary"
+                ],
+                [
+                  "mc-novatools-language",
+                  "MC NovaTools",
+                  "Remembers selected language.",
+                  "Until changed or browser storage is cleared",
+                  "Necessary"
+                ],
+                [
+                  "theme",
+                  "MC NovaTools",
+                  "Remembers light or dark theme selection.",
+                  "Until changed or browser storage is cleared",
+                  "Functional"
+                ],
+                [
+                  "_ga / Google Analytics storage",
+                  "Google",
+                  "Measures usage and page performance when analytics consent is granted.",
+                  "Set by Google according to service configuration",
+                  "Analytics"
+                ],
+                [
+                  "adsbygoogle / advertising identifiers",
+                  "Google AdSense",
+                  "Supports contextual advertising, ad delivery, fraud prevention, and measurement when advertising consent is granted.",
+                  "Set by Google according to service configuration",
+                  "Advertising"
+                ],
+                [
+                  "tool preferences",
+                  "MC NovaTools",
+                  "Stores optional user settings for individual tools where implemented.",
+                  "Varies by tool or until cleared",
+                  "Functional"
+                ]
+              ]
+            }
+          },
+          {
+            "id": "categories",
+            "title": "فئات الموافقة",
+            "list": [
+              "ضروري: تخزين الجلسة والأمان والموافقة واللغة اللازم للتشغيل الأساسي.",
+              "تحليلات: لا يتم تحميل Google Analytics أو القياس المشابه إلا بعد موافقة التحليلات.",
+              "إعلانات: لا يتم تحميل Google AdSense وقياس الإعلانات إلا بعد موافقة الإعلانات.",
+              "وظيفي: السمة وإعدادات المستخدم التي تحسن الراحة وليست ضرورية تماماً."
+            ]
+          },
+          {
+            "id": "manage",
+            "title": "إدارة ملفات تعريف الارتباط",
+            "body": [
+              "استخدم رابط إعدادات ملفات تعريف الارتباط في التذييل لتغيير الموافقة أو سحبها في أي وقت. يمكنك أيضاً حذف ملفات تعريف الارتباط والتخزين المحلي من إعدادات المتصفح.",
+              "سحب الموافقة يوقف التحميل المستقبلي للسكربتات غير الضرورية من هذا الموقع، لكنه لا يحذف تلقائياً البيانات التي عالجها طرف ثالث سابقاً."
+            ]
+          }
+        ]
+      },
+      "terms": {
+        "title": "شروط الخدمة",
+        "metaTitle": "شروط الخدمة | MC NovaTools",
+        "metaDescription": "راجع شروط الاستخدام وإخلاء المسؤولية والملكية الفكرية والتزامات المستخدم والاستخدامات المحظورة وتسوية النزاعات.",
+        "badge": "الشروط",
+        "intro": "تحكم شروط الخدمة هذه استخدامك لـ MC NovaTools. إذا لم توافق، فلا تستخدم الموقع.",
+        "sections": [
+          {
+            "id": "use-of-service",
+            "title": "استخدام الخدمة",
+            "body": [
+              "توفر MC NovaTools أدوات ومحاسبات ومحولات وأدلة تعمل من المتصفح لأغراض معلوماتية وإنتاجية عامة. أنت مسؤول عن مراجعة المدخلات والإعدادات والافتراضات والنتائج قبل الاعتماد عليها.",
+              "قد تتغير الخدمة أو تتوقف مؤقتاً أو تُزال أدوات ومحتويات لأسباب الصيانة أو الدقة أو الأمان أو المنتج."
+            ]
+          },
+          {
+            "id": "disclaimers",
+            "title": "إخلاء المسؤولية",
+            "body": [
+              "تُقدم الأدوات والمحتوى كما هي دون ضمانات للدقة أو التوفر أو الملاءمة لغرض معين. النتائج المالية أو القانونية أو الطبية أو الضريبية أو التأمينية أو التقنية معلوماتية وينبغي مراجعتها مع مختص عند الحاجة.",
+              "قد تتأثر المعالجة داخل المتصفح بقيود الجهاز أو أخطاء المتصفح أو تلف الملفات أو إعدادات المستخدم أو توفر خدمات الأطراف الثالثة."
+            ]
+          },
+          {
+            "id": "intellectual-property",
+            "title": "الملكية الفكرية",
+            "body": [
+              "اسم MC NovaTools وتصميم الموقع ونصوصه وأصوله الأصلية محمية بقواعد الملكية الفكرية ما لم يُذكر خلاف ذلك. يمكنك استخدام المخرجات التي تنشئها من مدخلاتك وفق الحقوق التي تملكها في تلك المدخلات.",
+              "لا تنسخ أو تكشط أو تعيد تغليف أو تبيع أجزاء كبيرة من الموقع بطريقة تضلل بشأن المصدر أو الملكية أو التأييد."
+            ]
+          },
+          {
+            "id": "user-obligations",
+            "title": "التزامات المستخدم",
+            "list": [
+              "استخدم الموقع بشكل قانوني ومحترم.",
+              "لا ترفع أو تعالج محتوى لا تملك حق استخدامه.",
+              "راجع النتائج قبل اتخاذ إجراء.",
+              "احتفظ بنسخ احتياطية من الملفات والبيانات المهمة.",
+              "لا تحاول تجاوز الأمان أو إرهاق البنية التحتية أو إعاقة المستخدمين الآخرين."
+            ]
+          },
+          {
+            "id": "prohibited-uses",
+            "title": "الاستخدامات المحظورة",
+            "list": [
+              "البرمجيات الخبيثة أو التصيد أو الرسائل المزعجة أو الاحتيال أو سرقة بيانات الدخول أو الوصول غير المصرح.",
+              "معالجة محتوى غير قانوني أو ضار أو منتهك للحقوق.",
+              "الكشط الآلي أو الطلبات عالية الحجم التي تضعف توفر الخدمة.",
+              "الهندسة العكسية أو إساءة استخدام واجهات API أو السكربتات أو أنظمة الإعلانات خارج نطاق التوافق القانوني."
+            ]
+          },
+          {
+            "id": "liability",
+            "title": "تحديد المسؤولية",
+            "body": [
+              "إلى أقصى حد يسمح به القانون، لا تتحمل MC NovaTools ومشغلها مسؤولية الأضرار غير المباشرة أو العرضية أو التبعية أو الخاصة أو العقابية أو خسارة الأرباح الناتجة عن استخدام الموقع. علاجك الحصري هو التوقف عن استخدام الخدمة.",
+              "قد لا تسمح بعض الولايات القضائية ببعض القيود، لذلك قد لا تنطبق عليك أجزاء من هذا القسم."
+            ]
+          },
+          {
+            "id": "law-disputes",
+            "title": "القانون الواجب التطبيق والنزاعات",
+            "body": [
+              "تُفسر هذه الشروط وفق القوانين المعمول بها في مكان تأسيس المشغل ما لم تفرض قواعد حماية المستهلك الإلزامية خلاف ذلك. قبل تقديم مطالبة رسمية، يرجى التواصل معنا عبر البريد في صفحة الاتصال لمحاولة الحل ودياً."
+            ]
+          },
+          {
+            "id": "changes",
+            "title": "تغييرات الشروط",
+            "body": [
+              "قد نحدث هذه الشروط لتعكس تغييرات الخدمة أو القانون أو التشغيل. يوضح تاريخ التحديث متى دخلت النسخة الأخيرة حيز التنفيذ. استمرار الاستخدام بعد التغييرات يعني قبول الشروط المحدثة."
+            ]
+          }
+        ]
+      },
+      "contact": {
+        "title": "تواصل مع MC NovaTools",
+        "metaTitle": "تواصل مع MC NovaTools | الدعم والملاحظات",
+        "metaDescription": "تواصل مع MC NovaTools للدعم أو الملاحظات أو طلبات الخصوصية أو الاستفسارات التجارية أو اقتراح الأدوات.",
+        "badge": "اتصل بنا",
+        "intro": "استخدم هذه الصفحة للدعم والملاحظات وطلبات الخصوصية واقتراح الأدوات والاستفسارات التجارية.",
+        "sections": [
+          {
+            "id": "contact-form",
+            "title": "نموذج التواصل",
+            "form": true
+          },
+          {
+            "id": "alternative-contact",
+            "title": "طرق تواصل بديلة",
+            "body": [
+              "البريد الإلكتروني: psk.dan.metehancetin@mc-novatools.com",
+              "المواضيع المقترحة: الدعم، طلب الخصوصية، بلاغ خطأ، استفسار تجاري، طلب أداة.",
+              "الهاتف: الدعم الهاتفي غير متاح حالياً.",
+              "العنوان: مشروع يعمل عن بُعد. يمكن إرسال المراسلات القانونية عبر البريد الإلكتروني."
+            ]
+          },
+          {
+            "id": "response-expectations",
+            "title": "توقعات الرد",
+            "body": [
+              "يرجى عدم إرسال ملفات حساسة ما لم نطلب ذلك تحديداً. عند الإبلاغ عن مشكلة تقنية، أضف رابط الصفحة والمتصفح والجهاز وخطوات إعادة الإنتاج.",
+              "يفتح النموذج مسودة بريد إلكتروني في عميل البريد لديك؛ لا يتم إرسال الرسالة بصمت إلى خلفية نموذج خارجية من هذه الصفحة."
+            ]
+          }
+        ]
+      }
+    },
+    "form": {
+      "name": "الاسم",
+      "email": "البريد الإلكتروني",
+      "subject": "الموضوع",
+      "message": "الرسالة",
+      "select": "اختر موضوعاً",
+      "subjects": [
+        "استفسار عام",
+        "دعم فني",
+        "طلب خصوصية",
+        "شراكة تجارية",
+        "بلاغ خطأ",
+        "طلب أداة"
+      ],
+      "submit": "فتح مسودة بريد",
+      "success": "ينبغي أن يفتح عميل البريد مسودة جاهزة.",
+      "error": "يرجى إكمال جميع الحقول المطلوبة ببريد إلكتروني صالح."
+    }
+  }
+}
