@@ -5,6 +5,8 @@
 
 import categories from './data/categories.js';
 import { setupThemeToggle } from './theme-toggle.mjs';
+import { initConsentManager } from './core/consent-manager.mjs';
+import { initAnalytics } from './js/analytics.js';
 import { applySeo, buildHomeSchema, upsertJsonLd } from './js/seo.js';
 import { initHomeSearch } from './js/home-search.js';
 
@@ -405,6 +407,8 @@ window.addEventListener('languageChanged', () => {
 document.addEventListener('DOMContentLoaded', () => {
   applySeo({ type: 'home', path: '/' });
   upsertJsonLd('homepage-seo-jsonld', buildHomeSchema());
+  initConsentManager();
+  initAnalytics();
   initDesignSystemInteractions();
   rerenderHomepageDynamicParts();
 });

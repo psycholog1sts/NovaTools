@@ -642,6 +642,7 @@
   function boot() {
     init();
     initQualityEnhancements();
+    import('/analytics.js').then((module) => module.initAnalytics?.());
     import('/consent-manager.mjs').then((module) => {
       module.initConsentManager();
       ensureAdSenseBootstrap();

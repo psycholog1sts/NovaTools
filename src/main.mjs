@@ -6,7 +6,7 @@
 /* global __APP_VERSION__ */
 
 import { injectSpeedInsights } from '@vercel/speed-insights';
-import { initAnalytics } from './core/analytics.mjs';
+import { initAnalytics } from './js/analytics.js';
 import { registerSW } from './core/pwa.mjs';
 import { initAdSense } from './core/ads/index.mjs';
 import { initConsentManager, hasConsent } from './core/consent-manager.mjs';
