@@ -222,14 +222,6 @@ export default defineConfig({
         {
           src: 'src/styles/component-library.css',
           dest: 'styles'
-        },
-        {
-          src: 'src/styles/category-guides.css',
-          dest: 'styles'
-        },
-        {
-          src: 'src/styles/tool-workflow.css',
-          dest: 'styles'
         }
       ]
     })
