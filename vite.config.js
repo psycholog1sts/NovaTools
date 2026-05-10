@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
-import { resolve } from 'path';
+import { dirname, resolve } from 'path';
+import { fileURLToPath } from 'url';
 import { readFileSync } from 'fs';
 import { globSync } from 'glob';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
@@ -7,6 +8,8 @@ import tailwindcss from 'tailwindcss';
 import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
 import postcssImport from 'postcss-import';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const devCorsOrigins = (process.env.VITE_DEV_CORS_ORIGINS || 'http://localhost:3000,http://127.0.0.1:3000')
   .split(',')
@@ -129,7 +132,7 @@ export default defineConfig({
   appType: 'mpa',
 
   build: {
-    target: 'es2022',
+    target: 'es2020',
     outDir: 'dist',
     emptyOutDir: true,
     assetsDir: 'assets',
@@ -319,7 +322,7 @@ export default defineConfig({
     exclude: ['pdf-lib', 'decimal.js', 'dompurify', 'wasm-vips'],
     include: ['zod', 'lodash-es', 'date-fns'],
     esbuildOptions: {
-      target: 'es2022'
+      target: 'es2020'
     }
   },
 

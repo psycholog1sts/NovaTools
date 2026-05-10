@@ -1902,6 +1902,91 @@ ul, ol {
 }
 
 /* ============================================
+   Ad slot reservation - CLS protection
+   ============================================ */
+.ad-slot,
+.ad-slot-container,
+.ad-container,
+.ad-slot-reserved,
+ins.adsbygoogle {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  border-radius: var(--radius-md, 12px);
+}
+
+.ad-slot,
+.ad-slot-container,
+.ad-container,
+.ad-slot-reserved {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(90deg, var(--ad-bg), rgba(255, 255, 255, 0.05), var(--ad-bg));
+  background-size: 240% 100%;
+  border: 1px dashed var(--ad-border);
+  animation: nt-ad-placeholder 1.8s ease-in-out infinite;
+}
+
+.ad-slot::before,
+.ad-slot-container::before,
+.ad-container::before {
+  content: 'Advertisement';
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: var(--ad-label-color);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+.ad-slot-leaderboard,
+.ad-banner,
+.ad-banner-container,
+[data-ad-format='leaderboard'] {
+  min-height: 90px;
+}
+
+.ad-slot-rectangle,
+.ad-rectangle,
+.ad-square,
+.ad-rectangle-container,
+.ad-square-container,
+[data-ad-format='rectangle'] {
+  min-height: 250px;
+}
+
+.ad-slot-sticky,
+.ad-mobile-anchor,
+.ad-mobile-anchor-container,
+[data-ad-format='sticky'] {
+  min-height: 100px;
+}
+
+.ad-sidebar,
+.ad-sidebar-container,
+[data-ad-format='sidebar'] {
+  min-height: 600px;
+}
+
+@keyframes nt-ad-placeholder {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ad-slot,
+  .ad-slot-container,
+  .ad-container,
+  .ad-slot-reserved {
+    animation: none;
+  }
+}
+
+/* ============================================
    PUBLIC PRODUCT POLISH LAYER - Premium surfaces
    Shared by production home, category, tool, blog, and public pages.
    ============================================ */
