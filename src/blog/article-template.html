@@ -138,7 +138,7 @@ const ready = checklist.every((step) => step.length > 0);</code></pre></div></se
     import { applyToolAdSlots } from '../core/ads/ad-slot-ids.mjs';
 
     const params = new URLSearchParams(window.location.search);
-    const pathSlug = window.location.pathname.match(/\/blog\/([^/]+)\.html$/)?.[1];
+    const pathSlug = window.location.pathname.match(/\/blog\/(?:articles\/)?([^/.]+)(?:\.html)?$/)?.[1];
     const requestedLocale = params.get('lang') || (window.location.pathname.startsWith('/tr/') ? 'tr' : window.location.pathname.startsWith('/ar/') ? 'ar' : getActiveBlogLocale());
     const slug = params.get('slug') || pathSlug || 'high-yield-savings-guide';
     const result = getBlogPost(requestedLocale, slug);

@@ -8,40 +8,32 @@ export const I18N_CONFIG = {
   defaultLocale: 'en',
   
   // Supported locales
-  locales: ['en', 'tr', 'ar'],
+  locales: ['en', 'tr', 'de', 'fr', 'es', 'pt', 'ru', 'zh', 'ja', 'ko', 'ar', 'hi', 'it', 'pl', 'nl'],
+  pathPrefixLocales: ['tr', 'ar'],
   
   // Locale metadata
   metadata: {
-    en: {
-      name: 'English',
-      dir: 'ltr',
-      flag: '🇬🇧',
-      domain: 'mc-novatools.com',
-      hreflang: 'en',
-      googleSite: 'mc_novatools_en'
-    },
-    tr: {
-      name: 'Türkçe',
-      dir: 'ltr',
-      flag: '🇹🇷',
-      domain: 'mc-novatools.com',
-      hreflang: 'tr',
-      googleSite: 'mc_novatools_tr'
-    },
-    ar: {
-      name: 'العربية',
-      dir: 'rtl',
-      flag: '🇸🇦',
-      domain: 'mc-novatools.com',
-      hreflang: 'ar',
-      googleSite: 'mc_novatools_ar'
-    }
+    en: { name: 'English', dir: 'ltr', flag: '🇬🇧', domain: 'mc-novatools.com', hreflang: 'en', googleSite: 'mc_novatools_en' },
+    tr: { name: 'Türkçe', dir: 'ltr', flag: '🇹🇷', domain: 'mc-novatools.com', hreflang: 'tr', googleSite: 'mc_novatools_tr' },
+    de: { name: 'Deutsch', dir: 'ltr', flag: '🇩🇪', domain: 'mc-novatools.com', hreflang: 'de', googleSite: 'mc_novatools_de' },
+    fr: { name: 'Français', dir: 'ltr', flag: '🇫🇷', domain: 'mc-novatools.com', hreflang: 'fr', googleSite: 'mc_novatools_fr' },
+    es: { name: 'Español', dir: 'ltr', flag: '🇪🇸', domain: 'mc-novatools.com', hreflang: 'es', googleSite: 'mc_novatools_es' },
+    pt: { name: 'Português', dir: 'ltr', flag: '🇵🇹', domain: 'mc-novatools.com', hreflang: 'pt', googleSite: 'mc_novatools_pt' },
+    ru: { name: 'Русский', dir: 'ltr', flag: '🇷🇺', domain: 'mc-novatools.com', hreflang: 'ru', googleSite: 'mc_novatools_ru' },
+    zh: { name: '中文', dir: 'ltr', flag: '🇨🇳', domain: 'mc-novatools.com', hreflang: 'zh', googleSite: 'mc_novatools_zh' },
+    ja: { name: '日本語', dir: 'ltr', flag: '🇯🇵', domain: 'mc-novatools.com', hreflang: 'ja', googleSite: 'mc_novatools_ja' },
+    ko: { name: '한국어', dir: 'ltr', flag: '🇰🇷', domain: 'mc-novatools.com', hreflang: 'ko', googleSite: 'mc_novatools_ko' },
+    ar: { name: 'العربية', dir: 'rtl', flag: '🇸🇦', domain: 'mc-novatools.com', hreflang: 'ar', googleSite: 'mc_novatools_ar' },
+    hi: { name: 'हिन्दी', dir: 'ltr', flag: '🇮🇳', domain: 'mc-novatools.com', hreflang: 'hi', googleSite: 'mc_novatools_hi' },
+    it: { name: 'Italiano', dir: 'ltr', flag: '🇮🇹', domain: 'mc-novatools.com', hreflang: 'it', googleSite: 'mc_novatools_it' },
+    pl: { name: 'Polski', dir: 'ltr', flag: '🇵🇱', domain: 'mc-novatools.com', hreflang: 'pl', googleSite: 'mc_novatools_pl' },
+    nl: { name: 'Nederlands', dir: 'ltr', flag: '🇳🇱', domain: 'mc-novatools.com', hreflang: 'nl', googleSite: 'mc_novatools_nl' }
   },
   
   // Path-based routing (no cookies/subdomains)
   routing: {
     type: 'path',
-    prefix: true // /en/tools/ vs /tools/
+    prefix: true // public path prefixes are reserved for locales with built static routes
   }
 };
 
@@ -50,8 +42,8 @@ export const I18N_CONFIG = {
  */
 export function detectLocale() {
   // Check URL path first
-  const pathMatch = window.location.pathname.match(/^\/(tr|ar)(?=\/|$)/);
-  if (pathMatch) return pathMatch[1];
+  const firstSegment = window.location.pathname.split('/').filter(Boolean)[0];
+  if (I18N_CONFIG.pathPrefixLocales.includes(firstSegment)) return firstSegment;
   
   // Check localStorage (explicit user choice)
   try {
@@ -63,12 +55,8 @@ export function detectLocale() {
   
   // Check browser language
   const browserLang = navigator.language || navigator.userLanguage;
-  if (browserLang.startsWith('tr')) return 'tr';
-  if (browserLang.startsWith('en')) return 'en';
-  if (browserLang.startsWith('ar')) return 'ar';
-  
-  // Default
-  return I18N_CONFIG.defaultLocale;
+  const browserLocale = String(browserLang || '').split('-')[0].toLowerCase();
+  return I18N_CONFIG.locales.includes(browserLocale) ? browserLocale : I18N_CONFIG.defaultLocale;
 }
 
 /**
@@ -97,7 +85,7 @@ export function t(key, locale = detectLocale()) {
  * Generate hreflang tags for SEO
  */
 export function generateHreflangTags(currentPath) {
-  const baseUrl = 'https://novatools.dev';
+  const baseUrl = 'https://mc-novatools.com';
   const tags = [];
   
   // x-default
@@ -105,9 +93,9 @@ export function generateHreflangTags(currentPath) {
   
   // Each locale
   I18N_CONFIG.locales.forEach(locale => {
-    const path = locale === I18N_CONFIG.defaultLocale 
-      ? currentPath 
-      : `/${locale}${currentPath}`;
+    const path = I18N_CONFIG.pathPrefixLocales.includes(locale)
+      ? `/${locale}${currentPath}`
+      : currentPath;
     
     tags.push(
       `<link rel="alternate" hreflang="${I18N_CONFIG.metadata[locale].hreflang}" href="${baseUrl}${path}">`
