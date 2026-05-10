@@ -1,0 +1,34 @@
+[
+  {
+    "id": "editorial",
+    "name": "NovaTools Editorial",
+    "title": "Editor",
+    "bio": {
+      "en": "The NovaTools Editorial team writes practical, privacy-aware workflow guides for people who need to prepare files, data, and decisions without unnecessary complexity.",
+      "tr": "NovaTools Editorial ekibi; dosya, veri ve karar hazırlığını gereksiz karmaşa olmadan tamamlamak isteyen kullanıcılar için pratik ve gizlilik odaklı rehberler hazırlar.",
+      "ar": "يكتب فريق تحرير NovaTools أدلة عملية تراعي الخصوصية للأشخاص الذين يحتاجون إلى تجهيز الملفات والبيانات والقرارات من دون تعقيد غير ضروري."
+    },
+    "avatar": "/logo-bird-88.webp",
+    "social": {
+      "twitter": "https://twitter.com/",
+      "linkedin": "https://www.linkedin.com/",
+      "github": "https://github.com/"
+    }
+  },
+  {
+    "id": "metehan",
+    "name": "Metehan Çetin",
+    "title": "Founder & Editor",
+    "bio": {
+      "en": "Metehan Çetin leads MC NovaTools content strategy with a focus on useful, transparent workflows for browser-based productivity and file preparation.",
+      "tr": "Metehan Çetin, tarayıcı tabanlı üretkenlik ve dosya hazırlığı için faydalı ve şeffaf iş akışlarına odaklanan MC NovaTools içerik stratejisini yönetir.",
+      "ar": "يقود متهان تشيتين استراتيجية محتوى MC NovaTools مع التركيز على مسارات عمل مفيدة وواضحة للإنتاجية وإعداد الملفات عبر المتصفح."
+    },
+    "avatar": "/logo-bird-88.webp",
+    "social": {
+      "twitter": "https://twitter.com/",
+      "linkedin": "https://www.linkedin.com/",
+      "github": "https://github.com/"
+    }
+  }
+]
