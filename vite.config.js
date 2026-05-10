@@ -71,7 +71,8 @@ const rootHtmlEntries = globSync('*.html', {
 
 // Admin entry point
 const adminEntry = {
-  admin: resolve(__dirname, 'admin/index.html')
+  admin: resolve(__dirname, 'admin/index.html'),
+  'admin/dashboard': resolve(__dirname, 'admin/dashboard.html')
 };
 
 

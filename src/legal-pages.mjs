@@ -1,5 +1,6 @@
 import legalContent from './i18n/legal.json';
 import { initConsentManager } from './core/consent-manager.mjs';
+import { initAnalytics } from './js/analytics.js';
 
 const PAGE_FILES = {
   about: 'about-us.html',
@@ -148,4 +149,4 @@ function render() {
   setupContactForm(localized.form);
 }
 
-document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', () => { render(); initConsentManager(); }) : (render(), initConsentManager());
+document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', () => { render(); initConsentManager(); initAnalytics(); }) : (render(), initConsentManager(), initAnalytics());

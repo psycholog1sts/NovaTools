@@ -197,6 +197,7 @@ function loadConsentedScripts(consent) {
     script.dataset.loaded = 'true';
     script.after(executable);
   });
+  window.dispatchEvent(new CustomEvent('novatools:consented-scripts-loaded', { detail: consent }));
 }
 
 function setupFooterLinks() {

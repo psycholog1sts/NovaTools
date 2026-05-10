@@ -99,6 +99,14 @@
             ]
           },
           {
+            "id": "analytics-events",
+            "title": "Analytics events and behavior measurement",
+            "body": [
+              "When analytics consent is granted, MC NovaTools may send privacy-screened GA4 events for content views, tool starts and completions, tool errors, input method categories, blog read depth, CTA and navigation clicks, anonymized search-query hashes, language changes, theme changes, optional ad impressions/clicks, and Core Web Vitals metrics such as LCP, CLS, INP, FCP, and TTFB.",
+              "Analytics scripts are not loaded and dataLayer/gtag tracking is not initialized unless analytics consent is granted. Rejecting non-essential cookies keeps analytics, advertising, heatmaps, and session-recording scripts disabled from this site."
+            ]
+          },
+          {
             "id": "how-we-use-data",
             "title": "How we use data",
             "list": [
@@ -207,7 +215,7 @@
                   "_ga / Google Analytics storage",
                   "Google",
                   "Measures usage and page performance when analytics consent is granted.",
-                  "Set by Google according to service configuration",
+                  "Up to 2 years after analytics consent is granted",
                   "Analytics"
                 ],
                 [
@@ -475,6 +483,14 @@
             ]
           },
           {
+            "id": "analytics-events",
+            "title": "Analitik eventleri ve davranış ölçümü",
+            "body": [
+              "Analitik izni verildiğinde MC NovaTools; içerik görüntüleme, araç başlatma ve tamamlama, araç hataları, giriş yöntemi kategorileri, blog okuma derinliği, CTA ve navigasyon tıklamaları, anonimleştirilmiş arama sorgusu özetleri, dil değişiklikleri, tema değişiklikleri, isteğe bağlı reklam gösterimi/tıklaması ve LCP, CLS, INP, FCP, TTFB gibi Core Web Vitals metrikleri için gizlilikten geçirilmiş GA4 eventleri gönderebilir.",
+              "Analitik izni verilmeden analitik scriptleri yüklenmez ve dataLayer/gtag takibi başlatılmaz. Zorunlu olmayan çerezleri reddetmek, bu siteden analitik, reklam, ısı haritası ve oturum kaydı scriptlerinin devre dışı kalmasını sağlar."
+            ]
+          },
+          {
             "id": "how-we-use-data",
             "title": "Verileri kullanım amaçlarımız",
             "list": [
@@ -583,7 +599,7 @@
                   "_ga / Google Analytics storage",
                   "Google",
                   "Measures usage and page performance when analytics consent is granted.",
-                  "Set by Google according to service configuration",
+                  "Analitik izni verildikten sonra en fazla 2 yıl",
                   "Analytics"
                 ],
                 [
@@ -851,6 +867,14 @@
             ]
           },
           {
+            "id": "analytics-events",
+            "title": "أحداث التحليلات وقياس السلوك",
+            "body": [
+              "عند منح موافقة التحليلات، قد ترسل MC NovaTools أحداث GA4 خاضعة لفحص الخصوصية لعرض المحتوى، وبدء الأدوات وإكمالها، وأخطاء الأدوات، وفئات طريقة الإدخال، وعمق قراءة المدونة، ونقرات الدعوة إلى الإجراء والتنقل، وملخصات مجهولة لاستعلامات البحث، وتغييرات اللغة والسمة، وانطباعات أو نقرات الإعلانات الاختيارية، ومقاييس Core Web Vitals مثل LCP وCLS وINP وFCP وTTFB.",
+              "لا تُحمّل سكربتات التحليلات ولا يبدأ تتبع dataLayer/gtag ما لم تُمنح موافقة التحليلات. يؤدي رفض ملفات تعريف الارتباط غير الضرورية إلى إبقاء سكربتات التحليلات والإعلانات والخرائط الحرارية وتسجيل الجلسات معطلة من هذا الموقع."
+            ]
+          },
+          {
             "id": "how-we-use-data",
             "title": "أغراض استخدام البيانات",
             "list": [
@@ -959,7 +983,7 @@
                   "_ga / Google Analytics storage",
                   "Google",
                   "Measures usage and page performance when analytics consent is granted.",
-                  "Set by Google according to service configuration",
+                  "حتى سنتين بعد منح موافقة التحليلات",
                   "Analytics"
                 ],
                 [
