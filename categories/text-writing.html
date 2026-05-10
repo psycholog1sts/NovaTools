@@ -1,777 +1,101 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="tr" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Free Text & Writing Tools | Word Counter, Case Converter, Slug, Diff & Text Utilities | MC NovaTools</title>
-  <meta name="description" content="Free text and writing tools for word counting, character counting, case conversion, lorem ipsum generation, slug creation, text diff, ASCII conversion, HTML entity encoding, and URL-safe text workflows.">
-  <meta name="keywords" content="text tools, writing tools, word counter, character counter, case converter, text diff, lorem ipsum generator, slug generator, url encoder">
-  <meta name="author" content="Metehan ÇETİN, LPC">
-  <meta name="theme-color" content="#0A0A0C">
+  <title>Metin ve Yazım Araçları | NovaTools</title>
+  <meta name="description" content="Kelime sayacı, metin dönüştürme, slug ve karşılaştırma araçlarını yazı işleri için karar tablosu, SSS ve hızlı görevlerle seçin.">
   <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#0A0A0C">
+  <meta name="author" content="Metehan ÇETİN, LPC">
   <link rel="canonical" href="https://mc-novatools.com/categories/text-writing.html">
-
-  <meta property="og:title" content="Free Text & Writing Tools | Word Counter, Case Converter, Slug & Text Utilities | MC NovaTools">
-  <meta property="og:description" content="Use free browser-based text tools for counting, formatting, comparison, cleanup, encoding, slug creation, and writing support workflows.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://mc-novatools.com/categories/text-writing.html">
-  <meta property="og:site_name" content="MC NovaTools">
-
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Free Text & Writing Tools | MC NovaTools">
-  <meta name="twitter:description" content="Practical browser-based text tools for writing, formatting, comparison, encoding, and text cleanup tasks.">
-
+  <link rel="alternate" hreflang="tr" href="https://mc-novatools.com/categories/text-writing.html">
+  <link rel="alternate" hreflang="x-default" href="https://mc-novatools.com/categories/text-writing.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/styles/critical.css">
+  <link rel="stylesheet" href="/src/styles/design-system.css">
+  <link rel="stylesheet" href="/src/styles/component-library.css">
+  <link rel="stylesheet" href="/src/styles/layout.css">
+  <link rel="stylesheet" href="/src/styles/category-guides.css">
   <script src="/i18n.js" defer></script>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "CollectionPage",
-        "name": "Free Text & Writing Tools",
-        "description": "Free text and writing tools for word counting, character counting, case conversion, lorem ipsum generation, slug creation, text diff, ASCII conversion, HTML entity encoding, and URL-safe text workflows.",
-        "url": "https://mc-novatools.com/categories/text-writing.html"
-      },
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://mc-novatools.com/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Text & Writing",
-            "item": "https://mc-novatools.com/categories/text-writing.html"
-          }
-        ]
-      }
-    ]
-  }
-  </script>
-
-  <style>
-    :root {
-      --bg: #06070b;
-      --bg-soft: #0d111a;
-      --panel: rgba(17, 24, 39, 0.72);
-      --panel-strong: rgba(15, 23, 42, 0.92);
-      --border: rgba(255, 255, 255, 0.08);
-      --text: #f8fafc;
-      --muted: #a5b4c7;
-      --primary: #8b5cf6;
-      --primary-2: #22d3ee;
-      --glow: 0 20px 60px rgba(139, 92, 246, 0.12);
-      --radius: 20px;
-      --container: 1180px;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      color: var(--text);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(139, 92, 246, 0.16), transparent 28%),
-        radial-gradient(circle at top right, rgba(34, 211, 238, 0.14), transparent 24%),
-        linear-gradient(180deg, #05060a 0%, #090b12 100%);
-      min-height: 100vh;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .container {
-      width: min(var(--container), calc(100% - 32px));
-      margin: 0 auto;
-    }
-
-    .main-header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      backdrop-filter: blur(14px);
-      background: rgba(6, 7, 11, 0.84);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .header-inner {
-      min-height: 78px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .logo {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      font-size: 1.35rem;
-      white-space: nowrap;
-    }
-
-    .logo-mc {
-      color: #22c55e;
-    }
-
-    .nav-desktop {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
-
-    .nav-desktop a {
-      color: var(--muted);
-      font-weight: 500;
-      transition: 0.2s ease;
-    }
-
-    .nav-desktop a:hover,
-    .nav-desktop a.active {
-      color: var(--text);
-    }
-
-    .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .language-selector {
-      min-width: 150px;
-      height: 42px;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      background: rgba(255, 255, 255, 0.04);
-      color: var(--text);
-      padding: 0 12px;
-      outline: none;
-    }
-
-    .breadcrumb-nav {
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-      background: rgba(255,255,255,0.01);
-    }
-
-    .breadcrumb {
-      list-style: none;
-      display: flex;
-      gap: 10px;
-      padding: 14px 0;
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    .breadcrumb li + li::before {
-      content: "/";
-      margin-right: 10px;
-      color: rgba(255,255,255,0.22);
-    }
-
-    .main-content {
-      padding-bottom: 64px;
-    }
-
-    .category-hero {
-      padding: 72px 0 28px;
-    }
-
-    .hero-card {
-      position: relative;
-      overflow: hidden;
-      background:
-        radial-gradient(circle at top left, rgba(139, 92, 246, 0.18), transparent 26%),
-        radial-gradient(circle at bottom right, rgba(34, 211, 238, 0.16), transparent 28%),
-        linear-gradient(180deg, rgba(15, 23, 42, 0.9), rgba(10, 14, 22, 0.96));
-      border: 1px solid var(--border);
-      border-radius: 28px;
-      padding: 40px;
-      box-shadow: var(--glow);
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      min-height: 34px;
-      padding: 0 14px;
-      border-radius: 999px;
-      background: rgba(139, 92, 246, 0.10);
-      border: 1px solid rgba(139, 92, 246, 0.22);
-      color: #e7d9ff;
-      font-size: 0.92rem;
-      font-weight: 600;
-      margin-bottom: 18px;
-    }
-
-    .category-title {
-      margin: 0 0 14px;
-      font-size: clamp(2.2rem, 5vw, 4rem);
-      line-height: 1.02;
-      letter-spacing: -0.04em;
-    }
-
-    .category-description {
-      margin: 0;
-      max-width: 760px;
-      font-size: 1.08rem;
-      line-height: 1.75;
-      color: var(--muted);
-    }
-
-    .hero-stats {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-      margin-top: 28px;
-    }
-
-    .hero-stat {
-      padding: 18px;
-      border-radius: 18px;
-      border: 1px solid var(--border);
-      background: rgba(255, 255, 255, 0.03);
-    }
-
-    .hero-stat strong {
-      display: block;
-      font-size: 1.25rem;
-      margin-bottom: 6px;
-    }
-
-    .hero-stat span {
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    .tools-section,
-    .content-section,
-    .faq-section {
-      padding: 24px 0;
-    }
-
-    .section-heading {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 20px;
-      margin-bottom: 18px;
-    }
-
-    .section-heading h2,
-    .faq-section h2 {
-      margin: 0;
-      font-size: 1.8rem;
-      letter-spacing: -0.03em;
-    }
-
-    .section-heading p {
-      margin: 0;
-      color: var(--muted);
-      max-width: 620px;
-      line-height: 1.7;
-    }
-
-    .grid {
-      display: grid;
-      gap: 20px;
-    }
-
-    .grid-3 {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
-    .tool-card {
-      display: block;
-      padding: 24px;
-      border-radius: 22px;
-      background: linear-gradient(180deg, rgba(17, 24, 39, 0.82), rgba(9, 13, 20, 0.96));
-      border: 1px solid var(--border);
-      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.22);
-      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-      min-height: 100%;
-    }
-
-    .tool-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(139, 92, 246, 0.35);
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
-    }
-
-    .tool-icon {
-      width: 56px;
-      height: 56px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 16px;
-      font-size: 1.5rem;
-      margin-bottom: 16px;
-      background: linear-gradient(135deg, rgba(139, 92, 246, 0.16), rgba(34, 211, 238, 0.16));
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .tool-card h3 {
-      margin: 0 0 10px;
-      font-size: 1.15rem;
-      line-height: 1.35;
-    }
-
-    .tool-card p {
-      margin: 0 0 16px;
-      color: var(--muted);
-      line-height: 1.65;
-      min-height: 52px;
-    }
-
-    .tool-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: #d9ccff;
-      font-weight: 600;
-      font-size: 0.95rem;
-    }
-
-    .content-panel {
-      padding: 28px;
-      border-radius: 24px;
-      border: 1px solid var(--border);
-      background: linear-gradient(180deg, rgba(12, 18, 30, 0.9), rgba(8, 11, 18, 0.98));
-      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.22);
-    }
-
-    .content-panel h2 {
-      margin: 0 0 14px;
-      font-size: 1.7rem;
-      letter-spacing: -0.03em;
-    }
-
-    .content-panel h3 {
-      margin: 22px 0 10px;
-      font-size: 1.15rem;
-      letter-spacing: -0.02em;
-    }
-
-    .content-panel p,
-    .content-panel li,
-    .faq-item p {
-      margin: 0 0 16px;
-      color: var(--muted);
-      line-height: 1.8;
-    }
-
-    .content-panel ul {
-      padding-left: 20px;
-      margin: 12px 0 18px;
-    }
-
-    .feature-list {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-      margin-top: 20px;
-    }
-
-    .feature-item {
-      padding: 16px 18px;
-      border-radius: 16px;
-      border: 1px solid var(--border);
-      background: rgba(255, 255, 255, 0.03);
-      color: #d8e7f5;
-    }
-
-    .faq-list {
-      display: grid;
-      gap: 16px;
-    }
-
-    .faq-item {
-      padding: 22px;
-      border-radius: 18px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.03);
-    }
-
-    .faq-item h3 {
-      margin: 0 0 10px;
-      font-size: 1.08rem;
-    }
-
-    .main-footer {
-      border-top: 1px solid var(--border);
-      background: rgba(6, 7, 11, 0.7);
-    }
-
-    .footer-inner {
-      padding: 26px 0 36px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .footer-inner p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    .footer-inner a {
-      color: #d9ccff;
-    }
-
-    @media (max-width: 980px) {
-      .header-inner {
-        min-height: auto;
-        padding: 14px 0;
-        flex-wrap: wrap;
-      }
-
-      .nav-desktop {
-        width: 100%;
-      }
-
-      .grid-3,
-      .feature-list,
-      .hero-stats {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .hero-card,
-      .content-panel,
-      .faq-item {
-        padding: 22px;
-      }
-
-      .category-hero {
-        padding-top: 42px;
-      }
-
-      .language-selector,
-      .header-actions {
-        width: 100%;
-      }
-
-      .breadcrumb {
-        flex-wrap: wrap;
-      }
-    }
-
-
-    .guide-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-
-    .guide-grid > div {
-      padding: 1rem;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 16px;
-    }
-
-    .guide-grid ul {
-      padding-left: 1.25rem;
-      margin-bottom: 0;
-    }
-
-    .category-guide-note {
-      margin-top: 1rem;
-      color: var(--muted);
-    }
-</style>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://mc-novatools.com/"}, {"@type": "ListItem", "position": 2, "name": "Metin ve Yazım Araçları", "item": "https://mc-novatools.com/categories/text-writing.html"}]}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Metin ve Yazım Araçları ücretsiz mi?", "acceptedAnswer": {"@type": "Answer", "text": "Evet. Bu kategori sayfası NovaTools içinde yer alan ilgili online araçlara doğrudan bağlantı verir ve hızlı başlangıç için hazırlanmıştır."}}, {"@type": "Question", "name": "Hangi aracı seçmem gerektiğini nasıl anlarım?", "acceptedAnswer": {"@type": "Answer", "text": "Önce en sık yapılan görevler bölümünü, ardından karar destek tablosunu inceleyin. İhtiyacınız önerilen araçla eşleştirilir."}}, {"@type": "Question", "name": "Bu sayfadaki araçlar mobilde kullanılabilir mi?", "acceptedAnswer": {"@type": "Answer", "text": "Sayfa mobil öncelikli düzenlenmiştir. Araçların ayrıntılı giriş alanları ilgili araç sayfasında ayrıca kontrol edilmelidir."}}, {"@type": "Question", "name": "Sonuçları paylaşmadan önce neyi kontrol etmeliyim?", "acceptedAnswer": {"@type": "Answer", "text": "Dosya adı, çıktı formatı, gizlilik ihtiyacı ve okunabilirlik gibi temel kalite kontrollerini yapmanız önerilir."}}, {"@type": "Question", "name": "İlgili rehberler ne işe yarar?", "acceptedAnswer": {"@type": "Answer", "text": "Blog rehberleri, araç seçimi ve çıktı kontrolü konusunda daha fazla bağlam vererek hatalı kullanım riskini azaltır."}}]}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "ItemList", "name": "Metin ve Yazım Araçları", "itemListElement": [{"@type": "ListItem", "position": 1, "url": "https://mc-novatools.com/tools/text/case-converter/", "name": "Case Converter"}, {"@type": "ListItem", "position": 2, "url": "https://mc-novatools.com/tools/text/character-counter/", "name": "Character Counter"}, {"@type": "ListItem", "position": 3, "url": "https://mc-novatools.com/tools/text/html-entity-encoder/", "name": "HTML Entity Encoder/Decoder"}, {"@type": "ListItem", "position": 4, "url": "https://mc-novatools.com/tools/text/lorem-ipsum-generator/", "name": "Lorem Ipsum Generator"}, {"@type": "ListItem", "position": 5, "url": "https://mc-novatools.com/tools/text/palindrome-checker/", "name": "Palindrome Checker"}, {"@type": "ListItem", "position": 6, "url": "https://mc-novatools.com/tools/text/text-diff/", "name": "Text Diff Checker"}, {"@type": "ListItem", "position": 7, "url": "https://mc-novatools.com/tools/text/text-to-ascii/", "name": "Text to ASCII/Unicode"}, {"@type": "ListItem", "position": 8, "url": "https://mc-novatools.com/tools/text/text-to-slug/", "name": "Text to Slug Converter"}, {"@type": "ListItem", "position": 9, "url": "https://mc-novatools.com/tools/text/url-encoder/", "name": "URL Encoder/Decoder"}, {"@type": "ListItem", "position": 10, "url": "https://mc-novatools.com/tools/text/word-counter/", "name": "Word Counter"}]}</script>
 </head>
-<body>
-  <header class="main-header">
-    <div class="container">
-      <div class="header-inner">
-        <a href="/" class="logo" aria-label="MC NovaTools Home">
-          <span class="logo-text">MC <span class="logo-mc">NovaTools</span></span>
-        </a>
-
-        <nav class="nav-desktop" aria-label="Main Navigation">
-          <a href="/categories/pdf-tools.html" data-i18n="nav.pdf">PDF</a>
-          <a href="/categories/image-tools.html" data-i18n="nav.image">Image</a>
-          <a href="/categories/finance-tools.html" data-i18n="nav.finance">Finance</a>
-          <a href="/categories/text-writing.html" class="active" data-i18n="nav.text">Text</a>
-          <a href="/about-us.html" data-i18n="nav.about">About</a>
-        </nav>
-
-        <div class="header-actions">
-          <select id="language-selector" class="language-selector" aria-label="Select Language">
-            <option value="en">🇬🇧 English</option>
-            <option value="tr">🇹🇷 Türkçe</option>
-            <option value="de">🇩🇪 Deutsch</option>
-            <option value="fr">🇫🇷 Français</option>
-            <option value="es">🇪🇸 Español</option>
-            <option value="pt">🇵🇹 Português</option>
-            <option value="ru">🇷🇺 Русский</option>
-            <option value="zh">🇨🇳 中文</option>
-            <option value="ja">🇯🇵 日本語</option>
-            <option value="ko">🇰🇷 한국어</option>
-            <option value="ar">🇸🇦 العربية</option>
-            <option value="hi">🇮🇳 हिंदी</option>
-            <option value="it">🇮🇹 Italiano</option>
-            <option value="pl">🇵🇱 Polski</option>
-            <option value="nl">🇳🇱 Nederlands</option>
-          </select>
-        </div>
-      </div>
-    </div>
+<body class="category-guide-page">
+  <header class="guide-header">
+    <div class="container guide-header__inner"><a class="logo" href="/" aria-label="NovaTools ana sayfa"><span class="logo-text">MC NovaTools</span></a><nav class="guide-nav" aria-label="Main navigation"><a href="/categories/index.html">Categories</a><a href="/categories/pdf-tools.html">PDF</a><a href="/categories/image-tools.html">Image</a><a href="/categories/finance-tools.html">Finance</a><a href="/categories/developer-tools.html">Developer</a><a href="/blog/index.html">Blog</a></nav><div class="header-actions"><select id="language-selector" class="language-selector" aria-label="Select Language"><option value="en">🇬🇧 English</option><option value="tr">🇹🇷 Türkçe</option><option value="de">🇩🇪 Deutsch</option><option value="fr">🇫🇷 Français</option><option value="es">🇪🇸 Español</option><option value="pt">🇵🇹 Português</option><option value="ru">🇷🇺 Русский</option><option value="zh">🇨🇳 中文</option><option value="ja">🇯🇵 日本語</option><option value="ko">🇰🇷 한국어</option><option value="ar">🇸🇦 العربية</option><option value="hi">🇮🇳 हिंदी</option><option value="it">🇮🇹 Italiano</option><option value="pl">🇵🇱 Polski</option><option value="nl">🇳🇱 Nederlands</option></select></div></div>
   </header>
-
-  <nav aria-label="Breadcrumb" class="breadcrumb-nav">
-    <div class="container">
-      <ol class="breadcrumb">
-        <li><a href="/" data-i18n="nav.home">Home</a></li>
-        <li aria-current="page" data-i18n="categories.text.sectionTitle">Text & Writing</li>
-      </ol>
-    </div>
-  </nav>
-
-  <main class="main-content">
-    <section class="category-hero">
-      <div class="container">
-        <div class="hero-card">
-          <div class="hero-badge" data-i18n="categories.text.badge">Free Online Text Utilities</div>
-          <h1 class="category-title" data-i18n="categories.text.title">Text Tools for Counting, Formatting, Converting, and Cleanup</h1>
-          <p class="category-description" data-i18n="categories.text.description">
-            Open practical writing and text-processing tools from one clean category page. Count words and characters,
-            convert text case, generate placeholder copy, compare text, create slugs, encode output safely, and clean text for publishing.
-          </p>
-
-          <div class="hero-stats">
-            <div class="hero-stat">
-              <strong>10</strong>
-              <span>Practical text tools</span>
-            </div>
-            <div class="hero-stat">
-              <strong>Browser-first</strong>
-              <span>Fast workflows without heavy setup</span>
-            </div>
-            <div class="hero-stat">
-              <strong>Clean output</strong>
-              <span>Built for writing, formatting, and text utility tasks</span>
-            </div>
-          </div>
+  <main class="category-guide-main">
+    <article>
+      <nav class="container guide-breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">Ana Sayfa</a></li><li aria-current="page">Metin ve Yazım Araçları</li></ol></nav>
+      <header class="category-guide-hero">
+        <div class="container category-guide-hero__grid">
+          <div class="category-guide-hero__icon" style="--category-accent: #3B82F6;"><span>✍️</span></div>
+          <div><p class="section-eyebrow">Kategori rehberi</p><h1>Metin ve Yazım Araçları – Online ve Ücretsiz</h1><p class="category-guide-intro">Metin ve Yazım Araçları kategorisi, kelime sayısı, karakter sınırı, metin farkı, slug üretimi ve yazım düzenleme işlerini tek bir karar rehberi içinde toplar. Bu sayfa yalnızca araç kartları sunmak yerine, kimlerin hangi durumda başlaması gerektiğini, en sık yapılan görevleri ve doğru aracı seçmek için kullanabileceğiniz karar tablosunu açıklar. Öğrenciler, içerik üreticileri, geliştiriciler, küçük işletmeler ve günlük kullanıcılar kendi hedeflerine göre hızlı başlangıç noktası bulabilir. Her araç kartı kısa açıklama, işlem etiketi ve doğrudan kullanım bağlantısı içerir; ilgili blog yazıları ve SSS bölümü de çıktıyı paylaşmadan önce kontrol etmeniz gereken noktaları netleştirir.</p></div>
         </div>
-      </div>
-    </section>
-
-    <section class="tools-section">
-      <div class="container">
-        <div class="section-heading">
-          <h2 data-i18n="categories.text.sectionTitle">Text Tools</h2>
-          <p>Open the exact writing or text-processing utility you need from one clear category hub.</p>
-        </div>
-
-        <div class="grid grid-3">
-          <a class="tool-card" href="/tools/text/word-counter/">
-            <div class="tool-icon">🔢</div>
-            <h3>Word Counter</h3>
-            <p>Count words, characters, sentences, and paragraphs quickly for writing, editing, and publishing tasks.</p>
-            <span class="tool-link" data-i18n="home.openTool">Open tool →</span>
-          </a>
-
-          <a class="tool-card" href="/tools/text/character-counter/">
-            <div class="tool-icon">📏</div>
-            <h3>Character Counter</h3>
-            <p>Measure total characters instantly for bios, post limits, forms, and tighter copy requirements.</p>
-            <span class="tool-link" data-i18n="home.openTool">Open tool →</span>
-          </a>
-
-          <a class="tool-card" href="/tools/text/case-converter/">
-            <div class="tool-icon">🔄</div>
-            <h3>Case Converter</h3>
-            <p>Convert text between uppercase, lowercase, sentence case, title case, and other writing formats.</p>
-            <span class="tool-link" data-i18n="home.openTool">Open tool →</span>
-          </a>
-
-          <a class="tool-card" href="/tools/text/lorem-ipsum-generator/">
-            <div class="tool-icon">📃</div>
-            <h3>Lorem Ipsum Generator</h3>
-            <p>Create placeholder text for interface layouts, design drafts, landing pages, and content mockups.</p>
-            <span class="tool-link" data-i18n="home.openTool">Open tool →</span>
-          </a>
-
-          <a class="tool-card" href="/tools/text/html-entity-encoder/">
-            <div class="tool-icon">🧩</div>
-            <h3>HTML Entity Encoder</h3>
-            <p>Encode special characters safely for HTML output, publishing workflows, and content cleanup.</p>
-            <span class="tool-link" data-i18n="home.openTool">Open tool →</span>
-          </a>
-
-          <a class="tool-card" href="/tools/text/palindrome-checker/">
-            <div class="tool-icon">🪞</div>
-            <h3>Palindrome Checker</h3>
-            <p>Check whether a word or phrase reads the same forward and backward with simple input handling.</p>
-            <span class="tool-link" data-i18n="home.openTool">Open tool →</span>
-          </a>
-
-          <a class="tool-card" href="/tools/text/text-diff/">
-            <div class="tool-icon">🆚</div>
-            <h3>Text Diff</h3>
-            <p>Compare two text blocks quickly and spot changes, edits, or removed lines more easily.</p>
-            <span class="tool-link" data-i18n="home.openTool">Open tool →</span>
-          </a>
-
-          <a class="tool-card" href="/tools/text/text-to-ascii/">
-            <div class="tool-icon">⌨️</div>
-            <h3>Text to ASCII</h3>
-            <p>Convert normal text into ASCII-based output for formatting, experiments, and simple transformation tasks.</p>
-            <span class="tool-link" data-i18n="home.openTool">Open tool →</span>
-          </a>
-
-          <a class="tool-card" href="/tools/text/text-to-slug/">
-            <div class="tool-icon">🔗</div>
-            <h3>Text to Slug</h3>
-            <p>Turn titles and phrases into clean, URL-friendly slugs for posts, pages, and publishing systems.</p>
-            <span class="tool-link" data-i18n="home.openTool">Open tool →</span>
-          </a>
-
-          <a class="tool-card" href="/tools/text/url-encoder/">
-            <div class="tool-icon">🌐</div>
-            <h3>URL Encoder</h3>
-            <p>Encode and decode text safely for use inside links, parameters, query strings, and web forms.</p>
-            <span class="tool-link" data-i18n="home.openTool">Open tool →</span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="content-section">
-      <div class="container">
-        <div class="content-panel">
-          <h2>Why use this page?</h2>
-          <p>
-            This category page gives your writing and text utilities a stable entry point instead of sending users through scattered routes.
-            It helps people find the right text tool faster and makes the category itself easier to understand and trust.
-          </p>
-
-          <h3>What this category helps with</h3>
-          <ul>
-            <li>Counting and measuring text for content, forms, and social publishing</li>
-            <li>Cleaning and converting text into safer or more usable output formats</li>
-            <li>Comparing text blocks and generating placeholder writing quickly</li>
-            <li>Improving category-level clarity for both users and search engines</li>
-          </ul>
-
-          <div class="feature-list">
-            <div class="feature-item">Direct links to live text tool routes</div>
-            <div class="feature-item">Cleaner category structure for writing workflows</div>
-            <div class="feature-item">Static page setup with stronger trust signals</div>
-            <div class="feature-item">Better SEO alignment for text utility intent</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-
-    <section class="content-section category-guide-standard" aria-labelledby="categoryGuideTitle">
-      <div class="container">
-        <div class="content-panel">
-          <h2 id="categoryGuideTitle">Text and writing workflow guide</h2>
-          <p>Use this category when you need to count, clean, compare, encode, or reshape text before publishing or sharing.</p>
-          <div class="guide-grid">
-            <div>
-              <h3>Who this category is for</h3>
-              <p>Writers, editors, students, developers, marketers, and anyone preparing copy for websites, forms, documents, or social posts.</p>
-            </div>
-            <div>
-              <h3>Most common tasks</h3>
-              <ul>
-              <li>Count words or characters before submitting content.</li>
-              <li>Convert case, slugs, or encoded characters for web publishing.</li>
-              <li>Compare drafts and spot text changes.</li>
-              <li>Generate placeholder copy for design drafts.</li>
-              <li>Prepare plain text before moving it into another tool.</li>
-              </ul>
-            </div>
-            <div>
-              <h3>Which tool should you choose?</h3>
-              <p>Start with the tool that matches your input format and desired output. If the result feeds another workflow, use the related tool link after checking the output.</p>
-              <p><a href="/tools/text/word-counter/">Open recommended starter tool →</a></p>
-              <p><a href="/tools/text/text-diff/">Open related follow-up tool →</a></p>
-            </div>
-          </div>
-          <p class="category-guide-note">These tools are intended for practical browser workflows and quick estimates. Review outputs before using them in sensitive, financial, legal, medical, or production-critical contexts.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="faq-section">
-      <div class="container">
-        <h2>Frequently Asked Questions</h2>
-        <div class="faq-list">
-          <div class="faq-item" itemscope itemtype="https://schema.org/Question">
-            <h3 itemprop="name">What kinds of tools are included here?</h3>
-            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text">This category includes text and writing utilities such as word counters, character counters, case converters, slug generators, diff tools, encoding helpers, lorem ipsum generators, and related cleanup tools.</p>
-            </div>
-          </div>
-
-          <div class="faq-item" itemscope itemtype="https://schema.org/Question">
-            <h3 itemprop="name">Who is this page useful for?</h3>
-            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text">It is useful for writers, editors, marketers, students, developers, and anyone who needs quick browser-based text utilities for formatting, checking, counting, or transforming text.</p>
-            </div>
-          </div>
-
-          <div class="faq-item" itemscope itemtype="https://schema.org/Question">
-            <h3 itemprop="name">Why does a dedicated text tools category page matter?</h3>
-            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text">A dedicated category page makes it easier to discover the right tool, improves navigation, strengthens topical relevance, and gives search engines clearer signals about the type of utilities grouped here.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="content-section novatools-related-guides" aria-labelledby="relatedGuidesTitle">
-      <div class="container">
-        <div class="panel">
-          <h2 id="relatedGuidesTitle">Related practical guides</h2>
-          <p>Use these guides when you need more context before choosing a tool, exporting a result, or continuing into the next workflow.</p>
-          <div class="related-tools-grid"><a class="related-tool-link" href="/blog/articles/word-counter-for-editing-client-copy.html">Word counter editing workflow</a><a class="related-tool-link" href="/blog/articles/text-diff-for-reviewing-edits.html">Text diff review workflow</a><a class="related-tool-link" href="/blog/articles/slug-generator-url-cleanup-guide.html">Slug generator guide</a></div>
-        </div>
-      </div>
-    </section>
+      </header>
+      <section class="guide-section" aria-labelledby="audienceTitle"><div class="container"><div class="section-header"><h2 id="audienceTitle" class="section-title">Kimler İçin?</h2><p class="section-description">Bu kategori, farklı kullanıcıların aynı araçları farklı hedeflerle kullanabileceği şekilde düzenlendi.</p></div><div class="persona-grid"><article class="persona-card"><h3>Yazarlar için</h3><p>Kelime sayısı, karakter sınırı ve metin biçimi kontrollerini yayın öncesinde hızlandırır.</p><div><a href="/tools/text/word-counter/">Word Counter</a><a href="/tools/text/case-converter/">Case Converter</a></div></article><article class="persona-card"><h3>Editörler için</h3><p>Metin farklarını, slug yapısını ve tekrar eden format sorunlarını daha kolay kontrol eder.</p><div><a href="/tools/text/text-diff/">Text Diff</a><a href="/tools/text/text-to-slug/">Text To Slug</a></div></article><article class="persona-card"><h3>Öğrenciler için</h3><p>Ödev, başvuru ve kısa metinlerde uzunluk ve düzen kontrolleri yapar.</p><div><a href="/tools/text/character-counter/">Character Counter</a><a href="/tools/text/lorem-ipsum-generator/">Lorem Ipsum Generator</a></div></article></div></div></section>
+      <section class="guide-section" aria-labelledby="tasksTitle"><div class="container"><div class="section-header"><h2 id="tasksTitle" class="section-title">En Sık Yapılan Görevler</h2></div><ol class="task-steps"><li><div><strong>Metin ve Yazım Araçları içinde hızlı başlangıç</strong><p>En sık kullanılan aracı seçip doğrudan ilgili iş akışına geçmenizi sağlar.</p></div><a class="btn btn-secondary" href="/tools/text/word-counter/">Aracı aç</a></li><li><div><strong>Metin ve Yazım Araçları çıktısını kontrol etmek</strong><p>Sonucu paylaşmadan önce biçim, ölçü veya içerik tutarlılığını gözden geçirmenize yardımcı olur.</p></div><a class="btn btn-secondary" href="/tools/text/text-diff/">Aracı aç</a></li><li><div><strong>Alternatif aracı seçmek</strong><p>Benzer görevler arasında ihtiyacınıza uygun aracı karşılaştırarak seçmenizi kolaylaştırır.</p></div><a class="btn btn-secondary" href="/tools/text/character-counter/">Aracı aç</a></li></ol></div></section>
+      <section class="guide-section" aria-labelledby="decisionTitle"><div class="container"><div class="section-header"><h2 id="decisionTitle" class="section-title">Hangi Aracı Ne Zaman Kullanmalısınız?</h2></div><div class="decision-table-wrap"><table class="decision-table"><thead><tr><th>İhtiyacınız</th><th>Önerilen Araç</th><th>Neden?</th></tr></thead><tbody><tr><td>Hızlı tek adımlı işlem gerekiyorsa</td><td>Metin ve Yazım Araçları</td><td>Kategori içindeki doğrudan araç kartlarından başlayın.</td></tr><tr><td>Çıktıyı paylaşmadan önce kontrol gerekiyorsa</td><td>İlgili rehberler</td><td>Blog bağlantıları ek kontrol ve kalite adımlarını açıklar.</td></tr><tr><td>Benzer araçlar arasında seçim yapamıyorsanız</td><td>Karar tablosu</td><td>İhtiyacınızı önerilen araçla eşleştirerek seçim süresini azaltır.</td></tr></tbody></table></div></div></section>
+      <section class="guide-section" aria-labelledby="toolsTitle"><div class="container"><div class="section-header"><h2 id="toolsTitle" class="section-title">Metin ve Yazım Araçları</h2><p class="section-description">Araç kartları kısa açıklama, işlem etiketi ve doğrudan kullanım bağlantısı içerir.</p></div><div class="guide-tools-grid"><article class="guide-tool-card nt-card nt-card--tool">
+              <div class="guide-tool-card__icon"><img src="/logo-bird-44.webp" alt="" width="32" height="32" loading="lazy"> <span>✍️</span></div>
+              <div class="guide-tool-card__body"><h3><a href="/tools/text/case-converter/">Case Converter</a></h3><p>Metni büyük harf, küçük harf, başlık formatı ve daha fazlası arasında dönüştürün.</p></div>
+              <div class="guide-tool-card__meta"><span>Tarayıcı öncelikli (uygunsa)</span><span>Kullanım verisi yok</span></div>
+              <a class="btn btn-primary" href="/tools/text/case-converter/">Kullan</a>
+            </article><article class="guide-tool-card nt-card nt-card--tool">
+              <div class="guide-tool-card__icon"><img src="/logo-bird-44.webp" alt="" width="32" height="32" loading="lazy"> <span>✍️</span></div>
+              <div class="guide-tool-card__body"><h3><a href="/tools/text/character-counter/">Character Counter</a></h3><p>Boşluklar, harfler, sayılar dahil ayrıntılı karakter dökümü ile karakterleri sayın. Sosyal medya limitlerini kontrol edin.</p></div>
+              <div class="guide-tool-card__meta"><span>Tarayıcı öncelikli (uygunsa)</span><span>Kullanım verisi yok</span></div>
+              <a class="btn btn-primary" href="/tools/text/character-counter/">Kullan</a>
+            </article><article class="guide-tool-card nt-card nt-card--tool">
+              <div class="guide-tool-card__icon"><img src="/logo-bird-44.webp" alt="" width="32" height="32" loading="lazy"> <span>✍️</span></div>
+              <div class="guide-tool-card__body"><h3><a href="/tools/text/html-entity-encoder/">HTML Entity Encoder/Decoder</a></h3><p>Özel karakterleri HTML varlıklarına dönüştürün ve geri çözün. HTML önizleme desteği.</p></div>
+              <div class="guide-tool-card__meta"><span>Tarayıcı öncelikli (uygunsa)</span><span>Kullanım verisi yok</span></div>
+              <a class="btn btn-primary" href="/tools/text/html-entity-encoder/">Kullan</a>
+            </article><article class="guide-tool-card nt-card nt-card--tool">
+              <div class="guide-tool-card__icon"><img src="/logo-bird-44.webp" alt="" width="32" height="32" loading="lazy"> <span>✍️</span></div>
+              <div class="guide-tool-card__body"><h3><a href="/tools/text/lorem-ipsum-generator/">Lorem Ipsum Generator</a></h3><p>Tasarım mockupları ve geliştirme için yer tutucu metin oluşturun. Özelleştirilebilir paragraf ve kelime sayısı.</p></div>
+              <div class="guide-tool-card__meta"><span>Tarayıcı öncelikli (uygunsa)</span><span>Kullanım verisi yok</span></div>
+              <a class="btn btn-primary" href="/tools/text/lorem-ipsum-generator/">Kullan</a>
+            </article><article class="guide-tool-card nt-card nt-card--tool">
+              <div class="guide-tool-card__icon"><img src="/logo-bird-44.webp" alt="" width="32" height="32" loading="lazy"> <span>✍️</span></div>
+              <div class="guide-tool-card__body"><h3><a href="/tools/text/palindrome-checker/">Palindrome Checker</a></h3><p>Metnin palindrom olup olmadığını kontrol edin. Gerçek zamanlı kontrol ve örnekler.</p></div>
+              <div class="guide-tool-card__meta"><span>Tarayıcı öncelikli (uygunsa)</span><span>Kullanım verisi yok</span></div>
+              <a class="btn btn-primary" href="/tools/text/palindrome-checker/">Kullan</a>
+            </article><article class="guide-tool-card nt-card nt-card--tool">
+              <div class="guide-tool-card__icon"><img src="/logo-bird-44.webp" alt="" width="32" height="32" loading="lazy"> <span>✍️</span></div>
+              <div class="guide-tool-card__body"><h3><a href="/tools/text/text-diff/">Text Diff Checker</a></h3><p>İki metni karşılaştırın ve farkları bulun. Satır satır karşılaştırma ve istatistikler.</p></div>
+              <div class="guide-tool-card__meta"><span>Tarayıcı öncelikli (uygunsa)</span><span>Kullanım verisi yok</span></div>
+              <a class="btn btn-primary" href="/tools/text/text-diff/">Kullan</a>
+            </article><article class="guide-tool-card nt-card nt-card--tool">
+              <div class="guide-tool-card__icon"><img src="/logo-bird-44.webp" alt="" width="32" height="32" loading="lazy"> <span>✍️</span></div>
+              <div class="guide-tool-card__body"><h3><a href="/tools/text/text-to-ascii/">Text to ASCII/Unicode</a></h3><p>Metni ASCII kodlarına, ikili, onaltılık, Base64 ve Unicode kod noktalarına dönüştürün.</p></div>
+              <div class="guide-tool-card__meta"><span>Tarayıcı öncelikli (uygunsa)</span><span>Kullanım verisi yok</span></div>
+              <a class="btn btn-primary" href="/tools/text/text-to-ascii/">Kullan</a>
+            </article><article class="guide-tool-card nt-card nt-card--tool">
+              <div class="guide-tool-card__icon"><img src="/logo-bird-44.webp" alt="" width="32" height="32" loading="lazy"> <span>✍️</span></div>
+              <div class="guide-tool-card__body"><h3><a href="/tools/text/text-to-slug/">Text to Slug Converter</a></h3><p>Metni URL dostu sluga dönüştürün. SEO uyumlu permalinkler için özelleştirilebilir seçenekler.</p></div>
+              <div class="guide-tool-card__meta"><span>Tarayıcı öncelikli (uygunsa)</span><span>Kullanım verisi yok</span></div>
+              <a class="btn btn-primary" href="/tools/text/text-to-slug/">Kullan</a>
+            </article><article class="guide-tool-card nt-card nt-card--tool">
+              <div class="guide-tool-card__icon"><img src="/logo-bird-44.webp" alt="" width="32" height="32" loading="lazy"> <span>✍️</span></div>
+              <div class="guide-tool-card__body"><h3><a href="/tools/text/url-encoder/">URL Encoder/Decoder</a></h3><p>URL&#x27;ler ve sorgu dizileri için metni kodlayın ve kodunu çözün. Percent encoding desteği.</p></div>
+              <div class="guide-tool-card__meta"><span>Tarayıcı öncelikli (uygunsa)</span><span>Kullanım verisi yok</span></div>
+              <a class="btn btn-primary" href="/tools/text/url-encoder/">Kullan</a>
+            </article><article class="guide-tool-card nt-card nt-card--tool">
+              <div class="guide-tool-card__icon"><img src="/logo-bird-44.webp" alt="" width="32" height="32" loading="lazy"> <span>✍️</span></div>
+              <div class="guide-tool-card__body"><h3><a href="/tools/text/word-counter/">Word Counter</a></h3><p>Kelimeleri, karakterleri, cümleleri ve paragrafları gerçek zamanlı olarak sayın. Okuma süresi ve anahtar kelime yoğunluğu analizi.</p></div>
+              <div class="guide-tool-card__meta"><span>Tarayıcı öncelikli (uygunsa)</span><span>Kullanım verisi yok</span></div>
+              <a class="btn btn-primary" href="/tools/text/word-counter/">Kullan</a>
+            </article></div></div></section>
+      <section class="guide-section" aria-labelledby="articlesTitle"><div class="container"><div class="section-header"><h2 id="articlesTitle" class="section-title">İlgili Blog Yazıları ve Rehberler</h2></div><div class="related-article-grid"><article class="related-article-card"><h3><a href="/blog/articles/tool-selection-map-for-new-users.html">Tool selection map for new users</a></h3><p>Yeni kullanıcılar için kategori ve araç seçme haritası.</p><a href="/blog/articles/tool-selection-map-for-new-users.html">Rehberi oku →</a></article><article class="related-article-card"><h3><a href="/blog/articles/browser-tool-empty-state-loading-success.html">Browser tool empty state loading success</a></h3><p>Araç akışlarında boş, yükleniyor ve başarı durumlarını anlama rehberi.</p><a href="/blog/articles/browser-tool-empty-state-loading-success.html">Rehberi oku →</a></article></div></div></section>
+      <section class="guide-section" aria-labelledby="faqTitle"><div class="container"><div class="section-header"><h2 id="faqTitle" class="section-title">Sık Sorulan Sorular</h2></div><div class="faq-accordion"><details><summary>Metin ve Yazım Araçları ücretsiz mi?</summary><p>Evet. Bu kategori sayfası NovaTools içinde yer alan ilgili online araçlara doğrudan bağlantı verir ve hızlı başlangıç için hazırlanmıştır.</p></details><details><summary>Hangi aracı seçmem gerektiğini nasıl anlarım?</summary><p>Önce en sık yapılan görevler bölümünü, ardından karar destek tablosunu inceleyin. İhtiyacınız önerilen araçla eşleştirilir.</p></details><details><summary>Bu sayfadaki araçlar mobilde kullanılabilir mi?</summary><p>Sayfa mobil öncelikli düzenlenmiştir. Araçların ayrıntılı giriş alanları ilgili araç sayfasında ayrıca kontrol edilmelidir.</p></details><details><summary>Sonuçları paylaşmadan önce neyi kontrol etmeliyim?</summary><p>Dosya adı, çıktı formatı, gizlilik ihtiyacı ve okunabilirlik gibi temel kalite kontrollerini yapmanız önerilir.</p></details><details><summary>İlgili rehberler ne işe yarar?</summary><p>Blog rehberleri, araç seçimi ve çıktı kontrolü konusunda daha fazla bağlam vererek hatalı kullanım riskini azaltır.</p></details></div></div></section>
+      <aside class="guide-section other-categories" aria-labelledby="otherCategoriesTitle"><div class="container"><div class="section-header"><h2 id="otherCategoriesTitle" class="section-title">Diğer Kategoriler</h2></div><div class="other-category-grid"><a class="other-category-card" href="/categories/pdf-tools.html"><strong>PDF Tools</strong><span>Edit and convert PDFs</span></a><a class="other-category-card" href="/categories/image-tools.html"><strong>Image Tools</strong><span>Optimize and edit images</span></a><a class="other-category-card" href="/categories/finance-tools.html"><strong>Finance Tools</strong><span>Hesaplama Araçları for your money</span></a></div></div></aside>
+    </article>
   </main>
-
-  <footer class="main-footer">
-    <div class="container">
-      <div class="footer-inner">
-        <p data-i18n="footer.copyright">
-          © 2026 MC NovaTools. Metehan ÇETİN, LPC.
-          <a href="mailto:psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a>
-        </p>
-      </div>
-    </div>
-  </footer>
+  <footer class="guide-footer"><div class="container guide-footer__grid"><div><strong>MC NovaTools</strong><p>Pratik online araçlar ve karar destek rehberleri.</p></div><nav aria-label="Footer"><a href="/categories/index.html">Kategoriler</a><a href="/blog/index.html">Blog</a><a href="/privacy-policy.html">Privacy Policy</a><a href="/contact.html">Contact</a></nav></div><div class="container guide-footer__bottom">NovaTools © 2026 - Tüm hakları saklıdır.</div></footer>
 </body>
 </html>
