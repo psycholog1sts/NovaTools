@@ -1,6 +1,6 @@
 const blogModules = import.meta.glob('../i18n/blog/*.json', { eager: true, import: 'default' });
 
-export const supportedBlogLocales = ['en', 'tr', 'ar'];
+export const supportedBlogLocales = ['en', 'tr', 'de', 'fr', 'es', 'pt', 'ru', 'zh', 'ja', 'ko', 'ar', 'hi', 'it', 'pl', 'nl'];
 export const fallbackBlogLocale = 'en';
 
 export const blogUi = {
@@ -75,6 +75,25 @@ export const blogUi = {
   }
 };
 
+const additionalBlogUi = {
+  de: { dir: 'ltr', heroBadge: 'Redaktionelle Workflow-Bibliothek', heroTitle: 'NovaTools Blog – Digitale Produktivität verbessern', heroDescription: 'Praktische Leitfäden für PDF, Bilder, Datenschutz, Finanzen, Entwicklerautomatisierung und produktive Browser-Workflows.', searchPlaceholder: 'Blogartikel suchen...', featured: 'Empfohlener Artikel', latest: 'Neueste Leitfäden', loadMore: 'Mehr laden', all: 'Alle', emptyTitle: 'Noch keine Artikel in dieser Kategorie', emptyText: 'Wählen Sie eine andere Kategorie oder zeigen Sie alle Artikel an.', emptyButton: 'Alle Artikel anzeigen', fallbackNotice: '', categories: {} },
+  fr: { dir: 'ltr', heroBadge: 'Bibliothèque de workflows éditoriaux', heroTitle: 'Blog NovaTools – Améliorez votre productivité numérique', heroDescription: 'Guides pratiques pour PDF, images, confidentialité, finance, automatisation développeur et workflows dans le navigateur.', searchPlaceholder: 'Rechercher des articles...', featured: 'Article à la une', latest: 'Derniers guides', loadMore: 'Charger plus', all: 'Tous', emptyTitle: 'Aucun article dans cette catégorie', emptyText: 'Essayez une autre catégorie ou affichez tous les articles.', emptyButton: 'Voir tous les articles', fallbackNotice: '', categories: {} },
+  es: { dir: 'ltr', heroBadge: 'Biblioteca editorial de flujos', heroTitle: 'Blog de NovaTools – Mejore su productividad digital', heroDescription: 'Guías prácticas para PDF, imágenes, privacidad, finanzas, automatización de desarrollo y flujos en el navegador.', searchPlaceholder: 'Buscar artículos...', featured: 'Artículo destacado', latest: 'Últimas guías', loadMore: 'Cargar más', all: 'Todos', emptyTitle: 'No hay artículos en esta categoría', emptyText: 'Pruebe otra categoría o vea todos los artículos.', emptyButton: 'Ver todos los artículos', fallbackNotice: '', categories: {} },
+  pt: { dir: 'ltr', heroBadge: 'Biblioteca editorial de fluxos', heroTitle: 'Blog NovaTools – Melhore sua produtividade digital', heroDescription: 'Guias práticos para PDF, imagens, privacidade, finanças, automação de desenvolvimento e fluxos no navegador.', searchPlaceholder: 'Pesquisar artigos...', featured: 'Artigo em destaque', latest: 'Guias recentes', loadMore: 'Carregar mais', all: 'Todos', emptyTitle: 'Nenhum artigo nesta categoria', emptyText: 'Tente outra categoria ou veja todos os artigos.', emptyButton: 'Ver todos os artigos', fallbackNotice: '', categories: {} },
+  ru: { dir: 'ltr', heroBadge: 'Библиотека редакционных процессов', heroTitle: 'Блог NovaTools — повысьте цифровую продуктивность', heroDescription: 'Практические руководства для PDF, изображений, приватности, финансов, разработки и браузерных процессов.', searchPlaceholder: 'Поиск статей...', featured: 'Избранная статья', latest: 'Новые руководства', loadMore: 'Показать ещё', all: 'Все', emptyTitle: 'В этой категории пока нет статей', emptyText: 'Попробуйте другую категорию или откройте все статьи.', emptyButton: 'Показать все статьи', fallbackNotice: '', categories: {} },
+  zh: { dir: 'ltr', heroBadge: '编辑工作流资料库', heroTitle: 'NovaTools 博客 – 提升数字生产力', heroDescription: '面向 PDF、图像、隐私、金融、开发自动化和浏览器工作流的实用指南。', searchPlaceholder: '搜索博客文章...', featured: '精选文章', latest: '最新指南', loadMore: '加载更多', all: '全部', emptyTitle: '此类别暂无文章', emptyText: '尝试其他类别或查看全部文章。', emptyButton: '查看全部文章', fallbackNotice: '', categories: {} },
+  ja: { dir: 'ltr', heroBadge: '編集ワークフローライブラリ', heroTitle: 'NovaTools ブログ – デジタル生産性を高める', heroDescription: 'PDF、画像、プライバシー、金融、開発自動化、ブラウザワークフローの実用ガイド。', searchPlaceholder: '記事を検索...', featured: '注目記事', latest: '最新ガイド', loadMore: 'さらに表示', all: 'すべて', emptyTitle: 'このカテゴリの記事はまだありません', emptyText: '別のカテゴリを試すか、すべての記事を表示してください。', emptyButton: 'すべての記事を見る', fallbackNotice: '', categories: {} },
+  ko: { dir: 'ltr', heroBadge: '편집 워크플로 라이브러리', heroTitle: 'NovaTools 블로그 – 디지털 생산성 향상', heroDescription: 'PDF, 이미지, 개인정보, 금융, 개발 자동화 및 브라우저 워크플로를 위한 실용 가이드.', searchPlaceholder: '블로그 글 검색...', featured: '추천 글', latest: '최신 가이드', loadMore: '더 보기', all: '전체', emptyTitle: '이 카테고리에 아직 글이 없습니다', emptyText: '다른 카테고리를 시도하거나 모든 글을 보세요.', emptyButton: '모든 글 보기', fallbackNotice: '', categories: {} },
+  hi: { dir: 'ltr', heroBadge: 'संपादकीय वर्कफ़्लो लाइब्रेरी', heroTitle: 'NovaTools ब्लॉग – डिजिटल उत्पादकता बढ़ाएँ', heroDescription: 'PDF, इमेज, गोपनीयता, वित्त, डेवलपर ऑटोमेशन और ब्राउज़र वर्कफ़्लो के लिए व्यावहारिक गाइड।', searchPlaceholder: 'ब्लॉग लेख खोजें...', featured: 'विशेष लेख', latest: 'नवीनतम गाइड', loadMore: 'और लोड करें', all: 'सभी', emptyTitle: 'इस श्रेणी में अभी लेख नहीं हैं', emptyText: 'दूसरी श्रेणी आज़माएँ या सभी लेख देखें।', emptyButton: 'सभी लेख देखें', fallbackNotice: '', categories: {} },
+  it: { dir: 'ltr', heroBadge: 'Libreria di workflow editoriali', heroTitle: 'Blog NovaTools – Migliora la produttività digitale', heroDescription: 'Guide pratiche per PDF, immagini, privacy, finanza, automazione sviluppatore e workflow nel browser.', searchPlaceholder: 'Cerca articoli...', featured: 'Articolo in evidenza', latest: 'Ultime guide', loadMore: 'Carica altro', all: 'Tutti', emptyTitle: 'Nessun articolo in questa categoria', emptyText: 'Prova un’altra categoria o visualizza tutti gli articoli.', emptyButton: 'Vedi tutti gli articoli', fallbackNotice: '', categories: {} },
+  pl: { dir: 'ltr', heroBadge: 'Biblioteka redakcyjnych przepływów pracy', heroTitle: 'Blog NovaTools – Popraw produktywność cyfrową', heroDescription: 'Praktyczne poradniki dla PDF, obrazów, prywatności, finansów, automatyzacji deweloperskiej i workflow w przeglądarce.', searchPlaceholder: 'Szukaj artykułów...', featured: 'Wyróżniony artykuł', latest: 'Najnowsze poradniki', loadMore: 'Załaduj więcej', all: 'Wszystkie', emptyTitle: 'Brak artykułów w tej kategorii', emptyText: 'Spróbuj innej kategorii albo zobacz wszystkie artykuły.', emptyButton: 'Zobacz wszystkie artykuły', fallbackNotice: '', categories: {} },
+  nl: { dir: 'ltr', heroBadge: 'Bibliotheek voor redactionele workflows', heroTitle: 'NovaTools Blog – Verbeter uw digitale productiviteit', heroDescription: 'Praktische gidsen voor PDF, afbeeldingen, privacy, finance, ontwikkelautomatisering en browserworkflows.', searchPlaceholder: 'Blogartikelen zoeken...', featured: 'Uitgelicht artikel', latest: 'Nieuwste gidsen', loadMore: 'Meer laden', all: 'Alle', emptyTitle: 'Nog geen artikelen in deze categorie', emptyText: 'Probeer een andere categorie of bekijk alle artikelen.', emptyButton: 'Alle artikelen bekijken', fallbackNotice: '', categories: {} }
+};
+
+Object.entries(additionalBlogUi).forEach(([locale, ui]) => {
+  blogUi[locale] = { ...blogUi.en, ...ui, categories: { ...blogUi.en.categories, ...ui.categories } };
+});
+
 const blogDataByLocale = Object.fromEntries(
   Object.entries(blogModules).map(([path, data]) => {
     const locale = path.match(/\/([a-z]{2})\.json$/)?.[1];
@@ -92,7 +111,7 @@ export function getBlogUi(locale = getActiveBlogLocale()) {
 }
 
 export function getBlogPostsForLocale(locale = getActiveBlogLocale()) {
-  return blogDataByLocale[locale] || [];
+  return blogDataByLocale[locale] || blogDataByLocale[fallbackBlogLocale] || [];
 }
 
 export function getTranslatedBlogSlugs() {
@@ -102,8 +121,10 @@ export function getTranslatedBlogSlugs() {
 }
 
 export function getBlogPost(locale, slug) {
-  const localized = getBlogPostsForLocale(locale).find((post) => post.slug === slug);
+  const localized = (blogDataByLocale[locale] || []).find((post) => post.slug === slug);
   if (localized) return { post: localized, locale, isFallback: false, isUnavailable: false };
+  const fallback = (blogDataByLocale[fallbackBlogLocale] || []).find((post) => post.slug === slug);
+  if (fallback) return { post: fallback, locale, isFallback: locale !== fallbackBlogLocale, isUnavailable: false };
   return { post: null, locale, isFallback: false, isUnavailable: true };
 }
 

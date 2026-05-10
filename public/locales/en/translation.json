@@ -5952,5 +5952,68 @@
         }
       }
     }
+  },
+  "surface": {
+    "seo": {
+      "homeTitle": "Free Online Tools for PDF, Image, Finance & Developer Work | MC NovaTools",
+      "homeDescription": "Fast, privacy-conscious online tools for PDF, image, finance, text, converters, security and developer workflows. No forced signup. Clean, simple, browser-first utilities.",
+      "blogTitle": "NovaTools Blog – Improve Your Digital Productivity | MC NovaTools",
+      "blogDescription": "Practical guides connected to PDF, image, writing, developer, finance, data, and browser-first file workflows.",
+      "contactTitle": "Contact MC NovaTools | Support, feedback, and legal requests",
+      "contactDescription": "Contact MC NovaTools for support, feedback, privacy requests, business inquiries, or tool suggestions using the validated contact form or email link."
+    },
+    "ui": {
+      "start": "Start",
+      "company": "Company",
+      "legal": "Legal",
+      "about": "About",
+      "aboutUs": "About Us",
+      "privacyPolicy": "Privacy Policy",
+      "termsOfService": "Terms of Service",
+      "cookiePolicy": "Cookie Policy",
+      "cookieSettings": "Cookie settings",
+      "requestTool": "Request a tool",
+      "practicalTools": "Practical online tools with privacy-conscious workflows.",
+      "guidesSupported": "Professional online tools supported by practical guides.",
+      "otherCategories": "Other Categories",
+      "allRightsReserved": "All rights reserved.",
+      "lastUpdated": "Last updated: 2026-05-10"
+    },
+    "chatbot": {
+      "title": "NovaTools guide",
+      "placeholder": "Ask which tool or guide fits your task…",
+      "open": "Open site guide",
+      "close": "Close site guide"
+    },
+    "alias": {
+      "guidesSupported": "Professional online tools supported by practical guides.",
+      "practicalToolsPrivacy": "Practical online tools with privacy-conscious workflows.",
+      "contact": "Contact",
+      "blog": "Blog",
+      "categories": "Browse by Category",
+      "privacy": "Privacy",
+      "otherCategories": "Other Categories",
+      "rights": "All rights reserved.",
+      "trGuidesSupportedSource": "Professional online tools supported by practical guides.",
+      "trRightsSource": "All rights reserved."
+    },
+    "cookie": {
+      "title": "Cookie choices",
+      "body": "We use necessary storage for core features. Analytics, advertising, and functional storage are optional and load only after consent.",
+      "settings": "Cookie Settings",
+      "accept": "Accept all",
+      "reject": "Reject non-essential",
+      "save": "Save choices",
+      "close": "Close"
+    },
+    "notFound": {
+      "title": "Page Not Found | NovaTools",
+      "description": "The page you requested could not be found. Return to NovaTools or open popular PDF, image, finance, and developer tools.",
+      "heading": "Page not found",
+      "body": "The link may be outdated or the page may have moved. Start from the home page, browse all categories, or jump directly to a popular tool.",
+      "home": "Go to homepage",
+      "categories": "Browse categories",
+      "guides": "Read guides"
+    }
   }
 }

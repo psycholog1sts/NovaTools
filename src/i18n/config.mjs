@@ -98,7 +98,7 @@ export function generateHreflangTags(currentPath) {
       : currentPath;
     
     tags.push(
-      `<link rel="alternate" hreflang="${I18N_CONFIG.metadata[locale].hreflang}" href="${baseUrl}${path}">`
+      `<link rel="alternate" hreflang="${I18N_CONFIG.metadata[locale].hreflang}" href="${baseUrl}${path}${query}">`
     );
   });
   

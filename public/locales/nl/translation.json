@@ -5829,5 +5829,68 @@
       "description": "Explore available tools organized by category, including PDF, image, finance, developer, text, and converters.",
       "sectionTitle": "All Categories"
     }
+  },
+  "surface": {
+    "seo": {
+      "homeTitle": "Gratis online tools voor PDF, afbeeldingen, finance en development | MC NovaTools",
+      "homeDescription": "Snelle, privacybewuste online tools voor PDF, afbeeldingen, finance, tekst, converters, beveiliging en ontwikkelworkflows.",
+      "blogTitle": "NovaTools Blog – Verbeter uw digitale productiviteit | MC NovaTools",
+      "blogDescription": "Praktische gidsen voor PDF-, beeld-, schrijf-, ontwikkel-, finance-, data- en browserbestandsworkflows.",
+      "contactTitle": "Contact met MC NovaTools | Support, feedback en juridische verzoeken",
+      "contactDescription": "Neem contact op met MC NovaTools voor support, feedback, privacyverzoeken, zakelijke vragen of toolvoorstellen."
+    },
+    "ui": {
+      "start": "Start",
+      "company": "Bedrijf",
+      "legal": "Juridisch",
+      "about": "Over",
+      "aboutUs": "Over ons",
+      "privacyPolicy": "Privacybeleid",
+      "termsOfService": "Servicevoorwaarden",
+      "cookiePolicy": "Cookiebeleid",
+      "cookieSettings": "Cookie-instellingen",
+      "requestTool": "Tool aanvragen",
+      "practicalTools": "Praktische online tools met privacybewuste workflows.",
+      "guidesSupported": "Professionele online tools ondersteund door praktische gidsen.",
+      "otherCategories": "Andere categorieën",
+      "allRightsReserved": "Alle rechten voorbehouden.",
+      "lastUpdated": "Laatst bijgewerkt: 2026-05-10"
+    },
+    "chatbot": {
+      "title": "NovaTools-gids",
+      "placeholder": "Vraag welke tool of gids bij uw taak past…",
+      "open": "Sitegids openen",
+      "close": "Sitegids sluiten"
+    },
+    "alias": {
+      "guidesSupported": "Professionele online tools ondersteund door praktische gidsen.",
+      "practicalToolsPrivacy": "Praktische online tools met privacybewuste workflows.",
+      "contact": "Contact",
+      "blog": "Blog",
+      "categories": "Bekijk per Categorie",
+      "privacy": "Privacy",
+      "otherCategories": "Andere categorieën",
+      "rights": "Alle rechten voorbehouden.",
+      "trGuidesSupportedSource": "Professionele online tools ondersteund door praktische gidsen.",
+      "trRightsSource": "Alle rechten voorbehouden."
+    },
+    "cookie": {
+      "title": "Cookiekeuzes",
+      "body": "We gebruiken noodzakelijke opslag voor kernfuncties. Analytics, advertenties en functionele opslag zijn optioneel en laden pas na toestemming.",
+      "settings": "Cookie-instellingen",
+      "accept": "Alles accepteren",
+      "reject": "Niet-essentieel weigeren",
+      "save": "Keuzes opslaan",
+      "close": "Sluiten"
+    },
+    "notFound": {
+      "title": "Pagina niet gevonden | NovaTools",
+      "description": "De gevraagde pagina is niet gevonden. Ga terug naar NovaTools of open populaire PDF-, beeld-, finance- en ontwikkeltools.",
+      "heading": "Pagina niet gevonden",
+      "body": "De link is mogelijk verouderd of de pagina is verplaatst. Start op de homepage, blader door categorieën of open een populaire tool.",
+      "home": "Naar homepage",
+      "categories": "Categorieën bekijken",
+      "guides": "Gidsen lezen"
+    }
   }
 }
