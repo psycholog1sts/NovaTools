@@ -6,7 +6,9 @@
 (function () {
   'use strict';
 
-  const SUPPORTED_LANGUAGES = ['en', 'tr', 'ar'];
+  const SUPPORTED_LANGUAGES = ['en', 'tr', 'de', 'fr', 'es', 'pt', 'ru', 'zh', 'ja', 'ko', 'ar', 'hi', 'it', 'pl', 'nl'];
+  const PATH_PREFIX_LANGUAGES = ['tr', 'ar'];
+  const RTL_LANGUAGES = ['ar'];
   const DEFAULT_LANGUAGE = 'en';
 
   let currentLanguage = DEFAULT_LANGUAGE;
@@ -16,20 +18,44 @@
   const LANGUAGE_NAMES = {
     en: 'English',
     tr: 'Türkçe',
-    ar: 'العربية'
+    de: 'Deutsch',
+    fr: 'Français',
+    es: 'Español',
+    pt: 'Português',
+    ru: 'Русский',
+    zh: '中文',
+    ja: '日本語',
+    ko: '한국어',
+    ar: 'العربية',
+    hi: 'हिन्दी',
+    it: 'Italiano',
+    pl: 'Polski',
+    nl: 'Nederlands'
   };
 
   const LANGUAGE_FLAGS = {
     en: '🇬🇧',
     tr: '🇹🇷',
-    ar: '🇸🇦'
+    de: '🇩🇪',
+    fr: '🇫🇷',
+    es: '🇪🇸',
+    pt: '🇵🇹',
+    ru: '🇷🇺',
+    zh: '🇨🇳',
+    ja: '🇯🇵',
+    ko: '🇰🇷',
+    ar: '🇸🇦',
+    hi: '🇮🇳',
+    it: '🇮🇹',
+    pl: '🇵🇱',
+    nl: '🇳🇱'
   };
 
   const SITE_ORIGIN = 'https://mc-novatools.com';
   const CONTENT_FALLBACK_NOTICE = {
     en: 'This content is currently available only in English.',
-    tr: 'Bu içerik şu anda yalnızca İngilizce olarak mevcuttur.',
-    ar: 'هذا المحتوى متاح حالياً باللغة الإنجليزية فقط.'
+    tr: 'Bu yüzey tam çevrilmediği için İngilizce gösteriliyor.',
+    ar: 'تُعرض هذه الصفحة بالإنجليزية لأن ترجمتها الكاملة غير جاهزة بعد.'
   };
   const contentAvailability = {
     categories: {},
@@ -189,13 +215,17 @@
   };
 
   function localeFromPath(pathname) {
-    const match = String(pathname || '').match(/^\/(tr|ar)(?=\/|$)/);
-    return match ? match[1] : DEFAULT_LANGUAGE;
+    const firstSegment = String(pathname || '').split('/').filter(Boolean)[0];
+    return PATH_PREFIX_LANGUAGES.includes(firstSegment) ? firstSegment : DEFAULT_LANGUAGE;
   }
 
   function stripLocalePrefix(pathname) {
-    const stripped = String(pathname || '/').replace(/^\/(tr|ar)(?=\/|$)/, '') || '/';
-    return stripped.startsWith('/') ? stripped : `/${stripped}`;
+    const firstSegment = String(pathname || '/').split('/').filter(Boolean)[0];
+    if (PATH_PREFIX_LANGUAGES.includes(firstSegment)) {
+      const stripped = String(pathname || '/').replace(new RegExp(`^/(${PATH_PREFIX_LANGUAGES.join('|')})(?=/|$)`), '') || '/';
+      return stripped.startsWith('/') ? stripped : `/${stripped}`;
+    }
+    return String(pathname || '/').startsWith('/') ? String(pathname || '/') : `/${pathname}`;
   }
 
   function getRequestedLanguage() {
@@ -209,7 +239,7 @@
 
   function localizedPath(lang, pathname = window.location.pathname) {
     const basePath = stripLocalePrefix(pathname);
-    return lang === DEFAULT_LANGUAGE ? basePath : `/${lang}${basePath === '/' ? '/' : basePath}`;
+    return PATH_PREFIX_LANGUAGES.includes(lang) ? `/${lang}${basePath === '/' ? '/' : basePath}` : basePath;
   }
 
   function absoluteUrl(pathname) {
@@ -239,20 +269,20 @@
 
   function pageContentAvailability() {
     const path = stripLocalePrefix(window.location.pathname).replace(/\/$/, '');
-    const blogMatch = path.match(/^\/blog\/([^/.]+)(?:\.html)?$/);
+    const blogMatch = path.match(/^\/blog\/(?:articles\/)?([^/.]+)(?:\.html)?$/);
     if (blogMatch) return contentAvailability.blog[blogMatch[1]] || ['en'];
     if (/^\/blog(?:\/index\.html)?$/.test(path)) return ['en', 'tr', 'ar'];
     const categoryMatch = path.match(/^\/categories\/([^/.]+)(?:\.html)?$/);
-    if (categoryMatch) return contentAvailability.categories[categoryMatch[1]] || ['en', 'tr', 'ar'];
+    if (categoryMatch) return contentAvailability.categories[categoryMatch[1]] || SUPPORTED_LANGUAGES;
     const toolMatch = path.match(/^\/tools\/(.+)$/);
-    if (toolMatch) return contentAvailability.tools[toolMatch[1].replace(/\/$/, '')] || ['en', 'tr', 'ar'];
-    return ['en', 'tr', 'ar'];
+    if (toolMatch) return contentAvailability.tools[toolMatch[1].replace(/\/$/, '')] || SUPPORTED_LANGUAGES;
+    return SUPPORTED_LANGUAGES;
   }
 
   function applyLocaleSeo(lang) {
     const canonicalPath = localizedPath(lang);
     document.querySelectorAll('link[rel="alternate"][hreflang]').forEach((el) => el.remove());
-    [['en', localizedPath('en')], ['tr', localizedPath('tr')], ['ar', localizedPath('ar')], ['x-default', localizedPath('en')]].forEach(([hreflang, href]) => {
+    [...SUPPORTED_LANGUAGES.map((code) => [code, localizedPath(code)]), ['x-default', localizedPath('en')]].forEach(([hreflang, href]) => {
       const link = document.createElement('link');
       link.rel = 'alternate';
       link.hreflang = hreflang;
@@ -420,8 +450,9 @@
     }
 
     document.documentElement.lang = lang;
-    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
-    document.body?.classList.toggle('is-rtl', lang === 'ar');
+    const isRtl = RTL_LANGUAGES.includes(lang);
+    document.documentElement.dir = isRtl ? 'rtl' : 'ltr';
+    document.body?.classList.toggle('is-rtl', isRtl);
     applyLocaleSeo(lang);
 
     const selector = document.getElementById('language-selector');
@@ -533,7 +564,9 @@
 
     currentLanguage = getInitialLanguage();
     document.documentElement.lang = currentLanguage;
-    document.documentElement.dir = currentLanguage === 'ar' ? 'rtl' : 'ltr';
+    document.documentElement.dir = RTL_LANGUAGES.includes(currentLanguage) ? 'rtl' : 'ltr';
+    document.body?.classList.toggle('is-rtl', RTL_LANGUAGES.includes(currentLanguage));
+    applyLocaleSeo(currentLanguage);
 
     await loadTranslations(currentLanguage);
 

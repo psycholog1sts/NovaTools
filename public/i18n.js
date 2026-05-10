@@ -6,7 +6,9 @@
 (function () {
   'use strict';
 
-  const SUPPORTED_LANGUAGES = ['en', 'tr', 'ar'];
+  const SUPPORTED_LANGUAGES = ['en', 'tr', 'de', 'fr', 'es', 'pt', 'ru', 'zh', 'ja', 'ko', 'ar', 'hi', 'it', 'pl', 'nl'];
+  const PATH_PREFIX_LANGUAGES = ['tr', 'ar'];
+  const RTL_LANGUAGES = ['ar'];
   const DEFAULT_LANGUAGE = 'en';
 
   let currentLanguage = DEFAULT_LANGUAGE;
@@ -16,13 +18,37 @@
   const LANGUAGE_NAMES = {
     en: 'English',
     tr: 'Türkçe',
-    ar: 'العربية'
+    de: 'Deutsch',
+    fr: 'Français',
+    es: 'Español',
+    pt: 'Português',
+    ru: 'Русский',
+    zh: '中文',
+    ja: '日本語',
+    ko: '한국어',
+    ar: 'العربية',
+    hi: 'हिन्दी',
+    it: 'Italiano',
+    pl: 'Polski',
+    nl: 'Nederlands'
   };
 
   const LANGUAGE_FLAGS = {
     en: '🇬🇧',
     tr: '🇹🇷',
-    ar: '🇸🇦'
+    de: '🇩🇪',
+    fr: '🇫🇷',
+    es: '🇪🇸',
+    pt: '🇵🇹',
+    ru: '🇷🇺',
+    zh: '🇨🇳',
+    ja: '🇯🇵',
+    ko: '🇰🇷',
+    ar: '🇸🇦',
+    hi: '🇮🇳',
+    it: '🇮🇹',
+    pl: '🇵🇱',
+    nl: '🇳🇱'
   };
 
   const SITE_ORIGIN = 'https://mc-novatools.com';
@@ -189,13 +215,17 @@
   };
 
   function localeFromPath(pathname) {
-    const match = String(pathname || '').match(/^\/(tr|ar)(?=\/|$)/);
-    return match ? match[1] : DEFAULT_LANGUAGE;
+    const firstSegment = String(pathname || '').split('/').filter(Boolean)[0];
+    return PATH_PREFIX_LANGUAGES.includes(firstSegment) ? firstSegment : DEFAULT_LANGUAGE;
   }
 
   function stripLocalePrefix(pathname) {
-    const stripped = String(pathname || '/').replace(/^\/(tr|ar)(?=\/|$)/, '') || '/';
-    return stripped.startsWith('/') ? stripped : `/${stripped}`;
+    const firstSegment = String(pathname || '/').split('/').filter(Boolean)[0];
+    if (PATH_PREFIX_LANGUAGES.includes(firstSegment)) {
+      const stripped = String(pathname || '/').replace(new RegExp(`^/(${PATH_PREFIX_LANGUAGES.join('|')})(?=/|$)`), '') || '/';
+      return stripped.startsWith('/') ? stripped : `/${stripped}`;
+    }
+    return String(pathname || '/').startsWith('/') ? String(pathname || '/') : `/${pathname}`;
   }
 
   function getRequestedLanguage() {
@@ -209,7 +239,7 @@
 
   function localizedPath(lang, pathname = window.location.pathname) {
     const basePath = stripLocalePrefix(pathname);
-    return lang === DEFAULT_LANGUAGE ? basePath : `/${lang}${basePath === '/' ? '/' : basePath}`;
+    return PATH_PREFIX_LANGUAGES.includes(lang) ? `/${lang}${basePath === '/' ? '/' : basePath}` : basePath;
   }
 
   function absoluteUrl(pathname) {
@@ -240,20 +270,19 @@
   function pageContentAvailability() {
     const path = stripLocalePrefix(window.location.pathname).replace(/\/$/, '');
     const blogMatch = path.match(/^\/blog\/(?:articles\/)?([^/.]+)(?:\.html)?$/);
-    if (blogMatch) return ['en'];
-    if (/^\/blog(?:\/index\.html)?$/.test(path)) return ['en'];
-    if (path === '' || path === '/index.html') return ['en'];
+    if (blogMatch) return contentAvailability.blog[blogMatch[1]] || ['en'];
+    if (/^\/blog(?:\/index\.html)?$/.test(path)) return ['en', 'tr', 'ar'];
     const categoryMatch = path.match(/^\/categories\/([^/.]+)(?:\.html)?$/);
-    if (categoryMatch) return contentAvailability.categories[categoryMatch[1]] || ['en'];
+    if (categoryMatch) return contentAvailability.categories[categoryMatch[1]] || SUPPORTED_LANGUAGES;
     const toolMatch = path.match(/^\/tools\/(.+)$/);
-    if (toolMatch) return contentAvailability.tools[toolMatch[1].replace(/\/$/, '')] || ['en'];
-    return ['en'];
+    if (toolMatch) return contentAvailability.tools[toolMatch[1].replace(/\/$/, '')] || SUPPORTED_LANGUAGES;
+    return SUPPORTED_LANGUAGES;
   }
 
   function applyLocaleSeo(lang) {
     const canonicalPath = localizedPath(lang);
     document.querySelectorAll('link[rel="alternate"][hreflang]').forEach((el) => el.remove());
-    [['en', localizedPath('en')], ['tr', localizedPath('tr')], ['ar', localizedPath('ar')], ['x-default', localizedPath('en')]].forEach(([hreflang, href]) => {
+    [...SUPPORTED_LANGUAGES.map((code) => [code, localizedPath(code)]), ['x-default', localizedPath('en')]].forEach(([hreflang, href]) => {
       const link = document.createElement('link');
       link.rel = 'alternate';
       link.hreflang = hreflang;
@@ -272,17 +301,22 @@
     if (!available.includes(lang)) ensureNoindex(CONTENT_FALLBACK_NOTICE[lang] || CONTENT_FALLBACK_NOTICE.en);
   }
 
-  function resolvePageLanguage(requested) {
-    const available = pageContentAvailability();
-    if (requested && available.includes(requested)) return requested;
-    if (requested && !available.includes(requested)) {
-      ensureNoindex(CONTENT_FALLBACK_NOTICE[requested] || CONTENT_FALLBACK_NOTICE.en);
-    }
-    return available.includes(DEFAULT_LANGUAGE) ? DEFAULT_LANGUAGE : available[0] || DEFAULT_LANGUAGE;
-  }
-
   function getInitialLanguage() {
-    return resolvePageLanguage(getRequestedLanguage());
+    const requested = getRequestedLanguage();
+    if (requested) return requested;
+
+    try {
+      const saved = localStorage.getItem('mc-novatools-language');
+      if (saved && SUPPORTED_LANGUAGES.includes(saved)) {
+        return saved;
+      }
+    } catch {
+      console.warn('localStorage not available');
+    }
+
+    const browserLang = navigator.language || navigator.userLanguage || DEFAULT_LANGUAGE;
+    const langCode = String(browserLang).split('-')[0].toLowerCase();
+    return SUPPORTED_LANGUAGES.includes(langCode) ? langCode : DEFAULT_LANGUAGE;
   }
 
   function getTranslationUrl(lang) {
@@ -401,37 +435,37 @@
       return;
     }
 
-    const effectiveLanguage = resolvePageLanguage(lang);
-    currentLanguage = effectiveLanguage;
+    currentLanguage = lang;
 
     try {
-      localStorage.setItem('mc-novatools-language', effectiveLanguage);
+      localStorage.setItem('mc-novatools-language', lang);
     } catch {
       console.warn('Could not save language preference');
     }
 
-    const targetPath = localizedPath(effectiveLanguage);
+    const targetPath = localizedPath(lang);
     if (window.location.pathname !== targetPath && !window.location.pathname.startsWith('/blog/article-template')) {
       window.location.assign(targetPath + window.location.search + window.location.hash);
       return;
     }
 
-    document.documentElement.lang = effectiveLanguage;
-    document.documentElement.dir = effectiveLanguage === 'ar' ? 'rtl' : 'ltr';
-    document.body?.classList.toggle('is-rtl', effectiveLanguage === 'ar');
-    applyLocaleSeo(effectiveLanguage);
+    document.documentElement.lang = lang;
+    const isRtl = RTL_LANGUAGES.includes(lang);
+    document.documentElement.dir = isRtl ? 'rtl' : 'ltr';
+    document.body?.classList.toggle('is-rtl', isRtl);
+    applyLocaleSeo(lang);
 
     const selector = document.getElementById('language-selector');
-    if (selector && selector.value !== effectiveLanguage) {
-      selector.value = effectiveLanguage;
+    if (selector && selector.value !== lang) {
+      selector.value = lang;
     }
 
-    await loadTranslations(effectiveLanguage);
+    await loadTranslations(lang);
     updatePageTranslations();
 
     window.dispatchEvent(
       new CustomEvent('languageChanged', {
-        detail: { language: effectiveLanguage, requestedLanguage: lang }
+        detail: { language: lang }
       })
     );
   }
@@ -530,8 +564,8 @@
 
     currentLanguage = getInitialLanguage();
     document.documentElement.lang = currentLanguage;
-    document.documentElement.dir = currentLanguage === 'ar' ? 'rtl' : 'ltr';
-    document.body?.classList.toggle('is-rtl', currentLanguage === 'ar');
+    document.documentElement.dir = RTL_LANGUAGES.includes(currentLanguage) ? 'rtl' : 'ltr';
+    document.body?.classList.toggle('is-rtl', RTL_LANGUAGES.includes(currentLanguage));
     applyLocaleSeo(currentLanguage);
 
     await loadTranslations(currentLanguage);
