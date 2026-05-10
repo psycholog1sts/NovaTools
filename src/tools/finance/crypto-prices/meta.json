@@ -1,0 +1,44 @@
+{
+  "id": "crypto-prices",
+  "name": "Crypto Price Tracker",
+  "nameEn": "Crypto Price Tracker",
+  "category": "finance",
+  "tier": 3,
+  "cpc": {
+    "tr": 1.2,
+    "us": 3
+  },
+  "keywords": {
+    "tr": [
+      "crypto price tracker",
+      "online araç"
+    ],
+    "en": [
+      "crypto price tracker",
+      "online tool"
+    ]
+  },
+  "description": {
+    "tr": "Track popular crypto prices and 24-hour changes through a cached server-side proxy.",
+    "en": "Track popular crypto prices and 24-hour changes through a cached server-side proxy."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "UtilityApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.3
+    }
+  },
+  "bundle": {
+    "lazyLoad": false
+  },
+  "relatedTools": []
+}

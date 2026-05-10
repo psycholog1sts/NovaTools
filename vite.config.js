@@ -8,6 +8,7 @@ import tailwindcss from 'tailwindcss';
 import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
 import postcssImport from 'postcss-import';
+import liveDataHandler from './api/live-data.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -15,6 +16,26 @@ const devCorsOrigins = (process.env.VITE_DEV_CORS_ORIGINS || 'http://localhost:3
   .split(',')
   .map((origin) => origin.trim())
   .filter(Boolean);
+
+
+const liveDataDevProxy = {
+  name: 'novatools-live-data-dev-proxy',
+  configureServer(server) {
+    server.middlewares.use('/api/live-data', async (request, response) => {
+      try {
+        const devRequest = new Request(`http://localhost${request.url || ''}`);
+        const proxiedResponse = await liveDataHandler(devRequest);
+        response.statusCode = proxiedResponse.status;
+        proxiedResponse.headers.forEach((value, key) => response.setHeader(key, value));
+        response.end(await proxiedResponse.text());
+      } catch (error) {
+        response.statusCode = 502;
+        response.setHeader('content-type', 'application/json; charset=utf-8');
+        response.end(JSON.stringify({ error: 'live_data_unavailable', message: error.message || 'Live data is temporarily unavailable.' }));
+      }
+    });
+  }
+};
 
 const securityHeaders = {
   'X-Frame-Options': 'DENY',
@@ -250,6 +271,7 @@ export default defineConfig({
   },
 
   plugins: [
+    liveDataDevProxy,
     viteStaticCopy({
       targets: [
         {

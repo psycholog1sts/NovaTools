@@ -1,0 +1,44 @@
+{
+  "id": "csv-json-summarizer",
+  "name": "CSV/JSON Summarizer",
+  "nameEn": "CSV/JSON Summarizer",
+  "category": "data",
+  "tier": 2,
+  "cpc": {
+    "tr": 0.4,
+    "us": 1
+  },
+  "keywords": {
+    "tr": [
+      "csv/json summarizer",
+      "online araç"
+    ],
+    "en": [
+      "csv/json summarizer",
+      "online tool"
+    ]
+  },
+  "description": {
+    "tr": "Paste CSV or JSON and get row, column, and field summaries locally.",
+    "en": "Paste CSV or JSON and get row, column, and field summaries locally."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "UtilityApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.3
+    }
+  },
+  "bundle": {
+    "lazyLoad": false
+  },
+  "relatedTools": []
+}
