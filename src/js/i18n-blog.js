@@ -83,16 +83,8 @@ const blogDataByLocale = Object.fromEntries(
 );
 
 export function getActiveBlogLocale() {
-  const pathLocale = window.location.pathname.match(/^\/(tr|ar)(?=\/|$)/)?.[1];
-  if (supportedBlogLocales.includes(pathLocale)) return pathLocale;
-
-  let stored = fallbackBlogLocale;
-  try {
-    stored = localStorage.getItem('mc-novatools-language') || localStorage.getItem('language') || document.documentElement.lang || fallbackBlogLocale;
-  } catch {
-    stored = document.documentElement.lang || fallbackBlogLocale;
-  }
-  return supportedBlogLocales.includes(stored) ? stored : fallbackBlogLocale;
+  const documentLocale = document.documentElement.lang;
+  return supportedBlogLocales.includes(documentLocale) ? documentLocale : fallbackBlogLocale;
 }
 
 export function getBlogUi(locale = getActiveBlogLocale()) {

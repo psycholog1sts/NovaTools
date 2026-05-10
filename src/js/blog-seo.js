@@ -21,9 +21,8 @@ function descriptionFor(post) {
   return truncate(source, DESCRIPTION_TARGET);
 }
 
-function cleanBlogUrl(slug, locale = 'en') {
-  if (locale === 'en') return `${SITE_ORIGIN}/blog/${slug}.html`;
-  return `${SITE_ORIGIN}/${locale}/blog/${slug}.html`;
+function cleanBlogUrl(slug, _locale = 'en') {
+  return `${SITE_ORIGIN}/blog/articles/${slug}.html`;
 }
 
 function absolute(path) {

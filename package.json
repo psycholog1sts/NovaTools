@@ -26,7 +26,8 @@
     "audit:adsense": "node scripts/adsense-readiness-audit.mjs",
     "lint:i18n": "node scripts/lint-i18n.mjs",
     "build:sitemap": "node scripts/generate-localized-sitemap.mjs",
-    "lighthouse:ci": "node ./node_modules/@lhci/cli/src/cli.js autorun --config=./lighthouserc.cjs"
+    "lighthouse:ci": "node ./node_modules/@lhci/cli/src/cli.js autorun --config=./lighthouserc.cjs",
+    "audit:public-routes": "node scripts/audit-public-routes.mjs"
   },
   "dependencies": {
     "@vercel/speed-insights": "^2.0.0",
