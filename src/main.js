@@ -4,6 +4,7 @@
  */
 
 import categories from './data/categories.js';
+import { setupThemeToggle } from './theme-toggle.mjs';
 
 // ============================================
 // I18N HELPERS
@@ -57,6 +58,25 @@ function getCategoryCountLabel(category) {
 
 function getCategoryHref(category) {
   return `/categories/${category.slug}.html`;
+}
+
+
+// ============================================
+// DESIGN SYSTEM INTERACTIONS
+// ============================================
+function initDesignSystemInteractions() {
+  setupThemeToggle('themeToggle');
+
+  const header = document.querySelector('.app-header');
+  let lastScrollY = window.scrollY;
+
+  window.addEventListener('scroll', () => {
+    if (!header) return;
+    const currentScrollY = window.scrollY;
+    const shouldHide = currentScrollY > lastScrollY && currentScrollY > 96;
+    header.classList.toggle('is-hidden', shouldHide);
+    lastScrollY = currentScrollY;
+  }, { passive: true });
 }
 
 // ============================================
@@ -473,5 +493,6 @@ window.addEventListener('languageChanged', () => {
 // INITIALIZE
 // ============================================
 document.addEventListener('DOMContentLoaded', () => {
+  initDesignSystemInteractions();
   rerenderHomepageDynamicParts();
 });
