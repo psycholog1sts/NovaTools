@@ -31,8 +31,7 @@ export function initAdSense() {
 
   configureAdPrivacy();
   reserveAdSlotSpace();
-  loadAdSenseScript();
-  initializeAdSlots();
+  deferAdSenseLoad();
 }
 
 function shouldBlockAds() {
@@ -51,6 +50,23 @@ function shouldBlockAds() {
 function configureAdPrivacy() {
   window.adsbygoogle = window.adsbygoogle || [];
   window.adsbygoogle.requestNonPersonalizedAds = 1;
+}
+
+
+function deferAdSenseLoad() {
+  const start = () => {
+    const schedule = window.requestIdleCallback || ((callback) => window.setTimeout(callback, 1));
+    schedule(() => {
+      loadAdSenseScript();
+      initializeAdSlots();
+    });
+  };
+
+  if (document.readyState === 'complete') {
+    start();
+  } else {
+    window.addEventListener('load', start, { once: true });
+  }
 }
 
 function loadAdSenseScript() {
