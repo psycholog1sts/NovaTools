@@ -244,6 +244,27 @@
   padding: var(--space-5);
 }
 
+.guide-tool-card,
+.phase10-tool-card {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  background: linear-gradient(180deg, var(--color-surface), var(--color-surface-elevated));
+  box-shadow: var(--shadow-sm);
+}
+
+.guide-tool-card a {
+  display: inline-flex;
+  width: max-content;
+  max-width: 100%;
+  color: var(--color-accent);
+  font-weight: var(--font-weight-bold);
+  text-decoration: none;
+}
+
+.guide-tool-card h3 a {
+  width: auto;
+}
+
 .guide-tool-card__icon {
   width: 56px;
   height: 56px;

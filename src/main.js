@@ -107,42 +107,42 @@ document.addEventListener('keydown', (event) => {
 });
 
 const popularTasks = [
-  { label: 'PDF Birleştir', slug: 'pdf/merge', icon: 'file-text' },
-  { label: 'PDF Sıkıştır', slug: 'pdf/compress', icon: 'file-text' },
-  { label: 'Resim Sıkıştır', slug: 'image/compress', icon: 'image' },
+  { label: 'Merge PDF', slug: 'pdf/merge', icon: 'file-text' },
+  { label: 'Compress PDF', slug: 'pdf/compress', icon: 'file-text' },
+  { label: 'Compress Image', slug: 'image/compress', icon: 'image' },
   { label: 'JSON Formatter', slug: 'dev/json-formatter', icon: 'code' },
-  { label: 'Canlı Döviz', slug: 'finance/live-exchange', icon: 'repeat' },
-  { label: 'Metin Analizi', slug: 'text/text-analysis', icon: 'type' },
-  { label: 'Mortgage Hesapla', slug: 'finance/mortgage-refinance', icon: 'trending-up' },
-  { label: 'Şifre Oluştur', slug: 'security/password-generator', icon: 'shield' }
+  { label: 'Live Exchange', slug: 'finance/live-exchange', icon: 'repeat' },
+  { label: 'Text Analysis', slug: 'text/text-analysis', icon: 'type' },
+  { label: 'Mortgage Calculator', slug: 'finance/mortgage-refinance', icon: 'trending-up' },
+  { label: 'Password Generator', slug: 'security/password-generator', icon: 'shield' }
 ];
 
 const featuredTools = [
   {
     slug: 'pdf/merge',
     name: 'PDF Merge',
-    description: 'Birden fazla PDF dosyasını tek belgede düzenli şekilde birleştirin.',
+    description: 'Combine multiple PDF files into one organized document.',
     category: 'PDF Tools',
     icon: 'file-text'
   },
   {
     slug: 'image/compress',
     name: 'Image Compressor',
-    description: 'Web ve e-posta için görsellerin dosya boyutunu hızlıca azaltın.',
+    description: 'Reduce image file sizes for web and email workflows.',
     category: 'Image Tools',
     icon: 'image'
   },
   {
     slug: 'dev/json-formatter',
     name: 'JSON Formatter',
-    description: 'JSON verisini okunabilir hale getirin, biçimlendirin ve kontrol edin.',
+    description: 'Format, read and validate JSON data before sharing.',
     category: 'Developer Tools',
     icon: 'code'
   },
   {
     slug: 'finance/live-exchange',
     name: 'Live Exchange Converter',
-    description: 'Döviz kurlarını sunucu tarafı proxy ve önbellekli fallback ile dönüştürün.',
+    description: 'Convert currency estimates with live-data and cached fallback handling.',
     category: 'Finance Tools',
     icon: 'trending-up'
   }
@@ -214,27 +214,27 @@ const categoryPopularTools = {
 const blogPosts = [
   {
     title: 'Tool selection map for new users',
-    excerpt: 'Yeni bir işe başlarken hangi kategoriye ve araca gitmeniz gerektiğini hızlıca seçin.',
+    excerpt: 'Choose the right category and tool quickly when you start a new task.',
     category: 'Workflow',
     href: '/blog/articles/tool-selection-map-for-new-users.html',
     image: '/logo-brand-520.webp',
-    minutes: '5 dk'
+    minutes: '5 min'
   },
   {
     title: 'Compress images for web quality checklist',
-    excerpt: 'Görsel boyutunu düşürürken okunabilirlik, format ve sayfa hızı kontrollerini atlamayın.',
+    excerpt: 'Keep quality, format and page speed checks in view while reducing image size.',
     category: 'Image',
     href: '/blog/articles/compress-images-for-web-quality-checklist.html',
     image: '/logo-brand-520.webp',
-    minutes: '6 dk'
+    minutes: '6 min'
   },
   {
     title: 'Base64 converter common use cases',
-    excerpt: 'Geliştirici akışlarında kodlama, çözme ve paylaşım öncesi kontrol adımları.',
+    excerpt: 'Encoding, decoding and pre-share checks for developer workflows.',
     category: 'Developer',
     href: '/blog/articles/base64-converter-common-use-cases.html',
     image: '/logo-brand-520.webp',
-    minutes: '4 dk'
+    minutes: '4 min'
   }
 ];
 
@@ -269,7 +269,7 @@ function renderFeaturedTools() {
       <span class="featured-tool-card__category">${getCategoryLabel(tool.category)}</span>
       <h3>${tool.name}</h3>
       <p>${tool.description}</p>
-      <a href="${getToolHref(tool.slug)}">Kullan →</a>
+      <a href="${getToolHref(tool.slug)}">Open →</a>
     </article>
   `).join('');
 }
@@ -317,7 +317,7 @@ function renderBlogCards() {
       <div class="home-blog-card__body">
         <div class="home-blog-card__meta">
           <span>${post.category}</span>
-          <span>${post.minutes} okuma</span>
+          <span>${post.minutes} read</span>
         </div>
         <h3><a href="${post.href}">${post.title}</a></h3>
         <p>${post.excerpt}</p>
