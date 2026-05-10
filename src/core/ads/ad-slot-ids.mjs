@@ -6,7 +6,10 @@ export const TOOL_AD_SLOTS = {
   newsSidebar: '7418529630',
   islamicCalendar: '8529630741',
   retirementTool: '9630741852',
-  studentLoanTool: '1741852963'
+  studentLoanTool: '1741852963',
+  blogInContent: '2852963074',
+  categorySponsored: '3963074185',
+  mobileAnchor: '4074185296'
 };
 
 export function applyToolAdSlots(root = document) {

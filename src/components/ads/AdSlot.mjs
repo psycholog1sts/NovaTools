@@ -12,35 +12,35 @@ export const AdSizes = {
     width: 728,
     height: 90,
     className: 'ad-banner',
-    slotId: 'BANNER_SLOT_ID'
+    slotId: '2852963074'
   },
   RECTANGLE: {
     name: 'rectangle',
     width: 300,
     height: 250,
     className: 'ad-rectangle',
-    slotId: 'RECTANGLE_SLOT_ID'
+    slotId: '3963074185'
   },
   SIDEBAR: {
     name: 'sidebar',
     width: 300,
     height: 600,
     className: 'ad-sidebar',
-    slotId: 'SIDEBAR_SLOT_ID'
+    slotId: '7418529630'
   },
   MOBILE_ANCHOR: {
     name: 'mobile-anchor',
     width: 320,
     height: 50,
     className: 'ad-mobile-anchor',
-    slotId: 'ANCHOR_SLOT_ID'
+    slotId: '4074185296'
   },
   SQUARE: {
     name: 'square',
     width: 250,
     height: 250,
     className: 'ad-square',
-    slotId: 'SQUARE_SLOT_ID'
+    slotId: '1741852963'
   }
 };
 
@@ -53,6 +53,7 @@ export const AdSizes = {
  * @param {boolean} options.showLabel - Show "Sponsored" label
  * @param {string} options.labelText - Custom label text
  * @param {boolean} options.responsive - Enable responsive mode
+ * @param {string} options.placement - Semantic placement name for audits
  * @returns {HTMLElement} Ad container element
  */
 export function createAdSlot({
@@ -61,14 +62,17 @@ export function createAdSlot({
   adSlot = null,
   showLabel = true,
   labelText = 'Sponsored',
-  responsive = false
+  responsive = false,
+  placement = null
 } = {}) {
   const config = AdSizes[size] || AdSizes.RECTANGLE;
   const slotId = adSlot || config.slotId;
+  const placementName = placement || config.name;
   
   // Container
   const container = document.createElement('div');
-  container.className = `ad-slot-container ${config.className}-container`;
+  container.className = `ad-slot-container revenue-card ${config.className}-container`;
+  container.setAttribute('data-ad-placement', placementName);
   container.style.cssText = `
     margin: 0 auto;
     text-align: center;
@@ -137,6 +141,7 @@ export function createAdSlot({
   adIns.setAttribute('data-ad-client', adClient);
   adIns.setAttribute('data-ad-slot', slotId);
   adIns.setAttribute('data-ad-format', responsive ? 'auto' : config.name);
+  adIns.setAttribute('data-ad-placement', placementName);
   
   if (responsive) {
     adIns.setAttribute('data-full-width-responsive', 'true');
@@ -145,22 +150,13 @@ export function createAdSlot({
   wrapper.appendChild(adIns);
   container.appendChild(wrapper);
   
-  // Push ad to AdSense
-  if (typeof window !== 'undefined' && window.adsbygoogle) {
-    try {
-      window.adsbygoogle.push({});
-    } catch (e) {
-      console.warn('AdSense push failed:', e);
-    }
-  }
-  
   return container;
 }
 
 /**
- * Create sticky header ad (728x90)
+ * Create non-sticky header ad (728x90)
  * @param {Object} options - Ad options
- * @returns {HTMLElement} Sticky ad container
+ * @returns {HTMLElement} Header ad container
  */
 export function createHeaderAd(options = {}) {
   const container = createAdSlot({
@@ -170,18 +166,9 @@ export function createHeaderAd(options = {}) {
     ...options
   });
   
-  container.classList.add('ad-header-sticky');
+  container.classList.add('ad-leaderboard-safe');
   container.style.cssText += `
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
-    background: rgba(10, 10, 12, 0.95);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    padding: 0.5rem 1rem;
-    margin: 0;
+    margin: 10rem auto;
   `;
   
   // Adjust wrapper for header
@@ -211,11 +198,10 @@ export function createSidebarAd(position = 'right', options = {}) {
   
   container.classList.add(`ad-sidebar-${position}`);
   container.style.cssText += `
-    position: fixed;
-    top: 50%;
+    position: sticky;
+    top: 7rem;
     ${position}: 1rem;
-    transform: translateY(-50%);
-    z-index: 40;
+    z-index: 1;
     display: none;
   `;
   
@@ -258,17 +244,96 @@ export function createMobileAnchorAd(options = {}) {
     margin: 0;
     display: none;
   `;
-  
-  // Show on mobile only
+  container.setAttribute('data-ad-format', 'sticky');
+
+  const closeButton = document.createElement('button');
+  closeButton.type = 'button';
+  closeButton.className = 'ad-mobile-anchor__close';
+  closeButton.setAttribute('data-ad-close', 'true');
+  closeButton.setAttribute('aria-label', 'Close advertisement');
+  closeButton.textContent = '×';
+  container.prepend(closeButton);
+
   const mediaQuery = window.matchMedia('(max-width: 768px)');
   const toggleVisibility = () => {
-    container.style.display = mediaQuery.matches ? 'block' : 'none';
+    const scrolled = window.scrollY > 480;
+    const dismissed = container.getAttribute('data-ad-dismissed') === 'true';
+    container.style.display = mediaQuery.matches && scrolled && !dismissed ? 'block' : 'none';
   };
-  
+
+  closeButton.addEventListener('click', () => {
+    container.setAttribute('data-ad-dismissed', 'true');
+    toggleVisibility();
+  });
   toggleVisibility();
   mediaQuery.addEventListener('change', toggleVisibility);
-  
+  window.addEventListener('scroll', toggleVisibility, { passive: true });
+
   return container;
+}
+
+/**
+ * Create sponsored content disclosure card
+ * @param {Object} options - Sponsored content options
+ * @returns {HTMLElement} Sponsored content container
+ */
+export function createSponsoredContentCard({
+  label = 'Sponsored',
+  title = 'Partner resource',
+  description = 'This clearly labeled placement is separate from editorial content.',
+  href = null,
+  linkText = 'Learn more'
+} = {}) {
+  const card = document.createElement('aside');
+  card.className = 'sponsored-content-card revenue-card';
+  card.setAttribute('aria-label', label);
+
+  const badge = document.createElement('span');
+  badge.className = 'sponsored-content-card__label';
+  badge.textContent = label;
+  const heading = document.createElement('h3');
+  heading.textContent = title;
+  const copy = document.createElement('p');
+  copy.textContent = description;
+  card.append(badge, heading, copy);
+
+  if (href) {
+    const link = document.createElement('a');
+    link.className = 'btn btn-secondary nt-affiliate-link';
+    link.rel = 'sponsored noopener';
+    link.dataset.affiliate = 'true';
+    link.href = href;
+    link.textContent = linkText;
+    card.appendChild(link);
+  }
+
+  return card;
+}
+
+/**
+ * Create premium plan CTA separate from ad inventory
+ * @param {Object} options - Premium plan options
+ * @returns {HTMLElement} Premium plan container
+ */
+export function createPremiumPlanCta({
+  title = 'Premium API plan',
+  description = 'Future API access will be presented separately from advertising inventory.',
+  href = '/contact.html',
+  linkText = 'Contact us'
+} = {}) {
+  const cta = document.createElement('aside');
+  cta.className = 'premium-plan-cta revenue-card';
+  const heading = document.createElement('h3');
+  heading.textContent = title;
+  const copy = document.createElement('p');
+  copy.textContent = description;
+  const link = document.createElement('a');
+  link.className = 'btn btn-primary';
+  link.rel = 'noopener';
+  link.href = href;
+  link.textContent = linkText;
+  cta.append(heading, copy, link);
+  return cta;
 }
 
 /**
@@ -294,7 +359,7 @@ export function initializeAds(config = {}) {
     adClient: 'ca-pub-5738022526587953',
     header: true,
     sidebars: true,
-    mobileAnchor: true,
+    mobileAnchor: false,
     lazyLoad: true,
     ...config
   };
@@ -331,6 +396,7 @@ export function initializeAds(config = {}) {
         (window.adsbygoogle = window.adsbygoogle || []).push({});
       } catch (_e) {
         // Ad load failed — non-critical, fallback shown
+        void _e;
       }
     });
   }
@@ -378,5 +444,7 @@ export default {
   createMobileAnchorAd,
   createInContentAd,
   initializeAds,
-  createAdPlaceholder
+  createAdPlaceholder,
+  createSponsoredContentCard,
+  createPremiumPlanCta
 };
