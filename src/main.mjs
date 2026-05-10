@@ -9,6 +9,7 @@ import { injectSpeedInsights } from '@vercel/speed-insights';
 import { initAnalytics } from './core/analytics.mjs';
 import { registerSW } from './core/pwa.mjs';
 import { initAdSense } from './core/ads/index.mjs';
+import { initConsentManager, hasConsent } from './core/consent-manager.mjs';
 import { injectHreflangTags } from './i18n/config.mjs';
 import { initCommonUI } from './components/layout/index.mjs';
 
@@ -220,7 +221,16 @@ async function loadToolPreview(card) {
  */
 async function init() {
   setupErrorHandlers();
+  let analyticsStarted = false;
+  const startAnalyticsAfterConsent = () => {
+    if (analyticsStarted || !hasConsent('analytics')) return;
+    analyticsStarted = true;
+    initAnalytics();
+  };
+  window.addEventListener('novatools:consent-updated', startAnalyticsAfterConsent);
   
+  initConsentManager();
+
   // Core services
   if ('serviceWorker' in navigator) {
     registerSW();
@@ -228,7 +238,7 @@ async function init() {
 
   // Initialize features in parallel
   await Promise.all([
-    initAnalytics(),
+    hasConsent('analytics') ? (analyticsStarted = true, initAnalytics()) : Promise.resolve(),
     initAdSense(),
     isToolPage() ? initNativeFeatures() : Promise.resolve()
   ]);

@@ -551,6 +551,21 @@
   }
 
 
+  function getStoredConsent() {
+    try {
+      const raw = localStorage.getItem('cookie_consent') || localStorage.getItem('novatools_cookie_consent') || localStorage.getItem('mc_novatools_cookie_consent');
+      return raw ? JSON.parse(raw) : null;
+    } catch (_e) {
+      void _e;
+      return null;
+    }
+  }
+
+  function hasConsentCategory(category) {
+    const consent = window.NovaToolsConsent || getStoredConsent();
+    return consent?.[category] === true || (category === 'advertising' && consent?.categories?.advertising === true);
+  }
+
   function isProductionHost() {
     return /(^|\.)mc-novatools\.com$/i.test(window.location.hostname);
   }
@@ -566,6 +581,7 @@
     if (window.__mcAdSenseLoaded) return;
     if (!document.head || !isProductionHost() || !hasValidAdSlot()) return;
     if (navigator.doNotTrack === '1' || navigator.globalPrivacyControl) return;
+    if (!hasConsentCategory('advertising')) return;
     if (document.querySelector('script[data-adsense-bootstrap="true"], script[data-adsense="true"]')) {
       window.__mcAdSenseLoaded = true;
       return;
@@ -626,7 +642,11 @@
   function boot() {
     init();
     initQualityEnhancements();
-    ensureAdSenseBootstrap();
+    import('/consent-manager.mjs').then((module) => {
+      module.initConsentManager();
+      ensureAdSenseBootstrap();
+    });
+    window.addEventListener('novatools:consent-updated', ensureAdSenseBootstrap);
   }
 
   if (document.readyState === 'loading') {
