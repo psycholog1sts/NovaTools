@@ -157,7 +157,7 @@
     const relatedHomeTitle = document.getElementById('relatedHomeTitle');
 
     const localeCode = () => locale === 'ar' ? 'ar' : locale === 'tr' ? 'tr-TR' : 'en-US';
-    const articleUrl = (article) => getCleanBlogUrl(article.slug, locale).replace('https://novatools.com', '');
+    const articleUrl = (article) => getCleanBlogUrl(article.slug, locale).replace('https://mc-novatools.com', '');
     const formattedDate = (date) => new Intl.DateTimeFormat(localeCode(), { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(`${date}T00:00:00`));
     const escapeHtml = (value) => String(value).replace(/[&<>'"]/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' })[char]);
     const categories = () => ['all', ...new Set(articles.map((article) => article.category))];

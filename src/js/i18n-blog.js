@@ -83,6 +83,9 @@ const blogDataByLocale = Object.fromEntries(
 );
 
 export function getActiveBlogLocale() {
+  const pathLocale = window.location.pathname.match(/^\/(tr|ar)(?=\/|$)/)?.[1];
+  if (supportedBlogLocales.includes(pathLocale)) return pathLocale;
+
   let stored = fallbackBlogLocale;
   try {
     stored = localStorage.getItem('mc-novatools-language') || localStorage.getItem('language') || document.documentElement.lang || fallbackBlogLocale;
@@ -108,9 +111,8 @@ export function getTranslatedBlogSlugs() {
 
 export function getBlogPost(locale, slug) {
   const localized = getBlogPostsForLocale(locale).find((post) => post.slug === slug);
-  if (localized) return { post: localized, locale, isFallback: false };
-  const fallback = getBlogPostsForLocale(fallbackBlogLocale).find((post) => post.slug === slug);
-  return fallback ? { post: fallback, locale: fallbackBlogLocale, isFallback: true } : { post: null, locale, isFallback: false };
+  if (localized) return { post: localized, locale, isFallback: false, isUnavailable: false };
+  return { post: null, locale, isFallback: false, isUnavailable: true };
 }
 
 export function applyBlogDocumentLocale(locale) {

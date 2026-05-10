@@ -51,19 +51,34 @@ const adminEntry = {
 };
 
 
-const translatedBlogSlugs = (() => {
-  try {
-    const posts = JSON.parse(readFileSync(resolve(__dirname, 'src/i18n/blog/en.json'), 'utf8'));
-    return posts.map((post) => post.slug).filter(Boolean);
-  } catch {
-    return [];
-  }
+// Localized duplicate entries keep /tr/ and /ar/ public routes buildable while
+// retaining the existing static HTML sources and runtime localization.
+const localizedRootHtmlEntries = ['tr', 'ar'].reduce((acc, locale) => {
+  acc[`${locale}/index`] = resolve(__dirname, 'index.html');
+  Object.keys(rootHtmlEntries).forEach((name) => {
+    acc[`${locale}/${name}`] = rootHtmlEntries[name];
+  });
+  return acc;
+}, {});
+
+
+const translatedBlogSlugsByLocale = (() => {
+  return ['en', 'tr', 'ar'].reduce((acc, locale) => {
+    try {
+      const posts = JSON.parse(readFileSync(resolve(__dirname, `src/i18n/blog/${locale}.json`), 'utf8'));
+      acc[locale] = posts.map((post) => post.slug).filter(Boolean);
+    } catch {
+      acc[locale] = [];
+    }
+    return acc;
+  }, {});
 })();
 
-const localizedBlogArticleEntries = translatedBlogSlugs.reduce((acc, slug) => {
-  acc[`blog/${slug}`] = resolve(__dirname, 'src/blog/article-template.html');
-  acc[`tr/blog/${slug}`] = resolve(__dirname, 'src/blog/article-template.html');
-  acc[`ar/blog/${slug}`] = resolve(__dirname, 'src/blog/article-template.html');
+const localizedBlogArticleEntries = Object.entries(translatedBlogSlugsByLocale).reduce((acc, [locale, slugs]) => {
+  slugs.forEach((slug) => {
+    const route = locale === 'en' ? `blog/${slug}` : `${locale}/blog/${slug}`;
+    acc[route] = resolve(__dirname, 'src/blog/article-template.html');
+  });
   return acc;
 }, {});
 
@@ -93,6 +108,20 @@ const categoryEntries = globSync('categories/**/*.html').reduce((acc, file) => {
   return acc;
 }, {});
 
+const localizedCategoryEntries = ['tr', 'ar'].reduce((acc, locale) => {
+  Object.entries(categoryEntries).forEach(([name, file]) => {
+    acc[`${locale}/${name}`] = file;
+  });
+  return acc;
+}, {});
+
+const localizedToolEntries = ['tr', 'ar'].reduce((acc, locale) => {
+  Object.entries(toolEntries).forEach(([name, file]) => {
+    acc[`${locale}/${name}`] = file;
+  });
+  return acc;
+}, {});
+
 export default defineConfig({
   root: '.',
   base: '/',
@@ -116,12 +145,17 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
         ...rootHtmlEntries,
+        ...localizedRootHtmlEntries,
         ...adminEntry,
         ...blogEntry,
+        'tr/blog/index': resolve(__dirname, 'src/blog/index.html'),
+        'ar/blog/index': resolve(__dirname, 'src/blog/index.html'),
         ...localizedBlogArticleEntries,
         ...blogArticleEntries,
         ...categoryEntries,
-        ...toolEntries
+        ...localizedCategoryEntries,
+        ...toolEntries,
+        ...localizedToolEntries
       },
 
       output: {

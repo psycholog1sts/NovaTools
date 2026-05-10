@@ -1,0 +1,78 @@
+{
+  "home": {
+    "hero": {
+      "title": "All-in-One Tools for Files, Finance & Code",
+      "subtitle": "Use MC NovaTools to convert, calculate, create, and streamline practical workflows with a fast, clear, browser-based toolkit.",
+      "cta": "Explore Tools",
+      "browse": "Browse Categories",
+      "freeTools": "Free Tools",
+      "categories": "Categories",
+      "private": "Private"
+    },
+    "trustBar": {
+      "secureTitle": "Secure & Private",
+      "secureDesc": "Many tools process data locally in your browser.",
+      "transparentTitle": "Transparent",
+      "transparentDesc": "Clear privacy policy & terms",
+      "supportTitle": "Support",
+      "supportDesc": "Contact us for any questions",
+      "verifiedTitle": "Clear Ownership",
+      "verifiedDesc": "Site ownership, policy pages, and contact details are clearly available."
+    },
+    "categoryBlocks": {
+      "pdf": {
+        "badge": "Free Online PDF Utilities",
+        "title": "PDF Tools for Merge, Split, Compression, OCR, and Conversion",
+        "description": "Open the live PDF tools directly from this page. Merge files, split pages, compress size, add watermarks, insert page numbers, run OCR, and convert PDF files to Word, Excel, HTML, JPG, PNG, PowerPoint, and text.",
+        "sectionTitle": "PDF Tools"
+      },
+      "image": {
+        "badge": "Free Online Image Utilities",
+        "title": "Image Tools for Compression, Conversion, Editing, and Cleanup",
+        "description": "Open the live image tools directly from this category page. Compress files, convert formats, resize, crop, flip, rotate, remove metadata, add watermarks, and generate optimized AVIF or WebP output.",
+        "sectionTitle": "Image Tools"
+      },
+      "finance": {
+        "badge": "Free Online Financial Calculators",
+        "title": "Finance Tools for Planning, Loans, Tax, and Long-Term Decisions",
+        "description": "Open the live financial tools directly from this category page. Calculate mortgage refinance options, compound growth, retirement projections, crypto tax, loan planning, and other personal finance scenarios.",
+        "sectionTitle": "Finance Tools"
+      },
+      "developer": {
+        "badge": "Free Online Developer Tools",
+        "title": "Developer Tools for Formatting, Testing, and Code Utilities",
+        "description": "Open the live developer tools directly from this category page. Format JSON, test regex, minify CSS and JS, convert Base64, generate UUIDs, validate JSON, and more.",
+        "sectionTitle": "Developer Tools"
+      },
+      "text": {
+        "badge": "Free Online Text Utilities",
+        "title": "Text Tools for Counting, Formatting, Converting, and Cleanup",
+        "description": "Open the live text tools directly from this category page. Count words and characters, convert text case, generate lorem ipsum, encode entities, create slugs, compare text, transform text to ASCII, and handle URL-safe output.",
+        "sectionTitle": "Text & Writing"
+      },
+      "converters": {
+        "badge": "Free Online Converters",
+        "title": "Converters for Units, Numbers, and Data Formats",
+        "description": "Open the live converter tools directly from this category page. Convert between units, number bases, currencies, time zones, and data formats.",
+        "sectionTitle": "Converters"
+      },
+      "all": {
+        "badge": "Browse All Tools",
+        "title": "Browse Categories Across NovaTools",
+        "description": "Explore all live NovaTools categories and open the tools you need in one click.",
+        "sectionTitle": "All Categories"
+      }
+    },
+    "cta": {
+      "title": "Need a specific tool?",
+      "desc": "Tell us what you need and we may add it next.",
+      "button": "Request a Tool"
+    },
+    "meta": {
+      "title": "MC NovaTools - Practical Online Tools",
+      "description": "Privacy-conscious browser tools for files, finance, text and code.",
+      "ogTitle": "MC NovaTools",
+      "ogDescription": "Practical online tools."
+    }
+  }
+}

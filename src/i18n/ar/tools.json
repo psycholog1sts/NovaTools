@@ -1,0 +1,29 @@
+{
+  "tools": {
+    "pdf_merge": {
+      "name": "PDF Merge",
+      "description": "Combine PDF files in order.",
+      "steps": {
+        "step1": "أضف ملفات PDF.",
+        "step2": "راجع الترتيب.",
+        "step3": "ادمج الملف ونزّل النتيجة."
+      },
+      "advantages": [
+        "سير عمل سريع داخل المتصفح."
+      ],
+      "limitations": [
+        "تعتمد الملفات الكبيرة جداً على ذاكرة الجهاز."
+      ],
+      "errors": {
+        "invalidFile": "اختر ملف PDF صالحاً."
+      },
+      "scenarios": [
+        "جمع أقسام التقرير في ملف واحد."
+      ],
+      "privacyNote": "تتم معالجة الملفات داخل المتصفح حيثما أمكن.",
+      "ctaText": "دمج PDF",
+      "successMessage": "ملف PDF جاهز.",
+      "errorMessage": "تعذر دمج PDF."
+    }
+  }
+}

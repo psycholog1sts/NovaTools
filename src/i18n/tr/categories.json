@@ -1,0 +1,268 @@
+{
+  "categories": {
+    "pdf_tools": {
+      "name": "PDF Araçları",
+      "description": "PDF dosyalarını tarayıcıda birleştirme, bölme, sıkıştırma ve dönüştürme iş akışları.",
+      "targetAudience": "Tarayıcıda hızlı ve kontrollü iş akışı isteyen kullanıcılar.",
+      "commonTasks": [
+        "prepare input",
+        "review output",
+        "share safely"
+      ],
+      "decisionTable": {
+        "bestFor": "PDF Araçları",
+        "useWhen": "PDF dosyalarını tarayıcıda birleştirme, bölme, sıkıştırma ve dönüştürme iş akışları.",
+        "avoidWhen": "Profesyonel denetim veya özel entegrasyon gerekiyorsa."
+      },
+      "faq": [
+        {
+          "question": "Bu kategori gizlilik odaklı mı?",
+          "answer": "Araçlar mümkün olduğunda tarayıcıda çalışacak şekilde sunulur."
+        }
+      ],
+      "relatedArticles": []
+    },
+    "image_tools": {
+      "name": "Görsel Araçları",
+      "description": "Görselleri sıkıştırma, dönüştürme, yeniden boyutlandırma ve paylaşım için hazırlama araçları.",
+      "targetAudience": "Tarayıcıda hızlı ve kontrollü iş akışı isteyen kullanıcılar.",
+      "commonTasks": [
+        "prepare input",
+        "review output",
+        "share safely"
+      ],
+      "decisionTable": {
+        "bestFor": "Görsel Araçları",
+        "useWhen": "Görselleri sıkıştırma, dönüştürme, yeniden boyutlandırma ve paylaşım için hazırlama araçları.",
+        "avoidWhen": "Profesyonel denetim veya özel entegrasyon gerekiyorsa."
+      },
+      "faq": [
+        {
+          "question": "Bu kategori gizlilik odaklı mı?",
+          "answer": "Araçlar mümkün olduğunda tarayıcıda çalışacak şekilde sunulur."
+        }
+      ],
+      "relatedArticles": []
+    },
+    "finance_tools": {
+      "name": "Finans Araçları",
+      "description": "Mortgage, faiz, vergi ve planlama hesaplamaları için açık varsayımlı araçlar.",
+      "targetAudience": "Tarayıcıda hızlı ve kontrollü iş akışı isteyen kullanıcılar.",
+      "commonTasks": [
+        "prepare input",
+        "review output",
+        "share safely"
+      ],
+      "decisionTable": {
+        "bestFor": "Finans Araçları",
+        "useWhen": "Mortgage, faiz, vergi ve planlama hesaplamaları için açık varsayımlı araçlar.",
+        "avoidWhen": "Profesyonel denetim veya özel entegrasyon gerekiyorsa."
+      },
+      "faq": [
+        {
+          "question": "Bu kategori gizlilik odaklı mı?",
+          "answer": "Araçlar mümkün olduğunda tarayıcıda çalışacak şekilde sunulur."
+        }
+      ],
+      "relatedArticles": []
+    },
+    "text_writing": {
+      "name": "Metin ve Yazım",
+      "description": "Metin sayma, dönüştürme, karşılaştırma ve yazım hazırlığı için pratik araçlar.",
+      "targetAudience": "Tarayıcıda hızlı ve kontrollü iş akışı isteyen kullanıcılar.",
+      "commonTasks": [
+        "prepare input",
+        "review output",
+        "share safely"
+      ],
+      "decisionTable": {
+        "bestFor": "Metin ve Yazım",
+        "useWhen": "Metin sayma, dönüştürme, karşılaştırma ve yazım hazırlığı için pratik araçlar.",
+        "avoidWhen": "Profesyonel denetim veya özel entegrasyon gerekiyorsa."
+      },
+      "faq": [
+        {
+          "question": "Bu kategori gizlilik odaklı mı?",
+          "answer": "Araçlar mümkün olduğunda tarayıcıda çalışacak şekilde sunulur."
+        }
+      ],
+      "relatedArticles": []
+    },
+    "developer_tools": {
+      "name": "Geliştirici Araçları",
+      "description": "JSON, regex, Base64, kod biçimlendirme ve geliştirici kontrol iş akışları.",
+      "targetAudience": "Tarayıcıda hızlı ve kontrollü iş akışı isteyen kullanıcılar.",
+      "commonTasks": [
+        "prepare input",
+        "review output",
+        "share safely"
+      ],
+      "decisionTable": {
+        "bestFor": "Geliştirici Araçları",
+        "useWhen": "JSON, regex, Base64, kod biçimlendirme ve geliştirici kontrol iş akışları.",
+        "avoidWhen": "Profesyonel denetim veya özel entegrasyon gerekiyorsa."
+      },
+      "faq": [
+        {
+          "question": "Bu kategori gizlilik odaklı mı?",
+          "answer": "Araçlar mümkün olduğunda tarayıcıda çalışacak şekilde sunulur."
+        }
+      ],
+      "relatedArticles": []
+    },
+    "converters": {
+      "name": "Dönüştürücüler",
+      "description": "Birim, zaman, para birimi ve veri biçimleri için hızlı dönüştürücüler.",
+      "targetAudience": "Tarayıcıda hızlı ve kontrollü iş akışı isteyen kullanıcılar.",
+      "commonTasks": [
+        "prepare input",
+        "review output",
+        "share safely"
+      ],
+      "decisionTable": {
+        "bestFor": "Dönüştürücüler",
+        "useWhen": "Birim, zaman, para birimi ve veri biçimleri için hızlı dönüştürücüler.",
+        "avoidWhen": "Profesyonel denetim veya özel entegrasyon gerekiyorsa."
+      },
+      "faq": [
+        {
+          "question": "Bu kategori gizlilik odaklı mı?",
+          "answer": "Araçlar mümkün olduğunda tarayıcıda çalışacak şekilde sunulur."
+        }
+      ],
+      "relatedArticles": []
+    },
+    "calculator_tools": {
+      "name": "Hesaplayıcılar",
+      "description": "Matematik, yüzde, yaş, BMI ve günlük hesaplamalar için sade araçlar.",
+      "targetAudience": "Tarayıcıda hızlı ve kontrollü iş akışı isteyen kullanıcılar.",
+      "commonTasks": [
+        "prepare input",
+        "review output",
+        "share safely"
+      ],
+      "decisionTable": {
+        "bestFor": "Hesaplayıcılar",
+        "useWhen": "Matematik, yüzde, yaş, BMI ve günlük hesaplamalar için sade araçlar.",
+        "avoidWhen": "Profesyonel denetim veya özel entegrasyon gerekiyorsa."
+      },
+      "faq": [
+        {
+          "question": "Bu kategori gizlilik odaklı mı?",
+          "answer": "Araçlar mümkün olduğunda tarayıcıda çalışacak şekilde sunulur."
+        }
+      ],
+      "relatedArticles": []
+    },
+    "security_tools": {
+      "name": "Güvenlik Araçları",
+      "description": "Parola, hash, UUID ve güvenli paylaşım kontrolleri için yardımcı araçlar.",
+      "targetAudience": "Tarayıcıda hızlı ve kontrollü iş akışı isteyen kullanıcılar.",
+      "commonTasks": [
+        "prepare input",
+        "review output",
+        "share safely"
+      ],
+      "decisionTable": {
+        "bestFor": "Güvenlik Araçları",
+        "useWhen": "Parola, hash, UUID ve güvenli paylaşım kontrolleri için yardımcı araçlar.",
+        "avoidWhen": "Profesyonel denetim veya özel entegrasyon gerekiyorsa."
+      },
+      "faq": [
+        {
+          "question": "Bu kategori gizlilik odaklı mı?",
+          "answer": "Araçlar mümkün olduğunda tarayıcıda çalışacak şekilde sunulur."
+        }
+      ],
+      "relatedArticles": []
+    },
+    "social_media_tools": {
+      "name": "Sosyal Medya",
+      "description": "Sosyal içerikleri hazırlama, bağlantı etiketleme ve görsel boyutlandırma araçları.",
+      "targetAudience": "Tarayıcıda hızlı ve kontrollü iş akışı isteyen kullanıcılar.",
+      "commonTasks": [
+        "prepare input",
+        "review output",
+        "share safely"
+      ],
+      "decisionTable": {
+        "bestFor": "Sosyal Medya",
+        "useWhen": "Sosyal içerikleri hazırlama, bağlantı etiketleme ve görsel boyutlandırma araçları.",
+        "avoidWhen": "Profesyonel denetim veya özel entegrasyon gerekiyorsa."
+      },
+      "faq": [
+        {
+          "question": "Bu kategori gizlilik odaklı mı?",
+          "answer": "Araçlar mümkün olduğunda tarayıcıda çalışacak şekilde sunulur."
+        }
+      ],
+      "relatedArticles": []
+    },
+    "productivity_tools": {
+      "name": "Üretkenlik",
+      "description": "Planlama, zamanlama ve çalışma düzenini destekleyen tarayıcı tabanlı araçlar.",
+      "targetAudience": "Tarayıcıda hızlı ve kontrollü iş akışı isteyen kullanıcılar.",
+      "commonTasks": [
+        "prepare input",
+        "review output",
+        "share safely"
+      ],
+      "decisionTable": {
+        "bestFor": "Üretkenlik",
+        "useWhen": "Planlama, zamanlama ve çalışma düzenini destekleyen tarayıcı tabanlı araçlar.",
+        "avoidWhen": "Profesyonel denetim veya özel entegrasyon gerekiyorsa."
+      },
+      "faq": [
+        {
+          "question": "Bu kategori gizlilik odaklı mı?",
+          "answer": "Araçlar mümkün olduğunda tarayıcıda çalışacak şekilde sunulur."
+        }
+      ],
+      "relatedArticles": []
+    },
+    "data_tools": {
+      "name": "Veri Araçları",
+      "description": "CSV, JSON ve dosya verilerini temizleme, dönüştürme ve kontrol etme araçları.",
+      "targetAudience": "Tarayıcıda hızlı ve kontrollü iş akışı isteyen kullanıcılar.",
+      "commonTasks": [
+        "prepare input",
+        "review output",
+        "share safely"
+      ],
+      "decisionTable": {
+        "bestFor": "Veri Araçları",
+        "useWhen": "CSV, JSON ve dosya verilerini temizleme, dönüştürme ve kontrol etme araçları.",
+        "avoidWhen": "Profesyonel denetim veya özel entegrasyon gerekiyorsa."
+      },
+      "faq": [
+        {
+          "question": "Bu kategori gizlilik odaklı mı?",
+          "answer": "Araçlar mümkün olduğunda tarayıcıda çalışacak şekilde sunulur."
+        }
+      ],
+      "relatedArticles": []
+    },
+    "design_tools": {
+      "name": "Tasarım Araçları",
+      "description": "Renk, görsel ve arayüz hazırlığı için pratik tasarım yardımcıları.",
+      "targetAudience": "Tarayıcıda hızlı ve kontrollü iş akışı isteyen kullanıcılar.",
+      "commonTasks": [
+        "prepare input",
+        "review output",
+        "share safely"
+      ],
+      "decisionTable": {
+        "bestFor": "Tasarım Araçları",
+        "useWhen": "Renk, görsel ve arayüz hazırlığı için pratik tasarım yardımcıları.",
+        "avoidWhen": "Profesyonel denetim veya özel entegrasyon gerekiyorsa."
+      },
+      "faq": [
+        {
+          "question": "Bu kategori gizlilik odaklı mı?",
+          "answer": "Araçlar mümkün olduğunda tarayıcıda çalışacak şekilde sunulur."
+        }
+      ],
+      "relatedArticles": []
+    }
+  }
+}

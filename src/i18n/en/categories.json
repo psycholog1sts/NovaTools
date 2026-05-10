@@ -1,0 +1,268 @@
+{
+  "categories": {
+    "pdf_tools": {
+      "name": "PDF Tools",
+      "description": "Convert, merge, split, compress and edit PDF files with powerful browser-based tools.",
+      "targetAudience": "People who need quick, clear browser-based workflows.",
+      "commonTasks": [
+        "prepare input",
+        "review output",
+        "share safely"
+      ],
+      "decisionTable": {
+        "bestFor": "PDF Tools",
+        "useWhen": "Convert, merge, split, compress and edit PDF files with powerful browser-based tools.",
+        "avoidWhen": "When specialist review or custom integration is required."
+      },
+      "faq": [
+        {
+          "question": "Is this category privacy-conscious?",
+          "answer": "Tools are presented as browser-first where practical."
+        }
+      ],
+      "relatedArticles": []
+    },
+    "image_tools": {
+      "name": "Image Tools",
+      "description": "Compress, convert, resize, and enhance images. Support for WebP, AVIF, PNG, JPG and more.",
+      "targetAudience": "People who need quick, clear browser-based workflows.",
+      "commonTasks": [
+        "prepare input",
+        "review output",
+        "share safely"
+      ],
+      "decisionTable": {
+        "bestFor": "Image Tools",
+        "useWhen": "Compress, convert, resize, and enhance images. Support for WebP, AVIF, PNG, JPG and more.",
+        "avoidWhen": "When specialist review or custom integration is required."
+      },
+      "faq": [
+        {
+          "question": "Is this category privacy-conscious?",
+          "answer": "Tools are presented as browser-first where practical."
+        }
+      ],
+      "relatedArticles": []
+    },
+    "finance_tools": {
+      "name": "Finance Tools",
+      "description": "Mortgage calculators, compound interest, tax estimators, retirement planners and more financial tools.",
+      "targetAudience": "People who need quick, clear browser-based workflows.",
+      "commonTasks": [
+        "prepare input",
+        "review output",
+        "share safely"
+      ],
+      "decisionTable": {
+        "bestFor": "Finance Tools",
+        "useWhen": "Mortgage calculators, compound interest, tax estimators, retirement planners and more financial tools.",
+        "avoidWhen": "When specialist review or custom integration is required."
+      },
+      "faq": [
+        {
+          "question": "Is this category privacy-conscious?",
+          "answer": "Tools are presented as browser-first where practical."
+        }
+      ],
+      "relatedArticles": []
+    },
+    "text_writing": {
+      "name": "Text & Writing",
+      "description": "Word counter, case converter, text diff, Lorem ipsum generator and other writing utilities.",
+      "targetAudience": "People who need quick, clear browser-based workflows.",
+      "commonTasks": [
+        "prepare input",
+        "review output",
+        "share safely"
+      ],
+      "decisionTable": {
+        "bestFor": "Text & Writing",
+        "useWhen": "Word counter, case converter, text diff, Lorem ipsum generator and other writing utilities.",
+        "avoidWhen": "When specialist review or custom integration is required."
+      },
+      "faq": [
+        {
+          "question": "Is this category privacy-conscious?",
+          "answer": "Tools are presented as browser-first where practical."
+        }
+      ],
+      "relatedArticles": []
+    },
+    "developer_tools": {
+      "name": "Developer Tools",
+      "description": "JSON formatter, regex tester, base64 converter, code minifiers and developer utilities.",
+      "targetAudience": "People who need quick, clear browser-based workflows.",
+      "commonTasks": [
+        "prepare input",
+        "review output",
+        "share safely"
+      ],
+      "decisionTable": {
+        "bestFor": "Developer Tools",
+        "useWhen": "JSON formatter, regex tester, base64 converter, code minifiers and developer utilities.",
+        "avoidWhen": "When specialist review or custom integration is required."
+      },
+      "faq": [
+        {
+          "question": "Is this category privacy-conscious?",
+          "answer": "Tools are presented as browser-first where practical."
+        }
+      ],
+      "relatedArticles": []
+    },
+    "converters": {
+      "name": "Converters",
+      "description": "Unit converter, currency converter, time converter, number base converter and more.",
+      "targetAudience": "People who need quick, clear browser-based workflows.",
+      "commonTasks": [
+        "prepare input",
+        "review output",
+        "share safely"
+      ],
+      "decisionTable": {
+        "bestFor": "Converters",
+        "useWhen": "Unit converter, currency converter, time converter, number base converter and more.",
+        "avoidWhen": "When specialist review or custom integration is required."
+      },
+      "faq": [
+        {
+          "question": "Is this category privacy-conscious?",
+          "answer": "Tools are presented as browser-first where practical."
+        }
+      ],
+      "relatedArticles": []
+    },
+    "calculator_tools": {
+      "name": "Calculators",
+      "description": "Scientific calculator, percentage calculator, BMI calculator, age calculator and more.",
+      "targetAudience": "People who need quick, clear browser-based workflows.",
+      "commonTasks": [
+        "prepare input",
+        "review output",
+        "share safely"
+      ],
+      "decisionTable": {
+        "bestFor": "Calculators",
+        "useWhen": "Scientific calculator, percentage calculator, BMI calculator, age calculator and more.",
+        "avoidWhen": "When specialist review or custom integration is required."
+      },
+      "faq": [
+        {
+          "question": "Is this category privacy-conscious?",
+          "answer": "Tools are presented as browser-first where practical."
+        }
+      ],
+      "relatedArticles": []
+    },
+    "security_tools": {
+      "name": "Security Tools",
+      "description": "Password generator, hash generator, UUID generator, encryption tools and security utilities.",
+      "targetAudience": "People who need quick, clear browser-based workflows.",
+      "commonTasks": [
+        "prepare input",
+        "review output",
+        "share safely"
+      ],
+      "decisionTable": {
+        "bestFor": "Security Tools",
+        "useWhen": "Password generator, hash generator, UUID generator, encryption tools and security utilities.",
+        "avoidWhen": "When specialist review or custom integration is required."
+      },
+      "faq": [
+        {
+          "question": "Is this category privacy-conscious?",
+          "answer": "Tools are presented as browser-first where practical."
+        }
+      ],
+      "relatedArticles": []
+    },
+    "social_media_tools": {
+      "name": "Social Media",
+      "description": "YouTube thumbnail downloader, Instagram photo downloader, hashtag generator and social tools.",
+      "targetAudience": "People who need quick, clear browser-based workflows.",
+      "commonTasks": [
+        "prepare input",
+        "review output",
+        "share safely"
+      ],
+      "decisionTable": {
+        "bestFor": "Social Media",
+        "useWhen": "YouTube thumbnail downloader, Instagram photo downloader, hashtag generator and social tools.",
+        "avoidWhen": "When specialist review or custom integration is required."
+      },
+      "faq": [
+        {
+          "question": "Is this category privacy-conscious?",
+          "answer": "Tools are presented as browser-first where practical."
+        }
+      ],
+      "relatedArticles": []
+    },
+    "productivity_tools": {
+      "name": "Productivity",
+      "description": "Todo lists, notes, Pomodoro timer, habit tracker and productivity utilities.",
+      "targetAudience": "People who need quick, clear browser-based workflows.",
+      "commonTasks": [
+        "prepare input",
+        "review output",
+        "share safely"
+      ],
+      "decisionTable": {
+        "bestFor": "Productivity",
+        "useWhen": "Todo lists, notes, Pomodoro timer, habit tracker and productivity utilities.",
+        "avoidWhen": "When specialist review or custom integration is required."
+      },
+      "faq": [
+        {
+          "question": "Is this category privacy-conscious?",
+          "answer": "Tools are presented as browser-first where practical."
+        }
+      ],
+      "relatedArticles": []
+    },
+    "data_tools": {
+      "name": "Data Tools",
+      "description": "CSV to JSON, JSON to CSV, SQL formatter, file organizers and data manipulation tools.",
+      "targetAudience": "People who need quick, clear browser-based workflows.",
+      "commonTasks": [
+        "prepare input",
+        "review output",
+        "share safely"
+      ],
+      "decisionTable": {
+        "bestFor": "Data Tools",
+        "useWhen": "CSV to JSON, JSON to CSV, SQL formatter, file organizers and data manipulation tools.",
+        "avoidWhen": "When specialist review or custom integration is required."
+      },
+      "faq": [
+        {
+          "question": "Is this category privacy-conscious?",
+          "answer": "Tools are presented as browser-first where practical."
+        }
+      ],
+      "relatedArticles": []
+    },
+    "design_tools": {
+      "name": "Design Tools",
+      "description": "Logo maker, business card creator, mockup generator, wireframe tools and design utilities.",
+      "targetAudience": "People who need quick, clear browser-based workflows.",
+      "commonTasks": [
+        "prepare input",
+        "review output",
+        "share safely"
+      ],
+      "decisionTable": {
+        "bestFor": "Design Tools",
+        "useWhen": "Logo maker, business card creator, mockup generator, wireframe tools and design utilities.",
+        "avoidWhen": "When specialist review or custom integration is required."
+      },
+      "faq": [
+        {
+          "question": "Is this category privacy-conscious?",
+          "answer": "Tools are presented as browser-first where practical."
+        }
+      ],
+      "relatedArticles": []
+    }
+  }
+}

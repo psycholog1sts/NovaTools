@@ -1,0 +1,29 @@
+{
+  "tools": {
+    "pdf_merge": {
+      "name": "PDF Merge",
+      "description": "Combine PDF files in order.",
+      "steps": {
+        "step1": "PDF dosyalarını ekleyin.",
+        "step2": "Sıralamayı kontrol edin.",
+        "step3": "Birleştirip sonucu indirin."
+      },
+      "advantages": [
+        "Hızlı tarayıcı iş akışı."
+      ],
+      "limitations": [
+        "Çok büyük dosyalar cihaz belleğine bağlıdır."
+      ],
+      "errors": {
+        "invalidFile": "Geçerli PDF seçin."
+      },
+      "scenarios": [
+        "Rapor bölümlerini tek dosyada toplama."
+      ],
+      "privacyNote": "Dosyalar mümkün olduğunda tarayıcıda işlenir.",
+      "ctaText": "PDF Birleştir",
+      "successMessage": "PDF hazır.",
+      "errorMessage": "PDF birleştirilemedi."
+    }
+  }
+}

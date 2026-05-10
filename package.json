@@ -22,8 +22,10 @@
     "prettier": "prettier --write \"src/**/*.{js,mjs,css,html}\"",
     "clean": "rimraf dist node_modules/.vite",
     "postinstall": "node scripts/postinstall.mjs",
-    "prebuild": "node scripts/generate-icons.mjs",
-    "audit:adsense": "node scripts/adsense-readiness-audit.mjs"
+    "prebuild": "npm run lint:i18n && npm run build:sitemap && node scripts/generate-icons.mjs",
+    "audit:adsense": "node scripts/adsense-readiness-audit.mjs",
+    "lint:i18n": "node scripts/lint-i18n.mjs",
+    "build:sitemap": "node scripts/generate-localized-sitemap.mjs"
   },
   "dependencies": {
     "@vercel/speed-insights": "^2.0.0",

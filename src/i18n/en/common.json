@@ -1,0 +1,67 @@
+{
+  "common": {
+    "navigation": {
+      "home": "Home",
+      "pdf": "PDF Tools",
+      "image": "Image Tools",
+      "finance": "Finance",
+      "developer": "Developer",
+      "text": "Text",
+      "about": "About",
+      "contact": "Contact",
+      "blog": "Blog",
+      "request": "Request Tool",
+      "security": "Security",
+      "privacy": "Privacy",
+      "terms": "Terms",
+      "cookies": "Cookies",
+      "converters": "Converters"
+    },
+    "footer": {
+      "signature": "Metehan ÇETİN, LPC",
+      "title": "Psychological Counselor and Founder",
+      "email": "psk.dan.metehancetin@mc-novatools.com",
+      "copyright": "© 2026 MC NovaTools. All rights reserved."
+    },
+    "buttons": {
+      "open": "Open",
+      "download": "Download",
+      "copy": "Copy"
+    },
+    "forms": {
+      "required": "This field is required.",
+      "invalidEmail": "Enter a valid email address."
+    },
+    "errors": {
+      "generic": "An error occurred",
+      "offline": "Check your connection."
+    },
+    "months": {
+      "long": [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December"
+      ]
+    },
+    "days": {
+      "long": [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ]
+    }
+  }
+}

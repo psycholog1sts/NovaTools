@@ -1,0 +1,29 @@
+{
+  "tools": {
+    "pdf_merge": {
+      "name": "PDF Merge",
+      "description": "Combine PDF files in order.",
+      "steps": {
+        "step1": "Add PDF files.",
+        "step2": "Review the order.",
+        "step3": "Merge and download the result."
+      },
+      "advantages": [
+        "Fast browser workflow."
+      ],
+      "limitations": [
+        "Very large files depend on device memory."
+      ],
+      "errors": {
+        "invalidFile": "Choose a valid PDF."
+      },
+      "scenarios": [
+        "Combine report sections into one file."
+      ],
+      "privacyNote": "Files are processed in the browser where practical.",
+      "ctaText": "Merge PDF",
+      "successMessage": "PDF is ready.",
+      "errorMessage": "PDF could not be merged."
+    }
+  }
+}
