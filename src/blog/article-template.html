@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="tr" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)})();</script>
@@ -123,73 +123,6 @@ const ready = checklist.every((step) => step.length > 0);</code></pre></div></se
     </div>
   </article>
   <button class="scroll-top" type="button" id="scrollTop" aria-label="Yazıya git">↑</button><div class="copy-toast" id="copyToast" role="status" aria-live="polite">Kopyalandı!</div>
-  <script type="module">
-    import {
-      applyBlogDocumentLocale,
-      applyNoindexFallback,
-      getActiveBlogLocale,
-      getBlogPost,
-      getBlogPostsForLocale,
-      getBlogUi,
-      renderContentBlock
-    } from '../js/i18n-blog.js';
-
-    const params = new URLSearchParams(window.location.search);
-    const requestedLocale = params.get('lang') || getActiveBlogLocale();
-    const slug = params.get('slug') || 'high-yield-savings-guide';
-    const result = getBlogPost(requestedLocale, slug);
-
-    function setMeta(selector, attr, value) {
-      const element = document.querySelector(selector);
-      if (element && value) element.setAttribute(attr, value);
-    }
-
-    function escapeHtml(value) {
-      return String(value).replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]);
-    }
-
-    function renderFaq(faq) {
-      return `<section aria-labelledby="sss"><h2 id="sss"><a href="#sss">FAQ</a></h2><div class="faq-list">${faq.map((item) => `<details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"><summary itemprop="name">${escapeHtml(item.question)}</summary><p itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><span itemprop="text">${escapeHtml(item.answer)}</span></p></details>`).join('')}</div></section>`;
-    }
-
-    function renderArticle(post, locale) {
-      const ui = getBlogUi(locale);
-      applyBlogDocumentLocale(locale);
-      document.title = `${post.title} | MC NovaTools Blog`;
-      setMeta('meta[name="description"]', 'content', post.excerpt);
-      setMeta('meta[property="og:title"]', 'content', post.title);
-      setMeta('meta[property="og:description"]', 'content', post.excerpt);
-      setMeta('meta[property="og:image"]', 'content', `https://mc-novatools.com${post.coverImage.og}`);
-      setMeta('link[rel="canonical"]', 'href', `https://mc-novatools.com/blog/article-template.html?slug=${encodeURIComponent(post.slug)}&lang=${locale}`);
-
-      const heroImage = document.querySelector('.article-hero img');
-      if (heroImage) {
-        heroImage.src = post.coverImage.og;
-        heroImage.alt = post.title;
-      }
-      const badge = document.querySelector('.article-badge');
-      if (badge) badge.textContent = ui.categories[post.category] || post.category;
-      const heading = document.querySelector('.article-hero h1');
-      if (heading) heading.textContent = post.title;
-      const meta = document.querySelector('.article-meta');
-      if (meta) meta.innerHTML = `<span class="article-meta__author"><img src="${post.author.avatar}" alt="" width="48" height="48"><span><strong>${escapeHtml(post.author.name)}</strong><br>${escapeHtml(post.author.title)}</span></span><time datetime="${post.datePublished}">${post.datePublished}</time><span class="updated-badge">${post.dateModified}</span><span>⏱ ${post.readTime} min</span>`;
-
-      const body = document.querySelector('.article-body');
-      if (!body) return;
-      const summary = `<section class="summary-box" aria-labelledby="summary-title"><h2 id="summary-title">${locale === 'tr' ? 'Bu Yazının Özeti' : locale === 'ar' ? 'ملخص المقال' : 'Article Summary'}</h2><ul>${post.summary.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul></section>`;
-      const blocks = post.contentBlocks.map(renderContentBlock).join('');
-      const cta = `<section aria-labelledby="sonuc-cta"><div class="article-cta"><h3 id="sonuc-cta">${escapeHtml(ui.loadMore === 'Daha Fazla Yükle' ? 'Bu aracı hemen deneyin' : ui.loadMore === 'تحميل المزيد' ? 'جرّب الأداة المرتبطة الآن' : 'Try the related tool now')}</h3><p>${escapeHtml(post.excerpt)}</p><a class="btn btn-primary" href="${post.relatedToolLinks?.[0] || '/categories/index.html'}">${locale === 'tr' ? 'Hemen Kullan' : locale === 'ar' ? 'ابدأ الآن' : 'Open Tool'}</a></div></section>`;
-      const relatedPosts = getBlogPostsForLocale(locale).filter((item) => item.slug !== post.slug && item.category === post.category).slice(0, 3);
-      const related = `<section aria-labelledby="ilgili"><h2 id="ilgili"><a href="#ilgili">${locale === 'tr' ? 'İlgili Yazılar ve Araçlar' : locale === 'ar' ? 'مقالات وأدوات ذات صلة' : 'Related Articles and Tools'}</a></h2><div class="mini-card-grid">${relatedPosts.map((item) => `<a class="related-post" href="/blog/article-template.html?slug=${encodeURIComponent(item.slug)}&lang=${locale}"><img src="${item.coverImage.card}" alt="" loading="lazy"><span><strong>${escapeHtml(item.title)}</strong><br>${item.datePublished}</span></a>`).join('')}</div></section>`;
-      const author = `<aside class="author-box" aria-label="Author"><img src="${post.author.avatar}" alt="${escapeHtml(post.author.name)} avatar" width="80" height="80"><div><h4>${escapeHtml(post.author.name)}</h4><p><strong>${escapeHtml(post.author.title)}</strong></p><p>${escapeHtml(post.author.bio)}</p></div></aside>`;
-      body.innerHTML = summary + blocks + renderFaq(post.faq) + cta + related + author;
-    }
-
-    if (result.post) {
-      renderArticle(result.post, result.locale);
-      if (result.isFallback) applyNoindexFallback(getBlogUi(requestedLocale).fallbackNotice);
-    }
-  </script>
   <script>
     const progress = document.getElementById('readingProgress');
     const scrollTopButton = document.getElementById('scrollTop');
@@ -198,7 +131,7 @@ const ready = checklist.every((step) => step.length > 0);</code></pre></div></se
     window.addEventListener('scroll', updateProgress, { passive: true });
     updateProgress();
     scrollTopButton.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-    document.addEventListener('click', async (event) => { const button = event.target.closest('.copy-code'); if (!button) return; const code = button.nextElementSibling?.innerText || ''; await navigator.clipboard.writeText(code); toast.classList.add('is-visible'); button.textContent = 'Copied!'; window.setTimeout(() => { toast.classList.remove('is-visible'); button.textContent = 'Copy'; }, 1000); });
+    document.querySelectorAll('.copy-code').forEach((button) => button.addEventListener('click', async () => { const code = button.nextElementSibling?.innerText || ''; await navigator.clipboard.writeText(code); toast.classList.add('is-visible'); button.textContent = 'Kopyalandı!'; window.setTimeout(() => { toast.classList.remove('is-visible'); button.textContent = 'Kopyala'; }, 1000); }));
     document.querySelectorAll('[data-share]').forEach((button) => button.addEventListener('click', () => { const url = encodeURIComponent(window.location.href); const title = encodeURIComponent(document.title); const map = { x: `https://twitter.com/intent/tweet?url=${url}&text=${title}`, linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${url}`, whatsapp: `https://wa.me/?text=${title}%20${url}`, email: `mailto:?subject=${title}&body=${url}` }; const shareUrl = map[button.dataset.share]; if (button.dataset.share === 'email') window.location.href = shareUrl; else window.open(shareUrl, '_blank', 'noopener,noreferrer,width=720,height=640'); }));
   </script>
 </body>
