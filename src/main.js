@@ -4,6 +4,8 @@
  */
 
 import categories from './data/categories.js';
+import { setupThemeToggle } from './theme-toggle.mjs';
+import { initHomeSearch } from './js/home-search.js';
 
 // ============================================
 // I18N HELPERS
@@ -45,18 +47,30 @@ function getCategoryDescription(category) {
   );
 }
 
-function getCategoryCountLabel(category) {
-  const count = Number(category.toolCount) || 0;
-
-  if (count > 0) {
-    return `${count}+ ${t('home.toolsGeneric', 'Tools')}`;
-  }
-
-  return t('home.toolsGeneric', 'Tools');
-}
-
 function getCategoryHref(category) {
   return `/categories/${category.slug}.html`;
+}
+
+function getToolHref(slug) {
+  return `/tools/${slug}/`;
+}
+
+// ============================================
+// DESIGN SYSTEM INTERACTIONS
+// ============================================
+function initDesignSystemInteractions() {
+  setupThemeToggle('themeToggle');
+
+  const header = document.querySelector('.app-header');
+  let lastScrollY = window.scrollY;
+
+  window.addEventListener('scroll', () => {
+    if (!header) return;
+    const currentScrollY = window.scrollY;
+    const shouldHide = currentScrollY > lastScrollY && currentScrollY > 96;
+    header.classList.toggle('is-hidden', shouldHide);
+    lastScrollY = currentScrollY;
+  }, { passive: true });
 }
 
 // ============================================
@@ -83,268 +97,229 @@ function toggleSearch() {
 
 window.toggleSearch = toggleSearch;
 
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') {
     document.getElementById('searchModal')?.classList.remove('active');
   }
 });
 
-// ============================================
-// HOMEPAGE STATS
-// ============================================
-function updateHomepageStats() {
-  const statValues = document.querySelectorAll('.hero-stats .stat .stat-value');
-  if (!statValues.length) return;
+const popularTasks = [
+  { label: 'PDF Birleştir', slug: 'pdf/merge', icon: 'file-text' },
+  { label: 'PDF Sıkıştır', slug: 'pdf/compress', icon: 'file-text' },
+  { label: 'Resim Sıkıştır', slug: 'image/compress', icon: 'image' },
+  { label: 'JSON Formatter', slug: 'dev/json-formatter', icon: 'code' },
+  { label: 'Para Birimi Çevir', slug: 'converters/currency-converter', icon: 'repeat' },
+  { label: 'Kelime Sayacı', slug: 'text/word-counter', icon: 'type' },
+  { label: 'Mortgage Hesapla', slug: 'finance/mortgage-refinance', icon: 'trending-up' },
+  { label: 'Şifre Oluştur', slug: 'security/password-generator', icon: 'shield' }
+];
 
-  if (statValues[1]) {
-    statValues[1].textContent = String(categories.length);
+const featuredTools = [
+  {
+    slug: 'pdf/merge',
+    name: 'PDF Merge',
+    description: 'Birden fazla PDF dosyasını tek belgede düzenli şekilde birleştirin.',
+    category: 'PDF Tools',
+    icon: 'file-text'
+  },
+  {
+    slug: 'image/compress',
+    name: 'Image Compressor',
+    description: 'Web ve e-posta için görsellerin dosya boyutunu hızlıca azaltın.',
+    category: 'Image Tools',
+    icon: 'image'
+  },
+  {
+    slug: 'dev/json-formatter',
+    name: 'JSON Formatter',
+    description: 'JSON verisini okunabilir hale getirin, biçimlendirin ve kontrol edin.',
+    category: 'Developer Tools',
+    icon: 'code'
+  },
+  {
+    slug: 'finance/mortgage-refinance',
+    name: 'Mortgage Refinance',
+    description: 'Yeniden finansman senaryolarını planlama amaçlı karşılaştırın.',
+    category: 'Finance Tools',
+    icon: 'trending-up'
   }
+];
 
-  const totalTools = categories.reduce((sum, category) => {
-    const count = Number(category.toolCount) || 0;
-    return sum + count;
-  }, 0);
+const categoryPopularTools = {
+  'pdf-tools': [
+    ['PDF Merge', 'pdf/merge'],
+    ['Compress PDF', 'pdf/compress'],
+    ['PDF to JPG', 'pdf/pdf-to-jpg']
+  ],
+  'image-tools': [
+    ['Image Compress', 'image/compress'],
+    ['Image Resize', 'image/image-resizer'],
+    ['Image to WebP', 'image/image-to-webp']
+  ],
+  'finance-tools': [
+    ['Mortgage', 'finance/mortgage-refinance'],
+    ['Tax Estimator', 'finance/tax'],
+    ['Compound Interest', 'finance/compound-interest']
+  ],
+  'text-writing': [
+    ['Word Counter', 'text/word-counter'],
+    ['Case Converter', 'text/case-converter'],
+    ['Text Diff', 'text/text-diff']
+  ],
+  'developer-tools': [
+    ['JSON Formatter', 'dev/json-formatter'],
+    ['Regex Tester', 'dev/regex-tester'],
+    ['Base64 Converter', 'dev/base64-converter']
+  ],
+  converters: [
+    ['Unit Converter', 'converters/unit-converter'],
+    ['Currency Converter', 'converters/currency-converter'],
+    ['Time Zone', 'converters/timezone-converter']
+  ],
+  'calculator-tools': [
+    ['Scientific', 'converters/scientific-calculator'],
+    ['BMI', 'converters/bmi-calculator'],
+    ['Percentage', 'converters/percentage-calculator']
+  ],
+  'security-tools': [
+    ['Password Generator', 'security/password-generator'],
+    ['Hash Generator', 'security/hash-generator'],
+    ['UUID Generator', 'security/uuid-generator']
+  ],
+  'social-media-tools': [
+    ['UTM Builder', 'social/utm-builder'],
+    ['Hashtag Generator', 'social/hashtag-generator'],
+    ['Thumbnail', 'social/youtube-thumbnail']
+  ],
+  'productivity-tools': [
+    ['Pomodoro', 'productivity/pomodoro-timer'],
+    ['Todo List', 'productivity/todo-list'],
+    ['Notes', 'productivity/notes']
+  ],
+  'data-tools': [
+    ['CSV to JSON', 'data/csv-to-json'],
+    ['JSON to CSV', 'data/json-to-csv'],
+    ['SQL Formatter', 'data/sql-formatter']
+  ],
+  'design-tools': [
+    ['Logo Maker', 'design/logo-maker'],
+    ['Invoice', 'design/invoice-generator'],
+    ['QR Designer', 'design/qr-code-designer']
+  ]
+};
 
-  if (totalTools > 0 && statValues[0]) {
-    statValues[0].textContent = `${totalTools}+`;
+const blogPosts = [
+  {
+    title: 'Tool selection map for new users',
+    excerpt: 'Yeni bir işe başlarken hangi kategoriye ve araca gitmeniz gerektiğini hızlıca seçin.',
+    category: 'Workflow',
+    href: '/blog/articles/tool-selection-map-for-new-users.html',
+    image: '/logo-brand-520.webp',
+    minutes: '5 dk'
+  },
+  {
+    title: 'Compress images for web quality checklist',
+    excerpt: 'Görsel boyutunu düşürürken okunabilirlik, format ve sayfa hızı kontrollerini atlamayın.',
+    category: 'Image',
+    href: '/blog/articles/compress-images-for-web-quality-checklist.html',
+    image: '/logo-brand-520.webp',
+    minutes: '6 dk'
+  },
+  {
+    title: 'Base64 converter common use cases',
+    excerpt: 'Geliştirici akışlarında kodlama, çözme ve paylaşım öncesi kontrol adımları.',
+    category: 'Developer',
+    href: '/blog/articles/base64-converter-common-use-cases.html',
+    image: '/logo-brand-520.webp',
+    minutes: '4 dk'
   }
-}
+];
 
 // ============================================
-// RENDER CATEGORIES
+// RENDER HOMEPAGE SECTIONS
 // ============================================
-function renderCategories() {
-  const container = document.getElementById('categoriesGrid');
+function renderPopularTasks() {
+  const container = document.getElementById('popularTasks');
   if (!container) return;
 
-  container.innerHTML = categories.map((category) => `
-    <a href="${getCategoryHref(category)}" class="category-card">
-      <div
-        class="category-icon"
-        style="background: linear-gradient(135deg, ${category.color}20, ${category.color}10); color: ${category.color}"
-      >
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          ${getIconPath(category.icon)}
-        </svg>
-      </div>
-      <h3 class="category-name">${getCategoryName(category)}</h3>
-      <p class="category-description">${getCategoryDescription(category)}</p>
-      <p class="category-decision-note">${t('home.categoryDecisionNote', 'Includes common tasks, decision guidance, and related workflows.')}</p>
-      <div class="category-meta">
-        <span class="category-count">${getCategoryCountLabel(category)}</span>
-        <span>→</span>
-      </div>
+  container.innerHTML = popularTasks.map((task) => `
+    <a class="task-chip" href="${getToolHref(task.slug)}">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        ${getIconPath(task.icon)}
+      </svg>
+      <span>${task.label}</span>
     </a>
   `).join('');
 }
 
-// ============================================
-// POPULAR TOOLS DATA
-// ============================================
-function getPopularTools() {
-  return [
-    {
-      slug: 'pdf/merge',
-      nameKey: 'home.popularCards.pdfMerge.name',
-      name: 'PDF Merge',
-      descriptionKey: 'home.popularCards.pdfMerge.description',
-      description: 'Combine multiple PDF files into one document quickly and easily.',
-      category: 'PDF Tools',
-      icon: 'file-text',
-      popular: true
-    },
-    {
-      slug: 'image/compress',
-      nameKey: 'home.popularCards.imageCompress.name',
-      name: 'Image Compressor',
-      descriptionKey: 'home.popularCards.imageCompress.description',
-      description: 'Reduce image file size without losing quality. WebP, PNG, JPG support.',
-      category: 'Image Tools',
-      icon: 'image',
-      popular: true
-    },
-    {
-      slug: 'finance/mortgage-refinance',
-      nameKey: 'home.popularCards.mortgage.name',
-      name: 'Mortgage Calculator',
-      descriptionKey: 'home.popularCards.mortgage.description',
-      description: 'Calculate mortgage payments, compare rates and estimate savings.',
-      category: 'Finance Tools',
-      icon: 'trending-up',
-      popular: true
-    },
-    {
-      slug: 'dev/json-formatter',
-      nameKey: 'home.popularCards.json.name',
-      name: 'JSON Formatter',
-      descriptionKey: 'home.popularCards.json.description',
-      description: 'Format, validate and beautify JSON data with syntax highlighting.',
-      category: 'Developer Tools',
-      icon: 'code',
-      popular: true
-    },
-    {
-      slug: 'text/word-counter',
-      nameKey: 'home.popularCards.wordCounter.name',
-      name: 'Word Counter',
-      descriptionKey: 'home.popularCards.wordCounter.description',
-      description: 'Count words, characters, sentences and paragraphs in your text.',
-      category: 'Text & Writing',
-      icon: 'type',
-      popular: false
-    },
-    {
-      slug: 'converters/unit-converter',
-      nameKey: 'home.popularCards.unitConverter.name',
-      name: 'Unit Converter',
-      descriptionKey: 'home.popularCards.unitConverter.description',
-      description: 'Convert between different units of measurement easily.',
-      category: 'Converters',
-      icon: 'repeat',
-      popular: false
-    },
-    {
-      slug: 'security/password-generator',
-      nameKey: 'home.popularCards.password.name',
-      name: 'Password Generator',
-      descriptionKey: 'home.popularCards.password.description',
-      description: 'Generate strong, secure passwords with customizable options.',
-      category: 'Security Tools',
-      icon: 'shield',
-      popular: false
-    },
-    {
-      slug: 'pdf/compress',
-      nameKey: 'home.popularCards.pdfCompress.name',
-      name: 'PDF Compressor',
-      descriptionKey: 'home.popularCards.pdfCompress.description',
-      description: 'Reduce PDF file size while maintaining document quality.',
-      category: 'PDF Tools',
-      icon: 'file-text',
-      popular: false
-    }
-  ];
-}
-
-// ============================================
-// RENDER POPULAR TOOLS
-// ============================================
-function renderPopularTools() {
-  const container = document.getElementById('popularTools');
+function renderFeaturedTools() {
+  const container = document.getElementById('featuredTools');
   if (!container) return;
 
-  const popularTools = getPopularTools();
-
-  container.innerHTML = popularTools.map((tool) => `
-    <div class="tool-card">
-      <div class="tool-header">
-        <div class="tool-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            ${getIconPath(tool.icon)}
-          </svg>
-        </div>
-        <div class="tool-badges">
-          ${tool.popular ? `<span class="tool-badge tool-badge-popular">${t('tools.popular', 'Popular')}</span>` : ''}
-        </div>
+  container.innerHTML = featuredTools.map((tool) => `
+    <article class="featured-tool-card">
+      <div class="featured-tool-card__icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          ${getIconPath(tool.icon)}
+        </svg>
       </div>
-      <h3 class="tool-name">${t(tool.nameKey, tool.name)}</h3>
-      <p class="tool-description">${t(tool.descriptionKey, tool.description)}</p>
-      <p class="tool-decision-note">${t('home.toolDecisionNote', 'Fast workflow · no forced signup · privacy notes on tool pages')}</p>
-      <div class="tool-footer">
-        <span class="tool-category">${getCategoryLabel(tool.category)}</span>
-        <a href="/tools/${tool.slug}" class="tool-link">
-          ${t('home.openTool', 'Open Tool')}
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M5 12h14M12 5l7 7-7 7"/>
-          </svg>
-        </a>
-      </div>
-    </div>
+      <span class="featured-tool-card__category">${getCategoryLabel(tool.category)}</span>
+      <h3>${tool.name}</h3>
+      <p>${tool.description}</p>
+      <a href="${getToolHref(tool.slug)}">Kullan →</a>
+    </article>
   `).join('');
 }
 
-// ============================================
-// NEW TOOLS DATA
-// ============================================
-function getNewTools() {
-  return [
-    {
-      slug: 'image/background-remover',
-      nameKey: 'home.newCards.backgroundRemover.name',
-      name: 'Background Remover',
-      descriptionKey: 'home.newCards.backgroundRemover.description',
-      description: 'Remove backgrounds from images automatically using AI.',
-      category: 'Image Tools',
-      icon: 'image',
-      new: true
-    },
-    {
-      slug: 'finance/crypto-tax',
-      nameKey: 'home.newCards.cryptoTax.name',
-      name: 'Crypto Tax Calculator',
-      descriptionKey: 'home.newCards.cryptoTax.description',
-      description: 'Calculate your cryptocurrency gains and tax obligations.',
-      category: 'Finance Tools',
-      icon: 'trending-up',
-      new: true
-    },
-    {
-      slug: 'text/text-diff',
-      nameKey: 'home.newCards.textDiff.name',
-      name: 'Text Diff Checker',
-      descriptionKey: 'home.newCards.textDiff.description',
-      description: 'Compare two texts and see the differences highlighted.',
-      category: 'Text & Writing',
-      icon: 'type',
-      new: true
-    },
-    {
-      slug: 'dev/regex-tester',
-      nameKey: 'home.newCards.regex.name',
-      name: 'Regex Tester',
-      descriptionKey: 'home.newCards.regex.description',
-      description: 'Test and debug regular expressions with real-time matching.',
-      category: 'Developer Tools',
-      icon: 'code',
-      new: true
-    }
-  ];
-}
-
-// ============================================
-// RENDER NEW TOOLS
-// ============================================
-function renderNewTools() {
-  const container = document.getElementById('newTools');
+function renderCategories() {
+  const container = document.getElementById('categoriesGrid');
   if (!container) return;
 
-  const newTools = getNewTools();
+  container.innerHTML = categories.map((category) => {
+    const popularLinks = categoryPopularTools[category.slug] || [];
 
-  container.innerHTML = newTools.map((tool) => `
-    <div class="tool-card">
-      <div class="tool-header">
-        <div class="tool-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            ${getIconPath(tool.icon)}
+    return `
+      <article class="category-nav-card">
+        <div
+          class="category-nav-card__icon"
+          style="background: linear-gradient(135deg, ${category.color}22, ${category.color}0f); color: ${category.color}"
+          aria-hidden="true"
+        >
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            ${getIconPath(category.icon)}
           </svg>
         </div>
-        <div class="tool-badges">
-          ${tool.new ? `<span class="tool-badge tool-badge-new">${t('home.newBadge', 'New')}</span>` : ''}
+        <h3><a href="${getCategoryHref(category)}">${getCategoryName(category)}</a></h3>
+        <p>${getCategoryDescription(category)}</p>
+        <div class="category-nav-card__links" aria-label="${getCategoryName(category)} popular tools">
+          ${popularLinks.map(([label, slug]) => `<a href="${getToolHref(slug)}">${label}</a>`).join('')}
         </div>
+      </article>
+    `;
+  }).join('');
+}
+
+function renderBlogCards() {
+  const container = document.getElementById('homeBlogCards');
+  if (!container) return;
+
+  container.innerHTML = blogPosts.map((post) => `
+    <article class="home-blog-card">
+      <a href="${post.href}" class="home-blog-card__image" aria-label="${post.title}">
+        <picture>
+          <source srcset="${post.image}" type="image/webp">
+          <img src="/logo-brand-520.png" alt="" width="520" height="292" loading="lazy" decoding="async">
+        </picture>
+      </a>
+      <div class="home-blog-card__body">
+        <div class="home-blog-card__meta">
+          <span>${post.category}</span>
+          <span>${post.minutes} okuma</span>
+        </div>
+        <h3><a href="${post.href}">${post.title}</a></h3>
+        <p>${post.excerpt}</p>
       </div>
-      <h3 class="tool-name">${t(tool.nameKey, tool.name)}</h3>
-      <p class="tool-description">${t(tool.descriptionKey, tool.description)}</p>
-      <p class="tool-decision-note">${t('home.toolDecisionNote', 'Fast workflow · no forced signup · privacy notes on tool pages')}</p>
-      <div class="tool-footer">
-        <span class="tool-category">${getCategoryLabel(tool.category)}</span>
-        <a href="/tools/${tool.slug}" class="tool-link">
-          ${t('home.openTool', 'Open Tool')}
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M5 12h14M12 5l7 7-7 7"/>
-          </svg>
-        </a>
-      </div>
-    </div>
+    </article>
   `).join('');
 }
 
@@ -379,61 +354,14 @@ function initSearch() {
 
   if (!searchInput || !searchResults) return;
 
-  const allTools = [
-    {
-      name: t('home.popularCards.pdfMerge.name', 'PDF Merge'),
-      slug: 'pdf/merge',
-      category: getCategoryLabel('PDF Tools')
-    },
-    {
-      name: t('home.searchTools.pdfSplit.name', 'PDF Split'),
-      slug: 'pdf/split',
-      category: getCategoryLabel('PDF Tools')
-    },
-    {
-      name: t('home.popularCards.pdfCompress.name', 'PDF Compressor'),
-      slug: 'pdf/compress',
-      category: getCategoryLabel('PDF Tools')
-    },
-    {
-      name: t('home.popularCards.imageCompress.name', 'Image Compressor'),
-      slug: 'image/compress',
-      category: getCategoryLabel('Image Tools')
-    },
-    {
-      name: t('home.searchTools.imageConverter.name', 'Image Converter'),
-      slug: 'image/convert',
-      category: getCategoryLabel('Image Tools')
-    },
-    {
-      name: t('home.popularCards.mortgage.name', 'Mortgage Calculator'),
-      slug: 'finance/mortgage-refinance',
-      category: getCategoryLabel('Finance Tools')
-    },
-    {
-      name: t('home.searchTools.taxEstimator.name', 'Tax Estimator'),
-      slug: 'finance/tax',
-      category: getCategoryLabel('Finance Tools')
-    },
-    {
-      name: t('home.popularCards.json.name', 'JSON Formatter'),
-      slug: 'dev/json-formatter',
-      category: getCategoryLabel('Developer Tools')
-    },
-    {
-      name: t('home.newCards.regex.name', 'Regex Tester'),
-      slug: 'dev/regex-tester',
-      category: getCategoryLabel('Developer Tools')
-    },
-    {
-      name: t('home.popularCards.wordCounter.name', 'Word Counter'),
-      slug: 'text/word-counter',
-      category: getCategoryLabel('Text & Writing')
-    }
-  ];
+  const allTools = popularTasks.concat(featuredTools).map((tool) => ({
+    name: tool.label || tool.name,
+    slug: tool.slug,
+    category: tool.category || 'Popular'
+  }));
 
-  searchInput.oninput = (e) => {
-    const query = e.target.value.toLowerCase().trim();
+  searchInput.oninput = (event) => {
+    const query = event.target.value.toLowerCase().trim();
 
     if (query.length < 2) {
       searchResults.innerHTML = '';
@@ -446,7 +374,7 @@ function initSearch() {
     ).slice(0, 5);
 
     searchResults.innerHTML = results.map((tool) => `
-      <a href="/tools/${tool.slug}" class="search-result-item">
+      <a href="${getToolHref(tool.slug)}" class="search-result-item">
         <span class="search-result-name">${tool.name}</span>
         <span class="search-result-category">${tool.category}</span>
       </a>
@@ -458,11 +386,12 @@ function initSearch() {
 // RERENDER ON LANGUAGE CHANGE
 // ============================================
 function rerenderHomepageDynamicParts() {
+  renderPopularTasks();
+  renderFeaturedTools();
   renderCategories();
-  renderPopularTools();
-  renderNewTools();
+  renderBlogCards();
   initSearch();
-  updateHomepageStats();
+  initHomeSearch({ getToolHref });
 }
 
 window.addEventListener('languageChanged', () => {
@@ -473,5 +402,6 @@ window.addEventListener('languageChanged', () => {
 // INITIALIZE
 // ============================================
 document.addEventListener('DOMContentLoaded', () => {
+  initDesignSystemInteractions();
   rerenderHomepageDynamicParts();
 });

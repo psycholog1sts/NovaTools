@@ -1,0 +1,14 @@
+@import '../../styles/design-system.css';
+
+.breadcrumb,
+.breadcrumbs,
+.nt-breadcrumb { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); color: var(--color-text-tertiary); font-size: var(--font-size-sm); }
+.nt-breadcrumb [aria-current='page'],
+.breadcrumbs [aria-current='page'] { color: var(--color-text-primary); font-weight: var(--font-weight-semibold); }
+.nt-breadcrumb__separator { color: var(--color-text-muted); }
+.breadcrumb a,
+.breadcrumbs a,
+.nt-breadcrumb a { color: var(--color-text-secondary); text-decoration: none; }
+.breadcrumb a:hover,
+.breadcrumbs a:hover,
+.nt-breadcrumb a:hover { color: var(--color-primary-500); }

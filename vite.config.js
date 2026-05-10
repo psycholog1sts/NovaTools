@@ -214,6 +214,14 @@ export default defineConfig({
         {
           src: 'src/styles/design-system.css',
           dest: 'styles'
+        },
+        {
+          src: 'src/styles/layout.css',
+          dest: 'styles'
+        },
+        {
+          src: 'src/styles/component-library.css',
+          dest: 'styles'
         }
       ]
     })
