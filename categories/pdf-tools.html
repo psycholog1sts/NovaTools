@@ -1,794 +1,116 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="tr" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Free Online PDF Tools | Merge, Split, Compress, Convert | MC NovaTools</title>
-  <meta name="description" content="Free online PDF tools for merge, split, compress, OCR, watermark, page numbering, and PDF conversion to Word, Excel, HTML, JPG, PNG, PowerPoint, and text.">
-  <meta name="keywords" content="free pdf tools, pdf merge, pdf split, pdf compress, pdf to word, pdf to excel, pdf watermark, pdf ocr">
-  <meta name="author" content="Metehan ÇETİN, LPC">
+  <title>PDF Araçları | NovaTools</title>
+  <meta name="description" content="PDF birleştirme, sıkıştırma, bölme, OCR ve dönüştürme araçlarını karar rehberi, SSS, görev listesi ve doğrudan kullanım linkleriyle keşfedin.">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="theme-color" content="#0A0A0C">
-
-  <meta property="og:title" content="Free Online PDF Tools | Merge, Split, Compress, Convert | MC NovaTools">
-  <meta property="og:description" content="Free online PDF tools for merge, split, compress, OCR, watermark, page numbering, and conversion.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://mc-novatools.com/categories/pdf-tools.html">
-  <meta property="og:image" content="https://mc-novatools.com/og-pdf-tools.png">
-
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Free Online PDF Tools | MC NovaTools">
-  <meta name="twitter:description" content="Merge, split, compress, OCR, watermark, and convert PDF files in your browser.">
-
+  <meta name="author" content="Metehan ÇETİN, LPC">
   <link rel="canonical" href="https://mc-novatools.com/categories/pdf-tools.html">
-  <link rel="alternate" hreflang="en" href="https://mc-novatools.com/categories/pdf-tools.html">
+  <link rel="alternate" hreflang="tr" href="https://mc-novatools.com/categories/pdf-tools.html">
   <link rel="alternate" hreflang="x-default" href="https://mc-novatools.com/categories/pdf-tools.html">
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/styles/critical.css">
+  <link rel="stylesheet" href="/src/styles/design-system.css">
+  <link rel="stylesheet" href="/src/styles/component-library.css">
+  <link rel="stylesheet" href="/src/styles/layout.css">
+  <link rel="stylesheet" href="/src/styles/category-guides.css">
   <script src="/i18n.js" defer></script>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    "name": "Free Online PDF Tools",
-    "description": "Free online PDF tools for merge, split, compress, OCR, watermark, page numbering, and conversion.",
-    "url": "https://mc-novatools.com/categories/pdf-tools.html",
-    "breadcrumb": {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://mc-novatools.com/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "PDF Tools",
-          "item": "https://mc-novatools.com/categories/pdf-tools.html"
-        }
-      ]
-    }
-  }
-  </script>
-
-  <style>
-    :root {
-      --bg: #06070b;
-      --bg-soft: #0d111a;
-      --panel: rgba(17, 24, 39, 0.72);
-      --panel-strong: rgba(15, 23, 42, 0.92);
-      --border: rgba(255, 255, 255, 0.08);
-      --text: #f8fafc;
-      --muted: #a5b4c7;
-      --primary: #22d3ee;
-      --primary-2: #8b5cf6;
-      --glow: 0 20px 60px rgba(34, 211, 238, 0.12);
-      --radius: 20px;
-      --container: 1180px;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      color: var(--text);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(239, 68, 68, 0.14), transparent 28%),
-        radial-gradient(circle at top right, rgba(34, 211, 238, 0.12), transparent 24%),
-        linear-gradient(180deg, #05060a 0%, #090b12 100%);
-      min-height: 100vh;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .container {
-      width: min(var(--container), calc(100% - 32px));
-      margin: 0 auto;
-    }
-
-    .main-header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      backdrop-filter: blur(14px);
-      background: rgba(6, 7, 11, 0.84);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .header-inner {
-      min-height: 78px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .logo {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      font-size: 1.35rem;
-      white-space: nowrap;
-    }
-
-    .logo-mc {
-      color: #22c55e;
-    }
-
-    .nav-desktop {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
-
-    .nav-desktop a {
-      color: var(--muted);
-      font-weight: 500;
-      transition: 0.2s ease;
-    }
-
-    .nav-desktop a:hover,
-    .nav-desktop a.active {
-      color: var(--text);
-    }
-
-    .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .language-selector {
-      min-width: 150px;
-      height: 42px;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      background: rgba(255, 255, 255, 0.04);
-      color: var(--text);
-      padding: 0 12px;
-      outline: none;
-    }
-
-    .breadcrumb-nav {
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-      background: rgba(255,255,255,0.01);
-    }
-
-    .breadcrumb {
-      list-style: none;
-      display: flex;
-      gap: 10px;
-      padding: 14px 0;
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    .breadcrumb li + li::before {
-      content: "/";
-      margin-right: 10px;
-      color: rgba(255,255,255,0.22);
-    }
-
-    .main-content {
-      padding-bottom: 64px;
-    }
-
-    .category-hero {
-      padding: 72px 0 28px;
-    }
-
-    .hero-card {
-      position: relative;
-      overflow: hidden;
-      background:
-        radial-gradient(circle at top left, rgba(239, 68, 68, 0.20), transparent 26%),
-        radial-gradient(circle at bottom right, rgba(34, 211, 238, 0.14), transparent 28%),
-        linear-gradient(180deg, rgba(15, 23, 42, 0.9), rgba(10, 14, 22, 0.96));
-      border: 1px solid var(--border);
-      border-radius: 28px;
-      padding: 40px;
-      box-shadow: var(--glow);
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      min-height: 34px;
-      padding: 0 14px;
-      border-radius: 999px;
-      background: rgba(239, 68, 68, 0.10);
-      border: 1px solid rgba(239, 68, 68, 0.22);
-      color: #ffd4d4;
-      font-size: 0.92rem;
-      font-weight: 600;
-      margin-bottom: 18px;
-    }
-
-    .category-title {
-      margin: 0 0 14px;
-      font-size: clamp(2.2rem, 5vw, 4rem);
-      line-height: 1.02;
-      letter-spacing: -0.04em;
-    }
-
-    .category-description {
-      margin: 0;
-      max-width: 780px;
-      font-size: 1.08rem;
-      line-height: 1.75;
-      color: var(--muted);
-    }
-
-    .category-stats {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-      margin-top: 28px;
-    }
-
-    .stat {
-      display: block;
-      padding: 18px;
-      border-radius: 18px;
-      border: 1px solid var(--border);
-      background: rgba(255, 255, 255, 0.03);
-      font-weight: 700;
-      color: #eaf2ff;
-    }
-
-    .tools-section,
-    .content-section,
-    .faq-section {
-      padding: 24px 0;
-    }
-
-    .section-title,
-    .content-section h2,
-    .faq-section h2 {
-      margin: 0 0 18px;
-      font-size: 1.8rem;
-      letter-spacing: -0.03em;
-    }
-
-    .grid {
-      display: grid;
-      gap: 20px;
-    }
-
-    .grid-3 {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
-    .tool-card {
-      display: flex;
-      flex-direction: column;
-      padding: 24px;
-      border-radius: 22px;
-      background: linear-gradient(180deg, rgba(17, 24, 39, 0.82), rgba(9, 13, 20, 0.96));
-      border: 1px solid var(--border);
-      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.22);
-      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-      min-height: 100%;
-    }
-
-    .tool-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(239, 68, 68, 0.35);
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
-    }
-
-    .tool-icon {
-      width: 56px;
-      height: 56px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 16px;
-      font-size: 1.5rem;
-      margin-bottom: 16px;
-      background: linear-gradient(135deg, rgba(239, 68, 68, 0.16), rgba(34, 211, 238, 0.12));
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .tool-card h3 {
-      margin: 0 0 10px;
-      font-size: 1.12rem;
-      line-height: 1.35;
-    }
-
-    .tool-card p {
-      margin: 0 0 16px;
-      color: var(--muted);
-      line-height: 1.65;
-      flex: 1;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 44px;
-      padding: 0 16px;
-      border-radius: 12px;
-      font-weight: 700;
-      border: 1px solid transparent;
-      transition: 0.2s ease;
-    }
-
-    .btn-primary {
-      color: white;
-      background: linear-gradient(135deg, #ef4444, #8b5cf6);
-      box-shadow: 0 16px 40px rgba(239, 68, 68, 0.18);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      filter: brightness(1.05);
-    }
-
-    .panel {
-      padding: 28px;
-      border-radius: 24px;
-      border: 1px solid var(--border);
-      background: linear-gradient(180deg, rgba(12, 18, 30, 0.9), rgba(8, 11, 18, 0.98));
-      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.22);
-    }
-
-    .content-section p,
-    .content-section li,
-    .faq-item p {
-      color: var(--muted);
-      line-height: 1.8;
-    }
-
-    .content-section ul,
-    .content-section ol {
-      padding-left: 20px;
-      margin-top: 10px;
-      margin-bottom: 18px;
-    }
-
-    .content-section h3 {
-      margin: 22px 0 10px;
-      font-size: 1.2rem;
-      letter-spacing: -0.02em;
-    }
-
-    .faq-list {
-      display: grid;
-      gap: 16px;
-    }
-
-    .faq-item {
-      padding: 22px;
-      border-radius: 18px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.03);
-    }
-
-    .faq-item h3 {
-      margin: 0 0 10px;
-      font-size: 1.08rem;
-    }
-
-    .main-footer {
-      border-top: 1px solid var(--border);
-      background: rgba(6, 7, 11, 0.7);
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 24px;
-      padding: 28px 0 20px;
-    }
-
-    .footer-col h4 {
-      margin: 0 0 12px;
-      font-size: 1rem;
-    }
-
-    .footer-col p,
-    .footer-col li,
-    .footer-bottom p {
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    .footer-col ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .footer-col li + li {
-      margin-top: 8px;
-    }
-
-    .footer-col a {
-      color: #baf4ff;
-    }
-
-    .footer-bottom {
-      padding: 0 0 32px;
-    }
-
-    .footer-bottom p {
-      margin: 0;
-    }
-
-    @media (max-width: 980px) {
-      .header-inner {
-        min-height: auto;
-        padding: 14px 0;
-        flex-wrap: wrap;
-      }
-
-      .nav-desktop {
-        width: 100%;
-      }
-
-      .grid-3,
-      .category-stats,
-      .footer-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .hero-card,
-      .panel {
-        padding: 22px;
-      }
-
-      .category-hero {
-        padding-top: 42px;
-      }
-
-      .language-selector,
-      .header-actions {
-        width: 100%;
-      }
-    }
-
-
-    .guide-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-
-    .guide-grid > div {
-      padding: 1rem;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 16px;
-    }
-
-    .guide-grid ul {
-      padding-left: 1.25rem;
-      margin-bottom: 0;
-    }
-
-    .category-guide-note {
-      margin-top: 1rem;
-      color: var(--muted);
-    }
-</style>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://mc-novatools.com/"}, {"@type": "ListItem", "position": 2, "name": "PDF Araçları", "item": "https://mc-novatools.com/categories/pdf-tools.html"}]}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "PDF Araçları ücretsiz mi?", "acceptedAnswer": {"@type": "Answer", "text": "Evet. Bu kategori sayfası NovaTools içinde yer alan ilgili online araçlara doğrudan bağlantı verir ve hızlı başlangıç için hazırlanmıştır."}}, {"@type": "Question", "name": "Hangi aracı seçmem gerektiğini nasıl anlarım?", "acceptedAnswer": {"@type": "Answer", "text": "Önce en sık yapılan görevler bölümünü, ardından karar destek tablosunu inceleyin. İhtiyacınız önerilen araçla eşleştirilir."}}, {"@type": "Question", "name": "Bu sayfadaki araçlar mobilde kullanılabilir mi?", "acceptedAnswer": {"@type": "Answer", "text": "Sayfa mobil öncelikli düzenlenmiştir. Araçların ayrıntılı giriş alanları ilgili araç sayfasında ayrıca kontrol edilmelidir."}}, {"@type": "Question", "name": "Sonuçları paylaşmadan önce neyi kontrol etmeliyim?", "acceptedAnswer": {"@type": "Answer", "text": "Dosya adı, çıktı formatı, gizlilik ihtiyacı ve okunabilirlik gibi temel kalite kontrollerini yapmanız önerilir."}}, {"@type": "Question", "name": "İlgili rehberler ne işe yarar?", "acceptedAnswer": {"@type": "Answer", "text": "Blog rehberleri, araç seçimi ve çıktı kontrolü konusunda daha fazla bağlam vererek hatalı kullanım riskini azaltır."}}]}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "ItemList", "name": "PDF Araçları", "itemListElement": [{"@type": "ListItem", "position": 1, "url": "https://mc-novatools.com/tools/pdf/compress/", "name": "PDF Compressor"}, {"@type": "ListItem", "position": 2, "url": "https://mc-novatools.com/tools/pdf/merge/", "name": "PDF Merger"}, {"@type": "ListItem", "position": 3, "url": "https://mc-novatools.com/tools/pdf/pdf-ocr/", "name": "PDF OCR (Text Recognition)"}, {"@type": "ListItem", "position": 4, "url": "https://mc-novatools.com/tools/pdf/pdf-page-number/", "name": "PDF Page Number Adder"}, {"@type": "ListItem", "position": 5, "url": "https://mc-novatools.com/tools/pdf/pdf-to-excel/", "name": "PDF to Excel Converter"}, {"@type": "ListItem", "position": 6, "url": "https://mc-novatools.com/tools/pdf/pdf-to-html/", "name": "PDF to HTML Converter"}, {"@type": "ListItem", "position": 7, "url": "https://mc-novatools.com/tools/pdf/pdf-to-jpg/", "name": "PDF to JPG Converter"}, {"@type": "ListItem", "position": 8, "url": "https://mc-novatools.com/tools/pdf/pdf-to-png/", "name": "PDF to PNG Converter"}, {"@type": "ListItem", "position": 9, "url": "https://mc-novatools.com/tools/pdf/pdf-to-powerpoint/", "name": "PDF to PowerPoint Converter"}, {"@type": "ListItem", "position": 10, "url": "https://mc-novatools.com/tools/pdf/pdf-to-text/", "name": "PDF to Text Converter"}, {"@type": "ListItem", "position": 11, "url": "https://mc-novatools.com/tools/pdf/pdf-to-word/", "name": "PDF to Word Converter"}, {"@type": "ListItem", "position": 12, "url": "https://mc-novatools.com/tools/pdf/pdf-watermark/", "name": "PDF Watermark Adder"}, {"@type": "ListItem", "position": 13, "url": "https://mc-novatools.com/tools/pdf/split/", "name": "PDF Splitter"}]}</script>
 </head>
-<body>
-  <header class="main-header">
-    <div class="container">
-      <div class="header-inner">
-        <a href="/" class="logo" aria-label="MC NovaTools Home">
-          <span class="logo-text">MC <span class="logo-mc">NovaTools</span></span>
-        </a>
-
-        <nav class="nav-desktop" aria-label="Main navigation">
-          <a href="/categories/pdf-tools.html" class="active" data-i18n="nav.pdf">PDF</a>
-          <a href="/categories/image-tools.html" data-i18n="nav.image">Image</a>
-          <a href="/categories/finance-tools.html" data-i18n="nav.finance">Finance</a>
-          <a href="/categories/developer-tools.html" data-i18n="nav.developer">Developer</a>
-          <a href="/categories/text-writing.html" data-i18n="nav.text">Text</a>
-          <a href="/about-us.html" data-i18n="nav.about">About</a>
-        </nav>
-
-        <div class="header-actions">
-          <select id="language-selector" class="language-selector" aria-label="Select Language">
-            <option value="en">🇬🇧 English</option>
-            <option value="tr">🇹🇷 Türkçe</option>
-            <option value="de">🇩🇪 Deutsch</option>
-            <option value="fr">🇫🇷 Français</option>
-            <option value="es">🇪🇸 Español</option>
-            <option value="pt">🇵🇹 Português</option>
-            <option value="ru">🇷🇺 Русский</option>
-            <option value="zh">🇨🇳 中文</option>
-            <option value="ja">🇯🇵 日本語</option>
-            <option value="ko">🇰🇷 한국어</option>
-            <option value="ar">🇸🇦 العربية</option>
-            <option value="hi">🇮🇳 हिंदी</option>
-            <option value="it">🇮🇹 Italiano</option>
-            <option value="pl">🇵🇱 Polski</option>
-            <option value="nl">🇳🇱 Nederlands</option>
-          </select>
-        </div>
-      </div>
-    </div>
+<body class="category-guide-page">
+  <header class="guide-header">
+    <div class="container guide-header__inner"><a class="logo" href="/" aria-label="NovaTools ana sayfa"><span class="logo-text">MC NovaTools</span></a><nav class="guide-nav" aria-label="Main navigation"><a href="/categories/index.html">Categories</a><a href="/categories/pdf-tools.html">PDF</a><a href="/categories/image-tools.html">Image</a><a href="/categories/finance-tools.html">Finance</a><a href="/categories/developer-tools.html">Developer</a><a href="/blog/index.html">Blog</a></nav><div class="header-actions"><select id="language-selector" class="language-selector" aria-label="Select Language"><option value="en">🇬🇧 English</option><option value="tr">🇹🇷 Türkçe</option><option value="de">🇩🇪 Deutsch</option><option value="fr">🇫🇷 Français</option><option value="es">🇪🇸 Español</option><option value="pt">🇵🇹 Português</option><option value="ru">🇷🇺 Русский</option><option value="zh">🇨🇳 中文</option><option value="ja">🇯🇵 日本語</option><option value="ko">🇰🇷 한국어</option><option value="ar">🇸🇦 العربية</option><option value="hi">🇮🇳 हिंदी</option><option value="it">🇮🇹 Italiano</option><option value="pl">🇵🇱 Polski</option><option value="nl">🇳🇱 Nederlands</option></select></div></div>
   </header>
-
-  <nav aria-label="Breadcrumb" class="breadcrumb-nav">
-    <div class="container">
-      <ol class="breadcrumb">
-        <li><a href="/" data-i18n="nav.home">Home</a></li>
-        <li aria-current="page" data-i18n="categories.pdf.sectionTitle">PDF Tools</li>
-      </ol>
-    </div>
-  </nav>
-
-  <main class="main-content">
-    <section class="category-hero">
-      <div class="container">
-        <div class="hero-card">
-          <div class="hero-badge" data-i18n="categories.pdf.badge">Free Online PDF Utilities</div>
-          <h1 class="category-title" data-i18n="categories.pdf.title">PDF Tools for Merge, Split, Compression, OCR, and Conversion</h1>
-          <p class="category-description" data-i18n="categories.pdf.description">
-            Open practical PDF workflows from one place. Merge files, split pages, compress size, add watermarks,
-            insert page numbers, run OCR, and convert PDF files to Word, Excel, HTML, JPG, PNG, PowerPoint, and text.
-          </p>
-          <div class="category-stats">
-            <span class="stat">13 Live PDF Tools</span>
-            <span class="stat">Browser-first workflows</span>
-            <span class="stat">Clean static category page</span>
-          </div>
+  <main class="category-guide-main">
+    <article>
+      <nav class="container guide-breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">Ana Sayfa</a></li><li aria-current="page">PDF Araçları</li></ol></nav>
+      <header class="category-guide-hero">
+        <div class="container category-guide-hero__grid">
+          <div class="category-guide-hero__icon" style="--category-accent: #ef4444;"><span>📄</span></div>
+          <div><p class="section-eyebrow">Kategori rehberi</p><h1>PDF Araçları – Online ve Ücretsiz</h1><p class="category-guide-intro">PDF Araçları kategorisi, belge birleştirme, sıkıştırma, sayfa ayırma, OCR ve format dönüştürme gibi PDF işlerini tek bir karar rehberi içinde toplar. Bu sayfa yalnızca araç kartları sunmak yerine, kimlerin hangi durumda başlaması gerektiğini, en sık yapılan görevleri ve doğru aracı seçmek için kullanabileceğiniz karar tablosunu açıklar. Öğrenciler, içerik üreticileri, geliştiriciler, küçük işletmeler ve günlük kullanıcılar kendi hedeflerine göre hızlı başlangıç noktası bulabilir. Her araç kartı kısa açıklama, işlem etiketi ve doğrudan kullanım bağlantısı içerir; ilgili blog yazıları ve SSS bölümü de çıktıyı paylaşmadan önce kontrol etmeniz gereken noktaları netleştirir.</p></div>
         </div>
-      </div>
-    </section>
-
-
-    <section class="content-section category-guide-standard" aria-labelledby="categoryGuideTitle">
-      <div class="container">
-        <div class="panel">
-          <h2 id="categoryGuideTitle">PDF workflow guide</h2>
-          <p>This category is organized around common user intent, not just a list of links. Start with the task below, then open the tool that best matches the output you need.</p>
-          <h3>Five common tasks</h3>
-          <ul>
-            <li><strong>Combine documents:</strong> use merge when files belong in one packet.</li>
-            <li><strong>Reduce size:</strong> compress before email or upload, then review readability.</li>
-            <li><strong>Extract pages:</strong> split when only selected pages should be shared.</li>
-            <li><strong>Convert carefully:</strong> use Word, Excel, image, HTML, or text output depending on what you need to edit.</li>
-            <li><strong>Protect context:</strong> add watermark or page numbers when recipients need source cues.</li>
-          </ul>
-          <h3>Which tool should you choose?</h3>
-          <p>Choose merge for packets, split for selected pages, compress for delivery, OCR for scanned text, and conversion tools when the next step requires editing outside a PDF reader.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="tools-section">
-      <div class="container">
-        <h2 class="section-title" data-i18n="categories.pdf.sectionTitle">PDF Tools</h2>
-        <div class="grid grid-3">
-          <article class="tool-card">
-            <div class="tool-icon">📎</div>
-            <h3><a href="/tools/pdf/merge/">PDF Merge</a></h3>
-            <p>Combine multiple PDF files into a single document quickly and cleanly.</p>
-            <a href="/tools/pdf/merge/" class="btn btn-primary" data-i18n="home.openTool">Use Tool</a>
-          </article>
-
-          <article class="tool-card">
-            <div class="tool-icon">🗜️</div>
-            <h3><a href="/tools/pdf/compress/">PDF Compress</a></h3>
-            <p>Reduce PDF file size for sharing, upload, storage, and faster delivery.</p>
-            <a href="/tools/pdf/compress/" class="btn btn-primary" data-i18n="home.openTool">Use Tool</a>
-          </article>
-
-          <article class="tool-card">
-            <div class="tool-icon">✂️</div>
-            <h3><a href="/tools/pdf/split/">PDF Split</a></h3>
-            <p>Extract or separate pages from large PDF documents with a simpler workflow.</p>
-            <a href="/tools/pdf/split/" class="btn btn-primary" data-i18n="home.openTool">Use Tool</a>
-          </article>
-
-          <article class="tool-card">
-            <div class="tool-icon">🔍</div>
-            <h3><a href="/tools/pdf/pdf-ocr/">PDF OCR</a></h3>
-            <p>Extract readable text from scanned or image-based PDF files.</p>
-            <a href="/tools/pdf/pdf-ocr/" class="btn btn-primary" data-i18n="home.openTool">Use Tool</a>
-          </article>
-
-          <article class="tool-card">
-            <div class="tool-icon">#️⃣</div>
-            <h3><a href="/tools/pdf/pdf-page-number/">PDF Page Number</a></h3>
-            <p>Insert page numbers into PDF documents with cleaner output control.</p>
-            <a href="/tools/pdf/pdf-page-number/" class="btn btn-primary" data-i18n="home.openTool">Use Tool</a>
-          </article>
-
-          <article class="tool-card">
-            <div class="tool-icon">📄</div>
-            <h3><a href="/tools/pdf/pdf-to-word/">PDF to Word</a></h3>
-            <p>Convert PDF documents into editable Word format for further work.</p>
-            <a href="/tools/pdf/pdf-to-word/" class="btn btn-primary" data-i18n="home.openTool">Use Tool</a>
-          </article>
-
-          <article class="tool-card">
-            <div class="tool-icon">📊</div>
-            <h3><a href="/tools/pdf/pdf-to-excel/">PDF to Excel</a></h3>
-            <p>Move PDF table content into spreadsheet-friendly format more easily.</p>
-            <a href="/tools/pdf/pdf-to-excel/" class="btn btn-primary" data-i18n="home.openTool">Use Tool</a>
-          </article>
-
-          <article class="tool-card">
-            <div class="tool-icon">🎞️</div>
-            <h3><a href="/tools/pdf/pdf-to-powerpoint/">PDF to PowerPoint</a></h3>
-            <p>Convert PDF slides into editable PowerPoint presentation output.</p>
-            <a href="/tools/pdf/pdf-to-powerpoint/" class="btn btn-primary" data-i18n="home.openTool">Use Tool</a>
-          </article>
-
-          <article class="tool-card">
-            <div class="tool-icon">🌐</div>
-            <h3><a href="/tools/pdf/pdf-to-html/">PDF to HTML</a></h3>
-            <p>Convert PDF content into HTML output for web publishing and reuse.</p>
-            <a href="/tools/pdf/pdf-to-html/" class="btn btn-primary" data-i18n="home.openTool">Use Tool</a>
-          </article>
-
-          <article class="tool-card">
-            <div class="tool-icon">🖼️</div>
-            <h3><a href="/tools/pdf/pdf-to-jpg/">PDF to JPG</a></h3>
-            <p>Turn PDF pages into JPG images for quick export and sharing.</p>
-            <a href="/tools/pdf/pdf-to-jpg/" class="btn btn-primary" data-i18n="home.openTool">Use Tool</a>
-          </article>
-
-          <article class="tool-card">
-            <div class="tool-icon">🖼️</div>
-            <h3><a href="/tools/pdf/pdf-to-png/">PDF to PNG</a></h3>
-            <p>Convert PDF pages into PNG images with cleaner lossless output.</p>
-            <a href="/tools/pdf/pdf-to-png/" class="btn btn-primary" data-i18n="home.openTool">Use Tool</a>
-          </article>
-
-          <article class="tool-card">
-            <div class="tool-icon">📝</div>
-            <h3><a href="/tools/pdf/pdf-to-text/">PDF to Text</a></h3>
-            <p>Extract plain text content from PDF documents for reuse and cleanup.</p>
-            <a href="/tools/pdf/pdf-to-text/" class="btn btn-primary" data-i18n="home.openTool">Use Tool</a>
-          </article>
-
-          <article class="tool-card">
-            <div class="tool-icon">💧</div>
-            <h3><a href="/tools/pdf/pdf-watermark/">PDF Watermark</a></h3>
-            <p>Add a visible watermark to protect or brand PDF files.</p>
-            <a href="/tools/pdf/pdf-watermark/" class="btn btn-primary" data-i18n="home.openTool">Use Tool</a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="content-section">
-      <div class="container">
-        <div class="panel">
-          <h2>Why use this page?</h2>
-          <p>
-            This page is the stable category hub for the live PDF tools already inside the project.
-            It gives users one reliable starting point for conversion, extraction, compression, and document cleanup tasks.
-          </p>
-
-          <h3>What you get here</h3>
-          <ul>
-            <li>Direct links to live PDF tool routes</li>
-            <li>Clear entry point for document workflows</li>
-            <li>Static standalone HTML suitable for deployment</li>
-            <li>Cleaner trust and SEO signals for the PDF category</li>
-          </ul>
-
-          <h3>Best use</h3>
-          <p>
-            Use this page as the main category hub for PDF operations.
-            It keeps navigation simple and makes your PDF tool collection easier to understand, use, and index.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="faq-section">
-      <div class="container">
-        <h2>Frequently Asked Questions</h2>
-        <div class="faq-list">
-          <div class="faq-item" itemscope itemtype="https://schema.org/Question">
-            <h3 itemprop="name">Are these PDF tools free?</h3>
-            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text">Yes. This category page links to the PDF tools included in the project and presents them in one stable place.</p>
-            </div>
-          </div>
-
-          <div class="faq-item" itemscope itemtype="https://schema.org/Question">
-            <h3 itemprop="name">What kinds of PDF tasks can I do here?</h3>
-            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text">You can merge, split, compress, watermark, number, OCR, and convert PDF files into multiple output formats including Word, Excel, images, HTML, and plain text.</p>
-            </div>
-          </div>
-
-          <div class="faq-item" itemscope itemtype="https://schema.org/Question">
-            <h3 itemprop="name">Why is this version better?</h3>
-            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text">This version keeps the PDF category visually strong while also aligning canonical paths, navigation links, and static-page structure more consistently with the rest of the site.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="content-section novatools-related-guides" aria-labelledby="relatedGuidesTitle">
-      <div class="container">
-        <div class="panel">
-          <h2 id="relatedGuidesTitle">Related practical guides</h2>
-          <p>Use these guides when you need more context before choosing a tool, exporting a result, or continuing into the next workflow.</p>
-          <div class="related-tools-grid"><a class="related-tool-link" href="/blog/articles/compress-pdf-for-email-without-ruining-readability.html">Compress PDF for email</a><a class="related-tool-link" href="/blog/articles/merge-pdf-files-client-documents-checklist.html">PDF merge checklist</a><a class="related-tool-link" href="/blog/articles/split-pdf-pages-before-sharing-sensitive-sections.html">PDF split workflow</a></div>
-        </div>
-      </div>
-    </section>
+      </header>
+      <section class="guide-section" aria-labelledby="audienceTitle"><div class="container"><div class="section-header"><h2 id="audienceTitle" class="section-title">Kimler İçin?</h2><p class="section-description">Bu kategori, farklı kullanıcıların aynı araçları farklı hedeflerle kullanabileceği şekilde düzenlendi.</p></div><div class="persona-grid"><article class="persona-card"><h3>Ofis ekipleri için</h3><p>Sözleşme, teklif ve rapor dosyalarını paylaşmadan önce birleştirme, sıkıştırma ve numaralandırma işlemlerini hızlıca tamamlar.</p><div><a href="/tools/pdf/merge/">Merge</a><a href="/tools/pdf/compress/">Compress</a></div></article><article class="persona-card"><h3>Öğrenciler için</h3><p>Ders notlarını, taranmış sayfaları ve ödev eklerini düzenli bir PDF akışına dönüştürür.</p><div><a href="/tools/pdf/split/">Split</a><a href="/tools/pdf/pdf-to-text/">Pdf To Text</a></div></article><article class="persona-card"><h3>Freelancerlar için</h3><p>Müşteri incelemesi öncesinde filigran, sayfa numarası ve dönüşüm adımlarını tek merkezden seçmeyi kolaylaştırır.</p><div><a href="/tools/pdf/pdf-watermark/">Pdf Watermark</a><a href="/tools/pdf/pdf-page-number/">Pdf Page Number</a></div></article></div></div></section>
+      <section class="guide-section" aria-labelledby="tasksTitle"><div class="container"><div class="section-header"><h2 id="tasksTitle" class="section-title">En Sık Yapılan Görevler</h2></div><ol class="task-steps"><li><div><strong>PDF dosyalarını birleştirmek</strong><p>Aynı teslimata ait dosyaları tek PDF haline getirerek paylaşımı sadeleştirir.</p></div><a class="btn btn-secondary" href="/tools/pdf/merge/">Aracı aç</a></li><li><div><strong>PDF boyutunu küçültmek</strong><p>E-posta veya portal yükleme sınırlarına takılmadan önce dosya boyutunu azaltır.</p></div><a class="btn btn-secondary" href="/tools/pdf/compress/">Aracı aç</a></li><li><div><strong>Belirli sayfaları ayırmak</strong><p>Sadece paylaşılması gereken sayfaları çıkararak gereksiz içerik aktarımını önler.</p></div><a class="btn btn-secondary" href="/tools/pdf/split/">Aracı aç</a></li><li><div><strong>Taranmış PDF metnini almak</strong><p>OCR ile görüntü tabanlı içerikten düzenlenebilir metin çıkarmaya yardımcı olur.</p></div><a class="btn btn-secondary" href="/tools/pdf/pdf-ocr/">Aracı aç</a></li><li><div><strong>PDF dosyasını düzenlenebilir formata çevirmek</strong><p>Word, Excel, metin veya görsel çıktıya geçiş gerektiğinde doğru dönüştürücüyü seçtirir.</p></div><a class="btn btn-secondary" href="/tools/pdf/pdf-to-word/">Aracı aç</a></li></ol></div></section>
+      <section class="guide-section" aria-labelledby="decisionTitle"><div class="container"><div class="section-header"><h2 id="decisionTitle" class="section-title">Hangi Aracı Ne Zaman Kullanmalısınız?</h2></div><div class="decision-table-wrap"><table class="decision-table"><thead><tr><th>İhtiyacınız</th><th>Önerilen Araç</th><th>Neden?</th></tr></thead><tbody><tr><td>Birden çok belgeyi tek dosyada teslim etmek</td><td>PDF Merge</td><td>Dosyaları sıralayıp tek paket halinde paylaşmak için en uygun başlangıçtır.</td></tr><tr><td>Dosya yükleme sınırı nedeniyle hata almak</td><td>PDF Compress</td><td>Boyutu azaltır; sonrasında okunabilirliği kontrol etmeniz gerekir.</td></tr><tr><td>Sadece birkaç sayfayı paylaşmak</td><td>PDF Split</td><td>Gereksiz sayfaları ayırarak daha kontrollü paylaşım sağlar.</td></tr><tr><td>Taranmış belgede arama yapmak</td><td>PDF OCR</td><td>Görüntü tabanlı sayfalardan metin çıkarma iş akışına yönlendirir.</td></tr></tbody></table></div></div></section>
+      <section class="guide-section" aria-labelledby="toolsTitle"><div class="container"><div class="section-header"><h2 id="toolsTitle" class="section-title">PDF Araçları</h2><p class="section-description">Araç kartları kısa açıklama, işlem etiketi ve doğrudan kullanım bağlantısı içerir.</p></div><div class="guide-tools-grid"><article class="guide-tool-card nt-card nt-card--tool">
+              <div class="guide-tool-card__icon"><img src="/logo-bird-44.webp" alt="" width="32" height="32" loading="lazy"> <span>📄</span></div>
+              <div class="guide-tool-card__body"><h3><a href="/tools/pdf/compress/">PDF Compressor</a></h3><p>PDF dosya boyutunu kalite kaybetmeden küçültün. OCR sonrası optimize edin.</p></div>
+              <div class="guide-tool-card__meta"><span>Tarayıcı öncelikli (uygunsa)</span><span>Kullanım verisi yok</span></div>
+              <a class="btn btn-primary" href="/tools/pdf/compress/">Kullan</a>
+            </article><article class="guide-tool-card nt-card nt-card--tool">
+              <div class="guide-tool-card__icon"><img src="/logo-bird-44.webp" alt="" width="32" height="32" loading="lazy"> <span>📄</span></div>
+              <div class="guide-tool-card__body"><h3><a href="/tools/pdf/merge/">PDF Merger</a></h3><p>Birden fazla PDF dosyasını tek bir dosyada birleştirin. 50MB&#x27;a kadar, tamamen tarayıcınızda.</p></div>
+              <div class="guide-tool-card__meta"><span>Tarayıcı öncelikli (uygunsa)</span><span>Kullanım verisi yok</span></div>
+              <a class="btn btn-primary" href="/tools/pdf/merge/">Kullan</a>
+            </article><article class="guide-tool-card nt-card nt-card--tool">
+              <div class="guide-tool-card__icon"><img src="/logo-bird-44.webp" alt="" width="32" height="32" loading="lazy"> <span>📄</span></div>
+              <div class="guide-tool-card__body"><h3><a href="/tools/pdf/pdf-ocr/">PDF OCR (Text Recognition)</a></h3><p>Extract text from scanned PDFs using OCR</p></div>
+              <div class="guide-tool-card__meta"><span>Tarayıcı öncelikli (uygunsa)</span><span>Kullanım verisi yok</span></div>
+              <a class="btn btn-primary" href="/tools/pdf/pdf-ocr/">Kullan</a>
+            </article><article class="guide-tool-card nt-card nt-card--tool">
+              <div class="guide-tool-card__icon"><img src="/logo-bird-44.webp" alt="" width="32" height="32" loading="lazy"> <span>📄</span></div>
+              <div class="guide-tool-card__body"><h3><a href="/tools/pdf/pdf-page-number/">PDF Page Number Adder</a></h3><p>Add page numbers to PDF documents</p></div>
+              <div class="guide-tool-card__meta"><span>Tarayıcı öncelikli (uygunsa)</span><span>Kullanım verisi yok</span></div>
+              <a class="btn btn-primary" href="/tools/pdf/pdf-page-number/">Kullan</a>
+            </article><article class="guide-tool-card nt-card nt-card--tool">
+              <div class="guide-tool-card__icon"><img src="/logo-bird-44.webp" alt="" width="32" height="32" loading="lazy"> <span>📄</span></div>
+              <div class="guide-tool-card__body"><h3><a href="/tools/pdf/pdf-to-excel/">PDF to Excel Converter</a></h3><p>Extract tables from PDF to Excel spreadsheet</p></div>
+              <div class="guide-tool-card__meta"><span>Tarayıcı öncelikli (uygunsa)</span><span>Kullanım verisi yok</span></div>
+              <a class="btn btn-primary" href="/tools/pdf/pdf-to-excel/">Kullan</a>
+            </article><article class="guide-tool-card nt-card nt-card--tool">
+              <div class="guide-tool-card__icon"><img src="/logo-bird-44.webp" alt="" width="32" height="32" loading="lazy"> <span>📄</span></div>
+              <div class="guide-tool-card__body"><h3><a href="/tools/pdf/pdf-to-html/">PDF to HTML Converter</a></h3><p>Convert PDF to web-friendly HTML format</p></div>
+              <div class="guide-tool-card__meta"><span>Tarayıcı öncelikli (uygunsa)</span><span>Kullanım verisi yok</span></div>
+              <a class="btn btn-primary" href="/tools/pdf/pdf-to-html/">Kullan</a>
+            </article><article class="guide-tool-card nt-card nt-card--tool">
+              <div class="guide-tool-card__icon"><img src="/logo-bird-44.webp" alt="" width="32" height="32" loading="lazy"> <span>📄</span></div>
+              <div class="guide-tool-card__body"><h3><a href="/tools/pdf/pdf-to-jpg/">PDF to JPG Converter</a></h3><p>Convert PDF pages to JPG images</p></div>
+              <div class="guide-tool-card__meta"><span>Tarayıcı öncelikli (uygunsa)</span><span>Kullanım verisi yok</span></div>
+              <a class="btn btn-primary" href="/tools/pdf/pdf-to-jpg/">Kullan</a>
+            </article><article class="guide-tool-card nt-card nt-card--tool">
+              <div class="guide-tool-card__icon"><img src="/logo-bird-44.webp" alt="" width="32" height="32" loading="lazy"> <span>📄</span></div>
+              <div class="guide-tool-card__body"><h3><a href="/tools/pdf/pdf-to-png/">PDF to PNG Converter</a></h3><p>Convert PDF pages to high-quality PNG images</p></div>
+              <div class="guide-tool-card__meta"><span>Tarayıcı öncelikli (uygunsa)</span><span>Kullanım verisi yok</span></div>
+              <a class="btn btn-primary" href="/tools/pdf/pdf-to-png/">Kullan</a>
+            </article><article class="guide-tool-card nt-card nt-card--tool">
+              <div class="guide-tool-card__icon"><img src="/logo-bird-44.webp" alt="" width="32" height="32" loading="lazy"> <span>📄</span></div>
+              <div class="guide-tool-card__body"><h3><a href="/tools/pdf/pdf-to-powerpoint/">PDF to PowerPoint Converter</a></h3><p>Convert PDF slides to PowerPoint presentation</p></div>
+              <div class="guide-tool-card__meta"><span>Tarayıcı öncelikli (uygunsa)</span><span>Kullanım verisi yok</span></div>
+              <a class="btn btn-primary" href="/tools/pdf/pdf-to-powerpoint/">Kullan</a>
+            </article><article class="guide-tool-card nt-card nt-card--tool">
+              <div class="guide-tool-card__icon"><img src="/logo-bird-44.webp" alt="" width="32" height="32" loading="lazy"> <span>📄</span></div>
+              <div class="guide-tool-card__body"><h3><a href="/tools/pdf/pdf-to-text/">PDF to Text Converter</a></h3><p>Extract plain text from PDF documents</p></div>
+              <div class="guide-tool-card__meta"><span>Tarayıcı öncelikli (uygunsa)</span><span>Kullanım verisi yok</span></div>
+              <a class="btn btn-primary" href="/tools/pdf/pdf-to-text/">Kullan</a>
+            </article><article class="guide-tool-card nt-card nt-card--tool">
+              <div class="guide-tool-card__icon"><img src="/logo-bird-44.webp" alt="" width="32" height="32" loading="lazy"> <span>📄</span></div>
+              <div class="guide-tool-card__body"><h3><a href="/tools/pdf/pdf-to-word/">PDF to Word Converter</a></h3><p>Convert PDF documents to editable Word format online for free</p></div>
+              <div class="guide-tool-card__meta"><span>Tarayıcı öncelikli (uygunsa)</span><span>Kullanım verisi yok</span></div>
+              <a class="btn btn-primary" href="/tools/pdf/pdf-to-word/">Kullan</a>
+            </article><article class="guide-tool-card nt-card nt-card--tool">
+              <div class="guide-tool-card__icon"><img src="/logo-bird-44.webp" alt="" width="32" height="32" loading="lazy"> <span>📄</span></div>
+              <div class="guide-tool-card__body"><h3><a href="/tools/pdf/pdf-watermark/">PDF Watermark Adder</a></h3><p>Add text or image watermarks to PDF</p></div>
+              <div class="guide-tool-card__meta"><span>Tarayıcı öncelikli (uygunsa)</span><span>Kullanım verisi yok</span></div>
+              <a class="btn btn-primary" href="/tools/pdf/pdf-watermark/">Kullan</a>
+            </article><article class="guide-tool-card nt-card nt-card--tool">
+              <div class="guide-tool-card__icon"><img src="/logo-bird-44.webp" alt="" width="32" height="32" loading="lazy"> <span>📄</span></div>
+              <div class="guide-tool-card__body"><h3><a href="/tools/pdf/split/">PDF Splitter</a></h3><p>PDF dosyasını sayfalara ayırın. Belirli sayfaları veya aralıkları çıkarın.</p></div>
+              <div class="guide-tool-card__meta"><span>Tarayıcı öncelikli (uygunsa)</span><span>Kullanım verisi yok</span></div>
+              <a class="btn btn-primary" href="/tools/pdf/split/">Kullan</a>
+            </article></div></div></section>
+      <section class="guide-section" aria-labelledby="articlesTitle"><div class="container"><div class="section-header"><h2 id="articlesTitle" class="section-title">İlgili Blog Yazıları ve Rehberler</h2></div><div class="related-article-grid"><article class="related-article-card"><h3><a href="/blog/articles/compress-pdf-for-email-without-ruining-readability.html">Compress PDF for email without ruining readability</a></h3><p>E-posta öncesinde dosya boyutu ve okunabilirlik dengesini kontrol edin.</p><a href="/blog/articles/compress-pdf-for-email-without-ruining-readability.html">Rehberi oku →</a></article><article class="related-article-card"><h3><a href="/blog/articles/merge-pdf-files-client-documents-checklist.html">Merge PDF files client documents checklist</a></h3><p>Müşteri dokümanlarını tek PDF yapmadan önce sıralama ve kontrol adımları.</p><a href="/blog/articles/merge-pdf-files-client-documents-checklist.html">Rehberi oku →</a></article><article class="related-article-card"><h3><a href="/blog/articles/pdf-watermark-before-client-review.html">PDF watermark before client review</a></h3><p>İnceleme kopyalarında filigranı ne zaman kullanmanız gerektiğini öğrenin.</p><a href="/blog/articles/pdf-watermark-before-client-review.html">Rehberi oku →</a></article></div></div></section>
+      <section class="guide-section" aria-labelledby="faqTitle"><div class="container"><div class="section-header"><h2 id="faqTitle" class="section-title">Sık Sorulan Sorular</h2></div><div class="faq-accordion"><details><summary>PDF Araçları ücretsiz mi?</summary><p>Evet. Bu kategori sayfası NovaTools içinde yer alan ilgili online araçlara doğrudan bağlantı verir ve hızlı başlangıç için hazırlanmıştır.</p></details><details><summary>Hangi aracı seçmem gerektiğini nasıl anlarım?</summary><p>Önce en sık yapılan görevler bölümünü, ardından karar destek tablosunu inceleyin. İhtiyacınız önerilen araçla eşleştirilir.</p></details><details><summary>Bu sayfadaki araçlar mobilde kullanılabilir mi?</summary><p>Sayfa mobil öncelikli düzenlenmiştir. Araçların ayrıntılı giriş alanları ilgili araç sayfasında ayrıca kontrol edilmelidir.</p></details><details><summary>Sonuçları paylaşmadan önce neyi kontrol etmeliyim?</summary><p>Dosya adı, çıktı formatı, gizlilik ihtiyacı ve okunabilirlik gibi temel kalite kontrollerini yapmanız önerilir.</p></details><details><summary>İlgili rehberler ne işe yarar?</summary><p>Blog rehberleri, araç seçimi ve çıktı kontrolü konusunda daha fazla bağlam vererek hatalı kullanım riskini azaltır.</p></details></div></div></section>
+      <aside class="guide-section other-categories" aria-labelledby="otherCategoriesTitle"><div class="container"><div class="section-header"><h2 id="otherCategoriesTitle" class="section-title">Diğer Kategoriler</h2></div><div class="other-category-grid"><a class="other-category-card" href="/categories/image-tools.html"><strong>Image Tools</strong><span>Optimize and edit images</span></a><a class="other-category-card" href="/categories/finance-tools.html"><strong>Finance Tools</strong><span>Hesaplama Araçları for your money</span></a><a class="other-category-card" href="/categories/text-writing.html"><strong>Metin ve Yazım Araçları</strong><span>Writing and text utilities</span></a></div></div></aside>
+    </article>
   </main>
-
-  <footer class="main-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-col">
-          <h4>MC NovaTools</h4>
-          <p data-i18n="common.footerDesc">Professional online tools for PDF, image, finance, and development.</p>
-          <p>Metehan ÇETİN, LPC</p>
-        </div>
-
-        <div class="footer-col">
-          <h4 data-i18n="categories.pdf.sectionTitle">PDF Tools</h4>
-          <ul>
-            <li><a href="/tools/pdf/merge/">PDF Merge</a></li>
-            <li><a href="/tools/pdf/compress/">PDF Compress</a></li>
-            <li><a href="/tools/pdf/split/">PDF Split</a></li>
-            <li><a href="/tools/pdf/pdf-to-word/">PDF to Word</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4 data-i18n="common.company">Company</h4>
-          <ul>
-            <li><a href="/about-us.html" data-i18n="common.aboutUs">About Us</a></li>
-            <li><a href="/blog/index.html" data-i18n="nav.blog">Blog</a></li>
-            <li><a href="/contact.html" data-i18n="nav.contact">Contact</a></li>
-            <li><a href="/request-tool.html" data-i18n="nav.request">Request Tool</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4 data-i18n="common.legal">Legal</h4>
-          <ul>
-            <li><a href="/privacy-policy.html" data-i18n="nav.privacy">Privacy Policy</a></li>
-            <li><a href="/terms-of-service.html" data-i18n="nav.terms">Terms of Service</a></li>
-            <li><a href="/cookie-policy.html" data-i18n="nav.cookies">Cookie Policy</a></li>
-            <li><a href="/security.html" data-i18n="nav.security">Security</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <p data-i18n="footer.copyright">© 2026 MC NovaTools. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
+  <footer class="guide-footer"><div class="container guide-footer__grid"><div><strong>MC NovaTools</strong><p>Pratik online araçlar ve karar destek rehberleri.</p></div><nav aria-label="Footer"><a href="/categories/index.html">Kategoriler</a><a href="/blog/index.html">Blog</a><a href="/privacy-policy.html">Privacy Policy</a><a href="/contact.html">Contact</a></nav></div><div class="container guide-footer__bottom">NovaTools © 2026 - Tüm hakları saklıdır.</div></footer>
 </body>
 </html>

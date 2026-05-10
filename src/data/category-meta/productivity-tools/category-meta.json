@@ -1,0 +1,99 @@
+{
+  "slug": "productivity-tools",
+  "name": "Verimlilik Araçları",
+  "description": "Pomodoro, not, görev, zaman takibi ve alışkanlık araçlarını günlük verimlilik akışları için görev listesi, SSS ve linklerle keşfedin.",
+  "targetAudience": [
+    {
+      "title": "Freelancerlar için",
+      "description": "Zaman takibi, görev listesi ve not alma araçlarını tek kategoride toplar.",
+      "tools": [
+        "productivity/time-tracker",
+        "productivity/todo-list"
+      ]
+    },
+    {
+      "title": "Öğrenciler için",
+      "description": "Pomodoro, alışkanlık ve geri sayım akışlarıyla çalışma düzeni kurmaya yardımcı olur.",
+      "tools": [
+        "productivity/pomodoro-timer",
+        "productivity/habit-tracker"
+      ]
+    },
+    {
+      "title": "Ekipler için",
+      "description": "Kanban, not ve dünya saati gibi araçlarla günlük koordinasyonu kolaylaştırır.",
+      "tools": [
+        "productivity/kanban-board",
+        "productivity/world-clock"
+      ]
+    }
+  ],
+  "commonTasks": [
+    {
+      "name": "Productivity içinde hızlı başlangıç",
+      "description": "En sık kullanılan aracı seçip doğrudan ilgili iş akışına geçmenizi sağlar.",
+      "tool": "productivity/time-tracker"
+    },
+    {
+      "name": "Productivity çıktısını kontrol etmek",
+      "description": "Sonucu paylaşmadan önce biçim, ölçü veya içerik tutarlılığını gözden geçirmenize yardımcı olur.",
+      "tool": "productivity/pomodoro-timer"
+    },
+    {
+      "name": "Alternatif aracı seçmek",
+      "description": "Benzer görevler arasında ihtiyacınıza uygun aracı karşılaştırarak seçmenizi kolaylaştırır.",
+      "tool": "productivity/kanban-board"
+    }
+  ],
+  "decisionTable": [
+    {
+      "need": "Hızlı tek adımlı işlem gerekiyorsa",
+      "recommendedTool": "Productivity",
+      "why": "Kategori içindeki doğrudan araç kartlarından başlayın."
+    },
+    {
+      "need": "Çıktıyı paylaşmadan önce kontrol gerekiyorsa",
+      "recommendedTool": "İlgili rehberler",
+      "why": "Blog bağlantıları ek kontrol ve kalite adımlarını açıklar."
+    },
+    {
+      "need": "Benzer araçlar arasında seçim yapamıyorsanız",
+      "recommendedTool": "Karar tablosu",
+      "why": "İhtiyacınızı önerilen araçla eşleştirerek seçim süresini azaltır."
+    }
+  ],
+  "relatedArticles": [
+    {
+      "title": "Tool selection map for new users",
+      "url": "/blog/articles/tool-selection-map-for-new-users.html",
+      "summary": "Yeni kullanıcılar için kategori ve araç seçme haritası."
+    },
+    {
+      "title": "Browser tool empty state loading success",
+      "url": "/blog/articles/browser-tool-empty-state-loading-success.html",
+      "summary": "Araç akışlarında boş, yükleniyor ve başarı durumlarını anlama rehberi."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Productivity ücretsiz mi?",
+      "answer": "Evet. Bu kategori sayfası NovaTools içinde yer alan ilgili online araçlara doğrudan bağlantı verir ve hızlı başlangıç için hazırlanmıştır."
+    },
+    {
+      "question": "Hangi aracı seçmem gerektiğini nasıl anlarım?",
+      "answer": "Önce en sık yapılan görevler bölümünü, ardından karar destek tablosunu inceleyin. İhtiyacınız önerilen araçla eşleştirilir."
+    },
+    {
+      "question": "Bu sayfadaki araçlar mobilde kullanılabilir mi?",
+      "answer": "Sayfa mobil öncelikli düzenlenmiştir. Araçların ayrıntılı giriş alanları ilgili araç sayfasında ayrıca kontrol edilmelidir."
+    },
+    {
+      "question": "Sonuçları paylaşmadan önce neyi kontrol etmeliyim?",
+      "answer": "Dosya adı, çıktı formatı, gizlilik ihtiyacı ve okunabilirlik gibi temel kalite kontrollerini yapmanız önerilir."
+    },
+    {
+      "question": "İlgili rehberler ne işe yarar?",
+      "answer": "Blog rehberleri, araç seçimi ve çıktı kontrolü konusunda daha fazla bağlam vererek hatalı kullanım riskini azaltır."
+    }
+  ]
+}

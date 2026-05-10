@@ -1,0 +1,99 @@
+{
+  "slug": "security-tools",
+  "name": "Güvenlik Araçları",
+  "description": "Şifre, hash, UUID, SSL, JWT ve güvenlik kontrol araçlarını karar tablosu, SSS, persona kartları ve doğrudan kullanım linkleriyle inceleyin.",
+  "targetAudience": [
+    {
+      "title": "Geliştiriciler için",
+      "description": "JWT, UUID, hash ve şifre üretimi gibi kontrolleri hızlıca test eder.",
+      "tools": [
+        "security/jwt-decoder",
+        "security/uuid-generator"
+      ]
+    },
+    {
+      "title": "Site sahipleri için",
+      "description": "SSL ve kullanıcı ajanı gibi teknik bilgileri kontrol ederek bakım akışını destekler.",
+      "tools": [
+        "security/ssl-checker",
+        "security/user-agent-parser"
+      ]
+    },
+    {
+      "title": "Günlük kullanıcılar için",
+      "description": "Güçlü şifre üretme ve şifre gücü kontrolü için pratik başlangıç sağlar.",
+      "tools": [
+        "security/password-generator",
+        "security/password-strength"
+      ]
+    }
+  ],
+  "commonTasks": [
+    {
+      "name": "Security Tools içinde hızlı başlangıç",
+      "description": "En sık kullanılan aracı seçip doğrudan ilgili iş akışına geçmenizi sağlar.",
+      "tool": "security/jwt-decoder"
+    },
+    {
+      "name": "Security Tools çıktısını kontrol etmek",
+      "description": "Sonucu paylaşmadan önce biçim, ölçü veya içerik tutarlılığını gözden geçirmenize yardımcı olur.",
+      "tool": "security/ssl-checker"
+    },
+    {
+      "name": "Alternatif aracı seçmek",
+      "description": "Benzer görevler arasında ihtiyacınıza uygun aracı karşılaştırarak seçmenizi kolaylaştırır.",
+      "tool": "security/password-generator"
+    }
+  ],
+  "decisionTable": [
+    {
+      "need": "Hızlı tek adımlı işlem gerekiyorsa",
+      "recommendedTool": "Security Tools",
+      "why": "Kategori içindeki doğrudan araç kartlarından başlayın."
+    },
+    {
+      "need": "Çıktıyı paylaşmadan önce kontrol gerekiyorsa",
+      "recommendedTool": "İlgili rehberler",
+      "why": "Blog bağlantıları ek kontrol ve kalite adımlarını açıklar."
+    },
+    {
+      "need": "Benzer araçlar arasında seçim yapamıyorsanız",
+      "recommendedTool": "Karar tablosu",
+      "why": "İhtiyacınızı önerilen araçla eşleştirerek seçim süresini azaltır."
+    }
+  ],
+  "relatedArticles": [
+    {
+      "title": "Tool selection map for new users",
+      "url": "/blog/articles/tool-selection-map-for-new-users.html",
+      "summary": "Yeni kullanıcılar için kategori ve araç seçme haritası."
+    },
+    {
+      "title": "Browser tool empty state loading success",
+      "url": "/blog/articles/browser-tool-empty-state-loading-success.html",
+      "summary": "Araç akışlarında boş, yükleniyor ve başarı durumlarını anlama rehberi."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Security Araçları ücretsiz mi?",
+      "answer": "Evet. Bu kategori sayfası NovaTools içinde yer alan ilgili online araçlara doğrudan bağlantı verir ve hızlı başlangıç için hazırlanmıştır."
+    },
+    {
+      "question": "Hangi aracı seçmem gerektiğini nasıl anlarım?",
+      "answer": "Önce en sık yapılan görevler bölümünü, ardından karar destek tablosunu inceleyin. İhtiyacınız önerilen araçla eşleştirilir."
+    },
+    {
+      "question": "Bu sayfadaki araçlar mobilde kullanılabilir mi?",
+      "answer": "Sayfa mobil öncelikli düzenlenmiştir. Araçların ayrıntılı giriş alanları ilgili araç sayfasında ayrıca kontrol edilmelidir."
+    },
+    {
+      "question": "Sonuçları paylaşmadan önce neyi kontrol etmeliyim?",
+      "answer": "Dosya adı, çıktı formatı, gizlilik ihtiyacı ve okunabilirlik gibi temel kalite kontrollerini yapmanız önerilir."
+    },
+    {
+      "question": "İlgili rehberler ne işe yarar?",
+      "answer": "Blog rehberleri, araç seçimi ve çıktı kontrolü konusunda daha fazla bağlam vererek hatalı kullanım riskini azaltır."
+    }
+  ]
+}

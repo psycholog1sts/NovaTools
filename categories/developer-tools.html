@@ -1,802 +1,111 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="tr" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Free Developer Tools | JSON, Regex, Base64, Formatters | MC NovaTools</title>
-  <meta name="description" content="Free developer tools for JSON formatting, regex testing, code formatting, JSON validation, Base64 conversion, URL encoding, Markdown conversion, CSS/JS minification, and more.">
-  <meta name="keywords" content="developer tools, json formatter, regex tester, base64 converter, json validator, code formatter, css minifier, js minifier, url encoder">
-  <meta name="author" content="Metehan ÇETİN, LPC">
+  <title>Geliştirici Araçları | NovaTools</title>
+  <meta name="description" content="JSON, regex, Base64, minify ve format araçlarını geliştirici iş akışlarına göre karar tablosu, SSS ve doğrudan linklerle seçin.">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="theme-color" content="#0A0A0C">
-
-  <meta property="og:title" content="Free Developer Tools | JSON, Regex, Base64, Formatters | MC NovaTools">
-  <meta property="og:description" content="Free developer tools for JSON formatting, regex testing, encoding, validation, minification, and quick browser-based workflows.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://mc-novatools.com/categories/developer-tools.html">
-  <meta property="og:image" content="https://mc-novatools.com/og-developer-tools.png">
-
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Free Developer Tools | MC NovaTools">
-  <meta name="twitter:description" content="Use free developer utilities for JSON, regex, Base64, formatting, encoding, conversion, and debugging.">
-
+  <meta name="author" content="Metehan ÇETİN, LPC">
   <link rel="canonical" href="https://mc-novatools.com/categories/developer-tools.html">
-  <link rel="alternate" hreflang="en" href="https://mc-novatools.com/categories/developer-tools.html">
+  <link rel="alternate" hreflang="tr" href="https://mc-novatools.com/categories/developer-tools.html">
   <link rel="alternate" hreflang="x-default" href="https://mc-novatools.com/categories/developer-tools.html">
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/styles/critical.css">
+  <link rel="stylesheet" href="/src/styles/design-system.css">
+  <link rel="stylesheet" href="/src/styles/component-library.css">
+  <link rel="stylesheet" href="/src/styles/layout.css">
+  <link rel="stylesheet" href="/src/styles/category-guides.css">
   <script src="/i18n.js" defer></script>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    "name": "Free Developer Tools",
-    "description": "Free developer tools for JSON formatting, regex testing, code formatting, validation, encoding, conversion, and minification.",
-    "url": "https://mc-novatools.com/categories/developer-tools.html",
-    "breadcrumb": {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://mc-novatools.com/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Developer Tools",
-          "item": "https://mc-novatools.com/categories/developer-tools.html"
-        }
-      ]
-    }
-  }
-  </script>
-
-  <style>
-    :root {
-      --bg: #06070b;
-      --bg-soft: #0d111a;
-      --panel: rgba(17, 24, 39, 0.72);
-      --panel-strong: rgba(15, 23, 42, 0.92);
-      --border: rgba(255, 255, 255, 0.08);
-      --text: #f8fafc;
-      --muted: #a5b4c7;
-      --primary: #22d3ee;
-      --primary-2: #8b5cf6;
-      --accent: #f59e0b;
-      --glow: 0 20px 60px rgba(34, 211, 238, 0.12);
-      --radius: 20px;
-      --container: 1180px;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      color: var(--text);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(245, 158, 11, 0.16), transparent 28%),
-        radial-gradient(circle at top right, rgba(34, 211, 238, 0.12), transparent 24%),
-        linear-gradient(180deg, #05060a 0%, #090b12 100%);
-      min-height: 100vh;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .container {
-      width: min(var(--container), calc(100% - 32px));
-      margin: 0 auto;
-    }
-
-    .main-header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      backdrop-filter: blur(14px);
-      background: rgba(6, 7, 11, 0.84);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .header-inner {
-      min-height: 78px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .logo {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      font-size: 1.35rem;
-      white-space: nowrap;
-    }
-
-    .logo-mc {
-      color: #22c55e;
-    }
-
-    .nav-desktop {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
-
-    .nav-desktop a {
-      color: var(--muted);
-      font-weight: 500;
-      transition: 0.2s ease;
-    }
-
-    .nav-desktop a:hover,
-    .nav-desktop a.active {
-      color: var(--text);
-    }
-
-    .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .language-selector {
-      min-width: 150px;
-      height: 42px;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      background: rgba(255, 255, 255, 0.04);
-      color: var(--text);
-      padding: 0 12px;
-      outline: none;
-    }
-
-    .breadcrumb-nav {
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-      background: rgba(255,255,255,0.01);
-    }
-
-    .breadcrumb {
-      list-style: none;
-      display: flex;
-      gap: 10px;
-      padding: 14px 0;
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    .breadcrumb li + li::before {
-      content: "/";
-      margin-right: 10px;
-      color: rgba(255,255,255,0.22);
-    }
-
-    .main-content {
-      padding-bottom: 64px;
-    }
-
-    .category-hero {
-      padding: 72px 0 28px;
-    }
-
-    .hero-card {
-      position: relative;
-      overflow: hidden;
-      background:
-        radial-gradient(circle at top left, rgba(245, 158, 11, 0.20), transparent 26%),
-        radial-gradient(circle at bottom right, rgba(34, 211, 238, 0.14), transparent 28%),
-        linear-gradient(180deg, rgba(15, 23, 42, 0.9), rgba(10, 14, 22, 0.96));
-      border: 1px solid var(--border);
-      border-radius: 28px;
-      padding: 40px;
-      box-shadow: var(--glow);
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      min-height: 34px;
-      padding: 0 14px;
-      border-radius: 999px;
-      background: rgba(245, 158, 11, 0.10);
-      border: 1px solid rgba(245, 158, 11, 0.22);
-      color: #ffe4b0;
-      font-size: 0.92rem;
-      font-weight: 600;
-      margin-bottom: 18px;
-    }
-
-    .category-title {
-      margin: 0 0 14px;
-      font-size: clamp(2.2rem, 5vw, 4rem);
-      line-height: 1.02;
-      letter-spacing: -0.04em;
-    }
-
-    .category-description {
-      margin: 0;
-      max-width: 780px;
-      font-size: 1.08rem;
-      line-height: 1.75;
-      color: var(--muted);
-    }
-
-    .category-stats {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-      margin-top: 28px;
-    }
-
-    .stat {
-      display: block;
-      padding: 18px;
-      border-radius: 18px;
-      border: 1px solid var(--border);
-      background: rgba(255, 255, 255, 0.03);
-      font-weight: 700;
-      color: #eaf2ff;
-    }
-
-    .tools-section,
-    .content-section,
-    .faq-section {
-      padding: 24px 0;
-    }
-
-    .section-title,
-    .content-section h2,
-    .faq-section h2 {
-      margin: 0 0 18px;
-      font-size: 1.8rem;
-      letter-spacing: -0.03em;
-    }
-
-    .grid {
-      display: grid;
-      gap: 20px;
-    }
-
-    .grid-3 {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
-    .tool-card {
-      display: flex;
-      flex-direction: column;
-      padding: 24px;
-      border-radius: 22px;
-      background: linear-gradient(180deg, rgba(17, 24, 39, 0.82), rgba(9, 13, 20, 0.96));
-      border: 1px solid var(--border);
-      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.22);
-      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-      min-height: 100%;
-    }
-
-    .tool-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(245, 158, 11, 0.35);
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
-    }
-
-    .tool-icon {
-      width: 56px;
-      height: 56px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 16px;
-      font-size: 1.5rem;
-      margin-bottom: 16px;
-      background: linear-gradient(135deg, rgba(245, 158, 11, 0.16), rgba(34, 211, 238, 0.12));
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .tool-card h3 {
-      margin: 0 0 10px;
-      font-size: 1.12rem;
-      line-height: 1.35;
-    }
-
-    .tool-card p {
-      margin: 0 0 16px;
-      color: var(--muted);
-      line-height: 1.65;
-      flex: 1;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 44px;
-      padding: 0 16px;
-      border-radius: 12px;
-      font-weight: 700;
-      border: 1px solid transparent;
-      transition: 0.2s ease;
-    }
-
-    .btn-primary {
-      color: white;
-      background: linear-gradient(135deg, #f59e0b, #8b5cf6);
-      box-shadow: 0 16px 40px rgba(245, 158, 11, 0.18);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      filter: brightness(1.05);
-    }
-
-    .panel {
-      padding: 28px;
-      border-radius: 24px;
-      border: 1px solid var(--border);
-      background: linear-gradient(180deg, rgba(12, 18, 30, 0.9), rgba(8, 11, 18, 0.98));
-      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.22);
-    }
-
-    .content-section p,
-    .content-section li,
-    .faq-item p {
-      color: var(--muted);
-      line-height: 1.8;
-    }
-
-    .content-section ul,
-    .content-section ol {
-      padding-left: 20px;
-      margin-top: 10px;
-      margin-bottom: 18px;
-    }
-
-    .content-section h3 {
-      margin: 22px 0 10px;
-      font-size: 1.2rem;
-      letter-spacing: -0.02em;
-    }
-
-    .faq-list {
-      display: grid;
-      gap: 16px;
-    }
-
-    .faq-item {
-      padding: 22px;
-      border-radius: 18px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.03);
-    }
-
-    .faq-item h3 {
-      margin: 0 0 10px;
-      font-size: 1.08rem;
-    }
-
-    .main-footer {
-      border-top: 1px solid var(--border);
-      background: rgba(6, 7, 11, 0.7);
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 24px;
-      padding: 28px 0 20px;
-    }
-
-    .footer-col h4 {
-      margin: 0 0 12px;
-      font-size: 1rem;
-    }
-
-    .footer-col p,
-    .footer-col li,
-    .footer-bottom p {
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    .footer-col ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .footer-col li + li {
-      margin-top: 8px;
-    }
-
-    .footer-col a {
-      color: #baf4ff;
-    }
-
-    .footer-bottom {
-      padding: 0 0 32px;
-    }
-
-    .footer-bottom p {
-      margin: 0;
-    }
-
-    @media (max-width: 980px) {
-      .header-inner {
-        min-height: auto;
-        padding: 14px 0;
-        flex-wrap: wrap;
-      }
-
-      .nav-desktop {
-        width: 100%;
-      }
-
-      .grid-3,
-      .category-stats,
-      .footer-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .hero-card,
-      .panel {
-        padding: 22px;
-      }
-
-      .category-hero {
-        padding-top: 42px;
-      }
-
-      .language-selector,
-      .header-actions {
-        width: 100%;
-      }
-    }
-
-
-    .guide-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-
-    .guide-grid > div {
-      padding: 1rem;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 16px;
-    }
-
-    .guide-grid ul {
-      padding-left: 1.25rem;
-      margin-bottom: 0;
-    }
-
-    .category-guide-note {
-      margin-top: 1rem;
-      color: var(--muted);
-    }
-</style>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://mc-novatools.com/"}, {"@type": "ListItem", "position": 2, "name": "Geliştirici Araçları", "item": "https://mc-novatools.com/categories/developer-tools.html"}]}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Geliştirici Araçları ücretsiz mi?", "acceptedAnswer": {"@type": "Answer", "text": "Evet. Bu kategori sayfası NovaTools içinde yer alan ilgili online araçlara doğrudan bağlantı verir ve hızlı başlangıç için hazırlanmıştır."}}, {"@type": "Question", "name": "Hangi aracı seçmem gerektiğini nasıl anlarım?", "acceptedAnswer": {"@type": "Answer", "text": "Önce en sık yapılan görevler bölümünü, ardından karar destek tablosunu inceleyin. İhtiyacınız önerilen araçla eşleştirilir."}}, {"@type": "Question", "name": "Bu sayfadaki araçlar mobilde kullanılabilir mi?", "acceptedAnswer": {"@type": "Answer", "text": "Sayfa mobil öncelikli düzenlenmiştir. Araçların ayrıntılı giriş alanları ilgili araç sayfasında ayrıca kontrol edilmelidir."}}, {"@type": "Question", "name": "Sonuçları paylaşmadan önce neyi kontrol etmeliyim?", "acceptedAnswer": {"@type": "Answer", "text": "Dosya adı, çıktı formatı, gizlilik ihtiyacı ve okunabilirlik gibi temel kalite kontrollerini yapmanız önerilir."}}, {"@type": "Question", "name": "İlgili rehberler ne işe yarar?", "acceptedAnswer": {"@type": "Answer", "text": "Blog rehberleri, araç seçimi ve çıktı kontrolü konusunda daha fazla bağlam vererek hatalı kullanım riskini azaltır."}}]}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "ItemList", "name": "Geliştirici Araçları", "itemListElement": [{"@type": "ListItem", "position": 1, "url": "https://mc-novatools.com/tools/dev/base64-converter/", "name": "Base64 Encoder/Decoder"}, {"@type": "ListItem", "position": 2, "url": "https://mc-novatools.com/tools/dev/code-formatter/", "name": "Code Formatter"}, {"@type": "ListItem", "position": 3, "url": "https://mc-novatools.com/tools/dev/color-converter/", "name": "Color Converter"}, {"@type": "ListItem", "position": 4, "url": "https://mc-novatools.com/tools/dev/css-minifier/", "name": "CSS Minifier"}, {"@type": "ListItem", "position": 5, "url": "https://mc-novatools.com/tools/dev/html-to-markdown/", "name": "HTML to Markdown"}, {"@type": "ListItem", "position": 6, "url": "https://mc-novatools.com/tools/dev/js-minifier/", "name": "JavaScript Minifier"}, {"@type": "ListItem", "position": 7, "url": "https://mc-novatools.com/tools/dev/json-formatter/", "name": "JSON Formatter"}, {"@type": "ListItem", "position": 8, "url": "https://mc-novatools.com/tools/dev/json-validator/", "name": "JSON Validator & Formatter"}, {"@type": "ListItem", "position": 9, "url": "https://mc-novatools.com/tools/dev/lorem-generator/", "name": "Lorem Ipsum Generator"}, {"@type": "ListItem", "position": 10, "url": "https://mc-novatools.com/tools/dev/markdown-to-html/", "name": "Markdown to HTML"}, {"@type": "ListItem", "position": 11, "url": "https://mc-novatools.com/tools/dev/regex-tester/", "name": "Regex Tester"}, {"@type": "ListItem", "position": 12, "url": "https://mc-novatools.com/tools/dev/url-encoder/", "name": "URL Encoder/Decoder"}]}</script>
 </head>
-<body>
-  <header class="main-header">
-    <div class="container">
-      <div class="header-inner">
-        <a href="/" class="logo" aria-label="MC NovaTools Home">
-          <span class="logo-text">MC <span class="logo-mc">NovaTools</span></span>
-        </a>
-
-        <nav class="nav-desktop" aria-label="Main navigation">
-          <a href="/categories/pdf-tools.html" data-i18n="nav.pdf">PDF</a>
-          <a href="/categories/image-tools.html" data-i18n="nav.image">Image</a>
-          <a href="/categories/finance-tools.html" data-i18n="nav.finance">Finance</a>
-          <a href="/categories/developer-tools.html" class="active" data-i18n="nav.developer">Developer</a>
-          <a href="/categories/text-writing.html" data-i18n="nav.text">Text</a>
-          <a href="/about-us" data-i18n="nav.about">About</a>
-        </nav>
-
-        <div class="header-actions">
-          <select id="language-selector" class="language-selector" aria-label="Select Language">
-            <option value="en">🇬🇧 English</option>
-            <option value="tr">🇹🇷 Türkçe</option>
-            <option value="de">🇩🇪 Deutsch</option>
-            <option value="fr">🇫🇷 Français</option>
-            <option value="es">🇪🇸 Español</option>
-            <option value="pt">🇵🇹 Português</option>
-            <option value="ru">🇷🇺 Русский</option>
-            <option value="zh">🇨🇳 中文</option>
-            <option value="ja">🇯🇵 日本語</option>
-            <option value="ko">🇰🇷 한국어</option>
-            <option value="ar">🇸🇦 العربية</option>
-            <option value="hi">🇮🇳 हिंदी</option>
-            <option value="it">🇮🇹 Italiano</option>
-            <option value="pl">🇵🇱 Polski</option>
-            <option value="nl">🇳🇱 Nederlands</option>
-          </select>
-        </div>
-      </div>
-    </div>
+<body class="category-guide-page">
+  <header class="guide-header">
+    <div class="container guide-header__inner"><a class="logo" href="/" aria-label="NovaTools ana sayfa"><span class="logo-text">MC NovaTools</span></a><nav class="guide-nav" aria-label="Main navigation"><a href="/categories/index.html">Categories</a><a href="/categories/pdf-tools.html">PDF</a><a href="/categories/image-tools.html">Image</a><a href="/categories/finance-tools.html">Finance</a><a href="/categories/developer-tools.html">Developer</a><a href="/blog/index.html">Blog</a></nav><div class="header-actions"><select id="language-selector" class="language-selector" aria-label="Select Language"><option value="en">🇬🇧 English</option><option value="tr">🇹🇷 Türkçe</option><option value="de">🇩🇪 Deutsch</option><option value="fr">🇫🇷 Français</option><option value="es">🇪🇸 Español</option><option value="pt">🇵🇹 Português</option><option value="ru">🇷🇺 Русский</option><option value="zh">🇨🇳 中文</option><option value="ja">🇯🇵 日本語</option><option value="ko">🇰🇷 한국어</option><option value="ar">🇸🇦 العربية</option><option value="hi">🇮🇳 हिंदी</option><option value="it">🇮🇹 Italiano</option><option value="pl">🇵🇱 Polski</option><option value="nl">🇳🇱 Nederlands</option></select></div></div>
   </header>
-
-  <nav aria-label="Breadcrumb" class="breadcrumb-nav">
-    <div class="container">
-      <ol class="breadcrumb">
-        <li><a href="/" data-i18n="nav.home">Home</a></li>
-        <li aria-current="page" data-i18n="categories.developer.sectionTitle">Developer Tools</li>
-      </ol>
-    </div>
-  </nav>
-
-  <main class="main-content">
-    <section class="category-hero">
-      <div class="container">
-        <div class="hero-card">
-          <div class="hero-badge" data-i18n="categories.developer.badge">Free Browser-Based Developer Utilities</div>
-          <h1 class="category-title" data-i18n="categories.developer.title">Developer Tools for JSON, Regex, Encoding, Formatting, and Quick Debug Work</h1>
-          <p class="category-description" data-i18n="categories.developer.description">
-            Open fast developer utilities from one place. Format JSON, test regex patterns, validate payloads,
-            encode and decode data, convert Markdown and HTML, and minify front-end code for cleaner workflows.
-          </p>
-          <div class="category-stats">
-            <span class="stat">12 Practical Dev Tools</span>
-            <span class="stat">Fast browser-first workflows</span>
-            <span class="stat">Built for clean utility use</span>
-          </div>
+  <main class="category-guide-main">
+    <article>
+      <nav class="container guide-breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">Ana Sayfa</a></li><li aria-current="page">Geliştirici Araçları</li></ol></nav>
+      <header class="category-guide-hero">
+        <div class="container category-guide-hero__grid">
+          <div class="category-guide-hero__icon" style="--category-accent: #F59E0B;"><span>&lt;/&gt;</span></div>
+          <div><p class="section-eyebrow">Kategori rehberi</p><h1>Geliştirici Araçları – Online ve Ücretsiz</h1><p class="category-guide-intro">Geliştirici Araçları kategorisi, JSON, regex, Base64, minify, doğrulama ve format dönüştürme gibi geliştirici kontrollerini tek bir karar rehberi içinde toplar. Bu sayfa yalnızca araç kartları sunmak yerine, kimlerin hangi durumda başlaması gerektiğini, en sık yapılan görevleri ve doğru aracı seçmek için kullanabileceğiniz karar tablosunu açıklar. Öğrenciler, içerik üreticileri, geliştiriciler, küçük işletmeler ve günlük kullanıcılar kendi hedeflerine göre hızlı başlangıç noktası bulabilir. Her araç kartı kısa açıklama, işlem etiketi ve doğrudan kullanım bağlantısı içerir; ilgili blog yazıları ve SSS bölümü de çıktıyı paylaşmadan önce kontrol etmeniz gereken noktaları netleştirir.</p></div>
         </div>
-      </div>
-    </section>
-
-    <section class="tools-section">
-      <div class="container">
-        <h2 class="section-title" data-i18n="categories.developer.sectionTitle">Developer Tools</h2>
-        <div class="grid grid-3">
-          <article class="tool-card">
-            <div class="tool-icon">{ }</div>
-            <h3><a href="/tools/dev/json-formatter/">JSON Formatter</a></h3>
-            <p>Format, beautify, and inspect JSON payloads for faster debugging and cleaner reading.</p>
-            <a href="/tools/dev/json-formatter/" class="btn btn-primary" data-i18n="home.openTool">Use Tool</a>
-          </article>
-
-          <article class="tool-card">
-            <div class="tool-icon">.*</div>
-            <h3><a href="/tools/dev/regex-tester/">Regex Tester</a></h3>
-            <p>Test regular expressions, validate matches, and iterate on patterns with fewer mistakes.</p>
-            <a href="/tools/dev/regex-tester/" class="btn btn-primary" data-i18n="home.openTool">Use Tool</a>
-          </article>
-
-          <article class="tool-card">
-            <div class="tool-icon">&lt;/&gt;</div>
-            <h3><a href="/tools/dev/code-formatter/">Code Formatter</a></h3>
-            <p>Clean up messy snippets and improve readability before sharing, debugging, or reviewing code.</p>
-            <a href="/tools/dev/code-formatter/" class="btn btn-primary" data-i18n="home.openTool">Use Tool</a>
-          </article>
-
-          <article class="tool-card">
-            <div class="tool-icon">✓</div>
-            <h3><a href="/tools/dev/json-validator/">JSON Validator</a></h3>
-            <p>Check whether JSON input is valid and catch structural errors before they reach production.</p>
-            <a href="/tools/dev/json-validator/" class="btn btn-primary" data-i18n="home.openTool">Use Tool</a>
-          </article>
-
-          <article class="tool-card">
-            <div class="tool-icon">64</div>
-            <h3><a href="/tools/dev/base64-converter/">Base64 Converter</a></h3>
-            <p>Encode and decode Base64 strings quickly for testing APIs, tokens, and transport data.</p>
-            <a href="/tools/dev/base64-converter/" class="btn btn-primary" data-i18n="home.openTool">Use Tool</a>
-          </article>
-
-          <article class="tool-card">
-            <div class="tool-icon">%</div>
-            <h3><a href="/tools/dev/url-encoder/">URL Encoder</a></h3>
-            <p>Encode and decode URLs safely when working with query strings, APIs, and web integrations.</p>
-            <a href="/tools/dev/url-encoder/" class="btn btn-primary" data-i18n="home.openTool">Use Tool</a>
-          </article>
-
-          <article class="tool-card">
-            <div class="tool-icon">MD</div>
-            <h3><a href="/tools/dev/markdown-to-html/">Markdown to HTML</a></h3>
-            <p>Convert Markdown into HTML markup for docs, blogs, notes, and content publishing workflows.</p>
-            <a href="/tools/dev/markdown-to-html/" class="btn btn-primary" data-i18n="home.openTool">Use Tool</a>
-          </article>
-
-          <article class="tool-card">
-            <div class="tool-icon">HTML</div>
-            <h3><a href="/tools/dev/html-to-markdown/">HTML to Markdown</a></h3>
-            <p>Turn HTML into readable Markdown when cleaning content or migrating documentation.</p>
-            <a href="/tools/dev/html-to-markdown/" class="btn btn-primary" data-i18n="home.openTool">Use Tool</a>
-          </article>
-
-          <article class="tool-card">
-            <div class="tool-icon">CSS</div>
-            <h3><a href="/tools/dev/css-minifier/">CSS Minifier</a></h3>
-            <p>Minify CSS files and remove unnecessary whitespace for lighter payloads and cleaner delivery.</p>
-            <a href="/tools/dev/css-minifier/" class="btn btn-primary" data-i18n="home.openTool">Use Tool</a>
-          </article>
-
-          <article class="tool-card">
-            <div class="tool-icon">JS</div>
-            <h3><a href="/tools/dev/js-minifier/">JS Minifier</a></h3>
-            <p>Reduce JavaScript file size for faster transfer and more compact production-ready output.</p>
-            <a href="/tools/dev/js-minifier/" class="btn btn-primary" data-i18n="home.openTool">Use Tool</a>
-          </article>
-
-          <article class="tool-card">
-            <div class="tool-icon">#</div>
-            <h3><a href="/tools/dev/color-converter/">Color Converter</a></h3>
-            <p>Convert HEX, RGB, and related color values during UI work, prototyping, and front-end polish.</p>
-            <a href="/tools/dev/color-converter/" class="btn btn-primary" data-i18n="home.openTool">Use Tool</a>
-          </article>
-
-          <article class="tool-card">
-            <div class="tool-icon">Aa</div>
-            <h3><a href="/tools/dev/lorem-generator/">Lorem Generator</a></h3>
-            <p>Generate placeholder copy for interface mockups, content blocks, and quick design testing.</p>
-            <a href="/tools/dev/lorem-generator/" class="btn btn-primary" data-i18n="home.openTool">Use Tool</a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="content-section">
-      <div class="container">
-        <div class="panel">
-          <h2>Why use this page?</h2>
-          <p>
-            This page gives developer-focused tools a proper home instead of mixing them into unrelated categories.
-            It is designed to make common utility tasks faster to find, easier to trust, and simpler to use.
-          </p>
-
-          <h3>What you get here</h3>
-          <ul>
-            <li>Quick access to practical developer utilities in one category hub</li>
-            <li>Cleaner information architecture for JSON, encoding, formatting, and debugging tools</li>
-            <li>Standalone category structure that fits the current site design language</li>
-            <li>Better category-level SEO alignment for developer-intent searches</li>
-          </ul>
-
-          <h3>Best use</h3>
-          <p>
-            Use this page as the central entry point for lightweight dev tasks: inspecting payloads,
-            testing patterns, converting formats, and cleaning snippets without hunting through unrelated tools.
-          </p>
-        </div>
-      </div>
-    </section>
-
-
-
-    <section class="content-section category-guide-standard" aria-labelledby="categoryGuideTitle">
-      <div class="container">
-        <div class="content-panel">
-          <h2 id="categoryGuideTitle">Developer workflow guide</h2>
-          <p>Use this category for formatting, validating, encoding, minifying, and converting code or structured text during everyday development work.</p>
-          <div class="guide-grid">
-            <div>
-              <h3>Who this category is for</h3>
-              <p>Developers, technical writers, QA testers, students, and site owners who need quick browser utilities for code-adjacent tasks.</p>
-            </div>
-            <div>
-              <h3>Most common tasks</h3>
-              <ul>
-              <li>Format JSON or code before review.</li>
-              <li>Validate JSON before passing it to an API.</li>
-              <li>Encode URLs or Base64 strings.</li>
-              <li>Convert Markdown and HTML snippets.</li>
-              <li>Minify CSS or JavaScript for lightweight delivery.</li>
-              </ul>
-            </div>
-            <div>
-              <h3>Which tool should you choose?</h3>
-              <p>Start with the tool that matches your input format and desired output. If the result feeds another workflow, use the related tool link after checking the output.</p>
-              <p><a href="/tools/dev/json-formatter/">Open recommended starter tool →</a></p>
-              <p><a href="/tools/dev/json-validator/">Open related follow-up tool →</a></p>
-            </div>
-          </div>
-          <p class="category-guide-note">These tools are intended for practical browser workflows and quick estimates. Review outputs before using them in sensitive, financial, legal, medical, or production-critical contexts.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="faq-section">
-      <div class="container">
-        <h2>Frequently Asked Questions</h2>
-        <div class="faq-list">
-          <div class="faq-item" itemscope itemtype="https://schema.org/Question">
-            <h3 itemprop="name">What kind of tools are included here?</h3>
-            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text">This category focuses on utility tools commonly used by developers, such as JSON formatters, regex testers, validators, encoders, converters, and minifiers.</p>
-            </div>
-          </div>
-
-          <div class="faq-item" itemscope itemtype="https://schema.org/Question">
-            <h3 itemprop="name">Why was the old developer page wrong?</h3>
-            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text">Because the old page still used PDF-specific metadata, headings, cards, and copy, so it did not represent the actual developer tools category correctly.</p>
-            </div>
-          </div>
-
-          <div class="faq-item" itemscope itemtype="https://schema.org/Question">
-            <h3 itemprop="name">What is improved in this version?</h3>
-            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text">This version aligns the page with the developer category itself: title, SEO metadata, breadcrumb, hero section, linked tools, and supporting copy are all now developer-focused.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="content-section novatools-related-guides" aria-labelledby="relatedGuidesTitle">
-      <div class="container">
-        <div class="panel">
-          <h2 id="relatedGuidesTitle">Related practical guides</h2>
-          <p>Use these guides when you need more context before choosing a tool, exporting a result, or continuing into the next workflow.</p>
-          <div class="related-tools-grid"><a class="related-tool-link" href="/blog/articles/json-formatter-debugging-api-responses.html">JSON formatter debugging</a><a class="related-tool-link" href="/blog/articles/regex-tester-safe-review-workflow.html">Regex tester workflow</a><a class="related-tool-link" href="/blog/articles/url-encoder-query-string-guide.html">URL encoder guide</a></div>
-        </div>
-      </div>
-    </section>
+      </header>
+      <section class="guide-section" aria-labelledby="audienceTitle"><div class="container"><div class="section-header"><h2 id="audienceTitle" class="section-title">Kimler İçin?</h2><p class="section-description">Bu kategori, farklı kullanıcıların aynı araçları farklı hedeflerle kullanabileceği şekilde düzenlendi.</p></div><div class="persona-grid"><article class="persona-card"><h3>Geliştiriciler için</h3><p>JSON, regex, Base64 ve minify gibi günlük debug adımlarını tarayıcıdan hızlıca açar.</p><div><a href="/tools/dev/json-formatter/">Json Formatter</a><a href="/tools/dev/regex-tester/">Regex Tester</a></div></article><article class="persona-card"><h3>QA ekipleri için</h3><p>Veri formatlarını ve kısa kod parçalarını test senaryolarına eklemeden önce kontrol eder.</p><div><a href="/tools/dev/json-validator/">Json Validator</a><a href="/tools/dev/base64-converter/">Base64 Converter</a></div></article><article class="persona-card"><h3>Teknik içerik ekipleri için</h3><p>Markdown, HTML ve örnek kod çıktılarında temiz dönüşümler sağlar.</p><div><a href="/tools/dev/markdown-to-html/">Markdown To Html</a><a href="/tools/dev/html-to-markdown/">Html To Markdown</a></div></article></div></div></section>
+      <section class="guide-section" aria-labelledby="tasksTitle"><div class="container"><div class="section-header"><h2 id="tasksTitle" class="section-title">En Sık Yapılan Görevler</h2></div><ol class="task-steps"><li><div><strong>Developer Tools içinde hızlı başlangıç</strong><p>En sık kullanılan aracı seçip doğrudan ilgili iş akışına geçmenizi sağlar.</p></div><a class="btn btn-secondary" href="/tools/dev/json-formatter/">Aracı aç</a></li><li><div><strong>Developer Tools çıktısını kontrol etmek</strong><p>Sonucu paylaşmadan önce biçim, ölçü veya içerik tutarlılığını gözden geçirmenize yardımcı olur.</p></div><a class="btn btn-secondary" href="/tools/dev/json-validator/">Aracı aç</a></li><li><div><strong>Alternatif aracı seçmek</strong><p>Benzer görevler arasında ihtiyacınıza uygun aracı karşılaştırarak seçmenizi kolaylaştırır.</p></div><a class="btn btn-secondary" href="/tools/dev/markdown-to-html/">Aracı aç</a></li></ol></div></section>
+      <section class="guide-section" aria-labelledby="decisionTitle"><div class="container"><div class="section-header"><h2 id="decisionTitle" class="section-title">Hangi Aracı Ne Zaman Kullanmalısınız?</h2></div><div class="decision-table-wrap"><table class="decision-table"><thead><tr><th>İhtiyacınız</th><th>Önerilen Araç</th><th>Neden?</th></tr></thead><tbody><tr><td>Hızlı tek adımlı işlem gerekiyorsa</td><td>Developer Tools</td><td>Kategori içindeki doğrudan araç kartlarından başlayın.</td></tr><tr><td>Çıktıyı paylaşmadan önce kontrol gerekiyorsa</td><td>İlgili rehberler</td><td>Blog bağlantıları ek kontrol ve kalite adımlarını açıklar.</td></tr><tr><td>Benzer araçlar arasında seçim yapamıyorsanız</td><td>Karar tablosu</td><td>İhtiyacınızı önerilen araçla eşleştirerek seçim süresini azaltır.</td></tr></tbody></table></div></div></section>
+      <section class="guide-section" aria-labelledby="toolsTitle"><div class="container"><div class="section-header"><h2 id="toolsTitle" class="section-title">Geliştirici Araçları</h2><p class="section-description">Araç kartları kısa açıklama, işlem etiketi ve doğrudan kullanım bağlantısı içerir.</p></div><div class="guide-tools-grid"><article class="guide-tool-card nt-card nt-card--tool">
+              <div class="guide-tool-card__icon"><img src="/logo-bird-44.webp" alt="" width="32" height="32" loading="lazy"> <span>&lt;/&gt;</span></div>
+              <div class="guide-tool-card__body"><h3><a href="/tools/dev/base64-converter/">Base64 Encoder/Decoder</a></h3><p>Metin ve dosyalarınızı Base64&#x27;e encode/decode edin. Dosya yükleme ve indirme desteği.</p></div>
+              <div class="guide-tool-card__meta"><span>Tarayıcı öncelikli (uygunsa)</span><span>Kullanım verisi yok</span></div>
+              <a class="btn btn-primary" href="/tools/dev/base64-converter/">Kullan</a>
+            </article><article class="guide-tool-card nt-card nt-card--tool">
+              <div class="guide-tool-card__icon"><img src="/logo-bird-44.webp" alt="" width="32" height="32" loading="lazy"> <span>&lt;/&gt;</span></div>
+              <div class="guide-tool-card__body"><h3><a href="/tools/dev/code-formatter/">Code Formatter</a></h3><p>HTML, CSS ve JavaScript kodlarınızı formatlayın ve güzelleştirin. Girintileme seçenekleri.</p></div>
+              <div class="guide-tool-card__meta"><span>Tarayıcı öncelikli (uygunsa)</span><span>Kullanım verisi yok</span></div>
+              <a class="btn btn-primary" href="/tools/dev/code-formatter/">Kullan</a>
+            </article><article class="guide-tool-card nt-card nt-card--tool">
+              <div class="guide-tool-card__icon"><img src="/logo-bird-44.webp" alt="" width="32" height="32" loading="lazy"> <span>&lt;/&gt;</span></div>
+              <div class="guide-tool-card__body"><h3><a href="/tools/dev/color-converter/">Color Converter</a></h3><p>HEX, RGB, HSL ve HSV renk formatları arasında dönüşüm yapın. Gerçek zamanlı dönüştürme.</p></div>
+              <div class="guide-tool-card__meta"><span>Tarayıcı öncelikli (uygunsa)</span><span>Kullanım verisi yok</span></div>
+              <a class="btn btn-primary" href="/tools/dev/color-converter/">Kullan</a>
+            </article><article class="guide-tool-card nt-card nt-card--tool">
+              <div class="guide-tool-card__icon"><img src="/logo-bird-44.webp" alt="" width="32" height="32" loading="lazy"> <span>&lt;/&gt;</span></div>
+              <div class="guide-tool-card__body"><h3><a href="/tools/dev/css-minifier/">CSS Minifier</a></h3><p>CSS kodunuzu minify ederek dosya boyutunu küçültün. Yorumları ve gereksiz boşlukları kaldırır.</p></div>
+              <div class="guide-tool-card__meta"><span>Tarayıcı öncelikli (uygunsa)</span><span>Kullanım verisi yok</span></div>
+              <a class="btn btn-primary" href="/tools/dev/css-minifier/">Kullan</a>
+            </article><article class="guide-tool-card nt-card nt-card--tool">
+              <div class="guide-tool-card__icon"><img src="/logo-bird-44.webp" alt="" width="32" height="32" loading="lazy"> <span>&lt;/&gt;</span></div>
+              <div class="guide-tool-card__body"><h3><a href="/tools/dev/html-to-markdown/">HTML to Markdown</a></h3><p>HTML kodunuzu Markdown formatına dönüştürün. Başlıklar, listeler, bağlantılar ve tabloları destekler.</p></div>
+              <div class="guide-tool-card__meta"><span>Tarayıcı öncelikli (uygunsa)</span><span>Kullanım verisi yok</span></div>
+              <a class="btn btn-primary" href="/tools/dev/html-to-markdown/">Kullan</a>
+            </article><article class="guide-tool-card nt-card nt-card--tool">
+              <div class="guide-tool-card__icon"><img src="/logo-bird-44.webp" alt="" width="32" height="32" loading="lazy"> <span>&lt;/&gt;</span></div>
+              <div class="guide-tool-card__body"><h3><a href="/tools/dev/js-minifier/">JavaScript Minifier</a></h3><p>JavaScript kodunuzu production için minify edin. Yorumları kaldırır ve dosya boyutunu küçültür.</p></div>
+              <div class="guide-tool-card__meta"><span>Tarayıcı öncelikli (uygunsa)</span><span>Kullanım verisi yok</span></div>
+              <a class="btn btn-primary" href="/tools/dev/js-minifier/">Kullan</a>
+            </article><article class="guide-tool-card nt-card nt-card--tool">
+              <div class="guide-tool-card__icon"><img src="/logo-bird-44.webp" alt="" width="32" height="32" loading="lazy"> <span>&lt;/&gt;</span></div>
+              <div class="guide-tool-card__body"><h3><a href="/tools/dev/json-formatter/">JSON Formatter</a></h3><p>JSON verilerinizi formatlayın, doğrulayın ve okunabilir hale getirin. Syntax highlighting ve hata tespiti.</p></div>
+              <div class="guide-tool-card__meta"><span>Tarayıcı öncelikli (uygunsa)</span><span>Kullanım verisi yok</span></div>
+              <a class="btn btn-primary" href="/tools/dev/json-formatter/">Kullan</a>
+            </article><article class="guide-tool-card nt-card nt-card--tool">
+              <div class="guide-tool-card__icon"><img src="/logo-bird-44.webp" alt="" width="32" height="32" loading="lazy"> <span>&lt;/&gt;</span></div>
+              <div class="guide-tool-card__body"><h3><a href="/tools/dev/json-validator/">JSON Validator &amp; Formatter</a></h3><p>JSON verilerinizi doğrulayın ve formatlayın. Hata konumu göstergesi ve syntax highlighting.</p></div>
+              <div class="guide-tool-card__meta"><span>Tarayıcı öncelikli (uygunsa)</span><span>Kullanım verisi yok</span></div>
+              <a class="btn btn-primary" href="/tools/dev/json-validator/">Kullan</a>
+            </article><article class="guide-tool-card nt-card nt-card--tool">
+              <div class="guide-tool-card__icon"><img src="/logo-bird-44.webp" alt="" width="32" height="32" loading="lazy"> <span>&lt;/&gt;</span></div>
+              <div class="guide-tool-card__body"><h3><a href="/tools/dev/lorem-generator/">Lorem Ipsum Generator</a></h3><p>Tasarım ve geliştirme için yer tutucu metin oluşturun. Paragraf ve kelime sayısı ayarlanabilir.</p></div>
+              <div class="guide-tool-card__meta"><span>Tarayıcı öncelikli (uygunsa)</span><span>Kullanım verisi yok</span></div>
+              <a class="btn btn-primary" href="/tools/dev/lorem-generator/">Kullan</a>
+            </article><article class="guide-tool-card nt-card nt-card--tool">
+              <div class="guide-tool-card__icon"><img src="/logo-bird-44.webp" alt="" width="32" height="32" loading="lazy"> <span>&lt;/&gt;</span></div>
+              <div class="guide-tool-card__body"><h3><a href="/tools/dev/markdown-to-html/">Markdown to HTML</a></h3><p>Markdown&#x27;ı HTML&#x27;ye dönüştürün. Canlı önizleme, GitHub-flavored Markdown desteği.</p></div>
+              <div class="guide-tool-card__meta"><span>Tarayıcı öncelikli (uygunsa)</span><span>Kullanım verisi yok</span></div>
+              <a class="btn btn-primary" href="/tools/dev/markdown-to-html/">Kullan</a>
+            </article><article class="guide-tool-card nt-card nt-card--tool">
+              <div class="guide-tool-card__icon"><img src="/logo-bird-44.webp" alt="" width="32" height="32" loading="lazy"> <span>&lt;/&gt;</span></div>
+              <div class="guide-tool-card__body"><h3><a href="/tools/dev/regex-tester/">Regex Tester</a></h3><p>Düzenli ifadelerinizi test edin ve debug yapın. Gerçek zamanlı eşleşme ve açıklama.</p></div>
+              <div class="guide-tool-card__meta"><span>Tarayıcı öncelikli (uygunsa)</span><span>Kullanım verisi yok</span></div>
+              <a class="btn btn-primary" href="/tools/dev/regex-tester/">Kullan</a>
+            </article><article class="guide-tool-card nt-card nt-card--tool">
+              <div class="guide-tool-card__icon"><img src="/logo-bird-44.webp" alt="" width="32" height="32" loading="lazy"> <span>&lt;/&gt;</span></div>
+              <div class="guide-tool-card__body"><h3><a href="/tools/dev/url-encoder/">URL Encoder/Decoder</a></h3><p>URL&#x27;leri ve URL bileşenlerini encode/decode edin. Tam URL ve parça modu.</p></div>
+              <div class="guide-tool-card__meta"><span>Tarayıcı öncelikli (uygunsa)</span><span>Kullanım verisi yok</span></div>
+              <a class="btn btn-primary" href="/tools/dev/url-encoder/">Kullan</a>
+            </article></div></div></section>
+      <section class="guide-section" aria-labelledby="articlesTitle"><div class="container"><div class="section-header"><h2 id="articlesTitle" class="section-title">İlgili Blog Yazıları ve Rehberler</h2></div><div class="related-article-grid"><article class="related-article-card"><h3><a href="/blog/articles/tool-selection-map-for-new-users.html">Tool selection map for new users</a></h3><p>Yeni kullanıcılar için kategori ve araç seçme haritası.</p><a href="/blog/articles/tool-selection-map-for-new-users.html">Rehberi oku →</a></article><article class="related-article-card"><h3><a href="/blog/articles/browser-tool-empty-state-loading-success.html">Browser tool empty state loading success</a></h3><p>Araç akışlarında boş, yükleniyor ve başarı durumlarını anlama rehberi.</p><a href="/blog/articles/browser-tool-empty-state-loading-success.html">Rehberi oku →</a></article></div></div></section>
+      <section class="guide-section" aria-labelledby="faqTitle"><div class="container"><div class="section-header"><h2 id="faqTitle" class="section-title">Sık Sorulan Sorular</h2></div><div class="faq-accordion"><details><summary>Geliştirici Araçları ücretsiz mi?</summary><p>Evet. Bu kategori sayfası NovaTools içinde yer alan ilgili online araçlara doğrudan bağlantı verir ve hızlı başlangıç için hazırlanmıştır.</p></details><details><summary>Hangi aracı seçmem gerektiğini nasıl anlarım?</summary><p>Önce en sık yapılan görevler bölümünü, ardından karar destek tablosunu inceleyin. İhtiyacınız önerilen araçla eşleştirilir.</p></details><details><summary>Bu sayfadaki araçlar mobilde kullanılabilir mi?</summary><p>Sayfa mobil öncelikli düzenlenmiştir. Araçların ayrıntılı giriş alanları ilgili araç sayfasında ayrıca kontrol edilmelidir.</p></details><details><summary>Sonuçları paylaşmadan önce neyi kontrol etmeliyim?</summary><p>Dosya adı, çıktı formatı, gizlilik ihtiyacı ve okunabilirlik gibi temel kalite kontrollerini yapmanız önerilir.</p></details><details><summary>İlgili rehberler ne işe yarar?</summary><p>Blog rehberleri, araç seçimi ve çıktı kontrolü konusunda daha fazla bağlam vererek hatalı kullanım riskini azaltır.</p></details></div></div></section>
+      <aside class="guide-section other-categories" aria-labelledby="otherCategoriesTitle"><div class="container"><div class="section-header"><h2 id="otherCategoriesTitle" class="section-title">Diğer Kategoriler</h2></div><div class="other-category-grid"><a class="other-category-card" href="/categories/pdf-tools.html"><strong>PDF Tools</strong><span>Edit and convert PDFs</span></a><a class="other-category-card" href="/categories/image-tools.html"><strong>Image Tools</strong><span>Optimize and edit images</span></a><a class="other-category-card" href="/categories/finance-tools.html"><strong>Finance Tools</strong><span>Hesaplama Araçları for your money</span></a></div></div></aside>
+    </article>
   </main>
-
-  <footer class="main-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-col">
-          <h4>MC NovaTools</h4>
-          <p data-i18n="common.footerDesc">Professional online tools for PDF, image, finance, and development.</p>
-          <p>Metehan ÇETİN, LPC</p>
-        </div>
-
-        <div class="footer-col">
-          <h4 data-i18n="categories.developer.sectionTitle">Developer Tools</h4>
-          <ul>
-            <li><a href="/tools/dev/json-formatter/">JSON Formatter</a></li>
-            <li><a href="/tools/dev/regex-tester/">Regex Tester</a></li>
-            <li><a href="/tools/dev/code-formatter/">Code Formatter</a></li>
-            <li><a href="/tools/dev/base64-converter/">Base64 Converter</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4 data-i18n="common.company">Company</h4>
-          <ul>
-            <li><a href="/about-us" data-i18n="common.aboutUs">About Us</a></li>
-            <li><a href="/blog" data-i18n="nav.blog">Blog</a></li>
-            <li><a href="/contact" data-i18n="nav.contact">Contact</a></li>
-            <li><a href="/request-tool" data-i18n="nav.request">Request Tool</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4 data-i18n="common.legal">Legal</h4>
-          <ul>
-            <li><a href="/privacy-policy.html" data-i18n="nav.privacy">Privacy Policy</a></li>
-            <li><a href="/terms-of-service.html" data-i18n="nav.terms">Terms of Service</a></li>
-            <li><a href="/cookie-policy.html" data-i18n="nav.cookies">Cookie Policy</a></li>
-            <li><a href="/security" data-i18n="nav.security">Security</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <p data-i18n="footer.copyright">© 2026 MC NovaTools. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
+  <footer class="guide-footer"><div class="container guide-footer__grid"><div><strong>MC NovaTools</strong><p>Pratik online araçlar ve karar destek rehberleri.</p></div><nav aria-label="Footer"><a href="/categories/index.html">Kategoriler</a><a href="/blog/index.html">Blog</a><a href="/privacy-policy.html">Privacy Policy</a><a href="/contact.html">Contact</a></nav></div><div class="container guide-footer__bottom">NovaTools © 2026 - Tüm hakları saklıdır.</div></footer>
 </body>
 </html>
