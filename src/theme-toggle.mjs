@@ -1,167 +1,166 @@
 /**
  * Theme Toggle Module
- * Dual theme (dark/light) with system preference detection
- * Zero dependencies, vanilla JS
+ * Light/dark theme with system preference detection and localStorage persistence.
  */
 
 const STORAGE_KEY = 'novatools-theme';
 const THEME_CHANGE_EVENT = 'themechange';
+const VALID_THEMES = new Set(['dark', 'light']);
+
+function getStoredTheme() {
+  try {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    return VALID_THEMES.has(stored) ? stored : null;
+  } catch {
+    return null;
+  }
+}
+
+function persistTheme(theme) {
+  try {
+    localStorage.setItem(STORAGE_KEY, theme);
+  } catch {
+    // Storage can be unavailable in strict privacy contexts; the DOM theme still updates.
+  }
+}
+
+function removeStoredTheme() {
+  try {
+    localStorage.removeItem(STORAGE_KEY);
+  } catch {
+    // Ignore unavailable storage.
+  }
+}
+
+function getSystemTheme() {
+  return window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
 
 /**
- * Initialize theme on page load (call immediately in head)
- * Prevents FOUC (Flash of Unstyled Content)
+ * Initialize theme on page load. Defaults to system preference unless the user saved a choice.
+ * @returns {'dark' | 'light'}
  */
 export function initTheme() {
-  const stored = localStorage.getItem(STORAGE_KEY);
-  const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  
-  // Default to dark if no preference stored
-  const theme = stored || (systemPrefersDark ? 'dark' : 'light');
-  
+  const theme = getStoredTheme() || getSystemTheme();
+
   document.documentElement.setAttribute('data-theme', theme);
   document.documentElement.style.colorScheme = theme;
-  
+  updateMetaThemeColor(theme);
+
   return theme;
 }
 
 /**
- * Get current effective theme
- * @returns {string} 'dark' | 'light'
+ * Get current effective theme.
+ * @returns {'dark' | 'light'}
  */
 export function getCurrentTheme() {
-  return document.documentElement.getAttribute('data-theme') || 'dark';
+  const currentTheme = document.documentElement.getAttribute('data-theme');
+  return VALID_THEMES.has(currentTheme) ? currentTheme : initTheme();
 }
 
 /**
- * Set theme explicitly
- * @param {string} theme - 'dark' | 'light'
+ * Set theme explicitly.
+ * @param {'dark' | 'light'} theme
  */
 export function setTheme(theme) {
-  if (!['dark', 'light'].includes(theme)) {
+  if (!VALID_THEMES.has(theme)) {
     console.warn(`Invalid theme: ${theme}. Use 'dark' or 'light'.`);
     return;
   }
-  
+
+  const previousTheme = getCurrentTheme();
   document.documentElement.setAttribute('data-theme', theme);
   document.documentElement.style.colorScheme = theme;
-  localStorage.setItem(STORAGE_KEY, theme);
-  
-  // Dispatch custom event for other components
-  window.dispatchEvent(new CustomEvent(THEME_CHANGE_EVENT, { 
-    detail: { theme, previousTheme: theme === 'dark' ? 'light' : 'dark' }
+  persistTheme(theme);
+
+  window.dispatchEvent(new CustomEvent(THEME_CHANGE_EVENT, {
+    detail: { theme, previousTheme }
   }));
-  
-  // Update meta theme-color for mobile browsers
+
   updateMetaThemeColor(theme);
-  
-  // Update any charts or canvases if present
   updateChartsForTheme(theme);
 }
 
-/**
- * Toggle between dark and light
- */
+/** Toggle between dark and light themes. */
 export function toggleTheme() {
-  const current = getCurrentTheme();
-  const next = current === 'dark' ? 'light' : 'dark';
+  const next = getCurrentTheme() === 'dark' ? 'light' : 'dark';
   setTheme(next);
   return next;
 }
 
 /**
- * Setup theme toggle button
- * @param {string} buttonId - ID of toggle button
+ * Setup theme toggle button.
+ * @param {string} buttonId
  */
 export function setupThemeToggle(buttonId = 'themeToggle') {
   const btn = document.getElementById(buttonId);
-  if (!btn) {
-    console.warn(`Theme toggle button not found: #${buttonId}`);
-    return;
-  }
-  
-  // Update icon to match current theme
+  if (!btn) return;
+
   updateToggleIcon(btn, getCurrentTheme());
-  
-  // Handle click
+
   btn.addEventListener('click', () => {
-    const newTheme = toggleTheme();
-    updateToggleIcon(btn, newTheme);
+    updateToggleIcon(btn, toggleTheme());
   });
-  
-  // Listen for system preference changes (if user hasn't manually set)
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-    if (!localStorage.getItem(STORAGE_KEY)) {
-      const newTheme = e.matches ? 'dark' : 'light';
-      setTheme(newTheme);
+
+  window.matchMedia?.('(prefers-color-scheme: dark)').addEventListener('change', (event) => {
+    if (!getStoredTheme()) {
+      const newTheme = event.matches ? 'dark' : 'light';
+      applySystemTheme(newTheme);
       updateToggleIcon(btn, newTheme);
     }
   });
-  
-  // Listen for theme changes from other sources
-  window.addEventListener(THEME_CHANGE_EVENT, (e) => {
-    updateToggleIcon(btn, e.detail.theme);
+
+  window.addEventListener(THEME_CHANGE_EVENT, (event) => {
+    updateToggleIcon(btn, event.detail.theme);
   });
 }
 
-/**
- * Update toggle button icon
- * @param {HTMLElement} btn - Toggle button
- * @param {string} theme - Current theme
- */
+function applySystemTheme(theme) {
+  const previousTheme = getCurrentTheme();
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.style.colorScheme = theme;
+  updateMetaThemeColor(theme);
+  window.dispatchEvent(new CustomEvent(THEME_CHANGE_EVENT, {
+    detail: { theme, previousTheme }
+  }));
+}
+
 function updateToggleIcon(btn, theme) {
   const sunIcon = btn.querySelector('.icon-sun');
   const moonIcon = btn.querySelector('.icon-moon');
-  
+
   if (sunIcon && moonIcon) {
-    if (theme === 'dark') {
-      sunIcon.style.display = 'block';
-      moonIcon.style.display = 'none';
-      btn.setAttribute('aria-label', 'Switch to light mode');
-    } else {
-      sunIcon.style.display = 'none';
-      moonIcon.style.display = 'block';
-      btn.setAttribute('aria-label', 'Switch to dark mode');
-    }
+    const isDark = theme === 'dark';
+    sunIcon.hidden = !isDark;
+    moonIcon.hidden = isDark;
+    btn.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
   }
-  
+
   btn.setAttribute('data-theme', theme);
 }
 
-/**
- * Update meta theme-color for mobile browsers
- * @param {string} theme 
- */
 function updateMetaThemeColor(theme) {
   const metaThemeColor = document.querySelector('meta[name="theme-color"]');
   if (metaThemeColor) {
-    const color = theme === 'dark' ? '#0A0A0C' : '#F8F9FA';
-    metaThemeColor.setAttribute('content', color);
+    metaThemeColor.setAttribute('content', theme === 'dark' ? '#06070b' : '#f8fafc');
   }
 }
 
-/**
- * Update charts for theme change
- * @param {string} theme 
- */
 function updateChartsForTheme(theme) {
-  // Dispatch event for chart components to listen
-  document.querySelectorAll('[data-chart]').forEach(chart => {
-    chart.dispatchEvent(new CustomEvent('chart:themechange', { 
+  document.querySelectorAll('[data-chart]').forEach((chart) => {
+    chart.dispatchEvent(new CustomEvent('chart:themechange', {
       detail: { theme }
     }));
   });
 }
 
-/**
- * Reset to system preference
- */
+/** Reset to system preference. */
 export function resetToSystemPreference() {
-  localStorage.removeItem(STORAGE_KEY);
-  const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  setTheme(systemPrefersDark ? 'dark' : 'light');
+  removeStoredTheme();
+  applySystemTheme(getSystemTheme());
 }
 
-// Auto-initialize theme on module load (for inline script usage)
 if (typeof document !== 'undefined') {
   initTheme();
 }
