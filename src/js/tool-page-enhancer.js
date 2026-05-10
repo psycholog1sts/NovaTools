@@ -1,10 +1,31 @@
 import manifest from '../../tools-manifest.json';
 import { ToolController, setupDropzones } from './tool-base.js';
+import {
+  applySeo,
+  buildBreadcrumbSchema,
+  buildFAQSchema,
+  buildSoftwareApplicationSchema,
+  upsertJsonLd
+} from './seo.js';
 
 const CATEGORY_LABELS = {
   pdf: 'PDF', image: 'Görsel', finance: 'Finans', dev: 'Geliştirici', text: 'Metin',
   converters: 'Dönüştürücü', data: 'Veri', design: 'Tasarım', productivity: 'Verimlilik',
   security: 'Güvenlik', social: 'Sosyal Medya', news: 'Haber', religious: 'Takvim'
+};
+
+const CATEGORY_ROUTES = {
+  pdf: 'pdf-tools',
+  image: 'image-tools',
+  finance: 'finance-tools',
+  dev: 'developer-tools',
+  text: 'text-writing',
+  converters: 'converters',
+  data: 'data-tools',
+  design: 'design-tools',
+  productivity: 'productivity-tools',
+  security: 'security-tools',
+  social: 'social-media-tools'
 };
 
 function activeScript() {
@@ -31,6 +52,10 @@ function categoryName(category) {
   return CATEGORY_LABELS[category] || category || 'Araç';
 }
 
+function categoryRoute(category) {
+  return CATEGORY_ROUTES[category] || `${category || 'index'}-tools`;
+}
+
 function toolName(tool, slug) {
   return tool?.name || tool?.nameEn || slug.split('/').pop().replace(/-/g, ' ');
 }
@@ -43,43 +68,35 @@ function relatedTools(tool, slug) {
 }
 
 function appendSchema(tool, slug) {
-  if (!tool || document.querySelector('script[data-premium-schema="software"]')) return;
-  const schema = {
-    '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
-    name: toolName(tool, slug),
+  if (!tool) return;
+  const name = toolName(tool, slug);
+  const category = categoryName(tool.category);
+  upsertJsonLd('tool-software-jsonld', buildSoftwareApplicationSchema({
+    name,
     description: textDescription(tool),
-    applicationCategory: 'UtilityApplication',
-    operatingSystem: 'Web',
-    url: `https://mc-novatools.com/tools/${slug}/`,
-    offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' }
-  };
-  const script = document.createElement('script');
-  script.type = 'application/ld+json';
-  script.dataset.premiumSchema = 'software';
-  script.textContent = JSON.stringify(schema);
-  document.head.append(script);
+    category: 'UtilityApplication',
+    url: `/tools/${slug}/`,
+    features: [category, 'Free online workflow', 'Browser-based processing guidance']
+  }));
+  upsertJsonLd('tool-breadcrumb-jsonld', buildBreadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: category, url: `/categories/${categoryRoute(tool?.category || slug.split('/')[0])}.html` },
+    { name, url: `/tools/${slug}/` }
+  ]));
 }
 
 function updateMeta(tool, slug) {
   if (!tool) return;
   const name = toolName(tool, slug);
   const category = categoryName(tool.category);
-  document.title = `${name} – Ücretsiz Online ${category} Aracı | NovaTools`;
-  let meta = document.querySelector('meta[name="description"]');
-  if (!meta) {
-    meta = document.createElement('meta');
-    meta.name = 'description';
-    document.head.append(meta);
-  }
-  meta.content = `${name} ile ${textDescription(tool)} Adım adım rehber, gizlilik notu, hata çözümleri ve ilgili araçlar tek sayfada.`.slice(0, 157);
-  let canonical = document.querySelector('link[rel="canonical"]');
-  if (!canonical) {
-    canonical = document.createElement('link');
-    canonical.rel = 'canonical';
-    document.head.append(canonical);
-  }
-  canonical.href = `https://mc-novatools.com/tools/${slug}/`;
+  applySeo({
+    type: 'tool',
+    path: `/tools/${slug}/`,
+    toolName: name,
+    category,
+    action: textDescription(tool).replace(/\.$/, '').toLowerCase(),
+    advantages: ['browser-based workflow', 'clear usage guidance']
+  });
 }
 
 function createHero(tool, slug) {
@@ -90,7 +107,7 @@ function createHero(tool, slug) {
   breadcrumb.innerHTML = `
     <div class="container">
       <nav class="premium-tool-breadcrumb" aria-label="Breadcrumb">
-        <a href="/">Ana Sayfa</a><span>›</span><a href="/categories/${tool?.category || slug.split('/')[0]}-tools.html">${category}</a><span>›</span><span aria-current="page">${name}</span>
+        <a href="/">Ana Sayfa</a><span>›</span><a href="/categories/${categoryRoute(tool?.category || slug.split('/')[0])}.html">${category}</a><span>›</span><span aria-current="page">${name}</span>
       </nav>
       <div class="premium-tool-hero__grid">
         <div>
@@ -169,20 +186,11 @@ function createGuides(tool, slug) {
 
 function appendFaqSchema(tool, slug) {
   const name = toolName(tool, slug);
-  const schema = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: [
-      { '@type': 'Question', name: `${name} ücretsiz mi?`, acceptedAnswer: { '@type': 'Answer', text: 'Evet. Bu araç ücretsiz online kullanım için hazırlanmıştır.' } },
-      { '@type': 'Question', name: 'Verilerim nereye gidiyor?', acceptedAnswer: { '@type': 'Answer', text: 'Araçlar tarayıcı öncelikli çalışacak şekilde tasarlanır; harici servis gereken durumlarda sayfa içi notlar kontrol edilmelidir.' } },
-      { '@type': 'Question', name: 'Hata alırsam ne yapmalıyım?', acceptedAnswer: { '@type': 'Answer', text: 'Girdileri, dosya boyutunu ve formatı kontrol edip tekrar deneyin.' } }
-    ]
-  };
-  const script = document.createElement('script');
-  script.type = 'application/ld+json';
-  script.dataset.premiumSchema = 'faq';
-  script.textContent = JSON.stringify(schema);
-  document.head.append(script);
+  upsertJsonLd('tool-faq-jsonld', buildFAQSchema([
+    { question: `${name} ücretsiz mi?`, answer: 'Evet. Bu araç ücretsiz online kullanım için hazırlanmıştır.' },
+    { question: 'Verilerim nereye gidiyor?', answer: 'Araçlar tarayıcı öncelikli çalışacak şekilde tasarlanır; harici servis gereken durumlarda sayfa içi notlar kontrol edilmelidir.' },
+    { question: 'Hata alırsam ne yapmalıyım?', answer: 'Girdileri, dosya boyutunu ve formatı kontrol edip tekrar deneyin.' }
+  ]));
 }
 
 function enhanceWorkspace(tool, slug) {

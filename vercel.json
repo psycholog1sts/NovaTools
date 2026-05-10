@@ -14,8 +14,7 @@
     { "source": "/blog/:path*", "destination": "/blog/index.html" },
     { "source": "/categories/:category", "destination": "/categories/:category.html" },
     { "source": "/tools/:category/:tool", "destination": "/tools/:category/:tool/index.html" },
-    { "source": "/tools/:category/:tool/:path*", "destination": "/tools/:category/:tool/index.html" },
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/tools/:category/:tool/:path*", "destination": "/tools/:category/:tool/index.html" }
   ],
   "headers": [
     {

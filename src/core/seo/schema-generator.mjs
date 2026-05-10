@@ -3,7 +3,7 @@
  * Dynamic schema generation for SEO optimization
  */
 
-const BASE_URL = 'https://novatools.dev';
+const BASE_URL = 'https://mc-novatools.com';
 
 /**
  * Generate SoftwareApplication schema for tools
@@ -29,24 +29,19 @@ export function generateSoftwareApplicationSchema(toolMeta) {
     offers: {
       '@type': 'Offer',
       price: '0',
-      priceCurrency: 'TRY'
-    },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.8',
-      ratingCount: String(Math.floor(Math.random() * 2000) + 500)
+      priceCurrency: 'USD'
     },
     featureList: Array.isArray(toolMeta.keywords?.tr) 
       ? toolMeta.keywords.tr.slice(0, 5)
       : [],
     author: {
       '@type': 'Organization',
-      name: 'NovaTools Platform',
+      name: 'NovaTools',
       url: BASE_URL
     },
     inLanguage: toolMeta.locale || 'tr',
     isAccessibleForFree: true,
-    url: `${BASE_URL}/src/tools/${toolMeta.id}/`,
+    url: `${BASE_URL}/tools/${toolMeta.category}/${toolMeta.id}/`,
     ...(toolMeta.description?.tr && { description: toolMeta.description.tr })
   };
 }
@@ -142,14 +137,14 @@ export function generateWebSiteSchema() {
     '@type': 'WebSite',
     name: 'NovaTools',
     url: BASE_URL,
-    description: 'Privacy-first online tools platform. Zero server, zero data transmission.',
+    description: 'Privacy-conscious online tools platform for files, finance, text and developer workflows.',
     inLanguage: ['tr', 'en'],
     publisher: {
       '@type': 'Organization',
-      name: 'NovaTools Platform',
+      name: 'NovaTools',
       logo: {
         '@type': 'ImageObject',
-        url: `${BASE_URL}/logo.svg`,
+        url: `${BASE_URL}/logo-brand.png`,
         width: 512,
         height: 512
       }
@@ -158,7 +153,7 @@ export function generateWebSiteSchema() {
       '@type': 'SearchAction',
       target: {
         '@type': 'EntryPoint',
-        urlTemplate: `${BASE_URL}/search?q={search_term_string}`
+        urlTemplate: `${BASE_URL}/?q={search_term_string}`
       },
       'query-input': 'required name=search_term_string'
     }
@@ -173,24 +168,17 @@ export function generateOrganizationSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'ZeroTools Platform',
-    alternateName: 'NovaTools',
+    name: 'NovaTools',
     url: BASE_URL,
     logo: {
       '@type': 'ImageObject',
-      url: `${BASE_URL}/logo.svg`,
+      url: `${BASE_URL}/logo-brand.png`,
       width: 512,
       height: 512
     },
     sameAs: [
-      'https://github.com/nova-tools'
-    ],
-    contactPoint: {
-      '@type': 'ContactPoint',
-      email: 'hello@novatools.dev',
-      contactType: 'customer support',
-      availableLanguage: ['Turkish', 'English']
-    }
+      'https://github.com/psycholog1sts/NovaTools'
+    ]
   };
 }
 
