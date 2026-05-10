@@ -93,14 +93,22 @@ function getLocaleUrl(locale) {
   const currentSearch = window.location.search;
   
   // Remove existing locale prefix
-  const pathWithoutLocale = currentPath.replace(/^\/(tr|ar)(?=\/|$)/, '') || '/';
+  const firstSegment = currentPath.split('/').filter(Boolean)[0];
+  const pathWithoutLocale = I18N_CONFIG.pathPrefixLocales.includes(firstSegment)
+    ? currentPath.replace(new RegExp(`^/(${I18N_CONFIG.pathPrefixLocales.join('|')})(?=/|$)`), '') || '/'
+    : currentPath;
   
   // Build new URL
-  const newPath = locale === I18N_CONFIG.defaultLocale
-    ? pathWithoutLocale
-    : `/${locale}${pathWithoutLocale}`;
-  
-  return `${newPath}${currentSearch}`;
+  const newPath = I18N_CONFIG.pathPrefixLocales.includes(locale)
+    ? `/${locale}${pathWithoutLocale}`
+    : pathWithoutLocale;
+  const params = new URLSearchParams(currentSearch || '');
+  params.delete('lang');
+  if (locale !== I18N_CONFIG.defaultLocale && !I18N_CONFIG.pathPrefixLocales.includes(locale)) {
+    params.set('lang', locale);
+  }
+  const nextSearch = params.toString();
+  return `${newPath}${nextSearch ? `?${nextSearch}` : ''}`;
 }
 
 /**

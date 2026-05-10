@@ -56,8 +56,22 @@ const COPY = {
 };
 
 function getLanguage() {
-  const pathLang = window.location.pathname.match(/^\/(tr|ar)(?=\/|$)/)?.[1];
-  return pathLang || document.documentElement.lang || window.i18n?.getCurrentLanguage?.() || 'en';
+  return window.i18n?.getCurrentLanguage?.() || document.documentElement.lang || 'en';
+}
+
+function translatedCopy(copy) {
+  const translate = window.i18n?.t;
+  if (typeof translate !== 'function') return copy;
+  return {
+    ...copy,
+    title: translate('surface.cookie.title', copy.title),
+    body: translate('surface.cookie.body', copy.body),
+    settings: translate('surface.cookie.settings', copy.settings),
+    accept: translate('surface.cookie.accept', copy.accept),
+    reject: translate('surface.cookie.reject', copy.reject),
+    save: translate('surface.cookie.save', copy.save),
+    close: translate('surface.cookie.close', copy.close)
+  };
 }
 
 function normalizeConsent(value) {
@@ -156,7 +170,7 @@ function renderModal(copy, existingConsent) {
 }
 
 function openModal() {
-  const copy = COPY[getLanguage()] || COPY.en;
+  const copy = translatedCopy(COPY[getLanguage()] || COPY.en);
   const modal = renderModal(copy, getConsent());
   modal.hidden = false;
 }
@@ -212,7 +226,7 @@ export function hasConsent(category) {
 
 export function initConsentManager() {
   ensureStyles();
-  const copy = COPY[getLanguage()] || COPY.en;
+  const copy = translatedCopy(COPY[getLanguage()] || COPY.en);
   const existing = getConsent();
   window.NovaToolsConsent = existing || DEFAULT_CONSENT;
   setupFooterLinks();

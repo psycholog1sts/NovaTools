@@ -6,30 +6,58 @@
 (function () {
   'use strict';
 
-  const SUPPORTED_LANGUAGES = ['en', 'tr', 'ar'];
+  const SUPPORTED_LANGUAGES = ['en', 'tr', 'de', 'fr', 'es', 'pt', 'ru', 'zh', 'ja', 'ko', 'ar', 'hi', 'it', 'pl', 'nl'];
+  const PATH_PREFIX_LANGUAGES = ['tr', 'ar'];
+  const RTL_LANGUAGES = ['ar'];
   const DEFAULT_LANGUAGE = 'en';
 
   let currentLanguage = DEFAULT_LANGUAGE;
   const translations = {};
+  const originalTextNodes = new WeakMap();
+  let originalDocumentTitle = null;
   let isInitialized = false;
 
   const LANGUAGE_NAMES = {
     en: 'English',
     tr: 'Türkçe',
-    ar: 'العربية'
+    de: 'Deutsch',
+    fr: 'Français',
+    es: 'Español',
+    pt: 'Português',
+    ru: 'Русский',
+    zh: '中文',
+    ja: '日本語',
+    ko: '한국어',
+    ar: 'العربية',
+    hi: 'हिन्दी',
+    it: 'Italiano',
+    pl: 'Polski',
+    nl: 'Nederlands'
   };
 
   const LANGUAGE_FLAGS = {
     en: '🇬🇧',
     tr: '🇹🇷',
-    ar: '🇸🇦'
+    de: '🇩🇪',
+    fr: '🇫🇷',
+    es: '🇪🇸',
+    pt: '🇵🇹',
+    ru: '🇷🇺',
+    zh: '🇨🇳',
+    ja: '🇯🇵',
+    ko: '🇰🇷',
+    ar: '🇸🇦',
+    hi: '🇮🇳',
+    it: '🇮🇹',
+    pl: '🇵🇱',
+    nl: '🇳🇱'
   };
 
   const SITE_ORIGIN = 'https://mc-novatools.com';
   const CONTENT_FALLBACK_NOTICE = {
     en: 'This content is currently available only in English.',
-    tr: 'Bu içerik şu anda yalnızca İngilizce olarak mevcuttur.',
-    ar: 'هذا المحتوى متاح حالياً باللغة الإنجليزية فقط.'
+    tr: 'Bu yüzey tam çevrilmediği için İngilizce gösteriliyor.',
+    ar: 'تُعرض هذه الصفحة بالإنجليزية لأن ترجمتها الكاملة غير جاهزة بعد.'
   };
   const contentAvailability = {
     categories: {},
@@ -189,13 +217,17 @@
   };
 
   function localeFromPath(pathname) {
-    const match = String(pathname || '').match(/^\/(tr|ar)(?=\/|$)/);
-    return match ? match[1] : DEFAULT_LANGUAGE;
+    const firstSegment = String(pathname || '').split('/').filter(Boolean)[0];
+    return PATH_PREFIX_LANGUAGES.includes(firstSegment) ? firstSegment : DEFAULT_LANGUAGE;
   }
 
   function stripLocalePrefix(pathname) {
-    const stripped = String(pathname || '/').replace(/^\/(tr|ar)(?=\/|$)/, '') || '/';
-    return stripped.startsWith('/') ? stripped : `/${stripped}`;
+    const firstSegment = String(pathname || '/').split('/').filter(Boolean)[0];
+    if (PATH_PREFIX_LANGUAGES.includes(firstSegment)) {
+      const stripped = String(pathname || '/').replace(new RegExp(`^/(${PATH_PREFIX_LANGUAGES.join('|')})(?=/|$)`), '') || '/';
+      return stripped.startsWith('/') ? stripped : `/${stripped}`;
+    }
+    return String(pathname || '/').startsWith('/') ? String(pathname || '/') : `/${pathname}`;
   }
 
   function getRequestedLanguage() {
@@ -209,7 +241,21 @@
 
   function localizedPath(lang, pathname = window.location.pathname) {
     const basePath = stripLocalePrefix(pathname);
-    return lang === DEFAULT_LANGUAGE ? basePath : `/${lang}${basePath === '/' ? '/' : basePath}`;
+    return PATH_PREFIX_LANGUAGES.includes(lang) ? `/${lang}${basePath === '/' ? '/' : basePath}` : basePath;
+  }
+
+  function localizedSearch(lang, search = window.location.search) {
+    const params = new URLSearchParams(search || '');
+    params.delete('lang');
+    if (lang !== DEFAULT_LANGUAGE && !PATH_PREFIX_LANGUAGES.includes(lang)) {
+      params.set('lang', lang);
+    }
+    const query = params.toString();
+    return query ? `?${query}` : '';
+  }
+
+  function localizedHref(lang, pathname = window.location.pathname, search = window.location.search) {
+    return `${localizedPath(lang, pathname)}${localizedSearch(lang, search)}`;
   }
 
   function absoluteUrl(pathname) {
@@ -239,20 +285,20 @@
 
   function pageContentAvailability() {
     const path = stripLocalePrefix(window.location.pathname).replace(/\/$/, '');
-    const blogMatch = path.match(/^\/blog\/([^/.]+)(?:\.html)?$/);
-    if (blogMatch) return contentAvailability.blog[blogMatch[1]] || ['en'];
-    if (/^\/blog(?:\/index\.html)?$/.test(path)) return ['en', 'tr', 'ar'];
+    const blogMatch = path.match(/^\/blog\/(?:articles\/)?([^/.]+)(?:\.html)?$/);
+    if (blogMatch) return SUPPORTED_LANGUAGES;
+    if (/^\/blog(?:\/index\.html)?$/.test(path)) return SUPPORTED_LANGUAGES;
     const categoryMatch = path.match(/^\/categories\/([^/.]+)(?:\.html)?$/);
-    if (categoryMatch) return contentAvailability.categories[categoryMatch[1]] || ['en', 'tr', 'ar'];
+    if (categoryMatch) return contentAvailability.categories[categoryMatch[1]] || SUPPORTED_LANGUAGES;
     const toolMatch = path.match(/^\/tools\/(.+)$/);
-    if (toolMatch) return contentAvailability.tools[toolMatch[1].replace(/\/$/, '')] || ['en', 'tr', 'ar'];
-    return ['en', 'tr', 'ar'];
+    if (toolMatch) return contentAvailability.tools[toolMatch[1].replace(/\/$/, '')] || SUPPORTED_LANGUAGES;
+    return SUPPORTED_LANGUAGES;
   }
 
   function applyLocaleSeo(lang) {
     const canonicalPath = localizedPath(lang);
     document.querySelectorAll('link[rel="alternate"][hreflang]').forEach((el) => el.remove());
-    [['en', localizedPath('en')], ['tr', localizedPath('tr')], ['ar', localizedPath('ar')], ['x-default', localizedPath('en')]].forEach(([hreflang, href]) => {
+    [...SUPPORTED_LANGUAGES.map((code) => [code, localizedHref(code)]), ['x-default', localizedHref('en')]].forEach(([hreflang, href]) => {
       const link = document.createElement('link');
       link.rel = 'alternate';
       link.hreflang = hreflang;
@@ -265,7 +311,7 @@
       canonical.rel = 'canonical';
       document.head.appendChild(canonical);
     }
-    canonical.href = absoluteUrl(canonicalPath);
+    canonical.href = absoluteUrl(`${canonicalPath}${localizedSearch(lang)}`);
 
     const available = pageContentAvailability();
     if (!available.includes(lang)) ensureNoindex(CONTENT_FALLBACK_NOTICE[lang] || CONTENT_FALLBACK_NOTICE.en);
@@ -339,7 +385,94 @@
     if (translation && Object.prototype.hasOwnProperty.call(translation, key)) {
       return translation[key];
     }
+    const fallbackTranslation = translations[DEFAULT_LANGUAGE];
+    if (fallbackTranslation && Object.prototype.hasOwnProperty.call(fallbackTranslation, key)) {
+      return fallbackTranslation[key];
+    }
     return fallback !== null ? fallback : key;
+  }
+
+  function normalizeTranslatableText(value) {
+    return String(value || '').replace(/\s+/g, ' ').trim();
+  }
+
+  function preserveOuterWhitespace(original, translated) {
+    const leading = String(original).match(/^\s*/)?.[0] || '';
+    const trailing = String(original).match(/\s*$/)?.[0] || '';
+    return `${leading}${translated}${trailing}`;
+  }
+
+  function buildReverseTranslationIndex() {
+    const reverse = new Map();
+    ['en', 'tr', 'ar'].forEach((sourceLang) => {
+      const source = translations[sourceLang];
+      if (!source) return;
+      Object.entries(source).forEach(([key, value]) => {
+        if (typeof value !== 'string') return;
+        const normalized = normalizeTranslatableText(value);
+        if (normalized.length > 1 && normalized.length < 260 && !reverse.has(normalized)) {
+          reverse.set(normalized, key);
+        }
+      });
+    });
+    return reverse;
+  }
+
+  function translateOriginalValue(original, reverseIndex) {
+    const normalized = normalizeTranslatableText(original);
+    if (!normalized) return null;
+    const key = reverseIndex.get(normalized);
+    if (!key) return null;
+    const translated = t(key, normalized);
+    if (!translated || translated === key) return null;
+    return preserveOuterWhitespace(original, translated);
+  }
+
+  function shouldSkipTextNode(node) {
+    const parent = node.parentElement;
+    if (!parent) return true;
+    return Boolean(parent.closest('script, style, code, pre, textarea, select, option, noscript, svg, canvas, [data-i18n-skip]'));
+  }
+
+  function updateStaticTextTranslations() {
+    if (!document.body) return;
+    const reverseIndex = buildReverseTranslationIndex();
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+      acceptNode(node) {
+        if (shouldSkipTextNode(node)) return NodeFilter.FILTER_REJECT;
+        return normalizeTranslatableText(node.nodeValue).length > 1 ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+      }
+    });
+
+    const nodes = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+    nodes.forEach((node) => {
+      if (!originalTextNodes.has(node)) originalTextNodes.set(node, node.nodeValue);
+      const original = originalTextNodes.get(node);
+      const translated = translateOriginalValue(original, reverseIndex);
+      if (translated) node.nodeValue = translated;
+    });
+
+    document.querySelectorAll('[aria-label], [title], [placeholder], [alt]').forEach((element) => {
+      ['aria-label', 'title', 'placeholder', 'alt'].forEach((attribute) => {
+        if (!element.hasAttribute(attribute)) return;
+        const storageKey = `data-i18n-original-attr-${attribute}`;
+        if (!element.hasAttribute(storageKey)) element.setAttribute(storageKey, element.getAttribute(attribute) || '');
+        const translated = translateOriginalValue(element.getAttribute(storageKey) || '', reverseIndex);
+        if (translated) element.setAttribute(attribute, translated.trim());
+      });
+    });
+
+    if (originalDocumentTitle === null) originalDocumentTitle = document.title;
+    const translatedTitle = translateOriginalValue(originalDocumentTitle, reverseIndex);
+    if (translatedTitle) document.title = translatedTitle.trim();
+
+    document.querySelectorAll('meta[name="description"], meta[property="og:title"], meta[property="og:description"], meta[name="twitter:title"], meta[name="twitter:description"]').forEach((meta) => {
+      const storageKey = 'data-i18n-original-content';
+      if (!meta.hasAttribute(storageKey)) meta.setAttribute(storageKey, meta.getAttribute('content') || '');
+      const translated = translateOriginalValue(meta.getAttribute(storageKey) || '', reverseIndex);
+      if (translated) meta.setAttribute('content', translated.trim());
+    });
   }
 
   function storeOriginalContent(el, attrName, value) {
@@ -397,6 +530,8 @@
       const original = document.title;
       document.title = t(key, original);
     }
+
+    updateStaticTextTranslations();
   }
 
   async function changeLanguage(lang) {
@@ -414,14 +549,16 @@
     }
 
     const targetPath = localizedPath(lang);
-    if (window.location.pathname !== targetPath && !window.location.pathname.startsWith('/blog/article-template')) {
-      window.location.assign(targetPath + window.location.search + window.location.hash);
+    const targetSearch = localizedSearch(lang);
+    if ((window.location.pathname !== targetPath || window.location.search !== targetSearch) && !window.location.pathname.startsWith('/blog/article-template')) {
+      window.location.assign(targetPath + targetSearch + window.location.hash);
       return;
     }
 
     document.documentElement.lang = lang;
-    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
-    document.body?.classList.toggle('is-rtl', lang === 'ar');
+    const isRtl = RTL_LANGUAGES.includes(lang);
+    document.documentElement.dir = isRtl ? 'rtl' : 'ltr';
+    document.body?.classList.toggle('is-rtl', isRtl);
     applyLocaleSeo(lang);
 
     const selector = document.getElementById('language-selector');
@@ -429,8 +566,9 @@
       selector.value = lang;
     }
 
-    await loadTranslations(lang);
+    await Promise.all([loadTranslations(DEFAULT_LANGUAGE), loadTranslations('tr'), loadTranslations('ar'), loadTranslations(lang)]);
     updatePageTranslations();
+    refreshSiteGuide();
 
     window.dispatchEvent(
       new CustomEvent('languageChanged', {
@@ -533,9 +671,11 @@
 
     currentLanguage = getInitialLanguage();
     document.documentElement.lang = currentLanguage;
-    document.documentElement.dir = currentLanguage === 'ar' ? 'rtl' : 'ltr';
+    document.documentElement.dir = RTL_LANGUAGES.includes(currentLanguage) ? 'rtl' : 'ltr';
+    document.body?.classList.toggle('is-rtl', RTL_LANGUAGES.includes(currentLanguage));
+    applyLocaleSeo(currentLanguage);
 
-    await loadTranslations(currentLanguage);
+    await Promise.all([loadTranslations(DEFAULT_LANGUAGE), loadTranslations('tr'), loadTranslations('ar'), loadTranslations(currentLanguage)]);
 
     if (!setupExistingSelector()) {
       injectLanguageSelector();
@@ -547,6 +687,7 @@
     }
 
     updatePageTranslations();
+    initSiteGuide();
     isInitialized = true;
   }
 
@@ -596,6 +737,43 @@
     window.__mcAdSenseLoaded = true;
   }
 
+
+  function initSiteGuide() {
+    if (document.getElementById('novatools-site-guide')) return;
+    const guide = document.createElement('aside');
+    guide.id = 'novatools-site-guide';
+    guide.className = 'site-guide-chatbot';
+    guide.setAttribute('aria-label', t('surface.chatbot.title', 'NovaTools guide'));
+    guide.innerHTML = `
+      <button type="button" class="site-guide-chatbot__toggle" aria-expanded="false" aria-controls="site-guide-chatbot-panel">${t('surface.chatbot.open', 'Open site guide')}</button>
+      <div id="site-guide-chatbot-panel" class="site-guide-chatbot__panel" hidden>
+        <div class="site-guide-chatbot__header"><strong>${t('surface.chatbot.title', 'NovaTools guide')}</strong><button type="button" class="site-guide-chatbot__close" aria-label="${t('surface.chatbot.close', 'Close site guide')}">×</button></div>
+        <p>${t('surface.chatbot.placeholder', 'Ask which tool or guide fits your task…')}</p>
+        <div class="site-guide-chatbot__links">
+          <a href="/categories/index.html">${t('tools.categories', 'Categories')}</a>
+          <a href="/blog/index.html">${t('nav.blog', 'Blog')}</a>
+          <a href="/contact.html">${t('nav.contact', 'Contact')}</a>
+        </div>
+      </div>`;
+    document.body.appendChild(guide);
+    const toggle = guide.querySelector('.site-guide-chatbot__toggle');
+    const panel = guide.querySelector('.site-guide-chatbot__panel');
+    const close = guide.querySelector('.site-guide-chatbot__close');
+    const setOpen = (open) => {
+      panel.hidden = !open;
+      toggle.setAttribute('aria-expanded', String(open));
+    };
+    toggle.addEventListener('click', () => setOpen(panel.hidden));
+    close.addEventListener('click', () => setOpen(false));
+  }
+
+  function refreshSiteGuide() {
+    const guide = document.getElementById('novatools-site-guide');
+    if (!guide) return;
+    guide.remove();
+    initSiteGuide();
+  }
+
   function initQualityEnhancements() {
     document.querySelectorAll('ins.adsbygoogle').forEach((el) => {
       el.classList.add('ad-slot-reserved');
@@ -634,6 +812,8 @@
     LANGUAGE_NAMES,
     LANGUAGE_FLAGS,
     localizedPath,
+    localizedSearch,
+    localizedHref,
     contentAvailability
   };
 
@@ -648,6 +828,18 @@
       ensureAdSenseBootstrap();
     });
     window.addEventListener('novatools:consent-updated', ensureAdSenseBootstrap);
+    if (document.body && !window.__novatoolsI18nObserver) {
+      let pendingRefresh = false;
+      window.__novatoolsI18nObserver = new MutationObserver(() => {
+        if (pendingRefresh) return;
+        pendingRefresh = true;
+        window.requestAnimationFrame(() => {
+          pendingRefresh = false;
+          updateStaticTextTranslations();
+        });
+      });
+      window.__novatoolsI18nObserver.observe(document.body, { childList: true, subtree: true });
+    }
   }
 
   if (document.readyState === 'loading') {
@@ -729,6 +921,81 @@
 
     .tool-quality-panel strong { color: #f8fafc; }
     .tool-quality-panel a { color: #22d3ee; }
+
+    .site-guide-chatbot {
+      position: fixed;
+      right: 1rem;
+      bottom: 1rem;
+      z-index: 9998;
+      width: min(340px, calc(100vw - 2rem));
+      font-family: Inter, system-ui, sans-serif;
+    }
+
+    .site-guide-chatbot__toggle,
+    .site-guide-chatbot__panel {
+      border: 1px solid rgba(148, 163, 184, 0.26);
+      box-shadow: 0 18px 60px rgba(2, 6, 23, 0.38);
+    }
+
+    .site-guide-chatbot__toggle {
+      float: right;
+      border-radius: 999px;
+      padding: 0.8rem 1rem;
+      background: linear-gradient(135deg, #22d3ee, #8b5cf6);
+      color: #020617;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .site-guide-chatbot__panel {
+      clear: both;
+      margin-top: 0.75rem;
+      padding: 1rem;
+      border-radius: 18px;
+      background: rgba(8, 17, 31, 0.96);
+      color: #f8fafc;
+    }
+
+    .site-guide-chatbot__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .site-guide-chatbot__close {
+      border: 0;
+      background: transparent;
+      color: inherit;
+      cursor: pointer;
+      font-size: 1.4rem;
+    }
+
+    .site-guide-chatbot__links {
+      display: grid;
+      gap: 0.5rem;
+      margin-top: 0.85rem;
+    }
+
+    .site-guide-chatbot__links a {
+      border-radius: 12px;
+      padding: 0.7rem 0.85rem;
+      background: rgba(255, 255, 255, 0.07);
+      color: #e2e8f0;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    [dir="rtl"] .site-guide-chatbot {
+      right: auto;
+      left: 1rem;
+      direction: rtl;
+    }
+
+    [dir="rtl"] .site-guide-chatbot__toggle {
+      float: left;
+    }
+
 
     @media (max-width: 768px) {
       .language-selector {

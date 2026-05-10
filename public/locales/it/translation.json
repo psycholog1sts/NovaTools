@@ -5829,5 +5829,68 @@
       "description": "Explore available tools organized by category, including PDF, image, finance, developer, text, and converters.",
       "sectionTitle": "All Categories"
     }
+  },
+  "surface": {
+    "seo": {
+      "homeTitle": "Strumenti online gratuiti per PDF, immagini, finanza e sviluppo | MC NovaTools",
+      "homeDescription": "Strumenti online rapidi e attenti alla privacy per PDF, immagini, finanza, testo, convertitori, sicurezza e workflow sviluppatore.",
+      "blogTitle": "Blog NovaTools – Migliora la produttività digitale | MC NovaTools",
+      "blogDescription": "Guide pratiche per workflow PDF, immagini, scrittura, sviluppo, finanza, dati e file nel browser.",
+      "contactTitle": "Contatta MC NovaTools | Supporto, feedback e richieste legali",
+      "contactDescription": "Contatta MC NovaTools per supporto, feedback, richieste privacy, domande commerciali o suggerimenti di strumenti."
+    },
+    "ui": {
+      "start": "Inizio",
+      "company": "Azienda",
+      "legal": "Legale",
+      "about": "Informazioni",
+      "aboutUs": "Chi siamo",
+      "privacyPolicy": "Informativa sulla privacy",
+      "termsOfService": "Termini di servizio",
+      "cookiePolicy": "Politica sui cookie",
+      "cookieSettings": "Impostazioni cookie",
+      "requestTool": "Richiedi uno strumento",
+      "practicalTools": "Strumenti online pratici con workflow attenti alla privacy.",
+      "guidesSupported": "Strumenti online professionali supportati da guide pratiche.",
+      "otherCategories": "Altre categorie",
+      "allRightsReserved": "Tutti i diritti riservati.",
+      "lastUpdated": "Ultimo aggiornamento: 2026-05-10"
+    },
+    "chatbot": {
+      "title": "Guida NovaTools",
+      "placeholder": "Chiedi quale strumento o guida si adatta al tuo compito…",
+      "open": "Apri guida del sito",
+      "close": "Chiudi guida del sito"
+    },
+    "alias": {
+      "guidesSupported": "Strumenti online professionali supportati da guide pratiche.",
+      "practicalToolsPrivacy": "Strumenti online pratici con workflow attenti alla privacy.",
+      "contact": "Contatti",
+      "blog": "Blog",
+      "categories": "Sfoglia per Categoria",
+      "privacy": "Privacy",
+      "otherCategories": "Altre categorie",
+      "rights": "Tutti i diritti riservati.",
+      "trGuidesSupportedSource": "Strumenti online professionali supportati da guide pratiche.",
+      "trRightsSource": "Tutti i diritti riservati."
+    },
+    "cookie": {
+      "title": "Scelte cookie",
+      "body": "Usiamo archiviazione necessaria per le funzioni principali. Analytics, pubblicità e archiviazione funzionale sono opzionali e si caricano solo dopo il consenso.",
+      "settings": "Impostazioni cookie",
+      "accept": "Accetta tutto",
+      "reject": "Rifiuta non essenziali",
+      "save": "Salva scelte",
+      "close": "Chiudi"
+    },
+    "notFound": {
+      "title": "Pagina non trovata | NovaTools",
+      "description": "La pagina richiesta non è stata trovata. Torna a NovaTools o apri strumenti popolari per PDF, immagini, finanza e sviluppo.",
+      "heading": "Pagina non trovata",
+      "body": "Il link potrebbe essere obsoleto o la pagina spostata. Inizia dalla home, sfoglia le categorie o apri uno strumento popolare.",
+      "home": "Vai alla home",
+      "categories": "Sfoglia categorie",
+      "guides": "Leggi guide"
+    }
   }
 }

@@ -5829,5 +5829,68 @@
       "description": "Explore available tools organized by category, including PDF, image, finance, developer, text, and converters.",
       "sectionTitle": "All Categories"
     }
+  },
+  "surface": {
+    "seo": {
+      "homeTitle": "Herramientas online gratis para PDF, imagen, finanzas y desarrollo | MC NovaTools",
+      "homeDescription": "Herramientas rápidas y conscientes de la privacidad para PDF, imagen, finanzas, texto, conversores, seguridad y flujos de desarrollo.",
+      "blogTitle": "Blog de NovaTools – Mejore su productividad digital | MC NovaTools",
+      "blogDescription": "Guías prácticas para flujos PDF, imagen, escritura, desarrollo, finanzas, datos y archivos en el navegador.",
+      "contactTitle": "Contactar con MC NovaTools | Soporte, comentarios y solicitudes legales",
+      "contactDescription": "Contacte con MC NovaTools para soporte, comentarios, privacidad, consultas comerciales o sugerencias de herramientas."
+    },
+    "ui": {
+      "start": "Inicio",
+      "company": "Empresa",
+      "legal": "Legal",
+      "about": "Acerca de",
+      "aboutUs": "Acerca de",
+      "privacyPolicy": "Política de privacidad",
+      "termsOfService": "Términos de servicio",
+      "cookiePolicy": "Política de cookies",
+      "cookieSettings": "Configuración de cookies",
+      "requestTool": "Solicitar herramienta",
+      "practicalTools": "Herramientas online prácticas con flujos conscientes de la privacidad.",
+      "guidesSupported": "Herramientas online profesionales apoyadas por guías prácticas.",
+      "otherCategories": "Otras categorías",
+      "allRightsReserved": "Todos los derechos reservados.",
+      "lastUpdated": "Última actualización: 2026-05-10"
+    },
+    "chatbot": {
+      "title": "Guía NovaTools",
+      "placeholder": "Pregunte qué herramienta o guía encaja con su tarea…",
+      "open": "Abrir guía del sitio",
+      "close": "Cerrar guía del sitio"
+    },
+    "alias": {
+      "guidesSupported": "Herramientas online profesionales apoyadas por guías prácticas.",
+      "practicalToolsPrivacy": "Herramientas online prácticas con flujos conscientes de la privacidad.",
+      "contact": "Contacto",
+      "blog": "Blog",
+      "categories": "Explorar por Categoría",
+      "privacy": "Privacidad",
+      "otherCategories": "Otras categorías",
+      "rights": "Todos los derechos reservados.",
+      "trGuidesSupportedSource": "Herramientas online profesionales apoyadas por guías prácticas.",
+      "trRightsSource": "Todos los derechos reservados."
+    },
+    "cookie": {
+      "title": "Opciones de cookies",
+      "body": "Usamos almacenamiento necesario para funciones básicas. Analítica, publicidad y almacenamiento funcional son opcionales y se cargan solo tras el consentimiento.",
+      "settings": "Configuración de cookies",
+      "accept": "Aceptar todo",
+      "reject": "Rechazar no esencial",
+      "save": "Guardar opciones",
+      "close": "Cerrar"
+    },
+    "notFound": {
+      "title": "Página no encontrada | NovaTools",
+      "description": "No se pudo encontrar la página solicitada. Vuelva a NovaTools o abra herramientas populares de PDF, imagen, finanzas y desarrollo.",
+      "heading": "Página no encontrada",
+      "body": "El enlace puede estar desactualizado o la página puede haberse movido. Empiece desde inicio, explore categorías o abra una herramienta popular.",
+      "home": "Ir al inicio",
+      "categories": "Explorar categorías",
+      "guides": "Leer guías"
+    }
   }
 }

@@ -5829,5 +5829,68 @@
       "description": "Explore available tools organized by category, including PDF, image, finance, developer, text, and converters.",
       "sectionTitle": "All Categories"
     }
+  },
+  "surface": {
+    "seo": {
+      "homeTitle": "Outils en ligne gratuits pour PDF, images, finance et développement | MC NovaTools",
+      "homeDescription": "Outils en ligne rapides et respectueux de la confidentialité pour PDF, images, finance, texte, convertisseurs, sécurité et workflows développeur.",
+      "blogTitle": "Blog NovaTools – Améliorez votre productivité numérique | MC NovaTools",
+      "blogDescription": "Guides pratiques liés aux workflows PDF, image, rédaction, développement, finance, données et fichiers dans le navigateur.",
+      "contactTitle": "Contacter MC NovaTools | Support, retours et demandes légales",
+      "contactDescription": "Contactez MC NovaTools pour le support, les retours, les demandes de confidentialité, les questions professionnelles ou les suggestions d’outils."
+    },
+    "ui": {
+      "start": "Démarrer",
+      "company": "Entreprise",
+      "legal": "Légal",
+      "about": "À propos",
+      "aboutUs": "À propos",
+      "privacyPolicy": "Politique de confidentialité",
+      "termsOfService": "Conditions d’utilisation",
+      "cookiePolicy": "Politique relative aux cookies",
+      "cookieSettings": "Paramètres des cookies",
+      "requestTool": "Demander un outil",
+      "practicalTools": "Outils en ligne pratiques avec des workflows respectueux de la confidentialité.",
+      "guidesSupported": "Outils en ligne professionnels soutenus par des guides pratiques.",
+      "otherCategories": "Autres catégories",
+      "allRightsReserved": "Tous droits réservés.",
+      "lastUpdated": "Dernière mise à jour : 2026-05-10"
+    },
+    "chatbot": {
+      "title": "Guide NovaTools",
+      "placeholder": "Demandez quel outil ou guide convient à votre tâche…",
+      "open": "Ouvrir le guide du site",
+      "close": "Fermer le guide du site"
+    },
+    "alias": {
+      "guidesSupported": "Outils en ligne professionnels soutenus par des guides pratiques.",
+      "practicalToolsPrivacy": "Outils en ligne pratiques avec des workflows respectueux de la confidentialité.",
+      "contact": "Contact",
+      "blog": "Blogue",
+      "categories": "Parcourir par Catégorie",
+      "privacy": "Confidentialité",
+      "otherCategories": "Autres catégories",
+      "rights": "Tous droits réservés.",
+      "trGuidesSupportedSource": "Outils en ligne professionnels soutenus par des guides pratiques.",
+      "trRightsSource": "Tous droits réservés."
+    },
+    "cookie": {
+      "title": "Choix des cookies",
+      "body": "Nous utilisons le stockage nécessaire pour les fonctions de base. Analytics, publicité et stockage fonctionnel sont optionnels et chargés seulement après consentement.",
+      "settings": "Paramètres des cookies",
+      "accept": "Tout accepter",
+      "reject": "Refuser le non essentiel",
+      "save": "Enregistrer les choix",
+      "close": "Fermer"
+    },
+    "notFound": {
+      "title": "Page introuvable | NovaTools",
+      "description": "La page demandée est introuvable. Revenez à NovaTools ou ouvrez des outils PDF, image, finance et développeur populaires.",
+      "heading": "Page introuvable",
+      "body": "Le lien est peut-être obsolète ou la page a été déplacée. Commencez par l’accueil, parcourez les catégories ou ouvrez un outil populaire.",
+      "home": "Aller à l’accueil",
+      "categories": "Parcourir les catégories",
+      "guides": "Lire les guides"
+    }
   }
 }

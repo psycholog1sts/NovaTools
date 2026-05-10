@@ -5829,5 +5829,68 @@
       "description": "Explore available tools organized by category, including PDF, image, finance, developer, text, and converters.",
       "sectionTitle": "All Categories"
     }
+  },
+  "surface": {
+    "seo": {
+      "homeTitle": "PDF, 이미지, 금융 및 개발 작업용 무료 온라인 도구 | MC NovaTools",
+      "homeDescription": "PDF, 이미지, 금융, 텍스트, 변환기, 보안 및 개발자 워크플로를 위한 빠르고 개인정보를 고려한 온라인 도구.",
+      "blogTitle": "NovaTools 블로그 – 디지털 생산성 향상 | MC NovaTools",
+      "blogDescription": "PDF, 이미지, 글쓰기, 개발, 금융, 데이터 및 브라우저 파일 워크플로와 연결된 실용 가이드.",
+      "contactTitle": "MC NovaTools 문의 | 지원, 피드백 및 법적 요청",
+      "contactDescription": "지원, 피드백, 개인정보 요청, 비즈니스 문의 또는 도구 제안을 위해 MC NovaTools에 문의하세요."
+    },
+    "ui": {
+      "start": "시작",
+      "company": "회사",
+      "legal": "법적 고지",
+      "about": "소개",
+      "aboutUs": "회사 소개",
+      "privacyPolicy": "개인정보 처리방침",
+      "termsOfService": "서비스 약관",
+      "cookiePolicy": "쿠키 정책",
+      "cookieSettings": "쿠키 설정",
+      "requestTool": "도구 요청",
+      "practicalTools": "개인정보를 고려한 워크플로를 갖춘 실용 온라인 도구.",
+      "guidesSupported": "실용 가이드가 지원하는 전문 온라인 도구.",
+      "otherCategories": "다른 카테고리",
+      "allRightsReserved": "모든 권리 보유.",
+      "lastUpdated": "마지막 업데이트: 2026-05-10"
+    },
+    "chatbot": {
+      "title": "NovaTools 가이드",
+      "placeholder": "작업에 맞는 도구나 가이드를 질문하세요…",
+      "open": "사이트 가이드 열기",
+      "close": "사이트 가이드 닫기"
+    },
+    "alias": {
+      "guidesSupported": "실용 가이드가 지원하는 전문 온라인 도구.",
+      "practicalToolsPrivacy": "개인정보를 고려한 워크플로를 갖춘 실용 온라인 도구.",
+      "contact": "문의하기",
+      "blog": "블로그",
+      "categories": "카테고리별 탐색",
+      "privacy": "개인정보",
+      "otherCategories": "다른 카테고리",
+      "rights": "모든 권리 보유.",
+      "trGuidesSupportedSource": "실용 가이드가 지원하는 전문 온라인 도구.",
+      "trRightsSource": "모든 권리 보유."
+    },
+    "cookie": {
+      "title": "쿠키 선택",
+      "body": "핵심 기능에는 필수 저장소를 사용합니다. 분석, 광고 및 기능 저장소는 선택 사항이며 동의 후에만 로드됩니다.",
+      "settings": "쿠키 설정",
+      "accept": "모두 허용",
+      "reject": "필수 외 거부",
+      "save": "선택 저장",
+      "close": "닫기"
+    },
+    "notFound": {
+      "title": "페이지를 찾을 수 없음 | NovaTools",
+      "description": "요청한 페이지를 찾을 수 없습니다. NovaTools로 돌아가거나 인기 PDF, 이미지, 금융 및 개발 도구를 여세요.",
+      "heading": "페이지를 찾을 수 없습니다",
+      "body": "링크가 오래되었거나 페이지가 이동되었을 수 있습니다. 홈에서 시작하거나 모든 카테고리를 보거나 인기 도구로 바로 이동하세요.",
+      "home": "홈으로 이동",
+      "categories": "카테고리 보기",
+      "guides": "가이드 읽기"
+    }
   }
 }

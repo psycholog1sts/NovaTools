@@ -1,4 +1,5 @@
-const SUPPORTED_LOCALES = ['en', 'tr', 'ar'];
+const SUPPORTED_LOCALES = ['en', 'tr', 'de', 'fr', 'es', 'pt', 'ru', 'zh', 'ja', 'ko', 'ar', 'hi', 'it', 'pl', 'nl'];
+const PATH_PREFIX_LOCALES = new Set(['tr', 'ar']);
 const DEFAULT_LOCALE = 'en';
 const RTL_LOCALES = new Set(['ar']);
 const SITE_ORIGIN = 'https://mc-novatools.com';
@@ -160,14 +161,18 @@ export const contentAvailability = {
   }
 };
 
-export function stripLocalePrefix(pathname = window.location.pathname) {
-  const stripped = String(pathname || '/').replace(/^\/(tr|ar)(?=\/|$)/, '') || '/';
-  return stripped.startsWith('/') ? stripped : `/${stripped}`;
+export function stripLocalePrefix(pathname = typeof window !== 'undefined' ? window.location.pathname : '/') {
+  const firstSegment = String(pathname || '/').split('/').filter(Boolean)[0];
+  if (PATH_PREFIX_LOCALES.has(firstSegment)) {
+    const stripped = String(pathname || '/').replace(new RegExp(`^/(${[...PATH_PREFIX_LOCALES].join('|')})(?=/|$)`), '') || '/';
+    return stripped.startsWith('/') ? stripped : `/${stripped}`;
+  }
+  return String(pathname || '/').startsWith('/') ? String(pathname || '/') : `/${pathname}`;
 }
 
-export function localeFromPath(pathname = window.location.pathname) {
-  const match = String(pathname || '').match(/^\/(tr|ar)(?=\/|$)/);
-  return match ? match[1] : DEFAULT_LOCALE;
+export function localeFromPath(pathname = typeof window !== 'undefined' ? window.location.pathname : '/') {
+  const firstSegment = String(pathname || '').split('/').filter(Boolean)[0];
+  return PATH_PREFIX_LOCALES.has(firstSegment) ? firstSegment : DEFAULT_LOCALE;
 }
 
 export function detectLocale() {
@@ -189,20 +194,30 @@ export function detectLocale() {
   return SUPPORTED_LOCALES.includes(browserLocale) ? browserLocale : DEFAULT_LOCALE;
 }
 
-export function localizedPath(locale, pathname = window.location.pathname) {
+export function localizedPath(locale, pathname = typeof window !== 'undefined' ? window.location.pathname : '/') {
   const basePath = stripLocalePrefix(pathname);
-  return locale === DEFAULT_LOCALE ? basePath : `/${locale}${basePath === '/' ? '/' : basePath}`;
+  return PATH_PREFIX_LOCALES.has(locale) ? `/${locale}${basePath === '/' ? '/' : basePath}` : basePath;
 }
 
-export function getCanonicalUrl(locale = detectLocale(), pathname = window.location.pathname) {
-  return `${SITE_ORIGIN}${localizedPath(locale, pathname)}`;
+export function localizedSearch(locale, search = typeof window !== 'undefined' ? window.location.search : '') {
+  const params = new URLSearchParams(search || '');
+  params.delete('lang');
+  if (locale !== DEFAULT_LOCALE && !PATH_PREFIX_LOCALES.has(locale)) params.set('lang', locale);
+  const query = params.toString();
+  return query ? `?${query}` : '';
 }
 
-export function getHreflangLinks(pathname = window.location.pathname) {
+export function localizedHref(locale, pathname = typeof window !== 'undefined' ? window.location.pathname : '/', search = typeof window !== 'undefined' ? window.location.search : '') {
+  return `${localizedPath(locale, pathname)}${localizedSearch(locale, search)}`;
+}
+
+export function getCanonicalUrl(locale = detectLocale(), pathname = typeof window !== 'undefined' ? window.location.pathname : '/') {
+  return `${SITE_ORIGIN}${localizedHref(locale, pathname)}`;
+}
+
+export function getHreflangLinks(pathname = typeof window !== 'undefined' ? window.location.pathname : '/') {
   return [
-    { hreflang: 'en', href: getCanonicalUrl('en', pathname) },
-    { hreflang: 'tr', href: getCanonicalUrl('tr', pathname) },
-    { hreflang: 'ar', href: getCanonicalUrl('ar', pathname) },
+    ...SUPPORTED_LOCALES.map((locale) => ({ hreflang: locale, href: getCanonicalUrl(locale, pathname) })),
     { hreflang: 'x-default', href: getCanonicalUrl('en', pathname) }
   ];
 }
@@ -224,7 +239,7 @@ export function markNoindex(reason = 'localized-content-unavailable') {
   document.documentElement.dataset.noindexReason = reason;
 }
 
-export function applySeoLinks(locale = detectLocale(), pathname = window.location.pathname) {
+export function applySeoLinks(locale = detectLocale(), pathname = typeof window !== 'undefined' ? window.location.pathname : '/') {
   document.head.querySelectorAll('link[rel="alternate"][hreflang]').forEach((link) => link.remove());
 
   getHreflangLinks(pathname).forEach(({ hreflang, href }) => {

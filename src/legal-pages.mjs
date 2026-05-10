@@ -2,6 +2,10 @@ import legalContent from './i18n/legal.json';
 import { initConsentManager } from './core/consent-manager.mjs';
 import { initAnalytics } from './js/analytics.js';
 
+const SUPPORTED_LANGUAGES = ['en', 'tr', 'de', 'fr', 'es', 'pt', 'ru', 'zh', 'ja', 'ko', 'ar', 'hi', 'it', 'pl', 'nl'];
+const PATH_PREFIX_LANGUAGES = ['tr', 'ar'];
+const RTL_LANGUAGES = ['ar'];
+
 const PAGE_FILES = {
   about: 'about-us.html',
   privacy: 'privacy-policy.html',
@@ -11,10 +15,16 @@ const PAGE_FILES = {
 };
 
 function currentLanguage() {
-  const pathLang = window.location.pathname.match(/^\/(tr|ar)(?=\/|$)/)?.[1];
+  const firstSegment = window.location.pathname.split('/').filter(Boolean)[0];
+  const pathLang = PATH_PREFIX_LANGUAGES.includes(firstSegment) ? firstSegment : null;
   const queryLang = new URLSearchParams(window.location.search).get('lang');
-  const stored = localStorage.getItem('mc-novatools-language');
-  return pathLang || (['en', 'tr', 'ar'].includes(queryLang) ? queryLang : null) || (['en', 'tr', 'ar'].includes(stored) ? stored : 'en');
+  let stored = null;
+  try {
+    stored = localStorage.getItem('mc-novatools-language');
+  } catch {
+    stored = null;
+  }
+  return pathLang || (SUPPORTED_LANGUAGES.includes(queryLang) ? queryLang : null) || (SUPPORTED_LANGUAGES.includes(stored) ? stored : 'en');
 }
 
 function pageKey() {
@@ -65,7 +75,7 @@ function renderSection(section, formContent) {
 
 function setMeta(page, lang, key) {
   document.documentElement.lang = lang;
-  document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+  document.documentElement.dir = RTL_LANGUAGES.includes(lang) ? 'rtl' : 'ltr';
   document.title = page.metaTitle;
   document.querySelector('meta[name="description"]')?.setAttribute('content', page.metaDescription);
   document.querySelector('meta[property="og:title"]')?.setAttribute('content', page.metaTitle);
@@ -73,13 +83,13 @@ function setMeta(page, lang, key) {
   document.querySelector('meta[name="twitter:title"]')?.setAttribute('content', page.metaTitle);
   document.querySelector('meta[name="twitter:description"]')?.setAttribute('content', page.metaDescription);
   const file = PAGE_FILES[key];
-  const path = lang === 'en' ? `/${file}` : `/${lang}/${file}`;
+  const path = PATH_PREFIX_LANGUAGES.includes(lang) ? `/${lang}/${file}` : `/${file}${lang === 'en' ? '' : `?lang=${lang}`}`;
   document.querySelector('link[rel="canonical"]')?.setAttribute('href', `https://mc-novatools.com${path}`);
 }
 
 function renderBreadcrumb(common, page, key, lang) {
-  const root = lang === 'en' ? '/' : `/${lang}/`;
-  const file = lang === 'en' ? `/${PAGE_FILES[key]}` : `/${lang}/${PAGE_FILES[key]}`;
+  const root = PATH_PREFIX_LANGUAGES.includes(lang) ? `/${lang}/` : `/${lang === 'en' ? '' : `?lang=${lang}`}`;
+  const file = PATH_PREFIX_LANGUAGES.includes(lang) ? `/${lang}/${PAGE_FILES[key]}` : `/${PAGE_FILES[key]}${lang === 'en' ? '' : `?lang=${lang}`}`;
   const breadcrumb = document.querySelector('[data-legal-breadcrumb]');
   if (breadcrumb) breadcrumb.innerHTML = `<a href="${root}">${common.home}</a><span>/</span><a href="${file}" aria-current="page">${page.title}</a>`;
 }
@@ -99,7 +109,7 @@ function updateActiveNav(key) {
 
 function updateSchema(page, key, lang) {
   const file = PAGE_FILES[key];
-  const path = lang === 'en' ? `/${file}` : `/${lang}/${file}`;
+  const path = PATH_PREFIX_LANGUAGES.includes(lang) ? `/${lang}/${file}` : `/${file}${lang === 'en' ? '' : `?lang=${lang}`}`;
   const schema = {
     '@context': 'https://schema.org',
     '@graph': [

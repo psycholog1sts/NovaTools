@@ -5829,5 +5829,68 @@
       "description": "Explore available tools organized by category, including PDF, image, finance, developer, text, and converters.",
       "sectionTitle": "All Categories"
     }
+  },
+  "surface": {
+    "seo": {
+      "homeTitle": "PDF、图像、金融和开发工作的免费在线工具 | MC NovaTools",
+      "homeDescription": "快速、注重隐私的在线工具，适用于 PDF、图像、金融、文本、转换器、安全和开发者工作流。",
+      "blogTitle": "NovaTools 博客 – 提升数字生产力 | MC NovaTools",
+      "blogDescription": "连接 PDF、图像、写作、开发、金融、数据和浏览器文件工作流的实用指南。",
+      "contactTitle": "联系 MC NovaTools | 支持、反馈和法律请求",
+      "contactDescription": "联系 MC NovaTools 获取支持、反馈、隐私请求、业务咨询或工具建议。"
+    },
+    "ui": {
+      "start": "开始",
+      "company": "公司",
+      "legal": "法律",
+      "about": "关于",
+      "aboutUs": "关于我们",
+      "privacyPolicy": "隐私政策",
+      "termsOfService": "服务条款",
+      "cookiePolicy": "Cookie 政策",
+      "cookieSettings": "Cookie 设置",
+      "requestTool": "请求工具",
+      "practicalTools": "具有隐私意识工作流的实用在线工具。",
+      "guidesSupported": "由实用指南支持的专业在线工具。",
+      "otherCategories": "其他类别",
+      "allRightsReserved": "保留所有权利。",
+      "lastUpdated": "最后更新：2026-05-10"
+    },
+    "chatbot": {
+      "title": "NovaTools 指南",
+      "placeholder": "询问哪个工具或指南适合您的任务…",
+      "open": "打开站点指南",
+      "close": "关闭站点指南"
+    },
+    "alias": {
+      "guidesSupported": "由实用指南支持的专业在线工具。",
+      "practicalToolsPrivacy": "具有隐私意识工作流的实用在线工具。",
+      "contact": "联系我们",
+      "blog": "博客",
+      "categories": "按分类浏览",
+      "privacy": "隐私",
+      "otherCategories": "其他类别",
+      "rights": "保留所有权利。",
+      "trGuidesSupportedSource": "由实用指南支持的专业在线工具。",
+      "trRightsSource": "保留所有权利。"
+    },
+    "cookie": {
+      "title": "Cookie 选择",
+      "body": "我们使用必要存储来支持核心功能。分析、广告和功能存储是可选的，仅在同意后加载。",
+      "settings": "Cookie 设置",
+      "accept": "全部接受",
+      "reject": "拒绝非必要项",
+      "save": "保存选择",
+      "close": "关闭"
+    },
+    "notFound": {
+      "title": "页面未找到 | NovaTools",
+      "description": "找不到您请求的页面。返回 NovaTools 或打开常用的 PDF、图像、金融和开发工具。",
+      "heading": "页面未找到",
+      "body": "链接可能已过期或页面已移动。请从首页开始，浏览所有分类，或直接打开常用工具。",
+      "home": "前往首页",
+      "categories": "浏览分类",
+      "guides": "阅读指南"
+    }
   }
 }

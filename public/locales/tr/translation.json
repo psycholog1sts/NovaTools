@@ -5976,5 +5976,68 @@
         }
       }
     }
+  },
+  "surface": {
+    "seo": {
+      "homeTitle": "PDF, Görsel, Finans ve Geliştirici İşleri için Ücretsiz Online Araçlar | MC NovaTools",
+      "homeDescription": "PDF, görsel, finans, metin, dönüştürücü, güvenlik ve geliştirici iş akışları için hızlı, gizlilik odaklı online araçlar. Zorunlu üyelik yok. Temiz, sade, tarayıcı öncelikli yardımcılar.",
+      "blogTitle": "NovaTools Blog – Dijital Üretkenliğinizi Artırın | MC NovaTools",
+      "blogDescription": "PDF, görsel, yazım, geliştirici, finans, veri ve tarayıcı öncelikli dosya iş akışlarına bağlı pratik rehberler.",
+      "contactTitle": "MC NovaTools ile İletişim | Destek, geri bildirim ve yasal talepler",
+      "contactDescription": "Destek, geri bildirim, gizlilik talepleri, iş birlikleri veya araç önerileri için doğrulanmış formu ya da e-posta bağlantısını kullanın."
+    },
+    "ui": {
+      "start": "Başlangıç",
+      "company": "Şirket",
+      "legal": "Yasal",
+      "about": "Hakkında",
+      "aboutUs": "Hakkımızda",
+      "privacyPolicy": "Gizlilik Politikası",
+      "termsOfService": "Kullanım Şartları",
+      "cookiePolicy": "Çerez Politikası",
+      "cookieSettings": "Çerez ayarları",
+      "requestTool": "Araç iste",
+      "practicalTools": "Gizlilik odaklı iş akışlarına sahip pratik online araçlar.",
+      "guidesSupported": "Pratik rehberlerle desteklenen profesyonel online araçlar.",
+      "otherCategories": "Diğer Kategoriler",
+      "allRightsReserved": "Tüm hakları saklıdır.",
+      "lastUpdated": "Son güncelleme: 2026-05-10"
+    },
+    "chatbot": {
+      "title": "NovaTools rehberi",
+      "placeholder": "Görevinize hangi araç veya rehber uyar?",
+      "open": "Site rehberini aç",
+      "close": "Site rehberini kapat"
+    },
+    "alias": {
+      "guidesSupported": "Pratik rehberlerle desteklenen profesyonel online araçlar.",
+      "otherCategories": "Diğer Kategoriler",
+      "categories": "Kategoriye Göre Gözat",
+      "rights": "Tüm hakları saklıdır.",
+      "practicalToolsPrivacy": "Gizlilik odaklı iş akışlarına sahip pratik online araçlar.",
+      "contact": "İletişim",
+      "blog": "Blog",
+      "privacy": "Gizlilik",
+      "trGuidesSupportedSource": "Pratik online araçlar ve karar destek rehberleri.",
+      "trRightsSource": "Tüm hakları saklıdır."
+    },
+    "cookie": {
+      "title": "Çerez tercihleri",
+      "body": "Temel özellikler için zorunlu depolama kullanırız. Analiz, reklam ve fonksiyonel depolama isteğe bağlıdır ve yalnızca onaydan sonra yüklenir.",
+      "settings": "Çerez Ayarları",
+      "accept": "Tümünü kabul et",
+      "reject": "Zorunlu olmayanları reddet",
+      "save": "Seçimleri kaydet",
+      "close": "Kapat"
+    },
+    "notFound": {
+      "title": "Sayfa Bulunamadı | NovaTools",
+      "description": "İstediğiniz sayfa bulunamadı. NovaTools ana sayfasına dönün veya popüler PDF, görsel, finans ve geliştirici araçlarını açın.",
+      "heading": "Sayfa bulunamadı",
+      "body": "Bağlantı eski olabilir veya sayfa taşınmış olabilir. Ana sayfadan başlayın, tüm kategorilere göz atın ya da popüler bir araca geçin.",
+      "home": "Ana sayfaya git",
+      "categories": "Kategorilere göz at",
+      "guides": "Rehberleri oku"
+    }
   }
 }

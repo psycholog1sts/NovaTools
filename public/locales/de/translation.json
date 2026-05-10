@@ -5829,5 +5829,68 @@
       "description": "Explore available tools organized by category, including PDF, image, finance, developer, text, and converters.",
       "sectionTitle": "All Categories"
     }
+  },
+  "surface": {
+    "seo": {
+      "homeTitle": "Kostenlose Online-Tools für PDF, Bilder, Finanzen und Entwicklung | MC NovaTools",
+      "homeDescription": "Schnelle, datenschutzbewusste Online-Tools für PDF, Bilder, Finanzen, Text, Konverter, Sicherheit und Entwickler-Workflows. Keine erzwungene Anmeldung.",
+      "blogTitle": "NovaTools Blog – Digitale Produktivität verbessern | MC NovaTools",
+      "blogDescription": "Praktische Leitfäden für PDF-, Bild-, Schreib-, Entwickler-, Finanz-, Daten- und browserbasierte Datei-Workflows.",
+      "contactTitle": "MC NovaTools kontaktieren | Support, Feedback und rechtliche Anfragen",
+      "contactDescription": "Kontaktieren Sie MC NovaTools für Support, Feedback, Datenschutzanfragen, geschäftliche Anliegen oder Tool-Vorschläge."
+    },
+    "ui": {
+      "start": "Start",
+      "company": "Unternehmen",
+      "legal": "Rechtliches",
+      "about": "Über uns",
+      "aboutUs": "Über uns",
+      "privacyPolicy": "Datenschutzrichtlinie",
+      "termsOfService": "Nutzungsbedingungen",
+      "cookiePolicy": "Cookie-Richtlinie",
+      "cookieSettings": "Cookie-Einstellungen",
+      "requestTool": "Tool anfragen",
+      "practicalTools": "Praktische Online-Tools mit datenschutzbewussten Workflows.",
+      "guidesSupported": "Professionelle Online-Tools, unterstützt durch praktische Leitfäden.",
+      "otherCategories": "Weitere Kategorien",
+      "allRightsReserved": "Alle Rechte vorbehalten.",
+      "lastUpdated": "Zuletzt aktualisiert: 2026-05-10"
+    },
+    "chatbot": {
+      "title": "NovaTools-Leitfaden",
+      "placeholder": "Fragen Sie, welches Tool oder welcher Leitfaden passt …",
+      "open": "Website-Leitfaden öffnen",
+      "close": "Website-Leitfaden schließen"
+    },
+    "alias": {
+      "guidesSupported": "Professionelle Online-Tools, unterstützt durch praktische Leitfäden.",
+      "practicalToolsPrivacy": "Praktische Online-Tools mit datenschutzbewussten Workflows.",
+      "contact": "Kontakt",
+      "blog": "Blog",
+      "categories": "Nach Kategorie Durchsuchen",
+      "privacy": "Datenschutz",
+      "otherCategories": "Weitere Kategorien",
+      "rights": "Alle Rechte vorbehalten.",
+      "trGuidesSupportedSource": "Professionelle Online-Tools, unterstützt durch praktische Leitfäden.",
+      "trRightsSource": "Alle Rechte vorbehalten."
+    },
+    "cookie": {
+      "title": "Cookie-Auswahl",
+      "body": "Wir verwenden notwendigen Speicher für Kernfunktionen. Analyse, Werbung und funktionaler Speicher sind optional und werden erst nach Zustimmung geladen.",
+      "settings": "Cookie-Einstellungen",
+      "accept": "Alle akzeptieren",
+      "reject": "Nicht notwendige ablehnen",
+      "save": "Auswahl speichern",
+      "close": "Schließen"
+    },
+    "notFound": {
+      "title": "Seite nicht gefunden | NovaTools",
+      "description": "Die angeforderte Seite wurde nicht gefunden. Kehren Sie zu NovaTools zurück oder öffnen Sie beliebte PDF-, Bild-, Finanz- und Entwickler-Tools.",
+      "heading": "Seite nicht gefunden",
+      "body": "Der Link ist möglicherweise veraltet oder die Seite wurde verschoben. Starten Sie auf der Startseite, durchsuchen Sie Kategorien oder öffnen Sie ein beliebtes Tool.",
+      "home": "Zur Startseite",
+      "categories": "Kategorien durchsuchen",
+      "guides": "Leitfäden lesen"
+    }
   }
 }
