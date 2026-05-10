@@ -1,0 +1,2 @@
+# Cloudflare Pages build output for direct uploads and Wrangler deploys.
+pages_build_output_dir = "dist"

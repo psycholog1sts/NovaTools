@@ -81,7 +81,7 @@ function generateManifest() {
 function saveManifest(tools) {
   const outputPath = join(rootDir, 'tools-manifest.json');
   const data = {
-    generated: new Date().toISOString(),
+    generated: 'postinstall',
     count: tools.length,
     tools
   };
@@ -96,6 +96,7 @@ function saveManifest(tools) {
 function validateTools(tools) {
   const required = ['id', 'name', 'category', 'description'];
   const errors = [];
+  const htmlOnlyTools = [];
   
   for (const tool of tools) {
     for (const field of required) {
@@ -113,7 +114,7 @@ function validateTools(tools) {
       errors.push(`${tool.id}: missing index.html`);
     }
     if (!existsSync(logicPath)) {
-      errors.push(`${tool.id}: missing logic.mjs`);
+      htmlOnlyTools.push(tool.id);
     }
   }
   
@@ -121,7 +122,11 @@ function validateTools(tools) {
     console.warn('\n⚠️  Validation warnings:');
     errors.forEach(e => console.warn(`  - ${e}`));
   } else {
-    console.log('✓ All tools validated');
+    console.log('✓ All required tool entry files validated');
+  }
+
+  if (htmlOnlyTools.length > 0) {
+    console.log(`ℹ ${htmlOnlyTools.length} tools use inline HTML scripts without standalone logic.mjs files`);
   }
 }
 
