@@ -109,8 +109,8 @@ const popularTasks = [
   { label: 'PDF Sıkıştır', slug: 'pdf/compress', icon: 'file-text' },
   { label: 'Resim Sıkıştır', slug: 'image/compress', icon: 'image' },
   { label: 'JSON Formatter', slug: 'dev/json-formatter', icon: 'code' },
-  { label: 'Para Birimi Çevir', slug: 'converters/currency-converter', icon: 'repeat' },
-  { label: 'Kelime Sayacı', slug: 'text/word-counter', icon: 'type' },
+  { label: 'Canlı Döviz', slug: 'finance/live-exchange', icon: 'repeat' },
+  { label: 'Metin Analizi', slug: 'text/text-analysis', icon: 'type' },
   { label: 'Mortgage Hesapla', slug: 'finance/mortgage-refinance', icon: 'trending-up' },
   { label: 'Şifre Oluştur', slug: 'security/password-generator', icon: 'shield' }
 ];
@@ -138,9 +138,9 @@ const featuredTools = [
     icon: 'code'
   },
   {
-    slug: 'finance/mortgage-refinance',
-    name: 'Mortgage Refinance',
-    description: 'Yeniden finansman senaryolarını planlama amaçlı karşılaştırın.',
+    slug: 'finance/live-exchange',
+    name: 'Live Exchange Converter',
+    description: 'Döviz kurlarını sunucu tarafı proxy ve önbellekli fallback ile dönüştürün.',
     category: 'Finance Tools',
     icon: 'trending-up'
   }
@@ -158,14 +158,14 @@ const categoryPopularTools = {
     ['Image to WebP', 'image/image-to-webp']
   ],
   'finance-tools': [
-    ['Mortgage', 'finance/mortgage-refinance'],
-    ['Tax Estimator', 'finance/tax'],
-    ['Compound Interest', 'finance/compound-interest']
+    ['Live Exchange', 'finance/live-exchange'],
+    ['Crypto Prices', 'finance/crypto-prices'],
+    ['Stock Lookup', 'finance/stock-lookup']
   ],
   'text-writing': [
-    ['Word Counter', 'text/word-counter'],
-    ['Case Converter', 'text/case-converter'],
-    ['Text Diff', 'text/text-diff']
+    ['Text Analysis', 'text/text-analysis'],
+    ['Text Summarizer', 'text/text-summarizer'],
+    ['Simple Translator', 'text/simple-translator']
   ],
   'developer-tools': [
     ['JSON Formatter', 'dev/json-formatter'],
@@ -198,9 +198,9 @@ const categoryPopularTools = {
     ['Notes', 'productivity/notes']
   ],
   'data-tools': [
-    ['CSV to JSON', 'data/csv-to-json'],
-    ['JSON to CSV', 'data/json-to-csv'],
-    ['SQL Formatter', 'data/sql-formatter']
+    ['CSV/JSON Summary', 'data/csv-json-summarizer'],
+    ['Chart Builder', 'data/chart-builder'],
+    ['Weather Lookup', 'data/weather-lookup']
   ],
   'design-tools': [
     ['Logo Maker', 'design/logo-maker'],

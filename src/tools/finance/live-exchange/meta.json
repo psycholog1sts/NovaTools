@@ -1,0 +1,44 @@
+{
+  "id": "live-exchange",
+  "name": "Live Exchange Converter",
+  "nameEn": "Live Exchange Converter",
+  "category": "finance",
+  "tier": 3,
+  "cpc": {
+    "tr": 1.2,
+    "us": 3
+  },
+  "keywords": {
+    "tr": [
+      "live exchange converter",
+      "online araç"
+    ],
+    "en": [
+      "live exchange converter",
+      "online tool"
+    ]
+  },
+  "description": {
+    "tr": "Convert currencies through the NovaTools server-side live-data proxy with one-hour browser cache.",
+    "en": "Convert currencies through the NovaTools server-side live-data proxy with one-hour browser cache."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "UtilityApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.3
+    }
+  },
+  "bundle": {
+    "lazyLoad": false
+  },
+  "relatedTools": []
+}

@@ -1,0 +1,44 @@
+{
+  "id": "chart-builder",
+  "name": "Simple Chart Builder",
+  "nameEn": "Simple Chart Builder",
+  "category": "data",
+  "tier": 2,
+  "cpc": {
+    "tr": 0.4,
+    "us": 1
+  },
+  "keywords": {
+    "tr": [
+      "simple chart builder",
+      "online araç"
+    ],
+    "en": [
+      "simple chart builder",
+      "online tool"
+    ]
+  },
+  "description": {
+    "tr": "Render a browser-only bar chart from label,value rows.",
+    "en": "Render a browser-only bar chart from label,value rows."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "UtilityApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.3
+    }
+  },
+  "bundle": {
+    "lazyLoad": false
+  },
+  "relatedTools": []
+}

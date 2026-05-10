@@ -1,0 +1,44 @@
+{
+  "id": "simple-translator",
+  "name": "Simple Translator",
+  "nameEn": "Simple Translator",
+  "category": "text",
+  "tier": 2,
+  "cpc": {
+    "tr": 0.4,
+    "us": 1
+  },
+  "keywords": {
+    "tr": [
+      "simple translator",
+      "online araç"
+    ],
+    "en": [
+      "simple translator",
+      "online tool"
+    ]
+  },
+  "description": {
+    "tr": "Translate common short phrases with a local dictionary and a documented proxy-ready API path.",
+    "en": "Translate common short phrases with a local dictionary and a documented proxy-ready API path."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "UtilityApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.3
+    }
+  },
+  "bundle": {
+    "lazyLoad": false
+  },
+  "relatedTools": []
+}

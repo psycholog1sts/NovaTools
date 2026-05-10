@@ -1,0 +1,44 @@
+{
+  "id": "audio-spectrum",
+  "name": "Audio Spectrum Visualizer",
+  "nameEn": "Audio Spectrum Visualizer",
+  "category": "data",
+  "tier": 2,
+  "cpc": {
+    "tr": 0.4,
+    "us": 1
+  },
+  "keywords": {
+    "tr": [
+      "audio spectrum visualizer",
+      "online araç"
+    ],
+    "en": [
+      "audio spectrum visualizer",
+      "online tool"
+    ]
+  },
+  "description": {
+    "tr": "Create a local waveform preview from an audio file with the Web Audio API.",
+    "en": "Create a local waveform preview from an audio file with the Web Audio API."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "UtilityApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.3
+    }
+  },
+  "bundle": {
+    "lazyLoad": false
+  },
+  "relatedTools": []
+}

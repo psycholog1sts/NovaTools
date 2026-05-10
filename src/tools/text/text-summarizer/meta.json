@@ -1,0 +1,44 @@
+{
+  "id": "text-summarizer",
+  "name": "Text Summarizer",
+  "nameEn": "Text Summarizer",
+  "category": "text",
+  "tier": 2,
+  "cpc": {
+    "tr": 0.4,
+    "us": 1
+  },
+  "keywords": {
+    "tr": [
+      "text summarizer",
+      "online araç"
+    ],
+    "en": [
+      "text summarizer",
+      "online tool"
+    ]
+  },
+  "description": {
+    "tr": "Summarize long pasted text locally with an extractive keyword-based workflow.",
+    "en": "Summarize long pasted text locally with an extractive keyword-based workflow."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "UtilityApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.3
+    }
+  },
+  "bundle": {
+    "lazyLoad": false
+  },
+  "relatedTools": []
+}

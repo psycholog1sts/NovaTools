@@ -1,6 +1,6 @@
 {
-  "generated": "2026-03-18T03:30:22.478Z",
-  "count": 110,
+  "generated": "2026-05-10T11:24:27.028Z",
+  "count": 121,
   "tools": [
     {
       "id": "age-calculator",
@@ -54,7 +54,7 @@
         "percentage-calculator"
       ],
       "path": "/converters/age-calculator",
-      "entry": "/tools/converters/age-calculator/"
+      "entry": "/src/tools/converters/age-calculator/"
     },
     {
       "id": "bmi-calculator",
@@ -109,7 +109,7 @@
         "percentage-calculator"
       ],
       "path": "/converters/bmi-calculator",
-      "entry": "/tools/converters/bmi-calculator/"
+      "entry": "/src/tools/converters/bmi-calculator/"
     },
     {
       "id": "currency-converter",
@@ -164,7 +164,7 @@
         "compound-interest"
       ],
       "path": "/converters/currency-converter",
-      "entry": "/tools/converters/currency-converter/"
+      "entry": "/src/tools/converters/currency-converter/"
     },
     {
       "id": "number-base-converter",
@@ -220,7 +220,7 @@
         "scientific-calculator"
       ],
       "path": "/converters/number-base-converter",
-      "entry": "/tools/converters/number-base-converter/"
+      "entry": "/src/tools/converters/number-base-converter/"
     },
     {
       "id": "percentage-calculator",
@@ -274,7 +274,7 @@
         "compound-interest"
       ],
       "path": "/converters/percentage-calculator",
-      "entry": "/tools/converters/percentage-calculator/"
+      "entry": "/src/tools/converters/percentage-calculator/"
     },
     {
       "id": "roman-numerals",
@@ -329,7 +329,7 @@
         "scientific-calculator"
       ],
       "path": "/converters/roman-numerals",
-      "entry": "/tools/converters/roman-numerals/"
+      "entry": "/src/tools/converters/roman-numerals/"
     },
     {
       "id": "scientific-calculator",
@@ -384,7 +384,7 @@
         "percentage-calculator"
       ],
       "path": "/converters/scientific-calculator",
-      "entry": "/tools/converters/scientific-calculator/"
+      "entry": "/src/tools/converters/scientific-calculator/"
     },
     {
       "id": "timezone-converter",
@@ -439,7 +439,7 @@
         "unit-converter"
       ],
       "path": "/converters/timezone-converter",
-      "entry": "/tools/converters/timezone-converter/"
+      "entry": "/src/tools/converters/timezone-converter/"
     },
     {
       "id": "unit-converter",
@@ -495,7 +495,7 @@
         "percentage-calculator"
       ],
       "path": "/converters/unit-converter",
-      "entry": "/tools/converters/unit-converter/"
+      "entry": "/src/tools/converters/unit-converter/"
     },
     {
       "id": "unix-timestamp",
@@ -550,7 +550,7 @@
         "json-formatter"
       ],
       "path": "/converters/unix-timestamp",
-      "entry": "/tools/converters/unix-timestamp/"
+      "entry": "/src/tools/converters/unix-timestamp/"
     },
     {
       "id": "checksum-calculator",
@@ -606,7 +606,7 @@
         "encrypt-decrypt"
       ],
       "path": "/data/checksum-calculator",
-      "entry": "/tools/data/checksum-calculator/"
+      "entry": "/src/tools/data/checksum-calculator/"
     },
     {
       "id": "csv-to-json",
@@ -658,7 +658,7 @@
         "csv-viewer"
       ],
       "path": "/data/csv-to-json",
-      "entry": "/tools/data/csv-to-json/"
+      "entry": "/src/tools/data/csv-to-json/"
     },
     {
       "id": "csv-viewer",
@@ -712,7 +712,7 @@
         "file-splitter"
       ],
       "path": "/data/csv-viewer",
-      "entry": "/tools/data/csv-viewer/"
+      "entry": "/src/tools/data/csv-viewer/"
     },
     {
       "id": "duplicate-finder",
@@ -766,7 +766,7 @@
         "checksum-calculator"
       ],
       "path": "/data/duplicate-finder",
-      "entry": "/tools/data/duplicate-finder/"
+      "entry": "/src/tools/data/duplicate-finder/"
     },
     {
       "id": "file-merger",
@@ -820,7 +820,7 @@
         "file-organizer"
       ],
       "path": "/data/file-merger",
-      "entry": "/tools/data/file-merger/"
+      "entry": "/src/tools/data/file-merger/"
     },
     {
       "id": "file-organizer",
@@ -874,7 +874,7 @@
         "file-renamer"
       ],
       "path": "/data/file-organizer",
-      "entry": "/tools/data/file-organizer/"
+      "entry": "/src/tools/data/file-organizer/"
     },
     {
       "id": "file-renamer",
@@ -927,7 +927,7 @@
         "duplicate-finder"
       ],
       "path": "/data/file-renamer",
-      "entry": "/tools/data/file-renamer/"
+      "entry": "/src/tools/data/file-renamer/"
     },
     {
       "id": "file-splitter",
@@ -981,7 +981,7 @@
         "file-organizer"
       ],
       "path": "/data/file-splitter",
-      "entry": "/tools/data/file-splitter/"
+      "entry": "/src/tools/data/file-splitter/"
     },
     {
       "id": "json-to-csv",
@@ -1033,7 +1033,7 @@
         "json-formatter"
       ],
       "path": "/data/json-to-csv",
-      "entry": "/tools/data/json-to-csv/"
+      "entry": "/src/tools/data/json-to-csv/"
     },
     {
       "id": "sql-formatter",
@@ -1087,7 +1087,191 @@
         "code-formatter"
       ],
       "path": "/data/sql-formatter",
-      "entry": "/tools/data/sql-formatter/"
+      "entry": "/src/tools/data/sql-formatter/"
+    },
+    {
+      "id": "audio-spectrum",
+      "name": "Audio Spectrum Visualizer",
+      "nameEn": "Audio Spectrum Visualizer",
+      "category": "data",
+      "tier": 2,
+      "cpc": {
+        "tr": 0.4,
+        "us": 1
+      },
+      "keywords": {
+        "tr": [
+          "audio spectrum visualizer",
+          "online araç"
+        ],
+        "en": [
+          "audio spectrum visualizer",
+          "online tool"
+        ]
+      },
+      "description": {
+        "tr": "Create a local waveform preview from an audio file with the Web Audio API.",
+        "en": "Create a local waveform preview from an audio file with the Web Audio API."
+      },
+      "schema": {
+        "@type": "WebApplication",
+        "applicationCategory": "UtilityApplication",
+        "offers": {
+          "@type": "Offer",
+          "price": "0"
+        }
+      },
+      "ads": {
+        "sidebar": {
+          "enabled": true,
+          "size": "336x280",
+          "minCpm": 0.3
+        }
+      },
+      "bundle": {
+        "lazyLoad": false
+      },
+      "relatedTools": [],
+      "path": "/data/audio-spectrum",
+      "entry": "/src/tools/data/audio-spectrum/"
+    },
+    {
+      "id": "chart-builder",
+      "name": "Simple Chart Builder",
+      "nameEn": "Simple Chart Builder",
+      "category": "data",
+      "tier": 2,
+      "cpc": {
+        "tr": 0.4,
+        "us": 1
+      },
+      "keywords": {
+        "tr": [
+          "simple chart builder",
+          "online araç"
+        ],
+        "en": [
+          "simple chart builder",
+          "online tool"
+        ]
+      },
+      "description": {
+        "tr": "Render a browser-only bar chart from label,value rows.",
+        "en": "Render a browser-only bar chart from label,value rows."
+      },
+      "schema": {
+        "@type": "WebApplication",
+        "applicationCategory": "UtilityApplication",
+        "offers": {
+          "@type": "Offer",
+          "price": "0"
+        }
+      },
+      "ads": {
+        "sidebar": {
+          "enabled": true,
+          "size": "336x280",
+          "minCpm": 0.3
+        }
+      },
+      "bundle": {
+        "lazyLoad": false
+      },
+      "relatedTools": [],
+      "path": "/data/chart-builder",
+      "entry": "/src/tools/data/chart-builder/"
+    },
+    {
+      "id": "csv-json-summarizer",
+      "name": "CSV/JSON Summarizer",
+      "nameEn": "CSV/JSON Summarizer",
+      "category": "data",
+      "tier": 2,
+      "cpc": {
+        "tr": 0.4,
+        "us": 1
+      },
+      "keywords": {
+        "tr": [
+          "csv/json summarizer",
+          "online araç"
+        ],
+        "en": [
+          "csv/json summarizer",
+          "online tool"
+        ]
+      },
+      "description": {
+        "tr": "Paste CSV or JSON and get row, column, and field summaries locally.",
+        "en": "Paste CSV or JSON and get row, column, and field summaries locally."
+      },
+      "schema": {
+        "@type": "WebApplication",
+        "applicationCategory": "UtilityApplication",
+        "offers": {
+          "@type": "Offer",
+          "price": "0"
+        }
+      },
+      "ads": {
+        "sidebar": {
+          "enabled": true,
+          "size": "336x280",
+          "minCpm": 0.3
+        }
+      },
+      "bundle": {
+        "lazyLoad": false
+      },
+      "relatedTools": [],
+      "path": "/data/csv-json-summarizer",
+      "entry": "/src/tools/data/csv-json-summarizer/"
+    },
+    {
+      "id": "weather-lookup",
+      "name": "Weather Lookup",
+      "nameEn": "Weather Lookup",
+      "category": "data",
+      "tier": 2,
+      "cpc": {
+        "tr": 0.4,
+        "us": 1
+      },
+      "keywords": {
+        "tr": [
+          "weather lookup",
+          "online araç"
+        ],
+        "en": [
+          "weather lookup",
+          "online tool"
+        ]
+      },
+      "description": {
+        "tr": "Get city weather through the NovaTools proxy with cached Open-Meteo data.",
+        "en": "Get city weather through the NovaTools proxy with cached Open-Meteo data."
+      },
+      "schema": {
+        "@type": "WebApplication",
+        "applicationCategory": "UtilityApplication",
+        "offers": {
+          "@type": "Offer",
+          "price": "0"
+        }
+      },
+      "ads": {
+        "sidebar": {
+          "enabled": true,
+          "size": "336x280",
+          "minCpm": 0.3
+        }
+      },
+      "bundle": {
+        "lazyLoad": false
+      },
+      "relatedTools": [],
+      "path": "/data/weather-lookup",
+      "entry": "/src/tools/data/weather-lookup/"
     },
     {
       "id": "barcode-generator",
@@ -1142,7 +1326,7 @@
         "invoice-generator"
       ],
       "path": "/design/barcode-generator",
-      "entry": "/tools/design/barcode-generator/"
+      "entry": "/src/tools/design/barcode-generator/"
     },
     {
       "id": "business-card-maker",
@@ -1195,7 +1379,7 @@
         "resume-builder"
       ],
       "path": "/design/business-card-maker",
-      "entry": "/tools/design/business-card-maker/"
+      "entry": "/src/tools/design/business-card-maker/"
     },
     {
       "id": "diagram-maker",
@@ -1248,7 +1432,7 @@
         "wireframe-tool"
       ],
       "path": "/design/diagram-maker",
-      "entry": "/tools/design/diagram-maker/"
+      "entry": "/src/tools/design/diagram-maker/"
     },
     {
       "id": "invoice-generator",
@@ -1301,7 +1485,7 @@
         "business-card-maker"
       ],
       "path": "/design/invoice-generator",
-      "entry": "/tools/design/invoice-generator/"
+      "entry": "/src/tools/design/invoice-generator/"
     },
     {
       "id": "logo-maker",
@@ -1354,7 +1538,7 @@
         "mockup-generator"
       ],
       "path": "/design/logo-maker",
-      "entry": "/tools/design/logo-maker/"
+      "entry": "/src/tools/design/logo-maker/"
     },
     {
       "id": "mind-map-tool",
@@ -1407,7 +1591,7 @@
         "wireframe-tool"
       ],
       "path": "/design/mind-map-tool",
-      "entry": "/tools/design/mind-map-tool/"
+      "entry": "/src/tools/design/mind-map-tool/"
     },
     {
       "id": "mockup-generator",
@@ -1460,7 +1644,7 @@
         "logo-maker"
       ],
       "path": "/design/mockup-generator",
-      "entry": "/tools/design/mockup-generator/"
+      "entry": "/src/tools/design/mockup-generator/"
     },
     {
       "id": "qr-code-designer",
@@ -1513,7 +1697,7 @@
         "business-card-maker"
       ],
       "path": "/design/qr-code-designer",
-      "entry": "/tools/design/qr-code-designer/"
+      "entry": "/src/tools/design/qr-code-designer/"
     },
     {
       "id": "resume-builder",
@@ -1566,7 +1750,7 @@
         "invoice-generator"
       ],
       "path": "/design/resume-builder",
-      "entry": "/tools/design/resume-builder/"
+      "entry": "/src/tools/design/resume-builder/"
     },
     {
       "id": "wireframe-tool",
@@ -1619,7 +1803,7 @@
         "mockup-generator"
       ],
       "path": "/design/wireframe-tool",
-      "entry": "/tools/design/wireframe-tool/"
+      "entry": "/src/tools/design/wireframe-tool/"
     },
     {
       "id": "base64-converter",
@@ -1672,7 +1856,7 @@
         "code-formatter"
       ],
       "path": "/dev/base64-converter",
-      "entry": "/tools/dev/base64-converter/"
+      "entry": "/src/tools/dev/base64-converter/"
     },
     {
       "id": "code-formatter",
@@ -1727,7 +1911,7 @@
         "base64-converter"
       ],
       "path": "/dev/code-formatter",
-      "entry": "/tools/dev/code-formatter/"
+      "entry": "/src/tools/dev/code-formatter/"
     },
     {
       "id": "color-converter",
@@ -1780,7 +1964,7 @@
         "json-formatter"
       ],
       "path": "/dev/color-converter",
-      "entry": "/tools/dev/color-converter/"
+      "entry": "/src/tools/dev/color-converter/"
     },
     {
       "id": "css-minifier",
@@ -1833,7 +2017,7 @@
         "code-formatter"
       ],
       "path": "/dev/css-minifier",
-      "entry": "/tools/dev/css-minifier/"
+      "entry": "/src/tools/dev/css-minifier/"
     },
     {
       "id": "html-to-markdown",
@@ -1886,7 +2070,7 @@
         "code-formatter"
       ],
       "path": "/dev/html-to-markdown",
-      "entry": "/tools/dev/html-to-markdown/"
+      "entry": "/src/tools/dev/html-to-markdown/"
     },
     {
       "id": "js-minifier",
@@ -1939,7 +2123,7 @@
         "json-formatter"
       ],
       "path": "/dev/js-minifier",
-      "entry": "/tools/dev/js-minifier/"
+      "entry": "/src/tools/dev/js-minifier/"
     },
     {
       "id": "json-formatter",
@@ -1992,7 +2176,7 @@
         "base64-encoder"
       ],
       "path": "/dev/json-formatter",
-      "entry": "/tools/dev/json-formatter/"
+      "entry": "/src/tools/dev/json-formatter/"
     },
     {
       "id": "json-validator",
@@ -2045,7 +2229,7 @@
         "base64-converter"
       ],
       "path": "/dev/json-validator",
-      "entry": "/tools/dev/json-validator/"
+      "entry": "/src/tools/dev/json-validator/"
     },
     {
       "id": "lorem-generator",
@@ -2098,7 +2282,7 @@
         "markdown-to-html"
       ],
       "path": "/dev/lorem-generator",
-      "entry": "/tools/dev/lorem-generator/"
+      "entry": "/src/tools/dev/lorem-generator/"
     },
     {
       "id": "markdown-to-html",
@@ -2151,7 +2335,7 @@
         "json-validator"
       ],
       "path": "/dev/markdown-to-html",
-      "entry": "/tools/dev/markdown-to-html/"
+      "entry": "/src/tools/dev/markdown-to-html/"
     },
     {
       "id": "regex-tester",
@@ -2202,7 +2386,7 @@
         "dev/json-formatter"
       ],
       "path": "/dev/regex-tester",
-      "entry": "/tools/dev/regex-tester/"
+      "entry": "/src/tools/dev/regex-tester/"
     },
     {
       "id": "url-encoder",
@@ -2255,7 +2439,7 @@
         "json-validator"
       ],
       "path": "/dev/url-encoder",
-      "entry": "/tools/dev/url-encoder/"
+      "entry": "/src/tools/dev/url-encoder/"
     },
     {
       "id": "mortgage-tr",
@@ -2321,7 +2505,7 @@
         "maxResults": 360
       },
       "path": "/finance/mortgage-refinance",
-      "entry": "/tools/finance/mortgage-refinance/"
+      "entry": "/src/tools/finance/mortgage-refinance/"
     },
     {
       "id": "compound-interest",
@@ -2371,7 +2555,7 @@
         "finance/mortgage-tr"
       ],
       "path": "/finance/compound-interest",
-      "entry": "/tools/finance/compound-interest/"
+      "entry": "/src/tools/finance/compound-interest/"
     },
     {
       "id": "cloud-cost",
@@ -2420,7 +2604,145 @@
         "finance/mortgage-tr"
       ],
       "path": "/finance/cloud-cost",
-      "entry": "/tools/finance/cloud-cost/"
+      "entry": "/src/tools/finance/cloud-cost/"
+    },
+    {
+      "id": "crypto-prices",
+      "name": "Crypto Price Tracker",
+      "nameEn": "Crypto Price Tracker",
+      "category": "finance",
+      "tier": 3,
+      "cpc": {
+        "tr": 1.2,
+        "us": 3
+      },
+      "keywords": {
+        "tr": [
+          "crypto price tracker",
+          "online araç"
+        ],
+        "en": [
+          "crypto price tracker",
+          "online tool"
+        ]
+      },
+      "description": {
+        "tr": "Track popular crypto prices and 24-hour changes through a cached server-side proxy.",
+        "en": "Track popular crypto prices and 24-hour changes through a cached server-side proxy."
+      },
+      "schema": {
+        "@type": "WebApplication",
+        "applicationCategory": "UtilityApplication",
+        "offers": {
+          "@type": "Offer",
+          "price": "0"
+        }
+      },
+      "ads": {
+        "sidebar": {
+          "enabled": true,
+          "size": "336x280",
+          "minCpm": 0.3
+        }
+      },
+      "bundle": {
+        "lazyLoad": false
+      },
+      "relatedTools": [],
+      "path": "/finance/crypto-prices",
+      "entry": "/src/tools/finance/crypto-prices/"
+    },
+    {
+      "id": "live-exchange",
+      "name": "Live Exchange Converter",
+      "nameEn": "Live Exchange Converter",
+      "category": "finance",
+      "tier": 3,
+      "cpc": {
+        "tr": 1.2,
+        "us": 3
+      },
+      "keywords": {
+        "tr": [
+          "live exchange converter",
+          "online araç"
+        ],
+        "en": [
+          "live exchange converter",
+          "online tool"
+        ]
+      },
+      "description": {
+        "tr": "Convert currencies through the NovaTools server-side live-data proxy with one-hour browser cache.",
+        "en": "Convert currencies through the NovaTools server-side live-data proxy with one-hour browser cache."
+      },
+      "schema": {
+        "@type": "WebApplication",
+        "applicationCategory": "UtilityApplication",
+        "offers": {
+          "@type": "Offer",
+          "price": "0"
+        }
+      },
+      "ads": {
+        "sidebar": {
+          "enabled": true,
+          "size": "336x280",
+          "minCpm": 0.3
+        }
+      },
+      "bundle": {
+        "lazyLoad": false
+      },
+      "relatedTools": [],
+      "path": "/finance/live-exchange",
+      "entry": "/src/tools/finance/live-exchange/"
+    },
+    {
+      "id": "stock-lookup",
+      "name": "Stock Quote Lookup",
+      "nameEn": "Stock Quote Lookup",
+      "category": "finance",
+      "tier": 3,
+      "cpc": {
+        "tr": 1.2,
+        "us": 3
+      },
+      "keywords": {
+        "tr": [
+          "stock quote lookup",
+          "online araç"
+        ],
+        "en": [
+          "stock quote lookup",
+          "online tool"
+        ]
+      },
+      "description": {
+        "tr": "Check a basic stock quote through the NovaTools live-data proxy without exposing client API keys.",
+        "en": "Check a basic stock quote through the NovaTools live-data proxy without exposing client API keys."
+      },
+      "schema": {
+        "@type": "WebApplication",
+        "applicationCategory": "UtilityApplication",
+        "offers": {
+          "@type": "Offer",
+          "price": "0"
+        }
+      },
+      "ads": {
+        "sidebar": {
+          "enabled": true,
+          "size": "336x280",
+          "minCpm": 0.3
+        }
+      },
+      "bundle": {
+        "lazyLoad": false
+      },
+      "relatedTools": [],
+      "path": "/finance/stock-lookup",
+      "entry": "/src/tools/finance/stock-lookup/"
     },
     {
       "id": "image-flipper",
@@ -2494,7 +2816,7 @@
         "download": true
       },
       "path": "/image/image-flipper",
-      "entry": "/tools/image/image-flipper/"
+      "entry": "/src/tools/image/image-flipper/"
     },
     {
       "id": "image-rotator",
@@ -2570,7 +2892,7 @@
         "download": true
       },
       "path": "/image/image-rotator",
-      "entry": "/tools/image/image-rotator/"
+      "entry": "/src/tools/image/image-rotator/"
     },
     {
       "id": "collage-maker",
@@ -2652,7 +2974,7 @@
         "download": true
       },
       "path": "/image/collage-maker",
-      "entry": "/tools/image/collage-maker/"
+      "entry": "/src/tools/image/collage-maker/"
     },
     {
       "id": "image-compress",
@@ -2717,7 +3039,7 @@
         "maxTotalSize": 52428800
       },
       "path": "/image/compress",
-      "entry": "/tools/image/compress/"
+      "entry": "/src/tools/image/compress/"
     },
     {
       "id": "image-convert",
@@ -2768,7 +3090,53 @@
         "image/compress"
       ],
       "path": "/image/convert",
-      "entry": "/tools/image/convert/"
+      "entry": "/src/tools/image/convert/"
+    },
+    {
+      "id": "exif-viewer",
+      "name": "EXIF Metadata Viewer",
+      "nameEn": "EXIF Metadata Viewer",
+      "category": "image",
+      "tier": 2,
+      "cpc": {
+        "tr": 0.4,
+        "us": 1
+      },
+      "keywords": {
+        "tr": [
+          "exif metadata viewer",
+          "online araç"
+        ],
+        "en": [
+          "exif metadata viewer",
+          "online tool"
+        ]
+      },
+      "description": {
+        "tr": "Inspect basic image metadata locally before publishing or sharing files.",
+        "en": "Inspect basic image metadata locally before publishing or sharing files."
+      },
+      "schema": {
+        "@type": "WebApplication",
+        "applicationCategory": "UtilityApplication",
+        "offers": {
+          "@type": "Offer",
+          "price": "0"
+        }
+      },
+      "ads": {
+        "sidebar": {
+          "enabled": true,
+          "size": "336x280",
+          "minCpm": 0.3
+        }
+      },
+      "bundle": {
+        "lazyLoad": false
+      },
+      "relatedTools": [],
+      "path": "/image/exif-viewer",
+      "entry": "/src/tools/image/exif-viewer/"
     },
     {
       "id": "image-cropper",
@@ -2847,7 +3215,7 @@
         "download": true
       },
       "path": "/image/image-cropper",
-      "entry": "/tools/image/image-cropper/"
+      "entry": "/src/tools/image/image-cropper/"
     },
     {
       "id": "image-resizer",
@@ -2925,7 +3293,7 @@
         ]
       },
       "path": "/image/image-resizer",
-      "entry": "/tools/image/image-resizer/"
+      "entry": "/src/tools/image/image-resizer/"
     },
     {
       "id": "image-to-avif",
@@ -3002,7 +3370,7 @@
         "outputFormat": "avif"
       },
       "path": "/image/image-to-avif",
-      "entry": "/tools/image/image-to-avif/"
+      "entry": "/src/tools/image/image-to-avif/"
     },
     {
       "id": "image-to-webp",
@@ -3081,7 +3449,7 @@
         "outputFormat": "webp"
       },
       "path": "/image/image-to-webp",
-      "entry": "/tools/image/image-to-webp/"
+      "entry": "/src/tools/image/image-to-webp/"
     },
     {
       "id": "image-watermark",
@@ -3158,7 +3526,7 @@
         "download": true
       },
       "path": "/image/image-watermark",
-      "entry": "/tools/image/image-watermark/"
+      "entry": "/src/tools/image/image-watermark/"
     },
     {
       "id": "metadata-remover",
@@ -3233,7 +3601,7 @@
         "download": true
       },
       "path": "/image/metadata-remover",
-      "entry": "/tools/image/metadata-remover/"
+      "entry": "/src/tools/image/metadata-remover/"
     },
     {
       "id": "background-remover",
@@ -3304,7 +3672,7 @@
         "outputFormat": "png"
       },
       "path": "/image/background-remover",
-      "entry": "/tools/image/background-remover/"
+      "entry": "/src/tools/image/background-remover/"
     },
     {
       "id": "pdf-merge",
@@ -3336,7 +3704,7 @@
       },
       "schema": {
         "@type": "WebApplication",
-        "applicationCategory": "DeveloperApplication",
+        "applicationCategory": "UtilityApplication",
         "offers": {
           "@type": "Offer",
           "price": "0"
@@ -3367,7 +3735,7 @@
       "relatedTools": [
         "pdf-compress",
         "pdf-split",
-        "image-convert"
+        "pdf-ocr"
       ],
       "legacyRedirects": [
         "/tools/pdf-birlestirme",
@@ -3379,7 +3747,7 @@
         "chunkSize": 10485760
       },
       "path": "/pdf/merge",
-      "entry": "/tools/pdf/merge/"
+      "entry": "/src/tools/pdf/merge/"
     },
     {
       "id": "pdf-compress",
@@ -3411,7 +3779,7 @@
       },
       "schema": {
         "@type": "WebApplication",
-        "applicationCategory": "DeveloperApplication",
+        "applicationCategory": "UtilityApplication",
         "offers": {
           "@type": "Offer",
           "price": "0"
@@ -3434,15 +3802,16 @@
         "lazyLoad": true
       },
       "relatedTools": [
-        "pdf/merge",
-        "pdf/split"
+        "pdf-merge",
+        "pdf-split",
+        "pdf-ocr"
       ],
       "memoryLimits": {
         "maxFileSize": 52428800,
         "chunkSize": 10485760
       },
       "path": "/pdf/compress",
-      "entry": "/tools/pdf/compress/"
+      "entry": "/src/tools/pdf/compress/"
     },
     {
       "id": "pdf-split",
@@ -3495,7 +3864,7 @@
         "pdf/compress"
       ],
       "path": "/pdf/split",
-      "entry": "/tools/pdf/split/"
+      "entry": "/src/tools/pdf/split/"
     },
     {
       "id": "pdf-ocr",
@@ -3521,7 +3890,7 @@
       "created": "2026-03-16",
       "updated": "2026-03-16",
       "path": "/pdf/pdf-ocr",
-      "entry": "/tools/pdf/pdf-ocr/"
+      "entry": "/src/tools/pdf/pdf-ocr/"
     },
     {
       "id": "pdf-page-number",
@@ -3558,7 +3927,7 @@
       "created": "2026-03-16",
       "updated": "2026-03-16",
       "path": "/pdf/pdf-page-number",
-      "entry": "/tools/pdf/pdf-page-number/"
+      "entry": "/src/tools/pdf/pdf-page-number/"
     },
     {
       "id": "pdf-to-excel",
@@ -3584,7 +3953,7 @@
       "created": "2026-03-16",
       "updated": "2026-03-16",
       "path": "/pdf/pdf-to-excel",
-      "entry": "/tools/pdf/pdf-to-excel/"
+      "entry": "/src/tools/pdf/pdf-to-excel/"
     },
     {
       "id": "pdf-to-html",
@@ -3609,7 +3978,7 @@
       "created": "2026-03-16",
       "updated": "2026-03-16",
       "path": "/pdf/pdf-to-html",
-      "entry": "/tools/pdf/pdf-to-html/"
+      "entry": "/src/tools/pdf/pdf-to-html/"
     },
     {
       "id": "pdf-to-jpg",
@@ -3634,7 +4003,7 @@
       "created": "2026-03-16",
       "updated": "2026-03-16",
       "path": "/pdf/pdf-to-jpg",
-      "entry": "/tools/pdf/pdf-to-jpg/"
+      "entry": "/src/tools/pdf/pdf-to-jpg/"
     },
     {
       "id": "pdf-to-png",
@@ -3659,7 +4028,7 @@
       "created": "2026-03-16",
       "updated": "2026-03-16",
       "path": "/pdf/pdf-to-png",
-      "entry": "/tools/pdf/pdf-to-png/"
+      "entry": "/src/tools/pdf/pdf-to-png/"
     },
     {
       "id": "pdf-to-powerpoint",
@@ -3684,7 +4053,7 @@
       "created": "2026-03-16",
       "updated": "2026-03-16",
       "path": "/pdf/pdf-to-powerpoint",
-      "entry": "/tools/pdf/pdf-to-powerpoint/"
+      "entry": "/src/tools/pdf/pdf-to-powerpoint/"
     },
     {
       "id": "pdf-to-text",
@@ -3709,7 +4078,7 @@
       "created": "2026-03-16",
       "updated": "2026-03-16",
       "path": "/pdf/pdf-to-text",
-      "entry": "/tools/pdf/pdf-to-text/"
+      "entry": "/src/tools/pdf/pdf-to-text/"
     },
     {
       "id": "pdf-to-word",
@@ -3736,7 +4105,7 @@
       "created": "2026-03-16",
       "updated": "2026-03-16",
       "path": "/pdf/pdf-to-word",
-      "entry": "/tools/pdf/pdf-to-word/"
+      "entry": "/src/tools/pdf/pdf-to-word/"
     },
     {
       "id": "pdf-watermark",
@@ -3773,7 +4142,7 @@
       "created": "2026-03-16",
       "updated": "2026-03-16",
       "path": "/pdf/pdf-watermark",
-      "entry": "/tools/pdf/pdf-watermark/"
+      "entry": "/src/tools/pdf/pdf-watermark/"
     },
     {
       "id": "countdown-timer",
@@ -3829,7 +4198,7 @@
         "world-clock"
       ],
       "path": "/productivity/countdown-timer",
-      "entry": "/tools/productivity/countdown-timer/"
+      "entry": "/src/tools/productivity/countdown-timer/"
     },
     {
       "id": "expense-tracker",
@@ -3885,7 +4254,7 @@
         "currency-converter"
       ],
       "path": "/productivity/expense-tracker",
-      "entry": "/tools/productivity/expense-tracker/"
+      "entry": "/src/tools/productivity/expense-tracker/"
     },
     {
       "id": "habit-tracker",
@@ -3941,7 +4310,7 @@
         "notes"
       ],
       "path": "/productivity/habit-tracker",
-      "entry": "/tools/productivity/habit-tracker/"
+      "entry": "/src/tools/productivity/habit-tracker/"
     },
     {
       "id": "kanban-board",
@@ -3997,7 +4366,7 @@
         "time-tracker"
       ],
       "path": "/productivity/kanban-board",
-      "entry": "/tools/productivity/kanban-board/"
+      "entry": "/src/tools/productivity/kanban-board/"
     },
     {
       "id": "notes",
@@ -4053,7 +4422,7 @@
         "habit-tracker"
       ],
       "path": "/productivity/notes",
-      "entry": "/tools/productivity/notes/"
+      "entry": "/src/tools/productivity/notes/"
     },
     {
       "id": "pomodoro-timer",
@@ -4110,7 +4479,7 @@
         "time-tracker"
       ],
       "path": "/productivity/pomodoro-timer",
-      "entry": "/tools/productivity/pomodoro-timer/"
+      "entry": "/src/tools/productivity/pomodoro-timer/"
     },
     {
       "id": "stopwatch",
@@ -4166,7 +4535,7 @@
         "time-tracker"
       ],
       "path": "/productivity/stopwatch",
-      "entry": "/tools/productivity/stopwatch/"
+      "entry": "/src/tools/productivity/stopwatch/"
     },
     {
       "id": "time-tracker",
@@ -4222,7 +4591,7 @@
         "kanban-board"
       ],
       "path": "/productivity/time-tracker",
-      "entry": "/tools/productivity/time-tracker/"
+      "entry": "/src/tools/productivity/time-tracker/"
     },
     {
       "id": "todo-list",
@@ -4278,7 +4647,7 @@
         "habit-tracker"
       ],
       "path": "/productivity/todo-list",
-      "entry": "/tools/productivity/todo-list/"
+      "entry": "/src/tools/productivity/todo-list/"
     },
     {
       "id": "world-clock",
@@ -4334,7 +4703,7 @@
         "pomodoro-timer"
       ],
       "path": "/productivity/world-clock",
-      "entry": "/tools/productivity/world-clock/"
+      "entry": "/src/tools/productivity/world-clock/"
     },
     {
       "id": "ad-blocker-tester",
@@ -4388,7 +4757,7 @@
         "user-agent-parser"
       ],
       "path": "/security/ad-blocker-tester",
-      "entry": "/tools/security/ad-blocker-tester/"
+      "entry": "/src/tools/security/ad-blocker-tester/"
     },
     {
       "id": "encrypt-decrypt",
@@ -4441,7 +4810,7 @@
         "password-generator"
       ],
       "path": "/security/encrypt-decrypt",
-      "entry": "/tools/security/encrypt-decrypt/"
+      "entry": "/src/tools/security/encrypt-decrypt/"
     },
     {
       "id": "hash-generator",
@@ -4496,7 +4865,7 @@
         "encrypt-decrypt"
       ],
       "path": "/security/hash-generator",
-      "entry": "/tools/security/hash-generator/"
+      "entry": "/src/tools/security/hash-generator/"
     },
     {
       "id": "ip-lookup",
@@ -4550,7 +4919,7 @@
         "user-agent-parser"
       ],
       "path": "/security/ip-lookup",
-      "entry": "/tools/security/ip-lookup/"
+      "entry": "/src/tools/security/ip-lookup/"
     },
     {
       "id": "jwt-decoder",
@@ -4605,7 +4974,7 @@
         "encrypt-decrypt"
       ],
       "path": "/security/jwt-decoder",
-      "entry": "/tools/security/jwt-decoder/"
+      "entry": "/src/tools/security/jwt-decoder/"
     },
     {
       "id": "password-generator",
@@ -4658,7 +5027,7 @@
         "hash-generator"
       ],
       "path": "/security/password-generator",
-      "entry": "/tools/security/password-generator/"
+      "entry": "/src/tools/security/password-generator/"
     },
     {
       "id": "password-strength",
@@ -4711,7 +5080,7 @@
         "hash-generator"
       ],
       "path": "/security/password-strength",
-      "entry": "/tools/security/password-strength/"
+      "entry": "/src/tools/security/password-strength/"
     },
     {
       "id": "ssl-checker",
@@ -4766,7 +5135,7 @@
         "jwt-decoder"
       ],
       "path": "/security/ssl-checker",
-      "entry": "/tools/security/ssl-checker/"
+      "entry": "/src/tools/security/ssl-checker/"
     },
     {
       "id": "user-agent-parser",
@@ -4821,7 +5190,7 @@
         "ssl-checker"
       ],
       "path": "/security/user-agent-parser",
-      "entry": "/tools/security/user-agent-parser/"
+      "entry": "/src/tools/security/user-agent-parser/"
     },
     {
       "id": "uuid-generator",
@@ -4874,7 +5243,7 @@
         "hash-generator"
       ],
       "path": "/security/uuid-generator",
-      "entry": "/tools/security/uuid-generator/"
+      "entry": "/src/tools/security/uuid-generator/"
     },
     {
       "id": "app-icon-generator",
@@ -4930,7 +5299,7 @@
         "image-to-png"
       ],
       "path": "/social/app-icon-generator",
-      "entry": "/tools/social/app-icon-generator/"
+      "entry": "/src/tools/social/app-icon-generator/"
     },
     {
       "id": "favicon-generator",
@@ -4985,7 +5354,7 @@
         "image-convert"
       ],
       "path": "/social/favicon-generator",
-      "entry": "/tools/social/favicon-generator/"
+      "entry": "/src/tools/social/favicon-generator/"
     },
     {
       "id": "hashtag-generator",
@@ -5040,7 +5409,7 @@
         "url-shortener"
       ],
       "path": "/social/hashtag-generator",
-      "entry": "/tools/social/hashtag-generator/"
+      "entry": "/src/tools/social/hashtag-generator/"
     },
     {
       "id": "instagram-photo",
@@ -5094,7 +5463,7 @@
         "social-image-resizer"
       ],
       "path": "/social/instagram-photo",
-      "entry": "/tools/social/instagram-photo/"
+      "entry": "/src/tools/social/instagram-photo/"
     },
     {
       "id": "social-image-resizer",
@@ -5149,7 +5518,7 @@
         "favicon-generator"
       ],
       "path": "/social/social-image-resizer",
-      "entry": "/tools/social/social-image-resizer/"
+      "entry": "/src/tools/social/social-image-resizer/"
     },
     {
       "id": "twitter-video",
@@ -5203,7 +5572,7 @@
         "social-image-resizer"
       ],
       "path": "/social/twitter-video",
-      "entry": "/tools/social/twitter-video/"
+      "entry": "/src/tools/social/twitter-video/"
     },
     {
       "id": "url-shortener",
@@ -5258,7 +5627,7 @@
         "qr-generator"
       ],
       "path": "/social/url-shortener",
-      "entry": "/tools/social/url-shortener/"
+      "entry": "/src/tools/social/url-shortener/"
     },
     {
       "id": "utm-builder",
@@ -5313,7 +5682,7 @@
         "website-screenshot"
       ],
       "path": "/social/utm-builder",
-      "entry": "/tools/social/utm-builder/"
+      "entry": "/src/tools/social/utm-builder/"
     },
     {
       "id": "website-screenshot",
@@ -5368,7 +5737,7 @@
         "favicon-generator"
       ],
       "path": "/social/website-screenshot",
-      "entry": "/tools/social/website-screenshot/"
+      "entry": "/src/tools/social/website-screenshot/"
     },
     {
       "id": "youtube-thumbnail",
@@ -5422,7 +5791,7 @@
         "social-image-resizer"
       ],
       "path": "/social/youtube-thumbnail",
-      "entry": "/tools/social/youtube-thumbnail/"
+      "entry": "/src/tools/social/youtube-thumbnail/"
     },
     {
       "id": "case-converter",
@@ -5481,7 +5850,7 @@
         "text-to-slug"
       ],
       "path": "/text/case-converter",
-      "entry": "/tools/text/case-converter/"
+      "entry": "/src/tools/text/case-converter/"
     },
     {
       "id": "character-counter",
@@ -5537,7 +5906,7 @@
         "text-to-slug"
       ],
       "path": "/text/character-counter",
-      "entry": "/tools/text/character-counter/"
+      "entry": "/src/tools/text/character-counter/"
     },
     {
       "id": "lorem-ipsum-generator",
@@ -5592,7 +5961,7 @@
         "case-converter"
       ],
       "path": "/text/lorem-ipsum-generator",
-      "entry": "/tools/text/lorem-ipsum-generator/"
+      "entry": "/src/tools/text/lorem-ipsum-generator/"
     },
     {
       "id": "text-to-slug",
@@ -5649,7 +6018,7 @@
         "case-converter"
       ],
       "path": "/text/text-to-slug",
-      "entry": "/tools/text/text-to-slug/"
+      "entry": "/src/tools/text/text-to-slug/"
     },
     {
       "id": "word-counter",
@@ -5704,7 +6073,7 @@
         "text-to-slug"
       ],
       "path": "/text/word-counter",
-      "entry": "/tools/text/word-counter/"
+      "entry": "/src/tools/text/word-counter/"
     },
     {
       "id": "html-entity-encoder",
@@ -5759,7 +6128,7 @@
         "text-diff"
       ],
       "path": "/text/html-entity-encoder",
-      "entry": "/tools/text/html-entity-encoder/"
+      "entry": "/src/tools/text/html-entity-encoder/"
     },
     {
       "id": "palindrome-checker",
@@ -5813,7 +6182,99 @@
         "character-counter"
       ],
       "path": "/text/palindrome-checker",
-      "entry": "/tools/text/palindrome-checker/"
+      "entry": "/src/tools/text/palindrome-checker/"
+    },
+    {
+      "id": "simple-translator",
+      "name": "Simple Translator",
+      "nameEn": "Simple Translator",
+      "category": "text",
+      "tier": 2,
+      "cpc": {
+        "tr": 0.4,
+        "us": 1
+      },
+      "keywords": {
+        "tr": [
+          "simple translator",
+          "online araç"
+        ],
+        "en": [
+          "simple translator",
+          "online tool"
+        ]
+      },
+      "description": {
+        "tr": "Translate common short phrases with a local dictionary and a documented proxy-ready API path.",
+        "en": "Translate common short phrases with a local dictionary and a documented proxy-ready API path."
+      },
+      "schema": {
+        "@type": "WebApplication",
+        "applicationCategory": "UtilityApplication",
+        "offers": {
+          "@type": "Offer",
+          "price": "0"
+        }
+      },
+      "ads": {
+        "sidebar": {
+          "enabled": true,
+          "size": "336x280",
+          "minCpm": 0.3
+        }
+      },
+      "bundle": {
+        "lazyLoad": false
+      },
+      "relatedTools": [],
+      "path": "/text/simple-translator",
+      "entry": "/src/tools/text/simple-translator/"
+    },
+    {
+      "id": "text-analysis",
+      "name": "Text Analysis",
+      "nameEn": "Text Analysis",
+      "category": "text",
+      "tier": 2,
+      "cpc": {
+        "tr": 0.4,
+        "us": 1
+      },
+      "keywords": {
+        "tr": [
+          "text analysis",
+          "online araç"
+        ],
+        "en": [
+          "text analysis",
+          "online tool"
+        ]
+      },
+      "description": {
+        "tr": "Inspect word count, readability, keyword density, and simple keyword sentiment in your browser.",
+        "en": "Inspect word count, readability, keyword density, and simple keyword sentiment in your browser."
+      },
+      "schema": {
+        "@type": "WebApplication",
+        "applicationCategory": "UtilityApplication",
+        "offers": {
+          "@type": "Offer",
+          "price": "0"
+        }
+      },
+      "ads": {
+        "sidebar": {
+          "enabled": true,
+          "size": "336x280",
+          "minCpm": 0.3
+        }
+      },
+      "bundle": {
+        "lazyLoad": false
+      },
+      "relatedTools": [],
+      "path": "/text/text-analysis",
+      "entry": "/src/tools/text/text-analysis/"
     },
     {
       "id": "text-diff",
@@ -5868,7 +6329,53 @@
         "url-encoder"
       ],
       "path": "/text/text-diff",
-      "entry": "/tools/text/text-diff/"
+      "entry": "/src/tools/text/text-diff/"
+    },
+    {
+      "id": "text-summarizer",
+      "name": "Text Summarizer",
+      "nameEn": "Text Summarizer",
+      "category": "text",
+      "tier": 2,
+      "cpc": {
+        "tr": 0.4,
+        "us": 1
+      },
+      "keywords": {
+        "tr": [
+          "text summarizer",
+          "online araç"
+        ],
+        "en": [
+          "text summarizer",
+          "online tool"
+        ]
+      },
+      "description": {
+        "tr": "Summarize long pasted text locally with an extractive keyword-based workflow.",
+        "en": "Summarize long pasted text locally with an extractive keyword-based workflow."
+      },
+      "schema": {
+        "@type": "WebApplication",
+        "applicationCategory": "UtilityApplication",
+        "offers": {
+          "@type": "Offer",
+          "price": "0"
+        }
+      },
+      "ads": {
+        "sidebar": {
+          "enabled": true,
+          "size": "336x280",
+          "minCpm": 0.3
+        }
+      },
+      "bundle": {
+        "lazyLoad": false
+      },
+      "relatedTools": [],
+      "path": "/text/text-summarizer",
+      "entry": "/src/tools/text/text-summarizer/"
     },
     {
       "id": "text-to-ascii",
@@ -5923,7 +6430,7 @@
         "palindrome-checker"
       ],
       "path": "/text/text-to-ascii",
-      "entry": "/tools/text/text-to-ascii/"
+      "entry": "/src/tools/text/text-to-ascii/"
     },
     {
       "id": "url-encoder",
@@ -5978,7 +6485,7 @@
         "case-converter"
       ],
       "path": "/text/url-encoder",
-      "entry": "/tools/text/url-encoder/"
+      "entry": "/src/tools/text/url-encoder/"
     }
   ]
 }

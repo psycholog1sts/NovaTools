@@ -1,0 +1,44 @@
+{
+  "id": "exif-viewer",
+  "name": "EXIF Metadata Viewer",
+  "nameEn": "EXIF Metadata Viewer",
+  "category": "image",
+  "tier": 2,
+  "cpc": {
+    "tr": 0.4,
+    "us": 1
+  },
+  "keywords": {
+    "tr": [
+      "exif metadata viewer",
+      "online araç"
+    ],
+    "en": [
+      "exif metadata viewer",
+      "online tool"
+    ]
+  },
+  "description": {
+    "tr": "Inspect basic image metadata locally before publishing or sharing files.",
+    "en": "Inspect basic image metadata locally before publishing or sharing files."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "UtilityApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.3
+    }
+  },
+  "bundle": {
+    "lazyLoad": false
+  },
+  "relatedTools": []
+}

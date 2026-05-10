@@ -1,0 +1,44 @@
+{
+  "id": "weather-lookup",
+  "name": "Weather Lookup",
+  "nameEn": "Weather Lookup",
+  "category": "data",
+  "tier": 2,
+  "cpc": {
+    "tr": 0.4,
+    "us": 1
+  },
+  "keywords": {
+    "tr": [
+      "weather lookup",
+      "online araç"
+    ],
+    "en": [
+      "weather lookup",
+      "online tool"
+    ]
+  },
+  "description": {
+    "tr": "Get city weather through the NovaTools proxy with cached Open-Meteo data.",
+    "en": "Get city weather through the NovaTools proxy with cached Open-Meteo data."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "UtilityApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.3
+    }
+  },
+  "bundle": {
+    "lazyLoad": false
+  },
+  "relatedTools": []
+}
