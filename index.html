@@ -28,6 +28,8 @@
   <!-- Styles -->
   <link rel="stylesheet" href="/src/styles/critical.css">
   <link rel="stylesheet" href="/src/styles/design-system.css">
+  <link rel="stylesheet" href="/src/styles/component-library.css">
+  <link rel="stylesheet" href="/src/styles/layout.css">
   
   <!-- i18n Script -->
   <script src="/i18n.js" defer></script>
@@ -146,6 +148,15 @@
               <option value="nl">🇳🇱 Nederlands</option>
             </select>
             
+            <button class="btn-icon theme-toggle" id="themeToggle" type="button" aria-label="Toggle color theme">
+              <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <circle cx="12" cy="12" r="4"/>
+                <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+              </svg>
+              <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+              </svg>
+            </button>
             <button class="btn-icon" aria-label="Search" onclick="toggleSearch()">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <circle cx="11" cy="11" r="8"/>

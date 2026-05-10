@@ -1,0 +1,63 @@
+@import '../../styles/design-system.css';
+
+.form-field,
+.nt-field { display: grid; gap: var(--space-2); }
+.form-label,
+.nt-label { color: var(--color-text-primary); font-weight: var(--font-weight-semibold); font-size: var(--font-size-sm); }
+.form-helper,
+.nt-helper { color: var(--color-text-muted); font-size: var(--font-size-xs); }
+.form-error,
+.nt-error { color: var(--color-error-500); font-size: var(--font-size-xs); }
+
+.input,
+.textarea,
+.select,
+.nt-input,
+.nt-textarea,
+.nt-select,
+input:not([type='checkbox']):not([type='radio']):not([type='range']),
+textarea,
+select {
+  min-height: 44px;
+  width: 100%;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  color: var(--color-text-primary);
+  padding: var(--space-3) var(--space-4);
+  font: var(--text-base);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.textarea,
+.nt-textarea,
+textarea { min-height: 120px; resize: vertical; }
+.input:focus-visible,
+.textarea:focus-visible,
+.select:focus-visible,
+.nt-input:focus-visible,
+.nt-textarea:focus-visible,
+.nt-select:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible { outline: 2px solid var(--color-primary-500); outline-offset: 2px; border-color: var(--color-primary-500); }
+
+[aria-invalid='true'],
+.is-error .input,
+.is-error .textarea,
+.is-error .select,
+.is-error .nt-input,
+.is-error .nt-textarea,
+.is-error .nt-select { border-color: var(--color-error-500); box-shadow: 0 0 0 3px hsl(0 76% 56% / 0.14); }
+
+.checkbox,
+.nt-checkbox { min-width: 20px; min-height: 20px; accent-color: var(--color-primary-500); }
+
+.toggle,
+.nt-toggle { position: relative; inline-size: 48px; block-size: 28px; appearance: none; border-radius: var(--radius-full); background: var(--color-bg-tertiary); border: 1px solid var(--color-border); cursor: pointer; transition: background-color var(--transition-base), border-color var(--transition-base); }
+.toggle::after,
+.nt-toggle::after { content: ''; position: absolute; inset-block-start: 3px; inset-inline-start: 3px; inline-size: 20px; block-size: 20px; border-radius: var(--radius-full); background: var(--color-text-primary); transition: transform var(--transition-base); }
+.toggle:checked,
+.nt-toggle:checked { background: var(--color-primary-500); border-color: var(--color-primary-500); }
+.toggle:checked::after,
+.nt-toggle:checked::after { transform: translateX(20px); }
