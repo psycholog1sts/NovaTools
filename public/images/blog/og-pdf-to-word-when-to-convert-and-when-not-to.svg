@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Pdf To Word When To Convert And When Not To: Pr… cover image">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="0.62" stop-color="#0f766e"/>
+      <stop offset="1" stop-color="#2dd4bf"/>
+    </linearGradient>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#grid)" opacity="0.45"/>
+  <circle cx="936" cy="151" r="192" fill="rgba(255,255,255,0.16)"/>
+  <circle cx="216" cy="491" r="156" fill="rgba(255,255,255,0.10)"/>
+  <rect x="72" y="76" width="216" height="8" rx="4" fill="#2dd4bf"/>
+  <text x="72" y="151" fill="rgba(255,255,255,0.78)" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="3">DATA PRIVACY</text>
+  <text x="72" y="309" fill="#fff" font-family="Inter, Arial, sans-serif" font-size="43" font-weight="800">Pdf To Word When To Convert And When Not To: Pr…</text>
+  <text x="72" y="416" fill="rgba(255,255,255,0.82)" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="600">Open Graph · NovaTools Blog</text>
+</svg>

@@ -7,7 +7,7 @@ date: 2026-05-10
 readTime: 8
 tags: ["fintech-personal-finance","mortgage-review","workflow"]
 relatedTools: ["compound-interest","cloud-cost","percentage-calculator"]
-coverImage: /images/blog-covers/finance-calculators.svg
+coverImage: /images/blog/card-pmi-removal-guide.svg
 locale: ar
 ---
 
@@ -21,7 +21,7 @@ locale: ar
 - استخدم أدوات المتصفح للتحضير والمقارنة، ثم اربط القرار النهائي بالسياق.
 - تجنب خلط اللغات أو نسخ فقرات قالبية عند نشر إرشادات لجمهور محلي.
 
-<section><h2 id="introduction">حدد المهمة قبل فتح الأداة</h2><p>يصبح دليل عملي: PMI Removal Checklist for Homeowners Reviewing Equity (نسخة عربية ملائمة) مفيداً عندما يحول مهمة غير واضحة إلى قرار يمكن مراجعته. يركز هذا الدليل على mortgage review: ما الذي يجب فحصه أولاً، وما الافتراضات التي ينبغي تدوينها، وكيف يمكن استخدام أدوات تعمل داخل المتصفح من دون الادعاء بأنها بديل عن الحكم المهني. الهدف ليس إضافة خطوات كثيرة، بل جعل العمل قابلاً للتكرار والمراجعة والشرح لشخص يحتاج إلى الوثوق بالنتيجة.</p><p>البداية الجيدة تجيب عن سؤالين معاً: ما النتيجة التي أريد إنتاجها، ومن سيستخدم هذه النتيجة؟ قد يحتاج تقدير مالي أو مخرج API أو ملف تعليمي أو مستند خاص إلى أداة مشابهة، لكن نقاط المراجعة تختلف. لذلك يربط هذا الدليل بين صيغة المخرج والمتلقي ومتطلبات الحفظ والخطوة التالية.</p><h3 id="scope-and-inputs">النطاق والمدخلات</h3><p>نظف المدخلات أولاً. استخدم أسماء ملفات واضحة، واجعل التواريخ قابلة للفهم، واكتب ملاحظة بجانب الأرقام التي لا يظهر مصدرها. بعد ذلك استخدم <a href="/tools/finance/compound-interest/">compound interest</a> أو <a href="/tools/finance/cloud-cost/">cloud cost</a> أو <a href="/tools/converters/percentage-calculator/">percentage calculator</a> لحل مشكلة واحدة في كل مرة. محاولة التحويل والتفسير واتخاذ القرار في خطوة واحدة تزيد احتمال الخطأ.</p></section>
+<section><h2 id="introduction">حدد المهمة قبل فتح الأداة</h2><p>يصبح دليل عملي: PMI Removal Checklist for Homeowners Reviewing Equity (نسخة عربية ملائمة) مفيداً عندما يحول مهمة غير واضحة إلى قرار يمكن مراجعته. يركز هذا الدليل على mortgage review: ما الذي يجب فحصه أولاً، وما الافتراضات التي ينبغي تدوينها، وكيف يمكن استخدام أدوات تعمل داخل المتصفح من دون الادعاء بأنها بديل عن الحكم المهني. الهدف ليس إضافة خطوات كثيرة، بل جعل العمل قابلاً للتكرار والمراجعة والشرح لشخص يحتاج إلى الوثوق بالنتيجة.</p><p>البداية الجيدة تجيب عن سؤالين معاً: ما النتيجة التي أريد إنتاجها، ومن سيستخدم هذه النتيجة؟ قد يحتاج تقدير مالي أو مخرج API أو ملف تعليمي أو مستند خاص إلى أداة مشابهة، لكن نقاط المراجعة تختلف. لذلك يربط هذا الدليل بين صيغة المخرج والمتلقي ومتطلبات الحفظ والخطوة التالية.</p><h3 id="scope-and-inputs">النطاق والمدخلات</h3><p>نظف المدخلات أولاً. استخدم أسماء ملفات واضحة، واجعل التواريخ قابلة للفهم، واكتب ملاحظة بجانب الأرقام التي لا يظهر مصدرها. بعد ذلك استخدم <a href="/tools/finance/compound-interest/" rel="noopener">compound interest</a> أو <a href="/tools/finance/cloud-cost/" rel="noopener">cloud cost</a> أو <a href="/tools/converters/percentage-calculator/" rel="noopener">percentage calculator</a> لحل مشكلة واحدة في كل مرة. محاولة التحويل والتفسير واتخاذ القرار في خطوة واحدة تزيد احتمال الخطأ.</p></section>
 
 <figure class="table-wrapper"><table><thead><tr><th>مجال القرار</th><th>فحص مفيد</th><th>دعم الأداة</th><th>مراجعة بشرية</th></tr></thead><tbody><tr><td>المدخلات</td><td>هل المصدر واضح؟</td><td>compound-interest</td><td>تأكيد المالك</td></tr><tr><td>المقارنة</td><td>هل الافتراضات مكتوبة؟</td><td>cloud-cost</td><td>مراجعة ثانية</td></tr><tr><td>التسليم</td><td>هل الروابط والملفات تعمل؟</td><td>percentage-calculator</td><td>اختبار على جهاز آخر</td></tr></tbody></table></figure>
 

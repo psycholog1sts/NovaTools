@@ -142,6 +142,19 @@ function escapeHtml(value) {
   return String(value).replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]);
 }
 
+export function renderBlogPicture(post, variant = 'card', options = {}) {
+  const width = options.width || (variant === 'og' ? 1200 : variant === 'featured' ? 1200 : 800);
+  const height = options.height || (variant === 'og' ? 630 : variant === 'featured' ? 675 : 450);
+  const image = post.coverImage || {};
+  const webp = image[variant] || image.card || image.og;
+  const fallback = image[`${variant}Fallback`] || image.cardFallback || image.ogFallback || webp;
+  const alt = options.alt || `${post.title} cover image`;
+  const loading = options.loading || 'lazy';
+  const className = options.className ? ` class="${options.className}"` : '';
+  const sourceType = webp?.endsWith('.svg') ? 'image/svg+xml' : 'image/webp';
+  return `<picture${className}><source srcset="${webp}" type="${sourceType}"><img src="${fallback}" alt="${escapeHtml(alt)}" loading="${loading}" width="${width}" height="${height}"></picture>`;
+}
+
 export function renderContentBlock(block) {
   if (block.type === 'table') return `<figure class="table-wrapper">${block.html}</figure>`;
   if (block.type === 'code') return `<div class="code-panel"><button class="copy-code" type="button">Copy</button><pre><code class="language-${block.language || 'text'}">${escapeHtml(block.code || '')}</code></pre></div>`;

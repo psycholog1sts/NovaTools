@@ -60,546 +60,546 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- Fully translated blog articles (Phase 5B: en/tr/ar only) -->
+  <!-- Fully translated blog articles (Phase 5B/5C: en/tr/ar only) -->
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=high-yield-savings-guide&amp;lang=en</loc>
+    <loc>https://novatools.com/blog/high-yield-savings-guide.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=high-yield-savings-guide&amp;lang=tr</loc>
+    <loc>https://novatools.com/tr/blog/high-yield-savings-guide.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=high-yield-savings-guide&amp;lang=ar</loc>
+    <loc>https://novatools.com/ar/blog/high-yield-savings-guide.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=personal-loan-vs-credit-card&amp;lang=en</loc>
+    <loc>https://novatools.com/blog/personal-loan-vs-credit-card.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=personal-loan-vs-credit-card&amp;lang=tr</loc>
+    <loc>https://novatools.com/tr/blog/personal-loan-vs-credit-card.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=personal-loan-vs-credit-card&amp;lang=ar</loc>
+    <loc>https://novatools.com/ar/blog/personal-loan-vs-credit-card.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=auto-insurance-savings&amp;lang=en</loc>
+    <loc>https://novatools.com/blog/auto-insurance-savings.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=auto-insurance-savings&amp;lang=tr</loc>
+    <loc>https://novatools.com/tr/blog/auto-insurance-savings.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=auto-insurance-savings&amp;lang=ar</loc>
+    <loc>https://novatools.com/ar/blog/auto-insurance-savings.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=health-insurance-marketplace&amp;lang=en</loc>
+    <loc>https://novatools.com/blog/health-insurance-marketplace.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=health-insurance-marketplace&amp;lang=tr</loc>
+    <loc>https://novatools.com/tr/blog/health-insurance-marketplace.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=health-insurance-marketplace&amp;lang=ar</loc>
+    <loc>https://novatools.com/ar/blog/health-insurance-marketplace.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=best-credit-cards-2026&amp;lang=en</loc>
+    <loc>https://novatools.com/blog/best-credit-cards-2026.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=best-credit-cards-2026&amp;lang=tr</loc>
+    <loc>https://novatools.com/tr/blog/best-credit-cards-2026.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=best-credit-cards-2026&amp;lang=ar</loc>
+    <loc>https://novatools.com/ar/blog/best-credit-cards-2026.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=student-loan-repayment&amp;lang=en</loc>
+    <loc>https://novatools.com/blog/student-loan-repayment.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=student-loan-repayment&amp;lang=tr</loc>
+    <loc>https://novatools.com/tr/blog/student-loan-repayment.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=student-loan-repayment&amp;lang=ar</loc>
+    <loc>https://novatools.com/ar/blog/student-loan-repayment.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=emergency-fund-guide&amp;lang=en</loc>
+    <loc>https://novatools.com/blog/emergency-fund-guide.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=emergency-fund-guide&amp;lang=tr</loc>
+    <loc>https://novatools.com/tr/blog/emergency-fund-guide.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=emergency-fund-guide&amp;lang=ar</loc>
+    <loc>https://novatools.com/ar/blog/emergency-fund-guide.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=credit-score-hacks&amp;lang=en</loc>
+    <loc>https://novatools.com/blog/credit-score-hacks.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=credit-score-hacks&amp;lang=tr</loc>
+    <loc>https://novatools.com/tr/blog/credit-score-hacks.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=credit-score-hacks&amp;lang=ar</loc>
+    <loc>https://novatools.com/ar/blog/credit-score-hacks.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=401k-rollover-guide&amp;lang=en</loc>
+    <loc>https://novatools.com/blog/401k-rollover-guide.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=401k-rollover-guide&amp;lang=tr</loc>
+    <loc>https://novatools.com/tr/blog/401k-rollover-guide.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=401k-rollover-guide&amp;lang=ar</loc>
+    <loc>https://novatools.com/ar/blog/401k-rollover-guide.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=nft-tax-guide&amp;lang=en</loc>
+    <loc>https://novatools.com/blog/nft-tax-guide.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=nft-tax-guide&amp;lang=tr</loc>
+    <loc>https://novatools.com/tr/blog/nft-tax-guide.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=nft-tax-guide&amp;lang=ar</loc>
+    <loc>https://novatools.com/ar/blog/nft-tax-guide.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=index-funds-vs-etfs&amp;lang=en</loc>
+    <loc>https://novatools.com/blog/index-funds-vs-etfs.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=index-funds-vs-etfs&amp;lang=tr</loc>
+    <loc>https://novatools.com/tr/blog/index-funds-vs-etfs.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=index-funds-vs-etfs&amp;lang=ar</loc>
+    <loc>https://novatools.com/ar/blog/index-funds-vs-etfs.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=term-vs-whole-life&amp;lang=en</loc>
+    <loc>https://novatools.com/blog/term-vs-whole-life.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=term-vs-whole-life&amp;lang=tr</loc>
+    <loc>https://novatools.com/tr/blog/term-vs-whole-life.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=term-vs-whole-life&amp;lang=ar</loc>
+    <loc>https://novatools.com/ar/blog/term-vs-whole-life.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=first-time-home-buyer&amp;lang=en</loc>
+    <loc>https://novatools.com/blog/first-time-home-buyer.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=first-time-home-buyer&amp;lang=tr</loc>
+    <loc>https://novatools.com/tr/blog/first-time-home-buyer.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=first-time-home-buyer&amp;lang=ar</loc>
+    <loc>https://novatools.com/ar/blog/first-time-home-buyer.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=tax-deductions-homeowners&amp;lang=en</loc>
+    <loc>https://novatools.com/blog/tax-deductions-homeowners.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=tax-deductions-homeowners&amp;lang=tr</loc>
+    <loc>https://novatools.com/tr/blog/tax-deductions-homeowners.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=tax-deductions-homeowners&amp;lang=ar</loc>
+    <loc>https://novatools.com/ar/blog/tax-deductions-homeowners.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=halal-mortgage-usa&amp;lang=en</loc>
+    <loc>https://novatools.com/blog/halal-mortgage-usa.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=halal-mortgage-usa&amp;lang=tr</loc>
+    <loc>https://novatools.com/tr/blog/halal-mortgage-usa.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=halal-mortgage-usa&amp;lang=ar</loc>
+    <loc>https://novatools.com/ar/blog/halal-mortgage-usa.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=cloud-cost-comparison&amp;lang=en</loc>
+    <loc>https://novatools.com/blog/cloud-cost-comparison.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=cloud-cost-comparison&amp;lang=tr</loc>
+    <loc>https://novatools.com/tr/blog/cloud-cost-comparison.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=cloud-cost-comparison&amp;lang=ar</loc>
+    <loc>https://novatools.com/ar/blog/cloud-cost-comparison.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=life-insurance-coverage-guide&amp;lang=en</loc>
+    <loc>https://novatools.com/blog/life-insurance-coverage-guide.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=life-insurance-coverage-guide&amp;lang=tr</loc>
+    <loc>https://novatools.com/tr/blog/life-insurance-coverage-guide.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=life-insurance-coverage-guide&amp;lang=ar</loc>
+    <loc>https://novatools.com/ar/blog/life-insurance-coverage-guide.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=zakat-investments-guide&amp;lang=en</loc>
+    <loc>https://novatools.com/blog/zakat-investments-guide.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=zakat-investments-guide&amp;lang=tr</loc>
+    <loc>https://novatools.com/tr/blog/zakat-investments-guide.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=zakat-investments-guide&amp;lang=ar</loc>
+    <loc>https://novatools.com/ar/blog/zakat-investments-guide.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=pdf-financial-records&amp;lang=en</loc>
+    <loc>https://novatools.com/blog/pdf-financial-records.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=pdf-financial-records&amp;lang=tr</loc>
+    <loc>https://novatools.com/tr/blog/pdf-financial-records.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=pdf-financial-records&amp;lang=ar</loc>
+    <loc>https://novatools.com/ar/blog/pdf-financial-records.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=mortgage-refinancing-guide&amp;lang=en</loc>
+    <loc>https://novatools.com/blog/mortgage-refinancing-guide.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=mortgage-refinancing-guide&amp;lang=tr</loc>
+    <loc>https://novatools.com/tr/blog/mortgage-refinancing-guide.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=mortgage-refinancing-guide&amp;lang=ar</loc>
+    <loc>https://novatools.com/ar/blog/mortgage-refinancing-guide.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=islamic-finance-investing&amp;lang=en</loc>
+    <loc>https://novatools.com/blog/islamic-finance-investing.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=islamic-finance-investing&amp;lang=tr</loc>
+    <loc>https://novatools.com/tr/blog/islamic-finance-investing.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=islamic-finance-investing&amp;lang=ar</loc>
+    <loc>https://novatools.com/ar/blog/islamic-finance-investing.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=crypto-tax-guide&amp;lang=en</loc>
+    <loc>https://novatools.com/blog/crypto-tax-guide.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=crypto-tax-guide&amp;lang=tr</loc>
+    <loc>https://novatools.com/tr/blog/crypto-tax-guide.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=crypto-tax-guide&amp;lang=ar</loc>
+    <loc>https://novatools.com/ar/blog/crypto-tax-guide.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=retirement-planning-millennials&amp;lang=en</loc>
+    <loc>https://novatools.com/blog/retirement-planning-millennials.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=retirement-planning-millennials&amp;lang=tr</loc>
+    <loc>https://novatools.com/tr/blog/retirement-planning-millennials.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=retirement-planning-millennials&amp;lang=ar</loc>
+    <loc>https://novatools.com/ar/blog/retirement-planning-millennials.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=pmi-removal-guide&amp;lang=en</loc>
+    <loc>https://novatools.com/blog/pmi-removal-guide.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=pmi-removal-guide&amp;lang=tr</loc>
+    <loc>https://novatools.com/tr/blog/pmi-removal-guide.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=pmi-removal-guide&amp;lang=ar</loc>
+    <loc>https://novatools.com/ar/blog/pmi-removal-guide.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=debt-consolidation-guide&amp;lang=en</loc>
+    <loc>https://novatools.com/blog/debt-consolidation-guide.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=debt-consolidation-guide&amp;lang=tr</loc>
+    <loc>https://novatools.com/tr/blog/debt-consolidation-guide.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=debt-consolidation-guide&amp;lang=ar</loc>
+    <loc>https://novatools.com/ar/blog/debt-consolidation-guide.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=pdf-to-word-when-to-convert-and-when-not-to&amp;lang=en</loc>
+    <loc>https://novatools.com/blog/pdf-to-word-when-to-convert-and-when-not-to.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=pdf-to-word-when-to-convert-and-when-not-to&amp;lang=tr</loc>
+    <loc>https://novatools.com/tr/blog/pdf-to-word-when-to-convert-and-when-not-to.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=pdf-to-word-when-to-convert-and-when-not-to&amp;lang=ar</loc>
+    <loc>https://novatools.com/ar/blog/pdf-to-word-when-to-convert-and-when-not-to.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=pdf-to-text-clean-extraction-workflow&amp;lang=en</loc>
+    <loc>https://novatools.com/blog/pdf-to-text-clean-extraction-workflow.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=pdf-to-text-clean-extraction-workflow&amp;lang=tr</loc>
+    <loc>https://novatools.com/tr/blog/pdf-to-text-clean-extraction-workflow.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=pdf-to-text-clean-extraction-workflow&amp;lang=ar</loc>
+    <loc>https://novatools.com/ar/blog/pdf-to-text-clean-extraction-workflow.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=transparent-background-image-workflow&amp;lang=en</loc>
+    <loc>https://novatools.com/blog/transparent-background-image-workflow.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=transparent-background-image-workflow&amp;lang=tr</loc>
+    <loc>https://novatools.com/tr/blog/transparent-background-image-workflow.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=transparent-background-image-workflow&amp;lang=ar</loc>
+    <loc>https://novatools.com/ar/blog/transparent-background-image-workflow.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=compress-pdf-for-email-without-ruining-readability&amp;lang=en</loc>
+    <loc>https://novatools.com/blog/compress-pdf-for-email-without-ruining-readability.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=compress-pdf-for-email-without-ruining-readability&amp;lang=tr</loc>
+    <loc>https://novatools.com/tr/blog/compress-pdf-for-email-without-ruining-readability.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=compress-pdf-for-email-without-ruining-readability&amp;lang=ar</loc>
+    <loc>https://novatools.com/ar/blog/compress-pdf-for-email-without-ruining-readability.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=slug-generator-url-cleanup-guide&amp;lang=en</loc>
+    <loc>https://novatools.com/blog/slug-generator-url-cleanup-guide.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=slug-generator-url-cleanup-guide&amp;lang=tr</loc>
+    <loc>https://novatools.com/tr/blog/slug-generator-url-cleanup-guide.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mc-novatools.com/blog/article-template.html?slug=slug-generator-url-cleanup-guide&amp;lang=ar</loc>
+    <loc>https://novatools.com/ar/blog/slug-generator-url-cleanup-guide.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
 
   <!-- Categories -->

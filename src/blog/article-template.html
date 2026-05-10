@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="tr" data-theme="dark">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)})();</script>
@@ -21,8 +21,6 @@
   <meta property="og:description" content="Tarayıcı öncelikli iş akışları için semantik, erişilebilir ve SEO uyumlu NovaTools makale şablonu.">
   <meta property="og:type" content="article">
   <meta property="og:image" content="https://mc-novatools.com/images/blog-covers/browser-privacy.svg">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Ana Sayfa","item":"https://mc-novatools.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://mc-novatools.com/blog/index.html"},{"@type":"ListItem","position":3,"name":"Yapay Zeka","item":"https://mc-novatools.com/blog/index.html?category=yapay-zeka"},{"@type":"ListItem","position":4,"name":"Tarayıcı Öncelikli Araçlar Ne Anlama Gelir?","item":"https://mc-novatools.com/blog/article-template.html"}]}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Tarayıcı öncelikli araç ne demektir?","acceptedAnswer":{"@type":"Answer","text":"Tarayıcı öncelikli araç, temel işlemi kullanıcının cihazında çalışan web arayüzü içinde tamamlamayı hedefleyen araçtır."}},{"@type":"Question","name":"Bu yaklaşım her dosya için yeterli midir?","acceptedAnswer":{"@type":"Answer","text":"Hayır. Çok büyük dosyalar, düzenleyici gerektiren belgeler veya mevzuata bağlı iş akışları ek kontrol gerektirebilir."}},{"@type":"Question","name":"Sonucu paylaşmadan önce ne kontrol edilmeli?","acceptedAnswer":{"@type":"Answer","text":"Dosya adı, çıktı formatı, okunabilirlik, hassas veri içeriği ve alıcının sonraki adımı kontrol edilmelidir."}}]}</script>
   <style>
     .reading-progress { position: fixed; inset: 0 auto auto 0; z-index: 9999; width: 0; height: 4px; background: linear-gradient(90deg, var(--color-primary-500), var(--color-accent-500)); }
     .article-template { background: var(--color-background); color: var(--text-primary); }
@@ -31,7 +29,8 @@
     .article-breadcrumb a { color: var(--text-secondary); text-decoration: none; }
     .article-breadcrumb .chevron { color: var(--text-muted); }
     .article-hero { position: relative; min-height: min(72vh, 520px); display: grid; align-items: end; overflow: hidden; }
-    .article-hero img { position: absolute; inset: 0; width: 100%; height: 100%; max-height: 520px; object-fit: cover; }
+    .article-hero picture { position: absolute; inset: 0; display: block; }
+    .article-hero img { width: 100%; height: 100%; max-height: 520px; object-fit: cover; }
     .article-hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.78), transparent 60%); }
     .article-hero__content { position: relative; z-index: 1; width: min(var(--container-xl), calc(100% - 2rem)); margin: 0 auto; padding: var(--space-16) 0 var(--space-10); color: #fff; }
     .article-hero h1 { max-width: 900px; margin: var(--space-4) 0; font: 800 var(--font-size-3xl)/1.1 var(--font-sans); letter-spacing: var(--letter-spacing-tight); text-shadow: 0 2px 20px rgba(0,0,0,.45); }
@@ -75,6 +74,7 @@
     [data-theme="dark"] .article-cta { background: hsl(260 82% 22% / .66); color: #fff; }
     .mini-card-grid { display: grid; gap: var(--space-4); }
     .related-post { display: grid; grid-template-columns: 80px 1fr; gap: var(--space-3); align-items: center; padding: var(--space-3); border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--surface-elevated); text-decoration: none; }
+    .related-post picture { width: 80px; height: 60px; display: block; }
     .related-post img { width: 80px; height: 60px; object-fit: cover; border-radius: var(--radius-sm); }
     .tool-mini-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-4); }
     .author-box { display: grid; grid-template-columns: 80px 1fr; gap: var(--space-5); margin-top: var(--space-10); padding: var(--space-5); border-radius: var(--radius-lg); background: var(--surface-elevated); border: 1px solid var(--border); }
@@ -123,6 +123,70 @@ const ready = checklist.every((step) => step.length > 0);</code></pre></div></se
     </div>
   </article>
   <button class="scroll-top" type="button" id="scrollTop" aria-label="Yazıya git">↑</button><div class="copy-toast" id="copyToast" role="status" aria-live="polite">Kopyalandı!</div>
+  <script type="module">
+    import {
+      applyBlogDocumentLocale,
+      applyNoindexFallback,
+      getActiveBlogLocale,
+      getBlogPost,
+      getBlogPostsForLocale,
+      getBlogUi,
+      renderBlogPicture,
+      renderContentBlock
+    } from '../js/i18n-blog.js';
+    import { getCleanBlogUrl, injectBlogSeo } from '../js/blog-seo.js';
+
+    const params = new URLSearchParams(window.location.search);
+    const pathSlug = window.location.pathname.match(/\/blog\/([^/]+)\.html$/)?.[1];
+    const requestedLocale = params.get('lang') || (window.location.pathname.startsWith('/tr/') ? 'tr' : window.location.pathname.startsWith('/ar/') ? 'ar' : getActiveBlogLocale());
+    const slug = params.get('slug') || pathSlug || 'high-yield-savings-guide';
+    const result = getBlogPost(requestedLocale, slug);
+
+    function setMeta(selector, attr, value) {
+      const element = document.querySelector(selector);
+      if (element && value) element.setAttribute(attr, value);
+    }
+
+    function escapeHtml(value) {
+      return String(value).replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]);
+    }
+
+    function renderFaq(faq) {
+      return `<section aria-labelledby="sss"><h2 id="sss"><a href="#sss">FAQ</a></h2><div class="faq-list">${faq.map((item) => `<details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"><summary itemprop="name">${escapeHtml(item.question)}</summary><p itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><span itemprop="text">${escapeHtml(item.answer)}</span></p></details>`).join('')}</div></section>`;
+    }
+
+    function renderArticle(post, locale) {
+      const ui = getBlogUi(locale);
+      applyBlogDocumentLocale(locale);
+      const categoryLabel = ui.categories[post.category] || post.category;
+      injectBlogSeo(post, locale, categoryLabel);
+
+      const hero = document.querySelector('.article-hero');
+      const existingHeroPicture = hero?.querySelector('picture, img');
+      if (existingHeroPicture) existingHeroPicture.outerHTML = renderBlogPicture(post, 'og', { width: 1200, height: 630, loading: 'eager', alt: `${post.title} cover image` });
+      const badge = document.querySelector('.article-badge');
+      if (badge) badge.textContent = categoryLabel;
+      const heading = document.querySelector('.article-hero h1');
+      if (heading) heading.textContent = post.title;
+      const meta = document.querySelector('.article-meta');
+      if (meta) meta.innerHTML = `<span class="article-meta__author"><img src="${post.author.avatar}" alt="" width="48" height="48"><span><strong>${escapeHtml(post.author.name)}</strong><br>${escapeHtml(post.author.title)}</span></span><time datetime="${post.datePublished}">${post.datePublished}</time><span class="updated-badge">${post.dateModified}</span><span>⏱ ${post.readTime} min</span>`;
+
+      const body = document.querySelector('.article-body');
+      if (!body) return;
+      const summary = `<section class="summary-box" aria-labelledby="summary-title"><h2 id="summary-title">${locale === 'tr' ? 'Bu Yazının Özeti' : locale === 'ar' ? 'ملخص المقال' : 'Article Summary'}</h2><ul>${post.summary.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul></section>`;
+      const blocks = post.contentBlocks.map(renderContentBlock).join('');
+      const cta = `<section aria-labelledby="sonuc-cta"><div class="article-cta"><h3 id="sonuc-cta">${escapeHtml(ui.loadMore === 'Daha Fazla Yükle' ? 'Bu aracı hemen deneyin' : ui.loadMore === 'تحميل المزيد' ? 'جرّب الأداة المرتبطة الآن' : 'Try the related tool now')}</h3><p>${escapeHtml(post.excerpt)}</p><a class="btn btn-primary" rel="noopener" href="${post.relatedToolLinks?.[0] || '/categories/index.html'}">${locale === 'tr' ? 'Hemen Kullan' : locale === 'ar' ? 'ابدأ الآن' : 'Open Tool'}</a></div></section>`;
+      const relatedPosts = getBlogPostsForLocale(locale).filter((item) => item.slug !== post.slug && item.category === post.category).slice(0, 3);
+      const related = `<section aria-labelledby="ilgili"><h2 id="ilgili"><a href="#ilgili">${locale === 'tr' ? 'İlgili Yazılar ve Araçlar' : locale === 'ar' ? 'مقالات وأدوات ذات صلة' : 'Related Articles and Tools'}</a></h2><div class="mini-card-grid">${relatedPosts.map((item) => `<a class="related-post" rel="noopener" href="${getCleanBlogUrl(item.slug, locale).replace('https://novatools.com', '')}">${renderBlogPicture(item, 'card', { width: 800, height: 450, alt: `${item.title} cover image` })}<span><strong>${escapeHtml(item.title)}</strong><br>${item.datePublished}</span></a>`).join('')}</div><p><a rel="noopener" href="/blog/index.html?category=${encodeURIComponent(post.category)}">${escapeHtml(categoryLabel)}</a></p></section>`;
+      const author = `<aside class="author-box" aria-label="Author"><img src="${post.author.avatar}" alt="${escapeHtml(post.author.name)} avatar" width="80" height="80"><div><h4>${escapeHtml(post.author.name)}</h4><p><strong>${escapeHtml(post.author.title)}</strong></p><p>${escapeHtml(post.author.bio)}</p></div></aside>`;
+      body.innerHTML = summary + blocks + renderFaq(post.faq) + cta + related + author;
+    }
+
+    if (result.post) {
+      renderArticle(result.post, result.locale);
+      if (result.isFallback) applyNoindexFallback(getBlogUi(requestedLocale).fallbackNotice);
+    }
+  </script>
   <script>
     const progress = document.getElementById('readingProgress');
     const scrollTopButton = document.getElementById('scrollTop');
@@ -131,7 +195,7 @@ const ready = checklist.every((step) => step.length > 0);</code></pre></div></se
     window.addEventListener('scroll', updateProgress, { passive: true });
     updateProgress();
     scrollTopButton.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-    document.querySelectorAll('.copy-code').forEach((button) => button.addEventListener('click', async () => { const code = button.nextElementSibling?.innerText || ''; await navigator.clipboard.writeText(code); toast.classList.add('is-visible'); button.textContent = 'Kopyalandı!'; window.setTimeout(() => { toast.classList.remove('is-visible'); button.textContent = 'Kopyala'; }, 1000); }));
+    document.addEventListener('click', async (event) => { const button = event.target.closest('.copy-code'); if (!button) return; const code = button.nextElementSibling?.innerText || ''; await navigator.clipboard.writeText(code); toast.classList.add('is-visible'); button.textContent = 'Copied!'; window.setTimeout(() => { toast.classList.remove('is-visible'); button.textContent = 'Copy'; }, 1000); });
     document.querySelectorAll('[data-share]').forEach((button) => button.addEventListener('click', () => { const url = encodeURIComponent(window.location.href); const title = encodeURIComponent(document.title); const map = { x: `https://twitter.com/intent/tweet?url=${url}&text=${title}`, linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${url}`, whatsapp: `https://wa.me/?text=${title}%20${url}`, email: `mailto:?subject=${title}&body=${url}` }; const shareUrl = map[button.dataset.share]; if (button.dataset.share === 'email') window.location.href = shareUrl; else window.open(shareUrl, '_blank', 'noopener,noreferrer,width=720,height=640'); }));
   </script>
 </body>

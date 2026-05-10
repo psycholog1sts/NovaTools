@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
+import { readFileSync } from 'fs';
 import { globSync } from 'glob';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
 import tailwindcss from 'tailwindcss';
@@ -48,6 +49,23 @@ const rootHtmlEntries = globSync('*.html', {
 const adminEntry = {
   admin: resolve(__dirname, 'admin/index.html')
 };
+
+
+const translatedBlogSlugs = (() => {
+  try {
+    const posts = JSON.parse(readFileSync(resolve(__dirname, 'src/i18n/blog/en.json'), 'utf8'));
+    return posts.map((post) => post.slug).filter(Boolean);
+  } catch {
+    return [];
+  }
+})();
+
+const localizedBlogArticleEntries = translatedBlogSlugs.reduce((acc, slug) => {
+  acc[`blog/${slug}`] = resolve(__dirname, 'src/blog/article-template.html');
+  acc[`tr/blog/${slug}`] = resolve(__dirname, 'src/blog/article-template.html');
+  acc[`ar/blog/${slug}`] = resolve(__dirname, 'src/blog/article-template.html');
+  return acc;
+}, {});
 
 // Blog entry points
 const blogEntry = {
@@ -100,6 +118,7 @@ export default defineConfig({
         ...rootHtmlEntries,
         ...adminEntry,
         ...blogEntry,
+        ...localizedBlogArticleEntries,
         ...blogArticleEntries,
         ...categoryEntries,
         ...toolEntries

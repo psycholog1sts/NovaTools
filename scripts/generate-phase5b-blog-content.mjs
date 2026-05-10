@@ -172,9 +172,9 @@ function excerpt(locale, title, scenario) {
 function paragraphSet(locale, title, scenario, category, tools) {
   const l = localeText[locale];
   const [toolA, toolB, toolC] = tools;
-  const linkA = `<a href="${toolLinks[toolA]}">${toolA.replaceAll('-', ' ')}</a>`;
-  const linkB = `<a href="${toolLinks[toolB]}">${toolB.replaceAll('-', ' ')}</a>`;
-  const linkC = `<a href="${toolLinks[toolC]}">${toolC.replaceAll('-', ' ')}</a>`;
+  const linkA = `<a href="${toolLinks[toolA]}" rel="noopener">${toolA.replaceAll('-', ' ')}</a>`;
+  const linkB = `<a href="${toolLinks[toolB]}" rel="noopener">${toolB.replaceAll('-', ' ')}</a>`;
+  const linkC = `<a href="${toolLinks[toolC]}" rel="noopener">${toolC.replaceAll('-', ' ')}</a>`;
   if (locale === 'tr') return [
     l.introLead(title, scenario),
     `İyi bir başlangıç, “hangi sonucu üretiyorum?” sorusunu “bu sonucu kim kullanacak?” sorusuyla birlikte cevaplamaktır. Bir finans tahmini, API çıktısı, ders materyali veya gizli belge hazırlığı aynı araca ihtiyaç duyabilir; fakat kontrol noktaları farklıdır. Bu nedenle rehber, çıktı formatını, alıcıyı, saklama gereksinimini ve sonraki eylemi birlikte değerlendirir.`,
@@ -268,7 +268,14 @@ function buildArticle(locale, queued, index) {
     datePublished,
     dateModified,
     readTime: 8,
-    coverImage: { og: coverByCategory[category], card: coverByCategory[category] }
+    coverImage: {
+      og: `/images/blog/og-${queued.slug}.svg`,
+      ogFallback: `/images/blog/og-${queued.slug}.svg`,
+      card: `/images/blog/card-${queued.slug}.svg`,
+      cardFallback: `/images/blog/card-${queued.slug}.svg`,
+      featured: `/images/blog/featured-${queued.slug}.svg`,
+      featuredFallback: `/images/blog/featured-${queued.slug}.svg`
+    }
   };
 }
 
