@@ -1,0 +1,2870 @@
+{
+  "generatedAt": "2026-05-10T03:36:50.875Z",
+  "methodology": {
+    "corpusGlob": "src/blog/articles/**/*.html",
+    "totalArticlesAnalyzed": 125,
+    "selectedForRewrite": 30,
+    "scoring": [
+      "word-count-under-400: -25",
+      "repeated-introduction: -15",
+      "repeated-conclusion: -15",
+      "possible-keyword-stuffing above 4.5% top non-stopword density: -15",
+      "weak-h2-structure fewer than 3 H2 headings: -15",
+      "weak-h3-structure fewer than 2 H3 headings: -10",
+      "insufficient-internal-links fewer than 3 internal links: -15",
+      "low-readability Flesch Reading Ease below 35: -10"
+    ]
+  },
+  "rewriteQueue": [
+    {
+      "slug": "high-yield-savings-guide",
+      "file": "src/blog/articles/high-yield-savings-guide.html",
+      "title": "Best High-Yield Savings Accounts 2026 | Earn 5%+ APY | NovaTools MC",
+      "score": 55,
+      "metrics": {
+        "wordCount": 1166,
+        "h2Count": 9,
+        "h3Count": 12,
+        "internalLinkCount": 1,
+        "fleschReadingEase": 35.8,
+        "topKeyword": "savings",
+        "topKeywordDensityPercent": 5.7
+      },
+      "issues": [
+        "repeated-conclusion",
+        "possible-keyword-stuffing",
+        "insufficient-internal-links"
+      ]
+    },
+    {
+      "slug": "personal-loan-vs-credit-card",
+      "file": "src/blog/articles/personal-loan-vs-credit-card.html",
+      "title": "Personal Loan vs Credit Card: Which is Better for You? | NovaTools MC",
+      "score": 55,
+      "metrics": {
+        "wordCount": 1450,
+        "h2Count": 10,
+        "h3Count": 19,
+        "internalLinkCount": 1,
+        "fleschReadingEase": 43.4,
+        "topKeyword": "credit",
+        "topKeywordDensityPercent": 5.4
+      },
+      "issues": [
+        "repeated-conclusion",
+        "possible-keyword-stuffing",
+        "insufficient-internal-links"
+      ]
+    },
+    {
+      "slug": "auto-insurance-savings",
+      "file": "src/blog/articles/auto-insurance-savings.html",
+      "title": "Auto Insurance Savings Guide 2026 | Cut Your Premium by 40% | NovaTools MC",
+      "score": 60,
+      "metrics": {
+        "wordCount": 1394,
+        "h2Count": 12,
+        "h3Count": 6,
+        "internalLinkCount": 1,
+        "fleschReadingEase": 31.8,
+        "topKeyword": "insurance",
+        "topKeywordDensityPercent": 3
+      },
+      "issues": [
+        "repeated-conclusion",
+        "insufficient-internal-links",
+        "low-readability"
+      ]
+    },
+    {
+      "slug": "health-insurance-marketplace",
+      "file": "src/blog/articles/health-insurance-marketplace.html",
+      "title": "Health Insurance Marketplace Guide 2026 | Save on Premiums | NovaTools MC",
+      "score": 60,
+      "metrics": {
+        "wordCount": 1470,
+        "h2Count": 9,
+        "h3Count": 19,
+        "internalLinkCount": 1,
+        "fleschReadingEase": 30.6,
+        "topKeyword": "insurance",
+        "topKeywordDensityPercent": 2.2
+      },
+      "issues": [
+        "repeated-conclusion",
+        "insufficient-internal-links",
+        "low-readability"
+      ]
+    },
+    {
+      "slug": "best-credit-cards-2026",
+      "file": "src/blog/articles/best-credit-cards-2026.html",
+      "title": "Best Credit Cards for Rewards in 2026 | NovaTools MC",
+      "score": 60,
+      "metrics": {
+        "wordCount": 1647,
+        "h2Count": 9,
+        "h3Count": 11,
+        "internalLinkCount": 2,
+        "fleschReadingEase": 34,
+        "topKeyword": "cards",
+        "topKeywordDensityPercent": 4.1
+      },
+      "issues": [
+        "repeated-conclusion",
+        "insufficient-internal-links",
+        "low-readability"
+      ]
+    },
+    {
+      "slug": "student-loan-repayment",
+      "file": "src/blog/articles/student-loan-repayment.html",
+      "title": "Student Loan Repayment Strategies That Actually Work in 2026 | NovaTools MC",
+      "score": 60,
+      "metrics": {
+        "wordCount": 1777,
+        "h2Count": 12,
+        "h3Count": 19,
+        "internalLinkCount": 2,
+        "fleschReadingEase": 27.6,
+        "topKeyword": "loan",
+        "topKeywordDensityPercent": 2.4
+      },
+      "issues": [
+        "repeated-conclusion",
+        "insufficient-internal-links",
+        "low-readability"
+      ]
+    },
+    {
+      "slug": "emergency-fund-guide",
+      "file": "src/blog/articles/emergency-fund-guide.html",
+      "title": "Building an Emergency Fund: The Complete 2026 Guide | NovaTools MC",
+      "score": 60,
+      "metrics": {
+        "wordCount": 1943,
+        "h2Count": 10,
+        "h3Count": 26,
+        "internalLinkCount": 2,
+        "fleschReadingEase": 31.3,
+        "topKeyword": "emergency",
+        "topKeywordDensityPercent": 3.3
+      },
+      "issues": [
+        "repeated-conclusion",
+        "insufficient-internal-links",
+        "low-readability"
+      ]
+    },
+    {
+      "slug": "credit-score-hacks",
+      "file": "src/blog/articles/credit-score-hacks.html",
+      "title": "Credit Score Hacks: Boost Your FICO Fast | NovaTools MC",
+      "score": 70,
+      "metrics": {
+        "wordCount": 1374,
+        "h2Count": 10,
+        "h3Count": 14,
+        "internalLinkCount": 7,
+        "fleschReadingEase": 47.6,
+        "topKeyword": "credit",
+        "topKeywordDensityPercent": 6
+      },
+      "issues": [
+        "repeated-conclusion",
+        "possible-keyword-stuffing"
+      ]
+    },
+    {
+      "slug": "401k-rollover-guide",
+      "file": "src/blog/articles/401k-rollover-guide.html",
+      "title": "401k Rollover Guide 2026 | Avoid Taxes and Penalties | NovaTools MC",
+      "score": 70,
+      "metrics": {
+        "wordCount": 1410,
+        "h2Count": 8,
+        "h3Count": 17,
+        "internalLinkCount": 1,
+        "fleschReadingEase": 36.7,
+        "topKeyword": "rollover",
+        "topKeywordDensityPercent": 2.6
+      },
+      "issues": [
+        "repeated-conclusion",
+        "insufficient-internal-links"
+      ]
+    },
+    {
+      "slug": "nft-tax-guide",
+      "file": "src/blog/articles/nft-tax-guide.html",
+      "title": "NFT Taxes: What Crypto Investors Must Know in 2025 | NovaTools MC",
+      "score": 70,
+      "metrics": {
+        "wordCount": 1604,
+        "h2Count": 13,
+        "h3Count": 22,
+        "internalLinkCount": 2,
+        "fleschReadingEase": 40.2,
+        "topKeyword": "tax",
+        "topKeywordDensityPercent": 3.6
+      },
+      "issues": [
+        "repeated-conclusion",
+        "insufficient-internal-links"
+      ]
+    },
+    {
+      "slug": "index-funds-vs-etfs",
+      "file": "src/blog/articles/index-funds-vs-etfs.html",
+      "title": "Index Funds vs ETFs: Complete Beginner's Guide 2025 | NovaTools MC",
+      "score": 70,
+      "metrics": {
+        "wordCount": 1799,
+        "h2Count": 12,
+        "h3Count": 31,
+        "internalLinkCount": 2,
+        "fleschReadingEase": 37.2,
+        "topKeyword": "funds",
+        "topKeywordDensityPercent": 3.5
+      },
+      "issues": [
+        "repeated-conclusion",
+        "insufficient-internal-links"
+      ]
+    },
+    {
+      "slug": "term-vs-whole-life",
+      "file": "src/blog/articles/term-vs-whole-life.html",
+      "title": "Term vs Whole Life Insurance: Which Is Better for You? | NovaTools MC",
+      "score": 70,
+      "metrics": {
+        "wordCount": 1992,
+        "h2Count": 10,
+        "h3Count": 18,
+        "internalLinkCount": 2,
+        "fleschReadingEase": 35,
+        "topKeyword": "life",
+        "topKeywordDensityPercent": 3.5
+      },
+      "issues": [
+        "repeated-conclusion",
+        "insufficient-internal-links"
+      ]
+    },
+    {
+      "slug": "first-time-home-buyer",
+      "file": "src/blog/articles/first-time-home-buyer.html",
+      "title": "First-Time Home Buyer's Complete Checklist 2026 | NovaTools MC",
+      "score": 70,
+      "metrics": {
+        "wordCount": 2180,
+        "h2Count": 10,
+        "h3Count": 29,
+        "internalLinkCount": 2,
+        "fleschReadingEase": 38.2,
+        "topKeyword": "home",
+        "topKeywordDensityPercent": 1.3
+      },
+      "issues": [
+        "repeated-conclusion",
+        "insufficient-internal-links"
+      ]
+    },
+    {
+      "slug": "tax-deductions-homeowners",
+      "file": "src/blog/articles/tax-deductions-homeowners.html",
+      "title": "Tax Deductions Homeowners Forget to Claim | NovaTools MC",
+      "score": 75,
+      "metrics": {
+        "wordCount": 1233,
+        "h2Count": 11,
+        "h3Count": 16,
+        "internalLinkCount": 3,
+        "fleschReadingEase": 29.7,
+        "topKeyword": "tax",
+        "topKeywordDensityPercent": 2.8
+      },
+      "issues": [
+        "repeated-conclusion",
+        "low-readability"
+      ]
+    },
+    {
+      "slug": "halal-mortgage-usa",
+      "file": "src/blog/articles/halal-mortgage-usa.html",
+      "title": "Halal Mortgage Alternatives in the USA | NovaTools MC",
+      "score": 75,
+      "metrics": {
+        "wordCount": 1606,
+        "h2Count": 9,
+        "h3Count": 11,
+        "internalLinkCount": 6,
+        "fleschReadingEase": 27.2,
+        "topKeyword": "islamic",
+        "topKeywordDensityPercent": 3.2
+      },
+      "issues": [
+        "repeated-conclusion",
+        "low-readability"
+      ]
+    },
+    {
+      "slug": "cloud-cost-comparison",
+      "file": "src/blog/articles/cloud-cost-comparison.html",
+      "title": "AWS vs Azure vs GCP: Cloud Cost Comparison 2026 | NovaTools MC",
+      "score": 75,
+      "metrics": {
+        "wordCount": 1607,
+        "h2Count": 10,
+        "h3Count": 23,
+        "internalLinkCount": 3,
+        "fleschReadingEase": 28,
+        "topKeyword": "cloud",
+        "topKeywordDensityPercent": 2.2
+      },
+      "issues": [
+        "repeated-conclusion",
+        "low-readability"
+      ]
+    },
+    {
+      "slug": "life-insurance-coverage-guide",
+      "file": "src/blog/articles/life-insurance-coverage-guide.html",
+      "title": "How Much Life Insurance Do You Really Need? | NovaTools MC",
+      "score": 75,
+      "metrics": {
+        "wordCount": 1613,
+        "h2Count": 9,
+        "h3Count": 20,
+        "internalLinkCount": 3,
+        "fleschReadingEase": 24.9,
+        "topKeyword": "insurance",
+        "topKeywordDensityPercent": 3.3
+      },
+      "issues": [
+        "repeated-conclusion",
+        "low-readability"
+      ]
+    },
+    {
+      "slug": "zakat-investments-guide",
+      "file": "src/blog/articles/zakat-investments-guide.html",
+      "title": "Understanding Zakat on Investments | NovaTools MC",
+      "score": 75,
+      "metrics": {
+        "wordCount": 1662,
+        "h2Count": 11,
+        "h3Count": 18,
+        "internalLinkCount": 6,
+        "fleschReadingEase": 34,
+        "topKeyword": "zakat",
+        "topKeywordDensityPercent": 4.4
+      },
+      "issues": [
+        "repeated-conclusion",
+        "low-readability"
+      ]
+    },
+    {
+      "slug": "pdf-financial-records",
+      "file": "src/blog/articles/pdf-financial-records.html",
+      "title": "Managing PDF Documents for Financial Records: Complete Guide | NovaTools MC",
+      "score": 75,
+      "metrics": {
+        "wordCount": 1837,
+        "h2Count": 13,
+        "h3Count": 35,
+        "internalLinkCount": 3,
+        "fleschReadingEase": 18.4,
+        "topKeyword": "documents",
+        "topKeywordDensityPercent": 3.2
+      },
+      "issues": [
+        "repeated-conclusion",
+        "low-readability"
+      ]
+    },
+    {
+      "slug": "mortgage-refinancing-guide",
+      "file": "src/blog/articles/mortgage-refinancing-guide.html",
+      "title": "Complete Guide to Mortgage Refinancing in 2026 | NovaTools MC",
+      "score": 75,
+      "metrics": {
+        "wordCount": 1873,
+        "h2Count": 10,
+        "h3Count": 26,
+        "internalLinkCount": 3,
+        "fleschReadingEase": 27.4,
+        "topKeyword": "refinancing",
+        "topKeywordDensityPercent": 2.8
+      },
+      "issues": [
+        "repeated-conclusion",
+        "low-readability"
+      ]
+    },
+    {
+      "slug": "islamic-finance-investing",
+      "file": "src/blog/articles/islamic-finance-investing.html",
+      "title": "Islamic Finance Principles for Modern Ethical Investing 2026 | NovaTools MC",
+      "score": 75,
+      "metrics": {
+        "wordCount": 2029,
+        "h2Count": 10,
+        "h3Count": 26,
+        "internalLinkCount": 3,
+        "fleschReadingEase": 11.4,
+        "topKeyword": "islamic",
+        "topKeywordDensityPercent": 2.6
+      },
+      "issues": [
+        "repeated-conclusion",
+        "low-readability"
+      ]
+    },
+    {
+      "slug": "crypto-tax-guide",
+      "file": "src/blog/articles/crypto-tax-guide.html",
+      "title": "Crypto Tax Guide 2026: Everything You Need to Know | NovaTools MC",
+      "score": 75,
+      "metrics": {
+        "wordCount": 2289,
+        "h2Count": 15,
+        "h3Count": 23,
+        "internalLinkCount": 3,
+        "fleschReadingEase": 30.7,
+        "topKeyword": "crypto",
+        "topKeywordDensityPercent": 3.7
+      },
+      "issues": [
+        "repeated-conclusion",
+        "low-readability"
+      ]
+    },
+    {
+      "slug": "retirement-planning-millennials",
+      "file": "src/blog/articles/retirement-planning-millennials.html",
+      "title": "Retirement Planning for Millennials & Gen Z | NovaTools MC",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1490,
+        "h2Count": 10,
+        "h3Count": 16,
+        "internalLinkCount": 7,
+        "fleschReadingEase": 44.3,
+        "topKeyword": "retirement",
+        "topKeywordDensityPercent": 2.8
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "pmi-removal-guide",
+      "file": "src/blog/articles/pmi-removal-guide.html",
+      "title": "Private Mortgage Insurance (PMI) Removal Guide 2025 | NovaTools MC",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1529,
+        "h2Count": 11,
+        "h3Count": 30,
+        "internalLinkCount": 3,
+        "fleschReadingEase": 37.6,
+        "topKeyword": "pmi",
+        "topKeywordDensityPercent": 4
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "debt-consolidation-guide",
+      "file": "src/blog/articles/debt-consolidation-guide.html",
+      "title": "Debt Consolidation: Is It Right for You? | NovaTools MC",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1767,
+        "h2Count": 10,
+        "h3Count": 13,
+        "internalLinkCount": 6,
+        "fleschReadingEase": 47.3,
+        "topKeyword": "debt",
+        "topKeywordDensityPercent": 3.1
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "pdf-to-word-when-to-convert-and-when-not-to",
+      "file": "src/blog/articles/pdf-to-word-when-to-convert-and-when-not-to.html",
+      "title": "PDF to Word: When to Convert and When Not To | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1798,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 46.1,
+        "topKeyword": "pdf",
+        "topKeywordDensityPercent": 1.9
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "pdf-to-text-clean-extraction-workflow",
+      "file": "src/blog/articles/pdf-to-text-clean-extraction-workflow.html",
+      "title": "PDF to Text: A Clean Extraction Workflow for Reusable Copy | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1800,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 46.2,
+        "topKeyword": "pdf",
+        "topKeywordDensityPercent": 1.9
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "transparent-background-image-workflow",
+      "file": "src/blog/articles/transparent-background-image-workflow.html",
+      "title": "Transparent Background Images: When PNG Still Makes Sense | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1818,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 40.8,
+        "topKeyword": "transparent",
+        "topKeywordDensityPercent": 1.9
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "compress-pdf-for-email-without-ruining-readability",
+      "file": "src/blog/articles/compress-pdf-for-email-without-ruining-readability.html",
+      "title": "How to Compress a PDF for Email Without Ruining Readability | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1821,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 39.9,
+        "topKeyword": "email",
+        "topKeywordDensityPercent": 2.5
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "slug-generator-url-cleanup-guide",
+      "file": "src/blog/articles/slug-generator-url-cleanup-guide.html",
+      "title": "Slug Generator Guide: Clean URLs for Tools, Blogs, and Landing Pages | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1823,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 44.3,
+        "topKeyword": "result",
+        "topKeywordDensityPercent": 1.8
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    }
+  ],
+  "analyzedArticles": [
+    {
+      "slug": "high-yield-savings-guide",
+      "file": "src/blog/articles/high-yield-savings-guide.html",
+      "title": "Best High-Yield Savings Accounts 2026 | Earn 5%+ APY | NovaTools MC",
+      "score": 55,
+      "metrics": {
+        "wordCount": 1166,
+        "h2Count": 9,
+        "h3Count": 12,
+        "internalLinkCount": 1,
+        "fleschReadingEase": 35.8,
+        "topKeyword": "savings",
+        "topKeywordDensityPercent": 5.7
+      },
+      "issues": [
+        "repeated-conclusion",
+        "possible-keyword-stuffing",
+        "insufficient-internal-links"
+      ]
+    },
+    {
+      "slug": "personal-loan-vs-credit-card",
+      "file": "src/blog/articles/personal-loan-vs-credit-card.html",
+      "title": "Personal Loan vs Credit Card: Which is Better for You? | NovaTools MC",
+      "score": 55,
+      "metrics": {
+        "wordCount": 1450,
+        "h2Count": 10,
+        "h3Count": 19,
+        "internalLinkCount": 1,
+        "fleschReadingEase": 43.4,
+        "topKeyword": "credit",
+        "topKeywordDensityPercent": 5.4
+      },
+      "issues": [
+        "repeated-conclusion",
+        "possible-keyword-stuffing",
+        "insufficient-internal-links"
+      ]
+    },
+    {
+      "slug": "auto-insurance-savings",
+      "file": "src/blog/articles/auto-insurance-savings.html",
+      "title": "Auto Insurance Savings Guide 2026 | Cut Your Premium by 40% | NovaTools MC",
+      "score": 60,
+      "metrics": {
+        "wordCount": 1394,
+        "h2Count": 12,
+        "h3Count": 6,
+        "internalLinkCount": 1,
+        "fleschReadingEase": 31.8,
+        "topKeyword": "insurance",
+        "topKeywordDensityPercent": 3
+      },
+      "issues": [
+        "repeated-conclusion",
+        "insufficient-internal-links",
+        "low-readability"
+      ]
+    },
+    {
+      "slug": "health-insurance-marketplace",
+      "file": "src/blog/articles/health-insurance-marketplace.html",
+      "title": "Health Insurance Marketplace Guide 2026 | Save on Premiums | NovaTools MC",
+      "score": 60,
+      "metrics": {
+        "wordCount": 1470,
+        "h2Count": 9,
+        "h3Count": 19,
+        "internalLinkCount": 1,
+        "fleschReadingEase": 30.6,
+        "topKeyword": "insurance",
+        "topKeywordDensityPercent": 2.2
+      },
+      "issues": [
+        "repeated-conclusion",
+        "insufficient-internal-links",
+        "low-readability"
+      ]
+    },
+    {
+      "slug": "best-credit-cards-2026",
+      "file": "src/blog/articles/best-credit-cards-2026.html",
+      "title": "Best Credit Cards for Rewards in 2026 | NovaTools MC",
+      "score": 60,
+      "metrics": {
+        "wordCount": 1647,
+        "h2Count": 9,
+        "h3Count": 11,
+        "internalLinkCount": 2,
+        "fleschReadingEase": 34,
+        "topKeyword": "cards",
+        "topKeywordDensityPercent": 4.1
+      },
+      "issues": [
+        "repeated-conclusion",
+        "insufficient-internal-links",
+        "low-readability"
+      ]
+    },
+    {
+      "slug": "student-loan-repayment",
+      "file": "src/blog/articles/student-loan-repayment.html",
+      "title": "Student Loan Repayment Strategies That Actually Work in 2026 | NovaTools MC",
+      "score": 60,
+      "metrics": {
+        "wordCount": 1777,
+        "h2Count": 12,
+        "h3Count": 19,
+        "internalLinkCount": 2,
+        "fleschReadingEase": 27.6,
+        "topKeyword": "loan",
+        "topKeywordDensityPercent": 2.4
+      },
+      "issues": [
+        "repeated-conclusion",
+        "insufficient-internal-links",
+        "low-readability"
+      ]
+    },
+    {
+      "slug": "emergency-fund-guide",
+      "file": "src/blog/articles/emergency-fund-guide.html",
+      "title": "Building an Emergency Fund: The Complete 2026 Guide | NovaTools MC",
+      "score": 60,
+      "metrics": {
+        "wordCount": 1943,
+        "h2Count": 10,
+        "h3Count": 26,
+        "internalLinkCount": 2,
+        "fleschReadingEase": 31.3,
+        "topKeyword": "emergency",
+        "topKeywordDensityPercent": 3.3
+      },
+      "issues": [
+        "repeated-conclusion",
+        "insufficient-internal-links",
+        "low-readability"
+      ]
+    },
+    {
+      "slug": "credit-score-hacks",
+      "file": "src/blog/articles/credit-score-hacks.html",
+      "title": "Credit Score Hacks: Boost Your FICO Fast | NovaTools MC",
+      "score": 70,
+      "metrics": {
+        "wordCount": 1374,
+        "h2Count": 10,
+        "h3Count": 14,
+        "internalLinkCount": 7,
+        "fleschReadingEase": 47.6,
+        "topKeyword": "credit",
+        "topKeywordDensityPercent": 6
+      },
+      "issues": [
+        "repeated-conclusion",
+        "possible-keyword-stuffing"
+      ]
+    },
+    {
+      "slug": "401k-rollover-guide",
+      "file": "src/blog/articles/401k-rollover-guide.html",
+      "title": "401k Rollover Guide 2026 | Avoid Taxes and Penalties | NovaTools MC",
+      "score": 70,
+      "metrics": {
+        "wordCount": 1410,
+        "h2Count": 8,
+        "h3Count": 17,
+        "internalLinkCount": 1,
+        "fleschReadingEase": 36.7,
+        "topKeyword": "rollover",
+        "topKeywordDensityPercent": 2.6
+      },
+      "issues": [
+        "repeated-conclusion",
+        "insufficient-internal-links"
+      ]
+    },
+    {
+      "slug": "nft-tax-guide",
+      "file": "src/blog/articles/nft-tax-guide.html",
+      "title": "NFT Taxes: What Crypto Investors Must Know in 2025 | NovaTools MC",
+      "score": 70,
+      "metrics": {
+        "wordCount": 1604,
+        "h2Count": 13,
+        "h3Count": 22,
+        "internalLinkCount": 2,
+        "fleschReadingEase": 40.2,
+        "topKeyword": "tax",
+        "topKeywordDensityPercent": 3.6
+      },
+      "issues": [
+        "repeated-conclusion",
+        "insufficient-internal-links"
+      ]
+    },
+    {
+      "slug": "index-funds-vs-etfs",
+      "file": "src/blog/articles/index-funds-vs-etfs.html",
+      "title": "Index Funds vs ETFs: Complete Beginner's Guide 2025 | NovaTools MC",
+      "score": 70,
+      "metrics": {
+        "wordCount": 1799,
+        "h2Count": 12,
+        "h3Count": 31,
+        "internalLinkCount": 2,
+        "fleschReadingEase": 37.2,
+        "topKeyword": "funds",
+        "topKeywordDensityPercent": 3.5
+      },
+      "issues": [
+        "repeated-conclusion",
+        "insufficient-internal-links"
+      ]
+    },
+    {
+      "slug": "term-vs-whole-life",
+      "file": "src/blog/articles/term-vs-whole-life.html",
+      "title": "Term vs Whole Life Insurance: Which Is Better for You? | NovaTools MC",
+      "score": 70,
+      "metrics": {
+        "wordCount": 1992,
+        "h2Count": 10,
+        "h3Count": 18,
+        "internalLinkCount": 2,
+        "fleschReadingEase": 35,
+        "topKeyword": "life",
+        "topKeywordDensityPercent": 3.5
+      },
+      "issues": [
+        "repeated-conclusion",
+        "insufficient-internal-links"
+      ]
+    },
+    {
+      "slug": "first-time-home-buyer",
+      "file": "src/blog/articles/first-time-home-buyer.html",
+      "title": "First-Time Home Buyer's Complete Checklist 2026 | NovaTools MC",
+      "score": 70,
+      "metrics": {
+        "wordCount": 2180,
+        "h2Count": 10,
+        "h3Count": 29,
+        "internalLinkCount": 2,
+        "fleschReadingEase": 38.2,
+        "topKeyword": "home",
+        "topKeywordDensityPercent": 1.3
+      },
+      "issues": [
+        "repeated-conclusion",
+        "insufficient-internal-links"
+      ]
+    },
+    {
+      "slug": "tax-deductions-homeowners",
+      "file": "src/blog/articles/tax-deductions-homeowners.html",
+      "title": "Tax Deductions Homeowners Forget to Claim | NovaTools MC",
+      "score": 75,
+      "metrics": {
+        "wordCount": 1233,
+        "h2Count": 11,
+        "h3Count": 16,
+        "internalLinkCount": 3,
+        "fleschReadingEase": 29.7,
+        "topKeyword": "tax",
+        "topKeywordDensityPercent": 2.8
+      },
+      "issues": [
+        "repeated-conclusion",
+        "low-readability"
+      ]
+    },
+    {
+      "slug": "halal-mortgage-usa",
+      "file": "src/blog/articles/halal-mortgage-usa.html",
+      "title": "Halal Mortgage Alternatives in the USA | NovaTools MC",
+      "score": 75,
+      "metrics": {
+        "wordCount": 1606,
+        "h2Count": 9,
+        "h3Count": 11,
+        "internalLinkCount": 6,
+        "fleschReadingEase": 27.2,
+        "topKeyword": "islamic",
+        "topKeywordDensityPercent": 3.2
+      },
+      "issues": [
+        "repeated-conclusion",
+        "low-readability"
+      ]
+    },
+    {
+      "slug": "cloud-cost-comparison",
+      "file": "src/blog/articles/cloud-cost-comparison.html",
+      "title": "AWS vs Azure vs GCP: Cloud Cost Comparison 2026 | NovaTools MC",
+      "score": 75,
+      "metrics": {
+        "wordCount": 1607,
+        "h2Count": 10,
+        "h3Count": 23,
+        "internalLinkCount": 3,
+        "fleschReadingEase": 28,
+        "topKeyword": "cloud",
+        "topKeywordDensityPercent": 2.2
+      },
+      "issues": [
+        "repeated-conclusion",
+        "low-readability"
+      ]
+    },
+    {
+      "slug": "life-insurance-coverage-guide",
+      "file": "src/blog/articles/life-insurance-coverage-guide.html",
+      "title": "How Much Life Insurance Do You Really Need? | NovaTools MC",
+      "score": 75,
+      "metrics": {
+        "wordCount": 1613,
+        "h2Count": 9,
+        "h3Count": 20,
+        "internalLinkCount": 3,
+        "fleschReadingEase": 24.9,
+        "topKeyword": "insurance",
+        "topKeywordDensityPercent": 3.3
+      },
+      "issues": [
+        "repeated-conclusion",
+        "low-readability"
+      ]
+    },
+    {
+      "slug": "zakat-investments-guide",
+      "file": "src/blog/articles/zakat-investments-guide.html",
+      "title": "Understanding Zakat on Investments | NovaTools MC",
+      "score": 75,
+      "metrics": {
+        "wordCount": 1662,
+        "h2Count": 11,
+        "h3Count": 18,
+        "internalLinkCount": 6,
+        "fleschReadingEase": 34,
+        "topKeyword": "zakat",
+        "topKeywordDensityPercent": 4.4
+      },
+      "issues": [
+        "repeated-conclusion",
+        "low-readability"
+      ]
+    },
+    {
+      "slug": "pdf-financial-records",
+      "file": "src/blog/articles/pdf-financial-records.html",
+      "title": "Managing PDF Documents for Financial Records: Complete Guide | NovaTools MC",
+      "score": 75,
+      "metrics": {
+        "wordCount": 1837,
+        "h2Count": 13,
+        "h3Count": 35,
+        "internalLinkCount": 3,
+        "fleschReadingEase": 18.4,
+        "topKeyword": "documents",
+        "topKeywordDensityPercent": 3.2
+      },
+      "issues": [
+        "repeated-conclusion",
+        "low-readability"
+      ]
+    },
+    {
+      "slug": "mortgage-refinancing-guide",
+      "file": "src/blog/articles/mortgage-refinancing-guide.html",
+      "title": "Complete Guide to Mortgage Refinancing in 2026 | NovaTools MC",
+      "score": 75,
+      "metrics": {
+        "wordCount": 1873,
+        "h2Count": 10,
+        "h3Count": 26,
+        "internalLinkCount": 3,
+        "fleschReadingEase": 27.4,
+        "topKeyword": "refinancing",
+        "topKeywordDensityPercent": 2.8
+      },
+      "issues": [
+        "repeated-conclusion",
+        "low-readability"
+      ]
+    },
+    {
+      "slug": "islamic-finance-investing",
+      "file": "src/blog/articles/islamic-finance-investing.html",
+      "title": "Islamic Finance Principles for Modern Ethical Investing 2026 | NovaTools MC",
+      "score": 75,
+      "metrics": {
+        "wordCount": 2029,
+        "h2Count": 10,
+        "h3Count": 26,
+        "internalLinkCount": 3,
+        "fleschReadingEase": 11.4,
+        "topKeyword": "islamic",
+        "topKeywordDensityPercent": 2.6
+      },
+      "issues": [
+        "repeated-conclusion",
+        "low-readability"
+      ]
+    },
+    {
+      "slug": "crypto-tax-guide",
+      "file": "src/blog/articles/crypto-tax-guide.html",
+      "title": "Crypto Tax Guide 2026: Everything You Need to Know | NovaTools MC",
+      "score": 75,
+      "metrics": {
+        "wordCount": 2289,
+        "h2Count": 15,
+        "h3Count": 23,
+        "internalLinkCount": 3,
+        "fleschReadingEase": 30.7,
+        "topKeyword": "crypto",
+        "topKeywordDensityPercent": 3.7
+      },
+      "issues": [
+        "repeated-conclusion",
+        "low-readability"
+      ]
+    },
+    {
+      "slug": "retirement-planning-millennials",
+      "file": "src/blog/articles/retirement-planning-millennials.html",
+      "title": "Retirement Planning for Millennials & Gen Z | NovaTools MC",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1490,
+        "h2Count": 10,
+        "h3Count": 16,
+        "internalLinkCount": 7,
+        "fleschReadingEase": 44.3,
+        "topKeyword": "retirement",
+        "topKeywordDensityPercent": 2.8
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "pmi-removal-guide",
+      "file": "src/blog/articles/pmi-removal-guide.html",
+      "title": "Private Mortgage Insurance (PMI) Removal Guide 2025 | NovaTools MC",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1529,
+        "h2Count": 11,
+        "h3Count": 30,
+        "internalLinkCount": 3,
+        "fleschReadingEase": 37.6,
+        "topKeyword": "pmi",
+        "topKeywordDensityPercent": 4
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "debt-consolidation-guide",
+      "file": "src/blog/articles/debt-consolidation-guide.html",
+      "title": "Debt Consolidation: Is It Right for You? | NovaTools MC",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1767,
+        "h2Count": 10,
+        "h3Count": 13,
+        "internalLinkCount": 6,
+        "fleschReadingEase": 47.3,
+        "topKeyword": "debt",
+        "topKeywordDensityPercent": 3.1
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "pdf-to-word-when-to-convert-and-when-not-to",
+      "file": "src/blog/articles/pdf-to-word-when-to-convert-and-when-not-to.html",
+      "title": "PDF to Word: When to Convert and When Not To | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1798,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 46.1,
+        "topKeyword": "pdf",
+        "topKeywordDensityPercent": 1.9
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "pdf-to-text-clean-extraction-workflow",
+      "file": "src/blog/articles/pdf-to-text-clean-extraction-workflow.html",
+      "title": "PDF to Text: A Clean Extraction Workflow for Reusable Copy | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1800,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 46.2,
+        "topKeyword": "pdf",
+        "topKeywordDensityPercent": 1.9
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "transparent-background-image-workflow",
+      "file": "src/blog/articles/transparent-background-image-workflow.html",
+      "title": "Transparent Background Images: When PNG Still Makes Sense | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1818,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 40.8,
+        "topKeyword": "transparent",
+        "topKeywordDensityPercent": 1.9
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "compress-pdf-for-email-without-ruining-readability",
+      "file": "src/blog/articles/compress-pdf-for-email-without-ruining-readability.html",
+      "title": "How to Compress a PDF for Email Without Ruining Readability | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1821,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 39.9,
+        "topKeyword": "email",
+        "topKeywordDensityPercent": 2.5
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "slug-generator-url-cleanup-guide",
+      "file": "src/blog/articles/slug-generator-url-cleanup-guide.html",
+      "title": "Slug Generator Guide: Clean URLs for Tools, Blogs, and Landing Pages | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1823,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 44.3,
+        "topKeyword": "result",
+        "topKeywordDensityPercent": 1.8
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "ocr-scanned-pdf-troubleshooting-guide",
+      "file": "src/blog/articles/ocr-scanned-pdf-troubleshooting-guide.html",
+      "title": "OCR for Scanned PDFs: Troubleshooting Poor Text Recognition | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1838,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 46.3,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 1.7
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "image-metadata-before-sharing-guide",
+      "file": "src/blog/articles/image-metadata-before-sharing-guide.html",
+      "title": "Image Metadata Before Sharing: What to Check in a Browser-First Workflow | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1839,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 39,
+        "topKeyword": "image",
+        "topKeywordDensityPercent": 1.8
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "compress-images-for-web-quality-checklist",
+      "file": "src/blog/articles/compress-images-for-web-quality-checklist.html",
+      "title": "Compress Images for the Web: A Quality Checklist That Works | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1843,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 43.3,
+        "topKeyword": "result",
+        "topKeywordDensityPercent": 1.7
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "pdf-to-jpg-vs-pdf-to-png",
+      "file": "src/blog/articles/pdf-to-jpg-vs-pdf-to-png.html",
+      "title": "PDF to JPG vs PDF to PNG: Which Export Should You Use? | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1845,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 48.1,
+        "topKeyword": "pdf",
+        "topKeywordDensityPercent": 3.1
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "clean-text-before-spreadsheet-import",
+      "file": "src/blog/articles/clean-text-before-spreadsheet-import.html",
+      "title": "Clean Text Before Spreadsheet Import: A Practical Checklist | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1853,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 44.4,
+        "topKeyword": "result",
+        "topKeywordDensityPercent": 1.7
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "text-diff-for-reviewing-edits",
+      "file": "src/blog/articles/text-diff-for-reviewing-edits.html",
+      "title": "Text Diff for Reviewing Edits: A Practical Non-Developer Guide | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1853,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 44.5,
+        "topKeyword": "result",
+        "topKeywordDensityPercent": 1.7
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "html-entity-encoder-publishing-guide",
+      "file": "src/blog/articles/html-entity-encoder-publishing-guide.html",
+      "title": "HTML Entity Encoding for Publishing: When It Solves Broken Characters | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1857,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 41.5,
+        "topKeyword": "publishing",
+        "topKeywordDensityPercent": 1.8
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "optimize-images-for-email-newsletters",
+      "file": "src/blog/articles/optimize-images-for-email-newsletters.html",
+      "title": "Optimize Images for Email Newsletters: Size, Clarity, and Layout | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1861,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 39.9,
+        "topKeyword": "email",
+        "topKeywordDensityPercent": 1.8
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "pdf-watermark-before-client-review",
+      "file": "src/blog/articles/pdf-watermark-before-client-review.html",
+      "title": "PDF Watermarks Before Client Review: What to Add and What to Avoid | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1861,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 44.1,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 2.8
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "jpg-vs-webp-for-small-websites",
+      "file": "src/blog/articles/jpg-vs-webp-for-small-websites.html",
+      "title": "JPG vs WebP for Small Websites: A Practical Decision Guide | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1862,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 44.4,
+        "topKeyword": "small",
+        "topKeywordDensityPercent": 1.9
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "tax-estimator-organize-documents-first",
+      "file": "src/blog/articles/tax-estimator-organize-documents-first.html",
+      "title": "Tax Estimator Workflow: Organize Documents Before Estimating | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1873,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 42.9,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 1.6
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "compound-interest-scenarios-guide",
+      "file": "src/blog/articles/compound-interest-scenarios-guide.html",
+      "title": "Compound Interest Scenarios: Compare Contributions, Rates, and Time | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1874,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 42.7,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 1.6
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "browser-first-tools-what-it-means",
+      "file": "src/blog/articles/browser-first-tools-what-it-means.html",
+      "title": "Browser-First Tools: What It Means for Everyday File Work | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1878,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 12,
+        "fleschReadingEase": 44.1,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 1.7
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "image-alt-text-and-file-names-workflow",
+      "file": "src/blog/articles/image-alt-text-and-file-names-workflow.html",
+      "title": "Image File Names and Alt Text: A Practical Publishing Workflow | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1878,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 44.9,
+        "topKeyword": "image",
+        "topKeywordDensityPercent": 1.8
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "budget-before-large-purchase-workflow",
+      "file": "src/blog/articles/budget-before-large-purchase-workflow.html",
+      "title": "Budget Before a Large Purchase: Calculator Workflow | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1880,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 44.2,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 1.6
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "merge-pdf-files-client-documents-checklist",
+      "file": "src/blog/articles/merge-pdf-files-client-documents-checklist.html",
+      "title": "Merge PDF Files for Client Documents: A Practical Checklist | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1880,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 46.1,
+        "topKeyword": "pdf",
+        "topKeywordDensityPercent": 1.8
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "life-insurance-estimate-context",
+      "file": "src/blog/articles/life-insurance-estimate-context.html",
+      "title": "Life Insurance Estimate Context: Inputs to Review Carefully | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1882,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 43.1,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 1.8
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "lorem-ipsum-with-real-layout-checks",
+      "file": "src/blog/articles/lorem-ipsum-with-real-layout-checks.html",
+      "title": "Lorem Ipsum With Real Layout Checks: How to Use Placeholder Text Wisely | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1884,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 45.7,
+        "topKeyword": "result",
+        "topKeywordDensityPercent": 1.7
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "palindrome-checker-teaching-string-logic",
+      "file": "src/blog/articles/palindrome-checker-teaching-string-logic.html",
+      "title": "Palindrome Checker as a Simple Way to Teach String Logic | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1889,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 44.7,
+        "topKeyword": "result",
+        "topKeywordDensityPercent": 1.7
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "writing-tool-stack-for-small-teams",
+      "file": "src/blog/articles/writing-tool-stack-for-small-teams.html",
+      "title": "A Practical Writing Tool Stack for Small Teams | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1889,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 45.5,
+        "topKeyword": "small",
+        "topKeywordDensityPercent": 1.9
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "base64-vs-url-encoding",
+      "file": "src/blog/articles/base64-vs-url-encoding.html",
+      "title": "Base64 vs URL Encoding: Similar Looking Tools, Different Purposes | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1891,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 44.5,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 1.6
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "local-processing-vs-upload-tools-comparison",
+      "file": "src/blog/articles/local-processing-vs-upload-tools-comparison.html",
+      "title": "Local Processing vs Upload Tools: A Practical Comparison | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1894,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 12,
+        "fleschReadingEase": 43.5,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 1.6
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "metadata-cleanup-before-publishing",
+      "file": "src/blog/articles/metadata-cleanup-before-publishing.html",
+      "title": "Metadata Cleanup Before Publishing: What Non-Experts Can Check | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1897,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 12,
+        "fleschReadingEase": 42,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 1.6
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "unix-timestamp-human-date-debugging",
+      "file": "src/blog/articles/unix-timestamp-human-date-debugging.html",
+      "title": "Unix Timestamp to Human Date: Debugging Logs and Exports | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1897,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 44.1,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 1.6
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "checksum-calculator-file-verification",
+      "file": "src/blog/articles/checksum-calculator-file-verification.html",
+      "title": "Checksum Calculator for File Verification: Practical Uses | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1898,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 43.2,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 1.7
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "bmi-calculator-result-context",
+      "file": "src/blog/articles/bmi-calculator-result-context.html",
+      "title": "BMI Calculator Result Context: How to Read the Number Carefully | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1899,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 43.3,
+        "topKeyword": "result",
+        "topKeywordDensityPercent": 2.2
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "regex-tester-safe-review-workflow",
+      "file": "src/blog/articles/regex-tester-safe-review-workflow.html",
+      "title": "Regex Tester Workflow: Build Patterns Without Breaking Real Data | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1900,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 44,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 2
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "retirement-calculator-inputs-that-matter",
+      "file": "src/blog/articles/retirement-calculator-inputs-that-matter.html",
+      "title": "Retirement Calculator Inputs That Matter Most | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1900,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 42.3,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 1.6
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "sensitive-spreadsheet-cleanup-before-conversion",
+      "file": "src/blog/articles/sensitive-spreadsheet-cleanup-before-conversion.html",
+      "title": "Sensitive Spreadsheet Cleanup Before Conversion | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1900,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 12,
+        "fleschReadingEase": 42.2,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 1.6
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "image-compressor-vs-image-resizer",
+      "file": "src/blog/articles/image-compressor-vs-image-resizer.html",
+      "title": "Image Compressor vs Image Resizer: Which Fixes Your Problem? | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1901,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 43.5,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 1.6
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "json-formatter-vs-json-validator",
+      "file": "src/blog/articles/json-formatter-vs-json-validator.html",
+      "title": "JSON Formatter vs JSON Validator: Different Jobs, Better Debugging | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1901,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 43.1,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 1.6
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "client-side-pdf-workflow-limits",
+      "file": "src/blog/articles/client-side-pdf-workflow-limits.html",
+      "title": "Client-Side PDF Workflow Limits: When to Use a Desktop App | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1902,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 12,
+        "fleschReadingEase": 44.6,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 1.6
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "convert-png-to-jpg-when-file-size-matters",
+      "file": "src/blog/articles/convert-png-to-jpg-when-file-size-matters.html",
+      "title": "Convert PNG to JPG When File Size Matters: Practical Rules | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1902,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 45.1,
+        "topKeyword": "result",
+        "topKeywordDensityPercent": 1.7
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "csv-to-json-vs-json-to-csv",
+      "file": "src/blog/articles/csv-to-json-vs-json-to-csv.html",
+      "title": "CSV to JSON vs JSON to CSV: Choose the Right Direction | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1903,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 46.6,
+        "topKeyword": "json",
+        "topKeywordDensityPercent": 1.6
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "data-cleanup-before-dashboard-import",
+      "file": "src/blog/articles/data-cleanup-before-dashboard-import.html",
+      "title": "Data Cleanup Before Dashboard Import: A Lightweight Workflow | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1903,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 45.5,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 1.6
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "mortgage-calculator-vs-refinance-calculator",
+      "file": "src/blog/articles/mortgage-calculator-vs-refinance-calculator.html",
+      "title": "Mortgage Calculator vs Refinance Calculator: Which Estimate Do You Need? | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1903,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 41.6,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 1.6
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "css-minifier-before-production",
+      "file": "src/blog/articles/css-minifier-before-production.html",
+      "title": "CSS Minifier Before Production: What to Check First | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1907,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 43.6,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 2
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "pdf-merge-vs-pdf-split",
+      "file": "src/blog/articles/pdf-merge-vs-pdf-split.html",
+      "title": "PDF Merge vs PDF Split: Which Tool Should You Open First? | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1908,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 46.7,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 1.6
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "remote-team-meeting-and-file-workflow",
+      "file": "src/blog/articles/remote-team-meeting-and-file-workflow.html",
+      "title": "Remote Team Meeting and File Workflow | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1911,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 47.1,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 1.6
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "unit-converter-for-project-planning",
+      "file": "src/blog/articles/unit-converter-for-project-planning.html",
+      "title": "Unit Converter for Project Planning: Avoid Small Measurement Mistakes | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1911,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 43.8,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 1.6
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "content-review-before-client-delivery",
+      "file": "src/blog/articles/content-review-before-client-delivery.html",
+      "title": "Content Review Before Client Delivery: Text, PDF, and Image Checks | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1912,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 45.2,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 2.3
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "cloud-cost-calculator-small-team-guide",
+      "file": "src/blog/articles/cloud-cost-calculator-small-team-guide.html",
+      "title": "Cloud Cost Calculator Guide for Small Teams | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1913,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 45.6,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 1.6
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "crypto-tax-records-prep-workflow",
+      "file": "src/blog/articles/crypto-tax-records-prep-workflow.html",
+      "title": "Crypto Tax Records Prep Workflow Before Calculations | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1913,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 43.3,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 1.6
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "mortgage-refinance-break-even-guide",
+      "file": "src/blog/articles/mortgage-refinance-break-even-guide.html",
+      "title": "Mortgage Refinance Break-Even Guide for Practical Decisions | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1914,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 42.1,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 1.6
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "pdf-page-numbers-for-long-reports",
+      "file": "src/blog/articles/pdf-page-numbers-for-long-reports.html",
+      "title": "Add Page Numbers to Long PDFs Without Creating Confusion | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1914,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 44.2,
+        "topKeyword": "page",
+        "topKeywordDensityPercent": 2.2
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "word-counter-for-editing-client-copy",
+      "file": "src/blog/articles/word-counter-for-editing-client-copy.html",
+      "title": "Use a Word Counter to Edit Client Copy Without Guesswork | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1914,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 43.8,
+        "topKeyword": "client",
+        "topKeywordDensityPercent": 1.7
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "character-counter-for-meta-descriptions",
+      "file": "src/blog/articles/character-counter-for-meta-descriptions.html",
+      "title": "Character Counter for Meta Descriptions, Headlines, and Snippets | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1915,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 41.2,
+        "topKeyword": "result",
+        "topKeywordDensityPercent": 1.7
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "private-document-workflow-without-signup",
+      "file": "src/blog/articles/private-document-workflow-without-signup.html",
+      "title": "Private Document Workflow Without Forced Signup | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1915,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 12,
+        "fleschReadingEase": 43.3,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 1.7
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "file-organizer-folder-architecture",
+      "file": "src/blog/articles/file-organizer-folder-architecture.html",
+      "title": "File Organizer Folder Architecture for Repeatable Work | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1918,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 43.4,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 1.7
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "file-renamer-consistent-naming-system",
+      "file": "src/blog/articles/file-renamer-consistent-naming-system.html",
+      "title": "File Renamer Workflow for a Consistent Naming System | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1918,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 44.5,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 1.7
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "file-merger-recombine-export-parts",
+      "file": "src/blog/articles/file-merger-recombine-export-parts.html",
+      "title": "File Merger Workflow to Recombine Export Parts Cleanly | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1919,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 45.1,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 1.7
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "file-splitter-large-upload-workflow",
+      "file": "src/blog/articles/file-splitter-large-upload-workflow.html",
+      "title": "File Splitter Workflow for Large Upload Limits | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1920,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 46.3,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 1.7
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "share-files-with-less-metadata-risk",
+      "file": "src/blog/articles/share-files-with-less-metadata-risk.html",
+      "title": "Share Files With Less Metadata Risk: A Practical Visible Checklist | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1920,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 12,
+        "fleschReadingEase": 44.6,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 1.7
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "tool-selection-map-for-new-users",
+      "file": "src/blog/articles/tool-selection-map-for-new-users.html",
+      "title": "Tool Selection Map for New Users: Start With the Task | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1920,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 47.2,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 1.6
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "csv-viewer-before-import-checklist",
+      "file": "src/blog/articles/csv-viewer-before-import-checklist.html",
+      "title": "CSV Viewer Checklist Before Importing Data Anywhere | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1921,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 43.8,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 1.7
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "html-to-markdown-content-migration",
+      "file": "src/blog/articles/html-to-markdown-content-migration.html",
+      "title": "HTML to Markdown for Content Migration: A Clean Review Workflow | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1921,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 44.4,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 2.1
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "five-minute-pdf-cleanup-workflow",
+      "file": "src/blog/articles/five-minute-pdf-cleanup-workflow.html",
+      "title": "A Five-Minute PDF Cleanup Workflow Before Sending Documents | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1923,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 44.1,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 1.6
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "monthly-finance-document-routine",
+      "file": "src/blog/articles/monthly-finance-document-routine.html",
+      "title": "Monthly Finance Document Routine With Browser Utilities | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1923,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 43.9,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 1.6
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "code-formatter-review-before-sharing",
+      "file": "src/blog/articles/code-formatter-review-before-sharing.html",
+      "title": "Code Formatter Review Before Sharing Snippets | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1925,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 43.5,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 2.6
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "timezone-converter-meeting-workflow",
+      "file": "src/blog/articles/timezone-converter-meeting-workflow.html",
+      "title": "Timezone Converter Meeting Workflow for Distributed Teams | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1925,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 43,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 1.6
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "student-loan-payment-estimate-workflow",
+      "file": "src/blog/articles/student-loan-payment-estimate-workflow.html",
+      "title": "Student Loan Payment Estimate Workflow for Budget Planning | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1926,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 43.3,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 1.6
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "compare-loan-options-with-clear-assumptions",
+      "file": "src/blog/articles/compare-loan-options-with-clear-assumptions.html",
+      "title": "Compare Loan Options With Clear Assumptions Instead of Guesswork | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1928,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 44.4,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 1.6
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "case-converter-cleanup-workflow",
+      "file": "src/blog/articles/case-converter-cleanup-workflow.html",
+      "title": "Case Converter Cleanup Workflow for Titles, Labels, and Data | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1929,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 43,
+        "topKeyword": "result",
+        "topKeywordDensityPercent": 1.7
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "currency-converter-for-estimates-not-final-prices",
+      "file": "src/blog/articles/currency-converter-for-estimates-not-final-prices.html",
+      "title": "Currency Converter for Estimates, Not Final Prices: A Practical Guide | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1929,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 43.2,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 1.6
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "json-to-csv-export-workflow",
+      "file": "src/blog/articles/json-to-csv-export-workflow.html",
+      "title": "JSON to CSV Export Workflow for Reports and Review | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1931,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 46.1,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 2.3
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "markdown-to-html-vs-html-to-markdown",
+      "file": "src/blog/articles/markdown-to-html-vs-html-to-markdown.html",
+      "title": "Markdown to HTML vs HTML to Markdown for Publishing Workflows | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1931,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 44.7,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 1.6
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "sql-formatter-query-review-guide",
+      "file": "src/blog/articles/sql-formatter-query-review-guide.html",
+      "title": "SQL Formatter Query Review Guide for Readable Statements | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1931,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 44.6,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 2.3
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "unit-converter-vs-scientific-calculator",
+      "file": "src/blog/articles/unit-converter-vs-scientific-calculator.html",
+      "title": "Unit Converter vs Scientific Calculator for Technical Work | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1931,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 41.7,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 1.6
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "duplicate-finder-vs-file-organizer",
+      "file": "src/blog/articles/duplicate-finder-vs-file-organizer.html",
+      "title": "Duplicate Finder vs File Organizer for Digital Cleanup | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1932,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 42.4,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 1.6
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "word-counter-vs-character-counter",
+      "file": "src/blog/articles/word-counter-vs-character-counter.html",
+      "title": "Word Counter vs Character Counter for Editing Decisions | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1932,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 42.8,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 1.6
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "duplicate-finder-digital-cleanup-workflow",
+      "file": "src/blog/articles/duplicate-finder-digital-cleanup-workflow.html",
+      "title": "Duplicate Finder Digital Cleanup Workflow for Safer Deletion | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1933,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 43.1,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 1.7
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "scientific-calculator-browser-workflow",
+      "file": "src/blog/articles/scientific-calculator-browser-workflow.html",
+      "title": "Scientific Calculator Browser Workflow for Quick Technical Math | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1933,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 42.4,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 1.6
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "age-calculator-for-forms-and-records",
+      "file": "src/blog/articles/age-calculator-for-forms-and-records.html",
+      "title": "Age Calculator for Forms, Records, and Eligibility Checks | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1934,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 42.6,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 1.6
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "developer-debugging-tool-chain",
+      "file": "src/blog/articles/developer-debugging-tool-chain.html",
+      "title": "Developer Debugging Tool Chain for Small Front-End Issues | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1934,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 45.2,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 1.6
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "percentage-calculator-business-copy",
+      "file": "src/blog/articles/percentage-calculator-business-copy.html",
+      "title": "Percentage Calculator for Business Copy and Quick Estimates | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1934,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 41.9,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 1.6
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "prepare-pdf-records-for-tax-season",
+      "file": "src/blog/articles/prepare-pdf-records-for-tax-season.html",
+      "title": "Prepare PDF Records for Tax Season Without a Last-Minute Mess | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1934,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 43.2,
+        "topKeyword": "pdf",
+        "topKeywordDensityPercent": 1.8
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "roman-numerals-conversion-checklist",
+      "file": "src/blog/articles/roman-numerals-conversion-checklist.html",
+      "title": "Roman Numerals Conversion Checklist for Design and Publishing | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1934,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 42.5,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 1.6
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "blog-publishing-tool-workflow",
+      "file": "src/blog/articles/blog-publishing-tool-workflow.html",
+      "title": "Blog Publishing Tool Workflow From Draft to Clean Assets | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1936,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 47.1,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 1.5
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "split-pdf-pages-before-sharing-sensitive-sections",
+      "file": "src/blog/articles/split-pdf-pages-before-sharing-sensitive-sections.html",
+      "title": "Split PDF Pages Before Sharing Only the Sections Someone Needs | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1937,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 44.6,
+        "topKeyword": "pdf",
+        "topKeywordDensityPercent": 1.8
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "public-link-review-workflow",
+      "file": "src/blog/articles/public-link-review-workflow.html",
+      "title": "Public Link Review Workflow Before You Send Anything | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1940,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 12,
+        "fleschReadingEase": 43.9,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 2.3
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "resize-images-for-social-platforms",
+      "file": "src/blog/articles/resize-images-for-social-platforms.html",
+      "title": "Resize Images for Social Platforms Without Cropping Important Details | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1940,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 38.9,
+        "topKeyword": "result",
+        "topKeywordDensityPercent": 1.6
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "reduce-screenshot-size-for-support-tickets",
+      "file": "src/blog/articles/reduce-screenshot-size-for-support-tickets.html",
+      "title": "Reduce Screenshot Size for Support Tickets Without Losing the Problem | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1942,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 41.2,
+        "topKeyword": "support",
+        "topKeywordDensityPercent": 1.7
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "csv-to-json-clean-conversion-guide",
+      "file": "src/blog/articles/csv-to-json-clean-conversion-guide.html",
+      "title": "CSV to JSON Clean Conversion Guide for Small Data Sets | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1944,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 47,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 1.6
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "js-minifier-practical-release-checks",
+      "file": "src/blog/articles/js-minifier-practical-release-checks.html",
+      "title": "JavaScript Minifier Practical Release Checks for Small Sites | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1948,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 43.6,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 2
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "base64-converter-common-use-cases",
+      "file": "src/blog/articles/base64-converter-common-use-cases.html",
+      "title": "Base64 Converter Common Use Cases and Common Misreads | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1949,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 44.7,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 1.9
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "support-ticket-evidence-prep",
+      "file": "src/blog/articles/support-ticket-evidence-prep.html",
+      "title": "Support Ticket Evidence Prep With Screenshots, PDFs, and Text | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1950,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 46.7,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 1.5
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "markdown-to-html-publishing-workflow",
+      "file": "src/blog/articles/markdown-to-html-publishing-workflow.html",
+      "title": "Markdown to HTML Publishing Workflow for Guides and Notes | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1951,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 45.3,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 1.9
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "safe-sharing-checklist-for-small-teams",
+      "file": "src/blog/articles/safe-sharing-checklist-for-small-teams.html",
+      "title": "Safe Sharing Checklist for Small Teams Using Online Utilities | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1951,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 12,
+        "fleschReadingEase": 43.6,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 1.6
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "browser-tool-empty-state-loading-success",
+      "file": "src/blog/articles/browser-tool-empty-state-loading-success.html",
+      "title": "Why Empty, Loading, and Success States Matter in Browser Tools | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1954,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 12,
+        "fleschReadingEase": 44.9,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 1.6
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "url-encoder-query-string-guide",
+      "file": "src/blog/articles/url-encoder-query-string-guide.html",
+      "title": "URL Encoder Guide for Query Strings, UTMs, and Redirects | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1959,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 44.9,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 1.9
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "number-base-converter-learning-guide",
+      "file": "src/blog/articles/number-base-converter-learning-guide.html",
+      "title": "Number Base Converter Learning Guide for Binary, Decimal, and Hex | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1960,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 43.7,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 1.5
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "json-formatter-debugging-api-responses",
+      "file": "src/blog/articles/json-formatter-debugging-api-responses.html",
+      "title": "JSON Formatter for Debugging API Responses Without Losing Context | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1962,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 42.8,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 1.9
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "batch-image-resize-workflow",
+      "file": "src/blog/articles/batch-image-resize-workflow.html",
+      "title": "Batch Image Resize Workflow for Product Pages and Blog Posts | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1963,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 44.5,
+        "topKeyword": "image",
+        "topKeywordDensityPercent": 1.6
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "color-converter-design-token-workflow",
+      "file": "src/blog/articles/color-converter-design-token-workflow.html",
+      "title": "Color Converter Workflow for Design Tokens and CSS Reviews | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1963,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 44,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 1.9
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    },
+    {
+      "slug": "small-business-file-prep-stack",
+      "file": "src/blog/articles/small-business-file-prep-stack.html",
+      "title": "Small Business File Prep Stack for Invoices, Images, and Reports | MC NovaTools Guides",
+      "score": 85,
+      "metrics": {
+        "wordCount": 1963,
+        "h2Count": 13,
+        "h3Count": 2,
+        "internalLinkCount": 14,
+        "fleschReadingEase": 47,
+        "topKeyword": "review",
+        "topKeywordDensityPercent": 1.5
+      },
+      "issues": [
+        "repeated-conclusion"
+      ]
+    }
+  ]
+}

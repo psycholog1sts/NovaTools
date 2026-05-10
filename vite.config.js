@@ -51,7 +51,8 @@ const adminEntry = {
 
 // Blog entry points
 const blogEntry = {
-  blog: resolve(__dirname, 'src/blog/index.html')
+  blog: resolve(__dirname, 'src/blog/index.html'),
+  'blog/article-template': resolve(__dirname, 'src/blog/article-template.html')
 };
 
 const blogArticleEntries = globSync('src/blog/articles/**/*.html').reduce((acc, file) => {
