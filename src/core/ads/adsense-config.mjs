@@ -1,21 +1,22 @@
 /**
  * Google AdSense Configuration
  * Contextual-only ads (zero personalized tracking)
- * GDPR/CCPA exempt setup
+ * GDPR/ePrivacy consent-gated setup
  */
 
 const ADSENSE_CONFIG = {
   publisherId: 'ca-pub-5738022526587953',
-  
+
   adUnits: {},
-  
+
   privacy: {
     personalizedAds: false,
     restrictedDataProcessing: true,
     disableCookies: true,
-    npa: true
+    npa: true,
+    requiresAdvertisingConsent: true
   },
-  
+
   lazyLoad: {
     fetchMarginPercent: 100,
     renderMarginPercent: 50,
@@ -23,14 +24,21 @@ const ADSENSE_CONFIG = {
   }
 };
 
+const CONSENT_EVENT_NAMES = ['novatools:consent-updated', 'mc-novatools:consent-updated', 'cookieConsentChanged'];
+
 export function initAdSense() {
-  if (shouldBlockAds() || !hasValidAdSlots()) {
-    reserveAdSlotSpace();
+  reserveAdSlotSpace();
+  observeAdStatus();
+  setupMobileAnchorControls();
+
+  if (shouldBlockAds() || !hasValidAdSlots()) return;
+  if (!hasAdvertisingConsent()) {
+    markAdsPendingConsent();
+    waitForAdvertisingConsent();
     return;
   }
 
   configureAdPrivacy();
-  reserveAdSlotSpace();
   deferAdSenseLoad();
 }
 
@@ -47,11 +55,46 @@ function shouldBlockAds() {
   return false;
 }
 
+function hasAdvertisingConsent() {
+  if (window.NovaToolsConsent?.advertising === true) return true;
+  if (window.NovaToolsConsent?.ads === true) return true;
+
+  try {
+    const rawConsent = localStorage.getItem('novatools_cookie_consent') || localStorage.getItem('mc_novatools_cookie_consent');
+    if (!rawConsent) return false;
+    const consent = JSON.parse(rawConsent);
+    return consent?.advertising === true || consent?.ads === true || consent?.categories?.advertising === true;
+  } catch (_e) {
+    void _e;
+    return false;
+  }
+}
+
+function waitForAdvertisingConsent() {
+  if (window.__mcAdSenseConsentListener) return;
+  window.__mcAdSenseConsentListener = true;
+
+  const onConsentChanged = () => {
+    if (!hasAdvertisingConsent() || shouldBlockAds() || !hasValidAdSlots()) return;
+    configureAdPrivacy();
+    deferAdSenseLoad();
+  };
+
+  CONSENT_EVENT_NAMES.forEach((eventName) => window.addEventListener(eventName, onConsentChanged));
+}
+
+function markAdsPendingConsent() {
+  document.querySelectorAll('ins.adsbygoogle').forEach((el) => {
+    if (!el.getAttribute('data-ad-status')) {
+      el.setAttribute('data-ad-status', 'pending-consent');
+    }
+  });
+}
+
 function configureAdPrivacy() {
   window.adsbygoogle = window.adsbygoogle || [];
   window.adsbygoogle.requestNonPersonalizedAds = 1;
 }
-
 
 function deferAdSenseLoad() {
   const start = () => {
@@ -71,14 +114,14 @@ function deferAdSenseLoad() {
 
 function loadAdSenseScript() {
   if (document.querySelector('script[data-adsense]')) return;
-  
+
   const script = document.createElement('script');
   script.async = true;
   script.src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CONFIG.publisherId}`;
   script.crossOrigin = 'anonymous';
   script.setAttribute('data-adsense', 'true');
   script.onerror = () => showAdFallbacks();
-  
+
   document.head.appendChild(script);
 }
 
@@ -110,16 +153,49 @@ function setupLazyLoading() {
         try {
           (window.adsbygoogle = window.adsbygoogle || []).push({});
         } catch (_e) {
-    // Storage/ad operation may fail in restricted environments
-    void _e;
-  }
+          // Ad operation may fail in restricted environments
+          void _e;
+        }
       }
     });
   }, { rootMargin: '100%' });
-  
+
   document.querySelectorAll('ins.adsbygoogle').forEach((container) => {
     if (/^\d{8,20}$/.test((container.getAttribute('data-ad-slot') || '').trim())) {
       observer.observe(container);
+    }
+  });
+}
+
+function observeAdStatus() {
+  if (window.__mcAdStatusObserver) return;
+  const updateContainer = (el) => {
+    const status = el.getAttribute('data-ad-status');
+    const container = el.closest('.ad-slot-container, .ad-frame, .ad-wrapper, .revenue-card');
+    if (!container) return;
+    container.classList.toggle('ad-slot-empty', status === 'unfilled' || status === 'fallback');
+  };
+
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      if (mutation.type === 'attributes' && mutation.attributeName === 'data-ad-status') {
+        updateContainer(mutation.target);
+      }
+    });
+  });
+
+  document.querySelectorAll('ins.adsbygoogle').forEach((el) => {
+    observer.observe(el, { attributes: true, attributeFilter: ['data-ad-status'] });
+    updateContainer(el);
+  });
+  window.__mcAdStatusObserver = observer;
+}
+
+function setupMobileAnchorControls() {
+  document.querySelectorAll('[data-ad-format="sticky"], .ad-mobile-anchor').forEach((container) => {
+    const close = container.querySelector('[data-ad-close]');
+    if (close) {
+      close.addEventListener('click', () => container.setAttribute('data-ad-dismissed', 'true'));
     }
   });
 }

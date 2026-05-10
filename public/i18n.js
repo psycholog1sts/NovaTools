@@ -294,10 +294,37 @@
     });
   }
 
+  function hasAdvertisingConsent() {
+    if (window.NovaToolsConsent && (window.NovaToolsConsent.advertising === true || window.NovaToolsConsent.ads === true)) return true;
+    try {
+      var rawConsent = localStorage.getItem('novatools_cookie_consent') || localStorage.getItem('mc_novatools_cookie_consent');
+      if (!rawConsent) return false;
+      var consent = JSON.parse(rawConsent);
+      return consent && (consent.advertising === true || consent.ads === true || (consent.categories && consent.categories.advertising === true));
+    } catch (_e) {
+      return false;
+    }
+  }
+
+  function waitForAdConsent() {
+    if (window.__mcAdSenseConsentListener) return;
+    window.__mcAdSenseConsentListener = true;
+    ['novatools:consent-updated', 'mc-novatools:consent-updated', 'cookieConsentChanged'].forEach(function(eventName) {
+      window.addEventListener(eventName, ensureAdSenseBootstrap);
+    });
+  }
+
   function ensureAdSenseBootstrap() {
     if (window.__mcAdSenseLoaded) return;
     if (!document.head || !isProductionHost() || !hasValidAdSlot()) return;
     if (navigator.doNotTrack === '1' || navigator.globalPrivacyControl) return;
+    if (!hasAdvertisingConsent()) {
+      document.querySelectorAll('ins.adsbygoogle').forEach(function(el) {
+        if (!el.getAttribute('data-ad-status')) el.setAttribute('data-ad-status', 'pending-consent');
+      });
+      waitForAdConsent();
+      return;
+    }
     if (document.querySelector('script[data-adsense-bootstrap="true"], script[data-adsense="true"]')) {
       window.__mcAdSenseLoaded = true;
       return;
@@ -312,7 +339,27 @@
     window.__mcAdSenseLoaded = true;
   }
 
+  function observeAdStatus() {
+    if (window.__mcAdStatusObserver) return;
+    var updateContainer = function(el) {
+      var status = el.getAttribute('data-ad-status');
+      var container = el.closest('.ad-slot-container, .ad-frame, .ad-wrapper, .revenue-card');
+      if (container) container.classList.toggle('ad-slot-empty', status === 'unfilled' || status === 'fallback');
+    };
+    var observer = new MutationObserver(function(mutations) {
+      mutations.forEach(function(mutation) {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'data-ad-status') updateContainer(mutation.target);
+      });
+    });
+    document.querySelectorAll('ins.adsbygoogle').forEach(function(el) {
+      observer.observe(el, { attributes: true, attributeFilter: ['data-ad-status'] });
+      updateContainer(el);
+    });
+    window.__mcAdStatusObserver = observer;
+  }
+
   function initQualityEnhancements() {
+    observeAdStatus();
     document.querySelectorAll('ins.adsbygoogle').forEach(function(el) {
       el.classList.add('ad-slot-reserved');
       if (!/^\d{8,20}$/.test((el.getAttribute('data-ad-slot') || '').trim())) {

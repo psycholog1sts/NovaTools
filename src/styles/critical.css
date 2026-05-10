@@ -2514,3 +2514,110 @@ input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):hover {
     min-height: 180px;
   }
 }
+
+/* ============================================
+   Phase 9 revenue surfaces - policy-safe spacing
+   ============================================ */
+.revenue-card,
+.ad-policy-space {
+  margin-block: 9.5rem;
+}
+
+.ad-leaderboard-safe {
+  margin-block: 9.5rem 9.5rem;
+}
+
+.tool-workspace + .ad-slot-container,
+.tool-card + .ad-slot-container,
+.tool-container + .ad-slot-container,
+.article-body .ad-slot-container {
+  margin-block: 9.5rem;
+}
+
+.ad-wrapper,
+.ad-frame {
+  position: relative;
+}
+
+.ad-slot-empty {
+  display: none !important;
+}
+
+.sponsored-content-card,
+.premium-plan-cta {
+  padding: clamp(1.25rem, 2vw, 1.75rem);
+  border-radius: var(--radius-lg, 18px);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  background: linear-gradient(180deg, rgba(30, 41, 59, 0.72), rgba(15, 23, 42, 0.84));
+  color: var(--text-primary, #f8fafc);
+}
+
+.sponsored-content-card {
+  background: linear-gradient(180deg, rgba(59, 130, 246, 0.1), rgba(15, 23, 42, 0.82));
+}
+
+.sponsored-content-card__label,
+.ad-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-bottom: 0.65rem;
+  color: var(--text-tertiary, #94a3b8);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.nt-affiliate-link::after {
+  content: ' sponsored';
+  margin-left: 0.35rem;
+  color: var(--text-tertiary, #94a3b8);
+  font-size: 0.72em;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.premium-plan-cta {
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.18), rgba(34, 211, 238, 0.1));
+}
+
+.ad-mobile-anchor-sticky {
+  min-height: 66px;
+  padding-right: 3rem !important;
+}
+
+.ad-mobile-anchor__close {
+  position: absolute;
+  top: 0.35rem;
+  right: 0.5rem;
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid rgba(148, 163, 184, 0.32);
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.92);
+  color: #f8fafc;
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.ad-mobile-anchor-sticky[data-ad-dismissed='true'] {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  .revenue-card,
+  .ad-policy-space,
+  .ad-leaderboard-safe,
+  .article-body .ad-slot-container {
+    margin-block: 9.5rem;
+  }
+
+  .ad-slot-leaderboard,
+  .ad-banner,
+  .ad-banner-container,
+  [data-ad-format='leaderboard'] {
+    min-height: 100px;
+  }
+}

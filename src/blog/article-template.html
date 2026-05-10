@@ -135,6 +135,7 @@ const ready = checklist.every((step) => step.length > 0);</code></pre></div></se
       renderContentBlock
     } from '../js/i18n-blog.js';
     import { getCleanBlogUrl, injectBlogSeo } from '../js/blog-seo.js';
+    import { applyToolAdSlots } from '../core/ads/ad-slot-ids.mjs';
 
     const params = new URLSearchParams(window.location.search);
     const pathSlug = window.location.pathname.match(/\/blog\/([^/]+)\.html$/)?.[1];
@@ -153,6 +154,10 @@ const ready = checklist.every((step) => step.length > 0);</code></pre></div></se
 
     function renderFaq(faq) {
       return `<section aria-labelledby="sss"><h2 id="sss"><a href="#sss">FAQ</a></h2><div class="faq-list">${faq.map((item) => `<details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"><summary itemprop="name">${escapeHtml(item.question)}</summary><p itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><span itemprop="text">${escapeHtml(item.answer)}</span></p></details>`).join('')}</div></section>`;
+    }
+
+    function renderInContentAd() {
+      return `<aside class="ad-slot-container revenue-card article-ad-slot" aria-label="Advertisement" data-ad-placement="blog-in-content"><span class="ad-label">Advertisement</span><ins class="adsbygoogle ad-slot-leaderboard" style="display:block" data-ad-client="ca-pub-5738022526587953" data-slot-key="blogInContent" data-ad-format="auto" data-full-width-responsive="true"></ins></aside>`;
     }
 
     function renderArticle(post, locale) {
@@ -179,7 +184,8 @@ const ready = checklist.every((step) => step.length > 0);</code></pre></div></se
       const relatedPosts = getBlogPostsForLocale(locale).filter((item) => item.slug !== post.slug && item.category === post.category).slice(0, 3);
       const related = `<section aria-labelledby="ilgili"><h2 id="ilgili"><a href="#ilgili">${locale === 'tr' ? 'İlgili Yazılar ve Araçlar' : locale === 'ar' ? 'مقالات وأدوات ذات صلة' : 'Related Articles and Tools'}</a></h2><div class="mini-card-grid">${relatedPosts.map((item) => `<a class="related-post" rel="noopener" href="${getCleanBlogUrl(item.slug, locale).replace('https://mc-novatools.com', '')}">${renderBlogPicture(item, 'card', { width: 800, height: 450, alt: `${item.title} cover image` })}<span><strong>${escapeHtml(item.title)}</strong><br>${item.datePublished}</span></a>`).join('')}</div><p><a rel="noopener" href="/blog/index.html?category=${encodeURIComponent(post.category)}">${escapeHtml(categoryLabel)}</a></p></section>`;
       const author = `<aside class="author-box" aria-label="Author"><img src="${post.author.avatar}" alt="${escapeHtml(post.author.name)} avatar" width="80" height="80"><div><h4>${escapeHtml(post.author.name)}</h4><p><strong>${escapeHtml(post.author.title)}</strong></p><p>${escapeHtml(post.author.bio)}</p></div></aside>`;
-      body.innerHTML = summary + blocks + renderFaq(post.faq) + cta + related + author;
+      body.innerHTML = summary + blocks + renderFaq(post.faq) + renderInContentAd() + cta + related + author;
+      applyToolAdSlots(body);
     }
 
     if (result.post) {
