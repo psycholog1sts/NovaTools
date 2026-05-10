@@ -1,0 +1,67 @@
+{
+  "common": {
+    "navigation": {
+      "home": "Ana Sayfa",
+      "pdf": "PDF Araçları",
+      "image": "Görüntü Araçları",
+      "finance": "Finans",
+      "developer": "Geliştirici",
+      "text": "Metin",
+      "about": "Hakkımızda",
+      "contact": "İletişim",
+      "blog": "Blog",
+      "request": "Araç Öner",
+      "security": "Güvenlik",
+      "privacy": "Gizlilik",
+      "terms": "Koşullar",
+      "cookies": "Çerezler",
+      "converters": "Dönüştürücüler"
+    },
+    "footer": {
+      "signature": "Metehan ÇETİN, LPC",
+      "title": "Psikolojik Danışman ve Kurucu",
+      "email": "psk.dan.metehancetin@mc-novatools.com",
+      "copyright": "© 2026 MC NovaTools. Tüm hakları saklıdır."
+    },
+    "buttons": {
+      "open": "Aç",
+      "download": "İndir",
+      "copy": "Kopyala"
+    },
+    "forms": {
+      "required": "Bu alan gereklidir.",
+      "invalidEmail": "Geçerli bir e-posta girin."
+    },
+    "errors": {
+      "generic": "Bir hata oluştu",
+      "offline": "Bağlantınızı kontrol edin."
+    },
+    "months": {
+      "long": [
+        "Ocak",
+        "Şubat",
+        "Mart",
+        "Nisan",
+        "Mayıs",
+        "Haziran",
+        "Temmuz",
+        "Ağustos",
+        "Eylül",
+        "Ekim",
+        "Kasım",
+        "Aralık"
+      ]
+    },
+    "days": {
+      "long": [
+        "Pazar",
+        "Pazartesi",
+        "Salı",
+        "Çarşamba",
+        "Perşembe",
+        "Cuma",
+        "Cumartesi"
+      ]
+    }
+  }
+}

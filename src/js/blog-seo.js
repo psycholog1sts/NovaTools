@@ -1,4 +1,4 @@
-const SITE_ORIGIN = 'https://novatools.com';
+const SITE_ORIGIN = 'https://mc-novatools.com';
 const TITLE_SUFFIX = ' | NovaTools Blog';
 const MAX_TITLE = 60;
 const MAX_DESCRIPTION = 160;

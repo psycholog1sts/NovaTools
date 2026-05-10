@@ -5,28 +5,36 @@
 
 export const I18N_CONFIG = {
   // Default locale
-  defaultLocale: 'tr',
+  defaultLocale: 'en',
   
   // Supported locales
-  locales: ['tr', 'en'],
+  locales: ['en', 'tr', 'ar'],
   
   // Locale metadata
   metadata: {
-    tr: {
-      name: 'Türkçe',
-      dir: 'ltr',
-      flag: '🇹🇷',
-      domain: 'zerotools.dev',
-      hreflang: 'tr-TR',
-      googleSite: 'zerotools_dev_tr'
-    },
     en: {
       name: 'English',
       dir: 'ltr',
       flag: '🇬🇧',
-      domain: 'zerotools.dev',
-      hreflang: 'en-US',
-      googleSite: 'zerotools_dev_en'
+      domain: 'mc-novatools.com',
+      hreflang: 'en',
+      googleSite: 'mc_novatools_en'
+    },
+    tr: {
+      name: 'Türkçe',
+      dir: 'ltr',
+      flag: '🇹🇷',
+      domain: 'mc-novatools.com',
+      hreflang: 'tr',
+      googleSite: 'mc_novatools_tr'
+    },
+    ar: {
+      name: 'العربية',
+      dir: 'rtl',
+      flag: '🇸🇦',
+      domain: 'mc-novatools.com',
+      hreflang: 'ar',
+      googleSite: 'mc_novatools_ar'
     }
   },
   
@@ -42,7 +50,7 @@ export const I18N_CONFIG = {
  */
 export function detectLocale() {
   // Check URL path first
-  const pathMatch = window.location.pathname.match(/^\/(tr|en)\//);
+  const pathMatch = window.location.pathname.match(/^\/(tr|ar)(?=\/|$)/);
   if (pathMatch) return pathMatch[1];
   
   // Check localStorage (explicit user choice)
@@ -51,12 +59,13 @@ export function detectLocale() {
     if (stored && I18N_CONFIG.locales.includes(stored)) {
       return stored;
     }
-  } catch (e) { /* ignore */ }
+  } catch { /* ignore */ }
   
   // Check browser language
   const browserLang = navigator.language || navigator.userLanguage;
   if (browserLang.startsWith('tr')) return 'tr';
   if (browserLang.startsWith('en')) return 'en';
+  if (browserLang.startsWith('ar')) return 'ar';
   
   // Default
   return I18N_CONFIG.defaultLocale;
@@ -71,7 +80,7 @@ export function setLocale(locale) {
   try {
     localStorage.setItem('novatools_locale', locale);
     return true;
-  } catch (e) {
+  } catch {
     return false;
   }
 }

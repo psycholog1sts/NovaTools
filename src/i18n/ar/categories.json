@@ -1,0 +1,268 @@
+{
+  "categories": {
+    "pdf_tools": {
+      "name": "أدوات PDF",
+      "description": "مسارات عمل داخل المتصفح لدمج ملفات PDF وتقسيمها وضغطها وتحويلها.",
+      "targetAudience": "مستخدمون يحتاجون إلى سير عمل سريع وواضح داخل المتصفح.",
+      "commonTasks": [
+        "prepare input",
+        "review output",
+        "share safely"
+      ],
+      "decisionTable": {
+        "bestFor": "أدوات PDF",
+        "useWhen": "مسارات عمل داخل المتصفح لدمج ملفات PDF وتقسيمها وضغطها وتحويلها.",
+        "avoidWhen": "عند الحاجة إلى تدقيق مهني أو تكامل مخصص."
+      },
+      "faq": [
+        {
+          "question": "هل تراعي هذه الفئة الخصوصية؟",
+          "answer": "تُعرض الأدوات للعمل داخل المتصفح حيثما أمكن."
+        }
+      ],
+      "relatedArticles": []
+    },
+    "image_tools": {
+      "name": "أدوات الصور",
+      "description": "أدوات لضغط الصور وتحويلها وتغيير حجمها وتجهيزها للمشاركة.",
+      "targetAudience": "مستخدمون يحتاجون إلى سير عمل سريع وواضح داخل المتصفح.",
+      "commonTasks": [
+        "prepare input",
+        "review output",
+        "share safely"
+      ],
+      "decisionTable": {
+        "bestFor": "أدوات الصور",
+        "useWhen": "أدوات لضغط الصور وتحويلها وتغيير حجمها وتجهيزها للمشاركة.",
+        "avoidWhen": "عند الحاجة إلى تدقيق مهني أو تكامل مخصص."
+      },
+      "faq": [
+        {
+          "question": "هل تراعي هذه الفئة الخصوصية؟",
+          "answer": "تُعرض الأدوات للعمل داخل المتصفح حيثما أمكن."
+        }
+      ],
+      "relatedArticles": []
+    },
+    "finance_tools": {
+      "name": "أدوات مالية",
+      "description": "حاسبات مالية بافتراضات واضحة للرهن والفائدة والضرائب والتخطيط.",
+      "targetAudience": "مستخدمون يحتاجون إلى سير عمل سريع وواضح داخل المتصفح.",
+      "commonTasks": [
+        "prepare input",
+        "review output",
+        "share safely"
+      ],
+      "decisionTable": {
+        "bestFor": "أدوات مالية",
+        "useWhen": "حاسبات مالية بافتراضات واضحة للرهن والفائدة والضرائب والتخطيط.",
+        "avoidWhen": "عند الحاجة إلى تدقيق مهني أو تكامل مخصص."
+      },
+      "faq": [
+        {
+          "question": "هل تراعي هذه الفئة الخصوصية؟",
+          "answer": "تُعرض الأدوات للعمل داخل المتصفح حيثما أمكن."
+        }
+      ],
+      "relatedArticles": []
+    },
+    "text_writing": {
+      "name": "النص والكتابة",
+      "description": "أدوات عملية لعدّ النصوص وتحويلها ومقارنتها وتجهيز الكتابة.",
+      "targetAudience": "مستخدمون يحتاجون إلى سير عمل سريع وواضح داخل المتصفح.",
+      "commonTasks": [
+        "prepare input",
+        "review output",
+        "share safely"
+      ],
+      "decisionTable": {
+        "bestFor": "النص والكتابة",
+        "useWhen": "أدوات عملية لعدّ النصوص وتحويلها ومقارنتها وتجهيز الكتابة.",
+        "avoidWhen": "عند الحاجة إلى تدقيق مهني أو تكامل مخصص."
+      },
+      "faq": [
+        {
+          "question": "هل تراعي هذه الفئة الخصوصية؟",
+          "answer": "تُعرض الأدوات للعمل داخل المتصفح حيثما أمكن."
+        }
+      ],
+      "relatedArticles": []
+    },
+    "developer_tools": {
+      "name": "أدوات المطورين",
+      "description": "مسارات عمل لـ JSON وRegex وBase64 وتنسيق الكود ومراجعته.",
+      "targetAudience": "مستخدمون يحتاجون إلى سير عمل سريع وواضح داخل المتصفح.",
+      "commonTasks": [
+        "prepare input",
+        "review output",
+        "share safely"
+      ],
+      "decisionTable": {
+        "bestFor": "أدوات المطورين",
+        "useWhen": "مسارات عمل لـ JSON وRegex وBase64 وتنسيق الكود ومراجعته.",
+        "avoidWhen": "عند الحاجة إلى تدقيق مهني أو تكامل مخصص."
+      },
+      "faq": [
+        {
+          "question": "هل تراعي هذه الفئة الخصوصية؟",
+          "answer": "تُعرض الأدوات للعمل داخل المتصفح حيثما أمكن."
+        }
+      ],
+      "relatedArticles": []
+    },
+    "converters": {
+      "name": "المحوّلات",
+      "description": "محوّلات سريعة للوحدات والوقت والعملات وتنسيقات البيانات.",
+      "targetAudience": "مستخدمون يحتاجون إلى سير عمل سريع وواضح داخل المتصفح.",
+      "commonTasks": [
+        "prepare input",
+        "review output",
+        "share safely"
+      ],
+      "decisionTable": {
+        "bestFor": "المحوّلات",
+        "useWhen": "محوّلات سريعة للوحدات والوقت والعملات وتنسيقات البيانات.",
+        "avoidWhen": "عند الحاجة إلى تدقيق مهني أو تكامل مخصص."
+      },
+      "faq": [
+        {
+          "question": "هل تراعي هذه الفئة الخصوصية؟",
+          "answer": "تُعرض الأدوات للعمل داخل المتصفح حيثما أمكن."
+        }
+      ],
+      "relatedArticles": []
+    },
+    "calculator_tools": {
+      "name": "الحاسبات",
+      "description": "أدوات بسيطة للرياضيات والنسب والعمر وBMI والحسابات اليومية.",
+      "targetAudience": "مستخدمون يحتاجون إلى سير عمل سريع وواضح داخل المتصفح.",
+      "commonTasks": [
+        "prepare input",
+        "review output",
+        "share safely"
+      ],
+      "decisionTable": {
+        "bestFor": "الحاسبات",
+        "useWhen": "أدوات بسيطة للرياضيات والنسب والعمر وBMI والحسابات اليومية.",
+        "avoidWhen": "عند الحاجة إلى تدقيق مهني أو تكامل مخصص."
+      },
+      "faq": [
+        {
+          "question": "هل تراعي هذه الفئة الخصوصية؟",
+          "answer": "تُعرض الأدوات للعمل داخل المتصفح حيثما أمكن."
+        }
+      ],
+      "relatedArticles": []
+    },
+    "security_tools": {
+      "name": "أدوات الأمان",
+      "description": "أدوات مساعدة لكلمات المرور والتجزئة وUUID وفحوصات المشاركة الآمنة.",
+      "targetAudience": "مستخدمون يحتاجون إلى سير عمل سريع وواضح داخل المتصفح.",
+      "commonTasks": [
+        "prepare input",
+        "review output",
+        "share safely"
+      ],
+      "decisionTable": {
+        "bestFor": "أدوات الأمان",
+        "useWhen": "أدوات مساعدة لكلمات المرور والتجزئة وUUID وفحوصات المشاركة الآمنة.",
+        "avoidWhen": "عند الحاجة إلى تدقيق مهني أو تكامل مخصص."
+      },
+      "faq": [
+        {
+          "question": "هل تراعي هذه الفئة الخصوصية؟",
+          "answer": "تُعرض الأدوات للعمل داخل المتصفح حيثما أمكن."
+        }
+      ],
+      "relatedArticles": []
+    },
+    "social_media_tools": {
+      "name": "وسائل التواصل",
+      "description": "أدوات لتحضير المحتوى الاجتماعي ووسوم الروابط وأحجام الصور.",
+      "targetAudience": "مستخدمون يحتاجون إلى سير عمل سريع وواضح داخل المتصفح.",
+      "commonTasks": [
+        "prepare input",
+        "review output",
+        "share safely"
+      ],
+      "decisionTable": {
+        "bestFor": "وسائل التواصل",
+        "useWhen": "أدوات لتحضير المحتوى الاجتماعي ووسوم الروابط وأحجام الصور.",
+        "avoidWhen": "عند الحاجة إلى تدقيق مهني أو تكامل مخصص."
+      },
+      "faq": [
+        {
+          "question": "هل تراعي هذه الفئة الخصوصية؟",
+          "answer": "تُعرض الأدوات للعمل داخل المتصفح حيثما أمكن."
+        }
+      ],
+      "relatedArticles": []
+    },
+    "productivity_tools": {
+      "name": "الإنتاجية",
+      "description": "أدوات داخل المتصفح للتخطيط وإدارة الوقت وتنظيم العمل.",
+      "targetAudience": "مستخدمون يحتاجون إلى سير عمل سريع وواضح داخل المتصفح.",
+      "commonTasks": [
+        "prepare input",
+        "review output",
+        "share safely"
+      ],
+      "decisionTable": {
+        "bestFor": "الإنتاجية",
+        "useWhen": "أدوات داخل المتصفح للتخطيط وإدارة الوقت وتنظيم العمل.",
+        "avoidWhen": "عند الحاجة إلى تدقيق مهني أو تكامل مخصص."
+      },
+      "faq": [
+        {
+          "question": "هل تراعي هذه الفئة الخصوصية؟",
+          "answer": "تُعرض الأدوات للعمل داخل المتصفح حيثما أمكن."
+        }
+      ],
+      "relatedArticles": []
+    },
+    "data_tools": {
+      "name": "أدوات البيانات",
+      "description": "أدوات لتنظيف CSV وJSON وبيانات الملفات وتحويلها ومراجعتها.",
+      "targetAudience": "مستخدمون يحتاجون إلى سير عمل سريع وواضح داخل المتصفح.",
+      "commonTasks": [
+        "prepare input",
+        "review output",
+        "share safely"
+      ],
+      "decisionTable": {
+        "bestFor": "أدوات البيانات",
+        "useWhen": "أدوات لتنظيف CSV وJSON وبيانات الملفات وتحويلها ومراجعتها.",
+        "avoidWhen": "عند الحاجة إلى تدقيق مهني أو تكامل مخصص."
+      },
+      "faq": [
+        {
+          "question": "هل تراعي هذه الفئة الخصوصية؟",
+          "answer": "تُعرض الأدوات للعمل داخل المتصفح حيثما أمكن."
+        }
+      ],
+      "relatedArticles": []
+    },
+    "design_tools": {
+      "name": "أدوات التصميم",
+      "description": "مساعدات عملية للألوان والصور وتحضير واجهات الاستخدام.",
+      "targetAudience": "مستخدمون يحتاجون إلى سير عمل سريع وواضح داخل المتصفح.",
+      "commonTasks": [
+        "prepare input",
+        "review output",
+        "share safely"
+      ],
+      "decisionTable": {
+        "bestFor": "أدوات التصميم",
+        "useWhen": "مساعدات عملية للألوان والصور وتحضير واجهات الاستخدام.",
+        "avoidWhen": "عند الحاجة إلى تدقيق مهني أو تكامل مخصص."
+      },
+      "faq": [
+        {
+          "question": "هل تراعي هذه الفئة الخصوصية؟",
+          "answer": "تُعرض الأدوات للعمل داخل المتصفح حيثما أمكن."
+        }
+      ],
+      "relatedArticles": []
+    }
+  }
+}

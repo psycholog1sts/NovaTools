@@ -6,7 +6,7 @@
 (function () {
   'use strict';
 
-  const SUPPORTED_LANGUAGES = ['en', 'tr', 'de', 'fr', 'es', 'pt', 'ru', 'zh', 'ja', 'ko', 'ar', 'hi', 'it', 'pl', 'nl'];
+  const SUPPORTED_LANGUAGES = ['en', 'tr', 'ar'];
   const DEFAULT_LANGUAGE = 'en';
 
   let currentLanguage = DEFAULT_LANGUAGE;
@@ -16,57 +16,277 @@
   const LANGUAGE_NAMES = {
     en: 'English',
     tr: 'Türkçe',
-    de: 'Deutsch',
-    fr: 'Français',
-    es: 'Español',
-    pt: 'Português',
-    ru: 'Русский',
-    zh: '中文',
-    ja: '日本語',
-    ko: '한국어',
-    ar: 'العربية',
-    hi: 'हिंदी',
-    it: 'Italiano',
-    pl: 'Polski',
-    nl: 'Nederlands'
+    ar: 'العربية'
   };
 
   const LANGUAGE_FLAGS = {
     en: '🇬🇧',
     tr: '🇹🇷',
-    de: '🇩🇪',
-    fr: '🇫🇷',
-    es: '🇪🇸',
-    pt: '🇵🇹',
-    ru: '🇷🇺',
-    zh: '🇨🇳',
-    ja: '🇯🇵',
-    ko: '🇰🇷',
-    ar: '🇸🇦',
-    hi: '🇮🇳',
-    it: '🇮🇹',
-    pl: '🇵🇱',
-    nl: '🇳🇱'
+    ar: '🇸🇦'
   };
 
+  const SITE_ORIGIN = 'https://mc-novatools.com';
+  const CONTENT_FALLBACK_NOTICE = {
+    en: 'This content is currently available only in English.',
+    tr: 'Bu içerik şu anda yalnızca İngilizce olarak mevcuttur.',
+    ar: 'هذا المحتوى متاح حالياً باللغة الإنجليزية فقط.'
+  };
+  const contentAvailability = {
+    categories: {},
+    tools: {},
+    blog: {
+        "high-yield-savings-guide": [
+            "en",
+            "tr",
+            "ar"
+        ],
+        "personal-loan-vs-credit-card": [
+            "en",
+            "tr",
+            "ar"
+        ],
+        "auto-insurance-savings": [
+            "en",
+            "tr",
+            "ar"
+        ],
+        "health-insurance-marketplace": [
+            "en",
+            "tr",
+            "ar"
+        ],
+        "best-credit-cards-2026": [
+            "en",
+            "tr",
+            "ar"
+        ],
+        "student-loan-repayment": [
+            "en",
+            "tr",
+            "ar"
+        ],
+        "emergency-fund-guide": [
+            "en",
+            "tr",
+            "ar"
+        ],
+        "credit-score-hacks": [
+            "en",
+            "tr",
+            "ar"
+        ],
+        "401k-rollover-guide": [
+            "en",
+            "tr",
+            "ar"
+        ],
+        "nft-tax-guide": [
+            "en",
+            "tr",
+            "ar"
+        ],
+        "index-funds-vs-etfs": [
+            "en",
+            "tr",
+            "ar"
+        ],
+        "term-vs-whole-life": [
+            "en",
+            "tr",
+            "ar"
+        ],
+        "first-time-home-buyer": [
+            "en",
+            "tr",
+            "ar"
+        ],
+        "tax-deductions-homeowners": [
+            "en",
+            "tr",
+            "ar"
+        ],
+        "halal-mortgage-usa": [
+            "en",
+            "tr",
+            "ar"
+        ],
+        "cloud-cost-comparison": [
+            "en",
+            "tr",
+            "ar"
+        ],
+        "life-insurance-coverage-guide": [
+            "en",
+            "tr",
+            "ar"
+        ],
+        "zakat-investments-guide": [
+            "en",
+            "tr",
+            "ar"
+        ],
+        "pdf-financial-records": [
+            "en",
+            "tr",
+            "ar"
+        ],
+        "mortgage-refinancing-guide": [
+            "en",
+            "tr",
+            "ar"
+        ],
+        "islamic-finance-investing": [
+            "en",
+            "tr",
+            "ar"
+        ],
+        "crypto-tax-guide": [
+            "en",
+            "tr",
+            "ar"
+        ],
+        "retirement-planning-millennials": [
+            "en",
+            "tr",
+            "ar"
+        ],
+        "pmi-removal-guide": [
+            "en",
+            "tr",
+            "ar"
+        ],
+        "debt-consolidation-guide": [
+            "en",
+            "tr",
+            "ar"
+        ],
+        "pdf-to-word-when-to-convert-and-when-not-to": [
+            "en",
+            "tr",
+            "ar"
+        ],
+        "pdf-to-text-clean-extraction-workflow": [
+            "en",
+            "tr",
+            "ar"
+        ],
+        "transparent-background-image-workflow": [
+            "en",
+            "tr",
+            "ar"
+        ],
+        "compress-pdf-for-email-without-ruining-readability": [
+            "en",
+            "tr",
+            "ar"
+        ],
+        "slug-generator-url-cleanup-guide": [
+            "en",
+            "tr",
+            "ar"
+        ]
+    }
+  };
+
+  function localeFromPath(pathname) {
+    const match = String(pathname || '').match(/^\/(tr|ar)(?=\/|$)/);
+    return match ? match[1] : DEFAULT_LANGUAGE;
+  }
+
+  function stripLocalePrefix(pathname) {
+    const stripped = String(pathname || '/').replace(/^\/(tr|ar)(?=\/|$)/, '') || '/';
+    return stripped.startsWith('/') ? stripped : `/${stripped}`;
+  }
+
+  function getRequestedLanguage() {
+    const params = new URLSearchParams(window.location.search);
+    const queryLang = params.get('lang');
+    if (SUPPORTED_LANGUAGES.includes(queryLang)) return queryLang;
+    const pathLang = localeFromPath(window.location.pathname);
+    if (pathLang !== DEFAULT_LANGUAGE) return pathLang;
+    return null;
+  }
+
+  function localizedPath(lang, pathname = window.location.pathname) {
+    const basePath = stripLocalePrefix(pathname);
+    return lang === DEFAULT_LANGUAGE ? basePath : `/${lang}${basePath === '/' ? '/' : basePath}`;
+  }
+
+  function absoluteUrl(pathname) {
+    return `${SITE_ORIGIN}${pathname}`;
+  }
+
+  function ensureMeta(selector, attrs) {
+    let element = document.head.querySelector(selector);
+    if (!element) {
+      element = document.createElement('meta');
+      document.head.appendChild(element);
+    }
+    Object.entries(attrs).forEach(([key, value]) => element.setAttribute(key, value));
+    return element;
+  }
+
+  function ensureNoindex(message) {
+    ensureMeta('meta[name="robots"]', { name: 'robots', content: 'noindex, follow' });
+    if (!message || document.querySelector('[data-i18n-availability-notice]')) return;
+    const notice = document.createElement('aside');
+    notice.setAttribute('data-i18n-availability-notice', '');
+    notice.setAttribute('role', 'status');
+    notice.textContent = message;
+    notice.style.cssText = 'max-width:960px;margin:1rem auto;padding:1rem;border:1px solid rgba(148,163,184,.28);border-radius:12px;background:rgba(15,23,42,.82);color:#e2e8f0;';
+    document.body.prepend(notice);
+  }
+
+  function pageContentAvailability() {
+    const path = stripLocalePrefix(window.location.pathname).replace(/\/$/, '');
+    const blogMatch = path.match(/^\/blog\/([^/.]+)(?:\.html)?$/);
+    if (blogMatch) return contentAvailability.blog[blogMatch[1]] || ['en'];
+    if (/^\/blog(?:\/index\.html)?$/.test(path)) return ['en', 'tr', 'ar'];
+    const categoryMatch = path.match(/^\/categories\/([^/.]+)(?:\.html)?$/);
+    if (categoryMatch) return contentAvailability.categories[categoryMatch[1]] || ['en', 'tr', 'ar'];
+    const toolMatch = path.match(/^\/tools\/(.+)$/);
+    if (toolMatch) return contentAvailability.tools[toolMatch[1].replace(/\/$/, '')] || ['en', 'tr', 'ar'];
+    return ['en', 'tr', 'ar'];
+  }
+
+  function applyLocaleSeo(lang) {
+    const canonicalPath = localizedPath(lang);
+    document.querySelectorAll('link[rel="alternate"][hreflang]').forEach((el) => el.remove());
+    [['en', localizedPath('en')], ['tr', localizedPath('tr')], ['ar', localizedPath('ar')], ['x-default', localizedPath('en')]].forEach(([hreflang, href]) => {
+      const link = document.createElement('link');
+      link.rel = 'alternate';
+      link.hreflang = hreflang;
+      link.href = absoluteUrl(href);
+      document.head.appendChild(link);
+    });
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.rel = 'canonical';
+      document.head.appendChild(canonical);
+    }
+    canonical.href = absoluteUrl(canonicalPath);
+
+    const available = pageContentAvailability();
+    if (!available.includes(lang)) ensureNoindex(CONTENT_FALLBACK_NOTICE[lang] || CONTENT_FALLBACK_NOTICE.en);
+  }
+
   function getInitialLanguage() {
+    const requested = getRequestedLanguage();
+    if (requested) return requested;
+
     try {
       const saved = localStorage.getItem('mc-novatools-language');
       if (saved && SUPPORTED_LANGUAGES.includes(saved)) {
         return saved;
       }
-    } catch (e) {
+    } catch {
       console.warn('localStorage not available');
     }
 
     const browserLang = navigator.language || navigator.userLanguage || DEFAULT_LANGUAGE;
     const langCode = String(browserLang).split('-')[0].toLowerCase();
-
-    if (SUPPORTED_LANGUAGES.includes(langCode)) {
-      return langCode;
-    }
-
-    return DEFAULT_LANGUAGE;
+    return SUPPORTED_LANGUAGES.includes(langCode) ? langCode : DEFAULT_LANGUAGE;
   }
 
   function getTranslationUrl(lang) {
@@ -189,12 +409,20 @@
 
     try {
       localStorage.setItem('mc-novatools-language', lang);
-    } catch (e) {
+    } catch {
       console.warn('Could not save language preference');
+    }
+
+    const targetPath = localizedPath(lang);
+    if (window.location.pathname !== targetPath && !window.location.pathname.startsWith('/blog/article-template')) {
+      window.location.assign(targetPath + window.location.search + window.location.hash);
+      return;
     }
 
     document.documentElement.lang = lang;
     document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    document.body?.classList.toggle('is-rtl', lang === 'ar');
+    applyLocaleSeo(lang);
 
     const selector = document.getElementById('language-selector');
     if (selector && selector.value !== lang) {
@@ -274,10 +502,21 @@
     const selector = document.getElementById('language-selector');
     if (!selector) return false;
 
+    selector.innerHTML = '';
+    SUPPORTED_LANGUAGES.forEach((lang) => {
+      const option = document.createElement('option');
+      option.value = lang;
+      option.textContent = `${LANGUAGE_FLAGS[lang]} ${LANGUAGE_NAMES[lang]}`;
+      selector.appendChild(option);
+    });
+
     const newSelector = selector.cloneNode(true);
     selector.parentNode.replaceChild(newSelector, selector);
 
     newSelector.value = currentLanguage;
+    newSelector.querySelectorAll('option').forEach((option) => {
+      option.toggleAttribute('selected', option.value === currentLanguage);
+    });
     newSelector.addEventListener('change', (e) => {
       e.preventDefault();
       e.stopPropagation();
@@ -377,7 +616,9 @@
     refresh: updatePageTranslations,
     SUPPORTED_LANGUAGES,
     LANGUAGE_NAMES,
-    LANGUAGE_FLAGS
+    LANGUAGE_FLAGS,
+    localizedPath,
+    contentAvailability
   };
 
   window.changeLanguage = changeLanguage;
@@ -396,6 +637,16 @@
 
   const styles = document.createElement('style');
   styles.textContent = `
+    html[dir="rtl"] body {
+      font-family: 'Tajawal', 'Cairo', Inter, system-ui, sans-serif;
+    }
+
+    html[dir="rtl"] .main-nav,
+    html[dir="rtl"] .header-inner,
+    html[dir="rtl"] .tool-quality-panel {
+      direction: rtl;
+    }
+
     .language-selector-wrapper {
       display: inline-block;
     }

@@ -93,7 +93,7 @@ function getLocaleUrl(locale) {
   const currentSearch = window.location.search;
   
   // Remove existing locale prefix
-  const pathWithoutLocale = currentPath.replace(/^\/(tr|en)\//, '/');
+  const pathWithoutLocale = currentPath.replace(/^\/(tr|ar)(?=\/|$)/, '') || '/';
   
   // Build new URL
   const newPath = locale === I18N_CONFIG.defaultLocale

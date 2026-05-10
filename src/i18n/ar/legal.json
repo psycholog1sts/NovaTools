@@ -1,0 +1,34 @@
+{
+  "legal": {
+    "privacy_policy": {
+      "title": "Privacy Policy",
+      "content": [
+        "This policy explains how MC NovaTools handles privacy-conscious browser workflows."
+      ]
+    },
+    "cookie_policy": {
+      "title": "سياسة ملفات تعريف الارتباط",
+      "content": [
+        "يجب توضيح تقنيات التتبع غير الضرورية بوضوح."
+      ]
+    },
+    "terms_of_service": {
+      "title": "شروط الخدمة",
+      "content": [
+        "يتحمل المستخدم مسؤولية مراجعة مخرجات الأدوات."
+      ]
+    },
+    "about": {
+      "title": "من نحن",
+      "content": [
+        "تقدم MC NovaTools أدوات عملية تعمل داخل المتصفح."
+      ]
+    },
+    "contact": {
+      "title": "اتصل بنا",
+      "content": [
+        "استخدم صفحة التواصل للدعم والملاحظات."
+      ]
+    }
+  }
+}

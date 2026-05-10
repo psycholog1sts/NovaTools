@@ -1,0 +1,78 @@
+{
+  "home": {
+    "hero": {
+      "title": "Dosyalar, Finans ve Kod için Her Şey Dahil Araçlar",
+      "subtitle": "Use MC NovaTools to convert, calculate, create, and streamline practical workflows with a fast, clear, browser-based toolkit.",
+      "cta": "Araçları Keşfet",
+      "browse": "Kategorileri Görüntüle",
+      "freeTools": "Ücretsiz Araçlar",
+      "categories": "Kategoriler",
+      "private": "Gizli"
+    },
+    "trustBar": {
+      "secureTitle": "Güvenli ve Özel",
+      "secureDesc": "Many tools process data locally in your browser.",
+      "transparentTitle": "Şeffaf",
+      "transparentDesc": "Açık gizlilik politikası ve şartları",
+      "supportTitle": "Destek",
+      "supportDesc": "Sorularınız için bizimle iletişime geçin",
+      "verifiedTitle": "Clear Ownership",
+      "verifiedDesc": "Site ownership, policy pages, and contact details are clearly available."
+    },
+    "categoryBlocks": {
+      "pdf": {
+        "badge": "Ücretsiz Çevrimiçi PDF Araçları",
+        "title": "PDF Araçları: Birleştirme, Bölme, Sıkıştırma, OCR ve Dönüştürme",
+        "description": "Canlı PDF araçlarını doğrudan bu sayfadan açın. Dosyaları birleştirin, sayfaları bölün, boyutu sıkıştırın, filigran ekleyin, sayfa numarası ekleyin, OCR çalıştırın ve PDF dosyalarını Word, Excel, HTML, JPG, PNG, PowerPoint ve metne dönüştürün.",
+        "sectionTitle": "PDF Araçları"
+      },
+      "image": {
+        "badge": "Ücretsiz Çevrimiçi Görüntü Araçları",
+        "title": "Görüntü Araçları: Sıkıştırma, Dönüştürme, Düzenleme ve Temizleme",
+        "description": "Canlı görüntü araçlarını doğrudan bu kategori sayfasından açın. Dosyaları sıkıştırın, formatları dönüştürün, yeniden boyutlandırın, kırpın, çevirin, döndürün, meta verileri kaldırın, filigran ekleyin ve optimize edilmiş AVIF veya WebP çıktısı oluşturun.",
+        "sectionTitle": "Görüntü Araçları"
+      },
+      "finance": {
+        "badge": "Ücretsiz Çevrimiçi Finansal Hesaplayıcılar",
+        "title": "Finans Araçları: Planlama, Krediler, Vergi ve Uzun Vadeli Kararlar",
+        "description": "Canlı finansal araçları doğrudan bu kategori sayfasından açın. Mortgage refinansman seçeneklerini, bileşik büyümeyi, emeklilik projeksiyonlarını, kripto vergisini, kredi planlamasını ve diğer kişisel finans senaryolarını hesaplayın.",
+        "sectionTitle": "Finans Araçları"
+      },
+      "developer": {
+        "badge": "Ücretsiz Çevrimiçi Geliştirici Araçları",
+        "title": "Geliştirici Araçları: Biçimlendirme, Test ve Kod Yardımcıları",
+        "description": "Canlı geliştirici araçlarını doğrudan bu kategori sayfasından açın. JSON biçimlendirin, regex test edin, CSS ve JS küçültün, Base64 dönüştürün, UUID oluşturun, JSON doğrulayın ve daha fazlasını yapın.",
+        "sectionTitle": "Geliştirici Araçları"
+      },
+      "text": {
+        "badge": "Ücretsiz Çevrimiçi Metin Araçları",
+        "title": "Metin Araçları: Sayma, Biçimlendirme, Dönüştürme ve Temizleme",
+        "description": "Canlı metin araçlarını doğrudan bu kategori sayfasından açın. Kelime ve karakter sayın, metin büyüklüğünü dönüştürün, lorem ipsum oluşturun, varlıkları kodlayın, slug oluşturun, metin karşılaştırın ve URL güvenli çıktı alın.",
+        "sectionTitle": "Metin ve Yazma"
+      },
+      "converters": {
+        "badge": "Ücretsiz Çevrimiçi Dönüştürücüler",
+        "title": "Dönüştürücüler: Birimler, Sayılar ve Veri Formatları",
+        "description": "Canlı dönüştürücü araçlarını doğrudan bu kategori sayfasından açın. Birimler, sayı tabanları, para birimleri, saat dilimleri ve veri formatları arasında dönüştürme yapın.",
+        "sectionTitle": "Dönüştürücüler"
+      },
+      "all": {
+        "badge": "Tüm Araçlara Göz Atın",
+        "title": "NovaTools Kategorilerine Göz Atın",
+        "description": "Tüm canlı NovaTools kategorilerini keşfedin ve ihtiyacınız olan aracı tek tıkla açın.",
+        "sectionTitle": "Tüm Kategoriler"
+      }
+    },
+    "cta": {
+      "title": "Belirli bir araca mı ihtiyacınız var?",
+      "desc": "Bize neye ihtiyacınız olduğunu söyleyin, sonra onu ekleyebiliriz.",
+      "button": "Araç Talep Et"
+    },
+    "meta": {
+      "title": "MC NovaTools - Practical Online Tools",
+      "description": "Privacy-conscious browser tools for files, finance, text and code.",
+      "ogTitle": "MC NovaTools",
+      "ogDescription": "Practical online tools."
+    }
+  }
+}
