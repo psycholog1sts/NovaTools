@@ -1,0 +1,63 @@
+@import '../../styles/design-system.css';
+
+.btn,
+.nt-button {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-5);
+  font: 650 var(--font-size-sm)/1 var(--font-sans);
+  color: var(--color-text-primary);
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform var(--transition-fast), opacity var(--transition-fast), background-color var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast), color var(--transition-fast);
+}
+
+.btn:hover,
+.nt-button:hover { transform: translateY(-1px); }
+.btn:active,
+.nt-button:active { transform: translateY(0); opacity: 0.88; }
+.btn:focus-visible,
+.nt-button:focus-visible { outline: 2px solid var(--color-primary-500); outline-offset: 2px; }
+.btn:disabled,
+.btn[aria-disabled='true'],
+.nt-button:disabled,
+.nt-button[aria-disabled='true'] { cursor: not-allowed; opacity: 0.56; transform: none; }
+
+.btn-primary,
+.nt-button--primary { background: linear-gradient(135deg, var(--color-primary-500), var(--color-accent-500)); color: hsl(0 0% 100%); box-shadow: var(--shadow-md); }
+.btn-secondary,
+.nt-button--secondary { background: var(--color-surface); border-color: var(--color-border); color: var(--color-text-primary); }
+.btn-ghost,
+.nt-button--ghost { background: transparent; color: var(--color-text-secondary); }
+.btn-danger,
+.nt-button--danger { background: var(--color-error-500); color: hsl(0 0% 100%); box-shadow: 0 12px 32px hsl(0 76% 56% / 0.22); }
+
+.btn-sm,
+.nt-button--sm { min-height: 36px; padding: var(--space-2) var(--space-3); font-size: var(--font-size-xs); }
+.btn-md,
+.nt-button--md { min-height: 44px; }
+.btn-lg,
+.nt-button--lg { min-height: 52px; padding: var(--space-4) var(--space-6); font-size: var(--font-size-base); border-radius: var(--radius-lg); }
+
+.btn-loading,
+.nt-button--loading { position: relative; pointer-events: none; }
+.btn-loading::before,
+.nt-button--loading::before {
+  content: '';
+  width: 1em;
+  height: 1em;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: var(--radius-full);
+  animation: nt-spin 0.75s linear infinite;
+}
+
+.icon-left,
+.icon-right,
+.nt-button__icon { display: inline-flex; align-items: center; justify-content: center; }
+@keyframes nt-spin { to { transform: rotate(360deg); } }

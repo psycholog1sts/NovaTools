@@ -1,0 +1,13 @@
+@import '../../styles/design-system.css';
+
+.app-header,
+.nt-navbar { position: sticky; top: 0; z-index: var(--z-sticky); transition: transform var(--transition-base), background-color var(--transition-base), border-color var(--transition-base); }
+.nt-navbar--hidden,
+.app-header.is-hidden { transform: translateY(-100%); }
+.nav-link:focus-visible,
+.mobile-nav-link:focus-visible,
+.btn-icon:focus-visible { outline: 2px solid var(--color-primary-500); outline-offset: 2px; }
+.mobile-menu,
+.nt-navbar__drawer { transition: opacity var(--transition-base), transform var(--transition-base); }
+.theme-toggle .icon-moon,
+.theme-toggle .icon-sun { pointer-events: none; }

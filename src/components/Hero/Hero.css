@@ -1,0 +1,13 @@
+@import '../../styles/design-system.css';
+
+.hero,
+.nt-hero { position: relative; overflow: hidden; padding-block: clamp(var(--space-16), 11vw, var(--space-24)); }
+.nt-hero { background: radial-gradient(circle at 20% 10%, var(--color-accent-glow), transparent 28%), radial-gradient(circle at 85% 12%, var(--color-accent-secondary-glow), transparent 26%); }
+.hero-title,
+.nt-hero__title { font: var(--font-h1); letter-spacing: var(--letter-spacing-tight); }
+.hero-description,
+.nt-hero__subtitle { color: var(--color-text-secondary); font-size: var(--font-size-lg); line-height: var(--line-height-relaxed); }
+.hero-actions,
+.nt-hero__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-3); }
+.nt-hero__search { max-width: 720px; margin-inline: auto; }
+@media (min-width: 768px) { .hero-title, .nt-hero__title { font-size: var(--font-size-6xl); } }

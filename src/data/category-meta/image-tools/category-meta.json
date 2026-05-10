@@ -1,0 +1,119 @@
+{
+  "slug": "image-tools",
+  "name": "Görsel Araçları",
+  "description": "Görsel sıkıştırma, boyutlandırma, format dönüştürme ve yayın öncesi kontrol araçlarını karar tablosu, SSS ve rehber linkleriyle inceleyin.",
+  "targetAudience": [
+    {
+      "title": "İçerik üreticileri için",
+      "description": "Blog, sosyal medya ve e-posta görsellerini yayın öncesi doğru boyut ve formata getirir.",
+      "tools": [
+        "image/compress",
+        "image/image-resizer"
+      ]
+    },
+    {
+      "title": "Pazarlama ekipleri için",
+      "description": "Kampanya görsellerini WebP, AVIF veya standart formatlara dönüştürerek sayfa hızını iyileştirir.",
+      "tools": [
+        "image/image-to-webp",
+        "image/convert"
+      ]
+    },
+    {
+      "title": "Tasarımcılar için",
+      "description": "Kırpma, filigran ve metadata temizliği gibi teslim öncesi kontrolleri kolaylaştırır.",
+      "tools": [
+        "image/image-cropper",
+        "image/metadata-remover"
+      ]
+    }
+  ],
+  "commonTasks": [
+    {
+      "name": "Görsel boyutunu düşürmek",
+      "description": "Web sayfaları ve e-posta kampanyaları için daha hafif dosyalar hazırlar.",
+      "tool": "image/compress"
+    },
+    {
+      "name": "Görseli yeniden boyutlandırmak",
+      "description": "Sosyal medya, blog ve ürün sayfaları için doğru ölçüyü seçmenizi sağlar.",
+      "tool": "image/image-resizer"
+    },
+    {
+      "name": "WebP formatına çevirmek",
+      "description": "Modern web yayınlarında daha küçük ve hızlı görsel çıktıları üretir.",
+      "tool": "image/image-to-webp"
+    },
+    {
+      "name": "Arka planı kaldırmak",
+      "description": "Ürün veya profil görsellerinde daha temiz bir sunum hazırlamaya yardımcı olur.",
+      "tool": "image/background-remover"
+    },
+    {
+      "name": "Metadata temizlemek",
+      "description": "Yayın öncesinde dosya içi gereksiz bilgileri azaltmak için kullanılır.",
+      "tool": "image/metadata-remover"
+    }
+  ],
+  "decisionTable": [
+    {
+      "need": "Sayfa hızı için görsel küçültmek",
+      "recommendedTool": "Image Compressor",
+      "why": "Kalite kontrolünü koruyarak dosya boyutunu azaltmaya odaklanır."
+    },
+    {
+      "need": "Sabit piksel ölçüsü gerekiyorsa",
+      "recommendedTool": "Image Resizer",
+      "why": "Platformların istediği ölçülere göre yeniden boyutlandırma yapar."
+    },
+    {
+      "need": "Modern web formatı isteniyorsa",
+      "recommendedTool": "Image to WebP",
+      "why": "WebP çıktısı çoğu web iş akışı için daha verimli olabilir."
+    },
+    {
+      "need": "Yayın öncesi gizlilik kontrolü gerekiyorsa",
+      "recommendedTool": "Metadata Remover",
+      "why": "Dosya içi gereksiz metadata bilgisini temizleme adımına götürür."
+    }
+  ],
+  "relatedArticles": [
+    {
+      "title": "Compress images for web quality checklist",
+      "url": "/blog/articles/compress-images-for-web-quality-checklist.html",
+      "summary": "Görsel sıkıştırırken kalite ve hız dengesini kontrol edin."
+    },
+    {
+      "title": "JPG vs WebP for small websites",
+      "url": "/blog/articles/jpg-vs-webp-for-small-websites.html",
+      "summary": "Küçük sitelerde hangi görsel formatının daha uygun olduğunu karşılaştırın."
+    },
+    {
+      "title": "Resize images for social platforms",
+      "url": "/blog/articles/resize-images-for-social-platforms.html",
+      "summary": "Sosyal medya ölçüleri için görsel hazırlama akışı."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Görsel Araçları ücretsiz mi?",
+      "answer": "Evet. Bu kategori sayfası NovaTools içinde yer alan ilgili online araçlara doğrudan bağlantı verir ve hızlı başlangıç için hazırlanmıştır."
+    },
+    {
+      "question": "Hangi aracı seçmem gerektiğini nasıl anlarım?",
+      "answer": "Önce en sık yapılan görevler bölümünü, ardından karar destek tablosunu inceleyin. İhtiyacınız önerilen araçla eşleştirilir."
+    },
+    {
+      "question": "Bu sayfadaki araçlar mobilde kullanılabilir mi?",
+      "answer": "Sayfa mobil öncelikli düzenlenmiştir. Araçların ayrıntılı giriş alanları ilgili araç sayfasında ayrıca kontrol edilmelidir."
+    },
+    {
+      "question": "Sonuçları paylaşmadan önce neyi kontrol etmeliyim?",
+      "answer": "Dosya adı, çıktı formatı, gizlilik ihtiyacı ve okunabilirlik gibi temel kalite kontrollerini yapmanız önerilir."
+    },
+    {
+      "question": "İlgili rehberler ne işe yarar?",
+      "answer": "Blog rehberleri, araç seçimi ve çıktı kontrolü konusunda daha fazla bağlam vererek hatalı kullanım riskini azaltır."
+    }
+  ]
+}
