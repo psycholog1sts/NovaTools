@@ -244,6 +244,20 @@
     return PATH_PREFIX_LANGUAGES.includes(lang) ? `/${lang}${basePath === '/' ? '/' : basePath}` : basePath;
   }
 
+  function localizedSearch(lang, search = window.location.search) {
+    const params = new URLSearchParams(search || '');
+    params.delete('lang');
+    if (lang !== DEFAULT_LANGUAGE && !PATH_PREFIX_LANGUAGES.includes(lang)) {
+      params.set('lang', lang);
+    }
+    const query = params.toString();
+    return query ? `?${query}` : '';
+  }
+
+  function localizedHref(lang, pathname = window.location.pathname, search = window.location.search) {
+    return `${localizedPath(lang, pathname)}${localizedSearch(lang, search)}`;
+  }
+
   function absoluteUrl(pathname) {
     return `${SITE_ORIGIN}${pathname}`;
   }
@@ -284,7 +298,7 @@
   function applyLocaleSeo(lang) {
     const canonicalPath = localizedPath(lang);
     document.querySelectorAll('link[rel="alternate"][hreflang]').forEach((el) => el.remove());
-    [...SUPPORTED_LANGUAGES.map((code) => [code, localizedPath(code)]), ['x-default', localizedPath('en')]].forEach(([hreflang, href]) => {
+    [...SUPPORTED_LANGUAGES.map((code) => [code, localizedHref(code)]), ['x-default', localizedHref('en')]].forEach(([hreflang, href]) => {
       const link = document.createElement('link');
       link.rel = 'alternate';
       link.hreflang = hreflang;
@@ -730,11 +744,23 @@
     guide.id = 'novatools-site-guide';
     guide.className = 'site-guide-chatbot';
     guide.setAttribute('aria-label', t('surface.chatbot.title', 'NovaTools guide'));
+    const recommendations = [
+      { match: 'pdf,merge,compress,split,file', title: 'PDF workflow', href: '/categories/pdf-tools.html', guide: '/blog/articles/five-minute-pdf-cleanup-workflow.html' },
+      { match: 'image,png,jpg,webp,photo,resize', title: 'Image workflow', href: '/categories/image-tools.html', guide: '/blog/articles/compress-images-for-web-quality-checklist.html' },
+      { match: 'json,regex,code,developer,api', title: 'Developer workflow', href: '/categories/developer-tools.html', guide: '/blog/articles/developer-debugging-tool-chain.html' },
+      { match: 'money,finance,tax,loan,mortgage,currency', title: 'Finance workflow', href: '/categories/finance-tools.html', guide: '/blog/articles/monthly-finance-document-routine.html' }
+    ];
     guide.innerHTML = `
       <button type="button" class="site-guide-chatbot__toggle" aria-expanded="false" aria-controls="site-guide-chatbot-panel">${t('surface.chatbot.open', 'Open site guide')}</button>
       <div id="site-guide-chatbot-panel" class="site-guide-chatbot__panel" hidden>
         <div class="site-guide-chatbot__header"><strong>${t('surface.chatbot.title', 'NovaTools guide')}</strong><button type="button" class="site-guide-chatbot__close" aria-label="${t('surface.chatbot.close', 'Close site guide')}">×</button></div>
         <p>${t('surface.chatbot.placeholder', 'Ask which tool or guide fits your task…')}</p>
+        <form class="site-guide-chatbot__form">
+          <label class="sr-only" for="site-guide-query">${t('surface.chatbot.placeholder', 'Ask which tool or guide fits your task…')}</label>
+          <input id="site-guide-query" type="search" placeholder="PDF, image, JSON, finance…">
+          <button type="submit">Find</button>
+        </form>
+        <div class="site-guide-chatbot__result" role="status"></div>
         <div class="site-guide-chatbot__links">
           <a href="/categories/index.html">${t('tools.categories', 'Categories')}</a>
           <a href="/blog/index.html">${t('nav.blog', 'Blog')}</a>
@@ -745,12 +771,26 @@
     const toggle = guide.querySelector('.site-guide-chatbot__toggle');
     const panel = guide.querySelector('.site-guide-chatbot__panel');
     const close = guide.querySelector('.site-guide-chatbot__close');
+    const form = guide.querySelector('.site-guide-chatbot__form');
+    const input = guide.querySelector('#site-guide-query');
+    const result = guide.querySelector('.site-guide-chatbot__result');
     const setOpen = (open) => {
       panel.hidden = !open;
       toggle.setAttribute('aria-expanded', String(open));
+      if (open) window.setTimeout(() => input?.focus(), 0);
+    };
+    const renderRecommendation = (query = '') => {
+      const normalized = query.toLowerCase();
+      const selected = recommendations.find((item) => item.match.split(',').some((term) => normalized.includes(term))) || recommendations[0];
+      result.innerHTML = `<strong>${selected.title}</strong><span>Open the category first, then use the linked guide as a checklist.</span><div><a href="${selected.href}">Open category</a><a href="${selected.guide}">Read guide</a></div>`;
     };
     toggle.addEventListener('click', () => setOpen(panel.hidden));
     close.addEventListener('click', () => setOpen(false));
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      renderRecommendation(input.value);
+    });
+    renderRecommendation();
   }
 
   function refreshSiteGuide() {
@@ -955,6 +995,61 @@
       color: inherit;
       cursor: pointer;
       font-size: 1.4rem;
+    }
+
+    .site-guide-chatbot__form {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0.5rem;
+      margin-top: 0.85rem;
+    }
+
+    .site-guide-chatbot__form input,
+    .site-guide-chatbot__form button {
+      min-width: 0;
+      border: 1px solid rgba(148, 163, 184, 0.28);
+      border-radius: 12px;
+      padding: 0.72rem 0.8rem;
+      font: inherit;
+    }
+
+    .site-guide-chatbot__form input {
+      background: rgba(255, 255, 255, 0.08);
+      color: #f8fafc;
+    }
+
+    .site-guide-chatbot__form button {
+      background: #22d3ee;
+      color: #020617;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .site-guide-chatbot__result {
+      display: grid;
+      gap: 0.45rem;
+      margin-top: 0.85rem;
+      padding: 0.85rem;
+      border: 1px solid rgba(34, 211, 238, 0.22);
+      border-radius: 14px;
+      background: rgba(34, 211, 238, 0.08);
+    }
+
+    .site-guide-chatbot__result span {
+      color: #cbd5e1;
+      line-height: 1.45;
+    }
+
+    .site-guide-chatbot__result div {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .site-guide-chatbot__result a {
+      color: #67e8f9;
+      font-weight: 800;
+      text-decoration: none;
     }
 
     .site-guide-chatbot__links {
