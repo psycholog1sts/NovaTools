@@ -926,8 +926,7 @@
     }
 
     html[dir="rtl"] .main-nav,
-    html[dir="rtl"] .header-inner,
-    html[dir="rtl"] .tool-quality-panel {
+    html[dir="rtl"] .header-inner {
       direction: rtl;
     }
 
