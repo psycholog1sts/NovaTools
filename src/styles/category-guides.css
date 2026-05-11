@@ -360,3 +360,64 @@
     padding-block: var(--space-4);
   }
 }
+
+.category-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+}
+
+.category-guide-page .section-description {
+  max-width: 760px;
+}
+
+.category-index-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.category-index-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top right, color-mix(in srgb, var(--category-accent, var(--color-accent)) 18%, transparent), transparent 42%);
+  pointer-events: none;
+}
+
+.category-index-card__icon {
+  width: 48px;
+  height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--category-accent, var(--color-accent)) 16%, var(--color-surface-elevated));
+  font-size: 1.5rem;
+}
+
+.guide-tool-card:hover,
+.persona-card:hover,
+.related-article-card:hover,
+.other-category-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-border-hover);
+  box-shadow: var(--shadow-md);
+}
+
+.guide-tool-card,
+.persona-card,
+.related-article-card,
+.other-category-card {
+  transition: transform var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.guide-tool-card__icon {
+  background: color-mix(in srgb, var(--category-accent, var(--color-accent)) 18%, var(--color-surface-elevated));
+  font-size: 1.45rem;
+}
+
+.guide-tool-card .btn {
+  margin-top: auto;
+}
