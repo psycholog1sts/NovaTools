@@ -217,7 +217,7 @@ const blogPosts = [
     excerpt: 'Choose the right category and tool quickly when you start a new task.',
     category: 'Workflow',
     href: '/blog/articles/tool-selection-map-for-new-users.html',
-    image: '/logo-brand-520.webp',
+    image: '/images/blog-covers/workflow-planning.svg',
     minutes: '5 min'
   },
   {
@@ -225,7 +225,7 @@ const blogPosts = [
     excerpt: 'Keep quality, format and page speed checks in view while reducing image size.',
     category: 'Image',
     href: '/blog/articles/compress-images-for-web-quality-checklist.html',
-    image: '/logo-brand-520.webp',
+    image: '/images/blog-covers/image-workflow.svg',
     minutes: '6 min'
   },
   {
@@ -233,8 +233,32 @@ const blogPosts = [
     excerpt: 'Encoding, decoding and pre-share checks for developer workflows.',
     category: 'Developer',
     href: '/blog/articles/base64-converter-common-use-cases.html',
-    image: '/logo-brand-520.webp',
+    image: '/images/blog-covers/developer-utilities.svg',
     minutes: '4 min'
+  }
+];
+
+const workflowCards = [
+  {
+    title: 'Prepare a PDF for email',
+    description: 'Compress the file, confirm readability, then use the PDF checklist before sending.',
+    tool: ['Compress PDF', 'pdf/compress'],
+    guide: ['PDF email checklist', '/blog/articles/compress-pdf-for-email-without-ruining-readability.html'],
+    category: ['PDF tools', '/categories/pdf-tools.html']
+  },
+  {
+    title: 'Clean developer data',
+    description: 'Format JSON, compare text changes and keep shareable snippets readable.',
+    tool: ['JSON Formatter', 'dev/json-formatter'],
+    guide: ['Debugging tool chain', '/blog/articles/developer-debugging-tool-chain.html'],
+    category: ['Developer tools', '/categories/developer-tools.html']
+  },
+  {
+    title: 'Publish lighter images',
+    description: 'Resize, compress and review file names before uploading images to a site or email.',
+    tool: ['Image Compressor', 'image/compress'],
+    guide: ['Image quality checklist', '/blog/articles/compress-images-for-web-quality-checklist.html'],
+    category: ['Image tools', '/categories/image-tools.html']
   }
 ];
 
@@ -309,10 +333,7 @@ function renderBlogCards() {
   container.innerHTML = blogPosts.map((post) => `
     <article class="home-blog-card">
       <a href="${post.href}" class="home-blog-card__image" aria-label="${post.title}">
-        <picture>
-          <source srcset="${post.image}" type="image/webp">
-          <img src="/logo-brand-520.png" alt="" width="520" height="292" loading="lazy" decoding="async">
-        </picture>
+        <img src="${post.image}" alt="" width="640" height="360" loading="lazy" decoding="async">
       </a>
       <div class="home-blog-card__body">
         <div class="home-blog-card__meta">
@@ -321,6 +342,24 @@ function renderBlogCards() {
         </div>
         <h3><a href="${post.href}">${post.title}</a></h3>
         <p>${post.excerpt}</p>
+      </div>
+    </article>
+  `).join('');
+}
+
+function renderWorkflowCards() {
+  const container = document.getElementById('workflowCards');
+  if (!container) return;
+
+  container.innerHTML = workflowCards.map((workflow) => `
+    <article class="workflow-card">
+      <span class="workflow-card__label">Guided workflow</span>
+      <h3>${workflow.title}</h3>
+      <p>${workflow.description}</p>
+      <div class="workflow-card__steps">
+        <a href="${getToolHref(workflow.tool[1])}"><strong>Tool</strong>${workflow.tool[0]}</a>
+        <a href="${workflow.guide[1]}"><strong>Guide</strong>${workflow.guide[0]}</a>
+        <a href="${workflow.category[1]}"><strong>Browse</strong>${workflow.category[0]}</a>
       </div>
     </article>
   `).join('');
@@ -393,6 +432,7 @@ function rerenderHomepageDynamicParts() {
   renderFeaturedTools();
   renderCategories();
   renderBlogCards();
+  renderWorkflowCards();
   initSearch();
   initHomeSearch({ getToolHref });
 }

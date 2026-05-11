@@ -51,19 +51,19 @@
   <!-- Hreflang Tags for 15 Languages -->
   <link rel="alternate" hreflang="en" href="https://mc-novatools.com/" />
   <link rel="alternate" hreflang="tr" href="https://mc-novatools.com/tr/" />
-  <link rel="alternate" hreflang="de" href="https://mc-novatools.com/de/" />
-  <link rel="alternate" hreflang="fr" href="https://mc-novatools.com/fr/" />
-  <link rel="alternate" hreflang="es" href="https://mc-novatools.com/es/" />
-  <link rel="alternate" hreflang="pt" href="https://mc-novatools.com/pt/" />
-  <link rel="alternate" hreflang="ru" href="https://mc-novatools.com/ru/" />
-  <link rel="alternate" hreflang="zh" href="https://mc-novatools.com/zh/" />
-  <link rel="alternate" hreflang="ja" href="https://mc-novatools.com/ja/" />
-  <link rel="alternate" hreflang="ko" href="https://mc-novatools.com/ko/" />
+  <link rel="alternate" hreflang="de" href="https://mc-novatools.com/?lang=de" />
+  <link rel="alternate" hreflang="fr" href="https://mc-novatools.com/?lang=fr" />
+  <link rel="alternate" hreflang="es" href="https://mc-novatools.com/?lang=es" />
+  <link rel="alternate" hreflang="pt" href="https://mc-novatools.com/?lang=pt" />
+  <link rel="alternate" hreflang="ru" href="https://mc-novatools.com/?lang=ru" />
+  <link rel="alternate" hreflang="zh" href="https://mc-novatools.com/?lang=zh" />
+  <link rel="alternate" hreflang="ja" href="https://mc-novatools.com/?lang=ja" />
+  <link rel="alternate" hreflang="ko" href="https://mc-novatools.com/?lang=ko" />
   <link rel="alternate" hreflang="ar" href="https://mc-novatools.com/ar/" />
-  <link rel="alternate" hreflang="hi" href="https://mc-novatools.com/hi/" />
-  <link rel="alternate" hreflang="it" href="https://mc-novatools.com/it/" />
-  <link rel="alternate" hreflang="pl" href="https://mc-novatools.com/pl/" />
-  <link rel="alternate" hreflang="nl" href="https://mc-novatools.com/nl/" />
+  <link rel="alternate" hreflang="hi" href="https://mc-novatools.com/?lang=hi" />
+  <link rel="alternate" hreflang="it" href="https://mc-novatools.com/?lang=it" />
+  <link rel="alternate" hreflang="pl" href="https://mc-novatools.com/?lang=pl" />
+  <link rel="alternate" hreflang="nl" href="https://mc-novatools.com/?lang=nl" />
   <link rel="alternate" hreflang="x-default" href="https://mc-novatools.com/" />
   
   <!-- Open Graph -->
@@ -239,10 +239,26 @@
             </div>
           </div>
 
-          <picture class="home-hero__visual">
-            <source srcset="/logo-brand-520.webp" type="image/webp">
-            <img src="/logo-brand-520.png" alt="MC NovaTools marka görseli" width="520" height="520" loading="eager" decoding="async">
-          </picture>
+          <aside class="home-hero__visual" aria-label="NovaTools workflow preview">
+            <div class="workflow-panel">
+              <div class="workflow-panel__header">
+                <span class="workflow-panel__dot"></span>
+                <span class="workflow-panel__dot"></span>
+                <span class="workflow-panel__dot"></span>
+                <strong>Workflow launcher</strong>
+              </div>
+              <div class="workflow-panel__search">compress pdf for email</div>
+              <div class="workflow-panel__stack">
+                <a href="/tools/pdf/compress/">Compress PDF <span>PDF</span></a>
+                <a href="/blog/articles/compress-pdf-for-email-without-ruining-readability.html">Readability checklist <span>Guide</span></a>
+                <a href="/categories/pdf-tools.html">Browse PDF tools <span>Category</span></a>
+              </div>
+              <div class="workflow-panel__trust">
+                <span>Browser-first where practical</span>
+                <span>No forced signup</span>
+              </div>
+            </div>
+          </aside>
         </div>
       </section>
 
@@ -316,6 +332,37 @@
         </div>
       </section>
 
+      <!-- Workflow Suggestions -->
+      <section class="section home-workflows" aria-labelledby="homeWorkflowsTitle">
+        <div class="container">
+          <div class="section-header section-header--split">
+            <div>
+              <span class="section-eyebrow">Workflows</span>
+              <h2 class="section-title" id="homeWorkflowsTitle">Start with a task, not a menu</h2>
+              <p class="section-description">Use guided entry points that connect a tool, a checklist, and the next useful step.</p>
+            </div>
+            <a class="section-link" href="/blog/articles/tool-selection-map-for-new-users.html">How to choose →</a>
+          </div>
+          <div class="workflow-card-grid" id="workflowCards">
+            <!-- Workflow cards injected by JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Monetization-ready placement -->
+      <section class="home-ad-ready" aria-label="Sponsored placement information">
+        <div class="container">
+          <div class="ad-ready-panel">
+            <div>
+              <span class="section-eyebrow">Clean layout</span>
+              <h2>Helpful content first, ads only in reserved spaces</h2>
+              <p>NovaTools keeps tool controls, guide cards and legal links easy to find. Advertising scripts load only after the appropriate consent and valid production configuration.</p>
+            </div>
+            <a class="btn btn-secondary" href="/cookie-policy.html">Cookie choices</a>
+          </div>
+        </div>
+      </section>
+
       <!-- Editorial Block -->
       <section class="section home-blog" aria-labelledby="homeBlogTitle">
         <div class="container">
@@ -346,13 +393,13 @@
               <span class="footer-logo-text">MC NovaTools</span>
             </a>
             <p class="footer-description">
-              PDF, görüntü, finans, metin ve geliştirici işleri için pratik online araçlar. Kayıt zorunluluğu olmadan hızlı başlangıç.
+              Browser-based tools for PDF, image, finance, text and developer workflows. Built for fast starts, clear choices and privacy-aware use.
             </p>
-            <div class="home-footer__social" aria-label="Sosyal bağlantılar">
+            <div class="home-footer__social" aria-label="NovaTools links">
               <a href="/blog/index.html" aria-label="NovaTools Blog">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5z"/></svg>
               </a>
-              <a href="mailto:psk.dan.metehancetin@mc-novatools.com?subject=MC%20NovaTools%20Support" aria-label="E-posta ile iletişim">
+              <a href="mailto:psk.dan.metehancetin@mc-novatools.com?subject=MC%20NovaTools%20Support" aria-label="Contact by email">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
               </a>
             </div>
@@ -370,8 +417,8 @@
             </ul>
           </nav>
 
-          <nav class="home-footer__column" aria-label="Yasal bağlantılar">
-            <h2 class="footer-column-title">Yasal</h2>
+          <nav class="home-footer__column" aria-label="Legal links">
+            <h2 class="footer-column-title">Legal</h2>
             <ul class="footer-column-list">
               <li><a href="/privacy-policy.html">Privacy Policy</a></li>
               <li><a href="/terms-of-service.html">Terms of Service</a></li>
@@ -382,18 +429,18 @@
           </nav>
 
           <div class="home-footer__column">
-            <h2 class="footer-column-title">Bülten / İletişim</h2>
-            <p class="home-footer__note">Yeni araçlar ve rehberler için blogu takip edin veya destek için bize yazın.</p>
+            <h2 class="footer-column-title">Updates & Contact</h2>
+            <p class="home-footer__note">Follow the blog for new guides or contact support for public-site questions.</p>
             <form class="newsletter-form" action="/contact.html" method="get">
-              <label class="sr-only" for="footerEmail">E-posta adresi</label>
-              <input id="footerEmail" type="email" name="email" placeholder="E-posta adresiniz">
-              <button class="btn btn-secondary" type="submit">İletişime Geç</button>
+              <label class="sr-only" for="footerEmail">Email address</label>
+              <input id="footerEmail" type="email" name="email" placeholder="Email addressniz">
+              <button class="btn btn-secondary" type="submit">Contact</button>
             </form>
           </div>
         </div>
 
         <div class="home-footer__bottom">
-          <p>NovaTools © 2026 - Tüm hakları saklıdır.</p>
+          <p>NovaTools © 2026 - All rights reserved.</p>
           <p>Owned and operated by Metehan ÇETİN, LPC.</p>
         </div>
       </div>

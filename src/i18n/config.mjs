@@ -94,8 +94,13 @@ export function generateHreflangTags(currentPath) {
   // Each locale
   I18N_CONFIG.locales.forEach(locale => {
     const path = I18N_CONFIG.pathPrefixLocales.includes(locale)
-      ? `/${locale}${currentPath}`
+      ? `/${locale}${currentPath === '/' ? '/' : currentPath}`
       : currentPath;
+    const params = new URLSearchParams();
+    if (locale !== I18N_CONFIG.defaultLocale && !I18N_CONFIG.pathPrefixLocales.includes(locale)) {
+      params.set('lang', locale);
+    }
+    const query = params.toString() ? `?${params.toString()}` : '';
     
     tags.push(
       `<link rel="alternate" hreflang="${I18N_CONFIG.metadata[locale].hreflang}" href="${baseUrl}${path}${query}">`
