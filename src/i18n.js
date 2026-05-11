@@ -808,8 +808,68 @@
       }
     });
 
-    if (/\/tools\//.test(window.location.pathname)) {
-      import('/tool-surface.mjs').then((module) => module.initToolSurface?.());
+    if (!/\/tools\//.test(window.location.pathname)) return;
+
+    const main = document.querySelector('main, .main-content, .tool-wrapper');
+    const hero = document.querySelector('.tool-hero, .hero, h1');
+    if (!main || !hero || document.querySelector('.tool-professional-layer')) return;
+
+    const pathMatch = window.location.pathname.match(/\/tools\/([^/]+)\/([^/]+)\/?/);
+    const category = pathMatch?.[1] || 'tools';
+    const categoryRoutes = {
+      pdf: 'pdf-tools', image: 'image-tools', finance: 'finance-tools', dev: 'developer-tools', text: 'text-writing',
+      converters: 'converters', data: 'data-tools', design: 'design-tools', productivity: 'productivity-tools', security: 'security-tools', social: 'social-media-tools'
+    };
+    const guideByCategory = {
+      pdf: '/blog/articles/five-minute-pdf-cleanup-workflow.html', image: '/blog/articles/compress-images-for-web-quality-checklist.html',
+      finance: '/blog/articles/monthly-finance-document-routine.html', dev: '/blog/articles/developer-debugging-tool-chain.html',
+      text: '/blog/articles/content-review-before-client-delivery.html', converters: '/blog/articles/unit-converter-for-project-planning.html',
+      data: '/blog/articles/data-cleanup-before-dashboard-import.html', design: '/blog/articles/image-alt-text-and-file-names-workflow.html',
+      productivity: '/blog/articles/tool-selection-map-for-new-users.html', security: '/blog/articles/local-processing-vs-upload-tools-comparison.html',
+      social: '/blog/articles/resize-images-for-social-platforms.html'
+    };
+    const categoryRoute = `/categories/${categoryRoutes[category] || 'index'}.html`;
+    const guideRoute = guideByCategory[category] || '/blog/articles/tool-selection-map-for-new-users.html';
+
+    main.classList.add('tool-ux-standard');
+    document.querySelectorAll('input, textarea, select, button, [tabindex]').forEach((el) => {
+      if (el.matches('button, a, input, textarea, select') || Number(el.getAttribute('tabindex')) >= 0) {
+        el.classList.add('tool-focusable');
+      }
+    });
+    document.querySelectorAll('.dropzone, [data-dropzone], .upload-area, .file-upload').forEach((el) => {
+      el.classList.add('tool-dropzone-standard');
+    });
+    document.querySelectorAll('.result, .results, .result-panel, .results-panel, .output, .output-area').forEach((el) => {
+      el.classList.add('tool-result-standard');
+    });
+
+    const panel = document.createElement('section');
+    panel.className = 'tool-professional-layer';
+    panel.setAttribute('aria-label', 'Tool workflow, privacy and help notes');
+    panel.innerHTML = `
+      <div class="tool-professional-card">
+        <strong>Workflow</strong>
+        <p>Add your input, review available settings, run the tool with its primary action, then inspect the result before download, copy or sharing.</p>
+      </div>
+      <div class="tool-professional-card">
+        <strong>Privacy & limits</strong>
+        <p>NovaTools favors browser-first processing where practical. Large files can depend on device memory, and tools that need live data or external services should be reviewed in context.</p>
+      </div>
+      <div class="tool-professional-card">
+        <strong>Result states</strong>
+        <p>Empty means input is still needed; loading means the browser is working; success should be reviewed; errors usually mean format, size or required-field issues.</p>
+      </div>
+      <div class="tool-professional-actions">
+        <a href="${categoryRoute}">Related tools</a>
+        <a href="${guideRoute}">Related guide</a>
+        <a href="/security.html">Safety notes</a>
+      </div>`;
+
+    if (hero.parentElement) {
+      hero.parentElement.insertAdjacentElement('afterend', panel);
+    } else {
+      main.insertAdjacentElement('afterbegin', panel);
     }
   }
 
@@ -914,6 +974,94 @@
       min-height: 250px;
       background: rgba(15, 23, 42, 0.38);
       border-radius: 12px;
+    }
+
+    .tool-quality-panel {
+      width: min(960px, calc(100% - 32px));
+      margin: 1rem auto 2rem;
+      padding: 1rem;
+      display: grid;
+      gap: 0.75rem;
+      color: #cbd5e1;
+      background: rgba(15, 23, 42, 0.72);
+      border: 1px solid rgba(148, 163, 184, 0.22);
+      border-radius: 16px;
+      line-height: 1.65;
+    }
+
+    .tool-quality-panel strong { color: #f8fafc; }
+    .tool-quality-panel a { color: #22d3ee; }
+
+    .tool-professional-layer {
+      width: min(1120px, calc(100% - 32px));
+      margin: 1rem auto 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+      gap: 0.9rem;
+      color: #cbd5e1;
+    }
+
+    .tool-professional-card,
+    .tool-professional-actions {
+      padding: 1rem;
+      border: 1px solid rgba(148, 163, 184, 0.22);
+      border-radius: 16px;
+      background: linear-gradient(180deg, rgba(15, 23, 42, 0.78), rgba(15, 23, 42, 0.52));
+      box-shadow: 0 12px 36px rgba(2, 6, 23, 0.22);
+    }
+
+    .tool-professional-card strong {
+      display: block;
+      margin-bottom: 0.35rem;
+      color: #f8fafc;
+      font-size: 0.95rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .tool-professional-card p {
+      margin: 0;
+      line-height: 1.65;
+    }
+
+    .tool-professional-actions {
+      display: grid;
+      gap: 0.55rem;
+      align-content: center;
+    }
+
+    .tool-professional-actions a {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding: 0.75rem 0.85rem;
+      border: 1px solid rgba(34, 211, 238, 0.18);
+      border-radius: 12px;
+      background: rgba(34, 211, 238, 0.08);
+      color: #67e8f9;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .tool-ux-standard input:not([type="checkbox"]):not([type="radio"]),
+    .tool-ux-standard textarea,
+    .tool-ux-standard select {
+      min-height: 44px;
+    }
+
+    .tool-focusable:focus-visible,
+    .tool-professional-actions a:focus-visible {
+      outline: 3px solid rgba(34, 211, 238, 0.65);
+      outline-offset: 3px;
+    }
+
+    .tool-dropzone-standard {
+      border-color: rgba(34, 211, 238, 0.34) !important;
+      box-shadow: inset 0 0 0 1px rgba(34, 211, 238, 0.12);
+    }
+
+    .tool-result-standard {
+      border-radius: 14px;
     }
 
     .site-guide-chatbot {
