@@ -1,7 +1,8 @@
+import { blogLocaleFromPath, fallbackBlogLocale, supportedBlogLocales } from './blog-routes.js';
+
 const blogModules = import.meta.glob('../i18n/blog/*.json', { eager: true, import: 'default' });
 
-export const supportedBlogLocales = ['en', 'tr', 'de', 'fr', 'es', 'pt', 'ru', 'zh', 'ja', 'ko', 'ar', 'hi', 'it', 'pl', 'nl'];
-export const fallbackBlogLocale = 'en';
+export { fallbackBlogLocale, supportedBlogLocales };
 
 export const blogUi = {
   en: {
@@ -102,6 +103,8 @@ const blogDataByLocale = Object.fromEntries(
 );
 
 export function getActiveBlogLocale() {
+  const routeLocale = blogLocaleFromPath(window.location.pathname);
+  if (routeLocale) return routeLocale;
   const documentLocale = document.documentElement.lang;
   return supportedBlogLocales.includes(documentLocale) ? documentLocale : fallbackBlogLocale;
 }

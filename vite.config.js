@@ -9,6 +9,7 @@ import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
 import postcssImport from 'postcss-import';
 import liveDataHandler from './api/live-data.js';
+import { fallbackBlogLocale, supportedBlogLocales } from './src/js/blog-routes.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -112,22 +113,34 @@ const localizedRootHtmlEntries = ['tr', 'ar'].reduce((acc, locale) => {
 }, {});
 
 
-const translatedBlogSlugsByLocale = (() => {
-  return ['en', 'tr', 'ar'].reduce((acc, locale) => {
+const blogSlugsByLocale = (() => {
+  const fallbackPosts = JSON.parse(readFileSync(resolve(__dirname, `src/i18n/blog/${fallbackBlogLocale}.json`), 'utf8'));
+  const fallbackSlugs = fallbackPosts.map((post) => post.slug).filter(Boolean);
+
+  return supportedBlogLocales.reduce((acc, locale) => {
     try {
       const posts = JSON.parse(readFileSync(resolve(__dirname, `src/i18n/blog/${locale}.json`), 'utf8'));
       acc[locale] = posts.map((post) => post.slug).filter(Boolean);
     } catch {
-      acc[locale] = [];
+      acc[locale] = fallbackSlugs;
     }
     return acc;
   }, {});
 })();
 
-const localizedBlogArticleEntries = Object.entries(translatedBlogSlugsByLocale).reduce((acc, [locale, slugs]) => {
+const localizedBlogIndexEntries = supportedBlogLocales
+  .filter((locale) => locale !== fallbackBlogLocale)
+  .reduce((acc, locale) => {
+    acc[`${locale}/blog/index`] = resolveHtmlEntry('src/blog/index.html');
+    return acc;
+  }, {});
+
+const blogArticleRouteEntries = Object.entries(blogSlugsByLocale).reduce((acc, [locale, slugs]) => {
   slugs.forEach((slug) => {
-    const route = locale === 'en' ? `blog/${slug}` : `${locale}/blog/${slug}`;
-    acc[route] = resolveHtmlEntry('src/blog/article-template.html');
+    const canonicalRoute = locale === fallbackBlogLocale ? `blog/articles/${slug}` : `${locale}/blog/articles/${slug}`;
+    const legacyRoute = locale === fallbackBlogLocale ? `blog/${slug}` : `${locale}/blog/${slug}`;
+    acc[canonicalRoute] = resolveHtmlEntry('src/blog/article-template.html');
+    acc[legacyRoute] = resolveHtmlEntry('src/blog/article-template.html');
   });
   return acc;
 }, {});
@@ -198,10 +211,9 @@ export default defineConfig({
         ...localizedRootHtmlEntries,
         ...adminEntry,
         ...blogEntry,
-        'tr/blog/index': resolveHtmlEntry('src/blog/index.html'),
-        'ar/blog/index': resolveHtmlEntry('src/blog/index.html'),
-        ...localizedBlogArticleEntries,
+        ...localizedBlogIndexEntries,
         ...blogArticleEntries,
+        ...blogArticleRouteEntries,
         ...categoryEntries,
         ...localizedCategoryEntries,
         ...toolEntries,

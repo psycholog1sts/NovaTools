@@ -3,11 +3,12 @@ import fs from 'fs';
 import path from 'path';
 import { globSync } from 'glob';
 import { fileURLToPath } from 'url';
+import { blogArticlePath, blogHubPath, fallbackBlogLocale, supportedBlogLocales } from '../src/js/blog-routes.js';
 
 const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const origin = 'https://mc-novatools.com';
 const lastmod = new Date().toISOString().slice(0, 10);
-const locales = ['en', 'tr', 'ar'];
+const locales = supportedBlogLocales;
 
 function readJson(relativePath) {
   return JSON.parse(fs.readFileSync(path.join(rootDir, relativePath), 'utf8'));
@@ -32,9 +33,10 @@ function urlEntry(loc, priority = '0.7', changefreq = 'monthly') {
 }
 
 const urls = [];
-['/', '/blog/index.html', '/about-us.html', '/contact.html', '/privacy-policy.html', '/terms-of-service.html', '/cookie-policy.html', '/security.html'].forEach((route) => {
+['/', '/about-us.html', '/contact.html', '/privacy-policy.html', '/terms-of-service.html', '/cookie-policy.html', '/security.html'].forEach((route) => {
   locales.forEach((locale) => urls.push(urlEntry(localizedUrl(route, locale), route === '/' ? '1.0' : '0.7', route === '/' ? 'weekly' : 'monthly')));
 });
+locales.forEach((locale) => urls.push(urlEntry(`${origin}${blogHubPath(locale)}`, '0.7', 'monthly')));
 
 globSync('categories/**/*.html', { cwd: rootDir }).sort().forEach((file) => {
   const route = `/${file.replace(/\\/g, '/')}`;
@@ -46,9 +48,11 @@ globSync('src/tools/**/index.html', { cwd: rootDir, ignore: ['**/demo-*/**', '**
   locales.forEach((locale) => urls.push(urlEntry(localizedUrl(route, locale), '0.8', 'weekly')));
 });
 
+const fallbackPosts = readJson(`src/i18n/blog/${fallbackBlogLocale}.json`);
 locales.forEach((locale) => {
-  const posts = readJson(`src/i18n/blog/${locale}.json`);
-  posts.forEach((post) => urls.push(urlEntry(localizedUrl(`/blog/${post.slug}.html`, locale), '0.6', 'monthly')));
+  const manifestPath = path.join(rootDir, `src/i18n/blog/${locale}.json`);
+  const posts = fs.existsSync(manifestPath) ? readJson(`src/i18n/blog/${locale}.json`) : fallbackPosts;
+  posts.forEach((post) => urls.push(urlEntry(`${origin}${blogArticlePath(post.slug, locale)}`, '0.6', 'monthly')));
 });
 
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join('\n')}\n</urlset>\n`;
