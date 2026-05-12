@@ -137,9 +137,10 @@
       renderBlogPicture
     } from '../js/i18n-blog.js';
     import { getCleanBlogUrl } from '../js/blog-seo.js';
+    import { blogLocaleFromPath } from '../js/blog-routes.js';
 
     const pageSize = 12;
-    let locale = getActiveBlogLocale();
+    let locale = blogLocaleFromPath(window.location.pathname) || getActiveBlogLocale();
     let ui = getBlogUi(locale);
     let articles = getBlogPostsForLocale(locale);
     let activeCategory = 'all';

@@ -1,5 +1,6 @@
 import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import path from 'node:path';
+import { blogArticlePath, blogHubPath, fallbackBlogLocale, supportedBlogLocales } from '../src/js/blog-routes.js';
 
 const repoRoot = process.cwd();
 const distDir = path.join(repoRoot, 'dist');
@@ -79,14 +80,20 @@ function auditHomeShell() {
   }
 }
 
+function readBlogPosts(locale) {
+  const manifestFile = path.join(repoRoot, 'src', 'i18n', 'blog', `${locale}.json`);
+  if (existsSync(manifestFile)) return JSON.parse(readFileSync(manifestFile, 'utf8'));
+  return JSON.parse(readFileSync(path.join(repoRoot, 'src', 'i18n', 'blog', `${fallbackBlogLocale}.json`), 'utf8'));
+}
+
 function auditBlogManifestRoutes() {
-  const locales = ['en', 'tr', 'ar'];
   let checked = 0;
-  for (const locale of locales) {
-    const manifestFile = path.join(repoRoot, 'src', 'i18n', 'blog', `${locale}.json`);
-    const posts = JSON.parse(readFileSync(manifestFile, 'utf8'));
-    for (const post of posts) {
-      const route = `blog/articles/${post.slug}.html`;
+  for (const locale of supportedBlogLocales) {
+    const hubRoute = blogHubPath(locale).replace(/^\//, '');
+    if (!distExists(hubRoute)) fail(`Blog hub route missing for ${locale}: ${hubRoute}`);
+
+    for (const post of readBlogPosts(locale)) {
+      const route = blogArticlePath(post.slug, locale).replace(/^\//, '');
       if (!distExists(route)) fail(`Blog manifest route missing for ${locale}/${post.slug}: ${route}`);
       checked += 1;
     }
@@ -110,6 +117,8 @@ if (!existsSync(distDir)) {
 } else {
   auditStaticHrefs('index.html');
   auditStaticHrefs('blog/index.html');
+  for (const file of walkHtml('blog')) auditStaticHrefs(file);
+  for (const locale of supportedBlogLocales.filter((item) => item !== fallbackBlogLocale)) auditStaticHrefs(`${locale}/blog/index.html`);
   for (const file of walkHtml('categories')) auditStaticHrefs(file);
   auditHomeShell();
   auditBlogManifestRoutes();
@@ -118,7 +127,7 @@ if (!existsSync(distDir)) {
 
 console.log('Public route audit summary');
 console.log(`- HTML category routes: ${existsSync(distDir) ? walkHtml('categories').length : 0}`);
-console.log(`- Blog article routes checked: ${existsSync(distDir) ? ['en', 'tr', 'ar'].reduce((sum, locale) => sum + JSON.parse(readFileSync(path.join(repoRoot, 'src', 'i18n', 'blog', `${locale}.json`), 'utf8')).length, 0) : 0}`);
+console.log(`- Blog article routes checked: ${existsSync(distDir) ? supportedBlogLocales.reduce((sum, locale) => sum + readBlogPosts(locale).length, 0) : 0}`);
 
 for (const message of warnings) console.warn(`WARN: ${message}`);
 for (const message of failures) console.error(`FAIL: ${message}`);

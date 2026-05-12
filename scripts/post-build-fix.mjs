@@ -6,6 +6,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { blogArticlePath, blogHubPath, fallbackBlogLocale, legacyBlogArticlePath, supportedBlogLocales } from '../src/js/blog-routes.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -54,14 +55,39 @@ if (fs.existsSync(blogSrcDir)) {
   console.log('✅ Fixed: dist/src/blog -> dist/blog');
 }
 
-// Ensure blog articles are copied from source if not present
+// Ensure blog articles are merged from source and localized manifest routes exist.
 const sourceArticlesDir = path.join(__dirname, '..', 'src', 'blog', 'articles');
 const distBlogArticlesDir = path.join(distDir, 'blog', 'articles');
 
-if (fs.existsSync(sourceArticlesDir) && !fs.existsSync(distBlogArticlesDir)) {
-  fs.mkdirSync(path.join(distDir, 'blog'), { recursive: true });
-  fs.cpSync(sourceArticlesDir, distBlogArticlesDir, { recursive: true });
-  console.log('✅ Copied: src/blog/articles -> dist/blog/articles');
+if (fs.existsSync(sourceArticlesDir)) {
+  fs.mkdirSync(distBlogArticlesDir, { recursive: true });
+  fs.cpSync(sourceArticlesDir, distBlogArticlesDir, { recursive: true, force: false });
+  console.log('✅ Merged: src/blog/articles -> dist/blog/articles');
+}
+
+const distBlogIndex = path.join(distDir, 'blog', 'index.html');
+const distBlogTemplate = path.join(distDir, 'blog', 'article-template.html');
+const readBlogManifest = (locale) => {
+  const manifestPath = path.join(__dirname, '..', 'src', 'i18n', 'blog', `${locale}.json`);
+  const fallbackPath = path.join(__dirname, '..', 'src', 'i18n', 'blog', `${fallbackBlogLocale}.json`);
+  return JSON.parse(fs.readFileSync(fs.existsSync(manifestPath) ? manifestPath : fallbackPath, 'utf8'));
+};
+
+if (fs.existsSync(distBlogIndex) && fs.existsSync(distBlogTemplate)) {
+  for (const locale of supportedBlogLocales) {
+    const hubPath = path.join(distDir, blogHubPath(locale).replace(/^\//, ''));
+    fs.mkdirSync(path.dirname(hubPath), { recursive: true });
+    if (!fs.existsSync(hubPath)) fs.copyFileSync(distBlogIndex, hubPath);
+
+    for (const post of readBlogManifest(locale)) {
+      for (const route of [blogArticlePath(post.slug, locale), legacyBlogArticlePath(post.slug, locale)]) {
+        const target = path.join(distDir, route.replace(/^\//, ''));
+        fs.mkdirSync(path.dirname(target), { recursive: true });
+        if (!fs.existsSync(target)) fs.copyFileSync(distBlogTemplate, target);
+      }
+    }
+  }
+  console.log('✅ Verified: localized blog hub, canonical article, and legacy article routes');
 }
 
 // Fix 3: Clean up dist/src if empty
