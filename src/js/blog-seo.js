@@ -1,4 +1,4 @@
-const SITE_ORIGIN = 'https://mc-novatools.com';
+import { SITE_ORIGIN, absoluteBlogUrl, blogArticlePath, blogHubPath, supportedBlogLocales } from './blog-routes.js';
 const TITLE_SUFFIX = ' | NovaTools Blog';
 const MAX_TITLE = 60;
 const MAX_DESCRIPTION = 160;
@@ -21,8 +21,8 @@ function descriptionFor(post) {
   return truncate(source, DESCRIPTION_TARGET);
 }
 
-function cleanBlogUrl(slug, _locale = 'en') {
-  return `${SITE_ORIGIN}/blog/articles/${slug}.html`;
+function cleanBlogUrl(slug, locale = 'en') {
+  return absoluteBlogUrl(blogArticlePath(slug, locale));
 }
 
 function absolute(path) {
@@ -99,9 +99,7 @@ export function injectBlogSeo(post, locale, categoryLabel) {
 
   document.head.querySelectorAll('link[rel="alternate"][data-blog-seo="hreflang"]').forEach((item) => item.remove());
   [
-    ['en', defaultUrl],
-    ['tr', cleanBlogUrl(post.slug, 'tr')],
-    ['ar', cleanBlogUrl(post.slug, 'ar')],
+    ...supportedBlogLocales.map((supportedLocale) => [supportedLocale, cleanBlogUrl(post.slug, supportedLocale)]),
     ['x-default', defaultUrl]
   ].forEach(([hreflang, href]) => {
     const link = document.createElement('link');
@@ -175,8 +173,8 @@ export function injectBlogSeo(post, locale, categoryLabel) {
     '@type': 'BreadcrumbList',
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: locale === 'tr' ? 'Ana Sayfa' : locale === 'ar' ? 'الرئيسية' : 'Home', item: `${SITE_ORIGIN}/` },
-      { '@type': 'ListItem', position: 2, name: 'Blog', item: `${SITE_ORIGIN}/blog/` },
-      { '@type': 'ListItem', position: 3, name: categoryLabel, item: `${SITE_ORIGIN}/blog/?category=${encodeURIComponent(post.category)}` },
+      { '@type': 'ListItem', position: 2, name: 'Blog', item: `${SITE_ORIGIN}${blogHubPath(locale)}` },
+      { '@type': 'ListItem', position: 3, name: categoryLabel, item: `${SITE_ORIGIN}${blogHubPath(locale)}?category=${encodeURIComponent(post.category)}` },
       { '@type': 'ListItem', position: 4, name: post.title, item: canonicalUrl }
     ]
   });
