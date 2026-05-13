@@ -201,7 +201,7 @@
       getBlogUi,
       renderBlogPicture
     } from '../js/i18n-blog.js';
-    import { getCleanBlogUrl } from '../js/blog-seo.js';
+    import { getCleanBlogUrl, injectBlogIndexSeo } from '../js/blog-seo.js';
     import { blogLocaleFromPath } from '../js/blog-routes.js';
 
     const pageSize = 12;
@@ -258,6 +258,7 @@
 
     function applyUi() {
       applyBlogDocumentLocale(locale);
+      injectBlogIndexSeo(locale);
       document.querySelectorAll('[data-blog-ui]').forEach((element) => {
         const key = element.dataset.blogUi;
         if (ui[key]) element.textContent = ui[key];

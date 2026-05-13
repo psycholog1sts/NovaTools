@@ -7,10 +7,128 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { blogArticleRoutes, blogHubPath, fallbackBlogLocale, supportedBlogLocales } from '../src/js/blog-routes.js';
+import { buildBlogArticleSeo, buildBlogIndexSeo } from '../src/js/blog-seo.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const distDir = path.join(__dirname, '..', 'dist');
+
+function escapeHtml(value) {
+  return String(value).replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]);
+}
+
+function escapeAttr(value) {
+  return escapeHtml(value);
+}
+
+function jsonScript(id, data) {
+  return `<script id="${id}" type="application/ld+json">${JSON.stringify(data).replace(/<\//g, '<\\/')}</script>`;
+}
+
+function metaName(name, content) {
+  return `<meta name="${name}" content="${escapeAttr(content)}">`;
+}
+
+function metaProperty(property, content) {
+  return `<meta property="${property}" content="${escapeAttr(content)}">`;
+}
+
+function alternateLinks(alternates) {
+  return alternates.map(([hreflang, href]) => `<link rel="alternate" hreflang="${hreflang}" href="${escapeAttr(href)}" data-blog-seo="hreflang">`).join('\n  ');
+}
+
+function socialLocaleTags(seo) {
+  return [
+    metaProperty('og:locale', seo.ogLocale),
+    ...seo.alternateLocales.map((ogLocale) => `<meta property="og:locale:alternate" content="${escapeAttr(ogLocale)}" data-blog-seo="og-locale">`)
+  ].join('\n  ');
+}
+
+function blogArticleHeadBlock(post, locale) {
+  const seo = buildBlogArticleSeo(post, locale, post.category);
+  return `<!-- blog-seo:start -->
+  <title>${escapeHtml(seo.title)}</title>
+  ${metaName('description', seo.description)}
+  ${metaName('robots', 'index, follow, max-image-preview:large')}
+  <link rel="canonical" href="${escapeAttr(seo.canonicalUrl)}">
+  ${alternateLinks(seo.alternates)}
+  ${metaProperty('og:title', seo.title)}
+  ${metaProperty('og:description', seo.description)}
+  ${metaProperty('og:type', 'article')}
+  ${metaProperty('og:url', seo.canonicalUrl)}
+  ${metaProperty('og:site_name', 'MC NovaTools')}
+  ${socialLocaleTags(seo)}
+  ${metaProperty('og:image', seo.ogImage)}
+  ${metaProperty('og:image:width', '1200')}
+  ${metaProperty('og:image:height', '630')}
+  ${metaProperty('og:image:type', seo.ogImageType)}
+  ${metaProperty('article:published_time', seo.published)}
+  ${metaProperty('article:modified_time', seo.modified)}
+  ${metaProperty('article:section', post.category)}
+  ${metaProperty('article:tag', (post.tags || []).join(', '))}
+  ${metaName('twitter:card', 'summary_large_image')}
+  ${metaName('twitter:title', seo.title)}
+  ${metaName('twitter:description', seo.description)}
+  ${metaName('twitter:image', seo.ogImage)}
+  ${jsonScript('blog-seo-article-jsonld', seo.jsonLd.article)}
+  ${post.faq?.length ? jsonScript('blog-seo-faq-jsonld', seo.jsonLd.faq) : ''}
+  ${jsonScript('blog-seo-breadcrumb-jsonld', seo.jsonLd.breadcrumb)}
+  <!-- blog-seo:end -->`;
+}
+
+function blogIndexHeadBlock(locale) {
+  const seo = buildBlogIndexSeo(locale);
+  return `<!-- blog-seo:start -->
+  <title>${escapeHtml(seo.title)}</title>
+  ${metaName('description', seo.description)}
+  ${metaName('robots', 'index, follow, max-image-preview:large')}
+  <link rel="canonical" href="${escapeAttr(seo.canonicalUrl)}">
+  ${alternateLinks(seo.alternates)}
+  ${metaProperty('og:title', seo.title)}
+  ${metaProperty('og:description', seo.description)}
+  ${metaProperty('og:type', 'website')}
+  ${metaProperty('og:url', seo.canonicalUrl)}
+  ${metaProperty('og:site_name', 'MC NovaTools')}
+  ${socialLocaleTags(seo)}
+  ${metaProperty('og:image', seo.ogImage)}
+  ${metaProperty('og:image:width', '520')}
+  ${metaProperty('og:image:height', '520')}
+  ${metaProperty('og:image:type', seo.ogImageType)}
+  ${metaName('twitter:card', 'summary_large_image')}
+  ${metaName('twitter:title', seo.title)}
+  ${metaName('twitter:description', seo.description)}
+  ${metaName('twitter:image', seo.ogImage)}
+  ${jsonScript('blog-seo-jsonld', seo.jsonLd.blog)}
+  ${jsonScript('blog-seo-breadcrumb-jsonld', seo.jsonLd.breadcrumb)}
+  <!-- blog-seo:end -->`;
+}
+
+function replaceBlogSeoHead(html, block) {
+  if (html.includes('<!-- blog-seo:start -->')) {
+    return html.replace(/\n?\s*<!-- blog-seo:start -->[\s\S]*?<!-- blog-seo:end -->/, `\n  ${block}`);
+  }
+  let next = html
+    .replace(/\n\s*<title>[\s\S]*?<\/title>/i, '')
+    .replace(/\n\s*<meta name="description"[^>]*>/i, '')
+    .replace(/\n\s*<meta name="robots"[^>]*>/i, '')
+    .replace(/\n\s*<link rel="canonical"[^>]*>/i, '')
+    .replace(/\n\s*<link rel="alternate"[^>]*data-blog-seo="hreflang"[^>]*>/gi, '')
+    .replace(/\n\s*<meta property="og:[^>]*>/gi, '')
+    .replace(/\n\s*<meta property="article:[^>]*>/gi, '')
+    .replace(/\n\s*<meta name="twitter:[^>]*>/gi, '')
+    .replace(/\n\s*<script(?: id="blog-seo-[^"]+")? type="application\/ld\+json">[\s\S]*?<\/script>/gi, '');
+  if (/<meta name="theme-color"[^>]*>/i.test(next)) return next.replace(/(<meta name="theme-color"[^>]*>)/i, `$1\n  ${block}`);
+  return next.replace(/<\/head>/i, `  ${block}\n</head>`);
+}
+
+function stampBlogFile(filePath, block, locale) {
+  if (!fs.existsSync(filePath)) return false;
+  const html = fs.readFileSync(filePath, 'utf8');
+  const stamped = replaceBlogSeoHead(html, block).replace(/<html lang="[^"]+"/, `<html lang="${locale}"`);
+  if (stamped !== html) fs.writeFileSync(filePath, stamped);
+  return true;
+}
+
 
 console.log('🔧 Running post-build fixes...\n');
 
@@ -78,12 +196,14 @@ if (fs.existsSync(distBlogIndex) && fs.existsSync(distBlogTemplate)) {
     const hubPath = path.join(distDir, blogHubPath(locale).replace(/^\//, ''));
     fs.mkdirSync(path.dirname(hubPath), { recursive: true });
     if (!fs.existsSync(hubPath)) fs.copyFileSync(distBlogIndex, hubPath);
+    stampBlogFile(hubPath, blogIndexHeadBlock(locale), locale);
 
     for (const post of readBlogManifest(locale)) {
       for (const route of Object.values(blogArticleRoutes(post.slug, locale))) {
         const target = path.join(distDir, route.replace(/^\//, ''));
         fs.mkdirSync(path.dirname(target), { recursive: true });
         if (!fs.existsSync(target)) fs.copyFileSync(distBlogTemplate, target);
+        stampBlogFile(target, blogArticleHeadBlock(post, locale), locale);
       }
     }
   }
