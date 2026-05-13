@@ -121,6 +121,9 @@ npm run build
 # Run tests
 npm test
 
+# Run the same pre-merge validation sequence used by PR checks
+npm run ci:validate
+
 # Lighthouse CI
 npm run lighthouse
 ```
