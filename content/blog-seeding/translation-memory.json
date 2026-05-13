@@ -1,0 +1,6 @@
+{
+  "schemaVersion": "blog-translation-memory-v1",
+  "description": "Human-approved translation memory for NovaTools blog localization. This file stores reviewed terminology and sentence mappings only; it is not a machine-translation source.",
+  "locales": ["en", "tr", "de", "fr", "es", "pt", "ru", "zh", "ja", "ko", "ar", "hi", "it", "pl", "nl"],
+  "entries": []
+}

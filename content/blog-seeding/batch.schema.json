@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mc-novatools.com/schemas/blog-seed-batch.schema.json",
+  "title": "NovaTools Blog Seed Batch",
+  "type": "object",
+  "required": ["schemaVersion", "articles"],
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": { "const": "blog-seed-batch-v1" },
+    "defaultLocale": { "type": "string", "default": "en" },
+    "notes": { "type": "string" },
+    "articles": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/article" }
+    }
+  },
+  "$defs": {
+    "article": {
+      "type": "object",
+      "required": ["slug", "title", "excerpt", "summary", "category", "faq", "cta", "relatedToolLinks", "relatedArticleLinks"],
+      "additionalProperties": true,
+      "properties": {
+        "slug": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+        "title": { "type": "string", "minLength": 20, "maxLength": 110 },
+        "excerpt": { "type": "string", "minLength": 90, "maxLength": 260 },
+        "summary": { "type": "array", "minItems": 3, "items": { "type": "string", "minLength": 20 } },
+        "category": { "type": "string", "minLength": 2 },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "coverImage": { "type": "object" },
+        "visualBrief": { "type": "object" },
+        "faq": { "type": "array", "minItems": 2, "items": { "$ref": "#/$defs/faq" } },
+        "cta": { "$ref": "#/$defs/cta" },
+        "relatedTools": { "type": "array", "items": { "type": "string" } },
+        "relatedToolLinks": { "type": "array", "minItems": 1, "items": { "type": "string", "pattern": "^/" } },
+        "relatedArticleLinks": { "type": "array", "minItems": 1, "items": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" } },
+        "localizations": {
+          "type": "object",
+          "additionalProperties": { "$ref": "#/$defs/localization" }
+        }
+      }
+    },
+    "faq": {
+      "type": "object",
+      "required": ["question", "answer"],
+      "additionalProperties": false,
+      "properties": {
+        "question": { "type": "string", "minLength": 12 },
+        "answer": { "type": "string", "minLength": 20 }
+      }
+    },
+    "cta": {
+      "type": "object",
+      "required": ["label", "href", "text"],
+      "additionalProperties": false,
+      "properties": {
+        "label": { "type": "string", "minLength": 2 },
+        "href": { "type": "string", "pattern": "^/" },
+        "text": { "type": "string", "minLength": 20 }
+      }
+    },
+    "localization": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "title": { "type": "string" },
+        "excerpt": { "type": "string" },
+        "summary": { "type": "array", "items": { "type": "string" } },
+        "faq": { "type": "array", "items": { "$ref": "#/$defs/faq" } },
+        "cta": { "$ref": "#/$defs/cta" },
+        "notes": { "type": "string" }
+      }
+    }
+  }
+}
