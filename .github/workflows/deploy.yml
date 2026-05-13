@@ -48,6 +48,9 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Audit public routes
+        run: npm run audit:public-routes
+
   security-audit:
     name: Security audit
     runs-on: ubuntu-latest
@@ -115,6 +118,9 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      - name: Audit public routes
+        run: npm run audit:public-routes
 
       - name: Verify Cloudflare Pages build output
         run: test -d dist && test -f dist/index.html
