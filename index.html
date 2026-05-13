@@ -213,29 +213,29 @@
         <div class="container home-hero__container">
           <div class="home-hero__content">
             <span class="home-eyebrow">MC NovaTools</span>
-            <h1 class="home-hero__title" id="homeHeroTitle">
-              Free Online Tools for Faster Everyday Workflows
+            <h1 class="home-hero__title" id="homeHeroTitle" data-i18n="hero.title">
+              All-in-One Tools for Files, Finance & Code
             </h1>
-            <p class="home-hero__subtitle">
-              Practical browser-first tools for PDF, image, text, finance, developer and security tasks. Start fast without forced signup.
+            <p class="home-hero__subtitle" data-i18n="hero.subtitle">
+              Use MC NovaTools to convert, calculate, create, and streamline practical workflows with a fast, clear, browser-based toolkit.
             </p>
 
             <form class="home-search" id="homeSearchForm" role="search" autocomplete="off">
-              <label class="sr-only" for="homeSearchInput">Araç ara</label>
+              <label class="sr-only" for="homeSearchInput" data-i18n="common.search">Search</label>
               <div class="home-search__box">
                 <svg class="home-search__icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                   <circle cx="11" cy="11" r="8"/>
                   <path d="m21 21-4.35-4.35"/>
                 </svg>
-                <input id="homeSearchInput" class="home-search__input" type="search" placeholder="What do you want to do? (e.g. compress PDF, summarize text)" aria-controls="homeSearchResults" aria-expanded="false">
-                <button class="btn btn-primary home-search__button" type="submit">Search</button>
+                <input id="homeSearchInput" class="home-search__input" type="search" placeholder="Search tools, categories, and workflows..." data-i18n-placeholder="home.searchPlaceholder" aria-controls="homeSearchResults" aria-expanded="false">
+                <button class="btn btn-primary home-search__button" type="submit" data-i18n="common.search">Search</button>
               </div>
               <div class="home-search__results" id="homeSearchResults" role="listbox" aria-label="Search suggestions"></div>
             </form>
 
             <div class="home-hero__actions" aria-label="Ana eylemler">
-              <a href="/categories/index.html" class="btn btn-primary btn-lg">Explore All Tools</a>
-              <a href="#popular-tasks" class="btn btn-secondary btn-lg">Popular Tasks</a>
+              <a href="/categories/index.html" class="btn btn-primary btn-lg" data-i18n="hero.cta">Explore Tools</a>
+              <a href="#popular-tasks" class="btn btn-secondary btn-lg" data-i18n="home.sections.popularTitle">Popular Tools</a>
             </div>
           </div>
 
@@ -267,15 +267,15 @@
         <div class="container home-trust__grid">
           <div class="home-trust__item">
             <span class="home-trust__icon" aria-hidden="true">🔒</span>
-            <span>Browser-first processing</span>
+            <span data-i18n="home.features.privateDesc">Your files and inputs stay on your device whenever possible.</span>
           </div>
           <div class="home-trust__item">
             <span class="home-trust__icon" aria-hidden="true">⚡</span>
-            <span>Fast results</span>
+            <span data-i18n="home.features.fastTitle">Lightning Fast</span>
           </div>
           <div class="home-trust__item">
             <span class="home-trust__icon" aria-hidden="true">🌍</span>
-            <span>Multilingual interface</span>
+            <span data-i18n="home.features.multiLangTitle">Multi-Language</span>
           </div>
           <div class="home-trust__item">
             <span class="home-trust__icon" aria-hidden="true">📱</span>
@@ -283,7 +283,7 @@
           </div>
           <div class="home-trust__item">
             <span class="home-trust__icon" aria-hidden="true">🆓</span>
-            <span>Free</span>
+            <span data-i18n="home.features.freeTitle">Completely Free</span>
           </div>
         </div>
       </section>
@@ -293,8 +293,8 @@
         <div class="container">
           <div class="section-header">
             <span class="section-eyebrow">Quick start</span>
-            <h2 class="section-title" id="popularTasksTitle">Popular Tasks</h2>
-            <p class="section-description">Choose a common task and open the right tool directly.</p>
+            <h2 class="section-title" id="popularTasksTitle" data-i18n="home.sections.popularTitle">Popular Tools</h2>
+            <p class="section-description" data-i18n="home.sections.popularDesc">Most-used tools picked by users.</p>
           </div>
           <div class="task-chip-grid" id="popularTasks">
             <!-- Popular task chips injected by JS -->
@@ -321,8 +321,8 @@
         <div class="container">
           <div class="section-header">
             <span class="section-eyebrow">Categories</span>
-            <h2 class="section-title" id="categoriesTitle" data-i18n="tools.categories">Browse by Category</h2>
-            <p class="section-description" data-i18n="tools.categoriesDesc">
+            <h2 class="section-title" id="categoriesTitle" data-i18n="home.sections.categoriesTitle">Browse by Category</h2>
+            <p class="section-description" data-i18n="home.sections.categoriesDesc">
               Organized collections of tools for real work. Click a category to explore.
             </p>
           </div>
@@ -392,8 +392,8 @@
               </span>
               <span class="footer-logo-text">MC NovaTools</span>
             </a>
-            <p class="footer-description">
-              Browser-based tools for PDF, image, finance, text and developer workflows. Built for fast starts, clear choices and privacy-aware use.
+            <p class="footer-description" data-i18n="home.footer.brandDesc">
+              Browser-based tools for files, finance, code, and everyday workflows. Built for clarity, practical use, and privacy-conscious operation.
             </p>
             <div class="home-footer__social" aria-label="NovaTools links">
               <a href="/blog/index.html" aria-label="NovaTools Blog">
@@ -406,42 +406,42 @@
           </div>
 
           <nav class="home-footer__column" aria-label="Categories">
-            <h2 class="footer-column-title">Categories</h2>
+            <h2 class="footer-column-title" data-i18n="home.footer.toolCategoriesTitle">Tool Categories</h2>
             <ul class="footer-column-list">
-              <li><a href="/categories/pdf-tools.html">PDF Tools</a></li>
-              <li><a href="/categories/image-tools.html">Image Tools</a></li>
-              <li><a href="/categories/finance-tools.html">Finance Tools</a></li>
-              <li><a href="/categories/developer-tools.html">Developer Tools</a></li>
-              <li><a href="/categories/text-writing.html">Text & Writing</a></li>
-              <li><a href="/categories/converters.html">Converters</a></li>
+              <li><a href="/categories/pdf-tools.html" data-i18n="nav.pdf">PDF Tools</a></li>
+              <li><a href="/categories/image-tools.html" data-i18n="nav.image">Image Tools</a></li>
+              <li><a href="/categories/finance-tools.html" data-i18n="nav.finance">Finance</a></li>
+              <li><a href="/categories/developer-tools.html" data-i18n="nav.developer">Developer</a></li>
+              <li><a href="/categories/text-writing.html" data-i18n="nav.text">Text</a></li>
+              <li><a href="/categories/converters.html" data-i18n="nav.converters">Converters</a></li>
             </ul>
           </nav>
 
           <nav class="home-footer__column" aria-label="Legal links">
-            <h2 class="footer-column-title">Legal</h2>
+            <h2 class="footer-column-title" data-i18n="home.footer.legalTitle">Legal & Privacy</h2>
             <ul class="footer-column-list">
-              <li><a href="/privacy-policy.html">Privacy Policy</a></li>
-              <li><a href="/terms-of-service.html">Terms of Service</a></li>
-              <li><a href="/cookie-policy.html">Cookie Policy</a></li>
-              <li><a href="/security.html">Security</a></li>
-              <li><a href="/contact.html">Contact</a></li>
+              <li><a href="/privacy-policy.html" data-i18n="nav.privacy">Privacy</a></li>
+              <li><a href="/terms-of-service.html" data-i18n="nav.terms">Terms</a></li>
+              <li><a href="/cookie-policy.html" data-i18n="nav.cookies">Cookies</a></li>
+              <li><a href="/security.html" data-i18n="nav.security">Security</a></li>
+              <li><a href="/contact.html" data-i18n="nav.contact">Contact</a></li>
             </ul>
           </nav>
 
           <div class="home-footer__column">
-            <h2 class="footer-column-title">Updates & Contact</h2>
+            <h2 class="footer-column-title" data-i18n="home.footer.ownerTitle">Site Owner & Contact</h2>
             <p class="home-footer__note">Follow the blog for new guides or contact support for public-site questions.</p>
             <form class="newsletter-form" action="/contact.html" method="get">
               <label class="sr-only" for="footerEmail">Email address</label>
-              <input id="footerEmail" type="email" name="email" placeholder="Email addressniz">
-              <button class="btn btn-secondary" type="submit">Contact</button>
+              <input id="footerEmail" type="email" name="email" placeholder="Email address">
+              <button class="btn btn-secondary" type="submit" data-i18n="nav.contact">Contact</button>
             </form>
           </div>
         </div>
 
         <div class="home-footer__bottom">
-          <p>NovaTools © 2026 - All rights reserved.</p>
-          <p>Owned and operated by Metehan ÇETİN, LPC.</p>
+          <p>NovaTools © 2026 - <span data-i18n="common.allRightsReserved">All rights reserved.</span></p>
+          <p><span data-i18n="home.footer.ownerRole">Licensed Professional Counselor & Founder</span>: Metehan ÇETİN, LPC.</p>
         </div>
       </div>
     </footer>

@@ -271,6 +271,50 @@ if (fs.existsSync(distBlogIndex) && fs.existsSync(distBlogTemplate)) {
   console.log('✅ Verified: localized blog hub, canonical article, legacy article, and generated article routes');
 }
 
+
+// Ensure path-prefixed localized public routes exist for locales that the runtime
+// language switcher links to (/tr/* and /ar/*). These pages reuse the built
+// browser-localized HTML and let the client-side i18n layer apply copy safely.
+const pathPrefixLocales = ['tr', 'ar'];
+const localizedRootFiles = [
+  'index.html',
+  'about-us.html',
+  'contact.html',
+  'request-tool.html',
+  'privacy-policy.html',
+  'terms-of-service.html',
+  'cookie-policy.html',
+  'security.html'
+];
+
+function copyFileIfExists(source, target) {
+  if (!fs.existsSync(source)) return false;
+  fs.mkdirSync(path.dirname(target), { recursive: true });
+  fs.copyFileSync(source, target);
+  return true;
+}
+
+function copyDirIfExists(source, target) {
+  if (!fs.existsSync(source)) return false;
+  fs.mkdirSync(path.dirname(target), { recursive: true });
+  fs.rmSync(target, { recursive: true, force: true });
+  fs.cpSync(source, target, { recursive: true });
+  return true;
+}
+
+for (const locale of pathPrefixLocales) {
+  for (const file of localizedRootFiles) {
+    const target = file === 'index.html'
+      ? path.join(distDir, locale, 'index.html')
+      : path.join(distDir, locale, file);
+    copyFileIfExists(path.join(distDir, file), target);
+  }
+
+  copyDirIfExists(path.join(distDir, 'categories'), path.join(distDir, locale, 'categories'));
+  copyDirIfExists(path.join(distDir, 'tools'), path.join(distDir, locale, 'tools'));
+}
+console.log('✅ Verified: localized /tr and /ar public surface routes');
+
 // Fix 3: Clean up dist/src if empty
 if (fs.existsSync(srcDir)) {
   const remaining = fs.readdirSync(srcDir);

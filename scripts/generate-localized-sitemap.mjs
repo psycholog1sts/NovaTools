@@ -9,6 +9,7 @@ const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const origin = 'https://mc-novatools.com';
 const lastmod = new Date().toISOString().slice(0, 10);
 const locales = supportedBlogLocales;
+const pathPrefixLocales = new Set(['tr', 'ar']);
 
 function readJson(relativePath) {
   return JSON.parse(fs.readFileSync(path.join(rootDir, relativePath), 'utf8'));
@@ -16,7 +17,14 @@ function readJson(relativePath) {
 
 function localizedUrl(route, locale) {
   const cleanRoute = route.startsWith('/') ? route : `/${route}`;
-  return locale === 'en' ? `${origin}${cleanRoute}` : `${origin}/${locale}${cleanRoute}`;
+  if (locale === 'en') return `${origin}${cleanRoute}`;
+  if (pathPrefixLocales.has(locale)) return `${origin}/${locale}${cleanRoute}`;
+  const separator = cleanRoute.includes('?') ? '&' : '?';
+  return `${origin}${cleanRoute}${separator}lang=${locale}`;
+}
+
+function localizedBlogUrl(path) {
+  return `${origin}${path}`;
 }
 
 function xmlEscape(value) {
@@ -43,7 +51,7 @@ const urls = [];
 ['/', '/about-us.html', '/contact.html', '/privacy-policy.html', '/terms-of-service.html', '/cookie-policy.html', '/security.html'].forEach((route) => {
   locales.forEach((locale) => urls.push(urlEntry(localizedUrl(route, locale), route === '/' ? '1.0' : '0.7', route === '/' ? 'weekly' : 'monthly')));
 });
-locales.forEach((locale) => urls.push(urlEntry(`${origin}${blogHubPath(locale)}`, '0.7', 'monthly')));
+locales.forEach((locale) => urls.push(urlEntry(localizedBlogUrl(blogHubPath(locale)), '0.7', 'monthly')));
 
 globSync('categories/**/*.html', { cwd: rootDir }).sort().forEach((file) => {
   const route = `/${file.replace(/\\/g, '/')}`;
@@ -61,7 +69,7 @@ locales.forEach((locale) => {
   const manifestPath = path.join(rootDir, `src/i18n/blog/${locale}.json`);
   const posts = fs.existsSync(manifestPath) ? readJson(`src/i18n/blog/${locale}.json`) : fallbackPosts;
   const slugs = normalizeBlogSlugList([...fallbackPostSlugs, ...posts.map((post) => post.slug).filter(Boolean), ...sourceBlogArticleSlugs()]);
-  slugs.forEach((slug) => urls.push(urlEntry(`${origin}${blogArticlePath(slug, locale)}`, '0.6', 'monthly')));
+  slugs.forEach((slug) => urls.push(urlEntry(localizedBlogUrl(blogArticlePath(slug, locale)), '0.6', 'monthly')));
 });
 
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join('\n')}\n</urlset>\n`;

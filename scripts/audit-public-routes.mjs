@@ -42,6 +42,49 @@ function extractHrefs(html) {
   return [...html.matchAll(/\bhref=["']([^"']+)["']/g)].map((match) => match[1]);
 }
 
+
+function extractSitemapLocs() {
+  const sitemapFiles = ['sitemap.xml', 'public/sitemap.xml'];
+  const locs = [];
+  for (const file of sitemapFiles) {
+    const fullPath = path.join(repoRoot, file);
+    if (!existsSync(fullPath)) continue;
+    const xml = readFileSync(fullPath, 'utf8');
+    locs.push(...[...xml.matchAll(/<loc>([\s\S]*?)<\/loc>/g)].map((match) => match[1]
+      .replace(/&amp;/g, '&')
+      .replace(/&lt;/g, '<')
+      .replace(/&gt;/g, '>')
+      .replace(/&quot;/g, '"')
+      .replace(/&apos;/g, "'")));
+  }
+  return [...new Set(locs)];
+}
+
+function auditSitemapRoutes() {
+  const locs = extractSitemapLocs();
+  if (!locs.length) {
+    warn('No sitemap <loc> entries found to audit');
+    return;
+  }
+
+  for (const loc of locs) {
+    let parsed;
+    try {
+      parsed = new URL(loc);
+    } catch {
+      fail(`Sitemap contains invalid URL: ${loc}`);
+      continue;
+    }
+
+    if (parsed.hostname !== 'mc-novatools.com') continue;
+    const resolved = resolveRoute(parsed.pathname);
+    if (!resolved) continue;
+    if (!resolved.candidates.some(distExists)) {
+      fail(`Sitemap URL ${loc} points to missing build route (tried ${resolved.candidates.join(', ')})`);
+    }
+  }
+}
+
 function auditStaticHrefs(file) {
   if (!distExists(file)) {
     fail(`Missing public surface file: ${file}`);
@@ -169,6 +212,7 @@ if (!existsSync(distDir)) {
     for (const file of walkHtml(`${locale}/blog`)) auditStaticHrefs(file);
   }
   for (const file of walkHtml('categories')) auditStaticHrefs(file);
+  auditSitemapRoutes();
   auditHomeShell();
   auditBlogManifestRoutes();
   auditGeneratedArticleRoutes();
