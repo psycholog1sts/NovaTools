@@ -33,11 +33,20 @@ jobs:
       - name: Run ESLint
         run: npm run lint
 
+      - name: Audit static media dimensions
+        run: npm run lint:media-dimensions
+
+      - name: Check blog outlines
+        run: npm run lint:blog-outlines
+
       - name: Run tests
         run: npm test
 
       - name: Build
         run: npm run build
+
+      - name: Audit public routes
+        run: npm run audit:public-routes
 
   security-audit:
     name: Security audit
@@ -92,11 +101,20 @@ jobs:
       - name: Run ESLint
         run: npm run lint
 
+      - name: Audit static media dimensions
+        run: npm run lint:media-dimensions
+
+      - name: Check blog outlines
+        run: npm run lint:blog-outlines
+
       - name: Run tests
         run: npm test
 
       - name: Build
         run: npm run build
+
+      - name: Audit public routes
+        run: npm run audit:public-routes
 
       - name: Verify Cloudflare Pages build output
         run: test -d dist && test -f dist/index.html
