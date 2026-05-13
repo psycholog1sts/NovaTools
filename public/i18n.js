@@ -10,6 +10,7 @@
   const PATH_PREFIX_LANGUAGES = ['tr', 'ar'];
   const RTL_LANGUAGES = ['ar'];
   const DEFAULT_LANGUAGE = 'en';
+  const BLOG_PATH_PREFIX_LANGUAGES = SUPPORTED_LANGUAGES.filter((lang) => lang !== DEFAULT_LANGUAGE);
 
   let currentLanguage = DEFAULT_LANGUAGE;
   const translations = {};
@@ -216,15 +217,31 @@
     }
   };
 
-  function localeFromPath(pathname) {
-    const firstSegment = String(pathname || '').split('/').filter(Boolean)[0];
-    return PATH_PREFIX_LANGUAGES.includes(firstSegment) ? firstSegment : DEFAULT_LANGUAGE;
+  function pathSegments(pathname) {
+    return String(pathname || '/').split('/').filter(Boolean);
   }
 
-  function stripLocalePrefix(pathname) {
-    const firstSegment = String(pathname || '/').split('/').filter(Boolean)[0];
-    if (PATH_PREFIX_LANGUAGES.includes(firstSegment)) {
-      const stripped = String(pathname || '/').replace(new RegExp(`^/(${PATH_PREFIX_LANGUAGES.join('|')})(?=/|$)`), '') || '/';
+  function isBlogPath(pathname) {
+    const segments = pathSegments(pathname);
+    const firstSegment = segments[0];
+    const unprefixedSegments = (PATH_PREFIX_LANGUAGES.includes(firstSegment) || BLOG_PATH_PREFIX_LANGUAGES.includes(firstSegment)) ? segments.slice(1) : segments;
+    return unprefixedSegments[0] === 'blog';
+  }
+
+  function localeFromPath(pathname = window.location.pathname) {
+    const segments = pathSegments(pathname);
+    const firstSegment = segments[0];
+    if (PATH_PREFIX_LANGUAGES.includes(firstSegment)) return firstSegment;
+    if (BLOG_PATH_PREFIX_LANGUAGES.includes(firstSegment) && segments[1] === 'blog') return firstSegment;
+    return DEFAULT_LANGUAGE;
+  }
+
+  function stripLocalePrefix(pathname = window.location.pathname) {
+    const segments = pathSegments(pathname);
+    const firstSegment = segments[0];
+    const shouldStrip = PATH_PREFIX_LANGUAGES.includes(firstSegment) || (BLOG_PATH_PREFIX_LANGUAGES.includes(firstSegment) && segments[1] === 'blog');
+    if (shouldStrip) {
+      const stripped = String(pathname || '/').replace(new RegExp(`^/${firstSegment}(?=/|$)`), '') || '/';
       return stripped.startsWith('/') ? stripped : `/${stripped}`;
     }
     return String(pathname || '/').startsWith('/') ? String(pathname || '/') : `/${pathname}`;
@@ -241,13 +258,18 @@
 
   function localizedPath(lang, pathname = window.location.pathname) {
     const basePath = stripLocalePrefix(pathname);
+    if (isBlogPath(pathname) || basePath.startsWith('/blog/')) {
+      return lang !== DEFAULT_LANGUAGE ? `/${lang}${basePath === '/' ? '/' : basePath}` : basePath;
+    }
     return PATH_PREFIX_LANGUAGES.includes(lang) ? `/${lang}${basePath === '/' ? '/' : basePath}` : basePath;
   }
 
-  function localizedSearch(lang, search = window.location.search) {
+  function localizedSearch(lang, search = window.location.search, pathname = window.location.pathname) {
     const params = new URLSearchParams(search || '');
     params.delete('lang');
-    if (lang !== DEFAULT_LANGUAGE && !PATH_PREFIX_LANGUAGES.includes(lang)) {
+    const basePath = stripLocalePrefix(pathname);
+    const usesLocalePrefixedBlogRoute = isBlogPath(pathname) || basePath.startsWith('/blog/');
+    if (lang !== DEFAULT_LANGUAGE && !PATH_PREFIX_LANGUAGES.includes(lang) && !usesLocalePrefixedBlogRoute) {
       params.set('lang', lang);
     }
     const query = params.toString();
@@ -255,7 +277,7 @@
   }
 
   function localizedHref(lang, pathname = window.location.pathname, search = window.location.search) {
-    return `${localizedPath(lang, pathname)}${localizedSearch(lang, search)}`;
+    return `${localizedPath(lang, pathname)}${localizedSearch(lang, search, pathname)}`;
   }
 
   function absoluteUrl(pathname) {
@@ -286,8 +308,8 @@
   function pageContentAvailability() {
     const path = stripLocalePrefix(window.location.pathname).replace(/\/$/, '');
     const blogMatch = path.match(/^\/blog\/(?:articles\/)?([^/.]+)(?:\.html)?$/);
-    if (blogMatch) return contentAvailability.blog[blogMatch[1]] || ['en'];
-    if (/^\/blog(?:\/index\.html)?$/.test(path)) return ['en', 'tr', 'ar'];
+    if (blogMatch) return SUPPORTED_LANGUAGES;
+    if (/^\/blog(?:\/index\.html)?$/.test(path)) return SUPPORTED_LANGUAGES;
     const categoryMatch = path.match(/^\/categories\/([^/.]+)(?:\.html)?$/);
     if (categoryMatch) return contentAvailability.categories[categoryMatch[1]] || SUPPORTED_LANGUAGES;
     const toolMatch = path.match(/^\/tools\/(.+)$/);
@@ -549,7 +571,7 @@
     }
 
     const targetPath = localizedPath(lang);
-    const targetSearch = localizedSearch(lang);
+    const targetSearch = localizedSearch(lang, window.location.search, window.location.pathname);
     if ((window.location.pathname !== targetPath || window.location.search !== targetSearch) && !window.location.pathname.startsWith('/blog/article-template')) {
       window.location.assign(targetPath + targetSearch + window.location.hash);
       return;

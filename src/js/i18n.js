@@ -1,6 +1,7 @@
 const SUPPORTED_LOCALES = ['en', 'tr', 'de', 'fr', 'es', 'pt', 'ru', 'zh', 'ja', 'ko', 'ar', 'hi', 'it', 'pl', 'nl'];
-const PATH_PREFIX_LOCALES = new Set(['tr', 'ar']);
 const DEFAULT_LOCALE = 'en';
+const PATH_PREFIX_LOCALES = new Set(['tr', 'ar']);
+const BLOG_PATH_PREFIX_LOCALES = new Set(SUPPORTED_LOCALES.filter((locale) => locale !== DEFAULT_LOCALE));
 const RTL_LOCALES = new Set(['ar']);
 const SITE_ORIGIN = 'https://mc-novatools.com';
 
@@ -161,18 +162,34 @@ export const contentAvailability = {
   }
 };
 
+function pathSegments(pathname) {
+  return String(pathname || '/').split('/').filter(Boolean);
+}
+
+function isBlogPath(pathname) {
+  const segments = pathSegments(pathname);
+  const firstSegment = segments[0];
+  const unprefixedSegments = (PATH_PREFIX_LOCALES.has(firstSegment) || BLOG_PATH_PREFIX_LOCALES.has(firstSegment)) ? segments.slice(1) : segments;
+  return unprefixedSegments[0] === 'blog';
+}
+
 export function stripLocalePrefix(pathname = typeof window !== 'undefined' ? window.location.pathname : '/') {
-  const firstSegment = String(pathname || '/').split('/').filter(Boolean)[0];
-  if (PATH_PREFIX_LOCALES.has(firstSegment)) {
-    const stripped = String(pathname || '/').replace(new RegExp(`^/(${[...PATH_PREFIX_LOCALES].join('|')})(?=/|$)`), '') || '/';
+  const segments = pathSegments(pathname);
+  const firstSegment = segments[0];
+  const shouldStrip = PATH_PREFIX_LOCALES.has(firstSegment) || (BLOG_PATH_PREFIX_LOCALES.has(firstSegment) && segments[1] === 'blog');
+  if (shouldStrip) {
+    const stripped = String(pathname || '/').replace(new RegExp(`^/${firstSegment}(?=/|$)`), '') || '/';
     return stripped.startsWith('/') ? stripped : `/${stripped}`;
   }
   return String(pathname || '/').startsWith('/') ? String(pathname || '/') : `/${pathname}`;
 }
 
 export function localeFromPath(pathname = typeof window !== 'undefined' ? window.location.pathname : '/') {
-  const firstSegment = String(pathname || '').split('/').filter(Boolean)[0];
-  return PATH_PREFIX_LOCALES.has(firstSegment) ? firstSegment : DEFAULT_LOCALE;
+  const segments = pathSegments(pathname);
+  const firstSegment = segments[0];
+  if (PATH_PREFIX_LOCALES.has(firstSegment)) return firstSegment;
+  if (BLOG_PATH_PREFIX_LOCALES.has(firstSegment) && segments[1] === 'blog') return firstSegment;
+  return DEFAULT_LOCALE;
 }
 
 export function detectLocale() {
@@ -196,19 +213,24 @@ export function detectLocale() {
 
 export function localizedPath(locale, pathname = typeof window !== 'undefined' ? window.location.pathname : '/') {
   const basePath = stripLocalePrefix(pathname);
+  if (isBlogPath(pathname) || basePath.startsWith('/blog/')) {
+    return locale !== DEFAULT_LOCALE ? `/${locale}${basePath === '/' ? '/' : basePath}` : basePath;
+  }
   return PATH_PREFIX_LOCALES.has(locale) ? `/${locale}${basePath === '/' ? '/' : basePath}` : basePath;
 }
 
-export function localizedSearch(locale, search = typeof window !== 'undefined' ? window.location.search : '') {
+export function localizedSearch(locale, search = typeof window !== 'undefined' ? window.location.search : '', pathname = typeof window !== 'undefined' ? window.location.pathname : '/') {
   const params = new URLSearchParams(search || '');
   params.delete('lang');
-  if (locale !== DEFAULT_LOCALE && !PATH_PREFIX_LOCALES.has(locale)) params.set('lang', locale);
+  const basePath = stripLocalePrefix(pathname);
+  const usesLocalePrefixedBlogRoute = isBlogPath(pathname) || basePath.startsWith('/blog/');
+  if (locale !== DEFAULT_LOCALE && !PATH_PREFIX_LOCALES.has(locale) && !usesLocalePrefixedBlogRoute) params.set('lang', locale);
   const query = params.toString();
   return query ? `?${query}` : '';
 }
 
 export function localizedHref(locale, pathname = typeof window !== 'undefined' ? window.location.pathname : '/', search = typeof window !== 'undefined' ? window.location.search : '') {
-  return `${localizedPath(locale, pathname)}${localizedSearch(locale, search)}`;
+  return `${localizedPath(locale, pathname)}${localizedSearch(locale, search, pathname)}`;
 }
 
 export function getCanonicalUrl(locale = detectLocale(), pathname = typeof window !== 'undefined' ? window.location.pathname : '/') {

@@ -9,7 +9,7 @@ import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
 import postcssImport from 'postcss-import';
 import liveDataHandler from './api/live-data.js';
-import { fallbackBlogLocale, supportedBlogLocales } from './src/js/blog-routes.js';
+import { buildBlogArticleRouteEntries, fallbackBlogLocale, supportedBlogLocales } from './src/js/blog-routes.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -135,15 +135,7 @@ const localizedBlogIndexEntries = supportedBlogLocales
     return acc;
   }, {});
 
-const blogArticleRouteEntries = Object.entries(blogSlugsByLocale).reduce((acc, [locale, slugs]) => {
-  slugs.forEach((slug) => {
-    const canonicalRoute = locale === fallbackBlogLocale ? `blog/articles/${slug}` : `${locale}/blog/articles/${slug}`;
-    const legacyRoute = locale === fallbackBlogLocale ? `blog/${slug}` : `${locale}/blog/${slug}`;
-    acc[canonicalRoute] = resolveHtmlEntry('src/blog/article-template.html');
-    acc[legacyRoute] = resolveHtmlEntry('src/blog/article-template.html');
-  });
-  return acc;
-}, {});
+const blogArticleRouteEntries = buildBlogArticleRouteEntries(blogSlugsByLocale, resolveHtmlEntry);
 
 // Blog entry points
 const blogEntry = {
