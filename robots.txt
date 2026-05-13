@@ -3,4 +3,5 @@ Allow: /
 Disallow: /admin/
 Disallow: /test/
 Disallow: /api/
+
 Sitemap: https://mc-novatools.com/sitemap.xml

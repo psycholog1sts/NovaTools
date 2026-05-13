@@ -283,6 +283,10 @@ const localizedRootFiles = [
   'request-tool.html',
   'privacy-policy.html',
   'terms-of-service.html',
+  'gizlilik-politikasi.html',
+  'kvkk-aydinlatma-metni.html',
+  'kullanim-kosullari.html',
+  'iletisim.html',
   'cookie-policy.html',
   'security.html'
 ];
@@ -356,6 +360,10 @@ const keyFiles = [
   'request-tool.html',
   'privacy-policy.html',
   'terms-of-service.html',
+  'gizlilik-politikasi.html',
+  'kvkk-aydinlatma-metni.html',
+  'kullanim-kosullari.html',
+  'iletisim.html',
   'cookie-policy.html',
   'security.html',
   'admin/index.html',
