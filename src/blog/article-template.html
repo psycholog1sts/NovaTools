@@ -28,65 +28,89 @@
     .article-breadcrumb ol { display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: center; margin: 0; padding: var(--space-4) 0; list-style: none; color: var(--text-muted); font: var(--text-sm); }
     .article-breadcrumb a { color: var(--text-secondary); text-decoration: none; }
     .article-breadcrumb .chevron { color: var(--text-muted); }
-    .article-hero { position: relative; min-height: min(72vh, 520px); display: grid; align-items: end; overflow: hidden; }
-    .article-hero picture { position: absolute; inset: 0; display: block; }
-    .article-hero img { width: 100%; height: 100%; max-height: 520px; object-fit: cover; }
-    .article-hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.78), transparent 60%); }
-    .article-hero__content { position: relative; z-index: 1; width: min(var(--container-xl), calc(100% - 2rem)); margin: 0 auto; padding: var(--space-16) 0 var(--space-10); color: #fff; }
-    .article-hero h1 { max-width: 900px; margin: var(--space-4) 0; font: 800 var(--font-size-3xl)/1.1 var(--font-sans); letter-spacing: var(--letter-spacing-tight); text-shadow: 0 2px 20px rgba(0,0,0,.45); }
-    .article-badge { display: inline-flex; padding: var(--space-2) var(--space-4); border-radius: var(--radius-full); background: var(--color-primary-500); color: #fff; font: 800 var(--font-size-xs)/1 var(--font-sans); text-transform: uppercase; letter-spacing: .08em; }
-    .article-meta { display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: center; color: hsl(0 0% 100% / .86); font: var(--text-sm); }
-    .article-meta__author { display: flex; gap: var(--space-3); align-items: center; }
-    .article-meta__author img { width: 48px; height: 48px; border: 2px solid hsl(0 0% 100% / .28); border-radius: var(--radius-full); }
-    .updated-badge { padding: var(--space-1) var(--space-3); border-radius: var(--radius-full); background: hsl(0 0% 100% / .16); }
-    .share-row { position: sticky; top: 86px; z-index: 20; display: flex; gap: var(--space-2); justify-content: center; padding: var(--space-3); background: var(--surface); border-bottom: 1px solid var(--border); backdrop-filter: blur(14px); }
+    .article-hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--border); background: var(--surface-elevated); }
+    .article-hero__grid { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, .95fr) minmax(18rem, .72fr); gap: clamp(1.5rem, 4vw, 3.5rem); align-items: center; width: min(var(--container-xl), calc(100% - 2rem)); margin: 0 auto; padding: clamp(3rem, 7vw, 6rem) 0; }
+    .article-hero__content { min-width: 0; }
+    .article-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 10% 0%, hsl(260 82% 60% / .2), transparent 34%), radial-gradient(circle at 90% 12%, hsl(190 90% 55% / .14), transparent 28%); pointer-events: none; }
+    .article-hero__media { position: relative; overflow: hidden; margin: 0; border: 1px solid var(--border); border-radius: var(--radius-2xl); background: var(--color-bg-secondary); box-shadow: var(--shadow-xl); }
+    .article-hero__media picture, .article-hero__media img { display: block; width: 100%; height: 100%; }
+    .article-hero__media img { aspect-ratio: 16 / 9; object-fit: cover; }
+    .article-hero h1 { max-width: 880px; margin: var(--space-4) 0; font: 800 clamp(2.25rem, 5vw, 4.75rem)/1.02 var(--font-sans); letter-spacing: var(--letter-spacing-tight); }
+    .article-dek { max-width: 760px; margin: 0 0 var(--space-5); color: var(--text-secondary); font-size: clamp(1.05rem, 2vw, 1.25rem); line-height: 1.75; }
+    .article-badge { display: inline-flex; width: max-content; max-width: 100%; padding: var(--space-2) var(--space-4); border-radius: var(--radius-full); background: var(--color-primary-500); color: #fff; font: 800 var(--font-size-xs)/1 var(--font-sans); text-transform: uppercase; letter-spacing: .08em; }
+    .article-meta { display: flex; flex-wrap: wrap; gap: var(--space-3) var(--space-4); align-items: center; color: var(--text-secondary); font: var(--text-sm); }
+    .article-meta__author { display: flex; gap: var(--space-3); align-items: center; color: var(--text-primary); }
+    .article-meta__author img { width: 48px; height: 48px; border: 2px solid hsl(0 0% 100% / .18); border-radius: var(--radius-full); }
+    .updated-badge { padding: var(--space-1) var(--space-3); border-radius: var(--radius-full); background: hsl(260 82% 60% / .12); color: var(--text-secondary); }
+    .share-row { position: sticky; top: 0; z-index: 20; display: flex; gap: var(--space-2); justify-content: center; padding: var(--space-3); background: color-mix(in srgb, var(--surface) 84%, transparent); border-bottom: 1px solid var(--border); backdrop-filter: blur(14px); }
     .share-btn { min-width: 44px; min-height: 44px; border: 1px solid var(--border); border-radius: var(--radius-full); background: var(--surface-elevated); color: var(--text-primary); cursor: pointer; }
-    .article-body { max-width: 720px; margin: 0 auto; padding: var(--space-10) var(--space-6) var(--space-16); }
-    .summary-box { margin-bottom: var(--space-8); padding: var(--space-5); border-left: 4px solid var(--color-primary-500); border-radius: var(--radius-md); background: var(--surface-elevated); }
-    .summary-box h2 { margin: 0 0 var(--space-3); color: var(--text-secondary); font: 800 var(--font-size-sm)/1.2 var(--font-sans); letter-spacing: .08em; text-transform: uppercase; }
-    .summary-box li { margin-block: var(--space-2); font: var(--text-base); }
-    .article-body h2, .article-body h3 { scroll-margin-top: 110px; letter-spacing: var(--letter-spacing-tight); }
-    .article-body h2 { margin: var(--space-10) 0 var(--space-4); font: var(--font-h3); }
-    .article-body h3 { margin: var(--space-8) 0 var(--space-3); font: var(--font-h5); }
-    .article-body h2 a, .article-body h3 a { color: inherit; text-decoration: none; }
-    .article-body p { margin: 0 0 var(--space-4); color: var(--text-primary); font-size: 1.125rem; line-height: 1.8; }
-    .article-body a { color: var(--color-primary-600); text-decoration: none; }
-    .article-body a:hover { text-decoration: underline; }
-    .article-body ul, .article-body ol { padding-left: var(--space-6); line-height: 1.8; }
-    .article-body li::marker { color: var(--color-primary-500); }
+    .article-shell { display: grid; grid-template-columns: minmax(12rem, .25fr) minmax(0, 760px) minmax(14rem, .28fr); gap: clamp(1.5rem, 4vw, 3rem); width: min(var(--container-xl), calc(100% - 2rem)); margin: 0 auto; padding: var(--space-12) 0 var(--space-16); align-items: start; }
+    .article-body { min-width: 0; max-width: 760px; }
+    .article-sidebar, .article-aside { position: sticky; top: 5.5rem; min-width: 0; }
+    .toc-card, .editorial-note, .summary-box, .callout-card, .article-cta, .author-box, .related-section { border: 1px solid var(--border); border-radius: var(--radius-xl); background: var(--surface-elevated); box-shadow: var(--shadow-sm); }
+    .toc-card { padding: var(--space-5); }
+    .toc-card h2, .editorial-note h2, .summary-box h2, .callout-card h2, .related-section h2 { margin: 0 0 var(--space-3); font: 800 var(--font-size-sm)/1.2 var(--font-sans); letter-spacing: .08em; text-transform: uppercase; color: var(--text-secondary); }
+    .toc-card ol { display: grid; gap: var(--space-2); margin: 0; padding: 0; list-style: none; }
+    .toc-card a { color: var(--text-secondary); font: 700 var(--font-size-sm)/1.45 var(--font-sans); text-decoration: none; }
+    .toc-card a:hover { color: var(--color-primary-400); }
+    .summary-box { margin-bottom: var(--space-6); padding: var(--space-6); border-inline-start: 4px solid var(--color-primary-500); }
+    .summary-box ul { display: grid; gap: var(--space-2); margin: 0; padding-inline-start: var(--space-5); }
+    .summary-box li { color: var(--text-primary); font-size: 1rem; line-height: 1.7; }
+    .callout-card { margin: var(--space-6) 0; padding: var(--space-5); background: linear-gradient(135deg, hsl(260 82% 60% / .12), hsl(190 90% 55% / .06)), var(--surface-elevated); }
+    .callout-card p { margin: 0; color: var(--text-primary); font-size: 1rem; line-height: 1.7; }
+    .article-prose > section { margin: var(--space-10) 0; }
+    .article-prose h2, .article-prose h3 { scroll-margin-top: 110px; letter-spacing: var(--letter-spacing-tight); }
+    .article-prose h2 { margin: var(--space-10) 0 var(--space-4); font: 800 var(--font-size-2xl)/1.2 var(--font-sans); }
+    .article-prose h3 { margin: var(--space-8) 0 var(--space-3); font: 750 var(--font-size-xl)/1.25 var(--font-sans); }
+    .article-prose h2 a, .article-prose h3 a { color: inherit; text-decoration: none; }
+    .article-prose p { margin: 0 0 var(--space-5); color: var(--text-primary); font-size: 1.075rem; line-height: 1.86; }
+    .article-prose a { color: var(--color-primary-500); text-decoration: none; text-underline-offset: 3px; }
+    .article-prose a:hover { text-decoration: underline; }
+    .article-prose ul, .article-prose ol { padding-inline-start: var(--space-6); line-height: 1.85; }
+    .article-prose li { margin-block: var(--space-2); }
+    .article-prose li::marker { color: var(--color-primary-500); }
     .table-wrapper { margin: var(--space-8) 0; overflow-x: auto; border: 1px solid var(--border); border-radius: var(--radius-md); }
     .table-wrapper table { width: 100%; min-width: 620px; border-collapse: collapse; }
-    .table-wrapper th, .table-wrapper td { padding: var(--space-3) var(--space-4); text-align: left; border-bottom: 1px solid var(--border); }
+    .table-wrapper th, .table-wrapper td { padding: var(--space-3) var(--space-4); text-align: start; border-bottom: 1px solid var(--border); }
     .table-wrapper th { background: var(--surface-elevated); font-weight: 700; }
     .table-wrapper tbody tr:nth-child(even) { background: hsl(220 38% 50% / .08); }
     .code-panel { position: relative; margin: var(--space-8) 0; }
     .code-panel pre { overflow-x: auto; margin: 0; padding: var(--space-4); border-radius: var(--radius-md); background: #1e1e1e; color: #f8fafc; font-family: var(--font-mono); }
-    .copy-code { position: absolute; top: var(--space-2); right: var(--space-2); min-height: 34px; padding: 0 var(--space-3); border: 1px solid rgba(255,255,255,.16); border-radius: var(--radius-sm); background: rgba(255,255,255,.08); color: #fff; cursor: pointer; }
+    .copy-code { position: absolute; top: var(--space-2); inset-inline-end: var(--space-2); min-height: 34px; padding: 0 var(--space-3); border: 1px solid rgba(255,255,255,.16); border-radius: var(--radius-sm); background: rgba(255,255,255,.08); color: #fff; cursor: pointer; }
     .article-figure { margin: var(--space-8) 0; }
     .article-figure img { width: 100%; height: auto; border-radius: var(--radius-lg); }
     .article-figure figcaption { margin-top: var(--space-2); color: var(--text-secondary); font: var(--text-sm); font-style: italic; text-align: center; }
-    blockquote { margin: var(--space-8) 0; padding: var(--space-4); border-left: 4px solid var(--color-primary-500); border-radius: var(--radius-md); background: var(--surface-elevated); font-style: italic; }
+    blockquote { margin: var(--space-8) 0; padding: var(--space-5); border-inline-start: 4px solid var(--color-primary-500); border-radius: var(--radius-md); background: var(--surface-elevated); color: var(--text-primary); font-style: italic; }
     .faq-list { display: grid; gap: var(--space-3); }
     .faq-list details { border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--surface-elevated); overflow: hidden; }
-    .faq-list summary { cursor: pointer; padding: var(--space-4); font-weight: 700; }
-    .faq-list details p { padding: 0 var(--space-4) var(--space-4); }
-    .article-cta { margin: var(--space-10) 0; padding: var(--space-6); border-radius: var(--radius-lg); background: var(--color-primary-50); color: var(--color-primary-900); }
-    [data-theme="dark"] .article-cta { background: hsl(260 82% 22% / .66); color: #fff; }
+    .faq-list summary { cursor: pointer; padding: var(--space-4); font-weight: 800; list-style-position: inside; }
+    .faq-list details p { padding: 0 var(--space-4) var(--space-4); margin: 0; color: var(--text-secondary); line-height: 1.75; }
+    .article-cta { display: grid; gap: var(--space-4); margin: var(--space-10) 0; padding: var(--space-6); background: linear-gradient(135deg, hsl(260 82% 60% / .16), hsl(190 90% 55% / .08)), var(--surface-elevated); }
+    .article-cta h2, .article-cta h3 { margin: 0; font: 800 var(--font-size-xl)/1.25 var(--font-sans); }
+    .article-cta p { margin: 0; color: var(--text-secondary); line-height: 1.7; }
     .mini-card-grid { display: grid; gap: var(--space-4); }
-    .related-post { display: grid; grid-template-columns: 80px 1fr; gap: var(--space-3); align-items: center; padding: var(--space-3); border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--surface-elevated); text-decoration: none; }
-    .related-post picture { width: 80px; height: 60px; display: block; }
-    .related-post img { width: 80px; height: 60px; object-fit: cover; border-radius: var(--radius-sm); }
-    .tool-mini-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-4); }
-    .author-box { display: grid; grid-template-columns: 80px 1fr; gap: var(--space-5); margin-top: var(--space-10); padding: var(--space-5); border-radius: var(--radius-lg); background: var(--surface-elevated); border: 1px solid var(--border); }
-    .author-box img { width: 80px; height: 80px; border-radius: var(--radius-full); }
-    .author-box h4 { margin: 0; font: var(--font-h5); }
-    .author-box p { margin-bottom: var(--space-2); font-size: var(--font-size-base); }
-    .scroll-top { position: fixed; right: var(--space-5); bottom: var(--space-5); z-index: 50; width: 48px; height: 48px; border: 0; border-radius: var(--radius-full); background: var(--color-primary-500); color: #fff; box-shadow: var(--shadow-lg); opacity: 0; pointer-events: none; transform: translateY(8px); transition: opacity var(--transition-fast), transform var(--transition-fast); cursor: pointer; }
+    .related-post { display: grid; grid-template-columns: 88px 1fr; gap: var(--space-3); align-items: center; padding: var(--space-3); border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--surface-elevated); color: inherit; text-decoration: none; }
+    .related-post picture { width: 88px; height: 64px; display: block; }
+    .related-post img { width: 88px; height: 64px; object-fit: cover; border-radius: var(--radius-sm); }
+    .related-post strong { display: block; margin-bottom: var(--space-1); line-height: 1.35; }
+    .tool-mini-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4); }
+    .tool-mini-grid .nt-card { padding: var(--space-4); text-decoration: none; }
+    .related-section { margin-top: var(--space-10); padding: var(--space-6); }
+    .related-section h3 { margin: var(--space-6) 0 var(--space-3); font: 800 var(--font-size-lg)/1.25 var(--font-sans); }
+    .author-box { display: grid; grid-template-columns: 72px 1fr; gap: var(--space-4); margin-top: var(--space-10); padding: var(--space-5); }
+    .author-box img { width: 72px; height: 72px; border-radius: var(--radius-full); }
+    .author-box h2, .author-box h4 { margin: 0; font: 800 var(--font-size-lg)/1.25 var(--font-sans); }
+    .author-box p, .editorial-note p { margin: var(--space-2) 0 0; color: var(--text-secondary); font-size: var(--font-size-sm); line-height: 1.7; }
+    .editorial-note { padding: var(--space-5); }
+    .scroll-top { position: fixed; inset-inline-end: var(--space-5); bottom: var(--space-5); z-index: 50; width: 48px; height: 48px; border: 0; border-radius: var(--radius-full); background: var(--color-primary-500); color: #fff; box-shadow: var(--shadow-lg); opacity: 0; pointer-events: none; transform: translateY(8px); transition: opacity var(--transition-fast), transform var(--transition-fast); cursor: pointer; }
     .scroll-top.is-visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
     .copy-toast { position: fixed; left: 50%; bottom: var(--space-8); z-index: 60; transform: translateX(-50%); padding: var(--space-3) var(--space-4); border-radius: var(--radius-full); background: var(--color-success-600); color: #fff; opacity: 0; pointer-events: none; transition: opacity var(--transition-fast); }
     .copy-toast.is-visible { opacity: 1; }
-    @media (min-width: 768px) { .article-hero h1 { font-size: var(--font-size-4xl); } }
-    @media (max-width: 780px) { .tool-mini-grid { grid-template-columns: 1fr; } .author-box { grid-template-columns: 1fr; } .share-row { overflow-x: auto; justify-content: flex-start; } }
+    [dir="rtl"] .article-template { text-align: start; }
+    [dir="rtl"] .article-meta__author, [dir="rtl"] .related-post { direction: rtl; }
+    @media (max-width: 1100px) { .article-shell { grid-template-columns: minmax(0, 1fr); } .article-sidebar, .article-aside { position: static; } .article-aside { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4); } }
+    @media (max-width: 900px) { .article-hero__grid { grid-template-columns: 1fr; } .article-hero__media { order: -1; } }
+    @media (max-width: 780px) { .tool-mini-grid, .article-aside { grid-template-columns: 1fr; } .author-box { grid-template-columns: 1fr; } .share-row { overflow-x: auto; justify-content: flex-start; } .article-shell { width: min(100% - 1rem, var(--container-xl)); padding-top: var(--space-8); } }
   </style>
 </head>
 <body class="article-template">
@@ -99,27 +123,28 @@
   <nav class="article-breadcrumb" aria-label="Breadcrumb">
     <div class="container"><ol><li><a href="/">Ana Sayfa</a></li><li class="chevron" aria-hidden="true">›</li><li><a href="/blog/index.html">Blog</a></li><li class="chevron" aria-hidden="true">›</li><li><a href="/blog/index.html?category=yapay-zeka">Yapay Zeka</a></li><li class="chevron" aria-hidden="true">›</li><li aria-current="page">Tarayıcı Öncelikli Araçlar</li></ol></div>
   </nav>
-  <article>
+  <article class="article-detail" itemscope itemtype="https://schema.org/Article">
     <header class="article-hero">
-      <img src="/images/blog-covers/browser-privacy.svg" alt="Tarayıcı içinde çalışan güvenli üretkenlik araçlarını gösteren kapak görseli" width="1280" height="720" loading="eager">
-      <div class="article-hero__content">
-        <span class="article-badge">Yapay Zeka</span>
-        <h1>Tarayıcı Öncelikli Araçlar Ne Anlama Gelir?</h1>
-        <div class="article-meta"><span class="article-meta__author"><img src="/logo-bird-88.webp" alt="" width="48" height="48"><span><strong>Metehan Çetin</strong><br>Founder & Editor</span></span><time datetime="2026-05-10">10 Mayıs 2026</time><span class="updated-badge">Güncellendi: 10 Mayıs 2026</span><span>⏱ 8 dk okuma</span></div>
+      <div class="article-hero__grid">
+        <div class="article-hero__content">
+          <span class="article-badge" itemprop="articleSection">Yapay Zeka</span>
+          <h1 itemprop="headline">Tarayıcı Öncelikli Araçlar Ne Anlama Gelir?</h1>
+          <p class="article-dek" itemprop="description">Tarayıcı öncelikli iş akışları için semantik, erişilebilir ve SEO uyumlu NovaTools makale şablonu.</p>
+          <div class="article-meta">
+            <span class="article-meta__author" itemprop="author" itemscope itemtype="https://schema.org/Person"><img src="/logo-bird-88.webp" alt="" width="48" height="48"><span><strong itemprop="name">Metehan Çetin</strong><br><span itemprop="jobTitle">Founder & Editor</span></span></span>
+            <time datetime="2026-05-10" itemprop="datePublished">10 Mayıs 2026</time>
+            <span class="updated-badge">Güncellendi: <time datetime="2026-05-10" itemprop="dateModified">10 Mayıs 2026</time></span>
+            <span>⏱ 8 dk okuma</span>
+          </div>
+        </div>
+        <figure class="article-hero__media" itemprop="image"><img src="/images/blog-covers/browser-privacy.svg" alt="Tarayıcı içinde çalışan güvenli üretkenlik araçlarını gösteren kapak görseli" width="1280" height="720" loading="eager"></figure>
       </div>
     </header>
     <div class="share-row" aria-label="Sosyal paylaşım"><button class="share-btn" type="button" data-share="x">X</button><button class="share-btn" type="button" data-share="linkedin">in</button><button class="share-btn" type="button" data-share="whatsapp">WA</button><button class="share-btn" type="button" data-share="email">@</button></div>
-    <div class="article-body">
-      <section class="summary-box" aria-labelledby="summary-title"><h2 id="summary-title">Bu Yazının Özeti</h2><ul><li>Tarayıcı öncelikli araçlar, temel işlemi kullanıcı cihazında tamamlamaya odaklanır.</li><li>Bu yaklaşım özellikle hızlı PDF, veri temizleme ve geliştirici yardımcıları için kontrollü bir iş akışı sağlar.</li><li>Hassas dosyalarda sonuç paylaşmadan önce çıktı, dosya adı ve alıcı bağlamı ayrıca kontrol edilmelidir.</li><li>Çok büyük dosyalar veya mevzuata bağlı süreçler ek doğrulama gerektirebilir.</li></ul></section>
-      <section aria-labelledby="neden-onemli"><h2 id="neden-onemli"><a href="#neden-onemli">Neden Önemli?</a></h2><p>Modern üretkenlik ekipleri dosya dönüştürme, veri düzenleme ve hızlı kontrol işlerini çoğu zaman tek amaçlı araçlarla tamamlar. Tarayıcı öncelikli yaklaşım, bu işleri daha az hesap oluşturma, daha az bekleme ve daha net çıktı kontrolüyle yapmayı hedefler.</p><p>Örneğin bir belge setini paylaşmadan önce <a href="/tools/pdf/compress/">PDF sıkıştırma aracını</a>, veri yanıtlarını incelemeden önce <a href="/tools/dev/json-formatter/">JSON formatter aracını</a> ve toplantı planlamadan önce <a href="/tools/productivity/world-clock/">world clock aracını</a> kullanabilirsiniz.</p></section>
-      <section aria-labelledby="karar-tablosu"><h2 id="karar-tablosu"><a href="#karar-tablosu">Karar Tablosu</a></h2><figure class="table-wrapper"><table><thead><tr><th>İş türü</th><th>Önerilen kontrol</th><th>Risk</th></tr></thead><tbody><tr><td>PDF paylaşımı</td><td>Boyut, sayfa sırası, dosya adı</td><td>Yanlış belge gönderimi</td></tr><tr><td>JSON inceleme</td><td>Geçerlilik, girinti, hassas alanlar</td><td>Eksik hata ayıklama</td></tr><tr><td>Görsel yayınlama</td><td>Alt metin, boyut, görünürlük</td><td>Yavaş sayfa ve erişilebilirlik sorunu</td></tr></tbody></table></figure></section>
-      <section aria-labelledby="kod-ornegi"><h2 id="kod-ornegi"><a href="#kod-ornegi">Kod Bloğu ve Kopyalama</a></h2><p>Makale şablonu, teknik rehberlerde örnekleri okunabilir şekilde sunmak için koyu temalı kod blokları ve kopyalama butonu içerir.</p><div class="code-panel"><button class="copy-code" type="button">Kopyala</button><pre><code class="language-javascript">const checklist = ['formatı doğrula', 'hassas alanları kontrol et', 'sonucu paylaş'];
-const ready = checklist.every((step) => step.length > 0);</code></pre></div></section>
-      <section aria-labelledby="gorsel-ve-alinti"><h2 id="gorsel-ve-alinti"><a href="#gorsel-ve-alinti">Görsel, Alıntı ve İç Linkleme</a></h2><figure class="article-figure"><img src="/images/blog-covers/workflow-planning.svg" alt="Dosya hazırlama ve son kontrol adımlarını gösteren üretkenlik iş akışı" width="1280" height="720" loading="lazy"><figcaption>Yayın veya paylaşım öncesi net bir kontrol listesi hata riskini azaltır.</figcaption></figure><blockquote>İyi bir araç akışı, yalnızca işlemi tamamlamaz; kullanıcının sonraki adımını da daha güvenli hale getirir.</blockquote><p>Benzer süreçler için <a href="/blog/articles/private-document-workflow-without-signup.html">kayıt olmadan özel belge iş akışı</a> rehberini de inceleyebilirsiniz.</p></section>
-      <section aria-labelledby="sss"><h2 id="sss"><a href="#sss">Sıkça Sorulan Sorular</a></h2><div class="faq-list"><details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"><summary itemprop="name">Tarayıcı öncelikli araç ne demektir?</summary><p itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><span itemprop="text">Temel işlemi kullanıcının cihazında çalışan web arayüzü içinde tamamlamayı hedefleyen araçtır.</span></p></details><details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"><summary itemprop="name">Bu yaklaşım her dosya için yeterli midir?</summary><p itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><span itemprop="text">Hayır. Çok büyük dosyalar, düzenleyici gerektiren belgeler veya mevzuata bağlı iş akışları ek kontrol gerektirebilir.</span></p></details><details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"><summary itemprop="name">Sonucu paylaşmadan önce ne kontrol edilmeli?</summary><p itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><span itemprop="text">Dosya adı, çıktı formatı, okunabilirlik, hassas veri içeriği ve alıcının sonraki adımı kontrol edilmelidir.</span></p></details></div></section>
-      <section aria-labelledby="sonuc"><h2 id="sonuc"><a href="#sonuc">Sonuç</a></h2><p>Tarayıcı öncelikli araçlar, küçük ama sık tekrarlanan dijital işleri daha hızlı ve kontrollü tamamlamaya yardımcı olur. En iyi sonuç için aracı seçmeden önce çıktı hedefini, paylaşım bağlamını ve son kontrol adımlarını netleştirin.</p><div class="article-cta"><h3>Bu aracı hemen ücretsiz deneyin</h3><p>JSON Formatter ile API yanıtlarını okunabilir hale getirin, geçerlilik kontrolünden önce yapıyı hızlıca inceleyin.</p><a class="btn btn-primary" href="/tools/dev/json-formatter/">Hemen Kullan</a></div></section>
-      <section aria-labelledby="ilgili"><h2 id="ilgili"><a href="#ilgili">İlgili Yazılar ve Araçlar</a></h2><h3>Benzer Yazılar</h3><div class="mini-card-grid"><a class="related-post" href="/blog/articles/private-document-workflow-without-signup.html"><img src="/images/blog-covers/browser-privacy.svg" alt="" width="320" height="180" loading="lazy" decoding="async"><span><strong>Kayıt Olmadan Özel Belge İş Akışı</strong><br>11 Nisan 2026</span></a><a class="related-post" href="/blog/articles/json-formatter-debugging-api-responses.html"><img src="/images/blog-covers/developer-utilities.svg" alt="" width="320" height="180" loading="lazy" decoding="async"><span><strong>API Yanıtlarını JSON Formatter ile İnceleme</strong><br>8 Mayıs 2026</span></a><a class="related-post" href="/blog/articles/data-cleanup-before-dashboard-import.html"><img src="/images/blog-covers/data-cleanup.svg" alt="" width="320" height="180" loading="lazy" decoding="async"><span><strong>Dashboard Öncesi Veri Temizleme</strong><br>5 Mayıs 2026</span></a></div><h3>İlgili Araçlar</h3><div class="tool-mini-grid"><a class="nt-card" href="/tools/dev/json-formatter/"><strong>JSON Formatter</strong><p>Yanıtları okunabilir formatta inceleyin.</p></a><a class="nt-card" href="/tools/pdf/compress/"><strong>PDF Compress</strong><p>Paylaşım öncesi dosya boyutunu azaltın.</p></a><a class="nt-card" href="/tools/dev/code-formatter/"><strong>Code Formatter</strong><p>Kod örneklerini daha okunabilir hale getirin.</p></a></div></section>
-      <aside class="author-box" aria-label="Yazar"><img src="/logo-bird-88.webp" alt="Metehan Çetin avatarı" width="80" height="80"><div><h4>Metehan Çetin</h4><p><strong>Founder & Editor</strong></p><p>MC NovaTools içerik stratejisini, kullanıcıların gerçek iş akışlarında ihtiyaç duyduğu pratik kontrol listelerine odaklanarak yönetir. Yazıları; üretkenlik, dosya hazırlığı ve tarayıcı tabanlı araç kullanımını sadeleştirmeyi hedefler.</p><p><a href="https://twitter.com/" rel="nofollow noopener">Twitter</a> · <a href="https://www.linkedin.com/" rel="nofollow noopener">LinkedIn</a> · <a href="https://github.com/" rel="nofollow noopener">GitHub</a></p></div></aside>
+    <div class="article-shell">
+      <aside class="article-sidebar" aria-label="Article navigation"><nav class="toc-card" aria-labelledby="toc-title"><h2 id="toc-title">İçindekiler</h2><ol id="articleToc"></ol></nav></aside>
+      <div class="article-body" itemprop="articleBody"></div>
+      <aside class="article-aside" aria-label="Editorial context"><section class="editorial-note" aria-labelledby="editorial-note-title"><h2 id="editorial-note-title">Editorial note</h2><p>NovaTools guides are written as practical browser-first workflows with privacy, review, and handoff checks.</p></section></aside>
     </div>
   </article>
   <button class="scroll-top" type="button" id="scrollTop" aria-label="Yazıya git">↑</button><div class="copy-toast" id="copyToast" role="status" aria-live="polite">Kopyalandı!</div>
@@ -144,10 +169,28 @@ const ready = checklist.every((step) => step.length > 0);</code></pre></div></se
     const slug = params.get('slug') || (route.type === 'article' ? route.slug : 'high-yield-savings-guide');
     const result = getBlogPost(requestedLocale, slug);
 
-    function setMeta(selector, attr, value) {
-      const element = document.querySelector(selector);
-      if (element && value) element.setAttribute(attr, value);
-    }
+    const articleLabels = {
+      en: { home: 'Home', updated: 'Updated:', readTime: '{minutes} min read', toc: 'On this page', summary: 'Article Summary', callout: 'Before you continue', faq: 'Frequently asked questions', cta: 'Try the related tool now', ctaButton: 'Open tool', related: 'Related Articles and Tools', relatedArticles: 'Related articles', relatedTools: 'Related tools', author: 'About the author', editorial: 'Editorial note', editorialText: 'NovaTools guides are written as practical browser-first workflows with privacy, review, and handoff checks.', ad: 'Advertisement', share: 'Share this article', copied: 'Copied!', copy: 'Copy' },
+      tr: { home: 'Ana Sayfa', updated: 'Güncellendi:', readTime: '{minutes} dk okuma', toc: 'İçindekiler', summary: 'Bu Yazının Özeti', callout: 'Devam etmeden önce', faq: 'Sık sorulan sorular', cta: 'İlgili aracı şimdi deneyin', ctaButton: 'Aracı aç', related: 'İlgili Yazılar ve Araçlar', relatedArticles: 'İlgili yazılar', relatedTools: 'İlgili araçlar', author: 'Yazar hakkında', editorial: 'Editoryal not', editorialText: 'NovaTools rehberleri; gizlilik, kontrol ve teslim adımlarını içeren pratik tarayıcı öncelikli iş akışları olarak hazırlanır.', ad: 'Reklam', share: 'Makaleyi paylaş', copied: 'Kopyalandı!', copy: 'Kopyala' },
+      de: { home: 'Startseite', updated: 'Aktualisiert:', readTime: '{minutes} Min. Lesezeit', toc: 'Auf dieser Seite', summary: 'Artikelzusammenfassung', callout: 'Bevor Sie fortfahren', faq: 'Häufig gestellte Fragen', cta: 'Verwandtes Tool jetzt testen', ctaButton: 'Tool öffnen', related: 'Verwandte Artikel und Tools', relatedArticles: 'Verwandte Artikel', relatedTools: 'Verwandte Tools', author: 'Über den Autor', editorial: 'Redaktioneller Hinweis', editorialText: 'NovaTools-Leitfäden werden als praktische browserbasierte Workflows mit Datenschutz-, Prüf- und Übergabekontrollen geschrieben.', ad: 'Anzeige', share: 'Artikel teilen', copied: 'Kopiert!', copy: 'Kopieren' },
+      fr: { home: 'Accueil', updated: 'Mis à jour :', readTime: '{minutes} min de lecture', toc: 'Dans cet article', summary: 'Résumé de l’article', callout: 'Avant de continuer', faq: 'Questions fréquentes', cta: 'Essayez l’outil lié maintenant', ctaButton: 'Ouvrir l’outil', related: 'Articles et outils liés', relatedArticles: 'Articles liés', relatedTools: 'Outils liés', author: 'À propos de l’auteur', editorial: 'Note éditoriale', editorialText: 'Les guides NovaTools sont rédigés comme des workflows pratiques dans le navigateur avec des contrôles de confidentialité, de révision et de transmission.', ad: 'Publicité', share: 'Partager cet article', copied: 'Copié !', copy: 'Copier' },
+      es: { home: 'Inicio', updated: 'Actualizado:', readTime: '{minutes} min de lectura', toc: 'En esta página', summary: 'Resumen del artículo', callout: 'Antes de continuar', faq: 'Preguntas frecuentes', cta: 'Pruebe ahora la herramienta relacionada', ctaButton: 'Abrir herramienta', related: 'Artículos y herramientas relacionados', relatedArticles: 'Artículos relacionados', relatedTools: 'Herramientas relacionadas', author: 'Sobre el autor', editorial: 'Nota editorial', editorialText: 'Las guías de NovaTools se escriben como flujos prácticos en el navegador con controles de privacidad, revisión y entrega.', ad: 'Anuncio', share: 'Compartir artículo', copied: '¡Copiado!', copy: 'Copiar' },
+      pt: { home: 'Início', updated: 'Atualizado:', readTime: '{minutes} min de leitura', toc: 'Nesta página', summary: 'Resumo do artigo', callout: 'Antes de continuar', faq: 'Perguntas frequentes', cta: 'Experimente a ferramenta relacionada agora', ctaButton: 'Abrir ferramenta', related: 'Artigos e ferramentas relacionados', relatedArticles: 'Artigos relacionados', relatedTools: 'Ferramentas relacionadas', author: 'Sobre o autor', editorial: 'Nota editorial', editorialText: 'Os guias NovaTools são escritos como fluxos práticos no navegador com verificações de privacidade, revisão e entrega.', ad: 'Publicidade', share: 'Compartilhar artigo', copied: 'Copiado!', copy: 'Copiar' },
+      ru: { home: 'Главная', updated: 'Обновлено:', readTime: '{minutes} мин чтения', toc: 'На этой странице', summary: 'Краткое содержание', callout: 'Перед продолжением', faq: 'Частые вопросы', cta: 'Откройте связанный инструмент', ctaButton: 'Открыть инструмент', related: 'Связанные статьи и инструменты', relatedArticles: 'Связанные статьи', relatedTools: 'Связанные инструменты', author: 'Об авторе', editorial: 'Редакционная заметка', editorialText: 'Руководства NovaTools описывают практичные браузерные процессы с проверками приватности, качества и передачи результата.', ad: 'Реклама', share: 'Поделиться статьей', copied: 'Скопировано!', copy: 'Копировать' },
+      zh: { home: '首页', updated: '更新：', readTime: '{minutes} 分钟阅读', toc: '本页内容', summary: '文章摘要', callout: '继续之前', faq: '常见问题', cta: '立即尝试相关工具', ctaButton: '打开工具', related: '相关文章和工具', relatedArticles: '相关文章', relatedTools: '相关工具', author: '关于作者', editorial: '编辑说明', editorialText: 'NovaTools 指南以浏览器优先的实用流程编写，并包含隐私、审查和交接检查。', ad: '广告', share: '分享本文', copied: '已复制！', copy: '复制' },
+      ja: { home: 'ホーム', updated: '更新日:', readTime: '{minutes} 分で読めます', toc: 'このページ', summary: '記事の要約', callout: '続ける前に', faq: 'よくある質問', cta: '関連ツールを試す', ctaButton: 'ツールを開く', related: '関連記事とツール', relatedArticles: '関連記事', relatedTools: '関連ツール', author: '著者について', editorial: '編集メモ', editorialText: 'NovaTools のガイドは、プライバシー、レビュー、引き継ぎ確認を含む実用的なブラウザー中心ワークフローとして作成されています。', ad: '広告', share: 'この記事を共有', copied: 'コピーしました', copy: 'コピー' },
+      ko: { home: '홈', updated: '업데이트:', readTime: '{minutes}분 읽기', toc: '이 페이지에서', summary: '글 요약', callout: '계속하기 전에', faq: '자주 묻는 질문', cta: '관련 도구 사용해 보기', ctaButton: '도구 열기', related: '관련 글과 도구', relatedArticles: '관련 글', relatedTools: '관련 도구', author: '작성자 소개', editorial: '편집 노트', editorialText: 'NovaTools 가이드는 개인정보, 검토, 인수인계 점검을 포함한 실용적인 브라우저 우선 워크플로로 작성됩니다.', ad: '광고', share: '글 공유', copied: '복사됨!', copy: '복사' },
+      ar: { home: 'الرئيسية', updated: 'تم التحديث:', readTime: '{minutes} دقائق قراءة', toc: 'في هذه الصفحة', summary: 'ملخص المقال', callout: 'قبل المتابعة', faq: 'الأسئلة الشائعة', cta: 'جرّب الأداة المرتبطة الآن', ctaButton: 'افتح الأداة', related: 'مقالات وأدوات ذات صلة', relatedArticles: 'مقالات ذات صلة', relatedTools: 'أدوات ذات صلة', author: 'عن الكاتب', editorial: 'ملاحظة تحريرية', editorialText: 'تُكتب أدلة NovaTools كمسارات عمل عملية داخل المتصفح مع فحوصات للخصوصية والمراجعة والتسليم.', ad: 'إعلان', share: 'شارك المقال', copied: 'تم النسخ!', copy: 'نسخ' },
+      hi: { home: 'होम', updated: 'अपडेट:', readTime: '{minutes} मिनट पढ़ें', toc: 'इस पेज पर', summary: 'लेख सारांश', callout: 'आगे बढ़ने से पहले', faq: 'अक्सर पूछे जाने वाले प्रश्न', cta: 'संबंधित टूल अभी आज़माएँ', ctaButton: 'टूल खोलें', related: 'संबंधित लेख और टूल', relatedArticles: 'संबंधित लेख', relatedTools: 'संबंधित टूल', author: 'लेखक के बारे में', editorial: 'संपादकीय नोट', editorialText: 'NovaTools गाइड गोपनीयता, समीक्षा और हैंडऑफ जाँचों के साथ व्यावहारिक ब्राउज़र-प्रथम वर्कफ़्लो के रूप में लिखे जाते हैं।', ad: 'विज्ञापन', share: 'लेख साझा करें', copied: 'कॉपी हो गया!', copy: 'कॉपी' },
+      it: { home: 'Home', updated: 'Aggiornato:', readTime: '{minutes} min di lettura', toc: 'In questa pagina', summary: 'Riepilogo articolo', callout: 'Prima di continuare', faq: 'Domande frequenti', cta: 'Prova ora lo strumento collegato', ctaButton: 'Apri strumento', related: 'Articoli e strumenti correlati', relatedArticles: 'Articoli correlati', relatedTools: 'Strumenti correlati', author: 'Informazioni sull’autore', editorial: 'Nota editoriale', editorialText: 'Le guide NovaTools sono scritte come workflow pratici nel browser con controlli di privacy, revisione e consegna.', ad: 'Annuncio', share: 'Condividi articolo', copied: 'Copiato!', copy: 'Copia' },
+      pl: { home: 'Strona główna', updated: 'Zaktualizowano:', readTime: '{minutes} min czytania', toc: 'Na tej stronie', summary: 'Podsumowanie artykułu', callout: 'Zanim przejdziesz dalej', faq: 'Częste pytania', cta: 'Wypróbuj powiązane narzędzie', ctaButton: 'Otwórz narzędzie', related: 'Powiązane artykuły i narzędzia', relatedArticles: 'Powiązane artykuły', relatedTools: 'Powiązane narzędzia', author: 'O autorze', editorial: 'Nota redakcyjna', editorialText: 'Poradniki NovaTools opisują praktyczne workflow w przeglądarce z kontrolami prywatności, przeglądu i przekazania.', ad: 'Reklama', share: 'Udostępnij artykuł', copied: 'Skopiowano!', copy: 'Kopiuj' },
+      nl: { home: 'Home', updated: 'Bijgewerkt:', readTime: '{minutes} min leestijd', toc: 'Op deze pagina', summary: 'Samenvatting', callout: 'Voordat u verdergaat', faq: 'Veelgestelde vragen', cta: 'Probeer de gerelateerde tool nu', ctaButton: 'Tool openen', related: 'Gerelateerde artikelen en tools', relatedArticles: 'Gerelateerde artikelen', relatedTools: 'Gerelateerde tools', author: 'Over de auteur', editorial: 'Redactionele noot', editorialText: 'NovaTools-gidsen worden geschreven als praktische browser-first workflows met controles voor privacy, review en overdracht.', ad: 'Advertentie', share: 'Artikel delen', copied: 'Gekopieerd!', copy: 'Kopiëren' }
+    };
+
+    const localeCode = (locale) => locale === 'zh' ? 'zh-CN' : locale === 'ja' ? 'ja-JP' : locale === 'ko' ? 'ko-KR' : locale === 'ar' ? 'ar' : locale === 'tr' ? 'tr-TR' : locale;
+    const labelsFor = (locale) => ({ ...articleLabels.en, ...(articleLabels[locale] || {}) });
+    const formatDate = (date, locale) => new Intl.DateTimeFormat(localeCode(locale), { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(`${date}T00:00:00`));
+    const readTime = (minutes, labels) => labels.readTime.replace('{minutes}', minutes);
 
     function escapeHtml(value) {
       return String(value).replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]);
@@ -155,39 +198,92 @@ const ready = checklist.every((step) => step.length > 0);</code></pre></div></se
 
     const inlineImg = ({ src, alt = '', width, height }) => '<img ' + `src="${escapeHtml(src)}" alt="${escapeHtml(alt)}" width="${width}" height="${height}">`;
 
-    function renderFaq(faq) {
-      return `<section aria-labelledby="sss"><h2 id="sss"><a href="#sss">FAQ</a></h2><div class="faq-list">${faq.map((item) => `<details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"><summary itemprop="name">${escapeHtml(item.question)}</summary><p itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><span itemprop="text">${escapeHtml(item.answer)}</span></p></details>`).join('')}</div></section>`;
+    function localToolLabel(href) {
+      return String(href || '')
+        .replace(/^\/tools\//, '')
+        .replace(/\/$/, '')
+        .split('/')
+        .pop()
+        .replace(/-/g, ' ')
+        .replace(/\b\w/g, (char) => char.toUpperCase());
     }
 
-    function renderInContentAd() {
-      return `<aside class="ad-slot-container revenue-card article-ad-slot" aria-label="Advertisement" data-ad-placement="blog-in-content"><span class="ad-label">Advertisement</span><ins class="adsbygoogle ad-slot-leaderboard" style="display:block" data-ad-client="ca-pub-5738022526587953" data-slot-key="blogInContent" data-ad-format="auto" data-full-width-responsive="true"></ins></aside>`;
+    function renderFaq(faq, labels) {
+      if (!faq?.length) return '';
+      return `<section class="faq-section" aria-labelledby="article-faq"><h2 id="article-faq"><a href="#article-faq">${escapeHtml(labels.faq)}</a></h2><div class="faq-list">${faq.map((item) => `<details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"><summary itemprop="name">${escapeHtml(item.question)}</summary><p itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><span itemprop="text">${escapeHtml(item.answer)}</span></p></details>`).join('')}</div></section>`;
     }
 
-    function renderArticle(post, locale) {
-      const ui = getBlogUi(locale);
-      applyBlogDocumentLocale(locale);
-      const categoryLabel = ui.categories[post.category] || post.category;
-      injectBlogSeo(post, locale, categoryLabel);
+    function renderInContentAd(labels) {
+      return `<aside class="ad-slot-container revenue-card article-ad-slot" aria-label="${escapeHtml(labels.ad)}" data-ad-placement="blog-in-content"><span class="ad-label">${escapeHtml(labels.ad)}</span><ins class="adsbygoogle ad-slot-leaderboard" style="display:block" data-ad-client="ca-pub-5738022526587953" data-slot-key="blogInContent" data-ad-format="auto" data-full-width-responsive="true"></ins></aside>`;
+    }
 
-      const hero = document.querySelector('.article-hero');
-      const existingHeroPicture = hero?.querySelector('picture, img');
-      if (existingHeroPicture) existingHeroPicture.outerHTML = renderBlogPicture(post, 'og', { width: 1200, height: 630, loading: 'eager', alt: `${post.title} cover image` });
+    function renderToc(post, labels) {
+      const toc = document.getElementById('articleToc');
+      const title = document.getElementById('toc-title');
+      if (title) title.textContent = labels.toc;
+      if (!toc) return;
+      const headings = (post.headings || []).filter((heading) => heading.level === 2 || heading.level === 3).slice(0, 8);
+      toc.innerHTML = headings.map((heading) => `<li><a href="#${escapeHtml(heading.id)}">${escapeHtml(heading.text)}</a></li>`).join('');
+    }
+
+    function renderRelated(post, locale, categoryLabel, labels) {
+      const localePosts = getBlogPostsForLocale(locale);
+      const relatedSlugs = new Set(post.relatedArticleLinks || []);
+      const explicitPosts = localePosts.filter((item) => relatedSlugs.has(item.slug) && item.slug !== post.slug);
+      const categoryPosts = localePosts.filter((item) => item.slug !== post.slug && item.category === post.category && !relatedSlugs.has(item.slug));
+      const posts = [...explicitPosts, ...categoryPosts].slice(0, 3);
+      const relatedPosts = posts.map((item) => `<a class="related-post" rel="noopener" href="${getCleanBlogUrl(item.slug, locale).replace('https://mc-novatools.com', '')}">${renderBlogPicture(item, 'card', { width: 800, height: 450, alt: `${item.title} cover image` })}<span><strong>${escapeHtml(item.title)}</strong><br><time datetime="${item.datePublished}">${formatDate(item.datePublished, locale)}</time></span></a>`).join('');
+      const toolCards = (post.relatedToolLinks || []).slice(0, 4).map((href, index) => `<a class="nt-card" rel="noopener" href="${escapeHtml(href)}"><strong>${escapeHtml(post.relatedTools?.[index] || localToolLabel(href))}</strong><p>${escapeHtml(labels.ctaButton)}</p></a>`).join('');
+      return `<section class="related-section" aria-labelledby="related-detail"><h2 id="related-detail"><a href="#related-detail">${escapeHtml(labels.related)}</a></h2><h3>${escapeHtml(labels.relatedArticles)}</h3><div class="mini-card-grid">${relatedPosts}</div><p><a rel="noopener" href="${blogHubPath(locale)}?category=${encodeURIComponent(post.category)}">${escapeHtml(categoryLabel)}</a></p><h3>${escapeHtml(labels.relatedTools)}</h3><div class="tool-mini-grid">${toolCards || `<a class="nt-card" href="/categories/index.html"><strong>NovaTools</strong><p>${escapeHtml(labels.ctaButton)}</p></a>`}</div></section>`;
+    }
+
+    function updateBreadcrumb(post, locale, categoryLabel, labels) {
+      const list = document.querySelector('.article-breadcrumb ol');
+      if (!list) return;
+      list.innerHTML = `<li><a href="/">${escapeHtml(labels.home)}</a></li><li class="chevron" aria-hidden="true">›</li><li><a href="${blogHubPath(locale)}">Blog</a></li><li class="chevron" aria-hidden="true">›</li><li><a href="${blogHubPath(locale)}?category=${encodeURIComponent(post.category)}">${escapeHtml(categoryLabel)}</a></li><li class="chevron" aria-hidden="true">›</li><li aria-current="page">${escapeHtml(post.title)}</li>`;
+    }
+
+    function updateHero(post, locale, categoryLabel, labels) {
+      const heroMedia = document.querySelector('.article-hero__media');
+      if (heroMedia) heroMedia.innerHTML = renderBlogPicture(post, 'featured', { width: 1200, height: 675, loading: 'eager', alt: `${post.title} cover image` });
       const badge = document.querySelector('.article-badge');
       if (badge) badge.textContent = categoryLabel;
       const heading = document.querySelector('.article-hero h1');
       if (heading) heading.textContent = post.title;
+      const dek = document.querySelector('.article-dek');
+      if (dek) dek.textContent = post.excerpt;
       const meta = document.querySelector('.article-meta');
-      if (meta) meta.innerHTML = `<span class="article-meta__author">${inlineImg({ src: post.author.avatar, width: 48, height: 48 })}<span><strong>${escapeHtml(post.author.name)}</strong><br>${escapeHtml(post.author.title)}</span></span><time datetime="${post.datePublished}">${post.datePublished}</time><span class="updated-badge">${post.dateModified}</span><span>⏱ ${post.readTime} min</span>`;
+      if (meta) meta.innerHTML = `<span class="article-meta__author" itemprop="author" itemscope itemtype="https://schema.org/Person">${inlineImg({ src: post.author.avatar, width: 48, height: 48 })}<span><strong itemprop="name">${escapeHtml(post.author.name)}</strong><br><span itemprop="jobTitle">${escapeHtml(post.author.title)}</span></span></span><time datetime="${post.datePublished}" itemprop="datePublished">${formatDate(post.datePublished, locale)}</time><span class="updated-badge">${escapeHtml(labels.updated)} <time datetime="${post.dateModified || post.datePublished}" itemprop="dateModified">${formatDate(post.dateModified || post.datePublished, locale)}</time></span><span>⏱ ${escapeHtml(readTime(post.readTime, labels))}</span>`;
+    }
+
+    function renderArticle(post, locale) {
+      const ui = getBlogUi(locale);
+      const labels = labelsFor(locale);
+      window.articleRuntimeLabels = labels;
+      applyBlogDocumentLocale(locale);
+      const categoryLabel = ui.categories[post.category] || post.category;
+      injectBlogSeo(post, locale, categoryLabel);
+      updateBreadcrumb(post, locale, categoryLabel, labels);
+      updateHero(post, locale, categoryLabel, labels);
+      renderToc(post, labels);
+
+      const shareRow = document.querySelector('.share-row');
+      if (shareRow) shareRow.setAttribute('aria-label', labels.share);
+      const scrollTop = document.getElementById('scrollTop');
+      if (scrollTop) scrollTop.setAttribute('aria-label', labels.toc);
+      const editorial = document.querySelector('.editorial-note');
+      if (editorial) editorial.innerHTML = `<h2>${escapeHtml(labels.editorial)}</h2><p>${escapeHtml(labels.editorialText)}</p>`;
 
       const body = document.querySelector('.article-body');
       if (!body) return;
-      const summary = `<section class="summary-box" aria-labelledby="summary-title"><h2 id="summary-title">${locale === 'tr' ? 'Bu Yazının Özeti' : locale === 'ar' ? 'ملخص المقال' : 'Article Summary'}</h2><ul>${post.summary.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul></section>`;
-      const blocks = post.contentBlocks.map(renderContentBlock).join('');
-      const cta = `<section aria-labelledby="sonuc-cta"><div class="article-cta"><h3 id="sonuc-cta">${escapeHtml(ui.loadMore === 'Daha Fazla Yükle' ? 'Bu aracı hemen deneyin' : ui.loadMore === 'تحميل المزيد' ? 'جرّب الأداة المرتبطة الآن' : 'Try the related tool now')}</h3><p>${escapeHtml(post.excerpt)}</p><a class="btn btn-primary" rel="noopener" href="${post.relatedToolLinks?.[0] || '/categories/index.html'}">${locale === 'tr' ? 'Hemen Kullan' : locale === 'ar' ? 'ابدأ الآن' : 'Open Tool'}</a></div></section>`;
-      const relatedPosts = getBlogPostsForLocale(locale).filter((item) => item.slug !== post.slug && item.category === post.category).slice(0, 3);
-      const related = `<section aria-labelledby="ilgili"><h2 id="ilgili"><a href="#ilgili">${locale === 'tr' ? 'İlgili Yazılar ve Araçlar' : locale === 'ar' ? 'مقالات وأدوات ذات صلة' : 'Related Articles and Tools'}</a></h2><div class="mini-card-grid">${relatedPosts.map((item) => `<a class="related-post" rel="noopener" href="${getCleanBlogUrl(item.slug, locale).replace('https://mc-novatools.com', '')}">${renderBlogPicture(item, 'card', { width: 800, height: 450, alt: `${item.title} cover image` })}<span><strong>${escapeHtml(item.title)}</strong><br>${item.datePublished}</span></a>`).join('')}</div><p><a rel="noopener" href="${blogHubPath(locale)}?category=${encodeURIComponent(post.category)}">${escapeHtml(categoryLabel)}</a></p></section>`;
-      const author = `<aside class="author-box" aria-label="Author">${inlineImg({ src: post.author.avatar, alt: `${post.author.name} avatar`, width: 80, height: 80 })}<div><h4>${escapeHtml(post.author.name)}</h4><p><strong>${escapeHtml(post.author.title)}</strong></p><p>${escapeHtml(post.author.bio)}</p></div></aside>`;
-      body.innerHTML = summary + blocks + renderFaq(post.faq) + renderInContentAd() + cta + related + author;
+      const summary = `<section class="summary-box" aria-labelledby="summary-title"><h2 id="summary-title">${escapeHtml(labels.summary)}</h2><ul>${(post.summary || []).map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul></section>`;
+      const callout = `<aside class="callout-card" aria-labelledby="callout-title"><h2 id="callout-title">${escapeHtml(labels.callout)}</h2><p>${escapeHtml(post.summary?.[0] || post.excerpt)}</p></aside>`;
+      const blocks = `<div class="article-prose">${post.contentBlocks.map(renderContentBlock).join('')}</div>`;
+      const cta = `<section aria-labelledby="article-cta"><div class="article-cta"><h2 id="article-cta">${escapeHtml(labels.cta)}</h2><p>${escapeHtml(post.excerpt)}</p><a class="btn btn-primary" rel="noopener" href="${escapeHtml(post.relatedToolLinks?.[0] || '/categories/index.html')}">${escapeHtml(labels.ctaButton)}</a></div></section>`;
+      const related = renderRelated(post, locale, categoryLabel, labels);
+      const author = `<aside class="author-box" aria-labelledby="author-box-title">${inlineImg({ src: post.author.avatar, alt: `${post.author.name} avatar`, width: 72, height: 72 })}<div><h2 id="author-box-title">${escapeHtml(labels.author)}</h2><h4>${escapeHtml(post.author.name)}</h4><p><strong>${escapeHtml(post.author.title)}</strong></p><p>${escapeHtml(post.author.bio)}</p></div></aside>`;
+      body.innerHTML = summary + callout + blocks + renderFaq(post.faq, labels) + renderInContentAd(labels) + cta + related + author;
+      body.querySelectorAll('.copy-code').forEach((button) => { button.textContent = labels.copy; });
       applyToolAdSlots(body);
     }
 
@@ -208,7 +304,7 @@ const ready = checklist.every((step) => step.length > 0);</code></pre></div></se
     window.addEventListener('scroll', updateProgress, { passive: true });
     updateProgress();
     scrollTopButton.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-    document.addEventListener('click', async (event) => { const button = event.target.closest('.copy-code'); if (!button) return; const code = button.nextElementSibling?.innerText || ''; await navigator.clipboard.writeText(code); toast.classList.add('is-visible'); button.textContent = 'Copied!'; window.setTimeout(() => { toast.classList.remove('is-visible'); button.textContent = 'Copy'; }, 1000); });
+    document.addEventListener('click', async (event) => { const button = event.target.closest('.copy-code'); if (!button) return; const labels = window.articleRuntimeLabels || {}; const code = button.nextElementSibling?.innerText || ''; await navigator.clipboard.writeText(code); toast.textContent = labels.copied || 'Copied!'; toast.classList.add('is-visible'); button.textContent = labels.copied || 'Copied!'; window.setTimeout(() => { toast.classList.remove('is-visible'); button.textContent = labels.copy || 'Copy'; }, 1000); });
     document.querySelectorAll('[data-share]').forEach((button) => button.addEventListener('click', () => { const url = encodeURIComponent(window.location.href); const title = encodeURIComponent(document.title); const map = { x: `https://twitter.com/intent/tweet?url=${url}&text=${title}`, linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${url}`, whatsapp: `https://wa.me/?text=${title}%20${url}`, email: `mailto:?subject=${title}&body=${url}` }; const shareUrl = map[button.dataset.share]; if (button.dataset.share === 'email') window.location.href = shareUrl; else window.open(shareUrl, '_blank', 'noopener,noreferrer,width=720,height=640'); }));
   </script>
 </body>

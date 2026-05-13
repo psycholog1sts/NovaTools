@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "blog-terminology-base-v1",
+  "description": "Approved multilingual terminology for NovaTools blog batches. Translators should prefer these terms when localizing article metadata and body copy.",
+  "terms": [
+    {
+      "id": "browser-first",
+      "domain": "privacy",
+      "source": "browser-first",
+      "notes": "Use for workflows where files or inputs stay in the user's browser whenever possible.",
+      "translations": {
+        "tr": "tarayıcı öncelikli",
+        "ar": "الأولوية للمتصفح"
+      }
+    },
+    {
+      "id": "handoff",
+      "domain": "workflow",
+      "source": "handoff",
+      "notes": "Use for passing a file, decision, or prepared output to another person or system.",
+      "translations": {
+        "tr": "teslim",
+        "ar": "التسليم"
+      }
+    }
+  ]
+}

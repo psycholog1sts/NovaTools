@@ -5,6 +5,7 @@ import path from 'node:path';
 
 const rootDir = process.cwd();
 const outlinePath = path.join(rootDir, 'content', 'blog-outlines.json');
+const fallbackBlogPath = path.join(rootDir, 'src', 'i18n', 'blog', 'en.json');
 const outDir = path.join(rootDir, 'public', 'images', 'blog');
 const mode = process.argv.includes('--check') ? 'check' : 'write';
 
@@ -62,7 +63,43 @@ const clusterThemes = {
     colors: ['#451a03', '#b45309', '#f59e0b', '#fffbeb'],
     icon: 'education',
     motif: 'Guided practice'
+  },
+  'ai-workflows': {
+    label: 'AI workflow',
+    colors: ['#312e81', '#8b5cf6', '#22d3ee', '#eef2ff'],
+    icon: 'nodes',
+    motif: 'Human review'
+  },
+  'data-workflows': {
+    label: 'Data workflow',
+    colors: ['#0c4a6e', '#0284c7', '#67e8f9', '#ecfeff'],
+    icon: 'data',
+    motif: 'Clean import'
+  },
+  comparison: {
+    label: 'Comparison guide',
+    colors: ['#111827', '#4f46e5', '#a78bfa', '#f5f3ff'],
+    icon: 'comparison',
+    motif: 'Trade-off map'
   }
+};
+
+const categoryClusterMap = {
+  'fintech-personal-finance': 'finance-calculators',
+  'education-technology': 'education',
+  'artificial-intelligence': 'ai-workflows',
+  'remote-productivity': 'productivity',
+  'developer-automation': 'developer-utilities',
+  'data-privacy': 'privacy-workflows',
+  pdf: 'pdf-workflows',
+  image: 'image-optimization',
+  finance: 'finance-calculators',
+  developer: 'developer-utilities',
+  data: 'data-workflows',
+  privacy: 'privacy-workflows',
+  productivity: 'productivity',
+  education: 'education',
+  comparison: 'comparison'
 };
 
 function escapeXml(value) {
@@ -125,6 +162,15 @@ function iconSvg(type, x, y, size, accent, light, seed) {
     const offset = seed % 18;
     return `<g transform="translate(${x} ${y})"><rect x="${s * 0.08}" y="${s * 0.12}" width="${s * 0.84}" height="${s * 0.72}" rx="${s * 0.08}" fill="rgba(255,255,255,0.12)"/><rect x="${s * 0.18}" y="${s * 0.26}" width="${s * 0.18}" height="${s * 0.36 + offset}" rx="${s * 0.04}" fill="${accent}" opacity="0.72"/><rect x="${s * 0.42}" y="${s * 0.26}" width="${s * 0.18}" height="${s * 0.28}" rx="${s * 0.04}" fill="rgba(255,255,255,0.24)"/><rect x="${s * 0.66}" y="${s * 0.26}" width="${s * 0.18}" height="${s * 0.44}" rx="${s * 0.04}" fill="rgba(255,255,255,0.2)"/></g>`;
   }
+  if (type === 'nodes') {
+    return `<g transform="translate(${x} ${y})"><circle cx="${s * 0.28}" cy="${s * 0.3}" r="${s * 0.1}" fill="rgba(255,255,255,0.14)"/><circle cx="${s * 0.7}" cy="${s * 0.42}" r="${s * 0.12}" fill="${accent}" opacity="0.34"/><circle cx="${s * 0.42}" cy="${s * 0.72}" r="${s * 0.1}" fill="rgba(255,255,255,0.14)"/><path d="M${s * 0.36} ${s * 0.34}l${s * 0.22} ${s * 0.06}M${s * 0.63} ${s * 0.52}l-${s * 0.14} ${s * 0.12}M${s * 0.34} ${s * 0.39}l${s * 0.07} ${s * 0.22}" ${stroke}/></g>`;
+  }
+  if (type === 'data') {
+    return `<g transform="translate(${x} ${y})"><rect x="${s * 0.12}" y="${s * 0.16}" width="${s * 0.76}" height="${s * 0.64}" rx="${s * 0.08}" fill="rgba(255,255,255,0.12)"/><path d="M${s * 0.24} ${s * 0.3}h${s * 0.52}M${s * 0.24} ${s * 0.46}h${s * 0.52}M${s * 0.24} ${s * 0.62}h${s * 0.52}M${s * 0.4} ${s * 0.24}v${s * 0.44}M${s * 0.58} ${s * 0.24}v${s * 0.44}" ${stroke}/><circle cx="${s * 0.74}" cy="${s * 0.28}" r="${s * 0.05}" fill="${accent}"/></g>`;
+  }
+  if (type === 'comparison') {
+    return `<g transform="translate(${x} ${y})"><rect x="${s * 0.1}" y="${s * 0.18}" width="${s * 0.3}" height="${s * 0.58}" rx="${s * 0.06}" fill="rgba(255,255,255,0.13)"/><rect x="${s * 0.6}" y="${s * 0.18}" width="${s * 0.3}" height="${s * 0.58}" rx="${s * 0.06}" fill="${accent}" opacity="0.26"/><path d="M${s * 0.48} ${s * 0.32}h${s * 0.1}M${s * 0.52} ${s * 0.28}l${s * 0.08} ${s * 0.04}-${s * 0.08} ${s * 0.04}M${s * 0.42} ${s * 0.62}h${s * 0.1}M${s * 0.44} ${s * 0.58}l-${s * 0.08} ${s * 0.04} ${s * 0.08} ${s * 0.04}" ${stroke}/></g>`;
+  }
   return `<g transform="translate(${x} ${y})"><circle cx="${s * 0.5}" cy="${s * 0.44}" r="${s * 0.26}" fill="rgba(255,255,255,0.13)"/><path d="M${s * 0.22} ${s * 0.48}l${s * 0.28}-${s * 0.14} ${s * 0.28} ${s * 0.14}-${s * 0.28} ${s * 0.14}zM${s * 0.5} ${s * 0.62}v${s * 0.16}" ${stroke}/><rect x="${s * 0.28}" y="${s * 0.76}" width="${s * 0.44}" height="${s * 0.08}" rx="${s * 0.04}" fill="${accent}"/></g>`;
 }
 
@@ -143,20 +189,22 @@ function decorativeNodes(width, height, seed, accent) {
 
 function svgFor(article, variant) {
   const { width, height, label } = variantSizes[variant];
-  const theme = clusterThemes[article.cluster] || clusterThemes.productivity;
+  const clusterKey = article.cluster || categoryClusterMap[article.category] || 'productivity';
+  const theme = clusterThemes[clusterKey] || clusterThemes.productivity;
   const [dark, primary, accent, light] = theme.colors;
   const seed = hashString(`${article.slug}:${variant}`);
-  const titleLines = wrapText(article.title, width >= 1000 ? 34 : 28, 3);
-  const task = article.searchIntent?.userTaskIntent || article.category;
+  const titleLines = wrapText(article.title, width >= 1000 ? 34 : 24, 3);
+  const task = article.searchIntent?.userTaskIntent || article.task || article.excerpt || article.category;
   const taskLines = wrapText(task, width >= 1000 ? 52 : 42, 2);
   const fontScale = width / 1200;
-  const titleSize = Math.round(58 * fontScale + (variant === 'card' ? 2 : 0));
-  const subSize = Math.round(24 * fontScale + (variant === 'card' ? 2 : 0));
+  const titleBase = variant === 'card' ? 48 : 58;
+  const titleSize = Math.round(titleBase * fontScale);
+  const subSize = Math.round(24 * fontScale + (variant === 'card' ? 1 : 0));
   const left = Math.round(width * 0.07);
   const titleTop = Math.round(height * 0.31);
   const lineGap = Math.round(titleSize * 1.12);
-  const iconSize = Math.round(Math.min(width, height) * 0.34);
-  const iconX = Math.round(width * 0.66);
+  const iconSize = Math.round(Math.min(width, height) * (variant === 'card' ? 0.28 : 0.34));
+  const iconX = Math.round(width * (variant === 'card' ? 0.72 : 0.66));
   const iconY = Math.round(height * 0.17);
   const patternSize = 54 + (seed % 24);
   const dash = 8 + (seed % 6);
@@ -192,20 +240,52 @@ function svgFor(article, variant) {
 `;
 }
 
+function coverPath(article, variant) {
+  const configured = article.coverImage?.[variant];
+  const relative = configured || `/images/blog/${variant}-${article.slug}.svg`;
+  const clean = relative.replace(/^\//, '');
+  return path.join(rootDir, clean.startsWith('images/') ? path.join('public', clean) : clean);
+}
+
+function normalizeBlogPost(post) {
+  const cluster = post.cluster || categoryClusterMap[post.category] || 'productivity';
+  return {
+    ...post,
+    cluster,
+    task: post.excerpt || post.title,
+    visualBrief: post.visualBrief || {
+      palette: clusterThemes[cluster]?.colors?.slice(0, 3),
+      iconography: [post.category, ...(post.tags || []).slice(0, 2)],
+      style: 'category-specific editorial cover generated from article metadata'
+    }
+  };
+}
+
+function uniqueArticles(outlineArticles, blogPosts) {
+  const bySlug = new Map();
+  [...outlineArticles, ...blogPosts].forEach((article) => {
+    if (!article?.slug) return;
+    bySlug.set(article.slug, { ...(bySlug.get(article.slug) || {}), ...normalizeBlogPost(article) });
+  });
+  return [...bySlug.values()].sort((a, b) => a.slug.localeCompare(b.slug));
+}
+
 function expectedAssets(articles) {
   return articles.flatMap((article) => Object.keys(variantSizes).map((variant) => ({
-    file: path.join(outDir, `${variant}-${article.slug}.svg`),
+    file: coverPath(article, variant),
     contents: svgFor(article, variant)
   })));
 }
 
 const dataset = JSON.parse(await readFile(outlinePath, 'utf8'));
-const articles = dataset.articles || [];
-if (articles.length !== 100) {
-  throw new Error(`Expected 100 blog outlines before image generation, found ${articles.length}.`);
+const outlineArticles = dataset.articles || [];
+if (outlineArticles.length !== 100) {
+  throw new Error(`Expected 100 blog outlines before image generation, found ${outlineArticles.length}.`);
 }
-
+const fallbackPosts = JSON.parse(await readFile(fallbackBlogPath, 'utf8'));
+const articles = uniqueArticles(outlineArticles, fallbackPosts);
 const assets = expectedAssets(articles);
+
 if (mode === 'check') {
   const stale = assets.filter(({ file, contents }) => !fs.existsSync(file) || fs.readFileSync(file, 'utf8') !== contents);
   if (stale.length) {
@@ -213,9 +293,9 @@ if (mode === 'check') {
     if (stale.length > 20) console.error(`FAIL: ${stale.length - 20} additional blog image assets are stale.`);
     process.exit(1);
   }
-  console.log(`✅ Blog cover assets are valid and up to date (${assets.length} SVG files for ${articles.length} outlines).`);
+  console.log(`✅ Blog cover assets are valid and up to date (${assets.length} SVG files for ${articles.length} unique articles).`);
 } else {
   await mkdir(outDir, { recursive: true });
   await Promise.all(assets.map(({ file, contents }) => writeFile(file, contents)));
-  console.log(`✅ Generated ${assets.length} unique SVG blog cover assets for ${articles.length} outlines in ${path.relative(rootDir, outDir)}.`);
+  console.log(`✅ Generated ${assets.length} unique SVG blog cover assets for ${articles.length} unique articles in ${path.relative(rootDir, outDir)}.`);
 }

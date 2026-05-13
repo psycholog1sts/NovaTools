@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "blog-seed-batch-v1",
+  "defaultLocale": "en",
+  "notes": "Copy this file, replace the sample article with human-authored content, then run npm run seed:blog -- --batch=path/to/batch.json.",
+  "articles": [
+    {
+      "slug": "example-browser-workflow-checklist",
+      "title": "Example Browser Workflow Checklist for Editorial Review",
+      "excerpt": "A human-authored example that shows the required metadata fields for adding a NovaTools blog article through the batch seeding pipeline.",
+      "summary": [
+        "Use this sample as a structural reference only; do not publish it as real content.",
+        "Keep article claims specific, reviewable, and tied to a real tool or workflow.",
+        "Provide professional localizations in localizations when a locale is ready for publication."
+      ],
+      "category": "workflow",
+      "tags": ["workflow", "editorial", "browser-first"],
+      "faq": [
+        {
+          "question": "Does the seeding script translate article copy?",
+          "answer": "No. The script prepares routing and manifest entries; localization remains a human editorial task."
+        },
+        {
+          "question": "When are cover images generated?",
+          "answer": "The seed command runs the blog image generator after writing manifests unless --skip-generated-assets is provided."
+        }
+      ],
+      "cta": {
+        "label": "Browse tools",
+        "href": "/categories/index.html",
+        "text": "Open the NovaTools category hub when you are ready to connect this guide to a tool path."
+      },
+      "relatedTools": ["Categories"],
+      "relatedToolLinks": ["/categories/index.html"],
+      "relatedArticleLinks": ["tool-selection-map-for-new-users"],
+      "localizations": {
+        "tr": {
+          "title": "Editoryal Kontrol İçin Örnek Tarayıcı İş Akışı Listesi",
+          "excerpt": "NovaTools bloguna batch seeding ile makale eklemek için gereken metadata alanlarını gösteren insan tarafından hazırlanmış örnek.",
+          "summary": [
+            "Bu örneği yalnızca yapı referansı olarak kullanın; gerçek içerik olarak yayınlamayın.",
+            "Makale iddialarını belirli, kontrol edilebilir ve gerçek araç yoluyla bağlantılı tutun.",
+            "Bir locale yayına hazır olduğunda localizations içinde profesyonel çevirisini sağlayın."
+          ]
+        }
+      }
+    }
+  ]
+}

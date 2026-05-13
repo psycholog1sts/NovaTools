@@ -7,6 +7,7 @@ import {
   blogHubPath,
   fallbackBlogLocale,
   normalizeBlogSlug,
+  normalizeBlogSlugList,
   supportedBlogLocales
 } from '../src/js/blog-routes.js';
 
@@ -34,6 +35,14 @@ function addRouteKey(key, owner) {
   routeKeys.set(key, owner);
 }
 
+function readSourceArticleSlugs() {
+  const articleDir = path.join(repoRoot, 'src', 'blog', 'articles');
+  if (!fs.existsSync(articleDir)) return [];
+  return fs.readdirSync(articleDir)
+    .filter((file) => file.endsWith('.html') && file !== 'index.html')
+    .map((file) => normalizeBlogSlug(file.replace(/\.html$/, '')));
+}
+
 if (supportedBlogLocales.length !== 15) {
   fail(`Expected 15 supported blog locales, found ${supportedBlogLocales.length}`);
 }
@@ -43,7 +52,9 @@ if (!fs.existsSync(path.join(repoRoot, 'src/blog/article-template.html'))) {
 }
 
 const fallbackPosts = readPosts(fallbackBlogLocale);
+const sourceArticleSlugs = readSourceArticleSlugs();
 const fallbackSlugs = new Set(fallbackPosts.map((post) => post.slug));
+const contractSlugs = normalizeBlogSlugList([...fallbackSlugs, ...sourceArticleSlugs]);
 
 for (const locale of supportedBlogLocales) {
   const hub = blogHubPath(locale);
@@ -65,7 +76,9 @@ for (const locale of supportedBlogLocales) {
     seen.add(slug);
 
     if (!fallbackSlugs.has(slug)) fail(`${locale} manifest slug is not present in fallback manifest: ${slug}`);
+  }
 
+  for (const slug of contractSlugs) {
     const routes = blogArticleRoutes(slug, locale);
     const expectedPrefix = locale === fallbackBlogLocale ? '/blog/' : `/${locale}/blog/`;
     if (!routes.canonicalPath.startsWith(`${expectedPrefix}articles/`)) fail(`${locale}/${slug} canonical route is not locale-prefixed articles route: ${routes.canonicalPath}`);
@@ -77,7 +90,7 @@ for (const locale of supportedBlogLocales) {
   }
 }
 
-const expectedMinimum = supportedBlogLocales.length * fallbackPosts.length * 2;
+const expectedMinimum = supportedBlogLocales.length * contractSlugs.length * 2;
 if (routeKeys.size < expectedMinimum) {
   fail(`Expected at least ${expectedMinimum} canonical+legacy route keys, found ${routeKeys.size}`);
 }
@@ -88,4 +101,4 @@ if (failures.length > 0) {
   process.exit(1);
 }
 
-console.log(`✅ Blog route contract verified for ${supportedBlogLocales.length} locales and ${routeKeys.size} article route keys.`);
+console.log(`✅ Blog route contract verified for ${supportedBlogLocales.length} locales, ${contractSlugs.length} article slugs, and ${routeKeys.size} article route keys.`);
