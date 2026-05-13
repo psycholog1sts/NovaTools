@@ -6,7 +6,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { blogArticleRoutes, blogHubPath, fallbackBlogLocale, normalizeBlogSlug, normalizeBlogSlugList, supportedBlogLocales } from '../src/js/blog-routes.js';
+import { blogArticleRoutes, blogHubPath, fallbackBlogLocale, supportedBlogLocales } from '../src/js/blog-routes.js';
 import { buildBlogArticleSeo, buildBlogIndexSeo } from '../src/js/blog-seo.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -129,14 +129,6 @@ function stampBlogFile(filePath, block, locale) {
   return true;
 }
 
-function setHtmlLang(filePath, locale) {
-  if (!fs.existsSync(filePath)) return false;
-  const html = fs.readFileSync(filePath, 'utf8');
-  const stamped = html.replace(/<html lang="[^"]+"/, `<html lang="${locale}"`);
-  if (stamped !== html) fs.writeFileSync(filePath, stamped);
-  return true;
-}
-
 
 console.log('🔧 Running post-build fixes...\n');
 
@@ -224,13 +216,8 @@ if (fs.existsSync(distBlogIndex) && fs.existsSync(distBlogTemplate)) {
       for (const route of Object.values(blogArticleRoutes(slug, locale))) {
         const target = path.join(distDir, route.replace(/^\//, ''));
         fs.mkdirSync(path.dirname(target), { recursive: true });
-        if (post) {
-          fs.copyFileSync(distBlogTemplate, target);
-          stampBlogFile(target, blogArticleHeadBlock(post, locale), locale);
-        } else if (sourceArticle) {
-          fs.copyFileSync(sourceArticle, target);
-          setHtmlLang(target, locale);
-        }
+        if (!fs.existsSync(target)) fs.copyFileSync(distBlogTemplate, target);
+        stampBlogFile(target, blogArticleHeadBlock(post, locale), locale);
       }
     }
   }

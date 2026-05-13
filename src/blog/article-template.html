@@ -227,11 +227,7 @@
     }
 
     function renderRelated(post, locale, categoryLabel, labels) {
-      const localePosts = getBlogPostsForLocale(locale);
-      const relatedSlugs = new Set(post.relatedArticleLinks || []);
-      const explicitPosts = localePosts.filter((item) => relatedSlugs.has(item.slug) && item.slug !== post.slug);
-      const categoryPosts = localePosts.filter((item) => item.slug !== post.slug && item.category === post.category && !relatedSlugs.has(item.slug));
-      const posts = [...explicitPosts, ...categoryPosts].slice(0, 3);
+      const posts = getBlogPostsForLocale(locale).filter((item) => item.slug !== post.slug && item.category === post.category).slice(0, 3);
       const relatedPosts = posts.map((item) => `<a class="related-post" rel="noopener" href="${getCleanBlogUrl(item.slug, locale).replace('https://mc-novatools.com', '')}">${renderBlogPicture(item, 'card', { width: 800, height: 450, alt: `${item.title} cover image` })}<span><strong>${escapeHtml(item.title)}</strong><br><time datetime="${item.datePublished}">${formatDate(item.datePublished, locale)}</time></span></a>`).join('');
       const toolCards = (post.relatedToolLinks || []).slice(0, 4).map((href, index) => `<a class="nt-card" rel="noopener" href="${escapeHtml(href)}"><strong>${escapeHtml(post.relatedTools?.[index] || localToolLabel(href))}</strong><p>${escapeHtml(labels.ctaButton)}</p></a>`).join('');
       return `<section class="related-section" aria-labelledby="related-detail"><h2 id="related-detail"><a href="#related-detail">${escapeHtml(labels.related)}</a></h2><h3>${escapeHtml(labels.relatedArticles)}</h3><div class="mini-card-grid">${relatedPosts}</div><p><a rel="noopener" href="${blogHubPath(locale)}?category=${encodeURIComponent(post.category)}">${escapeHtml(categoryLabel)}</a></p><h3>${escapeHtml(labels.relatedTools)}</h3><div class="tool-mini-grid">${toolCards || `<a class="nt-card" href="/categories/index.html"><strong>NovaTools</strong><p>${escapeHtml(labels.ctaButton)}</p></a>`}</div></section>`;
