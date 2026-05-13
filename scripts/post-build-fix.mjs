@@ -6,7 +6,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { blogArticleRoutes, blogHubPath, fallbackBlogLocale, supportedBlogLocales } from '../src/js/blog-routes.js';
+import { blogArticleRoutes, blogHubPath, fallbackBlogLocale, normalizeBlogSlug, normalizeBlogSlugList, supportedBlogLocales } from '../src/js/blog-routes.js';
 import { buildBlogArticleSeo, buildBlogIndexSeo } from '../src/js/blog-seo.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -198,6 +198,52 @@ const sourceArticleFileBySlug = () => {
     .map((file) => [normalizeBlogSlug(file.replace(/\.html$/, '')), path.join(sourceArticlesDir, file)]));
 };
 
+const sourceArticlePostCache = new Map();
+
+function textFromHtml(html, selectorPattern) {
+  const match = html.match(selectorPattern);
+  return match ? match[1].replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim() : '';
+}
+
+function attrFromHtml(html, selectorPattern) {
+  const match = html.match(selectorPattern);
+  return match ? match[1].replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&amp;/g, '&').trim() : '';
+}
+
+function sourceArticlePost(slug, filePath) {
+  if (sourceArticlePostCache.has(slug)) return sourceArticlePostCache.get(slug);
+  const html = fs.readFileSync(filePath, 'utf8');
+  let jsonLd = {};
+  const jsonLdMatch = html.match(/<script[^>]+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/i);
+  if (jsonLdMatch) {
+    try {
+      jsonLd = JSON.parse(jsonLdMatch[1]);
+    } catch {
+      jsonLd = {};
+    }
+  }
+  const title = jsonLd.headline || textFromHtml(html, /<h1[^>]*>([\s\S]*?)<\/h1>/i) || attrFromHtml(html, /<title[^>]*>([\s\S]*?)<\/title>/i).replace(/\s*[|–-]\s*(?:MC\s+)?NovaTools(?:\s+Guides?|\s+Blog)?[\s\S]*$/i, '') || slug.replace(/-/g, ' ');
+  const excerpt = jsonLd.description || attrFromHtml(html, /<meta\s+name=["']description["']\s+content=["']([^"']*)["'][^>]*>/i) || `Practical NovaTools guide for ${title}.`;
+  const category = jsonLd.articleSection || textFromHtml(html, /<span[^>]+class=["'][^"']*tag[^"']*["'][^>]*>([\s\S]*?)<\/span>/i) || 'NovaTools guides';
+  const image = typeof jsonLd.image === 'string' ? jsonLd.image.replace(/^https?:\/\/mc-novatools\.com/i, '') : '/logo-brand-520.png';
+  const post = {
+    slug,
+    title,
+    excerpt,
+    summary: [excerpt],
+    category,
+    tags: [],
+    faq: [],
+    author: { name: 'MC NovaTools Editorial' },
+    authorId: 'novatools-editorial',
+    datePublished: String(jsonLd.datePublished || '2026-04-17').slice(0, 10),
+    dateModified: String(jsonLd.dateModified || jsonLd.datePublished || '2026-04-17').slice(0, 10),
+    coverImage: { og: image, card: image, featured: image }
+  };
+  sourceArticlePostCache.set(slug, post);
+  return post;
+}
+
 if (fs.existsSync(distBlogIndex) && fs.existsSync(distBlogTemplate)) {
   const sourceArticles = sourceArticleFileBySlug();
   const fallbackPosts = manifestBySlug(fallbackBlogLocale);
@@ -211,8 +257,9 @@ if (fs.existsSync(distBlogIndex) && fs.existsSync(distBlogTemplate)) {
 
     const localePosts = manifestBySlug(locale);
     for (const slug of routeSlugs) {
-      const post = localePosts.get(slug) || fallbackPosts.get(slug);
       const sourceArticle = sourceArticles.get(slug);
+      const post = localePosts.get(slug) || fallbackPosts.get(slug) || (sourceArticle ? sourceArticlePost(slug, sourceArticle) : null);
+      if (!post) continue;
       for (const route of Object.values(blogArticleRoutes(slug, locale))) {
         const target = path.join(distDir, route.replace(/^\//, ''));
         fs.mkdirSync(path.dirname(target), { recursive: true });

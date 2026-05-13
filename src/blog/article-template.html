@@ -227,7 +227,13 @@
     }
 
     function renderRelated(post, locale, categoryLabel, labels) {
-      const posts = getBlogPostsForLocale(locale).filter((item) => item.slug !== post.slug && item.category === post.category).slice(0, 3);
+      const localePosts = getBlogPostsForLocale(locale);
+      const explicitRelatedPosts = (post.relatedArticleLinks || [])
+        .map((slug) => localePosts.find((item) => item.slug === slug))
+        .filter(Boolean);
+      const fallbackRelatedPosts = localePosts
+        .filter((item) => item.slug !== post.slug && item.category === post.category && !explicitRelatedPosts.some((related) => related.slug === item.slug));
+      const posts = (explicitRelatedPosts.length ? explicitRelatedPosts : fallbackRelatedPosts).slice(0, 3);
       const relatedPosts = posts.map((item) => `<a class="related-post" rel="noopener" href="${getCleanBlogUrl(item.slug, locale).replace('https://mc-novatools.com', '')}">${renderBlogPicture(item, 'card', { width: 800, height: 450, alt: `${item.title} cover image` })}<span><strong>${escapeHtml(item.title)}</strong><br><time datetime="${item.datePublished}">${formatDate(item.datePublished, locale)}</time></span></a>`).join('');
       const toolCards = (post.relatedToolLinks || []).slice(0, 4).map((href, index) => `<a class="nt-card" rel="noopener" href="${escapeHtml(href)}"><strong>${escapeHtml(post.relatedTools?.[index] || localToolLabel(href))}</strong><p>${escapeHtml(labels.ctaButton)}</p></a>`).join('');
       return `<section class="related-section" aria-labelledby="related-detail"><h2 id="related-detail"><a href="#related-detail">${escapeHtml(labels.related)}</a></h2><h3>${escapeHtml(labels.relatedArticles)}</h3><div class="mini-card-grid">${relatedPosts}</div><p><a rel="noopener" href="${blogHubPath(locale)}?category=${encodeURIComponent(post.category)}">${escapeHtml(categoryLabel)}</a></p><h3>${escapeHtml(labels.relatedTools)}</h3><div class="tool-mini-grid">${toolCards || `<a class="nt-card" href="/categories/index.html"><strong>NovaTools</strong><p>${escapeHtml(labels.ctaButton)}</p></a>`}</div></section>`;
