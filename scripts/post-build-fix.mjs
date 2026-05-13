@@ -6,7 +6,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { blogArticlePath, blogHubPath, fallbackBlogLocale, legacyBlogArticlePath, supportedBlogLocales } from '../src/js/blog-routes.js';
+import { blogArticleRoutes, blogHubPath, fallbackBlogLocale, supportedBlogLocales } from '../src/js/blog-routes.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -80,7 +80,7 @@ if (fs.existsSync(distBlogIndex) && fs.existsSync(distBlogTemplate)) {
     if (!fs.existsSync(hubPath)) fs.copyFileSync(distBlogIndex, hubPath);
 
     for (const post of readBlogManifest(locale)) {
-      for (const route of [blogArticlePath(post.slug, locale), legacyBlogArticlePath(post.slug, locale)]) {
+      for (const route of Object.values(blogArticleRoutes(post.slug, locale))) {
         const target = path.join(distDir, route.replace(/^\//, ''));
         fs.mkdirSync(path.dirname(target), { recursive: true });
         if (!fs.existsSync(target)) fs.copyFileSync(distBlogTemplate, target);

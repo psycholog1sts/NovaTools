@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-label="Expense Tracker Receipt Routine for Freelancers cover image">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#172554"/>
+      <stop offset="0.58" stop-color="#2563eb"/>
+      <stop offset="1" stop-color="#60a5fa"/>
+    </linearGradient>
+    <pattern id="grid" width="64" height="64" patternUnits="userSpaceOnUse">
+      <path d="M64 0H0V64" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1" stroke-dasharray="12 18"/>
+    </pattern>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#000" flood-opacity="0.24"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  <rect width="1200" height="675" fill="url(#grid)" opacity="0.58"/>
+  <circle cx="344" cy="578" r="14" fill="#eff6ff" opacity="0.1"/><circle cx="877" cy="94" r="13" fill="#eff6ff" opacity="0.14"/><circle cx="281" cy="284" r="12" fill="#eff6ff" opacity="0.18"/><circle cx="932" cy="474" r="11" fill="#eff6ff" opacity="0.22"/><circle cx="912" cy="664" r="10" fill="#eff6ff" opacity="0.1"/><circle cx="726" cy="179" r="9" fill="#eff6ff" opacity="0.14"/><circle cx="699" cy="370" r="8" fill="#eff6ff" opacity="0.18"/><circle cx="591" cy="560" r="7" fill="#eff6ff" opacity="0.22"/>
+  <path d="M744 0C1032 135 984 486 1200 675" fill="rgba(255,255,255,0.12)"/>
+  <rect x="84" y="68" width="264" height="8" rx="4" fill="#60a5fa"/>
+  <text x="84" y="135" fill="rgba(255,255,255,0.78)" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="800" letter-spacing="3">PRODUCTIVITY WORKFLOW</text>
+  <text x="84" y="209" fill="#fff" font-family="Inter, Arial, sans-serif" font-size="58" font-weight="850">Expense Tracker Receipt Routine</text>
+  <text x="84" y="274" fill="#fff" font-family="Inter, Arial, sans-serif" font-size="58" font-weight="850">for Freelancers</text>
+  <text x="84" y="459" fill="rgba(255,255,255,0.84)" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="650">record expenses before receipts pile up</text>
+  <g filter="url(#softShadow)"><g transform="translate(792 115)"><rect x="18.400000000000002" y="27.599999999999998" width="193.2" height="165.6" rx="18.400000000000002" fill="rgba(255,255,255,0.12)"/><rect x="41.4" y="59.800000000000004" width="41.4" height="92.8" rx="9.200000000000001" fill="#60a5fa" opacity="0.72"/><rect x="96.6" y="59.800000000000004" width="41.4" height="64.4" rx="9.200000000000001" fill="rgba(255,255,255,0.24)"/><rect x="151.8" y="59.800000000000004" width="41.4" height="101.2" rx="9.200000000000001" fill="rgba(255,255,255,0.2)"/></g></g>
+  <g transform="translate(84 567)">
+    <rect width="408" height="43" rx="22" fill="rgba(255,255,255,0.14)"/>
+    <text x="22" y="28" fill="#eff6ff" font-family="Inter, Arial, sans-serif" font-size="19" font-weight="800">Featured article · Next action</text>
+  </g>
+</svg>

@@ -135,13 +135,13 @@ const ready = checklist.every((step) => step.length > 0);</code></pre></div></se
       renderContentBlock
     } from '../js/i18n-blog.js';
     import { getCleanBlogUrl, injectBlogSeo } from '../js/blog-seo.js';
-    import { blogHubPath, blogLocaleFromPath } from '../js/blog-routes.js';
+    import { blogHubPath, resolveBlogRoute } from '../js/blog-routes.js';
     import { applyToolAdSlots } from '../core/ads/ad-slot-ids.mjs';
 
     const params = new URLSearchParams(window.location.search);
-    const pathSlug = window.location.pathname.match(/\/blog\/(?:articles\/)?([^/.]+)(?:\.html)?$/)?.[1];
-    const requestedLocale = params.get('lang') || blogLocaleFromPath(window.location.pathname) || getActiveBlogLocale();
-    const slug = params.get('slug') || pathSlug || 'high-yield-savings-guide';
+    const route = resolveBlogRoute(window.location.pathname);
+    const requestedLocale = params.get('lang') || (route.type === 'article' ? route.locale : getActiveBlogLocale());
+    const slug = params.get('slug') || (route.type === 'article' ? route.slug : 'high-yield-savings-guide');
     const result = getBlogPost(requestedLocale, slug);
 
     function setMeta(selector, attr, value) {
