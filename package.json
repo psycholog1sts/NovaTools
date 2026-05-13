@@ -14,7 +14,7 @@
     "lint": "eslint src/",
     "lint:fix": "eslint src/ --fix",
     "test": "node tests/tool-validation.mjs",
-    "ci:validate": "npm run lint && npm run lint:media-dimensions && npm run lint:blog-outlines && npm run lint:blog-seed && npm run build:blog-images && npm run lint:blog-images && npm test && npm run build && npm run audit:public-routes",
+    "ci:validate": "npm run lint && npm run lint:media-dimensions && npm run lint:blog-outlines && npm run lint:blog-seed && npm run build:blog-images && npm run lint:blog-images && npm test && npm run build && npm run lint:site-links && npm run audit:public-routes",
     "test:unit": "node tests/tool-validation.mjs",
     "test:watch": "node tests/tool-validation.mjs",
     "test:coverage": "node tests/tool-validation.mjs",
@@ -36,7 +36,10 @@
     "lint:blog-routes": "node scripts/audit-blog-routes.mjs",
     "lint:media-dimensions": "node scripts/audit-media-dimensions.mjs",
     "build:blog-images": "node scripts/generate-blog-images.mjs",
-    "lint:blog-images": "node scripts/generate-blog-images.mjs --check"
+    "lint:blog-images": "node scripts/generate-blog-images.mjs --check",
+    "lint:site-links": "node scripts/validate-site-links.mjs",
+    "indexing:dry-run": "node indexing.cjs --dry-run",
+    "indexing:send": "node indexing.cjs --send"
   },
   "dependencies": {
     "@vercel/speed-insights": "^2.0.0",

@@ -265,6 +265,22 @@ Privacy-first, cookie-free Fathom Analytics:
 <script src="https://cdn.usefathom.com/script.js" data-site="NOVATOOLS" defer></script>
 ```
 
+
+## 🔎 Search indexing operations
+
+The public sitemap and one-URL-per-line export are generated from the current route sources:
+
+```bash
+npm run build:sitemap
+npm run lint:site-links
+```
+
+- `sitemap.xml` and `public/sitemap.xml` are the XML files to deploy and submit once in Google Search Console.
+- `site-links.txt` is the matching plain-text URL export for audits and controlled batch workflows.
+- `indexing.cjs` can dry-run or submit selected URL chunks to Google Indexing API without storing credentials in the repository.
+
+See [Google Search Console sitemap and Indexing API workflow](./docs/google-search-console-indexing.md) for setup, quota-safe chunking, and the official Indexing API scope warning.
+
 ## 🚢 Deployment
 
 ### Vercel (Recommended)

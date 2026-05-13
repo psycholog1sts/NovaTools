@@ -37,6 +37,10 @@ function xmlEscape(value) {
 }
 
 function urlEntry(loc, priority = '0.7', changefreq = 'monthly') {
+  return { loc, priority, changefreq };
+}
+
+function renderUrlEntry({ loc, priority, changefreq }) {
   return `  <url>\n    <loc>${xmlEscape(loc)}</loc>\n    <lastmod>${lastmod}</lastmod>\n    <changefreq>${changefreq}</changefreq>\n    <priority>${priority}</priority>\n  </url>`;
 }
 
@@ -75,7 +79,9 @@ locales.forEach((locale) => {
   slugs.forEach((slug) => urls.push(urlEntry(localizedBlogUrl(blogArticlePath(slug, locale)), '0.6', 'monthly')));
 });
 
-const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join('\n')}\n</urlset>\n`;
+const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(renderUrlEntry).join('\n')}\n</urlset>\n`;
+const siteLinks = `${urls.map(({ loc }) => loc).join('\n')}\n`;
 fs.writeFileSync(path.join(rootDir, 'public', 'sitemap.xml'), sitemap);
 fs.writeFileSync(path.join(rootDir, 'sitemap.xml'), sitemap);
-console.log(`✅ Generated localized sitemap with ${urls.length} URLs.`);
+fs.writeFileSync(path.join(rootDir, 'site-links.txt'), siteLinks);
+console.log(`✅ Generated localized sitemap and site-links.txt with ${urls.length} URLs.`);
