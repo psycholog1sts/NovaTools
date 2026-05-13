@@ -9,7 +9,7 @@ import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
 import postcssImport from 'postcss-import';
 import liveDataHandler from './api/live-data.js';
-import { buildBlogArticleRouteEntries, fallbackBlogLocale, supportedBlogLocales } from './src/js/blog-routes.js';
+import { buildBlogArticleRouteEntries, buildBlogSlugsByLocale, fallbackBlogLocale, normalizeBlogSlug, supportedBlogLocales } from './src/js/blog-routes.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -113,11 +113,16 @@ const localizedRootHtmlEntries = ['tr', 'ar'].reduce((acc, locale) => {
 }, {});
 
 
+const sourceBlogArticleSlugs = globSync('src/blog/articles/**/*.html')
+  .map((file) => file.replace(/\\/g, '/').split('/').pop().replace(/\.html$/, ''))
+  .filter((slug) => slug !== 'index')
+  .map((slug) => normalizeBlogSlug(slug));
+
 const blogSlugsByLocale = (() => {
   const fallbackPosts = JSON.parse(readFileSync(resolve(__dirname, `src/i18n/blog/${fallbackBlogLocale}.json`), 'utf8'));
   const fallbackSlugs = fallbackPosts.map((post) => post.slug).filter(Boolean);
 
-  return supportedBlogLocales.reduce((acc, locale) => {
+  const manifestSlugsByLocale = supportedBlogLocales.reduce((acc, locale) => {
     try {
       const posts = JSON.parse(readFileSync(resolve(__dirname, `src/i18n/blog/${locale}.json`), 'utf8'));
       acc[locale] = posts.map((post) => post.slug).filter(Boolean);
@@ -126,6 +131,8 @@ const blogSlugsByLocale = (() => {
     }
     return acc;
   }, {});
+
+  return buildBlogSlugsByLocale(manifestSlugsByLocale, sourceBlogArticleSlugs);
 })();
 
 const localizedBlogIndexEntries = supportedBlogLocales

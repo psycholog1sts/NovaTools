@@ -50,11 +50,32 @@ export function blogArticleRoutes(slug, locale = fallbackBlogLocale) {
   };
 }
 
+export function normalizeBlogSlugList(slugs = []) {
+  return [...new Set(slugs.map((slug) => normalizeBlogSlug(slug)).filter(Boolean))].sort((a, b) => a.localeCompare(b));
+}
+
+export function buildBlogSlugsByLocale(slugsByLocale = {}, extraSlugs = []) {
+  const fallbackSlugs = normalizeBlogSlugList([...(slugsByLocale[fallbackBlogLocale] || []), ...extraSlugs]);
+  return supportedBlogLocales.reduce((acc, locale) => {
+    acc[locale] = normalizeBlogSlugList([...fallbackSlugs, ...(slugsByLocale[locale] || [])]);
+    return acc;
+  }, {});
+}
+
+export function blogRouteKeyFromPath(routePath) {
+  return String(routePath || '').replace(/^\//, '').replace(/\.html$/, '');
+}
+
+export function blogRoutePathFromKey(routeKey) {
+  const cleanKey = String(routeKey || '').replace(/^\//, '').replace(/\.html$/, '');
+  return `/${cleanKey}.html`;
+}
+
 export function blogArticleRouteKeys(slug, locale = fallbackBlogLocale) {
   const routes = blogArticleRoutes(slug, locale);
   return {
-    canonicalKey: routes.canonicalPath.replace(/^\//, '').replace(/\.html$/, ''),
-    legacyKey: routes.legacyPath.replace(/^\//, '').replace(/\.html$/, '')
+    canonicalKey: blogRouteKeyFromPath(routes.canonicalPath),
+    legacyKey: blogRouteKeyFromPath(routes.legacyPath)
   };
 }
 
