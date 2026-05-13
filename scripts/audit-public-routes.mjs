@@ -107,6 +107,14 @@ function readBlogPosts(locale) {
   return JSON.parse(readFileSync(path.join(repoRoot, 'src', 'i18n', 'blog', `${fallbackBlogLocale}.json`), 'utf8'));
 }
 
+function readSourceArticleSlugs() {
+  const articleDir = path.join(repoRoot, 'src', 'blog', 'articles');
+  if (!existsSync(articleDir)) return [];
+  return readdirSync(articleDir)
+    .filter((file) => file.endsWith('.html') && file !== 'index.html')
+    .map((file) => file.replace(/\.html$/, ''));
+}
+
 function auditBlogManifestRoutes() {
   let checked = 0;
   for (const locale of supportedBlogLocales) {
@@ -123,6 +131,21 @@ function auditBlogManifestRoutes() {
     }
   }
   if (checked < 20) fail(`Expected at least 20 blog article routes, checked ${checked}`);
+}
+
+
+function auditGeneratedArticleRoutes() {
+  const manifestSlugs = new Set(supportedBlogLocales.flatMap((locale) => readBlogPosts(locale).map((post) => post.slug)));
+  const sourceSlugs = readSourceArticleSlugs();
+  const routeSlugs = [...new Set([...manifestSlugs, ...sourceSlugs])].sort((a, b) => a.localeCompare(b));
+  for (const locale of supportedBlogLocales) {
+    for (const slug of routeSlugs) {
+      for (const [routeType, routePath] of Object.entries(blogArticleRoutes(slug, locale))) {
+        const route = routePath.replace(/^\//, '');
+        if (!distExists(route)) fail(`Generated blog ${routeType} missing for ${locale}/${slug}: ${route}`);
+      }
+    }
+  }
 }
 
 function auditCategoryShells() {
@@ -142,16 +165,20 @@ if (!existsSync(distDir)) {
   auditStaticHrefs('index.html');
   auditStaticHrefs('blog/index.html');
   for (const file of walkHtml('blog')) auditStaticHrefs(file);
-  for (const locale of supportedBlogLocales.filter((item) => item !== fallbackBlogLocale)) auditStaticHrefs(`${locale}/blog/index.html`);
+  for (const locale of supportedBlogLocales.filter((item) => item !== fallbackBlogLocale)) {
+    for (const file of walkHtml(`${locale}/blog`)) auditStaticHrefs(file);
+  }
   for (const file of walkHtml('categories')) auditStaticHrefs(file);
   auditHomeShell();
   auditBlogManifestRoutes();
+  auditGeneratedArticleRoutes();
   auditCategoryShells();
 }
 
 console.log('Public route audit summary');
 console.log(`- HTML category routes: ${existsSync(distDir) ? walkHtml('categories').length : 0}`);
 console.log(`- Blog article routes checked: ${existsSync(distDir) ? supportedBlogLocales.reduce((sum, locale) => sum + readBlogPosts(locale).length, 0) : 0}`);
+console.log(`- Generated/source blog article slugs checked: ${existsSync(distDir) ? readSourceArticleSlugs().length : 0}`);
 
 for (const message of warnings) console.warn(`WARN: ${message}`);
 for (const message of failures) console.error(`FAIL: ${message}`);

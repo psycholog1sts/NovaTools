@@ -190,16 +190,30 @@ const readBlogManifest = (locale) => {
   const fallbackPath = path.join(__dirname, '..', 'src', 'i18n', 'blog', `${fallbackBlogLocale}.json`);
   return JSON.parse(fs.readFileSync(fs.existsSync(manifestPath) ? manifestPath : fallbackPath, 'utf8'));
 };
+const manifestBySlug = (locale) => new Map(readBlogManifest(locale).map((post) => [normalizeBlogSlug(post.slug), post]));
+const sourceArticleFileBySlug = () => {
+  if (!fs.existsSync(sourceArticlesDir)) return new Map();
+  return new Map(fs.readdirSync(sourceArticlesDir)
+    .filter((file) => file.endsWith('.html') && file !== 'index.html')
+    .map((file) => [normalizeBlogSlug(file.replace(/\.html$/, '')), path.join(sourceArticlesDir, file)]));
+};
 
 if (fs.existsSync(distBlogIndex) && fs.existsSync(distBlogTemplate)) {
+  const sourceArticles = sourceArticleFileBySlug();
+  const fallbackPosts = manifestBySlug(fallbackBlogLocale);
+  const routeSlugs = normalizeBlogSlugList([...fallbackPosts.keys(), ...sourceArticles.keys()]);
+
   for (const locale of supportedBlogLocales) {
     const hubPath = path.join(distDir, blogHubPath(locale).replace(/^\//, ''));
     fs.mkdirSync(path.dirname(hubPath), { recursive: true });
     if (!fs.existsSync(hubPath)) fs.copyFileSync(distBlogIndex, hubPath);
     stampBlogFile(hubPath, blogIndexHeadBlock(locale), locale);
 
-    for (const post of readBlogManifest(locale)) {
-      for (const route of Object.values(blogArticleRoutes(post.slug, locale))) {
+    const localePosts = manifestBySlug(locale);
+    for (const slug of routeSlugs) {
+      const post = localePosts.get(slug) || fallbackPosts.get(slug);
+      const sourceArticle = sourceArticles.get(slug);
+      for (const route of Object.values(blogArticleRoutes(slug, locale))) {
         const target = path.join(distDir, route.replace(/^\//, ''));
         fs.mkdirSync(path.dirname(target), { recursive: true });
         if (!fs.existsSync(target)) fs.copyFileSync(distBlogTemplate, target);
@@ -207,7 +221,7 @@ if (fs.existsSync(distBlogIndex) && fs.existsSync(distBlogTemplate)) {
       }
     }
   }
-  console.log('✅ Verified: localized blog hub, canonical article, and legacy article routes');
+  console.log('✅ Verified: localized blog hub, canonical article, legacy article, and generated article routes');
 }
 
 // Fix 3: Clean up dist/src if empty
