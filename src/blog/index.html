@@ -28,46 +28,73 @@
   <style>
     .blog-page { background: var(--color-background); color: var(--text-primary); }
     .blog-page .main-content { padding-bottom: var(--space-20); }
-    .blog-hero { padding: var(--section-py) 0; background: var(--surface-elevated); border-bottom: 1px solid var(--border); }
-    .blog-hero__inner { max-width: 860px; margin: 0 auto; text-align: center; }
+    .blog-hero { padding: clamp(3.5rem, 8vw, 6.5rem) 0 var(--space-12); background: radial-gradient(circle at 18% 0%, hsl(260 82% 60% / 0.18), transparent 32%), radial-gradient(circle at 82% 12%, hsl(190 90% 55% / 0.14), transparent 28%), var(--surface-elevated); border-bottom: 1px solid var(--border); }
+    .blog-hero__inner { max-width: 940px; margin: 0 auto; text-align: center; }
     .blog-hero__eyebrow { display: inline-flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-4); padding: var(--space-2) var(--space-4); border-radius: var(--radius-full); background: hsl(260 82% 60% / 0.14); color: var(--color-primary-300); font: 700 var(--font-size-sm)/1 var(--font-sans); }
-    .blog-hero h1 { margin: 0; font: 800 var(--font-size-4xl)/1.08 var(--font-sans); letter-spacing: var(--letter-spacing-tight); }
-    .blog-hero p { max-width: 720px; margin: var(--space-4) auto 0; color: var(--text-secondary); font: var(--text-lg); }
-    .blog-search { position: relative; max-width: 600px; margin: var(--space-8) auto 0; }
+    .blog-hero h1 { max-width: 860px; margin: 0 auto; font: 800 clamp(2.35rem, 5vw, 4.75rem)/1.02 var(--font-sans); letter-spacing: var(--letter-spacing-tight); }
+    .blog-hero p { max-width: 760px; margin: var(--space-5) auto 0; color: var(--text-secondary); font: var(--text-lg); line-height: 1.75; }
+    .blog-search { position: relative; max-width: 640px; margin: var(--space-8) auto 0; }
     .blog-search svg { position: absolute; left: var(--space-4); top: 50%; transform: translateY(-50%); color: var(--text-muted); pointer-events: none; }
-    .blog-search input { height: 48px; border-radius: var(--radius-lg); padding-left: var(--space-12); background: var(--color-surface); box-shadow: var(--shadow-sm); }
+    .blog-search input { width: 100%; height: 52px; border-radius: var(--radius-lg); padding-left: var(--space-12); background: var(--color-surface); box-shadow: var(--shadow-sm); }
+    [dir="rtl"] .blog-search svg { left: auto; right: var(--space-4); }
+    [dir="rtl"] .blog-search input { padding-left: var(--space-4); padding-right: var(--space-12); }
     .blog-shell { width: min(var(--container-xl), calc(100% - 2rem)); margin: 0 auto; padding: var(--space-12) 0 0; }
-    .section-kicker { margin: 0 0 var(--space-5); color: var(--text-secondary); font: 700 var(--font-size-sm)/1 var(--font-sans); letter-spacing: .08em; text-transform: uppercase; }
-    .featured-article { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-8); align-items: center; padding: var(--space-6); overflow: hidden; border-radius: var(--radius-2xl); background: var(--surface-elevated); border: 1px solid var(--border); box-shadow: var(--shadow-md); transition: transform var(--transition-base), box-shadow var(--transition-base); }
-    .featured-article:hover { transform: translateY(-2px); box-shadow: var(--shadow-xl); }
-    .featured-article__media { aspect-ratio: 16 / 9; max-height: 360px; overflow: hidden; border-radius: var(--radius-lg); background: var(--color-bg-secondary); }
-    .featured-article__media img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--transition-base); }
+    .content-hub-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.34fr); gap: var(--space-8); align-items: start; }
+    .hub-main, .hub-sidebar { min-width: 0; }
+    .hub-sidebar { display: flex; flex-direction: column; gap: var(--space-6); position: sticky; top: 6rem; }
+    .section-heading { display: flex; align-items: end; justify-content: space-between; gap: var(--space-4); margin: 0 0 var(--space-5); }
+    .section-heading h2, .section-kicker { margin: 0; color: var(--text-primary); font: 800 var(--font-size-xl)/1.2 var(--font-sans); letter-spacing: var(--letter-spacing-tight); }
+    .section-heading p { max-width: 42rem; margin: var(--space-2) 0 0; color: var(--text-secondary); font: var(--text-sm); line-height: 1.65; }
+    .section-kicker { margin-bottom: var(--space-5); }
+    .featured-article { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(18rem, 0.88fr); gap: clamp(1.25rem, 3vw, 2.25rem); align-items: center; padding: var(--space-6); overflow: hidden; border-radius: var(--radius-2xl); background: linear-gradient(135deg, hsl(260 82% 60% / 0.14), transparent 42%), var(--surface-elevated); border: 1px solid var(--border); box-shadow: var(--shadow-md); transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-fast); }
+    .featured-article:hover { transform: translateY(-2px); border-color: var(--color-border-hover); box-shadow: var(--shadow-xl); }
+    .featured-article__media { aspect-ratio: 16 / 9; overflow: hidden; border-radius: var(--radius-lg); background: var(--color-bg-secondary); }
+    .featured-article__media img, .featured-article__media picture { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .featured-article__media img { transition: transform var(--transition-base); }
     .featured-article:hover img { transform: scale(1.02); }
-    .category-badge { display: inline-flex; align-items: center; width: max-content; padding: var(--space-1) var(--space-3); border-radius: var(--radius-full); color: var(--color-primary-700); background: var(--color-primary-100); font: 700 var(--font-size-xs)/1.4 var(--font-sans); text-decoration: none; }
+    .featured-article h2 { margin: var(--space-4) 0 var(--space-3); font: 800 clamp(1.75rem, 3vw, 2.55rem)/1.12 var(--font-sans); letter-spacing: var(--letter-spacing-tight); }
+    .featured-article p { margin: 0; color: var(--text-secondary); font: var(--text-base); line-height: 1.7; }
+    .category-badge { display: inline-flex; align-items: center; width: max-content; max-width: 100%; padding: var(--space-1) var(--space-3); border-radius: var(--radius-full); color: var(--color-primary-700); background: var(--color-primary-100); font: 700 var(--font-size-xs)/1.4 var(--font-sans); text-decoration: none; }
     [data-theme="dark"] .category-badge { color: hsl(0 0% 100%); background: hsl(260 82% 60% / 0.26); }
-    .featured-article h2 { margin: var(--space-4) 0 var(--space-3); font: 750 var(--font-size-2xl)/1.18 var(--font-sans); letter-spacing: var(--letter-spacing-tight); }
-    .featured-article p { display: -webkit-box; margin: 0; overflow: hidden; color: var(--text-secondary); font: var(--text-base); line-height: 1.7; -webkit-line-clamp: 3; -webkit-box-orient: vertical; }
-    .article-meta-row { display: flex; align-items: center; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-5); color: var(--text-muted); font: var(--text-sm); }
+    .article-meta-row { display: flex; align-items: center; flex-wrap: wrap; gap: var(--space-2) var(--space-3); margin-top: var(--space-5); color: var(--text-muted); font: var(--text-sm); }
+    .article-meta-row time, .article-meta-row span { white-space: nowrap; }
     .author-chip { display: inline-flex; align-items: center; gap: var(--space-2); color: var(--text-secondary); font-weight: 700; }
-    .author-chip img { width: 40px; height: 40px; border-radius: var(--radius-full); }
-    .filter-strip { display: flex; gap: var(--space-3); margin: var(--space-10) 0 var(--space-8); overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+    .author-chip img { flex: 0 0 auto; width: 40px; height: 40px; border-radius: var(--radius-full); }
+    .filter-strip { display: flex; gap: var(--space-3); margin: var(--space-8) 0; padding-bottom: var(--space-1); overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
     .filter-strip::-webkit-scrollbar { display: none; }
     .filter-chip { flex: 0 0 auto; border: 1px solid var(--border); border-radius: var(--radius-full); padding: var(--space-2) var(--space-4); background: var(--surface-elevated); color: var(--text-secondary); font: 700 var(--font-size-sm)/1.4 var(--font-sans); cursor: pointer; transition: background-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast), border-color var(--transition-fast); }
-    .filter-chip:hover { transform: translateY(-1px); border-color: var(--color-border-hover); }
+    .filter-chip:hover { transform: translateY(-1px); border-color: var(--color-border-hover); color: var(--text-primary); }
     .filter-chip.is-active { background: var(--color-primary-500); color: #fff; border-color: var(--color-primary-500); }
-    .article-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-6); opacity: 1; transition: opacity 200ms ease; }
+    .article-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-6); opacity: 1; transition: opacity 180ms ease; }
     .article-grid.is-fading { opacity: 0; }
-    .editorial-card { display: flex; flex-direction: column; overflow: hidden; min-height: 100%; color: inherit; text-decoration: none; }
+    .editorial-card { display: flex; flex-direction: column; overflow: hidden; min-height: 100%; color: inherit; text-decoration: none; border: 1px solid var(--border); transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-fast); }
+    .editorial-card:hover { transform: translateY(-2px); border-color: var(--color-border-hover); box-shadow: var(--shadow-lg); }
     .editorial-card__media { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: var(--color-bg-secondary); }
-    .editorial-card__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform var(--transition-base); }
+    .editorial-card__media img, .editorial-card__media picture { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .editorial-card__media img { position: absolute; inset: 0; transition: transform var(--transition-base); }
     .editorial-card:hover .editorial-card__media img { transform: scale(1.03); }
     .editorial-card__body { display: flex; flex: 1; flex-direction: column; gap: var(--space-3); padding: var(--space-5); }
-    .editorial-card h3 { display: -webkit-box; margin: 0; overflow: hidden; font: 700 var(--font-size-lg)/1.35 var(--font-sans); -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+    .editorial-card h3 { display: -webkit-box; margin: 0; overflow: hidden; font: 750 var(--font-size-lg)/1.34 var(--font-sans); -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
     .editorial-card p { display: -webkit-box; margin: 0; overflow: hidden; color: var(--text-secondary); font: var(--text-sm); line-height: 1.65; -webkit-line-clamp: 3; -webkit-box-orient: vertical; }
     .editorial-card__footer { display: grid; grid-template-columns: auto 1fr; gap: var(--space-2); align-items: center; margin-top: auto; color: var(--text-muted); font: var(--text-xs); }
     .editorial-card__footer img { grid-row: span 2; width: 32px; height: 32px; border-radius: var(--radius-full); }
     .editorial-card__footer strong { color: var(--text-secondary); font-size: var(--font-size-xs); }
+    .card-meta-line { display: flex; flex-wrap: wrap; gap: var(--space-1); }
     .load-more-wrap { display: flex; justify-content: center; margin-top: var(--space-8); }
+    .hub-panel, .cta-panel { border: 1px solid var(--border); border-radius: var(--radius-xl); background: var(--surface-elevated); box-shadow: var(--shadow-sm); }
+    .hub-panel { padding: var(--space-5); }
+    .hub-panel h2, .hub-panel h3, .cta-panel h2 { margin: 0 0 var(--space-3); font: 800 var(--font-size-lg)/1.25 var(--font-sans); }
+    .hub-panel p, .cta-panel p { margin: 0; color: var(--text-secondary); font: var(--text-sm); line-height: 1.65; }
+    .compact-list { display: grid; gap: var(--space-4); margin: var(--space-4) 0 0; padding: 0; list-style: none; }
+    .compact-list a { display: grid; gap: var(--space-2); color: inherit; text-decoration: none; }
+    .compact-list a:hover h3 { color: var(--color-primary-400); }
+    .compact-list h3 { margin: 0; font: 750 var(--font-size-sm)/1.35 var(--font-sans); transition: color var(--transition-fast); }
+    .compact-list .article-meta-row { margin-top: 0; font-size: var(--font-size-xs); }
+    .workflow-list { display: grid; gap: var(--space-3); margin: var(--space-4) 0 0; padding: 0; list-style: none; }
+    .workflow-list a { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); padding: var(--space-3); border: 1px solid var(--border); border-radius: var(--radius-lg); color: var(--text-secondary); text-decoration: none; transition: border-color var(--transition-fast), color var(--transition-fast), background-color var(--transition-fast); }
+    .workflow-list a:hover { border-color: var(--color-border-hover); color: var(--text-primary); background: hsl(260 82% 60% / 0.08); }
+    .cta-panel { display: grid; gap: var(--space-4); margin: var(--space-8) 0; padding: var(--space-6); background: linear-gradient(135deg, hsl(260 82% 60% / 0.16), hsl(190 90% 55% / 0.08)), var(--surface-elevated); }
+    .cta-panel__actions { display: flex; flex-wrap: wrap; gap: var(--space-3); }
     .related-home { margin-top: var(--space-12); }
     .btn-outline-primary { background: transparent; border-color: var(--color-primary-500); color: var(--color-primary-400); }
     .empty-state { display: none; max-width: 520px; margin: var(--space-10) auto; padding: var(--space-8); text-align: center; border: 1px solid var(--border); border-radius: var(--radius-xl); background: var(--surface-elevated); }
@@ -75,9 +102,9 @@
     .empty-state__icon { font-size: 4rem; color: var(--text-muted); line-height: 1; }
     .empty-state h2 { margin: var(--space-4) 0 var(--space-2); font: var(--font-h4); }
     .empty-state p { color: var(--text-secondary); }
-    @media (min-width: 768px) { .blog-hero h1 { font-size: var(--font-size-5xl); } }
-    @media (max-width: 980px) { .featured-article { grid-template-columns: 1fr; } .article-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-    @media (max-width: 640px) { .blog-hero { padding: var(--space-12) 0; } .blog-shell { width: min(100% - 1rem, var(--container-xl)); } .article-grid { grid-template-columns: 1fr; } .featured-article { padding: var(--space-4); } }
+    @media (max-width: 1180px) { .content-hub-grid { grid-template-columns: 1fr; } .hub-sidebar { position: static; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); } .article-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 820px) { .featured-article { grid-template-columns: 1fr; } .hub-sidebar { grid-template-columns: 1fr; } }
+    @media (max-width: 640px) { .blog-hero { padding: var(--space-12) 0; } .blog-shell { width: min(100% - 1rem, var(--container-xl)); padding-top: var(--space-8); } .article-grid { grid-template-columns: 1fr; gap: var(--space-4); } .featured-article, .cta-panel, .hub-panel { padding: var(--space-4); } .section-heading { align-items: start; flex-direction: column; } }
   </style>
 </head>
 <body class="blog-page">
@@ -109,20 +136,58 @@
       </div>
     </section>
     <section class="blog-shell" aria-labelledby="featuredTitle">
-      <p class="section-kicker" id="featuredTitle" data-blog-ui="featured">Featured article</p>
-      <div id="featuredArticle"></div>
-      <div class="filter-strip" id="categoryFilters" role="list" aria-label="Kategori filtreleri"></div>
-      <h2 class="section-kicker" data-blog-ui="latest">Latest guides</h2>
-      <div id="articleGrid" class="article-grid" aria-live="polite"></div>
-      <div id="emptyState" class="empty-state" aria-live="polite">
-        <div class="empty-state__icon" aria-hidden="true">⌕</div>
-        <h2>No articles in this category yet</h2>
-        <p>Try another category or view every article.</p>
-        <button class="btn btn-primary" type="button" id="resetFilters">View all articles</button>
+      <div class="content-hub-grid">
+        <div class="hub-main">
+          <div class="section-heading">
+            <div>
+              <h2 id="featuredTitle" data-blog-ui="featured">Featured article</h2>
+              <p data-blog-ui="featuredDescription">A timely, high-intent guide selected for readers who want a practical next step.</p>
+            </div>
+          </div>
+          <div id="featuredArticle"></div>
+          <div class="filter-strip" id="categoryFilters" role="list" aria-label="Category filters"></div>
+          <div class="section-heading">
+            <div>
+              <h2 data-blog-ui="latest">Latest guides</h2>
+              <p data-blog-ui="latestDescription">Browse the newest guides in chronological order, then filter by topic when you know the area you need.</p>
+            </div>
+          </div>
+          <div id="articleGrid" class="article-grid" aria-live="polite"></div>
+          <div id="emptyState" class="empty-state" aria-live="polite">
+            <div class="empty-state__icon" aria-hidden="true">⌕</div>
+            <h2>No articles in this category yet</h2>
+            <p>Try another category or view every article.</p>
+            <button class="btn btn-primary" type="button" id="resetFilters">View all articles</button>
+          </div>
+          <div class="load-more-wrap"><button class="btn btn-outline-primary" id="loadMore" type="button">Load more</button></div>
+          <aside class="cta-panel" aria-labelledby="toolCtaTitle">
+            <div>
+              <h2 id="toolCtaTitle" data-blog-ui="toolCtaTitle">Turn a guide into a browser workflow</h2>
+              <p data-blog-ui="toolCtaText">Open a relevant NovaTools category when you are ready to prepare, check, convert, or clean up your files locally.</p>
+            </div>
+            <div class="cta-panel__actions" id="primaryToolCtas"></div>
+          </aside>
+        </div>
+        <aside class="hub-sidebar" aria-label="Blog discovery">
+          <section class="hub-panel" aria-labelledby="popularGuidesTitle">
+            <h2 id="popularGuidesTitle" data-blog-ui="popularTitle">Popular guides</h2>
+            <p data-blog-ui="popularDescription">Editorially useful starting points with clear next actions.</p>
+            <ul id="popularGuides" class="compact-list"></ul>
+          </section>
+          <section class="hub-panel" aria-labelledby="workflowTitle">
+            <h2 id="workflowTitle" data-blog-ui="workflowTitle">Related workflows</h2>
+            <p data-blog-ui="workflowDescription">Move from reading to the next tool or category without dead ends.</p>
+            <ul id="workflowLinks" class="workflow-list"></ul>
+          </section>
+        </aside>
       </div>
-      <div class="load-more-wrap"><button class="btn btn-outline-primary" id="loadMore" type="button">Load more</button></div>
       <section class="related-home" aria-labelledby="relatedHomeTitle">
-        <h2 id="relatedHomeTitle" class="section-kicker">Related Articles</h2>
+        <div class="section-heading">
+          <div>
+            <h2 id="relatedHomeTitle" data-blog-ui="relatedTitle">Related Articles</h2>
+            <p data-blog-ui="relatedDescription">Continue with nearby guides that match your current filter.</p>
+          </div>
+        </div>
         <div id="relatedArticles" class="article-grid"></div>
       </section>
     </section>
@@ -136,7 +201,7 @@
       getBlogUi,
       renderBlogPicture
     } from '../js/i18n-blog.js';
-    import { getCleanBlogUrl } from '../js/blog-seo.js';
+    import { getCleanBlogUrl, injectBlogIndexSeo } from '../js/blog-seo.js';
     import { blogLocaleFromPath } from '../js/blog-routes.js';
 
     const pageSize = 12;
@@ -155,18 +220,45 @@
     const searchInput = document.getElementById('blogSearch');
     const resetFilters = document.getElementById('resetFilters');
     const relatedArticles = document.getElementById('relatedArticles');
-    const relatedHomeTitle = document.getElementById('relatedHomeTitle');
+    const popularGuides = document.getElementById('popularGuides');
+    const workflowLinks = document.getElementById('workflowLinks');
+    const primaryToolCtas = document.getElementById('primaryToolCtas');
 
-    const localeCode = () => locale === 'ar' ? 'ar' : locale === 'tr' ? 'tr-TR' : 'en-US';
+    const categoryIntentRank = {
+      'fintech-personal-finance': 6,
+      'data-privacy': 5,
+      'developer-automation': 4,
+      'remote-productivity': 3,
+      'artificial-intelligence': 2,
+      'education-technology': 1
+    };
+    const workflowFallbacks = [
+      { label: 'PDF workflows', href: '/categories/pdf-tools.html' },
+      { label: 'Image cleanup', href: '/categories/image-tools.html' },
+      { label: 'Finance calculators', href: '/categories/finance-tools.html' },
+      { label: 'Developer utilities', href: '/categories/developer-tools.html' }
+    ];
+
+    const localeCode = () => locale === 'zh' ? 'zh-CN' : locale === 'ja' ? 'ja-JP' : locale === 'ko' ? 'ko-KR' : locale === 'ar' ? 'ar' : locale === 'tr' ? 'tr-TR' : locale;
     const articleUrl = (article) => getCleanBlogUrl(article.slug, locale).replace('https://mc-novatools.com', '');
     const formattedDate = (date) => new Intl.DateTimeFormat(localeCode(), { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(`${date}T00:00:00`));
     const escapeHtml = (value) => String(value).replace(/[&<>'"]/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' })[char]);
     const inlineImg = ({ src, alt = '', width, height }) => '<img ' + `src="${escapeHtml(src)}" alt="${escapeHtml(alt)}" width="${width}" height="${height}">`;
-    const categories = () => ['all', ...new Set(articles.map((article) => article.category))];
+    const categories = () => ['all', ...new Set(sortedArticles().map((article) => article.category))];
     const categoryLabel = (category) => category === 'all' ? ui.all : (ui.categories[category] || category);
+    const readTimeLabel = (minutes) => ui.readTime ? ui.readTime.replace('{minutes}', minutes) : `${minutes} min read`;
+    const byDateDesc = (a, b) => new Date(`${b.datePublished}T00:00:00`) - new Date(`${a.datePublished}T00:00:00`);
+    const sortedArticles = () => [...articles].sort((a, b) => byDateDesc(a, b) || a.title.localeCompare(b.title, locale));
+    const featuredScore = (article) => (categoryIntentRank[article.category] || 0) + (article.relatedToolLinks?.length || 0) + (article.summary?.length || 0) / 10;
+    const formatWorkflowLabel = (label) => String(label || '').replace(/^\/tools\//, '').replace(/\/$/, '').replace(/[-/]+/g, ' ').replace(/\b\w/g, (char) => char.toLocaleUpperCase(locale));
+
+    function featuredPick(source = sortedArticles()) {
+      return [...source].sort((a, b) => byDateDesc(a, b) || featuredScore(b) - featuredScore(a) || a.title.localeCompare(b.title, locale))[0];
+    }
 
     function applyUi() {
       applyBlogDocumentLocale(locale);
+      injectBlogIndexSeo(locale);
       document.querySelectorAll('[data-blog-ui]').forEach((element) => {
         const key = element.dataset.blogUi;
         if (ui[key]) element.textContent = ui[key];
@@ -176,53 +268,85 @@
       emptyState.querySelector('p').textContent = ui.emptyText;
       resetFilters.textContent = ui.emptyButton;
       loadMore.textContent = ui.loadMore;
-      relatedHomeTitle.textContent = locale === 'tr' ? 'İlgili Yazılar' : locale === 'ar' ? 'مقالات ذات صلة' : 'Related Articles';
+      categoryFilters.setAttribute('aria-label', ui.categoryFilterLabel || 'Category filters');
     }
 
     function filteredArticles() {
-      return articles.filter((article) => {
+      return sortedArticles().filter((article) => {
         const matchesCategory = activeCategory === 'all' || article.category === activeCategory;
         const haystack = `${article.title} ${article.excerpt} ${article.category} ${article.tags.join(' ')}`.toLocaleLowerCase(locale);
         return matchesCategory && haystack.includes(query.toLocaleLowerCase(locale));
       });
     }
 
+    function renderMeta(article, avatarSize = 32) {
+      return `<div class="article-meta-row"><span class="author-chip">${inlineImg({ src: article.author.avatar, alt: '', width: avatarSize, height: avatarSize })}${escapeHtml(article.author.name)}</span><time datetime="${article.datePublished}">${formattedDate(article.datePublished)}</time><span aria-label="${escapeHtml(ui.readTimeAria || 'Read time')}">⏱ ${escapeHtml(readTimeLabel(article.readTime))}</span></div>`;
+    }
+
     function renderFeatured() {
-      const article = articles[0];
+      const article = featuredPick();
       if (!article) {
         featuredArticle.innerHTML = '';
         return;
       }
       featuredArticle.innerHTML = `<a class="featured-article" href="${articleUrl(article)}">
         <figure class="featured-article__media">${renderBlogPicture(article, 'featured', { width: 1200, height: 675, loading: 'eager', alt: `${article.title} cover image` })}</figure>
-        <div><span class="category-badge">${escapeHtml(categoryLabel(article.category))}</span><h2>${escapeHtml(article.title)}</h2><p>${escapeHtml(article.excerpt)}</p>
-        <div class="article-meta-row"><span class="author-chip">${inlineImg({ src: article.author.avatar, width: 40, height: 40 })}${escapeHtml(article.author.name)}</span><time datetime="${article.datePublished}">${formattedDate(article.datePublished)}</time><span aria-label="Read time">⏱ ${article.readTime} min</span></div></div>
+        <div><span class="category-badge">${escapeHtml(categoryLabel(article.category))}</span><h2>${escapeHtml(article.title)}</h2><p>${escapeHtml(article.excerpt)}</p>${renderMeta(article, 40)}</div>
       </a>`;
     }
 
     function renderFilters() {
-      categoryFilters.innerHTML = categories().map((category) => `<button type="button" class="filter-chip${category === activeCategory ? ' is-active' : ''}" data-category="${escapeHtml(category)}">${escapeHtml(categoryLabel(category))}</button>`).join('');
+      categoryFilters.innerHTML = categories().map((category) => `<button type="button" class="filter-chip${category === activeCategory ? ' is-active' : ''}" data-category="${escapeHtml(category)}" aria-pressed="${category === activeCategory}">${escapeHtml(categoryLabel(category))}</button>`).join('');
     }
 
     function card(article) {
       return `<a href="${articleUrl(article)}" class="nt-card nt-card--blog editorial-card" data-category="${escapeHtml(article.category)}">
         <div class="editorial-card__media">${renderBlogPicture(article, 'card', { width: 800, height: 450, alt: `${article.title} cover image` })}</div>
         <div class="editorial-card__body"><span class="category-badge">${escapeHtml(categoryLabel(article.category))}</span><h3>${escapeHtml(article.title)}</h3><p>${escapeHtml(article.excerpt)}</p>
-        <div class="editorial-card__footer">${inlineImg({ src: article.author.avatar, width: 32, height: 32 })}<strong>${escapeHtml(article.author.name)}</strong><span>${formattedDate(article.datePublished)} · ${article.readTime} min</span></div></div>
+        <div class="editorial-card__footer">${inlineImg({ src: article.author.avatar, alt: '', width: 32, height: 32 })}<strong>${escapeHtml(article.author.name)}</strong><span class="card-meta-line"><time datetime="${article.datePublished}">${formattedDate(article.datePublished)}</time><span>·</span><span>${escapeHtml(readTimeLabel(article.readTime))}</span></span></div></div>
       </a>`;
+    }
+
+    function renderPopular(list = sortedArticles()) {
+      const popular = [...list]
+        .sort((a, b) => featuredScore(b) - featuredScore(a) || byDateDesc(a, b) || a.title.localeCompare(b.title, locale))
+        .slice(0, 5);
+      popularGuides.innerHTML = popular.map((article) => `<li><a href="${articleUrl(article)}"><span class="category-badge">${escapeHtml(categoryLabel(article.category))}</span><h3>${escapeHtml(article.title)}</h3>${renderMeta(article, 32)}</a></li>`).join('');
+    }
+
+    function renderWorkflows(list = sortedArticles()) {
+      const seen = new Set();
+      const links = [];
+      list.forEach((article) => {
+        (article.relatedToolLinks || []).forEach((href, index) => {
+          if (!seen.has(href) && links.length < 4) {
+            seen.add(href);
+            links.push({ href, label: formatWorkflowLabel(article.relatedTools?.[index] || href) });
+          }
+        });
+      });
+      workflowFallbacks.forEach((item) => {
+        if (!seen.has(item.href) && links.length < 4) links.push(item);
+      });
+      workflowLinks.innerHTML = links.map((item) => `<li><a href="${escapeHtml(item.href)}"><span>${escapeHtml(item.label)}</span><span aria-hidden="true">→</span></a></li>`).join('');
+      primaryToolCtas.innerHTML = links.slice(0, 2).map((item, index) => `<a class="btn ${index === 0 ? 'btn-primary' : 'btn-outline-primary'}" href="${escapeHtml(item.href)}">${escapeHtml(item.label)}</a>`).join('');
     }
 
     function renderGrid() {
       const list = filteredArticles();
       articleGrid.classList.add('is-fading');
       window.setTimeout(() => {
-        articleGrid.innerHTML = list.slice(0, visibleCount).map(card).join('');
-        relatedArticles.innerHTML = list.slice(0, 3).map(card).join('');
+        const visible = list.slice(0, visibleCount);
+        const related = list.filter((article) => !visible.some((item) => item.slug === article.slug)).slice(0, 3);
+        articleGrid.innerHTML = visible.map(card).join('');
+        relatedArticles.innerHTML = (related.length ? related : sortedArticles().slice(0, 3)).map(card).join('');
         articleGrid.hidden = list.length === 0;
         emptyState.classList.toggle('is-visible', list.length === 0);
         loadMore.hidden = list.length <= visibleCount;
         articleGrid.classList.remove('is-fading');
-      }, 200);
+        renderPopular(list.length ? list : sortedArticles());
+        renderWorkflows(list.length ? list : sortedArticles());
+      }, 160);
     }
 
     function applyCategory(category) {
