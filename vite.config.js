@@ -9,6 +9,7 @@ import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
 import postcssImport from 'postcss-import';
 import liveDataHandler from './api/live-data.js';
+import { applySeoHead } from './src/components/Analytics.mjs';
 import { buildBlogArticleRouteEntries, buildBlogSlugsByLocale, fallbackBlogLocale, normalizeBlogSlug, supportedBlogLocales } from './src/js/blog-routes.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -22,18 +23,17 @@ const resolveHtmlEntry = (file) => {
   return absolutePath;
 };
 
-const googleSiteVerification = process.env.VITE_GOOGLE_SITE_VERIFICATION || '';
+const googleSiteVerification = process.env.PUBLIC_GSC_ID || process.env.VITE_GOOGLE_SITE_VERIFICATION || '';
+const googleAnalyticsId = process.env.PUBLIC_GA_ID || process.env.VITE_GA_ID || '';
 
 const optionalHtmlEnv = {
   name: 'novatools-optional-html-env',
   enforce: 'pre',
-  transformIndexHtml(html) {
-    return html.replace(
-      /<meta name="google-site-verification" content="[^"]*"\s*>/,
-      googleSiteVerification
-        ? `<meta name="google-site-verification" content="${googleSiteVerification.replace(/&/g, '&amp;').replace(/"/g, '&quot;')}">`
-        : ''
-    );
+  transformIndexHtml(html, context) {
+    return applySeoHead(html, context?.path || '/', {
+      gaId: googleAnalyticsId,
+      gscId: googleSiteVerification
+    });
   }
 };
 
@@ -186,6 +186,7 @@ const localizedToolEntries = ['tr', 'ar'].reduce((acc, locale) => {
 
 export default defineConfig({
   root: '.',
+  envPrefix: ['VITE_', 'PUBLIC_'],
   base: '/',
   publicDir: 'public',
   appType: 'mpa',
