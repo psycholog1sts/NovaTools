@@ -1,6 +1,6 @@
 import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import path from 'node:path';
-import { blogArticlePath, blogHubPath, fallbackBlogLocale, supportedBlogLocales } from '../src/js/blog-routes.js';
+import { blogArticleRoutes, blogHubPath, fallbackBlogLocale, supportedBlogLocales } from '../src/js/blog-routes.js';
 
 const repoRoot = process.cwd();
 const distDir = path.join(repoRoot, 'dist');
@@ -93,8 +93,11 @@ function auditBlogManifestRoutes() {
     if (!distExists(hubRoute)) fail(`Blog hub route missing for ${locale}: ${hubRoute}`);
 
     for (const post of readBlogPosts(locale)) {
-      const route = blogArticlePath(post.slug, locale).replace(/^\//, '');
-      if (!distExists(route)) fail(`Blog manifest route missing for ${locale}/${post.slug}: ${route}`);
+      const routes = blogArticleRoutes(post.slug, locale);
+      for (const [routeType, routePath] of Object.entries(routes)) {
+        const route = routePath.replace(/^\//, '');
+        if (!distExists(route)) fail(`Blog manifest ${routeType} missing for ${locale}/${post.slug}: ${route}`);
+      }
       checked += 1;
     }
   }

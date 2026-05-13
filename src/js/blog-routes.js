@@ -1,10 +1,21 @@
 export const SITE_ORIGIN = 'https://mc-novatools.com';
 export const fallbackBlogLocale = 'en';
 export const supportedBlogLocales = ['en', 'tr', 'de', 'fr', 'es', 'pt', 'ru', 'zh', 'ja', 'ko', 'ar', 'hi', 'it', 'pl', 'nl'];
+export const BLOG_ARTICLE_SEGMENT = 'articles';
+
+const BLOG_SLUG_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
 export function normalizeBlogLocale(locale) {
   const normalized = String(locale || '').toLowerCase().split('-')[0];
   return supportedBlogLocales.includes(normalized) ? normalized : fallbackBlogLocale;
+}
+
+export function normalizeBlogSlug(slug) {
+  const normalized = String(slug || '').trim().toLowerCase();
+  if (!BLOG_SLUG_PATTERN.test(normalized)) {
+    throw new Error(`Invalid blog article slug: ${slug || '(empty)'}`);
+  }
+  return normalized;
 }
 
 export function blogLocaleFromPath(pathname = '/') {
@@ -17,18 +28,92 @@ export function blogHubPath(locale = fallbackBlogLocale) {
   return normalized === fallbackBlogLocale ? '/blog/index.html' : `/${normalized}/blog/index.html`;
 }
 
-export function blogArticlePath(slug, locale = fallbackBlogLocale) {
-  const safeSlug = String(slug || '').trim();
+function blogRoutePrefix(locale = fallbackBlogLocale) {
   const normalized = normalizeBlogLocale(locale);
-  const prefix = normalized === fallbackBlogLocale ? '' : `/${normalized}`;
-  return `${prefix}/blog/articles/${safeSlug}.html`;
+  return normalized === fallbackBlogLocale ? '' : `/${normalized}`;
+}
+
+export function blogArticlePath(slug, locale = fallbackBlogLocale) {
+  const safeSlug = normalizeBlogSlug(slug);
+  return `${blogRoutePrefix(locale)}/blog/${BLOG_ARTICLE_SEGMENT}/${safeSlug}.html`;
 }
 
 export function legacyBlogArticlePath(slug, locale = fallbackBlogLocale) {
-  const safeSlug = String(slug || '').trim();
-  const normalized = normalizeBlogLocale(locale);
-  const prefix = normalized === fallbackBlogLocale ? '' : `/${normalized}`;
-  return `${prefix}/blog/${safeSlug}.html`;
+  const safeSlug = normalizeBlogSlug(slug);
+  return `${blogRoutePrefix(locale)}/blog/${safeSlug}.html`;
+}
+
+export function blogArticleRoutes(slug, locale = fallbackBlogLocale) {
+  return {
+    canonicalPath: blogArticlePath(slug, locale),
+    legacyPath: legacyBlogArticlePath(slug, locale)
+  };
+}
+
+export function blogArticleRouteKeys(slug, locale = fallbackBlogLocale) {
+  const routes = blogArticleRoutes(slug, locale);
+  return {
+    canonicalKey: routes.canonicalPath.replace(/^\//, '').replace(/\.html$/, ''),
+    legacyKey: routes.legacyPath.replace(/^\//, '').replace(/\.html$/, '')
+  };
+}
+
+export function resolveBlogRoute(pathname = '/') {
+  const path = String(pathname || '/').split(/[?#]/)[0] || '/';
+  const locale = blogLocaleFromPath(path) || fallbackBlogLocale;
+  const unprefixedPath = locale === fallbackBlogLocale ? path : path.replace(new RegExp(`^/${locale}(?=/|$)`), '') || '/';
+
+  if (/^\/blog\/?(?:index\.html)?$/.test(unprefixedPath)) {
+    return {
+      type: 'hub',
+      locale,
+      path,
+      canonicalPath: blogHubPath(locale)
+    };
+  }
+
+  const articleMatch = unprefixedPath.match(/^\/blog\/(?:articles\/)?([^/.]+)(?:\.html)?\/?$/);
+  if (!articleMatch) {
+    return {
+      type: 'unknown',
+      locale,
+      path,
+      canonicalPath: null
+    };
+  }
+
+  let slug;
+  try {
+    slug = normalizeBlogSlug(articleMatch[1]);
+  } catch {
+    return {
+      type: 'unknown',
+      locale,
+      path,
+      canonicalPath: null
+    };
+  }
+  const isLegacy = !unprefixedPath.includes(`/${BLOG_ARTICLE_SEGMENT}/`);
+  return {
+    type: 'article',
+    locale,
+    slug,
+    isLegacy,
+    path,
+    canonicalPath: blogArticlePath(slug, locale),
+    legacyPath: legacyBlogArticlePath(slug, locale)
+  };
+}
+
+export function buildBlogArticleRouteEntries(slugsByLocale, resolveHtmlEntry) {
+  return Object.entries(slugsByLocale).reduce((acc, [locale, slugs]) => {
+    slugs.forEach((slug) => {
+      const { canonicalKey, legacyKey } = blogArticleRouteKeys(slug, locale);
+      acc[canonicalKey] = resolveHtmlEntry('src/blog/article-template.html');
+      acc[legacyKey] = resolveHtmlEntry('src/blog/article-template.html');
+    });
+    return acc;
+  }, {});
 }
 
 export function absoluteBlogUrl(pathOrSlug, locale = fallbackBlogLocale) {
