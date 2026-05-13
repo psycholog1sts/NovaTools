@@ -45,6 +45,9 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Verify sitemap and site link export
+        run: npm run lint:site-links
+
       - name: Audit public routes
         run: npm run audit:public-routes
 
@@ -112,6 +115,9 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      - name: Verify sitemap and site link export
+        run: npm run lint:site-links
 
       - name: Audit public routes
         run: npm run audit:public-routes

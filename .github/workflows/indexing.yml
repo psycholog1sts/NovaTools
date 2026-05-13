@@ -1,15 +1,33 @@
-name: Google Indexing
+name: Sitemap and Google Indexing
 
 on:
   push:
     branches: [main]
+  workflow_dispatch:
+    inputs:
+      send_to_google:
+        description: 'Send selected URLs to Google Indexing API. Keep false for validation/dry-run only.'
+        required: true
+        default: 'false'
+        type: choice
+        options:
+          - 'false'
+          - 'true'
+      limit:
+        description: 'Maximum URLs to submit when send_to_google=true. Keep within your Google quota.'
+        required: true
+        default: '200'
+      offset:
+        description: 'Starting offset in site-links.txt for chunked submissions.'
+        required: true
+        default: '0'
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  build:
-    name: Build site for indexing
+  prepare:
+    name: Build and verify sitemap inputs
     runs-on: ubuntu-latest
 
     steps:
@@ -27,33 +45,34 @@ jobs:
       - name: Install dependencies
         run: npm ci --include=optional
 
-      - name: Build
-        run: npm run build
+      - name: Build sitemap and site links
+        run: npm run build:sitemap
 
-      - name: Verify indexing inputs
-        run: |
-          if [ ! -f dist/sitemap.xml ] && [ ! -f dist/robots.txt ]; then
-            echo "Sitemap not found, skipping indexing"
-            exit 0
-          fi
+      - name: Verify site-links.txt matches sitemap.xml
+        run: npm run lint:site-links
 
-      - name: Upload build output
+      - name: Dry-run Indexing API input
+        run: npm run indexing:dry-run -- --limit=10
+
+      - name: Upload indexing inputs
         uses: actions/upload-artifact@v4
         with:
-          name: indexing-build-output
-          path: dist
+          name: indexing-inputs
+          path: |
+            sitemap.xml
+            public/sitemap.xml
+            site-links.txt
           if-no-files-found: error
 
   index:
-    name: Submit sitemap URLs to Google Indexing
+    name: Optional Google Indexing API submission
+    if: github.event_name == 'workflow_dispatch' && inputs.send_to_google == 'true'
     runs-on: ubuntu-latest
-    needs: [build]
+    needs: [prepare]
 
     steps:
       - name: Checkout
         uses: actions/checkout@v6
-        with:
-          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v6
@@ -61,35 +80,13 @@ jobs:
           node-version-file: .node-version
           cache: npm
 
-      - name: Download build output
+      - name: Download indexing inputs
         uses: actions/download-artifact@v4
         with:
-          name: indexing-build-output
-          path: dist
+          name: indexing-inputs
+          path: .
 
-      - name: Install indexing dependencies
-        run: npm install --no-save --no-package-lock googleapis axios
-
-      - name: Run Indexing Script
-        run: |
-          if [ ! -f dist/sitemap.xml ] && [ ! -f dist/robots.txt ]; then
-            echo "Sitemap not found, skipping indexing"
-            exit 0
-          fi
-
-          if [ -z "${GOOGLE_INDEXING_KEY:-}" ]; then
-            echo "GOOGLE_INDEXING_KEY not configured, skipping indexing"
-            exit 0
-          fi
-
-          node indexing.cjs
+      - name: Submit selected URLs to Google Indexing API
+        run: node indexing.cjs --send --input=site-links.txt --limit="${{ inputs.limit }}" --offset="${{ inputs.offset }}"
         env:
           GOOGLE_INDEXING_KEY: ${{ secrets.GOOGLE_INDEXING_KEY }}
-
-      - name: Commit log if any
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add -A -- ':!dist'
-          git commit -m "chore: update indexing log" || exit 0
-          git push
