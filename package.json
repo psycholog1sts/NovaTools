@@ -22,7 +22,7 @@
     "prettier": "prettier --write \"src/**/*.{js,mjs,css,html}\"",
     "clean": "rimraf dist node_modules/.vite",
     "postinstall": "node scripts/postinstall.mjs",
-    "prebuild": "npm run lint:i18n && npm run build:blog-outlines && npm run lint:blog-routes && npm run build:sitemap && node scripts/generate-icons.mjs",
+    "prebuild": "npm run lint:i18n && npm run lint:media-dimensions && npm run build:blog-outlines && npm run lint:blog-routes && npm run build:sitemap && node scripts/generate-icons.mjs",
     "audit:adsense": "node scripts/adsense-readiness-audit.mjs",
     "lint:i18n": "node scripts/lint-i18n.mjs",
     "build:sitemap": "node scripts/generate-localized-sitemap.mjs",
@@ -30,7 +30,8 @@
     "audit:public-routes": "node scripts/audit-public-routes.mjs",
     "build:blog-outlines": "node scripts/generate-blog-outlines.mjs --write",
     "lint:blog-outlines": "node scripts/generate-blog-outlines.mjs --check",
-    "lint:blog-routes": "node scripts/audit-blog-routes.mjs"
+    "lint:blog-routes": "node scripts/audit-blog-routes.mjs",
+    "lint:media-dimensions": "node scripts/audit-media-dimensions.mjs"
   },
   "dependencies": {
     "@vercel/speed-insights": "^2.0.0",

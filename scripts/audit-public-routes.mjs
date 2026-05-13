@@ -70,6 +70,27 @@ function walkHtml(dir) {
   return out;
 }
 
+function verifyPostBuildBlogRoutes() {
+  if (!distExists('blog/index.html')) {
+    fail('Public route audit requires a completed build: missing blog/index.html. Run npm run build before npm run audit:public-routes.');
+    return false;
+  }
+
+  const missingHubs = supportedBlogLocales
+    .filter((locale) => locale !== fallbackBlogLocale)
+    .map((locale) => blogHubPath(locale).replace(/^\//, ''))
+    .filter((route) => !distExists(route));
+
+  if (missingHubs.length > 0) {
+    const preview = missingHubs.slice(0, 5).join(', ');
+    const suffix = missingHubs.length > 5 ? ', ...' : '';
+    fail(`Public route audit requires post-build localized blog routes. Missing ${missingHubs.length} hub route(s): ${preview}${suffix}. Run npm run build before npm run audit:public-routes.`);
+    return false;
+  }
+
+  return true;
+}
+
 function auditHomeShell() {
   const html = readDist('index.html');
   for (const marker of ['id="popularTasks"', 'class="task-chip-grid"', 'id="categoriesGrid"', 'class="category-nav-grid"']) {
@@ -117,7 +138,7 @@ function auditCategoryShells() {
 
 if (!existsSync(distDir)) {
   fail('dist directory does not exist; run npm run build first');
-} else {
+} else if (verifyPostBuildBlogRoutes()) {
   auditStaticHrefs('index.html');
   auditStaticHrefs('blog/index.html');
   for (const file of walkHtml('blog')) auditStaticHrefs(file);
