@@ -319,6 +319,29 @@ for (const locale of pathPrefixLocales) {
 }
 console.log('✅ Verified: localized /tr and /ar public surface routes');
 
+function ensureCleanHtmlAlias(file) {
+  if (!file.endsWith('.html') || file === 'index.html') return false;
+  const source = path.join(distDir, file);
+  if (!fs.existsSync(source)) return false;
+  const cleanRoute = file.replace(/\.html$/, '/index.html');
+  const target = path.join(distDir, cleanRoute);
+  fs.mkdirSync(path.dirname(target), { recursive: true });
+  fs.copyFileSync(source, target);
+  return true;
+}
+
+for (const file of localizedRootFiles) {
+  ensureCleanHtmlAlias(file);
+}
+
+for (const locale of pathPrefixLocales) {
+  for (const file of localizedRootFiles) {
+    if (file === 'index.html') continue;
+    ensureCleanHtmlAlias(`${locale}/${file}`);
+  }
+}
+console.log('✅ Verified: clean URL aliases for public root pages');
+
 // Fix 3: Clean up dist/src if empty
 if (fs.existsSync(srcDir)) {
   const remaining = fs.readdirSync(srcDir);
