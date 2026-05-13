@@ -14,6 +14,7 @@
     "lint": "eslint src/",
     "lint:fix": "eslint src/ --fix",
     "test": "node tests/tool-validation.mjs",
+    "ci:validate": "npm run lint && npm run lint:media-dimensions && npm run lint:blog-outlines && npm test && npm run build && npm run audit:public-routes",
     "test:unit": "node tests/tool-validation.mjs",
     "test:watch": "node tests/tool-validation.mjs",
     "test:coverage": "node tests/tool-validation.mjs",
