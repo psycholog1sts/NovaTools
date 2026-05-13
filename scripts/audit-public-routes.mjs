@@ -134,6 +134,45 @@ function verifyPostBuildBlogRoutes() {
   return true;
 }
 
+
+const publicSurfaceFiles = [
+  'index.html',
+  'about-us.html',
+  'contact.html',
+  'request-tool.html',
+  'privacy-policy.html',
+  'terms-of-service.html',
+  'cookie-policy.html',
+  'security.html',
+  'gizlilik-politikasi.html',
+  'kvkk-aydinlatma-metni.html',
+  'kullanim-kosullari.html',
+  'iletisim.html'
+];
+const pathPrefixLocales = ['tr', 'ar'];
+
+function cleanAliasFor(file) {
+  if (!file.endsWith('.html') || path.basename(file) === 'index.html') return null;
+  return file.replace(/\.html$/, '/index.html');
+}
+
+function auditPublicSurfaceRoutes() {
+  for (const file of publicSurfaceFiles) {
+    if (!distExists(file)) fail(`Missing public surface file: ${file}`);
+    const cleanAlias = cleanAliasFor(file);
+    if (cleanAlias && !distExists(cleanAlias)) fail(`Missing clean URL alias for ${file}: ${cleanAlias}`);
+  }
+
+  for (const locale of pathPrefixLocales) {
+    for (const file of publicSurfaceFiles) {
+      const localized = file === 'index.html' ? `${locale}/index.html` : `${locale}/${file}`;
+      if (!distExists(localized)) fail(`Missing localized public surface file: ${localized}`);
+      const cleanAlias = cleanAliasFor(localized);
+      if (cleanAlias && !distExists(cleanAlias)) fail(`Missing localized clean URL alias for ${localized}: ${cleanAlias}`);
+    }
+  }
+}
+
 function auditHomeShell() {
   const html = readDist('index.html');
   for (const marker of ['id="popularTasks"', 'class="task-chip-grid"', 'id="categoriesGrid"', 'class="category-nav-grid"']) {
@@ -213,6 +252,7 @@ if (!existsSync(distDir)) {
   }
   for (const file of walkHtml('categories')) auditStaticHrefs(file);
   auditSitemapRoutes();
+  auditPublicSurfaceRoutes();
   auditHomeShell();
   auditBlogManifestRoutes();
   auditGeneratedArticleRoutes();

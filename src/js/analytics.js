@@ -1,4 +1,4 @@
-const GA_MEASUREMENT_ID = 'G-Y896L63239';
+const GA_MEASUREMENT_ID = import.meta.env.PUBLIC_GA_ID || import.meta.env.VITE_GA_ID || window.NOVATOOLS_GA_ID || '';
 const CLARITY_PROJECT_ID = window.NOVATOOLS_CLARITY_PROJECT_ID || '';
 const COOKIE_EXPIRES_SECONDS = 63072000;
 const CONSENT_EVENT = 'novatools:consent-updated';
@@ -59,6 +59,7 @@ function ensureGtagStub() {
 }
 
 function configureGa() {
+  if (!GA_MEASUREMENT_ID) return;
   window[`ga-disable-${GA_MEASUREMENT_ID}`] = false;
   ensureGtagStub();
   window.gtag('js', new Date());
@@ -73,7 +74,7 @@ function configureGa() {
 }
 
 function loadGa() {
-  if (!isAnalyticsAllowed() || gaReady) return;
+  if (!GA_MEASUREMENT_ID || !isAnalyticsAllowed() || gaReady) return;
   const src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(GA_MEASUREMENT_ID)}`;
   createScript(src, { 'data-novatools-analytics': 'ga4' })
     .then(configureGa)
@@ -304,7 +305,7 @@ function setupCoreWebVitals() {
 
 function enableTracking() {
   if (!isAnalyticsAllowed()) {
-    window[`ga-disable-${GA_MEASUREMENT_ID}`] = true;
+    if (GA_MEASUREMENT_ID) window[`ga-disable-${GA_MEASUREMENT_ID}`] = true;
     return;
   }
   loadGa();

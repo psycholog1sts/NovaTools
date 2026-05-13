@@ -51,6 +51,9 @@ const urls = [];
 ['/', '/about-us.html', '/contact.html', '/privacy-policy.html', '/terms-of-service.html', '/cookie-policy.html', '/security.html'].forEach((route) => {
   locales.forEach((locale) => urls.push(urlEntry(localizedUrl(route, locale), route === '/' ? '1.0' : '0.7', route === '/' ? 'weekly' : 'monthly')));
 });
+['/gizlilik-politikasi.html', '/kvkk-aydinlatma-metni.html', '/kullanim-kosullari.html', '/iletisim.html'].forEach((route) => {
+  urls.push(urlEntry(`${origin}${route}`, '0.7', 'monthly'));
+});
 locales.forEach((locale) => urls.push(urlEntry(localizedBlogUrl(blogHubPath(locale)), '0.7', 'monthly')));
 
 globSync('categories/**/*.html', { cwd: rootDir }).sort().forEach((file) => {
