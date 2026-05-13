@@ -184,6 +184,54 @@ const clusters = {
 };
 
 const requiredSectionIds = ['introduction', 'decision-points', 'step-by-step-workflow', 'failure-points', 'expected-outcome', 'faq-plan'];
+const coverVariants = {
+  og: { width: 1200, height: 630 },
+  card: { width: 800, height: 450 },
+  featured: { width: 1200, height: 675 }
+};
+const visualLanguages = {
+  'pdf-workflows': {
+    palette: ['#1e3a8a', '#38bdf8', '#f8fafc'],
+    iconography: ['stacked document pages', 'review checkmarks', 'page flow lines'],
+    style: 'structured document-review composition with layered pages and clear handoff markers'
+  },
+  'image-optimization': {
+    palette: ['#7c3aed', '#fb7185', '#fef3c7'],
+    iconography: ['image frame', 'crop handles', 'compression rings'],
+    style: 'visual production board with image frames, crop guides, and asset quality markers'
+  },
+  'finance-calculators': {
+    palette: ['#065f46', '#22c55e', '#dcfce7'],
+    iconography: ['calculator grid', 'trend line', 'assumption cards'],
+    style: 'finance planning dashboard with visible assumptions and non-advisory estimate cues'
+  },
+  'developer-utilities': {
+    palette: ['#0f172a', '#06b6d4', '#dbeafe'],
+    iconography: ['code brackets', 'terminal panels', 'validation nodes'],
+    style: 'developer utility interface with code panels, validation nodes, and debugging paths'
+  },
+  'text-utilities': {
+    palette: ['#581c87', '#c084fc', '#f5f3ff'],
+    iconography: ['text lines', 'editing cursor', 'review annotations'],
+    style: 'editorial text workspace with line rhythm, annotations, and revision markers'
+  },
+  'privacy-workflows': {
+    palette: ['#115e59', '#2dd4bf', '#ccfbf1'],
+    iconography: ['shield', 'local browser window', 'metadata blocks'],
+    style: 'privacy-first browser workspace with shield forms and local-processing boundaries'
+  },
+  productivity: {
+    palette: ['#1d4ed8', '#60a5fa', '#eff6ff'],
+    iconography: ['kanban cards', 'timers', 'handoff arrows'],
+    style: 'productivity planning board with checklists, timing cues, and next-action cards'
+  },
+  education: {
+    palette: ['#b45309', '#f59e0b', '#fffbeb'],
+    iconography: ['learning cards', 'diagram nodes', 'classroom activity path'],
+    style: 'education activity canvas with lesson cards, diagrams, and guided practice markers'
+  }
+};
+
 const wordPlan = [
   ['introduction', 'Introduction and user intent', 180],
   ['decision-points', 'Entry decision points', 180],
@@ -222,12 +270,13 @@ function buildArticle(topic, clusterKey, clusterConfig, index) {
     `Use ${toolNames.slice(0, 2).join(' and ')} as preparation aids, not as replacements for final judgment.`,
     `Close with a handoff checklist that explains what changed, what still needs review, and where the output should go next.`
   ];
+  const excerpt = `${title} helps ${clusterConfig.audience} ${userTaskIntent} with decision points, repeatable steps, safeguards, and a clear handoff path.`;
 
   return {
     schemaVersion: 'blog-outline-v1',
     slug,
     title,
-    excerpt: `${title} helps ${clusterConfig.audience} ${userTaskIntent} with decision points, repeatable steps, safeguards, and a clear handoff path.`,
+    excerpt,
     cluster: clusterKey,
     category: clusterConfig.category,
     searchIntent: {
@@ -254,6 +303,9 @@ function buildArticle(topic, clusterKey, clusterConfig, index) {
     },
     relatedToolLinks,
     relatedArticleLinks: [],
+    coverImage: coverImageFor(slug),
+    visualBrief: visualBriefFor(slug, title, clusterKey, clusterConfig.category),
+    metadata: metadataFor(slug, title, excerpt, clusterKey),
     localizationNotes: {
       preserveToolNames: toolNames,
       avoidClaims: ['guaranteed savings', 'legal advice', 'tax advice', 'medical advice', 'instant ranking gains'],
@@ -295,6 +347,41 @@ function sectionPoints(id, task, toolNames, outcome) {
   return map[id];
 }
 
+function coverImageFor(slug) {
+  return Object.fromEntries(Object.keys(coverVariants).flatMap((variant) => [
+    [variant, `/images/blog/${variant}-${slug}.svg`],
+    [`${variant}Fallback`, `/images/blog/${variant}-${slug}.svg`]
+  ]));
+}
+
+function metadataFor(slug, title, excerpt, clusterKey) {
+  return {
+    seoTitle: title.length > 58 ? `${title.slice(0, 57).trimEnd()}…` : title,
+    metaDescription: excerpt.length > 155 ? `${excerpt.slice(0, 154).trimEnd()}…` : excerpt,
+    canonicalPath: `/blog/articles/${slug}.html`,
+    robots: 'index, follow, max-image-preview:large',
+    ogImage: `/images/blog/og-${slug}.svg`,
+    cardImage: `/images/blog/card-${slug}.svg`,
+    featuredImage: `/images/blog/featured-${slug}.svg`,
+    contentCluster: clusterKey,
+    estimatedReadingTimeMinutes: 6
+  };
+}
+
+function visualBriefFor(slug, title, clusterKey, category) {
+  const language = visualLanguages[clusterKey] || visualLanguages.productivity;
+  return {
+    generator: 'scripts/generate-blog-images.mjs',
+    assetBaseName: slug,
+    style: language.style,
+    palette: language.palette,
+    iconography: language.iconography,
+    variants: coverVariants,
+    altText: `${title} visual cover for ${category}`,
+    uniquenessRule: 'Use the article slug, cluster palette, topic title, and generated hash accents; do not use the generic NovaTools logo as the cover.'
+  };
+}
+
 function buildFaq(task, toolNames, category) {
   const primary = toolNames[0] || 'the related tool';
   return [
@@ -334,7 +421,7 @@ function buildDataset() {
       targetArticleCount: 100,
       minimumTargetWordCount: 1000,
       requiredSections: requiredSectionIds,
-      requiredMetadata: ['slug', 'title', 'excerpt', 'summary', 'category', 'faq', 'cta', 'relatedToolLinks', 'relatedArticleLinks']
+      requiredMetadata: ['slug', 'title', 'excerpt', 'summary', 'category', 'faq', 'cta', 'relatedToolLinks', 'relatedArticleLinks', 'coverImage', 'visualBrief', 'metadata']
     },
     articles
   };
@@ -380,6 +467,18 @@ function validateDataset(dataset) {
     (article.relatedArticleLinks || []).forEach((slug) => {
       if (!articleSlugs.has(slug) && !existingArticleSlugs.has(slug)) failures.push(`${prefix}: related article slug is unknown: ${slug}`);
     });
+    for (const variant of Object.keys(coverVariants)) {
+      const expected = `/images/blog/${variant}-${article.slug}.svg`;
+      if (article.coverImage?.[variant] !== expected || article.coverImage?.[`${variant}Fallback`] !== expected) failures.push(`${prefix}: coverImage ${variant} must be ${expected}.`);
+      if (article.visualBrief?.variants?.[variant]?.width !== coverVariants[variant].width || article.visualBrief?.variants?.[variant]?.height !== coverVariants[variant].height) failures.push(`${prefix}: visualBrief variant ${variant} dimensions are missing or incorrect.`);
+    }
+    if (!Array.isArray(article.visualBrief?.palette) || article.visualBrief.palette.length < 3) failures.push(`${prefix}: visualBrief palette must include at least 3 colors.`);
+    if (!Array.isArray(article.visualBrief?.iconography) || article.visualBrief.iconography.length < 3) failures.push(`${prefix}: visualBrief iconography must include at least 3 cues.`);
+    if (!article.visualBrief?.uniquenessRule?.includes('do not use the generic NovaTools logo')) failures.push(`${prefix}: visualBrief must forbid generic logo-only covers.`);
+    if (article.metadata?.canonicalPath !== `/blog/articles/${article.slug}.html`) failures.push(`${prefix}: metadata canonicalPath mismatch.`);
+    if (article.metadata?.ogImage !== article.coverImage?.og || article.metadata?.cardImage !== article.coverImage?.card || article.metadata?.featuredImage !== article.coverImage?.featured) failures.push(`${prefix}: metadata image references must match coverImage variants.`);
+    if (!article.metadata?.seoTitle || article.metadata.seoTitle.length > 60) failures.push(`${prefix}: metadata seoTitle is missing or too long.`);
+    if (!article.metadata?.metaDescription || article.metadata.metaDescription.length > 160) failures.push(`${prefix}: metadata metaDescription is missing or too long.`);
   });
 
   return failures;
