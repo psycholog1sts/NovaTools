@@ -1,3 +1,5 @@
+const fs = require('fs');
+const path = require('path');
 const { google } = require('googleapis');
 const axios = require('axios');
 
@@ -25,20 +27,34 @@ try {
     }
 
     try {
-      // 1. Sitemap dosyanı çekiyoruz
-      console.log("Sitemap okunuyor: https://mc-novatools.com/sitemap.xml");
-      const sitemapResponse = await axios.get('https://mc-novatools.com/sitemap.xml');
-      
-      // 2. XML içindeki tüm <loc> linklerini ayıklıyoruz (Regex ile en hızlı çözüm)
-      const urls = sitemapResponse.data.match(/<loc>(.*?)<\/loc>/g)
-        .map(val => val.replace(/<\/?loc>/g, ''));
+      // 1. Prefer the sitemap produced by this workflow so indexing does not depend
+      // on the currently deployed site being healthy. Fall back to production if needed.
+      const localSitemapPath = path.join(process.cwd(), 'dist', 'sitemap.xml');
+      let sitemapXml;
+      if (fs.existsSync(localSitemapPath)) {
+        console.log(`Sitemap okunuyor: ${localSitemapPath}`);
+        sitemapXml = fs.readFileSync(localSitemapPath, 'utf8');
+      } else {
+        console.log("Sitemap okunuyor: https://mc-novatools.com/sitemap.xml");
+        const sitemapResponse = await axios.get('https://mc-novatools.com/sitemap.xml');
+        sitemapXml = sitemapResponse.data;
+      }
+
+      // 2. XML içindeki tüm <loc> linklerini ayıklıyoruz.
+      const urls = (sitemapXml.match(/<loc>(.*?)<\/loc>/g) || [])
+        .map(val => val.replace(/<\/?loc>/g, '').replace(/&amp;/g, '&'));
+
+      if (urls.length === 0) {
+        console.log('Sitemap içinde gönderilecek URL bulunamadı; indeksleme atlanıyor.');
+        return;
+      }
 
       console.log(`Toplam ${urls.length} adet URL bulundu. İndeksleme başlıyor...`);
 
       // 3. Her bir URL için Google'a sinyal gönderiyoruz
       for (const url of urls) {
         try {
-          const response = await axios.post('https://indexing.googleapis.com/v3/urlNotifications:publish', {
+          await axios.post('https://indexing.googleapis.com/v3/urlNotifications:publish', {
             url: url,
             type: 'URL_UPDATED'
           }, {

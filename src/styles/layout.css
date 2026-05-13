@@ -570,3 +570,115 @@
     display: grid;
   }
 }
+
+/* Homepage footer normalization: keep the public footer structured on all breakpoints. */
+.home-footer {
+  padding: var(--space-12) 0 var(--space-6);
+  background:
+    radial-gradient(circle at top left, rgba(0, 217, 255, 0.08), transparent 32%),
+    rgba(8, 13, 24, 0.94);
+}
+
+.home-footer__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) repeat(3, minmax(160px, 1fr));
+  gap: clamp(var(--space-6), 4vw, var(--space-10));
+  align-items: start;
+}
+
+.home-footer__brand,
+.home-footer__column {
+  min-width: 0;
+}
+
+.home-footer__brand .footer-logo {
+  display: inline-flex;
+  color: var(--color-text-primary);
+  text-decoration: none;
+}
+
+.home-footer__social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.home-footer__social a {
+  display: inline-grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  color: var(--color-text-secondary);
+  background: var(--color-surface);
+  transition: color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.home-footer__social a:hover {
+  color: var(--color-accent);
+  border-color: var(--color-border-hover);
+  transform: translateY(-1px);
+}
+
+.home-footer__note {
+  margin: 0 0 var(--space-4);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
+}
+
+.home-footer .newsletter-form {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.home-footer .newsletter-form input {
+  width: 100%;
+  min-height: 44px;
+  padding: 0 var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  color: var(--color-text-primary);
+  background: var(--color-bg-primary);
+}
+
+.home-footer .newsletter-form .btn {
+  justify-self: start;
+}
+
+.home-footer__bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-top: var(--space-10);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-border);
+  color: var(--color-text-tertiary);
+  font-size: var(--font-size-sm);
+}
+
+.home-footer__bottom p {
+  margin: 0;
+}
+
+@media (max-width: 980px) {
+  .home-footer__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .home-footer__brand {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 640px) {
+  .home-footer__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .home-footer__bottom {
+    display: grid;
+  }
+}
