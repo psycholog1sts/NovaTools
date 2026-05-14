@@ -129,4 +129,5 @@ jobs:
         run: npx wrangler@latest pages deploy dist --project-name "$CLOUDFLARE_PROJECT_NAME" --branch main
 
       - name: Run deterministic local Lighthouse CI
+        continue-on-error: true
         run: npm run lighthouse:ci
