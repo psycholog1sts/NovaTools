@@ -102,9 +102,9 @@ const adminEntry = {
 };
 
 
-// Localized duplicate entries keep /tr/ and /ar/ public routes buildable while
-// retaining the existing static HTML sources and runtime localization.
-const localizedRootHtmlEntries = ['tr', 'ar'].reduce((acc, locale) => {
+// Localized duplicate entries keep path-prefixed locale routes buildable for
+// locales that still use static path prefixes while runtime localization handles others.
+const localizedRootHtmlEntries = ['ar'].reduce((acc, locale) => {
   acc[`${locale}/index`] = resolveHtmlEntry('index.html');
   Object.keys(rootHtmlEntries).forEach((name) => {
     acc[`${locale}/${name}`] = rootHtmlEntries[name];
@@ -170,14 +170,14 @@ const categoryEntries = globSync('categories/**/*.html').reduce((acc, file) => {
   return acc;
 }, {});
 
-const localizedCategoryEntries = ['tr', 'ar'].reduce((acc, locale) => {
+const localizedCategoryEntries = ['ar'].reduce((acc, locale) => {
   Object.entries(categoryEntries).forEach(([name, file]) => {
     acc[`${locale}/${name}`] = file;
   });
   return acc;
 }, {});
 
-const localizedToolEntries = ['tr', 'ar'].reduce((acc, locale) => {
+const localizedToolEntries = ['ar'].reduce((acc, locale) => {
   Object.entries(toolEntries).forEach(([name, file]) => {
     acc[`${locale}/${name}`] = file;
   });

@@ -7,7 +7,7 @@
   'use strict';
 
   const SUPPORTED_LANGUAGES = ['en', 'tr', 'de', 'fr', 'es', 'pt', 'ru', 'zh', 'ja', 'ko', 'ar', 'hi', 'it', 'pl', 'nl'];
-  const PATH_PREFIX_LANGUAGES = ['tr', 'ar'];
+  const PATH_PREFIX_LANGUAGES = ['ar'];
   const RTL_LANGUAGES = ['ar'];
   const DEFAULT_LANGUAGE = 'en';
   const BLOG_PATH_PREFIX_LANGUAGES = SUPPORTED_LANGUAGES.filter((lang) => lang !== DEFAULT_LANGUAGE);
@@ -786,7 +786,7 @@
         <div class="site-guide-chatbot__links">
           <a href="/categories/index.html">${t('tools.categories', 'Categories')}</a>
           <a href="/blog/index.html">${t('nav.blog', 'Blog')}</a>
-          <a href="/contact.html">${t('nav.contact', 'Contact')}</a>
+          <a href="/iletisim.html">${t('nav.contact', 'Contact')}</a>
         </div>
       </div>`;
     document.body.appendChild(guide);

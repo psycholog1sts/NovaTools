@@ -90,7 +90,7 @@ function switchLocale(locale) {
  */
 function getLocaleUrl(locale) {
   const currentPath = window.location.pathname;
-  const currentSearch = window.location.search;
+  const params = new URLSearchParams(window.location.search || '');
   
   // Remove existing locale prefix
   const firstSegment = currentPath.split('/').filter(Boolean)[0];
@@ -100,10 +100,16 @@ function getLocaleUrl(locale) {
   
   // Build new URL
   const newPath = I18N_CONFIG.pathPrefixLocales.includes(locale)
-    ? `/${locale}${pathWithoutLocale}`
+    ? `/${locale}${pathWithoutLocale === '/' ? '/' : pathWithoutLocale}`
     : pathWithoutLocale;
+
+  params.delete('lang');
+  if (locale !== I18N_CONFIG.defaultLocale && !I18N_CONFIG.pathPrefixLocales.includes(locale)) {
+    params.set('lang', locale);
+  }
+  const query = params.toString();
   
-  return `${newPath}${currentSearch}`;
+  return `${newPath}${query ? `?${query}` : ''}`;
 }
 
 /**

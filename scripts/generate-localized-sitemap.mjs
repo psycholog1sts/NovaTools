@@ -9,7 +9,7 @@ const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const origin = 'https://mc-novatools.com';
 const lastmod = new Date().toISOString().slice(0, 10);
 const locales = supportedBlogLocales;
-const pathPrefixLocales = new Set(['tr', 'ar']);
+const pathPrefixLocales = new Set(['ar']);
 
 function readJson(relativePath) {
   return JSON.parse(fs.readFileSync(path.join(rootDir, relativePath), 'utf8'));

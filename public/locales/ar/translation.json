@@ -67,7 +67,8 @@
       "legalTitle": "القانوني والخصوصية",
       "ownerRole": "مستشار نفسي ومؤسس",
       "legalBarContact": "اتصل بالدعم",
-      "legalBarIssue": "الإبلاغ عن مشكلة"
+      "legalBarIssue": "الإبلاغ عن مشكلة",
+      "contactNote": "تابع المدونة للحصول على أدلة جديدة أو تواصل مع الدعم لأسئلة الموقع العامة."
     },
     "popularCards": {
       "pdfMerge": {
@@ -194,7 +195,19 @@
     "viewAllDesc": "Browse our tool collection by category.",
     "searchPlaceholder": "Search tools...",
     "popularLabel": "شائع:",
-    "newBadge": "جديد"
+    "newBadge": "جديد",
+    "ads": {
+      "eyebrow": "تخطيط واضح",
+      "title": "المحتوى المفيد أولاً، والإعلانات في مساحات مخصصة فقط",
+      "description": "تحافظ NovaTools على سهولة الوصول إلى أدوات التحكم وبطاقات الأدلة والروابط القانونية. لا يتم تحميل سكربتات الإعلانات إلا بعد الموافقة المناسبة ووجود إعداد إنتاج صالح.",
+      "cookieChoices": "خيارات ملفات تعريف الارتباط"
+    },
+    "blog": {
+      "eyebrow": "الأدلة",
+      "title": "من مدونة NovaTools",
+      "description": "مقالات عملية توضّح متى تستخدم الأداة وما الذي يجب التحقق منه قبل التصدير.",
+      "viewAll": "عرض كل المقالات ←"
+    }
   },
   "footer": {
     "signature": "Metehan ÇETİN, LPC",
@@ -5784,7 +5797,8 @@
     "footerDesc": "Professional online tools for PDF, image, finance, and development.",
     "browserBased": "Browser-based",
     "aboutUs": "About Us",
-    "allRightsReserved": "All rights reserved."
+    "allRightsReserved": "All rights reserved.",
+    "emailAddress": "عنوان البريد الإلكتروني"
   },
   "categories": {
     "pdf": {
@@ -6284,6 +6298,14 @@
       "home": "اذهب إلى الصفحة الرئيسية",
       "categories": "تصفح الفئات",
       "guides": "اقرأ الأدلة"
+    }
+  },
+  "legal": {
+    "links": {
+      "privacyPolicy": "سياسة الخصوصية",
+      "termsOfUse": "شروط الاستخدام",
+      "kvkkNotice": "إشعار KVKK",
+      "contact": "اتصل بنا"
     }
   }
 }

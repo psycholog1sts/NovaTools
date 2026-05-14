@@ -62,6 +62,7 @@
         "Cuma",
         "Cumartesi"
       ]
-    }
+    },
+    "emailAddress": "E-posta adresi"
   }
 }

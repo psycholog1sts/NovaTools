@@ -373,6 +373,12 @@
       "submit": "Open email draft",
       "success": "Your email client should open with a prefilled draft.",
       "error": "Please complete all required fields with a valid email address."
+    },
+    "links": {
+      "privacyPolicy": "Gizlilik Politikası",
+      "termsOfUse": "Kullanım Koşulları",
+      "kvkkNotice": "KVKK Aydınlatma Metni",
+      "contact": "İletişim"
     }
   }
 }

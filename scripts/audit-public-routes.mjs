@@ -149,7 +149,7 @@ const publicSurfaceFiles = [
   'kullanim-kosullari.html',
   'iletisim.html'
 ];
-const pathPrefixLocales = ['tr', 'ar'];
+const pathPrefixLocales = ['ar'];
 
 function cleanAliasFor(file) {
   if (!file.endsWith('.html') || path.basename(file) === 'index.html') return null;

@@ -67,7 +67,8 @@
       "legalTitle": "法的情報＆プライバシー",
       "ownerRole": "心理カウンセラー＆創設者",
       "legalBarContact": "サポートに連絡",
-      "legalBarIssue": "問題を報告"
+      "legalBarIssue": "問題を報告",
+      "contactNote": "Follow the blog for new guides or contact support for public-site questions."
     },
     "popularCards": {
       "pdfMerge": {
@@ -194,7 +195,19 @@
     "viewAllDesc": "Browse our tool collection by category.",
     "searchPlaceholder": "Search tools...",
     "popularLabel": "人気：",
-    "newBadge": "新着"
+    "newBadge": "新着",
+    "ads": {
+      "eyebrow": "Clean layout",
+      "title": "Helpful content first, ads only in reserved spaces",
+      "description": "NovaTools keeps tool controls, guide cards and legal links easy to find. Advertising scripts load only after the appropriate consent and valid production configuration.",
+      "cookieChoices": "Cookie choices"
+    },
+    "blog": {
+      "eyebrow": "Guides",
+      "title": "From the NovaTools Blog",
+      "description": "Practical articles that explain when to use a tool and what to check before exporting.",
+      "viewAll": "View All Articles →"
+    }
   },
   "footer": {
     "signature": "メテハン・チェティン、LPC",
@@ -5784,7 +5797,8 @@
     "footerDesc": "Professional online tools for PDF, image, finance, and development.",
     "browserBased": "Browser-based",
     "aboutUs": "About Us",
-    "allRightsReserved": "All rights reserved."
+    "allRightsReserved": "All rights reserved.",
+    "emailAddress": "Email address"
   },
   "categories": {
     "pdf": {
@@ -5891,6 +5905,14 @@
       "home": "ホームへ",
       "categories": "カテゴリを見る",
       "guides": "ガイドを読む"
+    }
+  },
+  "legal": {
+    "links": {
+      "privacyPolicy": "Gizlilik Politikası",
+      "termsOfUse": "Kullanım Koşulları",
+      "kvkkNotice": "KVKK Aydınlatma Metni",
+      "contact": "İletişim"
     }
   }
 }

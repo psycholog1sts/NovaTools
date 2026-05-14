@@ -373,6 +373,12 @@
       "submit": "E-posta taslağı aç",
       "success": "E-posta istemcinizde doldurulmuş bir taslak açılmalıdır.",
       "error": "Lütfen tüm zorunlu alanları geçerli bir e-posta adresiyle doldurun."
+    },
+    "links": {
+      "privacyPolicy": "Gizlilik Politikası",
+      "termsOfUse": "Kullanım Koşulları",
+      "kvkkNotice": "KVKK Aydınlatma Metni",
+      "contact": "İletişim"
     }
   }
 }

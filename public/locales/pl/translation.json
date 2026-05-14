@@ -67,7 +67,8 @@
       "legalTitle": "Prawo & Prywatność",
       "ownerRole": "Doradca Psychologiczny & Założyciel",
       "legalBarContact": "Skontaktuj się z Pomocą",
-      "legalBarIssue": "Zgłoś Problem"
+      "legalBarIssue": "Zgłoś Problem",
+      "contactNote": "Follow the blog for new guides or contact support for public-site questions."
     },
     "popularCards": {
       "pdfMerge": {
@@ -194,7 +195,19 @@
     "viewAllDesc": "Browse our tool collection by category.",
     "searchPlaceholder": "Search tools...",
     "popularLabel": "Popularne:",
-    "newBadge": "Nowe"
+    "newBadge": "Nowe",
+    "ads": {
+      "eyebrow": "Clean layout",
+      "title": "Helpful content first, ads only in reserved spaces",
+      "description": "NovaTools keeps tool controls, guide cards and legal links easy to find. Advertising scripts load only after the appropriate consent and valid production configuration.",
+      "cookieChoices": "Cookie choices"
+    },
+    "blog": {
+      "eyebrow": "Guides",
+      "title": "From the NovaTools Blog",
+      "description": "Practical articles that explain when to use a tool and what to check before exporting.",
+      "viewAll": "View All Articles →"
+    }
   },
   "footer": {
     "signature": "Metehan ÇETİN, LPC",
@@ -5784,7 +5797,8 @@
     "footerDesc": "Professional online tools for PDF, image, finance, and development.",
     "browserBased": "Browser-based",
     "aboutUs": "About Us",
-    "allRightsReserved": "All rights reserved."
+    "allRightsReserved": "All rights reserved.",
+    "emailAddress": "Email address"
   },
   "categories": {
     "pdf": {
@@ -5891,6 +5905,14 @@
       "home": "Przejdź do strony głównej",
       "categories": "Przeglądaj kategorie",
       "guides": "Czytaj poradniki"
+    }
+  },
+  "legal": {
+    "links": {
+      "privacyPolicy": "Gizlilik Politikası",
+      "termsOfUse": "Kullanım Koşulları",
+      "kvkkNotice": "KVKK Aydınlatma Metni",
+      "contact": "İletişim"
     }
   }
 }

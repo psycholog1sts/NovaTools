@@ -1,6 +1,6 @@
 const SUPPORTED_LOCALES = ['en', 'tr', 'de', 'fr', 'es', 'pt', 'ru', 'zh', 'ja', 'ko', 'ar', 'hi', 'it', 'pl', 'nl'];
 const DEFAULT_LOCALE = 'en';
-const PATH_PREFIX_LOCALES = new Set(['tr', 'ar']);
+const PATH_PREFIX_LOCALES = new Set(['ar']);
 const BLOG_PATH_PREFIX_LOCALES = new Set(SUPPORTED_LOCALES.filter((locale) => locale !== DEFAULT_LOCALE));
 const RTL_LOCALES = new Set(['ar']);
 const SITE_ORIGIN = 'https://mc-novatools.com';
