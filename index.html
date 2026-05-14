@@ -50,7 +50,7 @@
   
   <!-- Hreflang Tags for 15 Languages -->
   <link rel="alternate" hreflang="en" href="https://mc-novatools.com/" />
-  <link rel="alternate" hreflang="tr" href="https://mc-novatools.com/tr/" />
+  <link rel="alternate" hreflang="tr" href="https://mc-novatools.com/?lang=tr" />
   <link rel="alternate" hreflang="de" href="https://mc-novatools.com/?lang=de" />
   <link rel="alternate" hreflang="fr" href="https://mc-novatools.com/?lang=fr" />
   <link rel="alternate" hreflang="es" href="https://mc-novatools.com/?lang=es" />
@@ -371,11 +371,11 @@
         <div class="container">
           <div class="ad-ready-panel">
             <div>
-              <span class="section-eyebrow">Clean layout</span>
-              <h2>Helpful content first, ads only in reserved spaces</h2>
-              <p>NovaTools keeps tool controls, guide cards and legal links easy to find. Advertising scripts load only after the appropriate consent and valid production configuration.</p>
+              <span class="section-eyebrow" data-i18n="home.ads.eyebrow">Clean layout</span>
+              <h2 data-i18n="home.ads.title">Helpful content first, ads only in reserved spaces</h2>
+              <p data-i18n="home.ads.description">NovaTools keeps tool controls, guide cards and legal links easy to find. Advertising scripts load only after the appropriate consent and valid production configuration.</p>
             </div>
-            <a class="btn btn-secondary" href="/cookie-policy.html">Cookie choices</a>
+            <a class="btn btn-secondary" href="/kvkk-aydinlatma-metni.html" data-i18n="home.ads.cookieChoices">Cookie choices</a>
           </div>
         </div>
       </section>
@@ -385,11 +385,11 @@
         <div class="container">
           <div class="section-header section-header--split">
             <div>
-              <span class="section-eyebrow">Guides</span>
-              <h2 class="section-title" id="homeBlogTitle">From the NovaTools Blog</h2>
-              <p class="section-description">Practical articles that explain when to use a tool and what to check before exporting.</p>
+              <span class="section-eyebrow" data-i18n="home.blog.eyebrow">Guides</span>
+              <h2 class="section-title" id="homeBlogTitle" data-i18n="home.blog.title">From the NovaTools Blog</h2>
+              <p class="section-description" data-i18n="home.blog.description">Practical articles that explain when to use a tool and what to check before exporting.</p>
             </div>
-            <a class="section-link" href="/blog/index.html">View All Articles →</a>
+            <a class="section-link" href="/blog/index.html" data-i18n="home.blog.viewAll">View All Articles →</a>
           </div>
           <div class="home-blog-grid" id="homeBlogCards">
             <!-- Blog cards injected by JS -->
@@ -437,19 +437,19 @@
           <nav class="home-footer__column" aria-label="Legal links">
             <h2 class="footer-column-title" data-i18n="home.footer.legalTitle">Legal & Privacy</h2>
             <ul class="footer-column-list">
-              <li><a href="/gizlilik-politikasi.html">Gizlilik Politikası</a></li>
-              <li><a href="/kullanim-kosullari.html">Kullanım Koşulları</a></li>
-              <li><a href="/kvkk-aydinlatma-metni.html">KVKK Aydınlatma Metni</a></li>
-              <li><a href="/iletisim.html">İletişim</a></li>
+              <li><a href="/gizlilik-politikasi.html" data-i18n="legal.links.privacyPolicy">Gizlilik Politikası</a></li>
+              <li><a href="/kullanim-kosullari.html" data-i18n="legal.links.termsOfUse">Kullanım Koşulları</a></li>
+              <li><a href="/kvkk-aydinlatma-metni.html" data-i18n="legal.links.kvkkNotice">KVKK Aydınlatma Metni</a></li>
+              <li><a href="/iletisim.html" data-i18n="legal.links.contact">İletişim</a></li>
             </ul>
           </nav>
 
           <div class="home-footer__column">
             <h2 class="footer-column-title" data-i18n="home.footer.ownerTitle">Site Owner & Contact</h2>
-            <p class="home-footer__note">Follow the blog for new guides or contact support for public-site questions.</p>
-            <form class="newsletter-form" action="/contact.html" method="get">
-              <label class="sr-only" for="footerEmail">Email address</label>
-              <input id="footerEmail" type="email" name="email" placeholder="Email address">
+            <p class="home-footer__note" data-i18n="home.footer.contactNote">Follow the blog for new guides or contact support for public-site questions.</p>
+            <form class="newsletter-form" action="/iletisim.html" method="get">
+              <label class="sr-only" for="footerEmail" data-i18n="common.emailAddress">Email address</label>
+              <input id="footerEmail" type="email" name="email" placeholder="Email address" data-i18n-placeholder="common.emailAddress">
               <button class="btn btn-secondary" type="submit" data-i18n="nav.contact">Contact</button>
             </form>
           </div>

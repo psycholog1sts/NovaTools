@@ -73,6 +73,27 @@
       "description": "Privacy-conscious browser tools for files, finance, text and code.",
       "ogTitle": "MC NovaTools",
       "ogDescription": "Practical online tools."
+    },
+    "ads": {
+      "eyebrow": "Clean layout",
+      "title": "Helpful content first, ads only in reserved spaces",
+      "description": "NovaTools keeps tool controls, guide cards and legal links easy to find. Advertising scripts load only after the appropriate consent and valid production configuration.",
+      "cookieChoices": "Cookie choices"
+    },
+    "blog": {
+      "eyebrow": "Guides",
+      "title": "From the NovaTools Blog",
+      "description": "Practical articles that explain when to use a tool and what to check before exporting.",
+      "viewAll": "View All Articles →"
+    },
+    "footer": {
+      "contactNote": "Follow the blog for new guides or contact support for public-site questions.",
+      "brandDesc": "Browser-based tools for files, finance, code, and everyday workflows. Built for clarity, practical use, and privacy-conscious operation."
+    },
+    "trust": {
+      "secureDesc": "Many tools process data locally in your browser.",
+      "verifiedTitle": "Clear Ownership",
+      "verifiedDesc": "Site ownership, policy pages, and contact details are clearly available."
     }
   }
 }

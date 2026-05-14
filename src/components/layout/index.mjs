@@ -112,10 +112,10 @@ export function createFooter() {
   legalNav.style.color = 'var(--text-tertiary)';
   legalNav.setAttribute('aria-label', 'Yasal bağlantılar');
   legalNav.innerHTML = `
-    <a href="/gizlilik-politikasi.html">Gizlilik Politikası</a>
-    <a href="/kullanim-kosullari.html">Kullanım Koşulları</a>
-    <a href="/kvkk-aydinlatma-metni.html">KVKK Aydınlatma Metni</a>
-    <a href="/iletisim.html">İletişim</a>
+    <a href="/gizlilik-politikasi.html" data-i18n="legal.links.privacyPolicy">Gizlilik Politikası</a>
+    <a href="/kullanim-kosullari.html" data-i18n="legal.links.termsOfUse">Kullanım Koşulları</a>
+    <a href="/kvkk-aydinlatma-metni.html" data-i18n="legal.links.kvkkNotice">KVKK Aydınlatma Metni</a>
+    <a href="/iletisim.html" data-i18n="legal.links.contact">İletişim</a>
   `;
 
   row.appendChild(copyright);

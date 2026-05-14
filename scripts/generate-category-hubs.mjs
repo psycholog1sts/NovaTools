@@ -162,7 +162,7 @@ function renderHeader() {
 }
 
 function renderFooter() {
-  return `<footer class="guide-footer"><div class="container guide-footer__grid"><div><strong>MC NovaTools</strong><p>Professional browser-based utilities with practical decision guides.</p></div><nav aria-label="Footer"><a href="/categories/index.html">Categories</a><a href="/blog/index.html">Blog</a><a href="/privacy-policy.html">Privacy Policy</a><a href="/contact.html">Contact</a></nav></div><div class="container guide-footer__bottom">NovaTools © ${year} - All rights reserved.</div></footer>`;
+  return `<footer class="guide-footer"><div class="container guide-footer__grid"><div><strong>MC NovaTools</strong><p>Professional browser-based utilities with practical decision guides.</p></div><nav aria-label="Footer"><a href="/categories/index.html">Categories</a><a href="/blog/index.html">Blog</a><a href="/gizlilik-politikasi.html">Privacy Policy</a><a href="/iletisim.html">Contact</a></nav></div><div class="container guide-footer__bottom">NovaTools © ${year} - All rights reserved.</div></footer>`;
 }
 
 function renderCategoryPage(hub) {

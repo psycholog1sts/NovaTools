@@ -9,7 +9,7 @@ export const I18N_CONFIG = {
   
   // Supported locales
   locales: ['en', 'tr', 'de', 'fr', 'es', 'pt', 'ru', 'zh', 'ja', 'ko', 'ar', 'hi', 'it', 'pl', 'nl'],
-  pathPrefixLocales: ['tr', 'ar'],
+  pathPrefixLocales: ['ar'],
   
   // Locale metadata
   metadata: {

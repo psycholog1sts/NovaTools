@@ -62,6 +62,7 @@
         "Friday",
         "Saturday"
       ]
-    }
+    },
+    "emailAddress": "Email address"
   }
 }

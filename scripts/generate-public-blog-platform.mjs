@@ -266,7 +266,7 @@ const categories = {
   finance: { label: 'Finance calculators', emoji: '💳', hub: '/categories/finance-tools.html', tool: '/tools/finance/mortgage-refinance/', toolLabel: 'Mortgage Refinance Calculator' },
   data: { label: 'Data tools', emoji: '🧾', hub: '/categories/data-tools.html', tool: '/tools/data/csv-to-json/', toolLabel: 'CSV to JSON' },
   workflow: { label: 'Workflow guides', emoji: '🧭', hub: '/categories/productivity-tools.html', tool: '/tools/productivity/todo-list/', toolLabel: 'To-do List' },
-  privacy: { label: 'Browser-first processing', emoji: '🛡️', hub: '/privacy-policy.html', tool: '/categories/index.html', toolLabel: 'Browse tools' },
+  privacy: { label: 'Browser-first processing', emoji: '🛡️', hub: '/gizlilik-politikasi.html', tool: '/categories/index.html', toolLabel: 'Browse tools' },
   comparison: { label: 'Tool comparisons', emoji: '⚖️', hub: '/categories/index.html', tool: '/categories/index.html', toolLabel: 'Compare categories' }
 };
 
@@ -584,7 +584,7 @@ ${sections}
       </div>
     </article>
   </main>
-  <footer class="main-footer"><div class="container"><div class="footer-bottom"><p>© 2026 MC NovaTools. Practical online tools and guides.</p><p><a href="/privacy-policy.html">Privacy</a> · <a href="/terms-of-service.html">Terms</a> · <a href="/contact.html">Contact</a></p></div></div></footer>
+  <footer class="main-footer"><div class="container"><div class="footer-bottom"><p>© 2026 MC NovaTools. Practical online tools and guides.</p><p><a href="/gizlilik-politikasi.html">Privacy</a> · <a href="/kullanim-kosullari.html">Terms</a> · <a href="/iletisim.html">Contact</a></p></div></div></footer>
 
   <script>
     (function(){
@@ -675,7 +675,7 @@ const indexHtml = `<!DOCTYPE html>
           <nav class="nav-desktop" aria-label="Main navigation"><a href="/categories/index.html" class="nav-link">Categories</a><a href="/categories/pdf-tools.html" class="nav-link">PDF</a><a href="/categories/image-tools.html" class="nav-link">Image</a><a href="/categories/finance-tools.html" class="nav-link">Finance</a><a href="/categories/developer-tools.html" class="nav-link">Developer</a><a href="/blog/index.html" class="nav-link active">Blog</a></nav>
           <button type="button" id="mobileMenuBtn" class="menu-btn" aria-label="Toggle menu" aria-expanded="false">☰</button>
         </div>
-        <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden><a href="/categories/index.html" class="mobile-nav-link">Categories</a><a href="/blog/index.html" class="mobile-nav-link">Blog</a><a href="/contact.html" class="mobile-nav-link">Contact</a></nav>
+        <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden><a href="/categories/index.html" class="mobile-nav-link">Categories</a><a href="/blog/index.html" class="mobile-nav-link">Blog</a><a href="/iletisim.html" class="mobile-nav-link">Contact</a></nav>
       </div>
     </header>
     <main class="main-content blog-hub">
@@ -697,7 +697,7 @@ const indexHtml = `<!DOCTYPE html>
         <div id="blogCategorySections" class="blog-sections"></div>
       </section>
     </main>
-    <footer class="main-footer"><div class="container"><div class="footer-grid"><div class="footer-col"><h4>MC NovaTools</h4><p>Professional online tools supported by practical, connected guides.</p></div><div class="footer-col"><h4>Start</h4><ul><li><a href="/categories/index.html">Categories</a></li><li><a href="/blog/index.html">Blog</a></li><li><a href="/request-tool.html">Request a tool</a></li></ul></div><div class="footer-col"><h4>Company</h4><ul><li><a href="/about-us.html">About</a></li><li><a href="/contact.html">Contact</a></li><li><a href="/privacy-policy.html">Privacy</a></li></ul></div></div><div class="footer-bottom"><p>© 2026 MC NovaTools. All rights reserved.</p></div></div></footer>
+    <footer class="main-footer"><div class="container"><div class="footer-grid"><div class="footer-col"><h4>MC NovaTools</h4><p>Professional online tools supported by practical, connected guides.</p></div><div class="footer-col"><h4>Start</h4><ul><li><a href="/categories/index.html">Categories</a></li><li><a href="/blog/index.html">Blog</a></li><li><a href="/request-tool.html">Request a tool</a></li></ul></div><div class="footer-col"><h4>Company</h4><ul><li><a href="/about-us.html">About</a></li><li><a href="/iletisim.html">Contact</a></li><li><a href="/gizlilik-politikasi.html">Privacy</a></li></ul></div></div><div class="footer-bottom"><p>© 2026 MC NovaTools. All rights reserved.</p></div></div></footer>
   </div>
   <script>
     const articles = ${JSON.stringify(articles)};

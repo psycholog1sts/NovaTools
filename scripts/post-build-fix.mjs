@@ -273,9 +273,9 @@ if (fs.existsSync(distBlogIndex) && fs.existsSync(distBlogTemplate)) {
 
 
 // Ensure path-prefixed localized public routes exist for locales that the runtime
-// language switcher links to (/tr/* and /ar/*). These pages reuse the built
+// language switcher links to path-prefixed locale routes (currently /ar/*). These pages reuse the built
 // browser-localized HTML and let the client-side i18n layer apply copy safely.
-const pathPrefixLocales = ['tr', 'ar'];
+const pathPrefixLocales = ['ar'];
 const localizedRootFiles = [
   'index.html',
   'about-us.html',
@@ -317,7 +317,7 @@ for (const locale of pathPrefixLocales) {
   copyDirIfExists(path.join(distDir, 'categories'), path.join(distDir, locale, 'categories'));
   copyDirIfExists(path.join(distDir, 'tools'), path.join(distDir, locale, 'tools'));
 }
-console.log('✅ Verified: localized /tr and /ar public surface routes');
+console.log('✅ Verified: path-prefixed localized public surface routes');
 
 function ensureCleanHtmlAlias(file) {
   if (!file.endsWith('.html') || file === 'index.html') return false;

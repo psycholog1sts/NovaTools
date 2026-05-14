@@ -73,6 +73,27 @@
       "description": "Privacy-conscious browser tools for files, finance, text and code.",
       "ogTitle": "MC NovaTools",
       "ogDescription": "Practical online tools."
+    },
+    "ads": {
+      "eyebrow": "Temiz yerleşim",
+      "title": "Önce faydalı içerik, reklamlar yalnızca ayrılmış alanlarda",
+      "description": "NovaTools; araç kontrollerini, rehber kartlarını ve yasal bağlantıları kolay bulunur tutar. Reklam betikleri yalnızca uygun onay ve geçerli üretim yapılandırması olduğunda yüklenir.",
+      "cookieChoices": "Çerez tercihleri"
+    },
+    "blog": {
+      "eyebrow": "Rehberler",
+      "title": "NovaTools Blogundan",
+      "description": "Bir aracı ne zaman kullanacağınızı ve dışa aktarmadan önce neleri kontrol edeceğinizi açıklayan pratik yazılar.",
+      "viewAll": "Tüm yazıları görüntüle →"
+    },
+    "footer": {
+      "brandDesc": "Dosyalar, finans, kod ve günlük iş akışları için tarayıcı tabanlı araçlar. Netlik, pratik kullanım ve gizlilik bilinciyle geliştirilmiştir.",
+      "contactNote": "Yeni rehberler için blogu takip edin veya herkese açık site soruları için destekle iletişime geçin."
+    },
+    "trust": {
+      "secureDesc": "Birçok araç verileri tarayıcınızda yerel olarak işler.",
+      "verifiedTitle": "Açık sahiplik",
+      "verifiedDesc": "Site sahipliği, politika sayfaları ve iletişim bilgileri açıkça sunulur."
     }
   }
 }
