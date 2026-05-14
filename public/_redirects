@@ -1,4 +1,4 @@
-# Clean URL rewrites for static hosts that do not automatically map /page to /page.html.
+# Clean URL rewrites for Cloudflare Pages static HTML routes.
 /about-us /about-us.html 200
 /contact /contact.html 200
 /request-tool /request-tool.html 200
