@@ -89,27 +89,22 @@ function switchLocale(locale) {
  * Get URL for specific locale
  */
 function getLocaleUrl(locale) {
-  const currentPath = window.location.pathname;
+  const currentPath = window.location.pathname || '/';
   const params = new URLSearchParams(window.location.search || '');
-  
-  // Remove existing locale prefix
+
   const firstSegment = currentPath.split('/').filter(Boolean)[0];
-  const pathWithoutLocale = I18N_CONFIG.pathPrefixLocales.includes(firstSegment)
-    ? currentPath.replace(new RegExp(`^/(${I18N_CONFIG.pathPrefixLocales.join('|')})(?=/|$)`), '') || '/'
+  const pathWithoutLocale = I18N_CONFIG.locales.includes(firstSegment)
+    ? currentPath.replace(new RegExp(`^/${firstSegment}(?=/|$)`), '') || '/'
     : currentPath;
-  
-  // Build new URL
-  const newPath = I18N_CONFIG.pathPrefixLocales.includes(locale)
-    ? `/${locale}${pathWithoutLocale === '/' ? '/' : pathWithoutLocale}`
-    : pathWithoutLocale;
+  const normalizedPath = pathWithoutLocale.startsWith('/') ? pathWithoutLocale : `/${pathWithoutLocale}`;
 
   params.delete('lang');
-  if (locale !== I18N_CONFIG.defaultLocale && !I18N_CONFIG.pathPrefixLocales.includes(locale)) {
+  if (locale !== I18N_CONFIG.defaultLocale) {
     params.set('lang', locale);
   }
   const query = params.toString();
-  
-  return `${newPath}${query ? `?${query}` : ''}`;
+
+  return `${normalizedPath}${query ? `?${query}` : ''}`;
 }
 
 /**

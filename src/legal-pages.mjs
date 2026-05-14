@@ -3,7 +3,7 @@ import { initConsentManager } from './core/consent-manager.mjs';
 import { initAnalytics } from './js/analytics.js';
 
 const SUPPORTED_LANGUAGES = ['en', 'tr', 'de', 'fr', 'es', 'pt', 'ru', 'zh', 'ja', 'ko', 'ar', 'hi', 'it', 'pl', 'nl'];
-const PATH_PREFIX_LANGUAGES = ['tr', 'ar'];
+const PATH_PREFIX_LANGUAGES = [];
 const RTL_LANGUAGES = ['ar'];
 
 const PAGE_FILES = {

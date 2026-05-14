@@ -7,7 +7,8 @@
       "browse": "Browse Categories",
       "freeTools": "Free Tools",
       "categories": "Categories",
-      "private": "Private"
+      "private": "Private",
+      "description": "Use MC NovaTools to convert, calculate, create, and streamline practical workflows with a fast, clear, browser-based toolkit."
     },
     "trustBar": {
       "secureTitle": "Secure & Private",
@@ -94,6 +95,20 @@
       "secureDesc": "Many tools process data locally in your browser.",
       "verifiedTitle": "Clear Ownership",
       "verifiedDesc": "Site ownership, policy pages, and contact details are clearly available."
+    },
+    "launcher": {
+      "title": "Workflow launcher",
+      "query": "compress pdf for email",
+      "compressPdf": "Compress PDF",
+      "readabilityChecklist": "Readability checklist",
+      "browsePdfTools": "Browse PDF tools",
+      "browserFirst": "Browser-first where practical",
+      "noSignup": "No forced signup",
+      "badges": {
+        "pdf": "PDF",
+        "guide": "Guide",
+        "category": "Category"
+      }
     }
   }
 }

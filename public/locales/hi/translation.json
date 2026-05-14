@@ -207,6 +207,23 @@
       "title": "From the NovaTools Blog",
       "description": "Practical articles that explain when to use a tool and what to check before exporting.",
       "viewAll": "View All Articles →"
+    },
+    "hero": {
+      "description": "MC NovaTools का उपयोग तेज़, स्पष्ट, ब्राउज़र-आधारित टूलकिट के साथ व्यावहारिक वर्कफ़्लो को बदलने, गणना करने, बनाने और सरल बनाने के लिए करें।"
+    },
+    "launcher": {
+      "title": "वर्कफ़्लो लॉन्चर",
+      "query": "ईमेल के लिए pdf संपीड़ित करें",
+      "compressPdf": "PDF संपीड़ित करें",
+      "readabilityChecklist": "पठनीयता चेकलिस्ट",
+      "browsePdfTools": "PDF टूल ब्राउज़ करें",
+      "browserFirst": "जहाँ व्यावहारिक हो, पहले ब्राउज़र में",
+      "noSignup": "कोई अनिवार्य साइनअप नहीं",
+      "badges": {
+        "pdf": "PDF",
+        "guide": "गाइड",
+        "category": "श्रेणी"
+      }
     }
   },
   "footer": {
