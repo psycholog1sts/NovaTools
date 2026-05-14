@@ -107,8 +107,20 @@ export function createFooter() {
   privacy.setAttribute('data-i18n', 'privacy.description');
   privacy.textContent = 'Your data never leaves your browser. 🔒';
 
+  const legalNav = document.createElement('nav');
+  legalNav.className = 'flex flex-wrap items-center justify-center gap-3 text-sm';
+  legalNav.style.color = 'var(--text-tertiary)';
+  legalNav.setAttribute('aria-label', 'Yasal bağlantılar');
+  legalNav.innerHTML = `
+    <a href="/gizlilik-politikasi">Gizlilik Politikası</a>
+    <a href="/kvkk-aydinlatma-metni">KVKK Aydınlatma Metni</a>
+    <a href="/kullanim-kosullari">Kullanım Koşulları</a>
+    <a href="/iletisim">İletişim</a>
+  `;
+
   row.appendChild(copyright);
   row.appendChild(privacy);
+  row.appendChild(legalNav);
   container.appendChild(row);
   footer.appendChild(container);
 
