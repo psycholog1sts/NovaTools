@@ -18,7 +18,7 @@
   },
   "hero": {
     "title": "Dosyalar, Finans ve Kod için Her Şey Dahil Araçlar",
-    "subtitle": "Use MC NovaTools to convert, calculate, create, and streamline practical workflows with a fast, clear, browser-based toolkit.",
+    "subtitle": "MC NovaTools’u hızlı, anlaşılır ve tarayıcı tabanlı bir araç setiyle dönüştürmek, hesaplamak, oluşturmak ve pratik iş akışlarını kolaylaştırmak için kullanın.",
     "cta": "Araçları Keşfet",
     "browse": "Kategorileri Görüntüle",
     "freeTools": "Ücretsiz Araçlar",
@@ -5882,6 +5882,23 @@
       "title": "NovaTools Blogundan",
       "description": "Bir aracı ne zaman kullanacağınızı ve dışa aktarmadan önce neleri kontrol edeceğinizi açıklayan pratik yazılar.",
       "viewAll": "Tüm yazıları görüntüle →"
+    },
+    "hero": {
+      "description": "MC NovaTools’u hızlı, anlaşılır ve tarayıcı tabanlı bir araç setiyle dönüştürmek, hesaplamak, oluşturmak ve pratik iş akışlarını kolaylaştırmak için kullanın."
+    },
+    "launcher": {
+      "title": "İş akışı başlatıcı",
+      "query": "e-posta için pdf sıkıştır",
+      "compressPdf": "PDF sıkıştır",
+      "readabilityChecklist": "Okunabilirlik kontrol listesi",
+      "browsePdfTools": "PDF araçlarına göz at",
+      "browserFirst": "Uygun olduğunda önce tarayıcıda çalışır",
+      "noSignup": "Zorunlu kayıt yok",
+      "badges": {
+        "pdf": "PDF",
+        "guide": "Rehber",
+        "category": "Kategori"
+      }
     }
   },
   "categories": {
