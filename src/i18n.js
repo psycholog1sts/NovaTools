@@ -7,8 +7,6 @@
   'use strict';
 
   const SUPPORTED_LANGUAGES = ['en', 'tr', 'de', 'fr', 'es', 'pt', 'ru', 'zh', 'ja', 'ko', 'ar', 'hi', 'it', 'pl', 'nl'];
-  const PATH_PREFIX_LANGUAGES = [];
-  const LEGACY_PATH_PREFIX_LANGUAGES = SUPPORTED_LANGUAGES.filter((lang) => lang !== DEFAULT_LANGUAGE);
   const RTL_LANGUAGES = ['ar'];
   const DEFAULT_LANGUAGE = 'en';
 
@@ -217,15 +215,19 @@
     }
   };
 
-  function localeFromPath(pathname) {
-    const firstSegment = String(pathname || '').split('/').filter(Boolean)[0];
-    return LEGACY_PATH_PREFIX_LANGUAGES.includes(firstSegment) ? firstSegment : DEFAULT_LANGUAGE;
+  function pathSegments(pathname = window.location.pathname) {
+    return String(pathname || '/').split('/').filter(Boolean);
   }
 
-  function stripLocalePrefix(pathname) {
-    const firstSegment = String(pathname || '/').split('/').filter(Boolean)[0];
-    if (LEGACY_PATH_PREFIX_LANGUAGES.includes(firstSegment)) {
-      const stripped = String(pathname || '/').replace(new RegExp(`^/(${LEGACY_PATH_PREFIX_LANGUAGES.join('|')})(?=/|$)`), '') || '/';
+  function legacyLocaleFromPath(pathname = window.location.pathname) {
+    const firstSegment = pathSegments(pathname)[0];
+    return SUPPORTED_LANGUAGES.includes(firstSegment) && firstSegment !== DEFAULT_LANGUAGE ? firstSegment : null;
+  }
+
+  function stripLocalePrefix(pathname = window.location.pathname) {
+    const firstSegment = pathSegments(pathname)[0];
+    if (SUPPORTED_LANGUAGES.includes(firstSegment)) {
+      const stripped = String(pathname || '/').replace(new RegExp(`^/${firstSegment}(?=/|$)`), '') || '/';
       return stripped.startsWith('/') ? stripped : `/${stripped}`;
     }
     return String(pathname || '/').startsWith('/') ? String(pathname || '/') : `/${pathname}`;
@@ -234,21 +236,17 @@
   function getRequestedLanguage() {
     const params = new URLSearchParams(window.location.search);
     const queryLang = params.get('lang');
-    if (SUPPORTED_LANGUAGES.includes(queryLang)) return queryLang;
-    const pathLang = localeFromPath(window.location.pathname);
-    if (pathLang !== DEFAULT_LANGUAGE) return pathLang;
-    return null;
+    return SUPPORTED_LANGUAGES.includes(queryLang) ? queryLang : null;
   }
 
-  function localizedPath(lang, pathname = window.location.pathname) {
-    const basePath = stripLocalePrefix(pathname);
-    return PATH_PREFIX_LANGUAGES.includes(lang) ? `/${lang}${basePath === '/' ? '/' : basePath}` : basePath;
+  function localizedPath(_lang, pathname = window.location.pathname) {
+    return stripLocalePrefix(pathname);
   }
 
   function localizedSearch(lang, search = window.location.search) {
     const params = new URLSearchParams(search || '');
     params.delete('lang');
-    if (lang !== DEFAULT_LANGUAGE && !PATH_PREFIX_LANGUAGES.includes(lang)) {
+    if (lang !== DEFAULT_LANGUAGE) {
       params.set('lang', lang);
     }
     const query = params.toString();
@@ -257,6 +255,15 @@
 
   function localizedHref(lang, pathname = window.location.pathname, search = window.location.search) {
     return `${localizedPath(lang, pathname)}${localizedSearch(lang, search)}`;
+  }
+
+  function redirectLegacyLocalePathToQuery() {
+    const legacyLang = legacyLocaleFromPath(window.location.pathname);
+    if (!legacyLang) return false;
+    const targetPath = localizedPath(legacyLang, window.location.pathname);
+    const targetSearch = localizedSearch(legacyLang, window.location.search);
+    window.location.replace(`${targetPath}${targetSearch}${window.location.hash}`);
+    return true;
   }
 
   function absoluteUrl(pathname) {
@@ -667,6 +674,10 @@
 
   async function init() {
     if (isInitialized) {
+      return;
+    }
+
+    if (redirectLegacyLocalePathToQuery()) {
       return;
     }
 

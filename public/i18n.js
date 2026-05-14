@@ -7,10 +7,8 @@
   'use strict';
 
   const SUPPORTED_LANGUAGES = ['en', 'tr', 'de', 'fr', 'es', 'pt', 'ru', 'zh', 'ja', 'ko', 'ar', 'hi', 'it', 'pl', 'nl'];
-  const PATH_PREFIX_LANGUAGES = ['ar'];
   const RTL_LANGUAGES = ['ar'];
   const DEFAULT_LANGUAGE = 'en';
-  const BLOG_PATH_PREFIX_LANGUAGES = SUPPORTED_LANGUAGES.filter((lang) => lang !== DEFAULT_LANGUAGE);
 
   let currentLanguage = DEFAULT_LANGUAGE;
   const translations = {};
@@ -217,30 +215,18 @@
     }
   };
 
-  function pathSegments(pathname) {
+  function pathSegments(pathname = window.location.pathname) {
     return String(pathname || '/').split('/').filter(Boolean);
   }
 
-  function isBlogPath(pathname) {
-    const segments = pathSegments(pathname);
-    const firstSegment = segments[0];
-    const unprefixedSegments = (PATH_PREFIX_LANGUAGES.includes(firstSegment) || BLOG_PATH_PREFIX_LANGUAGES.includes(firstSegment)) ? segments.slice(1) : segments;
-    return unprefixedSegments[0] === 'blog';
-  }
-
-  function localeFromPath(pathname = window.location.pathname) {
-    const segments = pathSegments(pathname);
-    const firstSegment = segments[0];
-    if (PATH_PREFIX_LANGUAGES.includes(firstSegment)) return firstSegment;
-    if (BLOG_PATH_PREFIX_LANGUAGES.includes(firstSegment) && segments[1] === 'blog') return firstSegment;
-    return DEFAULT_LANGUAGE;
+  function legacyLocaleFromPath(pathname = window.location.pathname) {
+    const firstSegment = pathSegments(pathname)[0];
+    return SUPPORTED_LANGUAGES.includes(firstSegment) && firstSegment !== DEFAULT_LANGUAGE ? firstSegment : null;
   }
 
   function stripLocalePrefix(pathname = window.location.pathname) {
-    const segments = pathSegments(pathname);
-    const firstSegment = segments[0];
-    const shouldStrip = PATH_PREFIX_LANGUAGES.includes(firstSegment) || (BLOG_PATH_PREFIX_LANGUAGES.includes(firstSegment) && segments[1] === 'blog');
-    if (shouldStrip) {
+    const firstSegment = pathSegments(pathname)[0];
+    if (SUPPORTED_LANGUAGES.includes(firstSegment)) {
       const stripped = String(pathname || '/').replace(new RegExp(`^/${firstSegment}(?=/|$)`), '') || '/';
       return stripped.startsWith('/') ? stripped : `/${stripped}`;
     }
@@ -250,26 +236,17 @@
   function getRequestedLanguage() {
     const params = new URLSearchParams(window.location.search);
     const queryLang = params.get('lang');
-    if (SUPPORTED_LANGUAGES.includes(queryLang)) return queryLang;
-    const pathLang = localeFromPath(window.location.pathname);
-    if (pathLang !== DEFAULT_LANGUAGE) return pathLang;
-    return null;
+    return SUPPORTED_LANGUAGES.includes(queryLang) ? queryLang : null;
   }
 
-  function localizedPath(lang, pathname = window.location.pathname) {
-    const basePath = stripLocalePrefix(pathname);
-    if (isBlogPath(pathname) || basePath.startsWith('/blog/')) {
-      return lang !== DEFAULT_LANGUAGE ? `/${lang}${basePath === '/' ? '/' : basePath}` : basePath;
-    }
-    return PATH_PREFIX_LANGUAGES.includes(lang) ? `/${lang}${basePath === '/' ? '/' : basePath}` : basePath;
+  function localizedPath(_lang, pathname = window.location.pathname) {
+    return stripLocalePrefix(pathname);
   }
 
-  function localizedSearch(lang, search = window.location.search, pathname = window.location.pathname) {
+  function localizedSearch(lang, search = window.location.search) {
     const params = new URLSearchParams(search || '');
     params.delete('lang');
-    const basePath = stripLocalePrefix(pathname);
-    const usesLocalePrefixedBlogRoute = isBlogPath(pathname) || basePath.startsWith('/blog/');
-    if (lang !== DEFAULT_LANGUAGE && !PATH_PREFIX_LANGUAGES.includes(lang) && !usesLocalePrefixedBlogRoute) {
+    if (lang !== DEFAULT_LANGUAGE) {
       params.set('lang', lang);
     }
     const query = params.toString();
@@ -277,7 +254,16 @@
   }
 
   function localizedHref(lang, pathname = window.location.pathname, search = window.location.search) {
-    return `${localizedPath(lang, pathname)}${localizedSearch(lang, search, pathname)}`;
+    return `${localizedPath(lang, pathname)}${localizedSearch(lang, search)}`;
+  }
+
+  function redirectLegacyLocalePathToQuery() {
+    const legacyLang = legacyLocaleFromPath(window.location.pathname);
+    if (!legacyLang) return false;
+    const targetPath = localizedPath(legacyLang, window.location.pathname);
+    const targetSearch = localizedSearch(legacyLang, window.location.search);
+    window.location.replace(`${targetPath}${targetSearch}${window.location.hash}`);
+    return true;
   }
 
   function absoluteUrl(pathname) {
@@ -688,6 +674,10 @@
 
   async function init() {
     if (isInitialized) {
+      return;
+    }
+
+    if (redirectLegacyLocalePathToQuery()) {
       return;
     }
 

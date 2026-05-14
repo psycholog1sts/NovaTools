@@ -1,7 +1,5 @@
 const SUPPORTED_LOCALES = ['en', 'tr', 'de', 'fr', 'es', 'pt', 'ru', 'zh', 'ja', 'ko', 'ar', 'hi', 'it', 'pl', 'nl'];
 const DEFAULT_LOCALE = 'en';
-const PATH_PREFIX_LOCALES = new Set();
-const LEGACY_PATH_PREFIX_LOCALES = new Set(SUPPORTED_LOCALES.filter((locale) => locale !== DEFAULT_LOCALE));
 const RTL_LOCALES = new Set(['ar']);
 const SITE_ORIGIN = 'https://mc-novatools.com';
 
@@ -169,8 +167,7 @@ function pathSegments(pathname) {
 export function stripLocalePrefix(pathname = typeof window !== 'undefined' ? window.location.pathname : '/') {
   const segments = pathSegments(pathname);
   const firstSegment = segments[0];
-  const shouldStrip = LEGACY_PATH_PREFIX_LOCALES.has(firstSegment);
-  if (shouldStrip) {
+  if (SUPPORTED_LOCALES.includes(firstSegment)) {
     const stripped = String(pathname || '/').replace(new RegExp(`^/${firstSegment}(?=/|$)`), '') || '/';
     return stripped.startsWith('/') ? stripped : `/${stripped}`;
   }
@@ -180,17 +177,13 @@ export function stripLocalePrefix(pathname = typeof window !== 'undefined' ? win
 export function localeFromPath(pathname = typeof window !== 'undefined' ? window.location.pathname : '/') {
   const segments = pathSegments(pathname);
   const firstSegment = segments[0];
-  if (LEGACY_PATH_PREFIX_LOCALES.has(firstSegment)) return firstSegment;
-  return DEFAULT_LOCALE;
+  return SUPPORTED_LOCALES.includes(firstSegment) && firstSegment !== DEFAULT_LOCALE ? firstSegment : DEFAULT_LOCALE;
 }
 
 export function detectLocale() {
   const params = new URLSearchParams(window.location.search);
   const queryLocale = params.get('lang');
   if (SUPPORTED_LOCALES.includes(queryLocale)) return queryLocale;
-
-  const pathLocale = localeFromPath(window.location.pathname);
-  if (pathLocale !== DEFAULT_LOCALE) return pathLocale;
 
   try {
     const stored = localStorage.getItem('mc-novatools-language');
@@ -205,13 +198,13 @@ export function detectLocale() {
 
 export function localizedPath(locale, pathname = typeof window !== 'undefined' ? window.location.pathname : '/') {
   const basePath = stripLocalePrefix(pathname);
-  return PATH_PREFIX_LOCALES.has(locale) ? `/${locale}${basePath === '/' ? '/' : basePath}` : basePath;
+  return basePath;
 }
 
 export function localizedSearch(locale, search = typeof window !== 'undefined' ? window.location.search : '') {
   const params = new URLSearchParams(search || '');
   params.delete('lang');
-  if (locale !== DEFAULT_LOCALE && !PATH_PREFIX_LOCALES.has(locale)) params.set('lang', locale);
+  if (locale !== DEFAULT_LOCALE) params.set('lang', locale);
   const query = params.toString();
   return query ? `?${query}` : '';
 }
