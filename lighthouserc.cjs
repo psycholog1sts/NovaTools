@@ -18,10 +18,6 @@ module.exports = {
         },
       },
     },
-    assert: {
-      // Keep Lighthouse CI informative during urgent production deploys without blocking the workflow.
-      assertions: {},
-    },
     upload: {
       target: 'filesystem',
       outputDir: './lighthouse-results',
