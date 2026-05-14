@@ -1,2 +1,4 @@
-# Cloudflare Pages build output for direct uploads and Wrangler deploys.
+name = "novatools"
 pages_build_output_dir = "dist"
+
+# Cloudflare Pages build output for direct uploads and Wrangler deploys.
