@@ -207,6 +207,23 @@
       "title": "From the NovaTools Blog",
       "description": "Practical articles that explain when to use a tool and what to check before exporting.",
       "viewAll": "View All Articles →"
+    },
+    "hero": {
+      "description": "MC NovaTools로 빠르고 명확한 브라우저 기반 도구 모음을 사용해 변환, 계산, 생성 및 실용적인 워크플로를 간소화하세요."
+    },
+    "launcher": {
+      "title": "워크플로 실행기",
+      "query": "이메일용 pdf 압축",
+      "compressPdf": "PDF 압축",
+      "readabilityChecklist": "가독성 체크리스트",
+      "browsePdfTools": "PDF 도구 찾아보기",
+      "browserFirst": "실용적인 경우 브라우저 우선",
+      "noSignup": "강제 가입 없음",
+      "badges": {
+        "pdf": "PDF",
+        "guide": "가이드",
+        "category": "카테고리"
+      }
     }
   },
   "footer": {

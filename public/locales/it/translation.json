@@ -207,6 +207,23 @@
       "title": "From the NovaTools Blog",
       "description": "Practical articles that explain when to use a tool and what to check before exporting.",
       "viewAll": "View All Articles →"
+    },
+    "hero": {
+      "description": "Usa MC NovaTools per convertire, calcolare, creare e semplificare workflow pratici con un toolkit rapido, chiaro e basato sul browser."
+    },
+    "launcher": {
+      "title": "Avvio workflow",
+      "query": "comprimere pdf per email",
+      "compressPdf": "Comprimi PDF",
+      "readabilityChecklist": "Checklist di leggibilità",
+      "browsePdfTools": "Sfoglia strumenti PDF",
+      "browserFirst": "Prima nel browser quando possibile",
+      "noSignup": "Nessuna registrazione obbligatoria",
+      "badges": {
+        "pdf": "PDF",
+        "guide": "Guida",
+        "category": "Categoria"
+      }
     }
   },
   "footer": {

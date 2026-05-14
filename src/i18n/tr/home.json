@@ -7,7 +7,8 @@
       "browse": "Kategorileri Görüntüle",
       "freeTools": "Ücretsiz Araçlar",
       "categories": "Kategoriler",
-      "private": "Gizli"
+      "private": "Gizli",
+      "description": "MC NovaTools’u hızlı, anlaşılır ve tarayıcı tabanlı bir araç setiyle dönüştürmek, hesaplamak, oluşturmak ve pratik iş akışlarını kolaylaştırmak için kullanın."
     },
     "trustBar": {
       "secureTitle": "Güvenli ve Özel",
@@ -94,6 +95,20 @@
       "secureDesc": "Birçok araç verileri tarayıcınızda yerel olarak işler.",
       "verifiedTitle": "Açık sahiplik",
       "verifiedDesc": "Site sahipliği, politika sayfaları ve iletişim bilgileri açıkça sunulur."
+    },
+    "launcher": {
+      "title": "İş akışı başlatıcı",
+      "query": "e-posta için pdf sıkıştır",
+      "compressPdf": "PDF sıkıştır",
+      "readabilityChecklist": "Okunabilirlik kontrol listesi",
+      "browsePdfTools": "PDF araçlarına göz at",
+      "browserFirst": "Uygun olduğunda önce tarayıcıda çalışır",
+      "noSignup": "Zorunlu kayıt yok",
+      "badges": {
+        "pdf": "PDF",
+        "guide": "Rehber",
+        "category": "Kategori"
+      }
     }
   }
 }

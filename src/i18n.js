@@ -7,7 +7,8 @@
   'use strict';
 
   const SUPPORTED_LANGUAGES = ['en', 'tr', 'de', 'fr', 'es', 'pt', 'ru', 'zh', 'ja', 'ko', 'ar', 'hi', 'it', 'pl', 'nl'];
-  const PATH_PREFIX_LANGUAGES = ['ar'];
+  const PATH_PREFIX_LANGUAGES = [];
+  const LEGACY_PATH_PREFIX_LANGUAGES = SUPPORTED_LANGUAGES.filter((lang) => lang !== DEFAULT_LANGUAGE);
   const RTL_LANGUAGES = ['ar'];
   const DEFAULT_LANGUAGE = 'en';
 
@@ -218,13 +219,13 @@
 
   function localeFromPath(pathname) {
     const firstSegment = String(pathname || '').split('/').filter(Boolean)[0];
-    return PATH_PREFIX_LANGUAGES.includes(firstSegment) ? firstSegment : DEFAULT_LANGUAGE;
+    return LEGACY_PATH_PREFIX_LANGUAGES.includes(firstSegment) ? firstSegment : DEFAULT_LANGUAGE;
   }
 
   function stripLocalePrefix(pathname) {
     const firstSegment = String(pathname || '/').split('/').filter(Boolean)[0];
-    if (PATH_PREFIX_LANGUAGES.includes(firstSegment)) {
-      const stripped = String(pathname || '/').replace(new RegExp(`^/(${PATH_PREFIX_LANGUAGES.join('|')})(?=/|$)`), '') || '/';
+    if (LEGACY_PATH_PREFIX_LANGUAGES.includes(firstSegment)) {
+      const stripped = String(pathname || '/').replace(new RegExp(`^/(${LEGACY_PATH_PREFIX_LANGUAGES.join('|')})(?=/|$)`), '') || '/';
       return stripped.startsWith('/') ? stripped : `/${stripped}`;
     }
     return String(pathname || '/').startsWith('/') ? String(pathname || '/') : `/${pathname}`;

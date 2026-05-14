@@ -207,6 +207,23 @@
       "title": "From the NovaTools Blog",
       "description": "Practical articles that explain when to use a tool and what to check before exporting.",
       "viewAll": "View All Articles →"
+    },
+    "hero": {
+      "description": "Use o MC NovaTools para converter, calcular, criar e simplificar fluxos de trabalho práticos com um kit de ferramentas rápido, claro e baseado no navegador."
+    },
+    "launcher": {
+      "title": "Iniciador de fluxos de trabalho",
+      "query": "comprimir pdf para e-mail",
+      "compressPdf": "Comprimir PDF",
+      "readabilityChecklist": "Lista de verificação de legibilidade",
+      "browsePdfTools": "Explorar ferramentas PDF",
+      "browserFirst": "Primeiro no navegador quando for prático",
+      "noSignup": "Sem cadastro obrigatório",
+      "badges": {
+        "pdf": "PDF",
+        "guide": "Guia",
+        "category": "Categoria"
+      }
     }
   },
   "footer": {

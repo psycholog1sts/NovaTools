@@ -207,6 +207,23 @@
       "title": "From the NovaTools Blog",
       "description": "Practical articles that explain when to use a tool and what to check before exporting.",
       "viewAll": "View All Articles →"
+    },
+    "hero": {
+      "description": "使用 MC NovaTools，通过快速、清晰、基于浏览器的工具包来转换、计算、创建并简化实用工作流。"
+    },
+    "launcher": {
+      "title": "工作流启动器",
+      "query": "为电子邮件压缩 pdf",
+      "compressPdf": "压缩 PDF",
+      "readabilityChecklist": "可读性检查清单",
+      "browsePdfTools": "浏览 PDF 工具",
+      "browserFirst": "适用时优先在浏览器中处理",
+      "noSignup": "无需强制注册",
+      "badges": {
+        "pdf": "PDF",
+        "guide": "指南",
+        "category": "类别"
+      }
     }
   },
   "footer": {
