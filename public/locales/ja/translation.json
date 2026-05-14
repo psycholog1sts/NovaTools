@@ -18,7 +18,7 @@
   },
   "hero": {
     "title": "ファイル、ファイナンス、コードのオールインワンツール",
-    "subtitle": "Use MC NovaTools to convert, calculate, create, and streamline practical workflows with a fast, clear, browser-based toolkit.",
+    "subtitle": "MC NovaTools を使って、変換、計算、作成、実用的なワークフローの効率化を、高速でわかりやすいブラウザベースのツールキットで行えます。",
     "cta": "ツールを探索",
     "browse": "カテゴリーを閲覧",
     "freeTools": "無料ツール",
@@ -207,6 +207,23 @@
       "title": "From the NovaTools Blog",
       "description": "Practical articles that explain when to use a tool and what to check before exporting.",
       "viewAll": "View All Articles →"
+    },
+    "hero": {
+      "description": "MC NovaTools を使って、変換、計算、作成、実用的なワークフローの効率化を、高速でわかりやすいブラウザベースのツールキットで行えます。"
+    },
+    "launcher": {
+      "title": "ワークフローランチャー",
+      "query": "メール用に pdf を圧縮",
+      "compressPdf": "PDF を圧縮",
+      "readabilityChecklist": "読みやすさチェックリスト",
+      "browsePdfTools": "PDF ツールを見る",
+      "browserFirst": "実用的な場合はブラウザ優先",
+      "noSignup": "強制登録なし",
+      "badges": {
+        "pdf": "PDF",
+        "guide": "ガイド",
+        "category": "カテゴリ"
+      }
     }
   },
   "footer": {
