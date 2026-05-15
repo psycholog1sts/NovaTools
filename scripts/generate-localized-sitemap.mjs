@@ -23,8 +23,11 @@ function localizedUrl(route, locale) {
   return `${origin}${cleanRoute}${separator}lang=${locale}`;
 }
 
-function localizedBlogUrl(path) {
-  return `${origin}${path}`;
+function localizedBlogUrl(route, locale = 'en') {
+  const cleanRoute = String(route || '/').replace(new RegExp(`^/${locale}(?=/blog(?:/|$))`), '') || '/';
+  if (locale === 'en') return `${origin}${cleanRoute}`;
+  const separator = cleanRoute.includes('?') ? '&' : '?';
+  return `${origin}${cleanRoute}${separator}lang=${locale}`;
 }
 
 function xmlEscape(value) {
@@ -58,7 +61,7 @@ const urls = [];
 ['/gizlilik-politikasi.html', '/kvkk-aydinlatma-metni.html', '/kullanim-kosullari.html', '/iletisim.html'].forEach((route) => {
   urls.push(urlEntry(`${origin}${route}`, '0.7', 'monthly'));
 });
-locales.forEach((locale) => urls.push(urlEntry(localizedBlogUrl(blogHubPath(locale)), '0.7', 'monthly')));
+locales.forEach((locale) => urls.push(urlEntry(localizedBlogUrl(blogHubPath(locale), locale), '0.7', 'monthly')));
 
 globSync('categories/**/*.html', { cwd: rootDir }).sort().forEach((file) => {
   const route = `/${file.replace(/\\/g, '/')}`;
@@ -76,7 +79,7 @@ locales.forEach((locale) => {
   const manifestPath = path.join(rootDir, `src/i18n/blog/${locale}.json`);
   const posts = fs.existsSync(manifestPath) ? readJson(`src/i18n/blog/${locale}.json`) : fallbackPosts;
   const slugs = normalizeBlogSlugList([...fallbackPostSlugs, ...posts.map((post) => post.slug).filter(Boolean), ...sourceBlogArticleSlugs()]);
-  slugs.forEach((slug) => urls.push(urlEntry(localizedBlogUrl(blogArticlePath(slug, locale)), '0.6', 'monthly')));
+  slugs.forEach((slug) => urls.push(urlEntry(localizedBlogUrl(blogArticlePath(slug, locale), locale), '0.6', 'monthly')));
 });
 
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(renderUrlEntry).join('\n')}\n</urlset>\n`;

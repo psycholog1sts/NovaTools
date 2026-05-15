@@ -30,10 +30,10 @@ export const I18N_CONFIG = {
     nl: { name: 'Nederlands', dir: 'ltr', flag: '🇳🇱', domain: 'mc-novatools.com', hreflang: 'nl', googleSite: 'mc_novatools_nl' }
   },
   
-  // Path-based routing (no cookies/subdomains)
+  // Query-parameter routing (no locale folders, cookies, or subdomains)
   routing: {
-    type: 'path',
-    prefix: true // public path prefixes are reserved for locales with built static routes
+    type: 'query',
+    prefix: false
   }
 };
 
@@ -41,9 +41,10 @@ export const I18N_CONFIG = {
  * Get user's preferred locale from browser
  */
 export function detectLocale() {
-  // Check URL path first
-  const firstSegment = window.location.pathname.split('/').filter(Boolean)[0];
-  if (I18N_CONFIG.pathPrefixLocales.includes(firstSegment)) return firstSegment;
+  // Check URL query first. Locale folders are intentionally unsupported.
+  const params = new URLSearchParams(window.location.search || '');
+  const queryLocale = params.get('lang');
+  if (I18N_CONFIG.locales.includes(queryLocale)) return queryLocale;
   
   // Check localStorage (explicit user choice)
   try {
@@ -93,11 +94,9 @@ export function generateHreflangTags(currentPath) {
   
   // Each locale
   I18N_CONFIG.locales.forEach(locale => {
-    const path = I18N_CONFIG.pathPrefixLocales.includes(locale)
-      ? `/${locale}${currentPath === '/' ? '/' : currentPath}`
-      : currentPath;
+    const path = currentPath;
     const params = new URLSearchParams();
-    if (locale !== I18N_CONFIG.defaultLocale && !I18N_CONFIG.pathPrefixLocales.includes(locale)) {
+    if (locale !== I18N_CONFIG.defaultLocale) {
       params.set('lang', locale);
     }
     const query = params.toString() ? `?${params.toString()}` : '';
