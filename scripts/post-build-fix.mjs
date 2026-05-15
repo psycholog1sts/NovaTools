@@ -306,6 +306,77 @@ function copyDirIfExists(source, target) {
   return true;
 }
 
+
+const financeToolSlugs = [
+  'mortgage-refinance',
+  'compound-interest',
+  'live-exchange',
+  'stock-lookup',
+  'crypto-prices',
+  'cloud-cost',
+  'crypto-tax',
+  'tax',
+  'life-insurance',
+  'retirement',
+  'student-loan'
+];
+const financeDisclaimer = '⚠️ Yasal Uyarı: Bu hesaplamalar tahmini değerlerdir. Kesin bilgi için lütfen yetkili bir mali müşavir veya kuruma danışın.';
+
+function rewriteFinanceCanonicalHtml(html, slug) {
+  const canonical = `https://mc-novatools.com/finance/${slug}/`;
+  let next = html
+    .replace(/https:\/\/(?:www\.)?mc-novatools\.com\/tools\/finance\//g, 'https://mc-novatools.com/finance/')
+    .replace(/href="\/tools\/finance\//g, 'href="/finance/')
+    .replace(/content="https:\/\/(?:www\.)?mc-novatools\.com\/tools\/finance\//g, 'content="https://mc-novatools.com/finance/');
+
+  if (/<link rel="canonical"[^>]*>/i.test(next)) {
+    next = next.replace(/<link rel="canonical" href="[^"]*"\s*\/?>/i, `<link rel="canonical" href="${canonical}">`);
+  } else {
+    next = next.replace(/<meta name="theme-color"[^>]*>/i, (match) => `${match}
+  <link rel="canonical" href="${canonical}">`);
+  }
+
+  if (/<meta property="og:url"[^>]*>/i.test(next)) {
+    next = next.replace(/<meta property="og:url" content="[^"]*"\s*\/?>/i, `<meta property="og:url" content="${canonical}">`);
+  } else {
+    next = next.replace(/<meta property="og:type"[^>]*>/i, (match) => `${match}
+  <meta property="og:url" content="${canonical}">`);
+  }
+
+  if (!next.includes(financeDisclaimer)) {
+    const block = `<aside class="finance-disclaimer" role="note" style="margin:1.5rem auto;max-width:980px;padding:1rem 1.25rem;border:1px solid rgba(245,158,11,.28);border-radius:12px;background:rgba(245,158,11,.08);color:var(--text-secondary,#cbd5e1);line-height:1.6;"><strong>${financeDisclaimer}</strong></aside>`;
+    if (/<\/main>/i.test(next)) next = next.replace(/<\/main>/i, `${block}
+    </main>`);
+    else next = next.replace(/<\/body>/i, `${block}
+</body>`);
+  }
+
+  return next;
+}
+
+function stampFinanceDirectory(dir) {
+  for (const slug of financeToolSlugs) {
+    const filePath = path.join(dir, slug, 'index.html');
+    if (!fs.existsSync(filePath)) continue;
+    const html = fs.readFileSync(filePath, 'utf8');
+    const stamped = rewriteFinanceCanonicalHtml(html, slug);
+    if (stamped !== html) fs.writeFileSync(filePath, stamped);
+  }
+}
+
+
+// Publish clean /finance/* aliases while preserving the existing /tools/finance/*
+// paths for backward-compatible links in older blog/content surfaces.
+const financeSrcDir = path.join(distDir, 'tools', 'finance');
+const financeDstDir = path.join(distDir, 'finance');
+if (copyDirIfExists(financeSrcDir, financeDstDir)) {
+  stampFinanceDirectory(financeSrcDir);
+  stampFinanceDirectory(financeDstDir);
+  console.log('✅ Verified: clean /finance aliases and canonical finance metadata');
+} else {
+  console.log('⚠️  dist/tools/finance not found - finance aliases could not be created');
+}
+
 for (const locale of pathPrefixLocales) {
   for (const file of localizedRootFiles) {
     const target = file === 'index.html'
@@ -316,6 +387,7 @@ for (const locale of pathPrefixLocales) {
 
   copyDirIfExists(path.join(distDir, 'categories'), path.join(distDir, locale, 'categories'));
   copyDirIfExists(path.join(distDir, 'tools'), path.join(distDir, locale, 'tools'));
+  copyDirIfExists(path.join(distDir, 'finance'), path.join(distDir, locale, 'finance'));
 }
 console.log('✅ Verified: path-prefixed localized public surface routes');
 
@@ -333,6 +405,7 @@ function ensureCleanHtmlAlias(file) {
 for (const file of localizedRootFiles) {
   ensureCleanHtmlAlias(file);
 }
+
 
 for (const locale of pathPrefixLocales) {
   for (const file of localizedRootFiles) {
@@ -392,6 +465,7 @@ const keyFiles = [
   'admin/index.html',
   'blog/index.html',
   'tools/finance/tax/index.html',
+  ...financeToolSlugs.map((slug) => `finance/${slug}/index.html`),
   'tools/pdf/merge/index.html',
   'categories/converters.html',
   'categories/pdf-tools.html',

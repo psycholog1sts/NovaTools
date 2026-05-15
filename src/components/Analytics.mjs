@@ -13,6 +13,8 @@ function normalizeRoute(route) {
   let cleanRoute = String(route || '/').split('?')[0].split('#')[0] || '/';
   cleanRoute = cleanRoute.replace(/\\/g, '/');
 
+  if (cleanRoute.startsWith('/src/tools/finance/')) cleanRoute = cleanRoute.replace(/^\/src\/tools\/finance\//, '/finance/');
+  if (cleanRoute.startsWith('/tools/finance/')) cleanRoute = cleanRoute.replace(/^\/tools\/finance\//, '/finance/');
   if (cleanRoute.startsWith('/src/tools/')) cleanRoute = cleanRoute.replace(/^\/src\//, '/');
   if (cleanRoute.startsWith('/src/blog/')) cleanRoute = cleanRoute.replace(/^\/src\//, '/');
   if (cleanRoute === '/index.html' || cleanRoute === '/src/index.html') return '/';
