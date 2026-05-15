@@ -3,12 +3,13 @@
  * Zero-cookie locale switching
  */
 
-import { detectLocale, setLocale, I18N_CONFIG } from './config.mjs';
+import { detectLocale, setLocale, normalizeLocale, I18N_CONFIG } from './config.mjs';
 
 /**
  * Create language switcher dropdown
  */
 export function createLanguageSwitcher(currentLocale = detectLocale()) {
+  currentLocale = normalizeLocale(currentLocale) || I18N_CONFIG.defaultLocale;
   const container = document.createElement('div');
   container.className = 'relative inline-block text-left';
   container.setAttribute('role', 'region');
@@ -77,11 +78,12 @@ export function createLanguageSwitcher(currentLocale = detectLocale()) {
  * Switch to new locale
  */
 function switchLocale(locale) {
+  const normalizedLocale = normalizeLocale(locale) || I18N_CONFIG.defaultLocale;
   // Store preference
-  setLocale(locale);
+  setLocale(normalizedLocale);
   
   // Navigate to localized URL
-  const newUrl = getLocaleUrl(locale);
+  const newUrl = getLocaleUrl(normalizedLocale);
   window.location.href = newUrl;
 }
 
@@ -89,6 +91,7 @@ function switchLocale(locale) {
  * Get URL for specific locale
  */
 function getLocaleUrl(locale) {
+  const normalizedLocale = normalizeLocale(locale) || I18N_CONFIG.defaultLocale;
   const currentPath = window.location.pathname || '/';
   const params = new URLSearchParams(window.location.search || '');
 
@@ -99,8 +102,8 @@ function getLocaleUrl(locale) {
   const normalizedPath = pathWithoutLocale.startsWith('/') ? pathWithoutLocale : `/${pathWithoutLocale}`;
 
   params.delete('lang');
-  if (locale !== I18N_CONFIG.defaultLocale) {
-    params.set('lang', locale);
+  if (normalizedLocale !== I18N_CONFIG.defaultLocale) {
+    params.set('lang', normalizedLocale);
   }
   const query = params.toString();
 
@@ -120,4 +123,4 @@ export function initLanguageSwitcher(containerId = 'language-switcher') {
   container.appendChild(switcher);
 }
 
-export { detectLocale, setLocale } from './config.mjs';
+export { detectLocale, setLocale, normalizeLocale } from './config.mjs';
