@@ -18,7 +18,7 @@
   },
   "hero": {
     "title": "Outils Tout-en-Un pour Fichiers, Finance & Code",
-    "subtitle": "Use MC NovaTools to convert, calculate, create, and streamline practical workflows with a fast, clear, browser-based toolkit.",
+    "subtitle": "Utilisez MC NovaTools pour convertir, calculer, créer et simplifier des workflows pratiques avec une boîte à outils rapide, claire et basée sur le navigateur.",
     "cta": "Découvrir les Outils",
     "browse": "Parcourir les Catégories",
     "freeTools": "Outils Gratuits",
@@ -223,6 +223,41 @@
         "pdf": "PDF",
         "guide": "Guide",
         "category": "Catégorie"
+      }
+    },
+    "workflows": {
+      "eyebrow": "Workflows",
+      "title": "Commencez par une tâche, pas par un menu",
+      "description": "Utilisez des points d’entrée guidés qui relient un outil, une liste de contrôle et l’étape utile suivante.",
+      "chooseLink": "Comment choisir →",
+      "label": "Workflow guidé",
+      "steps": {
+        "tool": "Outil",
+        "guide": "Guide",
+        "browse": "Parcourir"
+      },
+      "cards": {
+        "pdfEmail": {
+          "title": "Préparer un PDF pour e-mail",
+          "description": "Compressez le fichier, vérifiez la lisibilité, puis utilisez la liste de contrôle PDF avant l’envoi.",
+          "tool": "Compresser le PDF",
+          "guide": "Liste PDF pour e-mail",
+          "category": "Outils PDF"
+        },
+        "developerData": {
+          "title": "Nettoyer des données développeur",
+          "description": "Formatez le JSON, comparez les changements de texte et gardez les extraits partageables lisibles.",
+          "tool": "Formateur JSON",
+          "guide": "Chaîne d’outils de débogage",
+          "category": "Outils développeur"
+        },
+        "lighterImages": {
+          "title": "Publier des images plus légères",
+          "description": "Redimensionnez, compressez et vérifiez les noms de fichiers avant d’envoyer des images sur un site ou par e-mail.",
+          "tool": "Compresseur d’images",
+          "guide": "Liste de qualité d’image",
+          "category": "Outils image"
+        }
       }
     }
   },

@@ -18,7 +18,7 @@
   },
   "hero": {
     "title": "Wszystko-w-Jednym Narzędzia dla Plików, Finansów i Kodu",
-    "subtitle": "Use MC NovaTools to convert, calculate, create, and streamline practical workflows with a fast, clear, browser-based toolkit.",
+    "subtitle": "Użyj MC NovaTools, aby konwertować, obliczać, tworzyć i usprawniać praktyczne workflow za pomocą szybkiego, przejrzystego zestawu narzędzi działającego w przeglądarce.",
     "cta": "Przeglądaj Narzędzia",
     "browse": "Przeglądaj Kategorie",
     "freeTools": "Darmowe Narzędzia",
@@ -223,6 +223,41 @@
         "pdf": "PDF",
         "guide": "Poradnik",
         "category": "Kategoria"
+      }
+    },
+    "workflows": {
+      "eyebrow": "Workflow",
+      "title": "Zacznij od zadania, nie od menu",
+      "description": "Użyj prowadzonych punktów startu, które łączą narzędzie, listę kontrolną i kolejny przydatny krok.",
+      "chooseLink": "Jak wybrać →",
+      "label": "Prowadzony workflow",
+      "steps": {
+        "tool": "Narzędzie",
+        "guide": "Poradnik",
+        "browse": "Przeglądaj"
+      },
+      "cards": {
+        "pdfEmail": {
+          "title": "Przygotuj PDF do e-maila",
+          "description": "Skompresuj plik, sprawdź czytelność, a przed wysłaniem użyj listy kontrolnej PDF.",
+          "tool": "Kompresuj PDF",
+          "guide": "Lista PDF do e-maila",
+          "category": "Narzędzia PDF"
+        },
+        "developerData": {
+          "title": "Wyczyść dane deweloperskie",
+          "description": "Formatuj JSON, porównuj zmiany tekstu i utrzymuj udostępniane fragmenty czytelne.",
+          "tool": "Formatter JSON",
+          "guide": "Zestaw narzędzi debugowania",
+          "category": "Narzędzia deweloperskie"
+        },
+        "lighterImages": {
+          "title": "Publikuj lżejsze obrazy",
+          "description": "Zmień rozmiar, skompresuj i sprawdź nazwy plików przed przesłaniem obrazów na stronę lub do e-maila.",
+          "tool": "Kompresor obrazów",
+          "guide": "Lista jakości obrazu",
+          "category": "Narzędzia obrazów"
+        }
       }
     }
   },

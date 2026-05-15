@@ -224,6 +224,41 @@
         "guide": "ガイド",
         "category": "カテゴリ"
       }
+    },
+    "workflows": {
+      "eyebrow": "ワークフロー",
+      "title": "メニューではなくタスクから始める",
+      "description": "ツール、チェックリスト、次の有用な手順をつなぐガイド付きの入口を使えます。",
+      "chooseLink": "選び方 →",
+      "label": "ガイド付きワークフロー",
+      "steps": {
+        "tool": "ツール",
+        "guide": "ガイド",
+        "browse": "見る"
+      },
+      "cards": {
+        "pdfEmail": {
+          "title": "メール用に PDF を準備",
+          "description": "ファイルを圧縮し、読みやすさを確認してから、送信前に PDF チェックリストを使います。",
+          "tool": "PDF を圧縮",
+          "guide": "PDF メールチェックリスト",
+          "category": "PDF ツール"
+        },
+        "developerData": {
+          "title": "開発者データを整理",
+          "description": "JSON を整形し、テキスト変更を比較し、共有しやすいスニペットを読みやすく保ちます。",
+          "tool": "JSON フォーマッター",
+          "guide": "デバッグツールチェーン",
+          "category": "開発者ツール"
+        },
+        "lighterImages": {
+          "title": "軽量な画像を公開",
+          "description": "サイトやメールにアップロードする前に、画像のリサイズ、圧縮、ファイル名確認を行います。",
+          "tool": "画像圧縮",
+          "guide": "画像品質チェックリスト",
+          "category": "画像ツール"
+        }
+      }
     }
   },
   "footer": {

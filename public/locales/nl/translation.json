@@ -18,7 +18,7 @@
   },
   "hero": {
     "title": "Alles-in-Één Tools voor Bestanden, Financiën en Code",
-    "subtitle": "Use MC NovaTools to convert, calculate, create, and streamline practical workflows with a fast, clear, browser-based toolkit.",
+    "subtitle": "Gebruik MC NovaTools om praktische workflows te converteren, berekenen, maken en stroomlijnen met een snelle, duidelijke toolkit in de browser.",
     "cta": "Tools Verkennen",
     "browse": "Categorieën Bekijken",
     "freeTools": "Gratis Tools",
@@ -223,6 +223,41 @@
         "pdf": "PDF",
         "guide": "Gids",
         "category": "Categorie"
+      }
+    },
+    "workflows": {
+      "eyebrow": "Workflows",
+      "title": "Begin met een taak, niet met een menu",
+      "description": "Gebruik begeleide startpunten die een tool, een checklist en de volgende nuttige stap verbinden.",
+      "chooseLink": "Hoe kiezen →",
+      "label": "Begeleide workflow",
+      "steps": {
+        "tool": "Tool",
+        "guide": "Gids",
+        "browse": "Bekijken"
+      },
+      "cards": {
+        "pdfEmail": {
+          "title": "Een PDF voorbereiden voor e-mail",
+          "description": "Comprimeer het bestand, controleer de leesbaarheid en gebruik daarna de PDF-checklist vóór verzending.",
+          "tool": "PDF comprimeren",
+          "guide": "PDF-e-mailchecklist",
+          "category": "PDF-tools"
+        },
+        "developerData": {
+          "title": "Ontwikkelaarsdata opschonen",
+          "description": "Formatteer JSON, vergelijk tekstwijzigingen en houd deelbare snippets leesbaar.",
+          "tool": "JSON-formatter",
+          "guide": "Debugging-toolketen",
+          "category": "Ontwikkelaarstools"
+        },
+        "lighterImages": {
+          "title": "Lichtere afbeeldingen publiceren",
+          "description": "Wijzig formaat, comprimeer en controleer bestandsnamen voordat u afbeeldingen uploadt naar een site of e-mail.",
+          "tool": "Afbeeldingscompressor",
+          "guide": "Checklist beeldkwaliteit",
+          "category": "Afbeeldingstools"
+        }
       }
     }
   },

@@ -223,6 +223,41 @@
         "guide": "Guide",
         "category": "Category"
       }
+    },
+    "workflows": {
+      "eyebrow": "Workflows",
+      "title": "Start with a task, not a menu",
+      "description": "Use guided entry points that connect a tool, a checklist, and the next useful step.",
+      "chooseLink": "How to choose →",
+      "label": "Guided workflow",
+      "steps": {
+        "tool": "Tool",
+        "guide": "Guide",
+        "browse": "Browse"
+      },
+      "cards": {
+        "pdfEmail": {
+          "title": "Prepare a PDF for email",
+          "description": "Compress the file, confirm readability, then use the PDF checklist before sending.",
+          "tool": "Compress PDF",
+          "guide": "PDF email checklist",
+          "category": "PDF tools"
+        },
+        "developerData": {
+          "title": "Clean developer data",
+          "description": "Format JSON, compare text changes and keep shareable snippets readable.",
+          "tool": "JSON Formatter",
+          "guide": "Debugging tool chain",
+          "category": "Developer tools"
+        },
+        "lighterImages": {
+          "title": "Publish lighter images",
+          "description": "Resize, compress and review file names before uploading images to a site or email.",
+          "tool": "Image Compressor",
+          "guide": "Image quality checklist",
+          "category": "Image tools"
+        }
+      }
     }
   },
   "footer": {

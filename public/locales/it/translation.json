@@ -18,7 +18,7 @@
   },
   "hero": {
     "title": "Strumenti Tutto-in-Uno per File, Finanza e Codice",
-    "subtitle": "Use MC NovaTools to convert, calculate, create, and streamline practical workflows with a fast, clear, browser-based toolkit.",
+    "subtitle": "Usa MC NovaTools per convertire, calcolare, creare e semplificare workflow pratici con un toolkit rapido, chiaro e basato sul browser.",
     "cta": "Esplora Strumenti",
     "browse": "Sfoglia Categorie",
     "freeTools": "Strumenti Gratuiti",
@@ -223,6 +223,41 @@
         "pdf": "PDF",
         "guide": "Guida",
         "category": "Categoria"
+      }
+    },
+    "workflows": {
+      "eyebrow": "Workflow",
+      "title": "Inizia da un’attività, non da un menu",
+      "description": "Usa punti di ingresso guidati che collegano uno strumento, una checklist e il prossimo passaggio utile.",
+      "chooseLink": "Come scegliere →",
+      "label": "Workflow guidato",
+      "steps": {
+        "tool": "Strumento",
+        "guide": "Guida",
+        "browse": "Sfoglia"
+      },
+      "cards": {
+        "pdfEmail": {
+          "title": "Preparare un PDF per email",
+          "description": "Comprimi il file, verifica la leggibilità e usa la checklist PDF prima dell’invio.",
+          "tool": "Comprimi PDF",
+          "guide": "Checklist PDF per email",
+          "category": "Strumenti PDF"
+        },
+        "developerData": {
+          "title": "Pulire dati per sviluppatori",
+          "description": "Formatta JSON, confronta modifiche testuali e mantieni leggibili gli snippet condivisibili.",
+          "tool": "Formatter JSON",
+          "guide": "Catena di debug",
+          "category": "Strumenti sviluppatore"
+        },
+        "lighterImages": {
+          "title": "Pubblicare immagini più leggere",
+          "description": "Ridimensiona, comprimi e controlla i nomi dei file prima di caricare immagini su un sito o in un’email.",
+          "tool": "Compressore immagini",
+          "guide": "Checklist qualità immagini",
+          "category": "Strumenti immagine"
+        }
       }
     }
   },

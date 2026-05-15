@@ -18,7 +18,7 @@
   },
   "hero": {
     "title": "Herramientas Todo en Uno para Archivos, Finanzas y Código",
-    "subtitle": "Use MC NovaTools to convert, calculate, create, and streamline practical workflows with a fast, clear, browser-based toolkit.",
+    "subtitle": "Use MC NovaTools para convertir, calcular, crear y agilizar flujos de trabajo prácticos con un conjunto de herramientas rápido, claro y basado en el navegador.",
     "cta": "Explorar Herramientas",
     "browse": "Explorar Categorías",
     "freeTools": "Herramientas Gratis",
@@ -223,6 +223,41 @@
         "pdf": "PDF",
         "guide": "Guía",
         "category": "Categoría"
+      }
+    },
+    "workflows": {
+      "eyebrow": "Flujos de trabajo",
+      "title": "Empieza con una tarea, no con un menú",
+      "description": "Usa puntos de entrada guiados que conectan una herramienta, una lista de verificación y el siguiente paso útil.",
+      "chooseLink": "Cómo elegir →",
+      "label": "Flujo guiado",
+      "steps": {
+        "tool": "Herramienta",
+        "guide": "Guía",
+        "browse": "Explorar"
+      },
+      "cards": {
+        "pdfEmail": {
+          "title": "Preparar un PDF para correo electrónico",
+          "description": "Comprime el archivo, confirma la legibilidad y usa la lista de verificación de PDF antes de enviarlo.",
+          "tool": "Comprimir PDF",
+          "guide": "Lista de PDF para email",
+          "category": "Herramientas PDF"
+        },
+        "developerData": {
+          "title": "Limpiar datos de desarrollo",
+          "description": "Formatea JSON, compara cambios de texto y mantén legibles los fragmentos para compartir.",
+          "tool": "Formateador JSON",
+          "guide": "Cadena de depuración",
+          "category": "Herramientas de desarrollo"
+        },
+        "lighterImages": {
+          "title": "Publicar imágenes más ligeras",
+          "description": "Redimensiona, comprime y revisa nombres de archivo antes de subir imágenes a un sitio o email.",
+          "tool": "Compresor de imágenes",
+          "guide": "Lista de calidad de imagen",
+          "category": "Herramientas de imagen"
+        }
       }
     }
   },

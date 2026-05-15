@@ -18,7 +18,7 @@
   },
   "hero": {
     "title": "文件、财务和代码的一体化工具",
-    "subtitle": "Use MC NovaTools to convert, calculate, create, and streamline practical workflows with a fast, clear, browser-based toolkit.",
+    "subtitle": "使用 MC NovaTools，通过快速、清晰、基于浏览器的工具包来转换、计算、创建并简化实用工作流。",
     "cta": "探索工具",
     "browse": "浏览分类",
     "freeTools": "免费工具",
@@ -223,6 +223,41 @@
         "pdf": "PDF",
         "guide": "指南",
         "category": "类别"
+      }
+    },
+    "workflows": {
+      "eyebrow": "工作流",
+      "title": "从任务开始，而不是从菜单开始",
+      "description": "使用引导式入口，将工具、检查清单和下一个有用步骤连接起来。",
+      "chooseLink": "如何选择 →",
+      "label": "引导式工作流",
+      "steps": {
+        "tool": "工具",
+        "guide": "指南",
+        "browse": "浏览"
+      },
+      "cards": {
+        "pdfEmail": {
+          "title": "为电子邮件准备 PDF",
+          "description": "压缩文件、确认可读性，然后在发送前使用 PDF 检查清单。",
+          "tool": "压缩 PDF",
+          "guide": "PDF 邮件检查清单",
+          "category": "PDF 工具"
+        },
+        "developerData": {
+          "title": "清理开发者数据",
+          "description": "格式化 JSON、比较文本更改，并保持可分享片段易读。",
+          "tool": "JSON 格式化工具",
+          "guide": "调试工具链",
+          "category": "开发者工具"
+        },
+        "lighterImages": {
+          "title": "发布更轻量的图片",
+          "description": "在将图片上传到网站或电子邮件之前，调整大小、压缩并检查文件名。",
+          "tool": "图片压缩器",
+          "guide": "图片质量检查清单",
+          "category": "图片工具"
+        }
       }
     }
   },

@@ -18,7 +18,7 @@
   },
   "hero": {
     "title": "Ferramentas Tudo-em-Um para Arquivos, Finanças e Código",
-    "subtitle": "Use MC NovaTools to convert, calculate, create, and streamline practical workflows with a fast, clear, browser-based toolkit.",
+    "subtitle": "Use o MC NovaTools para converter, calcular, criar e simplificar fluxos de trabalho práticos com um kit de ferramentas rápido, claro e baseado no navegador.",
     "cta": "Explorar Ferramentas",
     "browse": "Navegar Categorias",
     "freeTools": "Ferramentas Grátis",
@@ -223,6 +223,41 @@
         "pdf": "PDF",
         "guide": "Guia",
         "category": "Categoria"
+      }
+    },
+    "workflows": {
+      "eyebrow": "Fluxos de trabalho",
+      "title": "Comece por uma tarefa, não por um menu",
+      "description": "Use pontos de entrada guiados que conectam uma ferramenta, uma lista de verificação e o próximo passo útil.",
+      "chooseLink": "Como escolher →",
+      "label": "Fluxo guiado",
+      "steps": {
+        "tool": "Ferramenta",
+        "guide": "Guia",
+        "browse": "Explorar"
+      },
+      "cards": {
+        "pdfEmail": {
+          "title": "Preparar um PDF para e-mail",
+          "description": "Comprima o arquivo, confirme a legibilidade e use a lista de verificação de PDF antes de enviar.",
+          "tool": "Comprimir PDF",
+          "guide": "Checklist de PDF para e-mail",
+          "category": "Ferramentas PDF"
+        },
+        "developerData": {
+          "title": "Limpar dados de desenvolvimento",
+          "description": "Formate JSON, compare alterações de texto e mantenha trechos compartilháveis legíveis.",
+          "tool": "Formatador JSON",
+          "guide": "Cadeia de ferramentas de depuração",
+          "category": "Ferramentas de desenvolvimento"
+        },
+        "lighterImages": {
+          "title": "Publicar imagens mais leves",
+          "description": "Redimensione, comprima e revise nomes de arquivo antes de enviar imagens para um site ou e-mail.",
+          "tool": "Compressor de imagens",
+          "guide": "Checklist de qualidade de imagem",
+          "category": "Ferramentas de imagem"
+        }
       }
     }
   },
