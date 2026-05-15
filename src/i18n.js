@@ -333,6 +333,8 @@
     if (/^\/blog(?:\/index\.html)?$/.test(path)) return ['en', 'tr', 'ar'];
     const categoryMatch = path.match(/^\/categories\/([^/.]+)(?:\.html)?$/);
     if (categoryMatch) return contentAvailability.categories[categoryMatch[1]] || SUPPORTED_LANGUAGES;
+    const financeMatch = path.match(/^\/finance\/(.+)$/);
+    if (financeMatch) return contentAvailability.tools[`finance/${financeMatch[1].replace(/\/$/, '')}`] || SUPPORTED_LANGUAGES;
     const toolMatch = path.match(/^\/tools\/(.+)$/);
     if (toolMatch) return contentAvailability.tools[toolMatch[1].replace(/\/$/, '')] || SUPPORTED_LANGUAGES;
     return SUPPORTED_LANGUAGES;

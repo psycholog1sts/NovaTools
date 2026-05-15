@@ -69,8 +69,11 @@ globSync('categories/**/*.html', { cwd: rootDir }).sort().forEach((file) => {
 });
 
 globSync('src/tools/**/index.html', { cwd: rootDir, ignore: ['**/demo-*/**', '**/experimental/**', '**/test/**'] }).sort().forEach((file) => {
-  const route = `/${file.replace(/^src\//, '').replace(/index\.html$/, '')}`;
-  locales.forEach((locale) => urls.push(urlEntry(localizedUrl(route, locale), '0.8', 'weekly')));
+  const sourceRoute = `/${file.replace(/^src\//, '').replace(/index\.html$/, '')}`;
+  const route = sourceRoute.startsWith('/tools/finance/')
+    ? sourceRoute.replace(/^\/tools\/finance\//, '/finance/')
+    : sourceRoute;
+  locales.forEach((locale) => urls.push(urlEntry(localizedUrl(route, locale), route.startsWith('/finance/') ? '0.9' : '0.8', 'weekly')));
 });
 
 const fallbackPosts = readJson(`src/i18n/blog/${fallbackBlogLocale}.json`);
