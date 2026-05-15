@@ -542,9 +542,18 @@
     updateStaticTextTranslations();
   }
 
-  async function changeLanguage(lang) {
+  function normalizeSelectedLanguage(value) {
+    return String(value || '').replace(/^\/+|\/+$/g, '').split('/')[0];
+  }
+
+  function languageSwitchUrl(lang) {
+    return `${window.location.pathname}?lang=${encodeURIComponent(lang)}`;
+  }
+
+  async function changeLanguage(selectedLang) {
+    const lang = normalizeSelectedLanguage(selectedLang);
     if (!SUPPORTED_LANGUAGES.includes(lang)) {
-      console.error('Unsupported language:', lang);
+      console.error('Unsupported language:', selectedLang);
       return;
     }
 
@@ -556,10 +565,9 @@
       console.warn('Could not save language preference');
     }
 
-    const targetPath = localizedPath(lang);
-    const targetSearch = localizedSearch(lang);
-    if ((window.location.pathname !== targetPath || window.location.search !== targetSearch) && !window.location.pathname.startsWith('/blog/article-template')) {
-      window.location.assign(targetPath + targetSearch + window.location.hash);
+    const targetHref = languageSwitchUrl(lang);
+    if (`${window.location.pathname}${window.location.search}` !== targetHref) {
+      window.location.href = targetHref;
       return;
     }
 
