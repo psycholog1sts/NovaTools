@@ -130,6 +130,35 @@ runner.test('Refinance: No savings when new rate is higher', () => {
   assert(result.recommendation.type === 'negative', 'Should have negative recommendation');
 });
 
+
+runner.test('Refinance: Turkey KKDF/BSMV are included in payment and schedule', () => {
+  const withTaxes = refinanceCalculator({
+    balance: 1000000,
+    currentRate: 36,
+    yearsRemaining: 10,
+    newRate: 30,
+    newTerm: 10,
+    closingCosts: 0,
+    kkdfRate: 15,
+    bsmvRate: 5
+  });
+
+  const withoutTaxes = refinanceCalculator({
+    balance: 1000000,
+    currentRate: 36,
+    yearsRemaining: 10,
+    newRate: 30,
+    newTerm: 10,
+    closingCosts: 0,
+    kkdfRate: 0,
+    bsmvRate: 0
+  });
+
+  assert(withTaxes.newPayment > withoutTaxes.newPayment, 'KKDF/BSMV should increase tax-adjusted installment');
+  assert(withTaxes.newSchedule.length === 120, '10-year amortization should produce 120 rows');
+  assert(withTaxes.newSchedule[0].kkdf > 0 && withTaxes.newSchedule[0].bsmv > 0, 'Schedule should expose KKDF and BSMV rows');
+});
+
 // ==========================================
 // COMPOUND INTEREST TESTS
 // ==========================================
@@ -164,6 +193,34 @@ runner.test('Compound: Monthly contributions increase total', () => {
   
   assert(resultWithContrib.finalAmount > resultNoContrib.finalAmount, 
     'With contributions should be higher');
+});
+
+
+runner.test('Compound: Frequency changes final amount', () => {
+  const annual = compoundInterestCalculator({
+    principal: 10000,
+    rate: 7,
+    years: 10,
+    monthlyContribution: 0,
+    compoundFrequency: 'annually'
+  });
+  const monthly = compoundInterestCalculator({
+    principal: 10000,
+    rate: 7,
+    years: 10,
+    monthlyContribution: 0,
+    compoundFrequency: 'monthly'
+  });
+  const daily = compoundInterestCalculator({
+    principal: 10000,
+    rate: 7,
+    years: 10,
+    monthlyContribution: 0,
+    compoundFrequency: 'daily'
+  });
+
+  assert(annual.finalAmount < monthly.finalAmount, 'Monthly compounding should exceed annual compounding');
+  assert(monthly.finalAmount < daily.finalAmount, 'Daily compounding should exceed monthly compounding');
 });
 
 // ==========================================
