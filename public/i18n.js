@@ -294,8 +294,8 @@
   function pageContentAvailability() {
     const path = stripLocalePrefix(window.location.pathname).replace(/\/$/, '');
     const blogMatch = path.match(/^\/blog\/(?:articles\/)?([^/.]+)(?:\.html)?$/);
-    if (blogMatch) return SUPPORTED_LANGUAGES;
-    if (/^\/blog(?:\/index\.html)?$/.test(path)) return SUPPORTED_LANGUAGES;
+    if (blogMatch) return contentAvailability.blog[blogMatch[1]] || ['en'];
+    if (/^\/blog(?:\/index\.html)?$/.test(path)) return ['en', 'tr', 'ar'];
     const categoryMatch = path.match(/^\/categories\/([^/.]+)(?:\.html)?$/);
     if (categoryMatch) return contentAvailability.categories[categoryMatch[1]] || SUPPORTED_LANGUAGES;
     const toolMatch = path.match(/^\/tools\/(.+)$/);
@@ -547,7 +547,13 @@
   }
 
   function languageSwitchUrl(lang) {
-    return `${window.location.pathname}?lang=${encodeURIComponent(lang)}`;
+    const params = new URLSearchParams(window.location.search || '');
+    params.delete('lang');
+    if (lang !== DEFAULT_LANGUAGE) {
+      params.set('lang', lang);
+    }
+    const query = params.toString();
+    return `${stripLocalePrefix(window.location.pathname)}${query ? `?${query}` : ''}${window.location.hash || ''}`;
   }
 
   async function changeLanguage(selectedLang) {
@@ -582,7 +588,7 @@
       selector.value = lang;
     }
 
-    await loadTranslations(lang);
+    await Promise.all([loadTranslations(DEFAULT_LANGUAGE), loadTranslations('tr'), loadTranslations('ar'), loadTranslations(lang)]);
     updatePageTranslations();
     refreshSiteGuide();
 

@@ -547,7 +547,13 @@
   }
 
   function languageSwitchUrl(lang) {
-    return `${window.location.pathname}?lang=${encodeURIComponent(lang)}`;
+    const params = new URLSearchParams(window.location.search || '');
+    params.delete('lang');
+    if (lang !== DEFAULT_LANGUAGE) {
+      params.set('lang', lang);
+    }
+    const query = params.toString();
+    return `${stripLocalePrefix(window.location.pathname)}${query ? `?${query}` : ''}${window.location.hash || ''}`;
   }
 
   async function changeLanguage(selectedLang) {
