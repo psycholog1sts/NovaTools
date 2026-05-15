@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <script type="text/plain" data-consent-category="analytics" async src="https://www.googletagmanager.com/gtag/js?id=G-Y896L63239"></script>
@@ -33,17 +33,17 @@
   <link rel="stylesheet" href="/src/styles/main.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   
-  <title data-i18n="tools.finance.mortgage-refinance.meta.title">Free Mortgage Refinance Calculator - Save Now | NovaTools</title>
+  <title data-i18n="tools.finance.mortgage-refinance.meta.title">Mortgage Refinance Calculator Turkey | NovaTools</title>
   
   <!-- i18n Script -->
   <script src="/i18n.js"></script>
-  <meta name="description" content="Free mortgage refinance calculator. Compare rates, calculate monthly savings &amp; break-even point instantly. No signup needed. Try free now!">
+  <meta name="description" content="Turkey mortgage refinance calculator with KKDF and BSMV. Estimate monthly installments, total repayment, amortization, and break-even savings in TRY.">
   <meta name="keywords" content="free mortgage refinance calculator, mortgage refinance, refinance savings, break-even calculator, monthly payment calculator">
   <meta name="theme-color" content="#0A0A0C">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Free Mortgage Refinance Calculator - Save Now | NovaTools">
-  <meta property="og:description" content="Free mortgage refinance calculator. Compare rates &amp; calculate savings instantly. No signup required.">
+  <meta property="og:title" content="Mortgage Refinance Calculator Turkey | NovaTools">
+  <meta property="og:description" content="Turkey mortgage refinance calculator with KKDF/BSMV, amortization table, and TRY estimates.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://mc-novatools.com/finance/mortgage-refinance/">
   <meta property="og:image" content="https://www.mc-novatools.com/og-image.png">
@@ -51,7 +51,7 @@
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Free Mortgage Refinance Calculator | NovaTools MC">
-  <meta name="twitter:description" content="Compare rates, calculate monthly savings &amp; break-even. 100% free, no signup.">
+  <meta name="twitter:description" content="Estimate TRY refinance savings with KKDF/BSMV and amortization details.">
 
   <!-- Canonical -->
   <link rel="canonical" href="https://mc-novatools.com/finance/mortgage-refinance/">
@@ -352,7 +352,7 @@
         <div style="max-width: 800px; margin: 0 auto;">
           <h1 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; text-align: center;" data-i18n="tools.finance.mortgage-refinance.text.011">Mortgage Refinance Calculator</h1>
           <span class="sr-only" data-i18n="tools.finance.mortgage-refinance.text.012">Free mortgage refinance calculator — 100% free online tool, no registration required. Calculate how much you save by refinancing your mortgage. Free break-even point calculator, free monthly payment comparison.</span>
-          <p style="color: var(--text-secondary); text-align: center; margin-bottom: 2rem;" data-i18n="tools.finance.mortgage-refinance.text.013">Calculate your potential savings by refinancing your mortgage. Compare rates and find your break-even point.</p>
+          <p style="color: var(--text-secondary); text-align: center; margin-bottom: 2rem;" data-i18n="tools.finance.mortgage-refinance.text.013">KKDF %15 ve BSMV %5 dahil tahmini taksit, toplam geri ödeme, refinansman farkı ve amortisman planını hesaplayın.</p>
           
           <form class="calculator-form" data-tool="mortgage-refinance" data-result=".results-panel">
             <div class="form-section">
@@ -360,18 +360,18 @@
               
               <div class="form-row">
                 <div class="form-group">
-                  <label for="balance" data-i18n="tools.finance.mortgage-refinance.text.015">Current Balance ($)</label>
-                  <input type="number" id="balance" name="balance" placeholder="300000" min="1000" step="1000" required>
+                  <label for="balance" data-i18n="tools.finance.mortgage-refinance.text.015">Kredi Tutarı (₺)</label>
+                  <input type="number" id="balance" name="balance" placeholder="3000000" min="1000" step="1000" required inputmode="decimal">
                 </div>
                 <div class="form-group">
-                  <label for="currentRate" data-i18n="tools.finance.mortgage-refinance.text.016">Current Interest Rate (%)</label>
-                  <input type="number" id="currentRate" name="currentRate" placeholder="6.5" min="0.01" max="20" step="0.01" required>
+                  <label for="currentRate" data-i18n="tools.finance.mortgage-refinance.text.016">Mevcut Yıllık Faiz Oranı (%)</label>
+                  <input type="number" id="currentRate" name="currentRate" placeholder="36" min="0.01" max="100" step="0.01" required inputmode="decimal">
                 </div>
               </div>
               
               <div class="form-group">
-                <label for="yearsRemaining" data-i18n="tools.finance.mortgage-refinance.text.017">Years Remaining</label>
-                <input type="number" id="yearsRemaining" name="yearsRemaining" placeholder="25" min="1" max="30" step="1" required>
+                <label for="yearsRemaining" data-i18n="tools.finance.mortgage-refinance.text.017">Kalan Vade (Yıl)</label>
+                <input type="number" id="yearsRemaining" name="yearsRemaining" placeholder="10" min="1" max="30" step="1" required inputmode="numeric">
               </div>
             </div>
             
@@ -380,23 +380,34 @@
               
               <div class="form-row">
                 <div class="form-group">
-                  <label for="newRate" data-i18n="tools.finance.mortgage-refinance.text.019">New Interest Rate (%)</label>
-                  <input type="number" id="newRate" name="newRate" placeholder="4.5" min="0.01" max="20" step="0.01" required>
+                  <label for="newRate" data-i18n="tools.finance.mortgage-refinance.text.019">Yeni Yıllık Faiz Oranı (%)</label>
+                  <input type="number" id="newRate" name="newRate" placeholder="30" min="0.01" max="100" step="0.01" required inputmode="decimal">
                 </div>
                 <div class="form-group">
-                  <label for="newTerm" data-i18n="tools.finance.mortgage-refinance.text.020">New Loan Term (Years)</label>
-                  <input type="number" id="newTerm" name="newTerm" placeholder="30" min="1" max="30" step="1" required>
+                  <label for="newTerm" data-i18n="tools.finance.mortgage-refinance.text.020">Yeni Vade (Yıl)</label>
+                  <input type="number" id="newTerm" name="newTerm" placeholder="10" min="1" max="30" step="1" required inputmode="numeric">
                 </div>
               </div>
               
               <div class="form-group">
-                <label for="closingCosts" data-i18n="tools.finance.mortgage-refinance.text.021">Closing Costs ($)</label>
-                <input type="number" id="closingCosts" name="closingCosts" placeholder="5000" min="0" step="500" value="5000">
+                <label for="closingCosts" data-i18n="tools.finance.mortgage-refinance.text.021">Refinansman Masrafları (₺)</label>
+                <input type="number" id="closingCosts" name="closingCosts" placeholder="25000" min="0" step="500" value="25000" inputmode="decimal">
               </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="kkdfRate">KKDF (%)</label>
+                  <input type="number" id="kkdfRate" name="kkdfRate" min="0" max="100" step="0.01" value="15" inputmode="decimal" required>
+                </div>
+                <div class="form-group">
+                  <label for="bsmvRate">BSMV (%)</label>
+                  <input type="number" id="bsmvRate" name="bsmvRate" min="0" max="100" step="0.01" value="5" inputmode="decimal" required>
+                </div>
+              </div>
+              <p class="finance-note">KKDF ve BSMV oranları formüle aylık faiz üzerinden dahil edilir. Bankanız farklı masraf/istisna uygulayabilir.</p>
             </div>
             
             <button type="submit" class="btn btn-primary calculate-btn" style="width: 100%; height: 52px; font-size: 1rem;" data-i18n="tools.finance.mortgage-refinance.text.022">
-              Calculate Savings
+              Tasarrufu Hesapla
             </button>
           </form>
           
@@ -419,7 +430,7 @@
           <li data-i18n="tools.finance.mortgage-refinance.text.026">Enter your current loan balance, interest rate, and years remaining on your mortgage.</li>
           <li data-i18n="tools.finance.mortgage-refinance.text.027">Input the new interest rate you're considering and your desired loan term.</li>
           <li data-i18n="tools.finance.mortgage-refinance.text.028">Add estimated closing costs, which typically range from 2% to 5% of the loan amount.</li>
-          <li data-i18n="tools.finance.mortgage-refinance.text.029">Click "Calculate Savings" to see your monthly savings, break-even point, and total interest savings.</li>
+          <li data-i18n="tools.finance.mortgage-refinance.text.029">Click "Tasarrufu Hesapla" to see your monthly savings, break-even point, and total interest savings.</li>
         </ol>
         
         <h3 style="font-size: 1.25rem; margin: 2rem 0 1rem; color: var(--text-primary);" data-i18n="tools.finance.mortgage-refinance.text.030">Frequently Asked Questions</h3>
@@ -452,6 +463,14 @@
 <style>
 .tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }
 .tool-footer a { color: #00D9FF; text-decoration: none; }
+.finance-note { margin-top: -0.5rem; color: var(--text-tertiary); font-size: 0.875rem; line-height: 1.5; }
+.results-panel .result-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-top: 1rem; }
+.results-panel .result-item { padding: 1rem; border: 1px solid var(--border-default); border-radius: var(--radius-md); background: var(--surface-default); }
+.results-panel .result-value { font-size: clamp(1.1rem, 4vw, 1.55rem); font-weight: 700; overflow-wrap: anywhere; }
+.results-panel table th, .results-panel table td { padding: 0.65rem; text-align: right; white-space: nowrap; }
+.results-panel table th:first-child, .results-panel table td:first-child { text-align: left; }
+.results-panel canvas { width: 100%; max-width: 100%; height: auto; background: rgba(255,255,255,0.02); border: 1px solid var(--border-default); border-radius: var(--radius-md); }
+@media (max-width: 640px) { .calculator-form { padding: 1rem; } .results-panel { padding: 1rem; } }
 </style>
   </div>
 
@@ -469,7 +488,7 @@ if (form) {
         action: 'calculate',
         timestamp: new Date().toISOString()
       });
-      gtag('event', 'generate_lead', { currency: 'USD', value: 1.0 });
+      gtag('event', 'generate_lead', { currency: 'TRY', value: 1.0 });
     }
   });
 
@@ -480,6 +499,7 @@ if (form) {
       const result = refinanceCalculator(data);
       if (resultsPanel) {
         resultsPanel.innerHTML = result.html;
+        drawMortgageScheduleChart(resultsPanel.querySelector('#mortgageScheduleChart'));
         resultsPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     } catch (err) {
@@ -488,6 +508,40 @@ if (form) {
       }
     }
   });
+}
+function drawMortgageScheduleChart(canvas) {
+  if (!canvas || !canvas.getContext) return;
+  var points = [];
+  try { points = JSON.parse(canvas.dataset.chart || '[]'); } catch (_) { points = []; }
+  if (!points.length) return;
+  var ctx = canvas.getContext('2d');
+  var width = canvas.width;
+  var height = canvas.height;
+  var padding = 34;
+  var maxBalance = Math.max.apply(null, points.map(function(point) { return Math.max(point.currentBalance, point.newBalance); }));
+  ctx.clearRect(0, 0, width, height);
+  ctx.strokeStyle = 'rgba(148,163,184,0.35)';
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(padding, padding);
+  ctx.lineTo(padding, height - padding);
+  ctx.lineTo(width - padding, height - padding);
+  ctx.stroke();
+  function drawLine(key, color) {
+    ctx.beginPath();
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 3;
+    points.forEach(function(point, index) {
+      var x = padding + (index / Math.max(points.length - 1, 1)) * (width - padding * 2);
+      var y = height - padding - (point[key] / Math.max(maxBalance, 1)) * (height - padding * 2);
+      if (index === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+    });
+    ctx.stroke();
+  }
+  drawLine('currentBalance', '#F97316');
+  drawLine('newBalance', '#22C55E');
+  ctx.fillStyle = '#F97316'; ctx.fillText('Mevcut', padding + 8, 18);
+  ctx.fillStyle = '#22C55E'; ctx.fillText('Yeni', padding + 78, 18);
 }
 </script>
 <script>
