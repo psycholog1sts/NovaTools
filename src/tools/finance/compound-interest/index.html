@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <script type="text/plain" data-consent-category="analytics" async src="https://www.googletagmanager.com/gtag/js?id=G-Y896L63239"></script>
@@ -86,6 +86,12 @@
     .result-item.highlight .result-value { color: #22C55E; }
     .result-label { font-size: 0.875rem; color: var(--text-tertiary); }
     .chart-container { margin-top: 2rem; padding: 1.5rem; background: var(--surface-default); border-radius: var(--radius-md); }
+    .chart-container canvas { width: 100%; max-width: 100%; height: auto; border: 1px solid var(--border-default); border-radius: var(--radius-md); background: rgba(255,255,255,0.02); }
+    .results-panel table { border-collapse: collapse; }
+    .results-panel th, .results-panel td { padding: 0.65rem; text-align: right; white-space: nowrap; border-bottom: 1px solid var(--border-default); }
+    .results-panel th:first-child, .results-panel td:first-child { text-align: left; }
+    .form-error { margin-top: 1rem; color: #FF5555; font-weight: 600; }
+    @media (max-width: 640px) { .container { padding-left: 0.75rem !important; padding-right: 0.75rem !important; } .calculator-form, .results-panel, .chart-container { padding: 1rem; } .result-value { font-size: 1.25rem; overflow-wrap: anywhere; } }
   </style>
 </head>
 <body>
@@ -140,33 +146,49 @@
             <div class="form-row">
               <div class="form-group">
                 <label for="principal" data-i18n="tools.finance.compound-interest.text.014">Initial Investment ($)</label>
-                <input type="number" id="principal" name="principal" placeholder="10000" min="0" value="10000" required>
+                <input type="number" id="principal" name="principal" placeholder="10000" min="0" step="0.01" value="10000" inputmode="decimal" required>
               </div>
               <div class="form-group">
                 <label for="monthlyContribution" data-i18n="tools.finance.compound-interest.text.015">Monthly Contribution ($)</label>
-                <input type="number" id="monthlyContribution" name="monthlyContribution" placeholder="500" min="0" value="500">
+                <input type="number" id="monthlyContribution" name="monthlyContribution" placeholder="500" min="0" step="0.01" value="500" inputmode="decimal">
               </div>
             </div>
             
             <div class="form-row">
               <div class="form-group">
                 <label for="rate" data-i18n="tools.finance.compound-interest.text.016">Annual Interest Rate (%)</label>
-                <input type="number" id="rate" name="rate" placeholder="7" min="0" max="100" step="0.1" value="7" required>
+                <input type="number" id="rate" name="rate" placeholder="7" min="0" max="100" step="0.1" value="7" inputmode="decimal" required>
               </div>
               <div class="form-group">
                 <label for="years" data-i18n="tools.finance.compound-interest.text.017">Time Period (years)</label>
-                <input type="number" id="years" name="years" placeholder="20" min="1" max="100" value="20" required>
+                <input type="number" id="years" name="years" placeholder="20" min="1" max="100" step="1" value="20" inputmode="numeric" required>
               </div>
             </div>
             
+            <div class="form-row">
+              <div class="form-group">
+                <label for="compoundFrequency" data-i18n="tools.finance.compound-interest.text.018">Compound Frequency</label>
+                <select id="compoundFrequency" name="compoundFrequency" required>
+                  <option value="daily">Daily</option>
+                  <option value="monthly" selected>Monthly</option>
+                  <option value="quarterly">Quarterly</option>
+                  <option value="annually">Annually</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="currency">Currency</label>
+                <select id="currency" name="currency" required>
+                  <option value="USD" selected>USD ($)</option>
+                  <option value="TRY">TRY (₺)</option>
+                  <option value="EUR">EUR (€)</option>
+                  <option value="GBP">GBP (£)</option>
+                </select>
+              </div>
+            </div>
+
             <div class="form-group">
-              <label for="compoundFrequency" data-i18n="tools.finance.compound-interest.text.018">Compound Frequency</label>
-              <select id="compoundFrequency" name="compoundFrequency" required>
-                <option value="daily">Daily</option>
-                <option value="monthly" selected>Monthly</option>
-                <option value="quarterly">Quarterly</option>
-                <option value="annually">Annually</option>
-              </select>
+              <label for="inflationRate">Inflation Adjustment (%)</label>
+              <input type="number" id="inflationRate" name="inflationRate" placeholder="0" min="0" max="100" step="0.1" value="0" inputmode="decimal">
             </div>
             
             <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem; height: 52px; font-size: 1rem;" data-i18n="tools.finance.compound-interest.text.019">
@@ -174,44 +196,7 @@
             </button>
           </form>
           
-          <div class="results-panel">
-            <h2 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; text-align: center;" data-i18n="tools.finance.compound-interest.text.020">Projected Growth</h2>
-            
-            <div class="result-grid">
-              <div class="result-item">
-                <div data-output="finalAmount" class="result-value">$0</div>
-                <div class="result-label">Final Amount</div>
-              </div>
-              <div class="result-item">
-                <div data-output="totalContributions" class="result-value">$0</div>
-                <div class="result-label">Total Contributed</div>
-              </div>
-              <div class="result-item highlight">
-                <div data-output="totalInterest" class="result-value">$0</div>
-                <div class="result-label">Interest Earned</div>
-              </div>
-              <div class="result-item">
-                <div data-output="growthMultiplier" class="result-value">0x</div>
-                <div class="result-label">Growth Multiplier</div>
-              </div>
-            </div>
-            
-            <div class="chart-container">
-              <h4 style="margin-bottom: 1rem; color: var(--text-primary);" data-i18n="tools.finance.compound-interest.text.021">Year by Year Breakdown</h4>
-              <div data-output="yearlyBreakdown" style="max-height: 300px; overflow-y: auto;">
-                <table style="width: 100%; font-size: 0.9375rem;">
-                  <thead>
-                    <tr style="border-bottom: 1px solid var(--border-default);">
-                      <th style="text-align: left; padding: 0.5rem;">Year</th>
-                      <th style="text-align: right; padding: 0.5rem;">Balance</th>
-                      <th style="text-align: right; padding: 0.5rem;">Interest</th>
-                    </tr>
-                  </thead>
-                  <tbody></tbody>
-                </table>
-              </div>
-            </div>
-          </div>
+          <div class="results-panel" aria-live="polite"></div>
         </div>
       </div>
       
@@ -263,6 +248,65 @@
 .tool-footer a { color: #00D9FF; text-decoration: none; }
 </style>
   </div>
+  <script type="module">
+import { compoundInterestCalculator } from '../compound.mjs';
+
+const form = document.querySelector('form[data-tool="compound-interest"]');
+const resultsPanel = document.querySelector('.results-panel');
+
+if (form && resultsPanel) {
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    try {
+      const result = compoundInterestCalculator(Object.fromEntries(new FormData(form)));
+      resultsPanel.innerHTML = result.html;
+      resultsPanel.classList.add('visible');
+      drawCompoundGrowthChart(resultsPanel.querySelector('#compoundGrowthChart'));
+      resultsPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } catch (error) {
+      resultsPanel.innerHTML = '<p class="form-error">Error: ' + error.message + '</p>';
+      resultsPanel.classList.add('visible');
+    }
+  });
+}
+
+function drawCompoundGrowthChart(canvas) {
+  if (!canvas || !canvas.getContext) return;
+  var points = [];
+  try { points = JSON.parse(canvas.dataset.chart || '[]'); } catch (_) { points = []; }
+  if (!points.length) return;
+  var ctx = canvas.getContext('2d');
+  var width = canvas.width;
+  var height = canvas.height;
+  var padding = 36;
+  var maxValue = Math.max.apply(null, points.map(function(point) { return Math.max(point.balance, point.contributions, point.inflationAdjustedBalance); }));
+  ctx.clearRect(0, 0, width, height);
+  ctx.strokeStyle = 'rgba(148,163,184,0.35)';
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(padding, padding);
+  ctx.lineTo(padding, height - padding);
+  ctx.lineTo(width - padding, height - padding);
+  ctx.stroke();
+  function drawLine(key, color) {
+    ctx.beginPath();
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 3;
+    points.forEach(function(point, index) {
+      var x = padding + (index / Math.max(points.length - 1, 1)) * (width - padding * 2);
+      var y = height - padding - (point[key] / Math.max(maxValue, 1)) * (height - padding * 2);
+      if (index === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+    });
+    ctx.stroke();
+  }
+  drawLine('balance', '#22C55E');
+  drawLine('contributions', '#38BDF8');
+  drawLine('inflationAdjustedBalance', '#F97316');
+  ctx.fillStyle = '#22C55E'; ctx.fillText('Balance', padding + 8, 18);
+  ctx.fillStyle = '#38BDF8'; ctx.fillText('Contributed', padding + 82, 18);
+  ctx.fillStyle = '#F97316'; ctx.fillText('Inflation adj.', padding + 180, 18);
+}
+</script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   var menuBtn = document.getElementById('mobileMenuBtn');
