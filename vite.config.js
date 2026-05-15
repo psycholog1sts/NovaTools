@@ -201,7 +201,9 @@ export default defineConfig({
     cssMinify: 'esbuild',
     assetsInlineLimit: 4096,
     modulePreload: {
-      polyfill: true
+      // Keep MPA HTML entries free of Vite's injected source-phase polyfill import;
+      // modern module browsers still receive generated modulepreload links.
+      polyfill: false
     },
 
     rollupOptions: {

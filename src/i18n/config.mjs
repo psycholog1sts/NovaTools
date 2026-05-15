@@ -10,6 +10,11 @@ export const I18N_CONFIG = {
   // Supported locales
   locales: ['en', 'tr', 'de', 'fr', 'es', 'pt', 'ru', 'zh', 'ja', 'ko', 'ar', 'hi', 'it', 'pl', 'nl'],
   pathPrefixLocales: [],
+  fallbackLocale: {
+    'tr-TR': ['tr', 'en'],
+    'en-US': ['en', 'tr'],
+    default: ['en']
+  },
   
   // Locale metadata
   metadata: {
@@ -37,37 +42,67 @@ export const I18N_CONFIG = {
   }
 };
 
+const LOCALE_ALIASES = {
+  'tr-tr': 'tr',
+  'tr_tr': 'tr',
+  'en-us': 'en',
+  'en_us': 'en',
+  'en-gb': 'en',
+  'en_gb': 'en',
+  'pt-br': 'pt',
+  'pt_br': 'pt',
+  'zh-cn': 'zh',
+  'zh_cn': 'zh',
+  'zh-tw': 'zh',
+  'zh_tw': 'zh'
+};
+
+export function normalizeLocale(value) {
+  const raw = String(value || '').trim();
+  if (!raw) return null;
+  const normalized = raw.replace(/^\/+|\/+$/g, '').replace('_', '-').toLowerCase();
+  const alias = LOCALE_ALIASES[normalized] || LOCALE_ALIASES[normalized.replace('-', '_')];
+  if (alias && I18N_CONFIG.locales.includes(alias)) return alias;
+  const base = normalized.split('-')[0];
+  return I18N_CONFIG.locales.includes(base) ? base : null;
+}
+
+function fallbackChain(locale) {
+  const normalized = normalizeLocale(locale) || I18N_CONFIG.defaultLocale;
+  const chain = I18N_CONFIG.fallbackLocale[locale] || I18N_CONFIG.fallbackLocale[normalized] || I18N_CONFIG.fallbackLocale.default;
+  return [...new Set([normalized, ...chain.map(normalizeLocale).filter(Boolean), I18N_CONFIG.defaultLocale])];
+}
+
 /**
  * Get user's preferred locale from browser
  */
 export function detectLocale() {
   // Check URL query first. Locale folders are intentionally unsupported.
   const params = new URLSearchParams(window.location.search || '');
-  const queryLocale = params.get('lang');
-  if (I18N_CONFIG.locales.includes(queryLocale)) return queryLocale;
+  const queryLocale = normalizeLocale(params.get('lang'));
+  if (queryLocale) return queryLocale;
   
   // Check localStorage (explicit user choice)
   try {
-    const stored = localStorage.getItem('novatools_locale');
-    if (stored && I18N_CONFIG.locales.includes(stored)) {
+    const stored = normalizeLocale(localStorage.getItem('novatools_locale'));
+    if (stored) {
       return stored;
     }
   } catch { /* ignore */ }
   
   // Check browser language
-  const browserLang = navigator.language || navigator.userLanguage;
-  const browserLocale = String(browserLang || '').split('-')[0].toLowerCase();
-  return I18N_CONFIG.locales.includes(browserLocale) ? browserLocale : I18N_CONFIG.defaultLocale;
+  return normalizeLocale(navigator.language || navigator.userLanguage) || I18N_CONFIG.defaultLocale;
 }
 
 /**
  * Set locale preference (stored in localStorage only)
  */
 export function setLocale(locale) {
-  if (!I18N_CONFIG.locales.includes(locale)) return false;
+  const normalized = normalizeLocale(locale);
+  if (!normalized) return false;
   
   try {
-    localStorage.setItem('novatools_locale', locale);
+    localStorage.setItem('novatools_locale', normalized);
     return true;
   } catch {
     return false;
@@ -78,8 +113,13 @@ export function setLocale(locale) {
  * Get translation for key
  */
 export function t(key, locale = detectLocale()) {
-  const translations = TRANSLATIONS[locale] || TRANSLATIONS[I18N_CONFIG.defaultLocale];
-  return translations[key] || key;
+  for (const candidate of fallbackChain(locale)) {
+    const translations = TRANSLATIONS[candidate];
+    if (translations && Object.prototype.hasOwnProperty.call(translations, key)) {
+      return translations[key];
+    }
+  }
+  return key;
 }
 
 /**
@@ -96,8 +136,9 @@ export function generateHreflangTags(currentPath) {
   I18N_CONFIG.locales.forEach(locale => {
     const path = currentPath;
     const params = new URLSearchParams();
-    if (locale !== I18N_CONFIG.defaultLocale) {
-      params.set('lang', locale);
+    const normalizedLocale = normalizeLocale(locale) || I18N_CONFIG.defaultLocale;
+    if (normalizedLocale !== I18N_CONFIG.defaultLocale) {
+      params.set('lang', normalizedLocale);
     }
     const query = params.toString() ? `?${params.toString()}` : '';
     
@@ -256,6 +297,7 @@ export default {
   config: I18N_CONFIG,
   detectLocale,
   setLocale,
+  normalizeLocale,
   t,
   generateHreflangTags,
   injectHreflangTags

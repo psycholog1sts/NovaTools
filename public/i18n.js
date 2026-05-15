@@ -9,6 +9,25 @@
   const SUPPORTED_LANGUAGES = ['en', 'tr', 'de', 'fr', 'es', 'pt', 'ru', 'zh', 'ja', 'ko', 'ar', 'hi', 'it', 'pl', 'nl'];
   const RTL_LANGUAGES = ['ar'];
   const DEFAULT_LANGUAGE = 'en';
+  const FALLBACK_LOCALES = {
+    'tr-TR': ['tr', 'en'],
+    'en-US': ['en', 'tr'],
+    default: ['en']
+  };
+  const LANGUAGE_ALIASES = {
+    'tr-tr': 'tr',
+    'tr_tr': 'tr',
+    'en-us': 'en',
+    'en_us': 'en',
+    'en-gb': 'en',
+    'en_gb': 'en',
+    'pt-br': 'pt',
+    'pt_br': 'pt',
+    'zh-cn': 'zh',
+    'zh_cn': 'zh',
+    'zh-tw': 'zh',
+    'zh_tw': 'zh'
+  };
 
   let currentLanguage = DEFAULT_LANGUAGE;
   const translations = {};
@@ -233,10 +252,25 @@
     return String(pathname || '/').startsWith('/') ? String(pathname || '/') : `/${pathname}`;
   }
 
+  function normalizeLanguage(value) {
+    const raw = String(value || '').trim();
+    if (!raw) return null;
+    const normalized = raw.replace(/^\/+|\/+$/g, '').replace('_', '-').toLowerCase();
+    const alias = LANGUAGE_ALIASES[normalized] || LANGUAGE_ALIASES[normalized.replace('-', '_')];
+    if (alias && SUPPORTED_LANGUAGES.includes(alias)) return alias;
+    const base = normalized.split('-')[0];
+    return SUPPORTED_LANGUAGES.includes(base) ? base : null;
+  }
+
+  function getFallbackChain(lang) {
+    const normalized = normalizeLanguage(lang) || DEFAULT_LANGUAGE;
+    const chain = FALLBACK_LOCALES[lang] || FALLBACK_LOCALES[normalized] || FALLBACK_LOCALES.default;
+    return [...new Set([normalized, ...chain.map((candidate) => normalizeLanguage(candidate)).filter(Boolean), DEFAULT_LANGUAGE])];
+  }
+
   function getRequestedLanguage() {
     const params = new URLSearchParams(window.location.search);
-    const queryLang = params.get('lang');
-    return SUPPORTED_LANGUAGES.includes(queryLang) ? queryLang : null;
+    return normalizeLanguage(params.get('lang'));
   }
 
   function localizedPath(_lang, pathname = window.location.pathname) {
@@ -246,8 +280,9 @@
   function localizedSearch(lang, search = window.location.search) {
     const params = new URLSearchParams(search || '');
     params.delete('lang');
-    if (lang !== DEFAULT_LANGUAGE) {
-      params.set('lang', lang);
+    const normalizedLang = normalizeLanguage(lang) || DEFAULT_LANGUAGE;
+    if (normalizedLang !== DEFAULT_LANGUAGE) {
+      params.set('lang', normalizedLang);
     }
     const query = params.toString();
     return query ? `?${query}` : '';
@@ -330,17 +365,15 @@
     if (requested) return requested;
 
     try {
-      const saved = localStorage.getItem('mc-novatools-language');
-      if (saved && SUPPORTED_LANGUAGES.includes(saved)) {
+      const saved = normalizeLanguage(localStorage.getItem('mc-novatools-language'));
+      if (saved) {
         return saved;
       }
     } catch {
       console.warn('localStorage not available');
     }
 
-    const browserLang = navigator.language || navigator.userLanguage || DEFAULT_LANGUAGE;
-    const langCode = String(browserLang).split('-')[0].toLowerCase();
-    return SUPPORTED_LANGUAGES.includes(langCode) ? langCode : DEFAULT_LANGUAGE;
+    return normalizeLanguage(navigator.language || navigator.userLanguage || DEFAULT_LANGUAGE) || DEFAULT_LANGUAGE;
   }
 
   function getTranslationUrl(lang) {
@@ -366,7 +399,7 @@
       translations[lang] = flattenTranslations(data);
       return translations[lang];
     } catch (error) {
-      console.error('Error loading translations:', error);
+      console.warn('i18n translation load failed; falling back safely:', error);
       translations[lang] = {};
       return translations[lang];
     }
@@ -389,13 +422,11 @@
   }
 
   function t(key, fallback = null) {
-    const translation = translations[currentLanguage];
-    if (translation && Object.prototype.hasOwnProperty.call(translation, key)) {
-      return translation[key];
-    }
-    const fallbackTranslation = translations[DEFAULT_LANGUAGE];
-    if (fallbackTranslation && Object.prototype.hasOwnProperty.call(fallbackTranslation, key)) {
-      return fallbackTranslation[key];
+    for (const lang of getFallbackChain(currentLanguage)) {
+      const translation = translations[lang];
+      if (translation && Object.prototype.hasOwnProperty.call(translation, key)) {
+        return translation[key];
+      }
     }
     return fallback !== null ? fallback : key;
   }
@@ -543,14 +574,15 @@
   }
 
   function normalizeSelectedLanguage(value) {
-    return String(value || '').replace(/^\/+|\/+$/g, '').split('/')[0];
+    return normalizeLanguage(String(value || '').replace(/^\/+|\/+$/g, '').split('/')[0]) || '';
   }
 
   function languageSwitchUrl(lang) {
     const params = new URLSearchParams(window.location.search || '');
     params.delete('lang');
-    if (lang !== DEFAULT_LANGUAGE) {
-      params.set('lang', lang);
+    const normalizedLang = normalizeLanguage(lang) || DEFAULT_LANGUAGE;
+    if (normalizedLang !== DEFAULT_LANGUAGE) {
+      params.set('lang', normalizedLang);
     }
     const query = params.toString();
     return `${stripLocalePrefix(window.location.pathname)}${query ? `?${query}` : ''}${window.location.hash || ''}`;
@@ -588,7 +620,7 @@
       selector.value = lang;
     }
 
-    await Promise.all([loadTranslations(DEFAULT_LANGUAGE), loadTranslations('tr'), loadTranslations('ar'), loadTranslations(lang)]);
+    await Promise.all(getFallbackChain(lang).map((candidate) => loadTranslations(candidate)));
     updatePageTranslations();
     refreshSiteGuide();
 
@@ -701,7 +733,7 @@
     document.body?.classList.toggle('is-rtl', RTL_LANGUAGES.includes(currentLanguage));
     applyLocaleSeo(currentLanguage);
 
-    await Promise.all([loadTranslations(DEFAULT_LANGUAGE), loadTranslations('tr'), loadTranslations('ar'), loadTranslations(currentLanguage)]);
+    await Promise.all(getFallbackChain(currentLanguage).map((candidate) => loadTranslations(candidate)));
 
     if (!setupExistingSelector()) {
       injectLanguageSelector();
@@ -911,7 +943,8 @@
     localizedPath,
     localizedSearch,
     localizedHref,
-    contentAvailability
+    contentAvailability,
+    normalizeLanguage
   };
 
   window.changeLanguage = changeLanguage;
