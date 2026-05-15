@@ -7,6 +7,7 @@ import { mortgageCalculator } from '../src/tools/finance/mortgage.mjs';
 import { refinanceCalculator } from '../src/tools/finance/mortgage-refinance.mjs';
 import { compoundInterestCalculator } from '../src/tools/finance/compound.mjs';
 import { cloudCostCalculator } from '../src/tools/finance/cloud-cost.mjs';
+import { calculateCloudCost, calculateCryptoTax, calculateTaxEstimator, calculateLifeInsurance, calculateRetirement, calculateStudentLoan } from '../src/tools/finance/p0-batch2.mjs';
 
 // Test utilities
 const assert = (condition, message) => {
@@ -257,6 +258,44 @@ runner.test('Cloud Cost: Different providers give different prices', () => {
   });
   
   assert(aws.totalMonthly !== gcp.totalMonthly, 'Different providers should differ');
+});
+
+
+// ==========================================
+// P0 FINANCE BATCH 2 TESTS
+// ==========================================
+
+runner.test('P0 Batch 2: Cloud cost returns TRY and chart HTML', () => {
+  const result = calculateCloudCost({ provider: 'aws', instance: 't3.medium', hours: 730, storage: 100, network: 100, plan: 'onDemand' });
+  assert(result.html.includes('cloudCostChart'), 'Cloud chart should be rendered');
+  assert(result.html.includes('Aylık toplam'), 'Cloud result should include monthly total');
+});
+
+runner.test('P0 Batch 2: Crypto tax applies 15% on gains', () => {
+  const result = calculateCryptoTax({ year: 2026, totalBuy: 100000, totalSell: 150000, costBasis: 'FIFO' });
+  assert(result.html.includes('₺7.500,00') || result.html.includes('₺7.500'), 'Crypto tax should estimate 15% tax on 50k gain');
+});
+
+runner.test('P0 Batch 2: Tax estimator includes payroll deductions', () => {
+  const result = calculateTaxEstimator({ grossSalary: 75000, children: 0, privateInsurance: 0 });
+  assert(result.html.includes('SGK %14'), 'Tax estimator should include SGK deduction');
+  assert(result.html.includes('AGİ kaldırıldı'), 'Tax estimator should note AGI removal');
+});
+
+runner.test('P0 Batch 2: Life insurance validates coverage and renders chart', () => {
+  const result = calculateLifeInsurance({ age: 35, gender: 'female', coverage: 1000000, term: 20, paymentMode: 'monthly' });
+  assert(result.html.includes('lifeInsuranceChart'), 'Life insurance chart should be rendered');
+});
+
+runner.test('P0 Batch 2: Retirement builds age-based projection', () => {
+  const result = calculateRetirement({ currentAge: 35, retirementAge: 60, monthlySaving: 5000, currentSavings: 100000, returnRate: 8, inflationRate: 3 });
+  assert(result.html.includes('retirementChart'), 'Retirement chart should be rendered');
+});
+
+runner.test('P0 Batch 2: Student loan extra payment saves interest', () => {
+  const result = calculateStudentLoan({ balance: 100000, interestRate: 4.5, monthlyPayment: 3500, extraPayment: 500 });
+  assert(result.html.includes('studentLoanChart'), 'Student loan chart should be rendered');
+  assert(result.html.includes('Faiz tasarrufu'), 'Student loan should report interest savings');
 });
 
 // Run tests

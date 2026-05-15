@@ -1,288 +1,36 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<script type="text/plain" data-consent-category="analytics" async src="https://www.googletagmanager.com/gtag/js?id=G-Y896L63239"></script>
-<script type="text/plain" data-consent-category="analytics">
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-Y896L63239', {
-    anonymize_ip: true,
-    cookie_expires: 63072000,
-    cookie_update: true
-  });
-</script>
   <meta charset="UTF-8">
   <script>(function(){var t=localStorage.getItem('novatools-theme');if(t)document.documentElement.setAttribute('data-theme',t);else{var d=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',d);document.documentElement.style.colorScheme=d;}})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Favicon - Required by Google Search -->
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="/src/styles/critical.css">
   <link rel="stylesheet" href="/src/styles/main.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <title data-i18n="tools.finance.tax.meta.title">Free Tax Calculator - Estimate Federal Tax (2024 Brackets)</title>
-  
-  <!-- i18n Script -->
+  <title>Tax Estimator Turkey 2026 | NovaTools</title>
   <script src="/i18n.js"></script>
-  <meta name="description" content="Free online tax calculator. Estimate federal income tax using 2024 bracket logic with filing status, deductions, and credits. Instant estimate, no signup.">
-  <meta name="keywords" content="free tax calculator, federal tax calculator, tax estimate 2024 brackets, income tax estimator, free tax estimator">
+  <meta name="description" content="Türkiye 2026 ücret gelir vergisi, SGK, işsizlik, damga vergisi ve işveren maliyeti için net maaş tahmini.">
   <meta name="theme-color" content="#0A0A0C">
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Free Tax Calculator - Estimate Federal Tax (2024 Brackets)">
-  <meta property="og:description" content="Free online tax calculator. Estimate federal tax using 2024 bracket logic. No signup required.">
+  <link rel="canonical" href="https://mc-novatools.com/finance/tax/">
+  <meta property="og:title" content="Tax Estimator Turkey 2026 | NovaTools">
+  <meta property="og:description" content="Türkiye 2026 ücret gelir vergisi, SGK, işsizlik, damga vergisi ve işveren maliyeti için net maaş tahmini.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://mc-novatools.com/finance/tax/">
   <meta property="og:image" content="https://www.mc-novatools.com/og-image.png">
-
-  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Free Tax Calculator - Federal Tax Estimate | NovaTools">
-  <meta name="twitter:description" content="Estimate federal tax with 2024 bracket logic based on income, deductions, and filing status.">
-
-  <!-- Canonical -->
-  <link rel="canonical" href="https://mc-novatools.com/finance/tax/">
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [{
-      "@type": "WebApplication",
-      "name": "Free Tax Calculator",
-      "description": "Free online tax calculator. Estimate federal income tax liability using 2024 bracket logic based on income, deductions, and filing status.",
-      "url": "https://mc-novatools.com/finance/tax/",
-      "applicationCategory": "FinanceApplication",
-      "operatingSystem": "Any",
-      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
-    }]
-  }
-  </script>
-  <style>
-    .calculator-form { background: var(--surface-default); border: 1px solid var(--border-default); border-radius: var(--radius-lg); padding: 2rem; margin: 2rem 0; }
-    .form-group { margin-bottom: 1.5rem; }
-    .form-group label { display: block; font-size: 0.9375rem; font-weight: 500; color: var(--text-secondary); margin-bottom: 0.5rem; }
-    .form-group input, .form-group select { width: 100%; height: 48px; padding: 0 1rem; background: var(--bg-tertiary); border: 1px solid var(--border-default); border-radius: var(--radius-md); color: var(--text-primary); font-size: 1rem; }
-    .form-group input:focus, .form-group select:focus { outline: none; border-color: var(--accent-primary); box-shadow: 0 0 0 3px var(--accent-glow); }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    @media (max-width: 640px) { .form-row { grid-template-columns: 1fr; } }
-    .results-panel { background: linear-gradient(135deg, var(--accent-subtle), rgba(139, 92, 246, 0.05)); border: 1px solid var(--accent-glow); border-radius: var(--radius-lg); padding: 2rem; margin-top: 2rem; display: none; }
-    .results-panel.visible { display: block; animation: fadeIn 0.3s ease; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-  </style>
+  <meta name="twitter:title" content="Tax Estimator Turkey 2026 | NovaTools">
+  <meta name="twitter:description" content="Türkiye 2026 ücret gelir vergisi, SGK, işsizlik, damga vergisi ve işveren maliyeti için net maaş tahmini.">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Tax Estimator","description":"Türkiye 2026 ücret gelir vergisi, SGK, işsizlik, damga vergisi ve işveren maliyeti için net maaş tahmini.","url":"https://mc-novatools.com/finance/tax/","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"TRY"}}</script>
+  <style>.tool-wrapper{max-width:1080px;margin:0 auto;padding:3rem 1rem 5rem}.tool-hero{text-align:center;margin-bottom:2rem}.tool-hero-icon{font-size:3.2rem;margin-bottom:1rem}.tool-hero h1{font-size:clamp(1.9rem,4vw,2.8rem);margin:.2rem 0;color:var(--text-primary,#fafafa)}.tool-hero p{max-width:740px;margin:0 auto;color:var(--text-secondary,#a1a1aa);line-height:1.7}.workflow-card{background:rgba(15,15,20,.72);border:1px solid rgba(0,217,255,.16);border-radius:18px;padding:1.5rem;box-shadow:0 22px 70px rgba(0,0,0,.24)}.form-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1rem;align-items:end}.form-grid label{display:block;color:var(--text-secondary,#cbd5e1);font-weight:600}.form-grid input,.form-grid select{width:100%;box-sizing:border-box;background:var(--bg-tertiary,#0f0f12);border:1px solid rgba(0,217,255,.22);border-radius:10px;color:var(--text-primary,#fafafa);padding:.9rem 1rem;margin:.4rem 0 0;font:inherit}.btn{display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:999px;background:linear-gradient(135deg,#00d9ff,#00ff88);color:#050507;font-weight:800;padding:.8rem 1.2rem;cursor:pointer;margin-top:1rem}.btn-secondary{background:rgba(255,255,255,.08);color:var(--text-primary,#fafafa);border:1px solid rgba(255,255,255,.15)}.status{margin:1rem 0;color:#a1a1aa}.status[data-type='success']{color:#00ff88}.status[data-type='error'],.form-error{color:#ff6b6b}.status[data-type='warning']{color:#ffc107}.results-panel{background:linear-gradient(135deg,rgba(0,217,255,.08),rgba(139,92,246,.05));border:1px solid rgba(0,217,255,.2);border-radius:18px;padding:1.5rem;margin-top:1.5rem;display:none}.results-panel.visible{display:block}.result-grid,.crypto-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1rem;margin:1rem 0}.result-item{padding:1rem;border:1px solid rgba(255,255,255,.1);border-radius:14px;background:rgba(255,255,255,.04);overflow-wrap:anywhere}.result-item.highlight{border-color:#22c55e;background:rgba(34,197,94,.08)}.result-value{font-size:clamp(1.15rem,4vw,1.65rem);font-weight:800;color:#22c55e}.result-label{font-size:.875rem;color:var(--text-tertiary,#94a3b8);margin-top:.35rem}.chart-container{margin-top:1.5rem;padding:1rem;border:1px solid rgba(255,255,255,.1);border-radius:14px;background:rgba(255,255,255,.035)}.chart-container canvas{width:100%;max-width:100%;height:auto;border:1px solid rgba(255,255,255,.08);border-radius:10px;background:rgba(0,0,0,.15)}.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:1rem}.table-wrap table{width:100%;min-width:640px;border-collapse:collapse}.table-wrap th,.table-wrap td{padding:.7rem;text-align:right;white-space:nowrap;border-bottom:1px solid rgba(255,255,255,.1)}.table-wrap th:first-child,.table-wrap td:first-child{text-align:left}.finance-note,.seo-section{color:var(--text-secondary,#a1a1aa);line-height:1.7}.seo-section{max-width:980px;margin:2rem auto 0}.seo-section h2,.seo-section h3{color:var(--text-primary,#fafafa)}.tool-footer{margin-top:3rem;padding:1.5rem 1rem;border-top:1px solid var(--border-default,rgba(255,255,255,.12));text-align:center;color:#718096;font-size:.85rem;line-height:1.8}.tool-footer a{color:#00d9ff;text-decoration:none}@media(max-width:640px){.tool-wrapper{padding:2rem .75rem 4rem}.workflow-card,.results-panel,.chart-container{padding:1rem}.form-grid,.result-grid,.crypto-grid{grid-template-columns:1fr}.btn{width:100%}}</style>
 </head>
-<body>
-  <div class="bg-ambient" aria-hidden="true"></div>
-  <div class="noise-overlay" aria-hidden="true"></div>
+<body data-finance-tool="tax">
+  <div class="bg-ambient" aria-hidden="true"></div><div class="noise-overlay" aria-hidden="true"></div>
   <div id="app" class="app">
-        <header class="main-header">
-      <div class="container">
-        <div class="header-inner">
-          <a href="/" class="logo" aria-label="NovaTools MC Home">
-            <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
-            <span class="logo-text">NovaTools <span class="logo-mc" data-i18n="tools.finance.tax.text.001">MC</span></span>
-          </a>
-          <nav class="nav-desktop" aria-label="Main navigation">
-            <a href="/#finance" class="nav-link" data-i18n="tools.finance.tax.text.002">Finance</a>
-            <a href="/#pdf" class="nav-link" data-i18n="tools.finance.tax.text.003">PDF Tools</a>
-            <a href="/#image" class="nav-link" data-i18n="tools.finance.tax.text.004">Images</a>
-            <a href="/#dev" class="nav-link" data-i18n="tools.finance.tax.text.005">Developers</a>
-          </nav>
-          <div class="privacy-badge" title="Your data never leaves your browser" data-i18n-title="tools.finance.tax.title.001">
-            <span class="privacy-badge-dot"></span>
-            <span data-i18n="tools.finance.tax.text.006">Privacy First</span>
-          </div>
-          <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
-            <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-            <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-          </button>
-          <button type="button" id="mobileMenuBtn" class="menu-btn" aria-label="Toggle menu" aria-expanded="false">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-          </button>
-        </div>
-        <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
-          <a href="/#finance" class="mobile-nav-link" data-i18n="tools.finance.tax.text.007">Finance Tools</a>
-          <a href="/#pdf" class="mobile-nav-link" data-i18n="tools.finance.tax.text.008">PDF Tools</a>
-          <a href="/#image" class="mobile-nav-link" data-i18n="tools.finance.tax.text.009">Image Tools</a>
-          <a href="/#dev" class="mobile-nav-link" data-i18n="tools.finance.tax.text.010">Developer Tools</a>
-        </nav>
-      </div>
-    </header>
-<main class="main-content">
-      <div class="container" style="padding: 4rem 1rem;">
-        <div style="max-width: 800px; margin: 0 auto;">
-          <h1 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; text-align: center;" data-i18n="tools.finance.tax.text.011">Tax Estimator</h1>
-          <span class="sr-only" data-i18n="tools.finance.tax.text.012">Free tax calculator — federal income tax estimator using 2024 bracket logic. Calculate estimated liability based on income, deductions, and filing status.</span>
-          <p style="color: var(--text-secondary); text-align: center; margin-bottom: 2rem;" data-i18n="tools.finance.tax.text.013">Estimate your tax liability based on income, deductions, and filing status.</p>
-          <div class="calculator-form">
-            <div class="form-row">
-              <div class="form-group"><label data-i18n="tools.finance.tax.text.014">Filing Status</label><select id="filingStatus"><option value="single">Single</option><option value="married">Married Filing Jointly</option><option value="head">Head of Household</option></select></div>
-              <div class="form-group"><label data-i18n="tools.finance.tax.text.015">Gross Income ($)</label><input type="number" id="grossIncome" placeholder="75000" min="0"></div>
-            </div>
-            <div class="form-row">
-              <div class="form-group"><label>Itemized Deductions ($) <span style="font-size:0.8em;color:var(--text-muted,#888)" data-i18n="tools.finance.tax.text.016">(leave 0 to use standard deduction)</span></label><input type="number" id="deductions" placeholder="0" min="0" value="0"></div>
-              <div class="form-group"><label data-i18n="tools.finance.tax.text.017">Tax Credits ($)</label><input type="number" id="taxCredits" placeholder="0" min="0"></div>
-            </div>
-            <button type="button" id="calcBtn" class="btn btn-primary" style="width: 100%; margin-top: 1rem; height: 52px;" data-i18n="tools.finance.tax.text.018">Calculate Tax Estimate</button>
-          </div>
-          
-          <!-- In-Tool Rectangle Ad (300x250) -->
-          <div class="ad-in-tool" role="complementary" aria-label="Advertisement" style="margin: 2rem auto; text-align: center;">
-            <div style="font-size: 0.6875rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 0.5rem;">Sponsored</div>
-            <div style="display: inline-flex; background: var(--surface-default); border: 1px solid var(--border-default); border-radius: 12px; padding: 0.75rem;">
-              <div class="ad-slot-disabled" data-ad-disabled="missing-ad-slot" aria-hidden="true"></div>
-            </div>
-          </div>
-          
-          <div id="results" class="results-panel">
-            <h2 style="text-align: center; margin-bottom: 1.5rem;" data-i18n="tools.finance.tax.text.019">Tax Estimate</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
-              <div style="text-align: center; padding: 1.5rem; background: var(--surface-default); border-radius: var(--radius-md);">
-                <div id="taxableIncome" style="font-size: 1.5rem; font-weight: 700; color: var(--text-primary);">$0</div>
-                <div style="font-size: 0.875rem; color: var(--text-tertiary);">Taxable Income</div>
-              </div>
-              <div style="text-align: center; padding: 1.5rem; background: var(--surface-default); border-radius: var(--radius-md);">
-                <div id="taxLiability" style="font-size: 1.5rem; font-weight: 700; color: var(--accent-hover);">$0</div>
-                <div style="font-size: 0.875rem; color: var(--text-tertiary);">Estimated Tax</div>
-              </div>
-              <div style="text-align: center; padding: 1.5rem; background: var(--surface-default); border-radius: var(--radius-md);">
-                <div id="effectiveRate" style="font-size: 1.5rem; font-weight: 700; color: var(--accent-hover);">0%</div>
-                <div style="font-size: 0.875rem; color: var(--text-tertiary);">Effective Rate</div>
-              </div>
-            </div>
-            <div style="margin-top:1.5rem; padding:0.75rem 1rem; background:rgba(255,255,255,0.04); border:1px solid var(--border-default); border-radius:8px; font-size:0.8125rem; color:var(--text-muted, #888);">
-              <strong>Disclaimer:</strong> This tool provides estimates only, not financial or professional advice. Federal brackets only — state taxes, FICA, AMT, and other factors are not included. Consult a tax professional for your actual tax liability.
-            </div>
-          </div>
-
-          <article style="margin-top: 2rem; padding: 1.5rem; border: 1px solid var(--border-default); border-radius: var(--radius-lg); background: rgba(255,255,255,0.02);">
-            <h2 style="margin-top: 0;">Bu araç ne işe yarar?</h2>
-            <p style="color: var(--text-secondary); line-height: 1.75;">Bu hesaplayıcı, gelir, beyan türü, indirim ve vergi kredisi girdilerine göre yaklaşık federal vergi yükünü hızlıca görmenizi sağlar. Nihai beyan yerine ön planlama için tasarlanmıştır.</p>
-
-            <h3>Nasıl kullanılır?</h3>
-            <ol style="color: var(--text-secondary); line-height: 1.8;">
-              <li>Beyan türünüzü seçin (single, married filing jointly, head of household).</li>
-              <li>Brüt gelir, varsa itemized deduction ve vergi kredisi tutarlarını girin.</li>
-              <li><strong>Calculate Tax Estimate</strong> butonuna basın ve tahmini vergi/efektif oranı inceleyin.</li>
-            </ol>
-
-            <h3>Kimler için uygundur?</h3>
-            <p style="color: var(--text-secondary); line-height: 1.75;">Maaşlı çalışanlar, serbest çalışanlar ve yıllık gelir planlaması yapan bireyler için uygundur. Muhasebe uzmanı yerine geçmez ancak senaryo karşılaştırması için hızlıdır.</p>
-
-            <h3>Benzer araçlardan farkı</h3>
-            <p style="color: var(--text-secondary); line-height: 1.75;">Bu sayfa, kullanılan yaklaşımı açıkça belirtir (2024 federal bracket logic) ve sonuç panelinde tahmin niteliğini görünür şekilde sunar. Böylece kullanıcı hangi kapsamı hesapladığını net biçimde görür.</p>
-
-            <h3>Sık sorulan sorular</h3>
-            <details style="margin-bottom: 0.75rem;">
-              <summary>Bu sonuç resmi vergi beyanı yerine geçer mi?</summary>
-              <p style="color: var(--text-secondary);">Hayır. Bu araç yalnızca tahmin üretir. Gerçek yükümlülük için güncel mevzuat ve profesyonel destek gerekir.</p>
-            </details>
-            <details>
-              <summary>State tax veya FICA hesaplanıyor mu?</summary>
-              <p style="color: var(--text-secondary);">Hayır. Araç federal bracket tabanlı yaklaşık hesap üretir; state tax, FICA ve özel durumlar dahil değildir.</p>
-            </details>
-          </article>
-        </div>
-      </div>
-        <section class="trust-help novatools-tool-reading-path" aria-labelledby="toolReadingPathTitle">
-          <h2 id="toolReadingPathTitle">Recommended next reading</h2>
-          <p>Use these practical guides to understand when this tool is the right choice, what to check before exporting, and which workflow usually comes next.</p>
-          <div class="related-tools-grid"><a class="related-tool-link" href="/blog/articles/monthly-finance-document-routine.html">Finance document routine</a><a class="related-tool-link" href="/blog/articles/compare-loan-options-with-clear-assumptions.html">Loan comparison assumptions</a></div>
-        </section>
-    </main>
-    <footer class="tool-footer">
-  <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="mailto:psk.dan.metehancetin@mc-novatools.com" data-i18n="tools.finance.tax.text.020">psk.dan.metehancetin@mc-novatools.com</a></p>
-  <p data-i18n="tools.finance.tax.text.021">Estimates only &mdash; not financial, legal, or tax advice.</p>
-  <p><a href="/about-us.html">About</a> · <a href="/iletisim.html">Contact</a> · <a href="/gizlilik-politikasi.html">Privacy Policy</a> · <a href="/kullanim-kosullari.html">Terms</a></p>
-</footer>
-<style>
-.tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }
-.tool-footer a { color: #00D9FF; text-decoration: none; }
-</style>
+    <header class="app-header"><div class="container"><div class="header-inner"><a href="/" class="logo"><span class="logo-icon"><img src="/logo-brand-260.webp" alt="MC NovaTools Logo" width="36" height="36"></span><span class="logo-text">MC NovaTools</span></a><nav class="main-nav" aria-label="Main navigation"><a href="/categories/index.html" class="nav-link">Categories</a><a href="/categories/finance-tools.html" class="nav-link">Finance</a><a href="/categories/security-tools.html" class="nav-link">Security</a></nav><button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">◐</button></div></div></header>
+    <main class="main-content"><div class="tool-wrapper"><section class="tool-hero"><div class="tool-hero-icon">💼</div><h1>Tax Estimator</h1><p>Brüt maaştan 2026 ücret gelir vergisi, SGK, işsizlik, damga vergisi, net maaş ve işveren maliyeti hesaplayın.</p></section><section class="workflow-card" aria-label="Tax Estimator workflow"><form id="financeToolForm"></form><p id="toolStatus" class="status" data-type="info">Hazır.</p><div class="results-panel" aria-live="polite"></div><p class="finance-note">Tüm hesaplamalar tarayıcıda yapılır; hassas finansal girdiler sunucuya gönderilmez. Canlı veri kullanılan araçlarda yalnızca sembol/kur isteği NovaTools proxy üzerinden yapılır.</p></section><section class="seo-section"><h2>Tax Estimator nasıl çalışır?</h2><p>Brüt maaştan 2026 ücret gelir vergisi, SGK, işsizlik, damga vergisi, net maaş ve işveren maliyeti hesaplayın.</p><h3>Yasal ve veri notu</h3><p>Maaş hesaplamaları tahminidir, kesin bilgi için mali müşavire danışın.</p></section></div></main>
+    <footer class="tool-footer"><p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="mailto:psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p><p>⚠️ Yasal Uyarı: Bu hesaplamalar tahmini değerlerdir. Kesin bilgi için yetkili bir kuruma danışın.</p><p>Maaş hesaplamaları tahminidir, kesin bilgi için mali müşavire danışın.</p></footer>
   </div>
-  <script>
-    document.getElementById('calcBtn').addEventListener('click', function() {
-      const income = parseFloat(document.getElementById('grossIncome').value) || 0;
-      const itemizedDeductions = parseFloat(document.getElementById('deductions').value) || 0;
-      const credits = parseFloat(document.getElementById('taxCredits').value) || 0;
-      const filingStatus = document.getElementById('filingStatus').value;
-
-      // 2024 Standard deductions
-      const standardDeductions = { single: 14600, married: 29200, head: 21900 };
-      const standardDeduction = standardDeductions[filingStatus] || 14600;
-
-      // Use greater of standard or itemized deduction
-      const deduction = Math.max(standardDeduction, itemizedDeductions);
-      const taxableIncome = Math.max(0, income - deduction);
-
-      // 2024 US Federal tax brackets
-      let tax = 0;
-      const brackets = filingStatus === 'married' ?
-        [[23200, 0.1], [94300, 0.12], [201050, 0.22], [383900, 0.24], [487450, 0.32], [731200, 0.35], [Infinity, 0.37]] :
-        filingStatus === 'head' ?
-        [[16550, 0.1], [63100, 0.12], [100500, 0.22], [191950, 0.24], [243700, 0.32], [609350, 0.35], [Infinity, 0.37]] :
-        [[11600, 0.1], [47150, 0.12], [100525, 0.22], [191950, 0.24], [243725, 0.32], [609350, 0.35], [Infinity, 0.37]];
-
-      let remaining = taxableIncome;
-      let previous = 0;
-      for (const [limit, rate] of brackets) {
-        if (remaining <= 0) break;
-        const taxableAtRate = Math.min(remaining, limit - previous);
-        tax += taxableAtRate * rate;
-        remaining -= taxableAtRate;
-        previous = limit;
-      }
-
-      const finalTax = Math.max(0, tax - credits);
-      const effectiveRate = income > 0 ? ((finalTax / income) * 100).toFixed(1) : 0;
-
-      const formatCurrency = (num) => '$' + num.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-
-      document.getElementById('taxableIncome').textContent = formatCurrency(taxableIncome);
-      document.getElementById('taxLiability').textContent = formatCurrency(finalTax);
-      document.getElementById('effectiveRate').textContent = effectiveRate + '%';
-      document.getElementById('results').classList.add('visible');
-    });
-  </script>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  var menuBtn = document.getElementById('mobileMenuBtn');
-  var mobileMenu = document.getElementById('mobileMenu');
-  if (menuBtn && mobileMenu) {
-    menuBtn.addEventListener('click', function() {
-      var isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
-      menuBtn.setAttribute('aria-expanded', !isExpanded);
-      mobileMenu.hidden = isExpanded;
-      mobileMenu.classList.toggle('active', !isExpanded);
-    });
-  }
-  var themeBtn = document.getElementById('themeToggle');
-  if (themeBtn) {
-    function getTheme() {
-      var s = localStorage.getItem('theme');
-      if (s) return s;
-      return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-    }
-    function updateIcon() {
-      var t = getTheme();
-      themeBtn.querySelector('.icon-sun').style.display = t === 'light' ? 'none' : 'block';
-      themeBtn.querySelector('.icon-moon').style.display = t === 'dark' ? 'none' : 'block';
-    }
-    themeBtn.addEventListener('click', function() {
-      var next = getTheme() === 'dark' ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', next);
-      localStorage.setItem('theme', next);
-      updateIcon();
-    });
-    updateIcon();
-  }
-});
-</script>
+  <script type="module" src="/src/theme-toggle.mjs"></script>
+  <script type="module" src="../p0-batch2.mjs"></script>
 </body>
 </html>

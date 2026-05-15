@@ -14,10 +14,36 @@ async function fetchJson(url) {
   return response.json();
 }
 
+function readTcmbCurrency(xml, code) {
+  const marker = `CurrencyCode="${code}"`;
+  const start = xml.indexOf(marker);
+  if (start === -1) return null;
+  const finish = xml.indexOf('</Currency>', start);
+  if (finish === -1) return null;
+  const block = xml.slice(start, finish);
+  const forexSelling = block.match(/<ForexSelling>([^<]+)<\/ForexSelling>/)?.[1];
+  const forexBuying = block.match(/<ForexBuying>([^<]+)<\/ForexBuying>/)?.[1];
+  const value = Number.parseFloat(forexSelling || forexBuying || '');
+  return Number.isFinite(value) ? value : null;
+}
+
+async function fetchText(url) {
+  const response = await fetch(url, { headers: { accept: 'application/xml,text/xml,*/*', 'user-agent': 'NovaTools/1.0' } });
+  if (!response.ok) throw new Error(`Upstream returned ${response.status}`);
+  return response.text();
+}
+
 async function exchange(searchParams) {
   const base = (searchParams.get('base') || 'USD').toUpperCase().replace(/[^A-Z]/g, '').slice(0, 3) || 'USD';
-  const data = await fetchJson(`https://api.frankfurter.app/latest?from=${base}`);
-  return { resource: 'exchange', base: data.base, date: data.date, rates: data.rates, provider: 'frankfurter.app' };
+  const xml = await fetchText('https://www.tcmb.gov.tr/kurlar/today.xml');
+  const usdTry = readTcmbCurrency(xml, 'USD');
+  const eurTry = readTcmbCurrency(xml, 'EUR');
+  if (!usdTry || !eurTry) throw new Error('TCMB rates are temporarily unavailable.');
+  const tryRates = { TRY: 1, USD: 1 / usdTry, EUR: 1 / eurTry };
+  const usdRates = { TRY: usdTry, USD: 1, EUR: usdTry / eurTry };
+  const eurRates = { TRY: eurTry, USD: eurTry / usdTry, EUR: 1 };
+  const table = { TRY: tryRates, USD: usdRates, EUR: eurRates };
+  return { resource: 'exchange', base, date: new Date().toISOString().slice(0, 10), rates: table[base] || usdRates, provider: 'tcmb.gov.tr' };
 }
 
 async function crypto(searchParams) {
@@ -26,7 +52,7 @@ async function crypto(searchParams) {
     .filter(Boolean)
     .slice(0, 12)
     .join(',');
-  const data = await fetchJson(`https://api.coingecko.com/api/v3/simple/price?ids=${ids}&vs_currencies=usd&include_24hr_change=true&include_last_updated_at=true`);
+  const data = await fetchJson(`https://api.coingecko.com/api/v3/simple/price?ids=${ids}&vs_currencies=usd&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true&include_last_updated_at=true`);
   return { resource: 'crypto', coins: data, provider: 'coingecko.com' };
 }
 
@@ -47,8 +73,11 @@ async function stocks(searchParams) {
   if (!result) throw new Error('Stock symbol was not found.');
   const quote = result.indicators?.quote?.[0] || {};
   const meta = result.meta || {};
-  const lastClose = [...(quote.close || [])].reverse().find((value) => Number.isFinite(value));
-  return { resource: 'stocks', symbol, meta, lastClose, currency: meta.currency, provider: 'finance.yahoo.com' };
+  const closes = (quote.close || []).filter((value) => Number.isFinite(value));
+  const volumes = (quote.volume || []).filter((value) => Number.isFinite(value));
+  const lastClose = [...closes].reverse().find((value) => Number.isFinite(value));
+  const lastVolume = [...volumes].reverse().find((value) => Number.isFinite(value));
+  return { resource: 'stocks', symbol, meta: { ...meta, regularMarketVolume: meta.regularMarketVolume || lastVolume }, closes, lastClose, currency: meta.currency, provider: 'finance.yahoo.com' };
 }
 
 const handlers = { exchange, crypto, weather, stocks };
