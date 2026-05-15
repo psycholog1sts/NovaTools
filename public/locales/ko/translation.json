@@ -18,7 +18,7 @@
   },
   "hero": {
     "title": "파일, 금융 및 코드를 위한 올인원 도구",
-    "subtitle": "Use MC NovaTools to convert, calculate, create, and streamline practical workflows with a fast, clear, browser-based toolkit.",
+    "subtitle": "MC NovaTools로 빠르고 명확한 브라우저 기반 도구 모음을 사용해 변환, 계산, 생성 및 실용적인 워크플로를 간소화하세요.",
     "cta": "도구 탐색",
     "browse": "카테고리 탐색",
     "freeTools": "묣 도구",
@@ -223,6 +223,41 @@
         "pdf": "PDF",
         "guide": "가이드",
         "category": "카테고리"
+      }
+    },
+    "workflows": {
+      "eyebrow": "워크플로",
+      "title": "메뉴가 아니라 작업에서 시작하세요",
+      "description": "도구, 체크리스트, 다음 유용한 단계를 연결하는 안내형 진입점을 사용하세요.",
+      "chooseLink": "선택 방법 →",
+      "label": "안내형 워크플로",
+      "steps": {
+        "tool": "도구",
+        "guide": "가이드",
+        "browse": "찾아보기"
+      },
+      "cards": {
+        "pdfEmail": {
+          "title": "이메일용 PDF 준비",
+          "description": "파일을 압축하고 가독성을 확인한 다음 보내기 전에 PDF 체크리스트를 사용하세요.",
+          "tool": "PDF 압축",
+          "guide": "PDF 이메일 체크리스트",
+          "category": "PDF 도구"
+        },
+        "developerData": {
+          "title": "개발자 데이터 정리",
+          "description": "JSON을 형식화하고 텍스트 변경 사항을 비교하며 공유 가능한 스니펫을 읽기 쉽게 유지하세요.",
+          "tool": "JSON 포매터",
+          "guide": "디버깅 도구 체인",
+          "category": "개발자 도구"
+        },
+        "lighterImages": {
+          "title": "더 가벼운 이미지 게시",
+          "description": "사이트나 이메일에 이미지를 업로드하기 전에 크기를 조정하고 압축하며 파일 이름을 검토하세요.",
+          "tool": "이미지 압축기",
+          "guide": "이미지 품질 체크리스트",
+          "category": "이미지 도구"
+        }
       }
     }
   },

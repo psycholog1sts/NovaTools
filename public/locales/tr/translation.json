@@ -18,7 +18,7 @@
   },
   "hero": {
     "title": "Dosyalar, Finans ve Kod için Her Şey Dahil Araçlar",
-    "subtitle": "MC NovaTools’u hızlı, anlaşılır ve tarayıcı tabanlı bir araç setiyle dönüştürmek, hesaplamak, oluşturmak ve pratik iş akışlarını kolaylaştırmak için kullanın.",
+    "subtitle": "MC NovaTools’u hızlı, anlaşılır ve tarayıcı tabanlı bir araç setiyle pratik iş akışlarını dönüştürmek, hesaplamak ve oluşturmak için kullanın.",
     "cta": "Araçları Keşfet",
     "browse": "Kategorileri Görüntüle",
     "freeTools": "Ücretsiz Araçlar",
@@ -5884,7 +5884,7 @@
       "viewAll": "Tüm yazıları görüntüle →"
     },
     "hero": {
-      "description": "MC NovaTools’u hızlı, anlaşılır ve tarayıcı tabanlı bir araç setiyle dönüştürmek, hesaplamak, oluşturmak ve pratik iş akışlarını kolaylaştırmak için kullanın."
+      "description": "MC NovaTools’u hızlı, anlaşılır ve tarayıcı tabanlı bir araç setiyle pratik iş akışlarını dönüştürmek, hesaplamak ve oluşturmak için kullanın."
     },
     "launcher": {
       "title": "İş akışı başlatıcı",
@@ -5898,6 +5898,41 @@
         "pdf": "PDF",
         "guide": "Rehber",
         "category": "Kategori"
+      }
+    },
+    "workflows": {
+      "eyebrow": "İş akışları",
+      "title": "Menüyle değil, görevle başlayın",
+      "description": "Bir aracı, kontrol listesini ve bir sonraki faydalı adımı birleştiren yönlendirmeli giriş noktalarını kullanın.",
+      "chooseLink": "Nasıl seçilir →",
+      "label": "Yönlendirmeli iş akışı",
+      "steps": {
+        "tool": "Araç",
+        "guide": "Rehber",
+        "browse": "Göz at"
+      },
+      "cards": {
+        "pdfEmail": {
+          "title": "E-posta için PDF hazırlayın",
+          "description": "Dosyayı sıkıştırın, okunabilirliği doğrulayın ve göndermeden önce PDF kontrol listesini kullanın.",
+          "tool": "PDF sıkıştır",
+          "guide": "PDF e-posta kontrol listesi",
+          "category": "PDF araçları"
+        },
+        "developerData": {
+          "title": "Geliştirici verilerini temizleyin",
+          "description": "JSON’u biçimlendirin, metin değişikliklerini karşılaştırın ve paylaşılabilir kod parçalarını okunur tutun.",
+          "tool": "JSON biçimlendirici",
+          "guide": "Hata ayıklama araç zinciri",
+          "category": "Geliştirici araçları"
+        },
+        "lighterImages": {
+          "title": "Daha hafif görseller yayınlayın",
+          "description": "Görselleri siteye veya e-postaya yüklemeden önce yeniden boyutlandırın, sıkıştırın ve dosya adlarını gözden geçirin.",
+          "tool": "Görsel sıkıştırıcı",
+          "guide": "Görsel kalite kontrol listesi",
+          "category": "Görsel araçları"
+        }
       }
     }
   },

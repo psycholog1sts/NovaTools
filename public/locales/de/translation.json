@@ -18,7 +18,7 @@
   },
   "hero": {
     "title": "All-in-One Tools für Dateien, Finanzen & Code",
-    "subtitle": "Use MC NovaTools to convert, calculate, create, and streamline practical workflows with a fast, clear, browser-based toolkit.",
+    "subtitle": "Nutzen Sie MC NovaTools, um mit einem schnellen, klaren, browserbasierten Toolkit praktische Workflows zu konvertieren, zu berechnen, zu erstellen und zu vereinfachen.",
     "cta": "Tools Entdecken",
     "browse": "Kategorien Durchsuchen",
     "freeTools": "Kostenlose Tools",
@@ -223,6 +223,41 @@
         "pdf": "PDF",
         "guide": "Leitfaden",
         "category": "Kategorie"
+      }
+    },
+    "workflows": {
+      "eyebrow": "Workflows",
+      "title": "Mit einer Aufgabe starten, nicht mit einem Menü",
+      "description": "Nutzen Sie geführte Einstiegspunkte, die ein Tool, eine Checkliste und den nächsten sinnvollen Schritt verbinden.",
+      "chooseLink": "So wählen Sie aus →",
+      "label": "Geführter Workflow",
+      "steps": {
+        "tool": "Tool",
+        "guide": "Leitfaden",
+        "browse": "Durchsuchen"
+      },
+      "cards": {
+        "pdfEmail": {
+          "title": "PDF für E-Mail vorbereiten",
+          "description": "Komprimieren Sie die Datei, prüfen Sie die Lesbarkeit und nutzen Sie vor dem Senden die PDF-Checkliste.",
+          "tool": "PDF komprimieren",
+          "guide": "PDF-E-Mail-Checkliste",
+          "category": "PDF-Tools"
+        },
+        "developerData": {
+          "title": "Entwicklerdaten bereinigen",
+          "description": "Formatieren Sie JSON, vergleichen Sie Textänderungen und halten Sie teilbare Snippets lesbar.",
+          "tool": "JSON-Formatter",
+          "guide": "Debugging-Toolkette",
+          "category": "Entwickler-Tools"
+        },
+        "lighterImages": {
+          "title": "Leichtere Bilder veröffentlichen",
+          "description": "Ändern Sie Größe, komprimieren Sie und prüfen Sie Dateinamen vor dem Hochladen auf eine Website oder in eine E-Mail.",
+          "tool": "Bildkompressor",
+          "guide": "Checkliste für Bildqualität",
+          "category": "Bild-Tools"
+        }
       }
     }
   },

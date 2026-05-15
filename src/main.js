@@ -240,6 +240,7 @@ const blogPosts = [
 
 const workflowCards = [
   {
+    key: 'pdfEmail',
     title: 'Prepare a PDF for email',
     description: 'Compress the file, confirm readability, then use the PDF checklist before sending.',
     tool: ['Compress PDF', 'pdf/compress'],
@@ -247,6 +248,7 @@ const workflowCards = [
     category: ['PDF tools', '/categories/pdf-tools.html']
   },
   {
+    key: 'developerData',
     title: 'Clean developer data',
     description: 'Format JSON, compare text changes and keep shareable snippets readable.',
     tool: ['JSON Formatter', 'dev/json-formatter'],
@@ -254,6 +256,7 @@ const workflowCards = [
     category: ['Developer tools', '/categories/developer-tools.html']
   },
   {
+    key: 'lighterImages',
     title: 'Publish lighter images',
     description: 'Resize, compress and review file names before uploading images to a site or email.',
     tool: ['Image Compressor', 'image/compress'],
@@ -351,18 +354,27 @@ function renderWorkflowCards() {
   const container = document.getElementById('workflowCards');
   if (!container) return;
 
-  container.innerHTML = workflowCards.map((workflow) => `
-    <article class="workflow-card">
-      <span class="workflow-card__label">Guided workflow</span>
-      <h3>${workflow.title}</h3>
-      <p>${workflow.description}</p>
-      <div class="workflow-card__steps">
-        <a href="${getToolHref(workflow.tool[1])}"><strong>Tool</strong>${workflow.tool[0]}</a>
-        <a href="${workflow.guide[1]}"><strong>Guide</strong>${workflow.guide[0]}</a>
-        <a href="${workflow.category[1]}"><strong>Browse</strong>${workflow.category[0]}</a>
-      </div>
-    </article>
-  `).join('');
+  container.innerHTML = workflowCards.map((workflow) => {
+    const baseKey = `home.workflows.cards.${workflow.key}`;
+    const title = t(`${baseKey}.title`, workflow.title);
+    const description = t(`${baseKey}.description`, workflow.description);
+    const toolLabel = t(`${baseKey}.tool`, workflow.tool[0]);
+    const guideLabel = t(`${baseKey}.guide`, workflow.guide[0]);
+    const categoryLabel = t(`${baseKey}.category`, workflow.category[0]);
+
+    return `
+      <article class="workflow-card">
+        <span class="workflow-card__label">${t('home.workflows.label', 'Guided workflow')}</span>
+        <h3>${title}</h3>
+        <p>${description}</p>
+        <div class="workflow-card__steps">
+          <a href="${getToolHref(workflow.tool[1])}"><strong>${t('home.workflows.steps.tool', 'Tool')}</strong>${toolLabel}</a>
+          <a href="${workflow.guide[1]}"><strong>${t('home.workflows.steps.guide', 'Guide')}</strong>${guideLabel}</a>
+          <a href="${workflow.category[1]}"><strong>${t('home.workflows.steps.browse', 'Browse')}</strong>${categoryLabel}</a>
+        </div>
+      </article>
+    `;
+  }).join('');
 }
 
 // ============================================
