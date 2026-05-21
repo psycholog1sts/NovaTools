@@ -101,28 +101,6 @@ All `categories/*.html` routes, including localized variants.
 - Blog index/template/articles and localized blog routes.
 - Admin entry points: `/admin/`, `/admin/dashboard.html`.
 
-## Phase execution tracker (current run)
-- Date: 2026-05-21 (UTC)
-- Status: baseline automated checks completed successfully.
-
-### Completed baseline checks
-- `npm run lint` ✅
-- `npm test` ✅
-- `npm run build` ✅
-- `npm run audit:public-routes` ✅
-
-### Automated coverage achieved in this run
-- Lint pass for `src/`.
-- Tool validation suite pass (17/17).
-- Production build with post-build fix script completed.
-- Public route audit passed (category routes + blog route surface checks).
-
-### Still required for full “all-phase” completion
-- Tool-by-tool manual QA for each P0→P3 group (input validation, edge cases, UX states, copy/legal checks).
-- Locale QA for `/tr/*` and `/ar/*` rendered surfaces.
-- Cross-link/canonical/manual SEO checks on category + legal + blog routes.
-- Live-data failure-path tests (rate limits, offline, provider error states).
-
 ## Risk register (carry-forward)
 - Manifest/public-route mismatch risk (inventory noted 121 manifest tools vs 129 source public tool-like pages).
 - Dirty `dist/` state can hide regressions and stale references.
