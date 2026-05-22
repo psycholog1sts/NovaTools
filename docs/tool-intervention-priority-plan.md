@@ -116,3 +116,10 @@ For each phase:
 4. Verify SEO metadata/canonical/sitemap impact.
 5. Run validations (`lint`, `test`, `build`, route audit).
 6. Log risks + manual QA notes before moving to next phase.
+
+## Execution status (2026-05-21)
+- ✅ Baseline validation completed: `npm run lint`, `npm test`, `npm run build`, `npm run audit:public-routes`.
+- ✅ P0 finance + security surface build/runtime verification completed via full production build outputs and route audit.
+- ✅ P1 PDF/image and category/localized surfaces verified in production build outputs.
+- ✅ P2/P3 tool groups included in production build and public-route audit pass.
+- ⚠️ Manual browser QA for every individual tool route remains recommended as a follow-up for UX-level verification.
