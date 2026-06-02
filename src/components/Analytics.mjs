@@ -112,8 +112,8 @@ function readHeadValue(html, pattern, fallback = '') {
 function routePageType(route) {
   const normalized = normalizeRoute(route);
   if (normalized === '/' || /^\/[a-z]{2}\/?$/.test(normalized)) return 'home';
-  if (/^\/(?:ar\/)?(?:tools|finance)\//.test(normalized)) return 'tool';
-  if (/^\/(?:ar\/)?categories\//.test(normalized)) return 'category';
+  if (/^\/(?:[a-z]{2}\/)?(?:tools|finance)\//.test(normalized)) return 'tool';
+  if (/^\/(?:[a-z]{2}\/)?categories\//.test(normalized)) return 'category';
   if (/^\/(?:[a-z]{2}\/)?blog(?:\/|$)/.test(normalized)) return 'blog';
   if (/\/(?:about|about-us)(?:\.html)?\/?$/.test(normalized)) return 'about';
   if (/\/contact(?:\.html)?\/?$|\/iletisim(?:\.html)?\/?$/.test(normalized)) return 'contact';
@@ -123,10 +123,27 @@ function routePageType(route) {
 function routeCategory(route) {
   const normalized = normalizeRoute(route);
   const parts = normalized.replace(/^\//, '').split('/');
-  const offset = parts[0] === 'ar' ? 1 : 0;
-  if (parts[offset] === 'finance') return 'finance';
-  if (parts[offset] === 'tools') return parts[offset + 1] || 'tools';
-  return 'tools';
+  const offset = /^[a-z]{2}$/.test(parts[0] || '') ? 1 : 0;
+  if (parts[offset] === 'finance') return 'FinanceApplication';
+  if (parts[offset] === 'tools') return categoryApplicationName(parts[offset + 1] || 'tools');
+  return 'UtilitiesApplication';
+}
+
+function categoryApplicationName(category) {
+  const normalized = String(category || '').toLowerCase();
+  if (normalized.includes('finance')) return 'FinanceApplication';
+  if (normalized.includes('business') || normalized.includes('productivity')) return 'BusinessApplication';
+  if (normalized.includes('developer') || normalized.includes('dev') || normalized.includes('security') || normalized.includes('data')) return 'DeveloperApplication';
+  if (normalized.includes('design') || normalized.includes('image') || normalized.includes('social')) return 'MultimediaApplication';
+  if (normalized.includes('calculator') || normalized.includes('converter') || normalized.includes('pdf') || normalized.includes('text')) return 'UtilitiesApplication';
+  return 'UtilitiesApplication';
+}
+
+function absoluteUrl(value, fallback = SITE_ORIGIN) {
+  const raw = String(value || '').trim();
+  if (!raw) return fallback;
+  if (/^https?:\/\//i.test(raw)) return raw;
+  return `${SITE_ORIGIN}${raw.startsWith('/') ? raw : `/${raw}`}`;
 }
 
 function organizationSchema() {
@@ -134,7 +151,7 @@ function organizationSchema() {
     '@type': 'Organization',
     name: 'MC NovaTools',
     url: SITE_ORIGIN,
-    logo: `${SITE_ORIGIN}/logo-brand-260.webp`,
+    logo: `${SITE_ORIGIN}/logo-brand-520.png`,
     sameAs: [
       'https://www.linkedin.com/company/mc-novatools',
       'https://twitter.com/mcnovatools',
@@ -143,10 +160,25 @@ function organizationSchema() {
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'customer support',
-      email: '[CONTACT_EMAIL]',
-      availableLanguage: ['English', 'Turkish']
+      email: 'support@example.com'
     }
   };
+}
+
+function softwareDescription(pageData) {
+  const base = stripTags(pageData.description || '');
+  if (base.length >= 150) return base;
+  const name = stripTags(pageData.name || pageData.title || 'This browser tool');
+  const extension = `${name} runs in a web browser for practical utility workflows, with clear steps, no required signup, and privacy-first processing designed to keep user inputs local whenever possible.`;
+  return `${base ? `${base} ` : ''}${extension}`.slice(0, 500).trim();
+}
+
+function toIsoDateTime(value) {
+  const raw = String(value || '').trim();
+  if (!raw) return '2026-06-02T00:00:00+00:00';
+  const parsed = new Date(raw);
+  if (Number.isNaN(parsed.getTime())) return '2026-06-02T00:00:00+00:00';
+  return parsed.toISOString().replace(/\.\d{3}Z$/, '+00:00');
 }
 
 function collectCategoryItems(html) {
@@ -155,24 +187,24 @@ function collectCategoryItems(html) {
   const linkPattern = /<a\b[^>]*href=["']([^"']*(?:\/tools\/|\/finance\/)[^"']*)["'][^>]*>([\s\S]*?)<\/a>/gi;
   let match;
   while ((match = linkPattern.exec(html)) && items.length < 100) {
-    const href = match[1].startsWith('http') ? match[1] : `${SITE_ORIGIN}${match[1].startsWith('/') ? match[1] : `/${match[1]}`}`;
+    const href = absoluteUrl(match[1]);
     if (seen.has(href)) continue;
     seen.add(href);
-    items.push({ '@type': 'ListItem', position: items.length + 1, url: href, name: stripTags(match[2]) || href });
+    items.push({ '@type': 'ListItem', position: items.length + 1, name: stripTags(match[2]) || href, url: href });
   }
   return items;
 }
 
 export function generateSchemaJsonLd(pageType, pageData = {}, route = '/') {
   const canonical = canonicalUrlForRoute(route);
-  const name = pageData.title || 'MC NovaTools';
-  const description = pageData.description || 'MC NovaTools provides privacy-first browser-based utility tools.';
-  const image = pageData.image || DEFAULT_OG_IMAGE;
+  const name = stripTags(pageData.name || pageData.title || 'MC NovaTools');
+  const description = stripTags(pageData.description || 'MC NovaTools provides privacy-first browser-based utility tools.');
+  const image = absoluteUrl(pageData.image || DEFAULT_OG_IMAGE, DEFAULT_OG_IMAGE);
   const organization = organizationSchema();
-  let schema;
+  let schemas;
 
   if (pageType === 'home') {
-    schema = {
+    schemas = [{
       '@context': 'https://schema.org',
       '@type': 'WebSite',
       name: 'MC NovaTools',
@@ -182,90 +214,98 @@ export function generateSchemaJsonLd(pageType, pageData = {}, route = '/') {
         target: `${SITE_ORIGIN}/search?q={search_term_string}`,
         'query-input': 'required name=search_term_string'
       }
-    };
+    }];
   } else if (pageType === 'tool') {
-    schema = {
+    schemas = [{
       '@context': 'https://schema.org',
       '@type': 'SoftwareApplication',
       name,
-      description,
-      url: canonical,
-      applicationCategory: pageData.category || 'Browser utility',
+      description: softwareDescription({ ...pageData, name }),
+      applicationCategory: categoryApplicationName(pageData.category),
       operatingSystem: 'Web Browser',
-      offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-      aggregateRating: { '@type': 'AggregateRating', ratingValue: '5', reviewCount: '1' },
-      author: organization
-    };
+      offers: { '@type': 'Offer', price: 0, priceCurrency: 'USD' },
+      aggregateRating: { '@type': 'AggregateRating', ratingValue: 5, reviewCount: 1 },
+      author: { '@type': 'Organization', name: 'MC NovaTools' },
+      publisher: { '@type': 'Organization', name: 'MC NovaTools' }
+    }];
   } else if (pageType === 'category') {
-    schema = {
+    schemas = [{
       '@context': 'https://schema.org',
       '@type': 'ItemList',
-      name,
-      description,
-      url: canonical,
       itemListElement: pageData.items || []
-    };
+    }];
   } else if (pageType === 'blog') {
-    schema = {
+    schemas = [{
       '@context': 'https://schema.org',
       '@type': 'Article',
       headline: name,
-      description,
-      url: canonical,
-      image,
-      author: { '@type': 'Organization', name: 'MC NovaTools', url: SITE_ORIGIN },
-      datePublished: pageData.datePublished || '2026-06-02T00:00:00.000Z',
-      dateModified: pageData.dateModified || '2026-06-02T00:00:00.000Z',
-      publisher: organization
-    };
+      author: { '@type': 'Person', name: stripTags(pageData.authorName || 'MC NovaTools Editorial Team') },
+      publisher: { '@type': 'Organization', name: 'MC NovaTools', logo: `${SITE_ORIGIN}/logo-brand-520.png` },
+      datePublished: toIsoDateTime(pageData.datePublished),
+      dateModified: toIsoDateTime(pageData.dateModified || pageData.datePublished),
+      image
+    }];
   } else if (pageType === 'about') {
-    schema = {
-      '@context': 'https://schema.org',
-      '@graph': [
-        { '@type': 'AboutPage', name, description, url: canonical, publisher: organization },
-        organization
-      ]
-    };
+    schemas = [
+      { '@context': 'https://schema.org', '@type': 'AboutPage', name: 'About MC NovaTools', url: canonical },
+      { '@context': 'https://schema.org', ...organization }
+    ];
   } else if (pageType === 'contact') {
-    schema = {
+    schemas = [{
       '@context': 'https://schema.org',
       '@type': 'ContactPage',
-      name,
-      description,
+      name: 'Contact Us',
       url: canonical,
-      publisher: organization,
-      mainEntity: organization.contactPoint
-    };
-  } else {
-    schema = {
+      mainContentOfPage: { '@type': 'WebPageElement', name: 'Contact form', cssSelector: 'form, #contact-form, [data-contact-form]' }
+    }];
+  } else if (pageType === 'legal') {
+    schemas = [{
       '@context': 'https://schema.org',
       '@type': 'WebPage',
       name,
-      description,
-      url: canonical,
-      publisher: organization
-    };
+      description
+    }];
+  } else {
+    return '';
   }
 
-  return `<script type="application/ld+json">${jsonLdEscape(schema)}</script>`;
+  return schemas.map((schema) => `<script type="application/ld+json">${jsonLdEscape(schema)}</script>`).join('\n');
 }
 
 function removePhase5Schema(html) {
-  return html.replace(/\n?\s*<script\b[^>]*data-schema-source=["']phase5["'][^>]*>[\s\S]*?<\/script>\s*/gi, '\n');
+  return html.replace(/\n?\s*<script\b(?=[^>]*\btype\s*=\s*["']application\/ld\+json["'])[^>]*>[\s\S]*?<\/script>\s*/gi, '\n');
 }
 
-function schemaForHtml(html, route) {
-  const title = readHeadValue(html, /<title\b[^>]*>([\s\S]*?)<\/title>/i, 'MC NovaTools');
-  const description = readHeadValue(html, /<meta\b(?=[^>]*\bname=["']description["'])(?=[^>]*\bcontent=["']([^"']*)["'])[^>]*>/i, 'MC NovaTools privacy-first browser tools.');
+function readFirstH1(html, fallback = '') {
+  return stripTags(html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i)?.[1] || fallback);
+}
+
+function readMetaContent(html, key, fallback = '') {
+  const pattern = new RegExp(`<meta\\b(?=[^>]*(?:name|property)=["']${key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}["'])(?=[^>]*\\bcontent=["']([^"']*)["'])[^>]*>`, 'i');
+  return stripTags(html.match(pattern)?.[1] || fallback);
+}
+
+function readArticleDate(html, property, fallback = '') {
+  return readMetaContent(html, property, '')
+    || stripTags(html.match(new RegExp(`"${property === 'article:modified_time' ? 'dateModified' : 'datePublished'}"\\s*:\\s*"([^"]+)"`, 'i'))?.[1] || '')
+    || stripTags(html.match(/<time\b[^>]*datetime=["']([^"']+)["'][^>]*>/i)?.[1] || '')
+    || fallback;
+}
+
+function schemaForHtml(html, route, pageTitle, description, image) {
   const pageType = routePageType(route);
   const schema = generateSchemaJsonLd(pageType, {
-    title,
+    name: pageTitle,
+    title: pageTitle,
     description,
     category: routeCategory(route),
     items: pageType === 'category' ? collectCategoryItems(html) : undefined,
-    image: DEFAULT_OG_IMAGE
+    authorName: readMetaContent(html, 'author', 'MC NovaTools Editorial Team'),
+    datePublished: readArticleDate(html, 'article:published_time', '2026-06-02T00:00:00+00:00'),
+    dateModified: readArticleDate(html, 'article:modified_time', readArticleDate(html, 'article:published_time', '2026-06-02T00:00:00+00:00')),
+    image
   }, route);
-  return schema.replace('<script ', '<script data-schema-source="phase5" ');
+  return schema;
 }
 
 function localeForRoute(route) {
@@ -285,20 +325,23 @@ export function applySeoHead(html, route, { gaId = '', gscId = '', adsenseClient
   nextHtml = removeLegacyGaSnippets(nextHtml);
   nextHtml = removePhase5Schema(nextHtml);
 
-  const title = readHeadValue(nextHtml, /<title\b[^>]*>([\s\S]*?)<\/title>/i, 'MC NovaTools');
-  const description = readHeadValue(nextHtml, /<meta\b(?=[^>]*\bname=["']description["'])(?=[^>]*\bcontent=["']([^"']*)["'])[^>]*>/i, 'MC NovaTools privacy-first browser tools.');
+  const existingTitle = readHeadValue(nextHtml, /<title\b[^>]*>([\s\S]*?)<\/title>/i, 'MC NovaTools');
+  const title = readFirstH1(nextHtml, existingTitle) || existingTitle;
+  const description = readHeadValue(nextHtml, /<meta\b(?=[^>]*\bname=["']description["'])(?=[^>]*\bcontent=["']([^"']*)["'])[^>]*>/i, `${title} from MC NovaTools, a privacy-first browser utility collection.`);
   const escapedTitle = escapeHtml(title);
   const escapedDescription = escapeHtml(description.length > 200 ? `${description.slice(0, 197).replace(/\s+\S*$/, '')}...` : description);
   const ogType = routePageType(route) === 'blog' ? 'article' : 'website';
   const locale = localeForRoute(route);
 
+  nextHtml = upsertTag(nextHtml, /<title\b[^>]*>[\s\S]*?<\/title>/i, `<title>${escapedTitle}</title>`);
   nextHtml = upsertTag(nextHtml, /<meta name="description" content="[^"]*"\s*\/?>/i, `<meta name="description" content="${escapedDescription}">`);
   nextHtml = upsertTag(nextHtml, /<link rel="canonical" href="[^"]*"\s*\/?>/i, `<link rel="canonical" href="${canonical}">`);
   nextHtml = upsertTag(nextHtml, /<meta property="og:title" content="[^"]*"\s*\/?>/i, `<meta property="og:title" content="${escapedTitle}">`);
   nextHtml = upsertTag(nextHtml, /<meta property="og:description" content="[^"]*"\s*\/?>/i, `<meta property="og:description" content="${escapedDescription}">`);
   nextHtml = upsertTag(nextHtml, /<meta property="og:type" content="[^"]*"\s*\/?>/i, `<meta property="og:type" content="${ogType}">`);
   nextHtml = upsertTag(nextHtml, /<meta property="og:url" content="[^"]*"\s*\/?>/i, `<meta property="og:url" content="${canonical}">`);
-  nextHtml = upsertTag(nextHtml, /<meta property="og:image" content="[^"]*"\s*\/?>/i, `<meta property="og:image" content="${DEFAULT_OG_IMAGE}">`);
+  const socialImage = DEFAULT_OG_IMAGE;
+  nextHtml = upsertTag(nextHtml, /<meta property="og:image" content="[^"]*"\s*\/?>/i, `<meta property="og:image" content="${socialImage}">`);
   nextHtml = upsertTag(nextHtml, /<meta property="og:image:width" content="[^"]*"\s*\/?>/i, '<meta property="og:image:width" content="1200">');
   nextHtml = upsertTag(nextHtml, /<meta property="og:image:height" content="[^"]*"\s*\/?>/i, '<meta property="og:image:height" content="630">');
   nextHtml = upsertTag(nextHtml, /<meta property="og:site_name" content="[^"]*"\s*\/?>/i, '<meta property="og:site_name" content="MC NovaTools">');
@@ -306,11 +349,11 @@ export function applySeoHead(html, route, { gaId = '', gscId = '', adsenseClient
   nextHtml = upsertTag(nextHtml, /<meta name="twitter:card" content="[^"]*"\s*\/?>/i, '<meta name="twitter:card" content="summary_large_image">');
   nextHtml = upsertTag(nextHtml, /<meta name="twitter:title" content="[^"]*"\s*\/?>/i, `<meta name="twitter:title" content="${escapedTitle}">`);
   nextHtml = upsertTag(nextHtml, /<meta name="twitter:description" content="[^"]*"\s*\/?>/i, `<meta name="twitter:description" content="${escapedDescription}">`);
-  nextHtml = upsertTag(nextHtml, /<meta name="twitter:image" content="[^"]*"\s*\/?>/i, `<meta name="twitter:image" content="${DEFAULT_OG_IMAGE}">`);
+  nextHtml = upsertTag(nextHtml, /<meta name="twitter:image" content="[^"]*"\s*\/?>/i, `<meta name="twitter:image" content="${socialImage}">`);
 
   nextHtml = optimizeImageTags(nextHtml);
 
-  const schemaHead = schemaForHtml(nextHtml, route);
+  const schemaHead = schemaForHtml(nextHtml, route, title, description, socialImage);
   if (schemaHead) nextHtml = nextHtml.replace(/<\/head>/i, `  ${schemaHead}\n</head>`);
 
   nextHtml = nextHtml.replace(/\s*<meta name="google-site-verification" content="[^"]*"\s*\/?>/i, '');
