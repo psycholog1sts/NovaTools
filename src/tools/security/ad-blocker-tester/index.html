@@ -462,7 +462,7 @@
 <body>
   <!-- Bait elements for ad blocker detection -->
   <div class="bait-element ad-banner"></div>
-  <div class="bait-element adsbygoogle"></div>
+  <div class="bait-element ad-test-bait"></div>
   <div class="bait-element ad-box-" id="ad-bait-1"></div>
 
   <div class="bg-ambient" aria-hidden="true"></div>
@@ -473,7 +473,7 @@
       <div class="container">
         <div class="header-inner">
           <a href="/" class="logo" aria-label="NovaTools MC Home">
-            <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
+            <picture><source srcset="/logo-bird-44.webp" type="image/webp"><img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44" decoding="async"></picture>
             <span class="logo-text">NovaTools <span class="logo-mc" data-i18n="tools.security.ad-blocker-tester.text.001">MC</span></span>
           </a>
           <nav class="nav-desktop" aria-label="Main navigation">
@@ -664,7 +664,7 @@
       };
 
       // Test 1: Check if bait elements are hidden
-      const baitElements = document.querySelectorAll('.bait-element, .ad-banner, .adsbygoogle');
+      const baitElements = document.querySelectorAll('.bait-element, .ad-banner, .ad-test-bait');
       let hiddenCount = 0;
       baitElements.forEach(el => {
         const style = window.getComputedStyle(el);

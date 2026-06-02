@@ -143,7 +143,7 @@
       <div class="container">
         <div class="header-inner">
           <a href="/" class="logo" aria-label="NovaTools MC Home">
-            <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
+            <picture><source srcset="/logo-bird-44.webp" type="image/webp"><img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44" decoding="async"></picture>
             <span class="logo-text">NovaTools <span class="logo-mc" data-i18n="tools.image.collage-maker.text.001">MC</span></span>
           </a>
           <nav class="nav-desktop" aria-label="Main navigation">
@@ -411,7 +411,7 @@ document.addEventListener('DOMContentLoaded', function() {
       thumb.className = 'thumb-item';
       thumb.draggable = true;
       thumb.dataset.index = index;
-      thumb.innerHTML = '<img src="' + item.src + '" alt=""><button class="remove-btn" data-index="' + index + '">×</button>';
+      thumb.innerHTML = '<img src="' + item.src + '" alt="" decoding="async" loading="lazy"><button class="remove-btn" data-index="' + index + '">×</button>';
       
       thumb.addEventListener('dragstart', function(e) { dragSrcEl = this; this.classList.add('dragging'); e.dataTransfer.effectAllowed = 'move'; });
       thumb.addEventListener('dragend', function() { this.classList.remove('dragging'); document.querySelectorAll('.thumb-item').forEach(function(i) { i.classList.remove('drag-over'); }); });

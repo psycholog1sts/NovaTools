@@ -120,7 +120,7 @@
       <div class="container">
         <div class="header-inner">
           <a href="/" class="logo" aria-label="NovaTools MC Home">
-            <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
+            <picture><source srcset="/logo-bird-44.webp" type="image/webp"><img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44" decoding="async"></picture>
             <span class="logo-text">NovaTools <span class="logo-mc" data-i18n="tools.social.youtube-thumbnail.text.001">MC</span></span>
           </a>
           <nav class="nav-desktop" aria-label="Main navigation">
@@ -272,7 +272,7 @@
       const imgUrl = `https://img.youtube.com/vi/${videoId}/${quality.key}.jpg`;
       return `
         <div class="thumbnail-item">
-          <img src="${imgUrl}" alt="${quality.name}" loading="lazy" onerror="this.parentElement.style.display='none'">
+          <img src="${imgUrl}" alt="${quality.name}" loading="lazy" onerror="this.parentElement.style.display='none'" decoding="async">
           <div class="thumbnail-info">
             <div class="thumbnail-quality">${quality.name}</div>
             <div class="thumbnail-dimensions">${quality.dims}</div>

@@ -1,41 +1,46 @@
-const CACHE_VERSION = 'novatools-static-v1';
-const STATIC_CACHE = `${CACHE_VERSION}-assets`;
-const STATIC_ASSET_PATTERN = /\.(?:css|js|mjs|woff2?|png|jpe?g|webp|avif|svg|ico)$/i;
+/* NovaTools Workbox service worker: precache critical shell assets and cache same-origin static assets. */
 
-self.addEventListener('install', (event) => {
-  event.waitUntil(self.skipWaiting());
-});
+importScripts('https://storage.googleapis.com/workbox-cdn/releases/7.0.0/workbox-sw.js');
 
-self.addEventListener('activate', (event) => {
-  event.waitUntil((async () => {
-    const cacheNames = await caches.keys();
-    await Promise.all(
-      cacheNames
-        .filter((cacheName) => cacheName.startsWith('novatools-static-') && cacheName !== STATIC_CACHE)
-        .map((cacheName) => caches.delete(cacheName))
-    );
-    await self.clients.claim();
-  })());
-});
+workbox.setConfig({ debug: false });
+workbox.core.skipWaiting();
+workbox.core.clientsClaim();
 
-self.addEventListener('fetch', (event) => {
-  const { request } = event;
-  if (request.method !== 'GET') return;
+workbox.precaching.precacheAndRoute([
+  { url: '/', revision: 'phase6-shell' },
+  { url: '/index.html', revision: 'phase6-shell' },
+  { url: '/styles/critical.css', revision: 'phase6-critical-css' },
+  { url: '/styles/design-system.css', revision: 'phase6-design-system' },
+  { url: '/styles/layout.css', revision: 'phase6-layout' },
+  { url: '/i18n.js', revision: 'phase6-i18n' },
+  { url: '/favicon.svg', revision: 'phase6-favicon' },
+  { url: '/logo-bird-44.webp', revision: 'phase6-logo' },
+  { url: '/logo-brand-520.webp', revision: 'phase6-brand' }
+]);
 
-  const url = new URL(request.url);
-  if (url.origin !== self.location.origin || !STATIC_ASSET_PATTERN.test(url.pathname)) return;
+workbox.routing.registerRoute(
+  ({ request, sameOrigin }) => sameOrigin && ['style', 'script', 'font', 'image'].includes(request.destination),
+  new workbox.strategies.CacheFirst({
+    cacheName: 'novatools-static-assets',
+    plugins: [
+      new workbox.expiration.ExpirationPlugin({
+        maxEntries: 180,
+        maxAgeSeconds: 60 * 60 * 24 * 30
+      })
+    ]
+  })
+);
 
-  event.respondWith(cacheFirst(request));
-});
-
-async function cacheFirst(request) {
-  const cache = await caches.open(STATIC_CACHE);
-  const cachedResponse = await cache.match(request);
-  if (cachedResponse) return cachedResponse;
-
-  const networkResponse = await fetch(request);
-  if (networkResponse.ok) {
-    await cache.put(request, networkResponse.clone());
-  }
-  return networkResponse;
-}
+workbox.routing.registerRoute(
+  ({ request, sameOrigin }) => sameOrigin && request.mode === 'navigate',
+  new workbox.strategies.NetworkFirst({
+    cacheName: 'novatools-pages',
+    networkTimeoutSeconds: 3,
+    plugins: [
+      new workbox.expiration.ExpirationPlugin({
+        maxEntries: 80,
+        maxAgeSeconds: 60 * 60 * 24 * 7
+      })
+    ]
+  })
+);

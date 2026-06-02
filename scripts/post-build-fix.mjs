@@ -137,6 +137,41 @@ function stampBlogFile(filePath, block, locale) {
 }
 
 
+
+function deferNonCriticalStylesInHtml(html) {
+  return html.replace(/<link\s+rel=["']stylesheet["']\s+href=["']([^"']+)["']\s*\/?>/gi, (tag, href) => {
+    if (/critical\.css(?:$|[?#])/.test(href) || /fonts\.googleapis\.com/.test(href)) return tag;
+    if (/rel=["']preload["']/.test(tag)) return tag;
+    return `<link rel="preload" href="${href}" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="${href}"></noscript>`;
+  });
+}
+
+function renderPhase6CriticalHead() {
+  return `<style data-critical-inline="phase6">html{max-width:100%;overflow-x:clip}body{margin:0;background:#0a0a0c;color:#fafafa;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.app-header,.main-header{position:sticky;top:0;z-index:40;background:rgba(10,10,12,.92);backdrop-filter:blur(16px)}.container{width:min(1120px,calc(100% - 32px));margin-inline:auto}.hero,.tool-hero{padding-block:clamp(2rem,6vw,4rem);text-align:center}img{max-width:100%;height:auto}button,a,input,select,textarea{font:inherit}:focus-visible{outline:3px solid #00d9ff;outline-offset:3px}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>`;
+}
+
+function applyPerformanceHtmlPass(dir) {
+  if (!fs.existsSync(dir)) return;
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    const filePath = path.join(dir, entry.name);
+    if (entry.isDirectory()) {
+      applyPerformanceHtmlPass(filePath);
+      continue;
+    }
+    if (!entry.isFile() || !entry.name.endsWith('.html')) continue;
+    const html = fs.readFileSync(filePath, 'utf8');
+    let next = html;
+    if (!/data-critical-inline="phase6"/.test(next)) {
+      next = next.replace(/<\/head>/i, `  ${renderPhase6CriticalHead()}
+</head>`);
+    }
+    next = deferNonCriticalStylesInHtml(next);
+    if (next !== html) fs.writeFileSync(filePath, next);
+  }
+}
+
 console.log('🔧 Running post-build fixes...\n');
 
 // Fix 1: Move dist/src/tools -> dist/tools
@@ -733,3 +768,6 @@ if (allGood) {
   console.log('\n⚠️  Some files are missing - check build output');
   process.exit(1);
 }
+
+applyPerformanceHtmlPass(distDir);
+console.log('✅ Applied: deferred non-critical stylesheets');

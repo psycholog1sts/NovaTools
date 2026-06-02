@@ -776,6 +776,24 @@
     });
   }
 
+  function reserveInlineAdSlot(el) {
+    const format = el.getAttribute('data-ad-format') || '';
+    const width = format === 'leaderboard' || el.classList.contains('ad-slot-leaderboard') ? 728 : format === 'sticky' ? 320 : 300;
+    const height = format === 'leaderboard' || el.classList.contains('ad-slot-leaderboard') ? 90 : format === 'sticky' ? 50 : format === 'sidebar' ? 600 : 250;
+    if (!el.getAttribute('width')) el.setAttribute('width', String(width));
+    if (!el.getAttribute('height')) el.setAttribute('height', String(height));
+    el.style.minWidth = el.style.minWidth || `min(100%, ${width}px)`;
+    el.style.minHeight = el.style.minHeight || `${height}px`;
+    el.style.aspectRatio = el.style.aspectRatio || `${width} / ${height}`;
+    const container = el.closest('.ad-slot-container, .ad-in-tool, .ad-frame, .ad-wrapper, aside, div');
+    if (container && !container.querySelector('.ad-label')) {
+      const label = document.createElement('span');
+      label.className = 'ad-label';
+      label.textContent = (document.documentElement.lang || '').toLowerCase().startsWith('tr') ? 'Reklam' : 'Advertisement';
+      container.insertBefore(label, container.firstChild);
+    }
+  }
+
   function ensureAdSenseBootstrap() {
     if (window.__mcAdSenseLoaded) return;
     if (!document.head || !isProductionHost() || !hasValidAdSlot()) return;
@@ -861,6 +879,7 @@
   function initQualityEnhancements() {
     document.querySelectorAll('ins.adsbygoogle').forEach((el) => {
       el.classList.add('ad-slot-reserved');
+      reserveInlineAdSlot(el);
       if (!/^\d{8,20}$/.test((el.getAttribute('data-ad-slot') || '').trim())) {
         el.setAttribute('data-ad-status', 'pending-valid-slot');
       }
@@ -1031,7 +1050,9 @@
 
     .ad-slot-reserved {
       min-height: 250px;
+      aspect-ratio: 300 / 250;
       background: rgba(15, 23, 42, 0.38);
+      border: 1px solid rgba(148, 163, 184, 0.32);
       border-radius: 12px;
     }
 
