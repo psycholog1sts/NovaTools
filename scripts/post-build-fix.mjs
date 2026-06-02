@@ -8,7 +8,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { blogArticleRoutes, blogHubPath, fallbackBlogLocale, normalizeBlogSlug, normalizeBlogSlugList, supportedBlogLocales } from '../src/js/blog-routes.js';
 import { buildBlogArticleSeo, buildBlogIndexSeo } from '../src/js/blog-seo.js';
-import { removeLegacyAdSenseHead, renderAdSenseHead } from '../src/components/Analytics.mjs';
+import { applySeoHead, removeLegacyAdSenseHead, renderAdSenseHead } from '../src/components/Analytics.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -655,9 +655,43 @@ function stampToolHelpfulContent() {
   return auditRows;
 }
 
+<<<<<<< codex/2026-06-02-02-08-29-optimize-site-for-google-adsense-approval
+
+function listDistHtmlFiles() {
+  const files = [];
+  const walk = (dir) => {
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      const full = path.join(dir, entry.name);
+      if (entry.isDirectory()) walk(full);
+      else if (entry.isFile() && entry.name.endsWith('.html')) files.push(full);
+    }
+  };
+  walk(distDir);
+  return files.sort();
+}
+
+function stampPhase5SeoHead() {
+  const htmlFiles = listDistHtmlFiles();
+  for (const filePath of htmlFiles) {
+    const relative = path.relative(distDir, filePath).replace(/\\/g, '/');
+    const route = `/${relative}`;
+    const stamped = applySeoHead(fs.readFileSync(filePath, 'utf8'), route);
+    fs.writeFileSync(filePath, stamped);
+  }
+  return htmlFiles.length;
+}
+
 const phase4ToolAuditRows = stampToolHelpfulContent();
 console.log(`✅ Added Phase 4 helpful content to ${phase4ToolAuditRows.length} tool pages`);
 
+const phase5SeoPageCount = stampPhase5SeoHead();
+console.log(`✅ Added Phase 5 structured data and social metadata to ${phase5SeoPageCount} HTML pages`);
+
+=======
+const phase4ToolAuditRows = stampToolHelpfulContent();
+console.log(`✅ Added Phase 4 helpful content to ${phase4ToolAuditRows.length} tool pages`);
+
+>>>>>>> main
 // Verify key files exist
 const keyFiles = [
   'index.html',

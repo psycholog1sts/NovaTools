@@ -7,7 +7,7 @@ import { blogArticlePath, blogHubPath, fallbackBlogLocale, normalizeBlogSlug, no
 
 const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const origin = 'https://mc-novatools.com';
-const lastmod = new Date().toISOString().slice(0, 10);
+const lastmod = new Date().toISOString();
 const locales = supportedBlogLocales;
 const pathPrefixLocales = new Set();
 
@@ -55,17 +55,18 @@ function sourceBlogArticleSlugs() {
 }
 
 const urls = [];
-['/', '/about-us.html', '/contact.html', '/privacy-policy.html', '/terms-of-service.html', '/cookie-policy.html', '/security.html'].forEach((route) => {
-  locales.forEach((locale) => urls.push(urlEntry(localizedUrl(route, locale), route === '/' ? '1.0' : '0.7', route === '/' ? 'weekly' : 'monthly')));
+['/', '/about.html', '/about-us.html', '/contact.html', '/privacy-policy.html', '/terms-of-service.html', '/cookie-policy.html', '/disclaimer.html', '/security.html'].forEach((route) => {
+  const priority = route === '/' ? '1.0' : '0.4';
+  locales.forEach((locale) => urls.push(urlEntry(localizedUrl(route, locale), priority, route === '/' ? 'weekly' : 'monthly')));
 });
 ['/gizlilik-politikasi.html', '/kvkk-aydinlatma-metni.html', '/kullanim-kosullari.html', '/iletisim.html'].forEach((route) => {
-  urls.push(urlEntry(`${origin}${route}`, '0.7', 'monthly'));
+  urls.push(urlEntry(`${origin}${route}`, '0.4', 'monthly'));
 });
-locales.forEach((locale) => urls.push(urlEntry(localizedBlogUrl(blogHubPath(locale), locale), '0.7', 'monthly')));
+locales.forEach((locale) => urls.push(urlEntry(localizedBlogUrl(blogHubPath(locale), locale), '0.6', 'monthly')));
 
 globSync('categories/**/*.html', { cwd: rootDir }).sort().forEach((file) => {
   const route = `/${file.replace(/\\/g, '/')}`;
-  locales.forEach((locale) => urls.push(urlEntry(localizedUrl(route, locale), '0.8', 'weekly')));
+  locales.forEach((locale) => urls.push(urlEntry(localizedUrl(route, locale), '0.6', 'weekly')));
 });
 
 globSync('src/tools/**/index.html', { cwd: rootDir, ignore: ['**/demo-*/**', '**/experimental/**', '**/test/**'] }).sort().forEach((file) => {
@@ -73,7 +74,7 @@ globSync('src/tools/**/index.html', { cwd: rootDir, ignore: ['**/demo-*/**', '**
   const route = sourceRoute.startsWith('/tools/finance/')
     ? sourceRoute.replace(/^\/tools\/finance\//, '/finance/')
     : sourceRoute;
-  locales.forEach((locale) => urls.push(urlEntry(localizedUrl(route, locale), route.startsWith('/finance/') ? '0.9' : '0.8', 'weekly')));
+  locales.forEach((locale) => urls.push(urlEntry(localizedUrl(route, locale), '0.8', 'weekly')));
 });
 
 const fallbackPosts = readJson(`src/i18n/blog/${fallbackBlogLocale}.json`);
