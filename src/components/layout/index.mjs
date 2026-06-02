@@ -112,6 +112,12 @@ export function createFooter() {
   legalNav.style.color = 'var(--text-tertiary)';
   legalNav.setAttribute('aria-label', 'Yasal bağlantılar');
   legalNav.innerHTML = `
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/privacy-policy.html">Privacy Policy</a>
+    <a href="/terms-of-service.html">Terms of Service</a>
+    <a href="/cookie-policy.html">Cookie Policy</a>
+    <a href="/disclaimer.html">Disclaimer</a>
     <a href="/gizlilik-politikasi.html" data-i18n="legal.links.privacyPolicy">Gizlilik Politikası</a>
     <a href="/kullanim-kosullari.html" data-i18n="legal.links.termsOfUse">Kullanım Koşulları</a>
     <a href="/kvkk-aydinlatma-metni.html" data-i18n="legal.links.kvkkNotice">KVKK Aydınlatma Metni</a>
