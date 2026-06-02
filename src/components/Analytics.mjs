@@ -46,9 +46,8 @@ export function renderAdSenseHead(adsenseClient = DEFAULT_ADSENSE_CLIENT) {
   if (!/^ca-pub-[0-9]{16}$/.test(client)) return '';
 
   const safeClient = escapeHtml(client);
-  const safeScriptSrc = escapeHtml(`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${client}`);
   return `<meta name="google-adsense-account" content="${safeClient}">
-<script async src="${safeScriptSrc}" crossorigin="anonymous"></script>`;
+<link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">`;
 }
 
 export function renderAnalyticsHead({ gaId = '', gscId = '' } = {}) {
@@ -62,6 +61,27 @@ export function renderAnalyticsHead({ gaId = '', gscId = '' } = {}) {
   }
 
   return tags.join('\n');
+}
+
+
+function optimizeImageTags(html) {
+  let heroImageSeen = false;
+  return html.replace(/<img\b([^>]*)>/gi, (tag, attrs) => {
+    let nextTag = tag;
+    const src = attrs.match(/\ssrc=["']([^"']+)["']/i)?.[1] || '';
+    const isLogo = /logo|favicon|icon/i.test(src);
+    const isHero = /class=["'][^"']*(article-visual|hero|featured)[^"']*["']/i.test(attrs) || /loading=["']eager["']/i.test(attrs);
+    if (!/\sdecoding=/i.test(nextTag)) nextTag = nextTag.replace(/>$/, ' decoding="async">');
+    if (!isLogo && !isHero && !/\sloading=/i.test(nextTag)) nextTag = nextTag.replace(/>$/, ' loading="lazy">');
+    if (isHero && !heroImageSeen) {
+      heroImageSeen = true;
+      nextTag = nextTag.replace(/\sloading=["']lazy["']/i, ' loading="eager"');
+      if (!/\sfetchpriority=/i.test(nextTag)) nextTag = nextTag.replace(/>$/, ' fetchpriority="high">');
+    } else {
+      nextTag = nextTag.replace(/\sfetchpriority=["']high["']/i, '');
+    }
+    return nextTag;
+  });
 }
 
 function jsonLdEscape(value) {
@@ -288,6 +308,8 @@ export function applySeoHead(html, route, { gaId = '', gscId = '', adsenseClient
   nextHtml = upsertTag(nextHtml, /<meta name="twitter:title" content="[^"]*"\s*\/?>/i, `<meta name="twitter:title" content="${escapedTitle}">`);
   nextHtml = upsertTag(nextHtml, /<meta name="twitter:description" content="[^"]*"\s*\/?>/i, `<meta name="twitter:description" content="${escapedDescription}">`);
   nextHtml = upsertTag(nextHtml, /<meta name="twitter:image" content="[^"]*"\s*\/?>/i, `<meta name="twitter:image" content="${DEFAULT_OG_IMAGE}">`);
+
+  nextHtml = optimizeImageTags(nextHtml);
 
   const schemaHead = schemaForHtml(nextHtml, route);
   if (schemaHead) nextHtml = nextHtml.replace(/<\/head>/i, `  ${schemaHead}\n</head>`);

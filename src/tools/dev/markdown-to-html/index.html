@@ -155,7 +155,7 @@
       <div class="container">
         <div class="header-inner">
           <a href="/" class="logo" aria-label="NovaTools MC Home">
-            <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
+            <picture><source srcset="/logo-bird-44.webp" type="image/webp"><img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44" decoding="async"></picture>
             <span class="logo-text">NovaTools <span class="logo-mc" data-i18n="tools.dev.markdown-to-html.text.001">MC</span></span>
           </a>
           <nav class="nav-desktop" aria-label="Main navigation">
@@ -382,7 +382,7 @@
       html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
       
       // Images
-      html = html.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img alt="$1" src="$2">');
+      html = html.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img alt="$1" src="$2" decoding="async" loading="lazy">');
       
       // Line breaks
       html = html.replace(/\n/g, '<br>');

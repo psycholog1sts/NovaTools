@@ -17,10 +17,10 @@
   <meta name="twitter:title" content="About MC NovaTools | Transparent browser-based utility tools">
   <meta name="twitter:description" content="Learn who operates MC NovaTools, our mission, privacy-first tool philosophy, expertise, contact details, and accountability commitments.">
   <link rel="stylesheet" href="/styles/critical.css">
-  <link rel="stylesheet" href="/styles/design-system.css">
-  <link rel="stylesheet" href="/styles/layout.css">
+  <link rel="preload" href="/styles/design-system.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/styles/design-system.css"></noscript>
+  <link rel="preload" href="/styles/layout.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/styles/layout.css"></noscript>
   <meta name="google-adsense-account" content="ca-pub-5738022526587953">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5738022526587953" crossorigin="anonymous"></script>
+  <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
   <meta property="og:image" content="https://mc-novatools.com/og-image.svg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -32,7 +32,7 @@
 <header class="app-header">
   <div class="container">
     <div class="header-inner">
-      <a href="/" class="logo" aria-label="MC NovaTools home"><span class="logo-icon"><img src="/logo-brand-260.webp" alt="MC NovaTools logo" width="36" height="36"></span><span class="logo-text">MC NovaTools</span></a>
+      <a href="/" class="logo" aria-label="MC NovaTools home"><span class="logo-icon"><img src="/logo-brand-260.webp" alt="MC NovaTools logo" width="36" height="36" decoding="async"></span><span class="logo-text">MC NovaTools</span></a>
       <nav class="main-nav" aria-label="Main navigation">
         <a href="/" class="nav-link">Home</a>
         <a href="/about.html" class="nav-link">About</a>
@@ -50,7 +50,7 @@
     <article class="tool-card" style="max-width: 980px; margin: 0 auto; padding: 2rem; line-height: 1.75;">
       <p class="section-eyebrow">Company transparency</p>
       <h1>About MC NovaTools</h1>
-      <figure style="margin: 1.5rem 0; display: grid; gap: .75rem;"><img src="[FOUNDER_PHOTO]" alt="Portrait photograph of [FOUNDER_NAME], founder of MC NovaTools" width="320" height="320" loading="lazy" style="border-radius: 24px; max-width: 100%; height: auto;"><figcaption>Founder photograph for [FOUNDER_NAME].</figcaption></figure>
+      <figure style="margin: 1.5rem 0; display: grid; gap: .75rem;"><img src="[FOUNDER_PHOTO]" alt="Portrait photograph of [FOUNDER_NAME], founder of MC NovaTools" width="320" height="320" loading="lazy" style="border-radius: 24px; max-width: 100%; height: auto;" decoding="async"><figcaption>Founder photograph for [FOUNDER_NAME].</figcaption></figure>
       <p>MC NovaTools is a practical online tools platform founded in [FOUNDING_YEAR] by [FOUNDER_NAME]. We build browser-based utilities for people who need to prepare documents, convert files, check text, estimate finance scenarios, and complete developer tasks without unnecessary friction. Our mission is straightforward: we provide free browser-based tools for file conversion, finance calculation, and developer utilities while keeping the experience clear, fast, and respectful of user privacy. We believe a useful tool website should explain what each tool does, what it does not do, and how users can verify the result before relying on it.</p>
       <p>We started MC NovaTools because everyday digital work is fragmented. A student may need to compress a PDF before uploading an assignment. A freelancer may need a quick invoice workflow, a clean image conversion, or a word count before sending a proposal. A developer may need to format JSON, test a regular expression, encode a URL, or inspect a checksum while debugging a small issue. A household may want to compare mortgage, student loan, compound interest, or retirement scenarios before speaking with a qualified professional. We bring these workflows together in one place so users can move from problem to result without installing heavy software or sharing more information than necessary.</p>
       <p>Our product philosophy is privacy-first and browser-first. Where technically possible, we design tools so files and inputs are processed locally in the user’s browser. That approach reduces unnecessary uploads, shortens the workflow, and gives users more control. Some tools may use live data sources or external services when a feature cannot work without current information, but we aim to explain those cases clearly. We do not want users to guess whether their content is being uploaded. We want the interface, help text, and legal pages to make data handling understandable.</p>

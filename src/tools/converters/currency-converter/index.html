@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <script type="text/plain" data-consent-category="analytics" async src="https://www.googletagmanager.com/gtag/js?id=G-Y896L63239"></script>
@@ -130,14 +130,11 @@
     .faq-item[open] summary::after { content: '\2212'; }
     .faq-item p { margin-top: 0.625rem; color: #A1A1AA; line-height: 1.7; }
     
-    .ads-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
-    .ad-box { background: rgba(255,255,255,0.03); border: 1px dashed rgba(0,217,255,0.2); border-radius: 8px; min-height: 90px; display: flex; align-items: center; justify-content: center; color: #52525B; font-size: 0.75rem; }
     
     @media (max-width: 768px) {
       .currency-row { grid-template-columns: 1fr; }
       .swap-btn { margin: 0 auto; }
       .amount-row { flex-direction: column; }
-      .ads-row { grid-template-columns: 1fr; }
       .result-value { font-size: 1.75rem; }
     }
   </style>
@@ -151,7 +148,7 @@
       <div class="container">
         <div class="header-inner">
           <a href="/" class="logo" aria-label="NovaTools MC Home">
-            <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
+            <picture><source srcset="/logo-bird-44.webp" type="image/webp"><img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44" decoding="async"></picture>
             <span class="logo-text">NovaTools <span class="logo-mc" data-i18n="tools.converters.currency-converter.text.001">MC</span></span>
           </a>
           <nav class="nav-desktop" aria-label="Main navigation">
@@ -190,11 +187,6 @@
         </div>
 
         <div class="card">
-          <div class="ads-row">
-            <div class="ad-box">Ad 336x280</div>
-            <div class="ad-box">Ad 336x280</div>
-            <div class="ad-box">Ad 336x280</div>
-          </div>
 
           <div class="amount-row">
             <div class="amount-input-wrapper">

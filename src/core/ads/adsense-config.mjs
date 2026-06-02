@@ -139,10 +139,32 @@ function hasValidAdSlots() {
 function reserveAdSlotSpace() {
   document.querySelectorAll('ins.adsbygoogle').forEach((el) => {
     el.classList.add('ad-slot-reserved');
+    reserveSingleAdSlot(el);
+    ensureAdLabel(el);
     if (!/^\d{8,20}$/.test((el.getAttribute('data-ad-slot') || '').trim())) {
       el.setAttribute('data-ad-status', 'pending-valid-slot');
     }
   });
+}
+
+function reserveSingleAdSlot(el) {
+  const format = el.getAttribute('data-ad-format') || '';
+  const width = format === 'leaderboard' || el.classList.contains('ad-slot-leaderboard') ? 728 : format === 'sticky' ? 320 : 300;
+  const height = format === 'leaderboard' || el.classList.contains('ad-slot-leaderboard') ? 90 : format === 'sticky' ? 50 : format === 'sidebar' ? 600 : 250;
+  if (!el.getAttribute('width')) el.setAttribute('width', String(width));
+  if (!el.getAttribute('height')) el.setAttribute('height', String(height));
+  el.style.minWidth = el.style.minWidth || `min(100%, ${width}px)`;
+  el.style.minHeight = el.style.minHeight || `${height}px`;
+  el.style.aspectRatio = el.style.aspectRatio || `${width} / ${height}`;
+}
+
+function ensureAdLabel(el) {
+  const container = el.closest('.ad-slot-container, .ad-in-tool, .ad-frame, .ad-wrapper, aside, div');
+  if (!container || container.querySelector('.ad-label')) return;
+  const label = document.createElement('span');
+  label.className = 'ad-label';
+  label.textContent = document.documentElement.lang?.toLowerCase().startsWith('tr') ? 'Reklam' : 'Advertisement';
+  container.insertBefore(label, container.firstChild);
 }
 
 function setupLazyLoading() {
@@ -173,7 +195,7 @@ function observeAdStatus() {
     const status = el.getAttribute('data-ad-status');
     const container = el.closest('.ad-slot-container, .ad-frame, .ad-wrapper, .revenue-card');
     if (!container) return;
-    container.classList.toggle('ad-slot-empty', status === 'unfilled' || status === 'fallback');
+    container.setAttribute('data-ad-status', status || 'reserved');
   };
 
   const observer = new MutationObserver((mutations) => {

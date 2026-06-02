@@ -82,7 +82,7 @@
       <div class="container">
         <div class="header-inner">
           <a href="/" class="logo" aria-label="NovaTools MC Home">
-            <img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44">
+            <picture><source srcset="/logo-bird-44.webp" type="image/webp"><img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44" decoding="async"></picture>
             <span class="logo-text">NovaTools <span class="logo-mc" data-i18n="tools.news.summarizer.text.001">MC</span></span>
           </a>
           <nav class="nav-desktop" aria-label="Main navigation">
@@ -174,10 +174,10 @@
             </div>
             
             <!-- Sidebar Ad -->
-            <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-default);">
-              <div style="font-size: 0.6875rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 0.5rem;">Sponsored</div>
-              <div style="background: var(--surface-default); border: 1px solid var(--border-default); border-radius: 12px; padding: 0.75rem;">
-                <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-5738022526587953" data-slot-key="newsSidebar" data-ad-slot="7418529630"></ins>
+            <div class="ad-slot-container" role="complementary" aria-label="Advertisement" data-ad-placement="news-sidebar">
+              <span class="ad-label">Advertisement</span>
+              <div class="ad-wrapper" style="width: min(100%, 300px); min-height: 250px; aspect-ratio: 300 / 250;">
+                <ins class="adsbygoogle" width="300" height="250" style="display:inline-block;width:300px;height:250px;min-width:min(100%,300px);min-height:250px;aspect-ratio:300/250" data-ad-client="ca-pub-5738022526587953" data-slot-key="newsSidebar" data-ad-slot="7418529630"></ins>
               </div>
             </div>
           </aside>
@@ -364,9 +364,7 @@
     loadTrending();
     
     // Push AdSense
-    if (window.adsbygoogle) {
-      window.adsbygoogle.push({});
-    }
+    // AdSense initialization is consent-gated and lazy-loaded by /i18n.js.
   </script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {

@@ -50,7 +50,7 @@ export const AdSizes = {
  * @param {string} options.size - Ad size key from AdSizes
  * @param {string} options.adClient - AdSense publisher ID
  * @param {string} options.adSlot - AdSense slot ID
- * @param {boolean} options.showLabel - Show "Sponsored" label
+ * @param {boolean} options.showLabel - Show clear Advertisement/Reklam label
  * @param {string} options.labelText - Custom label text
  * @param {boolean} options.responsive - Enable responsive mode
  * @param {string} options.placement - Semantic placement name for audits
@@ -61,7 +61,7 @@ export function createAdSlot({
   adClient = 'ca-pub-5738022526587953',
   adSlot = null,
   showLabel = true,
-  labelText = 'Sponsored',
+  labelText = 'Advertisement',
   responsive = false,
   placement = null
 } = {}) {
@@ -74,7 +74,7 @@ export function createAdSlot({
   container.className = `ad-slot-container revenue-card ${config.className}-container`;
   container.setAttribute('data-ad-placement', placementName);
   container.style.cssText = `
-    margin: 0 auto;
+    margin: 9.5rem auto;
     text-align: center;
     max-width: 100%;
   `;
@@ -86,10 +86,10 @@ export function createAdSlot({
     label.textContent = labelText;
     label.style.cssText = `
       font-size: 0.6875rem;
-      font-weight: 500;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      color: var(--text-muted, #52525B);
+      color: var(--text-tertiary, #94a3b8);
       margin-bottom: 0.5rem;
       text-align: center;
     `;
@@ -100,15 +100,17 @@ export function createAdSlot({
   const wrapper = document.createElement('div');
   wrapper.className = `ad-wrapper ad-wrapper--${config.name}`;
   wrapper.style.cssText = `
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: var(--ad-bg, rgba(15, 23, 42, 0.38));
+    border: 1px solid var(--ad-border, rgba(148, 163, 184, 0.32));
     border-radius: 12px;
     padding: 0.75rem;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-width: ${config.width}px;
+    width: min(100%, ${config.width}px);
+    min-width: min(100%, ${config.width}px);
     min-height: ${config.height}px;
+    aspect-ratio: ${config.width} / ${config.height};
     max-width: 100%;
     overflow: hidden;
     position: relative;
@@ -133,7 +135,7 @@ export function createAdSlot({
   adIns.style.cssText = `
     display: ${responsive ? 'block' : 'inline-block'};
     width: ${responsive ? '100%' : `${config.width}px`};
-    height: ${responsive ? 'auto' : `${config.height}px`};
+    height: ${config.height}px;
     max-width: 100%;
   `;
   
@@ -142,6 +144,8 @@ export function createAdSlot({
   adIns.setAttribute('data-ad-slot', slotId);
   adIns.setAttribute('data-ad-format', responsive ? 'auto' : config.name);
   adIns.setAttribute('data-ad-placement', placementName);
+  adIns.setAttribute('width', String(config.width));
+  adIns.setAttribute('height', String(config.height));
   
   if (responsive) {
     adIns.setAttribute('data-full-width-responsive', 'true');
@@ -161,23 +165,24 @@ export function createAdSlot({
 export function createHeaderAd(options = {}) {
   const container = createAdSlot({
     size: 'BANNER',
-    showLabel: false,
+    showLabel: true,
     responsive: true,
     ...options
   });
   
   container.classList.add('ad-leaderboard-safe');
   container.style.cssText += `
-    margin: 10rem auto;
+    margin: 9.5rem auto;
   `;
   
   // Adjust wrapper for header
   const wrapper = container.querySelector('.ad-wrapper');
   if (wrapper) {
     wrapper.style.background = 'transparent';
-    wrapper.style.border = 'none';
+    wrapper.style.border = '1px solid var(--ad-border, rgba(148, 163, 184, 0.32))';
     wrapper.style.padding = '0';
     wrapper.style.minHeight = '90px';
+    wrapper.style.aspectRatio = '728 / 90';
   }
   
   return container;
@@ -225,7 +230,7 @@ export function createSidebarAd(position = 'right', options = {}) {
 export function createMobileAnchorAd(options = {}) {
   const container = createAdSlot({
     size: 'MOBILE_ANCHOR',
-    showLabel: false,
+    showLabel: true,
     responsive: true,
     ...options
   });
@@ -344,7 +349,7 @@ export function createPremiumPlanCta({
 export function createInContentAd(options = {}) {
   return createAdSlot({
     size: 'RECTANGLE',
-    labelText: 'Sponsored',
+    labelText: 'Advertisement',
     responsive: true,
     ...options
   });
@@ -371,11 +376,13 @@ export function initializeAds(config = {}) {
         if (entry.isIntersecting) {
           const ad = entry.target.querySelector('.adsbygoogle');
           if (ad && !ad.hasAttribute('data-ad-loaded')) {
-            try {
-              (window.adsbygoogle = window.adsbygoogle || []).push({});
-              ad.setAttribute('data-ad-loaded', 'true');
-            } catch (e) {
-              console.warn('Ad load failed:', e);
+            if (Array.isArray(window.adsbygoogle)) {
+              try {
+                window.adsbygoogle.push({});
+                ad.setAttribute('data-ad-loaded', 'true');
+              } catch (_e) {
+                void _e;
+              }
             }
           }
           observer.unobserve(entry.target);
@@ -392,11 +399,12 @@ export function initializeAds(config = {}) {
   } else {
     // Immediate load if lazy loading not supported
     document.querySelectorAll('.adsbygoogle').forEach(_ad => {
-      try {
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
-      } catch (_e) {
-        // Ad load failed — non-critical, fallback shown
-        void _e;
+      if (Array.isArray(window.adsbygoogle)) {
+        try {
+          window.adsbygoogle.push({});
+        } catch (_e) {
+          void _e;
+        }
       }
     });
   }

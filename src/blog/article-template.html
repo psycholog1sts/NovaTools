@@ -118,7 +118,7 @@
   <div class="bg-ambient" aria-hidden="true"></div>
   <div class="noise-overlay" aria-hidden="true"></div>
   <header class="main-header">
-    <div class="container"><div class="header-inner"><a href="/" class="logo" aria-label="MC NovaTools Home"><img src="/logo-bird.png" alt="MC NovaTools" class="header-logo-img" width="44" height="44"><span class="logo-text">NovaTools <span class="logo-mc">MC</span></span></a><nav class="nav-desktop" aria-label="Main navigation"><a href="/categories/index.html" class="nav-link">Categories</a><a href="/categories/pdf-tools.html" class="nav-link">PDF</a><a href="/categories/finance-tools.html" class="nav-link">Finance</a><a href="/categories/developer-tools.html" class="nav-link">Developer</a><a href="/blog/index.html" class="nav-link active">Blog</a></nav></div></div>
+    <div class="container"><div class="header-inner"><a href="/" class="logo" aria-label="MC NovaTools Home"><picture><source srcset="/logo-bird-44.webp" type="image/webp"><img src="/logo-bird.png" alt="MC NovaTools" class="header-logo-img" width="44" height="44" decoding="async"></picture><span class="logo-text">NovaTools <span class="logo-mc">MC</span></span></a><nav class="nav-desktop" aria-label="Main navigation"><a href="/categories/index.html" class="nav-link">Categories</a><a href="/categories/pdf-tools.html" class="nav-link">PDF</a><a href="/categories/finance-tools.html" class="nav-link">Finance</a><a href="/categories/developer-tools.html" class="nav-link">Developer</a><a href="/blog/index.html" class="nav-link active">Blog</a></nav></div></div>
   </header>
   <nav class="article-breadcrumb" aria-label="Breadcrumb">
     <div class="container"><ol><li><a href="/">Ana Sayfa</a></li><li class="chevron" aria-hidden="true">›</li><li><a href="/blog/index.html">Blog</a></li><li class="chevron" aria-hidden="true">›</li><li><a href="/blog/index.html?category=yapay-zeka">Yapay Zeka</a></li><li class="chevron" aria-hidden="true">›</li><li aria-current="page">Tarayıcı Öncelikli Araçlar</li></ol></div>
@@ -131,13 +131,13 @@
           <h1 itemprop="headline">Tarayıcı Öncelikli Araçlar Ne Anlama Gelir?</h1>
           <p class="article-dek" itemprop="description">Tarayıcı öncelikli iş akışları için semantik, erişilebilir ve SEO uyumlu NovaTools makale şablonu.</p>
           <div class="article-meta">
-            <span class="article-meta__author" itemprop="author" itemscope itemtype="https://schema.org/Person"><img src="/logo-bird-88.webp" alt="" width="48" height="48"><span><strong itemprop="name">Metehan Çetin</strong><br><span itemprop="jobTitle">Founder & Editor</span></span></span>
+            <span class="article-meta__author" itemprop="author" itemscope itemtype="https://schema.org/Person"><img src="/logo-bird-88.webp" alt="" width="48" height="48" decoding="async"><span><strong itemprop="name">Metehan Çetin</strong><br><span itemprop="jobTitle">Founder & Editor</span></span></span>
             <time datetime="2026-05-10" itemprop="datePublished">10 Mayıs 2026</time>
             <span class="updated-badge">Güncellendi: <time datetime="2026-05-10" itemprop="dateModified">10 Mayıs 2026</time></span>
             <span>⏱ 8 dk okuma</span>
           </div>
         </div>
-        <figure class="article-hero__media" itemprop="image"><img src="/images/blog-covers/browser-privacy.svg" alt="Tarayıcı içinde çalışan güvenli üretkenlik araçlarını gösteren kapak görseli" width="1280" height="720" loading="eager"></figure>
+        <figure class="article-hero__media" itemprop="image"><img src="/images/blog-covers/browser-privacy.svg" alt="Tarayıcı içinde çalışan güvenli üretkenlik araçlarını gösteren kapak görseli" width="1280" height="720" loading="eager" decoding="async" fetchpriority="high"></figure>
       </div>
     </header>
     <div class="share-row" aria-label="Sosyal paylaşım"><button class="share-btn" type="button" data-share="x">X</button><button class="share-btn" type="button" data-share="linkedin">in</button><button class="share-btn" type="button" data-share="whatsapp">WA</button><button class="share-btn" type="button" data-share="email">@</button></div>
@@ -196,7 +196,7 @@
       return String(value).replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]);
     }
 
-    const inlineImg = ({ src, alt = '', width, height }) => '<img ' + `src="${escapeHtml(src)}" alt="${escapeHtml(alt)}" width="${width}" height="${height}">`;
+    const inlineImg = ({ src, alt = '', width, height }) => '<img ' + `src="${escapeHtml(src)}" alt="${escapeHtml(alt)}" width="${width}" height="${height}" decoding="async" loading="lazy">`;
 
     function localToolLabel(href) {
       return String(href || '')
@@ -214,7 +214,7 @@
     }
 
     function renderInContentAd(labels) {
-      return `<aside class="ad-slot-container revenue-card article-ad-slot" aria-label="${escapeHtml(labels.ad)}" data-ad-placement="blog-in-content"><span class="ad-label">${escapeHtml(labels.ad)}</span><ins class="adsbygoogle ad-slot-leaderboard" style="display:block" data-ad-client="ca-pub-5738022526587953" data-slot-key="blogInContent" data-ad-slot="2852963074" data-ad-format="auto" data-full-width-responsive="true"></ins></aside>`;
+      return `<aside class="ad-slot-container revenue-card article-ad-slot" aria-label="${escapeHtml(labels.ad)}" data-ad-placement="blog-in-content"><span class="ad-label">${escapeHtml(labels.ad)}</span><ins class="adsbygoogle ad-slot-leaderboard" width="728" height="90" style="display:block;width:100%;min-height:90px;aspect-ratio:728/90" data-ad-client="ca-pub-5738022526587953" data-slot-key="blogInContent" data-ad-slot="2852963074" data-ad-format="leaderboard" data-full-width-responsive="true"></ins></aside>`;
     }
 
     function renderToc(post, labels) {

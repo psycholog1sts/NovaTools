@@ -113,7 +113,7 @@
   <header class="main-header">
     <div class="container">
       <div class="header-inner">
-        <a href="/" class="logo" aria-label="MC NovaTools Home"><img src="/logo-bird.png" alt="MC NovaTools" class="header-logo-img" width="44" height="44"><span class="logo-text">NovaTools <span class="logo-mc">MC</span></span></a>
+        <a href="/" class="logo" aria-label="MC NovaTools Home"><picture><source srcset="/logo-bird-44.webp" type="image/webp"><img src="/logo-bird.png" alt="MC NovaTools" class="header-logo-img" width="44" height="44" decoding="async"></picture><span class="logo-text">NovaTools <span class="logo-mc">MC</span></span></a>
         <nav class="nav-desktop" aria-label="Main navigation"><a href="/categories/index.html" class="nav-link" data-i18n="tools.categories">Categories</a><a href="/categories/pdf-tools.html" class="nav-link" data-i18n="nav.pdf">PDF</a><a href="/categories/image-tools.html" class="nav-link" data-i18n="nav.image">Image</a><a href="/categories/finance-tools.html" class="nav-link" data-i18n="nav.finance">Finance</a><a href="/categories/developer-tools.html" class="nav-link" data-i18n="nav.developer">Developer</a><a href="/blog/index.html" class="nav-link active" data-i18n="nav.blog">Blog</a></nav>
         <button type="button" id="mobileMenuBtn" class="menu-btn" aria-label="Toggle menu" aria-expanded="false">☰</button>
       </div>
@@ -243,7 +243,7 @@
     const articleUrl = (article) => getCleanBlogUrl(article.slug, locale).replace('https://mc-novatools.com', '');
     const formattedDate = (date) => new Intl.DateTimeFormat(localeCode(), { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(`${date}T00:00:00`));
     const escapeHtml = (value) => String(value).replace(/[&<>'"]/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' })[char]);
-    const inlineImg = ({ src, alt = '', width, height }) => '<img ' + `src="${escapeHtml(src)}" alt="${escapeHtml(alt)}" width="${width}" height="${height}">`;
+    const inlineImg = ({ src, alt = '', width, height }) => '<img ' + `src="${escapeHtml(src)}" alt="${escapeHtml(alt)}" width="${width}" height="${height}" decoding="async" loading="lazy">`;
     const categories = () => ['all', ...new Set(sortedArticles().map((article) => article.category))];
     const categoryLabel = (category) => category === 'all' ? ui.all : (ui.categories[category] || category);
     const readTimeLabel = (minutes) => ui.readTime ? ui.readTime.replace('{minutes}', minutes) : `${minutes} min read`;
