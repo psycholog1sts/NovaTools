@@ -25,6 +25,7 @@ const resolveHtmlEntry = (file) => {
 
 const googleSiteVerification = process.env.PUBLIC_GSC_ID || process.env.VITE_GOOGLE_SITE_VERIFICATION || '';
 const googleAnalyticsId = process.env.PUBLIC_GA_ID || process.env.VITE_GA_ID || '';
+const googleAdSenseClient = process.env.PUBLIC_ADSENSE_CLIENT || process.env.VITE_ADSENSE_CLIENT || 'ca-pub-5738022526587953';
 
 const optionalHtmlEnv = {
   name: 'novatools-optional-html-env',
@@ -32,7 +33,8 @@ const optionalHtmlEnv = {
   transformIndexHtml(html, context) {
     return applySeoHead(html, context?.path || '/', {
       gaId: googleAnalyticsId,
-      gscId: googleSiteVerification
+      gscId: googleSiteVerification,
+      adsenseClient: googleAdSenseClient
     });
   }
 };
