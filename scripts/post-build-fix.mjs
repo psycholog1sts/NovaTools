@@ -655,6 +655,7 @@ function stampToolHelpfulContent() {
   return auditRows;
 }
 
+<<<<<<< codex/2026-06-02-02-08-29-optimize-site-for-google-adsense-approval
 
 function listDistHtmlFiles() {
   const files = [];
@@ -686,6 +687,11 @@ console.log(`✅ Added Phase 4 helpful content to ${phase4ToolAuditRows.length} 
 const phase5SeoPageCount = stampPhase5SeoHead();
 console.log(`✅ Added Phase 5 structured data and social metadata to ${phase5SeoPageCount} HTML pages`);
 
+=======
+const phase4ToolAuditRows = stampToolHelpfulContent();
+console.log(`✅ Added Phase 4 helpful content to ${phase4ToolAuditRows.length} tool pages`);
+
+>>>>>>> main
 // Verify key files exist
 const keyFiles = [
   'index.html',
