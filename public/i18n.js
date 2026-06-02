@@ -781,7 +781,7 @@
     if (!document.head || !isProductionHost() || !hasValidAdSlot()) return;
     if (navigator.doNotTrack === '1' || navigator.globalPrivacyControl) return;
     if (!hasConsentCategory('advertising')) return;
-    if (document.querySelector('script[data-adsense-bootstrap="true"], script[data-adsense="true"], script[src^="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client="]')) {
+    if (document.querySelector('script[src^="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client="]')) {
       window.__mcAdSenseLoaded = true;
       return;
     }
