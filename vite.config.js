@@ -25,7 +25,11 @@ const resolveHtmlEntry = (file) => {
 
 const googleSiteVerification = process.env.PUBLIC_GSC_ID || process.env.VITE_GOOGLE_SITE_VERIFICATION || '';
 const googleAnalyticsId = process.env.PUBLIC_GA_ID || process.env.VITE_GA_ID || '';
-const googleAdSenseClient = process.env.PUBLIC_ADSENSE_CLIENT || process.env.VITE_ADSENSE_CLIENT || 'ca-pub-5738022526587953';
+const defaultAdSenseClient = 'ca-pub-5738022526587953';
+const adSenseClientPattern = /^ca-pub-[0-9]{16}$/;
+const googleAdSenseClient = [process.env.PUBLIC_ADSENSE_CLIENT, process.env.VITE_ADSENSE_CLIENT]
+  .map((value) => String(value || '').trim())
+  .find((value) => adSenseClientPattern.test(value)) || defaultAdSenseClient;
 
 const optionalHtmlEnv = {
   name: 'novatools-optional-html-env',
