@@ -36,9 +36,8 @@ export function removeLegacyGaSnippets(html) {
 
 export function removeLegacyAdSenseHead(html) {
   return html
-    .replace(/\n?\s*<meta\b(?=[^>]*\bname=["']google-adsense-account["'])[^>]*\/?>/gi, '')
-    .replace(/\n?\s*<script\b(?=[^>]*\bsrc=["']https:\/\/pagead2\.googlesyndication\.com\/pagead\/js\/adsbygoogle\.js\?client=[^"']*["'])[^>]*>\s*<\/script>/gi, '')
-    .replace(/\n?\s*<script\b(?=[^>]*\bsrc=["']https:\/\/pagead2\.googlesyndication\.com\/pagead\/js\/adsbygoogle\.js\?client=[^"']*["'])[^>]*\/?>/gi, '');
+    .replace(/\n?\s*<meta\b(?=[^>]*\bname\s*=\s*["']google-adsense-account["'])(?=[^>]*\bcontent\s*=\s*["']ca-pub-[0-9]{16}["'])[^>]*\/?\s*>/gi, '')
+    .replace(/\n?\s*<script\b(?=[^>]*\bsrc\s*=\s*["']https:\/\/pagead2\.googlesyndication\.com\/pagead\/js\/adsbygoogle\.js\?client=ca-pub-[0-9]{16}[^"']*["'])(?=[^>]*(?:\basync\b|>))(?=[^>]*(?:\bcrossorigin\s*=\s*["']anonymous["']|>))[^>]*>\s*<\/script>/gi, '');
 }
 
 export function renderAdSenseHead(adsenseClient = DEFAULT_ADSENSE_CLIENT) {
@@ -47,7 +46,7 @@ export function renderAdSenseHead(adsenseClient = DEFAULT_ADSENSE_CLIENT) {
 
   const safeClient = escapeHtml(client);
   return `<meta name="google-adsense-account" content="${safeClient}">
-<link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">`;
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${safeClient}" crossorigin="anonymous"></script>`;
 }
 
 export function renderAnalyticsHead({ gaId = '', gscId = '' } = {}) {
@@ -316,10 +315,10 @@ export function applySeoHead(html, route, { gaId = '', gscId = '', adsenseClient
 
   nextHtml = nextHtml.replace(/\s*<meta name="google-site-verification" content="[^"]*"\s*\/?>/i, '');
   const adSenseHead = renderAdSenseHead(adsenseClient);
-  if (adSenseHead) nextHtml = nextHtml.replace(/<\/head>/i, `  ${adSenseHead}\n</head>`);
+  if (adSenseHead) nextHtml = nextHtml.replace(/<\/head>/i, `${adSenseHead}\n</head>`);
 
   const analyticsHead = renderAnalyticsHead({ gaId, gscId });
-  if (analyticsHead) nextHtml = nextHtml.replace(/<\/head>/i, `  ${analyticsHead}\n</head>`);
+  if (analyticsHead) nextHtml = nextHtml.replace(/<\/head>/i, `${analyticsHead}\n</head>`);
 
   return nextHtml;
 }
