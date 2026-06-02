@@ -1,6 +1,8 @@
 const SITE_ORIGIN = 'https://mc-novatools.com';
 const DEFAULT_OG_IMAGE = `${SITE_ORIGIN}/og-image.svg`;
 
+const DEFAULT_ADSENSE_CLIENT = 'ca-pub-5738022526587953';
+
 function escapeHtml(value) {
   return String(value || '')
     .replace(/&/g, '&amp;')
@@ -32,6 +34,23 @@ export function removeLegacyGaSnippets(html) {
     .replace(/\n?\s*<script type="text\/plain" data-consent-category="analytics" async src="https:\/\/www\.googletagmanager\.com\/gtag\/js\?id=[^"]+"><\/script>\s*\n\s*<script type="text\/plain" data-consent-category="analytics">[\s\S]*?gtag\('config',[\s\S]*?<\/script>\s*/g, '\n');
 }
 
+export function removeLegacyAdSenseHead(html) {
+  return html
+    .replace(/\n?\s*<meta\b(?=[^>]*\bname=["']google-adsense-account["'])[^>]*\/?>/gi, '')
+    .replace(/\n?\s*<script\b(?=[^>]*\bsrc=["']https:\/\/pagead2\.googlesyndication\.com\/pagead\/js\/adsbygoogle\.js\?client=[^"']*["'])[^>]*>\s*<\/script>/gi, '')
+    .replace(/\n?\s*<script\b(?=[^>]*\bsrc=["']https:\/\/pagead2\.googlesyndication\.com\/pagead\/js\/adsbygoogle\.js\?client=[^"']*["'])[^>]*\/?>/gi, '');
+}
+
+export function renderAdSenseHead(adsenseClient = DEFAULT_ADSENSE_CLIENT) {
+  const client = String(adsenseClient || '').trim();
+  if (!/^ca-pub-[0-9]{16}$/.test(client)) return '';
+
+  const safeClient = escapeHtml(client);
+  const safeScriptSrc = escapeHtml(`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${client}`);
+  return `<meta name="google-adsense-account" content="${safeClient}">
+<script async src="${safeScriptSrc}" crossorigin="anonymous"></script>`;
+}
+
 export function renderAnalyticsHead({ gaId = '', gscId = '' } = {}) {
   const safeGaId = escapeHtml(gaId.trim());
   const safeGscId = escapeHtml(gscId.trim());
@@ -50,9 +69,10 @@ function upsertTag(html, pattern, tag) {
   return html.replace(/<\/head>/i, `  ${tag}\n</head>`);
 }
 
-export function applySeoHead(html, route, { gaId = '', gscId = '' } = {}) {
+export function applySeoHead(html, route, { gaId = '', gscId = '', adsenseClient = DEFAULT_ADSENSE_CLIENT } = {}) {
   const canonical = canonicalUrlForRoute(route);
-  let nextHtml = removeLegacyGaSnippets(html);
+  let nextHtml = removeLegacyAdSenseHead(html);
+  nextHtml = removeLegacyGaSnippets(nextHtml);
 
   nextHtml = upsertTag(nextHtml, /<link rel="canonical" href="[^"]*"\s*\/?>/i, `<link rel="canonical" href="${canonical}">`);
   nextHtml = upsertTag(nextHtml, /<meta property="og:url" content="[^"]*"\s*\/?>/i, `<meta property="og:url" content="${canonical}">`);
@@ -61,6 +81,9 @@ export function applySeoHead(html, route, { gaId = '', gscId = '' } = {}) {
   nextHtml = upsertTag(nextHtml, /<meta name="twitter:image" content="[^"]*"\s*\/?>/i, `<meta name="twitter:image" content="${DEFAULT_OG_IMAGE}">`);
 
   nextHtml = nextHtml.replace(/\s*<meta name="google-site-verification" content="[^"]*"\s*\/?>/i, '');
+  const adSenseHead = renderAdSenseHead(adsenseClient);
+  if (adSenseHead) nextHtml = nextHtml.replace(/<\/head>/i, `  ${adSenseHead}\n</head>`);
+
   const analyticsHead = renderAnalyticsHead({ gaId, gscId });
   if (analyticsHead) nextHtml = nextHtml.replace(/<\/head>/i, `  ${analyticsHead}\n</head>`);
 

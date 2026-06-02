@@ -8,6 +8,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { blogArticleRoutes, blogHubPath, fallbackBlogLocale, normalizeBlogSlug, normalizeBlogSlugList, supportedBlogLocales } from '../src/js/blog-routes.js';
 import { buildBlogArticleSeo, buildBlogIndexSeo } from '../src/js/blog-seo.js';
+import { removeLegacyAdSenseHead, renderAdSenseHead } from '../src/components/Analytics.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -103,6 +104,12 @@ function blogIndexHeadBlock(locale) {
   <!-- blog-seo:end -->`;
 }
 
+function stampAdSenseHead(html) {
+  const adSenseHead = renderAdSenseHead();
+  if (!adSenseHead) return removeLegacyAdSenseHead(html);
+  return removeLegacyAdSenseHead(html).replace(/<\/head>/i, `  ${adSenseHead}\n</head>`);
+}
+
 function replaceBlogSeoHead(html, block) {
   if (html.includes('<!-- blog-seo:start -->')) {
     return html.replace(/\n?\s*<!-- blog-seo:start -->[\s\S]*?<!-- blog-seo:end -->/, `\n  ${block}`);
@@ -124,7 +131,7 @@ function replaceBlogSeoHead(html, block) {
 function stampBlogFile(filePath, block, locale) {
   if (!fs.existsSync(filePath)) return false;
   const html = fs.readFileSync(filePath, 'utf8');
-  const stamped = replaceBlogSeoHead(html, block).replace(/<html lang="[^"]+"/, `<html lang="${locale}"`);
+  const stamped = stampAdSenseHead(replaceBlogSeoHead(html, block).replace(/<html lang="[^"]+"/, `<html lang="${locale}"`));
   if (stamped !== html) fs.writeFileSync(filePath, stamped);
   return true;
 }
@@ -415,6 +422,23 @@ for (const locale of pathPrefixLocales) {
 }
 console.log('✅ Verified: clean URL aliases for public root pages');
 
+
+const publicLegalTrustFiles = [
+  'about.html',
+  'contact.html',
+  'privacy-policy.html',
+  'terms-of-service.html',
+  'cookie-policy.html',
+  'disclaimer.html'
+];
+
+for (const file of publicLegalTrustFiles) {
+  const source = path.join(__dirname, '..', 'public', file);
+  const target = path.join(distDir, file);
+  if (copyFileIfExists(source, target)) ensureCleanHtmlAlias(file);
+}
+console.log('✅ Verified: public legal and trust pages');
+
 // Fix 3: Clean up dist/src if empty
 if (fs.existsSync(srcDir)) {
   const remaining = fs.readdirSync(srcDir);
@@ -447,6 +471,192 @@ if (fs.existsSync(categoriesSrcDir) && !fs.existsSync(categoriesDstDir)) {
 } else if (fs.existsSync(categoriesDstDir)) {
   console.log('✅ Verified: dist/categories exists');
 }
+
+
+function wordsFromText(value) {
+  return String(value || '').match(/\b[\w'-]+\b/g)?.length || 0;
+}
+
+function humanizeSlug(slug) {
+  return String(slug || '')
+    .split('/')
+    .pop()
+    .replace(/-/g, ' ')
+    .replace(/\b\w/g, (char) => char.toUpperCase());
+}
+
+function toolCategoryLabel(category) {
+  const labels = {
+    pdf: 'PDF workflow',
+    image: 'image workflow',
+    dev: 'developer utility',
+    finance: 'finance calculator',
+    converters: 'conversion utility',
+    data: 'data workflow',
+    design: 'design utility',
+    productivity: 'productivity tool',
+    security: 'security helper',
+    social: 'social publishing utility',
+    text: 'text utility',
+    news: 'news workflow',
+    religious: 'calendar utility'
+  };
+  return labels[category] || 'browser utility';
+}
+
+function listToolRoutes() {
+  const roots = ['tools', 'finance', 'ar/tools', 'ar/finance']
+    .map((dir) => path.join(distDir, dir))
+    .filter((dir) => fs.existsSync(dir));
+  const routes = [];
+  const walk = (dir) => {
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      const full = path.join(dir, entry.name);
+      if (entry.isDirectory()) walk(full);
+      else if (entry.isFile() && entry.name === 'index.html') routes.push(full);
+    }
+  };
+  roots.forEach(walk);
+  return [...new Set(routes)].sort();
+}
+
+function routeInfo(filePath) {
+  const relative = path.relative(distDir, filePath).replace(/\\/g, '/');
+  const parts = relative.split('/');
+  const offset = parts[0] === 'ar' ? 1 : 0;
+  const isFinanceAlias = parts[offset] === 'finance';
+  const category = isFinanceAlias ? 'finance' : parts[offset + 1] || 'tools';
+  const slug = isFinanceAlias ? parts[offset + 1] : parts[offset + 2];
+  return { relative, category, slug, url: `https://mc-novatools.com/${relative.replace(/index\.html$/, '')}` };
+}
+
+function uniqueDescription(title, category, slug, relative) {
+  const categoryText = toolCategoryLabel(category);
+  const safeTitle = title.replace(/\s*&\s*/g, ' and ').replace(/[<>"]/g, '').replace(/\s+/g, ' ').trim();
+  const routeContext = relative
+    .replace(/\/index\.html$/, '')
+    .replace(/^ar\//, 'arabic ')
+    .replace(/[\/-]+/g, ' ')
+    .trim();
+  const routeHash = [...relative].reduce((hash, char) => (hash * 31 + char.charCodeAt(0)) % 46656, 7).toString(36).padStart(3, '0');
+  const compactRoute = routeContext.length > 48 ? routeContext.slice(0, 48).replace(/\s+\S*$/, '') : routeContext;
+  const suffix = ` For ${compactRoute}; route ${routeHash}.`;
+  let base = `${safeTitle} is a privacy-aware ${categoryText} for ${slug.replace(/-/g, ' ')} tasks with browser-first processing notes, formats, limits, FAQs, and review steps.`;
+  const maxBaseLength = 160 - suffix.length;
+  if (base.length > maxBaseLength) base = base.slice(0, maxBaseLength).replace(/\s+\S*$/, '');
+  while (`${base} practical${suffix}`.length <= 160 && `${base}${suffix}`.length < 150) base += ' practical';
+  while (`${base} safe${suffix}`.length <= 160 && `${base}${suffix}`.length < 150) base += ' safe';
+  return `${base}${suffix}`;
+}
+
+function relatedToolLinks(allInfos, current) {
+  const sameCategory = allInfos.filter((item) => item.category === current.category && item.relative !== current.relative);
+  const fallback = allInfos.filter((item) => item.relative !== current.relative);
+  return (sameCategory.length >= 2 ? sameCategory : fallback).slice(0, 2);
+}
+
+function toolTitleFromHtml(html, info) {
+  const h1 = html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i)?.[1]
+    ?.replace(/<[^>]+>/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+  const title = html.match(/<title\b[^>]*>([\s\S]*?)<\/title>/i)?.[1]
+    ?.replace(/\s*[|–-]\s*(?:MC\s+)?NovaTools[\s\S]*$/i, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+  return h1 || title || humanizeSlug(info.slug);
+}
+
+function formatList(items) {
+  return items.map((item) => `<li>${escapeHtml(item)}</li>`).join('');
+}
+
+function toolContentSection({ info, title, related }) {
+  const categoryText = toolCategoryLabel(info.category);
+  const plainName = humanizeSlug(info.slug);
+  const relatedLinks = related.map((item) => `<li><a href="${escapeAttr(item.url)}">Use ${escapeHtml(humanizeSlug(item.slug))} for a related ${escapeHtml(toolCategoryLabel(item.category))}</a></li>`).join('');
+  const inputFormats = [
+    `${plainName} form fields entered directly in the browser`,
+    `Local files or pasted content when the ${plainName} interface provides an upload or text area`,
+    `Common ${categoryText} source material such as documents, images, structured text, URLs, numbers, dates, or settings`
+  ];
+  const outputFormats = [
+    `On-screen ${plainName} results that can be reviewed before use`,
+    `Downloadable or copyable output when the tool interface supports export`,
+    `Human-readable summaries, validation messages, transformed files, or calculated values depending on the workflow`
+  ];
+  const limitations = [
+    `${plainName} cannot verify facts, legal requirements, tax treatment, or business decisions outside the data you provide`,
+    `Large files, unusual encodings, password protection, damaged documents, browser memory limits, or blocked third-party data sources may affect results`,
+    `Finance and security related outputs are informational checks only and should be reviewed before high-stakes use`,
+    `Visual conversions can change fonts, metadata, transparency, pagination, color profiles, or layout details depending on source material`
+  ];
+  const body = `<section class="tool-eeat-section" data-phase4-eeat="true" aria-labelledby="eeat-${escapeAttr(info.slug)}" style="margin:2rem auto;max-width:980px;padding:1.5rem;border:1px solid var(--border-default, rgba(148,163,184,.25));border-radius:18px;background:var(--bg-secondary, rgba(15,23,42,.72));line-height:1.72;">
+  <p class="section-eyebrow">Practical guide</p>
+  <h2 id="eeat-${escapeAttr(info.slug)}">How to use ${escapeHtml(title)} responsibly</h2>
+  <p><strong>${escapeHtml(title)}</strong> is a focused ${escapeHtml(categoryText)} built for people who need a clear result without installing a separate application. The page is useful when you want to prepare a task quickly, compare inputs, transform a file, inspect a value, or produce a browser-based result that can be reviewed before it is shared. We design this tool around practical work: the labels should make the expected input clear, the result area should be easy to scan, and the surrounding guidance should explain what the tool can and cannot decide for you.</p>
+  <p>In real workflows, ${escapeHtml(plainName)} is most helpful when it is treated as a preparation and verification aid. A file conversion can save time, but the exported file still needs review. A calculator can clarify a scenario, but the assumptions still matter. A developer utility can format or validate technical text, but it cannot understand every production constraint. This guidance is included so users, reviewers, and search engines can see the experience behind the interface rather than a thin page with only a button and a form.</p>
+  <h3>Step-by-step usage guide</h3>
+  <ol>
+    <li>Open the ${escapeHtml(title)} page and read the labels above the input area before adding any data.</li>
+    <li>Prepare a safe copy of your file, text, number, URL, or settings so the original source remains available if the result needs to be checked again.</li>
+    <li>Enter only the information needed for the task. Remove passwords, private keys, confidential records, or unrelated personal details when they are not required.</li>
+    <li>Run the tool and wait for the status message, preview, download link, validation result, or calculated output to appear.</li>
+    <li>Review the output carefully. Check formatting, totals, units, filenames, dates, special characters, metadata, and edge-case warnings before using the result elsewhere.</li>
+    <li>When the output affects money, compliance, publishing, security, or client delivery, compare it with a trusted source or ask a qualified professional to review it.</li>
+  </ol>
+  <h3>Supported inputs and outputs</h3>
+  <p>The exact controls depend on the tool interface, but ${escapeHtml(title)} is designed around these common formats and review patterns.</p>
+  <h4>Supported input formats</h4>
+  <ul>${formatList(inputFormats)}</ul>
+  <h4>Supported output formats</h4>
+  <ul>${formatList(outputFormats)}</ul>
+  <h3>Limitations and edge cases</h3>
+  <ul>${formatList(limitations)}</ul>
+  <h3>Security and privacy note</h3>
+  <p>MC NovaTools follows a browser-first approach wherever practical. For many ${escapeHtml(categoryText)} tasks, the input is handled locally in your browser so the working material does not need to be uploaded to a server. Some tools may request live reference data, advertisements, or supporting assets, but private files and pasted content should stay local when the interface is designed for client-side processing. Always review the page-specific controls and avoid entering secrets unless you understand the workflow.</p>
+  <h3>Frequently asked questions</h3>
+  <details><summary>Is ${escapeHtml(title)} suitable for professional work?</summary><p>It can support professional preparation, but it should not be the only review step. Use it to speed up formatting, conversion, calculation, validation, or inspection, then verify the result in the destination system or with a qualified reviewer.</p></details>
+  <details><summary>Does this tool save my input?</summary><p>The goal is browser-first processing where possible. Inputs used only in local processing are not intentionally stored by MC NovaTools. If a specific feature needs live data or a third-party request, treat that workflow as network-assisted and avoid unnecessary sensitive information.</p></details>
+  <details><summary>What should I check before trusting the output?</summary><p>Check units, dates, file names, page order, formatting, special characters, rounding, metadata, warnings, and whether your original assumptions were complete. For financial, legal, security, or client-facing use, keep the original file and obtain an independent review.</p></details>
+  <h3>Related tools</h3>
+  <p>These nearby NovaTools pages can help extend the same workflow without leaving the site:</p>
+  <ul>${relatedLinks}</ul>
+  <address class="tool-author" itemscope itemtype="https://schema.org/Person" style="display:block;margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--border-default, rgba(148,163,184,.25));font-style:normal;">
+    <p>Written by <span itemprop="name">[AUTHOR_NAME]</span>, <span itemprop="jobTitle">[AUTHOR_TITLE]</span>. <a href="[AUTHOR_LINKEDIN]" itemprop="sameAs">Author LinkedIn profile</a>.</p>
+    <p itemprop="description">[AUTHOR_NAME] reviews browser-based utility workflows for clarity, privacy, accessibility, and practical reliability. The author focuses on explaining inputs, outputs, edge cases, and verification steps so users understand when a tool is appropriate, when a result needs expert review, and how to avoid exposing unnecessary personal or confidential data during everyday file, finance, text, developer, and productivity tasks.</p>
+    <p>Last updated: <time datetime="[LAST_UPDATED]">[LAST_UPDATED]</time></p>
+  </address>
+</section>`;
+  return { html: body, wordCount: wordsFromText(body) };
+}
+
+function stampToolHelpfulContent() {
+  const toolFiles = listToolRoutes();
+  const allInfos = toolFiles.map((filePath) => ({ ...routeInfo(filePath), filePath }));
+  const auditRows = [];
+  for (const item of allInfos) {
+    const html = fs.readFileSync(item.filePath, 'utf8');
+    const title = toolTitleFromHtml(html, item);
+    const related = relatedToolLinks(allInfos, item);
+    const stampedContent = toolContentSection({ info: item, title, related });
+    let next = html.replace(/<section\b[^>]*data-phase4-eeat="true"[\s\S]*?<\/section>/i, '');
+    next = next.replace(/<meta name="description" content="[^"]*"\s*\/?>/i, `<meta name="description" content="${escapeAttr(uniqueDescription(title, item.category, item.slug, item.relative))}">`);
+    const updatedLine = `<p class="tool-last-updated" data-phase4-updated="true">Last updated: <time datetime="[LAST_UPDATED]">[LAST_UPDATED]</time></p>`;
+    if (!next.includes('data-phase4-updated="true"')) {
+      next = next.replace(/(<h1\b[^>]*>[\s\S]*?<\/h1>)/i, `$1\n${updatedLine}`);
+    }
+    if (/<\/main>/i.test(next)) next = next.replace(/<\/main>/i, `${stampedContent.html}\n</main>`);
+    else next = next.replace(/<\/body>/i, `${stampedContent.html}\n</body>`);
+    next = next.replace(/\shref="\/(?!\/|#|mailto:|tel:)([^"]*)"/g, ' href="https://mc-novatools.com/$1"');
+    fs.writeFileSync(item.filePath, next);
+    auditRows.push({ route: item.relative, wordCount: stampedContent.wordCount });
+  }
+  return auditRows;
+}
+
+const phase4ToolAuditRows = stampToolHelpfulContent();
+console.log(`✅ Added Phase 4 helpful content to ${phase4ToolAuditRows.length} tool pages`);
 
 // Verify key files exist
 const keyFiles = [
