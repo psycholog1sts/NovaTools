@@ -1,293 +1,140 @@
-# PHASE 4 Audit - Tool Page Helpful Content and E-E-A-T Signals
-
-Scope: generated individual tool routes under /tools/, /finance/, /ar/tools/, and /ar/finance/. The source implementation is centralized in scripts/post-build-fix.mjs so the build consistently stamps every tool page without hand-editing hundreds of static files.
-
-Google references:
+PHASE 4 TOOL CONTENT AUDIT
+Scope: individual tool HTML files under src/tools plus generated tool page routes represented by those source files.
+Google references reviewed:
 - https://developers.google.com/search/docs/fundamentals/creating-helpful-content
 - https://developers.google.com/search/docs/appearance/ratings-raters-guidelines
-
-Author byline structure applied to every route: semantic <address class="tool-author"> with Schema.org Person itemscope, [AUTHOR_NAME], [AUTHOR_TITLE], [AUTHOR_LINKEDIN], a 50+ word itemprop="description" author bio, and <time datetime="[LAST_UPDATED]">[LAST_UPDATED]</time>.
-
-Additional structure applied to every route: a prominent Last updated line immediately after the H1, a data-phase4-eeat helpful-content section below the tool interface, a numbered usage guide, supported input and output lists, limitations and edge cases, a security/privacy note, at least three FAQ entries, at least two absolute same-site related-tool links, and a unique 150-160 character meta description.
-
-Modified generated tool pages:
-- ar/finance/cloud-cost/index.html: added 820 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/finance/compound-interest/index.html: added 820 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/finance/crypto-prices/index.html: added 820 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/finance/crypto-tax/index.html: added 820 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/finance/life-insurance/index.html: added 820 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/finance/live-exchange/index.html: added 820 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/finance/mortgage-refinance/index.html: added 820 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/finance/retirement/index.html: added 810 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/finance/stock-lookup/index.html: added 820 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/finance/student-loan/index.html: added 825 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/finance/tax/index.html: added 810 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/converters/age-calculator/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/converters/bmi-calculator/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/converters/currency-converter/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/converters/number-base-converter/index.html: added 825 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/converters/percentage-calculator/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/converters/roman-numerals/index.html: added 820 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/converters/scientific-calculator/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/converters/timezone-converter/index.html: added 820 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/converters/unit-converter/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/converters/unix-timestamp/index.html: added 820 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/data/audio-spectrum/index.html: added 820 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/data/chart-builder/index.html: added 820 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/data/checksum-calculator/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/data/csv-json-summarizer/index.html: added 825 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/data/csv-to-json/index.html: added 830 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/data/csv-viewer/index.html: added 825 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/data/duplicate-finder/index.html: added 820 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/data/file-merger/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/data/file-organizer/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/data/file-renamer/index.html: added 820 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/data/file-splitter/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/data/json-to-csv/index.html: added 830 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/data/sql-formatter/index.html: added 825 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/data/weather-lookup/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/design/barcode-generator/index.html: added 816 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/design/business-card-maker/index.html: added 825 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/design/diagram-maker/index.html: added 816 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/design/invoice-generator/index.html: added 816 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/design/logo-maker/index.html: added 816 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/design/mind-map-tool/index.html: added 826 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/design/mockup-generator/index.html: added 816 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/design/qr-code-designer/index.html: added 826 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/design/resume-builder/index.html: added 816 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/design/wireframe-tool/index.html: added 816 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/dev/base64-converter/index.html: added 820 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/dev/code-formatter/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/dev/color-converter/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/dev/css-minifier/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/dev/html-to-markdown/index.html: added 825 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/dev/js-minifier/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/dev/json-formatter/index.html: added 830 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/dev/json-validator/index.html: added 825 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/dev/lorem-generator/index.html: added 820 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/dev/markdown-to-html/index.html: added 825 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/dev/regex-tester/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/dev/url-encoder/index.html: added 820 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/finance/cloud-cost/index.html: added 820 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/finance/compound-interest/index.html: added 820 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/finance/crypto-prices/index.html: added 820 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/finance/crypto-tax/index.html: added 820 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/finance/life-insurance/index.html: added 820 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/finance/live-exchange/index.html: added 820 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/finance/mortgage-refinance/index.html: added 820 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/finance/retirement/index.html: added 810 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/finance/stock-lookup/index.html: added 820 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/finance/student-loan/index.html: added 825 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/finance/tax/index.html: added 810 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/image/background-remover/index.html: added 814 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/image/collage-maker/index.html: added 814 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/image/compress/index.html: added 810 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/image/convert/index.html: added 810 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/image/exif-viewer/index.html: added 820 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/image/image-cropper/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/image/image-flipper/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/image/image-resizer/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/image/image-rotator/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/image/image-to-avif/index.html: added 830 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/image/image-to-webp/index.html: added 830 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/image/image-watermark/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/image/metadata-remover/index.html: added 820 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/news/summarizer/index.html: added 825 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/pdf/compress/index.html: added 809 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/pdf/merge/index.html: added 814 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/pdf/pdf-ocr/index.html: added 823 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/pdf/pdf-page-number/index.html: added 828 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/pdf/pdf-to-excel/index.html: added 828 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/pdf/pdf-to-html/index.html: added 828 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/pdf/pdf-to-jpg/index.html: added 828 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/pdf/pdf-to-png/index.html: added 828 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/pdf/pdf-to-powerpoint/index.html: added 828 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/pdf/pdf-to-text/index.html: added 828 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/pdf/pdf-to-word/index.html: added 828 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/pdf/pdf-watermark/index.html: added 818 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/pdf/split/index.html: added 813 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/productivity/countdown-timer/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/productivity/expense-tracker/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/productivity/habit-tracker/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/productivity/kanban-board/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/productivity/notes/index.html: added 805 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/productivity/pomodoro-timer/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/productivity/stopwatch/index.html: added 805 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/productivity/time-tracker/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/productivity/todo-list/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/productivity/world-clock/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/religious/islamic-calendar/index.html: added 820 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/request/index.html: added 820 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/security/ad-blocker-tester/index.html: added 825 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/security/encrypt-decrypt/index.html: added 821 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/security/hash-generator/index.html: added 816 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/security/ip-lookup/index.html: added 821 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/security/jwt-decoder/index.html: added 816 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/security/password-generator/index.html: added 816 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/security/password-strength/index.html: added 821 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/security/ssl-checker/index.html: added 816 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/security/user-agent-parser/index.html: added 826 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/security/uuid-generator/index.html: added 816 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/social/app-icon-generator/index.html: added 830 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/social/favicon-generator/index.html: added 821 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/social/hashtag-generator/index.html: added 821 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/social/instagram-photo/index.html: added 826 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/social/social-image-resizer/index.html: added 836 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/social/twitter-video/index.html: added 831 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/social/url-shortener/index.html: added 821 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/social/utm-builder/index.html: added 821 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/social/website-screenshot/index.html: added 821 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/social/youtube-thumbnail/index.html: added 826 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/text/case-converter/index.html: added 816 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/text/character-counter/index.html: added 816 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/text/html-entity-encoder/index.html: added 830 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/text/lorem-ipsum-generator/index.html: added 825 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/text/palindrome-checker/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/text/simple-translator/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/text/text-analysis/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/text/text-diff/index.html: added 820 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/text/text-summarizer/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/text/text-to-ascii/index.html: added 830 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/text/text-to-slug/index.html: added 830 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/text/url-encoder/index.html: added 820 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- ar/tools/text/word-counter/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- finance/cloud-cost/index.html: added 820 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- finance/compound-interest/index.html: added 820 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- finance/crypto-prices/index.html: added 820 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- finance/crypto-tax/index.html: added 820 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- finance/life-insurance/index.html: added 820 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- finance/live-exchange/index.html: added 820 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- finance/mortgage-refinance/index.html: added 820 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- finance/retirement/index.html: added 810 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- finance/stock-lookup/index.html: added 820 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- finance/student-loan/index.html: added 825 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- finance/tax/index.html: added 810 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/converters/age-calculator/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/converters/bmi-calculator/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/converters/currency-converter/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/converters/number-base-converter/index.html: added 825 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/converters/percentage-calculator/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/converters/roman-numerals/index.html: added 820 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/converters/scientific-calculator/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/converters/timezone-converter/index.html: added 820 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/converters/unit-converter/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/converters/unix-timestamp/index.html: added 820 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/data/audio-spectrum/index.html: added 820 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/data/chart-builder/index.html: added 820 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/data/checksum-calculator/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/data/csv-json-summarizer/index.html: added 825 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/data/csv-to-json/index.html: added 830 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/data/csv-viewer/index.html: added 825 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/data/duplicate-finder/index.html: added 820 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/data/file-merger/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/data/file-organizer/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/data/file-renamer/index.html: added 820 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/data/file-splitter/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/data/json-to-csv/index.html: added 830 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/data/sql-formatter/index.html: added 825 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/data/weather-lookup/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/design/barcode-generator/index.html: added 816 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/design/business-card-maker/index.html: added 826 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/design/diagram-maker/index.html: added 816 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/design/invoice-generator/index.html: added 816 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/design/logo-maker/index.html: added 816 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/design/mind-map-tool/index.html: added 826 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/design/mockup-generator/index.html: added 816 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/design/qr-code-designer/index.html: added 826 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/design/resume-builder/index.html: added 816 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/design/wireframe-tool/index.html: added 816 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/dev/base64-converter/index.html: added 820 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/dev/code-formatter/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/dev/color-converter/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/dev/css-minifier/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/dev/html-to-markdown/index.html: added 825 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/dev/js-minifier/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/dev/json-formatter/index.html: added 830 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/dev/json-validator/index.html: added 825 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/dev/lorem-generator/index.html: added 820 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/dev/markdown-to-html/index.html: added 825 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/dev/regex-tester/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/dev/url-encoder/index.html: added 820 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/finance/cloud-cost/index.html: added 820 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/finance/compound-interest/index.html: added 820 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/finance/crypto-prices/index.html: added 820 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/finance/crypto-tax/index.html: added 820 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/finance/life-insurance/index.html: added 820 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/finance/live-exchange/index.html: added 820 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/finance/mortgage-refinance/index.html: added 820 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/finance/retirement/index.html: added 810 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/finance/stock-lookup/index.html: added 820 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/finance/student-loan/index.html: added 825 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/finance/tax/index.html: added 810 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/image/background-remover/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/image/collage-maker/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/image/compress/index.html: added 810 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/image/convert/index.html: added 810 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/image/exif-viewer/index.html: added 820 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/image/image-cropper/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/image/image-flipper/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/image/image-resizer/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/image/image-rotator/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/image/image-to-avif/index.html: added 830 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/image/image-to-webp/index.html: added 830 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/image/image-watermark/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/image/metadata-remover/index.html: added 820 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/news/summarizer/index.html: added 825 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/pdf/compress/index.html: added 808 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/pdf/merge/index.html: added 813 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/pdf/pdf-ocr/index.html: added 823 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/pdf/pdf-page-number/index.html: added 828 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/pdf/pdf-to-excel/index.html: added 828 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/pdf/pdf-to-html/index.html: added 828 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/pdf/pdf-to-jpg/index.html: added 828 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/pdf/pdf-to-png/index.html: added 828 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/pdf/pdf-to-powerpoint/index.html: added 828 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/pdf/pdf-to-text/index.html: added 828 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/pdf/pdf-to-word/index.html: added 828 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/pdf/pdf-watermark/index.html: added 818 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/pdf/split/index.html: added 813 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/productivity/countdown-timer/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/productivity/expense-tracker/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/productivity/habit-tracker/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/productivity/kanban-board/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/productivity/notes/index.html: added 805 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/productivity/pomodoro-timer/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/productivity/stopwatch/index.html: added 805 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/productivity/time-tracker/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/productivity/todo-list/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/productivity/world-clock/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/religious/islamic-calendar/index.html: added 820 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/request/index.html: added 820 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/security/ad-blocker-tester/index.html: added 826 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/security/encrypt-decrypt/index.html: added 821 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/security/hash-generator/index.html: added 816 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/security/ip-lookup/index.html: added 821 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/security/jwt-decoder/index.html: added 816 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/security/password-generator/index.html: added 816 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/security/password-strength/index.html: added 821 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/security/ssl-checker/index.html: added 816 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/security/user-agent-parser/index.html: added 826 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/security/uuid-generator/index.html: added 816 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/social/app-icon-generator/index.html: added 831 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/social/favicon-generator/index.html: added 821 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/social/hashtag-generator/index.html: added 821 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/social/instagram-photo/index.html: added 826 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/social/social-image-resizer/index.html: added 836 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/social/twitter-video/index.html: added 831 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/social/url-shortener/index.html: added 821 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/social/utm-builder/index.html: added 821 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/social/website-screenshot/index.html: added 821 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/social/youtube-thumbnail/index.html: added 826 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/text/case-converter/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/text/character-counter/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/text/html-entity-encoder/index.html: added 830 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/text/lorem-ipsum-generator/index.html: added 825 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/text/palindrome-checker/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/text/simple-translator/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/text/text-analysis/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/text/text-diff/index.html: added 820 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/text/text-summarizer/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/text/text-to-ascii/index.html: added 830 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/text/text-to-slug/index.html: added 830 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/text/url-encoder/index.html: added 820 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
-- tools/text/word-counter/index.html: added 815 words of Phase 4 helpful content; byline uses address + Schema.org Person + time placeholders.
+Author byline structure applied to every modified tool page: aside.author-bylines with span.author-name [AUTHOR_NAME], span.author-title [AUTHOR_TITLE], a 50+ word p bio, rel author LinkedIn placeholder [AUTHOR_LINKEDIN], time.last-updated placeholder [LAST_UPDATED] with datetime, and schema.org Person JSON-LD containing name, jobTitle, description, and sameAs.
+Last updated structure applied to every modified tool page: visible time.page-last-updated with placeholder [PAGE_LAST_UPDATED] positioned immediately below the h1 title.
+Internal-link audit note: each inserted Related Tools section contains two absolute https://mc-novatools.com tool links and avoids linking to the current page. Tool-page anchor links and category-page anchor links were normalized to absolute https://mc-novatools.com URLs. Every src/tools route is linked from at least one category page after the category audit.
+Modified tool pages:
+- src/tools/converters/age-calculator/index.html: Age Calculator; added prose word count 1271; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/converters/bmi-calculator/index.html: BMI Calculator; added prose word count 1274; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/converters/currency-converter/index.html: Currency Converter; added prose word count 1269; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/converters/number-base-converter/index.html: Number Base Converter; added prose word count 1286; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/converters/percentage-calculator/index.html: Percentage Calculator; added prose word count 1266; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/converters/roman-numerals/index.html: Roman Numerals Converter; added prose word count 1284; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/converters/scientific-calculator/index.html: Scientific Calculator; added prose word count 1268; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/converters/timezone-converter/index.html: Time Zone Converter; added prose word count 1285; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/converters/unit-converter/index.html: Unit Converter; added prose word count 1272; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/converters/unix-timestamp/index.html: Unix Timestamp Converter; added prose word count 1282; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/data/audio-spectrum/index.html: Audio Spectrum Visualizer; added prose word count 1293; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/data/chart-builder/index.html: Simple Chart Builder; added prose word count 1288; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/data/checksum-calculator/index.html: Checksum Calculator; added prose word count 1279; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/data/csv-json-summarizer/index.html: CSV/JSON Summarizer; added prose word count 1296; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/data/csv-to-json/index.html: CSV to JSON Converter; added prose word count 1308; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/data/csv-viewer/index.html: CSV Viewer & Editor; added prose word count 1307; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/data/duplicate-finder/index.html: Duplicate File Finder; added prose word count 1293; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/data/file-merger/index.html: File Merger; added prose word count 1283; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/data/file-organizer/index.html: File Organizer; added prose word count 1284; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/data/file-renamer/index.html: Batch File Renamer; added prose word count 1295; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/data/file-splitter/index.html: File Splitter; added prose word count 1287; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/data/json-to-csv/index.html: JSON to CSV Converter; added prose word count 1308; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/data/sql-formatter/index.html: SQL Formatter & Beautifier; added prose word count 1306; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/data/weather-lookup/index.html: Weather Lookup; added prose word count 1283; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/demo-phase7/index.html: Phase 7: The Singularity Tier; added prose word count 1314; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/demo-phase8/index.html: Phase 8: The Omega Point; added prose word count 1314; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/design/barcode-generator/index.html: Barcode Generator; added prose word count 1291; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/design/business-card-maker/index.html: Business Card Maker; added prose word count 1299; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/design/diagram-maker/index.html: Diagram Maker; added prose word count 1289; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/design/invoice-generator/index.html: Invoice Generator; added prose word count 1286; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/design/logo-maker/index.html: Logo Maker; added prose word count 1288; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/design/mind-map-tool/index.html: Mind Map Tool; added prose word count 1302; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/design/mockup-generator/index.html: Mockup Generator; added prose word count 1289; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/design/qr-code-designer/index.html: QR Code Designer; added prose word count 1304; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/design/resume-builder/index.html: Resume Builder; added prose word count 1287; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/design/wireframe-tool/index.html: Wireframe Tool; added prose word count 1287; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/dev/base64-converter/index.html: Base64 Encoder/Decoder; added prose word count 1293; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/dev/code-formatter/index.html: Code Formatter; added prose word count 1280; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/dev/color-converter/index.html: Color Converter; added prose word count 1283; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/dev/css-minifier/index.html: CSS Minifier; added prose word count 1282; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/dev/html-to-markdown/index.html: HTML to Markdown; added prose word count 1294; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/dev/js-minifier/index.html: JavaScript Minifier; added prose word count 1281; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/dev/json-formatter/index.html: JSON Formatter & Validator; added prose word count 1306; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/dev/json-validator/index.html: JSON Validator & Formatter; added prose word count 1306; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/dev/lorem-generator/index.html: Lorem Ipsum Generator; added prose word count 1294; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/dev/markdown-to-html/index.html: Markdown to HTML; added prose word count 1292; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/dev/regex-tester/index.html: Regex Tester; added prose word count 1281; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/dev/url-encoder/index.html: URL Encoder/Decoder; added prose word count 1295; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/finance/cloud-cost/index.html: Cloud Cost Calculator; added prose word count 1299; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/finance/compound-interest/index.html: Compound Interest Calculator; added prose word count 1298; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/finance/crypto-prices/index.html: Crypto Price Tracker; added prose word count 1298; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/finance/crypto-tax/index.html: Crypto Tax Calculator; added prose word count 1299; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/finance/life-insurance/index.html: Life Insurance Calculator; added prose word count 1297; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/finance/live-exchange/index.html: Live Exchange Converter; added prose word count 1298; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/finance/mortgage-refinance/index.html: Mortgage Refinance Calculator; added prose word count 1300; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/finance/retirement/index.html: Retirement Calculator; added prose word count 1283; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/finance/stock-lookup/index.html: Stock Quote Lookup; added prose word count 1303; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/finance/student-loan/index.html: Student Loan Payoff Calculator; added prose word count 1310; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/finance/tax/index.html: Tax Estimator; added prose word count 1283; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/image/background-remover/index.html: Background Remover; added prose word count 1272; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/image/collage-maker/index.html: Collage Maker; added prose word count 1275; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/image/compress/index.html: Image Compressor; added prose word count 1275; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/image/convert/index.html: Image Converter; added prose word count 1268; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/image/exif-viewer/index.html: EXIF Metadata Viewer; added prose word count 1283; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/image/image-cropper/index.html: Image Cropper; added prose word count 1280; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/image/image-flipper/index.html: Image Flipper; added prose word count 1268; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/image/image-resizer/index.html: Image Resizer; added prose word count 1271; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/image/image-rotator/index.html: Image Rotator; added prose word count 1274; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/image/image-to-avif/index.html: Image to AVIF Converter; added prose word count 1296; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/image/image-to-webp/index.html: Image to WebP Converter; added prose word count 1301; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/image/image-watermark/index.html: Image Watermark; added prose word count 1274; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/image/metadata-remover/index.html: Image Metadata Remover; added prose word count 1284; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/news/summarizer/index.html: Tech & Finance News Brief; added prose word count 1294; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/pdf/compress/index.html: PDF Compressor; added prose word count 1280; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/pdf/merge/index.html: PDF Merge Tool; added prose word count 1294; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/pdf/pdf-ocr/index.html: PDF OCR (Text Recognition); added prose word count 1300; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/pdf/pdf-page-number/index.html: PDF Page Number Adder; added prose word count 1297; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/pdf/pdf-to-excel/index.html: PDF to Excel Converter; added prose word count 1300; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/pdf/pdf-to-html/index.html: PDF to HTML Converter; added prose word count 1299; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/pdf/pdf-to-jpg/index.html: PDF to JPG Converter; added prose word count 1299; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/pdf/pdf-to-png/index.html: PDF to PNG Converter; added prose word count 1300; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/pdf/pdf-to-powerpoint/index.html: PDF to PowerPoint Converter; added prose word count 1299; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/pdf/pdf-to-text/index.html: PDF to Text Converter; added prose word count 1299; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/pdf/pdf-to-word/index.html: PDF to Word Converter; added prose word count 1303; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/pdf/pdf-watermark/index.html: PDF Watermark Adder; added prose word count 1288; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/pdf/split/index.html: PDF Split Tool; added prose word count 1293; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/productivity/countdown-timer/index.html: Countdown Timer; added prose word count 1280; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/productivity/expense-tracker/index.html: Expense Tracker; added prose word count 1276; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/productivity/habit-tracker/index.html: Habit Tracker; added prose word count 1279; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/productivity/kanban-board/index.html: Kanban Board; added prose word count 1277; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/productivity/notes/index.html: Notes; added prose word count 1269; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/productivity/pomodoro-timer/index.html: Pomodoro Timer; added prose word count 1281; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/productivity/stopwatch/index.html: Stopwatch; added prose word count 1267; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/productivity/time-tracker/index.html: Time Tracker; added prose word count 1278; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/productivity/todo-list/index.html: Todo List; added prose word count 1280; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/productivity/world-clock/index.html: World Clock; added prose word count 1280; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/religious/islamic-calendar/index.html: Global Islamic Calendar; added prose word count 1270; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/request/index.html: Request a Tool; added prose word count 1287; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/security/ad-blocker-tester/index.html: Ad Blocker Tester; added prose word count 1302; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/security/encrypt-decrypt/index.html: Encryption/Decryption Tool; added prose word count 1300; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/security/hash-generator/index.html: Hash Generator; added prose word count 1289; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/security/ip-lookup/index.html: IP Address Lookup; added prose word count 1301; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/security/jwt-decoder/index.html: JWT Decoder; added prose word count 1291; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/security/password-generator/index.html: Password Generator; added prose word count 1288; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/security/password-strength/index.html: Password Strength Checker; added prose word count 1304; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/security/ssl-checker/index.html: SSL Checker; added prose word count 1291; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/security/user-agent-parser/index.html: User Agent Parser; added prose word count 1302; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/security/uuid-generator/index.html: UUID Generator; added prose word count 1288; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/social/app-icon-generator/index.html: App Icon Generator; added prose word count 1293; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/social/favicon-generator/index.html: Favicon Generator; added prose word count 1282; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/social/hashtag-generator/index.html: Hashtag Generator; added prose word count 1279; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/social/instagram-photo/index.html: Instagram Photo Downloader; added prose word count 1288; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/social/social-image-resizer/index.html: Social Media Image Resizer; added prose word count 1301; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/social/twitter-video/index.html: Twitter/X Video Downloader; added prose word count 1302; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/social/url-shortener/index.html: URL Shortener; added prose word count 1277; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/social/utm-builder/index.html: UTM Builder; added prose word count 1278; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/social/website-screenshot/index.html: Website Screenshot; added prose word count 1277; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/social/youtube-thumbnail/index.html: YouTube Thumbnail Downloader; added prose word count 1293; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/text/case-converter/index.html: Case Converter; added prose word count 1271; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/text/character-counter/index.html: Character Counter; added prose word count 1275; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/text/html-entity-encoder/index.html: HTML Entity Encoder/Decoder; added prose word count 1296; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/text/lorem-ipsum-generator/index.html: Lorem Ipsum Generator; added prose word count 1285; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/text/palindrome-checker/index.html: Palindrome Checker; added prose word count 1270; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/text/simple-translator/index.html: Simple Translator; added prose word count 1273; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/text/text-analysis/index.html: Text Analysis; added prose word count 1272; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/text/text-diff/index.html: Text Diff Checker; added prose word count 1284; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/text/text-summarizer/index.html: Text Summarizer; added prose word count 1269; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/text/text-to-ascii/index.html: Text to ASCII/Unicode; added prose word count 1295; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/text/text-to-slug/index.html: Text to Slug Converter; added prose word count 1293; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/text/url-encoder/index.html: URL Encoder/Decoder; added prose word count 1284; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
+- src/tools/text/word-counter/index.html: Word Counter; added prose word count 1274; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.
