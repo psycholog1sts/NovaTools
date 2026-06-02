@@ -8,6 +8,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { blogArticleRoutes, blogHubPath, fallbackBlogLocale, normalizeBlogSlug, normalizeBlogSlugList, supportedBlogLocales } from '../src/js/blog-routes.js';
 import { buildBlogArticleSeo, buildBlogIndexSeo } from '../src/js/blog-seo.js';
+import { removeLegacyAdSenseHead, renderAdSenseHead } from '../src/components/Analytics.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -103,6 +104,12 @@ function blogIndexHeadBlock(locale) {
   <!-- blog-seo:end -->`;
 }
 
+function stampAdSenseHead(html) {
+  const adSenseHead = renderAdSenseHead();
+  if (!adSenseHead) return removeLegacyAdSenseHead(html);
+  return removeLegacyAdSenseHead(html).replace(/<\/head>/i, `  ${adSenseHead}\n</head>`);
+}
+
 function replaceBlogSeoHead(html, block) {
   if (html.includes('<!-- blog-seo:start -->')) {
     return html.replace(/\n?\s*<!-- blog-seo:start -->[\s\S]*?<!-- blog-seo:end -->/, `\n  ${block}`);
@@ -124,7 +131,7 @@ function replaceBlogSeoHead(html, block) {
 function stampBlogFile(filePath, block, locale) {
   if (!fs.existsSync(filePath)) return false;
   const html = fs.readFileSync(filePath, 'utf8');
-  const stamped = replaceBlogSeoHead(html, block).replace(/<html lang="[^"]+"/, `<html lang="${locale}"`);
+  const stamped = stampAdSenseHead(replaceBlogSeoHead(html, block).replace(/<html lang="[^"]+"/, `<html lang="${locale}"`));
   if (stamped !== html) fs.writeFileSync(filePath, stamped);
   return true;
 }
