@@ -7,7 +7,7 @@ import { blogArticlePath, blogHubPath, fallbackBlogLocale, normalizeBlogSlug, no
 
 const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const origin = 'https://mc-novatools.com';
-const lastmod = new Date().toISOString();
+const lastmod = new Date().toISOString().replace(/\.\d{3}Z$/, '+00:00');
 const locales = supportedBlogLocales;
 const pathPrefixLocales = new Set();
 
@@ -57,16 +57,16 @@ function sourceBlogArticleSlugs() {
 const urls = [];
 ['/', '/about.html', '/about-us.html', '/contact.html', '/privacy-policy.html', '/terms-of-service.html', '/cookie-policy.html', '/disclaimer.html', '/security.html'].forEach((route) => {
   const priority = route === '/' ? '1.0' : '0.4';
-  locales.forEach((locale) => urls.push(urlEntry(localizedUrl(route, locale), priority, route === '/' ? 'weekly' : 'monthly')));
+  locales.forEach((locale) => urls.push(urlEntry(localizedUrl(route, locale), priority, route === '/' ? 'daily' : 'monthly')));
 });
 ['/gizlilik-politikasi.html', '/kvkk-aydinlatma-metni.html', '/kullanim-kosullari.html', '/iletisim.html'].forEach((route) => {
   urls.push(urlEntry(`${origin}${route}`, '0.4', 'monthly'));
 });
-locales.forEach((locale) => urls.push(urlEntry(localizedBlogUrl(blogHubPath(locale), locale), '0.6', 'monthly')));
+locales.forEach((locale) => urls.push(urlEntry(localizedBlogUrl(blogHubPath(locale), locale), '0.6', 'weekly')));
 
 globSync('categories/**/*.html', { cwd: rootDir }).sort().forEach((file) => {
   const route = `/${file.replace(/\\/g, '/')}`;
-  locales.forEach((locale) => urls.push(urlEntry(localizedUrl(route, locale), '0.6', 'weekly')));
+  locales.forEach((locale) => urls.push(urlEntry(localizedUrl(route, locale), '0.6', 'monthly')));
 });
 
 globSync('src/tools/**/index.html', { cwd: rootDir, ignore: ['**/demo-*/**', '**/experimental/**', '**/test/**'] }).sort().forEach((file) => {
@@ -83,7 +83,7 @@ locales.forEach((locale) => {
   const manifestPath = path.join(rootDir, `src/i18n/blog/${locale}.json`);
   const posts = fs.existsSync(manifestPath) ? readJson(`src/i18n/blog/${locale}.json`) : fallbackPosts;
   const slugs = normalizeBlogSlugList([...fallbackPostSlugs, ...posts.map((post) => post.slug).filter(Boolean), ...sourceBlogArticleSlugs()]);
-  slugs.forEach((slug) => urls.push(urlEntry(localizedBlogUrl(blogArticlePath(slug, locale), locale), '0.6', 'monthly')));
+  slugs.forEach((slug) => urls.push(urlEntry(localizedBlogUrl(blogArticlePath(slug, locale), locale), '0.6', 'weekly')));
 });
 
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(renderUrlEntry).join('\n')}\n</urlset>\n`;
