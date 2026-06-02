@@ -422,6 +422,23 @@ for (const locale of pathPrefixLocales) {
 }
 console.log('✅ Verified: clean URL aliases for public root pages');
 
+
+const publicLegalTrustFiles = [
+  'about.html',
+  'contact.html',
+  'privacy-policy.html',
+  'terms-of-service.html',
+  'cookie-policy.html',
+  'disclaimer.html'
+];
+
+for (const file of publicLegalTrustFiles) {
+  const source = path.join(__dirname, '..', 'public', file);
+  const target = path.join(distDir, file);
+  if (copyFileIfExists(source, target)) ensureCleanHtmlAlias(file);
+}
+console.log('✅ Verified: public legal and trust pages');
+
 // Fix 3: Clean up dist/src if empty
 if (fs.existsSync(srcDir)) {
   const remaining = fs.readdirSync(srcDir);
