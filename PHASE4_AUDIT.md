@@ -3,8 +3,8 @@ Scope: individual tool HTML files under src/tools plus generated tool page route
 Google references reviewed:
 - https://developers.google.com/search/docs/fundamentals/creating-helpful-content
 - https://developers.google.com/search/docs/appearance/ratings-raters-guidelines
-Author byline structure applied to every modified tool page: aside.author-bylines with span.author-name [AUTHOR_NAME], span.author-title [AUTHOR_TITLE], a 50+ word p bio, rel author LinkedIn placeholder [AUTHOR_LINKEDIN], time.last-updated placeholder [LAST_UPDATED] with datetime, and schema.org Person JSON-LD containing name, jobTitle, description, and sameAs.
-Last updated structure applied to every modified tool page: visible time.page-last-updated with placeholder [PAGE_LAST_UPDATED] positioned immediately below the h1 title.
+Author byline structure applied to every modified tool page: aside.author-bylines with span.author-name Metehan ÇETİN, LPC, span.author-title Founder and editor, a 50+ word p bio, rel author LinkedIn placeholder https://mc-novatools.com/about-us.html, time.last-updated placeholder 2026-06-03 with datetime, and schema.org Person JSON-LD containing name, jobTitle, description, and sameAs.
+Last updated structure applied to every modified tool page: visible time.page-last-updated with placeholder 2026-06-03 positioned immediately below the h1 title.
 Internal-link audit note: each inserted Related Tools section contains two absolute https://mc-novatools.com tool links and avoids linking to the current page. Tool-page anchor links and category-page anchor links were normalized to absolute https://mc-novatools.com URLs. Every src/tools route is linked from at least one category page after the category audit.
 Modified tool pages:
 - src/tools/converters/age-calculator/index.html: Age Calculator; added prose word count 1271; author byline present as aside.author-bylines; related internal links in added section 2; byline author placeholder link 1.

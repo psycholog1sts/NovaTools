@@ -229,7 +229,7 @@ export function createSidebarAd(position = 'right', options = {}) {
 }
 
 /**
- * Create mobile anchor ad (320x50) - Fixed at bottom
+ * Create a mobile-safe in-flow ad (320x50). Avoid custom sticky mobile ads for policy safety
  * @param {Object} options - Ad options
  * @returns {HTMLElement} Mobile anchor container
  */
@@ -241,21 +241,15 @@ export function createMobileAnchorAd(options = {}) {
     ...options
   });
   
-  container.classList.add('ad-mobile-anchor-sticky');
+  container.classList.add('ad-mobile-anchor-inline');
   container.style.cssText += `
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
     background: rgba(10, 10, 12, 0.98);
-    backdrop-filter: blur(20px);
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.06);
     padding: 0.5rem;
-    margin: 0;
-    display: none;
+    margin: 2rem auto;
+    display: block;
   `;
-  container.setAttribute('data-ad-format', 'sticky');
+  container.setAttribute('data-ad-format', 'mobile-banner');
 
   const closeButton = document.createElement('button');
   closeButton.type = 'button';
@@ -265,11 +259,9 @@ export function createMobileAnchorAd(options = {}) {
   closeButton.textContent = '×';
   container.prepend(closeButton);
 
-  const mediaQuery = window.matchMedia('(max-width: 768px)');
   const toggleVisibility = () => {
-    const scrolled = window.scrollY > 480;
     const dismissed = container.getAttribute('data-ad-dismissed') === 'true';
-    container.style.display = mediaQuery.matches && scrolled && !dismissed ? 'block' : 'none';
+    container.style.display = dismissed ? 'none' : 'block';
   };
 
   closeButton.addEventListener('click', () => {
@@ -277,9 +269,6 @@ export function createMobileAnchorAd(options = {}) {
     toggleVisibility();
   });
   toggleVisibility();
-  mediaQuery.addEventListener('change', toggleVisibility);
-  window.addEventListener('scroll', toggleVisibility, { passive: true });
-
   return container;
 }
 

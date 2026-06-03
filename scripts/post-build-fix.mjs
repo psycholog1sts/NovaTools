@@ -658,9 +658,9 @@ function toolContentSection({ info, title, related }) {
   <p>These nearby NovaTools pages can help extend the same workflow without leaving the site:</p>
   <ul>${relatedLinks}</ul>
   <address class="tool-author" itemscope itemtype="https://schema.org/Person" style="display:block;margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--border-default, rgba(148,163,184,.25));font-style:normal;">
-    <p>Written by <span itemprop="name">[AUTHOR_NAME]</span>, <span itemprop="jobTitle">[AUTHOR_TITLE]</span>. <a href="[AUTHOR_LINKEDIN]" itemprop="sameAs">Author LinkedIn profile</a>.</p>
-    <p itemprop="description">[AUTHOR_NAME] reviews browser-based utility workflows for clarity, privacy, accessibility, and practical reliability. The author focuses on explaining inputs, outputs, edge cases, and verification steps so users understand when a tool is appropriate, when a result needs expert review, and how to avoid exposing unnecessary personal or confidential data during everyday file, finance, text, developer, and productivity tasks.</p>
-    <p>Last updated: <time datetime="[LAST_UPDATED]">[LAST_UPDATED]</time></p>
+    <p>Written by <span itemprop="name">Metehan ÇETİN, LPC</span>, <span itemprop="jobTitle">Founder and editor</span>. <a href="https://mc-novatools.com/about-us.html" itemprop="sameAs">Author and review profile</a>.</p>
+    <p itemprop="description">Metehan ÇETİN, LPC reviews browser-based utility workflows for clarity, privacy, accessibility, and practical reliability. The author focuses on explaining inputs, outputs, edge cases, and verification steps so users understand when a tool is appropriate, when a result needs expert review, and how to avoid exposing unnecessary personal or confidential data during everyday file, finance, text, developer, and productivity tasks.</p>
+    <p>Last updated: <time datetime="2026-06-03">2026-06-03</time></p>
   </address>
 </section>`;
   return { html: body, wordCount: wordsFromText(body) };
@@ -677,7 +677,7 @@ function stampToolHelpfulContent() {
     const stampedContent = toolContentSection({ info: item, title, related });
     let next = html.replace(/<section\b[^>]*data-phase4-eeat="true"[\s\S]*?<\/section>/i, '');
     next = next.replace(/<meta name="description" content="[^"]*"\s*\/?>/i, `<meta name="description" content="${escapeAttr(uniqueDescription(title, item.category, item.slug, item.relative))}">`);
-    const updatedLine = `<p class="tool-last-updated" data-phase4-updated="true">Last updated: <time datetime="[LAST_UPDATED]">[LAST_UPDATED]</time></p>`;
+    const updatedLine = `<p class="tool-last-updated" data-phase4-updated="true">Last updated: <time datetime="2026-06-03">2026-06-03</time></p>`;
     if (!next.includes('data-phase4-updated="true"')) {
       next = next.replace(/(<h1\b[^>]*>[\s\S]*?<\/h1>)/i, `$1\n${updatedLine}`);
     }
