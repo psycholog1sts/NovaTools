@@ -31,7 +31,7 @@ export function initAdSense() {
   observeAdStatus();
   setupMobileAnchorControls();
 
-  if (shouldBlockAds() || !hasValidAdSlots()) return;
+  if (shouldBlockAds() || !hasValidAdSlots() || hasDisallowedMobileStickyAds()) return;
   if (!hasAdvertisingConsent()) {
     markAdsPendingConsent();
     waitForAdvertisingConsent();
@@ -53,6 +53,11 @@ function shouldBlockAds() {
     void _e;
   }
   return false;
+}
+
+function hasDisallowedMobileStickyAds() {
+  if (typeof window.matchMedia !== 'function' || !window.matchMedia('(max-width: 768px)').matches) return false;
+  return Boolean(document.querySelector('[data-ad-format="sticky"] ins.adsbygoogle, .ad-mobile-anchor ins.adsbygoogle, .ad-mobile-anchor-sticky ins.adsbygoogle'));
 }
 
 function hasAdvertisingConsent() {

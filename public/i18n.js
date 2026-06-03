@@ -776,6 +776,11 @@
     });
   }
 
+  function hasDisallowedMobileStickyAds() {
+    if (typeof window.matchMedia !== 'function' || !window.matchMedia('(max-width: 768px)').matches) return false;
+    return Boolean(document.querySelector('[data-ad-format="sticky"] ins.adsbygoogle, .ad-mobile-anchor ins.adsbygoogle, .ad-mobile-anchor-sticky ins.adsbygoogle'));
+  }
+
   function reserveInlineAdSlot(el) {
     const format = el.getAttribute('data-ad-format') || '';
     const width = format === 'leaderboard' || el.classList.contains('ad-slot-leaderboard') ? 728 : format === 'sticky' ? 320 : 300;
@@ -801,7 +806,7 @@
 
   function ensureAdSenseBootstrap() {
     if (window.__mcAdSenseLoaded) return;
-    if (!document.head || !isProductionHost() || !hasValidAdSlot()) return;
+    if (!document.head || !isProductionHost() || !hasValidAdSlot() || hasDisallowedMobileStickyAds()) return;
     if (navigator.doNotTrack === '1' || navigator.globalPrivacyControl) return;
     if (!hasConsentCategory('advertising')) return;
     if (

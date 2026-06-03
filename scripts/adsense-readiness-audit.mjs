@@ -48,8 +48,14 @@ for (const file of ['index.html', ...categoryPages]) {
 }
 
 const invalidAdSlots = [];
+const adExperienceRisks = [];
+const publicPlaceholders = [];
+const placeholderPattern = /\[(AUTHOR|FOUNDER|BUSINESS_ADDRESS|CONTACT_EMAIL|FORM_ENDPOINT|PHONE_NUMBER|LINKEDIN|TWITTER|GITHUB|LAST_UPDATED|PAGE_LAST_UPDATED|FOUNDING_YEAR|FOUNDER_PHOTO)[A-Z_]*\]/;
 for (const file of [...toolPages, ...globSync('src/blog/**/*.html')]) {
   const html = readFileSync(file, 'utf8');
+  if (placeholderPattern.test(html)) {
+    publicPlaceholders.push(file);
+  }
   for (const match of html.matchAll(/<ins\b[^>]*class="[^"]*adsbygoogle[^"]*"[^>]*>/gi)) {
     const slot = /data-ad-slot="([^"]+)"/i.exec(match[0])?.[1] || '';
     if (slot && !/^\d{8,20}$/.test(slot)) {
@@ -58,8 +64,30 @@ for (const file of [...toolPages, ...globSync('src/blog/**/*.html')]) {
   }
 }
 
+for (const file of ['public/about.html', 'public/contact.html', 'public/privacy-policy.html', 'public/cookie-policy.html']) {
+  if (existsSync(file) && placeholderPattern.test(readFileSync(file, 'utf8'))) {
+    publicPlaceholders.push(file);
+  }
+}
+
+for (const file of ['src/components/ads/AdSlot.mjs', 'src/core/ads/adsense-config.mjs', 'src/i18n.js', 'public/i18n.js']) {
+  if (!existsSync(file)) continue;
+  const source = readFileSync(file, 'utf8');
+  if (/position:\s*fixed[\s\S]{0,400}(ad-mobile-anchor|data-ad-format['"]?\s*,?\s*['"]sticky)/i.test(source)) {
+    adExperienceRisks.push(`${file}: custom mobile sticky ad placement`);
+  }
+}
+
 if (invalidAdSlots.length) {
   warnings.push(`Non-numeric AdSense slot placeholders found and will be gated: ${invalidAdSlots.slice(0, 10).join(', ')}${invalidAdSlots.length > 10 ? '…' : ''}`);
+}
+
+if (publicPlaceholders.length) {
+  errors.push(`Unresolved public E-E-A-T/contact placeholders found: ${publicPlaceholders.slice(0, 12).join(', ')}${publicPlaceholders.length > 12 ? '…' : ''}`);
+}
+
+if (adExperienceRisks.length) {
+  errors.push(`Potential Better Ads mobile sticky placement risk found: ${adExperienceRisks.join(', ')}`);
 }
 
 const publicI18n = readFileSync('public/i18n.js', 'utf8');
