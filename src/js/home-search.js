@@ -1,4 +1,5 @@
 import manifest from '../../tools-manifest.json';
+import blogPosts from '../i18n/blog/en.json';
 
 function normalize(value) {
   return String(value || '')
@@ -37,6 +38,24 @@ function toSearchItem(tool, getToolHref) {
   };
 }
 
+
+function toBlogSearchItem(post) {
+  return {
+    id: `blog-${post.slug}`,
+    name: post.title,
+    category: post.category || 'Blog',
+    description: post.description || 'NovaTools guide',
+    href: `/blog/articles/${post.slug}.html`,
+    type: 'Blog',
+    haystack: normalize([
+      post.title,
+      post.description,
+      post.category,
+      post.slug
+    ].join(' '))
+  };
+}
+
 function renderResults(container, input, results) {
   input.setAttribute('aria-expanded', String(results.length > 0));
 
@@ -51,7 +70,7 @@ function renderResults(container, input, results) {
         <strong>${tool.name}</strong>
         <small>${tool.description}</small>
       </span>
-      <em>${tool.category}</em>
+      <em>${tool.type || tool.category}</em>
     </a>
   `).join('');
 }
@@ -65,7 +84,10 @@ export function initHomeSearch({ getToolHref } = {}) {
   if (!form || !input || !resultsContainer || form.dataset.searchReady === 'true') return;
   form.dataset.searchReady = 'true';
 
-  const tools = (manifest.tools || []).map((tool) => toSearchItem(tool, resolveHref));
+  const tools = [
+    ...(manifest.tools || []).map((tool) => toSearchItem(tool, resolveHref)),
+    ...(blogPosts || []).map(toBlogSearchItem)
+  ];
 
   input.addEventListener('input', () => {
     const query = normalize(input.value);

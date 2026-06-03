@@ -31,6 +31,42 @@ const googleAdSenseClient = [process.env.PUBLIC_ADSENSE_CLIENT, process.env.VITE
   .map((value) => String(value || '').trim())
   .find((value) => adSenseClientPattern.test(value)) || defaultAdSenseClient;
 
+
+function toolSlugFromHtmlPath(pathname = '') {
+  const cleanPath = String(pathname || '').replace(/\\/g, '/');
+  const match = cleanPath.match(/(?:^|\/)src\/tools\/([^/]+)\/([^/]+)\/index\.html$/) || cleanPath.match(/(?:^|\/)tools\/([^/]+)\/([^/]+)\/?(?:index\.html)?$/);
+  return match ? `${match[1]}/${match[2]}` : '';
+}
+
+const toolUxEnhancementAssets = {
+  name: 'novatools-tool-ux-enhancement-assets',
+  enforce: 'pre',
+  transformIndexHtml(html, context) {
+    const slug = toolSlugFromHtmlPath(context?.path || '');
+    if (!slug || html.includes('tool-page-enhancer.js')) return html;
+
+    const isDev = Boolean(context?.server);
+    const stylesheetHref = isDev ? '/src/styles/tool-workflow.css' : '/styles/tool-workflow.css';
+    const scriptSrc = isDev ? '/src/js/tool-page-enhancer.js' : '/js/tool-page-enhancer.js';
+
+    return {
+      html,
+      tags: [
+        {
+          tag: 'link',
+          attrs: { rel: 'stylesheet', href: stylesheetHref },
+          injectTo: 'head'
+        },
+        {
+          tag: 'script',
+          attrs: { type: 'module', src: scriptSrc, 'data-tool-slug': slug },
+          injectTo: 'body'
+        }
+      ]
+    };
+  }
+};
+
 const optionalHtmlEnv = {
   name: 'novatools-optional-html-env',
   enforce: 'pre',
@@ -263,6 +299,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolveHtmlEntry('index.html'),
+        'tool-page-enhancer': resolve(__dirname, 'src/js/tool-page-enhancer.js'),
         ...rootHtmlEntries,
         ...authorEntries,
         ...localizedRootHtmlEntries,
@@ -323,7 +360,8 @@ export default defineConfig({
           return 'js/[name]-[hash].js';
         },
 
-        entryFileNames: () => {
+        entryFileNames: (chunkInfo) => {
+          if (chunkInfo.name === 'tool-page-enhancer') return 'js/tool-page-enhancer.js';
           return 'js/[name]-[hash].js';
         },
 
@@ -371,6 +409,7 @@ export default defineConfig({
 
   plugins: [
     optionalHtmlEnv,
+    toolUxEnhancementAssets,
     liveDataDevProxy,
     viteStaticCopy({
       targets: [
@@ -400,6 +439,10 @@ export default defineConfig({
         },
         {
           src: 'src/styles/component-library.css',
+          dest: 'styles'
+        },
+        {
+          src: 'src/styles/tool-workflow.css',
           dest: 'styles'
         }
       ]
