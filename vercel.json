@@ -48,6 +48,9 @@
     { "source": "/blog", "destination": "/blog/index.html" },
     { "source": "/tr/blog", "destination": "/tr/blog/index.html" },
     { "source": "/ar/blog", "destination": "/ar/blog/index.html" },
+    { "source": "/guides/:guide", "destination": "/guides/:guide.html" },
+    { "source": "/guides/articles/:article", "destination": "/guides/articles/:article.html" },
+    { "source": "/site-map/topical", "destination": "/site-map/topical.html" },
     { "source": "/categories/:category", "destination": "/categories/:category.html" },
     { "source": "/tools/:category/:tool", "destination": "/tools/:category/:tool/index.html" },
     { "source": "/tools/:category/:tool/:path*", "destination": "/tools/:category/:tool/index.html" }

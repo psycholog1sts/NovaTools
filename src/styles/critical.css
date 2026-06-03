@@ -2720,3 +2720,112 @@ textarea {
   outline: 3px solid var(--accent-primary, #00d9ff);
   outline-offset: 3px;
 }
+
+/* Task 4.1 long-form tool resource sections */
+article.tool-resource {
+  max-width: 980px;
+  margin: 3rem auto;
+  padding: 2rem;
+  color: var(--text-secondary, #cbd5e1);
+  background: rgba(15, 23, 42, 0.72);
+  border: 1px solid var(--border-default, rgba(148, 163, 184, 0.22));
+  border-radius: var(--radius-lg, 16px);
+  line-height: 1.7;
+}
+
+article.tool-resource h2,
+article.tool-resource h3 {
+  color: var(--text-primary, #f8fafc);
+}
+
+article.tool-resource h2 {
+  margin-top: 2.25rem;
+}
+
+article.tool-resource h2:first-child {
+  margin-top: 0;
+}
+
+.tool-visual {
+  margin: 2rem 0;
+}
+
+.tool-visual img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  border-radius: var(--radius-lg, 16px);
+  background: #070b12;
+}
+
+.tool-visual figcaption,
+.rating-note {
+  color: var(--text-muted, #94a3b8);
+  font-size: 0.95rem;
+}
+
+.resource-steps,
+.feature-list,
+.related-resource-list {
+  padding-left: 1.25rem;
+}
+
+.resource-steps li,
+.feature-list li,
+.related-resource-list li {
+  margin-bottom: 0.75rem;
+}
+
+.tool-comparison-table {
+  width: 100%;
+  margin: 1rem 0 2rem;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.tool-comparison-table th,
+.tool-comparison-table td {
+  padding: 0.85rem;
+  border: 1px solid rgba(148, 163, 184, 0.24);
+  text-align: left;
+  vertical-align: top;
+}
+
+.tool-comparison-table thead th {
+  color: var(--text-primary, #f8fafc);
+  background: rgba(34, 211, 238, 0.08);
+}
+
+article.tool-resource details {
+  margin: 0.75rem 0;
+  padding: 1rem;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: var(--radius-md, 12px);
+  background: rgba(255, 255, 255, 0.035);
+}
+
+article.tool-resource summary {
+  color: var(--text-primary, #f8fafc);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+article.tool-resource blockquote {
+  margin: 1rem 0;
+  padding: 0.85rem 1rem;
+  border-left: 3px solid var(--accent-primary, #00d9ff);
+  background: rgba(255, 255, 255, 0.035);
+  border-radius: 0 var(--radius-md, 12px) var(--radius-md, 12px) 0;
+}
+
+@media (max-width: 640px) {
+  article.tool-resource {
+    padding: 1.25rem;
+  }
+
+  .tool-comparison-table {
+    display: block;
+    overflow-x: auto;
+  }
+}
