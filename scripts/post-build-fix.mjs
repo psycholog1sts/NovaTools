@@ -275,6 +275,15 @@ if (fs.existsSync(blogSrcDir)) {
     if (fs.existsSync(srcIndex) && !fs.existsSync(dstIndex)) {
       fs.copyFileSync(srcIndex, dstIndex);
     }
+    // Copy shared blog files that Vite may emit under dist/src/blog when the clean
+    // dist/blog folder already exists from localized blog entry points.
+    for (const fileName of ['article-template.html', 'index.html']) {
+      const sourceFile = path.join(blogSrcDir, fileName);
+      const targetFile = path.join(blogDstDir, fileName);
+      if (fs.existsSync(sourceFile) && !fs.existsSync(targetFile)) {
+        fs.copyFileSync(sourceFile, targetFile);
+      }
+    }
     // Copy articles if they exist in src
     if (fs.existsSync(blogArticlesSrc) && !fs.existsSync(blogArticlesDst)) {
       fs.cpSync(blogArticlesSrc, blogArticlesDst, { recursive: true });
@@ -358,17 +367,22 @@ function sourceArticlePost(slug, filePath) {
   return post;
 }
 
-if (fs.existsSync(distBlogIndex) && fs.existsSync(distBlogTemplate)) {
-  const sourceArticles = sourceArticleFileBySlug();
-  const fallbackPosts = manifestBySlug(fallbackBlogLocale);
-  const routeSlugs = normalizeBlogSlugList([...fallbackPosts.keys(), ...sourceArticles.keys()]);
-
+if (fs.existsSync(distBlogIndex)) {
   for (const locale of supportedBlogLocales) {
     const hubPath = path.join(distDir, blogHubPath(locale).replace(/^\//, ''));
     fs.mkdirSync(path.dirname(hubPath), { recursive: true });
     if (!fs.existsSync(hubPath)) fs.copyFileSync(distBlogIndex, hubPath);
     stampBlogFile(hubPath, blogIndexHeadBlock(locale), locale);
+  }
+  console.log('✅ Verified: localized blog hub routes');
+}
 
+if (fs.existsSync(distBlogTemplate)) {
+  const sourceArticles = sourceArticleFileBySlug();
+  const fallbackPosts = manifestBySlug(fallbackBlogLocale);
+  const routeSlugs = normalizeBlogSlugList([...fallbackPosts.keys(), ...sourceArticles.keys()]);
+
+  for (const locale of supportedBlogLocales) {
     const localePosts = manifestBySlug(locale);
     for (const slug of routeSlugs) {
       const sourceArticle = sourceArticles.get(slug);
@@ -382,7 +396,7 @@ if (fs.existsSync(distBlogIndex) && fs.existsSync(distBlogTemplate)) {
       }
     }
   }
-  console.log('✅ Verified: localized blog hub, canonical article, legacy article, and generated article routes');
+  console.log('✅ Verified: canonical article, legacy article, and generated article routes');
 }
 
 

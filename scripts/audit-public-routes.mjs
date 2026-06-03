@@ -25,7 +25,7 @@ function distExists(file) {
 
 function resolveRoute(href) {
   const clean = href.split('#')[0].split('?')[0];
-  if (!clean || clean.startsWith('mailto:') || clean.startsWith('tel:') || /^[a-z]+:/i.test(clean)) return null;
+  if (!clean || clean.startsWith('mailto:') || clean.startsWith('tel:') || clean.startsWith('//') || /^[a-z]+:/i.test(clean)) return null;
   if (!clean.startsWith('/')) return null;
 
   const withoutSlash = clean.replace(/^\//, '');
@@ -39,7 +39,10 @@ function resolveRoute(href) {
 }
 
 function extractHrefs(html) {
-  return [...html.matchAll(/\bhref=["']([^"']+)["']/g)].map((match) => match[1]);
+  return [...html.matchAll(/<(?<tag>a|link)\b(?<attrs>[^>]*)>/gi)]
+    .filter((match) => !/\brel=["'][^"']*(?:dns-prefetch|preconnect|prefetch|preload|modulepreload|stylesheet|manifest|icon)[^"']*["']/i.test(match.groups.attrs))
+    .map((match) => /\bhref=["']([^"']+)["']/i.exec(match.groups.attrs)?.[1])
+    .filter(Boolean);
 }
 
 
