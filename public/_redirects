@@ -12,8 +12,6 @@
 /iletisim /iletisim.html 200
 
 # Legacy locale-folder URLs are redirected to the canonical ?lang= locale standard.
-/tr /?lang=tr 301
-/tr/* /:splat?lang=tr 301
 /de /?lang=de 301
 /de/* /:splat?lang=de 301
 /fr /?lang=fr 301

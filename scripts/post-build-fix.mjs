@@ -690,6 +690,32 @@ function stampToolHelpfulContent() {
   return auditRows;
 }
 
+
+const cleanCategoryAliases = [
+  ['pdf-tools.html', 'pdf'],
+  ['image-tools.html', 'image'],
+  ['developer-tools.html', 'developer'],
+  ['finance-tools.html', 'finance']
+];
+
+function publishCleanCategoryAliases() {
+  const prefixes = ['', 'en', 'tr', 'ar'];
+  let count = 0;
+  for (const prefix of prefixes) {
+    for (const [sourceFile, aliasSlug] of cleanCategoryAliases) {
+      const source = path.join(distDir, prefix, 'categories', sourceFile);
+      if (!fs.existsSync(source)) continue;
+      const target = path.join(distDir, prefix, 'tools', aliasSlug, 'index.html');
+      fs.mkdirSync(path.dirname(target), { recursive: true });
+      const route = `/${[prefix, 'tools', aliasSlug, 'index.html'].filter(Boolean).join('/')}`;
+      const stamped = applySeoHead(fs.readFileSync(source, 'utf8'), route);
+      fs.writeFileSync(target, stamped);
+      count += 1;
+    }
+  }
+  return count;
+}
+
 function listDistHtmlFiles() {
   const files = [];
   const walk = (dir) => {
@@ -719,6 +745,9 @@ console.log(`✅ Added Phase 4 helpful content to ${phase4ToolAuditRows.length} 
 
 const phase5SeoPageCount = stampPhase5SeoHead();
 console.log(`✅ Added Phase 5 structured data and social metadata to ${phase5SeoPageCount} HTML pages`);
+
+const cleanCategoryAliasCount = publishCleanCategoryAliases();
+console.log(`✅ Published ${cleanCategoryAliasCount} clean /tools/{category}/ category aliases`);
 
 // Verify key files exist
 const keyFiles = [
