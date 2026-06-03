@@ -1,0 +1,31 @@
+Day,Workstream,Asset,Target,Acceptance criteria
+1,Audit,Rejection evidence log,Collect exact AdSense rejection text and screenshots,Issue category mapped to Low value content/Site not ready/Policy violation/Other
+2,Audit,Thin-content crawl,Re-run word-count and placeholder scans,All public pages >= required word-count threshold or listed for remediation
+3,Audit,Internal link crawl,Validate category/tool/blog links,Zero internal 404s from crawl/audit
+4,Blog,Post 1 outline,Privacy-first PDF workflows,Outline has unique angle FAQ schema and internal links
+5,Blog,Post 1 draft,Privacy-first PDF workflows,1000+ edited words screenshots/examples and 3 internal links
+6,Blog,Post 2 outline,Image compression for ecommerce,Outline has examples risks and tool links
+7,Blog,Post 2 draft,Image compression for ecommerce,1000+ edited words and original examples
+8,Blog,Post 3 outline,Developer data cleanup checklist,Outline covers JSON CSV regex and validation
+9,Blog,Post 3 draft,Developer data cleanup checklist,1000+ edited words and code-safe examples
+10,Tools,Tool expansion 1,Expand weakest PDF tool page,1200+ unique words how-to FAQ limitations privacy note
+11,Tools,Tool expansion 2,Expand weakest image tool page,1200+ unique words examples and internal links
+12,Blog,Post 4 outline,Finance calculator interpretation guide,Includes financial disclaimer and non-advice language
+13,Blog,Post 4 draft,Finance calculator interpretation guide,1000+ edited words and calculator examples
+14,Backlinks,Outreach list,Developer forums and tool directories,10 relevant prospects with submission requirements
+15,Blog,Post 5 outline,Accessibility checks for online tools,WCAG-focused outline with examples
+16,Blog,Post 5 draft,Accessibility checks for online tools,1000+ edited words and internal links
+17,Tools,Tool expansion 3,Expand weakest developer tool page,1200+ unique words debug examples and FAQ
+18,Tools,Tool expansion 4,Expand weakest finance tool page,1200+ unique words disclaimer and examples
+19,Blog,Post 6 outline,Local browser processing vs uploads,Privacy/security angle with practical comparison
+20,Blog,Post 6 draft,Local browser processing vs uploads,1000+ edited words and original comparison table
+21,Backlinks,Outreach wave 1,Submit to 3 relevant directories/forums,No paid/bot links and no spammy anchors
+22,Blog,Post 7 outline,PDF accessibility preparation,Unique checklist and tool links
+23,Blog,Post 7 draft,PDF accessibility preparation,1000+ edited words and examples
+24,Blog,Post 8 outline,Spreadsheet and CSV cleanup,Unique workflow and data-tool links
+25,Blog,Post 8 draft,Spreadsheet and CSV cleanup,1000+ edited words and examples
+26,Tools,Tool expansion 5,Expand weakest productivity/security tool page,1200+ unique words and privacy note
+27,Blog,Post 9 draft,Image SEO file naming and alt text,1000+ edited words and original examples
+28,Blog,Post 10 draft,Regex troubleshooting for non-developers,1000+ edited words and safe examples
+29,Backlinks,Outreach wave 2,Submit remaining quality prospects,At least 5 total relevant accepted/pending placements
+30,Final QA,Reapplication readiness review,Re-run lint test build public-route audit and manual checklist,All checkable boxes passed; unresolved GSC/live items documented before reapply
