@@ -1,5 +1,6 @@
 const SITE_ORIGIN = 'https://mc-novatools.com';
 const DEFAULT_OG_IMAGE = `${SITE_ORIGIN}/og-image.svg`;
+const HREFLANG_LOCALES = ['en', 'tr'];
 
 const DEFAULT_ADSENSE_CLIENT = 'ca-pub-5738022526587953';
 
@@ -15,8 +16,6 @@ function normalizeRoute(route) {
   let cleanRoute = String(route || '/').split('?')[0].split('#')[0] || '/';
   cleanRoute = cleanRoute.replace(/\\/g, '/');
 
-  if (cleanRoute.startsWith('/src/tools/finance/')) cleanRoute = cleanRoute.replace(/^\/src\/tools\/finance\//, '/finance/');
-  if (cleanRoute.startsWith('/tools/finance/')) cleanRoute = cleanRoute.replace(/^\/tools\/finance\//, '/finance/');
   if (cleanRoute.startsWith('/src/tools/')) cleanRoute = cleanRoute.replace(/^\/src\//, '/');
   if (cleanRoute.startsWith('/src/blog/')) cleanRoute = cleanRoute.replace(/^\/src\//, '/');
   if (cleanRoute === '/index.html' || cleanRoute === '/src/index.html') return '/';
@@ -139,6 +138,51 @@ function categoryApplicationName(category) {
   if (normalized.includes('design') || normalized.includes('image') || normalized.includes('social')) return 'MultimediaApplication';
   if (normalized.includes('calculator') || normalized.includes('converter') || normalized.includes('pdf') || normalized.includes('text')) return 'UtilitiesApplication';
   return 'UtilitiesApplication';
+}
+
+function localizedRoute(route, locale) {
+  const normalized = normalizeRoute(route).replace(/^\/(?:en|tr)(?=\/|$)/, '') || '/';
+  if (normalized === '/') return `${SITE_ORIGIN}/${locale}/`;
+  return `${SITE_ORIGIN}/${locale}${normalized}`;
+}
+
+function renderHreflangTags(route) {
+  const normalized = normalizeRoute(route).replace(/^\/(?:en|tr)(?=\/|$)/, '') || '/';
+  const tags = HREFLANG_LOCALES.map((locale) => `<link rel="alternate" hreflang="${locale}" href="${localizedRoute(normalized, locale)}">`);
+  tags.push(`<link rel="alternate" hreflang="x-default" href="${SITE_ORIGIN}${normalized}">`);
+  return tags.join('\n');
+}
+
+function breadcrumbLabel(segment) {
+  if (!segment) return 'Home';
+  const labels = {
+    pdf: 'PDF Tools',
+    image: 'Image Tools',
+    dev: 'Developer Tools',
+    developer: 'Developer Tools',
+    finance: 'Finance Tools',
+    blog: 'Blog',
+    author: 'Author',
+    categories: 'Categories'
+  };
+  return labels[segment] || segment.replace(/\.html$/, '').split('-').filter(Boolean).map((part) => part.charAt(0).toUpperCase() + part.slice(1)).join(' ');
+}
+
+function breadcrumbItemsForRoute(route, pageTitle) {
+  const normalized = normalizeRoute(route).replace(/^\/(?:en|tr)(?=\/|$)/, '') || '/';
+  if (normalized === '/') return [];
+  const parts = normalized.replace(/^\//, '').replace(/\/$/, '').split('/').filter(Boolean);
+  const visibleParts = parts[0] === 'blog' && parts[1] === 'articles' ? [parts[0], ...parts.slice(2)] : parts;
+  const items = [{ '@type': 'ListItem', position: 1, name: 'Home', item: SITE_ORIGIN }];
+  let current = '';
+  visibleParts.forEach((part, index) => {
+    current += `/${part}`;
+    const isLast = index === visibleParts.length - 1;
+    const name = isLast ? stripTags(pageTitle || breadcrumbLabel(part)) : breadcrumbLabel(part);
+    const item = isLast ? canonicalUrlForRoute(route) : `${SITE_ORIGIN}${current}${part.endsWith('.html') ? '' : '/'}`;
+    items.push({ '@type': 'ListItem', position: items.length + 1, name, item });
+  });
+  return items;
 }
 
 function absoluteUrl(value, fallback = SITE_ORIGIN) {
@@ -323,6 +367,13 @@ export function generateSchemaJsonLd(pageType, pageData = {}, route = '/') {
   return schemas.map((schema) => `<script type="application/ld+json">${jsonLdEscape(schema)}</script>`).join('\n');
 }
 
+function breadcrumbSchemaForRoute(route, pageTitle) {
+  const itemListElement = breadcrumbItemsForRoute(route, pageTitle);
+  if (itemListElement.length < 2) return '';
+  return `<script type="application/ld+json">${jsonLdEscape({ '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement })}</script>`;
+}
+
+
 function removePhase5Schema(html) {
   return html.replace(/\n?\s*<script\b(?=[^>]*\btype\s*=\s*["']application\/ld\+json["'])[^>]*>[\s\S]*?<\/script>\s*/gi, '\n');
 }
@@ -370,6 +421,28 @@ function upsertTag(html, pattern, tag) {
   return html.replace(/<\/head>/i, `  ${tag}\n</head>`);
 }
 
+
+function renderVisibleBreadcrumb(route, pageTitle) {
+  const items = breadcrumbItemsForRoute(route, pageTitle);
+  if (items.length < 2) return '';
+  const links = items.map((item, index) => {
+    const isLast = index === items.length - 1;
+    const label = escapeHtml(item.name);
+    if (isLast) return `<span aria-current="page">${label}</span>`;
+    const href = item.item === SITE_ORIGIN ? '/' : item.item.replace(SITE_ORIGIN, '') || '/';
+    return `<a href="${escapeHtml(href)}">${label}</a>`;
+  }).join('<span class="breadcrumb-sep" aria-hidden="true">›</span>');
+  return `<nav class="breadcrumb seo-breadcrumb" aria-label="Breadcrumb">${links}</nav>`;
+}
+
+function injectVisibleBreadcrumb(html, route, pageTitle) {
+  if (normalizeRoute(route) === '/' || /aria-label=["']Breadcrumb["']/i.test(html)) return html;
+  const breadcrumb = renderVisibleBreadcrumb(route, pageTitle);
+  if (!breadcrumb) return html;
+  if (/<main\b[^>]*>/i.test(html)) return html.replace(/<main\b([^>]*)>/i, `<main$1>\n  ${breadcrumb}`);
+  return html.replace(/<body\b([^>]*)>/i, `<body$1>\n  ${breadcrumb}`);
+}
+
 export function applySeoHead(html, route, { gaId = '', gscId = '', adsenseClient = DEFAULT_ADSENSE_CLIENT } = {}) {
   const canonical = canonicalUrlForRoute(route);
   let nextHtml = removeLegacyAdSenseHead(html);
@@ -387,6 +460,8 @@ export function applySeoHead(html, route, { gaId = '', gscId = '', adsenseClient
   nextHtml = upsertTag(nextHtml, /<title\b[^>]*>[\s\S]*?<\/title>/i, `<title>${escapedTitle}</title>`);
   nextHtml = upsertTag(nextHtml, /<meta name="description" content="[^"]*"\s*\/?>/i, `<meta name="description" content="${escapedDescription}">`);
   nextHtml = upsertTag(nextHtml, /<link rel="canonical" href="[^"]*"\s*\/?>/i, `<link rel="canonical" href="${canonical}">`);
+  nextHtml = nextHtml.replace(/\n?\s*<link\b(?=[^>]*\brel=["']alternate["'])(?=[^>]*\bhreflang=)[^>]*>\s*/gi, '\n');
+  nextHtml = nextHtml.replace(/<\/head>/i, `${renderHreflangTags(route)}\n</head>`);
   nextHtml = upsertTag(nextHtml, /<meta property="og:title" content="[^"]*"\s*\/?>/i, `<meta property="og:title" content="${escapedTitle}">`);
   nextHtml = upsertTag(nextHtml, /<meta property="og:description" content="[^"]*"\s*\/?>/i, `<meta property="og:description" content="${escapedDescription}">`);
   nextHtml = upsertTag(nextHtml, /<meta property="og:type" content="[^"]*"\s*\/?>/i, `<meta property="og:type" content="${ogType}">`);
@@ -401,6 +476,8 @@ export function applySeoHead(html, route, { gaId = '', gscId = '', adsenseClient
   nextHtml = upsertTag(nextHtml, /<meta name="twitter:title" content="[^"]*"\s*\/?>/i, `<meta name="twitter:title" content="${escapedTitle}">`);
   nextHtml = upsertTag(nextHtml, /<meta name="twitter:description" content="[^"]*"\s*\/?>/i, `<meta name="twitter:description" content="${escapedDescription}">`);
   nextHtml = upsertTag(nextHtml, /<meta name="twitter:image" content="[^"]*"\s*\/?>/i, `<meta name="twitter:image" content="${socialImage}">`);
+
+  nextHtml = injectVisibleBreadcrumb(nextHtml, route, title);
 
   nextHtml = optimizeImageTags(nextHtml);
 

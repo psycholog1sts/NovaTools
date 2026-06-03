@@ -120,7 +120,7 @@ const adminEntry = {
 
 // Localized duplicate entries keep path-prefixed locale routes buildable for
 // locales that still use static path prefixes while runtime localization handles others.
-const localizedRootHtmlEntries = ['ar'].reduce((acc, locale) => {
+const localizedRootHtmlEntries = ['en', 'tr', 'ar'].reduce((acc, locale) => {
   acc[`${locale}/index`] = resolveHtmlEntry('index.html');
   Object.keys(rootHtmlEntries).forEach((name) => {
     acc[`${locale}/${name}`] = rootHtmlEntries[name];
@@ -176,6 +176,23 @@ const blogArticleEntries = globSync('src/blog/articles/**/*.html').reduce((acc, 
   return acc;
 }, {});
 
+// Author profile entry points
+const authorEntries = globSync('author/**/index.html').reduce((acc, file) => {
+  const name = file
+    .replace(/\\/g, '/')
+    .replace(/\.html$/, '');
+
+  acc[name] = resolveHtmlEntry(file);
+  return acc;
+}, {});
+
+const localizedAuthorEntries = ['en', 'tr'].reduce((acc, locale) => {
+  Object.entries(authorEntries).forEach(([name, file]) => {
+    acc[`${locale}/${name}`] = file;
+  });
+  return acc;
+}, {});
+
 // Categories entry points
 const categoryEntries = globSync('categories/**/*.html').reduce((acc, file) => {
   const name = file
@@ -186,14 +203,14 @@ const categoryEntries = globSync('categories/**/*.html').reduce((acc, file) => {
   return acc;
 }, {});
 
-const localizedCategoryEntries = ['ar'].reduce((acc, locale) => {
+const localizedCategoryEntries = ['en', 'tr', 'ar'].reduce((acc, locale) => {
   Object.entries(categoryEntries).forEach(([name, file]) => {
     acc[`${locale}/${name}`] = file;
   });
   return acc;
 }, {});
 
-const localizedToolEntries = ['ar'].reduce((acc, locale) => {
+const localizedToolEntries = ['en', 'tr', 'ar'].reduce((acc, locale) => {
   Object.entries(toolEntries).forEach(([name, file]) => {
     acc[`${locale}/${name}`] = file;
   });
@@ -231,6 +248,8 @@ export default defineConfig({
         ...adminEntry,
         ...blogEntry,
         ...localizedBlogIndexEntries,
+        ...authorEntries,
+        ...localizedAuthorEntries,
         ...blogArticleEntries,
         ...blogArticleRouteEntries,
         ...categoryEntries,
