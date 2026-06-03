@@ -8,7 +8,7 @@
       "categories": "Categories",
       "settings": "Cookie settings",
       "updated": "Last updated: 2026-05-10",
-      "email": "psk.dan.metehancetin@mc-novatools.com",
+      "email": "support@mc-novatools.com",
       "address": "Remote-first project. Legal correspondence may be sent by email.",
       "phone": "Phone support is not currently offered.",
       "social": "Social links are published only from official MC NovaTools profiles.",
@@ -63,7 +63,7 @@
             "id": "contact-details",
             "title": "Contact details",
             "body": [
-              "Email: psk.dan.metehancetin@mc-novatools.com",
+              "Email: support@mc-novatools.com",
               "Address: Remote-first project. Legal correspondence may be sent by email.",
               "Phone: Phone support is not currently offered.",
               "Social media: Official links are added only when they are maintained and monitored."
@@ -82,7 +82,7 @@
             "id": "data-controller",
             "title": "Data controller and contact",
             "body": [
-              "MC NovaTools is operated by Metehan ÇETİN, LPC for this public website and its browser-based utility pages. Privacy questions and rights requests can be sent to psk.dan.metehancetin@mc-novatools.com.",
+              "MC NovaTools is operated by Metehan ÇETİN, LPC for this public website and its browser-based utility pages. Privacy questions and rights requests can be sent to support@mc-novatools.com.",
               "This policy is written for a general international audience, including visitors from the European Economic Area, the United Kingdom, and Türkiye. It is intended to be transparent, but it is not legal advice."
             ]
           },
@@ -339,7 +339,7 @@
             "id": "alternative-contact",
             "title": "Alternative contact",
             "body": [
-              "Email: psk.dan.metehancetin@mc-novatools.com",
+              "Email: support@mc-novatools.com",
               "Suggested subjects: support, privacy request, bug report, business inquiry, tool request.",
               "Phone: Phone support is not currently offered.",
               "Address: Remote-first project. Legal correspondence may be sent by email."

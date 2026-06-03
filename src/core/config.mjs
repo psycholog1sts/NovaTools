@@ -9,7 +9,7 @@ export const CONFIG = {
     name: 'NovaTools MC',
     version: '2.0.0',
     author: 'Licensed Professional Counselor Metehan ÇETİN',
-    email: 'psk.dan.metehancetin@mc-novatools.com',
+    email: 'support@mc-novatools.com',
     copyright: '© 2026 Licensed Professional Counselor Metehan ÇETİN. All rights reserved.'
   },
 

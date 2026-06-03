@@ -9,6 +9,7 @@ import { fileURLToPath } from 'url';
 import { blogArticleRoutes, blogHubPath, fallbackBlogLocale, normalizeBlogSlug, normalizeBlogSlugList, supportedBlogLocales } from '../src/js/blog-routes.js';
 import { buildBlogArticleSeo, buildBlogIndexSeo } from '../src/js/blog-seo.js';
 import { applySeoHead, removeLegacyAdSenseHead, renderAdSenseHead } from '../src/components/Analytics.mjs';
+import { renderGlobalFooter, renderGlobalFooterStyle } from '../src/components/global-footer.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -137,6 +138,77 @@ function stampBlogFile(filePath, block, locale) {
 }
 
 
+
+
+
+function visibleBlogAuthorshipBlock() {
+  return `<div class="article-trust-meta" data-visible-authorship="true" style="margin:1rem 0 1.5rem;color:var(--text-secondary,#cbd5e1);font-size:.95rem;line-height:1.6;display:flex;flex-wrap:wrap;gap:.75rem 1rem;">
+    <span>Written by <a href="/author/novatools-editorial.html">NovaTools Editorial Review</a></span>
+    <span>Published <time datetime="2026-04-17">2026-04-17</time></span>
+    <span>Last modified <time datetime="2026-06-03">2026-06-03</time></span>
+    <span>11 min read</span>
+    <span>Reviewed by <a href="/author/metehan-cetin.html">Metehan Çetin, LPC</a></span>
+  </div>`;
+}
+
+function applyVisibleBlogAuthorship(dir) {
+  const blogDir = path.join(dir, 'blog');
+  if (!fs.existsSync(blogDir)) return 0;
+  let count = 0;
+  const walk = (current) => {
+    for (const entry of fs.readdirSync(current, { withFileTypes: true })) {
+      const filePath = path.join(current, entry.name);
+      if (entry.isDirectory()) { walk(filePath); continue; }
+      if (!entry.isFile() || !entry.name.endsWith('.html')) continue;
+      const html = fs.readFileSync(filePath, 'utf8');
+      if (html.includes('data-visible-authorship="true"') || !/(?:<article\b|article-meta|blog-seo-article-jsonld)/i.test(html)) continue;
+      let next = html;
+      if (/<h1\b[^>]*>[\s\S]*?<\/h1>/i.test(next)) next = next.replace(/(<h1\b[^>]*>[\s\S]*?<\/h1>)/i, `$1
+${visibleBlogAuthorshipBlock()}`);
+      else next = next.replace(/<main\b[^>]*>/i, (m) => `${m}
+${visibleBlogAuthorshipBlock()}`);
+      if (next !== html) { fs.writeFileSync(filePath, next); count += 1; }
+    }
+  };
+  walk(blogDir);
+  return count;
+}
+
+function applyGlobalFooterToHtml(html) {
+  const footer = renderGlobalFooter();
+  let next = html;
+  if (!/data-global-footer="true"/.test(next)) {
+    next = next.replace(/<\/head>/i, `  ${renderGlobalFooterStyle()}
+</head>`);
+  }
+  if (/<footer\b[\s\S]*?<\/footer>/i.test(next)) {
+    next = next.replace(/<footer\b[\s\S]*?<\/footer>/i, footer);
+  } else {
+    next = next.replace(/<\/body>/i, `${footer}
+</body>`);
+  }
+  return next;
+}
+
+function applyGlobalFooterPass(dir) {
+  if (!fs.existsSync(dir)) return 0;
+  let count = 0;
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    const filePath = path.join(dir, entry.name);
+    if (entry.isDirectory()) {
+      count += applyGlobalFooterPass(filePath);
+      continue;
+    }
+    if (!entry.isFile() || !entry.name.endsWith('.html')) continue;
+    const html = fs.readFileSync(filePath, 'utf8');
+    const next = applyGlobalFooterToHtml(html);
+    if (next !== html) {
+      fs.writeFileSync(filePath, next);
+      count += 1;
+    }
+  }
+  return count;
+}
 
 function deferNonCriticalStylesInHtml(html) {
   return html.replace(/<link\s+rel=["']stylesheet["']\s+href=["']([^"']+)["']\s*\/?>/gi, (tag, href) => {
@@ -325,6 +397,9 @@ const localizedRootFiles = [
   'request-tool.html',
   'privacy-policy.html',
   'terms-of-service.html',
+  'disclaimer.html',
+  'author/metehan-cetin.html',
+  'author/novatools-editorial.html',
   'gizlilik-politikasi.html',
   'kvkk-aydinlatma-metni.html',
   'kullanim-kosullari.html',
@@ -460,11 +535,7 @@ console.log('✅ Verified: clean URL aliases for public root pages');
 
 const publicLegalTrustFiles = [
   'about.html',
-  'contact.html',
-  'privacy-policy.html',
-  'terms-of-service.html',
-  'cookie-policy.html',
-  'disclaimer.html'
+  'cookie-policy.html'
 ];
 
 for (const file of publicLegalTrustFiles) {
@@ -658,7 +729,7 @@ function toolContentSection({ info, title, related }) {
   <p>These nearby NovaTools pages can help extend the same workflow without leaving the site:</p>
   <ul>${relatedLinks}</ul>
   <address class="tool-author" itemscope itemtype="https://schema.org/Person" style="display:block;margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--border-default, rgba(148,163,184,.25));font-style:normal;">
-    <p>Written by <span itemprop="name">Metehan ÇETİN, LPC</span>, <span itemprop="jobTitle">Founder and editor</span>. <a href="https://mc-novatools.com/about-us.html" itemprop="sameAs">Author and review profile</a>.</p>
+    <p>Written by <span itemprop="name">Metehan ÇETİN, LPC</span>, <span itemprop="jobTitle">Founder and editor</span>. <a href="https://mc-novatools.com/author/metehan-cetin.html" itemprop="url">Author profile</a>.</p>
     <p itemprop="description">Metehan ÇETİN, LPC reviews browser-based utility workflows for clarity, privacy, accessibility, and practical reliability. The author focuses on explaining inputs, outputs, edge cases, and verification steps so users understand when a tool is appropriate, when a result needs expert review, and how to avoid exposing unnecessary personal or confidential data during everyday file, finance, text, developer, and productivity tasks.</p>
     <p>Last updated: <time datetime="2026-06-03">2026-06-03</time></p>
   </address>
@@ -757,6 +828,9 @@ const keyFiles = [
   'request-tool.html',
   'privacy-policy.html',
   'terms-of-service.html',
+  'disclaimer.html',
+  'author/metehan-cetin.html',
+  'author/novatools-editorial.html',
   'gizlilik-politikasi.html',
   'kvkk-aydinlatma-metni.html',
   'kullanim-kosullari.html',
@@ -790,6 +864,12 @@ if (allGood) {
   console.log('\n⚠️  Some files are missing - check build output');
   process.exit(1);
 }
+
+const visibleBlogAuthorshipCount = applyVisibleBlogAuthorship(distDir);
+console.log(`✅ Applied: visible blog authorship metadata to ${visibleBlogAuthorshipCount} HTML pages`);
+
+const globalFooterCount = applyGlobalFooterPass(distDir);
+console.log(`✅ Applied: semantic global footer to ${globalFooterCount} HTML pages`);
 
 applyPerformanceHtmlPass(distDir);
 console.log('✅ Applied: deferred non-critical stylesheets');

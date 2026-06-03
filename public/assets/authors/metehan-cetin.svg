@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="240" viewBox="0 0 240 240" role="img" aria-labelledby="title desc">
+  <title id="title">Metehan Çetin avatar</title><desc id="desc">Consistent illustrated headshot avatar for the MC NovaTools founder profile.</desc>
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0f172a"/><stop offset="1" stop-color="#2563eb"/></linearGradient><linearGradient id="shirt" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22d3ee"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient></defs>
+  <rect width="240" height="240" rx="48" fill="url(#bg)"/>
+  <circle cx="120" cy="98" r="46" fill="#f1c7a8"/>
+  <path d="M73 92c6-39 32-55 65-45 20 6 29 22 31 45-18-15-38-20-62-19-12 0-23 6-34 19z" fill="#172033"/>
+  <path d="M69 216c7-45 30-68 51-68s44 23 51 68H69z" fill="url(#shirt)"/>
+  <path d="M94 145c12 17 40 17 52 0v26c-13 13-39 13-52 0v-26z" fill="#e7b58f"/>
+  <circle cx="103" cy="98" r="5" fill="#111827"/><circle cx="138" cy="98" r="5" fill="#111827"/>
+  <path d="M101 123c14 10 27 10 41 0" fill="none" stroke="#7c2d12" stroke-width="5" stroke-linecap="round"/>
+  <path d="M48 52l28-14 12 24-28 14z" fill="#67e8f9" opacity=".9"/><path d="M172 39h28v28h-28z" fill="#a78bfa" opacity=".9"/>
+  <text x="120" y="229" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="18" font-weight="800" fill="#fff">MC</text>
+</svg>

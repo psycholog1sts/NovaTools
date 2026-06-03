@@ -8,7 +8,7 @@
       "categories": "Kategoriler",
       "settings": "Çerez ayarları",
       "updated": "Son güncelleme: 2026-05-10",
-      "email": "psk.dan.metehancetin@mc-novatools.com",
+      "email": "support@mc-novatools.com",
       "address": "Uzaktan çalışan proje. Yasal yazışmalar e-posta ile gönderilebilir.",
       "phone": "Telefon desteği şu anda sunulmamaktadır.",
       "social": "Sosyal medya bağlantıları yalnızca resmi ve takip edilen profillerden yayınlanır.",
@@ -63,7 +63,7 @@
             "id": "contact-details",
             "title": "İletişim bilgileri",
             "body": [
-              "E-posta: psk.dan.metehancetin@mc-novatools.com",
+              "E-posta: support@mc-novatools.com",
               "Adres: Uzaktan çalışan proje. Yasal yazışmalar e-posta ile gönderilebilir.",
               "Telefon: Telefon desteği şu anda sunulmamaktadır.",
               "Sosyal medya: Resmi bağlantılar yalnızca yönetilen profiller için eklenir."
@@ -82,7 +82,7 @@
             "id": "data-controller",
             "title": "Veri sorumlusu ve iletişim",
             "body": [
-              "MC NovaTools, bu web sitesi ve tarayıcı tabanlı araçlar için Metehan ÇETİN, LPC tarafından işletilir. Gizlilik soruları ve hak talepleri psk.dan.metehancetin@mc-novatools.com adresine gönderilebilir.",
+              "MC NovaTools, bu web sitesi ve tarayıcı tabanlı araçlar için Metehan ÇETİN, LPC tarafından işletilir. Gizlilik soruları ve hak talepleri support@mc-novatools.com adresine gönderilebilir.",
               "Bu politika Avrupa Ekonomik Alanı, Birleşik Krallık ve Türkiye dahil genel uluslararası ziyaretçiler için şeffaflık amacıyla hazırlanmıştır; hukuki danışmanlık değildir."
             ]
           },
@@ -339,7 +339,7 @@
             "id": "alternative-contact",
             "title": "Alternatif iletişim",
             "body": [
-              "E-posta: psk.dan.metehancetin@mc-novatools.com",
+              "E-posta: support@mc-novatools.com",
               "Önerilen konular: destek, gizlilik talebi, hata bildirimi, iş birliği, araç talebi.",
               "Telefon: Telefon desteği şu anda sunulmamaktadır.",
               "Adres: Uzaktan çalışan proje. Yasal yazışmalar e-posta ile gönderilebilir."

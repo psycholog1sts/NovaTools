@@ -11,7 +11,8 @@ const PAGE_FILES = {
   privacy: 'privacy-policy.html',
   cookies: 'cookie-policy.html',
   terms: 'terms-of-service.html',
-  contact: 'contact.html'
+  contact: 'contact.html',
+  disclaimer: 'disclaimer.html'
 };
 
 function currentLanguage() {
@@ -66,7 +67,7 @@ function renderSection(section, formContent) {
   if (section.list) html += renderList(section.list);
   if (section.table) html += renderTable(section.table);
   if (section.cards) {
-    html += `<div class="legal-card-grid">${section.cards.map((card) => `<article class="legal-team-card"><div class="legal-avatar" aria-hidden="true">${card.name.slice(0, 2)}</div><div><h3>${card.name}</h3><p><strong>${card.role}</strong></p><p>${card.bio}</p></div></article>`).join('')}</div>`;
+    html += `<div class="legal-card-grid">${section.cards.map((card) => `<article class="legal-team-card">${card.image ? `<img class="legal-avatar-img" src="${card.image}" alt="${card.name} profile avatar" width="72" height="72" loading="lazy" decoding="async">` : `<div class="legal-avatar" aria-hidden="true">${card.name.slice(0, 2)}</div>`}<div><h3>${card.name}</h3><p><strong>${card.role}</strong></p><p>${card.bio}</p></div></article>`).join('')}</div>`;
   }
   if (section.form) html += renderForm(formContent);
   html += '</section>';
@@ -113,7 +114,7 @@ function updateSchema(page, key, lang) {
   const schema = {
     '@context': 'https://schema.org',
     '@graph': [
-      { '@type': 'Organization', name: 'MC NovaTools', url: 'https://mc-novatools.com/', email: legalContent.en.common.email, founder: { '@type': 'Person', name: 'Metehan ÇETİN, LPC' } },
+      { '@type': 'Organization', '@id': 'https://mc-novatools.com/#organization', name: 'MC NovaTools', url: 'https://mc-novatools.com', email: legalContent.en.common.email, founder: { '@type': 'Person', name: 'Metehan ÇETİN, LPC' } },
       { '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mc-novatools.com/' }, { '@type': 'ListItem', position: 2, name: page.title, item: `https://mc-novatools.com${path}` }] },
       { '@type': key === 'contact' ? 'ContactPage' : 'WebPage', name: page.title, url: `https://mc-novatools.com${path}`, description: page.metaDescription, inLanguage: lang }
     ]
