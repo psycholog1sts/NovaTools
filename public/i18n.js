@@ -784,8 +784,13 @@
     if (!el.getAttribute('height')) el.setAttribute('height', String(height));
     el.style.minWidth = el.style.minWidth || `min(100%, ${width}px)`;
     el.style.minHeight = el.style.minHeight || `${height}px`;
+    el.style.maxHeight = el.style.maxHeight || `${height}px`;
     el.style.aspectRatio = el.style.aspectRatio || `${width} / ${height}`;
     const container = el.closest('.ad-slot-container, .ad-in-tool, .ad-frame, .ad-wrapper, aside, div');
+    if (container) {
+      container.style.overflow = container.style.overflow || 'hidden';
+      container.style.maxHeight = container.style.maxHeight || `calc(${height}px + 4rem)`;
+    }
     if (container && !container.querySelector('.ad-label')) {
       const label = document.createElement('span');
       label.className = 'ad-label';

@@ -36,7 +36,7 @@
   <title data-i18n="tools.finance.mortgage-refinance.meta.title">Mortgage Refinance Calculator Turkey | NovaTools</title>
   
   <!-- i18n Script -->
-  <script src="/i18n.js"></script>
+  <script src="/i18n.js" defer></script>
   <meta name="description" content="Use Mortgage Refinance Calculator for finance mortgage refinance tasks with browser-first processing, clear steps, privacy notes, and practical limits.">
   <meta name="keywords" content="free mortgage refinance calculator, mortgage refinance, refinance savings, break-even calculator, monthly payment calculator">
   <meta name="theme-color" content="#0A0A0C">
@@ -308,8 +308,10 @@
       to { opacity: 1; transform: translateY(0); }
     }
   </style>
+  <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   <div class="bg-ambient" aria-hidden="true"></div>
   <div class="noise-overlay" aria-hidden="true"></div>
   
@@ -347,7 +349,7 @@
         </nav>
       </div>
     </header>
-<main class="main-content">
+<main id="main-content" class="main-content">
       <div class="container" style="padding: 4rem 1rem;">
         <div style="max-width: 800px; margin: 0 auto;">
           <h1 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; text-align: center;" data-i18n="tools.finance.mortgage-refinance.text.011">Mortgage Refinance Calculator</h1>

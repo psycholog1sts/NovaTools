@@ -28,7 +28,7 @@
   <title data-i18n="tools.image.image-cropper.meta.title">Image Cropper - Crop Photos Online Free | NovaTools</title>
   
   <!-- i18n Script -->
-  <script src="/i18n.js"></script>
+  <script src="/i18n.js" defer></script>
   <meta name="description" content="Use Image Cropper for image image cropper tasks with browser-first processing, clear steps, privacy notes, and practical limits. Review outputs before sharing.">
   <meta name="keywords" content="image cropper, crop photo, aspect ratio, photo editor, online image crop">
   <meta name="theme-color" content="#0A0A0C">
@@ -132,8 +132,10 @@
     .faq-item summary:hover { background: var(--border-default); }
     .faq-item p { padding: 1rem; margin: 0; border-top: 1px solid var(--border-hover); color: var(--text-secondary); }
   </style>
+  <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   <div class="bg-ambient" aria-hidden="true"></div>
   <div class="noise-overlay" aria-hidden="true"></div>
   
@@ -172,7 +174,7 @@
       </div>
     </header>
 
-    <main class="main-content">
+    <main id="main-content" class="main-content">
       <div class="tool-container">
         <div class="tool-header">
           <h1 data-i18n="tools.image.image-cropper.text.011">✂️ Image Cropper</h1>

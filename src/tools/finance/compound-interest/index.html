@@ -33,7 +33,7 @@
   <title data-i18n="tools.finance.compound-interest.meta.title">Free Compound Interest Calculator - Investment Growth</title>
   
   <!-- i18n Script -->
-  <script src="/i18n.js"></script>
+  <script src="/i18n.js" defer></script>
   <meta name="description" content="Use Compound Interest Calculator for finance compound interest tasks with browser-first processing, clear steps, privacy notes, and practical limits. Use safely">
   <meta name="keywords" content="free compound interest calculator, investment growth calculator, compounding calculator, savings calculator, free interest calculator">
   <meta name="theme-color" content="#0A0A0C">
@@ -93,8 +93,10 @@
     .form-error { margin-top: 1rem; color: #FF5555; font-weight: 600; }
     @media (max-width: 640px) { .container { padding-left: 0.75rem !important; padding-right: 0.75rem !important; } .calculator-form, .results-panel, .chart-container { padding: 1rem; } .result-value { font-size: 1.25rem; overflow-wrap: anywhere; } }
   </style>
+  <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   <div class="bg-ambient" aria-hidden="true"></div>
   <div class="noise-overlay" aria-hidden="true"></div>
   
@@ -132,7 +134,7 @@
         </nav>
       </div>
     </header>
-<main class="main-content">
+<main id="main-content" class="main-content">
       <div class="container" style="padding: 4rem 1rem;">
         <div style="max-width: 800px; margin: 0 auto;">
           <div style="text-align: center; margin-bottom: 2rem;">

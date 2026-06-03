@@ -31,7 +31,7 @@
   <title data-i18n="tools.design.business-card-maker.meta.title">Free Business Card Maker Online | Design & Print | NovaTools MC</title>
   
   <!-- i18n Script -->
-  <script src="/i18n.js"></script>
+  <script src="/i18n.js" defer></script>
   <meta name="description" content="Use Business Card Maker for design business card maker tasks with browser-first processing, clear steps, privacy notes, and practical limits. Use safely with ch">
   <meta name="keywords" content="business card maker, free business card design, printable business cards, custom business cards">
   <meta name="theme-color" content="#0A0A0C">
@@ -118,8 +118,10 @@
     .tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }
     .tool-footer a { color: #00D9FF; text-decoration: none; }
   </style>
+  <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   <div class="bg-ambient" aria-hidden="true"></div>
   <div class="noise-overlay" aria-hidden="true"></div>
 
@@ -158,7 +160,7 @@
       </div>
     </header>
 
-    <main class="main-content">
+    <main id="main-content" class="main-content">
       <div class="tool-wrapper">
         <div class="tool-hero">
           <div class="tool-hero-icon">&#128220;</div>

@@ -31,7 +31,7 @@
   <title data-i18n="tools.design.resume-builder.meta.title">Free Resume Builder Online | Create CV PDF | NovaTools MC</title>
   
   <!-- i18n Script -->
-  <script src="/i18n.js"></script>
+  <script src="/i18n.js" defer></script>
   <meta name="description" content="Use Resume Builder for design resume builder tasks with browser-first processing, clear steps, privacy notes, and practical limits. Use safely with checks.">
   <meta name="keywords" content="resume builder, free CV maker, online resume creator, professional resume template">
   <meta name="theme-color" content="#0A0A0C">
@@ -151,8 +151,10 @@
     .resume-minimal .job-company { color: #666; }
     .resume-minimal .job-date { color: #999; font-size: 0.85rem; }
   </style>
+  <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   <div class="bg-ambient" aria-hidden="true"></div>
   <div class="noise-overlay" aria-hidden="true"></div>
 
@@ -191,7 +193,7 @@
       </div>
     </header>
 
-    <main class="main-content">
+    <main id="main-content" class="main-content">
       <div class="tool-wrapper">
         <div class="tool-hero">
           <div class="tool-hero-icon">&#128196;</div>

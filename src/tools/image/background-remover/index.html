@@ -28,7 +28,7 @@
   <title data-i18n="tools.image.background-remover.meta.title">Background Remover - Remove Image Background Free | NovaTools</title>
   
   <!-- i18n Script -->
-  <script src="/i18n.js"></script>
+  <script src="/i18n.js" defer></script>
   <meta name="description" content="Use Background Remover for image background remover tasks with browser-first processing, clear steps, privacy notes, and practical limits. Use safely with check">
   <meta name="keywords" content="remove background, transparent background, image background remover, background eraser">
   <meta name="theme-color" content="#0A0A0C">
@@ -130,8 +130,10 @@
     .progress-fill { height: 100%; background: linear-gradient(90deg, #6366F1, #8B5CF6); border-radius: 4px; transition: width 0.3s ease; }
     .progress-text { text-align: center; font-size: 0.875rem; color: var(--text-secondary); }
   </style>
+  <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   <div class="bg-ambient" aria-hidden="true"></div>
   <div class="noise-overlay" aria-hidden="true"></div>
   
@@ -170,7 +172,7 @@
       </div>
     </header>
 
-    <main class="main-content">
+    <main id="main-content" class="main-content">
       <div class="tool-container">
         <div class="tool-header">
           <h1 data-i18n="tools.image.background-remover.text.011">🎭 Background Remover</h1>

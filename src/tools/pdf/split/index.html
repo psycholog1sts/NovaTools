@@ -30,7 +30,7 @@
   <title data-i18n="tools.pdf.split.meta.title">Free PDF Splitter - Extract &amp; Split PDF Pages Online</title>
   
   <!-- i18n Script -->
-  <script src="/i18n.js"></script>
+  <script src="/i18n.js" defer></script>
   <meta name="description" content="Use PDF Split Tool for pdf split tasks with browser-first processing, clear steps, privacy notes, and practical limits. Review outputs before sharing.">
   <meta name="keywords" content="free PDF splitter, split PDF online, extract PDF pages, free PDF page extractor, split PDF into multiple files">
   <meta name="theme-color" content="#0A0A0C">
@@ -84,8 +84,10 @@
     .download-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(34, 197, 94, 0.3); }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
   </style>
+  <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   <div class="bg-ambient" aria-hidden="true"></div>
   <div class="noise-overlay" aria-hidden="true"></div>
   
@@ -123,7 +125,7 @@
         </nav>
       </div>
     </header>
-<main class="main-content">
+<main id="main-content" class="main-content">
       <div class="tool-container">
         <div class="tool-header">
           <h1 data-i18n="tools.pdf.split.text.011">✂️ PDF Split Tool</h1>

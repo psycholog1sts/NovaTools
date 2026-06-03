@@ -31,7 +31,7 @@
   <title data-i18n="tools.design.barcode-generator.meta.title">Free Barcode Generator Online | Create UPC, EAN, Code 128 | NovaTools MC</title>
   
   <!-- i18n Script -->
-  <script src="/i18n.js"></script>
+  <script src="/i18n.js" defer></script>
   <meta name="description" content="Use Barcode Generator for design barcode generator tasks with browser-first processing, clear steps, privacy notes, and practical limits. Use safely with checks">
   <meta name="keywords" content="barcode generator, free barcode maker, UPC barcode, EAN barcode, Code 128">
   <meta name="theme-color" content="#0A0A0C">
@@ -113,8 +113,10 @@
     .tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }
     .tool-footer a { color: #00D9FF; text-decoration: none; }
   </style>
+  <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   <div class="bg-ambient" aria-hidden="true"></div>
   <div class="noise-overlay" aria-hidden="true"></div>
 
@@ -153,7 +155,7 @@
       </div>
     </header>
 
-    <main class="main-content">
+    <main id="main-content" class="main-content">
       <div class="tool-wrapper">
         <div class="tool-hero">
           <div class="tool-hero-icon">&#128289;</div>

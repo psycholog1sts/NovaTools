@@ -25,7 +25,7 @@
   <title data-i18n="tools.religious.islamic-calendar.meta.title">Global Islamic Calendar 2026-2027 | Hijri Date & Event Countdown | NovaTools MC</title>
   
   <!-- i18n Script -->
-  <script src="/i18n.js"></script>
+  <script src="/i18n.js" defer></script>
   <meta name="description" content="Use Global Islamic Calendar for religious islamic calendar tasks with browser-first processing, clear steps, privacy notes, and practical limits. Use safely wit">
   <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
   <link rel="canonical" href="https://mc-novatools.com/tools/religious/islamic-calendar/">
@@ -65,8 +65,10 @@
     .days-left { font-weight: 600; color: var(--success); }
     .days-left.urgent { color: #F59E0B; }
   </style>
+  <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   <div class="bg-ambient" aria-hidden="true"></div>
   <div class="noise-overlay" aria-hidden="true"></div>
   
@@ -104,7 +106,7 @@
         </nav>
       </div>
     </header>
-<main class="main-content">
+<main id="main-content" class="main-content">
       <div class="container" style="padding: 2rem 1rem;">
         <div class="calendar-hero">
           <h1 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem;" data-i18n="tools.religious.islamic-calendar.text.011">🌙 Global Islamic Calendar</h1>
@@ -122,8 +124,8 @@
         <!-- In-Tool Ad -->
         <div class="ad-in-tool ad-slot-container" role="complementary" aria-label="Advertisement" data-ad-placement="islamic-calendar-in-content">
           <span class="ad-label">Advertisement</span>
-          <div class="ad-wrapper" style="display: inline-flex; width: min(100%, 300px); min-height: 250px; aspect-ratio: 300 / 250;">
-            <ins class="adsbygoogle" width="300" height="250" style="display:inline-block;width:300px;height:250px;min-width:min(100%,300px);min-height:250px;aspect-ratio:300/250" data-ad-client="ca-pub-5738022526587953" data-slot-key="islamicCalendar" data-ad-slot="8529630741"></ins>
+          <div class="ad-wrapper" style="display:inline-flex;width:min(100%,300px);min-width:min(100%,300px);min-height:250px;max-height:250px;aspect-ratio:300/250;overflow:hidden;">
+            <ins class="adsbygoogle" width="300" height="250" style="display:inline-block;width:300px;height:250px;min-width:min(100%,300px);min-height:250px;max-height:250px;aspect-ratio:300/250;overflow:hidden" data-ad-client="ca-pub-5738022526587953" data-slot-key="islamicCalendar" data-ad-slot="8529630741"></ins>
           </div>
         </div>
 

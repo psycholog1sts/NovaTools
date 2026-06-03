@@ -1,96 +1,156 @@
-# Phase 6 Better Ads and Core Web Vitals Audit
+# Phase 6 Better Ads, Core Web Vitals, Mobile, and Accessibility Audit
 
 ## Scope completed
 
-This phase audited source HTML templates, JavaScript ad initialization, CSS ad presentation rules, and static public page heads for Better Ads compliance, ad layout stability, mobile usability, accessibility guardrails, and Core Web Vitals readiness.
+This phase audited and tightened source HTML templates, JavaScript ad initialization, shared CSS ad presentation rules, and build-time ad head configuration for Better Ads compliance, Core Web Vitals readiness, mobile usability, and WCAG 2.1 AA guardrails. The implementation stays within CSS, JavaScript, HTML templates, and ad placement configuration.
 
-## Google and Coalition references used
+## References
 
 - Better Ads Standards: https://www.betterads.org/standards/
 - Core Web Vitals: https://web.dev/vitals/
-- Google AdSense placement policies reference requested for this phase: https://support.google.com/adsense/answer/11188578
+- Google AdSense ad placement policies: https://support.google.com/adsense/answer/11188578
+- WCAG 2.1 Quick Reference: https://www.w3.org/WAI/WCAG21/quickref/
 
 ## Ad density calculation method
 
-Mobile audit method:
+Mobile viewports audited: 320px, 360px, 375px, 390px, and 414px wide.
 
-- Viewports considered: 320px, 360px, 375px, 390px, 414px wide.
-- Above-the-fold height baseline: first viewport height before scroll.
-- Maximum allowed mobile ad area above the fold: 30 percent of viewport height.
-- Formula used for a rendered ad slot: visible ad slot height above fold divided by viewport height.
-- Conservative mobile threshold example: 100px leaderboard / 667px viewport = 14.99 percent; 250px rectangle / 667px viewport = 37.48 percent and is therefore not allowed above the fold.
+Mobile formula: total rendered pixel height of ad units above the fold divided by viewport height. Required maximum: 0.30 or 30 percent.
 
-Desktop audit method:
+Desktop viewports audited: 1024px and wider.
 
-- Desktop above-the-fold content area is the visible main content viewport excluding browser chrome.
-- Maximum allowed desktop ad area above the fold: 40 percent of visible content area for this phase.
-- Formula used for desktop placements: visible ad slot area above fold divided by visible content area above fold.
-- Sidebar and rail placements before the title or primary action were treated as non-compliant regardless of area because they could appear before the user reaches the tool controls.
+Desktop formula: total rendered pixel height of ad units in the initial viewport divided by viewport height. Required maximum: 0.40 or 40 percent.
 
-Result:
+Home page type result: no live AdSense unit appears above the fold. Mobile calculation: 0px / 667px = 0.00. Desktop calculation: 0px / 768px = 0.00.
 
-- Removed all three-up 336x280 placeholder rows that appeared inside converter/text tool control cards before primary controls.
-- Removed disabled ad placeholders and rail shells from PDF/blog pages and the reusable tool template.
-- Left only post-content or sidebar content ads that are clearly labeled, separated, and dimension-reserved.
-- Mobile sidebar-format ad slots are hidden by CSS, and mobile leaderboard slots are capped at 100px reserved height.
+Category page type result: no live AdSense unit appears above the fold. Mobile calculation: 0px / 667px = 0.00. Desktop calculation: 0px / 768px = 0.00.
+
+Tool page type result: the reusable tool template retains only a post-FAQ 728x90 leaderboard below primary content. Mobile above-the-fold calculation: 0px / 667px = 0.00. Desktop initial viewport calculation: 0px / 768px = 0.00.
+
+Islamic Calendar tool result: the existing 300x250 in-content slot remains after the page title and countdown cards, not between the h1 and the primary content action. Conservative mobile above-the-fold calculation for the audited 667px mobile height is 0px / 667px = 0.00 because the slot is below the initial hero/countdown region. Desktop initial viewport calculation is 0px / 768px = 0.00 for the same reason.
+
+News Summarizer tool result: the sidebar 300x250 slot is inside the sidebar after trending content and is hidden on mobile by the global sidebar ad rule. Mobile calculation: 0px / 667px = 0.00. Desktop calculation: 250px / 768px = 0.33 if visible in the initial sidebar viewport, which is below the 0.40 desktop limit and is not adjacent to the primary action.
+
+Blog article type result: the generated in-content 728x90 leaderboard appears inside article content after body content is rendered, not between the article h1 and the reading action. Mobile calculation: 0px / 667px = 0.00 when above fold; if encountered later, the capped mobile slot is 100px / 667px = 0.15. Desktop calculation: 90px / 768px = 0.12 when visible, below the 0.40 threshold.
+
+Legal/public page type result: no live AdSense unit appears above the fold. Mobile calculation: 0px / 667px = 0.00. Desktop calculation: 0px / 768px = 0.00.
 
 ## Ad units modified
 
-- Removed the three 336x280 placeholder ad boxes from every converter and text tool page that placed ads inside the tool card before the primary input/action. Affected source routes include all `src/tools/converters/*/index.html` and all `src/tools/text/*/index.html` pages that used `.ads-row`.
-- Restyled and dimension-reserved the Islamic Calendar in-content AdSense slot. It now uses an `Advertisement` label, a bordered wrapper, at least 8px separation through the global ad spacing rules, explicit `width` and `height` attributes, `min-height`, and `aspect-ratio`.
-- Restyled and dimension-reserved the News Summarizer sidebar AdSense slot. It now uses an `Advertisement` label, a bordered wrapper, explicit `width` and `height` attributes, `min-height`, and `aspect-ratio`.
-- Updated the blog article template in-content ad to a 728x90 leaderboard reservation with explicit `width`, `height`, `min-height`, and `aspect-ratio`.
-- Updated the reusable `docs/tool-template.html` ad example by removing left and right ad rails and retaining only a post-FAQ leaderboard slot after primary content.
-- Removed disabled ad placeholders from PDF converter pages and legacy finance blog articles so empty ad-looking boxes no longer appear in article headers, inline article bodies, or side rails.
-- Changed the ad-blocker tester bait element so it no longer uses the production `adsbygoogle` class; it now uses a non-AdSense test class and remains separate from real ad inventory.
-- Updated the JavaScript ad slot factory to default labels to `Advertisement`, always reserve dimensions, keep a visible border, and avoid unlabeled header slots.
-- Updated ad initialization to reserve dimensions and insert a localized `Advertisement` or `Reklam` label when an existing slot lacks one.
+Reusable tool template post-FAQ leaderboard:
+Before: 728x90 AdSense slot had explicit dimensions but wrapper did not cap max-height.
+After: wrapper and ins element reserve min-width, min-height, max-height, aspect-ratio, and overflow hidden at 728x90 desktop and capped responsive sizing on mobile.
 
-## Deceptive placement audit result
+Blog article in-content leaderboard:
+Before: generated ins element reserved 728x90 but did not have a fixed overflow-hidden wrapper in the template string.
+After: generated slot is wrapped in an overflow-hidden ad wrapper with min-width, min-height, max-height, and aspect-ratio before AdSense loads.
 
-- No remaining live ad unit is styled as a download button, next-page button, system notification, or content continuation link.
-- No remaining live ad unit is placed between a page title and the primary content action.
-- No remaining live ad unit is placed inside a tool form/control panel.
-- Ad labels are visible above ad inventory through `.ad-label` and JavaScript label enforcement.
-- Ad wrappers use a visible border and enforced spacing.
+Islamic Calendar in-content rectangle:
+Before: 300x250 slot reserved width, height, min-height, and aspect-ratio, but wrapper lacked max-height and explicit overflow hidden in the source template.
+After: wrapper and ins element cap at 300x250 with max-height and overflow hidden so ad fill cannot push surrounding content.
 
-## Layout shift prevention applied
+News Summarizer sidebar rectangle:
+Before: 300x250 slot reserved width, height, min-height, and aspect-ratio, but wrapper lacked max-height and explicit overflow hidden in the source template.
+After: wrapper and ins element cap at 300x250 with max-height and overflow hidden. Sidebar-format ads remain hidden on mobile.
 
-- All remaining `ins.adsbygoogle` source placements now include explicit `width` and `height` attributes or are generated with those attributes.
-- Global ad CSS reserves expected dimensions with `min-height` and `aspect-ratio` before ad scripts load.
-- JavaScript ad bootstrap applies missing width, height, `min-height`, and `aspect-ratio` values before lazy-loading ads.
-- Empty or fallback ad status no longer collapses reserved ad containers in the core AdSense observer, preventing late upward layout shift.
+JavaScript-created ad slots:
+Before: generated wrappers and ins elements reserved width and height but did not set max-height on every generated element.
+After: generated wrappers and ins elements include max-height, min-width, min-height, aspect-ratio, and overflow hidden.
+
+Runtime-reserved inline ad slots:
+Before: runtime reservation applied width, height, min-width, min-height, and aspect-ratio.
+After: runtime reservation also applies max-height to the ins element and an overflow-hidden max-height cap to the closest ad container.
+
+Build-time AdSense head configuration:
+Before: renderAdSenseHead emitted the AdSense account meta tag and an async AdSense script tag into generated heads.
+After: renderAdSenseHead emits the account meta tag plus dns-prefetch only. Runtime AdSense loading remains consent-gated and idle/lazy through existing JavaScript.
+
+## Deceptive placement compliance
+
+No remaining live AdSense unit is styled as a button, download control, submit button, notification, or content continuation link.
+
+All ad containers use a visible 1px border with a contrasting slate border token.
+
+All ad containers have at least 16px separation from surrounding content. Existing policy-safe large vertical spacing remains for in-content revenue cards.
+
+Every live ad unit has an Advertisement/Reklam label, either in source markup or inserted by the ad initialization code before loading.
+
+No live ad unit is inside a form element, tool control panel, or button.
+
+No live ad unit is placed between a page h1 and the primary tool interface or article action.
+
+## Layout shift prevention
+
+All live source AdSense placements now have explicit width and height attributes.
+
+All live source AdSense placements reserve min-width, min-height, max-height, aspect-ratio, and overflow hidden before the ad script can fill.
+
+Shared CSS enforces ad slot box sizing, width limits, min-height, max-height, and overflow hidden for leaderboard, rectangle, sticky, and sidebar formats.
+
+Runtime reservation in src/core/ads/adsense-config.mjs, src/i18n.js, and public/i18n.js now applies max-height and caps the closest ad container.
+
+The generated AdSense head no longer inserts an early ad script. This reduces third-party work during initial rendering and keeps ad loading consent-gated.
 
 ## Core Web Vitals optimizations applied
 
-- Added a build-time inline critical CSS block for above-the-fold shell, header, hero, image sizing, typography inheritance, and focus visibility.
-- Deferred non-critical stylesheets in the post-build HTML pass by converting non-critical CSS links to preload plus noscript stylesheet fallback.
-- Removed direct AdSense script injection from generated heads. Production AdSense now loads lazily after consent and only when valid ad slots exist.
-- Added AdSense DNS prefetch metadata instead of a render-blocking or early third-party ad script.
-- Preserved Google Fonts `display=swap` usage and added build-time font preconnect tags.
-- Added `decoding="async"` to image tags across source HTML.
-- Added lazy loading to non-logo, non-hero images across source HTML.
-- Added `fetchpriority="high"` to eager article hero images and build-time enforcement that only the first hero image keeps high priority.
-- Reused existing WebP logo variants where already available and wrapped raster logo references with WebP `picture` fallbacks without adding new binary image assets to the PR diff.
-- Replaced the static cache-only service worker with a Workbox-powered service worker that precaches critical shell assets and applies cache-first handling for same-origin styles, scripts, fonts, and images plus network-first handling for navigations.
+AdSense script loading was moved out of the generated head path and remains consent-gated, idle-scheduled, and lazy-loaded. Estimated impact: reduced initial third-party script contention and lower LCP/TBT risk on pages with ad slots.
 
-## Mobile usability improvements applied
+Ad containers now reserve final dimensions with max-height. Estimated impact: lower CLS risk from responsive ad fill.
 
-- Added global horizontal overflow protection with `overflow-x: clip` and `max-width: 100%`.
-- Added minimum 48px touch target sizing to buttons, button-like links, nav links, task chips, tool card links, and form submit/reset/button inputs.
-- Enforced at least 16px font size for inputs, selects, and textareas to avoid iOS form zoom.
-- Existing viewport meta tags were preserved; build/static routes continue using `width=device-width, initial-scale=1.0`.
+All source HTML documents now include dns-prefetch for pagead2.googlesyndication.com. Estimated impact: prepares DNS resolution without loading ad script early.
 
-## Accessibility improvements applied
+All external script tags with src that were not async, defer, text/plain consent placeholders, JSON-LD, JSON data, or type module were updated to defer. Estimated impact: fewer parser-blocking script loads.
 
-- Added global visible `:focus-visible` outlines.
-- Added or preserved image `alt` text and `decoding="async"` attributes across source HTML.
-- Preserved semantic ad containers as complementary regions with explicit labels where applicable.
-- Kept interactive ad-close controls keyboard operable and gave them accessible labels.
-- Removed ad-looking disabled boxes that could be mistaken for content or controls.
+Existing Google Fonts URLs retain display=swap. Pages using Google Fonts include preconnect coverage for fonts.googleapis.com and fonts.gstatic.com where applicable. Estimated impact: less font connection latency and lower FOIT risk.
+
+Existing image optimization behavior is preserved: generated blog images use SVG/WebP-capable helpers where available, source image tags use decoding async patterns, and non-critical images are lazy-loaded by existing template/build logic.
+
+Skip navigation CSS was added to the critical stylesheet so the accessibility affordance is available before non-critical CSS loads.
+
+## Mobile usability checklist
+
+Viewport meta tags were audited and retained as width=device-width, initial-scale=1.0.
+
+Buttons, role=button elements, button-like links, nav links, tool card links, category card links, and form button inputs have a minimum 48px touch target rule.
+
+Ad close buttons now reserve 48px by 48px.
+
+Inputs, selects, and textareas enforce at least 16px font size to prevent iOS zoom.
+
+Global horizontal overflow protection remains in place with max-width and overflow-x clipping.
+
+Mobile sidebar ads are hidden. Mobile leaderboard slots are capped at 100px, which is 14.99 percent of a 667px mobile viewport and below the 30 percent threshold.
+
+## Accessibility checklist
+
+Skip navigation links are present in source HTML templates and are visible on focus through the shared critical CSS rule.
+
+Focus-visible indicators have a minimum 2px outline and 2px offset.
+
+Ad regions use complementary semantics or accessible labels where applicable.
+
+Ad labels remain visible above ad inventory.
+
+Form input labeling was preserved. No ad was inserted inside a form or control group.
+
+Images retain existing alt text. Decorative author/logo imagery that already used empty alt remains decorative.
+
+Interactive controls remain reachable through normal document order. Deferring external scripts does not remove semantic controls from the DOM.
+
+Color contrast guardrails were preserved by using existing high-contrast dark theme tokens for body text, labels, focus rings, and ad borders.
+
+## Commands run for this audit
+
+Repository/ad pattern inspection was performed with ripgrep over HTML, CSS, JS, and MJS source files.
+
+A source script audit confirmed no remaining non-async/non-defer external script src tags outside JSON-LD, JSON data, text/plain consent placeholders, and type module scripts.
+
+A source skip-link audit confirmed source HTML templates have skip links, with the towing documentation package retaining its existing #main target.
 
 ## Remaining risks and manual QA
 
-- Automated source checks verify placement patterns, dimensions, and labels, but final ad density should still be manually validated in Chrome DevTools at 320px, 360px, 375px, 390px, and 414px widths after production build deployment.
-- The Workbox service worker is copied from `public/sw.js` during build; verify the final `dist/sw.js` in deployment and confirm service worker update behavior in a clean browser profile.
-- Run a production Lighthouse pass after deploy because real AdSense fill behavior and field Core Web Vitals depend on network, consent state, and third-party response timing.
+Final ad density should still be manually verified in Chrome DevTools at 320px, 375px, 414px, 768px, 1024px, and wider desktop widths after production deployment because real AdSense fill behavior depends on consent state, inventory, and network timing.
+
+Run Lighthouse against deployed pages with production consent states because lab metrics in a local build do not fully represent third-party ad fill timing.
+
+Manually inspect the Islamic Calendar, News Summarizer, generated blog articles, category pages, and legal pages for visual spacing, keyboard tab order, and absence of horizontal scrolling.

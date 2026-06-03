@@ -30,7 +30,7 @@
   <title data-i18n="tools.pdf.merge.meta.title">Free PDF Merger - Combine PDF Files Online | NovaTools MC</title>
 
   <!-- i18n Script -->
-  <script src="/i18n.js"></script>
+  <script src="/i18n.js" defer></script>
   <meta name="description" content="Use PDF Merge Tool for pdf merge tasks with browser-first processing, clear steps, privacy notes, and practical limits. Review outputs before sharing.">
   <meta name="keywords" content="free PDF merger, merge PDF online, combine PDF files, free PDF combiner, join PDF documents">
   <meta name="theme-color" content="#0A0A0C">
@@ -309,8 +309,10 @@
       to { opacity: 1; transform: translateY(0); }
     }
   </style>
+  <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   <div class="bg-ambient" aria-hidden="true"></div>
   <div class="noise-overlay" aria-hidden="true"></div>
 
@@ -348,7 +350,7 @@
         </nav>
       </div>
     </header>
-<main class="main-content">
+<main id="main-content" class="main-content">
       <div class="tool-container">
         <div class="tool-header">
           <h1 data-i18n="tools.pdf.merge.text.011">📎 PDF Merge Tool</h1>

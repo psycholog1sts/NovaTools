@@ -31,7 +31,7 @@
   <title data-i18n="tools.text.case-converter.meta.title">Free Case Converter Online | NovaTools MC</title>
   
   <!-- i18n Script -->
-  <script src="/i18n.js"></script>
+  <script src="/i18n.js" defer></script>
   <meta name="description" content="Use Case Converter for text case converter tasks with browser-first processing, clear steps, privacy notes, and practical limits. Review outputs before sharing.">
   <meta name="keywords" content="case converter, uppercase, lowercase, title case, text transform, camelCase, snake_case, kebab-case">
   <meta name="theme-color" content="#0A0A0C">
@@ -111,8 +111,10 @@
       .btn { height: 38px; padding: 0 0.875rem; font-size: 0.85rem; }
     }
   </style>
+  <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   <div class="bg-ambient" aria-hidden="true"></div>
   <div class="noise-overlay" aria-hidden="true"></div>
 
@@ -151,7 +153,7 @@
       </div>
     </header>
 
-    <main class="main-content">
+    <main id="main-content" class="main-content">
       <div class="tool-wrapper">
         <div class="tool-hero">
           <div class="tool-hero-icon">&#128260;</div>

@@ -31,7 +31,7 @@
   <title data-i18n="tools.social.url-shortener.meta.title">Free URL Shortener | NovaTools MC</title>
   
   <!-- i18n Script -->
-  <script src="/i18n.js"></script>
+  <script src="/i18n.js" defer></script>
   <meta name="description" content="Use URL Shortener for social url shortener tasks with browser-first processing, clear steps, privacy notes, and practical limits. Review outputs before sharing.">
   <meta name="keywords" content="url shortener, link shortener, short url, compact link, url shrink">
   <meta name="theme-color" content="#0A0A0C">
@@ -115,8 +115,10 @@
     .faq-item[open] summary::after { content: '\2212'; }
     .faq-item p { margin-top: 0.625rem; color: #A1A1AA; line-height: 1.7; }
   </style>
+  <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   <div class="bg-ambient" aria-hidden="true"></div>
   <div class="noise-overlay" aria-hidden="true"></div>
 
@@ -155,7 +157,7 @@
       </div>
     </header>
 
-    <main class="main-content">
+    <main id="main-content" class="main-content">
       <div class="tool-wrapper">
         <div class="tool-hero">
           <div class="tool-hero-icon">&#128279;</div>
