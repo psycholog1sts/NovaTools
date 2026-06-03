@@ -18,17 +18,20 @@
   });
   </script>
 
-  <!-- Preconnect -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Core Web Vitals resource hints -->
+  <link rel="preload" as="image" href="/hero.svg" type="image/svg+xml">
+  <link rel="dns-prefetch" href="//cdn.mc-novatools.com">
+  <link rel="preconnect" href="https://cdn.mc-novatools.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="manifest" href="/manifest.json">
+  <link rel="prefetch" href="/tools/popular">
   
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Fonts are resolved through local/system stacks; custom font faces use font-display: swap in critical.css. -->
   
   <!-- Styles -->
   <link rel="stylesheet" href="/src/styles/critical.css">
@@ -36,6 +39,9 @@
   <link rel="stylesheet" href="/src/styles/component-library.css">
   <link rel="stylesheet" href="/src/styles/layout.css">
   
+  <!-- INP guard: coalesce input handlers to at least one frame. -->
+  <script src="/input-performance.js"></script>
+
   <!-- i18n Script -->
   <script src="/i18n.js" defer></script>
   
@@ -263,6 +269,9 @@
           </div>
 
           <aside class="home-hero__visual" aria-label="NovaTools workflow preview">
+            <picture class="home-hero__image">
+              <img src="/hero.svg" alt="MC NovaTools workflow dashboard preview" width="800" height="420" decoding="async" fetchpriority="high">
+            </picture>
             <div class="workflow-panel">
               <div class="workflow-panel__header">
                 <span class="workflow-panel__dot"></span>

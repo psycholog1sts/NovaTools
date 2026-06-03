@@ -79,6 +79,31 @@ const optionalHtmlEnv = {
   }
 };
 
+const coreWebVitalsHeadHints = {
+  name: 'novatools-core-web-vitals-head-hints',
+  transformIndexHtml(html) {
+    const requiredHints = [
+      '<link rel="preload" as="image" href="/hero.svg" type="image/svg+xml">',
+      '<link rel="dns-prefetch" href="//cdn.mc-novatools.com">',
+      '<link rel="preconnect" href="https://cdn.mc-novatools.com">',
+      '<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>',
+      '<link rel="manifest" href="/manifest.json">',
+      '<link rel="prefetch" href="/tools/popular">',
+      '<script src="/input-performance.js"></script>'
+    ];
+
+    const tagsToInject = requiredHints.filter((tag) => {
+      const href = tag.match(/href="([^"]+)"/)?.[1];
+      const src = tag.match(/src="([^"]+)"/)?.[1];
+      if (href) return !html.includes(`href="${href}"`);
+      if (src) return !html.includes(`src="${src}"`);
+      return false;
+    });
+
+    if (!tagsToInject.length) return html;
+    return html.replace('</head>', `  <!-- Core Web Vitals resource hints -->\n  ${tagsToInject.join('\n  ')}\n</head>`);
+  }
+};
 
 const devCorsOrigins = (process.env.VITE_DEV_CORS_ORIGINS || 'http://localhost:3000,http://127.0.0.1:3000')
   .split(',')
@@ -106,10 +131,12 @@ const liveDataDevProxy = {
 };
 
 const securityHeaders = {
-  'X-Frame-Options': 'DENY',
+  'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload',
   'X-Content-Type-Options': 'nosniff',
+  'X-Frame-Options': 'DENY',
+  'Content-Security-Policy': "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://pagead2.googlesyndication.com; img-src 'self' data: https:; style-src 'self' 'unsafe-inline';",
   'Referrer-Policy': 'strict-origin-when-cross-origin',
-  'Permissions-Policy': 'camera=(), microphone=(), geolocation=()'
+  'Permissions-Policy': 'geolocation=(), microphone=(), camera=()'
 };
 
 // Discover all tool entry points
@@ -347,9 +374,6 @@ export default defineConfig({
             return 'core';
           }
 
-          if (id.includes('/src/components/')) {
-            return 'components';
-          }
         },
 
         chunkFileNames: (chunkInfo) => {
@@ -408,6 +432,7 @@ export default defineConfig({
   },
 
   plugins: [
+    coreWebVitalsHeadHints,
     optionalHtmlEnv,
     toolUxEnhancementAssets,
     liveDataDevProxy,
