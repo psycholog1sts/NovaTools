@@ -184,6 +184,25 @@ const localizedAuthorEntries = ['en', 'tr'].reduce((acc, locale) => {
   return acc;
 }, {});
 
+
+const guideEntries = globSync('guides/**/*.html').reduce((acc, file) => {
+  const name = file
+    .replace(/\\/g, '/')
+    .replace(/\.html$/, '');
+
+  acc[name] = resolveHtmlEntry(file);
+  return acc;
+}, {});
+
+const siteMapEntries = globSync('site-map/**/*.html').reduce((acc, file) => {
+  const name = file
+    .replace(/\\/g, '/')
+    .replace(/\.html$/, '');
+
+  acc[name] = resolveHtmlEntry(file);
+  return acc;
+}, {});
+
 // Categories entry points
 const categoryEntries = globSync('categories/**/*.html').reduce((acc, file) => {
   const name = file
@@ -240,6 +259,8 @@ export default defineConfig({
         ...blogEntry,
         ...localizedBlogIndexEntries,
         ...localizedAuthorEntries,
+        ...guideEntries,
+        ...siteMapEntries,
         ...blogArticleEntries,
         ...blogArticleRouteEntries,
         ...categoryEntries,

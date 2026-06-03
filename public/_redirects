@@ -11,6 +11,14 @@
 /kullanim-kosullari /kullanim-kosullari.html 200
 /iletisim /iletisim.html 200
 
+# Topical authority clean URL rewrites.
+/guides/complete-pdf-workflow /guides/complete-pdf-workflow.html 200
+/guides/web-image-optimization /guides/web-image-optimization.html 200
+/guides/developer-productivity-tools /guides/developer-productivity-tools.html 200
+/guides/personal-finance-calculations /guides/personal-finance-calculations.html 200
+/guides/articles/:article /guides/articles/:article.html 200
+/site-map/topical /site-map/topical.html 200
+
 # Legacy locale-folder URLs are redirected to the canonical ?lang= locale standard.
 /de /?lang=de 301
 /de/* /:splat?lang=de 301
