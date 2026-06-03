@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" role="img" aria-label="Understanding JSON Web Tokens (JWT): Structure and Security cover image">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#172554"/>
+      <stop offset="0.58" stop-color="#2563eb"/>
+      <stop offset="1" stop-color="#60a5fa"/>
+    </linearGradient>
+    <pattern id="grid" width="59" height="59" patternUnits="userSpaceOnUse">
+      <path d="M59 0H0V59" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1" stroke-dasharray="13 19"/>
+    </pattern>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#000" flood-opacity="0.24"/>
+    </filter>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg)"/>
+  <rect width="800" height="450" fill="url(#grid)" opacity="0.58"/>
+  <circle cx="288" cy="305" r="9" fill="#eff6ff" opacity="0.1"/><circle cx="375" cy="432" r="8" fill="#eff6ff" opacity="0.14"/><circle cx="229" cy="109" r="7" fill="#eff6ff" opacity="0.18"/><circle cx="129" cy="235" r="6" fill="#eff6ff" opacity="0.22"/><circle cx="510" cy="362" r="5" fill="#eff6ff" opacity="0.1"/><circle cx="652" cy="39" r="4" fill="#eff6ff" opacity="0.14"/><circle cx="22" cy="166" r="21" fill="#eff6ff" opacity="0.18"/><circle cx="280" cy="293" r="20" fill="#eff6ff" opacity="0.22"/>
+  <path d="M496 0C688 90 656 324 800 450" fill="rgba(255,255,255,0.12)"/>
+  <rect x="56" y="45" width="176" height="8" rx="4" fill="#60a5fa"/>
+  <text x="56" y="90" fill="rgba(255,255,255,0.78)" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="800" letter-spacing="3">PRODUCTIVITY WORKFLOW</text>
+  <text x="56" y="140" fill="#fff" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="850">Understanding JSON Web</text>
+  <text x="56" y="176" fill="#fff" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="850">Tokens (JWT): Structure</text>
+  <text x="56" y="212" fill="#fff" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="850">and Security</text>
+  <text x="56" y="306" fill="rgba(255,255,255,0.84)" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="650">A developer-focused explanation of JWT</text>
+  <text x="56" y="327" fill="rgba(255,255,255,0.84)" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="650">header, payload, signature, claims…</text>
+  <g filter="url(#softShadow)"><g transform="translate(576 77)"><rect x="10.08" y="15.12" width="105.83999999999999" height="90.72" rx="10.08" fill="rgba(255,255,255,0.12)"/><rect x="22.68" y="32.76" width="22.68" height="50.36" rx="5.04" fill="#60a5fa" opacity="0.72"/><rect x="52.919999999999995" y="32.76" width="22.68" height="35.28" rx="5.04" fill="rgba(255,255,255,0.24)"/><rect x="83.16000000000001" y="32.76" width="22.68" height="55.44" rx="5.04" fill="rgba(255,255,255,0.2)"/></g></g>
+  <g transform="translate(56 378)">
+    <rect width="272" height="31" rx="15" fill="rgba(255,255,255,0.14)"/>
+    <text x="15" y="20" fill="#eff6ff" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="800">Article card · Next action</text>
+  </g>
+</svg>

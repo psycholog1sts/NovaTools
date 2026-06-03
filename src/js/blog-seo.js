@@ -211,7 +211,7 @@ export function buildBlogArticleSeo(post, locale = 'en', categoryLabel = post.ca
   };
 }
 
-export function buildBlogIndexSeo(locale = 'en') {
+export function buildBlogIndexSeo(locale = 'en', posts = []) {
   const labels = metaFor(locale);
   const canonicalUrl = `${SITE_ORIGIN}${blogHubPath(locale)}`;
   const ogImage = `${SITE_ORIGIN}/logo-brand-520.png`;
@@ -246,6 +246,27 @@ export function buildBlogIndexSeo(locale = 'en') {
           }
         }
       },
+      articleList: {
+        '@context': 'https://schema.org',
+        '@type': 'ItemList',
+        name: `${BLOG_NAME} latest articles`,
+        itemListElement: posts.slice(0, 12).map((post, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: {
+            '@type': 'Article',
+            headline: post.title,
+            url: cleanBlogUrl(post.slug, locale),
+            image: getSeoImage(post, 'card'),
+            datePublished: isoDate(post.datePublished),
+            dateModified: isoDate(post.dateModified || post.datePublished),
+            author: {
+              '@type': 'Person',
+              name: post.author?.name || 'NovaTools Editorial Review'
+            }
+          }
+        }))
+      },
       breadcrumb: {
         '@context': 'https://schema.org',
         '@type': 'BreadcrumbList',
@@ -270,8 +291,8 @@ function applyAlternates(alternates) {
   });
 }
 
-export function injectBlogIndexSeo(locale = 'en') {
-  const seo = buildBlogIndexSeo(locale);
+export function injectBlogIndexSeo(locale = 'en', posts = []) {
+  const seo = buildBlogIndexSeo(locale, posts);
   document.title = seo.title;
   ensureMeta('meta[name="description"]', { name: 'description', content: seo.description });
   ensureLink('link[rel="canonical"]', { rel: 'canonical', href: seo.canonicalUrl });
@@ -299,6 +320,7 @@ export function injectBlogIndexSeo(locale = 'en') {
   ensureMeta('meta[name="twitter:description"]', { name: 'twitter:description', content: seo.description });
   ensureMeta('meta[name="twitter:image"]', { name: 'twitter:image', content: seo.ogImage });
   upsertJsonLd('blog-seo-jsonld', seo.jsonLd.blog);
+  if (seo.jsonLd.articleList.itemListElement.length) upsertJsonLd('blog-seo-article-list-jsonld', seo.jsonLd.articleList);
   upsertJsonLd('blog-seo-breadcrumb-jsonld', seo.jsonLd.breadcrumb);
   return { title: seo.title, description: seo.description, canonicalUrl: seo.canonicalUrl, ogImage: seo.ogImage };
 }

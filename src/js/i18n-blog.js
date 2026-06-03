@@ -38,7 +38,12 @@ export const blogUi = {
       'remote-productivity': 'Remote Productivity',
       'fintech-personal-finance': 'Fintech',
       'education-technology': 'Education Technology',
-      'developer-automation': 'Developer Tools'
+      'developer-automation': 'Developer Tools',
+      'pdf-document-management': 'PDF & Document Management',
+      'image-processing-web-performance': 'Image Processing & Web Performance',
+      'developer-tools-coding': 'Developer Tools & Coding',
+      'finance-calculators': 'Finance & Calculators',
+      'productivity-tool-guides': 'Productivity & Tool Guides'
     }
   },
   tr: {
@@ -74,7 +79,12 @@ export const blogUi = {
       'remote-productivity': 'Üretkenlik',
       'fintech-personal-finance': 'Fintech',
       'education-technology': 'Eğitim Teknolojileri',
-      'developer-automation': 'Geliştirici Araçları'
+      'developer-automation': 'Geliştirici Araçları',
+      'pdf-document-management': 'PDF ve Doküman Yönetimi',
+      'image-processing-web-performance': 'Görsel İşleme ve Web Performansı',
+      'developer-tools-coding': 'Geliştirici Araçları ve Kodlama',
+      'finance-calculators': 'Finans ve Hesaplayıcılar',
+      'productivity-tool-guides': 'Üretkenlik ve Araç Rehberleri'
     }
   },
   ar: {
@@ -110,7 +120,12 @@ export const blogUi = {
       'remote-productivity': 'إنتاجية العمل عن بعد',
       'fintech-personal-finance': 'التقنيات المالية',
       'education-technology': 'تقنيات التعليم',
-      'developer-automation': 'أدوات المطورين'
+      'developer-automation': 'أدوات المطورين',
+      'pdf-document-management': 'إدارة PDF والمستندات',
+      'image-processing-web-performance': 'معالجة الصور وأداء الويب',
+      'developer-tools-coding': 'أدوات المطورين والبرمجة',
+      'finance-calculators': 'التمويل والحاسبات',
+      'productivity-tool-guides': 'الإنتاجية وأدلة الأدوات'
     }
   }
 };

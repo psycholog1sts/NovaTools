@@ -18,13 +18,14 @@
   <path d="M496 0C688 90 656 324 800 450" fill="rgba(255,255,255,0.12)"/>
   <rect x="56" y="45" width="176" height="8" rx="4" fill="#f59e0b"/>
   <text x="56" y="90" fill="rgba(255,255,255,0.78)" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="800" letter-spacing="3">EDUCATION WORKFLOW</text>
-  <text x="56" y="140" fill="#fff" font-family="Inter, Arial, sans-serif" font-size="41" font-weight="850">BMI Calculator Health</text>
-  <text x="56" y="186" fill="#fff" font-family="Inter, Arial, sans-serif" font-size="41" font-weight="850">Literacy Discussion Guide</text>
-  <text x="56" y="306" fill="rgba(255,255,255,0.84)" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="650">discuss calculator limits and context</text>
-  <text x="56" y="329" fill="rgba(255,255,255,0.84)" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="650">responsibly</text>
-  <g filter="url(#softShadow)"><g transform="translate(528 77)"><circle cx="76.5" cy="67.32000000000001" r="39.78" fill="rgba(255,255,255,0.13)"/><path d="M33.660000000000004 73.44l42.84-21.42 42.84 21.42-42.84 21.42zM76.5 94.86v24.48" stroke="#fffbeb" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><rect x="42.84" y="116.28" width="67.32000000000001" height="12.24" rx="6.12" fill="#f59e0b"/></g></g>
+  <text x="56" y="140" fill="#fff" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="850">BMI Calculator Health</text>
+  <text x="56" y="176" fill="#fff" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="850">Literacy Discussion</text>
+  <text x="56" y="212" fill="#fff" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="850">Guide</text>
+  <text x="56" y="306" fill="rgba(255,255,255,0.84)" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="650">discuss calculator limits and context</text>
+  <text x="56" y="327" fill="rgba(255,255,255,0.84)" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="650">responsibly</text>
+  <g filter="url(#softShadow)"><g transform="translate(576 77)"><circle cx="63" cy="55.44" r="32.76" fill="rgba(255,255,255,0.13)"/><path d="M27.72 60.48l35.28-17.64 35.28 17.64-35.28 17.64zM63 78.12v20.16" stroke="#fffbeb" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><rect x="35.28" y="95.76" width="55.44" height="10.08" rx="5.04" fill="#f59e0b"/></g></g>
   <g transform="translate(56 378)">
-    <rect width="272" height="32" rx="16" fill="rgba(255,255,255,0.14)"/>
-    <text x="16" y="21" fill="#fffbeb" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="800">Article card · Guided practice</text>
+    <rect width="272" height="31" rx="15" fill="rgba(255,255,255,0.14)"/>
+    <text x="15" y="20" fill="#fffbeb" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="800">Article card · Guided practice</text>
   </g>
 </svg>

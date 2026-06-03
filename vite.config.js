@@ -166,6 +166,17 @@ const blogEntry = {
   'blog/article-template': resolveHtmlEntry('src/blog/article-template.html')
 };
 
+
+const blogCategoryArchiveEntries = globSync('blog/categories/**/*.html').reduce((acc, file) => {
+  const name = file
+    .replace(/\.html$/, '')
+    .replace(/\\/g, '/');
+
+  acc[name] = resolveHtmlEntry(file);
+  return acc;
+}, {});
+
+
 const blogArticleEntries = globSync('src/blog/articles/**/*.html').reduce((acc, file) => {
   const name = file
     .replace(/^src[/\\]/, '')
@@ -263,6 +274,7 @@ export default defineConfig({
         ...siteMapEntries,
         ...blogArticleEntries,
         ...blogArticleRouteEntries,
+        ...blogCategoryArchiveEntries,
         ...categoryEntries,
         ...localizedCategoryEntries,
         ...toolEntries,

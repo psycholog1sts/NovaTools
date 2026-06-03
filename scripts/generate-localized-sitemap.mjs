@@ -20,6 +20,14 @@ const staticPages = [
   [blogHubPath(fallbackBlogLocale), '0.7', 'weekly']
 ];
 
+const blogCategoryPages = [
+  '/blog/categories/pdf-document-management.html',
+  '/blog/categories/image-processing-web-performance.html',
+  '/blog/categories/developer-tools-coding.html',
+  '/blog/categories/finance-calculators.html',
+  '/blog/categories/productivity-tool-guides.html'
+];
+
 const categoryPages = [
   ['/tools/pdf/', '0.8', 'weekly'],
   ['/tools/image/', '0.8', 'weekly'],
@@ -94,9 +102,7 @@ const sections = [
   ['Individual tool pages', globSync('src/tools/**/index.html', { cwd: rootDir, ignore: ['**/demo-*/**', '**/experimental/**', '**/test/**', 'src/tools/request/**'] })
     .sort()
     .map((file) => urlEntry(`/${file.replace(/^src\//, '').replace(/index\.html$/, '')}`, '0.8', 'weekly', 'Individual tool pages'))],
-  ['Guides and topical map', globSync('{guides,site-map}/**/*.html', { cwd: rootDir })
-    .sort()
-    .map((file) => urlEntry(`/${file.replace(/\.html$/, '')}`, file.startsWith('guides/articles/') ? '0.6' : '0.7', 'weekly', 'Guides and topical map'))],
+  ['Blog category archive pages', blogCategoryPages.map((route) => urlEntry(route, '0.55', 'weekly', 'Blog category archive pages'))],
   ['Blog posts', normalizeBlogSlugList([
     ...readJson(`src/i18n/blog/${fallbackBlogLocale}.json`).map((post) => post.slug).filter(Boolean),
     ...sourceBlogArticleSlugs()

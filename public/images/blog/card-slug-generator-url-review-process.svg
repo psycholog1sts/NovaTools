@@ -18,12 +18,12 @@
   <path d="M496 0C688 90 656 324 800 450" fill="rgba(255,255,255,0.12)"/>
   <rect x="56" y="45" width="176" height="8" rx="4" fill="#c084fc"/>
   <text x="56" y="90" fill="rgba(255,255,255,0.78)" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="800" letter-spacing="3">TEXT UTILITY</text>
-  <text x="56" y="140" fill="#fff" font-family="Inter, Arial, sans-serif" font-size="41" font-weight="850">Slug Generator URL Review</text>
-  <text x="56" y="186" fill="#fff" font-family="Inter, Arial, sans-serif" font-size="41" font-weight="850">Process</text>
-  <text x="56" y="306" fill="rgba(255,255,255,0.84)" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="650">create readable slugs that can stay stable</text>
-  <g filter="url(#softShadow)"><g transform="translate(528 77)"><rect x="18.36" y="18.36" width="116.28" height="116.28" rx="12.24" fill="rgba(255,255,255,0.12)"/><path d="M36.72 48.96h70.38000000000001M36.72 70.38000000000001h58.14M36.72 91.8h67.32000000000001" stroke="#f5f3ff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M110.16 110.16l18.36 18.36" stroke="#f5f3ff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="107.1" cy="107.1" r="12.24" fill="#c084fc"/></g></g>
+  <text x="56" y="140" fill="#fff" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="850">Slug Generator URL</text>
+  <text x="56" y="176" fill="#fff" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="850">Review Process</text>
+  <text x="56" y="306" fill="rgba(255,255,255,0.84)" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="650">create readable slugs that can stay stable</text>
+  <g filter="url(#softShadow)"><g transform="translate(576 77)"><rect x="15.12" y="15.12" width="95.76" height="95.76" rx="10.08" fill="rgba(255,255,255,0.12)"/><path d="M30.24 40.32h57.96M30.24 57.96h47.88M30.24 75.6h55.44" stroke="#f5f3ff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M90.72 90.72l15.12 15.12" stroke="#f5f3ff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="88.19999999999999" cy="88.19999999999999" r="10.08" fill="#c084fc"/></g></g>
   <g transform="translate(56 378)">
-    <rect width="272" height="32" rx="16" fill="rgba(255,255,255,0.14)"/>
-    <text x="16" y="21" fill="#f5f3ff" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="800">Article card · Editorial review</text>
+    <rect width="272" height="31" rx="15" fill="rgba(255,255,255,0.14)"/>
+    <text x="15" y="20" fill="#f5f3ff" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="800">Article card · Editorial review</text>
   </g>
 </svg>

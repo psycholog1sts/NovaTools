@@ -1,20 +1,30 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Personal Loan vs Credit Card: A Practical Decis… cover image">
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Personal Loan vs Credit Card: A Practical Decision Framework cover image">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#0f172a"/>
-      <stop offset="0.62" stop-color="#1d4ed8"/>
+      <stop offset="0" stop-color="#052e16"/>
+      <stop offset="0.58" stop-color="#047857"/>
       <stop offset="1" stop-color="#22c55e"/>
     </linearGradient>
-    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
-      <path d="M48 0H0V48" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+    <pattern id="grid" width="77" height="77" patternUnits="userSpaceOnUse">
+      <path d="M77 0H0V77" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1" stroke-dasharray="13 19"/>
     </pattern>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#000" flood-opacity="0.24"/>
+    </filter>
   </defs>
   <rect width="1200" height="630" fill="url(#bg)"/>
-  <rect width="1200" height="630" fill="url(#grid)" opacity="0.45"/>
-  <circle cx="936" cy="151" r="192" fill="rgba(255,255,255,0.16)"/>
-  <circle cx="216" cy="491" r="156" fill="rgba(255,255,255,0.10)"/>
-  <rect x="72" y="76" width="216" height="8" rx="4" fill="#22c55e"/>
-  <text x="72" y="151" fill="rgba(255,255,255,0.78)" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="3">FINTECH PERSONAL FINANCE</text>
-  <text x="72" y="309" fill="#fff" font-family="Inter, Arial, sans-serif" font-size="43" font-weight="800">Personal Loan vs Credit Card: A Practical Decis…</text>
-  <text x="72" y="416" fill="rgba(255,255,255,0.82)" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="600">Open Graph · NovaTools Blog</text>
+  <rect width="1200" height="630" fill="url(#grid)" opacity="0.58"/>
+  <circle cx="79" cy="426" r="9" fill="#dcfce7" opacity="0.1"/><circle cx="507" cy="604" r="8" fill="#dcfce7" opacity="0.14"/><circle cx="1081" cy="151" r="7" fill="#dcfce7" opacity="0.18"/><circle cx="794" cy="329" r="6" fill="#dcfce7" opacity="0.22"/><circle cx="357" cy="506" r="5" fill="#dcfce7" opacity="0.1"/><circle cx="629" cy="54" r="4" fill="#dcfce7" opacity="0.14"/><circle cx="729" cy="231" r="21" fill="#dcfce7" opacity="0.18"/><circle cx="348" cy="409" r="20" fill="#dcfce7" opacity="0.22"/>
+  <path d="M744 0C1032 126 984 454 1200 630" fill="rgba(255,255,255,0.12)"/>
+  <rect x="84" y="63" width="264" height="8" rx="4" fill="#22c55e"/>
+  <text x="84" y="126" fill="rgba(255,255,255,0.78)" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="800" letter-spacing="3">FINANCE CALCULATOR</text>
+  <text x="84" y="195" fill="#fff" font-family="Inter, Arial, sans-serif" font-size="58" font-weight="850">Personal Loan vs Credit Card: A</text>
+  <text x="84" y="260" fill="#fff" font-family="Inter, Arial, sans-serif" font-size="58" font-weight="850">Practical Decision Framework</text>
+  <text x="84" y="428" fill="rgba(255,255,255,0.84)" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="650">Personal Loan vs Credit Card: A Practical Decision</text>
+  <text x="84" y="458" fill="rgba(255,255,255,0.84)" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="650">Framework with transparent assumptions, practical…</text>
+  <g filter="url(#softShadow)"><g transform="translate(792 107)"><rect x="17.12" y="25.68" width="179.76" height="154.07999999999998" rx="21.400000000000002" fill="rgba(255,255,255,0.13)"/><path d="M38.519999999999996 141.24l38.519999999999996-38.519999999999996 34.24 17.12 51.36-64.2" stroke="#dcfce7" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="47.08" cy="64.2" r="12.84" fill="#22c55e"/><path d="M42.800000000000004 166.92000000000002h119.84000000000002" stroke="#dcfce7" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g></g>
+  <g transform="translate(84 529)">
+    <rect width="408" height="43" rx="22" fill="rgba(255,255,255,0.14)"/>
+    <text x="22" y="28" fill="#dcfce7" font-family="Inter, Arial, sans-serif" font-size="19" font-weight="800">Open Graph · Assumption review</text>
+  </g>
 </svg>

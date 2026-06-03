@@ -18,12 +18,12 @@
   <path d="M496 0C688 90 656 324 800 450" fill="rgba(255,255,255,0.12)"/>
   <rect x="56" y="45" width="176" height="8" rx="4" fill="#06b6d4"/>
   <text x="56" y="90" fill="rgba(255,255,255,0.78)" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="800" letter-spacing="3">DEVELOPER UTILITY</text>
-  <text x="56" y="140" fill="#fff" font-family="Inter, Arial, sans-serif" font-size="41" font-weight="850">SQL Formatting Query Review</text>
-  <text x="56" y="186" fill="#fff" font-family="Inter, Arial, sans-serif" font-size="41" font-weight="850">Flow</text>
-  <text x="56" y="306" fill="rgba(255,255,255,0.84)" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="650">format SQL before sharing it for review</text>
-  <g filter="url(#softShadow)"><g transform="translate(528 77)"><rect x="9.18" y="21.42" width="134.64000000000001" height="110.16" rx="12.24" fill="rgba(255,255,255,0.12)"/><path d="M55.08 55.08l-21.42 21.42 21.42 21.42M97.92 55.08l21.42 21.42-21.42 21.42M82.62 45.9l-15.3 61.2" stroke="#dbeafe" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="27.54" cy="36.72" r="3.825" fill="#06b6d4"/></g></g>
+  <text x="56" y="140" fill="#fff" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="850">SQL Formatting Query</text>
+  <text x="56" y="176" fill="#fff" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="850">Review Flow</text>
+  <text x="56" y="306" fill="rgba(255,255,255,0.84)" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="650">format SQL before sharing it for review</text>
+  <g filter="url(#softShadow)"><g transform="translate(576 77)"><rect x="7.56" y="17.64" width="110.88" height="90.72" rx="10.08" fill="rgba(255,255,255,0.12)"/><path d="M45.36 45.36l-17.64 17.64 17.64 17.64M80.64 45.36l17.64 17.64-17.64 17.64M68.04 37.8l-12.600000000000001 50.400000000000006" stroke="#dbeafe" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="22.68" cy="30.24" r="3.1500000000000004" fill="#06b6d4"/></g></g>
   <g transform="translate(56 378)">
-    <rect width="272" height="32" rx="16" fill="rgba(255,255,255,0.14)"/>
-    <text x="16" y="21" fill="#dbeafe" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="800">Article card · Debug path</text>
+    <rect width="272" height="31" rx="15" fill="rgba(255,255,255,0.14)"/>
+    <text x="15" y="20" fill="#dbeafe" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="800">Article card · Debug path</text>
   </g>
 </svg>
