@@ -1,0 +1,18 @@
+    .archive-page { background: var(--color-background); color: var(--text-primary); }
+    .archive-hero { padding: clamp(3rem, 7vw, 5.5rem) 0; border-bottom: 1px solid var(--border); background: radial-gradient(circle at 20% 0%, hsl(260 82% 60% / .2), transparent 34%), var(--surface-elevated); }
+    .archive-hero__inner, .archive-shell { width: min(var(--container-xl), calc(100% - 2rem)); margin: 0 auto; }
+    .archive-hero__inner { max-width: 860px; text-align: center; }
+    .archive-eyebrow { display: inline-flex; padding: var(--space-2) var(--space-4); border-radius: var(--radius-full); background: hsl(260 82% 60% / .14); color: var(--color-primary-300); font: 800 var(--font-size-sm)/1 var(--font-sans); }
+    .archive-hero h1 { margin: var(--space-4) 0; font: 800 clamp(2.2rem, 5vw, 4.5rem)/1.04 var(--font-sans); letter-spacing: var(--letter-spacing-tight); }
+    .archive-hero p { margin: 0 auto; max-width: 720px; color: var(--text-secondary); font: var(--text-lg); line-height: 1.75; }
+    .archive-shell { padding: var(--space-12) 0 var(--space-16); }
+    .archive-nav { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-bottom: var(--space-8); }
+    .archive-nav a { padding: var(--space-2) var(--space-4); border: 1px solid var(--border); border-radius: var(--radius-full); color: var(--text-secondary); text-decoration: none; background: var(--surface); }
+    .archive-nav a.is-active { color: #fff; background: var(--color-primary-500); border-color: var(--color-primary-500); }
+    .archive-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-6); }
+    .archive-card { display: grid; overflow: hidden; border: 1px solid var(--border); border-radius: var(--radius-xl); background: var(--surface-elevated); color: inherit; text-decoration: none; box-shadow: var(--shadow-sm); }
+    .archive-card picture, .archive-card img { display: block; width: 100%; height: auto; }
+    .archive-card__body { padding: var(--space-5); }
+    .archive-card__body h2 { margin: var(--space-2) 0; font: 800 var(--font-size-xl)/1.25 var(--font-sans); }
+    .archive-card__body p { color: var(--text-secondary); line-height: 1.7; }
+    .archive-meta { display: flex; flex-wrap: wrap; gap: var(--space-2); color: var(--text-muted); font: var(--text-sm); }

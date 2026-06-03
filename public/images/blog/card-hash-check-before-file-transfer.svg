@@ -18,12 +18,12 @@
   <path d="M496 0C688 90 656 324 800 450" fill="rgba(255,255,255,0.12)"/>
   <rect x="56" y="45" width="176" height="8" rx="4" fill="#2dd4bf"/>
   <text x="56" y="90" fill="rgba(255,255,255,0.78)" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="800" letter-spacing="3">PRIVACY WORKFLOW</text>
-  <text x="56" y="140" fill="#fff" font-family="Inter, Arial, sans-serif" font-size="41" font-weight="850">Hash Check Before File</text>
-  <text x="56" y="186" fill="#fff" font-family="Inter, Arial, sans-serif" font-size="41" font-weight="850">Transfer Workflow</text>
-  <text x="56" y="306" fill="rgba(255,255,255,0.84)" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="650">compare file hashes during transfer review</text>
-  <g filter="url(#softShadow)"><g transform="translate(528 77)"><path d="M76.5 12.24l52.02 18.36v42.84c0 33.660000000000004-21.42 58.14-52.02 73.44-52.02-15.3-52.02-39.78-52.02-73.44V30.6z" fill="rgba(255,255,255,0.14)"/><path d="M52.02 76.5l18.36 18.36 36.72-42.84" stroke="#ccfbf1" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="110.16" cy="42.84" r="7.65" fill="#2dd4bf"/></g></g>
+  <text x="56" y="140" fill="#fff" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="850">Hash Check Before File</text>
+  <text x="56" y="176" fill="#fff" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="850">Transfer Workflow</text>
+  <text x="56" y="306" fill="rgba(255,255,255,0.84)" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="650">compare file hashes during transfer review</text>
+  <g filter="url(#softShadow)"><g transform="translate(576 77)"><path d="M63 10.08l42.84 15.12v35.28c0 27.72-17.64 47.88-42.84 60.48-42.84-12.600000000000001-42.84-32.76-42.84-60.48V25.200000000000003z" fill="rgba(255,255,255,0.14)"/><path d="M42.84 63l15.12 15.12 30.24-35.28" stroke="#ccfbf1" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="90.72" cy="35.28" r="6.300000000000001" fill="#2dd4bf"/></g></g>
   <g transform="translate(56 378)">
-    <rect width="272" height="32" rx="16" fill="rgba(255,255,255,0.14)"/>
-    <text x="16" y="21" fill="#ccfbf1" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="800">Article card · Local processing</text>
+    <rect width="272" height="31" rx="15" fill="rgba(255,255,255,0.14)"/>
+    <text x="15" y="20" fill="#ccfbf1" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="800">Article card · Local processing</text>
   </g>
 </svg>

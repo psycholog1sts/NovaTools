@@ -3,1601 +3,1662 @@
   <!-- Static pages -->
   <url>
     <loc>https://mc-novatools.com/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/about-us.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/contact.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/privacy-policy.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/terms-of-service.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/disclaimer.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/index.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <!-- Category pages -->
   <url>
     <loc>https://mc-novatools.com/tools/pdf/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/image/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/developer/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/finance/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <!-- Individual tool pages -->
   <url>
     <loc>https://mc-novatools.com/tools/converters/age-calculator/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/converters/bmi-calculator/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/converters/currency-converter/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/converters/number-base-converter/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/converters/percentage-calculator/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/converters/roman-numerals/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/converters/scientific-calculator/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/converters/timezone-converter/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/converters/unit-converter/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/converters/unix-timestamp/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/data/audio-spectrum/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/data/chart-builder/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/data/checksum-calculator/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/data/csv-json-summarizer/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/data/csv-to-json/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/data/csv-viewer/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/data/duplicate-finder/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/data/file-merger/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/data/file-organizer/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/data/file-renamer/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/data/file-splitter/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/data/json-to-csv/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/data/sql-formatter/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/data/weather-lookup/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/design/barcode-generator/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/design/business-card-maker/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/design/diagram-maker/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/design/invoice-generator/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/design/logo-maker/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/design/mind-map-tool/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/design/mockup-generator/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/design/qr-code-designer/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/design/resume-builder/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/design/wireframe-tool/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/dev/base64-converter/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/dev/code-formatter/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/dev/color-converter/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/dev/css-minifier/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/dev/html-to-markdown/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/dev/js-minifier/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/dev/json-formatter/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/dev/json-validator/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/dev/lorem-generator/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/dev/markdown-to-html/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/dev/regex-tester/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/dev/url-encoder/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/finance/cloud-cost/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/finance/compound-interest/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/finance/crypto-prices/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/finance/crypto-tax/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/finance/life-insurance/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/finance/live-exchange/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/finance/mortgage-refinance/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/finance/retirement/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/finance/stock-lookup/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/finance/student-loan/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/finance/tax/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/image/background-remover/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/image/collage-maker/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/image/compress/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/image/convert/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/image/exif-viewer/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/image/image-cropper/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/image/image-flipper/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/image/image-resizer/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/image/image-rotator/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/image/image-to-avif/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/image/image-to-webp/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/image/image-watermark/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/image/metadata-remover/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/news/summarizer/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/pdf/compress/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/pdf/merge/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/pdf/pdf-ocr/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/pdf/pdf-page-number/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/pdf/pdf-to-excel/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/pdf/pdf-to-html/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/pdf/pdf-to-jpg/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/pdf/pdf-to-png/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/pdf/pdf-to-powerpoint/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/pdf/pdf-to-text/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/pdf/pdf-to-word/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/pdf/pdf-watermark/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/pdf/split/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/productivity/countdown-timer/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/productivity/expense-tracker/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/productivity/habit-tracker/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/productivity/kanban-board/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/productivity/notes/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/productivity/pomodoro-timer/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/productivity/stopwatch/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/productivity/time-tracker/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/productivity/todo-list/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/productivity/world-clock/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/religious/islamic-calendar/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/security/ad-blocker-tester/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/security/encrypt-decrypt/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/security/hash-generator/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/security/ip-lookup/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/security/jwt-decoder/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/security/password-generator/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/security/password-strength/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/security/ssl-checker/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/security/user-agent-parser/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/security/uuid-generator/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/social/app-icon-generator/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/social/favicon-generator/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/social/hashtag-generator/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/social/instagram-photo/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/social/social-image-resizer/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/social/twitter-video/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/social/url-shortener/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/social/utm-builder/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/social/website-screenshot/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/social/youtube-thumbnail/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/text/case-converter/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/text/character-counter/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/text/html-entity-encoder/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/text/lorem-ipsum-generator/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/text/palindrome-checker/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/text/simple-translator/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/text/text-analysis/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/text/text-diff/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/text/text-summarizer/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/text/text-to-ascii/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/text/text-to-slug/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/text/url-encoder/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/text/word-counter/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <!-- Blog category archive pages -->
+  <url>
+    <loc>https://mc-novatools.com/blog/categories/pdf-document-management.html</loc>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.55</priority>
+  </url>
+  <url>
+    <loc>https://mc-novatools.com/blog/categories/image-processing-web-performance.html</loc>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.55</priority>
+  </url>
+  <url>
+    <loc>https://mc-novatools.com/blog/categories/developer-tools-coding.html</loc>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.55</priority>
+  </url>
+  <url>
+    <loc>https://mc-novatools.com/blog/categories/finance-calculators.html</loc>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.55</priority>
+  </url>
+  <url>
+    <loc>https://mc-novatools.com/blog/categories/productivity-tool-guides.html</loc>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.55</priority>
   </url>
   <!-- Blog posts -->
   <url>
     <loc>https://mc-novatools.com/blog/articles/401k-rollover-guide.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/age-calculator-for-forms-and-records.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/auto-insurance-savings.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/base64-converter-common-use-cases.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/base64-vs-url-encoding.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/batch-image-resize-workflow.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/best-credit-cards-2026.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/blog-publishing-tool-workflow.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/bmi-calculator-result-context.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://mc-novatools.com/blog/articles/browser-based-tools-vs-desktop-software-privacy-comparison.html</loc>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/browser-first-tools-what-it-means.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/browser-tool-empty-state-loading-success.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/budget-before-large-purchase-workflow.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/case-converter-cleanup-workflow.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/character-counter-for-meta-descriptions.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/checksum-calculator-file-verification.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/clean-text-before-spreadsheet-import.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/client-side-pdf-workflow-limits.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/cloud-cost-calculator-small-team-guide.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/cloud-cost-comparison.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/code-formatter-review-before-sharing.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/color-converter-design-token-workflow.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/compare-loan-options-with-clear-assumptions.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/compound-interest-scenarios-guide.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/compress-images-for-web-quality-checklist.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/compress-pdf-for-email-without-ruining-readability.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/content-review-before-client-delivery.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/convert-png-to-jpg-when-file-size-matters.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/credit-score-hacks.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/crypto-tax-guide.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/crypto-tax-records-prep-workflow.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/css-minifier-before-production.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/csv-to-json-clean-conversion-guide.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/csv-to-json-vs-json-to-csv.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/csv-viewer-before-import-checklist.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/currency-converter-for-estimates-not-final-prices.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/data-cleanup-before-dashboard-import.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/debt-consolidation-guide.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/developer-debugging-tool-chain.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/duplicate-finder-digital-cleanup-workflow.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/duplicate-finder-vs-file-organizer.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://mc-novatools.com/blog/articles/edit-pdf-without-adobe-acrobat-free-methods.html</loc>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/emergency-fund-guide.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/file-merger-recombine-export-parts.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/file-organizer-folder-architecture.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/file-renamer-consistent-naming-system.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/file-splitter-large-upload-workflow.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/first-time-home-buyer.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/five-minute-pdf-cleanup-workflow.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/halal-mortgage-usa.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/health-insurance-marketplace.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/high-yield-savings-guide.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/html-entity-encoder-publishing-guide.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/html-to-markdown-content-migration.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/image-alt-text-and-file-names-workflow.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/image-compressor-vs-image-resizer.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/image-metadata-before-sharing-guide.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/index-funds-vs-etfs.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/islamic-finance-investing.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/jpg-vs-webp-for-small-websites.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/js-minifier-practical-release-checks.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/json-formatter-debugging-api-responses.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/json-formatter-vs-json-validator.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/json-to-csv-export-workflow.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://mc-novatools.com/blog/articles/lazy-loading-images-implementation-guide-2026.html</loc>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/life-insurance-coverage-guide.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/life-insurance-estimate-context.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/local-processing-vs-upload-tools-comparison.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/lorem-ipsum-with-real-layout-checks.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/markdown-to-html-publishing-workflow.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/markdown-to-html-vs-html-to-markdown.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/merge-pdf-files-client-documents-checklist.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/metadata-cleanup-before-publishing.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/monthly-finance-document-routine.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/mortgage-calculator-vs-refinance-calculator.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/mortgage-refinance-break-even-guide.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/mortgage-refinancing-guide.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/nft-tax-guide.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/number-base-converter-learning-guide.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/ocr-scanned-pdf-troubleshooting-guide.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/optimize-images-for-email-newsletters.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/palindrome-checker-teaching-string-logic.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/pdf-financial-records.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/pdf-merge-vs-pdf-split.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/pdf-page-numbers-for-long-reports.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/pdf-to-jpg-vs-pdf-to-png.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/pdf-to-text-clean-extraction-workflow.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/pdf-to-word-when-to-convert-and-when-not-to.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/pdf-watermark-before-client-review.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/percentage-calculator-business-copy.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/personal-loan-vs-credit-card.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/pmi-removal-guide.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/prepare-pdf-records-for-tax-season.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/private-document-workflow-without-signup.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/public-link-review-workflow.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/reduce-screenshot-size-for-support-tickets.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/regex-tester-safe-review-workflow.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/remote-team-meeting-and-file-workflow.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/resize-images-for-social-platforms.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/retirement-calculator-inputs-that-matter.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/retirement-planning-millennials.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/roman-numerals-conversion-checklist.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://mc-novatools.com/blog/articles/rule-of-72-estimate-investment-doubling-time.html</loc>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/safe-sharing-checklist-for-small-teams.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/scientific-calculator-browser-workflow.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/sensitive-spreadsheet-cleanup-before-conversion.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/share-files-with-less-metadata-risk.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/slug-generator-url-cleanup-guide.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/small-business-file-prep-stack.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/split-pdf-pages-before-sharing-sensitive-sections.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/sql-formatter-query-review-guide.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/student-loan-payment-estimate-workflow.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/student-loan-repayment.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/support-ticket-evidence-prep.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/tax-deductions-homeowners.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/tax-estimator-organize-documents-first.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/term-vs-whole-life.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/text-diff-for-reviewing-edits.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/timezone-converter-meeting-workflow.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/tool-selection-map-for-new-users.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/transparent-background-image-workflow.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://mc-novatools.com/blog/articles/understanding-json-web-tokens-structure-security.html</loc>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/unit-converter-for-project-planning.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/unit-converter-vs-scientific-calculator.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/unix-timestamp-human-date-debugging.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/url-encoder-query-string-guide.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/word-counter-for-editing-client-copy.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/word-counter-vs-character-counter.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/writing-tool-stack-for-small-teams.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/articles/zakat-investments-guide.html</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <!-- Author pages -->
   <url>
     <loc>https://mc-novatools.com/author/editorial/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/author/metehan/</loc>
-    <lastmod>2026-06-03T01:32:39+00:00</lastmod>
+    <lastmod>2026-06-03T08:52:22+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>

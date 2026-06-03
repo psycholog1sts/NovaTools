@@ -12,6 +12,7 @@
   <script src="/i18n.js" defer></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="alternate" type="application/rss+xml" title="MC NovaTools Blog RSS" href="https://mc-novatools.com/rss.xml">
   <title>NovaTools Blog – Improve Your Digital Productivity | MC NovaTools</title>
   <meta name="description" content="In-depth NovaTools guides on AI, data privacy, fintech, education technology, developer automation, and remote productivity.">
   <meta name="robots" content="index, follow, max-image-preview:large">
@@ -260,7 +261,7 @@
 
     function applyUi() {
       applyBlogDocumentLocale(locale);
-      injectBlogIndexSeo(locale);
+      injectBlogIndexSeo(locale, articles);
       document.querySelectorAll('[data-blog-ui]').forEach((element) => {
         const key = element.dataset.blogUi;
         if (ui[key]) element.textContent = ui[key];

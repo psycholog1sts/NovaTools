@@ -23,7 +23,7 @@
     "prettier": "prettier --write \"src/**/*.{js,mjs,css,html}\"",
     "clean": "rimraf dist node_modules/.vite",
     "postinstall": "node scripts/postinstall.mjs",
-    "prebuild": "npm run lint:i18n && npm run build:blog-outlines && npm run build:blog-images && npm run lint:blog-images && npm run lint:media-dimensions && npm run lint:blog-seed && npm run lint:blog-routes && npm run build:sitemap && node scripts/generate-icons.mjs",
+    "prebuild": "npm run lint:i18n && npm run build:blog-outlines && npm run build:blog-images && npm run lint:blog-images && npm run lint:media-dimensions && npm run lint:blog-seed && npm run lint:blog-routes && npm run build:sitemap && npm run build:rss && node scripts/generate-icons.mjs",
     "audit:adsense": "node scripts/adsense-readiness-audit.mjs",
     "lint:i18n": "node scripts/lint-i18n.mjs",
     "build:sitemap": "node scripts/generate-localized-sitemap.mjs",
@@ -41,7 +41,9 @@
     "indexing:dry-run": "node indexing.cjs --dry-run",
     "indexing:send": "node indexing.cjs --send",
     "build:structured-data": "node scripts/inject-structured-data.mjs && npm run validate:structured-data",
-    "validate:structured-data": "node scripts/validate-structured-data.mjs --dist"
+    "validate:structured-data": "node scripts/validate-structured-data.mjs --dist",
+    "build:rss": "node scripts/generate-blog-rss.mjs",
+    "lint:rss": "node scripts/generate-blog-rss.mjs --check"
   },
   "dependencies": {
     "@vercel/speed-insights": "^2.0.0",
