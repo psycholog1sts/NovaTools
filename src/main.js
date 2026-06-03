@@ -9,6 +9,7 @@ import { initConsentManager } from './core/consent-manager.mjs';
 import { initAnalytics } from './js/analytics.js';
 import { applySeo, buildHomeSchema, upsertJsonLd } from './js/seo.js';
 import { initHomeSearch } from './js/home-search.js';
+import { getPopularThisWeek } from './components/engagement-widgets.mjs';
 
 // ============================================
 // I18N HELPERS
@@ -282,6 +283,20 @@ function renderPopularTasks() {
   `).join('');
 }
 
+
+function renderPopularThisWeek() {
+  const container = document.getElementById('popularThisWeek');
+  if (!container) return;
+
+  container.innerHTML = getPopularThisWeek(6).map((tool) => `
+    <a class="home-popular-week__card" href="${tool.href}">
+      <strong>${tool.name}</strong>
+      <span>${tool.category}</span>
+      <small>${tool.count ? `${tool.count} local use${tool.count === 1 ? '' : 's'} this week` : 'Suggested starter tool'}</small>
+    </a>
+  `).join('');
+}
+
 function renderFeaturedTools() {
   const container = document.getElementById('featuredTools');
   if (!container) return;
@@ -442,6 +457,7 @@ function initSearch() {
 function rerenderHomepageDynamicParts() {
   renderPopularTasks();
   renderFeaturedTools();
+  renderPopularThisWeek();
   renderCategories();
   renderBlogCards();
   renderWorkflowCards();

@@ -7,6 +7,21 @@ import {
   buildSoftwareApplicationSchema,
   upsertJsonLd
 } from './seo.js';
+import {
+  bindEngagementWidgets,
+  categoryLabel,
+  getSimilarTools,
+  recordToolUse,
+  renderBlogSuggestions,
+  renderCompareTools,
+  renderProgressIndicator,
+  renderRecentlyUsed,
+  renderRelatedTools,
+  renderToolEngagementPanel,
+  toolHref,
+  toolName
+} from '../components/engagement-widgets.mjs';
+import { setupThemePreference } from '../components/navigation.mjs';
 
 const CATEGORY_LABELS = {
   pdf: 'PDF', image: 'Image', finance: 'Finance', dev: 'Developer', text: 'Text',
@@ -33,13 +48,14 @@ function activeScript() {
 }
 
 function slugFromPath() {
-  const match = window.location.pathname.match(/\/tools\/([^/]+)\/([^/]+)\/?/);
+  const match = window.location.pathname.match(/\/(?:src\/)?tools\/([^/]+)\/([^/]+)\/?/);
   return match ? `${match[1]}/${match[2]}` : '';
 }
 
 function findTool(slug) {
-  const entry = `/tools/${slug}/`;
-  return manifest.tools?.find((tool) => tool.entry === entry) || null;
+  const publicEntry = `/tools/${slug}/`;
+  const sourceEntry = `/src/tools/${slug}/`;
+  return manifest.tools?.find((tool) => tool.entry === publicEntry || tool.entry === sourceEntry || tool.path === `/${slug}`) || null;
 }
 
 function textDescription(tool) {
@@ -56,20 +72,34 @@ function categoryRoute(category) {
   return CATEGORY_ROUTES[category] || `${category || 'index'}-tools`;
 }
 
-function toolName(tool, slug) {
-  return tool?.name || tool?.nameEn || slug.split('/').pop().replace(/-/g, ' ');
+function displayToolName(tool, slug) {
+  return toolName(tool) || slug.split('/').pop().replace(/-/g, ' ');
 }
 
 function relatedTools(tool, slug) {
   const category = tool?.category || slug.split('/')[0];
-  return (manifest.tools || [])
-    .filter((candidate) => candidate.category === category && candidate.id !== tool?.id)
-    .slice(0, 4);
+  return getSimilarTools(tool || { category }, 4);
+}
+
+function setLocalFlag(key, value) {
+  try {
+    window.localStorage?.setItem(key, value);
+  } catch {
+    // localStorage may be unavailable in strict privacy contexts; the UI still works.
+  }
+}
+
+function getLocalFlag(key) {
+  try {
+    return window.localStorage?.getItem(key) || '';
+  } catch {
+    return '';
+  }
 }
 
 function appendSchema(tool, slug) {
   if (!tool) return;
-  const name = toolName(tool, slug);
+  const name = displayToolName(tool, slug);
   const category = categoryName(tool.category);
   upsertJsonLd('tool-software-jsonld', buildSoftwareApplicationSchema({
     name,
@@ -87,7 +117,7 @@ function appendSchema(tool, slug) {
 
 function updateMeta(tool, slug) {
   if (!tool) return;
-  const name = toolName(tool, slug);
+  const name = displayToolName(tool, slug);
   const category = categoryName(tool.category);
   applySeo({
     type: 'tool',
@@ -99,8 +129,21 @@ function updateMeta(tool, slug) {
   });
 }
 
+function createStickyHeader(tool, slug) {
+  const name = displayToolName(tool, slug);
+  const category = categoryName(tool?.category || slug.split('/')[0]);
+  const header = document.createElement('div');
+  header.className = 'nt-sticky-tool-header';
+  header.innerHTML = `<div class="nt-sticky-tool-header__inner">
+    <nav aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">›</span><a href="/categories/${categoryRoute(tool?.category || slug.split('/')[0])}.html">${category}</a></nav>
+    <strong>${name}</strong>
+    <a href="#tool-workspace">Open tool</a>
+  </div>`;
+  return header;
+}
+
 function createHero(tool, slug) {
-  const name = toolName(tool, slug);
+  const name = displayToolName(tool, slug);
   const category = categoryName(tool?.category || slug.split('/')[0]);
   const breadcrumb = document.createElement('section');
   breadcrumb.className = 'premium-tool-hero';
@@ -121,6 +164,25 @@ function createHero(tool, slug) {
   return breadcrumb;
 }
 
+function createHowToUse(tool, slug) {
+  const name = displayToolName(tool, slug);
+  const storageKey = `novatools-howto-seen:${slug}`;
+  const seen = getLocalFlag(storageKey) === 'true';
+  const section = document.createElement('section');
+  section.className = 'nt-howto';
+  section.innerHTML = `<details ${seen ? '' : 'open'}>
+    <summary>How to Use ${name}</summary>
+    <ol>
+      <li><strong>Add input:</strong> Paste text, enter values, or choose files as required by the tool.</li>
+      <li><strong>Review settings:</strong> Confirm format, order, units, naming, and privacy needs.</li>
+      <li><strong>Run and verify:</strong> Use the primary action, then review the output before copying, downloading, or sharing.</li>
+    </ol>
+    <noscript><p>This guide is visible without JavaScript. Remember/collapse preference requires localStorage.</p></noscript>
+  </details>`;
+  section.querySelector('details')?.addEventListener('toggle', () => setLocalFlag(storageKey, 'true'));
+  return section;
+}
+
 function createWorkspaceCompanion(tool, slug) {
   const related = relatedTools(tool, slug)[0];
   const panel = document.createElement('aside');
@@ -130,8 +192,10 @@ function createWorkspaceCompanion(tool, slug) {
     <p>Add input, review settings, use the tool’s own primary action, then inspect the result before download, copy or sharing.</p>
     <div class="premium-workspace-actions">
       <a class="btn btn-primary" href="#tool-workspace">Review tool panel</a>
-      <a class="btn btn-secondary" href="${related?.entry || '/categories/index.html'}">Related tool</a>
+      <a class="btn btn-secondary" href="${related ? toolHref(related) : '/categories/index.html'}">Related tool</a>
     </div>
+    ${renderProgressIndicator(tool)}
+    ${renderRecentlyUsed()}
     <div class="premium-state premium-state--success">
       <strong>Result review</strong>
       <p>When a result appears, confirm format, readability, file name and privacy needs before using it elsewhere.</p>
@@ -144,7 +208,7 @@ function createWorkspaceCompanion(tool, slug) {
 }
 
 function createGuides(tool, slug) {
-  const name = toolName(tool, slug);
+  const name = displayToolName(tool, slug);
   const related = relatedTools(tool, slug);
   const section = document.createElement('section');
   section.className = 'premium-tool-guides';
@@ -172,7 +236,11 @@ function createGuides(tool, slug) {
         <article><h3>Professionals</h3><p>Review proposals, reports or operational outputs before sharing.</p></article>
         <article><h3>Content teams</h3><p>Complete format, quality and quick-edit checks before publishing.</p></article>
       </div></section>
-      <section class="premium-guide-block"><h2>Related tools</h2><div class="premium-related-grid">${related.map((item) => `<a href="${item.entry}"><strong>${item.name || item.nameEn}</strong><span>${categoryName(item.category)}</span></a>`).join('')}</div></section>
+      <section class="premium-guide-block"><h2>Related tools</h2><div class="premium-related-grid">${related.map((item) => `<a href="${toolHref(item)}"><strong>${toolName(item)}</strong><span>${categoryLabel(item.category)}</span></a>`).join('')}</div></section>
+      ${renderRelatedTools(tool)}
+      ${renderBlogSuggestions(tool)}
+      ${renderCompareTools(tool)}
+      ${renderToolEngagementPanel(tool)}
       <section class="premium-guide-block"><h2>FAQ</h2><div class="premium-accordion">
         <details><summary>${name} free to use?</summary><p>Yes. This page is prepared as a free online workflow for the related tool.</p></details>
         <details><summary>Where does my data go?</summary><p>NovaTools tools are designed browser-first where practical; check page notes when external services are required.</p></details>
@@ -183,12 +251,70 @@ function createGuides(tool, slug) {
 }
 
 function appendFaqSchema(tool, slug) {
-  const name = toolName(tool, slug);
+  const name = displayToolName(tool, slug);
   upsertJsonLd('tool-faq-jsonld', buildFAQSchema([
     { question: `Is ${name} free to use?`, answer: 'Yes. This tool is prepared for free online use.' },
     { question: 'Where does my data go?', answer: 'Tools are designed browser-first where practical; check page notes when external services are required.' },
     { question: 'What should I do if I get an error?', answer: 'Check inputs, file size and format, then try again with adjusted settings.' }
   ]));
+}
+
+function addTextCounters(workspace) {
+  workspace.querySelectorAll('textarea, input[type="text"], input[type="search"], input[type="url"], input[type="email"]').forEach((field, index) => {
+    if (field.dataset.ntCounterReady === 'true') return;
+    field.dataset.ntCounterReady = 'true';
+    const counter = document.createElement('p');
+    counter.className = 'nt-live-counter';
+    counter.id = field.id ? `${field.id}-counter` : `nt-live-counter-${index}`;
+    counter.setAttribute('aria-live', 'polite');
+    const describedBy = [field.getAttribute('aria-describedby'), counter.id].filter(Boolean).join(' ');
+    field.setAttribute('aria-describedby', describedBy);
+    const update = () => {
+      const value = field.value || '';
+      const words = value.trim() ? value.trim().split(/\s+/).length : 0;
+      const bytes = new TextEncoder().encode(value).length;
+      counter.textContent = `${value.length} characters • ${words} words • ${bytes} bytes`;
+    };
+    update();
+    field.addEventListener('input', update);
+    field.insertAdjacentElement('afterend', counter);
+  });
+}
+
+function addKeyboardHints(workspace) {
+  workspace.querySelectorAll('button, input[type="submit"], a.btn').forEach((element) => {
+    if (element.dataset.ntShortcutReady === 'true') return;
+    const label = element.textContent || element.value || '';
+    if (!/convert|format|merge|compress|calculate|generate|validate|process|run/i.test(label)) return;
+    element.dataset.ntShortcutReady = 'true';
+    const hint = document.createElement('span');
+    hint.className = 'nt-shortcut-hint';
+    hint.textContent = 'Ctrl+Enter';
+    element.insertAdjacentElement('afterend', hint);
+  });
+}
+
+function addProgressHooks(workspace) {
+  const progress = workspace.querySelector('.nt-progress-bar');
+  if (!progress) return;
+  const fill = progress.querySelector('span');
+  workspace.addEventListener('click', (event) => {
+    const trigger = event.target.closest('button, input[type="submit"], a.btn');
+    if (!trigger || !/convert|format|merge|compress|calculate|generate|validate|process|run/i.test(trigger.textContent || trigger.value || '')) return;
+    progress.setAttribute('aria-valuenow', '35');
+    if (fill) fill.style.width = '35%';
+    window.setTimeout(() => {
+      progress.setAttribute('aria-valuenow', '70');
+      if (fill) fill.style.width = '70%';
+    }, 500);
+  });
+}
+
+function addSkeletonState(workspace) {
+  if (workspace.dataset.ntSkeletonReady === 'true') return;
+  workspace.dataset.ntSkeletonReady = 'true';
+  workspace.classList.add('nt-tool-loading');
+  window.requestAnimationFrame(() => workspace.classList.remove('nt-tool-loading'));
 }
 
 function enhanceWorkspace(tool, slug) {
@@ -197,12 +323,21 @@ function enhanceWorkspace(tool, slug) {
   workspace.id = workspace.id || 'tool-workspace';
   workspace.classList.add('premium-tool-workspace');
 
+  workspace.insertAdjacentElement('afterbegin', createHowToUse(tool, slug));
   const companion = createWorkspaceCompanion(tool, slug);
   workspace.append(companion);
   setupDropzones(workspace);
+  addSkeletonState(workspace);
+  addTextCounters(workspace);
+  addKeyboardHints(workspace);
+  addProgressHooks(workspace);
 
   workspace.querySelectorAll('input, textarea, select, button, a').forEach((element) => {
     element.classList.add('premium-focusable');
+    if (!element.getAttribute('aria-label') && !element.getAttribute('aria-labelledby')) {
+      const label = element.textContent?.trim() || element.value || element.name || element.id;
+      if (label && !element.closest('label')) element.setAttribute('aria-label', label);
+    }
   });
   workspace.querySelectorAll('.result, .results, .result-panel, .results-panel, .output, .output-area').forEach((element) => {
     element.classList.add('premium-result-panel');
@@ -212,15 +347,19 @@ function enhanceWorkspace(tool, slug) {
 function init() {
   const slug = activeScript()?.dataset.toolSlug || slugFromPath();
   if (!slug || document.body.dataset.premiumToolReady === 'true') return;
-  const tool = findTool(slug) || { category: slug.split('/')[0], name: slug.split('/').pop().replace(/-/g, ' ') };
+  const tool = findTool(slug) || { id: slug.replace('/', '-'), category: slug.split('/')[0], name: slug.split('/').pop().replace(/-/g, ' '), entry: `/tools/${slug}/` };
   document.body.dataset.premiumToolReady = 'true';
 
+  setupThemePreference('#themeToggle');
+  recordToolUse(tool);
   updateMeta(tool, slug);
   appendSchema(tool, slug);
   appendFaqSchema(tool, slug);
+  document.body.prepend(createStickyHeader(tool, slug));
   document.body.prepend(createHero(tool, slug));
   enhanceWorkspace(tool, slug);
   document.body.append(createGuides(tool, slug));
+  bindEngagementWidgets(document);
 }
 
 if (document.readyState === 'loading') {

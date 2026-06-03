@@ -292,3 +292,40 @@
     box-shadow: none !important;
   }
 }
+
+/* Homepage Task 7 discovery enhancements */
+.home-popular-week {
+  padding: var(--space-10, 3rem) 0;
+}
+
+.home-popular-week__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  gap: var(--grid-gap, 1rem);
+}
+
+.home-popular-week__card {
+  display: grid;
+  gap: .4rem;
+  padding: var(--space-5, 1.25rem);
+  border: 1px solid var(--color-border, #334155);
+  border-radius: var(--radius-xl, 16px);
+  background: var(--color-surface, #101827);
+  color: var(--color-text-primary, #f8fafc);
+  text-decoration: none;
+}
+
+.home-popular-week__card:focus-visible {
+  outline: 3px solid var(--color-accent, #67e8f9);
+  outline-offset: 3px;
+}
+
+.home-popular-week__card span,
+.home-popular-week__card small {
+  color: var(--color-text-secondary, #cbd5e1);
+}
+
+.home-search__result em,
+.search-result-category {
+  text-transform: capitalize;
+}
