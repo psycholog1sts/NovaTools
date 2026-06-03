@@ -1,6 +1,6 @@
 const SITE_ORIGIN = 'https://mc-novatools.com';
 const SITE_NAME = 'NovaTools';
-const SUPPORTED_LOCALES = ['en', 'tr', 'ar'];
+const SUPPORTED_LOCALES = ['en', 'tr'];
 const DEFAULT_LOCALE = 'en';
 const DESCRIPTION_LIMIT = 160;
 const TITLE_LIMIT = 60;
@@ -77,9 +77,9 @@ export function absoluteUrl(path = '/') {
 
 export function localizedUrl(path = '/', locale = DEFAULT_LOCALE) {
   const clean = cleanPath(path);
-  if (locale === DEFAULT_LOCALE) return absoluteUrl(clean);
-  if (clean === '/') return `${SITE_ORIGIN}/${locale}/`;
-  return `${SITE_ORIGIN}/${locale}${clean}`;
+  const lang = normalizeLocale(locale);
+  if (clean === '/') return `${SITE_ORIGIN}/${lang}/`;
+  return `${SITE_ORIGIN}/${lang}${clean}`;
 }
 
 function ensureMeta(selector, attrs) {
@@ -124,7 +124,7 @@ export function buildHreflang(path = window.location.pathname) {
   const clean = cleanPath(path);
   return [
     ...SUPPORTED_LOCALES.map((locale) => ({ hreflang: locale, href: localizedUrl(clean, locale) })),
-    { hreflang: 'x-default', href: localizedUrl(clean, DEFAULT_LOCALE) }
+    { hreflang: 'x-default', href: absoluteUrl(clean) }
   ];
 }
 

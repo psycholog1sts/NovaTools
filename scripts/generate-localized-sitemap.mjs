@@ -3,31 +3,32 @@ import fs from 'fs';
 import path from 'path';
 import { globSync } from 'glob';
 import { fileURLToPath } from 'url';
-import { blogArticlePath, blogHubPath, fallbackBlogLocale, normalizeBlogSlug, normalizeBlogSlugList, supportedBlogLocales } from '../src/js/blog-routes.js';
+import { blogArticlePath, blogHubPath, fallbackBlogLocale, normalizeBlogSlug, normalizeBlogSlugList } from '../src/js/blog-routes.js';
 
 const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const origin = 'https://mc-novatools.com';
 const lastmod = new Date().toISOString().replace(/\.\d{3}Z$/, '+00:00');
-const locales = supportedBlogLocales;
-const pathPrefixLocales = new Set();
+const maxUrlsPerSitemap = 50000;
+
+const staticPages = [
+  ['/', '1.0', 'daily'],
+  ['/about-us.html', '0.5', 'monthly'],
+  ['/contact.html', '0.5', 'monthly'],
+  ['/privacy-policy.html', '0.4', 'monthly'],
+  ['/terms-of-service.html', '0.4', 'monthly'],
+  ['/disclaimer.html', '0.4', 'monthly'],
+  [blogHubPath(fallbackBlogLocale), '0.7', 'weekly']
+];
+
+const categoryPages = [
+  ['/tools/pdf/', '0.8', 'weekly'],
+  ['/tools/image/', '0.8', 'weekly'],
+  ['/tools/developer/', '0.8', 'weekly'],
+  ['/tools/finance/', '0.8', 'weekly']
+];
 
 function readJson(relativePath) {
   return JSON.parse(fs.readFileSync(path.join(rootDir, relativePath), 'utf8'));
-}
-
-function localizedUrl(route, locale) {
-  const cleanRoute = route.startsWith('/') ? route : `/${route}`;
-  if (locale === 'en') return `${origin}${cleanRoute}`;
-  if (pathPrefixLocales.has(locale)) return `${origin}/${locale}${cleanRoute}`;
-  const separator = cleanRoute.includes('?') ? '&' : '?';
-  return `${origin}${cleanRoute}${separator}lang=${locale}`;
-}
-
-function localizedBlogUrl(route, locale = 'en') {
-  const cleanRoute = String(route || '/').replace(new RegExp(`^/${locale}(?=/blog(?:/|$))`), '') || '/';
-  if (locale === 'en') return `${origin}${cleanRoute}`;
-  const separator = cleanRoute.includes('?') ? '&' : '?';
-  return `${origin}${cleanRoute}${separator}lang=${locale}`;
 }
 
 function xmlEscape(value) {
@@ -39,12 +40,17 @@ function xmlEscape(value) {
     .replace(/'/g, '&apos;');
 }
 
-function urlEntry(loc, priority = '0.7', changefreq = 'monthly') {
-  return { loc, priority, changefreq };
+function urlEntry(route, priority = '0.7', changefreq = 'monthly', section = 'Other') {
+  const cleanRoute = route.startsWith('/') ? route : `/${route}`;
+  return { loc: `${origin}${cleanRoute}`, priority, changefreq, section };
 }
 
 function renderUrlEntry({ loc, priority, changefreq }) {
   return `  <url>\n    <loc>${xmlEscape(loc)}</loc>\n    <lastmod>${lastmod}</lastmod>\n    <changefreq>${changefreq}</changefreq>\n    <priority>${priority}</priority>\n  </url>`;
+}
+
+function renderSection(name, entries) {
+  return [`  <!-- ${name} -->`, ...entries.map(renderUrlEntry)].join('\n');
 }
 
 function sourceBlogArticleSlugs() {
@@ -54,41 +60,70 @@ function sourceBlogArticleSlugs() {
     .map((slug) => normalizeBlogSlug(slug));
 }
 
-const urls = [];
-['/', '/about.html', '/about-us.html', '/contact.html', '/privacy-policy.html', '/terms-of-service.html', '/cookie-policy.html', '/disclaimer.html', '/security.html'].forEach((route) => {
-  const priority = route === '/' ? '1.0' : '0.4';
-  locales.forEach((locale) => urls.push(urlEntry(localizedUrl(route, locale), priority, route === '/' ? 'daily' : 'monthly')));
-});
-['/gizlilik-politikasi.html', '/kvkk-aydinlatma-metni.html', '/kullanim-kosullari.html', '/iletisim.html'].forEach((route) => {
-  urls.push(urlEntry(`${origin}${route}`, '0.4', 'monthly'));
-});
-locales.forEach((locale) => urls.push(urlEntry(localizedBlogUrl(blogHubPath(locale), locale), '0.6', 'weekly')));
+function authorSlug(author) {
+  return String(author.id || author.name || '')
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '');
+}
 
-globSync('categories/**/*.html', { cwd: rootDir }).sort().forEach((file) => {
-  const route = `/${file.replace(/\\/g, '/')}`;
-  locales.forEach((locale) => urls.push(urlEntry(localizedUrl(route, locale), '0.6', 'monthly')));
+function writeSitemap(fileName, entries) {
+  const grouped = entries.reduce((acc, entry) => {
+    acc[entry.section] ||= [];
+    acc[entry.section].push(entry);
+    return acc;
+  }, {});
+  const body = Object.entries(grouped).map(([section, sectionEntries]) => renderSection(section, sectionEntries)).join('\n');
+  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${body}\n</urlset>\n`;
+  fs.writeFileSync(path.join(rootDir, 'public', fileName), sitemap);
+  fs.writeFileSync(path.join(rootDir, fileName), sitemap);
+}
+
+function writeSitemapIndex(sitemapNames) {
+  const body = sitemapNames.map((fileName) => `  <sitemap>\n    <loc>${origin}/${fileName}</loc>\n    <lastmod>${lastmod}</lastmod>\n  </sitemap>`).join('\n');
+  const index = `<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${body}\n</sitemapindex>\n`;
+  fs.writeFileSync(path.join(rootDir, 'public', 'sitemap.xml'), index);
+  fs.writeFileSync(path.join(rootDir, 'sitemap.xml'), index);
+}
+
+const sections = [
+  ['Static pages', staticPages.map(([route, priority, changefreq]) => urlEntry(route, priority, changefreq, 'Static pages'))],
+  ['Category pages', categoryPages.map(([route, priority, changefreq]) => urlEntry(route, priority, changefreq, 'Category pages'))],
+  ['Individual tool pages', globSync('src/tools/**/index.html', { cwd: rootDir, ignore: ['**/demo-*/**', '**/experimental/**', '**/test/**', 'src/tools/request/**'] })
+    .sort()
+    .map((file) => urlEntry(`/${file.replace(/^src\//, '').replace(/index\.html$/, '')}`, '0.8', 'weekly', 'Individual tool pages'))],
+  ['Blog posts', normalizeBlogSlugList([
+    ...readJson(`src/i18n/blog/${fallbackBlogLocale}.json`).map((post) => post.slug).filter(Boolean),
+    ...sourceBlogArticleSlugs()
+  ]).map((slug) => urlEntry(blogArticlePath(slug, fallbackBlogLocale), '0.6', 'weekly', 'Blog posts'))],
+  ['Author pages', readJson('src/data/authors.json')
+    .map(authorSlug)
+    .filter(Boolean)
+    .map((slug) => urlEntry(`/author/${slug}/`, '0.5', 'monthly', 'Author pages'))]
+];
+
+const urls = sections.flatMap(([, entries]) => entries);
+const seen = new Set();
+const deduped = urls.filter(({ loc }) => {
+  if (seen.has(loc)) return false;
+  seen.add(loc);
+  return true;
 });
 
-globSync('src/tools/**/index.html', { cwd: rootDir, ignore: ['**/demo-*/**', '**/experimental/**', '**/test/**'] }).sort().forEach((file) => {
-  const sourceRoute = `/${file.replace(/^src\//, '').replace(/index\.html$/, '')}`;
-  const route = sourceRoute.startsWith('/tools/finance/')
-    ? sourceRoute.replace(/^\/tools\/finance\//, '/finance/')
-    : sourceRoute;
-  locales.forEach((locale) => urls.push(urlEntry(localizedUrl(route, locale), '0.8', 'weekly')));
-});
+if (deduped.length > maxUrlsPerSitemap) {
+  const names = [];
+  for (let index = 0; index < deduped.length; index += maxUrlsPerSitemap) {
+    const fileName = `sitemap-${Math.floor(index / maxUrlsPerSitemap) + 1}.xml`;
+    writeSitemap(fileName, deduped.slice(index, index + maxUrlsPerSitemap));
+    names.push(fileName);
+  }
+  writeSitemapIndex(names);
+} else {
+  writeSitemap('sitemap.xml', deduped);
+}
 
-const fallbackPosts = readJson(`src/i18n/blog/${fallbackBlogLocale}.json`);
-const fallbackPostSlugs = fallbackPosts.map((post) => post.slug).filter(Boolean);
-locales.forEach((locale) => {
-  const manifestPath = path.join(rootDir, `src/i18n/blog/${locale}.json`);
-  const posts = fs.existsSync(manifestPath) ? readJson(`src/i18n/blog/${locale}.json`) : fallbackPosts;
-  const slugs = normalizeBlogSlugList([...fallbackPostSlugs, ...posts.map((post) => post.slug).filter(Boolean), ...sourceBlogArticleSlugs()]);
-  slugs.forEach((slug) => urls.push(urlEntry(localizedBlogUrl(blogArticlePath(slug, locale), locale), '0.6', 'weekly')));
-});
-
-const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(renderUrlEntry).join('\n')}\n</urlset>\n`;
-const siteLinks = `${urls.map(({ loc }) => loc).join('\n')}\n`;
-fs.writeFileSync(path.join(rootDir, 'public', 'sitemap.xml'), sitemap);
-fs.writeFileSync(path.join(rootDir, 'sitemap.xml'), sitemap);
+const siteLinks = `${deduped.map(({ loc }) => loc).join('\n')}\n`;
 fs.writeFileSync(path.join(rootDir, 'site-links.txt'), siteLinks);
-console.log(`✅ Generated localized sitemap and site-links.txt with ${urls.length} URLs.`);
+console.log(`✅ Generated sitemap architecture and site-links.txt with ${deduped.length} URLs.`);

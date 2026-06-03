@@ -131,7 +131,7 @@ export function buildBlogArticleSeo(post, locale = 'en', categoryLabel = post.ca
   const canonicalUrl = cleanBlogUrl(post.slug, locale);
   const defaultUrl = cleanBlogUrl(post.slug, 'en');
   const ogImage = getSeoImage(post, 'og');
-  const authorUrl = `${SITE_ORIGIN}/authors/${authorSlug(post)}`;
+  const authorUrl = `${SITE_ORIGIN}/author/${authorSlug(post)}/`;
   const published = isoDate(post.datePublished);
   const modified = isoDate(post.dateModified || post.datePublished);
   const labels = metaFor(locale);
