@@ -7,7 +7,7 @@
   "packageManager": "npm@10.2.4",
   "scripts": {
     "dev": "node ./node_modules/vite/bin/vite.js",
-    "build": "node ./node_modules/vite/bin/vite.js build && npm run build:fix-paths && npm run build:structured-data",
+    "build": "node ./node_modules/vite/bin/vite.js build && npm run build:fix-paths && npm run build:inline-critical-css && npm run build:structured-data",
     "build:fix-paths": "node scripts/post-build-fix.mjs",
     "build:analyze": "node ./node_modules/vite/bin/vite.js build --mode analyze",
     "preview": "node ./node_modules/vite/bin/vite.js preview",
@@ -43,7 +43,11 @@
     "build:structured-data": "node scripts/inject-structured-data.mjs && npm run validate:structured-data",
     "validate:structured-data": "node scripts/validate-structured-data.mjs --dist",
     "build:rss": "node scripts/generate-blog-rss.mjs",
-    "lint:rss": "node scripts/generate-blog-rss.mjs --check"
+    "lint:rss": "node scripts/generate-blog-rss.mjs --check",
+    "build:inline-critical-css": "node scripts/extract-critical-css.mjs",
+    "lint:critical-css": "node scripts/extract-critical-css.mjs --check",
+    "optimize:images": "node scripts/optimize-images.mjs",
+    "lint:performance-budget": "node scripts/check-performance-budget.mjs"
   },
   "dependencies": {
     "@vercel/speed-insights": "^2.0.0",

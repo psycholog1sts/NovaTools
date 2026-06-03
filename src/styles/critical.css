@@ -2829,3 +2829,28 @@ article.tool-resource blockquote {
     overflow-x: auto;
   }
 }
+
+/* Core Web Vitals safeguards: reserve stable above-the-fold media and tool UI space. */
+.home-hero__image {
+  display: block;
+  width: min(100%, 800px);
+  aspect-ratio: 40 / 21;
+  margin: 0 0 1rem;
+  overflow: hidden;
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  border-radius: var(--radius-xl, 22px);
+  background: #06070b;
+}
+
+.home-hero__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tool-wrapper,
+.tool-container,
+.premium-tool-workspace,
+.nt-tool-workspace {
+  min-height: 600px;
+}
