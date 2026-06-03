@@ -176,15 +176,6 @@ const blogArticleEntries = globSync('src/blog/articles/**/*.html').reduce((acc, 
   return acc;
 }, {});
 
-// Author profile entry points
-const authorEntries = globSync('author/**/index.html').reduce((acc, file) => {
-  const name = file
-    .replace(/\\/g, '/')
-    .replace(/\.html$/, '');
-
-  acc[name] = resolveHtmlEntry(file);
-  return acc;
-}, {});
 
 const localizedAuthorEntries = ['en', 'tr'].reduce((acc, locale) => {
   Object.entries(authorEntries).forEach(([name, file]) => {
@@ -248,7 +239,6 @@ export default defineConfig({
         ...adminEntry,
         ...blogEntry,
         ...localizedBlogIndexEntries,
-        ...authorEntries,
         ...localizedAuthorEntries,
         ...blogArticleEntries,
         ...blogArticleRouteEntries,

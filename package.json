@@ -7,7 +7,7 @@
   "packageManager": "npm@10.2.4",
   "scripts": {
     "dev": "node ./node_modules/vite/bin/vite.js",
-    "build": "node ./node_modules/vite/bin/vite.js build && npm run build:fix-paths",
+    "build": "node ./node_modules/vite/bin/vite.js build && npm run build:fix-paths && npm run build:structured-data",
     "build:fix-paths": "node scripts/post-build-fix.mjs",
     "build:analyze": "node ./node_modules/vite/bin/vite.js build --mode analyze",
     "preview": "node ./node_modules/vite/bin/vite.js preview",
@@ -39,7 +39,9 @@
     "lint:blog-images": "node scripts/generate-blog-images.mjs --check",
     "lint:site-links": "node scripts/validate-site-links.mjs",
     "indexing:dry-run": "node indexing.cjs --dry-run",
-    "indexing:send": "node indexing.cjs --send"
+    "indexing:send": "node indexing.cjs --send",
+    "build:structured-data": "node scripts/inject-structured-data.mjs && npm run validate:structured-data",
+    "validate:structured-data": "node scripts/validate-structured-data.mjs --dist"
   },
   "dependencies": {
     "@vercel/speed-insights": "^2.0.0",
