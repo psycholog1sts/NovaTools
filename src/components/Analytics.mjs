@@ -37,6 +37,7 @@ export function removeLegacyGaSnippets(html) {
 export function removeLegacyAdSenseHead(html) {
   return html
     .replace(/\n?\s*<meta\b(?=[^>]*\bname\s*=\s*["']google-adsense-account["'])(?=[^>]*\bcontent\s*=\s*["']ca-pub-[0-9]{16}["'])[^>]*\/?\s*>/gi, '')
+    .replace(/\n?\s*<link\b(?=[^>]*\brel\s*=\s*["']dns-prefetch["'])(?=[^>]*\bhref\s*=\s*["']https:\/\/pagead2\.googlesyndication\.com["'])[^>]*\/?\s*>/gi, '')
     .replace(/\n?\s*<script\b(?=[^>]*\bsrc\s*=\s*["']https:\/\/pagead2\.googlesyndication\.com\/pagead\/js\/adsbygoogle\.js\?client=ca-pub-[0-9]{16}[^"']*["'])(?=[^>]*(?:\basync\b|>))(?=[^>]*(?:\bcrossorigin\s*=\s*["']anonymous["']|>))[^>]*>\s*<\/script>/gi, '');
 }
 
@@ -46,7 +47,7 @@ export function renderAdSenseHead(adsenseClient = DEFAULT_ADSENSE_CLIENT) {
 
   const safeClient = escapeHtml(client);
   return `<meta name="google-adsense-account" content="${safeClient}">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${safeClient}" crossorigin="anonymous"></script>`;
+<link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">`;
 }
 
 export function renderAnalyticsHead({ gaId = '', gscId = '' } = {}) {

@@ -110,6 +110,7 @@ export function createAdSlot({
     width: min(100%, ${config.width}px);
     min-width: min(100%, ${config.width}px);
     min-height: ${config.height}px;
+    max-height: ${config.height}px;
     aspect-ratio: ${config.width} / ${config.height};
     max-width: 100%;
     overflow: hidden;
@@ -136,7 +137,12 @@ export function createAdSlot({
     display: ${responsive ? 'block' : 'inline-block'};
     width: ${responsive ? '100%' : `${config.width}px`};
     height: ${config.height}px;
+    min-width: min(100%, ${config.width}px);
+    min-height: ${config.height}px;
+    max-height: ${config.height}px;
+    aspect-ratio: ${config.width} / ${config.height};
     max-width: 100%;
+    overflow: hidden;
   `;
   
   // AdSense attributes

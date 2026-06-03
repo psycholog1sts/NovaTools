@@ -31,7 +31,7 @@
   <title data-i18n="tools.design.invoice-generator.meta.title">Free Invoice Generator Online | Create PDF Invoices | NovaTools MC</title>
   
   <!-- i18n Script -->
-  <script src="/i18n.js"></script>
+  <script src="/i18n.js" defer></script>
   <meta name="description" content="Use Invoice Generator for design invoice generator tasks with browser-first processing, clear steps, privacy notes, and practical limits. Use safely with checks">
   <meta name="keywords" content="invoice generator, free invoice maker, PDF invoice, online invoicing">
   <meta name="theme-color" content="#0A0A0C">
@@ -142,8 +142,10 @@
     .invoice-notes { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #e0e0e0; }
     .invoice-notes h4 { font-size: 0.875rem; color: #666; margin-bottom: 0.5rem; }
   </style>
+  <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   <div class="bg-ambient" aria-hidden="true"></div>
   <div class="noise-overlay" aria-hidden="true"></div>
 
@@ -182,7 +184,7 @@
       </div>
     </header>
 
-    <main class="main-content">
+    <main id="main-content" class="main-content">
       <div class="tool-wrapper">
         <div class="tool-hero">
           <div class="tool-hero-icon">&#128179;</div>

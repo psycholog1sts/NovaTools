@@ -31,7 +31,7 @@
   <title data-i18n="tools.design.mockup-generator.meta.title">Free Mockup Generator Online | Device Mockups | NovaTools MC</title>
   
   <!-- i18n Script -->
-  <script src="/i18n.js"></script>
+  <script src="/i18n.js" defer></script>
   <meta name="description" content="Use Mockup Generator for design mockup generator tasks with browser-first processing, clear steps, privacy notes, and practical limits. Use safely with checks.">
   <meta name="keywords" content="mockup generator, device mockup, phone mockup, laptop mockup, screenshot mockup">
   <meta name="theme-color" content="#0A0A0C">
@@ -121,8 +121,10 @@
     .tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }
     .tool-footer a { color: #00D9FF; text-decoration: none; }
   </style>
+  <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   <div class="bg-ambient" aria-hidden="true"></div>
   <div class="noise-overlay" aria-hidden="true"></div>
 
@@ -161,7 +163,7 @@
       </div>
     </header>
 
-    <main class="main-content">
+    <main id="main-content" class="main-content">
       <div class="tool-wrapper">
         <div class="tool-hero">
           <div class="tool-hero-icon">&#128187;</div>

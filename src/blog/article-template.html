@@ -112,8 +112,10 @@
     @media (max-width: 900px) { .article-hero__grid { grid-template-columns: 1fr; } .article-hero__media { order: -1; } }
     @media (max-width: 780px) { .tool-mini-grid, .article-aside { grid-template-columns: 1fr; } .author-box { grid-template-columns: 1fr; } .share-row { overflow-x: auto; justify-content: flex-start; } .article-shell { width: min(100% - 1rem, var(--container-xl)); padding-top: var(--space-8); } }
   </style>
+  <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
 </head>
 <body class="article-template">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   <div class="reading-progress" id="readingProgress" aria-hidden="true"></div>
   <div class="bg-ambient" aria-hidden="true"></div>
   <div class="noise-overlay" aria-hidden="true"></div>
@@ -123,7 +125,7 @@
   <nav class="article-breadcrumb" aria-label="Breadcrumb">
     <div class="container"><ol><li><a href="/">Ana Sayfa</a></li><li class="chevron" aria-hidden="true">›</li><li><a href="/blog/index.html">Blog</a></li><li class="chevron" aria-hidden="true">›</li><li><a href="/blog/index.html?category=yapay-zeka">Yapay Zeka</a></li><li class="chevron" aria-hidden="true">›</li><li aria-current="page">Tarayıcı Öncelikli Araçlar</li></ol></div>
   </nav>
-  <article class="article-detail" itemscope itemtype="https://schema.org/Article">
+  <article id="main-content" class="article-detail" itemscope itemtype="https://schema.org/Article">
     <header class="article-hero">
       <div class="article-hero__grid">
         <div class="article-hero__content">
@@ -214,7 +216,7 @@
     }
 
     function renderInContentAd(labels) {
-      return `<aside class="ad-slot-container revenue-card article-ad-slot" aria-label="${escapeHtml(labels.ad)}" data-ad-placement="blog-in-content"><span class="ad-label">${escapeHtml(labels.ad)}</span><ins class="adsbygoogle ad-slot-leaderboard" width="728" height="90" style="display:block;width:100%;min-height:90px;aspect-ratio:728/90" data-ad-client="ca-pub-5738022526587953" data-slot-key="blogInContent" data-ad-slot="2852963074" data-ad-format="leaderboard" data-full-width-responsive="true"></ins></aside>`;
+      return `<aside class="ad-slot-container revenue-card article-ad-slot" aria-label="${escapeHtml(labels.ad)}" data-ad-placement="blog-in-content"><span class="ad-label">${escapeHtml(labels.ad)}</span><div class="ad-wrapper" style="width:min(100%,728px);min-width:min(100%,320px);min-height:90px;max-height:90px;aspect-ratio:728/90;overflow:hidden;"><ins class="adsbygoogle ad-slot-leaderboard" width="728" height="90" style="display:block;width:100%;min-width:min(100%,320px);min-height:90px;max-height:90px;aspect-ratio:728/90;overflow:hidden" data-ad-client="ca-pub-5738022526587953" data-slot-key="blogInContent" data-ad-slot="2852963074" data-ad-format="leaderboard" data-full-width-responsive="true"></ins></div></aside>`;
     }
 
     function renderToc(post, labels) {

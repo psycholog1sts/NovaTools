@@ -32,7 +32,7 @@
   <title data-i18n="tools.dev.code-formatter.meta.title">Free Code Formatter - HTML, CSS, JavaScript Beautifier | NovaTools MC</title>
   
   <!-- i18n Script -->
-  <script src="/i18n.js"></script>
+  <script src="/i18n.js" defer></script>
   <meta name="description" content="Use Code Formatter for dev code formatter tasks with browser-first processing, clear steps, privacy notes, and practical limits. Review outputs before sharing.">
   <meta name="keywords" content="free code formatter, html beautifier, css formatter, javascript formatter, format code online">
   <meta name="theme-color" content="#0A0A0C">
@@ -135,8 +135,10 @@
       .options-row { flex-direction: column; align-items: flex-start; }
     }
   </style>
+  <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   <div class="bg-ambient" aria-hidden="true"></div>
   <div class="noise-overlay" aria-hidden="true"></div>
 
@@ -175,7 +177,7 @@
       </div>
     </header>
 
-    <main class="main-content">
+    <main id="main-content" class="main-content">
       <div class="tool-wrapper">
         <div class="tool-hero">
           <div class="tool-hero-icon">&#128221;</div>

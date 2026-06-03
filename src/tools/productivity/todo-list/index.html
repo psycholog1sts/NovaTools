@@ -31,7 +31,7 @@
   <title data-i18n="tools.productivity.todo-list.meta.title">Free Todo List | NovaTools MC</title>
   
   <!-- i18n Script -->
-  <script src="/i18n.js"></script>
+  <script src="/i18n.js" defer></script>
   <meta name="description" content="Use Todo List for productivity todo list tasks with browser-first processing, clear steps, privacy notes, and practical limits. Review outputs before sharing.">
   <meta name="keywords" content="todo list, task manager, checklist, to-do app, task organizer">
   <meta name="theme-color" content="#0A0A0C">
@@ -137,8 +137,10 @@
       .form-row .task-input, .priority-select, .date-input { width: 100%; }
     }
   </style>
+  <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   <div class="bg-ambient" aria-hidden="true"></div>
   <div class="noise-overlay" aria-hidden="true"></div>
 
@@ -177,7 +179,7 @@
       </div>
     </header>
 
-    <main class="main-content">
+    <main id="main-content" class="main-content">
       <div class="tool-wrapper">
         <div class="tool-hero">
           <div class="tool-hero-icon">&#9989;</div>

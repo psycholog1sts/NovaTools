@@ -31,7 +31,7 @@
   <title data-i18n="tools.data.file-splitter.meta.title">File Splitter — Free Online Tool | NovaTools MC</title>
   
   <!-- i18n Script -->
-  <script src="/i18n.js"></script>
+  <script src="/i18n.js" defer></script>
   <meta name="description" content="Use File Splitter for data file splitter tasks with browser-first processing, clear steps, privacy notes, and practical limits. Review outputs before sharing.">
   <meta name="keywords" content="file splitter, split files, divide files, file chunker, split large files">
   <meta name="theme-color" content="#0A0A0C">
@@ -142,8 +142,10 @@
       .option-group input, .option-group select { width: 100%; }
     }
   </style>
+  <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   <div class="bg-ambient" aria-hidden="true"></div>
   <div class="noise-overlay" aria-hidden="true"></div>
 
@@ -182,7 +184,7 @@
       </div>
     </header>
 
-    <main class="main-content">
+    <main id="main-content" class="main-content">
       <div class="tool-wrapper">
         <div class="tool-hero">
           <div class="tool-hero-icon">✂️</div>

@@ -30,7 +30,7 @@
   <title data-i18n="tools.image.convert.meta.title">Free Image Converter - JPG to PNG, WebP Online | NovaTools</title>
   
   <!-- i18n Script -->
-  <script src="/i18n.js"></script>
+  <script src="/i18n.js" defer></script>
   <meta name="description" content="Use Image Converter for image convert tasks with browser-first processing, clear steps, privacy notes, and practical limits. Review outputs before sharing.">
   <meta name="keywords" content="free image converter, JPG to PNG converter, PNG to WebP, free image format converter, convert image online free">
   <meta name="theme-color" content="#0A0A0C">
@@ -91,8 +91,10 @@
     .faq-item summary:hover { background: var(--border-default); }
     .faq-item p { padding: 1rem; margin: 0; border-top: 1px solid var(--border-hover); }
   </style>
+  <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   <div class="bg-ambient" aria-hidden="true"></div>
   <div class="noise-overlay" aria-hidden="true"></div>
   
@@ -130,7 +132,7 @@
         </nav>
       </div>
     </header>
-<main class="main-content">
+<main id="main-content" class="main-content">
       <div class="tool-container">
         <div class="tool-header">
           <h1 data-i18n="tools.image.convert.text.011">🔄 Image Converter</h1>

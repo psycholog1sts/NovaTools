@@ -32,7 +32,7 @@
   <title data-i18n="tools.dev.url-encoder.meta.title">Free URL Encoder/Decoder Online | NovaTools MC</title>
   
   <!-- i18n Script -->
-  <script src="/i18n.js"></script>
+  <script src="/i18n.js" defer></script>
   <meta name="description" content="Use URL Encoder/Decoder for dev url encoder tasks with browser-first processing, clear steps, privacy notes, and practical limits. Use safely with checks.">
   <meta name="keywords" content="free url encoder, url decoder online, percent encoding, url escape, encode url component">
   <meta name="theme-color" content="#0A0A0C">
@@ -136,8 +136,10 @@
       .btn { height: 38px; padding: 0 0.875rem; font-size: 0.85rem; }
     }
   </style>
+  <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   <div class="bg-ambient" aria-hidden="true"></div>
   <div class="noise-overlay" aria-hidden="true"></div>
 
@@ -176,7 +178,7 @@
       </div>
     </header>
 
-    <main class="main-content">
+    <main id="main-content" class="main-content">
       <div class="tool-wrapper">
         <div class="tool-hero">
           <div class="tool-hero-icon">&#128279;</div>

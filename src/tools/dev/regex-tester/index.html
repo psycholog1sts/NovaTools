@@ -28,7 +28,7 @@
   <title data-i18n="tools.dev.regex-tester.meta.title">Free Regex Tester - Online Regular Expression Tool</title>
   
   <!-- i18n Script -->
-  <script src="/i18n.js"></script>
+  <script src="/i18n.js" defer></script>
   <meta name="description" content="Use Regex Tester for dev regex tester tasks with browser-first processing, clear steps, privacy notes, and practical limits. Review outputs before sharing.">
   <meta name="keywords" content="free regex tester, regular expression tester online, regex validator, regex debugger, free regex tool, test regex online">
   <meta name="theme-color" content="#0A0A0C">
@@ -133,8 +133,10 @@
       .match-table th, .match-table td { padding: 0.5rem 0.625rem; }
     }
   </style>
+  <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   <div class="bg-ambient" aria-hidden="true"></div>
   <div class="noise-overlay" aria-hidden="true"></div>
   <div id="app" class="app">
@@ -171,7 +173,7 @@
         </nav>
       </div>
     </header>
-<main class="main-content">
+<main id="main-content" class="main-content">
       <div class="tool-wrapper">
         <div class="tool-hero">
           <div class="tool-hero-icon">&#9654;*</div>

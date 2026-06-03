@@ -25,7 +25,7 @@
   <title data-i18n="tools.news.summarizer.meta.title">Daily Tech & Finance News Brief | AI Summarizer | NovaTools MC</title>
   
   <!-- i18n Script -->
-  <script src="/i18n.js"></script>
+  <script src="/i18n.js" defer></script>
   <meta name="description" content="Use Tech &amp; Finance News Brief for news summarizer tasks with browser-first processing, clear steps, privacy notes, and practical limits. Use safely with checks.">
   <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
   <link rel="canonical" href="https://mc-novatools.com/tools/news/summarizer/">
@@ -72,8 +72,10 @@
     .loading-skeleton { background: linear-gradient(90deg, var(--surface-default) 25%, var(--border-default) 50%, var(--surface-default) 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; border-radius: var(--radius-md); height: 120px; margin-bottom: 1rem; }
     @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
   </style>
+  <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   <div class="bg-ambient" aria-hidden="true"></div>
   <div class="noise-overlay" aria-hidden="true"></div>
   
@@ -111,7 +113,7 @@
         </nav>
       </div>
     </header>
-<main class="main-content">
+<main id="main-content" class="main-content">
       <div class="container" style="padding: 2rem 1rem;">
         <div class="news-hero">
           <div style="font-size: 3rem; margin-bottom: 1rem;">📰</div>
@@ -177,8 +179,8 @@
             <!-- Sidebar Ad -->
             <div class="ad-slot-container" role="complementary" aria-label="Advertisement" data-ad-placement="news-sidebar">
               <span class="ad-label">Advertisement</span>
-              <div class="ad-wrapper" style="width: min(100%, 300px); min-height: 250px; aspect-ratio: 300 / 250;">
-                <ins class="adsbygoogle" width="300" height="250" style="display:inline-block;width:300px;height:250px;min-width:min(100%,300px);min-height:250px;aspect-ratio:300/250" data-ad-client="ca-pub-5738022526587953" data-slot-key="newsSidebar" data-ad-slot="7418529630"></ins>
+              <div class="ad-wrapper" style="width:min(100%,300px);min-width:min(100%,300px);min-height:250px;max-height:250px;aspect-ratio:300/250;overflow:hidden;">
+                <ins class="adsbygoogle" width="300" height="250" style="display:inline-block;width:300px;height:250px;min-width:min(100%,300px);min-height:250px;max-height:250px;aspect-ratio:300/250;overflow:hidden" data-ad-client="ca-pub-5738022526587953" data-slot-key="newsSidebar" data-ad-slot="7418529630"></ins>
               </div>
             </div>
           </aside>

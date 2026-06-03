@@ -31,7 +31,7 @@
   <title data-i18n="tools.security.user-agent-parser.meta.title">Free User Agent Parser - Browser Detector | NovaTools MC</title>
   
   <!-- i18n Script -->
-  <script src="/i18n.js"></script>
+  <script src="/i18n.js" defer></script>
   <meta name="description" content="Use User Agent Parser for security user agent parser tasks with browser-first processing, clear steps, privacy notes, and practical limits. Use safely with chec">
   <meta name="keywords" content="user agent parser, browser info, user agent string, detect browser, os detector">
   <meta name="theme-color" content="#0A0A0C">
@@ -403,8 +403,10 @@
       .results-grid { grid-template-columns: 1fr; }
     }
   </style>
+  <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   <div class="bg-ambient" aria-hidden="true"></div>
   <div class="noise-overlay" aria-hidden="true"></div>
 
@@ -443,7 +445,7 @@
       </div>
     </header>
 
-    <main class="main-content">
+    <main id="main-content" class="main-content">
       <div class="tool-wrapper">
         <div class="tool-hero">
           <div class="tool-hero-icon">&#128187;</div>

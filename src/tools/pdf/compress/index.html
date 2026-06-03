@@ -30,7 +30,7 @@
   <title data-i18n="tools.pdf.compress.meta.title">Free PDF Compressor - Reduce PDF Size Online | NovaTools MC</title>
 
   <!-- i18n Script -->
-  <script src="/i18n.js"></script>
+  <script src="/i18n.js" defer></script>
   <meta name="description" content="Use PDF Compressor for pdf compress tasks with browser-first processing, clear steps, privacy notes, and practical limits. Review outputs before sharing.">
   <meta name="keywords" content="free PDF compressor, compress PDF online, reduce PDF size, PDF optimizer, free PDF size reducer">
   <meta name="theme-color" content="#0A0A0C">
@@ -310,8 +310,10 @@
       to { opacity: 1; transform: translateY(0); }
     }
   </style>
+  <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   <div class="bg-ambient" aria-hidden="true"></div>
   <div class="noise-overlay" aria-hidden="true"></div>
 
@@ -349,7 +351,7 @@
         </nav>
       </div>
     </header>
-<main class="main-content">
+<main id="main-content" class="main-content">
       <div class="tool-container">
         <div class="tool-header">
           <h1 data-i18n="tools.pdf.compress.text.011">🗜️ PDF Compressor</h1>

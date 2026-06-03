@@ -31,7 +31,7 @@
   <title data-i18n="tools.security.ad-blocker-tester.meta.title">Free Ad Blocker Tester - Check Your Ad Blocker | NovaTools MC</title>
   
   <!-- i18n Script -->
-  <script src="/i18n.js"></script>
+  <script src="/i18n.js" defer></script>
   <meta name="description" content="Use Ad Blocker Tester for security ad blocker tester tasks with browser-first processing, clear steps, privacy notes, and practical limits. Use safely with chec">
   <meta name="keywords" content="ad blocker test, adblock tester, check ad blocker, adblocker working, privacy test">
   <meta name="theme-color" content="#0A0A0C">
@@ -458,8 +458,10 @@
       .tests-grid { grid-template-columns: 1fr 1fr; }
     }
   </style>
+  <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   <!-- Bait elements for ad blocker detection -->
   <div class="bait-element ad-banner"></div>
   <div class="bait-element ad-test-bait"></div>
@@ -503,7 +505,7 @@
       </div>
     </header>
 
-    <main class="main-content">
+    <main id="main-content" class="main-content">
       <div class="tool-wrapper">
         <div class="tool-hero">
           <div class="tool-hero-icon">&#128737;</div>
