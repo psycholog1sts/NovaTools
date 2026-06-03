@@ -131,7 +131,7 @@ export function buildBlogArticleSeo(post, locale = 'en', categoryLabel = post.ca
   const canonicalUrl = cleanBlogUrl(post.slug, locale);
   const defaultUrl = cleanBlogUrl(post.slug, 'en');
   const ogImage = getSeoImage(post, 'og');
-  const authorUrl = `${SITE_ORIGIN}/authors/${authorSlug(post)}`;
+  const authorUrl = post.author?.profileUrl ? `${SITE_ORIGIN}${post.author.profileUrl}` : `${SITE_ORIGIN}/author/${authorSlug(post)}.html`;
   const published = isoDate(post.datePublished);
   const modified = isoDate(post.dateModified || post.datePublished);
   const labels = metaFor(locale);
@@ -162,15 +162,18 @@ export function buildBlogArticleSeo(post, locale = 'en', categoryLabel = post.ca
         dateModified: modified,
         author: {
           '@type': 'Person',
-          name: post.author?.name || 'MC NovaTools Editorial',
+          name: post.author?.name || 'NovaTools Editorial Review',
           url: authorUrl
         },
         publisher: {
           '@type': 'Organization',
+          '@id': `${SITE_ORIGIN}/#organization`,
           name: SITE_NAME,
           logo: {
             '@type': 'ImageObject',
-            url: `${SITE_ORIGIN}/logo-brand.png`
+            url: `${SITE_ORIGIN}/logo-brand-520.png`,
+            width: 512,
+            height: 512
           }
         },
         description,
@@ -233,10 +236,13 @@ export function buildBlogIndexSeo(locale = 'en') {
         inLanguage: locale,
         publisher: {
           '@type': 'Organization',
+          '@id': `${SITE_ORIGIN}/#organization`,
           name: SITE_NAME,
           logo: {
             '@type': 'ImageObject',
-            url: `${SITE_ORIGIN}/logo-brand.png`
+            url: `${SITE_ORIGIN}/logo-brand-520.png`,
+            width: 512,
+            height: 512
           }
         }
       },

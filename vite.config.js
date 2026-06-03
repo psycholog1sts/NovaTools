@@ -101,6 +101,16 @@ const rootHtmlEntries = globSync('*.html', {
   return acc;
 }, {});
 
+
+const authorEntries = globSync('author/**/*.html').reduce((acc, file) => {
+  const name = file
+    .replace(/\\/g, '/')
+    .replace(/\.html$/, '');
+
+  acc[name] = resolveHtmlEntry(file);
+  return acc;
+}, {});
+
 // Admin entry point
 const adminEntry = {
   admin: resolveHtmlEntry('admin/index.html'),
@@ -216,6 +226,7 @@ export default defineConfig({
       input: {
         main: resolveHtmlEntry('index.html'),
         ...rootHtmlEntries,
+        ...authorEntries,
         ...localizedRootHtmlEntries,
         ...adminEntry,
         ...blogEntry,

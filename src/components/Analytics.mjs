@@ -116,6 +116,7 @@ function routePageType(route) {
   if (/^\/(?:[a-z]{2}\/)?(?:tools|finance)\//.test(normalized)) return 'tool';
   if (/^\/(?:[a-z]{2}\/)?categories\//.test(normalized)) return 'category';
   if (/^\/(?:[a-z]{2}\/)?blog(?:\/|$)/.test(normalized)) return 'blog';
+  if (/^\/(?:[a-z]{2}\/)?author\//.test(normalized)) return 'author';
   if (/\/(?:about|about-us)(?:\.html)?\/?$/.test(normalized)) return 'about';
   if (/\/contact(?:\.html)?\/?$|\/iletisim(?:\.html)?\/?$/.test(normalized)) return 'contact';
   return 'legal';
@@ -150,20 +151,55 @@ function absoluteUrl(value, fallback = SITE_ORIGIN) {
 function organizationSchema() {
   return {
     '@type': 'Organization',
+    '@id': `${SITE_ORIGIN}/#organization`,
     name: 'MC NovaTools',
     url: SITE_ORIGIN,
-    logo: `${SITE_ORIGIN}/logo-brand-520.png`,
+    logo: {
+      '@type': 'ImageObject',
+      url: `${SITE_ORIGIN}/logo-brand-520.png`,
+      width: 512,
+      height: 512
+    },
     sameAs: [
-      'https://www.linkedin.com/company/mc-novatools',
+      'https://github.com/mc-novatools',
       'https://twitter.com/mcnovatools',
-      'https://github.com/mc-novatools'
+      'https://linkedin.com/company/mc-novatools'
     ],
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'customer support',
-      email: 'support@example.com'
+      email: 'support@mc-novatools.com',
+      availableLanguage: ['English', 'Turkish', 'German']
     }
   };
+}
+
+export function graphRootSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      organizationSchema(),
+      {
+        '@type': 'WebSite',
+        '@id': `${SITE_ORIGIN}/#website`,
+        url: SITE_ORIGIN,
+        name: 'MC NovaTools — All-in-One Browser Utilities',
+        publisher: { '@id': `${SITE_ORIGIN}/#organization` },
+        potentialAction: {
+          '@type': 'SearchAction',
+          target: {
+            '@type': 'EntryPoint',
+            urlTemplate: `${SITE_ORIGIN}/search?q={search_term_string}`
+          },
+          'query-input': 'required name=search_term_string'
+        }
+      }
+    ]
+  };
+}
+
+function renderGraphRootSchema() {
+  return `<script type="application/ld+json">${jsonLdEscape(graphRootSchema())}</script>`;
 }
 
 function softwareDescription(pageData) {
@@ -225,7 +261,6 @@ export function generateSchemaJsonLd(pageType, pageData = {}, route = '/') {
       applicationCategory: categoryApplicationName(pageData.category),
       operatingSystem: 'Web Browser',
       offers: { '@type': 'Offer', price: 0, priceCurrency: 'USD' },
-      aggregateRating: { '@type': 'AggregateRating', ratingValue: 5, reviewCount: 1 },
       author: { '@type': 'Organization', name: 'MC NovaTools' },
       publisher: { '@type': 'Organization', name: 'MC NovaTools' }
     }];
@@ -240,8 +275,8 @@ export function generateSchemaJsonLd(pageType, pageData = {}, route = '/') {
       '@context': 'https://schema.org',
       '@type': 'Article',
       headline: name,
-      author: { '@type': 'Person', name: stripTags(pageData.authorName || 'MC NovaTools Editorial Team') },
-      publisher: { '@type': 'Organization', name: 'MC NovaTools', logo: `${SITE_ORIGIN}/logo-brand-520.png` },
+      author: { '@type': 'Person', name: stripTags(pageData.authorName || 'NovaTools Editorial Review'), url: `${SITE_ORIGIN}/author/novatools-editorial.html` },
+      publisher: { '@type': 'Organization', '@id': `${SITE_ORIGIN}/#organization`, name: 'MC NovaTools' },
       datePublished: toIsoDateTime(pageData.datePublished),
       dateModified: toIsoDateTime(pageData.dateModified || pageData.datePublished),
       image
@@ -258,6 +293,21 @@ export function generateSchemaJsonLd(pageType, pageData = {}, route = '/') {
       name: 'Contact Us',
       url: canonical,
       mainContentOfPage: { '@type': 'WebPageElement', name: 'Contact form', cssSelector: 'form, #contact-form, [data-contact-form]' }
+    }];
+  } else if (pageType === 'author') {
+    const isMetehan = /metehan-cetin/i.test(route);
+    schemas = [{
+      '@context': 'https://schema.org',
+      '@type': 'Person',
+      '@id': `${canonical}#person`,
+      name: isMetehan ? 'Metehan Çetin, LPC' : 'NovaTools Editorial Review',
+      jobTitle: isMetehan ? 'Founder, Editor and Browser Workflow Reviewer' : 'Editorial Quality Reviewer',
+      url: canonical,
+      image: `${SITE_ORIGIN}/assets/authors/${isMetehan ? 'metehan-cetin' : 'novatools-editorial'}.svg`,
+      worksFor: { '@id': `${SITE_ORIGIN}/#organization` },
+      alumniOf: { '@type': 'EducationalOrganization', name: isMetehan ? 'Professional counseling and applied web-product training' : 'MC NovaTools editorial workflow training' },
+      knowsAbout: ['PDF Processing', 'Image Optimization', 'Web Development'],
+      sameAs: ['https://linkedin.com/company/mc-novatools', 'https://github.com/mc-novatools', 'https://twitter.com/mcnovatools']
     }];
   } else if (pageType === 'legal') {
     schemas = [{
@@ -301,7 +351,7 @@ function schemaForHtml(html, route, pageTitle, description, image) {
     description,
     category: routeCategory(route),
     items: pageType === 'category' ? collectCategoryItems(html) : undefined,
-    authorName: readMetaContent(html, 'author', 'MC NovaTools Editorial Team'),
+    authorName: readMetaContent(html, 'author', 'NovaTools Editorial Review'),
     datePublished: readArticleDate(html, 'article:published_time', '2026-06-02T00:00:00+00:00'),
     dateModified: readArticleDate(html, 'article:modified_time', readArticleDate(html, 'article:published_time', '2026-06-02T00:00:00+00:00')),
     image
@@ -354,7 +404,7 @@ export function applySeoHead(html, route, { gaId = '', gscId = '', adsenseClient
 
   nextHtml = optimizeImageTags(nextHtml);
 
-  const schemaHead = schemaForHtml(nextHtml, route, title, description, socialImage);
+  const schemaHead = [renderGraphRootSchema(), schemaForHtml(nextHtml, route, title, description, socialImage)].filter(Boolean).join('\n');
   if (schemaHead) nextHtml = nextHtml.replace(/<\/head>/i, `  ${schemaHead}\n</head>`);
 
   nextHtml = nextHtml.replace(/\s*<meta name="google-site-verification" content="[^"]*"\s*\/?>/i, '');
