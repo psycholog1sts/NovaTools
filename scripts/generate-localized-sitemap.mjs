@@ -78,6 +78,7 @@ function authorSlug(author) {
 }
 
 function writeSitemap(fileName, entries) {
+  if (!entries.length) return;
   const grouped = entries.reduce((acc, entry) => {
     acc[entry.section] ||= [];
     acc[entry.section].push(entry);
@@ -113,13 +114,27 @@ const sections = [
     .map((slug) => urlEntry(`/author/${slug}/`, '0.5', 'monthly', 'Author pages'))]
 ];
 
+function dedupeEntries(entries) {
+  const seen = new Set();
+  return entries.filter(({ loc }) => {
+    if (seen.has(loc)) return false;
+    seen.add(loc);
+    return true;
+  });
+}
+
 const urls = sections.flatMap(([, entries]) => entries);
-const seen = new Set();
-const deduped = urls.filter(({ loc }) => {
-  if (seen.has(loc)) return false;
-  seen.add(loc);
-  return true;
-});
+const deduped = dedupeEntries(urls);
+const sitemapVariants = {
+  'sitemap-tools.xml': dedupeEntries(sections
+    .filter(([section]) => ['Category pages', 'Individual tool pages'].includes(section))
+    .flatMap(([, entries]) => entries)),
+  'sitemap-blog.xml': dedupeEntries(sections
+    .filter(([section]) => ['Blog category archive pages', 'Blog posts', 'Author pages'].includes(section))
+    .flatMap(([, entries]) => entries))
+};
+
+Object.entries(sitemapVariants).forEach(([fileName, entries]) => writeSitemap(fileName, entries));
 
 if (deduped.length > maxUrlsPerSitemap) {
   const names = [];
@@ -136,3 +151,4 @@ if (deduped.length > maxUrlsPerSitemap) {
 const siteLinks = `${deduped.map(({ loc }) => loc).join('\n')}\n`;
 fs.writeFileSync(path.join(rootDir, 'site-links.txt'), siteLinks);
 console.log(`✅ Generated sitemap architecture and site-links.txt with ${deduped.length} URLs.`);
+console.log(`✅ Generated sitemap variants: ${Object.entries(sitemapVariants).map(([fileName, entries]) => `${fileName} (${entries.length} URLs)`).join(', ')}.`);
