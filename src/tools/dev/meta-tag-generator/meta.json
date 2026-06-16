@@ -1,0 +1,41 @@
+{
+  "id": "meta-tag-generator",
+  "name": "Meta Tag Generator",
+  "nameEn": "Meta Tag Generator",
+  "category": "dev",
+  "tier": 1,
+  "cpc": {
+    "tr": 0.8,
+    "us": 2.2
+  },
+  "keywords": {
+    "tr": ["meta tag oluşturucu", "seo meta etiket", "open graph oluşturucu", "twitter card oluşturucu", "meta description oluşturucu"],
+    "en": ["meta tag generator", "seo meta tags", "open graph generator", "twitter card generator", "meta description generator"]
+  },
+  "description": {
+    "tr": "SEO, Open Graph ve Twitter Card meta etiketlerini canlı önizleme ile oluşturun. Kopyala-yapıştır hazır kod.",
+    "en": "Generate SEO, Open Graph and Twitter Card meta tags with live search and social previews. Copy-paste ready code."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "DeveloperApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.4
+    }
+  },
+  "bundle": {
+    "lazyLoad": false
+  },
+  "relatedTools": [
+    "robots-txt-generator",
+    "xml-formatter"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "id": "roi-calculator",
+  "name": "ROI Calculator",
+  "nameEn": "ROI Calculator",
+  "category": "finance",
+  "tier": 1,
+  "cpc": {
+    "tr": 1.2,
+    "us": 4.5
+  },
+  "keywords": {
+    "tr": ["roi hesaplama", "yatırım getirisi hesaplama", "yatırım getiri oranı", "yıllık getiri hesaplama", "kar zarar hesaplama"],
+    "en": ["roi calculator", "return on investment calculator", "investment return calculator", "annualized return", "profit calculator"]
+  },
+  "description": {
+    "tr": "Yatırım getirinizi (ROI) ve yıllıklandırılmış getiriyi hesaplayın. Kar/zarar, yüzde ve CAGR. Tarayıcıda çalışır.",
+    "en": "Calculate return on investment (ROI), net profit and annualized return (CAGR). Runs entirely in your browser."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "FinanceApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.8
+    }
+  },
+  "bundle": {
+    "lazyLoad": false
+  },
+  "relatedTools": [
+    "compound-interest",
+    "percentage-calculator"
+  ]
+}
