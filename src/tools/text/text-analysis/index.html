@@ -30,37 +30,33 @@
           <p class="tool-updated-note">Last updated: <time class="page-last-updated" datetime="2026-06-03">2026-06-03</time></p><p>Inspect word count, readability, keyword density, and simple keyword sentiment in your browser.</p></section><section class="workflow-card" aria-label="Text Analysis workflow"><textarea id="mainInput" rows="12" placeholder="Paste text to analyze..."></textarea><p id="toolStatus" class="status">Ready.</p><div id="result" class="result" aria-live="polite">Results will appear here.</div><p class="note">Phase 10 workflow: browser-first processing where possible; live data tools call the same-origin NovaTools proxy and use TTL cache plus fallback messaging.</p></section>
 
       <article class="tool-description" aria-labelledby="toolDescriptionTitle-text-analysis">
-        <h2 id="toolDescriptionTitle-text-analysis">What Text Analysis Does and Why It Matters</h2>
-        <p>Text Analysis helps people turn a common browser workflow into a clearer, repeatable process without turning a simple task into a full software project. In real work, text analysis tasks often appear right before a deadline: a document has to be sent, a data file needs to be checked, an image must be prepared for publishing, a calculation needs a second scenario, or a developer has to verify a pasted value before it enters a larger workflow. This page focuses on that practical moment. The interface gives you a direct place to provide the input, review settings, run the operation, and keep the result close enough to inspect before you use it elsewhere. That matters because small preparation mistakes can create oversized attachments, unreadable exports, broken imports, misleading estimates, or accidental exposure of details that should have stayed private.</p>
-        <p>The main value of Text Analysis is control. Instead of sending material through an unfamiliar workflow, you can use the browser to perform the job, observe the state of the input, and decide whether the output is ready. Inspect word count, readability, keyword density, and simple keyword sentiment in your browser. The tool is especially useful for teams that need quick utility work between larger applications: support staff preparing evidence, creators publishing assets, finance users comparing planning assumptions, students organizing files, and developers validating snippets before sharing them in tickets or pull requests. It is intentionally focused on one job, so the page can explain what is supported, what should be checked manually, and when a specialist application or professional review is more appropriate.</p>
-        <p>Experience signals on this page are written around common failure points rather than generic marketing. For Text Analysis, the important questions are whether the source material is in a supported format, whether the browser has enough memory to complete the action, whether the result keeps the information you expect, and whether any limitation changes how you should use the file or value. Reading these notes before you click the main action can save time because it frames the tool as part of a workflow: prepare the input, run the operation, inspect the output, then keep or discard the result based on evidence.</p>
+        <h2 id="toolDescriptionTitle-text-analysis">What the Text Analysis Tool Does and Why It Matters</h2>
+        <p>The Text Analysis tool inspects a block of text and reports word count, readability, keyword density, and a simple keyword-based sentiment read, entirely in your browser. It gives a quick, objective profile of writing rather than just a word total.</p>
+        <p>This matters when you want to understand or improve a piece of text — checking that it is readable for its audience, that no keyword is over-stuffed, and that the overall tone leans the way you intend, without sending the draft to an external service.</p>
         <h2>How to Use Text Analysis</h2>
         <ol>
-          <li>Open Text Analysis and read the short instructions near the interface so you know which input type the page expects.</li>
-          <li>Upload the supported file, paste the text, or enter the numeric values requested by the form; avoid adding unrelated private information.</li>
-          <li>Review every visible option, such as output format, range, quality, delimiter, units, date, rate, or mode, because these settings shape the final result.</li>
-          <li>Run the tool with the primary action button and wait for the status message, preview, validation result, calculation, or progress indicator to finish.</li>
-          <li>Inspect the displayed result carefully, including file name, page order, dimensions, row count, formatting, estimate assumptions, warnings, and any visible errors.</li>
-          <li>Download the generated file, copy the result, or record the calculation only after the preview matches your intended use case.</li>
-          <li>Clear the page or close the browser tab when finished, especially on a shared device or when the input included confidential material.</li>
+          <li>Paste the text you want to analyze.</li>
+          <li>Run the analysis to compute the metrics.</li>
+          <li>Read the readability score, word count, and keyword density.</li>
+          <li>Check the simple sentiment indicator for overall tone.</li>
+          <li>Revise the text and re-run to see the metrics change.</li>
         </ol>
-        <h2>Supported Formats and Limitations</h2>
-        <h3>Supported input formats</h3>
-        <ul><li>Plain text pasted or typed into the editor</li><li>URLs, HTML entities, slugs, paragraphs, article drafts, or comparison text supported by the tool</li><li>Optional settings such as case style, length, language, separator, or comparison mode</li></ul>
-        <h3>Supported output formats</h3>
-        <ul><li>Cleaned, counted, encoded, decoded, converted, summarized, or comparison-ready text</li><li>Copyable results for CMS fields, spreadsheets, documentation, or messages</li><li>Counts, warnings, and previews that help users review the output</li></ul>
-        <h3>Known limitations and edge cases</h3>
-        <ul><li>Generated or transformed text still needs human editorial review.</li><li>Very long documents may be constrained by browser memory and textarea performance.</li><li>Translations, summaries, and heuristics may miss context, tone, or domain-specific meaning.</li></ul>
-        <p>For best results, test Text Analysis with a small sample before committing a large batch or an important deadline item. Browser utilities are convenient because they reduce setup and keep the workflow close to the user, but they still depend on device memory, browser permissions, source-file quality, and the exact assumptions entered into the interface. If the output will be used for legal, medical, financial, security, accessibility, or production engineering decisions, treat the result as a preparation aid and verify it with the appropriate system of record.</p>
+        <h2>Supported Inputs and Limitations</h2>
+        <h3>What you provide</h3>
+        <ul><li>A block of text pasted into the tool</li></ul>
+        <h3>What you get</h3>
+        <ul><li>Word count and readability metrics</li><li>Keyword density and a simple keyword-based sentiment read</li></ul>
+        <h3>Known limitations</h3>
+        <ul><li>Sentiment is a lightweight keyword heuristic, not a trained language model, so it can miss sarcasm and nuance.</li><li>Readability formulas approximate difficulty and are guides, not absolute judgments.</li><li>It analyzes English-style text best; other languages may score less reliably.</li></ul>
         <h2>Privacy and Security</h2>
-        <p>Text Analysis is designed around a privacy-first browser workflow. Where possible, files and inputs are processed client-side in your browser, which means the work happens on your device instead of being permanently stored on NovaTools servers. Uploaded data is not stored on servers permanently by this page, and the safest habit is still to avoid uploading or pasting secrets that are not required for the task. Some features may depend on browser APIs, optional public lookups, or third-party libraries loaded by the page, so you should review the interface notes and avoid using confidential production data unless the tool behavior fits your policy.</p>
+        <p>All analysis runs in your browser. Your text is processed on your device and is never transmitted to NovaTools or any external service.</p>
         <h2>Frequently Asked Questions</h2>
-        <h3>Is Text Analysis suitable for confidential work?</h3>
-        <p>It can be suitable for many confidential preparation tasks when the operation is completed locally in the browser and your organization allows that workflow. You should still avoid unnecessary sensitive fields, use a trusted device, clear the page afterward, and verify whether any optional lookup or external dependency is involved before using regulated or secret material.</p>
-        <h3>Why should I inspect the output before downloading or copying it?</h3>
-        <p>Inspection is the step that turns a quick utility into a reliable workflow. A file may process successfully while still having the wrong order, dimensions, delimiter, estimate assumption, encoding, or visual quality. Reviewing the preview and status details helps catch those issues before the result reaches a client, upload portal, repository, spreadsheet, or public page.</p>
-        <h3>What should I do if Text Analysis does not accept my input?</h3>
-        <p>Start by checking the file type, size, formatting, and any visible error message. Try a smaller sample, remove unsupported characters or corrupted content, and confirm that your browser is current. If the source file uses a proprietary format, encryption, unusual encoding, or a damaged structure, a dedicated desktop application may be needed before this browser tool can help.</p>
+        <h3>How accurate is the sentiment read?</h3>
+        <p>It is a simple keyword-based estimate of overall tone, useful for a quick gauge but not a substitute for careful human reading or an AI model.</p>
+        <h3>What does the readability score mean?</h3>
+        <p>It approximates how easy the text is to read based on word and sentence length, helping you match the text to your audience.</p>
+        <h3>Is my text uploaded?</h3>
+        <p>No. Everything is computed locally and the text stays in your browser.</p>
         <h2>Related Tools</h2>
         <ul><li><a href="https://mc-novatools.com/tools/text/case-converter/">Case Converter — Convert text between uppercase, lowercase, title case, and more.</a></li><li><a href="https://mc-novatools.com/tools/text/character-counter/">Character Counter — Count characters with detailed breakdown including spaces, letters, numbers.</a></li></ul>
       </article>

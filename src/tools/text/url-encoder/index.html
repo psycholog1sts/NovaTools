@@ -229,37 +229,32 @@
       </div>
 
       <article class="tool-description" aria-labelledby="toolDescriptionTitle-url-encoder">
-        <h2 id="toolDescriptionTitle-url-encoder">What URL Encoder/Decoder Does and Why It Matters</h2>
-        <p>URL Encoder/Decoder helps people inspect the input and surface issues before you rely on it without turning a simple task into a full software project. In real work, url encoder tasks often appear right before a deadline: a document has to be sent, a data file needs to be checked, an image must be prepared for publishing, a calculation needs a second scenario, or a developer has to verify a pasted value before it enters a larger workflow. This page focuses on that practical moment. The interface gives you a direct place to provide the input, review settings, run the operation, and keep the result close enough to inspect before you use it elsewhere. That matters because small preparation mistakes can create oversized attachments, unreadable exports, broken imports, misleading estimates, or accidental exposure of details that should have stayed private.</p>
-        <p>The main value of URL Encoder/Decoder is control. Instead of sending material through an unfamiliar workflow, you can use the browser to perform the job, observe the state of the input, and decide whether the output is ready. Encode and decode text for URLs and query strings. Supports percent encoding. The tool is especially useful for teams that need quick utility work between larger applications: support staff preparing evidence, creators publishing assets, finance users comparing planning assumptions, students organizing files, and developers validating snippets before sharing them in tickets or pull requests. It is intentionally focused on one job, so the page can explain what is supported, what should be checked manually, and when a specialist application or professional review is more appropriate.</p>
-        <p>Experience signals on this page are written around common failure points rather than generic marketing. For URL Encoder/Decoder, the important questions are whether the source material is in a supported format, whether the browser has enough memory to complete the action, whether the result keeps the information you expect, and whether any limitation changes how you should use the file or value. Reading these notes before you click the main action can save time because it frames the tool as part of a workflow: prepare the input, run the operation, inspect the output, then keep or discard the result based on evidence.</p>
+        <h2 id="toolDescriptionTitle-url-encoder">What the URL Encoder/Decoder Does and Why It Matters</h2>
+        <p>The URL Encoder/Decoder converts text to and from percent-encoded form, so characters that are unsafe in a URL — spaces, &amp;, ?, =, and non-ASCII characters — become safe %XX sequences (and back), all in your browser.</p>
+        <p>This matters because URLs have a strict character set: a raw space or ampersand in a query string breaks the link or splits a parameter. Percent-encoding lets you safely put arbitrary text into a URL or read an encoded link someone shared.</p>
         <h2>How to Use URL Encoder/Decoder</h2>
         <ol>
-          <li>Open URL Encoder/Decoder and read the short instructions near the interface so you know which input type the page expects.</li>
-          <li>Upload the supported file, paste the text, or enter the numeric values requested by the form; avoid adding unrelated private information.</li>
-          <li>Review every visible option, such as output format, range, quality, delimiter, units, date, rate, or mode, because these settings shape the final result.</li>
-          <li>Run the tool with the primary action button and wait for the status message, preview, validation result, calculation, or progress indicator to finish.</li>
-          <li>Inspect the displayed result carefully, including file name, page order, dimensions, row count, formatting, estimate assumptions, warnings, and any visible errors.</li>
-          <li>Download the generated file, copy the result, or record the calculation only after the preview matches your intended use case.</li>
-          <li>Clear the page or close the browser tab when finished, especially on a shared device or when the input included confidential material.</li>
+          <li>Paste the text or URL component into the input.</li>
+          <li>Choose to encode (text to percent-encoding) or decode (percent-encoding back to text).</li>
+          <li>Run the conversion.</li>
+          <li>Copy the encoded or decoded result.</li>
         </ol>
-        <h2>Supported Formats and Limitations</h2>
-        <h3>Supported input formats</h3>
-        <ul><li>Plain text pasted or typed into the editor</li><li>URLs, HTML entities, slugs, paragraphs, article drafts, or comparison text supported by the tool</li><li>Optional settings such as case style, length, language, separator, or comparison mode</li></ul>
-        <h3>Supported output formats</h3>
-        <ul><li>Cleaned, counted, encoded, decoded, converted, summarized, or comparison-ready text</li><li>Copyable results for CMS fields, spreadsheets, documentation, or messages</li><li>Counts, warnings, and previews that help users review the output</li></ul>
-        <h3>Known limitations and edge cases</h3>
-        <ul><li>Generated or transformed text still needs human editorial review.</li><li>Very long documents may be constrained by browser memory and textarea performance.</li><li>Translations, summaries, and heuristics may miss context, tone, or domain-specific meaning.</li></ul>
-        <p>For best results, test URL Encoder/Decoder with a small sample before committing a large batch or an important deadline item. Browser utilities are convenient because they reduce setup and keep the workflow close to the user, but they still depend on device memory, browser permissions, source-file quality, and the exact assumptions entered into the interface. If the output will be used for legal, medical, financial, security, accessibility, or production engineering decisions, treat the result as a preparation aid and verify it with the appropriate system of record.</p>
+        <h2>Supported Inputs and Limitations</h2>
+        <h3>What you provide</h3>
+        <ul><li>Text or a URL component to encode, or a percent-encoded string to decode</li></ul>
+        <h3>What you get</h3>
+        <ul><li>A correctly percent-encoded string (or the decoded text)</li><li>Copy-ready output</li></ul>
+        <h3>Known limitations</h3>
+        <ul><li>Encoding a whole URL vs. a single query value differs; encode components individually when building a URL.</li><li>Double-encoding (encoding already-encoded text) produces literal %25 sequences — decode first if unsure.</li><li>It transforms text; it does not validate that a URL is reachable.</li></ul>
         <h2>Privacy and Security</h2>
-        <p>URL Encoder/Decoder is designed around a privacy-first browser workflow. Where possible, files and inputs are processed client-side in your browser, which means the work happens on your device instead of being permanently stored on NovaTools servers. Uploaded data is not stored on servers permanently by this page, and the safest habit is still to avoid uploading or pasting secrets that are not required for the task. Some features may depend on browser APIs, optional public lookups, or third-party libraries loaded by the page, so you should review the interface notes and avoid using confidential production data unless the tool behavior fits your policy.</p>
+        <p>Encoding and decoding run entirely in your browser. The text you enter is processed on your device and is never sent to NovaTools or any external service.</p>
         <h2>Frequently Asked Questions</h2>
-        <h3>Is URL Encoder/Decoder suitable for confidential work?</h3>
-        <p>It can be suitable for many confidential preparation tasks when the operation is completed locally in the browser and your organization allows that workflow. You should still avoid unnecessary sensitive fields, use a trusted device, clear the page afterward, and verify whether any optional lookup or external dependency is involved before using regulated or secret material.</p>
-        <h3>Why should I inspect the output before downloading or copying it?</h3>
-        <p>Inspection is the step that turns a quick utility into a reliable workflow. A file may process successfully while still having the wrong order, dimensions, delimiter, estimate assumption, encoding, or visual quality. Reviewing the preview and status details helps catch those issues before the result reaches a client, upload portal, repository, spreadsheet, or public page.</p>
-        <h3>What should I do if URL Encoder/Decoder does not accept my input?</h3>
-        <p>Start by checking the file type, size, formatting, and any visible error message. Try a smaller sample, remove unsupported characters or corrupted content, and confirm that your browser is current. If the source file uses a proprietary format, encryption, unusual encoding, or a damaged structure, a dedicated desktop application may be needed before this browser tool can help.</p>
+        <h3>What is percent-encoding?</h3>
+        <p>It replaces characters that are unsafe in a URL with a % followed by their hex code, for example a space becomes %20, so the URL stays valid.</p>
+        <h3>Should I encode the whole URL?</h3>
+        <p>Usually encode individual components (like a query value) rather than the entire URL, so structural characters such as ? and &amp; are not escaped.</p>
+        <h3>Is my text uploaded?</h3>
+        <p>No. Conversion is local and the text never leaves your browser.</p>
         <h2>Related Tools</h2>
         <ul><li><a href="https://mc-novatools.com/tools/text/case-converter/">Case Converter — Convert text between uppercase, lowercase, title case, and more.</a></li><li><a href="https://mc-novatools.com/tools/text/character-counter/">Character Counter — Count characters with detailed breakdown including spaces, letters, numbers.</a></li></ul>
       </article>
