@@ -319,7 +319,7 @@
             const open = serializer.serializeToString(child);
             out += pad + open + '\n';
           } else {
-            const openTag = '<' + child.nodeName + Array.from(child.attributes).map((a) => ' ' + a.name + '="' + a.value + '"').join('') + '>';
+            const openTag = '<' + child.nodeName + Array.from(child.attributes).map((a) => ' ' + a.name + '="' + a.value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;') + '"').join('') + '>';
             out += pad + openTag + '\n';
             out += prettyPrint(child, unit, level + 1);
             out += pad + '</' + child.nodeName + '>\n';

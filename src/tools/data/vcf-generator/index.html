@@ -299,7 +299,7 @@
 
     function fileName() {
       const fn = [$('firstName').value.trim(), $('lastName').value.trim()].filter(Boolean).join('-') || 'contact';
-      return fn.toLowerCase().replace(/[^a-z0-9-]/g, '') + '.vcf';
+      return (fn.toLowerCase().replace(/[^a-z0-9-]/g, '') || 'contact') + '.vcf';
     }
 
     ids.forEach((id) => $(id).addEventListener('input', build));
