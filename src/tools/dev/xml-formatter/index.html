@@ -327,6 +327,8 @@
         } else if (child.nodeType === 3) {
           const t = child.nodeValue.trim();
           if (t) out += pad + t + '\n';
+        } else if (child.nodeType === 7) {
+          out += pad + '<?' + child.target + (child.data ? ' ' + child.data : '') + '?>\n';
         } else if (child.nodeType === 8) {
           out += pad + '<!--' + child.nodeValue + '-->\n';
         }
