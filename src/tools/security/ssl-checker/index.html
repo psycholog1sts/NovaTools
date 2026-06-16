@@ -675,33 +675,33 @@
 
       <article class="tool-description" aria-labelledby="toolDescriptionTitle-ssl-checker">
         <h2 id="toolDescriptionTitle-ssl-checker">What the SSL Checker Does and Why It Matters</h2>
-        <p>The SSL Checker inspects the TLS certificate served by a domain and reports the essentials: who issued it, when it expires, which protocol versions are in play, and whether the certificate chain looks healthy.</p>
-        <p>An expired or misconfigured certificate breaks HTTPS and scares away visitors, so a quick pre-flight check before or after a deployment saves a lot of trouble. It is also a fast way to confirm that a renewal actually took effect on the live server.</p>
+        <p>The SSL Checker is an educational tool that explains how HTTPS and TLS work and shows an illustrative, simulated certificate report for a domain you enter. Because browsers do not let a web page perform a raw TLS handshake against another site, this tool does not fetch a real certificate; it generates a representative example so you can learn what fields such as issuer, validity dates, and TLS version mean.</p>
+        <p>It is useful for understanding what to look for in a certificate and why an expired or misconfigured one breaks HTTPS and scares away visitors. For an authoritative audit of a live site, you still need a server-side scanner such as Qualys SSL Labs — this page is a learning aid, not a substitute for one.</p>
         <h2>How to Use SSL Checker</h2>
         <ol>
-          <li>Enter the domain or hostname you want to inspect.</li>
-          <li>Run the check and wait for the certificate details to load.</li>
-          <li>Review the issuer and the validity (not-before and not-after) dates.</li>
-          <li>Note the TLS version and other reported configuration details.</li>
-          <li>Confirm the expiry date gives you enough runway to renew.</li>
-          <li>Re-run after a renewal to verify the new certificate is live.</li>
+          <li>Enter a domain or hostname to use as the example subject.</li>
+          <li>Click Check SSL to run the simulated check.</li>
+          <li>Read the illustrative certificate details (issuer, validity window, TLS version).</li>
+          <li>Use the explanations to learn what each field means and why it matters.</li>
+          <li>Note the on-page disclaimer that the data is simulated, not live.</li>
+          <li>For a real audit, run the domain through a server-side tool such as Qualys SSL Labs.</li>
         </ol>
         <h2>Supported Inputs and Limitations</h2>
         <h3>Supported input</h3>
-        <ul><li>A domain name or hostname (for example example.com)</li><li>Public HTTPS endpoints reachable by the lookup service</li></ul>
+        <ul><li>A domain name or hostname used as the example subject</li><li>Any value you want to explore the explanations with</li></ul>
         <h3>What you get</h3>
-        <ul><li>Certificate issuer and subject details</li><li>Validity window and days remaining until expiry</li><li>TLS version and basic configuration notes</li></ul>
+        <ul><li>An illustrative, simulated certificate report</li><li>Plain-language explanations of TLS version, validity, and HSTS</li><li>Pointers to authoritative server-side tools for real testing</li></ul>
         <h3>Known limitations</h3>
-        <ul><li>Results reflect a single point in time and depend on an external lookup service.</li><li>It reports certificate facts; it is not a full vulnerability scan or penetration test.</li><li>Private, internal, or firewalled hosts that the service cannot reach will not return data.</li></ul>
+        <ul><li>The tool makes no network request and does not read any real certificate; the values shown are simulated.</li><li>Browser security restrictions prevent client-side code from performing a genuine TLS handshake against a third-party host.</li><li>Do not use the output for compliance, security, or production decisions — verify with a server-side scanner.</li></ul>
         <h2>Privacy and Security</h2>
-        <p>The domain you enter is sent to a public certificate-lookup service so its live certificate can be read; only the hostname is needed, not any private data. NovaTools does not retain the domains you check. Because the query leaves your browser, avoid entering internal hostnames you would prefer not to disclose.</p>
+        <p>Everything happens in your browser. The domain you type is used only to build the on-page example and is never sent to NovaTools or any external service, and nothing is stored after you leave. Because no real lookup is performed, this tool cannot expose anything about the domain you enter.</p>
         <h2>Frequently Asked Questions</h2>
-        <h3>What does "certificate expired" mean for visitors?</h3>
-        <p>Browsers will show a prominent security warning and may block the page entirely, so traffic and trust drop sharply. Renewing and reinstalling the certificate clears the warning.</p>
-        <h3>Is the domain I check kept or logged?</h3>
-        <p>NovaTools does not store the domains you look up. The hostname is passed to a public lookup service only to read the live certificate, then discarded.</p>
-        <h3>Can it check an internal or localhost server?</h3>
-        <p>Only endpoints the external lookup service can reach are supported. Private, internal, or firewalled hosts will not return results because the service cannot connect to them.</p>
+        <h3>Does this tool read my site’s real certificate?</h3>
+        <p>No. Browsers do not allow a web page to perform a raw TLS handshake against another domain, so the certificate details shown here are a simulated example for learning. To inspect a live certificate, use a server-side scanner.</p>
+        <h3>How do I properly test a live site’s SSL?</h3>
+        <p>Use a server-side tool such as Qualys SSL Labs, or check the certificate directly in your browser by clicking the padlock in the address bar. Those sources read the actual certificate served by the host.</p>
+        <h3>Is the domain I enter sent anywhere?</h3>
+        <p>No. The value stays in your browser and is used only to populate the illustrative example. The tool makes no network request, so the domain is never transmitted or logged.</p>
         <h2>Related Tools</h2>
         <ul><li><a href="https://mc-novatools.com/tools/security/ad-blocker-tester/">Ad Blocker Tester for inspect the input and surface issues before you rely on it</a></li><li><a href="https://mc-novatools.com/tools/security/encrypt-decrypt/">Encryption/Decryption Tool for turn a common browser workflow into a clearer, repeatable process</a></li></ul>
       </article>
