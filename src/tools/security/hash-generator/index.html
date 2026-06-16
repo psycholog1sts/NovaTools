@@ -655,37 +655,34 @@
       </div>
 
       <article class="tool-description" aria-labelledby="toolDescriptionTitle-hash-generator">
-        <h2 id="toolDescriptionTitle-hash-generator">What Hash Generator Does and Why It Matters</h2>
-        <p>Hash Generator helps people create a useful draft or asset from settings you control without turning a simple task into a full software project. In real work, hash generator tasks often appear right before a deadline: a document has to be sent, a data file needs to be checked, an image must be prepared for publishing, a calculation needs a second scenario, or a developer has to verify a pasted value before it enters a larger workflow. This page focuses on that practical moment. The interface gives you a direct place to provide the input, review settings, run the operation, and keep the result close enough to inspect before you use it elsewhere. That matters because small preparation mistakes can create oversized attachments, unreadable exports, broken imports, misleading estimates, or accidental exposure of details that should have stayed private.</p>
-        <p>The main value of Hash Generator is control. Instead of sending material through an unfamiliar workflow, you can use the browser to perform the job, observe the state of the input, and decide whether the output is ready. Generate MD5, SHA-1, SHA-256, SHA-512 hashes. Text and file hash calculation with verification features. The tool is especially useful for teams that need quick utility work between larger applications: support staff preparing evidence, creators publishing assets, finance users comparing planning assumptions, students organizing files, and developers validating snippets before sharing them in tickets or pull requests. It is intentionally focused on one job, so the page can explain what is supported, what should be checked manually, and when a specialist application or professional review is more appropriate.</p>
-        <p>Experience signals on this page are written around common failure points rather than generic marketing. For Hash Generator, the important questions are whether the source material is in a supported format, whether the browser has enough memory to complete the action, whether the result keeps the information you expect, and whether any limitation changes how you should use the file or value. Reading these notes before you click the main action can save time because it frames the tool as part of a workflow: prepare the input, run the operation, inspect the output, then keep or discard the result based on evidence.</p>
+        <h2 id="toolDescriptionTitle-hash-generator">What the Hash Generator Does and Why It Matters</h2>
+        <p>The Hash Generator computes cryptographic digests — MD5, SHA-1, SHA-256, and SHA-512 — from text you type or a file you select. A hash is a fixed-length fingerprint of the input: the same input always produces the same digest, while any change produces a completely different one.</p>
+        <p>Hashes are how you verify that a download was not corrupted or tampered with, compare two files without opening them, or store a checksum for later comparison. Because modern browsers expose SubtleCrypto, the calculation happens locally and works even on large files without an upload step.</p>
         <h2>How to Use Hash Generator</h2>
         <ol>
-          <li>Open Hash Generator and read the short instructions near the interface so you know which input type the page expects.</li>
-          <li>Upload the supported file, paste the text, or enter the numeric values requested by the form; avoid adding unrelated private information.</li>
-          <li>Review every visible option, such as output format, range, quality, delimiter, units, date, rate, or mode, because these settings shape the final result.</li>
-          <li>Run the tool with the primary action button and wait for the status message, preview, validation result, calculation, or progress indicator to finish.</li>
-          <li>Inspect the displayed result carefully, including file name, page order, dimensions, row count, formatting, estimate assumptions, warnings, and any visible errors.</li>
-          <li>Download the generated file, copy the result, or record the calculation only after the preview matches your intended use case.</li>
-          <li>Clear the page or close the browser tab when finished, especially on a shared device or when the input included confidential material.</li>
+          <li>Enter text in the input box, or choose a file to hash.</li>
+          <li>Select the algorithm you need (SHA-256 is a sensible default).</li>
+          <li>Run the calculation and read the resulting hexadecimal digest.</li>
+          <li>Use Copy to grab the digest for documentation or comparison.</li>
+          <li>To verify integrity, paste an expected checksum and compare it to the output.</li>
+          <li>Repeat with a different algorithm if a vendor publishes a specific one.</li>
         </ol>
-        <h2>Supported Formats and Limitations</h2>
-        <h3>Supported input formats</h3>
-        <ul><li>Text, tokens, hashes, passwords, IPs, UUID requests, or connection details entered by the user</li><li>Optional strength, algorithm, length, parsing, or lookup settings</li><li>Browser-provided information when the tool inspects local user-agent or connection context</li></ul>
-        <h3>Supported output formats</h3>
-        <ul><li>Generated passwords, UUIDs, hashes, decoded token views, or diagnostic summaries</li><li>Copy-ready security values with visible warnings and constraints</li><li>Human-readable interpretations that help users avoid unsafe assumptions</li></ul>
-        <h3>Known limitations and edge cases</h3>
-        <ul><li>Decoded tokens or hashes are not proof of trust, authorization, or identity.</li><li>External network checks may depend on public data availability and should not replace formal security monitoring.</li><li>Do not paste production secrets unless the tool explicitly states that processing remains local and the risk is acceptable.</li></ul>
-        <p>For best results, test Hash Generator with a small sample before committing a large batch or an important deadline item. Browser utilities are convenient because they reduce setup and keep the workflow close to the user, but they still depend on device memory, browser permissions, source-file quality, and the exact assumptions entered into the interface. If the output will be used for legal, medical, financial, security, accessibility, or production engineering decisions, treat the result as a preparation aid and verify it with the appropriate system of record.</p>
+        <h2>Supported Inputs and Limitations</h2>
+        <h3>Supported input</h3>
+        <ul><li>Arbitrary text entered in the box</li><li>A local file selected from your device</li><li>A choice of MD5, SHA-1, SHA-256, or SHA-512</li></ul>
+        <h3>What you get</h3>
+        <ul><li>A hexadecimal digest for the selected algorithm</li><li>A copy-ready value for checksums or records</li><li>Consistent output for verifying file integrity</li></ul>
+        <h3>Known limitations</h3>
+        <ul><li>MD5 and SHA-1 are fine for integrity checks but are not collision-resistant enough for security decisions.</li><li>A hash is one-way: it identifies data but cannot be reversed back into the original input.</li><li>Hashing is not encryption and does not keep the input confidential on its own.</li></ul>
         <h2>Privacy and Security</h2>
-        <p>Hash Generator is designed around a privacy-first browser workflow. Where possible, files and inputs are processed client-side in your browser, which means the work happens on your device instead of being permanently stored on NovaTools servers. Uploaded data is not stored on servers permanently by this page, and the safest habit is still to avoid uploading or pasting secrets that are not required for the task. Some features may depend on browser APIs, optional public lookups, or third-party libraries loaded by the page, so you should review the interface notes and avoid using confidential production data unless the tool behavior fits your policy.</p>
+        <p>Text and files are hashed in your browser using the built-in SubtleCrypto API, so the content is not uploaded to NovaTools or any server. Nothing is retained after the page is closed. For very sensitive files this local processing is a real advantage, since the data never leaves your machine.</p>
         <h2>Frequently Asked Questions</h2>
-        <h3>Is Hash Generator suitable for confidential work?</h3>
-        <p>It can be suitable for many confidential preparation tasks when the operation is completed locally in the browser and your organization allows that workflow. You should still avoid unnecessary sensitive fields, use a trusted device, clear the page afterward, and verify whether any optional lookup or external dependency is involved before using regulated or secret material.</p>
-        <h3>Why should I inspect the output before downloading or copying it?</h3>
-        <p>Inspection is the step that turns a quick utility into a reliable workflow. A file may process successfully while still having the wrong order, dimensions, delimiter, estimate assumption, encoding, or visual quality. Reviewing the preview and status details helps catch those issues before the result reaches a client, upload portal, repository, spreadsheet, or public page.</p>
-        <h3>What should I do if Hash Generator does not accept my input?</h3>
-        <p>Start by checking the file type, size, formatting, and any visible error message. Try a smaller sample, remove unsupported characters or corrupted content, and confirm that your browser is current. If the source file uses a proprietary format, encryption, unusual encoding, or a damaged structure, a dedicated desktop application may be needed before this browser tool can help.</p>
+        <h3>Which hash algorithm should I use?</h3>
+        <p>For security-relevant work choose SHA-256 or SHA-512. MD5 and SHA-1 remain useful for quick integrity or de-duplication checks where deliberate tampering is not a concern.</p>
+        <h3>Are my files uploaded to a server?</h3>
+        <p>No. File hashing uses the browser’s SubtleCrypto API and runs entirely on your device. The file contents are never sent anywhere.</p>
+        <h3>Can I recover the original text from a hash?</h3>
+        <p>No. Hashing is a one-way function by design. The digest can confirm whether data matches, but it cannot be decoded back into the original input.</p>
         <h2>Related Tools</h2>
         <ul><li><a href="https://mc-novatools.com/tools/security/ad-blocker-tester/">Ad Blocker Tester for inspect the input and surface issues before you rely on it</a></li><li><a href="https://mc-novatools.com/tools/security/encrypt-decrypt/">Encryption/Decryption Tool for turn a common browser workflow into a clearer, repeatable process</a></li></ul>
       </article>
