@@ -1,0 +1,41 @@
+{
+  "id": "schema-markup-generator",
+  "name": "Schema Markup Generator",
+  "nameEn": "Schema Markup Generator",
+  "category": "dev",
+  "tier": 1,
+  "cpc": {
+    "tr": 0.7,
+    "us": 2.4
+  },
+  "keywords": {
+    "tr": ["schema markup oluşturucu", "json-ld oluşturucu", "yapılandırılmış veri", "schema.org oluşturucu", "rich snippet"],
+    "en": ["schema markup generator", "json-ld generator", "structured data generator", "schema.org generator", "rich snippet generator"]
+  },
+  "description": {
+    "tr": "Schema.org JSON-LD yapılandırılmış verisini görsel olarak oluşturun: Article, FAQ, Product, LocalBusiness, Organization ve daha fazlası.",
+    "en": "Generate Schema.org JSON-LD structured data visually: Article, FAQ, Product, LocalBusiness, Organization and more. Copy-paste ready."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "DeveloperApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.45
+    }
+  },
+  "bundle": {
+    "lazyLoad": false
+  },
+  "relatedTools": [
+    "meta-tag-generator",
+    "sitemap-generator"
+  ]
+}

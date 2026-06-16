@@ -1,0 +1,41 @@
+{
+  "id": "sitemap-generator",
+  "name": "XML Sitemap Generator",
+  "nameEn": "XML Sitemap Generator",
+  "category": "dev",
+  "tier": 1,
+  "cpc": {
+    "tr": 0.6,
+    "us": 1.9
+  },
+  "keywords": {
+    "tr": ["sitemap oluşturucu", "xml sitemap generator", "site haritası oluştur", "sitemap.xml nasıl yapılır", "seo sitemap"],
+    "en": ["sitemap generator", "xml sitemap generator", "create sitemap", "sitemap.xml builder", "seo sitemap tool"]
+  },
+  "description": {
+    "tr": "URL'lerinizden geçerli bir XML sitemap (sitemap.xml) oluşturun. lastmod, changefreq ve priority desteği. Tarayıcıda çalışır.",
+    "en": "Generate a valid XML sitemap (sitemap.xml) from your URLs with lastmod, changefreq and priority. Runs in your browser."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "DeveloperApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.35
+    }
+  },
+  "bundle": {
+    "lazyLoad": false
+  },
+  "relatedTools": [
+    "robots-txt-generator",
+    "schema-markup-generator"
+  ]
+}
