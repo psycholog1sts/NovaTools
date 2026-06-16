@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script type="text/plain" data-consent-category="analytics" async src="https://www.googletagmanager.com/gtag/js?id=G-Y896L63239"></script>
+  <script type="text/plain" data-consent-category="analytics">
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Y896L63239', {
+    anonymize_ip: true,
+    cookie_expires: 63072000,
+    cookie_update: true
+  });
+  </script>
+  <meta charset="UTF-8">
+  <script>(function(){var t=localStorage.getItem('novatools-theme');if(t)document.documentElement.setAttribute('data-theme',t);else{var d=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',d);document.documentElement.style.colorScheme=d;}})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/src/styles/critical.css">
+  <link rel="stylesheet" href="/src/styles/main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <title>XML Formatter, Validator &amp; Minifier - Free Online Tool | NovaTools MC</title>
+
+  <!-- i18n Script -->
+  <script src="/i18n.js" defer></script>
+  <meta name="description" content="Format, validate and minify XML in your browser. Pretty-print messy XML, catch syntax errors, and compress files. 100% client-side, no upload, no signup.">
+  <meta name="keywords" content="xml formatter, xml beautifier, format xml online, xml validator, xml minifier, pretty print xml">
+  <meta name="theme-color" content="#0A0A0C">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="XML Formatter, Validator &amp; Minifier | NovaTools MC">
+  <meta property="og:description" content="Pretty-print, validate and minify XML directly in your browser. No data leaves your device.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.mc-novatools.com/tools/dev/xml-formatter/">
+  <meta property="og:image" content="https://www.mc-novatools.com/og-image.png">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="XML Formatter, Validator &amp; Minifier | NovaTools MC">
+  <meta name="twitter:description" content="Format, validate and minify XML in the browser. No signup.">
+
+  <link rel="canonical" href="https://www.mc-novatools.com/tools/dev/xml-formatter/">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [{
+      "@type": "WebApplication",
+      "name": "XML Formatter",
+      "description": "Free online XML formatter, validator and minifier that runs entirely in your browser.",
+      "url": "https://www.mc-novatools.com/tools/dev/xml-formatter/",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+    }]
+  }
+  </script>
+
+  <style>
+    .tool-wrapper { max-width: 960px; margin: 0 auto; padding: 3rem 1rem 5rem; }
+    .tool-hero { text-align: center; margin-bottom: 2.5rem; }
+    .tool-hero-icon { font-size: 3.5rem; line-height: 1; margin-bottom: 1rem; }
+    .tool-hero h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; letter-spacing: -0.02em; color: #FAFAFA; margin-bottom: 0.75rem; }
+    .tool-hero p { color: #A1A1AA; font-size: 1.0625rem; max-width: 620px; margin: 0 auto; }
+    .tool-updated-note { font-size: 0.8125rem; color: #71717A; margin-bottom: 0.5rem; }
+    .card { background: rgba(15,15,20,0.7); border: 1px solid rgba(0,217,255,0.15); border-radius: 14px; padding: 1.75rem; backdrop-filter: blur(12px); }
+    .options-row { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; margin-bottom: 1.25rem; }
+    .option-field { display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; color: #A1A1AA; }
+    .option-field select { background: #0F0F12; color: #FAFAFA; border: 1px solid rgba(0,217,255,0.2); border-radius: 8px; padding: 0.4rem 0.6rem; font-size: 0.85rem; }
+    .input-section { margin-bottom: 1.25rem; }
+    .input-label { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #71717A; margin-bottom: 0.625rem; }
+    .code-area { width: 100%; min-height: 150px; padding: 1rem 1.125rem; background: #0F0F12; border: 1px solid rgba(0,217,255,0.12); border-radius: 10px; color: #FAFAFA; font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.875rem; line-height: 1.7; resize: vertical; outline: none; box-sizing: border-box; }
+    .code-area::placeholder { color: #52525B; }
+    .code-area:focus { border-color: rgba(0,217,255,0.45); box-shadow: 0 0 0 3px rgba(0,217,255,0.08); }
+    .btn-bar { display: flex; flex-wrap: wrap; gap: 0.625rem; margin: 1.25rem 0 1.5rem; }
+    .btn { display: inline-flex; align-items: center; gap: 0.4rem; height: 40px; padding: 0 1.125rem; border: none; border-radius: 8px; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: background 0.18s, transform 0.12s, opacity 0.18s; outline: none; user-select: none; }
+    .btn:active { transform: scale(0.97); }
+    .btn-primary { background: linear-gradient(135deg, #00D9FF, #0099CC); color: #0A0A0C; }
+    .btn-primary:hover { background: linear-gradient(135deg, #1FE2FF, #00B8EE); }
+    .btn-ghost { background: var(--surface-default); border: 1px solid var(--border-hover); color: #A1A1AA; }
+    .btn-ghost:hover { background: rgba(255,255,255,0.09); color: #FAFAFA; }
+    .btn-danger { background: rgba(255,85,85,0.1); border: 1px solid rgba(255,85,85,0.25); color: #FF5555; }
+    .btn-danger:hover { background: rgba(255,85,85,0.18); }
+    .status-banner { display: none; align-items: flex-start; gap: 0.75rem; padding: 0.875rem 1rem; border-radius: 10px; margin-bottom: 1rem; font-size: 0.85rem; line-height: 1.6; }
+    .status-banner.visible { display: flex; }
+    .status-banner.error { background: rgba(255,85,85,0.08); border: 1px solid rgba(255,85,85,0.3); color: #FF7777; }
+    .status-banner.success { background: rgba(0,255,136,0.06); border: 1px solid rgba(0,255,136,0.25); color: #34D399; }
+    .output-label { font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #71717A; margin-bottom: 0.625rem; }
+    .legal-note { margin-top: 1.5rem; padding: 1rem 1.25rem; background: rgba(255,193,7,0.05); border: 1px solid rgba(255,193,7,0.15); border-radius: 10px; font-size: 0.8125rem; color: #A1A1AA; line-height: 1.6; }
+    .legal-note strong { color: #FFC107; }
+    .tool-description { max-width: 960px; margin: 3.5rem auto 0; padding: 0 1rem; }
+    .tool-description h2 { font-size: 1.375rem; font-weight: 700; color: #FAFAFA; margin: 2.25rem 0 0.75rem; }
+    .tool-description h3 { font-size: 1.0625rem; font-weight: 600; color: #FAFAFA; margin: 1.5rem 0 0.5rem; }
+    .tool-description p, .tool-description li { color: #A1A1AA; line-height: 1.8; font-size: 0.9375rem; }
+    .tool-description ul, .tool-description ol { padding-left: 1.25rem; }
+    .tool-description li { margin-bottom: 0.4rem; }
+    .faq-item { border: 1px solid rgba(0,217,255,0.1); border-radius: 10px; padding: 1rem 1.125rem; margin-bottom: 0.875rem; background: rgba(15,15,20,0.5); }
+    .faq-item summary { font-weight: 600; color: #FAFAFA; cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: '+'; color: #00D9FF; font-size: 1.25rem; flex-shrink: 0; }
+    .faq-item[open] summary::after { content: '\2212'; }
+    .faq-item p { margin-top: 0.625rem; color: #A1A1AA; line-height: 1.7; }
+    .related-list { list-style: none; padding: 0; display: grid; gap: 0.5rem; }
+    .related-list a { color: #00D9FF; text-decoration: none; }
+    .author-bylines { max-width: 960px; margin: 2.5rem auto 0; padding: 1.25rem 1rem; color: #A1A1AA; font-size: 0.875rem; line-height: 1.7; }
+    .author-name { color: #FAFAFA; font-weight: 600; }
+    .tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }
+    .tool-footer a { color: #00D9FF; text-decoration: none; }
+  </style>
+  <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div class="bg-ambient" aria-hidden="true"></div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <div id="app" class="app">
+    <header class="main-header">
+      <div class="container">
+        <div class="header-inner">
+          <a href="https://mc-novatools.com/" class="logo" aria-label="NovaTools MC Home">
+            <picture><source srcset="/logo-bird-44.webp" type="image/webp"><img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44" decoding="async"></picture>
+            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+          </a>
+          <nav class="nav-desktop" aria-label="Main navigation">
+            <a href="https://mc-novatools.com/#finance" class="nav-link">Finance</a>
+            <a href="https://mc-novatools.com/#pdf" class="nav-link">PDF Tools</a>
+            <a href="https://mc-novatools.com/#image" class="nav-link">Images</a>
+            <a href="https://mc-novatools.com/#dev" class="nav-link">Developers</a>
+          </nav>
+          <div class="privacy-badge" title="Your data never leaves your browser">
+            <span class="privacy-badge-dot"></span>
+            <span>Privacy First</span>
+          </div>
+          <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+            <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+          <button type="button" id="mobileMenuBtn" class="menu-btn" aria-label="Toggle menu" aria-expanded="false">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+        </div>
+        <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
+          <a href="https://mc-novatools.com/#finance" class="mobile-nav-link">Finance Tools</a>
+          <a href="https://mc-novatools.com/#pdf" class="mobile-nav-link">PDF Tools</a>
+          <a href="https://mc-novatools.com/#image" class="mobile-nav-link">Image Tools</a>
+          <a href="https://mc-novatools.com/#dev" class="mobile-nav-link">Developer Tools</a>
+        </nav>
+      </div>
+    </header>
+
+    <nav class="guide-breadcrumb" aria-label="Breadcrumb">
+      <div class="container">
+        <ol>
+          <li><a href="https://mc-novatools.com/">Home</a></li>
+          <li><a href="https://mc-novatools.com/categories/developer-tools.html">Developer Tools</a></li>
+          <li aria-current="page">XML Formatter</li>
+        </ol>
+      </div>
+    </nav>
+
+    <main id="main-content" class="main-content">
+      <div class="tool-wrapper">
+        <div class="tool-hero">
+          <div class="tool-hero-icon">&#128196;</div>
+          <h1>XML Formatter, Validator &amp; Minifier</h1>
+          <p class="tool-updated-note">Last updated: <time class="page-last-updated" datetime="2026-06-16">2026-06-16</time></p>
+          <p>Paste raw XML to pretty-print it with consistent indentation, catch syntax errors with line-level feedback, or minify it into a single compact line. Everything runs in your browser &mdash; nothing is uploaded.</p>
+        </div>
+
+        <div class="card">
+          <div class="options-row">
+            <label class="option-field">Indent
+              <select id="indentSize">
+                <option value="2">2 spaces</option>
+                <option value="4">4 spaces</option>
+                <option value="tab">Tab</option>
+              </select>
+            </label>
+            <label class="option-field"><input type="checkbox" id="collapseEmpty"> Collapse empty tags</label>
+          </div>
+
+          <div class="input-section">
+            <div class="input-label">XML Input</div>
+            <textarea id="xmlInput" class="code-area" spellcheck="false" autocomplete="off" placeholder="&lt;note&gt;&lt;to&gt;Tove&lt;/to&gt;&lt;from&gt;Jani&lt;/from&gt;&lt;body&gt;Reminder&lt;/body&gt;&lt;/note&gt;" aria-label="XML input"></textarea>
+          </div>
+
+          <div class="btn-bar" role="toolbar" aria-label="XML actions">
+            <button class="btn btn-primary" id="btnFormat" type="button">Format</button>
+            <button class="btn btn-ghost" id="btnMinify" type="button">Minify</button>
+            <button class="btn btn-ghost" id="btnValidate" type="button">Validate</button>
+            <button class="btn btn-ghost" id="btnCopy" type="button">Copy</button>
+            <button class="btn btn-ghost" id="btnSample" type="button">Load sample</button>
+            <button class="btn btn-danger" id="btnClear" type="button">Clear</button>
+          </div>
+
+          <div class="status-banner" id="statusBanner" role="alert"></div>
+
+          <div>
+            <div class="output-label">Result</div>
+            <textarea id="xmlOutput" class="code-area" spellcheck="false" aria-label="XML output" readonly placeholder="Formatted XML will appear here"></textarea>
+          </div>
+
+          <div class="legal-note">
+            <strong>Privacy:</strong> This tool parses and formats XML locally in your browser using the native DOMParser. No XML content is transmitted to or stored on any server.
+          </div>
+        </div>
+      </div>
+
+      <article class="tool-description">
+        <h2>What the XML Formatter does</h2>
+        <p>XML is everywhere developers may not expect it: RSS and Atom feeds, SOAP API responses, SVG graphics, Android layout files, Maven <code>pom.xml</code> builds, Office Open XML documents, sitemaps, and configuration for countless frameworks. The trouble is that XML is frequently produced by machines on a single line, with no whitespace, which makes it almost impossible to read or debug by eye. This formatter takes that compact, machine-generated XML and re-indents it into a clean, nested tree so you can actually see the structure, find the element you care about, and spot where a tag was never closed.</p>
+        <p>It does three jobs from one input box. <strong>Format</strong> rebuilds the document with the indentation you choose (2 spaces, 4 spaces, or tabs) and puts each element on its own line. <strong>Minify</strong> does the opposite: it strips insignificant whitespace between tags to produce the smallest valid payload, which is useful before sending XML over the wire or embedding it in another file. <strong>Validate</strong> runs the input through the browser&rsquo;s XML parser and reports the first well-formedness error it finds, including the kind of problem and roughly where it occurred.</p>
+
+        <h2>How to use it</h2>
+        <ol>
+          <li>Paste your XML into the input box, or press <strong>Load sample</strong> to try it with a small example document.</li>
+          <li>Pick your indentation in the <strong>Indent</strong> dropdown. Two spaces is common for feeds and config; four spaces or tabs suit larger documents.</li>
+          <li>Press <strong>Format</strong> to pretty-print, or <strong>Minify</strong> to collapse it to one line.</li>
+          <li>If the parser reports a problem, read the message under the buttons &mdash; it tells you whether a tag is unclosed, mismatched, or contains an illegal character.</li>
+          <li>Press <strong>Copy</strong> to put the result on your clipboard, then paste it into your editor, ticket, or commit.</li>
+        </ol>
+
+        <h2>Well-formed vs. valid XML</h2>
+        <p>It helps to know the difference. <em>Well-formed</em> XML follows the basic syntax rules of the language: one root element, every opening tag has a matching closing tag, attributes are quoted, and special characters such as <code>&amp;</code> are escaped. <em>Valid</em> XML is well-formed <em>and</em> conforms to a schema (a DTD or XSD) that defines which elements and attributes are allowed and in what order. This tool checks well-formedness, which is the error that breaks parsers most often. It does not validate against a custom XSD, because schemas are project-specific and usually live on your build server.</p>
+
+        <h2>Common XML mistakes this tool catches</h2>
+        <ul>
+          <li><strong>Unclosed or mismatched tags</strong> &mdash; for example <code>&lt;item&gt;...&lt;/Item&gt;</code> where case does not match.</li>
+          <li><strong>Multiple root elements</strong> &mdash; XML allows exactly one top-level element.</li>
+          <li><strong>Unescaped ampersands</strong> &mdash; a bare <code>&amp;</code> in text must be written as <code>&amp;amp;</code>.</li>
+          <li><strong>Stray characters before the declaration</strong> &mdash; the <code>&lt;?xml ?&gt;</code> declaration must be the very first thing in the file.</li>
+        </ul>
+
+        <h2>Frequently asked questions</h2>
+        <details class="faq-item"><summary>Is my XML uploaded anywhere?</summary><p>No. Formatting, minifying and validation all happen in your browser with the native DOMParser and XMLSerializer. The XML never leaves your device, which makes the tool safe for configuration files and API responses that may contain internal details.</p></details>
+        <details class="faq-item"><summary>Can it validate against my XSD or DTD?</summary><p>Not currently. It checks that your XML is well-formed (correct syntax, matched tags, single root). Schema validation requires your specific XSD/DTD and is usually run as part of a build pipeline rather than a quick browser tool.</p></details>
+        <details class="faq-item"><summary>Why did formatting change my self-closing tags?</summary><p>The browser normalises XML when it parses it. Empty elements such as <code>&lt;br&gt;&lt;/br&gt;</code> may be re-serialised as <code>&lt;br/&gt;</code>. The two forms are equivalent in XML. Enable &ldquo;Collapse empty tags&rdquo; to prefer the self-closing form.</p></details>
+        <details class="faq-item"><summary>Does it handle very large files?</summary><p>It can handle most documents that fit comfortably in memory, but extremely large files (tens of megabytes) may be slow because the entire document is parsed at once. For huge feeds, format a representative sample instead.</p></details>
+
+        <h2>Related developer tools</h2>
+        <ul class="related-list">
+          <li><a href="https://mc-novatools.com/tools/dev/json-formatter/">JSON Formatter &amp; Validator</a> &mdash; the JSON counterpart for APIs that speak JSON.</li>
+          <li><a href="https://mc-novatools.com/tools/dev/code-formatter/">Code Formatter</a> &mdash; tidy HTML, CSS and JavaScript.</li>
+          <li><a href="https://mc-novatools.com/tools/dev/base64-converter/">Base64 Encoder/Decoder</a> &mdash; decode XML embedded in Base64 payloads.</li>
+        </ul>
+      </article>
+
+      <aside class="author-bylines" aria-label="Author and review information for XML Formatter">
+        <p><span class="author-name">Metehan ÇETİN, LPC</span>, Founder and editor</p>
+        <p>This XML Formatter is maintained as a public, browser-only developer utility. The review notes cover real-world XML failure points &mdash; feeds, SOAP, SVG and config files &mdash; and the difference between well-formedness and schema validation.</p>
+        <p><a href="https://mc-novatools.com/about-us.html" rel="author">Author and review profile</a></p>
+        <p>Last updated: <time class="last-updated" datetime="2026-06-16">2026-06-16</time></p>
+      </aside>
+    </main>
+
+    <footer class="tool-footer">
+      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="mailto:psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
+      <p>All processing happens in your browser &mdash; no XML is uploaded.</p>
+    </footer>
+  </div>
+
+  <script type="module">
+    const $ = (id) => document.getElementById(id);
+    const input = $('xmlInput');
+    const output = $('xmlOutput');
+    const statusBanner = $('statusBanner');
+    const indentSel = $('indentSize');
+    const collapseEmpty = $('collapseEmpty');
+
+    const SAMPLE = '<?xml version="1.0" encoding="UTF-8"?><catalog><book id="bk101"><author>Gambardella, Matthew</author><title>XML Developer\'s Guide</title><genre>Computer</genre><price>44.95</price></book><book id="bk102"><author>Ralls, Kim</author><title>Midnight Rain</title><genre>Fantasy</genre><price>5.95</price></book></catalog>';
+
+    function showStatus(type, message) {
+      statusBanner.className = 'status-banner visible ' + type;
+      statusBanner.textContent = message;
+    }
+    function clearStatus() {
+      statusBanner.className = 'status-banner';
+      statusBanner.textContent = '';
+    }
+
+    function getIndentUnit() {
+      const v = indentSel.value;
+      if (v === 'tab') return '\t';
+      return ' '.repeat(parseInt(v, 10) || 2);
+    }
+
+    function parseXml(text) {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(text, 'application/xml');
+      const err = doc.querySelector('parsererror');
+      if (err) {
+        return { error: err.textContent.replace(/\s+/g, ' ').trim() };
+      }
+      return { doc };
+    }
+
+    function prettyPrint(node, unit, level) {
+      const pad = unit.repeat(level);
+      let out = '';
+      node.childNodes.forEach((child) => {
+        if (child.nodeType === 1) {
+          const serializer = new XMLSerializer();
+          const hasElementChildren = Array.from(child.childNodes).some((c) => c.nodeType === 1);
+          const textContent = child.textContent.trim();
+          if (!child.childNodes.length || (collapseEmpty.checked && !textContent && !hasElementChildren)) {
+            out += pad + serializer.serializeToString(child) + '\n';
+          } else if (!hasElementChildren) {
+            const open = serializer.serializeToString(child);
+            out += pad + open + '\n';
+          } else {
+            const openTag = '<' + child.nodeName + Array.from(child.attributes).map((a) => ' ' + a.name + '="' + a.value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;') + '"').join('') + '>';
+            out += pad + openTag + '\n';
+            out += prettyPrint(child, unit, level + 1);
+            out += pad + '</' + child.nodeName + '>\n';
+          }
+        } else if (child.nodeType === 3) {
+          const t = child.nodeValue.trim();
+          if (t) out += pad + t + '\n';
+        } else if (child.nodeType === 8) {
+          out += pad + '<!--' + child.nodeValue + '-->\n';
+        }
+      });
+      return out;
+    }
+
+    function formatXml() {
+      const text = input.value.trim();
+      if (!text) { showStatus('error', 'Please paste some XML first.'); return; }
+      const result = parseXml(text);
+      if (result.error) { showStatus('error', 'Invalid XML: ' + result.error); output.value = ''; return; }
+      const unit = getIndentUnit();
+      const decl = text.startsWith('<?xml') ? text.slice(0, text.indexOf('?>') + 2) + '\n' : '';
+      output.value = (decl + prettyPrint(result.doc, unit, 0)).replace(/\n+$/,'\n');
+      showStatus('success', 'Formatted successfully. The XML is well-formed.');
+    }
+
+    function minifyXml() {
+      const text = input.value.trim();
+      if (!text) { showStatus('error', 'Please paste some XML first.'); return; }
+      const result = parseXml(text);
+      if (result.error) { showStatus('error', 'Invalid XML: ' + result.error); output.value = ''; return; }
+      const serializer = new XMLSerializer();
+      let min = serializer.serializeToString(result.doc).replace(/>\s+</g, '><').trim();
+      output.value = min;
+      const saved = text.length - min.length;
+      showStatus('success', 'Minified. Removed ' + (saved > 0 ? saved : 0) + ' characters of whitespace.');
+    }
+
+    function validateXml() {
+      const text = input.value.trim();
+      if (!text) { showStatus('error', 'Please paste some XML first.'); return; }
+      const result = parseXml(text);
+      if (result.error) { showStatus('error', 'Not well-formed: ' + result.error); }
+      else { showStatus('success', 'Valid: this XML is well-formed.'); }
+    }
+
+    async function copyResult() {
+      const text = output.value || input.value;
+      if (!text) { showStatus('error', 'Nothing to copy yet.'); return; }
+      try { await navigator.clipboard.writeText(text); showStatus('success', 'Copied to clipboard.'); }
+      catch { output.select(); document.execCommand('copy'); showStatus('success', 'Copied to clipboard.'); }
+    }
+
+    $('btnFormat').addEventListener('click', formatXml);
+    $('btnMinify').addEventListener('click', minifyXml);
+    $('btnValidate').addEventListener('click', validateXml);
+    $('btnCopy').addEventListener('click', copyResult);
+    $('btnClear').addEventListener('click', () => { input.value = ''; output.value = ''; clearStatus(); input.focus(); });
+    $('btnSample').addEventListener('click', () => { input.value = SAMPLE; clearStatus(); formatXml(); });
+  </script>
+</body>
+</html>

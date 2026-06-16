@@ -1,6 +1,6 @@
 {
   "generated": "postinstall",
-  "count": 121,
+  "count": 126,
   "tools": [
     {
       "id": "age-calculator",
@@ -1228,6 +1228,61 @@
       "entry": "/src/tools/data/csv-json-summarizer/"
     },
     {
+      "id": "vcf-generator",
+      "name": "vCard (VCF) Generator",
+      "nameEn": "vCard (VCF) Generator",
+      "category": "data",
+      "tier": 2,
+      "cpc": {
+        "tr": 0.4,
+        "us": 1.1
+      },
+      "keywords": {
+        "tr": [
+          "vcard oluşturucu",
+          "vcf oluşturucu",
+          "kartvizit dosyası",
+          "rehber kişi oluştur",
+          "vcf indir"
+        ],
+        "en": [
+          "vcard generator",
+          "vcf generator",
+          "create vcf file",
+          "contact card generator",
+          "vcard maker"
+        ]
+      },
+      "description": {
+        "tr": "İsim, telefon, e-posta ve adresten standart .vcf (vCard) kişi dosyası oluşturun ve indirin. Tarayıcıda çalışır.",
+        "en": "Create and download a standard .vcf (vCard) contact file from name, phone, email and address. Runs in your browser."
+      },
+      "schema": {
+        "@type": "WebApplication",
+        "applicationCategory": "BusinessApplication",
+        "offers": {
+          "@type": "Offer",
+          "price": "0"
+        }
+      },
+      "ads": {
+        "sidebar": {
+          "enabled": true,
+          "size": "336x280",
+          "minCpm": 0.25
+        }
+      },
+      "bundle": {
+        "lazyLoad": false
+      },
+      "relatedTools": [
+        "csv-to-json",
+        "qr-code-designer"
+      ],
+      "path": "/data/vcf-generator",
+      "entry": "/src/tools/data/vcf-generator/"
+    },
+    {
       "id": "weather-lookup",
       "name": "Weather Lookup",
       "nameEn": "Weather Lookup",
@@ -2338,6 +2393,61 @@
       "entry": "/src/tools/dev/markdown-to-html/"
     },
     {
+      "id": "meta-tag-generator",
+      "name": "Meta Tag Generator",
+      "nameEn": "Meta Tag Generator",
+      "category": "dev",
+      "tier": 1,
+      "cpc": {
+        "tr": 0.8,
+        "us": 2.2
+      },
+      "keywords": {
+        "tr": [
+          "meta tag oluşturucu",
+          "seo meta etiket",
+          "open graph oluşturucu",
+          "twitter card oluşturucu",
+          "meta description oluşturucu"
+        ],
+        "en": [
+          "meta tag generator",
+          "seo meta tags",
+          "open graph generator",
+          "twitter card generator",
+          "meta description generator"
+        ]
+      },
+      "description": {
+        "tr": "SEO, Open Graph ve Twitter Card meta etiketlerini canlı önizleme ile oluşturun. Kopyala-yapıştır hazır kod.",
+        "en": "Generate SEO, Open Graph and Twitter Card meta tags with live search and social previews. Copy-paste ready code."
+      },
+      "schema": {
+        "@type": "WebApplication",
+        "applicationCategory": "DeveloperApplication",
+        "offers": {
+          "@type": "Offer",
+          "price": "0"
+        }
+      },
+      "ads": {
+        "sidebar": {
+          "enabled": true,
+          "size": "336x280",
+          "minCpm": 0.4
+        }
+      },
+      "bundle": {
+        "lazyLoad": false
+      },
+      "relatedTools": [
+        "robots-txt-generator",
+        "xml-formatter"
+      ],
+      "path": "/dev/meta-tag-generator",
+      "entry": "/src/tools/dev/meta-tag-generator/"
+    },
+    {
       "id": "regex-tester",
       "name": "Regex Tester",
       "nameEn": "Regex Tester",
@@ -2387,6 +2497,61 @@
       ],
       "path": "/dev/regex-tester",
       "entry": "/src/tools/dev/regex-tester/"
+    },
+    {
+      "id": "robots-txt-generator",
+      "name": "Robots.txt Generator",
+      "nameEn": "Robots.txt Generator",
+      "category": "dev",
+      "tier": 1,
+      "cpc": {
+        "tr": 0.6,
+        "us": 1.8
+      },
+      "keywords": {
+        "tr": [
+          "robots.txt oluşturucu",
+          "robots txt generator",
+          "robots.txt nasıl yazılır",
+          "crawler engelleme",
+          "seo robots"
+        ],
+        "en": [
+          "robots.txt generator",
+          "create robots.txt",
+          "robots txt builder",
+          "block crawlers",
+          "seo robots file"
+        ]
+      },
+      "description": {
+        "tr": "Arama motorları için robots.txt dosyanızı görsel olarak oluşturun. Kurallar, sitemap ve crawl-delay desteği.",
+        "en": "Build a valid robots.txt file visually with allow/disallow rules, sitemap and crawl-delay. Copy-paste ready."
+      },
+      "schema": {
+        "@type": "WebApplication",
+        "applicationCategory": "DeveloperApplication",
+        "offers": {
+          "@type": "Offer",
+          "price": "0"
+        }
+      },
+      "ads": {
+        "sidebar": {
+          "enabled": true,
+          "size": "336x280",
+          "minCpm": 0.35
+        }
+      },
+      "bundle": {
+        "lazyLoad": false
+      },
+      "relatedTools": [
+        "meta-tag-generator",
+        "xml-formatter"
+      ],
+      "path": "/dev/robots-txt-generator",
+      "entry": "/src/tools/dev/robots-txt-generator/"
     },
     {
       "id": "url-encoder",
@@ -2440,6 +2605,61 @@
       ],
       "path": "/dev/url-encoder",
       "entry": "/src/tools/dev/url-encoder/"
+    },
+    {
+      "id": "xml-formatter",
+      "name": "XML Formatter",
+      "nameEn": "XML Formatter",
+      "category": "dev",
+      "tier": 1,
+      "cpc": {
+        "tr": 0.5,
+        "us": 1.4
+      },
+      "keywords": {
+        "tr": [
+          "xml formatlayıcı",
+          "xml düzenleyici",
+          "xml güzelleştirici",
+          "xml doğrulayıcı",
+          "xml minify"
+        ],
+        "en": [
+          "xml formatter",
+          "xml beautifier",
+          "format xml online",
+          "xml validator",
+          "xml minifier"
+        ]
+      },
+      "description": {
+        "tr": "XML belgelerinizi tarayıcıda formatlayın, doğrulayın ve küçültün. Hiçbir veri sunucuya gönderilmez.",
+        "en": "Format, validate and minify XML documents in your browser. No data is sent to any server."
+      },
+      "schema": {
+        "@type": "WebApplication",
+        "applicationCategory": "DeveloperApplication",
+        "offers": {
+          "@type": "Offer",
+          "price": "0"
+        }
+      },
+      "ads": {
+        "sidebar": {
+          "enabled": true,
+          "size": "336x280",
+          "minCpm": 0.3
+        }
+      },
+      "bundle": {
+        "lazyLoad": false
+      },
+      "relatedTools": [
+        "json-formatter",
+        "code-formatter"
+      ],
+      "path": "/dev/xml-formatter",
+      "entry": "/src/tools/dev/xml-formatter/"
     },
     {
       "id": "mortgage-tr",
@@ -2506,6 +2726,61 @@
       },
       "path": "/finance/mortgage-refinance",
       "entry": "/src/tools/finance/mortgage-refinance/"
+    },
+    {
+      "id": "roi-calculator",
+      "name": "ROI Calculator",
+      "nameEn": "ROI Calculator",
+      "category": "finance",
+      "tier": 1,
+      "cpc": {
+        "tr": 1.2,
+        "us": 4.5
+      },
+      "keywords": {
+        "tr": [
+          "roi hesaplama",
+          "yatırım getirisi hesaplama",
+          "yatırım getiri oranı",
+          "yıllık getiri hesaplama",
+          "kar zarar hesaplama"
+        ],
+        "en": [
+          "roi calculator",
+          "return on investment calculator",
+          "investment return calculator",
+          "annualized return",
+          "profit calculator"
+        ]
+      },
+      "description": {
+        "tr": "Yatırım getirinizi (ROI) ve yıllıklandırılmış getiriyi hesaplayın. Kar/zarar, yüzde ve CAGR. Tarayıcıda çalışır.",
+        "en": "Calculate return on investment (ROI), net profit and annualized return (CAGR). Runs entirely in your browser."
+      },
+      "schema": {
+        "@type": "WebApplication",
+        "applicationCategory": "FinanceApplication",
+        "offers": {
+          "@type": "Offer",
+          "price": "0"
+        }
+      },
+      "ads": {
+        "sidebar": {
+          "enabled": true,
+          "size": "336x280",
+          "minCpm": 0.8
+        }
+      },
+      "bundle": {
+        "lazyLoad": false
+      },
+      "relatedTools": [
+        "compound-interest",
+        "percentage-calculator"
+      ],
+      "path": "/finance/roi-calculator",
+      "entry": "/src/tools/finance/roi-calculator/"
     },
     {
       "id": "compound-interest",

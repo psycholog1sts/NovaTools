@@ -1,0 +1,41 @@
+{
+  "id": "robots-txt-generator",
+  "name": "Robots.txt Generator",
+  "nameEn": "Robots.txt Generator",
+  "category": "dev",
+  "tier": 1,
+  "cpc": {
+    "tr": 0.6,
+    "us": 1.8
+  },
+  "keywords": {
+    "tr": ["robots.txt oluşturucu", "robots txt generator", "robots.txt nasıl yazılır", "crawler engelleme", "seo robots"],
+    "en": ["robots.txt generator", "create robots.txt", "robots txt builder", "block crawlers", "seo robots file"]
+  },
+  "description": {
+    "tr": "Arama motorları için robots.txt dosyanızı görsel olarak oluşturun. Kurallar, sitemap ve crawl-delay desteği.",
+    "en": "Build a valid robots.txt file visually with allow/disallow rules, sitemap and crawl-delay. Copy-paste ready."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "DeveloperApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.35
+    }
+  },
+  "bundle": {
+    "lazyLoad": false
+  },
+  "relatedTools": [
+    "meta-tag-generator",
+    "xml-formatter"
+  ]
+}

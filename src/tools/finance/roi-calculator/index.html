@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script type="text/plain" data-consent-category="analytics" async src="https://www.googletagmanager.com/gtag/js?id=G-Y896L63239"></script>
+  <script type="text/plain" data-consent-category="analytics">
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Y896L63239', {
+    anonymize_ip: true,
+    cookie_expires: 63072000,
+    cookie_update: true
+  });
+  </script>
+  <meta charset="UTF-8">
+  <script>(function(){var t=localStorage.getItem('novatools-theme');if(t)document.documentElement.setAttribute('data-theme',t);else{var d=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',d);document.documentElement.style.colorScheme=d;}})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/src/styles/critical.css">
+  <link rel="stylesheet" href="/src/styles/main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <title>ROI Calculator - Return on Investment &amp; Annualized Return | NovaTools MC</title>
+
+  <!-- i18n Script -->
+  <script src="/i18n.js" defer></script>
+  <meta name="description" content="Free ROI calculator: work out return on investment, net profit and annualized return (CAGR) from your cost and final value. Runs in your browser, no signup.">
+  <meta name="keywords" content="roi calculator, return on investment calculator, investment return calculator, annualized return, cagr calculator">
+  <meta name="theme-color" content="#0A0A0C">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="ROI Calculator - Return on Investment &amp; Annualized Return | NovaTools MC">
+  <meta property="og:description" content="Calculate ROI, net profit and annualized return (CAGR) in your browser. Free, no signup.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.mc-novatools.com/tools/finance/roi-calculator/">
+  <meta property="og:image" content="https://www.mc-novatools.com/og-image.png">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ROI Calculator | NovaTools MC">
+  <meta name="twitter:description" content="Calculate return on investment, net profit and annualized return (CAGR).">
+
+  <link rel="canonical" href="https://www.mc-novatools.com/tools/finance/roi-calculator/">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [{
+      "@type": "WebApplication",
+      "name": "ROI Calculator",
+      "description": "Free return on investment calculator with net profit and annualized return (CAGR), running entirely in your browser.",
+      "url": "https://www.mc-novatools.com/tools/finance/roi-calculator/",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Any",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+    }]
+  }
+  </script>
+
+  <style>
+    .tool-wrapper { max-width: 960px; margin: 0 auto; padding: 3rem 1rem 5rem; }
+    .tool-hero { text-align: center; margin-bottom: 2.5rem; }
+    .tool-hero-icon { font-size: 3.5rem; line-height: 1; margin-bottom: 1rem; }
+    .tool-hero h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; letter-spacing: -0.02em; color: #FAFAFA; margin-bottom: 0.75rem; }
+    .tool-hero p { color: #A1A1AA; font-size: 1.0625rem; max-width: 620px; margin: 0 auto; }
+    .tool-updated-note { font-size: 0.8125rem; color: #71717A; margin-bottom: 0.5rem; }
+    .card { background: rgba(15,15,20,0.7); border: 1px solid rgba(0,217,255,0.15); border-radius: 14px; padding: 1.75rem; backdrop-filter: blur(12px); }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 600px) { .grid-2 { grid-template-columns: 1fr; } }
+    .field { margin-bottom: 1.1rem; }
+    .field label { display: block; font-size: 0.8125rem; font-weight: 600; color: #A1A1AA; margin-bottom: 0.4rem; }
+    .input-wrap { position: relative; }
+    .input-wrap .prefix { position: absolute; left: 0.9rem; top: 50%; transform: translateY(-50%); color: #71717A; font-size: 0.9rem; }
+    .field input, .field select { width: 100%; padding: 0.7rem 0.9rem; background: #0F0F12; border: 1px solid rgba(0,217,255,0.12); border-radius: 9px; color: #FAFAFA; font-family: inherit; font-size: 0.95rem; box-sizing: border-box; outline: none; }
+    .input-wrap.has-prefix input { padding-left: 1.9rem; }
+    .field input:focus { border-color: rgba(0,217,255,0.45); box-shadow: 0 0 0 3px rgba(0,217,255,0.08); }
+    .btn-bar { display: flex; flex-wrap: wrap; gap: 0.625rem; margin: 0.5rem 0 0; }
+    .btn { display: inline-flex; align-items: center; gap: 0.4rem; height: 44px; padding: 0 1.4rem; border: none; border-radius: 8px; font-size: 0.95rem; font-weight: 600; cursor: pointer; outline: none; }
+    .btn:active { transform: scale(0.97); }
+    .btn-primary { background: linear-gradient(135deg, #00D9FF, #0099CC); color: #0A0A0C; }
+    .btn-ghost { background: var(--surface-default); border: 1px solid var(--border-hover); color: #A1A1AA; }
+    .results { display: none; margin-top: 1.5rem; }
+    .results.visible { display: block; }
+    .result-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; }
+    .result-tile { background: rgba(0,217,255,0.05); border: 1px solid rgba(0,217,255,0.15); border-radius: 12px; padding: 1.1rem 1.25rem; text-align: center; }
+    .result-tile .label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: #71717A; margin-bottom: 0.35rem; }
+    .result-tile .value { font-size: 1.5rem; font-weight: 700; color: #FAFAFA; }
+    .result-tile .value.pos { color: #34D399; }
+    .result-tile .value.neg { color: #FF7777; }
+    .error-banner { display: none; padding: 0.875rem 1rem; background: rgba(255,85,85,0.08); border: 1px solid rgba(255,85,85,0.3); border-radius: 10px; margin-top: 1rem; color: #FF7777; font-size: 0.85rem; }
+    .error-banner.visible { display: block; }
+    .legal-note { margin-top: 1.5rem; padding: 1rem 1.25rem; background: rgba(255,193,7,0.05); border: 1px solid rgba(255,193,7,0.15); border-radius: 10px; font-size: 0.8125rem; color: #A1A1AA; line-height: 1.6; }
+    .legal-note strong { color: #FFC107; }
+    .tool-description { max-width: 960px; margin: 3.5rem auto 0; padding: 0 1rem; }
+    .tool-description h2 { font-size: 1.375rem; font-weight: 700; color: #FAFAFA; margin: 2.25rem 0 0.75rem; }
+    .tool-description p, .tool-description li { color: #A1A1AA; line-height: 1.8; font-size: 0.9375rem; }
+    .tool-description ul, .tool-description ol { padding-left: 1.25rem; }
+    .tool-description li { margin-bottom: 0.4rem; }
+    .tool-description code { background: rgba(0,217,255,0.08); padding: 0.1rem 0.35rem; border-radius: 5px; font-size: 0.85em; }
+    .faq-item { border: 1px solid rgba(0,217,255,0.1); border-radius: 10px; padding: 1rem 1.125rem; margin-bottom: 0.875rem; background: rgba(15,15,20,0.5); }
+    .faq-item summary { font-weight: 600; color: #FAFAFA; cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: '+'; color: #00D9FF; font-size: 1.25rem; }
+    .faq-item[open] summary::after { content: '\2212'; }
+    .faq-item p { margin-top: 0.625rem; color: #A1A1AA; line-height: 1.7; }
+    .related-list { list-style: none; padding: 0; display: grid; gap: 0.5rem; }
+    .related-list a { color: #00D9FF; text-decoration: none; }
+    .author-bylines { max-width: 960px; margin: 2.5rem auto 0; padding: 1.25rem 1rem; color: #A1A1AA; font-size: 0.875rem; line-height: 1.7; }
+    .author-name { color: #FAFAFA; font-weight: 600; }
+    .tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }
+    .tool-footer a { color: #00D9FF; text-decoration: none; }
+  </style>
+  <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div class="bg-ambient" aria-hidden="true"></div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <div id="app" class="app">
+    <header class="main-header">
+      <div class="container">
+        <div class="header-inner">
+          <a href="https://mc-novatools.com/" class="logo" aria-label="NovaTools MC Home">
+            <picture><source srcset="/logo-bird-44.webp" type="image/webp"><img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44" decoding="async"></picture>
+            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+          </a>
+          <nav class="nav-desktop" aria-label="Main navigation">
+            <a href="https://mc-novatools.com/#finance" class="nav-link">Finance</a>
+            <a href="https://mc-novatools.com/#pdf" class="nav-link">PDF Tools</a>
+            <a href="https://mc-novatools.com/#image" class="nav-link">Images</a>
+            <a href="https://mc-novatools.com/#dev" class="nav-link">Developers</a>
+          </nav>
+          <div class="privacy-badge" title="Your data never leaves your browser">
+            <span class="privacy-badge-dot"></span>
+            <span>Privacy First</span>
+          </div>
+          <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+            <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+          <button type="button" id="mobileMenuBtn" class="menu-btn" aria-label="Toggle menu" aria-expanded="false">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+        </div>
+        <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
+          <a href="https://mc-novatools.com/#finance" class="mobile-nav-link">Finance Tools</a>
+          <a href="https://mc-novatools.com/#pdf" class="mobile-nav-link">PDF Tools</a>
+          <a href="https://mc-novatools.com/#image" class="mobile-nav-link">Image Tools</a>
+          <a href="https://mc-novatools.com/#dev" class="mobile-nav-link">Developer Tools</a>
+        </nav>
+      </div>
+    </header>
+
+    <nav class="guide-breadcrumb" aria-label="Breadcrumb">
+      <div class="container">
+        <ol>
+          <li><a href="https://mc-novatools.com/">Home</a></li>
+          <li><a href="https://mc-novatools.com/categories/finance-tools.html">Finance Tools</a></li>
+          <li aria-current="page">ROI Calculator</li>
+        </ol>
+      </div>
+    </nav>
+
+    <main id="main-content" class="main-content">
+      <div class="tool-wrapper">
+        <div class="tool-hero">
+          <div class="tool-hero-icon">&#128200;</div>
+          <h1>ROI Calculator</h1>
+          <p class="tool-updated-note">Last updated: <time class="page-last-updated" datetime="2026-06-16">2026-06-16</time></p>
+          <p>Enter what you invested and what it is worth now to see your return on investment, net profit, and &mdash; if you add a time period &mdash; your annualized return (CAGR). All maths happens in your browser.</p>
+        </div>
+
+        <div class="card">
+          <div class="grid-2">
+            <div class="field">
+              <label for="amountInvested">Amount invested</label>
+              <div class="input-wrap has-prefix"><span class="prefix" id="prefix1">$</span><input type="number" id="amountInvested" inputmode="decimal" placeholder="10000" min="0" step="any"></div>
+            </div>
+            <div class="field">
+              <label for="finalValue">Final / current value</label>
+              <div class="input-wrap has-prefix"><span class="prefix" id="prefix2">$</span><input type="number" id="finalValue" inputmode="decimal" placeholder="13500" min="0" step="any"></div>
+            </div>
+          </div>
+          <div class="grid-2">
+            <div class="field">
+              <label for="years">Holding period (years, optional)</label>
+              <input type="number" id="years" inputmode="decimal" placeholder="3" min="0" step="any">
+            </div>
+            <div class="field">
+              <label for="currency">Currency</label>
+              <select id="currency">
+                <option value="$">USD ($)</option>
+                <option value="&euro;">EUR (&euro;)</option>
+                <option value="&pound;">GBP (&pound;)</option>
+                <option value="&#8378;">TRY (&#8378;)</option>
+                <option value="">None</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="btn-bar">
+            <button class="btn btn-primary" id="btnCalc" type="button">Calculate ROI</button>
+            <button class="btn btn-ghost" id="btnReset" type="button">Reset</button>
+          </div>
+
+          <div class="error-banner" id="errorBanner" role="alert"></div>
+
+          <div class="results" id="results" aria-live="polite">
+            <div class="result-grid">
+              <div class="result-tile"><div class="label">ROI</div><div class="value" id="rRoi">&ndash;</div></div>
+              <div class="result-tile"><div class="label">Net profit</div><div class="value" id="rProfit">&ndash;</div></div>
+              <div class="result-tile"><div class="label">Annualized (CAGR)</div><div class="value" id="rCagr">&ndash;</div></div>
+            </div>
+          </div>
+
+          <div class="legal-note"><strong>Disclaimer:</strong> This calculator is for general informational and educational use only and does not account for fees, taxes, inflation, or reinvested dividends. It is not financial, investment, or tax advice. Consult a licensed professional before making investment decisions.</div>
+        </div>
+      </div>
+
+      <article class="tool-description">
+        <h2>What return on investment (ROI) means</h2>
+        <p>Return on investment is the single most common way to express how well an investment performed relative to its cost. It answers a simple question: for every unit of money you put in, how much did you get back? Because ROI is expressed as a percentage, it lets you compare very different things on the same scale &mdash; a stock purchase, a rental property, a marketing campaign, or a small business project &mdash; even when the amounts and time frames differ. That comparability is exactly why investors, marketers and finance teams reach for it first.</p>
+        <p>The basic formula is straightforward: <code>ROI = (final value &minus; amount invested) &divide; amount invested &times; 100</code>. If you invested 10,000 and it is now worth 13,500, your net profit is 3,500 and your ROI is 35%. This calculator does that arithmetic for you and, when you supply a holding period, goes one step further to show your annualized return.</p>
+
+        <h2>Why annualized return (CAGR) matters more</h2>
+        <p>Plain ROI hides time. A 35% return is excellent over one year but mediocre over ten. The compound annual growth rate (CAGR) fixes this by converting your total return into the equivalent steady yearly rate, using <code>CAGR = (final &divide; invested)^(1 &divide; years) &minus; 1</code>. That 35% over three years works out to roughly 10.5% per year &mdash; a far more honest number for comparing investments held for different lengths of time. Whenever you are weighing two opportunities, compare their annualized returns, not their headline totals.</p>
+
+        <h2>How to use this calculator</h2>
+        <ol>
+          <li>Enter the <strong>amount invested</strong> &mdash; your total cost, including purchase price and any upfront fees you want to factor in.</li>
+          <li>Enter the <strong>final or current value</strong> &mdash; what the investment is worth today or what you sold it for.</li>
+          <li>Optionally add the <strong>holding period in years</strong> to unlock the annualized (CAGR) figure. You can use decimals, e.g. 1.5 for eighteen months.</li>
+          <li>Pick your <strong>currency</strong> for display, then press <strong>Calculate ROI</strong>.</li>
+          <li>Read the three tiles: total ROI, net profit, and annualized return. Green means a gain, red means a loss.</li>
+        </ol>
+
+        <h2>What ROI does not capture</h2>
+        <ul>
+          <li><strong>Risk.</strong> Two investments with the same ROI can carry wildly different risk. ROI alone never tells you how much you could have lost.</li>
+          <li><strong>Taxes and fees.</strong> Real returns are reduced by capital gains tax, trading commissions and management fees. Enter net figures if you want an after-cost view.</li>
+          <li><strong>Inflation.</strong> A 5% return when inflation is 6% is a real loss of purchasing power.</li>
+          <li><strong>Cash flows.</strong> For investments with regular contributions or dividends, a money-weighted measure such as IRR is more accurate than simple ROI.</li>
+        </ul>
+
+        <h2>Frequently asked questions</h2>
+        <details class="faq-item"><summary>Can ROI be negative?</summary><p>Yes. If the final value is lower than the amount invested, ROI is negative, which means a loss. For example, investing 10,000 that is now worth 8,000 gives an ROI of &minus;20%.</p></details>
+        <details class="faq-item"><summary>Should I use ROI or CAGR to compare investments?</summary><p>Use CAGR (annualized return) whenever the holding periods differ. Plain ROI is fine for a quick gross comparison over the same time frame, but CAGR is the fairer measure across different durations.</p></details>
+        <details class="faq-item"><summary>Does this include compounding or reinvested dividends?</summary><p>The CAGR figure reflects compounding of the price change, but it does not separately add reinvested dividends or interest. To include them, add their value to the final amount before calculating.</p></details>
+        <details class="faq-item"><summary>Is my data saved?</summary><p>No. Every figure stays in your browser and the calculation runs locally in JavaScript. Nothing is uploaded or stored.</p></details>
+
+        <h2>Related finance tools</h2>
+        <ul class="related-list">
+          <li><a href="https://mc-novatools.com/tools/finance/compound-interest/">Compound Interest Calculator</a> &mdash; project growth with regular contributions.</li>
+          <li><a href="https://mc-novatools.com/tools/converters/percentage-calculator/">Percentage Calculator</a> &mdash; quick percentage change and difference maths.</li>
+          <li><a href="https://mc-novatools.com/tools/finance/mortgage-refinance/">Mortgage Refinance Calculator</a> &mdash; estimate payments and interest savings.</li>
+        </ul>
+      </article>
+
+      <aside class="author-bylines" aria-label="Author and review information for ROI Calculator">
+        <p><span class="author-name">Metehan ÇETİN, LPC</span>, Founder and editor</p>
+        <p>This ROI Calculator is maintained as a browser-only, educational finance utility. The explanations cover the difference between total ROI and annualized return (CAGR) and the real-world factors &mdash; risk, fees, taxes and inflation &mdash; that a single ROI percentage cannot show.</p>
+        <p><a href="https://mc-novatools.com/about-us.html" rel="author">Author and review profile</a></p>
+        <p>Last updated: <time class="last-updated" datetime="2026-06-16">2026-06-16</time></p>
+      </aside>
+    </main>
+
+    <footer class="tool-footer">
+      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="mailto:psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
+      <p>Estimates only &mdash; not financial, legal, or tax advice.</p>
+    </footer>
+  </div>
+
+  <script type="module">
+    const $ = (id) => document.getElementById(id);
+    const errorBanner = $('errorBanner');
+    const results = $('results');
+
+    function showError(msg) {
+      errorBanner.textContent = msg; errorBanner.classList.add('visible'); results.classList.remove('visible');
+    }
+    function clearError() { errorBanner.classList.remove('visible'); errorBanner.textContent = ''; }
+
+    function fmtCurrency(n, sym) {
+      const s = Math.abs(n).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      return (n < 0 ? '-' : '') + sym + s;
+    }
+    function fmtPct(n) {
+      return (n >= 0 ? '+' : '') + n.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + '%';
+    }
+    function setTile(el, text, val) {
+      el.innerHTML = text;
+      el.className = 'value' + (val > 0 ? ' pos' : val < 0 ? ' neg' : '');
+    }
+
+    function calc() {
+      clearError();
+      const invested = parseFloat($('amountInvested').value);
+      const finalVal = parseFloat($('finalValue').value);
+      const years = parseFloat($('years').value);
+      const symRaw = $('currency').value;
+      const sym = symRaw ? new DOMParser().parseFromString(symRaw, 'text/html').body.textContent : '';
+
+      if (!isFinite(invested) || invested <= 0) { showError('Enter an amount invested greater than zero.'); return; }
+      if (!isFinite(finalVal) || finalVal < 0) { showError('Enter a valid final or current value.'); return; }
+
+      const profit = finalVal - invested;
+      const roi = profit / invested * 100;
+      setTile($('rRoi'), fmtPct(roi), roi);
+      setTile($('rProfit'), fmtCurrency(profit, sym), profit);
+
+      if (isFinite(years) && years > 0) {
+        const cagr = (Math.pow(finalVal / invested, 1 / years) - 1) * 100;
+        setTile($('rCagr'), fmtPct(cagr), cagr);
+      } else {
+        $('rCagr').textContent = 'Add years';
+        $('rCagr').className = 'value';
+      }
+      results.classList.add('visible');
+    }
+
+    $('btnCalc').addEventListener('click', calc);
+    $('btnReset').addEventListener('click', () => {
+      ['amountInvested','finalValue','years'].forEach((id) => { $(id).value = ''; });
+      clearError(); results.classList.remove('visible');
+    });
+    ['amountInvested','finalValue','years'].forEach((id) => $(id).addEventListener('keydown', (e) => { if (e.key === 'Enter') calc(); }));
+  </script>
+</body>
+</html>

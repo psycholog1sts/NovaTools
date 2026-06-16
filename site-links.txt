@@ -32,6 +32,7 @@ https://mc-novatools.com/tools/data/file-renamer/
 https://mc-novatools.com/tools/data/file-splitter/
 https://mc-novatools.com/tools/data/json-to-csv/
 https://mc-novatools.com/tools/data/sql-formatter/
+https://mc-novatools.com/tools/data/vcf-generator/
 https://mc-novatools.com/tools/data/weather-lookup/
 https://mc-novatools.com/tools/design/barcode-generator/
 https://mc-novatools.com/tools/design/business-card-maker/
@@ -53,8 +54,11 @@ https://mc-novatools.com/tools/dev/json-formatter/
 https://mc-novatools.com/tools/dev/json-validator/
 https://mc-novatools.com/tools/dev/lorem-generator/
 https://mc-novatools.com/tools/dev/markdown-to-html/
+https://mc-novatools.com/tools/dev/meta-tag-generator/
 https://mc-novatools.com/tools/dev/regex-tester/
+https://mc-novatools.com/tools/dev/robots-txt-generator/
 https://mc-novatools.com/tools/dev/url-encoder/
+https://mc-novatools.com/tools/dev/xml-formatter/
 https://mc-novatools.com/tools/finance/cloud-cost/
 https://mc-novatools.com/tools/finance/compound-interest/
 https://mc-novatools.com/tools/finance/crypto-prices/
@@ -63,6 +67,7 @@ https://mc-novatools.com/tools/finance/life-insurance/
 https://mc-novatools.com/tools/finance/live-exchange/
 https://mc-novatools.com/tools/finance/mortgage-refinance/
 https://mc-novatools.com/tools/finance/retirement/
+https://mc-novatools.com/tools/finance/roi-calculator/
 https://mc-novatools.com/tools/finance/stock-lookup/
 https://mc-novatools.com/tools/finance/student-loan/
 https://mc-novatools.com/tools/finance/tax/

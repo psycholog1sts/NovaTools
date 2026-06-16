@@ -1,0 +1,41 @@
+{
+  "id": "xml-formatter",
+  "name": "XML Formatter",
+  "nameEn": "XML Formatter",
+  "category": "dev",
+  "tier": 1,
+  "cpc": {
+    "tr": 0.5,
+    "us": 1.4
+  },
+  "keywords": {
+    "tr": ["xml formatlayıcı", "xml düzenleyici", "xml güzelleştirici", "xml doğrulayıcı", "xml minify"],
+    "en": ["xml formatter", "xml beautifier", "format xml online", "xml validator", "xml minifier"]
+  },
+  "description": {
+    "tr": "XML belgelerinizi tarayıcıda formatlayın, doğrulayın ve küçültün. Hiçbir veri sunucuya gönderilmez.",
+    "en": "Format, validate and minify XML documents in your browser. No data is sent to any server."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "DeveloperApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.3
+    }
+  },
+  "bundle": {
+    "lazyLoad": false
+  },
+  "relatedTools": [
+    "json-formatter",
+    "code-formatter"
+  ]
+}

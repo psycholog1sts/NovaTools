@@ -1,0 +1,41 @@
+{
+  "id": "vcf-generator",
+  "name": "vCard (VCF) Generator",
+  "nameEn": "vCard (VCF) Generator",
+  "category": "data",
+  "tier": 2,
+  "cpc": {
+    "tr": 0.4,
+    "us": 1.1
+  },
+  "keywords": {
+    "tr": ["vcard oluşturucu", "vcf oluşturucu", "kartvizit dosyası", "rehber kişi oluştur", "vcf indir"],
+    "en": ["vcard generator", "vcf generator", "create vcf file", "contact card generator", "vcard maker"]
+  },
+  "description": {
+    "tr": "İsim, telefon, e-posta ve adresten standart .vcf (vCard) kişi dosyası oluşturun ve indirin. Tarayıcıda çalışır.",
+    "en": "Create and download a standard .vcf (vCard) contact file from name, phone, email and address. Runs in your browser."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "BusinessApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.25
+    }
+  },
+  "bundle": {
+    "lazyLoad": false
+  },
+  "relatedTools": [
+    "csv-to-json",
+    "qr-code-designer"
+  ]
+}
