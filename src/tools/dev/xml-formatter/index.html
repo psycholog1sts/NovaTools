@@ -342,7 +342,8 @@
       const result = parseXml(text);
       if (result.error) { showStatus('error', 'Invalid XML: ' + result.error); output.value = ''; return; }
       const unit = getIndentUnit();
-      const decl = text.startsWith('<?xml') ? text.slice(0, text.indexOf('?>') + 2) + '\n' : '';
+      const declMatch = text.match(/^<\?xml\s[^?]*\?>/);
+      const decl = declMatch ? declMatch[0] + '\n' : '';
       output.value = (decl + prettyPrint(result.doc, unit, 0)).replace(/\n+$/,'\n');
       showStatus('success', 'Formatted successfully. The XML is well-formed.');
     }
