@@ -547,7 +547,7 @@
         <h3>Known limitations</h3>
         <ul><li>Numbers are drawn as new text on top of pages; they are not linked to any existing numbering in the content.</li><li>On very dense pages, choose a position that does not overlap important content.</li><li>Encrypted PDFs may need to be unlocked first.</li></ul>
         <h2>Privacy and Security</h2>
-        <p>Numbering is applied entirely in your browser with pdf-lib. The PDF is processed on your device and is never uploaded to NovaTools or any external service.</p>
+        <p>Numbering is applied entirely in your browser with pdf-lib. The PDF is processed on your device and is never uploaded to NovaTools or any external service; only the pdf-lib library itself is fetched from a public CDN.</p>
         <h2>Frequently Asked Questions</h2>
         <h3>Can I start numbering from a specific value?</h3>
         <p>Yes. You can set the starting number, which is useful when a document continues a sequence from an earlier file.</p>
@@ -701,66 +701,100 @@
     startNumber.addEventListener('input', updatePreview);
     formatSelect.addEventListener('change', updatePreview);
 
+    let pdfLibPromise = null;
+    function ensurePdfLib() {
+      if (typeof window.PDFLib !== 'undefined') return Promise.resolve(window.PDFLib);
+      if (pdfLibPromise) return pdfLibPromise;
+      const sources = [
+        'https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js',
+        'https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js'
+      ];
+      pdfLibPromise = new Promise((resolve, reject) => {
+        const loadFrom = (i) => {
+          if (i >= sources.length) { reject(new Error('PDF library failed to load')); return; }
+          const s = document.createElement('script');
+          s.src = sources[i];
+          s.async = true;
+          s.onload = () => { typeof window.PDFLib !== 'undefined' ? resolve(window.PDFLib) : loadFrom(i + 1); };
+          s.onerror = () => loadFrom(i + 1);
+          document.head.appendChild(s);
+        };
+        loadFrom(0);
+      }).catch((err) => { pdfLibPromise = null; throw err; });
+      return pdfLibPromise;
+    }
+
     convertBtn.addEventListener('click', async () => {
       if (!currentFile) return;
 
       convertBtn.disabled = true;
       progressContainer.classList.add('visible');
-      progressFill.style.width = '0%';
-      progressText.textContent = 'Processing PDF...';
+      progressFill.style.width = '10%';
+      progressText.textContent = 'Loading PDF library...';
 
       try {
-        await simulateProgress();
-        
-        // In a real implementation, you would use a PDF manipulation library
-        // For this demo, we'll create a simulated numbered PDF
-        const blob = await addPageNumbersToPdf(currentFile);
-        
+        const PDFLib = await ensurePdfLib();
+        progressFill.style.width = '40%';
+        progressText.textContent = 'Adding page numbers...';
+
+        const blob = await addPageNumbersToPdf(PDFLib, currentFile);
+
         progressFill.style.width = '100%';
         progressText.textContent = 'Complete!';
-        
+
         const url = URL.createObjectURL(blob);
         downloadBtn.href = url;
-        downloadBtn.download = currentFile.name.replace('.pdf', '-numbered.pdf');
-        
+        downloadBtn.download = currentFile.name.replace(/\.pdf$/i, '') + '-numbered.pdf';
+
         setTimeout(() => {
           resultContainer.classList.add('visible');
           progressContainer.classList.remove('visible');
-        }, 500);
+        }, 400);
 
       } catch (error) {
         console.error('Processing error:', error);
-        alert('Error adding page numbers. Please try again.');
+        progressText.textContent = 'Error';
+        alert(error && error.message === 'PDF library failed to load'
+          ? 'The PDF library could not be loaded. Please check your connection and try again.'
+          : 'Could not add page numbers. Please make sure the file is a valid PDF and try again.');
         convertBtn.disabled = false;
         progressContainer.classList.remove('visible');
       }
     });
 
-    async function simulateProgress() {
-      const steps = [
-        { width: 25, text: 'Reading PDF...', delay: 300 },
-        { width: 50, text: 'Adding page numbers...', delay: 500 },
-        { width: 75, text: 'Generating new PDF...', delay: 400 },
-        { width: 95, text: 'Finalizing...', delay: 200 }
-      ];
-
-      for (const step of steps) {
-        progressFill.style.width = step.width + '%';
-        progressText.textContent = step.text;
-        await new Promise(r => setTimeout(r, step.delay));
-      }
+    function formatLabel(n, mode) {
+      if (mode === 'page-number') return 'Page ' + n;
+      if (mode === 'dash') return '- ' + n + ' -';
+      return String(n);
     }
 
-    async function addPageNumbersToPdf(file) {
-      // For demo purposes, return the original file
-      // In production, use PDF-lib or similar library to add page numbers
-      return new Promise((resolve) => {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-          resolve(new Blob([e.target.result], { type: 'application/pdf' }));
-        };
-        reader.readAsArrayBuffer(file);
+    async function addPageNumbersToPdf(PDFLib, file) {
+      const { PDFDocument, StandardFonts, rgb } = PDFLib;
+      const bytes = new Uint8Array(await file.arrayBuffer());
+      const pdfDoc = await PDFDocument.load(bytes, { ignoreEncryption: true });
+      const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
+
+      const size = parseInt(fontSizeSelect.value, 10) || 12;
+      const start = parseInt(startNumber.value, 10) || 1;
+      const position = positionSelect.value;
+      const mode = formatSelect.value;
+      const color = rgb(0.1, 0.1, 0.1);
+      const margin = 28;
+
+      const pages = pdfDoc.getPages();
+      pages.forEach((page, idx) => {
+        const { width: w, height: h } = page.getSize();
+        const label = formatLabel(start + idx, mode);
+        const textWidth = font.widthOfTextAtSize(label, size);
+        let x = margin;
+        if (position.endsWith('center')) x = (w - textWidth) / 2;
+        else if (position.endsWith('right')) x = w - margin - textWidth;
+        const y = position.startsWith('top') ? h - margin : margin;
+        page.drawText(label, { x: Math.max(0, x), y, size, font, color });
       });
+
+      const out = await pdfDoc.save();
+      return new Blob([out], { type: 'application/pdf' });
     }
   </script>
 </body>
