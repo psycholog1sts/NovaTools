@@ -192,7 +192,7 @@
             the pages you need. Whether you want to remove unwanted pages, create separate documents from specific chapters, 
             or extract important pages for email attachments, our browser-based tool handles it all. Simply upload your PDF, 
             specify the page range using formats like "1-5" for a range or "1,3,5" for specific pages, and download your 
-            extracted content instantly. Leave the page range empty to split all pages into individual files. All processing 
+            extracted pages as a single PDF instantly. Leave the page range empty to split every page into its own PDF, delivered as a ZIP. All processing 
             happens client-side in your browser, ensuring your confidential documents remain private. No registration, no 
             watermarks, and no software installation required - just fast, secure PDF splitting whenever you need it.
           </p>
@@ -245,11 +245,11 @@
         <h3>What you provide</h3>
         <ul><li>A single PDF file</li><li>A page selection: all pages, or specific pages and ranges</li></ul>
         <h3>What you get</h3>
-        <ul><li>Individual page PDFs, or a PDF of the pages you selected</li><li>Downloadable files containing only what you asked for</li></ul>
+        <ul><li>A single PDF containing the pages you selected, or — when you leave the range empty — every page as its own PDF packaged in a ZIP</li><li>Downloadable files containing only what you asked for</li></ul>
         <h3>Known limitations</h3>
         <ul><li>It operates on page boundaries; it cannot split a single page into pieces.</li><li>Encrypted PDFs may need to be unlocked first.</li><li>Very large documents depend on available browser memory.</li></ul>
         <h2>Privacy and Security</h2>
-        <p>Splitting is performed entirely in your browser. The PDF you upload is processed on your device and is never sent to NovaTools or any external service.</p>
+        <p>Splitting is performed entirely in your browser using pdf-lib. The PDF you upload is processed on your device and is never sent to NovaTools or any external service. The pdf-lib library itself is loaded from a public CDN.</p>
         <h2>Frequently Asked Questions</h2>
         <h3>Can I extract just a few pages?</h3>
         <p>Yes. Specify the pages or ranges you want (for example 2, 4-6) and the tool outputs only those pages.</p>
@@ -285,6 +285,152 @@
   </div>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+  // ── File Upload & Split Logic ──────────────────────────────
+  var splitForm = document.querySelector('form[data-tool="pdf-split"]');
+  var dropzone = document.getElementById('dropzone');
+  var fileInput = document.getElementById('fileInput');
+  var fileInfoCard = document.getElementById('fileInfoCard');
+  var fileNameEl = document.getElementById('fileName');
+  var fileSizeEl = document.getElementById('fileSize');
+  var pageSelector = document.getElementById('pageSelector');
+  var pageRangeInput = document.getElementById('pageRange');
+  var splitBtn = document.getElementById('splitBtn');
+  var resultSection = document.getElementById('resultSection');
+  var resultInfo = document.getElementById('resultInfo');
+  var downloadLink = document.getElementById('downloadLink');
+  var currentFile = null;
+  var pdfLibPromise = null;
+
+  function fmtSize(b) { return b < 1048576 ? (b / 1024).toFixed(1) + ' KB' : (b / 1048576).toFixed(1) + ' MB'; }
+
+  function setDownloadLabel(text) {
+    if (!downloadLink) return;
+    var last = downloadLink.childNodes[downloadLink.childNodes.length - 1];
+    if (last && last.nodeType === 3) last.textContent = ' ' + text;
+  }
+
+  function selectFile(file) {
+    if (!file) return;
+    if (file.type && file.type !== 'application/pdf' && !/\.pdf$/i.test(file.name)) {
+      alert('Please choose a PDF file.');
+      return;
+    }
+    currentFile = file;
+    if (fileNameEl) fileNameEl.textContent = file.name;
+    if (fileSizeEl) fileSizeEl.textContent = fmtSize(file.size);
+    if (fileInfoCard) fileInfoCard.classList.add('visible');
+    if (pageSelector) pageSelector.classList.add('visible');
+    if (resultSection) resultSection.classList.remove('visible');
+  }
+
+  if (dropzone) {
+    dropzone.addEventListener('click', function() { if (fileInput) fileInput.click(); });
+    dropzone.addEventListener('dragover', function(e) { e.preventDefault(); dropzone.classList.add('drag-active'); });
+    dropzone.addEventListener('dragleave', function() { dropzone.classList.remove('drag-active'); });
+    dropzone.addEventListener('drop', function(e) {
+      e.preventDefault();
+      dropzone.classList.remove('drag-active');
+      if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0]) selectFile(e.dataTransfer.files[0]);
+    });
+  }
+  if (fileInput) {
+    fileInput.addEventListener('change', function(e) { if (e.target.files && e.target.files[0]) selectFile(e.target.files[0]); });
+  }
+
+  function parsePageRange(rangeStr, maxPages) {
+    var pages = new Set();
+    rangeStr.split(',').map(function(s) { return s.trim(); }).forEach(function(part) {
+      if (!part) return;
+      if (part.indexOf('-') !== -1) {
+        var bounds = part.split('-').map(function(s) { return parseInt(s.trim(), 10); });
+        var start = bounds[0], end = bounds[1];
+        if (!isNaN(start) && !isNaN(end)) {
+          for (var i = start; i <= end; i++) { if (i > 0 && i <= maxPages) pages.add(i - 1); }
+        }
+      } else {
+        var p = parseInt(part, 10);
+        if (!isNaN(p) && p > 0 && p <= maxPages) pages.add(p - 1);
+      }
+    });
+    return Array.from(pages).sort(function(a, b) { return a - b; });
+  }
+
+  function ensurePdfLib() {
+    if (typeof window.PDFLib !== 'undefined') return Promise.resolve(window.PDFLib);
+    if (pdfLibPromise) return pdfLibPromise;
+    var sources = [
+      'https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js',
+      'https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js'
+    ];
+    pdfLibPromise = new Promise(function(resolve, reject) {
+      function loadFrom(index) {
+        if (index >= sources.length) { reject(new Error('PDF library failed to load')); return; }
+        var s = document.createElement('script');
+        s.src = sources[index];
+        s.async = true;
+        s.onload = function() { typeof window.PDFLib !== 'undefined' ? resolve(window.PDFLib) : loadFrom(index + 1); };
+        s.onerror = function() { loadFrom(index + 1); };
+        document.head.appendChild(s);
+      }
+      loadFrom(0);
+    }).catch(function(err) { pdfLibPromise = null; throw err; });
+    return pdfLibPromise;
+  }
+
+  async function runSplit() {
+    var PDFLib = await ensurePdfLib();
+    var base = currentFile.name.replace(/\.pdf$/i, '');
+    var buf = await currentFile.arrayBuffer();
+    var srcDoc = await PDFLib.PDFDocument.load(new Uint8Array(buf), { ignoreEncryption: true });
+    var total = srcDoc.getPageCount();
+    var rangeStr = (pageRangeInput && pageRangeInput.value || '').trim();
+
+    if (rangeStr) {
+      var indices = parsePageRange(rangeStr, total);
+      if (!indices.length) throw new Error('No valid pages in that range. This PDF has ' + total + ' page(s).');
+      var outDoc = await PDFLib.PDFDocument.create();
+      var copied = await outDoc.copyPages(srcDoc, indices);
+      copied.forEach(function(p) { outDoc.addPage(p); });
+      var bytes = await outDoc.save();
+      var blob = new Blob([bytes], { type: 'application/pdf' });
+      var url = URL.createObjectURL(blob);
+      if (downloadLink) { downloadLink.href = url; downloadLink.download = base + '-pages.pdf'; }
+      setDownloadLabel('Download Extracted PDF');
+      if (resultInfo) resultInfo.textContent = 'Extracted ' + indices.length + ' of ' + total + ' page(s) into one PDF.';
+    } else {
+      var JSZipMod = await import('https://cdn.jsdelivr.net/npm/jszip@3.10.1/+esm');
+      var JSZip = JSZipMod.default;
+      var zip = new JSZip();
+      for (var i = 0; i < total; i++) {
+        var single = await PDFLib.PDFDocument.create();
+        var pages = await single.copyPages(srcDoc, [i]);
+        single.addPage(pages[0]);
+        var pageBytes = await single.save();
+        zip.file(base + '_page_' + (i + 1) + '.pdf', pageBytes);
+      }
+      var zipBlob = await zip.generateAsync({ type: 'blob' });
+      var zipUrl = URL.createObjectURL(zipBlob);
+      if (downloadLink) { downloadLink.href = zipUrl; downloadLink.download = base + '_pages.zip'; }
+      setDownloadLabel('Download All Pages (ZIP)');
+      if (resultInfo) resultInfo.textContent = 'Split into ' + total + ' single-page PDF(s), packaged as a ZIP.';
+    }
+    if (resultSection) resultSection.classList.add('visible');
+  }
+
+  if (splitForm) {
+    splitForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      if (!currentFile) { alert('Please choose a PDF file first.'); return; }
+      if (splitBtn) splitBtn.disabled = true;
+      runSplit().catch(function(err) {
+        alert(err && err.message === 'PDF library failed to load'
+          ? 'The PDF library could not be loaded. Please check your connection and try again.'
+          : (err && err.message) || 'Could not split this PDF. Please make sure it is a valid PDF and try again.');
+      }).finally(function() { if (splitBtn) splitBtn.disabled = false; });
+    });
+  }
+  // ──────────────────────────────────────────────────────────
+
   var menuBtn = document.getElementById('mobileMenuBtn');
   var mobileMenu = document.getElementById('mobileMenu');
   if (menuBtn && mobileMenu) {
