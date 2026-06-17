@@ -672,7 +672,7 @@
       },
       "csv-viewer": {
         "meta": {
-          "title": "CSV Görüntüleyici ve Düzenleyici — Ücretsiz Çevrimiçi Araç | NovaTools MC"
+          "title": "CSV Görüntüleyici — Ücretsiz Çevrimiçi Araç | NovaTools MC"
         },
         "placeholder": {
           "001": "Satırları filtrele..."
@@ -691,13 +691,13 @@
           "008": "PDF Araçlar",
           "009": "Görüntü Araçları",
           "010": "Geliştirici Araçları",
-          "011": "CSV Görüntüleyici ve Düzenleyici",
+          "011": "CSV Görüntüleyici",
           "012": "CSV dosyalarını çevrimiçi olarak görüntüleyin, sıralayın ve filtreleyin. Sunuculara yükleme yapılmaz; tüm işlemler tarayıcınızda gerçekleşir.",
           "013": "CSV'ı indirin",
           "014": "Temizlemek",
           "015": "0 satır",
           "016": "0 sütun",
-          "017": "CSV Görüntüleyici ve Düzenleyici Hakkında",
+          "017": "CSV Görüntüleyici Hakkında",
           "018": "Bu ücretsiz çevrimiçi araç, herhangi bir yazılım yüklemeden veya verilerinizi bir sunucuya yüklemeden CSV dosyalarını görüntülemenize, sıralamanıza ve filtrelemenize olanak tanır. CSV verilerini hızlı bir şekilde incelemek, dosya içeriğini kontrol etmek veya basit veri analizi gerçekleştirmek için mükemmeldir.",
           "019": "Nasıl Kullanılır",
           "020": "CSV dosyanızı yükleme alanına sürükleyip bırakın veya göz atmak için tıklayın.",

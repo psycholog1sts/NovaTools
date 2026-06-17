@@ -908,7 +908,7 @@
       },
       "csv-viewer": {
         "meta": {
-          "title": "CSV Visor y editor: herramienta gratuita en línea | NovaTools MC"
+          "title": "CSV Visor: herramienta gratuita en línea | NovaTools MC"
         },
         "placeholder": {
           "001": "Filtrar filas..."
@@ -927,13 +927,13 @@
           "008": "PDF Herramientas",
           "009": "Herramientas de imagen",
           "010": "Herramientas para desarrolladores",
-          "011": "CSV Visor y editor",
+          "011": "CSV Visor",
           "012": "Vea, ordene y filtre CSV archivos en línea. Sin carga a servidores: todo el procesamiento se realiza en su navegador.",
           "013": "Descargar CSV",
           "014": "Claro",
           "015": "0 filas",
           "016": "0 columnas",
-          "017": "Acerca de CSV Visor y editor",
+          "017": "Acerca de CSV Visor",
           "018": "Esta herramienta en línea gratuita le permite ver, ordenar y filtrar archivos CSV sin instalar ningún software ni cargar sus datos en un servidor. Es perfecto para inspeccionar rápidamente datos CSV, verificar el contenido de archivos o realizar análisis de datos simples.",
           "019": "Cómo utilizar",
           "020": "Arrastre y suelte su archivo CSV en el área de carga o haga clic para explorar.",
