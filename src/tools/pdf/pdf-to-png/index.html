@@ -621,6 +621,20 @@
       return new Promise((resolve) => canvas.toBlob((b) => resolve(b), mime));
     }
 
+    async function loadJSZip() {
+      const sources = ['https://cdn.jsdelivr.net/npm/jszip@3.10.1/+esm', 'https://esm.sh/jszip@3.10.1'];
+      for (const src of sources) {
+        try { const m = await import(src); return m.default || m; } catch (e) { /* try next */ }
+      }
+      throw new Error('ZIP library failed to load');
+    }
+
+    function setDownload(url, name) {
+      if (downloadBtn.href && downloadBtn.href.indexOf('blob:') === 0) URL.revokeObjectURL(downloadBtn.href);
+      downloadBtn.href = url;
+      downloadBtn.download = name;
+    }
+
     function setDownloadLabel(text) {
       const last = downloadBtn.childNodes[downloadBtn.childNodes.length - 1];
       if (last && last.nodeType === 3) last.textContent = ' ' + text;
@@ -668,7 +682,7 @@
           outName = `${base}.${IMG_EXT}`;
           label = `Download ${IMG_EXT.toUpperCase()} Image`;
         } else {
-          const JSZip = (await import('https://cdn.jsdelivr.net/npm/jszip@3.10.1/+esm')).default;
+          const JSZip = await loadJSZip();
           const zip = new JSZip();
           images.forEach((img) => zip.file(img.name, img.blob));
           outBlob = await zip.generateAsync({ type: 'blob' });
@@ -678,9 +692,7 @@
 
         progressFill.style.width = '100%';
         progressText.textContent = 'Complete!';
-        const url = URL.createObjectURL(outBlob);
-        downloadBtn.href = url;
-        downloadBtn.download = outName;
+        setDownload(URL.createObjectURL(outBlob), outName);
         setDownloadLabel(label);
 
         setTimeout(() => {
