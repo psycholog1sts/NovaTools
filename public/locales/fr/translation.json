@@ -908,7 +908,7 @@
       },
       "csv-viewer": {
         "meta": {
-          "title": "CSV Visionneuse et éditeur — Outil en ligne gratuit | NovaTools MC"
+          "title": "CSV Visionneuse — Outil en ligne gratuit | NovaTools MC"
         },
         "placeholder": {
           "001": "Filtrer les lignes..."
@@ -927,13 +927,13 @@
           "008": "PDF Outils",
           "009": "Outils d'images",
           "010": "Outils de développement",
-          "011": "CSV Visionneuse et éditeur",
+          "011": "CSV Visionneuse",
           "012": "Affichez, triez et filtrez les fichiers CSV en ligne. Pas de téléchargement sur les serveurs : tout le traitement s'effectue dans votre navigateur.",
           "013": "Télécharger CSV",
           "014": "Clair",
           "015": "0 lignes",
           "016": "0 colonnes",
-          "017": "À propos de la visionneuse et de l'éditeur CSV",
+          "017": "À propos de la visionneuse CSV",
           "018": "Cet outil en ligne gratuit vous permet d'afficher, de trier et de filtrer les fichiers CSV sans installer de logiciel ni télécharger vos données sur un serveur. Il est parfait pour inspecter rapidement les données CSV, vérifier le contenu des fichiers ou effectuer une analyse simple des données.",
           "019": "Comment utiliser",
           "020": "Faites glisser et déposez votre fichier CSV sur la zone de téléchargement ou cliquez pour parcourir.",

@@ -908,7 +908,7 @@
       },
       "csv-viewer": {
         "meta": {
-          "title": "CSV Viewer & Editor – kostenloses Online-Tool | NovaTools MC"
+          "title": "CSV Viewer – kostenloses Online-Tool | NovaTools MC"
         },
         "placeholder": {
           "001": "Zeilen filtern..."
@@ -927,13 +927,13 @@
           "008": "PDF Werkzeuge",
           "009": "Bildwerkzeuge",
           "010": "Entwicklertools",
-          "011": "CSV Betrachter und Herausgeber",
+          "011": "CSV Betrachter",
           "012": "CSV-Dateien online anzeigen, sortieren und filtern. Kein Upload auf Server – die gesamte Verarbeitung erfolgt in Ihrem Browser.",
           "013": "CSV herunterladen",
           "014": "Klar",
           "015": "0 Zeilen",
           "016": "0 Spalten",
-          "017": "Über CSV Viewer & Editor",
+          "017": "Über CSV Viewer",
           "018": "Mit diesem kostenlosen Online-Tool können Sie CSV-Dateien anzeigen, sortieren und filtern, ohne Software installieren oder Ihre Daten auf einen Server hochladen zu müssen. Es eignet sich perfekt für die schnelle Überprüfung von CSV-Daten, die Überprüfung von Dateiinhalten oder die Durchführung einfacher Datenanalysen.",
           "019": "Verwendung",
           "020": "Ziehen Sie Ihre CSV-Datei per Drag-and-Drop in den Upload-Bereich oder klicken Sie zum Durchsuchen.",
