@@ -594,28 +594,28 @@
 
       <article class="tool-description" aria-labelledby="toolDescriptionTitle-pdf-watermark">
         <h2 id="toolDescriptionTitle-pdf-watermark">What the PDF Watermark Adder Does and Why It Matters</h2>
-        <p>The PDF Watermark Adder overlays a text or image watermark — at the opacity and position you choose — onto every page of a PDF, using pdf-lib in your browser. It is useful for marking documents as DRAFT, CONFIDENTIAL, or with your brand.</p>
+        <p>The PDF Watermark Adder stamps a text watermark — at the colour, size, opacity, and position you choose — onto the pages of a PDF, using pdf-lib in your browser. It is useful for marking documents as DRAFT, CONFIDENTIAL, or with your brand.</p>
         <p>This matters because a visible watermark signals status and ownership and discourages misuse of a shared file. Applying it on-device means the document you are protecting is never exposed to a third-party server in the process.</p>
         <h2>How to Use PDF Watermark Adder</h2>
         <ol>
           <li>Upload the PDF you want to watermark.</li>
-          <li>Enter watermark text or choose a watermark image.</li>
-          <li>Set the opacity, position, and size so it is visible but not overwhelming.</li>
-          <li>Run the tool to stamp the watermark on every page.</li>
+          <li>Enter your watermark text (for example CONFIDENTIAL).</li>
+          <li>Set the colour, size, opacity, and position so it is visible but not overwhelming, and choose whether to stamp all pages, only the first, or only the last.</li>
+          <li>Run the tool to stamp the watermark on the selected pages.</li>
           <li>Download the watermarked PDF.</li>
         </ol>
         <h2>Supported Inputs and Limitations</h2>
         <h3>What you provide</h3>
-        <ul><li>A PDF file</li><li>Watermark text or an image, plus opacity and position settings</li></ul>
+        <ul><li>A PDF file</li><li>Watermark text, plus colour, size, opacity, position, and page-range settings</li></ul>
         <h3>What you get</h3>
         <ul><li>The PDF with a watermark on each page</li><li>A downloadable, marked document</li></ul>
         <h3>Known limitations</h3>
         <ul><li>The watermark is a visual overlay; it does not encrypt or lock the document.</li><li>Determined users can still remove overlays with specialist software, so it is a deterrent, not security.</li><li>Very low opacity may be hard to see; very high opacity can obscure content.</li></ul>
         <h2>Privacy and Security</h2>
-        <p>Watermarking is performed entirely in your browser using pdf-lib. Your PDF and any watermark image are processed on your device and are never uploaded to NovaTools or any external server.</p>
+        <p>Watermarking is performed entirely in your browser using pdf-lib. Your PDF is processed on your device and is never uploaded to NovaTools or any external server. The pdf-lib library itself is loaded from a public CDN.</p>
         <h2>Frequently Asked Questions</h2>
-        <h3>Can I use my logo as a watermark?</h3>
-        <p>Yes. You can apply an image watermark in addition to text, and set its opacity and position.</p>
+        <h3>Can I watermark only some pages?</h3>
+        <p>Yes. You can stamp the watermark on every page, only the first page, or only the last page. The tool applies a text watermark; image/logo watermarks are not supported.</p>
         <h3>Does a watermark protect my document?</h3>
         <p>It is a visual deterrent indicating status or ownership, not encryption. For real protection, also use access controls or password protection.</p>
         <h3>Is my file uploaded?</h3>
@@ -687,6 +687,7 @@
     const opacitySlider = document.getElementById('opacitySlider');
     const opacityValue = document.getElementById('opacityValue');
     const colorSelect = document.getElementById('colorSelect');
+    const pagesSelect = document.getElementById('pagesSelect');
     const previewWatermark = document.getElementById('previewWatermark');
 
     let currentFile = null;
@@ -787,66 +788,128 @@
       updatePreview();
     });
 
+    let pdfLibPromise = null;
+    function ensurePdfLib() {
+      if (typeof window.PDFLib !== 'undefined') return Promise.resolve(window.PDFLib);
+      if (pdfLibPromise) return pdfLibPromise;
+      const sources = [
+        'https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js',
+        'https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js'
+      ];
+      pdfLibPromise = new Promise((resolve, reject) => {
+        const loadFrom = (i) => {
+          if (i >= sources.length) { reject(new Error('PDF library failed to load')); return; }
+          const s = document.createElement('script');
+          s.src = sources[i];
+          s.async = true;
+          s.onload = () => { typeof window.PDFLib !== 'undefined' ? resolve(window.PDFLib) : loadFrom(i + 1); };
+          s.onerror = () => loadFrom(i + 1);
+          document.head.appendChild(s);
+        };
+        loadFrom(0);
+      }).catch((err) => { pdfLibPromise = null; throw err; });
+      return pdfLibPromise;
+    }
+
     convertBtn.addEventListener('click', async () => {
       if (!currentFile) return;
 
       convertBtn.disabled = true;
       progressContainer.classList.add('visible');
-      progressFill.style.width = '0%';
-      progressText.textContent = 'Processing PDF...';
+      progressFill.style.width = '10%';
+      progressText.textContent = 'Loading PDF library...';
 
       try {
-        await simulateProgress();
-        
-        // In a real implementation, you would use a PDF manipulation library
-        // For this demo, we'll create a simulated watermarked PDF
-        const blob = await addWatermarkToPdf(currentFile);
-        
+        const PDFLib = await ensurePdfLib();
+        progressFill.style.width = '40%';
+        progressText.textContent = 'Adding watermark...';
+
+        const blob = await addWatermarkToPdf(PDFLib, currentFile);
+
         progressFill.style.width = '100%';
         progressText.textContent = 'Complete!';
-        
+
         const url = URL.createObjectURL(blob);
         downloadBtn.href = url;
-        downloadBtn.download = currentFile.name.replace('.pdf', '-watermarked.pdf');
-        
+        downloadBtn.download = currentFile.name.replace(/\.pdf$/i, '') + '-watermarked.pdf';
+
         setTimeout(() => {
           resultContainer.classList.add('visible');
           progressContainer.classList.remove('visible');
-        }, 500);
+        }, 400);
 
       } catch (error) {
         console.error('Processing error:', error);
-        alert('Error adding watermark. Please try again.');
+        progressText.textContent = 'Error';
+        alert(error && error.message === 'PDF library failed to load'
+          ? 'The PDF library could not be loaded. Please check your connection and try again.'
+          : 'Could not add the watermark. Please make sure the file is a valid PDF and try again.');
         convertBtn.disabled = false;
         progressContainer.classList.remove('visible');
       }
     });
 
-    async function simulateProgress() {
-      const steps = [
-        { width: 25, text: 'Reading PDF...', delay: 300 },
-        { width: 50, text: 'Adding watermark...', delay: 500 },
-        { width: 75, text: 'Generating new PDF...', delay: 400 },
-        { width: 95, text: 'Finalizing...', delay: 200 }
-      ];
+    const colorRgbMap = {
+      gray: [0.5, 0.5, 0.5],
+      red: [0.85, 0.1, 0.1],
+      blue: [0.1, 0.2, 0.75],
+      black: [0, 0, 0]
+    };
 
-      for (const step of steps) {
-        progressFill.style.width = step.width + '%';
-        progressText.textContent = step.text;
-        await new Promise(r => setTimeout(r, step.delay));
+    async function addWatermarkToPdf(PDFLib, file) {
+      const { PDFDocument, StandardFonts, degrees, rgb } = PDFLib;
+      const bytes = new Uint8Array(await file.arrayBuffer());
+      const pdfDoc = await PDFDocument.load(bytes, { ignoreEncryption: true });
+      const font = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
+
+      const text = (watermarkText.value || 'WATERMARK').toString();
+      const size = parseInt(fontSizeSelect.value, 10) || 36;
+      const opacity = Math.max(0.1, Math.min(0.9, (parseInt(opacitySlider.value, 10) || 30) / 100));
+      const [r, g, b] = colorRgbMap[colorSelect.value] || colorRgbMap.gray;
+      const color = rgb(r, g, b);
+      const position = positionSelect.value;
+      const pagesMode = pagesSelect.value;
+
+      const textWidth = font.widthOfTextAtSize(text, size);
+      const pages = pdfDoc.getPages();
+      let targets = pages;
+      if (pagesMode === 'first') targets = pages.slice(0, 1);
+      else if (pagesMode === 'last') targets = pages.slice(-1);
+
+      const margin = 24;
+      for (const page of targets) {
+        const { width: w, height: h } = page.getSize();
+        const common = { size, font, color, opacity };
+        if (position === 'center') {
+          const angle = 45;
+          const rad = (angle * Math.PI) / 180;
+          page.drawText(text, {
+            ...common,
+            x: w / 2 - (textWidth / 2) * Math.cos(rad),
+            y: h / 2 - (textWidth / 2) * Math.sin(rad),
+            rotate: degrees(angle)
+          });
+        } else if (position === 'tile') {
+          const stepX = Math.max(textWidth, 160) + 80;
+          const stepY = size + 110;
+          for (let y = 0; y < h + stepY; y += stepY) {
+            for (let x = -textWidth; x < w + stepX; x += stepX) {
+              page.drawText(text, { ...common, x, y, rotate: degrees(45) });
+            }
+          }
+        } else {
+          let x = margin;
+          let y = margin;
+          if (position === 'top-left') { x = margin; y = h - margin - size; }
+          else if (position === 'top-right') { x = w - margin - textWidth; y = h - margin - size; }
+          else if (position === 'bottom-left') { x = margin; y = margin; }
+          else if (position === 'bottom-right') { x = w - margin - textWidth; y = margin; }
+          page.drawText(text, { ...common, x: Math.max(0, x), y: Math.max(0, y) });
+        }
       }
-    }
 
-    async function addWatermarkToPdf(file) {
-      // For demo purposes, return the original file
-      // In production, use PDF-lib or similar library to add watermark
-      return new Promise((resolve) => {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-          resolve(new Blob([e.target.result], { type: 'application/pdf' }));
-        };
-        reader.readAsArrayBuffer(file);
-      });
+      const out = await pdfDoc.save();
+      return new Blob([out], { type: 'application/pdf' });
     }
   </script>
 
