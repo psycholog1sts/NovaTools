@@ -611,7 +611,7 @@
       const slides = [];
       for (let i = 1; i <= pdf.numPages; i++) {
         progressText.textContent = `Rendering page ${i} of ${pdf.numPages}...`;
-        progressFill.style.width = (5 + (i / pdf.numPages) * 80) + '%';
+        progressFill.style.width = (5 + ((i - 1) / pdf.numPages) * 80) + '%';
         const page = await pdf.getPage(i);
         const viewport = page.getViewport({ scale: 1.5 });
         const canvas = document.createElement('canvas');

@@ -688,7 +688,7 @@
       const pages = [];
       for (let i = 1; i <= pdf.numPages; i++) {
         progressText.textContent = `Extracting text from page ${i} of ${pdf.numPages}...`;
-        progressFill.style.width = (10 + (i / pdf.numPages) * 75) + '%';
+        progressFill.style.width = (10 + ((i - 1) / pdf.numPages) * 75) + '%';
         const page = await pdf.getPage(i);
         const tc = await page.getTextContent();
         const lines = [];
