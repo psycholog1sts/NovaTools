@@ -309,6 +309,21 @@ document.addEventListener('DOMContentLoaded', function() {
     if (last && last.nodeType === 3) last.textContent = ' ' + text;
   }
 
+  function setDownload(url, name) {
+    if (!downloadLink) return;
+    if (downloadLink.href && downloadLink.href.indexOf('blob:') === 0) URL.revokeObjectURL(downloadLink.href);
+    downloadLink.href = url;
+    downloadLink.download = name;
+  }
+
+  async function loadJSZip() {
+    var sources = ['https://cdn.jsdelivr.net/npm/jszip@3.10.1/+esm', 'https://esm.sh/jszip@3.10.1'];
+    for (var i = 0; i < sources.length; i++) {
+      try { var m = await import(sources[i]); return m.default || m; } catch (e) { /* try next */ }
+    }
+    throw new Error('ZIP library failed to load');
+  }
+
   function selectFile(file) {
     if (!file) return;
     if (file.type && file.type !== 'application/pdf' && !/\.pdf$/i.test(file.name)) {
@@ -393,13 +408,11 @@ document.addEventListener('DOMContentLoaded', function() {
       copied.forEach(function(p) { outDoc.addPage(p); });
       var bytes = await outDoc.save();
       var blob = new Blob([bytes], { type: 'application/pdf' });
-      var url = URL.createObjectURL(blob);
-      if (downloadLink) { downloadLink.href = url; downloadLink.download = base + '-pages.pdf'; }
+      setDownload(URL.createObjectURL(blob), base + '-pages.pdf');
       setDownloadLabel('Download Extracted PDF');
       if (resultInfo) resultInfo.textContent = 'Extracted ' + indices.length + ' of ' + total + ' page(s) into one PDF.';
     } else {
-      var JSZipMod = await import('https://cdn.jsdelivr.net/npm/jszip@3.10.1/+esm');
-      var JSZip = JSZipMod.default;
+      var JSZip = await loadJSZip();
       var zip = new JSZip();
       for (var i = 0; i < total; i++) {
         var single = await PDFLib.PDFDocument.create();
@@ -409,8 +422,7 @@ document.addEventListener('DOMContentLoaded', function() {
         zip.file(base + '_page_' + (i + 1) + '.pdf', pageBytes);
       }
       var zipBlob = await zip.generateAsync({ type: 'blob' });
-      var zipUrl = URL.createObjectURL(zipBlob);
-      if (downloadLink) { downloadLink.href = zipUrl; downloadLink.download = base + '_pages.zip'; }
+      setDownload(URL.createObjectURL(zipBlob), base + '_pages.zip');
       setDownloadLabel('Download All Pages (ZIP)');
       if (resultInfo) resultInfo.textContent = 'Split into ' + total + ' single-page PDF(s), packaged as a ZIP.';
     }
