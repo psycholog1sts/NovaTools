@@ -657,95 +657,118 @@
       return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
     }
 
+    let pdfjsPromise = null;
+    function ensurePdfJs() {
+      if (pdfjsPromise) return pdfjsPromise;
+      pdfjsPromise = import('https://cdn.jsdelivr.net/npm/pdfjs-dist@4.0.379/+esm')
+        .then((lib) => {
+          lib.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.0.379/build/pdf.worker.min.mjs';
+          return lib;
+        })
+        .catch((err) => { pdfjsPromise = null; throw err; });
+      return pdfjsPromise;
+    }
+
+    async function loadJSZip() {
+      const sources = ['https://cdn.jsdelivr.net/npm/jszip@3.10.1/+esm', 'https://esm.sh/jszip@3.10.1'];
+      for (const src of sources) {
+        try { const m = await import(src); return m.default || m; } catch (e) { /* try next */ }
+      }
+      throw new Error('ZIP library failed to load');
+    }
+
+    function escapeXml(s) {
+      return String(s)
+        .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F]/g, '')
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;').replace(/'/g, '&apos;');
+    }
+
+    async function extractPages(pdf) {
+      const pages = [];
+      for (let i = 1; i <= pdf.numPages; i++) {
+        progressText.textContent = `Extracting text from page ${i} of ${pdf.numPages}...`;
+        progressFill.style.width = (10 + (i / pdf.numPages) * 75) + '%';
+        const page = await pdf.getPage(i);
+        const tc = await page.getTextContent();
+        const lines = [];
+        let line = '';
+        for (const it of tc.items) {
+          if (typeof it.str === 'string') line += it.str;
+          if (it.hasEOL) { lines.push(line); line = ''; }
+        }
+        if (line) lines.push(line);
+        pages.push(lines);
+      }
+      return pages;
+    }
+
+    function buildDocumentXml(pages) {
+      const para = (t) => t.trim()
+        ? `<w:p><w:r><w:t xml:space="preserve">${escapeXml(t)}</w:t></w:r></w:p>`
+        : '<w:p/>';
+      let body = '';
+      pages.forEach((lines, idx) => {
+        if (idx > 0) body += '<w:p><w:r><w:br w:type="page"/></w:r></w:p>';
+        if (!lines.length) body += '<w:p/>';
+        else lines.forEach((l) => { body += para(l); });
+      });
+      return `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+  <w:body>${body}<w:sectPr/></w:body>
+</w:document>`;
+    }
+
     convertBtn.addEventListener('click', async () => {
       if (!currentFile) return;
 
       convertBtn.disabled = true;
       progressContainer.classList.add('visible');
-      progressFill.style.width = '0%';
-      progressText.textContent = 'Reading PDF...';
+      resultContainer.classList.remove('visible');
+      progressFill.style.width = '5%';
+      progressText.textContent = 'Loading PDF engine...';
 
       try {
-        // Simulate progress
-        await simulateProgress();
+        const pdfjsLib = await ensurePdfJs();
+        const data = new Uint8Array(await currentFile.arrayBuffer());
+        const pdf = await pdfjsLib.getDocument({ data }).promise;
+        const pages = await extractPages(pdf);
 
-        // Create a simple Word document from the filename
-        // In a real implementation, you would extract text from PDF here
-        const docxBlob = await createSimpleDocx(currentFile.name);
+        const hasText = pages.some((p) => p.some((l) => l.trim()));
+        if (!hasText) {
+          alert('No selectable text was found in this PDF. It looks like a scanned or image-only document — try the PDF OCR tool to recognize the text first.');
+          convertBtn.disabled = false;
+          progressContainer.classList.remove('visible');
+          return;
+        }
+
+        progressText.textContent = 'Generating Word document...';
+        progressFill.style.width = '92%';
+        const docxBlob = await createDocx(buildDocumentXml(pages));
 
         progressFill.style.width = '100%';
         progressText.textContent = 'Complete!';
 
-        // Setup download
-        const url = URL.createObjectURL(docxBlob);
-        downloadBtn.href = url;
-        downloadBtn.download = currentFile.name.replace('.pdf', '.docx');
+        if (downloadBtn.href && downloadBtn.href.indexOf('blob:') === 0) URL.revokeObjectURL(downloadBtn.href);
+        downloadBtn.href = URL.createObjectURL(docxBlob);
+        downloadBtn.download = currentFile.name.replace(/\.pdf$/i, '.docx');
 
         setTimeout(() => {
           resultContainer.classList.add('visible');
           progressContainer.classList.remove('visible');
-        }, 500);
+        }, 400);
 
       } catch (error) {
         console.error('Conversion error:', error);
-        alert('Error converting file. Please try again.');
+        alert('Could not convert this PDF. Please make sure it is a valid PDF and try again.');
         convertBtn.disabled = false;
         progressContainer.classList.remove('visible');
       }
     });
 
-    async function simulateProgress() {
-      const steps = [
-        { width: 20, text: 'Analyzing PDF...', delay: 300 },
-        { width: 40, text: 'Extracting content...', delay: 500 },
-        { width: 60, text: 'Converting format...', delay: 400 },
-        { width: 80, text: 'Generating Word doc...', delay: 300 },
-        { width: 95, text: 'Finalizing...', delay: 200 }
-      ];
-
-      for (const step of steps) {
-        progressFill.style.width = step.width + '%';
-        progressText.textContent = step.text;
-        await new Promise(r => setTimeout(r, step.delay));
-      }
-    }
-
-    async function createSimpleDocx(filename) {
-      // Create a minimal DOCX file structure
-      const docxContent = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
-  <w:body>
-    <w:p>
-      <w:r>
-        <w:t>Converted from: ${filename}</w:t>
-      </w:r>
-    </w:p>
-    <w:p>
-      <w:r>
-        <w:t>This document was converted using NovaTools MC PDF to Word Converter.</w:t>
-      </w:r>
-    </w:p>
-    <w:p>
-      <w:r>
-        <w:t>Conversion Date: ${new Date().toLocaleString()}</w:t>
-      </w:r>
-    </w:p>
-    <w:p>
-      <w:r>
-        <w:t>---</w:t>
-      </w:r>
-    </w:p>
-    <w:p>
-      <w:r>
-        <w:t>Note: This is a basic conversion. For complex PDFs with images, tables, and advanced formatting, the result may require manual adjustment.</w:t>
-      </w:r>
-    </w:p>
-  </w:body>
-</w:document>`;
-
-      // Create a simple zip structure for docx
-      const JSZip = await import('https://cdn.jsdelivr.net/npm/jszip@3.10.1/+esm');
-      const zip = new JSZip.default();
+    async function createDocx(docxContent) {
+      const JSZip = await loadJSZip();
+      const zip = new JSZip();
 
       // Add [Content_Types].xml
       zip.file('[Content_Types].xml', `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>

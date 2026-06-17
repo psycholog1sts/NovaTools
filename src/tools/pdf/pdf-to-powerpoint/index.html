@@ -568,128 +568,164 @@
       return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
     }
 
+    const SLIDE_W = 12192000; // 16:9 in EMU
+    const SLIDE_H = 6858000;
+    const EMU_PER_PX = 9525;
+
+    let pdfjsPromise = null;
+    function ensurePdfJs() {
+      if (pdfjsPromise) return pdfjsPromise;
+      pdfjsPromise = import('https://cdn.jsdelivr.net/npm/pdfjs-dist@4.0.379/+esm')
+        .then((lib) => {
+          lib.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.0.379/build/pdf.worker.min.mjs';
+          return lib;
+        })
+        .catch((err) => { pdfjsPromise = null; throw err; });
+      return pdfjsPromise;
+    }
+
+    async function loadJSZip() {
+      const sources = ['https://cdn.jsdelivr.net/npm/jszip@3.10.1/+esm', 'https://esm.sh/jszip@3.10.1'];
+      for (const src of sources) {
+        try { const m = await import(src); return m.default || m; } catch (e) { /* try next */ }
+      }
+      throw new Error('ZIP library failed to load');
+    }
+
+    function canvasToBlob(canvas, mime, quality) {
+      return new Promise((resolve) => canvas.toBlob((b) => resolve(b), mime, quality));
+    }
+
+    function fitRect(pxW, pxH) {
+      const imgW = pxW * EMU_PER_PX;
+      const imgH = pxH * EMU_PER_PX;
+      const scale = Math.min(SLIDE_W / imgW, SLIDE_H / imgH);
+      const cx = Math.round(imgW * scale);
+      const cy = Math.round(imgH * scale);
+      return { x: Math.round((SLIDE_W - cx) / 2), y: Math.round((SLIDE_H - cy) / 2), cx, cy };
+    }
+
+    const REL = 'http://schemas.openxmlformats.org/officeDocument/2006/relationships';
+
+    async function renderSlides(pdf) {
+      const slides = [];
+      for (let i = 1; i <= pdf.numPages; i++) {
+        progressText.textContent = `Rendering page ${i} of ${pdf.numPages}...`;
+        progressFill.style.width = (5 + (i / pdf.numPages) * 80) + '%';
+        const page = await pdf.getPage(i);
+        const viewport = page.getViewport({ scale: 1.5 });
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = viewport.width;
+        canvas.height = viewport.height;
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        await page.render({ canvasContext: ctx, viewport }).promise;
+        const blob = await canvasToBlob(canvas, 'image/png');
+        slides.push({ blob, rect: fitRect(canvas.width, canvas.height) });
+        canvas.width = 0;
+        canvas.height = 0;
+      }
+      return slides;
+    }
+
+    function slideXml(rect) {
+      return `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<p:sld xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main" xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:r="${REL}"><p:cSld><p:spTree><p:nvGrpSpPr><p:cNvPr id="1" name=""/><p:cNvGrpSpPr/><p:nvPr/></p:nvGrpSpPr><p:grpSpPr/><p:pic><p:nvPicPr><p:cNvPr id="2" name="Slide image"/><p:cNvPicPr><a:picLocks noChangeAspect="1"/></p:cNvPicPr><p:nvPr/></p:nvPicPr><p:blipFill><a:blip r:embed="rId1"/><a:stretch><a:fillRect/></a:stretch></p:blipFill><p:spPr><a:xfrm><a:off x="${rect.x}" y="${rect.y}"/><a:ext cx="${rect.cx}" cy="${rect.cy}"/></a:xfrm><a:prstGeom prst="rect"><a:avLst/></a:prstGeom></p:spPr></p:pic></p:spTree></p:cSld></p:sld>`;
+    }
+
+    function themeXml() {
+      const c = '<a:srgbClr val="000000"/>';
+      const w = '<a:srgbClr val="FFFFFF"/>';
+      return `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<a:theme xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" name="Office"><a:themeElements><a:clrScheme name="Office"><a:dk1><a:sysClr val="windowText" lastClr="000000"/></a:dk1><a:lt1><a:sysClr val="window" lastClr="FFFFFF"/></a:lt1><a:dk2>${c}</a:dk2><a:lt2>${w}</a:lt2><a:accent1><a:srgbClr val="4472C4"/></a:accent1><a:accent2><a:srgbClr val="ED7D31"/></a:accent2><a:accent3><a:srgbClr val="A5A5A5"/></a:accent3><a:accent4><a:srgbClr val="FFC000"/></a:accent4><a:accent5><a:srgbClr val="5B9BD5"/></a:accent5><a:accent6><a:srgbClr val="70AD47"/></a:accent6><a:hlink><a:srgbClr val="0563C1"/></a:hlink><a:folHlink><a:srgbClr val="954F72"/></a:folHlink></a:clrScheme><a:fontScheme name="Office"><a:majorFont><a:latin typeface="Calibri Light"/><a:ea typeface=""/><a:cs typeface=""/></a:majorFont><a:minorFont><a:latin typeface="Calibri"/><a:ea typeface=""/><a:cs typeface=""/></a:minorFont></a:fontScheme><a:fmtScheme name="Office"><a:fillStyleLst><a:solidFill><a:schemeClr val="phClr"/></a:solidFill><a:solidFill><a:schemeClr val="phClr"/></a:solidFill><a:solidFill><a:schemeClr val="phClr"/></a:solidFill></a:fillStyleLst><a:lnStyleLst><a:ln w="6350"><a:solidFill><a:schemeClr val="phClr"/></a:solidFill></a:ln><a:ln w="12700"><a:solidFill><a:schemeClr val="phClr"/></a:solidFill></a:ln><a:ln w="19050"><a:solidFill><a:schemeClr val="phClr"/></a:solidFill></a:ln></a:lnStyleLst><a:effectStyleLst><a:effectStyle><a:effectLst/></a:effectStyle><a:effectStyle><a:effectLst/></a:effectStyle><a:effectStyle><a:effectLst/></a:effectStyle></a:effectStyleLst><a:bgFillStyleLst><a:solidFill><a:schemeClr val="phClr"/></a:solidFill><a:solidFill><a:schemeClr val="phClr"/></a:solidFill><a:solidFill><a:schemeClr val="phClr"/></a:solidFill></a:bgFillStyleLst></a:fmtScheme></a:themeElements></a:theme>`;
+    }
+
+    async function createPptx(slides) {
+      const JSZip = await loadJSZip();
+      const zip = new JSZip();
+
+      const slideOverrides = slides.map((_, i) =>
+        `<Override PartName="/ppt/slides/slide${i + 1}.xml" ContentType="application/vnd.openxmlformats-officedocument.presentationml.slide+xml"/>`).join('');
+      zip.file('[Content_Types].xml', `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Default Extension="png" ContentType="image/png"/><Override PartName="/ppt/presentation.xml" ContentType="application/vnd.openxmlformats-officedocument.presentationml.presentation.main+xml"/><Override PartName="/ppt/slideMasters/slideMaster1.xml" ContentType="application/vnd.openxmlformats-officedocument.presentationml.slideMaster+xml"/><Override PartName="/ppt/slideLayouts/slideLayout1.xml" ContentType="application/vnd.openxmlformats-officedocument.presentationml.slideLayout+xml"/><Override PartName="/ppt/theme/theme1.xml" ContentType="application/vnd.openxmlformats-officedocument.theme+xml"/>${slideOverrides}</Types>`);
+
+      zip.folder('_rels').file('.rels', `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="${REL}/officeDocument" Target="ppt/presentation.xml"/></Relationships>`);
+
+      const sldIds = slides.map((_, i) => `<p:sldId id="${256 + i}" r:id="rId${i + 2}"/>`).join('');
+      zip.folder('ppt').file('presentation.xml', `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<p:presentation xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:r="${REL}" xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main"><p:sldMasterIdLst><p:sldMasterId id="2147483648" r:id="rId1"/></p:sldMasterIdLst><p:sldIdLst>${sldIds}</p:sldIdLst><p:sldSz cx="${SLIDE_W}" cy="${SLIDE_H}" type="screen16x9"/><p:notesSz cx="6858000" cy="9144000"/></p:presentation>`);
+
+      const presRels = slides.map((_, i) =>
+        `<Relationship Id="rId${i + 2}" Type="${REL}/slide" Target="slides/slide${i + 1}.xml"/>`).join('');
+      zip.folder('ppt').folder('_rels').file('presentation.xml.rels', `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="${REL}/slideMaster" Target="slideMasters/slideMaster1.xml"/>${presRels}</Relationships>`);
+
+      zip.folder('ppt').folder('theme').file('theme1.xml', themeXml());
+
+      zip.folder('ppt').folder('slideMasters').file('slideMaster1.xml', `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<p:sldMaster xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:r="${REL}" xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main"><p:cSld><p:bg><p:bgRef idx="1001"><a:schemeClr val="bg1"/></p:bgRef></p:bg><p:spTree><p:nvGrpSpPr><p:cNvPr id="1" name=""/><p:cNvGrpSpPr/><p:nvPr/></p:nvGrpSpPr><p:grpSpPr/></p:spTree></p:cSld><p:clrMap bg1="lt1" tx1="dk1" bg2="lt2" tx2="dk2" accent1="accent1" accent2="accent2" accent3="accent3" accent4="accent4" accent5="accent5" accent6="accent6" hlink="hlink" folHlink="folHlink"/><p:sldLayoutIdLst><p:sldLayoutId id="2147483649" r:id="rId1"/></p:sldLayoutIdLst><p:txStyles><p:titleStyle/><p:bodyStyle/><p:otherStyle/></p:txStyles></p:sldMaster>`);
+      zip.folder('ppt').folder('slideMasters').folder('_rels').file('slideMaster1.xml.rels', `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="${REL}/slideLayout" Target="../slideLayouts/slideLayout1.xml"/><Relationship Id="rId2" Type="${REL}/theme" Target="../theme/theme1.xml"/></Relationships>`);
+
+      zip.folder('ppt').folder('slideLayouts').file('slideLayout1.xml', `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<p:sldLayout xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:r="${REL}" xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main" type="blank" preserve="1"><p:cSld name="Blank"><p:spTree><p:nvGrpSpPr><p:cNvPr id="1" name=""/><p:cNvGrpSpPr/><p:nvPr/></p:nvGrpSpPr><p:grpSpPr/></p:spTree></p:cSld><p:clrMapOvr><a:masterClrMapping/></p:clrMapOvr></p:sldLayout>`);
+      zip.folder('ppt').folder('slideLayouts').folder('_rels').file('slideLayout1.xml.rels', `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="${REL}/slideMaster" Target="../slideMasters/slideMaster1.xml"/></Relationships>`);
+
+      const slidesFolder = zip.folder('ppt').folder('slides');
+      const slideRelsFolder = slidesFolder.folder('_rels');
+      const mediaFolder = zip.folder('ppt').folder('media');
+      slides.forEach((s, i) => {
+        const idx = i + 1;
+        mediaFolder.file(`image${idx}.png`, s.blob);
+        slidesFolder.file(`slide${idx}.xml`, slideXml(s.rect));
+        slideRelsFolder.file(`slide${idx}.xml.rels`, `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="${REL}/image" Target="../media/image${idx}.png"/><Relationship Id="rId2" Type="${REL}/slideLayout" Target="../slideLayouts/slideLayout1.xml"/></Relationships>`);
+      });
+
+      return zip.generateAsync({ type: 'blob', mimeType: 'application/vnd.openxmlformats-officedocument.presentationml.presentation' });
+    }
+
     convertBtn.addEventListener('click', async () => {
       if (!currentFile) return;
 
       convertBtn.disabled = true;
       progressContainer.classList.add('visible');
-      progressFill.style.width = '0%';
-      progressText.textContent = 'Reading PDF...';
+      resultContainer.classList.remove('visible');
+      progressFill.style.width = '5%';
+      progressText.textContent = 'Loading PDF engine...';
 
       try {
-        await simulateProgress();
-        
-        const pptxBlob = await createSimplePptx(currentFile.name);
-        
+        const pdfjsLib = await ensurePdfJs();
+        const data = new Uint8Array(await currentFile.arrayBuffer());
+        const pdf = await pdfjsLib.getDocument({ data }).promise;
+        const slides = await renderSlides(pdf);
+
+        progressText.textContent = 'Building PowerPoint...';
+        progressFill.style.width = '92%';
+        const pptxBlob = await createPptx(slides);
+
         progressFill.style.width = '100%';
         progressText.textContent = 'Complete!';
-        
-        const url = URL.createObjectURL(pptxBlob);
-        downloadBtn.href = url;
-        downloadBtn.download = currentFile.name.replace('.pdf', '.pptx');
-        
+
+        if (downloadBtn.href && downloadBtn.href.indexOf('blob:') === 0) URL.revokeObjectURL(downloadBtn.href);
+        downloadBtn.href = URL.createObjectURL(pptxBlob);
+        downloadBtn.download = currentFile.name.replace(/\.pdf$/i, '.pptx');
+
         setTimeout(() => {
           resultContainer.classList.add('visible');
           progressContainer.classList.remove('visible');
-        }, 500);
+        }, 400);
 
       } catch (error) {
         console.error('Conversion error:', error);
-        alert('Error converting file. Please try again.');
+        alert('Could not convert this PDF. Please make sure it is a valid PDF and try again.');
         convertBtn.disabled = false;
         progressContainer.classList.remove('visible');
       }
     });
-
-    async function simulateProgress() {
-      const steps = [
-        { width: 20, text: 'Analyzing PDF...', delay: 300 },
-        { width: 40, text: 'Extracting slides...', delay: 500 },
-        { width: 60, text: 'Converting format...', delay: 400 },
-        { width: 80, text: 'Generating PowerPoint...', delay: 300 },
-        { width: 95, text: 'Finalizing...', delay: 200 }
-      ];
-
-      for (const step of steps) {
-        progressFill.style.width = step.width + '%';
-        progressText.textContent = step.text;
-        await new Promise(r => setTimeout(r, step.delay));
-      }
-    }
-
-    async function createSimplePptx(filename) {
-      const JSZip = await import('https://cdn.jsdelivr.net/npm/jszip@3.10.1/+esm');
-      const zip = new JSZip.default();
-      
-      zip.file('[Content_Types].xml', `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">
-  <Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>
-  <Default Extension="xml" ContentType="application/xml"/>
-  <Override PartName="/ppt/presentation.xml" ContentType="application/vnd.openxmlformats-officedocument.presentationml.presentation.main+xml"/>
-  <Override PartName="/ppt/slides/slide1.xml" ContentType="application/vnd.openxmlformats-officedocument.presentationml.slide+xml"/>
-</Types>`);
-
-      zip.folder('_rels').file('.rels', `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
-  <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="ppt/presentation.xml"/>
-</Relationships>`);
-
-      zip.folder('ppt').file('presentation.xml', `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<p:presentation xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">
-  <p:sldIdLst>
-    <p:sldId id="256" r:id="rId1"/>
-  </p:sldIdLst>
-</p:presentation>`);
-
-      zip.folder('ppt').folder('_rels').file('presentation.xml.rels', `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
-  <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/slide" Target="slides/slide1.xml"/>
-</Relationships>`);
-
-      zip.folder('ppt').folder('slides').file('slide1.xml', `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<p:sld xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main" xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
-  <p:cSld>
-    <p:spTree>
-      <p:nvGrpSpPr>
-        <p:cNvPr id="1" name=""/>
-        <p:cNvGrpSpPr/>
-        <p:nvPr/>
-      </p:nvGrpSpPr>
-      <p:grpSpPr>
-        <a:xfrm/>
-      </p:grpSpPr>
-      <p:sp>
-        <p:nvSpPr>
-          <p:cNvPr id="2" name="Title"/>
-          <p:cNvSpPr txBox="1"/>
-          <p:nvPr/>
-        </p:nvSpPr>
-        <p:spPr>
-          <a:xfrm>
-            <a:off x="457200" y="274638"/>
-            <a:ext cx="8229600" cy="1143000"/>
-          </a:xfrm>
-          <a:prstGeom prst="rect">
-            <a:avLst/>
-          </a:prstGeom>
-        </p:spPr>
-        <p:txBody>
-          <a:bodyPr/>
-          <a:lstStyle/>
-          <a:p>
-            <a:r>
-              <a:t>Converted from: ${filename}</a:t>
-            </a:r>
-          </a:p>
-        </p:txBody>
-      </p:sp>
-    </p:spTree>
-  </p:cSld>
-</p:sld>`);
-
-      const blob = await zip.generateAsync({ type: 'blob', mimeType: 'application/vnd.openxmlformats-officedocument.presentationml.presentation' });
-      return blob;
-    }
   </script>
 </body>
 </html>

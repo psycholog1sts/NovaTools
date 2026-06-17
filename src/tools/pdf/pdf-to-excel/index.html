@@ -458,7 +458,7 @@
 
       <article class="tool-description" aria-labelledby="toolDescriptionTitle-pdf-to-excel">
         <h2 id="toolDescriptionTitle-pdf-to-excel">What the PDF to Excel Converter Does and Why It Matters</h2>
-        <p>The PDF to Excel Converter pulls text and tabular data out of a PDF and builds an .xlsx spreadsheet with the SheetJS (xlsx) library, in your browser. It is designed to recover rows and columns from PDFs so you can work with the numbers in Excel or Google Sheets.</p>
+        <p>The PDF to Excel Converter reads the text layer of a PDF with PDF.js, groups it into rows by position, splits each row into columns where there are clear gaps, and writes a real .xlsx (Office Open XML) workbook — all in your browser. It is designed to recover rows and columns from PDFs so you can work with the numbers in Excel or Google Sheets.</p>
         <p>This matters because data trapped in a PDF — invoices, statements, reports — is painful to retype. Getting it into a spreadsheet lets you sort, total, and analyze it, and doing the extraction locally keeps financial documents off third-party servers.</p>
         <h2>How to Use PDF to Excel Converter</h2>
         <ol>
@@ -476,7 +476,7 @@
         <h3>Known limitations</h3>
         <ul><li>Table detection is heuristic: merged cells, multi-line rows, and unusual layouts may need manual cleanup.</li><li>Scanned PDFs have no text layer and must be run through PDF OCR first.</li><li>Always verify totals and columns against the source before relying on the data.</li></ul>
         <h2>Privacy and Security</h2>
-        <p>Extraction and spreadsheet generation run entirely in your browser using SheetJS. Your PDF is processed on your device and is never uploaded to NovaTools or any external server.</p>
+        <p>Text extraction (PDF.js) and spreadsheet generation run entirely in your browser. Your PDF is processed on your device and is never uploaded to NovaTools or any external server.</p>
         <h2>Frequently Asked Questions</h2>
         <h3>Will my tables come through perfectly?</h3>
         <p>Often closely, but PDF tables have no formal structure, so detection is a best effort. Complex tables may need a few manual fixes after export.</p>
@@ -603,76 +603,140 @@
       return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
     }
 
+    let pdfjsPromise = null;
+    function ensurePdfJs() {
+      if (pdfjsPromise) return pdfjsPromise;
+      pdfjsPromise = import('https://cdn.jsdelivr.net/npm/pdfjs-dist@4.0.379/+esm')
+        .then((lib) => {
+          lib.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.0.379/build/pdf.worker.min.mjs';
+          return lib;
+        })
+        .catch((err) => { pdfjsPromise = null; throw err; });
+      return pdfjsPromise;
+    }
+
+    async function loadJSZip() {
+      const sources = ['https://cdn.jsdelivr.net/npm/jszip@3.10.1/+esm', 'https://esm.sh/jszip@3.10.1'];
+      for (const src of sources) {
+        try { const m = await import(src); return m.default || m; } catch (e) { /* try next */ }
+      }
+      throw new Error('ZIP library failed to load');
+    }
+
+    function escapeXml(s) {
+      return String(s)
+        .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F]/g, '')
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;').replace(/'/g, '&apos;');
+    }
+
+    function colName(c) {
+      let s = '';
+      c += 1;
+      while (c > 0) { const m = (c - 1) % 26; s = String.fromCharCode(65 + m) + s; c = Math.floor((c - 1) / 26); }
+      return s;
+    }
+
+    // Group a page's text items into rows (by vertical position) and split each
+    // row into cells where there is a noticeable horizontal gap between runs.
+    async function extractRows(pdf) {
+      const rows = [];
+      for (let i = 1; i <= pdf.numPages; i++) {
+        progressText.textContent = `Extracting tables from page ${i} of ${pdf.numPages}...`;
+        progressFill.style.width = (10 + (i / pdf.numPages) * 75) + '%';
+        const page = await pdf.getPage(i);
+        const tc = await page.getTextContent();
+        const lineMap = new Map();
+        for (const it of tc.items) {
+          if (typeof it.str !== 'string' || !it.str.trim()) continue;
+          const key = Math.round(it.transform[5] / 3) * 3;
+          if (!lineMap.has(key)) lineMap.set(key, []);
+          lineMap.get(key).push(it);
+        }
+        const keys = Array.from(lineMap.keys()).sort((a, b) => b - a);
+        for (const key of keys) {
+          const items = lineMap.get(key).sort((a, b) => a.transform[4] - b.transform[4]);
+          const cells = [];
+          let cur = '';
+          let prevEnd = null;
+          for (const it of items) {
+            const x = it.transform[4];
+            const gapLimit = Math.max(8, (it.height || 10) * 0.9);
+            if (prevEnd !== null && (x - prevEnd) > gapLimit) { cells.push(cur.trim()); cur = ''; }
+            cur += it.str;
+            prevEnd = x + (it.width || 0);
+          }
+          if (cur.trim() || cells.length) cells.push(cur.trim());
+          if (cells.some((c) => c)) rows.push(cells);
+        }
+      }
+      return rows;
+    }
+
+    function buildSheetXml(rows) {
+      let sd = '';
+      rows.forEach((cells, r) => {
+        const rn = r + 1;
+        let cellsXml = '';
+        cells.forEach((val, c) => {
+          if (val === '') return;
+          cellsXml += `<c r="${colName(c)}${rn}" t="inlineStr"><is><t xml:space="preserve">${escapeXml(val)}</t></is></c>`;
+        });
+        sd += `<row r="${rn}">${cellsXml}</row>`;
+      });
+      return `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"><sheetData>${sd}</sheetData></worksheet>`;
+    }
+
     convertBtn.addEventListener('click', async () => {
       if (!currentFile) return;
 
       convertBtn.disabled = true;
       progressContainer.classList.add('visible');
-      progressFill.style.width = '0%';
-      progressText.textContent = 'Reading PDF...';
+      resultContainer.classList.remove('visible');
+      progressFill.style.width = '5%';
+      progressText.textContent = 'Loading PDF engine...';
 
       try {
-        await simulateProgress();
+        const pdfjsLib = await ensurePdfJs();
+        const data = new Uint8Array(await currentFile.arrayBuffer());
+        const pdf = await pdfjsLib.getDocument({ data }).promise;
+        const rows = await extractRows(pdf);
 
-        const xlsxBlob = await createSimpleXlsx(currentFile.name);
+        if (!rows.length) {
+          alert('No selectable text was found in this PDF. It looks like a scanned or image-only document — try the PDF OCR tool to recognize the text first.');
+          convertBtn.disabled = false;
+          progressContainer.classList.remove('visible');
+          return;
+        }
+
+        progressText.textContent = 'Generating Excel spreadsheet...';
+        progressFill.style.width = '92%';
+        const xlsxBlob = await createXlsx(buildSheetXml(rows));
 
         progressFill.style.width = '100%';
         progressText.textContent = 'Complete!';
 
-        const url = URL.createObjectURL(xlsxBlob);
-        downloadBtn.href = url;
-        downloadBtn.download = currentFile.name.replace('.pdf', '.xlsx');
+        if (downloadBtn.href && downloadBtn.href.indexOf('blob:') === 0) URL.revokeObjectURL(downloadBtn.href);
+        downloadBtn.href = URL.createObjectURL(xlsxBlob);
+        downloadBtn.download = currentFile.name.replace(/\.pdf$/i, '.xlsx');
 
         setTimeout(() => {
           resultContainer.classList.add('visible');
           progressContainer.classList.remove('visible');
-        }, 500);
+        }, 400);
 
       } catch (error) {
         console.error('Conversion error:', error);
-        alert('Error converting file. Please try again.');
+        alert('Could not convert this PDF. Please make sure it is a valid PDF and try again.');
         convertBtn.disabled = false;
         progressContainer.classList.remove('visible');
       }
     });
 
-    async function simulateProgress() {
-      const steps = [
-        { width: 20, text: 'Analyzing PDF...', delay: 300 },
-        { width: 40, text: 'Extracting tables...', delay: 500 },
-        { width: 60, text: 'Converting format...', delay: 400 },
-        { width: 80, text: 'Generating Excel file...', delay: 300 },
-        { width: 95, text: 'Finalizing...', delay: 200 }
-      ];
-
-      for (const step of steps) {
-        progressFill.style.width = step.width + '%';
-        progressText.textContent = step.text;
-        await new Promise(r => setTimeout(r, step.delay));
-      }
-    }
-
-    async function createSimpleXlsx(filename) {
-      const xlsxContent = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">
-  <sheetData>
-    <row r="1">
-      <c r="A1" t="inlineStr"><is><t>Converted from: ${filename}</t></is></c>
-    </row>
-    <row r="2">
-      <c r="A2" t="inlineStr"><is><t>Conversion Date: ${new Date().toLocaleString()}</t></is></c>
-    </row>
-    <row r="3">
-      <c r="A3" t="inlineStr"><is><t>Tool: NovaTools MC PDF to Excel Converter</t></is></c>
-    </row>
-    <row r="5">
-      <c r="A5" t="inlineStr"><is><t>Note: This is a basic conversion. For complex tables, manual adjustment may be needed.</t></is></c>
-    </row>
-  </sheetData>
-</worksheet>`;
-
-      const JSZip = await import('https://cdn.jsdelivr.net/npm/jszip@3.10.1/+esm');
-      const zip = new JSZip.default();
+    async function createXlsx(xlsxContent) {
+      const JSZip = await loadJSZip();
+      const zip = new JSZip();
 
       zip.file('[Content_Types].xml', `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">
