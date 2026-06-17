@@ -471,7 +471,7 @@
         <h3>What you provide</h3>
         <ul><li>A PDF file from your device</li></ul>
         <h3>What you get</h3>
-        <ul><li>One JPG image per page</li><li>Downloadable images ready to upload or embed</li></ul>
+        <ul><li>One JPG image per page (a single image for a one-page PDF, or a ZIP of images for multi-page PDFs)</li><li>Downloadable images ready to upload or embed</li></ul>
         <h3>Known limitations</h3>
         <ul><li>JPG uses lossy compression, so sharp text edges can soften slightly — choose PNG for the crispest text.</li><li>Rendering many high-resolution pages depends on browser memory.</li><li>The output is an image; the text is no longer selectable.</li></ul>
         <h2>Privacy and Security</h2>
@@ -602,93 +602,99 @@
       return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
     }
 
+    const IMG_MIME = 'image/jpeg';
+    const IMG_EXT = 'jpg';
+    let pdfjsPromise = null;
+
+    function ensurePdfJs() {
+      if (pdfjsPromise) return pdfjsPromise;
+      pdfjsPromise = import('https://cdn.jsdelivr.net/npm/pdfjs-dist@4.0.379/+esm')
+        .then((lib) => {
+          lib.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.0.379/build/pdf.worker.min.mjs';
+          return lib;
+        })
+        .catch((err) => { pdfjsPromise = null; throw err; });
+      return pdfjsPromise;
+    }
+
+    function canvasToBlob(canvas, mime, quality) {
+      return new Promise((resolve) => canvas.toBlob((b) => resolve(b), mime, quality));
+    }
+
+    function setDownloadLabel(text) {
+      const last = downloadBtn.childNodes[downloadBtn.childNodes.length - 1];
+      if (last && last.nodeType === 3) last.textContent = ' ' + text;
+    }
+
     convertBtn.addEventListener('click', async () => {
       if (!currentFile) return;
 
       convertBtn.disabled = true;
       progressContainer.classList.add('visible');
-      progressFill.style.width = '0%';
-      progressText.textContent = 'Reading PDF...';
+      resultContainer.classList.remove('visible');
+      progressFill.style.width = '5%';
+      progressText.textContent = 'Loading PDF engine...';
 
       try {
-        await simulateProgress();
+        const pdfjsLib = await ensurePdfJs();
+        const data = new Uint8Array(await currentFile.arrayBuffer());
+        const pdf = await pdfjsLib.getDocument({ data }).promise;
+        const total = pdf.numPages;
+        const base = currentFile.name.replace(/\.pdf$/i, '');
+        const images = [];
 
-        const jpgBlob = await createPlaceholderJpg(currentFile.name);
+        for (let i = 1; i <= total; i++) {
+          progressText.textContent = `Rendering page ${i} of ${total}...`;
+          progressFill.style.width = (5 + (i / total) * 85) + '%';
+          const page = await pdf.getPage(i);
+          const viewport = page.getViewport({ scale: 2 });
+          const canvas = document.createElement('canvas');
+          const context = canvas.getContext('2d');
+          canvas.width = viewport.width;
+          canvas.height = viewport.height;
+          context.fillStyle = '#ffffff';
+          context.fillRect(0, 0, canvas.width, canvas.height);
+          await page.render({ canvasContext: context, viewport }).promise;
+          const blob = await canvasToBlob(canvas, IMG_MIME, 0.92);
+          images.push({ blob, name: `${base}_page_${i}.${IMG_EXT}` });
+          canvas.width = 0;
+          canvas.height = 0;
+        }
+
+        progressText.textContent = 'Packaging...';
+        let outBlob, outName, label;
+        if (images.length === 1) {
+          outBlob = images[0].blob;
+          outName = `${base}.${IMG_EXT}`;
+          label = `Download ${IMG_EXT.toUpperCase()} Image`;
+        } else {
+          const JSZip = (await import('https://cdn.jsdelivr.net/npm/jszip@3.10.1/+esm')).default;
+          const zip = new JSZip();
+          images.forEach((img) => zip.file(img.name, img.blob));
+          outBlob = await zip.generateAsync({ type: 'blob' });
+          outName = `${base}_images.zip`;
+          label = `Download ${images.length} ${IMG_EXT.toUpperCase()} Images (ZIP)`;
+        }
 
         progressFill.style.width = '100%';
         progressText.textContent = 'Complete!';
-
-        const url = URL.createObjectURL(jpgBlob);
+        const url = URL.createObjectURL(outBlob);
         downloadBtn.href = url;
-        downloadBtn.download = currentFile.name.replace('.pdf', '.jpg');
+        downloadBtn.download = outName;
+        setDownloadLabel(label);
 
         setTimeout(() => {
           resultContainer.classList.add('visible');
           progressContainer.classList.remove('visible');
-        }, 500);
+        }, 400);
 
       } catch (error) {
         console.error('Conversion error:', error);
-        alert('Error converting file. Please try again.');
+        alert('Could not convert this PDF. Please make sure it is a valid PDF and try again.');
         convertBtn.disabled = false;
         progressContainer.classList.remove('visible');
       }
     });
-
-    async function simulateProgress() {
-      const steps = [
-        { width: 20, text: 'Analyzing PDF...', delay: 300 },
-        { width: 40, text: 'Extracting pages...', delay: 500 },
-        { width: 60, text: 'Converting to JPG...', delay: 400 },
-        { width: 80, text: 'Optimizing images...', delay: 300 },
-        { width: 95, text: 'Finalizing...', delay: 200 }
-      ];
-
-      for (const step of steps) {
-        progressFill.style.width = step.width + '%';
-        progressText.textContent = step.text;
-        await new Promise(r => setTimeout(r, step.delay));
-      }
-    }
-
-    async function createPlaceholderJpg(filename) {
-      // Create a canvas and draw a placeholder image
-      const canvas = document.createElement('canvas');
-      canvas.width = 800;
-      canvas.height = 600;
-      const ctx = canvas.getContext('2d');
-
-      // Fill background
-      ctx.fillStyle = '#f0f0f0';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      // Draw border
-      ctx.strokeStyle = '#6366f1';
-      ctx.lineWidth = 10;
-      ctx.strokeRect(20, 20, canvas.width - 40, canvas.height - 40);
-
-      // Draw text
-      ctx.fillStyle = '#333';
-      ctx.font = 'bold 32px Inter, sans-serif';
-      ctx.textAlign = 'center';
-      ctx.fillText('Converted from PDF', canvas.width / 2, canvas.height / 2 - 40);
-
-      ctx.font = '20px Inter, sans-serif';
-      ctx.fillStyle = '#666';
-      ctx.fillText(filename, canvas.width / 2, canvas.height / 2 + 10);
-
-      ctx.font = '16px Inter, sans-serif';
-      ctx.fillStyle = '#999';
-      ctx.fillText(`Converted: ${new Date().toLocaleString()}`, canvas.width / 2, canvas.height / 2 + 50);
-
-      ctx.fillStyle = '#6366f1';
-      ctx.font = 'bold 18px Inter, sans-serif';
-      ctx.fillText('NovaTools MC PDF to JPG Converter', canvas.width / 2, canvas.height - 60);
-
-      return new Promise(resolve => {
-        canvas.toBlob(blob => resolve(blob), 'image/jpeg', 0.9);
-      });
-    }
   </script>
 
   <aside class="topical-authority-links" data-topical-authority-links style="max-width: 900px; margin: 2rem auto; padding: 1rem; border: 1px solid var(--border-default, var(--color-border, #334155)); border-radius: 16px; background: var(--surface-default, var(--color-surface, #101827));">
