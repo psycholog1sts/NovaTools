@@ -842,6 +842,68 @@
     };
     const categoryRoute = `/categories/${categoryRoutes[category] || 'index'}.html`;
     const guideRoute = guideByCategory[category] || '/blog/articles/tool-selection-map-for-new-users.html';
+    const workflowByCategory = {
+      pdf: [
+        ['Combine', '/tools/pdf/merge/'], ['Reduce size', '/tools/pdf/compress/'], ['Add page numbers', '/tools/pdf/pdf-page-number/']
+      ],
+      image: [
+        ['Crop', '/tools/image/image-cropper/'], ['Compress', '/tools/image/compress/'], ['Convert format', '/tools/image/convert/']
+      ],
+      dev: [
+        ['Format code', '/tools/dev/code-formatter/'], ['Validate JSON', '/tools/dev/json-validator/'], ['Create checksum', '/tools/data/checksum-calculator/']
+      ],
+      finance: [
+        ['Compare scenarios', '/tools/finance/compound-interest/'], ['Check affordability', '/tools/finance/mortgage-refinance/'], ['Track expenses', '/tools/productivity/expense-tracker/']
+      ],
+      text: [
+        ['Clean case', '/tools/text/case-converter/'], ['Check length', '/tools/text/character-counter/'], ['Compare versions', '/tools/text/text-diff/']
+      ],
+      data: [
+        ['Inspect CSV', '/tools/data/csv-viewer/'], ['Convert to JSON', '/tools/data/csv-to-json/'], ['Build a chart', '/tools/data/chart-builder/']
+      ],
+      design: [
+        ['Create a logo', '/tools/design/logo-maker/'], ['Build a business card', '/tools/design/business-card-maker/'], ['Generate a QR code', '/tools/design/qr-code-designer/']
+      ],
+      productivity: [
+        ['Capture notes', '/tools/productivity/notes/'], ['Plan tasks', '/tools/productivity/kanban-board/'], ['Focus', '/tools/productivity/pomodoro-timer/']
+      ],
+      security: [
+        ['Generate a password', '/tools/security/password-generator/'], ['Check strength', '/tools/security/password-strength/'], ['Create a hash', '/tools/security/hash-generator/']
+      ],
+      social: [
+        ['Resize image', '/tools/social/social-image-resizer/'], ['Generate hashtags', '/tools/social/hashtag-generator/'], ['Create app icon', '/tools/social/app-icon-generator/']
+      ],
+      converters: [
+        ['Convert units', '/tools/converters/unit-converter/'], ['Calculate percentage', '/tools/converters/percentage-calculator/'], ['Convert number base', '/tools/converters/number-base-converter/']
+      ]
+    };
+    const workflow = workflowByCategory[category] || workflowByCategory.productivity;
+    const safeText = (value) => String(value).replace(/[&<>"']/g, (character) => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    })[character]);
+    const workflowMarkup = workflow
+      .map(([label, href], index) => `<li><span>${index + 1}</span><a href="${href}" data-workflow-step="${index + 1}">${safeText(label)}</a></li>`)
+      .join('');
+    const currentTool = {
+      href: window.location.pathname,
+      title: document.querySelector('h1')?.textContent?.trim() || document.title
+    };
+    let recentTools = [];
+    try {
+      const stored = JSON.parse(localStorage.getItem('novatools_recent_tools') || '[]');
+      recentTools = Array.isArray(stored)
+        ? stored.filter((item) => item && /^\/tools\/[a-z0-9-]+\/[a-z0-9-]+\/$/.test(item.href) && typeof item.title === 'string')
+        : [];
+      recentTools = [currentTool, ...recentTools.filter((item) => item.href !== currentTool.href)].slice(0, 5);
+      localStorage.setItem('novatools_recent_tools', JSON.stringify(recentTools));
+    } catch (_e) {
+      void _e;
+    }
+    const recentMarkup = recentTools
+      .filter((item) => item.href !== currentTool.href)
+      .slice(0, 2)
+      .map((item) => `<a href="${item.href}" data-recent-tool="true">${safeText(item.title)}</a>`)
+      .join('');
 
     main.classList.add('tool-ux-standard');
     document.querySelectorAll('input, textarea, select, button, [tabindex]').forEach((el) => {
@@ -868,14 +930,16 @@
         <strong>Privacy & limits</strong>
         <p>NovaTools favors browser-first processing where practical. Large files can depend on device memory, and tools that need live data or external services should be reviewed in context.</p>
       </div>
-      <div class="tool-professional-card">
-        <strong>Result states</strong>
-        <p>Empty means input is still needed; loading means the browser is working; success should be reviewed; errors usually mean format, size or required-field issues.</p>
+      <div class="tool-professional-card tool-workflow-card">
+        <strong>Finish the whole task</strong>
+        <p>Use this privacy-first sequence instead of searching again after every step.</p>
+        <ol class="tool-workflow-steps">${workflowMarkup}</ol>
       </div>
       <div class="tool-professional-actions">
         <a href="${categoryRoute}">Related tools</a>
         <a href="${guideRoute}">Related guide</a>
         <a href="/security.html">Safety notes</a>
+        ${recentMarkup ? `<span class="tool-recent-label">Continue where you left off</span>${recentMarkup}` : ''}
       </div>`;
 
     if (hero.parentElement) {
@@ -1035,6 +1099,45 @@
     .tool-professional-card p {
       margin: 0;
       line-height: 1.65;
+    }
+
+    .tool-workflow-steps {
+      display: grid;
+      gap: 0.5rem;
+      margin: 0.8rem 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .tool-workflow-steps li {
+      display: grid;
+      grid-template-columns: 1.75rem 1fr;
+      gap: 0.55rem;
+      align-items: center;
+    }
+
+    .tool-workflow-steps span {
+      display: grid;
+      width: 1.65rem;
+      height: 1.65rem;
+      place-items: center;
+      border-radius: 999px;
+      color: #082f49;
+      background: #67e8f9;
+      font-weight: 800;
+    }
+
+    .tool-workflow-steps a,
+    .tool-recent-label {
+      color: #e2e8f0;
+    }
+
+    .tool-recent-label {
+      margin-top: 0.35rem;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
     }
 
     .tool-professional-actions {
