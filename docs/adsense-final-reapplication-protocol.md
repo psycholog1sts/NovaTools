@@ -1,4 +1,12 @@
-# AdSense Final Reapplication Protocol — Phase 10
+# AdSense Final Reapplication Protocol
+
+> **4 Ağustos 2026 güncellemesi:** Güncel CMP, reklam kodu, sahte slot önleme,
+> Auto Ads ve organik büyüme kuralları için
+> [adsense-growth-operating-plan-2026-08-04.md](./adsense-growth-operating-plan-2026-08-04.md)
+> esas alınmalıdır. Site içi özel çerez paneli Google sertifikalı reklam CMP'si
+> değildir; EEA, UK ve İsviçre reklam trafiği için Google AdSense hesabındaki
+> sertifikalı IAB TCF mesajı yayınlanmalıdır.
+ — Phase 10
 
 **Site:** `https://mc-novatools.com`  
 **Prepared for:** Final pre-submission QA, AdSense compliance review, and rejection recovery planning  
