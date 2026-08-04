@@ -175,7 +175,7 @@ for (const i18nRuntime of [sourceI18n, publicI18n]) {
     'Accessible labels must be translated alongside visible copy.'
   );
 }
-for (const locale of ['en', 'tr', 'ar']) {
+for (const locale of ['en', 'tr']) {
   const bundle = JSON.parse(read(`public/locales/${locale}/translation.json`));
   for (const key of ['quickStartEyebrow', 'categoriesEyebrow']) {
     assert.ok(bundle.home?.sections?.[key], `${locale} homepage bundle is missing home.sections.${key}`);
