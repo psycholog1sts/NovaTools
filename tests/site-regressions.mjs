@@ -166,7 +166,7 @@ assert.match(
 for (const i18nRuntime of [sourceI18n, publicI18n]) {
   assert.match(
     i18nRuntime,
-    /const SUPPORTED_LANGUAGES = \['en', 'tr', 'ar'\];/,
+    /const SUPPORTED_LANGUAGES = \['en', 'tr'\];/,
     'The language selector must expose only fully quality-checked locales.'
   );
   assert.match(
