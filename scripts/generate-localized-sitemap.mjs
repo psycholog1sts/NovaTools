@@ -14,9 +14,16 @@ const staticPages = [
   ['/', '1.0', 'daily'],
   ['/about-us.html', '0.5', 'monthly'],
   ['/contact.html', '0.5', 'monthly'],
+  ['/request-tool.html', '0.5', 'monthly'],
   ['/privacy-policy.html', '0.4', 'monthly'],
   ['/terms-of-service.html', '0.4', 'monthly'],
   ['/disclaimer.html', '0.4', 'monthly'],
+  ['/cookie-policy.html', '0.4', 'monthly'],
+  ['/security.html', '0.4', 'monthly'],
+  ['/gizlilik-politikasi.html', '0.4', 'monthly'],
+  ['/kvkk-aydinlatma-metni.html', '0.4', 'monthly'],
+  ['/kullanim-kosullari.html', '0.4', 'monthly'],
+  ['/iletisim.html', '0.4', 'monthly'],
   [blogHubPath(fallbackBlogLocale), '0.7', 'weekly']
 ];
 
@@ -29,6 +36,19 @@ const blogCategoryPages = [
 ];
 
 const categoryPages = [
+  ['/categories/index.html', '0.8', 'weekly'],
+  ['/categories/pdf-tools.html', '0.8', 'weekly'],
+  ['/categories/image-tools.html', '0.8', 'weekly'],
+  ['/categories/finance-tools.html', '0.8', 'weekly'],
+  ['/categories/developer-tools.html', '0.8', 'weekly'],
+  ['/categories/text-writing.html', '0.8', 'weekly'],
+  ['/categories/converters.html', '0.8', 'weekly'],
+  ['/categories/calculator-tools.html', '0.8', 'weekly'],
+  ['/categories/security-tools.html', '0.8', 'weekly'],
+  ['/categories/social-media-tools.html', '0.8', 'weekly'],
+  ['/categories/productivity-tools.html', '0.8', 'weekly'],
+  ['/categories/data-tools.html', '0.8', 'weekly'],
+  ['/categories/design-tools.html', '0.8', 'weekly'],
   ['/tools/pdf/', '0.8', 'weekly'],
   ['/tools/image/', '0.8', 'weekly'],
   ['/tools/developer/', '0.8', 'weekly'],
