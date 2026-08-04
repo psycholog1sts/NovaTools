@@ -5734,7 +5734,11 @@
     },
     "footer": {
       "brandDesc": "Dosyalar, finans, kod ve günlük iş akışları için tarayıcı tabanlı araçlar. Netlik, pratik kullanım ve gizlilik bilinciyle geliştirilmiştir.",
-      "contactNote": "Yeni rehberler için blogu takip edin veya herkese açık site soruları için destekle iletişime geçin."
+      "contactNote": "Yeni rehberler için blogu takip edin veya herkese açık site soruları için destekle iletişime geçin.",
+      "toolCategoriesTitle": "Araç Kategorileri",
+      "legalTitle": "Yasal",
+      "ownerTitle": "Site Sahibi",
+      "ownerRole": "Psikolojik Danışman ve Geliştirici"
     },
     "popularCards": {
       "pdfMerge": {
