@@ -115,7 +115,7 @@
             "title": "Third-party sharing",
             "body": [
               "We do not sell personal information. Limited data may be processed by infrastructure, analytics, advertising, and form-handling providers that support the website.",
-              "Google Analytics and Google AdSense are loaded only after the relevant consent category is granted. Google may process data under its own terms when those services are enabled. Hosting, security, and email providers may process technical logs or submitted messages as necessary to provide the service."
+              "Google Analytics loads only after site analytics consent. The AdSense connection code is present for site verification and ad delivery; in the EEA, UK, and Switzerland, advertising choices must be collected through a Google-certified IAB TCF CMP. Google may process data under its own terms when those services are enabled."
             ]
           },
           {
@@ -132,7 +132,7 @@
             "id": "user-rights",
             "title": "User rights",
             "body": [
-              "Depending on your location, you may have rights to access, correct, delete, restrict, object to, or receive a copy of personal data. You may also withdraw consent at any time from Cookie Settings in the footer.",
+              "Depending on your location, you may have rights to access, correct, delete, restrict, object to, or receive a copy of personal data. Site analytics and functional choices can be changed in Cookie Settings; advertising choices are managed through Google's certified message, Google Ad Settings, and applicable browser controls.",
               "For KVKK-related requests, include enough information for us to identify the request and the relevant interaction. We may need to verify ownership of the email address before acting on a request."
             ]
           },
@@ -158,16 +158,16 @@
       "cookies": {
         "title": "Cookie Policy",
         "metaTitle": "Cookie Policy | MC NovaTools",
-        "metaDescription": "Learn about necessary, analytics, advertising, and functional cookies/localStorage used by MC NovaTools and how to manage consent.",
+        "metaDescription": "Learn about necessary, analytics, and functional storage used by MC NovaTools, plus the separate Google-certified advertising consent message.",
         "badge": "Cookies",
-        "intro": "This Cookie Policy explains how MC NovaTools uses cookies and similar technologies such as localStorage. Non-essential categories are disabled until you grant consent.",
+        "intro": "This Cookie Policy explains how MC NovaTools uses cookies and localStorage. Site analytics and functional storage are optional. Google manages advertising consent separately through a certified CMP where required.",
         "sections": [
           {
             "id": "overview",
             "title": "Overview",
             "body": [
-              "Cookies and browser storage help websites remember choices, measure usage, or support advertising. MC NovaTools separates storage into Necessary, Analytics, Advertising, and Functional categories.",
-              "You can accept all, reject non-essential categories, or choose categories in Cookie Settings. Necessary storage is always enabled because it supports security and core preferences."
+              "MC NovaTools uses Necessary, Analytics, and Functional storage. Google AdSense may use separate advertising storage under Google's certified consent message and applicable law.",
+              "You can accept, reject, or customize site analytics and functional storage in Cookie Settings. Necessary storage remains enabled for security and core preferences."
             ]
           },
           {
@@ -185,7 +185,7 @@
                 [
                   "cookie_consent / novatools_cookie_consent",
                   "MC NovaTools",
-                  "Stores your consent choices for necessary, analytics, advertising, and functional categories.",
+                  "Stores your consent choices for necessary, analytics, and functional site categories.",
                   "Until changed or browser storage is cleared",
                   "Necessary"
                 ],
@@ -213,7 +213,7 @@
                 [
                   "adsbygoogle / advertising identifiers",
                   "Google AdSense",
-                  "Supports contextual advertising, ad delivery, fraud prevention, and measurement when advertising consent is granted.",
+                  "Supports ad delivery, fraud prevention, measurement, and permitted personalization under Google's certified CMP choices where required.",
                   "Set by Google according to service configuration",
                   "Advertising"
                 ],
@@ -231,9 +231,9 @@
             "id": "categories",
             "title": "Consent categories",
             "list": [
-              "Necessary: session, security, consent, and language storage needed for basic operation.",
-              "Analytics: Google Analytics or similar measurement loaded only after analytics consent.",
-              "Advertising: Google AdSense and ad measurement loaded only after advertising consent.",
+              "Necessary: security, consent, and language storage needed for basic operation.",
+              "Analytics: Google Analytics or similar measurement loaded only after site analytics consent.",
+              "Advertising: managed separately by Google's certified CMP where required; it is not controlled by the NovaTools site-cookie panel.",
               "Functional: theme and user settings that improve convenience but are not strictly required."
             ]
           },
@@ -241,8 +241,8 @@
             "id": "manage",
             "title": "How to manage cookies",
             "body": [
-              "Use the Cookie Settings link in the footer to change or withdraw consent at any time. You can also delete cookies and localStorage in your browser settings.",
-              "Withdrawing consent stops future loading of non-essential scripts from this site, but it does not automatically delete data already processed by a third-party provider. Review the relevant provider controls for additional deletion options."
+              "Use Cookie Settings in the footer to change site analytics and functional choices. Use Google's advertising privacy message, Google Ad Settings, or browser controls for advertising choices.",
+              "Withdrawing site consent stops future loading of the corresponding optional site scripts. Provider-side data and advertising choices are governed by the relevant provider controls and policies."
             ]
           }
         ]
