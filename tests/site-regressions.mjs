@@ -152,8 +152,11 @@ assert.match(
   'Homepage hero must include the transparent PNG brand mark.'
 );
 const layoutCss = read('src/styles/layout.css');
-assert.match(layoutCss, /@keyframes novatools-logo-spin/, 'Homepage brand mark must have a 360-degree spin animation.');
-assert.match(layoutCss, /rotate\(360deg\)/, 'Homepage brand animation must complete a full rotation.');
+assert.match(layoutCss, /@keyframes novatools-logo-spin/, 'Homepage brand mark must have a 3D spin animation.');
+assert.match(layoutCss, /rotateY\(360deg\)/, 'Homepage brand animation must rotate sideways around its vertical axis.');
+assert.match(layoutCss, /perspective:\s*700px/, 'Homepage logo stage must provide 3D perspective.');
+assert.match(layoutCss, /transform-style:\s*preserve-3d/, 'Homepage brand animation must preserve its 3D transform context.');
+assert.doesNotMatch(layoutCss, /rotate\(360deg\)/, 'Homepage brand mark must not use the dizzying flat wheel rotation.');
 assert.match(
   layoutCss,
   /@media \(prefers-reduced-motion: reduce\)[\s\S]*home-hero__spin-logo/,
