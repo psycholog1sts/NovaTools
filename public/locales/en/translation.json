@@ -58,7 +58,11 @@
     },
     "footer": {
       "contactNote": "Follow the blog for new guides or contact support for public-site questions.",
-      "brandDesc": "Browser-based tools for files, finance, code, and everyday workflows. Built for clarity, practical use, and privacy-conscious operation."
+      "brandDesc": "Browser-based tools for files, finance, code, and everyday workflows. Built for clarity, practical use, and privacy-conscious operation.",
+      "toolCategoriesTitle": "Tool Categories",
+      "legalTitle": "Legal",
+      "ownerTitle": "Owner",
+      "ownerRole": "Psychological Counselor & Developer"
     },
     "popularCards": {
       "pdfMerge": {
@@ -3629,7 +3633,18 @@
           "040": "Related PDF Tools",
           "041": "PDF Compressor",
           "042": "PDF Splitter",
-          "043": "PDF OCR"
+          "043": "PDF OCR",
+          "045": "Looking for the easiest way to merge PDFs online?",
+          "046": "Upload your PDFs:",
+          "047": "Arrange the order:",
+          "048": "Customize the output:",
+          "049": "Merge and download:",
+          "050": "Is this PDF merger completely free to use?",
+          "051": "Yes. The PDF merge tool is free to use, requires no registration, and adds no watermark to your documents.",
+          "052": "Are my PDF files secure when merging online?",
+          "053": "Yes. Processing runs directly in your browser. Your PDFs are not uploaded to our servers.",
+          "054": "How many PDF files can I merge at once?",
+          "055": "You can merge up to 20 PDF files in one operation, with a combined size limit of 50 MB."
         }
       },
       "pdf-ocr": {
