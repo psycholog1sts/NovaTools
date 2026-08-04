@@ -20,11 +20,8 @@
 
   <!-- Core Web Vitals resource hints -->
   <link rel="preload" as="image" href="/hero.svg" type="image/svg+xml">
-  <link rel="dns-prefetch" href="//cdn.mc-novatools.com">
-  <link rel="preconnect" href="https://cdn.mc-novatools.com">
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link rel="manifest" href="/manifest.json">
-  <link rel="prefetch" href="/tools/popular">
   
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -155,8 +152,8 @@
             <a href="/categories/developer-tools.html" class="nav-link" data-i18n="nav.developer">Dev</a>
             <a href="/blog/index.html" class="nav-link" data-i18n="nav.blog">Blog</a>
             <a href="/about-us.html" class="nav-link" data-i18n="nav.about">About</a>
-            <a href="/about-us.html" class="nav-link">Trust</a>
-            <a href="/contact.html" class="nav-link">Contact</a>
+            <a href="/security.html" class="nav-link" data-i18n="nav.security">Security</a>
+            <a href="/contact.html" class="nav-link" data-i18n="nav.contact">Contact</a>
           </nav>
           
           <!-- Actions -->
@@ -214,8 +211,8 @@
         <a href="#popular" class="mobile-nav-link" data-i18n="home.sections.popularTitle">Popular Tools</a>
         <a href="#new" class="mobile-nav-link" data-i18n="home.sections.newTitle">New Tools</a>
         <a href="/blog/index.html" class="mobile-nav-link" data-i18n="nav.blog">Blog</a>
-        <a href="/about-us.html" class="mobile-nav-link">About</a>
-        <a href="/contact.html" class="mobile-nav-link">Contact</a>
+        <a href="/about-us.html" class="mobile-nav-link" data-i18n="nav.about">About</a>
+        <a href="/contact.html" class="mobile-nav-link" data-i18n="nav.contact">Contact</a>
       </nav>
     </div>
 
@@ -227,8 +224,8 @@
             <circle cx="11" cy="11" r="8"/>
             <path d="m21 21-4.35-4.35"/>
           </svg>
-          <input type="text" class="search-input" placeholder="Search tools, categories, and workflows..." data-i18n-placeholder="home.searchPlaceholder" id="globalSearch">
-          <button class="search-close" onclick="toggleSearch()">×</button>
+          <input type="text" class="search-input" placeholder="Search tools, categories, and workflows..." data-i18n-placeholder="home.searchPlaceholder" aria-label="Search tools, categories, and workflows" id="globalSearch">
+          <button class="search-close" type="button" onclick="toggleSearch()" aria-label="Close search" data-i18n-aria-label="common.close">×</button>
         </div>
         <div class="search-results" id="searchResults"></div>
       </div>
@@ -324,7 +321,7 @@
       <section class="section home-popular" id="popular-tasks" aria-labelledby="popularTasksTitle">
         <div class="container">
           <div class="section-header">
-            <span class="section-eyebrow">Quick start</span>
+            <span class="section-eyebrow" data-i18n="home.sections.quickStartEyebrow">Quick start</span>
             <h2 class="section-title" id="popularTasksTitle" data-i18n="home.sections.popularTitle">Popular Tools</h2>
             <p class="section-description" data-i18n="home.sections.popularDesc">Most-used tools picked by users.</p>
           </div>
@@ -339,12 +336,12 @@
       <section class="section home-popular-week" aria-labelledby="popularThisWeekTitle">
         <div class="container">
           <div class="section-header">
-            <span class="section-eyebrow">Local discovery</span>
-            <h2 class="section-title" id="popularThisWeekTitle">Popular This Week</h2>
-            <p class="section-description">Based on this browser's local tool use only. No analytics or server tracking is used for this list.</p>
+            <span class="section-eyebrow" data-i18n="home.privateStarter.eyebrow">Private discovery</span>
+            <h2 class="section-title" id="popularThisWeekTitle" data-i18n="home.privateStarter.title">Your private starter set</h2>
+            <p class="section-description" data-i18n="home.privateStarter.description">Uses completed tool activity stored on this device; until then, starter tools are shown. Nothing is sent to a server.</p>
           </div>
           <div class="home-popular-week__grid" id="popularThisWeek">
-            <noscript><p>Enable JavaScript to show a local, device-only popularity list.</p></noscript>
+            <noscript><p data-i18n="home.privateStarter.noscript">Enable JavaScript to show the device-only starter set.</p></noscript>
           </div>
         </div>
       </section>
@@ -353,9 +350,9 @@
       <section class="section home-featured" id="featured-tools" aria-labelledby="featuredToolsTitle">
         <div class="container">
           <div class="section-header">
-            <span class="section-eyebrow">Featured</span>
-            <h2 class="section-title" id="featuredToolsTitle">Tools You Can Start With Today</h2>
-            <p class="section-description">Quick-start cards for PDF, image, developer and finance workflows.</p>
+            <span class="section-eyebrow" data-i18n="home.featured.eyebrow">Featured</span>
+            <h2 class="section-title" id="featuredToolsTitle" data-i18n="home.featured.title">Tools You Can Start With Today</h2>
+            <p class="section-description" data-i18n="home.featured.description">Quick-start cards for PDF, image, developer and finance workflows.</p>
           </div>
           <div class="featured-tool-grid" id="featuredTools">
             <!-- Featured tools injected by JS -->
@@ -367,7 +364,7 @@
       <section class="section home-categories" id="categories" aria-labelledby="categoriesTitle">
         <div class="container">
           <div class="section-header">
-            <span class="section-eyebrow">Categories</span>
+            <span class="section-eyebrow" data-i18n="home.sections.categoriesEyebrow">Categories</span>
             <h2 class="section-title" id="categoriesTitle" data-i18n="home.sections.categoriesTitle">Browse by Category</h2>
             <p class="section-description" data-i18n="home.sections.categoriesDesc">
               Organized collections of tools for real work. Click a category to explore.
