@@ -14,7 +14,7 @@
     "lint": "eslint src/",
     "lint:fix": "eslint src/ --fix",
     "test": "node tests/tool-validation.mjs && node tests/site-regressions.mjs",
-    "ci:validate": "npm run lint && npm run lint:media-dimensions && npm run lint:blog-outlines && npm run lint:blog-seed && npm run build:blog-images && npm run lint:blog-images && npm test && npm run audit:adsense && npm run build && npm run lint:site-links && npm run audit:public-routes",
+    "ci:validate": "npm run lint && npm run lint:media-dimensions && npm run lint:blog-outlines && npm run lint:blog-seed && npm run build:blog-images && npm run lint:blog-images && npm test && npm run audit:adsense && npm run audit:algorithm-resilience && npm run build && npm run lint:performance-budget && npm run lint:critical-css && npm run lint:rss && npm run lint:site-links && npm run audit:public-routes",
     "test:unit": "node tests/tool-validation.mjs && node tests/site-regressions.mjs",
     "test:watch": "node tests/tool-validation.mjs && node tests/site-regressions.mjs",
     "test:coverage": "node tests/tool-validation.mjs && node tests/site-regressions.mjs",
@@ -48,7 +48,8 @@
     "lint:critical-css": "node scripts/extract-critical-css.mjs --check",
     "optimize:images": "node scripts/optimize-images.mjs",
     "lint:performance-budget": "node scripts/check-performance-budget.mjs",
-    "test:site-regressions": "node tests/site-regressions.mjs"
+    "test:site-regressions": "node tests/site-regressions.mjs",
+    "audit:algorithm-resilience": "node scripts/algorithm-resilience-audit.mjs"
   },
   "dependencies": {
     "@vercel/speed-insights": "^2.0.0",
