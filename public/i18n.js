@@ -750,21 +750,6 @@
   }
 
 
-  function getStoredConsent() {
-    try {
-      const raw = localStorage.getItem('cookie_consent') || localStorage.getItem('novatools_cookie_consent') || localStorage.getItem('mc_novatools_cookie_consent');
-      return raw ? JSON.parse(raw) : null;
-    } catch (_e) {
-      void _e;
-      return null;
-    }
-  }
-
-  function hasConsentCategory(category) {
-    const consent = window.NovaToolsConsent || getStoredConsent();
-    return consent?.[category] === true || (category === 'advertising' && consent?.categories?.advertising === true);
-  }
-
   function initSiteGuide() {
     if (document.getElementById('novatools-site-guide')) return;
     const guide = document.createElement('aside');
@@ -830,7 +815,6 @@
   function initQualityEnhancements() {
     document.querySelectorAll('ins.adsbygoogle').forEach((el) => {
       el.classList.add('ad-slot-reserved');
-      reserveInlineAdSlot(el);
       if (!/^\d{8,20}$/.test((el.getAttribute('data-ad-slot') || '').trim())) {
         el.setAttribute('data-ad-status', 'pending-valid-slot');
       }
