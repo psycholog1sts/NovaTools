@@ -858,13 +858,13 @@
         ['Compare scenarios', '/tools/finance/compound-interest/'], ['Check affordability', '/tools/finance/mortgage-refinance/'], ['Track expenses', '/tools/productivity/expense-tracker/']
       ],
       text: [
-        ['Clean case', '/tools/text/case-converter/'], ['Check length', '/tools/text/character-counter/'], ['Compare versions', '/tools/text/text-diff-checker/']
+        ['Clean case', '/tools/text/case-converter/'], ['Check length', '/tools/text/character-counter/'], ['Compare versions', '/tools/text/text-diff/']
       ],
       data: [
         ['Inspect CSV', '/tools/data/csv-viewer/'], ['Convert to JSON', '/tools/data/csv-to-json/'], ['Build a chart', '/tools/data/chart-builder/']
       ],
       design: [
-        ['Create a logo', '/tools/design/logo-maker/'], ['Build a business card', '/tools/design/business-card-maker/'], ['Generate a QR code', '/tools/design/qr-code-generator/']
+        ['Create a logo', '/tools/design/logo-maker/'], ['Build a business card', '/tools/design/business-card-maker/'], ['Generate a QR code', '/tools/design/qr-code-designer/']
       ],
       productivity: [
         ['Capture notes', '/tools/productivity/notes/'], ['Plan tasks', '/tools/productivity/kanban-board/'], ['Focus', '/tools/productivity/pomodoro-timer/']
