@@ -4,12 +4,18 @@
 /request-tool /request-tool.html 200
 /privacy-policy /privacy-policy.html 200
 /terms-of-service /terms-of-service.html 200
+/disclaimer /disclaimer.html 200
 /cookie-policy /cookie-policy.html 200
 /security /security.html 200
 /gizlilik-politikasi /gizlilik-politikasi.html 200
 /kvkk-aydinlatma-metni /kvkk-aydinlatma-metni.html 200
 /kullanim-kosullari /kullanim-kosullari.html 200
 /iletisim /iletisim.html 200
+
+# Category and blog clean URL rewrites.
+/categories/:page /categories/:page.html 200
+/blog/categories/:page /blog/categories/:page.html 200
+/blog/articles/:article /blog/articles/:article.html 200
 
 # Topical authority clean URL rewrites.
 /guides/complete-pdf-workflow /guides/complete-pdf-workflow.html 200

@@ -752,84 +752,6 @@
   }
 
 
-  function getStoredConsent() {
-    try {
-      const raw = localStorage.getItem('cookie_consent') || localStorage.getItem('novatools_cookie_consent') || localStorage.getItem('mc_novatools_cookie_consent');
-      return raw ? JSON.parse(raw) : null;
-    } catch (_e) {
-      void _e;
-      return null;
-    }
-  }
-
-  function hasConsentCategory(category) {
-    const consent = window.NovaToolsConsent || getStoredConsent();
-    return consent?.[category] === true || (category === 'advertising' && consent?.categories?.advertising === true);
-  }
-
-  function isProductionHost() {
-    return /(^|\.)mc-novatools\.com$/i.test(window.location.hostname);
-  }
-
-  function hasValidAdSlot() {
-    return Array.from(document.querySelectorAll('ins.adsbygoogle')).some((el) => {
-      const slot = el.getAttribute('data-ad-slot') || '';
-      return /^\d{8,20}$/.test(slot.trim());
-    });
-  }
-
-  function hasDisallowedMobileStickyAds() {
-    if (typeof window.matchMedia !== 'function' || !window.matchMedia('(max-width: 768px)').matches) return false;
-    return Boolean(document.querySelector('[data-ad-format="sticky"] ins.adsbygoogle, .ad-mobile-anchor ins.adsbygoogle, .ad-mobile-anchor-sticky ins.adsbygoogle'));
-  }
-
-  function reserveInlineAdSlot(el) {
-    const format = el.getAttribute('data-ad-format') || '';
-    const width = format === 'leaderboard' || el.classList.contains('ad-slot-leaderboard') ? 728 : format === 'sticky' ? 320 : 300;
-    const height = format === 'leaderboard' || el.classList.contains('ad-slot-leaderboard') ? 90 : format === 'sticky' ? 50 : format === 'sidebar' ? 600 : 250;
-    if (!el.getAttribute('width')) el.setAttribute('width', String(width));
-    if (!el.getAttribute('height')) el.setAttribute('height', String(height));
-    el.style.minWidth = el.style.minWidth || `min(100%, ${width}px)`;
-    el.style.minHeight = el.style.minHeight || `${height}px`;
-    el.style.maxHeight = el.style.maxHeight || `${height}px`;
-    el.style.aspectRatio = el.style.aspectRatio || `${width} / ${height}`;
-    const container = el.closest('.ad-slot-container, .ad-in-tool, .ad-frame, .ad-wrapper, aside, div');
-    if (container) {
-      container.style.overflow = container.style.overflow || 'hidden';
-      container.style.maxHeight = container.style.maxHeight || `calc(${height}px + 4rem)`;
-    }
-    if (container && !container.querySelector('.ad-label')) {
-      const label = document.createElement('span');
-      label.className = 'ad-label';
-      label.textContent = (document.documentElement.lang || '').toLowerCase().startsWith('tr') ? 'Reklam' : 'Advertisement';
-      container.insertBefore(label, container.firstChild);
-    }
-  }
-
-  function ensureAdSenseBootstrap() {
-    if (window.__mcAdSenseLoaded) return;
-    if (!document.head || !isProductionHost() || !hasValidAdSlot() || hasDisallowedMobileStickyAds()) return;
-    if (navigator.doNotTrack === '1' || navigator.globalPrivacyControl) return;
-    if (!hasConsentCategory('advertising')) return;
-    if (
-      document.querySelector('script[data-adsense-bootstrap="true"]') ||
-      document.querySelector('script[data-adsense="true"]') ||
-      document.querySelector('script[src^="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client="]')
-    ) {
-      window.__mcAdSenseLoaded = true;
-      return;
-    }
-
-    const script = document.createElement('script');
-    script.async = true;
-    script.crossOrigin = 'anonymous';
-    script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5738022526587953';
-    script.setAttribute('data-adsense-bootstrap', 'true');
-    document.head.appendChild(script);
-    window.__mcAdSenseLoaded = true;
-  }
-
-
   function initSiteGuide() {
     if (document.getElementById('novatools-site-guide')) return;
     const guide = document.createElement('aside');
@@ -895,7 +817,6 @@
   function initQualityEnhancements() {
     document.querySelectorAll('ins.adsbygoogle').forEach((el) => {
       el.classList.add('ad-slot-reserved');
-      reserveInlineAdSlot(el);
       if (!/^\d{8,20}$/.test((el.getAttribute('data-ad-slot') || '').trim())) {
         el.setAttribute('data-ad-status', 'pending-valid-slot');
       }
@@ -990,9 +911,7 @@
     import('/analytics.js').then((module) => module.initAnalytics?.());
     import('/consent-manager.mjs').then((module) => {
       module.initConsentManager();
-      ensureAdSenseBootstrap();
     });
-    window.addEventListener('novatools:consent-updated', ensureAdSenseBootstrap);
     if (document.body && !window.__novatoolsI18nObserver) {
       let pendingRefresh = false;
       window.__novatoolsI18nObserver = new MutationObserver(() => {

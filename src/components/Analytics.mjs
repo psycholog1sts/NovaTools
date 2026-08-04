@@ -46,7 +46,8 @@ export function renderAdSenseHead(adsenseClient = DEFAULT_ADSENSE_CLIENT) {
 
   const safeClient = escapeHtml(client);
   return `<meta name="google-adsense-account" content="${safeClient}">
-<link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">`;
+<link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+<script async crossorigin="anonymous" data-adsense="true" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${safeClient}"></script>`;
 }
 
 export function renderAnalyticsHead({ gaId = '', gscId = '' } = {}) {

@@ -8,6 +8,7 @@ const ADSENSE_CONFIG = {
   publisherId: 'ca-pub-5738022526587953',
 
   adUnits: {},
+  manualInventoryEnabled: false,
 
   privacy: {
     personalizedAds: false,
@@ -31,13 +32,12 @@ export function initAdSense() {
   observeAdStatus();
   setupMobileAnchorControls();
 
-  if (shouldBlockAds() || !hasValidAdSlots() || hasDisallowedMobileStickyAds()) return;
-  if (!hasAdvertisingConsent()) {
-    markAdsPendingConsent();
-    waitForAdvertisingConsent();
-    return;
-  }
+  disableUnconfiguredManualInventory();
+  if (shouldBlockAds() || hasDisallowedMobileStickyAds()) return;
 
+  // The connection script is present on every built page so AdSense can verify
+  // the site and Google's certified CMP can produce TCF signals where required.
+  // Manual units remain disabled until real account slot IDs are configured.
   configureAdPrivacy();
   deferAdSenseLoad();
 }
@@ -97,8 +97,9 @@ function markAdsPendingConsent() {
 }
 
 function configureAdPrivacy() {
+  // Do not override personalized/non-personalized mode in page code. Google's
+  // certified CMP and the user's TCF choices are the source of truth.
   window.adsbygoogle = window.adsbygoogle || [];
-  window.adsbygoogle.requestNonPersonalizedAds = 1;
 }
 
 function deferAdSenseLoad() {
@@ -131,7 +132,22 @@ function loadAdSenseScript() {
 }
 
 function initializeAdSlots() {
+  if (!ADSENSE_CONFIG.manualInventoryEnabled) {
+    disableUnconfiguredManualInventory();
+    return;
+  }
   setupLazyLoading();
+}
+
+function disableUnconfiguredManualInventory() {
+  document.querySelectorAll('ins.adsbygoogle').forEach((el) => {
+    const slot = (el.getAttribute('data-ad-slot') || '').trim();
+    const enabled = ADSENSE_CONFIG.manualInventoryEnabled && /^\d{8,20}$/.test(slot);
+    if (enabled) return;
+    el.setAttribute('data-ad-status', 'disabled-unconfigured');
+    const container = el.closest('.ad-slot-container, .ad-in-tool, .ad-frame, .ad-wrapper, aside');
+    if (container) container.hidden = true;
+  });
 }
 
 function hasValidAdSlots() {

@@ -115,7 +115,7 @@
             "title": "Üçüncü taraf paylaşımı",
             "body": [
               "Kişisel bilgileri satmayız. Sınırlı veriler; barındırma, analiz, reklam ve form/eposta hizmet sağlayıcıları tarafından siteyi işletmek için işlenebilir.",
-              "Google Analytics ve Google AdSense yalnızca ilgili onay kategorisi verildikten sonra yüklenir. Etkinleştirildiğinde Google kendi şartları kapsamında veri işleyebilir."
+              "Google Analytics yalnız site analiz onayından sonra yüklenir. AdSense bağlantı kodu site doğrulama ve reklam sunumu için bulunur; EEA, Birleşik Krallık ve İsviçre'de reklam tercihleri Google sertifikalı IAB TCF CMP üzerinden alınmalıdır. Hizmetler etkin olduğunda Google kendi şartları kapsamında veri işleyebilir."
             ]
           },
           {
@@ -132,7 +132,7 @@
             "id": "user-rights",
             "title": "Kullanıcı hakları",
             "body": [
-              "Bulunduğunuz yere bağlı olarak erişim, düzeltme, silme, kısıtlama, itiraz ve veri taşınabilirliği haklarınız olabilir. Footer’daki Çerez Ayarları bağlantısıyla onayı her zaman geri çekebilirsiniz.",
+              "Bulunduğunuz yere bağlı olarak erişim, düzeltme, silme, kısıtlama, itiraz ve veri taşınabilirliği haklarınız olabilir. Site analizi ve fonksiyonel tercihler Çerez Ayarları'ndan; reklam tercihleri Google'ın sertifikalı mesajı, Google Reklam Ayarları ve uygun tarayıcı kontrollerinden yönetilir.",
               "KVKK talepleri için ilgili etkileşimi belirlemeye yetecek bilgi ekleyin. İşlem yapmadan önce e-posta sahipliğini doğrulamamız gerekebilir."
             ]
           },
@@ -158,16 +158,16 @@
       "cookies": {
         "title": "Çerez Politikası",
         "metaTitle": "Çerez Politikası | MC NovaTools",
-        "metaDescription": "MC NovaTools tarafından kullanılan zorunlu, analiz, reklam ve fonksiyonel çerezler/localStorage hakkında bilgi edinin.",
+        "metaDescription": "MC NovaTools'un zorunlu, analiz ve fonksiyonel depolamasını ve Google'ın ayrı sertifikalı reklam onayı mesajını öğrenin.",
         "badge": "Çerezler",
-        "intro": "Bu politika, MC NovaTools’un çerezleri ve localStorage gibi benzer teknolojileri nasıl kullandığını açıklar. Zorunlu olmayan kategoriler onay verilene kadar devre dışıdır.",
+        "intro": "Bu Çerez Politikası MC NovaTools'un çerez ve localStorage kullanımını açıklar. Site analizi ve fonksiyonel depolama isteğe bağlıdır. Google, gerekli bölgelerde reklam onayını ayrı ve sertifikalı bir CMP ile yönetir.",
         "sections": [
           {
             "id": "overview",
             "title": "Genel bakış",
             "body": [
-              "Çerezler ve tarayıcı depolaması; tercihleri hatırlama, kullanımı ölçme veya reklam desteği için kullanılır. MC NovaTools depolamayı Zorunlu, Analiz, Reklam ve Fonksiyonel kategorilerine ayırır.",
-              "Tümünü kabul edebilir, zorunlu olmayanları reddedebilir veya Çerez Ayarları üzerinden kategori seçebilirsiniz. Zorunlu depolama temel çalışmayı desteklediği için her zaman açıktır."
+              "MC NovaTools Zorunlu, Analiz ve Fonksiyonel depolama kullanır. Google AdSense, geçerli hukuk ve Google'ın sertifikalı onay mesajındaki tercihlere göre ayrı reklam depolaması kullanabilir.",
+              "Çerez Ayarları üzerinden site analizini ve fonksiyonel depolamayı kabul edebilir, reddedebilir veya özelleştirebilirsiniz. Güvenlik ve temel tercihler için zorunlu depolama açık kalır."
             ]
           },
           {
@@ -185,7 +185,7 @@
                 [
                   "cookie_consent / novatools_cookie_consent",
                   "MC NovaTools",
-                  "Stores your consent choices for necessary, analytics, advertising, and functional categories.",
+                  "Zorunlu, analiz ve fonksiyonel site kategorileri için tercihlerinizi saklar.",
                   "Until changed or browser storage is cleared",
                   "Necessary"
                 ],
@@ -213,7 +213,7 @@
                 [
                   "adsbygoogle / advertising identifiers",
                   "Google AdSense",
-                  "Supports contextual advertising, ad delivery, fraud prevention, and measurement when advertising consent is granted.",
+                  "Gerekli bölgelerde Google'ın sertifikalı CMP tercihleri kapsamında reklam sunumu, sahtekârlık önleme, ölçüm ve izin verilen kişiselleştirmeyi destekler.",
                   "Set by Google according to service configuration",
                   "Advertising"
                 ],
@@ -231,18 +231,18 @@
             "id": "categories",
             "title": "Onay kategorileri",
             "list": [
-              "Zorunlu: temel çalışma için gerekli oturum, güvenlik, onay ve dil depolaması.",
-              "Analiz: Google Analytics veya benzeri ölçüm yalnızca analiz onayından sonra yüklenir.",
-              "Reklam: Google AdSense ve reklam ölçümü yalnızca reklam onayından sonra yüklenir.",
-              "Fonksiyonel: kullanım kolaylığı sağlayan tema ve kullanıcı ayarları."
+              "Zorunlu: temel çalışma için gerekli güvenlik, onay ve dil depolaması.",
+              "Analiz: yalnız site analiz onayından sonra yüklenen Google Analytics veya benzeri ölçüm.",
+              "Reklam: gerekli bölgelerde Google'ın sertifikalı CMP'si tarafından ayrıca yönetilir; NovaTools site çerez paneli tarafından kontrol edilmez.",
+              "Fonksiyonel: kullanım kolaylığı sağlayan tema ve araç ayarları."
             ]
           },
           {
             "id": "manage",
             "title": "Çerezleri yönetme",
             "body": [
-              "Footer’daki Çerez Ayarları bağlantısını kullanarak onayınızı istediğiniz zaman değiştirebilir veya geri çekebilirsiniz. Tarayıcı ayarlarınızdan çerezleri ve localStorage’ı da silebilirsiniz.",
-              "Onayı geri çekmek gelecekteki zorunlu olmayan script yüklemelerini durdurur; ancak üçüncü taraflarda daha önce işlenen verileri otomatik silmez. Ek silme seçenekleri için ilgili sağlayıcı kontrollerini inceleyin."
+              "Site analizi ve fonksiyonel tercihleri footer'daki Çerez Ayarları üzerinden değiştirin. Reklam tercihleri için Google'ın reklam gizliliği mesajını, Google Reklam Ayarları'nı veya tarayıcı kontrollerini kullanın.",
+              "Site onayını geri çekmek ilgili isteğe bağlı site script'lerinin gelecekte yüklenmesini durdurur. Sağlayıcı tarafındaki veriler ve reklam tercihleri ilgili sağlayıcının kontrol ve politikalarına tabidir."
             ]
           }
         ]

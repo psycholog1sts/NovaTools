@@ -27,7 +27,7 @@ class Router {
 
     // Handle link clicks - BUT ONLY for SPA routes, not static files
     document.addEventListener('click', (e) => {
-      const link = e.target.closest('a[href]');
+      const link = e.target.closest('a[data-router-link][href]');
       if (!link) return;
 
       // Skip external links
@@ -53,17 +53,8 @@ class Router {
       this.navigate(link.pathname);
     });
 
-    // Handle initial route - ONLY for SPA routes, not on page load for static files
-    // Static pages should be served by the server, not handled by client router
-    const currentPath = window.location.pathname;
-    const isStaticPage = currentPath.startsWith('/tools/') || 
-                         currentPath.startsWith('/blog/') || 
-                         currentPath.startsWith('/admin/');
-    
-    // Only handle route if it's not a static page
-    if (!isStaticPage && currentPath !== '/') {
-      this.handleRouteChange(currentPath);
-    }
+    // NovaTools is a multi-page application. Initial document rendering belongs
+    // to the server; SPA handling is enabled only for explicit data-router-link links.
   }
 
   /**
