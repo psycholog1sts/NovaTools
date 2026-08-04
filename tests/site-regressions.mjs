@@ -145,6 +145,21 @@ assert.match(
   'Tool pages must reuse the canonical completed-tool history.'
 );
 
+
+assert.match(
+  homepage,
+  /home-hero__spin-logo[\s\S]*logo-brand-260\.png/,
+  'Homepage hero must include the transparent PNG brand mark.'
+);
+const layoutCss = read('src/styles/layout.css');
+assert.match(layoutCss, /@keyframes novatools-logo-spin/, 'Homepage brand mark must have a 360-degree spin animation.');
+assert.match(layoutCss, /rotate\(360deg\)/, 'Homepage brand animation must complete a full rotation.');
+assert.match(
+  layoutCss,
+  /@media \(prefers-reduced-motion: reduce\)[\s\S]*home-hero__spin-logo/,
+  'Homepage brand animation must respect reduced-motion preferences.'
+);
+
 const packageScripts = JSON.parse(read('package.json')).scripts;
 for (const qualityGate of [
   'audit:algorithm-resilience',
