@@ -5708,7 +5708,9 @@
       "newTitle": "Yeni ve Trend",
       "newDesc": "Yeni araçlar ve yakın zamanda eklenen yardımcı programlar.",
       "categoriesTitle": "Kategoriye Göre Gözat",
-      "categoriesDesc": "Her ihtiyaca yönelik organize araç koleksiyonları. Keşfetmek için bir kategoriye tıklayın."
+      "categoriesDesc": "Her ihtiyaca yönelik organize araç koleksiyonları. Keşfetmek için bir kategoriye tıklayın.",
+      "quickStartEyebrow": "Hızlı başlangıç",
+      "categoriesEyebrow": "Kategoriler"
     },
     "features": {
       "fastTitle": "Yıldırım Hızında",
@@ -5726,24 +5728,12 @@
       "button": "Araç Talep Et"
     },
     "trust": {
-      "secureTitle": "Güvenli ve Özel",
       "secureDesc": "Birçok araç verileri tarayıcınızda yerel olarak işler.",
-      "transparentTitle": "Şeffaf",
-      "transparentDesc": "Açık gizlilik politikası ve şartları",
-      "supportTitle": "Destek",
-      "supportDesc": "Sorularınız için bizimle iletişime geçin",
       "verifiedTitle": "Açık sahiplik",
       "verifiedDesc": "Site sahipliği, politika sayfaları ve iletişim bilgileri açıkça sunulur."
     },
     "footer": {
       "brandDesc": "Dosyalar, finans, kod ve günlük iş akışları için tarayıcı tabanlı araçlar. Netlik, pratik kullanım ve gizlilik bilinciyle geliştirilmiştir.",
-      "ownerTitle": "Site Sahibi ve İletişim",
-      "toolCategoriesTitle": "Araç Kategorileri",
-      "companyTitle": "Şirket",
-      "legalTitle": "Yasal ve Gizlilik",
-      "ownerRole": "Lisanslı Profesyonel Danışman ve Kurucu",
-      "legalBarContact": "Destek Ekibiyle İletişime Geçin",
-      "legalBarIssue": "Sorunu Bildir",
       "contactNote": "Yeni rehberler için blogu takip edin veya herkese açık site soruları için destekle iletişime geçin."
     },
     "popularCards": {
@@ -5884,6 +5874,13 @@
       "viewAll": "Tüm yazıları görüntüle →"
     },
     "hero": {
+      "title": "Dosyalar, Finans ve Kod için Her Şey Dahil Araçlar",
+      "subtitle": "MC NovaTools’u hızlı, anlaşılır ve tarayıcı tabanlı bir araç setiyle pratik iş akışlarını dönüştürmek, hesaplamak ve oluşturmak için kullanın.",
+      "cta": "Araçları Keşfet",
+      "browse": "Kategorileri Görüntüle",
+      "freeTools": "Ücretsiz Araçlar",
+      "categories": "Kategoriler",
+      "private": "Gizli",
       "description": "MC NovaTools’u hızlı, anlaşılır ve tarayıcı tabanlı bir araç setiyle pratik iş akışlarını dönüştürmek, hesaplamak ve oluşturmak için kullanın."
     },
     "launcher": {
@@ -5933,6 +5930,109 @@
           "guide": "Görsel kalite kontrol listesi",
           "category": "Görsel araçları"
         }
+      }
+    },
+    "trustBar": {
+      "secureTitle": "Güvenli ve Özel",
+      "secureDesc": "Many tools process data locally in your browser.",
+      "transparentTitle": "Şeffaf",
+      "transparentDesc": "Açık gizlilik politikası ve şartları",
+      "supportTitle": "Destek",
+      "supportDesc": "Sorularınız için bizimle iletişime geçin",
+      "verifiedTitle": "Clear Ownership",
+      "verifiedDesc": "Site ownership, policy pages, and contact details are clearly available."
+    },
+    "categoryBlocks": {
+      "pdf": {
+        "badge": "Ücretsiz Çevrimiçi PDF Araçları",
+        "title": "PDF Araçları: Birleştirme, Bölme, Sıkıştırma, OCR ve Dönüştürme",
+        "description": "Canlı PDF araçlarını doğrudan bu sayfadan açın. Dosyaları birleştirin, sayfaları bölün, boyutu sıkıştırın, filigran ekleyin, sayfa numarası ekleyin, OCR çalıştırın ve PDF dosyalarını Word, Excel, HTML, JPG, PNG, PowerPoint ve metne dönüştürün.",
+        "sectionTitle": "PDF Araçları"
+      },
+      "image": {
+        "badge": "Ücretsiz Çevrimiçi Görüntü Araçları",
+        "title": "Görüntü Araçları: Sıkıştırma, Dönüştürme, Düzenleme ve Temizleme",
+        "description": "Canlı görüntü araçlarını doğrudan bu kategori sayfasından açın. Dosyaları sıkıştırın, formatları dönüştürün, yeniden boyutlandırın, kırpın, çevirin, döndürün, meta verileri kaldırın, filigran ekleyin ve optimize edilmiş AVIF veya WebP çıktısı oluşturun.",
+        "sectionTitle": "Görüntü Araçları"
+      },
+      "finance": {
+        "badge": "Ücretsiz Çevrimiçi Finansal Hesaplayıcılar",
+        "title": "Finans Araçları: Planlama, Krediler, Vergi ve Uzun Vadeli Kararlar",
+        "description": "Canlı finansal araçları doğrudan bu kategori sayfasından açın. Mortgage refinansman seçeneklerini, bileşik büyümeyi, emeklilik projeksiyonlarını, kripto vergisini, kredi planlamasını ve diğer kişisel finans senaryolarını hesaplayın.",
+        "sectionTitle": "Finans Araçları"
+      },
+      "developer": {
+        "badge": "Ücretsiz Çevrimiçi Geliştirici Araçları",
+        "title": "Geliştirici Araçları: Biçimlendirme, Test ve Kod Yardımcıları",
+        "description": "Canlı geliştirici araçlarını doğrudan bu kategori sayfasından açın. JSON biçimlendirin, regex test edin, CSS ve JS küçültün, Base64 dönüştürün, UUID oluşturun, JSON doğrulayın ve daha fazlasını yapın.",
+        "sectionTitle": "Geliştirici Araçları"
+      },
+      "text": {
+        "badge": "Ücretsiz Çevrimiçi Metin Araçları",
+        "title": "Metin Araçları: Sayma, Biçimlendirme, Dönüştürme ve Temizleme",
+        "description": "Canlı metin araçlarını doğrudan bu kategori sayfasından açın. Kelime ve karakter sayın, metin büyüklüğünü dönüştürün, lorem ipsum oluşturun, varlıkları kodlayın, slug oluşturun, metin karşılaştırın ve URL güvenli çıktı alın.",
+        "sectionTitle": "Metin ve Yazma"
+      },
+      "converters": {
+        "badge": "Ücretsiz Çevrimiçi Dönüştürücüler",
+        "title": "Dönüştürücüler: Birimler, Sayılar ve Veri Formatları",
+        "description": "Canlı dönüştürücü araçlarını doğrudan bu kategori sayfasından açın. Birimler, sayı tabanları, para birimleri, saat dilimleri ve veri formatları arasında dönüştürme yapın.",
+        "sectionTitle": "Dönüştürücüler"
+      },
+      "all": {
+        "badge": "Tüm Araçlara Göz Atın",
+        "title": "NovaTools Kategorilerine Göz Atın",
+        "description": "Tüm canlı NovaTools kategorilerini keşfedin ve ihtiyacınız olan aracı tek tıkla açın.",
+        "sectionTitle": "Tüm Kategoriler"
+      }
+    },
+    "meta": {
+      "title": "MC NovaTools - Practical Online Tools",
+      "description": "Privacy-conscious browser tools for files, finance, text and code.",
+      "ogTitle": "MC NovaTools",
+      "ogDescription": "Practical online tools."
+    },
+    "privateStarter": {
+      "eyebrow": "Özel keşif",
+      "title": "Size özel başlangıç seti",
+      "description": "Bu cihazda tamamlanan araç kullanımlarını gösterir; henüz kullanım yoksa başlangıç araçları sunulur. Sunucuya hiçbir şey gönderilmez.",
+      "noscript": "Yalnızca cihazda çalışan başlangıç setini görmek için JavaScript’i etkinleştirin.",
+      "starterTool": "Önerilen başlangıç aracı",
+      "localUse": "bu hafta cihazda 1 kullanım",
+      "localUses": "bu hafta cihazda {count} kullanım"
+    },
+    "featured": {
+      "eyebrow": "Öne çıkanlar",
+      "title": "Bugün kullanmaya başlayabileceğiniz araçlar",
+      "description": "PDF, görsel, geliştirici ve finans iş akışları için hızlı başlangıç kartları.",
+      "open": "Aç →"
+    },
+    "toolLabels": {
+      "mergePdf": "PDF birleştir",
+      "compressPdf": "PDF sıkıştır",
+      "compressImage": "Görsel sıkıştır",
+      "jsonFormatter": "JSON biçimlendirici",
+      "liveExchange": "Canlı döviz",
+      "textAnalysis": "Metin analizi",
+      "mortgageCalculator": "Mortgage hesaplayıcı",
+      "passwordGenerator": "Parola oluşturucu"
+    },
+    "featuredCards": {
+      "pdfMerge": {
+        "name": "PDF birleştir",
+        "description": "Birden fazla PDF dosyasını düzenli tek bir belgede birleştirin."
+      },
+      "imageCompress": {
+        "name": "Görsel sıkıştırıcı",
+        "description": "Web ve e-posta iş akışları için görsel dosya boyutlarını küçültün."
+      },
+      "jsonFormatter": {
+        "name": "JSON biçimlendirici",
+        "description": "JSON verisini paylaşmadan önce biçimlendirin, okuyun ve doğrulayın."
+      },
+      "liveExchange": {
+        "name": "Canlı döviz dönüştürücü",
+        "description": "Canlı veri ve önbellek yedeğiyle döviz kuru tahminlerini dönüştürün."
       }
     }
   },
