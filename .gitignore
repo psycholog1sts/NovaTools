@@ -2,6 +2,12 @@
 node_modules/
 .pnpm-store/
 
+# Python environments
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
 # Build output
 # dist/  # Temporarily enabled for deployment
 *.tsbuildinfo
