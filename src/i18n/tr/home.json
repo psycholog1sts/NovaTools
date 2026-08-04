@@ -144,6 +144,53 @@
           "category": "Görsel araçları"
         }
       }
+    },
+    "sections": {
+      "quickStartEyebrow": "Hızlı başlangıç",
+      "categoriesEyebrow": "Kategoriler"
+    },
+    "privateStarter": {
+      "eyebrow": "Özel keşif",
+      "title": "Size özel başlangıç seti",
+      "description": "Bu cihazda tamamlanan araç kullanımlarını gösterir; henüz kullanım yoksa başlangıç araçları sunulur. Sunucuya hiçbir şey gönderilmez.",
+      "noscript": "Yalnızca cihazda çalışan başlangıç setini görmek için JavaScript’i etkinleştirin.",
+      "starterTool": "Önerilen başlangıç aracı",
+      "localUse": "bu hafta cihazda 1 kullanım",
+      "localUses": "bu hafta cihazda {count} kullanım"
+    },
+    "featured": {
+      "eyebrow": "Öne çıkanlar",
+      "title": "Bugün kullanmaya başlayabileceğiniz araçlar",
+      "description": "PDF, görsel, geliştirici ve finans iş akışları için hızlı başlangıç kartları.",
+      "open": "Aç →"
+    },
+    "toolLabels": {
+      "mergePdf": "PDF birleştir",
+      "compressPdf": "PDF sıkıştır",
+      "compressImage": "Görsel sıkıştır",
+      "jsonFormatter": "JSON biçimlendirici",
+      "liveExchange": "Canlı döviz",
+      "textAnalysis": "Metin analizi",
+      "mortgageCalculator": "Mortgage hesaplayıcı",
+      "passwordGenerator": "Parola oluşturucu"
+    },
+    "featuredCards": {
+      "pdfMerge": {
+        "name": "PDF birleştir",
+        "description": "Birden fazla PDF dosyasını düzenli tek bir belgede birleştirin."
+      },
+      "imageCompress": {
+        "name": "Görsel sıkıştırıcı",
+        "description": "Web ve e-posta iş akışları için görsel dosya boyutlarını küçültün."
+      },
+      "jsonFormatter": {
+        "name": "JSON biçimlendirici",
+        "description": "JSON verisini paylaşmadan önce biçimlendirin, okuyun ve doğrulayın."
+      },
+      "liveExchange": {
+        "name": "Canlı döviz dönüştürücü",
+        "description": "Canlı veri ve önbellek yedeğiyle döviz kuru tahminlerini dönüştürün."
+      }
     }
   }
 }
