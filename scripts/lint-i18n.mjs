@@ -7,7 +7,7 @@ import { globSync } from 'glob';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, '..');
 const i18nDir = path.join(rootDir, 'src', 'i18n');
-const locales = ['en', 'tr', 'ar'];
+const locales = ['en', 'tr'];
 const namespaces = ['common', 'home', 'categories', 'tools', 'blog', 'legal'];
 const requiredTopLevel = new Map(namespaces.map((namespace) => [namespace, namespace]));
 let failures = 0;
@@ -150,4 +150,4 @@ if (failures > 0) {
   process.exit(1);
 }
 
-console.log(`✅ i18n JSON and ${referencedKeys.size} page-level translation keys passed for en, tr, and ar.`);
+console.log(`✅ i18n JSON and ${referencedKeys.size} page-level translation keys passed for en and tr.`);
