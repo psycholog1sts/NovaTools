@@ -6,7 +6,7 @@
 (function () {
   'use strict';
 
-  const SUPPORTED_LANGUAGES = ['en', 'tr', 'de', 'fr', 'es', 'pt', 'ru', 'zh', 'ja', 'ko', 'ar', 'hi', 'it', 'pl', 'nl'];
+  const SUPPORTED_LANGUAGES = ['en', 'tr', 'ar'];
   const RTL_LANGUAGES = ['ar'];
   const DEFAULT_LANGUAGE = 'en';
   const FALLBACK_LOCALES = {
