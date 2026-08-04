@@ -84,7 +84,7 @@ const sourceI18n = read('src/i18n.js');
 const publicI18n = read('public/i18n.js');
 for (const requiredPattern of [
   /const workflowByCategory = \{/,
-  /novatools_recent_tools/,
+  /novatools:recent-tools/,
   /data-workflow-step=/,
   /data-recent-tool="true"/,
   /Finish the whole task/,
@@ -97,7 +97,7 @@ for (const requiredPattern of [
 }
 assert.doesNotMatch(
   sourceI18n,
-  /fetch\([^)]*novatools_recent_tools|sendBeacon\([^)]*novatools_recent_tools/,
+  /fetch\([^)]*novatools:recent-tools|sendBeacon\([^)]*novatools:recent-tools/,
   'Recent tool history must remain browser-local.'
 );
 for (const workflowRoute of [
@@ -115,6 +115,35 @@ for (const workflowRoute of [
     `Workflow route is missing from the sitemap: ${workflowRoute}`
   );
 }
+
+
+const homepage = read('index.html');
+assert.doesNotMatch(homepage, /cdn\.mc-novatools\.com/, 'Homepage must not preconnect to an unused CDN.');
+assert.doesNotMatch(homepage, /rel="prefetch" href="\/tools\/popular"/, 'Homepage must not prefetch a nonexistent popular-tools route.');
+assert.match(homepage, /href="\/security\.html"[^>]*data-i18n="nav\.security"/, 'Desktop navigation must expose the security page instead of duplicating About.');
+assert.match(homepage, /id="globalSearch"[^>]*aria-label=/, 'Global search must have an accessible name.');
+assert.match(homepage, /class="search-close"[^>]*aria-label=/, 'Search close control must have an accessible name.');
+assert.match(homepage, /home\.privateStarter\.title/, 'Device-only discovery must be labeled honestly and localized.');
+
+const homepageMain = read('src/main.js');
+for (const key of [
+  'home.toolLabels.',
+  'home.featuredCards.',
+  'home.privateStarter.localUse',
+  'home.privateStarter.starterTool'
+]) {
+  assert.ok(homepageMain.includes(key), `Homepage dynamic copy must use i18n key: ${key}`);
+}
+assert.doesNotMatch(
+  sourceI18n,
+  /localStorage\.setItem\('novatools_recent_tools'/,
+  'Tool pages must not maintain a second recent-tool storage schema.'
+);
+assert.match(
+  sourceI18n,
+  /localStorage\.getItem\('novatools:recent-tools'/,
+  'Tool pages must reuse the canonical completed-tool history.'
+);
 
 const packageScripts = JSON.parse(read('package.json')).scripts;
 for (const qualityGate of [
