@@ -83,6 +83,7 @@
   background: radial-gradient(circle, color-mix(in srgb, var(--color-accent) 16%, transparent), transparent 68%);
   filter: drop-shadow(0 14px 28px color-mix(in srgb, var(--color-accent) 26%, transparent));
   perspective: 700px;
+  transform-style: preserve-3d;
 }
 
 .home-hero__spin-logo img {
@@ -90,13 +91,16 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
-  animation: novatools-logo-spin 5.5s linear infinite;
+  animation: novatools-logo-spin 8s linear infinite;
+  backface-visibility: visible;
   transform-origin: 50% 50%;
+  transform-style: preserve-3d;
   will-change: transform;
 }
 
 @keyframes novatools-logo-spin {
-  to { transform: rotate(360deg); }
+  from { transform: rotateX(-4deg) rotateY(0deg); }
+  to { transform: rotateX(-4deg) rotateY(360deg); }
 }
 
 @media (prefers-reduced-motion: reduce) {
