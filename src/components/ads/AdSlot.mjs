@@ -12,35 +12,35 @@ export const AdSizes = {
     width: 728,
     height: 90,
     className: 'ad-banner',
-    slotId: '2852963074'
+    slotId: null
   },
   RECTANGLE: {
     name: 'rectangle',
     width: 300,
     height: 250,
     className: 'ad-rectangle',
-    slotId: '3963074185'
+    slotId: null
   },
   SIDEBAR: {
     name: 'sidebar',
     width: 300,
     height: 600,
     className: 'ad-sidebar',
-    slotId: '7418529630'
+    slotId: null
   },
   MOBILE_ANCHOR: {
     name: 'mobile-anchor',
     width: 320,
     height: 50,
     className: 'ad-mobile-anchor',
-    slotId: '4074185296'
+    slotId: null
   },
   SQUARE: {
     name: 'square',
     width: 250,
     height: 250,
     className: 'ad-square',
-    slotId: '1741852963'
+    slotId: null
   }
 };
 
@@ -68,11 +68,16 @@ export function createAdSlot({
   const config = AdSizes[size] || AdSizes.RECTANGLE;
   const slotId = adSlot || config.slotId;
   const placementName = placement || config.name;
+  const hasVerifiedSlot = /^\d{8,20}$/.test(String(slotId || ''));
   
   // Container
   const container = document.createElement('div');
   container.className = `ad-slot-container revenue-card ${config.className}-container`;
   container.setAttribute('data-ad-placement', placementName);
+  if (!hasVerifiedSlot) {
+    container.hidden = true;
+    container.setAttribute('data-ad-status', 'disabled-unconfigured');
+  }
   container.style.cssText = `
     margin: 9.5rem auto;
     text-align: center;
@@ -147,7 +152,8 @@ export function createAdSlot({
   
   // AdSense attributes
   adIns.setAttribute('data-ad-client', adClient);
-  adIns.setAttribute('data-ad-slot', slotId);
+  if (hasVerifiedSlot) adIns.setAttribute('data-ad-slot', slotId);
+  adIns.setAttribute('data-ad-status', hasVerifiedSlot ? 'reserved' : 'disabled-unconfigured');
   adIns.setAttribute('data-ad-format', responsive ? 'auto' : config.name);
   adIns.setAttribute('data-ad-placement', placementName);
   adIns.setAttribute('width', String(config.width));
