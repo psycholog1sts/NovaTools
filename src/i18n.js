@@ -555,6 +555,16 @@
       }
     });
 
+    document.querySelectorAll('[data-i18n-aria-label]').forEach((el) => {
+      const key = el.getAttribute('data-i18n-aria-label');
+      const original = storeOriginalContent(el, 'aria-label', el.getAttribute('aria-label') || '');
+      const translation = t(key, original);
+
+      if (typeof translation === 'string') {
+        el.setAttribute('aria-label', translation);
+      }
+    });
+
     document.querySelectorAll('[data-i18n-html]').forEach((el) => {
       const key = el.getAttribute('data-i18n-html');
       const original = storeOriginalContent(el, 'html', el.innerHTML);
