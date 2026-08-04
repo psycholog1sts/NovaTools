@@ -317,26 +317,40 @@ function addSkeletonState(workspace) {
   window.requestAnimationFrame(() => workspace.classList.remove('nt-tool-loading'));
 }
 
-function enhanceWorkspace(tool, slug) {
+function enhanceWorkspace(tool, slug, { augmentContent = true } = {}) {
   const main = document.querySelector('main') || document.querySelector('.tool-wrapper') || document.body;
   const workspace = document.querySelector('.tool-wrapper, .tool-container, .main-content > section, main > section') || main;
   workspace.id = workspace.id || 'tool-workspace';
   workspace.classList.add('premium-tool-workspace');
 
-  workspace.insertAdjacentElement('afterbegin', createHowToUse(tool, slug));
-  const companion = createWorkspaceCompanion(tool, slug);
-  workspace.append(companion);
+  if (augmentContent) {
+    workspace.insertAdjacentElement('afterbegin', createHowToUse(tool, slug));
+    const companion = createWorkspaceCompanion(tool, slug);
+    workspace.append(companion);
+  }
   setupDropzones(workspace);
   addSkeletonState(workspace);
   addTextCounters(workspace);
   addKeyboardHints(workspace);
   addProgressHooks(workspace);
 
-  workspace.querySelectorAll('input, textarea, select, button, a').forEach((element) => {
+  main.querySelectorAll('input, textarea, select, button, a').forEach((element) => {
     element.classList.add('premium-focusable');
-    if (!element.getAttribute('aria-label') && !element.getAttribute('aria-labelledby')) {
-      const label = element.textContent?.trim() || element.value || element.name || element.id;
-      if (label && !element.closest('label')) element.setAttribute('aria-label', label);
+    const alreadyNamed = element.getAttribute('aria-label')
+      || element.getAttribute('aria-labelledby')
+      || element.labels?.length
+      || element.closest('label');
+    if (!alreadyNamed) {
+      const rawLabel = element.getAttribute('placeholder')
+        || element.getAttribute('name')
+        || element.id
+        || element.textContent?.trim()
+        || element.value;
+      const label = rawLabel
+        ?.replace(/[-_]+/g, ' ')
+        .replace(/([a-z0-9])([A-Z])/g, '$1 $2')
+        .trim();
+      if (label) element.setAttribute('aria-label', label);
     }
   });
   workspace.querySelectorAll('.result, .results, .result-panel, .results-panel, .output, .output-area').forEach((element) => {
@@ -355,10 +369,14 @@ function init() {
   updateMeta(tool, slug);
   appendSchema(tool, slug);
   appendFaqSchema(tool, slug);
-  document.body.prepend(createStickyHeader(tool, slug));
-  document.body.prepend(createHero(tool, slug));
-  enhanceWorkspace(tool, slug);
-  document.body.append(createGuides(tool, slug));
+  const hasExistingHeading = Boolean(document.querySelector('h1'));
+  const hasExistingHeader = Boolean(document.querySelector('header, [role="banner"]'));
+  if (!hasExistingHeader) document.body.prepend(createStickyHeader(tool, slug));
+  if (!hasExistingHeading) document.body.prepend(createHero(tool, slug));
+  enhanceWorkspace(tool, slug, { augmentContent: !hasExistingHeading });
+  if (!hasExistingHeading && !document.querySelector('.premium-tool-guides')) {
+    document.body.append(createGuides(tool, slug));
+  }
   bindEngagementWidgets(document);
 }
 
