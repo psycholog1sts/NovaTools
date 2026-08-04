@@ -1,16 +1,18 @@
 /**
  * Centralized AdSense slot IDs for static tool pages.
- * Keep IDs numeric (production format) and unique per placement.
+ *
+ * Manual inventory stays disabled until every value is copied from the
+ * approved AdSense account. Never invent numeric IDs to satisfy validation.
  */
-export const TOOL_AD_SLOTS = {
-  newsSidebar: '7418529630',
-  islamicCalendar: '8529630741',
-  retirementTool: '9630741852',
-  studentLoanTool: '1741852963',
-  blogInContent: '2852963074',
-  categorySponsored: '3963074185',
-  mobileAnchor: '4074185296'
-};
+export const TOOL_AD_SLOTS = Object.freeze({
+  newsSidebar: null,
+  islamicCalendar: null,
+  retirementTool: null,
+  studentLoanTool: null,
+  blogInContent: null,
+  categorySponsored: null,
+  mobileAnchor: null
+});
 
 export function applyToolAdSlots(root = document) {
   if (!root || typeof root.querySelectorAll !== 'function') return;
@@ -18,8 +20,13 @@ export function applyToolAdSlots(root = document) {
   root.querySelectorAll('ins.adsbygoogle[data-slot-key]').forEach((el) => {
     const key = el.getAttribute('data-slot-key');
     const mapped = key && TOOL_AD_SLOTS[key];
-    if (mapped) {
+    if (/^\d{8,20}$/.test(String(mapped || ''))) {
       el.setAttribute('data-ad-slot', mapped);
+      return;
     }
+    el.removeAttribute('data-ad-slot');
+    el.setAttribute('data-ad-status', 'disabled-unconfigured');
+    const container = el.closest('.ad-slot-container, .ad-in-tool, .ad-frame, .ad-wrapper, aside');
+    if (container) container.hidden = true;
   });
 }
