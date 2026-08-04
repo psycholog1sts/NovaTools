@@ -79,4 +79,38 @@ for (const slug of ['mortgage-refinance', 'compound-interest', 'live-exchange'])
 const gitignore = read('.gitignore');
 assert.match(gitignore, /^\.venv\/$/m, 'Local Python virtual environments must stay out of Git.');
 
+
+const sourceI18n = read('src/i18n.js');
+const publicI18n = read('public/i18n.js');
+for (const requiredPattern of [
+  /const workflowByCategory = \{/,
+  /novatools_recent_tools/,
+  /data-workflow-step=/,
+  /data-recent-tool="true"/,
+  /Finish the whole task/
+]) {
+  assert.match(sourceI18n, requiredPattern, `Missing workflow-retention feature: ${requiredPattern}`);
+  assert.match(publicI18n, requiredPattern, `Public i18n copy is missing workflow-retention feature: ${requiredPattern}`);
+}
+assert.doesNotMatch(
+  sourceI18n,
+  /fetch\([^)]*novatools_recent_tools|sendBeacon\([^)]*novatools_recent_tools/,
+  'Recent tool history must remain browser-local.'
+);
+for (const workflowRoute of [
+  '/tools/pdf/merge/',
+  '/tools/pdf/compress/',
+  '/tools/image/image-cropper/',
+  '/tools/dev/json-validator/',
+  '/tools/text/text-diff/',
+  '/tools/design/qr-code-designer/',
+  '/tools/security/password-strength/',
+  '/tools/converters/unit-converter/'
+]) {
+  assert.ok(
+    read('public/sitemap.xml').includes(`https://mc-novatools.com${workflowRoute}`),
+    `Workflow route is missing from the sitemap: ${workflowRoute}`
+  );
+}
+
 console.log('Site regression checks passed.');
