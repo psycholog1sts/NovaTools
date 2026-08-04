@@ -929,25 +929,24 @@
         return `<li><span>${index + 1}</span><a href="${href}" data-workflow-step="${index + 1}">${safeText(localizedLabel)}</a></li>`;
       })
       .join('');
-    const currentTool = {
-      href: window.location.pathname,
-      title: document.querySelector('h1')?.textContent?.trim() || document.title
-    };
     let recentTools = [];
     try {
-      const stored = JSON.parse(localStorage.getItem('novatools_recent_tools') || '[]');
+      const stored = JSON.parse(localStorage.getItem('novatools:recent-tools') || '[]');
       recentTools = Array.isArray(stored)
-        ? stored.filter((item) => item && /^\/tools\/[a-z0-9-]+\/[a-z0-9-]+\/$/.test(item.href) && typeof item.title === 'string')
+        ? stored.filter((item) => (
+          item &&
+          /^\/tools\/[a-z0-9-]+\/[a-z0-9-]+\/$/.test(item.href) &&
+          typeof item.name === 'string' &&
+          Number.isFinite(item.at)
+        ))
         : [];
-      recentTools = [currentTool, ...recentTools.filter((item) => item.href !== currentTool.href)].slice(0, 5);
-      localStorage.setItem('novatools_recent_tools', JSON.stringify(recentTools));
     } catch (_e) {
       void _e;
     }
     const recentMarkup = recentTools
-      .filter((item) => item.href !== currentTool.href)
+      .filter((item) => item.href !== window.location.pathname)
       .slice(0, 2)
-      .map((item) => `<a href="${item.href}" data-recent-tool="true">${safeText(item.title)}</a>`)
+      .map((item) => `<a href="${item.href}" data-recent-tool="true">${safeText(item.name)}</a>`)
       .join('');
 
     main.classList.add('tool-ux-standard');

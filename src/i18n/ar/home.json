@@ -144,6 +144,53 @@
           "category": "أدوات الصور"
         }
       }
+    },
+    "sections": {
+      "quickStartEyebrow": "بدء سريع",
+      "categoriesEyebrow": "الفئات"
+    },
+    "privateStarter": {
+      "eyebrow": "اكتشاف خاص",
+      "title": "مجموعة البداية الخاصة بك",
+      "description": "تستخدم نشاط الأدوات المكتمل والمحفوظ على هذا الجهاز؛ وحتى ذلك الحين تُعرض أدوات بداية مقترحة. لا يُرسل أي شيء إلى الخادم.",
+      "noscript": "فعّل JavaScript لعرض مجموعة البداية المحفوظة على الجهاز فقط.",
+      "starterTool": "أداة بداية مقترحة",
+      "localUse": "استخدام واحد على هذا الجهاز هذا الأسبوع",
+      "localUses": "{count} استخدامات على هذا الجهاز هذا الأسبوع"
+    },
+    "featured": {
+      "eyebrow": "مميز",
+      "title": "أدوات يمكنك البدء بها اليوم",
+      "description": "بطاقات بدء سريع لمسارات عمل PDF والصور والمطورين والتمويل.",
+      "open": "فتح ←"
+    },
+    "toolLabels": {
+      "mergePdf": "دمج PDF",
+      "compressPdf": "ضغط PDF",
+      "compressImage": "ضغط الصورة",
+      "jsonFormatter": "منسّق JSON",
+      "liveExchange": "أسعار صرف مباشرة",
+      "textAnalysis": "تحليل النص",
+      "mortgageCalculator": "حاسبة الرهن العقاري",
+      "passwordGenerator": "مولّد كلمات المرور"
+    },
+    "featuredCards": {
+      "pdfMerge": {
+        "name": "دمج PDF",
+        "description": "ادمج عدة ملفات PDF في مستند واحد منظم."
+      },
+      "imageCompress": {
+        "name": "ضاغط الصور",
+        "description": "قلّل حجم ملفات الصور لاستخدامها على الويب وفي البريد الإلكتروني."
+      },
+      "jsonFormatter": {
+        "name": "منسّق JSON",
+        "description": "نسّق بيانات JSON واقرأها وتحقق منها قبل مشاركتها."
+      },
+      "liveExchange": {
+        "name": "محول العملات المباشر",
+        "description": "حوّل تقديرات العملات باستخدام بيانات مباشرة مع معالجة احتياطية من الذاكرة المؤقتة."
+      }
     }
   }
 }

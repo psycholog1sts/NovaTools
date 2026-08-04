@@ -144,6 +144,53 @@
           "category": "Image tools"
         }
       }
+    },
+    "sections": {
+      "quickStartEyebrow": "Quick start",
+      "categoriesEyebrow": "Categories"
+    },
+    "privateStarter": {
+      "eyebrow": "Private discovery",
+      "title": "Your private starter set",
+      "description": "Uses completed tool activity stored on this device; until then, starter tools are shown. Nothing is sent to a server.",
+      "noscript": "Enable JavaScript to show the device-only starter set.",
+      "starterTool": "Suggested starter tool",
+      "localUse": "1 use on this device this week",
+      "localUses": "{count} uses on this device this week"
+    },
+    "featured": {
+      "eyebrow": "Featured",
+      "title": "Tools You Can Start With Today",
+      "description": "Quick-start cards for PDF, image, developer and finance workflows.",
+      "open": "Open →"
+    },
+    "toolLabels": {
+      "mergePdf": "Merge PDF",
+      "compressPdf": "Compress PDF",
+      "compressImage": "Compress Image",
+      "jsonFormatter": "JSON Formatter",
+      "liveExchange": "Live Exchange",
+      "textAnalysis": "Text Analysis",
+      "mortgageCalculator": "Mortgage Calculator",
+      "passwordGenerator": "Password Generator"
+    },
+    "featuredCards": {
+      "pdfMerge": {
+        "name": "PDF Merge",
+        "description": "Combine multiple PDF files into one organized document."
+      },
+      "imageCompress": {
+        "name": "Image Compressor",
+        "description": "Reduce image file sizes for web and email workflows."
+      },
+      "jsonFormatter": {
+        "name": "JSON Formatter",
+        "description": "Format, read and validate JSON data before sharing."
+      },
+      "liveExchange": {
+        "name": "Live Exchange Converter",
+        "description": "Convert currency estimates with live-data and cached fallback handling."
+      }
     }
   }
 }

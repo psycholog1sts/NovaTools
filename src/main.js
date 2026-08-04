@@ -108,18 +108,19 @@ document.addEventListener('keydown', (event) => {
 });
 
 const popularTasks = [
-  { label: 'Merge PDF', slug: 'pdf/merge', icon: 'file-text' },
-  { label: 'Compress PDF', slug: 'pdf/compress', icon: 'file-text' },
-  { label: 'Compress Image', slug: 'image/compress', icon: 'image' },
-  { label: 'JSON Formatter', slug: 'dev/json-formatter', icon: 'code' },
-  { label: 'Live Exchange', slug: 'finance/live-exchange', icon: 'repeat' },
-  { label: 'Text Analysis', slug: 'text/text-analysis', icon: 'type' },
-  { label: 'Mortgage Calculator', slug: 'finance/mortgage-refinance', icon: 'trending-up' },
-  { label: 'Password Generator', slug: 'security/password-generator', icon: 'shield' }
+  { key: 'mergePdf', label: 'Merge PDF', slug: 'pdf/merge', icon: 'file-text' },
+  { key: 'compressPdf', label: 'Compress PDF', slug: 'pdf/compress', icon: 'file-text' },
+  { key: 'compressImage', label: 'Compress Image', slug: 'image/compress', icon: 'image' },
+  { key: 'jsonFormatter', label: 'JSON Formatter', slug: 'dev/json-formatter', icon: 'code' },
+  { key: 'liveExchange', label: 'Live Exchange', slug: 'finance/live-exchange', icon: 'repeat' },
+  { key: 'textAnalysis', label: 'Text Analysis', slug: 'text/text-analysis', icon: 'type' },
+  { key: 'mortgageCalculator', label: 'Mortgage Calculator', slug: 'finance/mortgage-refinance', icon: 'trending-up' },
+  { key: 'passwordGenerator', label: 'Password Generator', slug: 'security/password-generator', icon: 'shield' }
 ];
 
 const featuredTools = [
   {
+    key: 'pdfMerge',
     slug: 'pdf/merge',
     name: 'PDF Merge',
     description: 'Combine multiple PDF files into one organized document.',
@@ -127,6 +128,7 @@ const featuredTools = [
     icon: 'file-text'
   },
   {
+    key: 'imageCompress',
     slug: 'image/compress',
     name: 'Image Compressor',
     description: 'Reduce image file sizes for web and email workflows.',
@@ -134,6 +136,7 @@ const featuredTools = [
     icon: 'image'
   },
   {
+    key: 'jsonFormatter',
     slug: 'dev/json-formatter',
     name: 'JSON Formatter',
     description: 'Format, read and validate JSON data before sharing.',
@@ -141,6 +144,7 @@ const featuredTools = [
     icon: 'code'
   },
   {
+    key: 'liveExchange',
     slug: 'finance/live-exchange',
     name: 'Live Exchange Converter',
     description: 'Convert currency estimates with live-data and cached fallback handling.',
@@ -278,7 +282,7 @@ function renderPopularTasks() {
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
         ${getIconPath(task.icon)}
       </svg>
-      <span>${task.label}</span>
+      <span>${t(`home.toolLabels.${task.key}`, task.label)}</span>
     </a>
   `).join('');
 }
@@ -292,7 +296,11 @@ function renderPopularThisWeek() {
     <a class="home-popular-week__card" href="${tool.href}">
       <strong>${tool.name}</strong>
       <span>${tool.category}</span>
-      <small>${tool.count ? `${tool.count} local use${tool.count === 1 ? '' : 's'} this week` : 'Suggested starter tool'}</small>
+      <small>${tool.count
+        ? (tool.count === 1
+          ? t('home.privateStarter.localUse', '1 use on this device this week')
+          : t('home.privateStarter.localUses', '{count} uses on this device this week').replace('{count}', String(tool.count)))
+        : t('home.privateStarter.starterTool', 'Suggested starter tool')}</small>
     </a>
   `).join('');
 }
@@ -309,9 +317,9 @@ function renderFeaturedTools() {
         </svg>
       </div>
       <span class="featured-tool-card__category">${getCategoryLabel(tool.category)}</span>
-      <h3>${tool.name}</h3>
-      <p>${tool.description}</p>
-      <a href="${getToolHref(tool.slug)}">Open →</a>
+      <h3>${t(`home.featuredCards.${tool.key}.name`, tool.name)}</h3>
+      <p>${t(`home.featuredCards.${tool.key}.description`, tool.description)}</p>
+      <a href="${getToolHref(tool.slug)}">${t('home.featured.open', 'Open →')}</a>
     </article>
   `).join('');
 }
