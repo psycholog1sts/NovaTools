@@ -163,6 +163,31 @@ assert.match(
   'Homepage brand animation must respect reduced-motion preferences.'
 );
 
+for (const i18nRuntime of [sourceI18n, publicI18n]) {
+  assert.match(
+    i18nRuntime,
+    /const SUPPORTED_LANGUAGES = \['en', 'tr'\];/,
+    'The language selector must expose only fully quality-checked locales.'
+  );
+  assert.match(
+    i18nRuntime,
+    /querySelectorAll\('\[data-i18n-aria-label\]'\)/,
+    'Accessible labels must be translated alongside visible copy.'
+  );
+}
+for (const locale of ['en', 'tr']) {
+  const bundle = JSON.parse(read(`public/locales/${locale}/translation.json`));
+  for (const key of ['quickStartEyebrow', 'categoriesEyebrow']) {
+    assert.ok(bundle.home?.sections?.[key], `${locale} homepage bundle is missing home.sections.${key}`);
+  }
+  for (const key of ['eyebrow', 'title', 'description', 'noscript']) {
+    assert.ok(bundle.home?.privateStarter?.[key], `${locale} homepage bundle is missing home.privateStarter.${key}`);
+  }
+  for (const key of ['eyebrow', 'title', 'description']) {
+    assert.ok(bundle.home?.featured?.[key], `${locale} homepage bundle is missing home.featured.${key}`);
+  }
+}
+
 const packageScripts = JSON.parse(read('package.json')).scripts;
 for (const qualityGate of [
   'audit:algorithm-resilience',

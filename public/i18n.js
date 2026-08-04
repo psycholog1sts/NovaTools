@@ -6,7 +6,7 @@
 (function () {
   'use strict';
 
-  const SUPPORTED_LANGUAGES = ['en', 'tr', 'de', 'fr', 'es', 'pt', 'ru', 'zh', 'ja', 'ko', 'ar', 'hi', 'it', 'pl', 'nl'];
+  const SUPPORTED_LANGUAGES = ['en', 'tr'];
   const RTL_LANGUAGES = ['ar'];
   const DEFAULT_LANGUAGE = 'en';
   const FALLBACK_LOCALES = {
@@ -550,6 +550,16 @@
 
       if (typeof translation === 'string') {
         el.setAttribute('title', translation);
+      }
+    });
+
+    document.querySelectorAll('[data-i18n-aria-label]').forEach((el) => {
+      const key = el.getAttribute('data-i18n-aria-label');
+      const original = storeOriginalContent(el, 'aria-label', el.getAttribute('aria-label') || '');
+      const translation = t(key, original);
+
+      if (typeof translation === 'string') {
+        el.setAttribute('aria-label', translation);
       }
     });
 

@@ -32,7 +32,9 @@
       "newTitle": "New & Trending",
       "newDesc": "Fresh tools and recently added utilities.",
       "categoriesTitle": "Browse by Category",
-      "categoriesDesc": "Organized collections of tools for every need. Click a category to explore."
+      "categoriesDesc": "Organized collections of tools for every need. Click a category to explore.",
+      "quickStartEyebrow": "Quick start",
+      "categoriesEyebrow": "Categories"
     },
     "features": {
       "fastTitle": "Lightning Fast",
@@ -50,25 +52,17 @@
       "button": "Request a Tool"
     },
     "trust": {
-      "secureTitle": "Secure & Private",
       "secureDesc": "Many tools process data locally in your browser.",
-      "transparentTitle": "Transparent",
-      "transparentDesc": "Clear privacy policy & terms",
-      "supportTitle": "Support",
-      "supportDesc": "Contact us for any questions",
       "verifiedTitle": "Clear Ownership",
       "verifiedDesc": "Site ownership, policy pages, and contact details are clearly available."
     },
     "footer": {
+      "contactNote": "Follow the blog for new guides or contact support for public-site questions.",
       "brandDesc": "Browser-based tools for files, finance, code, and everyday workflows. Built for clarity, practical use, and privacy-conscious operation.",
-      "ownerTitle": "Site Owner & Contact",
       "toolCategoriesTitle": "Tool Categories",
-      "companyTitle": "Company",
-      "legalTitle": "Legal & Privacy",
-      "ownerRole": "Licensed Professional Counselor & Founder",
-      "legalBarContact": "Contact Support",
-      "legalBarIssue": "Report Issue",
-      "contactNote": "Follow the blog for new guides or contact support for public-site questions."
+      "legalTitle": "Legal",
+      "ownerTitle": "Owner",
+      "ownerRole": "Psychological Counselor & Developer"
     },
     "popularCards": {
       "pdfMerge": {
@@ -208,6 +202,13 @@
       "viewAll": "View All Articles →"
     },
     "hero": {
+      "title": "All-in-One Tools for Files, Finance & Code",
+      "subtitle": "Use MC NovaTools to convert, calculate, create, and streamline practical workflows with a fast, clear, browser-based toolkit.",
+      "cta": "Explore Tools",
+      "browse": "Browse Categories",
+      "freeTools": "Free Tools",
+      "categories": "Categories",
+      "private": "Private",
       "description": "Use MC NovaTools to convert, calculate, create, and streamline practical workflows with a fast, clear, browser-based toolkit."
     },
     "launcher": {
@@ -257,6 +258,109 @@
           "guide": "Image quality checklist",
           "category": "Image tools"
         }
+      }
+    },
+    "trustBar": {
+      "secureTitle": "Secure & Private",
+      "secureDesc": "Many tools process data locally in your browser.",
+      "transparentTitle": "Transparent",
+      "transparentDesc": "Clear privacy policy & terms",
+      "supportTitle": "Support",
+      "supportDesc": "Contact us for any questions",
+      "verifiedTitle": "Clear Ownership",
+      "verifiedDesc": "Site ownership, policy pages, and contact details are clearly available."
+    },
+    "categoryBlocks": {
+      "pdf": {
+        "badge": "Free Online PDF Utilities",
+        "title": "PDF Tools for Merge, Split, Compression, OCR, and Conversion",
+        "description": "Open the live PDF tools directly from this page. Merge files, split pages, compress size, add watermarks, insert page numbers, run OCR, and convert PDF files to Word, Excel, HTML, JPG, PNG, PowerPoint, and text.",
+        "sectionTitle": "PDF Tools"
+      },
+      "image": {
+        "badge": "Free Online Image Utilities",
+        "title": "Image Tools for Compression, Conversion, Editing, and Cleanup",
+        "description": "Open the live image tools directly from this category page. Compress files, convert formats, resize, crop, flip, rotate, remove metadata, add watermarks, and generate optimized AVIF or WebP output.",
+        "sectionTitle": "Image Tools"
+      },
+      "finance": {
+        "badge": "Free Online Financial Calculators",
+        "title": "Finance Tools for Planning, Loans, Tax, and Long-Term Decisions",
+        "description": "Open the live financial tools directly from this category page. Calculate mortgage refinance options, compound growth, retirement projections, crypto tax, loan planning, and other personal finance scenarios.",
+        "sectionTitle": "Finance Tools"
+      },
+      "developer": {
+        "badge": "Free Online Developer Tools",
+        "title": "Developer Tools for Formatting, Testing, and Code Utilities",
+        "description": "Open the live developer tools directly from this category page. Format JSON, test regex, minify CSS and JS, convert Base64, generate UUIDs, validate JSON, and more.",
+        "sectionTitle": "Developer Tools"
+      },
+      "text": {
+        "badge": "Free Online Text Utilities",
+        "title": "Text Tools for Counting, Formatting, Converting, and Cleanup",
+        "description": "Open the live text tools directly from this category page. Count words and characters, convert text case, generate lorem ipsum, encode entities, create slugs, compare text, transform text to ASCII, and handle URL-safe output.",
+        "sectionTitle": "Text & Writing"
+      },
+      "converters": {
+        "badge": "Free Online Converters",
+        "title": "Converters for Units, Numbers, and Data Formats",
+        "description": "Open the live converter tools directly from this category page. Convert between units, number bases, currencies, time zones, and data formats.",
+        "sectionTitle": "Converters"
+      },
+      "all": {
+        "badge": "Browse All Tools",
+        "title": "Browse Categories Across NovaTools",
+        "description": "Explore all live NovaTools categories and open the tools you need in one click.",
+        "sectionTitle": "All Categories"
+      }
+    },
+    "meta": {
+      "title": "MC NovaTools - Practical Online Tools",
+      "description": "Privacy-conscious browser tools for files, finance, text and code.",
+      "ogTitle": "MC NovaTools",
+      "ogDescription": "Practical online tools."
+    },
+    "privateStarter": {
+      "eyebrow": "Private discovery",
+      "title": "Your private starter set",
+      "description": "Uses completed tool activity stored on this device; until then, starter tools are shown. Nothing is sent to a server.",
+      "noscript": "Enable JavaScript to show the device-only starter set.",
+      "starterTool": "Suggested starter tool",
+      "localUse": "1 use on this device this week",
+      "localUses": "{count} uses on this device this week"
+    },
+    "featured": {
+      "eyebrow": "Featured",
+      "title": "Tools You Can Start With Today",
+      "description": "Quick-start cards for PDF, image, developer and finance workflows.",
+      "open": "Open →"
+    },
+    "toolLabels": {
+      "mergePdf": "Merge PDF",
+      "compressPdf": "Compress PDF",
+      "compressImage": "Compress Image",
+      "jsonFormatter": "JSON Formatter",
+      "liveExchange": "Live Exchange",
+      "textAnalysis": "Text Analysis",
+      "mortgageCalculator": "Mortgage Calculator",
+      "passwordGenerator": "Password Generator"
+    },
+    "featuredCards": {
+      "pdfMerge": {
+        "name": "PDF Merge",
+        "description": "Combine multiple PDF files into one organized document."
+      },
+      "imageCompress": {
+        "name": "Image Compressor",
+        "description": "Reduce image file sizes for web and email workflows."
+      },
+      "jsonFormatter": {
+        "name": "JSON Formatter",
+        "description": "Format, read and validate JSON data before sharing."
+      },
+      "liveExchange": {
+        "name": "Live Exchange Converter",
+        "description": "Convert currency estimates with live-data and cached fallback handling."
       }
     }
   },
@@ -3529,7 +3633,18 @@
           "040": "Related PDF Tools",
           "041": "PDF Compressor",
           "042": "PDF Splitter",
-          "043": "PDF OCR"
+          "043": "PDF OCR",
+          "045": "Looking for the easiest way to merge PDFs online?",
+          "046": "Upload your PDFs:",
+          "047": "Arrange the order:",
+          "048": "Customize the output:",
+          "049": "Merge and download:",
+          "050": "Is this PDF merger completely free to use?",
+          "051": "Yes. The PDF merge tool is free to use, requires no registration, and adds no watermark to your documents.",
+          "052": "Are my PDF files secure when merging online?",
+          "053": "Yes. Processing runs directly in your browser. Your PDFs are not uploaded to our servers.",
+          "054": "How many PDF files can I merge at once?",
+          "055": "You can merge up to 20 PDF files in one operation, with a combined size limit of 50 MB."
         }
       },
       "pdf-ocr": {

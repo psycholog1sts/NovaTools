@@ -32,7 +32,9 @@
       "newTitle": "جديد ورائج",
       "newDesc": "أدوات مضافة حديثاً وتحديثات.",
       "categoriesTitle": "تصفح حسب الفئة",
-      "categoriesDesc": "مجموعات منظمة من الأدوات لكل حاجة."
+      "categoriesDesc": "مجموعات منظمة من الأدوات لكل حاجة.",
+      "quickStartEyebrow": "بدء سريع",
+      "categoriesEyebrow": "الفئات"
     },
     "features": {
       "fastTitle": "سريع للغاية",
@@ -50,25 +52,13 @@
       "button": "طلب أداة"
     },
     "trust": {
-      "secureTitle": "آمن وخاص",
-      "secureDesc": "Many tools process data locally in your browser.",
-      "transparentTitle": "شفاف",
-      "transparentDesc": "سياسة خصوصية واضحة",
-      "supportTitle": "الدعم",
-      "supportDesc": "تواصل معنا لأي استفسار",
-      "verifiedTitle": "Clear Ownership",
-      "verifiedDesc": "Site ownership, policy pages, and contact details are clearly available."
+      "secureDesc": "تعالج العديد من الأدوات البيانات محلياً داخل متصفحك.",
+      "verifiedTitle": "ملكية واضحة",
+      "verifiedDesc": "يتم عرض ملكية الموقع وصفحات السياسات وبيانات التواصل بوضوح."
     },
     "footer": {
-      "brandDesc": "Browser-based tools for files, finance, code, and everyday workflows. Built for clarity, practical use, and privacy-conscious operation.",
-      "ownerTitle": "مالك الموقع والتواصل",
-      "toolCategoriesTitle": "فئات الأدوات",
-      "companyTitle": "الشركة",
-      "legalTitle": "القانوني والخصوصية",
-      "ownerRole": "مستشار نفسي ومؤسس",
-      "legalBarContact": "اتصل بالدعم",
-      "legalBarIssue": "الإبلاغ عن مشكلة",
-      "contactNote": "تابع المدونة للحصول على أدلة جديدة أو تواصل مع الدعم لأسئلة الموقع العامة."
+      "contactNote": "تابع المدونة للحصول على أدلة جديدة أو تواصل مع الدعم لأسئلة الموقع العامة.",
+      "brandDesc": "أدوات تعمل في المتصفح للملفات والتمويل والكود وسير العمل اليومي، مبنية للوضوح والاستخدام العملي واحترام الخصوصية."
     },
     "popularCards": {
       "pdfMerge": {
@@ -209,6 +199,13 @@
       "viewAll": "عرض كل المقالات ←"
     },
     "hero": {
+      "title": "أدوات الكل في واحد للملفات والمالية والبرمجة",
+      "subtitle": "استخدم MC NovaTools للتحويل والحساب والإنشاء وتبسيط مهام العمل العملية من خلال مجموعة أدوات سريعة وواضحة تعمل في المتصفح.",
+      "cta": "استكشف الأدوات",
+      "browse": "تصفح الفئات",
+      "freeTools": "أدوات مجانية",
+      "categories": "الفئات",
+      "private": "خاص",
       "description": "استخدم MC NovaTools للتحويل والحساب والإنشاء وتبسيط مهام العمل العملية من خلال مجموعة أدوات سريعة وواضحة تعمل في المتصفح."
     },
     "launcher": {
@@ -258,6 +255,109 @@
           "guide": "قائمة تحقق جودة الصور",
           "category": "أدوات الصور"
         }
+      }
+    },
+    "trustBar": {
+      "secureTitle": "آمن وخاص",
+      "secureDesc": "Many tools process data locally in your browser.",
+      "transparentTitle": "شفاف",
+      "transparentDesc": "سياسة خصوصية واضحة",
+      "supportTitle": "الدعم",
+      "supportDesc": "تواصل معنا لأي استفسار",
+      "verifiedTitle": "Clear Ownership",
+      "verifiedDesc": "Site ownership, policy pages, and contact details are clearly available."
+    },
+    "categoryBlocks": {
+      "pdf": {
+        "badge": "Free Online PDF Utilities",
+        "title": "PDF Tools for Merge, Split, Compression, OCR, and Conversion",
+        "description": "Open the live PDF tools directly from this page. Merge files, split pages, compress size, add watermarks, insert page numbers, run OCR, and convert PDF files to Word, Excel, HTML, JPG, PNG, PowerPoint, and text.",
+        "sectionTitle": "PDF Tools"
+      },
+      "image": {
+        "badge": "Free Online Image Utilities",
+        "title": "Image Tools for Compression, Conversion, Editing, and Cleanup",
+        "description": "Open the live image tools directly from this category page. Compress files, convert formats, resize, crop, flip, rotate, remove metadata, add watermarks, and generate optimized AVIF or WebP output.",
+        "sectionTitle": "Image Tools"
+      },
+      "finance": {
+        "badge": "Free Online Financial Calculators",
+        "title": "Finance Tools for Planning, Loans, Tax, and Long-Term Decisions",
+        "description": "Open the live financial tools directly from this category page. Calculate mortgage refinance options, compound growth, retirement projections, crypto tax, loan planning, and other personal finance scenarios.",
+        "sectionTitle": "Finance Tools"
+      },
+      "developer": {
+        "badge": "Free Online Developer Tools",
+        "title": "Developer Tools for Formatting, Testing, and Code Utilities",
+        "description": "Open the live developer tools directly from this category page. Format JSON, test regex, minify CSS and JS, convert Base64, generate UUIDs, validate JSON, and more.",
+        "sectionTitle": "Developer Tools"
+      },
+      "text": {
+        "badge": "Free Online Text Utilities",
+        "title": "Text Tools for Counting, Formatting, Converting, and Cleanup",
+        "description": "Open the live text tools directly from this category page. Count words and characters, convert text case, generate lorem ipsum, encode entities, create slugs, compare text, transform text to ASCII, and handle URL-safe output.",
+        "sectionTitle": "Text & Writing"
+      },
+      "converters": {
+        "badge": "Free Online Converters",
+        "title": "Converters for Units, Numbers, and Data Formats",
+        "description": "Open the live converter tools directly from this category page. Convert between units, number bases, currencies, time zones, and data formats.",
+        "sectionTitle": "Converters"
+      },
+      "all": {
+        "badge": "Browse All Tools",
+        "title": "All Tools — Online Utilities by Category",
+        "description": "Explore available tools organized by category, including PDF, image, finance, developer, text, and converters.",
+        "sectionTitle": "All Categories"
+      }
+    },
+    "meta": {
+      "title": "MC NovaTools - Practical Online Tools",
+      "description": "Privacy-conscious browser tools for files, finance, text and code.",
+      "ogTitle": "MC NovaTools",
+      "ogDescription": "Practical online tools."
+    },
+    "privateStarter": {
+      "eyebrow": "اكتشاف خاص",
+      "title": "مجموعة البداية الخاصة بك",
+      "description": "تستخدم نشاط الأدوات المكتمل والمحفوظ على هذا الجهاز؛ وحتى ذلك الحين تُعرض أدوات بداية مقترحة. لا يُرسل أي شيء إلى الخادم.",
+      "noscript": "فعّل JavaScript لعرض مجموعة البداية المحفوظة على الجهاز فقط.",
+      "starterTool": "أداة بداية مقترحة",
+      "localUse": "استخدام واحد على هذا الجهاز هذا الأسبوع",
+      "localUses": "{count} استخدامات على هذا الجهاز هذا الأسبوع"
+    },
+    "featured": {
+      "eyebrow": "مميز",
+      "title": "أدوات يمكنك البدء بها اليوم",
+      "description": "بطاقات بدء سريع لمسارات عمل PDF والصور والمطورين والتمويل.",
+      "open": "فتح ←"
+    },
+    "toolLabels": {
+      "mergePdf": "دمج PDF",
+      "compressPdf": "ضغط PDF",
+      "compressImage": "ضغط الصورة",
+      "jsonFormatter": "منسّق JSON",
+      "liveExchange": "أسعار صرف مباشرة",
+      "textAnalysis": "تحليل النص",
+      "mortgageCalculator": "حاسبة الرهن العقاري",
+      "passwordGenerator": "مولّد كلمات المرور"
+    },
+    "featuredCards": {
+      "pdfMerge": {
+        "name": "دمج PDF",
+        "description": "ادمج عدة ملفات PDF في مستند واحد منظم."
+      },
+      "imageCompress": {
+        "name": "ضاغط الصور",
+        "description": "قلّل حجم ملفات الصور لاستخدامها على الويب وفي البريد الإلكتروني."
+      },
+      "jsonFormatter": {
+        "name": "منسّق JSON",
+        "description": "نسّق بيانات JSON واقرأها وتحقق منها قبل مشاركتها."
+      },
+      "liveExchange": {
+        "name": "محول العملات المباشر",
+        "description": "حوّل تقديرات العملات باستخدام بيانات مباشرة مع معالجة احتياطية من الذاكرة المؤقتة."
       }
     }
   },
