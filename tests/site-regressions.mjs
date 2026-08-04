@@ -121,7 +121,7 @@ const homepage = read('index.html');
 assert.doesNotMatch(homepage, /cdn\.mc-novatools\.com/, 'Homepage must not preconnect to an unused CDN.');
 assert.doesNotMatch(homepage, /rel="prefetch" href="\/tools\/popular"/, 'Homepage must not prefetch a nonexistent popular-tools route.');
 assert.match(homepage, /href="\/security\.html"[^>]*data-i18n="nav\.security"/, 'Desktop navigation must expose the security page instead of duplicating About.');
-assert.match(homepage, /id="globalSearch"[^>]*aria-label=/, 'Global search must have an accessible name.');
+assert.match(homepage, /<input(?=[^>]*id="globalSearch")(?=[^>]*aria-label=)[^>]*>/, 'Global search must have an accessible name.');
 assert.match(homepage, /class="search-close"[^>]*aria-label=/, 'Search close control must have an accessible name.');
 assert.match(homepage, /home\.privateStarter\.title/, 'Device-only discovery must be labeled honestly and localized.');
 
