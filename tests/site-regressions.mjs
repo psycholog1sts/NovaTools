@@ -87,7 +87,10 @@ for (const requiredPattern of [
   /novatools_recent_tools/,
   /data-workflow-step=/,
   /data-recent-tool="true"/,
-  /Finish the whole task/
+  /Finish the whole task/,
+  /Bütün işi tamamlayın/,
+  /qualityCopyByLanguage/,
+  /turkishWorkflowLabels/
 ]) {
   assert.match(sourceI18n, requiredPattern, `Missing workflow-retention feature: ${requiredPattern}`);
   assert.match(publicI18n, requiredPattern, `Public i18n copy is missing workflow-retention feature: ${requiredPattern}`);
@@ -110,6 +113,19 @@ for (const workflowRoute of [
   assert.ok(
     read('public/sitemap.xml').includes(`https://mc-novatools.com${workflowRoute}`),
     `Workflow route is missing from the sitemap: ${workflowRoute}`
+  );
+}
+
+const packageScripts = JSON.parse(read('package.json')).scripts;
+for (const qualityGate of [
+  'audit:algorithm-resilience',
+  'lint:performance-budget',
+  'lint:critical-css',
+  'lint:rss'
+]) {
+  assert.ok(
+    packageScripts['ci:validate'].includes(qualityGate),
+    `CI must enforce the quality gate: ${qualityGate}`
   );
 }
 
