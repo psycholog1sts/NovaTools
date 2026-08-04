@@ -2,6 +2,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { globSync } from 'glob';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, '..');
@@ -103,9 +104,50 @@ for (const namespace of namespaces) {
   }
 }
 
+const publicLocalesDir = path.join(rootDir, 'public', 'locales');
+const publicBundles = new Map(
+  locales.map((locale) => [
+    locale,
+    readJson(path.join(publicLocalesDir, locale, 'translation.json'))
+  ])
+);
+const referencedKeys = new Map();
+const attributePattern = /data-i18n(?:-placeholder|-title|-html|-aria-label|-document-title)?=["']([^"']+)["']/g;
+const htmlFiles = globSync('**/*.html', {
+  cwd: rootDir,
+  ignore: ['dist/**', 'node_modules/**', '.venv/**', 'coverage/**']
+});
+
+for (const relativeFile of htmlFiles) {
+  const source = fs.readFileSync(path.join(rootDir, relativeFile), 'utf8');
+  for (const match of source.matchAll(attributePattern)) {
+    const key = match[1].trim();
+    if (!key) continue;
+    if (!referencedKeys.has(key)) referencedKeys.set(key, []);
+    referencedKeys.get(key).push(relativeFile);
+  }
+}
+
+for (const [locale, data] of publicBundles) {
+  if (!data) continue;
+  const flat = new Map(flattenKeys(data).map((key) => [key, key.split('.').reduce((node, part) => node?.[part], data)]));
+  for (const [key, files] of referencedKeys) {
+    if (!flat.has(key)) {
+      failures += 1;
+      console.error(`❌ public/locales/${locale}/translation.json is missing page key "${key}" used by ${[...new Set(files)].slice(0, 3).join(', ')}`);
+      continue;
+    }
+    const value = flat.get(key);
+    if (typeof value !== 'string' || value.trim() === '' || value.trim() === key) {
+      failures += 1;
+      console.error(`❌ public/locales/${locale}/translation.json has an unusable value for "${key}".`);
+    }
+  }
+}
+
 if (failures > 0) {
   console.error(`\n${failures} i18n validation issue(s) found.`);
   process.exit(1);
 }
 
-console.log('✅ i18n JSON validation passed for en, tr, and ar.');
+console.log(`✅ i18n JSON and ${referencedKeys.size} page-level translation keys passed for en, tr, and ar.`);
