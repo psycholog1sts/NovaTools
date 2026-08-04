@@ -877,12 +877,57 @@
         ['Convert units', '/tools/converters/unit-converter/'], ['Calculate percentage', '/tools/converters/percentage-calculator/'], ['Convert number base', '/tools/converters/number-base-converter/']
       ]
     };
+    const qualityCopyByLanguage = {
+      en: {
+        aria: 'Tool workflow, privacy and help notes',
+        workflow: 'Workflow',
+        workflowBody: 'Add your input, review settings, run the primary action, then inspect the result before downloading, copying or sharing.',
+        privacy: 'Privacy & limits',
+        privacyBody: 'NovaTools favors browser-first processing where practical. Large files depend on device memory; live-data tools can contact an external service only when the tool requires it.',
+        finish: 'Finish the whole task',
+        finishBody: 'Use this privacy-first sequence instead of searching again after every step.',
+        relatedTools: 'Related tools',
+        relatedGuide: 'Related guide',
+        safety: 'Safety notes',
+        continue: 'Continue where you left off'
+      },
+      tr: {
+        aria: 'Araç akışı, gizlilik ve yardım notları',
+        workflow: 'Nasıl kullanılır?',
+        workflowBody: 'Girdinizi ekleyin, ayarları kontrol edin, ana işlemi çalıştırın; indirmeden, kopyalamadan veya paylaşmadan önce sonucu inceleyin.',
+        privacy: 'Gizlilik ve sınırlar',
+        privacyBody: 'NovaTools mümkün olduğunda işlemleri tarayıcınızda yapar. Büyük dosyalar cihaz belleğine bağlıdır; canlı veri araçları yalnız gerektiğinde harici servise bağlanabilir.',
+        finish: 'Bütün işi tamamlayın',
+        finishBody: 'Her adımdan sonra yeniden arama yapmak yerine bu gizlilik odaklı sırayı izleyin.',
+        relatedTools: 'İlgili araçlar',
+        relatedGuide: 'İlgili rehber',
+        safety: 'Güvenlik notları',
+        continue: 'Kaldığınız yerden devam edin'
+      }
+    };
+    const turkishWorkflowLabels = {
+      'Combine': 'Birleştir', 'Reduce size': 'Boyutu küçült', 'Add page numbers': 'Sayfa numarası ekle',
+      'Crop': 'Kırp', 'Compress': 'Sıkıştır', 'Convert format': 'Formatı dönüştür',
+      'Format code': 'Kodu biçimlendir', 'Validate JSON': 'JSON doğrula', 'Create checksum': 'Sağlama toplamı oluştur',
+      'Compare scenarios': 'Senaryoları karşılaştır', 'Check affordability': 'Ödenebilirliği kontrol et', 'Track expenses': 'Giderleri takip et',
+      'Clean case': 'Harf düzenini temizle', 'Check length': 'Uzunluğu kontrol et', 'Compare versions': 'Sürümleri karşılaştır',
+      'Inspect CSV': 'CSV incele', 'Convert to JSON': 'JSON’a dönüştür', 'Build a chart': 'Grafik oluştur',
+      'Create a logo': 'Logo oluştur', 'Build a business card': 'Kartvizit hazırla', 'Generate a QR code': 'QR kod oluştur',
+      'Capture notes': 'Not al', 'Plan tasks': 'Görevleri planla', 'Focus': 'Odaklan',
+      'Generate a password': 'Parola oluştur', 'Check strength': 'Gücü kontrol et', 'Create a hash': 'Hash oluştur',
+      'Resize image': 'Görseli boyutlandır', 'Generate hashtags': 'Etiket oluştur', 'Create app icon': 'Uygulama simgesi oluştur',
+      'Convert units': 'Birim dönüştür', 'Calculate percentage': 'Yüzde hesapla', 'Convert number base': 'Sayı tabanını dönüştür'
+    };
+    const qualityCopy = qualityCopyByLanguage[currentLanguage] || qualityCopyByLanguage.en;
     const workflow = workflowByCategory[category] || workflowByCategory.productivity;
     const safeText = (value) => String(value).replace(/[&<>"']/g, (character) => ({
       '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
     })[character]);
     const workflowMarkup = workflow
-      .map(([label, href], index) => `<li><span>${index + 1}</span><a href="${href}" data-workflow-step="${index + 1}">${safeText(label)}</a></li>`)
+      .map(([label, href], index) => {
+        const localizedLabel = currentLanguage === 'tr' ? (turkishWorkflowLabels[label] || label) : label;
+        return `<li><span>${index + 1}</span><a href="${href}" data-workflow-step="${index + 1}">${safeText(localizedLabel)}</a></li>`;
+      })
       .join('');
     const currentTool = {
       href: window.location.pathname,
@@ -920,26 +965,26 @@
 
     const panel = document.createElement('section');
     panel.className = 'tool-professional-layer';
-    panel.setAttribute('aria-label', 'Tool workflow, privacy and help notes');
+    panel.setAttribute('aria-label', qualityCopy.aria);
     panel.innerHTML = `
       <div class="tool-professional-card">
-        <strong>Workflow</strong>
-        <p>Add your input, review available settings, run the tool with its primary action, then inspect the result before download, copy or sharing.</p>
+        <strong>${qualityCopy.workflow}</strong>
+        <p>${qualityCopy.workflowBody}</p>
       </div>
       <div class="tool-professional-card">
-        <strong>Privacy & limits</strong>
-        <p>NovaTools favors browser-first processing where practical. Large files can depend on device memory, and tools that need live data or external services should be reviewed in context.</p>
+        <strong>${qualityCopy.privacy}</strong>
+        <p>${qualityCopy.privacyBody}</p>
       </div>
       <div class="tool-professional-card tool-workflow-card">
-        <strong>Finish the whole task</strong>
-        <p>Use this privacy-first sequence instead of searching again after every step.</p>
+        <strong>${qualityCopy.finish}</strong>
+        <p>${qualityCopy.finishBody}</p>
         <ol class="tool-workflow-steps">${workflowMarkup}</ol>
       </div>
       <div class="tool-professional-actions">
-        <a href="${categoryRoute}">Related tools</a>
-        <a href="${guideRoute}">Related guide</a>
-        <a href="/security.html">Safety notes</a>
-        ${recentMarkup ? `<span class="tool-recent-label">Continue where you left off</span>${recentMarkup}` : ''}
+        <a href="${categoryRoute}">${qualityCopy.relatedTools}</a>
+        <a href="${guideRoute}">${qualityCopy.relatedGuide}</a>
+        <a href="/security.html">${qualityCopy.safety}</a>
+        ${recentMarkup ? `<span class="tool-recent-label">${qualityCopy.continue}</span>${recentMarkup}` : ''}
       </div>`;
 
     if (hero.parentElement) {
