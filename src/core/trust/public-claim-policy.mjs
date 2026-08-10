@@ -9,6 +9,15 @@ const UNVERIFIED_TRAINING_LABELS = new Set([
   'MC NovaTools editorial workflow training'
 ]);
 
+const UNVERIFIED_EXPERIENCE_PATTERNS = Object.freeze([
+  /\bwith more than five years of hands-on experience\b/i,
+  /\bwith more than five years of practical experience\b/i,
+  /\bwith 5\+ years of hands-on experience\b/i,
+  /\bwith 5\+ years of practical experience\b/i,
+  /\b(?:has|brings) more than five years of (?:hands-on |practical )?experience\b/i,
+  /\b(?:has|brings) 5\+ years of (?:hands-on |practical )?experience\b/i
+]);
+
 function escapeRegExp(value) {
   return String(value).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
@@ -23,7 +32,11 @@ export function sanitizeClaimText(value) {
     .replace(/Metehan ÇETİN,\s*LPC/g, 'Metehan ÇETİN')
     .replace(/Metehan Çetin,\s*LPC/g, 'Metehan Çetin')
     .replace(/\bwith more than five years of hands-on experience\b/gi, 'with hands-on experience')
+    .replace(/\bwith more than five years of practical experience\b/gi, 'with practical experience')
+    .replace(/\bwith 5\+ years of hands-on experience\b/gi, 'with hands-on experience')
     .replace(/\bwith 5\+ years of practical experience\b/gi, 'with practical experience')
+    .replace(/\b(has|brings) more than five years of (?:hands-on |practical )?experience\b/gi, '$1 practical experience')
+    .replace(/\b(has|brings) 5\+ years of (?:hands-on |practical )?experience\b/gi, '$1 practical experience')
     .replace(/Official profiles: GitHub mc-novatools, X\/Twitter @mcnovatools, and LinkedIn company\/mc-novatools\.?/gi, 'Public social links are listed only after ownership is verified.')
     .replace(/official social links/gi, 'verified contact details');
 }
@@ -121,7 +134,7 @@ export function findBlockedPublicClaims(html) {
   const text = String(html || '');
   const findings = [];
   if (/Metehan Ç(?:etin|ETİN),\s*LPC/.test(text)) findings.push('unverified_lpc_credential');
-  if (/\b(?:5\+|five)\s+years\b/i.test(text)) findings.push('unverified_years_experience');
+  if (UNVERIFIED_EXPERIENCE_PATTERNS.some((pattern) => pattern.test(text))) findings.push('unverified_years_experience');
   for (const url of UNVERIFIED_SOCIAL_URLS) {
     if (text.includes(url)) findings.push(`unverified_social:${url}`);
   }
