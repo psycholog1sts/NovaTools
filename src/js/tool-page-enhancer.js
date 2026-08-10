@@ -251,17 +251,20 @@ function updateMeta(tool, slug) {
     toolName: name,
     category,
     action: textDescription(tool).replace(/\.$/, '').toLowerCase(),
-    advantages: ['browser-based workflow', 'clear usage guidance']
+    advantages: enhancerLanguage() === 'tr'
+      ? ['tarayıcı tabanlı iş akışı', 'açık kullanım rehberi']
+      : ['browser-based workflow', 'clear usage guidance']
   });
 }
 
 function createStickyHeader(tool, slug) {
   const name = displayToolName(tool, slug);
-  const category = categoryName(tool?.category || slug.split('/')[0]);
+  const categoryKey = tool?.category || slug.split('/')[0];
+  const category = categoryName(categoryKey);
   const header = document.createElement('div');
   header.className = 'nt-sticky-tool-header';
   header.innerHTML = `<div class="nt-sticky-tool-header__inner">
-    <nav aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">›</span><a href="/categories/${categoryRoute(tool?.category || slug.split('/')[0])}.html">${category}</a></nav>
+    <nav aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">›</span><a href="/categories/${categoryRoute(categoryKey)}.html" data-enhancer-category="${categoryKey}">${category}</a></nav>
     <strong>${name}</strong>
     <a href="#tool-workspace">Open tool</a>
   </div>`;
@@ -270,13 +273,14 @@ function createStickyHeader(tool, slug) {
 
 function createHero(tool, slug) {
   const name = displayToolName(tool, slug);
-  const category = categoryName(tool?.category || slug.split('/')[0]);
+  const categoryKey = tool?.category || slug.split('/')[0];
+  const category = categoryName(categoryKey);
   const breadcrumb = document.createElement('section');
   breadcrumb.className = 'premium-tool-hero';
   breadcrumb.innerHTML = `
     <div class="container">
       <nav class="premium-tool-breadcrumb" aria-label="Breadcrumb">
-        <a href="/">Home</a><span>›</span><a href="/categories/${categoryRoute(tool?.category || slug.split('/')[0])}.html">${category}</a><span>›</span><span aria-current="page">${name}</span>
+        <a href="/">Home</a><span>›</span><a href="/categories/${categoryRoute(categoryKey)}.html" data-enhancer-category="${categoryKey}">${category}</a><span>›</span><span aria-current="page">${name}</span>
       </nav>
       <div class="premium-tool-hero__grid">
         <div>
@@ -500,6 +504,9 @@ function refreshLocalizedMetadata() {
   const tool = findTool(slug) || { id: slug.replace('/', '-'), category: slug.split('/')[0], name: slug.split('/').pop().replace(/-/g, ' '), entry: `/tools/${slug}/` };
   document.querySelectorAll('[data-enhancer-description]').forEach((element) => {
     element.textContent = textDescription(tool);
+  });
+  document.querySelectorAll('[data-enhancer-category]').forEach((element) => {
+    element.textContent = categoryName(element.dataset.enhancerCategory);
   });
   updateMeta(tool, slug);
   appendSchema(tool, slug);
