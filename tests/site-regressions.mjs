@@ -188,6 +188,30 @@ for (const locale of ['en', 'tr']) {
   }
 }
 
+const toolEnhancer = read('src/js/tool-page-enhancer.js');
+assert.match(toolEnhancer, /const ENHANCER_COPY = \{/, 'Late tool-page UI must use a shared locale copy dictionary.');
+assert.match(
+  toolEnhancer,
+  /document\.documentElement\.lang(?:\.split\([^)]*\))?\s*===\s*['"]tr['"]/,
+  'Tool-page enhancement must select Turkish copy from the active document language.'
+);
+assert.match(homepageMain, /home\.categoryPopularTools\.\$\{tool\.key\}/, 'Homepage category shortcuts must render through stable i18n keys.');
+assert.match(homepageMain, /home\.blogCards\.\$\{post\.key\}/, 'Homepage blog cards must render through stable i18n keys.');
+
+for (const locale of ['en', 'tr']) {
+  const bundle = JSON.parse(read(`public/locales/${locale}/translation.json`));
+  for (const key of ['pdfMerge', 'imageCompress', 'liveExchange', 'textAnalysis', 'timezone', 'invoice']) {
+    assert.ok(
+      bundle.home?.categoryPopularTools?.[key],
+      `${locale} homepage bundle is missing home.categoryPopularTools.${key}`
+    );
+  }
+  for (const key of ['toolSelection', 'imageQuality', 'base64Uses']) {
+    assert.ok(bundle.home?.blogCards?.[key]?.title, `${locale} homepage bundle is missing home.blogCards.${key}.title`);
+    assert.ok(bundle.home?.blogCards?.[key]?.excerpt, `${locale} homepage bundle is missing home.blogCards.${key}.excerpt`);
+  }
+}
+
 const packageScripts = JSON.parse(read('package.json')).scripts;
 for (const qualityGate of [
   'audit:algorithm-resilience',
