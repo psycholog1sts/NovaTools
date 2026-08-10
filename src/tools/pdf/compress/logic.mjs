@@ -1,6 +1,7 @@
 /**
- * PDF Compress Tool Logic
- * Refactored with shared utilities
+ * PDF Compressor
+ * Performs a structural pdf-lib rewrite in the browser.
+ * This does not downsample page images or guarantee a smaller output.
  */
 
 import { PDFDocument } from 'pdf-lib';
@@ -9,12 +10,7 @@ import { generateToolPageSchemas, injectMultipleSchemas } from '../../../core/se
 import { formatBytes, trackEvent, preventDefaults } from '../../../core/utils/index.mjs';
 
 const CONFIG = {
-  MAX_FILE_SIZE: 50 * 1024 * 1024,
-  COMPRESSION_LEVELS: {
-    low: { imageQuality: 0.9, removeMetadata: false },
-    medium: { imageQuality: 0.7, removeMetadata: true },
-    high: { imageQuality: 0.5, removeMetadata: true }
-  }
+  MAX_FILE_SIZE: 50 * 1024 * 1024
 };
 
 const state = {
@@ -27,14 +23,12 @@ const elements = {};
 
 async function init() {
   const meta = await loadToolMeta('pdf/compress');
-  if (meta) {
-    injectToolSchemas(meta);
-  }
+  if (meta) injectToolSchemas(meta);
   cacheElements();
   bindAliases();
+  normalizeCompressionUi();
   setupEventListeners();
   setupDragAndDrop();
-  setupQualityOptions();
   setState('empty');
   updateUIState();
 }
@@ -48,7 +42,7 @@ function cacheElements() {
     'emptyState', 'loadingState', 'successState'];
 
   elements.compressForm = document.querySelector('form[data-tool="pdf-compress"]');
-  ids.forEach(id => elements[id] = document.getElementById(id));
+  ids.forEach((id) => { elements[id] = document.getElementById(id); });
 }
 
 function bindAliases() {
@@ -56,12 +50,33 @@ function bindAliases() {
   elements.progressBar = elements.progressBar || elements.progressFill;
 }
 
+function normalizeCompressionUi() {
+  const selector = document.getElementById('qualitySelector');
+  const label = selector?.querySelector('label');
+  const options = selector?.querySelector('.quality-options');
+  const statLabels = document.querySelectorAll('.compression-stats .stat-label');
+
+  if (label) label.textContent = 'Optimization mode';
+  if (options) {
+    options.innerHTML = `
+      <div class="quality-option selected" data-quality="structural" aria-current="true">
+        <div class="icon">🧩</div>
+        <div class="label">Structural optimization</div>
+        <div class="desc">Rewrites PDF structure with object streams. Page images are not downsampled, so the result may be smaller, similar in size, or larger.</div>
+      </div>`;
+    options.style.gridTemplateColumns = '1fr';
+  }
+  if (elements.qualityInput) elements.qualityInput.value = 'structural';
+  if (statLabels[1]) statLabels[1].textContent = 'Output';
+  if (statLabels[2]) statLabels[2].textContent = 'Size change';
+}
+
 function setupEventListeners() {
   elements.fileInput?.addEventListener('change', handleFileSelect);
   elements.removeFileBtn?.addEventListener('click', clearFile);
   if (elements.compressForm) {
-    elements.compressForm.addEventListener('submit', (e) => {
-      e.preventDefault();
+    elements.compressForm.addEventListener('submit', (event) => {
+      event.preventDefault();
       handleCompress();
     });
   } else {
@@ -76,63 +91,59 @@ function setupDragAndDrop() {
   const fileInput = elements.fileInput;
   if (!dz || !fileInput) return;
 
-  dz.addEventListener('click', (e) => {
-    if (e.target !== fileInput) fileInput.click();
+  dz.addEventListener('click', (event) => {
+    if (event.target !== fileInput) fileInput.click();
   });
 
-  dz.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
+  dz.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
       fileInput.click();
     }
   });
-  
-  ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(e => dz.addEventListener(e, preventDefaults));
-  ['dragenter', 'dragover'].forEach(e => dz.addEventListener(e, () => dz.classList.add('border-primary-500', 'bg-blue-50')));
-  ['dragleave', 'drop'].forEach(e => dz.addEventListener(e, () => dz.classList.remove('border-primary-500', 'bg-blue-50')));
-  dz.addEventListener('drop', (e) => processFile(e.dataTransfer.files[0]));
+
+  ['dragenter', 'dragover', 'dragleave', 'drop'].forEach((eventName) => dz.addEventListener(eventName, preventDefaults));
+  ['dragenter', 'dragover'].forEach((eventName) => dz.addEventListener(eventName, () => dz.classList.add('border-primary-500', 'bg-blue-50')));
+  ['dragleave', 'drop'].forEach((eventName) => dz.addEventListener(eventName, () => dz.classList.remove('border-primary-500', 'bg-blue-50')));
+  dz.addEventListener('drop', (event) => processFile(event.dataTransfer.files[0]));
 }
 
-function setupQualityOptions() {
-  const qualityInput = elements.qualityInput;
-  document.querySelectorAll('.quality-option').forEach(option => {
-    option.addEventListener('click', () => {
-      document.querySelectorAll('.quality-option').forEach(el => el.classList.remove('selected'));
-      option.classList.add('selected');
-      if (qualityInput) {
-        qualityInput.value = option.getAttribute('data-quality') || 'balanced';
-      }
-    });
-  });
+function handleFileSelect(event) {
+  if (event.target.files.length > 0) processFile(event.target.files[0]);
 }
 
-function handleFileSelect(e) {
-  if (e.target.files.length > 0) processFile(e.target.files[0]);
+function fileSizeBucket(bytes) {
+  const mb = bytes / (1024 * 1024);
+  if (mb < 1) return '<1MB';
+  if (mb < 5) return '1-5MB';
+  if (mb < 20) return '5-20MB';
+  if (mb < 50) return '20-50MB';
+  return '50MB+';
 }
 
 function processFile(file) {
   if (!file?.name?.toLowerCase().endsWith('.pdf')) {
-    showError('Sadece PDF dosyaları kabul edilir.');
+    showError('Only PDF files are accepted.');
     return;
   }
-  
+
   if (file.size > CONFIG.MAX_FILE_SIZE) {
-    showError(`Dosya boyutu ${formatBytes(CONFIG.MAX_FILE_SIZE)}'ı geçemez.`);
+    showError(`File size cannot exceed ${formatBytes(CONFIG.MAX_FILE_SIZE)}.`);
     return;
   }
-  
+
   state.file = file;
-  
+
   if (elements.fileName) elements.fileName.textContent = file.name;
   if (elements.fileSize) elements.fileSize.textContent = formatBytes(file.size);
   elements.fileInfoSection?.classList.remove('hidden');
   elements.fileInfoSection?.classList.add('visible');
   elements.dropzone?.classList.add('hidden');
-  
+
   updateUIState();
   hideError();
   setState('empty');
-  trackEvent('pdf-compress-file-selected', { size: file.size });
+  trackEvent('pdf-compress-file-selected', { fileSizeBucket: fileSizeBucket(file.size) });
 }
 
 function clearFile() {
@@ -146,14 +157,12 @@ function clearFile() {
 }
 
 function clearAll() {
-  if (elements.downloadLink?.href?.startsWith('blob:')) {
-    URL.revokeObjectURL(elements.downloadLink.href);
-  }
-  
+  if (elements.downloadLink?.href?.startsWith('blob:')) URL.revokeObjectURL(elements.downloadLink.href);
+
   state.file = null;
   state.compressedBytes = null;
   state.isProcessing = false;
-  
+
   if (elements.fileInput) elements.fileInput.value = '';
   elements.fileInfoSection?.classList.add('hidden');
   elements.fileInfoSection?.classList.remove('visible');
@@ -161,16 +170,16 @@ function clearAll() {
   elements.resultSection?.classList.add('hidden');
   hideProgress();
   hideError();
-  
+
   updateUIState();
   setState('empty');
 }
 
 function updateUIState() {
   const hasFile = state.file !== null;
-  elements.compressBtn && (elements.compressBtn.disabled = !hasFile || state.isProcessing);
-  elements.clearBtn && (elements.clearBtn.disabled = state.isProcessing);
-  
+  if (elements.compressBtn) elements.compressBtn.disabled = !hasFile || state.isProcessing;
+  if (elements.clearBtn) elements.clearBtn.disabled = state.isProcessing;
+
   if (state.isProcessing) {
     elements.compressBtnText?.classList.add('hidden');
     elements.compressBtnLoading?.classList.remove('hidden');
@@ -182,33 +191,34 @@ function updateUIState() {
 
 async function handleCompress() {
   if (!state.file) return;
-  
-  const selected = elements.qualityInput?.value || 'balanced';
-  const levelMap = { high: 'low', balanced: 'medium', maximum: 'high' };
-  const level = levelMap[selected] || 'medium';
-  
+
   state.isProcessing = true;
   updateUIState();
   setState('loading');
   showProgress();
   hideError();
   hideResult();
-  
+
   try {
-    const result = await compressPDF(level);
+    const result = await compressPDF();
     state.compressedBytes = result.bytes;
-    
+
     const blob = new Blob([result.bytes], { type: 'application/pdf' });
     const url = URL.createObjectURL(blob);
-    const savings = ((state.file.size - result.bytes.length) / state.file.size * 100).toFixed(1);
-    
-    showResult(url, state.file.size, result.bytes.length, savings);
+    const percentChange = ((result.bytes.length - state.file.size) / state.file.size) * 100;
+
+    showResult(url, state.file.size, result.bytes.length, percentChange);
     setState('success');
-    trackEvent('pdf-compress-success', { originalSize: state.file.size, compressedSize: result.bytes.length, savings, level });
+    trackEvent('pdf-compress-success', {
+      originalSizeBucket: fileSizeBucket(state.file.size),
+      outputSizeBucket: fileSizeBucket(result.bytes.length),
+      sizeChangeDirection: percentChange < -0.05 ? 'smaller' : percentChange > 0.05 ? 'larger' : 'similar',
+      mode: 'structural'
+    });
   } catch (error) {
-    showError(`Sıkıştırma sırasında hata oluştu: ${error.message}`);
+    showError('The PDF could not be optimized. Check that the file is valid and not protected, then try again.');
     setState('error');
-    trackEvent('pdf-compress-error', { error: error.message });
+    trackEvent('pdf-compress-error', { errorCode: error?.name || 'PDF_OPTIMIZATION_FAILED' });
   } finally {
     state.isProcessing = false;
     updateUIState();
@@ -216,50 +226,31 @@ async function handleCompress() {
   }
 }
 
-async function compressPDF(level) {
-  const config = CONFIG.COMPRESSION_LEVELS[level];
-  
-  updateProgress(5, 'PDF yükleniyor...', state.file.name);
-  
+async function compressPDF() {
+  updateProgress(5, 'Loading PDF...', '');
   const arrayBuffer = await state.file.arrayBuffer();
-  
-  updateProgress(15, 'PDF ayrıştırılıyor...', '');
-  
+
+  updateProgress(15, 'Parsing PDF...', '');
   const pdfDoc = await PDFDocument.load(arrayBuffer, { updateMetadata: false, ignoreEncryption: true });
   const pageCount = pdfDoc.getPageCount();
-  
-  updateProgress(25, 'Optimizasyon yapılıyor...', `${pageCount} sayfa`);
-  
-  // Process pages in chunks
-  const chunks = Math.ceil(pageCount / 50);
-  for (let i = 0; i < chunks; i++) {
-    updateProgress(25 + (i / chunks) * 50, 'Sayfalar optimize ediliyor...', `Part ${i + 1}/${chunks}`);
-    await new Promise(r => setTimeout(r, 10));
-    if (i % 2 === 0 && globalThis.gc) globalThis.gc();
+
+  updateProgress(25, 'Preparing structural rewrite...', `${pageCount} pages`);
+  const chunks = Math.max(1, Math.ceil(pageCount / 50));
+  for (let index = 0; index < chunks; index += 1) {
+    updateProgress(25 + (index / chunks) * 50, 'Preparing pages...', `Part ${index + 1}/${chunks}`);
+    await new Promise((resolve) => setTimeout(resolve, 10));
   }
-  
-  updateProgress(80, 'PDF yeniden oluşturuluyor...', '');
-  
-  if (config.removeMetadata) {
-    pdfDoc.setTitle('');
-    pdfDoc.setAuthor('');
-    pdfDoc.setSubject('');
-    pdfDoc.setKeywords([]);
-    pdfDoc.setProducer('NovaTools PDF Compressor');
-    pdfDoc.setCreator('NovaTools');
-  }
-  
+
+  updateProgress(80, 'Rewriting PDF structure...', '');
   const bytes = await pdfDoc.save({ useObjectStreams: true });
-  
-  updateProgress(100, 'Tamamlandı!', '');
-  
+  updateProgress(100, 'Complete', '');
   return { bytes };
 }
 
 function showProgress() {
   elements.progressSection?.classList.add('visible');
   elements.progressSection?.classList.remove('hidden');
-  updateProgress(0, 'Hazırlanıyor...', '');
+  updateProgress(0, 'Preparing...', '');
 }
 
 function hideProgress() {
@@ -277,17 +268,26 @@ function updateProgress(percent, text, detail) {
   if (elements.progressDetail) elements.progressDetail.textContent = detail;
 }
 
-function showResult(url, originalSize, compressedSize, savings) {
+function sizeChangeLabel(percentChange) {
+  if (percentChange < -0.05) return `${Math.abs(percentChange).toFixed(1)}% smaller`;
+  if (percentChange > 0.05) return `${percentChange.toFixed(1)}% larger`;
+  return 'Similar size';
+}
+
+function showResult(url, originalSize, outputSize, percentChange) {
   if (elements.originalSize) elements.originalSize.textContent = formatBytes(originalSize);
-  if (elements.compressedSize) elements.compressedSize.textContent = formatBytes(compressedSize);
-  if (elements.savingsPercent) elements.savingsPercent.textContent = `-${savings}%`;
-  
-  const fileName = state.file.name.replace('.pdf', '');
+  if (elements.compressedSize) elements.compressedSize.textContent = formatBytes(outputSize);
+  if (elements.savingsPercent) {
+    elements.savingsPercent.textContent = sizeChangeLabel(percentChange);
+    elements.savingsPercent.classList.toggle('savings', percentChange < -0.05);
+  }
+
+  const fileName = state.file.name.replace(/\.pdf$/i, '');
   if (elements.downloadLink) {
     elements.downloadLink.href = url;
-    elements.downloadLink.download = `${fileName}-compressed.pdf`;
+    elements.downloadLink.download = `${fileName}-optimized.pdf`;
   }
-  
+
   elements.resultSection?.classList.add('visible');
   elements.resultSection?.classList.remove('hidden');
 }
@@ -322,15 +322,15 @@ function setState(next) {
     success: elements.successState
   };
 
-  Object.values(states).forEach(el => el?.classList.remove('visible'));
+  Object.values(states).forEach((element) => element?.classList.remove('visible'));
   if (states[next]) states[next].classList.add('visible');
 
   if (elements.compressStatusRegion) {
     const messageMap = {
       empty: elements.emptyState?.textContent?.trim() || 'Ready for one PDF file.',
-      loading: elements.loadingState?.textContent?.trim() || 'Compression is in progress.',
-      success: elements.successState?.textContent?.trim() || 'Compression completed successfully.',
-      error: 'Compression failed. Please check the error details.'
+      loading: elements.loadingState?.textContent?.trim() || 'PDF optimization is in progress.',
+      success: 'PDF structural optimization finished. Compare the output size and review the document before using it.',
+      error: 'PDF optimization failed. Check the error details.'
     };
     elements.compressStatusRegion.textContent = messageMap[next] || '';
   }
@@ -338,26 +338,30 @@ function setState(next) {
 
 function injectToolSchemas(meta) {
   const breadcrumbs = [
-    { name: 'Ana Sayfa', url: '/' },
-    { name: 'PDF Araçları', url: '/#pdf' },
-    { name: 'PDF Sıkıştırma', url: '/src/tools/pdf/compress/' }
+    { name: 'Home', url: '/' },
+    { name: 'PDF Tools', url: '/#pdf' },
+    { name: 'PDF Compressor', url: '/tools/pdf/compress/' }
   ];
-  
+
   const faqs = [
-    { question: 'PDF sıkıştırma güvenli mi?', answer: 'Evet, tamamen güvenli. Tüm işlemler tarayıcınızda gerçekleşir.' },
-    { question: 'Ne kadar sıkıştırma yapabilirim?', answer: '%10 ile %80 arasında sıkıştırma sağlanabilir.' }
+    {
+      question: 'Are PDF files uploaded to NovaTools for this operation?',
+      answer: 'No. The PDF is read and rewritten in your browser for this operation. Review the page privacy notes for unrelated analytics or advertising services.'
+    },
+    {
+      question: 'How much smaller will my PDF become?',
+      answer: 'There is no guaranteed reduction. This tool performs a structural rewrite with pdf-lib and does not downsample page images, so some PDFs become smaller while others stay similar in size or become larger.'
+    }
   ];
-  
+
   const schemas = generateToolPageSchemas(meta, breadcrumbs, faqs);
   injectMultipleSchemas(schemas);
 }
 
-document.readyState === 'loading' 
+document.readyState === 'loading'
   ? document.addEventListener('DOMContentLoaded', init)
   : init();
 
 window.addEventListener('beforeunload', () => {
-  if (elements.downloadLink?.href?.startsWith('blob:')) {
-    URL.revokeObjectURL(elements.downloadLink.href);
-  }
+  if (elements.downloadLink?.href?.startsWith('blob:')) URL.revokeObjectURL(elements.downloadLink.href);
 });
