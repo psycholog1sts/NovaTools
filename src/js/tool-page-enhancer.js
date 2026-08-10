@@ -43,6 +43,129 @@ const CATEGORY_ROUTES = {
   social: 'social-media-tools'
 };
 
+const ENHANCER_COPY = {
+  en: {},
+  tr: {
+    Home: 'Ana Sayfa',
+    Breadcrumb: 'İçerik yolu',
+    Image: 'Görsel',
+    Finance: 'Finans',
+    Developer: 'Geliştirici',
+    Text: 'Metin',
+    Converter: 'Dönüştürücü',
+    Data: 'Veri',
+    Design: 'Tasarım',
+    Productivity: 'Üretkenlik',
+    Security: 'Güvenlik',
+    'Social Media': 'Sosyal Medya',
+    News: 'Haberler',
+    Calendar: 'Takvim',
+    Tool: 'Araç',
+    'Open tool': 'Aracı aç',
+    'Professional utility workflow': 'Profesyonel araç iş akışı',
+    'Use this page as an input → action → result workflow with privacy notes, limitations and related next steps kept visible.': 'Bu sayfayı; gizlilik notları, sınırlar ve ilgili sonraki adımlar görünür kalacak şekilde girdi → işlem → sonuç akışı olarak kullanın.',
+    'Browser-first where practical; review page notes for tools that need live data or external services.': 'Uygun olduğunda önce tarayıcıda çalışır; canlı veri veya harici servis gerektiren araçlar için sayfa notlarını inceleyin.',
+    'Add input:': 'Girdi ekleyin:',
+    'Paste text, enter values, or choose files as required by the tool.': 'Aracın gerektirdiği metni yapıştırın, değerleri girin veya dosyaları seçin.',
+    'Review settings:': 'Ayarları inceleyin:',
+    'Confirm format, order, units, naming, and privacy needs.': 'Biçim, sıra, birim, adlandırma ve gizlilik ihtiyaçlarını doğrulayın.',
+    'Run and verify:': 'Çalıştırın ve doğrulayın:',
+    'Use the primary action, then review the output before copying, downloading, or sharing.': 'Ana işlemi çalıştırın; ardından çıktıyı kopyalamadan, indirmeden veya paylaşmadan önce inceleyin.',
+    'This guide is visible without JavaScript. Remember/collapse preference requires localStorage.': 'Bu kılavuz JavaScript olmadan da görünür. Açık/kapalı tercihini hatırlamak için yerel depolama gerekir.',
+    'Workflow support': 'İş akışı desteği',
+    'Add input, review settings, use the tool’s own primary action, then inspect the result before download, copy or sharing.': 'Girdiyi ekleyin, ayarları inceleyin, aracın ana işlemini çalıştırın ve indirmeden, kopyalamadan veya paylaşmadan önce sonucu kontrol edin.',
+    'Review tool panel': 'Araç panelini incele',
+    'Related tool': 'İlgili araç',
+    'Result review': 'Sonuç kontrolü',
+    'When a result appears, confirm format, readability, file name and privacy needs before using it elsewhere.': 'Sonuç oluştuğunda başka yerde kullanmadan önce biçimi, okunabilirliği, dosya adını ve gizlilik gereksinimlerini doğrulayın.',
+    'If something fails': 'Bir şey ters giderse',
+    'Check required fields, file type, file size and browser memory. Try a smaller sample when troubleshooting.': 'Zorunlu alanları, dosya türünü, dosya boyutunu ve tarayıcı belleğini kontrol edin. Sorunu incelerken daha küçük bir örnek deneyin.',
+    'How to use it in 3 steps': '3 adımda nasıl kullanılır?',
+    'Add input': 'Girdi ekleyin',
+    'Add the file, text or values needed by the tool. File tools may support drag and drop.': 'Aracın ihtiyaç duyduğu dosyayı, metni veya değerleri ekleyin. Dosya araçları sürükleyip bırakmayı destekleyebilir.',
+    'Review settings': 'Ayarları inceleyin',
+    'Check output format, order, measurement or calculation settings before running.': 'Çalıştırmadan önce çıktı biçimini, sırayı, ölçüm veya hesaplama ayarlarını kontrol edin.',
+    'Review the result': 'Sonucu inceleyin',
+    'When processing finishes, download, copy or move to a related next tool.': 'İşlem tamamlandığında çıktıyı indirin, kopyalayın veya ilgili sonraki araca geçin.',
+    'Benefits and limits': 'Avantajlar ve sınırlar',
+    Benefits: 'Avantajlar',
+    '✅ Free start without forced signup': '✅ Zorunlu kayıt olmadan ücretsiz başlangıç',
+    '✅ Clear input → action → result flow': '✅ Açık girdi → işlem → sonuç akışı',
+    '✅ Designed for mobile and desktop use': '✅ Mobil ve masaüstü kullanım için tasarlandı',
+    Limits: 'Sınırlar',
+    '⚠️ Very large files can be limited by browser memory.': '⚠️ Çok büyük dosyalar tarayıcı belleğiyle sınırlı olabilir.',
+    '⚠️ Review sensitive outputs before sharing.': '⚠️ Hassas çıktıları paylaşmadan önce inceleyin.',
+    '⚠️ Tools requiring live data may depend on third-party sources.': '⚠️ Canlı veri gerektiren araçlar üçüncü taraf kaynaklara bağlı olabilir.',
+    'Common issues and fixes': 'Yaygın sorunlar ve çözümleri',
+    'What if a file does not load?': 'Dosya yüklenmezse ne yapmalıyım?',
+    'Check file type, size and browser permissions. Try a smaller sample for very large files.': 'Dosya türünü, boyutunu ve tarayıcı izinlerini kontrol edin. Çok büyük dosyalarda daha küçük bir örnek deneyin.',
+    'What if the output looks wrong?': 'Çıktı yanlış görünürse ne yapmalıyım?',
+    'Reset settings, review the input and test with a smaller sample.': 'Ayarları sıfırlayın, girdiyi inceleyin ve daha küçük bir örnekle test edin.',
+    'What if processing is slow?': 'İşlem yavaşsa ne yapmalıyım?',
+    'Split large files or reduce open browser tabs before trying again.': 'Yeniden denemeden önce büyük dosyaları bölün veya açık tarayıcı sekmelerini azaltın.',
+    'Example use cases': 'Örnek kullanım alanları',
+    Students: 'Öğrenciler',
+    'Prepare assignments, notes or data exports before submission.': 'Teslimden önce ödevleri, notları veya veri dışa aktarımlarını hazırlayın.',
+    Professionals: 'Profesyoneller',
+    'Review proposals, reports or operational outputs before sharing.': 'Teklifleri, raporları veya operasyonel çıktıları paylaşmadan önce inceleyin.',
+    'Content teams': 'İçerik ekipleri',
+    'Complete format, quality and quick-edit checks before publishing.': 'Yayımlamadan önce biçim, kalite ve hızlı düzenleme kontrollerini tamamlayın.',
+    'Related tools': 'İlgili araçlar',
+    FAQ: 'Sık Sorulan Sorular',
+    'Yes. This page is prepared as a free online workflow for the related tool.': 'Evet. Bu sayfa, ilgili araç için ücretsiz bir çevrim içi iş akışı olarak hazırlanmıştır.',
+    'Where does my data go?': 'Verilerim nereye gider?',
+    'NovaTools tools are designed browser-first where practical; check page notes when external services are required.': 'NovaTools araçları uygun olduğunda önce tarayıcıda çalışacak şekilde tasarlanır; harici servis gerektiğinde sayfa notlarını kontrol edin.',
+    'What should I do if I get an error?': 'Hata alırsam ne yapmalıyım?',
+    'Check inputs, file size and format, then retry with adjusted settings.': 'Girdileri, dosya boyutunu ve biçimini kontrol edin; ardından ayarları düzenleyip yeniden deneyin.'
+  }
+};
+
+const originalEnhancerText = new WeakMap();
+
+function enhancerLanguage() {
+  return document.documentElement.lang === 'tr' ? 'tr' : 'en';
+}
+
+function translateEnhancerText(value, language = enhancerLanguage()) {
+  if (language !== 'tr') return value;
+  const exact = ENHANCER_COPY.tr[value];
+  if (exact) return exact;
+  if (value.startsWith('How to Use ')) return `Nasıl Kullanılır: ${value.slice('How to Use '.length)}`;
+  if (value.startsWith('Is ') && value.endsWith(' free to use?')) {
+    return `${value.slice('Is '.length, -' free to use?'.length)} ücretsiz mi?`;
+  }
+  if (value.endsWith(' free to use?')) {
+    return `${value.slice(0, -' free to use?'.length)} ücretsiz mi?`;
+  }
+  const workflowSentence = 'Use this page as an input → action → result workflow with privacy notes, limitations and related next steps kept visible.';
+  if (value.includes(workflowSentence)) {
+    return value.replace(workflowSentence, ENHANCER_COPY.tr[workflowSentence]);
+  }
+  return value;
+}
+
+function localizeEnhancerSubtree(root = document) {
+  const language = enhancerLanguage();
+  const selector = '.nt-sticky-tool-header, .premium-tool-hero, .nt-howto, .premium-workspace-companion, .premium-tool-guides';
+  root.querySelectorAll(selector).forEach((container) => {
+    const walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT);
+    let node;
+    while ((node = walker.nextNode())) {
+      const initial = originalEnhancerText.get(node) ?? node.nodeValue;
+      originalEnhancerText.set(node, initial);
+      const leading = initial.match(/^\\s*/)?.[0] || '';
+      const trailing = initial.match(/\\s*$/)?.[0] || '';
+      const core = initial.slice(leading.length, initial.length - trailing.length);
+      node.nodeValue = `${leading}${translateEnhancerText(core, language)}${trailing}`;
+    }
+    container.querySelectorAll('[aria-label]').forEach((element) => {
+      const original = element.dataset.originalAriaLabel || element.getAttribute('aria-label');
+      if (!element.dataset.originalAriaLabel) element.dataset.originalAriaLabel = original;
+      element.setAttribute('aria-label', translateEnhancerText(original, language));
+    });
+  });
+}
+
 function activeScript() {
   return document.querySelector('script[data-tool-slug][src*="tool-page-enhancer"]');
 }
@@ -61,11 +184,12 @@ function findTool(slug) {
 function textDescription(tool) {
   const description = tool?.description;
   if (typeof description === 'string') return description;
-  return description?.tr || description?.en || 'This tool helps you complete the selected workflow with clear input, action and result steps.';
+  const language = enhancerLanguage();
+  return description?.[language] || description?.en || description?.tr || 'This tool helps you complete the selected workflow with clear input, action and result steps.';
 }
 
 function categoryName(category) {
-  return CATEGORY_LABELS[category] || category || 'Tool';
+  return translateEnhancerText(CATEGORY_LABELS[category] || category || 'Tool');
 }
 
 function categoryRoute(category) {
@@ -106,10 +230,12 @@ function appendSchema(tool, slug) {
     description: textDescription(tool),
     category: 'UtilityApplication',
     url: `/tools/${slug}/`,
-    features: [category, 'Free online workflow', 'Browser-based processing guidance']
+    features: enhancerLanguage() === 'tr'
+      ? [category, 'Ücretsiz çevrim içi iş akışı', 'Tarayıcı tabanlı işlem rehberi']
+      : [category, 'Free online workflow', 'Browser-based processing guidance']
   }));
   upsertJsonLd('tool-breadcrumb-jsonld', buildBreadcrumbSchema([
-    { name: 'Home', url: '/' },
+    { name: translateEnhancerText('Home'), url: '/' },
     { name: category, url: `/categories/${categoryRoute(tool?.category || slug.split('/')[0])}.html` },
     { name, url: `/tools/${slug}/` }
   ]));
@@ -125,17 +251,20 @@ function updateMeta(tool, slug) {
     toolName: name,
     category,
     action: textDescription(tool).replace(/\.$/, '').toLowerCase(),
-    advantages: ['browser-based workflow', 'clear usage guidance']
+    advantages: enhancerLanguage() === 'tr'
+      ? ['tarayıcı tabanlı iş akışı', 'açık kullanım rehberi']
+      : ['browser-based workflow', 'clear usage guidance']
   });
 }
 
 function createStickyHeader(tool, slug) {
   const name = displayToolName(tool, slug);
-  const category = categoryName(tool?.category || slug.split('/')[0]);
+  const categoryKey = tool?.category || slug.split('/')[0];
+  const category = categoryName(categoryKey);
   const header = document.createElement('div');
   header.className = 'nt-sticky-tool-header';
   header.innerHTML = `<div class="nt-sticky-tool-header__inner">
-    <nav aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">›</span><a href="/categories/${categoryRoute(tool?.category || slug.split('/')[0])}.html">${category}</a></nav>
+    <nav aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">›</span><a href="/categories/${categoryRoute(categoryKey)}.html" data-enhancer-category="${categoryKey}">${category}</a></nav>
     <strong>${name}</strong>
     <a href="#tool-workspace">Open tool</a>
   </div>`;
@@ -144,19 +273,20 @@ function createStickyHeader(tool, slug) {
 
 function createHero(tool, slug) {
   const name = displayToolName(tool, slug);
-  const category = categoryName(tool?.category || slug.split('/')[0]);
+  const categoryKey = tool?.category || slug.split('/')[0];
+  const category = categoryName(categoryKey);
   const breadcrumb = document.createElement('section');
   breadcrumb.className = 'premium-tool-hero';
   breadcrumb.innerHTML = `
     <div class="container">
       <nav class="premium-tool-breadcrumb" aria-label="Breadcrumb">
-        <a href="/">Home</a><span>›</span><a href="/categories/${categoryRoute(tool?.category || slug.split('/')[0])}.html">${category}</a><span>›</span><span aria-current="page">${name}</span>
+        <a href="/">Home</a><span>›</span><a href="/categories/${categoryRoute(categoryKey)}.html" data-enhancer-category="${categoryKey}">${category}</a><span>›</span><span aria-current="page">${name}</span>
       </nav>
       <div class="premium-tool-hero__grid">
         <div>
           <span class="premium-tool-kicker">Professional utility workflow</span>
           <h1>${name}</h1>
-          <p>${textDescription(tool)} Use this page as an input → action → result workflow with privacy notes, limitations and related next steps kept visible.</p>
+          <p><span data-enhancer-description>${textDescription(tool)}</span> Use this page as an input → action → result workflow with privacy notes, limitations and related next steps kept visible.</p>
           <div class="premium-privacy-badge premium-privacy-badge--client">🔒 Browser-first where practical; review page notes for tools that need live data or external services.</div>
         </div>
       </div>
@@ -252,11 +382,18 @@ function createGuides(tool, slug) {
 
 function appendFaqSchema(tool, slug) {
   const name = displayToolName(tool, slug);
-  upsertJsonLd('tool-faq-jsonld', buildFAQSchema([
-    { question: `Is ${name} free to use?`, answer: 'Yes. This tool is prepared for free online use.' },
-    { question: 'Where does my data go?', answer: 'Tools are designed browser-first where practical; check page notes when external services are required.' },
-    { question: 'What should I do if I get an error?', answer: 'Check inputs, file size and format, then try again with adjusted settings.' }
-  ]));
+  const questions = enhancerLanguage() === 'tr'
+    ? [
+        { question: `${name} ücretsiz mi?`, answer: 'Evet. Bu araç ücretsiz çevrim içi kullanım için hazırlanmıştır.' },
+        { question: 'Verilerim nereye gider?', answer: 'Araçlar uygun olduğunda önce tarayıcıda çalışacak şekilde tasarlanır; harici servis gerektiğinde sayfa notlarını kontrol edin.' },
+        { question: 'Hata alırsam ne yapmalıyım?', answer: 'Girdileri, dosya boyutunu ve biçimini kontrol edin; ardından ayarları düzenleyip yeniden deneyin.' }
+      ]
+    : [
+        { question: `Is ${name} free to use?`, answer: 'Yes. This tool is prepared for free online use.' },
+        { question: 'Where does my data go?', answer: 'Tools are designed browser-first where practical; check page notes when external services are required.' },
+        { question: 'What should I do if I get an error?', answer: 'Check inputs, file size and format, then try again with adjusted settings.' }
+      ];
+  upsertJsonLd('tool-faq-jsonld', buildFAQSchema(questions));
 }
 
 function addTextCounters(workspace) {
@@ -273,10 +410,13 @@ function addTextCounters(workspace) {
       const value = field.value || '';
       const words = value.trim() ? value.trim().split(/\s+/).length : 0;
       const bytes = new TextEncoder().encode(value).length;
-      counter.textContent = `${value.length} characters • ${words} words • ${bytes} bytes`;
+      counter.textContent = enhancerLanguage() === 'tr'
+        ? `${value.length} karakter • ${words} kelime • ${bytes} bayt`
+        : `${value.length} characters • ${words} words • ${bytes} bytes`;
     };
     update();
     field.addEventListener('input', update);
+    window.addEventListener('languageChanged', update);
     field.insertAdjacentElement('afterend', counter);
   });
 }
@@ -358,6 +498,22 @@ function enhanceWorkspace(tool, slug, { augmentContent = true } = {}) {
   });
 }
 
+function refreshLocalizedMetadata() {
+  const slug = activeScript()?.dataset.toolSlug || slugFromPath();
+  if (!slug) return;
+  const tool = findTool(slug) || { id: slug.replace('/', '-'), category: slug.split('/')[0], name: slug.split('/').pop().replace(/-/g, ' '), entry: `/tools/${slug}/` };
+  document.querySelectorAll('[data-enhancer-description]').forEach((element) => {
+    element.textContent = textDescription(tool);
+  });
+  document.querySelectorAll('[data-enhancer-category]').forEach((element) => {
+    element.textContent = categoryName(element.dataset.enhancerCategory);
+  });
+  updateMeta(tool, slug);
+  appendSchema(tool, slug);
+  appendFaqSchema(tool, slug);
+  localizeEnhancerSubtree(document);
+}
+
 function init() {
   const slug = activeScript()?.dataset.toolSlug || slugFromPath();
   if (!slug || document.body.dataset.premiumToolReady === 'true') return;
@@ -378,6 +534,7 @@ function init() {
     document.body.append(createGuides(tool, slug));
   }
   bindEngagementWidgets(document);
+  localizeEnhancerSubtree(document);
 }
 
 if (document.readyState === 'loading') {
@@ -385,3 +542,5 @@ if (document.readyState === 'loading') {
 } else {
   init();
 }
+
+window.addEventListener('languageChanged', refreshLocalizedMetadata);

@@ -155,69 +155,70 @@ const featuredTools = [
 
 const categoryPopularTools = {
   'pdf-tools': [
-    ['PDF Merge', 'pdf/merge'],
-    ['Compress PDF', 'pdf/compress'],
-    ['PDF to JPG', 'pdf/pdf-to-jpg']
+    { key: 'pdfMerge', label: 'PDF Merge', slug: 'pdf/merge' },
+    { key: 'pdfCompress', label: 'Compress PDF', slug: 'pdf/compress' },
+    { key: 'pdfToJpg', label: 'PDF to JPG', slug: 'pdf/pdf-to-jpg' }
   ],
   'image-tools': [
-    ['Image Compress', 'image/compress'],
-    ['Image Resize', 'image/image-resizer'],
-    ['Image to WebP', 'image/image-to-webp']
+    { key: 'imageCompress', label: 'Image Compress', slug: 'image/compress' },
+    { key: 'imageResize', label: 'Image Resize', slug: 'image/image-resizer' },
+    { key: 'imageToWebp', label: 'Image to WebP', slug: 'image/image-to-webp' }
   ],
   'finance-tools': [
-    ['Live Exchange', 'finance/live-exchange'],
-    ['Crypto Prices', 'finance/crypto-prices'],
-    ['Stock Lookup', 'finance/stock-lookup']
+    { key: 'liveExchange', label: 'Live Exchange', slug: 'finance/live-exchange' },
+    { key: 'cryptoPrices', label: 'Crypto Prices', slug: 'finance/crypto-prices' },
+    { key: 'stockLookup', label: 'Stock Lookup', slug: 'finance/stock-lookup' }
   ],
   'text-writing': [
-    ['Text Analysis', 'text/text-analysis'],
-    ['Text Summarizer', 'text/text-summarizer'],
-    ['Simple Translator', 'text/simple-translator']
+    { key: 'textAnalysis', label: 'Text Analysis', slug: 'text/text-analysis' },
+    { key: 'textSummarizer', label: 'Text Summarizer', slug: 'text/text-summarizer' },
+    { key: 'simpleTranslator', label: 'Simple Translator', slug: 'text/simple-translator' }
   ],
   'developer-tools': [
-    ['JSON Formatter', 'dev/json-formatter'],
-    ['Regex Tester', 'dev/regex-tester'],
-    ['Base64 Converter', 'dev/base64-converter']
+    { key: 'jsonFormatter', label: 'JSON Formatter', slug: 'dev/json-formatter' },
+    { key: 'regexTester', label: 'Regex Tester', slug: 'dev/regex-tester' },
+    { key: 'base64Converter', label: 'Base64 Converter', slug: 'dev/base64-converter' }
   ],
   converters: [
-    ['Unit Converter', 'converters/unit-converter'],
-    ['Currency Converter', 'converters/currency-converter'],
-    ['Time Zone', 'converters/timezone-converter']
+    { key: 'unitConverter', label: 'Unit Converter', slug: 'converters/unit-converter' },
+    { key: 'currencyConverter', label: 'Currency Converter', slug: 'converters/currency-converter' },
+    { key: 'timezone', label: 'Time Zone', slug: 'converters/timezone-converter' }
   ],
   'calculator-tools': [
-    ['Scientific', 'converters/scientific-calculator'],
-    ['BMI', 'converters/bmi-calculator'],
-    ['Percentage', 'converters/percentage-calculator']
+    { key: 'scientific', label: 'Scientific', slug: 'converters/scientific-calculator' },
+    { key: 'bmi', label: 'BMI', slug: 'converters/bmi-calculator' },
+    { key: 'percentage', label: 'Percentage', slug: 'converters/percentage-calculator' }
   ],
   'security-tools': [
-    ['Password Generator', 'security/password-generator'],
-    ['Hash Generator', 'security/hash-generator'],
-    ['UUID Generator', 'security/uuid-generator']
+    { key: 'passwordGenerator', label: 'Password Generator', slug: 'security/password-generator' },
+    { key: 'hashGenerator', label: 'Hash Generator', slug: 'security/hash-generator' },
+    { key: 'uuidGenerator', label: 'UUID Generator', slug: 'security/uuid-generator' }
   ],
   'social-media-tools': [
-    ['UTM Builder', 'social/utm-builder'],
-    ['Hashtag Generator', 'social/hashtag-generator'],
-    ['Thumbnail', 'social/youtube-thumbnail']
+    { key: 'utmBuilder', label: 'UTM Builder', slug: 'social/utm-builder' },
+    { key: 'hashtagGenerator', label: 'Hashtag Generator', slug: 'social/hashtag-generator' },
+    { key: 'thumbnail', label: 'Thumbnail', slug: 'social/youtube-thumbnail' }
   ],
   'productivity-tools': [
-    ['Pomodoro', 'productivity/pomodoro-timer'],
-    ['Todo List', 'productivity/todo-list'],
-    ['Notes', 'productivity/notes']
+    { key: 'pomodoro', label: 'Pomodoro', slug: 'productivity/pomodoro-timer' },
+    { key: 'todoList', label: 'Todo List', slug: 'productivity/todo-list' },
+    { key: 'notes', label: 'Notes', slug: 'productivity/notes' }
   ],
   'data-tools': [
-    ['CSV/JSON Summary', 'data/csv-json-summarizer'],
-    ['Chart Builder', 'data/chart-builder'],
-    ['Weather Lookup', 'data/weather-lookup']
+    { key: 'csvJsonSummary', label: 'CSV/JSON Summary', slug: 'data/csv-json-summarizer' },
+    { key: 'chartBuilder', label: 'Chart Builder', slug: 'data/chart-builder' },
+    { key: 'weatherLookup', label: 'Weather Lookup', slug: 'data/weather-lookup' }
   ],
   'design-tools': [
-    ['Logo Maker', 'design/logo-maker'],
-    ['Invoice', 'design/invoice-generator'],
-    ['QR Designer', 'design/qr-code-designer']
+    { key: 'logoMaker', label: 'Logo Maker', slug: 'design/logo-maker' },
+    { key: 'invoice', label: 'Invoice', slug: 'design/invoice-generator' },
+    { key: 'qrDesigner', label: 'QR Designer', slug: 'design/qr-code-designer' }
   ]
 };
 
 const blogPosts = [
   {
+    key: 'toolSelection',
     title: 'Tool selection map for new users',
     excerpt: 'Choose the right category and tool quickly when you start a new task.',
     category: 'Workflow',
@@ -226,6 +227,7 @@ const blogPosts = [
     minutes: '5 min'
   },
   {
+    key: 'imageQuality',
     title: 'Compress images for web quality checklist',
     excerpt: 'Keep quality, format and page speed checks in view while reducing image size.',
     category: 'Image',
@@ -234,6 +236,7 @@ const blogPosts = [
     minutes: '6 min'
   },
   {
+    key: 'base64Uses',
     title: 'Base64 converter common use cases',
     excerpt: 'Encoding, decoding and pre-share checks for developer workflows.',
     category: 'Developer',
@@ -344,8 +347,8 @@ function renderCategories() {
         </div>
         <h3><a href="${getCategoryHref(category)}">${getCategoryName(category)}</a></h3>
         <p>${getCategoryDescription(category)}</p>
-        <div class="category-nav-card__links" aria-label="${getCategoryName(category)} popular tools">
-          ${popularLinks.map(([label, slug]) => `<a href="${getToolHref(slug)}">${label}</a>`).join('')}
+        <div class="category-nav-card__links" aria-label="${getCategoryName(category)} ${t('home.popularToolsAriaSuffix', 'popular tools')}">
+          ${popularLinks.map((tool) => `<a href="${getToolHref(tool.slug)}">${t(`home.categoryPopularTools.${tool.key}`, tool.label)}</a>`).join('')}
         </div>
       </article>
     `;
@@ -356,21 +359,29 @@ function renderBlogCards() {
   const container = document.getElementById('homeBlogCards');
   if (!container) return;
 
-  container.innerHTML = blogPosts.map((post) => `
-    <article class="home-blog-card">
-      <a href="${post.href}" class="home-blog-card__image" aria-label="${post.title}">
-        <img src="${post.image}" alt="" width="640" height="360" loading="lazy" decoding="async">
-      </a>
-      <div class="home-blog-card__body">
-        <div class="home-blog-card__meta">
-          <span>${post.category}</span>
-          <span>${post.minutes} read</span>
+  container.innerHTML = blogPosts.map((post) => {
+    const baseKey = `home.blogCards.${post.key}`;
+    const title = t(`${baseKey}.title`, post.title);
+    const excerpt = t(`${baseKey}.excerpt`, post.excerpt);
+    const category = t(`${baseKey}.category`, post.category);
+    const readSuffix = t('home.blogCards.readSuffix', 'read');
+
+    return `
+      <article class="home-blog-card">
+        <a href="${post.href}" class="home-blog-card__image" aria-label="${title}">
+          <img src="${post.image}" alt="" width="640" height="360" loading="lazy" decoding="async">
+        </a>
+        <div class="home-blog-card__body">
+          <div class="home-blog-card__meta">
+            <span>${category}</span>
+            <span>${post.minutes} ${readSuffix}</span>
+          </div>
+          <h3><a href="${post.href}">${title}</a></h3>
+          <p>${excerpt}</p>
         </div>
-        <h3><a href="${post.href}">${post.title}</a></h3>
-        <p>${post.excerpt}</p>
-      </div>
-    </article>
-  `).join('');
+      </article>
+    `;
+  }).join('');
 }
 
 function renderWorkflowCards() {

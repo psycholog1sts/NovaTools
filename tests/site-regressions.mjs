@@ -188,6 +188,101 @@ for (const locale of ['en', 'tr']) {
   }
 }
 
+const toolEnhancer = read('src/js/tool-page-enhancer.js');
+const seoRuntime = read('src/js/seo.js');
+assert.match(toolEnhancer, /const ENHANCER_COPY = \{/, 'Late tool-page UI must use a shared locale copy dictionary.');
+assert.match(
+  toolEnhancer,
+  /document\.documentElement\.lang(?:\.split\([^)]*\))?\s*===\s*['"]tr['"]/,
+  'Tool-page enhancement must select Turkish copy from the active document language.'
+);
+assert.match(
+  toolEnhancer,
+  /value\.includes\(workflowSentence\)/,
+  'Combined hero description text must translate the appended workflow sentence.'
+);
+assert.match(
+  toolEnhancer,
+  /value\.startsWith\('Is '\)[\s\S]*value\.slice\('Is '\.length/,
+  'Turkish FAQ localization must remove the English question prefix.'
+);
+assert.match(
+  toolEnhancer,
+  /\$\{value\.length\} karakter • \$\{words\} kelime • \$\{bytes\} bayt/,
+  'Text counters must render Turkish units when Turkish is active.'
+);
+assert.match(
+  toolEnhancer,
+  /if \(value\.endsWith\(' free to use\?'\)\)/,
+  'Visible FAQ questions without an English prefix must still localize.'
+);
+assert.match(
+  toolEnhancer,
+  /function refreshLocalizedMetadata\(\)[\s\S]*updateMeta\(tool, slug\);[\s\S]*appendSchema\(tool, slug\);[\s\S]*appendFaqSchema\(tool, slug\);/,
+  'Language changes must refresh SEO metadata and structured data.'
+);
+assert.match(
+  toolEnhancer,
+  /data-enhancer-description/,
+  'Generated hero descriptions must be independently refreshable on language changes.'
+);
+assert.match(
+  toolEnhancer,
+  /Breadcrumb: 'İçerik yolu'/,
+  'Generated breadcrumb accessibility labels must have Turkish copy.'
+);
+assert.match(
+  toolEnhancer,
+  /data-enhancer-category/,
+  'Generated breadcrumb category labels must be refreshable on language changes.'
+);
+assert.match(
+  toolEnhancer,
+  /element\.textContent = categoryName\(element\.dataset\.enhancerCategory\)/,
+  'Language changes must regenerate visible category labels.'
+);
+assert.match(
+  seoRuntime,
+  /Ücretsiz Çevrim İçi \$\{categoryName\} Aracı/,
+  'Tool SEO metadata must use a Turkish title template.'
+);
+assert.match(
+  seoRuntime,
+  /Kayıt gerekmez\./,
+  'Turkish SEO descriptions must avoid English signup copy.'
+);
+assert.match(
+  toolEnhancer,
+  /const questions = enhancerLanguage\(\) === 'tr'/,
+  'FAQ structured data must be generated in the active language.'
+);
+assert.match(
+  toolEnhancer,
+  /name: translateEnhancerText\('Home'\)/,
+  'Breadcrumb structured data must localize its home label.'
+);
+assert.match(
+  homepageMain,
+  /home\.popularToolsAriaSuffix/,
+  'Homepage popular-tool groups must localize their accessible label.'
+);
+assert.match(homepageMain, /home\.categoryPopularTools\.\$\{tool\.key\}/, 'Homepage category shortcuts must render through stable i18n keys.');
+assert.match(homepageMain, /home\.blogCards\.\$\{post\.key\}/, 'Homepage blog cards must render through stable i18n keys.');
+
+for (const locale of ['en', 'tr']) {
+  const bundle = JSON.parse(read(`public/locales/${locale}/translation.json`));
+  for (const key of ['pdfMerge', 'imageCompress', 'liveExchange', 'textAnalysis', 'timezone', 'invoice']) {
+    assert.ok(
+      bundle.home?.categoryPopularTools?.[key],
+      `${locale} homepage bundle is missing home.categoryPopularTools.${key}`
+    );
+  }
+  for (const key of ['toolSelection', 'imageQuality', 'base64Uses']) {
+    assert.ok(bundle.home?.blogCards?.[key]?.title, `${locale} homepage bundle is missing home.blogCards.${key}.title`);
+    assert.ok(bundle.home?.blogCards?.[key]?.excerpt, `${locale} homepage bundle is missing home.blogCards.${key}.excerpt`);
+  }
+}
+
 const packageScripts = JSON.parse(read('package.json')).scripts;
 for (const qualityGate of [
   'audit:algorithm-resilience',
