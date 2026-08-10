@@ -29,6 +29,7 @@ export async function pdfCompressor(inputs) {
   const sizeChangePercent = originalSize > 0
     ? round(((outputSize - originalSize) / originalSize) * 100)
     : 0;
+  const legacySavingsPercent = round(-sizeChangePercent);
 
   return {
     file: blob,
@@ -36,6 +37,10 @@ export async function pdfCompressor(inputs) {
     originalSize,
     outputSize,
     sizeChangePercent,
+    // Transitional compatibility aliases for callers of the previous controller contract.
+    // `savings` is intentionally signed: a larger output produces a negative value.
+    compressedSize: outputSize,
+    savings: legacySavingsPercent,
     html: formatOptimizeResult(originalSize, outputSize, sizeChangePercent, blob)
   };
 }
