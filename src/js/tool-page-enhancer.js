@@ -130,7 +130,13 @@ function translateEnhancerText(value, language = enhancerLanguage()) {
   const exact = ENHANCER_COPY.tr[value];
   if (exact) return exact;
   if (value.startsWith('How to Use ')) return `Nasıl Kullanılır: ${value.slice('How to Use '.length)}`;
-  if (value.endsWith(' free to use?')) return `${value.slice(0, -' free to use?'.length)} ücretsiz mi?`;
+  if (value.startsWith('Is ') && value.endsWith(' free to use?')) {
+    return `${value.slice('Is '.length, -' free to use?'.length)} ücretsiz mi?`;
+  }
+  const workflowSentence = 'Use this page as an input → action → result workflow with privacy notes, limitations and related next steps kept visible.';
+  if (value.includes(workflowSentence)) {
+    return value.replace(workflowSentence, ENHANCER_COPY.tr[workflowSentence]);
+  }
   return value;
 }
 
@@ -174,11 +180,12 @@ function findTool(slug) {
 function textDescription(tool) {
   const description = tool?.description;
   if (typeof description === 'string') return description;
-  return description?.tr || description?.en || 'This tool helps you complete the selected workflow with clear input, action and result steps.';
+  const language = enhancerLanguage();
+  return description?.[language] || description?.en || description?.tr || 'This tool helps you complete the selected workflow with clear input, action and result steps.';
 }
 
 function categoryName(category) {
-  return CATEGORY_LABELS[category] || category || 'Tool';
+  return translateEnhancerText(CATEGORY_LABELS[category] || category || 'Tool');
 }
 
 function categoryRoute(category) {
@@ -219,10 +226,12 @@ function appendSchema(tool, slug) {
     description: textDescription(tool),
     category: 'UtilityApplication',
     url: `/tools/${slug}/`,
-    features: [category, 'Free online workflow', 'Browser-based processing guidance']
+    features: enhancerLanguage() === 'tr'
+      ? [category, 'Ücretsiz çevrim içi iş akışı', 'Tarayıcı tabanlı işlem rehberi']
+      : [category, 'Free online workflow', 'Browser-based processing guidance']
   }));
   upsertJsonLd('tool-breadcrumb-jsonld', buildBreadcrumbSchema([
-    { name: 'Home', url: '/' },
+    { name: translateEnhancerText('Home'), url: '/' },
     { name: category, url: `/categories/${categoryRoute(tool?.category || slug.split('/')[0])}.html` },
     { name, url: `/tools/${slug}/` }
   ]));
@@ -365,11 +374,18 @@ function createGuides(tool, slug) {
 
 function appendFaqSchema(tool, slug) {
   const name = displayToolName(tool, slug);
-  upsertJsonLd('tool-faq-jsonld', buildFAQSchema([
-    { question: `Is ${name} free to use?`, answer: 'Yes. This tool is prepared for free online use.' },
-    { question: 'Where does my data go?', answer: 'Tools are designed browser-first where practical; check page notes when external services are required.' },
-    { question: 'What should I do if I get an error?', answer: 'Check inputs, file size and format, then try again with adjusted settings.' }
-  ]));
+  const questions = enhancerLanguage() === 'tr'
+    ? [
+        { question: `${name} ücretsiz mi?`, answer: 'Evet. Bu araç ücretsiz çevrim içi kullanım için hazırlanmıştır.' },
+        { question: 'Verilerim nereye gider?', answer: 'Araçlar uygun olduğunda önce tarayıcıda çalışacak şekilde tasarlanır; harici servis gerektiğinde sayfa notlarını kontrol edin.' },
+        { question: 'Hata alırsam ne yapmalıyım?', answer: 'Girdileri, dosya boyutunu ve biçimini kontrol edin; ardından ayarları düzenleyip yeniden deneyin.' }
+      ]
+    : [
+        { question: `Is ${name} free to use?`, answer: 'Yes. This tool is prepared for free online use.' },
+        { question: 'Where does my data go?', answer: 'Tools are designed browser-first where practical; check page notes when external services are required.' },
+        { question: 'What should I do if I get an error?', answer: 'Check inputs, file size and format, then try again with adjusted settings.' }
+      ];
+  upsertJsonLd('tool-faq-jsonld', buildFAQSchema(questions));
 }
 
 function addTextCounters(workspace) {
@@ -386,10 +402,13 @@ function addTextCounters(workspace) {
       const value = field.value || '';
       const words = value.trim() ? value.trim().split(/\s+/).length : 0;
       const bytes = new TextEncoder().encode(value).length;
-      counter.textContent = `${value.length} characters • ${words} words • ${bytes} bytes`;
+      counter.textContent = enhancerLanguage() === 'tr'
+        ? `${value.length} karakter • ${words} kelime • ${bytes} bayt`
+        : `${value.length} characters • ${words} words • ${bytes} bytes`;
     };
     update();
     field.addEventListener('input', update);
+    window.addEventListener('languageChanged', update);
     field.insertAdjacentElement('afterend', counter);
   });
 }
