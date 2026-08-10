@@ -12,6 +12,7 @@ const maxUrlsPerSitemap = 50000;
 
 const staticPages = [
   ['/', '1.0', 'daily'],
+  ['/pricing/', '0.7', 'weekly'],
   ['/about-us.html', '0.5', 'monthly'],
   ['/contact.html', '0.5', 'monthly'],
   ['/request-tool.html', '0.5', 'monthly'],
