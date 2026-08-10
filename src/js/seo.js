@@ -145,16 +145,29 @@ export function buildMeta({ type, locale = getCurrentLocale(), title, descriptio
   const lang = normalizeLocale(locale);
   if (type === 'home') return HOME_COPY[lang] || HOME_COPY.en;
   if (type === 'category') {
-    const categoryName = category || 'Online';
+    const categoryName = category || (lang === 'tr' ? 'Çevrim İçi' : 'Online');
+    if (lang === 'tr') {
+      return {
+        title: trimTitle(`${categoryName} Araçları – Ücretsiz Çevrim İçi | NovaTools`),
+        description: truncateText(`${categoryName} için ücretsiz çevrim içi araçlar. Dosyalarınızı hızlıca düzenleyin, dönüştürün ve analiz edin. Kayıt gerekmez.`)
+      };
+    }
     return {
       title: trimTitle(`${categoryName} Tools – Free Online | NovaTools`),
       description: truncateText(`Free online tools for ${categoryName}. Edit, convert, and analyze your ${categoryName.toLowerCase()} files quickly. No signup required.`)
     };
   }
   if (type === 'tool') {
-    const categoryName = category || 'Online';
-    const safeToolName = toolName || 'Online Tool';
-    const benefitText = advantages.filter(Boolean).slice(0, 2).join(', ') || 'fast browser-based workflow, practical guidance';
+    const categoryName = category || (lang === 'tr' ? 'Çevrim İçi' : 'Online');
+    const safeToolName = toolName || (lang === 'tr' ? 'Çevrim İçi Araç' : 'Online Tool');
+    const benefitText = advantages.filter(Boolean).slice(0, 2).join(', ')
+      || (lang === 'tr' ? 'hızlı tarayıcı tabanlı iş akışı, pratik rehberlik' : 'fast browser-based workflow, practical guidance');
+    if (lang === 'tr') {
+      return {
+        title: trimTitle(`${safeToolName} – Ücretsiz Çevrim İçi ${categoryName} Aracı | NovaTools`),
+        description: truncateText(`${safeToolName}, ${categoryName.toLowerCase()} iş akışını çevrim içi ve ücretsiz tamamlamanıza yardımcı olur. ${benefitText}. Kayıt gerekmez.`)
+      };
+    }
     return {
       title: trimTitle(`${safeToolName} – Free Online ${categoryName} Tool | NovaTools`),
       description: truncateText(`${safeToolName} lets you ${action || 'complete this task'} free online. ${benefitText}. Try it now; no signup required.`)
