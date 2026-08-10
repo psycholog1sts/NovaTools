@@ -1,24 +1,49 @@
 /**
- * Vitest Test Setup
- * Global test configuration and mocks
+ * Node test setup for legacy core tests.
+ * Keeps the old Vitest-style imports through the local compatibility package.
  */
 
+import { JSDOM } from 'jsdom';
 import { vi } from 'vitest';
 
+const dom = new JSDOM('<!doctype html><html><body></body></html>', {
+  url: 'https://mc-novatools.com/'
+});
+
+Object.defineProperty(globalThis, 'window', {
+  value: dom.window,
+  configurable: true,
+  writable: true
+});
+Object.defineProperty(globalThis, 'document', {
+  value: dom.window.document,
+  configurable: true,
+  writable: true
+});
+Object.defineProperty(globalThis, 'navigator', {
+  value: dom.window.navigator,
+  configurable: true,
+  writable: true
+});
+
+globalThis.Event = dom.window.Event;
+globalThis.CustomEvent = dom.window.CustomEvent;
+globalThis.HTMLElement = dom.window.HTMLElement;
+
 // Mock window.matchMedia
-global.matchMedia = global.matchMedia || function() {
+globalThis.matchMedia = globalThis.matchMedia || function() {
   return {
     matches: false,
     addListener: vi.fn(),
     removeListener: vi.fn(),
     addEventListener: vi.fn(),
     removeEventListener: vi.fn(),
-    dispatchEvent: vi.fn(),
+    dispatchEvent: vi.fn()
   };
 };
 
 // Mock IntersectionObserver
-global.IntersectionObserver = class IntersectionObserver {
+globalThis.IntersectionObserver = class IntersectionObserver {
   constructor(callback) {
     this.callback = callback;
   }
@@ -28,7 +53,7 @@ global.IntersectionObserver = class IntersectionObserver {
 };
 
 // Mock ResizeObserver
-global.ResizeObserver = class ResizeObserver {
+globalThis.ResizeObserver = class ResizeObserver {
   constructor(callback) {
     this.callback = callback;
   }
@@ -38,24 +63,26 @@ global.ResizeObserver = class ResizeObserver {
 };
 
 // Mock URL.createObjectURL / revokeObjectURL
-global.URL.createObjectURL = vi.fn(() => 'blob:test-url');
-global.URL.revokeObjectURL = vi.fn();
+globalThis.URL.createObjectURL = vi.fn(() => 'blob:test-url');
+globalThis.URL.revokeObjectURL = vi.fn();
 
 // Mock fetch
-global.fetch = vi.fn();
+globalThis.fetch = vi.fn();
 
-// Mock navigator.clipboard
-global.navigator.clipboard = {
-  writeText: vi.fn(() => Promise.resolve()),
-  readText: vi.fn(() => Promise.resolve('')),
-};
+Object.defineProperty(globalThis.navigator, 'clipboard', {
+  value: {
+    writeText: vi.fn(() => Promise.resolve()),
+    readText: vi.fn(() => Promise.resolve(''))
+  },
+  configurable: true
+});
 
 // Mock customElements if not available
-if (!global.customElements) {
-  global.customElements = {
+if (!globalThis.customElements) {
+  globalThis.customElements = {
     define: vi.fn(),
     get: vi.fn(),
-    whenDefined: vi.fn(() => Promise.resolve()),
+    whenDefined: vi.fn(() => Promise.resolve())
   };
 }
 
@@ -72,8 +99,12 @@ const localStorageMock = (() => {
     }),
     clear: vi.fn(() => {
       store = {};
-    }),
+    })
   };
 })();
 
-global.localStorage = localStorageMock;
+Object.defineProperty(globalThis, 'localStorage', {
+  value: localStorageMock,
+  configurable: true,
+  writable: true
+});
