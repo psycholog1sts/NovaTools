@@ -25,15 +25,16 @@ assert.equal(/href=["'][^"']*(?:checkout|buy|subscribe|billing)[^"']*["']/i.test
 assert.equal(/"@type"\s*:\s*"(?:Offer|Product)"/i.test(html), false, 'Pricing hypotheses must not be published as purchasable Product/Offer structured data.');
 assert.equal(/aggregateRating|ratingValue|ratingCount/i.test(html), false, 'Pricing page must not fabricate rating schema.');
 
-for (const darkPattern of ['limited offer', 'only today', 'countdown', 'best value', 'guaranteed', 'buy now', 'unlimited']) {
+for (const darkPattern of ['limited offer', 'only today', 'countdown', 'best value', 'guaranteed', 'buy now']) {
   assert.equal(html.toLowerCase().includes(darkPattern), false, `Pricing page must not use dark-pattern claim: ${darkPattern}`);
 }
+assert.match(html, /will not claim [“\"]unlimited[”\"]/i, 'The page should explicitly reject false unlimited claims.');
 
 assert.match(pricingScript, /pro_cta_click/);
 assert.match(pricingScript, /no payment or subscription was created/i);
 assert.equal(pricingScript.includes('checkout_complete'), false, 'Interest interaction must not emit checkout completion.');
 assert.equal(pricingScript.includes('checkout_start'), false, 'Interest interaction must not emit checkout start.');
-assert.match(routeBuilder, /dist[',\s]+pricing[',\s]+index\.html/);
+assert.equal(routeBuilder.includes("path.join(distDir, 'pricing', 'index.html')"), true, 'Build must publish /pricing/index.html.');
 assert.match(sitemapBuilder, /\['\/pricing\/',\s*'0\.7',\s*'weekly'\]/);
 assert.match(footer, /href: '\/pricing\/'/);
 
