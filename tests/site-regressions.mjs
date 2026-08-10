@@ -212,6 +212,26 @@ assert.match(
 );
 assert.match(
   toolEnhancer,
+  /if \(value\.endsWith\(' free to use\?'\)\)/,
+  'Visible FAQ questions without an English prefix must still localize.'
+);
+assert.match(
+  toolEnhancer,
+  /function refreshLocalizedMetadata\(\)[\s\S]*updateMeta\(tool, slug\);[\s\S]*appendSchema\(tool, slug\);[\s\S]*appendFaqSchema\(tool, slug\);/,
+  'Language changes must refresh SEO metadata and structured data.'
+);
+assert.match(
+  toolEnhancer,
+  /data-enhancer-description/,
+  'Generated hero descriptions must be independently refreshable on language changes.'
+);
+assert.match(
+  toolEnhancer,
+  /Breadcrumb: 'İçerik yolu'/,
+  'Generated breadcrumb accessibility labels must have Turkish copy.'
+);
+assert.match(
+  toolEnhancer,
   /const questions = enhancerLanguage\(\) === 'tr'/,
   'FAQ structured data must be generated in the active language.'
 );
