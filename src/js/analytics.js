@@ -1,9 +1,11 @@
+import { PRODUCT_EVENT_NAMES } from '../core/analytics/event-schema.mjs';
+import { sanitizeEventPayload } from '../core/analytics/privacy-filter.mjs';
+
 const GA_MEASUREMENT_ID = import.meta.env.PUBLIC_GA_ID || import.meta.env.VITE_GA_ID || window.NOVATOOLS_GA_ID || '';
 const CLARITY_PROJECT_ID = window.NOVATOOLS_CLARITY_PROJECT_ID || '';
 const COOKIE_EXPIRES_SECONDS = 63072000;
 const CONSENT_EVENT = 'novatools:consent-updated';
 const SCRIPT_LOADED_EVENT = 'novatools:consented-scripts-loaded';
-const SENSITIVE_KEY_PATTERN = /(email|phone|name|address|password|token|secret|message)/i;
 const SCROLL_THRESHOLDS = [25, 50, 75, 100];
 
 let initialized = false;
@@ -98,18 +100,116 @@ function loadClarity() {
     });
 }
 
-function sanitizeValue(value) {
-  if (typeof value === 'string') return value.slice(0, 120);
-  if (typeof value === 'number' || typeof value === 'boolean') return value;
-  if (Array.isArray(value)) return value.slice(0, 10).map(sanitizeValue);
-  if (value && typeof value === 'object') return sanitizeParams(value);
-  return value ?? undefined;
+function toolSlugFromPath() {
+  return window.location.pathname.match(/\/tools\/([^/]+\/[^/]+)/)?.[1] || '';
 }
 
-function sanitizeParams(params = {}) {
-  return Object.fromEntries(Object.entries(params)
-    .filter(([key]) => !SENSITIVE_KEY_PATTERN.test(key))
-    .map(([key, value]) => [key, sanitizeValue(value)]));
+function sendEvent(name, params = {}) {
+  if (!isAnalyticsAllowed()) return false;
+
+  const sanitized = sanitizeEventPayload(name, {
+    page_path: window.location.pathname,
+    ...params
+  });
+
+  if (!sanitized.name) return false;
+
+  if (!gaReady || typeof window.gtag !== 'function') {
+    queuedEvents.push([sanitized.name, sanitized.params]);
+    queuedEvents = queuedEvents.slice(-50);
+    return true;
+  }
+
+  window.gtag('event', sanitized.name, sanitized.params);
+  return true;
+}
+
+function flushQueue() {
+  const events = queuedEvents;
+  queuedEvents = [];
+  events.forEach(([name, params]) => sendEvent(name, params));
+}
+
+function pageType() {
+  const path = window.location.pathname;
+  if (path === '/' || /\/index\.html$/.test(path)) return path.includes('/blog/') ? 'blog_index' : 'home';
+  if (/\/pricing\/?$/.test(path)) return 'pricing';
+  if (/\/account\//.test(path)) return 'account';
+  if (/\/categories\//.test(path)) return 'category';
+  if (/\/tools\//.test(path)) return 'tool';
+  if (/\/blog\//.test(path)) return 'blog';
+  if (/\/(privacy-policy|cookie-policy|terms-of-service|about-us|contact|security)\.html$/.test(path)) return 'legal';
+  return 'other';
+}
+
+function trackContentView() {
+  const type = pageType();
+  sendEvent(PRODUCT_EVENT_NAMES.PAGE_VIEW, { page_type: type });
+
+  if (type === 'tool') {
+    sendEvent(PRODUCT_EVENT_NAMES.TOOL_VIEW, {
+      page_type: type,
+      tool_slug: toolSlugFromPath()
+    });
+  } else if (type === 'pricing') {
+    sendEvent(PRODUCT_EVENT_NAMES.PRICING_VIEW, { page_type: type });
+  }
+}
+
+function trackBlogRead(reason) {
+  if (blogReadTracked || !['blog', 'blog_index'].includes(pageType())) return;
+  blogReadTracked = true;
+  sendEvent('blog_article_read', { page_type: pageType(), read_trigger: reason });
+}
+
+function setupScrollTracking() {
+  if (scrollTrackingReady) return;
+  scrollTrackingReady = true;
+  window.addEventListener('scroll', () => {
+    const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+    if (scrollable <= 0) return;
+    const depth = Math.min(100, Math.round((window.scrollY / scrollable) * 100));
+    SCROLL_THRESHOLDS.forEach((threshold) => {
+      if (depth >= threshold && !seenScrollThresholds.has(threshold)) {
+        seenScrollThresholds.add(threshold);
+        sendEvent(pageType().startsWith('blog') ? 'blog_scroll_depth' : 'scroll_depth', {
+          page_type: pageType(),
+          percent_scrolled: threshold
+        });
+        if (threshold >= 75) trackBlogRead('scroll_75');
+      }
+    });
+  }, { passive: true });
+  window.setTimeout(() => trackBlogRead('time_30_seconds'), 30000);
+}
+
+function setupClickTracking() {
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest('a, button');
+    if (!link) return;
+    const href = link.getAttribute('href') || '';
+    const location = link.closest('header') ? 'header' : link.closest('footer') ? 'footer' : link.closest('.hero, .tool-hero') ? 'hero' : pageType();
+
+    if (link.matches('[data-analytics-cta], .btn, .button, .section-link')) {
+      sendEvent('cta_click', { page_type: pageType(), cta_location: location, link_url: href });
+    }
+
+    if (link.closest('nav, header')) {
+      sendEvent('nav_click', { page_type: pageType(), nav_location: location, link_url: href });
+    }
+  });
+}
+
+function setupSearchTracking() {
+  document.addEventListener('change', (event) => {
+    const input = event.target.closest('input[type="search"], input[id*="search" i], input[name*="search" i]');
+    if (!input || String(input.value || '').trim().length < 2) return;
+    sendEvent('search_query', {
+      page_type: pageType(),
+      query_hash: hashSearchQuery(input.value),
+      query_length: String(input.value).trim().length
+    });
+  });
 }
 
 function hashSearchQuery(query) {
@@ -123,114 +223,17 @@ function hashSearchQuery(query) {
   return Math.abs(hash).toString(36);
 }
 
-function sendEvent(name, params = {}) {
-  if (!isAnalyticsAllowed()) return false;
-  const payload = sanitizeParams({
-    page_path: window.location.pathname,
-    page_title: document.title,
-    ...params
-  });
-
-  if (!gaReady || typeof window.gtag !== 'function') {
-    queuedEvents.push([name, payload]);
-    queuedEvents = queuedEvents.slice(-50);
-    return true;
-  }
-
-  window.gtag('event', name, payload);
-  return true;
-}
-
-function flushQueue() {
-  const events = queuedEvents;
-  queuedEvents = [];
-  events.forEach(([name, params]) => sendEvent(name, params));
-}
-
-function pageType() {
-  const path = window.location.pathname;
-  if (path === '/' || /\/index\.html$/.test(path)) return path.includes('/blog/') ? 'blog_index' : 'home';
-  if (/\/categories\//.test(path)) return 'category';
-  if (/\/tools\//.test(path)) return 'tool';
-  if (/\/blog\//.test(path)) return 'blog';
-  if (/\/(privacy-policy|cookie-policy|terms-of-service|about-us|contact|security)\.html$/.test(path)) return 'legal';
-  return 'other';
-}
-
-function contentViewName(type) {
-  return `${type === 'blog_index' ? 'blog' : type}_view`;
-}
-
-function trackContentView() {
-  const type = pageType();
-  sendEvent('content_view', {
-    content_type: type,
-    content_event: contentViewName(type)
-  });
-}
-
-function trackBlogRead(reason) {
-  if (blogReadTracked || !['blog', 'blog_index'].includes(pageType())) return;
-  blogReadTracked = true;
-  sendEvent('blog_article_read', { read_trigger: reason });
-}
-
-function setupScrollTracking() {
-  if (scrollTrackingReady) return;
-  scrollTrackingReady = true;
-  window.addEventListener('scroll', () => {
-    const scrollable = document.documentElement.scrollHeight - window.innerHeight;
-    if (scrollable <= 0) return;
-    const depth = Math.min(100, Math.round((window.scrollY / scrollable) * 100));
-    SCROLL_THRESHOLDS.forEach((threshold) => {
-      if (depth >= threshold && !seenScrollThresholds.has(threshold)) {
-        seenScrollThresholds.add(threshold);
-        sendEvent(pageType().startsWith('blog') ? 'blog_scroll_depth' : 'scroll_depth', { percent_scrolled: threshold });
-        if (threshold >= 75) trackBlogRead('scroll_75');
-      }
-    });
-  }, { passive: true });
-  window.setTimeout(() => trackBlogRead('time_30_seconds'), 30000);
-}
-
-function setupClickTracking() {
-  document.addEventListener('click', (event) => {
-    const link = event.target.closest('a, button');
-    if (!link) return;
-    const text = (link.getAttribute('aria-label') || link.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 80);
-    const href = link.getAttribute('href') || '';
-    const location = link.closest('header') ? 'header' : link.closest('footer') ? 'footer' : link.closest('.hero, .tool-hero') ? 'hero' : pageType();
-
-    if (link.matches('[data-analytics-cta], .btn, .button, .section-link')) {
-      sendEvent('cta_click', { cta_text: text, cta_location: location, link_url: href });
-    }
-
-    if (link.closest('nav, header')) {
-      sendEvent('nav_click', { nav_text: text, nav_location: location, link_url: href });
-    }
-  });
-}
-
-function setupSearchTracking() {
-  document.addEventListener('change', (event) => {
-    const input = event.target.closest('input[type="search"], input[id*="search" i], input[name*="search" i]');
-    if (!input || String(input.value || '').trim().length < 2) return;
-    sendEvent('search_query', {
-      query_hash: hashSearchQuery(input.value),
-      query_length: String(input.value).trim().length
-    });
-  });
-}
-
 function setupPreferenceTracking() {
   window.addEventListener('languageChanged', (event) => {
     sendEvent('language_change', {
+      page_type: pageType(),
       old_language: event.detail?.previousLanguage || event.detail?.oldLanguage,
       new_language: event.detail?.language
     });
   });
   window.addEventListener('themechange', (event) => {
     sendEvent('theme_change', {
+      page_type: pageType(),
       old_theme: event.detail?.previousTheme,
       new_theme: event.detail?.theme
     });
@@ -241,25 +244,46 @@ function observeToolEvents() {
   document.addEventListener('click', (event) => {
     const control = event.target.closest('[data-tool-action], button[type="submit"], .tool-button, .process-button');
     if (!control || !/\/tools\//.test(window.location.pathname)) return;
-    sendEvent('tool_task_start', {
-      tool_id: window.location.pathname.replace(/^.*\/tools\//, '').replace(/\/$/, ''),
-      action_label: (control.textContent || control.getAttribute('aria-label') || 'run').trim().slice(0, 80)
+    sendEvent(PRODUCT_EVENT_NAMES.TOOL_START, {
+      page_type: 'tool',
+      tool_slug: toolSlugFromPath(),
+      action_label: (control.getAttribute('aria-label') || control.dataset.toolAction || 'run').trim().slice(0, 80)
     });
   });
+
   document.addEventListener('change', (event) => {
     if (!/\/tools\//.test(window.location.pathname)) return;
     const input = event.target.closest('input, textarea, select');
     if (!input) return;
     const method = input.type === 'file' ? 'file_upload' : input.tagName === 'TEXTAREA' ? 'text_input' : input.type || input.tagName.toLowerCase();
-    sendEvent('tool_input_method', { input_method: method });
+    sendEvent('tool_input_method', {
+      page_type: 'tool',
+      tool_slug: toolSlugFromPath(),
+      input_method: method
+    });
   });
-  window.addEventListener('novatools:tool-task-complete', (event) => sendEvent('tool_task_complete', event.detail || {}));
-  window.addEventListener('novatools:tool-task-error', (event) => sendEvent('tool_task_error', { error_message: event.detail?.message || 'unknown_error' }));
+
+  window.addEventListener('novatools:tool-task-complete', (event) => {
+    sendEvent(PRODUCT_EVENT_NAMES.TOOL_SUCCESS, {
+      page_type: 'tool',
+      tool_slug: toolSlugFromPath(),
+      ...(event.detail || {})
+    });
+  });
+
+  window.addEventListener('novatools:tool-task-error', (event) => {
+    sendEvent(PRODUCT_EVENT_NAMES.TOOL_ERROR, {
+      page_type: 'tool',
+      tool_slug: toolSlugFromPath(),
+      error_code: event.detail?.code || 'tool_error'
+    });
+  });
 }
 
 function trackWebVitalMetric(metric) {
   const value = metric.name === 'CLS' ? metric.value : Math.round(metric.value);
   sendEvent('web_vital', {
+    page_type: pageType(),
     metric_name: metric.name,
     metric_value: value,
     metric_rating: metric.rating || 'unknown',
@@ -332,9 +356,9 @@ export function initAnalytics() {
 export const analytics = {
   init: initAnalytics,
   trackEvent: sendEvent,
-  trackToolStart: (params) => sendEvent('tool_task_start', params),
-  trackToolComplete: (params) => sendEvent('tool_task_complete', params),
-  trackToolError: (params) => sendEvent('tool_task_error', params),
+  trackToolStart: (params) => sendEvent(PRODUCT_EVENT_NAMES.TOOL_START, params),
+  trackToolComplete: (params) => sendEvent(PRODUCT_EVENT_NAMES.TOOL_SUCCESS, params),
+  trackToolError: (params) => sendEvent(PRODUCT_EVENT_NAMES.TOOL_ERROR, params),
   trackInputMethod: (params) => sendEvent('tool_input_method', params),
   trackCtaClick: (params) => sendEvent('cta_click', params),
   trackAdImpression: (params) => sendEvent('ad_impression', params),
