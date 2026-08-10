@@ -362,6 +362,62 @@
         "name": "Live Exchange Converter",
         "description": "Convert currency estimates with live-data and cached fallback handling."
       }
+    },
+    "categoryPopularTools": {
+      "pdfMerge": "PDF Merge",
+      "pdfCompress": "PDF Compress",
+      "pdfToJpg": "PDF to JPG",
+      "imageCompress": "Image Compress",
+      "imageResize": "Image Resize",
+      "imageToWebp": "Image to WebP",
+      "liveExchange": "Live Exchange",
+      "cryptoPrices": "Crypto Prices",
+      "stockLookup": "Stock Lookup",
+      "textAnalysis": "Text Analysis",
+      "textSummarizer": "Text Summarizer",
+      "simpleTranslator": "Simple Translator",
+      "jsonFormatter": "JSON Formatter",
+      "regexTester": "Regex Tester",
+      "base64Converter": "Base64 Converter",
+      "unitConverter": "Unit Converter",
+      "currencyConverter": "Currency Converter",
+      "timezone": "Time Zone",
+      "scientific": "Scientific Calculator",
+      "bmi": "BMI Calculator",
+      "percentage": "Percentage Calculator",
+      "passwordGenerator": "Password Generator",
+      "hashGenerator": "Hash Generator",
+      "uuidGenerator": "UUID Generator",
+      "utmBuilder": "UTM Builder",
+      "hashtagGenerator": "Hashtag Generator",
+      "thumbnail": "Thumbnail Downloader",
+      "pomodoro": "Pomodoro Timer",
+      "todoList": "To-Do List",
+      "notes": "Notes",
+      "csvJsonSummary": "CSV/JSON Summary",
+      "chartBuilder": "Chart Builder",
+      "weatherLookup": "Weather Lookup",
+      "logoMaker": "Logo Maker",
+      "invoice": "Invoice Generator",
+      "qrDesigner": "QR Designer"
+    },
+    "blogCards": {
+      "readSuffix": "read",
+      "toolSelection": {
+        "title": "How to Choose the Right Online Tool for Faster Workflows",
+        "excerpt": "A practical checklist for selecting browser tools by privacy, output quality, and repeatability.",
+        "category": "Workflow"
+      },
+      "imageQuality": {
+        "title": "Image Compression vs. Resizing: Which One Preserves Quality?",
+        "excerpt": "Learn when to compress, when to resize, and how to avoid blurry assets across the web.",
+        "category": "Image"
+      },
+      "base64Uses": {
+        "title": "Base64 Encoding: Practical Uses, Limits, and Security Notes",
+        "excerpt": "Understand where Base64 helps, where it adds overhead, and why it is not encryption.",
+        "category": "Developer"
+      }
     }
   },
   "footer": {
