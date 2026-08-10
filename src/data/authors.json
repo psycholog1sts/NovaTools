@@ -9,28 +9,20 @@
       "ar": "يكتب فريق تحرير NovaTools أدلة عملية تراعي الخصوصية للأشخاص الذين يحتاجون إلى تجهيز الملفات والبيانات والقرارات من دون تعقيد غير ضروري."
     },
     "avatar": "/assets/authors/novatools-editorial.svg",
-    "social": {
-      "twitter": "https://twitter.com/mcnovatools",
-      "linkedin": "https://linkedin.com/company/mc-novatools",
-      "github": "https://github.com/mc-novatools"
-    },
+    "social": {},
     "profileUrl": "/author/novatools-editorial.html"
   },
   {
     "id": "metehan",
-    "name": "Metehan Çetin, LPC",
+    "name": "Metehan Çetin",
     "title": "Founder, Editor and Browser Workflow Reviewer",
     "bio": {
-      "en": "Metehan Çetin, LPC reviews MC NovaTools guides and tools with 5+ years of practical experience in browser-first PDF processing, image optimization, developer utilities, privacy-aware workflows and finance-tool disclaimers.",
+      "en": "Metehan Çetin reviews MC NovaTools guides and tools for browser-first PDF workflows, image optimization, developer utilities, privacy-aware product language and finance-tool disclaimers.",
       "tr": "Metehan Çetin, tarayıcı tabanlı üretkenlik ve dosya hazırlığı için faydalı ve şeffaf iş akışlarına odaklanan MC NovaTools içerik stratejisini yönetir.",
       "ar": "يقود متهان تشيتين استراتيجية محتوى MC NovaTools مع التركيز على مسارات عمل مفيدة وواضحة للإنتاجية وإعداد الملفات عبر المتصفح."
     },
     "avatar": "/assets/authors/metehan-cetin.svg",
-    "social": {
-      "twitter": "https://twitter.com/mcnovatools",
-      "linkedin": "https://linkedin.com/company/mc-novatools",
-      "github": "https://github.com/mc-novatools"
-    },
+    "social": {},
     "profileUrl": "/author/metehan-cetin.html"
   }
 ]
