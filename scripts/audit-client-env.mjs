@@ -14,7 +14,14 @@ const files = [
 
 const failures = [];
 const forbiddenEnvName = /\bVITE_[A-Z0-9_]*(?:SECRET|SERVICE_ROLE|PRIVATE_KEY|SERVICE_KEY)\b/g;
+const forbiddenRuntimeEnvName = /^VITE_[A-Z0-9_]*(?:SECRET|SERVICE_ROLE|PRIVATE_KEY|SERVICE_KEY)$/i;
 const literalSecretKey = /\bsb_secret_[A-Za-z0-9_-]+\b/g;
+
+for (const name of Object.keys(process.env)) {
+  if (forbiddenRuntimeEnvName.test(name)) {
+    failures.push(`process.env: forbidden client secret variable name ${name}`);
+  }
+}
 
 for (const relative of [...new Set(files)].sort()) {
   const full = path.join(root, relative);
