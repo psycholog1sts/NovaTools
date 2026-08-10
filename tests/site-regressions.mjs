@@ -195,6 +195,36 @@ assert.match(
   /document\.documentElement\.lang(?:\.split\([^)]*\))?\s*===\s*['"]tr['"]/,
   'Tool-page enhancement must select Turkish copy from the active document language.'
 );
+assert.match(
+  toolEnhancer,
+  /value\.includes\(workflowSentence\)/,
+  'Combined hero description text must translate the appended workflow sentence.'
+);
+assert.match(
+  toolEnhancer,
+  /value\.startsWith\('Is '\)[\s\S]*value\.slice\('Is '\.length/,
+  'Turkish FAQ localization must remove the English question prefix.'
+);
+assert.match(
+  toolEnhancer,
+  /\$\{value\.length\} karakter • \$\{words\} kelime • \$\{bytes\} bayt/,
+  'Text counters must render Turkish units when Turkish is active.'
+);
+assert.match(
+  toolEnhancer,
+  /const questions = enhancerLanguage\(\) === 'tr'/,
+  'FAQ structured data must be generated in the active language.'
+);
+assert.match(
+  toolEnhancer,
+  /name: translateEnhancerText\('Home'\)/,
+  'Breadcrumb structured data must localize its home label.'
+);
+assert.match(
+  homepageMain,
+  /home\.popularToolsAriaSuffix/,
+  'Homepage popular-tool groups must localize their accessible label.'
+);
 assert.match(homepageMain, /home\.categoryPopularTools\.\$\{tool\.key\}/, 'Homepage category shortcuts must render through stable i18n keys.');
 assert.match(homepageMain, /home\.blogCards\.\$\{post\.key\}/, 'Homepage blog cards must render through stable i18n keys.');
 
