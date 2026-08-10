@@ -22,6 +22,14 @@ assert.equal(sanitized.includes('https://github.com/mc-novatools'), false);
 assert.equal(sanitized.includes('Professional counseling and applied web-product training'), false);
 assert.equal(sanitized.includes('https://example.com/verified-profile'), true);
 
+const legitimateDurationCopy = `
+  <article>
+    <p>Keeping a loan for five years can change the total interest cost.</p>
+    <p>Compare the five years before retirement with the next five years.</p>
+  </article>`;
+assert.deepEqual(findBlockedPublicClaims(legitimateDurationCopy), [], 'Ordinary financial/time-duration copy must not be treated as a biography claim.');
+assert.equal(sanitizeHtmlTrustClaims(legitimateDurationCopy), legitimateDurationCopy, 'Legitimate duration copy should remain unchanged.');
+
 const legalCopy = sanitizeClaimValue({
   common: {
     social: 'Official profiles: GitHub mc-novatools, X/Twitter @mcnovatools, and LinkedIn company/mc-novatools.'
