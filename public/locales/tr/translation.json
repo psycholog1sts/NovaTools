@@ -6038,6 +6038,62 @@
         "name": "Canlı döviz dönüştürücü",
         "description": "Canlı veri ve önbellek yedeğiyle döviz kuru tahminlerini dönüştürün."
       }
+    },
+    "categoryPopularTools": {
+      "pdfMerge": "PDF Birleştirme",
+      "pdfCompress": "PDF Sıkıştırma",
+      "pdfToJpg": "PDF'den JPG'ye",
+      "imageCompress": "Görsel Sıkıştırma",
+      "imageResize": "Görsel Boyutlandırma",
+      "imageToWebp": "Görselden WebP'ye",
+      "liveExchange": "Canlı Döviz Kurları",
+      "cryptoPrices": "Kripto Fiyatları",
+      "stockLookup": "Hisse Sorgulama",
+      "textAnalysis": "Metin Analizi",
+      "textSummarizer": "Metin Özetleyici",
+      "simpleTranslator": "Basit Çeviri",
+      "jsonFormatter": "JSON Biçimlendirici",
+      "regexTester": "Regex Test Aracı",
+      "base64Converter": "Base64 Dönüştürücü",
+      "unitConverter": "Birim Dönüştürücü",
+      "currencyConverter": "Para Birimi Dönüştürücü",
+      "timezone": "Saat Dilimi",
+      "scientific": "Bilimsel Hesap Makinesi",
+      "bmi": "VKİ Hesaplayıcı",
+      "percentage": "Yüzde Hesaplayıcı",
+      "passwordGenerator": "Parola Oluşturucu",
+      "hashGenerator": "Özet Değer Oluşturucu",
+      "uuidGenerator": "UUID Oluşturucu",
+      "utmBuilder": "UTM Oluşturucu",
+      "hashtagGenerator": "Etiket Oluşturucu",
+      "thumbnail": "Küçük Resim İndirici",
+      "pomodoro": "Pomodoro Sayacı",
+      "todoList": "Yapılacaklar Listesi",
+      "notes": "Notlar",
+      "csvJsonSummary": "CSV/JSON Özeti",
+      "chartBuilder": "Grafik Oluşturucu",
+      "weatherLookup": "Hava Durumu Sorgulama",
+      "logoMaker": "Logo Oluşturucu",
+      "invoice": "Fatura Oluşturucu",
+      "qrDesigner": "QR Kod Tasarımcısı"
+    },
+    "blogCards": {
+      "readSuffix": "okuma",
+      "toolSelection": {
+        "title": "Daha Hızlı İş Akışları İçin Doğru Çevrim İçi Araç Nasıl Seçilir?",
+        "excerpt": "Tarayıcı araçlarını gizlilik, çıktı kalitesi ve tekrarlanabilirlik açısından seçmek için pratik bir kontrol listesi.",
+        "category": "İş Akışı"
+      },
+      "imageQuality": {
+        "title": "Görsel Sıkıştırma mı Boyutlandırma mı? Hangisi Kaliteyi Korur?",
+        "excerpt": "Ne zaman sıkıştırma, ne zaman boyutlandırma yapmanız gerektiğini ve bulanık görsellerden nasıl kaçınacağınızı öğrenin.",
+        "category": "Görsel"
+      },
+      "base64Uses": {
+        "title": "Base64 Kodlama: Kullanım Alanları, Sınırlar ve Güvenlik Notları",
+        "excerpt": "Base64'ün nerede işe yaradığını, nerede ek yük oluşturduğunu ve neden şifreleme olmadığını anlayın.",
+        "category": "Geliştirici"
+      }
     }
   },
   "categories": {
