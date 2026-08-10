@@ -23,12 +23,15 @@ export function generateId(prefix = 'id') {
 }
 
 /**
- * Track event to analytics (privacy-first)
+ * Track event through the consent-aware NovaTools analytics transport.
+ * If analytics is not present on the page, fail closed/no-op rather than
+ * falling back to an unrelated network endpoint.
  */
 export function trackEvent(eventName, data = {}) {
-  if (window.umami) {
-    window.umami.track(eventName, data);
+  if (window.NovaToolsAnalytics?.trackEvent) {
+    return window.NovaToolsAnalytics.trackEvent(eventName, data);
   }
+  return false;
 }
 
 /**
