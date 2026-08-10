@@ -13,8 +13,6 @@ import { pdfToImage } from './pdf-to-image.mjs';
  * @param {ToolController} controller - Tool controller instance
  */
 export function registerPDFTools(controller) {
-  
-  // PDF Splitter
   controller.registerTool('pdf-split', {
     name: 'PDF Splitter',
     description: 'Split PDF into individual pages or extract specific pages',
@@ -56,7 +54,6 @@ export function registerPDFTools(controller) {
     ]
   }, pdfSplitter);
 
-  // PDF Merger
   controller.registerTool('pdf-merge', {
     name: 'PDF Merger',
     description: 'Combine multiple PDF files into one',
@@ -82,10 +79,9 @@ export function registerPDFTools(controller) {
     ]
   }, pdfMerger);
 
-  // PDF Compressor
   controller.registerTool('pdf-compress', {
     name: 'PDF Compressor',
-    description: 'Reduce PDF file size while maintaining quality',
+    description: 'Rewrite PDF structure with object streams and report the actual output size. Page images are not downsampled and reduction is not guaranteed.',
     category: 'pdf',
     icon: '🗜️',
     fileUpload: {
@@ -100,25 +96,16 @@ export function registerPDFTools(controller) {
         label: 'PDF File',
         required: true,
         accept: ['application/pdf']
-      },
-      {
-        name: 'quality',
-        type: 'select',
-        label: 'Compression Level',
-        required: true,
-        options: ['low', 'medium', 'high'],
-        default: 'medium'
       }
     ],
     outputs: [
       { name: 'file', type: 'blob' },
       { name: 'originalSize', type: 'integer' },
-      { name: 'compressedSize', type: 'integer' },
-      { name: 'savings', type: 'percentage' }
+      { name: 'outputSize', type: 'integer' },
+      { name: 'sizeChangePercent', type: 'percentage' }
     ]
   }, pdfCompressor);
 
-  // PDF to Image
   controller.registerTool('pdf-to-image', {
     name: 'PDF to Image',
     description: 'Convert PDF pages to images',
@@ -160,8 +147,6 @@ export function registerPDFTools(controller) {
       { name: 'count', type: 'integer' }
     ]
   }, pdfToImage);
-
-
 }
 
 export default registerPDFTools;
