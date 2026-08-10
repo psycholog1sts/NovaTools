@@ -1,316 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script type="text/plain" data-consent-category="analytics" async src="https://www.googletagmanager.com/gtag/js?id=G-Y896L63239"></script>
-<script type="text/plain" data-consent-category="analytics">
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-Y896L63239', {
-    anonymize_ip: true,
-    cookie_expires: 63072000,
-    cookie_update: true
-  });
-</script>
   <meta charset="UTF-8">
-  <script>(function(){var t=localStorage.getItem('novatools-theme');if(t)document.documentElement.setAttribute('data-theme',t);else{var d=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',d);document.documentElement.style.colorScheme=d;}})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0A0A0C">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <title>PDF Compressor - Structural PDF Optimization | NovaTools</title>
+  <meta name="description" content="Optimize PDF structure in your browser with pdf-lib. No upload to NovaTools for the PDF operation. Page images are not downsampled and size reduction is not guaranteed.">
+  <link rel="canonical" href="https://mc-novatools.com/tools/pdf/compress/">
+  <meta property="og:title" content="PDF Compressor - Structural PDF Optimization | NovaTools">
+  <meta property="og:description" content="Rewrite PDF structure locally in your browser. Compare the output size before downloading; page images are not downsampled.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mc-novatools.com/tools/pdf/compress/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="PDF Compressor - Structural PDF Optimization | NovaTools">
+  <meta name="twitter:description" content="Browser-local structural PDF optimization with honest size-change reporting.">
+
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="/src/styles/critical.css">
   <link rel="stylesheet" href="/src/styles/main.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <!-- Favicon - Required by Google Search -->
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <title data-i18n="tools.pdf.compress.meta.title">Free PDF Compressor - Reduce PDF Size Online | NovaTools MC</title>
-
-  <!-- i18n Script -->
   <script src="/i18n.js" defer></script>
-  <meta name="description" content="Use PDF Compressor for pdf compress tasks with browser-first processing, clear steps, privacy notes, and practical limits. Review outputs before sharing.">
-  <meta name="keywords" content="free PDF compressor, compress PDF online, reduce PDF size, PDF optimizer, free PDF size reducer">
-  <meta name="theme-color" content="#0A0A0C">
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Free PDF Compressor - Reduce PDF File Size Online | NovaTools MC">
-  <meta property="og:description" content="Reduce PDF file size with practical quality presets and private in-browser processing.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.mc-novatools.com/tools/pdf/compress/">
-  <meta property="og:image" content="https://www.mc-novatools.com/og-image.png">
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Free PDF Compressor - Reduce PDF File Size Online | NovaTools MC">
-  <meta name="twitter:description" content="Compress PDF files with clear quality presets and in-browser processing.">
-
-  <!-- Canonical -->
-  <link rel="canonical" href="https://www.mc-novatools.com/tools/pdf/compress/">
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@graph": [{
-      "@type": "WebApplication",
-      "name": "PDF Compressor",
-      "description": "Compress PDF files in your browser with practical quality presets for email, upload, and storage needs.",
-      "url": "https://www.mc-novatools.com/tools/pdf/compress/",
-      "applicationCategory": "UtilityApplication",
-      "operatingSystem": "Any",
-      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
-    }]
+    "@type": "WebApplication",
+    "name": "PDF Compressor",
+    "description": "Browser-based structural PDF optimization. The tool rewrites PDF structure with pdf-lib and does not guarantee a smaller output or downsample page images.",
+    "url": "https://mc-novatools.com/tools/pdf/compress/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Web Browser",
+    "offers": {"@type": "Offer", "price": 0, "priceCurrency": "USD"}
   }
   </script>
+
   <style>
-    .tool-container { max-width: 900px; margin: 0 auto; padding: 2rem 1rem; }
-    .tool-header { text-align: center; margin-bottom: 2rem; }
-    .tool-header h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; }
-    .tool-header p { color: var(--text-secondary); }
-    .hero-note {
-      margin-top: 0.75rem;
-      font-size: 0.875rem;
-      color: var(--text-muted);
-    }
-
-    .dropzone {
-      border: 2px dashed var(--border-default);
-      border-radius: 16px;
-      padding: 3rem 2rem;
-      text-align: center;
-      background: var(--surface-default);
-      transition: all 0.3s ease;
-      cursor: pointer;
-    }
-    .dropzone:hover {
-      border-color: var(--border-accent);
-      background: var(--border-default);
-    }
-    .dropzone.drag-active {
-      border-color: var(--accent-primary);
-      background: var(--accent-subtle);
-      transform: scale(1.02);
-    }
-    .dropzone-icon { font-size: 3rem; margin-bottom: 1rem; }
-    .dropzone-title { font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; }
-    .dropzone-hint { font-size: 0.875rem; color: var(--text-muted); }
-
-    .file-info-card {
-      display: none;
-      margin-top: 1.5rem;
-      padding: 1.5rem;
-      background: var(--surface-default);
-      border: 1px solid var(--border-default);
-      border-radius: var(--radius-lg);
-    }
-    .file-info-card.visible { display: block; }
-    .file-details { display: flex; align-items: center; gap: 1rem; }
-    .file-icon-large { font-size: 2.5rem; }
-    .file-meta { flex: 1; }
-    .file-name-large { font-weight: 600; font-size: 1.125rem; }
-    .file-size-large { color: var(--text-muted); }
-
-    .quality-selector {
-      margin-top: 1.5rem;
-      padding: 1.5rem;
-      background: var(--surface-default);
-      border: 1px solid var(--border-default);
-      border-radius: var(--radius-lg);
-      display: none;
-    }
-    .quality-selector.visible { display: block; }
-
-    .quality-options {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-
-    @media (max-width: 640px) {
-      .quality-options { grid-template-columns: 1fr; }
-    }
-
-    .quality-option {
-      padding: 1rem;
-      background: var(--surface-default);
-      border: 2px solid var(--border-hover);
-      border-radius: var(--radius-md);
-      cursor: pointer;
-      text-align: center;
-      transition: all 0.2s;
-    }
-    .quality-option:hover {
-      border-color: var(--border-accent);
-      background: var(--border-default);
-    }
-    .quality-option.selected {
-      border-color: var(--accent-primary);
-      background: var(--accent-glow);
-    }
-    .quality-option .icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
-    .quality-option .label { font-weight: 600; }
-    .quality-option .desc { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem; }
-
-    .btn-primary {
-      width: 100%;
-      height: 52px;
-      margin-top: 1.5rem;
-    }
-    .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
-
-    .progress-section {
-      margin-top: 1.5rem;
-      padding: 1.5rem;
-      background: var(--surface-default);
-      border: 1px solid var(--border-default);
-      border-radius: var(--radius-lg);
-      display: none;
-    }
-    .progress-section.visible { display: block; }
-    .progress-bar {
-      height: 8px;
-      background: var(--border-hover);
-      border-radius: 4px;
-      overflow: hidden;
-      margin: 1rem 0;
-    }
-    .progress-fill {
-      height: 100%;
-      background: linear-gradient(90deg, #6366F1, #8B5CF6);
-      border-radius: 4px;
-      transition: width 0.3s ease;
-    }
-
-    .result-section {
-      margin-top: 1.5rem;
-      padding: 2rem;
-      background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(34, 197, 94, 0.05));
-      border: 1px solid rgba(34, 197, 94, 0.3);
-      border-radius: var(--radius-lg);
-      text-align: center;
-      display: none;
-    }
-    .result-section.visible { display: block; animation: fadeIn 0.3s ease; }
-
-    .compression-stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-      margin: 1.5rem 0;
-    }
-    .stat-box {
-      padding: 1rem;
-      background: var(--border-hover);
-      border-radius: var(--radius-md);
-    }
-    .stat-value { font-size: 1.25rem; font-weight: 700; }
-    .stat-label { font-size: 0.75rem; color: var(--text-muted); }
-    .stat-value.savings { color: #22C55E; }
-
-    .download-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 1rem 2rem;
-      background: linear-gradient(135deg, #22C55E, #16A34A);
-      color: white;
-      font-weight: 600;
-      border-radius: var(--radius-md);
-      text-decoration: none;
-      transition: all 0.2s;
-    }
-    .download-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(34, 197, 94, 0.3); }
-
-    .error-message {
-      margin-top: 1rem;
-      padding: 1rem;
-      background: rgba(239, 68, 68, 0.1);
-      border: 1px solid rgba(239, 68, 68, 0.3);
-      border-radius: var(--radius-md);
-      color: #ef4444;
-      display: none;
-    }
-    .error-message.visible { display: block; }
-
-    .state-section {
-      margin-top: 1rem;
-      padding: 1rem 1.25rem;
-      border-radius: var(--radius-md);
-      border: 1px solid var(--border-default);
-      background: var(--surface-default);
-      font-size: 0.9375rem;
-      color: var(--text-secondary);
-      display: none;
-    }
-    .state-section.visible { display: block; }
-    .state-section[data-state="loading"] {
-      border-color: rgba(99, 102, 241, 0.45);
-      background: rgba(99, 102, 241, 0.08);
-    }
-    .state-section[data-state="success"] {
-      border-color: rgba(34, 197, 94, 0.35);
-      background: rgba(34, 197, 94, 0.08);
-      color: #4ade80;
-      font-weight: 600;
-    }
-
-    .trust-help,
-    .related-tools {
-      margin-top: 1.5rem;
-      padding: 1.5rem;
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border-default);
-      background: var(--surface-default);
-    }
-    .trust-help h2,
-    .related-tools h2 {
-      margin: 0 0 0.75rem;
-      font-size: 1.125rem;
-      font-weight: 600;
-    }
-    .trust-help ul {
-      margin: 0;
-      padding-left: 1.125rem;
-      color: var(--text-secondary);
-      line-height: 1.7;
-    }
-    .related-tools-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 0.75rem;
-    }
-    .related-tool-link {
-      display: block;
-      padding: 0.85rem 1rem;
-      border: 1px solid var(--border-default);
-      border-radius: var(--radius-md);
-      color: var(--text-primary);
-      text-decoration: none;
-      font-weight: 500;
-      transition: border-color 0.2s ease, transform 0.2s ease;
-    }
-    .related-tool-link:hover,
-    .related-tool-link:focus-visible {
-      border-color: var(--border-accent);
-      transform: translateY(-1px);
-    }
-
-    @media (max-width: 768px) {
-      .tool-header h1 { font-size: 1.75rem; }
-      .compression-stats { grid-template-columns: 1fr; }
-      .related-tools-grid { grid-template-columns: 1fr; }
-      .download-btn { width: 100%; justify-content: center; }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    .tool-container{max-width:900px;margin:0 auto;padding:2rem 1rem 4rem}.tool-header{text-align:center;margin-bottom:2rem}.tool-header h1{font-size:clamp(1.8rem,5vw,2.4rem);font-weight:700;margin-bottom:.6rem}.tool-header p{color:var(--text-secondary);line-height:1.65}.tool-updated-note,.hero-note{font-size:.875rem;color:var(--text-muted)}
+    .tool-workspace,.trust-help,.related-tools,.tool-description{margin-top:1.5rem;padding:1.5rem;background:var(--surface-default);border:1px solid var(--border-default);border-radius:var(--radius-lg)}
+    .dropzone{border:2px dashed var(--border-default);border-radius:16px;padding:3rem 2rem;text-align:center;background:var(--surface-default);transition:border-color .2s,background .2s;cursor:pointer}.dropzone:hover,.dropzone:focus-visible,.dropzone.drag-active{border-color:var(--accent-primary);background:var(--accent-subtle)}.dropzone-icon{font-size:3rem;margin-bottom:1rem}.dropzone-title{font-size:1.125rem;font-weight:600;margin-bottom:.5rem}.dropzone-hint{font-size:.875rem;color:var(--text-muted)}
+    .file-info-card{display:none;margin-top:1.25rem;padding:1.25rem;background:var(--surface-default);border:1px solid var(--border-default);border-radius:var(--radius-lg)}.file-info-card.visible{display:block}.file-details{display:flex;align-items:center;gap:1rem}.file-icon-large{font-size:2.5rem}.file-meta{min-width:0;flex:1}.file-name-large{font-weight:600;font-size:1.05rem;overflow-wrap:anywhere}.file-size-large{color:var(--text-muted)}
+    .quality-selector{margin-top:1.25rem;padding:1.25rem;background:var(--surface-default);border:1px solid var(--border-default);border-radius:var(--radius-lg)}.quality-options{margin-top:.75rem}.quality-option{padding:1rem;background:var(--surface-default);border:2px solid var(--accent-primary);border-radius:var(--radius-md)}.quality-option .icon{font-size:1.5rem;margin-bottom:.4rem}.quality-option .label{font-weight:600}.quality-option .desc{font-size:.85rem;color:var(--text-muted);margin-top:.35rem;line-height:1.55}
+    .btn-primary{width:100%;min-height:52px;margin-top:1.25rem}.btn-primary:disabled{opacity:.5;cursor:not-allowed}.state-section{margin-top:1rem;padding:1rem 1.25rem;border-radius:var(--radius-md);border:1px solid var(--border-default);background:var(--surface-default);font-size:.9375rem;color:var(--text-secondary);display:none}.state-section.visible{display:block}.state-section[data-state="loading"]{border-color:rgba(99,102,241,.45);background:rgba(99,102,241,.08)}.state-section[data-state="success"]{border-color:rgba(34,197,94,.35);background:rgba(34,197,94,.08);color:#4ade80;font-weight:600}
+    .progress-section{margin-top:1.25rem;padding:1.25rem;background:var(--surface-default);border:1px solid var(--border-default);border-radius:var(--radius-lg);display:none}.progress-section.visible{display:block}.progress-bar{height:8px;background:var(--border-hover);border-radius:4px;overflow:hidden;margin:1rem 0}.progress-fill{height:100%;background:linear-gradient(90deg,#6366F1,#8B5CF6);border-radius:4px;transition:width .3s ease}
+    .result-section{margin-top:1.25rem;padding:2rem;background:linear-gradient(135deg,rgba(34,197,94,.1),rgba(34,197,94,.05));border:1px solid rgba(34,197,94,.3);border-radius:var(--radius-lg);text-align:center;display:none}.result-section.visible{display:block}.compression-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1.5rem 0}.stat-box{padding:1rem;background:var(--border-hover);border-radius:var(--radius-md)}.stat-value{font-size:1.15rem;font-weight:700;overflow-wrap:anywhere}.stat-label{font-size:.75rem;color:var(--text-muted)}.stat-value.savings{color:#22C55E}.download-btn{display:inline-flex;align-items:center;gap:.5rem;padding:1rem 2rem;background:linear-gradient(135deg,#22C55E,#16A34A);color:#fff;font-weight:600;border-radius:var(--radius-md);text-decoration:none}.error-message{margin-top:1rem;padding:1rem;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);border-radius:var(--radius-md);color:#ef4444;display:none}.error-message.visible{display:block}
+    .tool-description{line-height:1.75}.tool-description h2,.trust-help h2,.related-tools h2{margin:1.5rem 0 .75rem;font-size:1.25rem}.tool-description h2:first-child,.trust-help h2:first-child,.related-tools h2:first-child{margin-top:0}.tool-description h3{margin:1.1rem 0 .5rem;font-size:1.05rem}.tool-description ul,.tool-description ol,.trust-help ul{padding-left:1.25rem}.related-tools-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.75rem}.related-tool-link{display:block;padding:.85rem 1rem;border:1px solid var(--border-default);border-radius:var(--radius-md);color:var(--text-primary);text-decoration:none;font-weight:500}.related-tool-link:hover,.related-tool-link:focus-visible{border-color:var(--border-accent)}
+    .limitation-note{padding:1rem;border-left:4px solid #f59e0b;background:rgba(245,158,11,.08);border-radius:0 var(--radius-md) var(--radius-md) 0;color:var(--text-secondary)}
+    @media(max-width:768px){.compression-stats,.related-tools-grid{grid-template-columns:1fr}.download-btn{width:100%;justify-content:center}.dropzone{padding:2rem 1rem}}
   </style>
-  <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -318,408 +60,155 @@
   <div class="noise-overlay" aria-hidden="true"></div>
 
   <div id="app" class="app">
-        <header class="main-header">
+    <header class="main-header">
       <div class="container">
         <div class="header-inner">
-          <a href="https://mc-novatools.com/" class="logo" aria-label="NovaTools MC Home">
-            <picture><source srcset="/logo-bird-44.webp" type="image/webp"><img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44" decoding="async"></picture>
-            <span class="logo-text">NovaTools <span class="logo-mc" data-i18n="tools.pdf.compress.text.001">MC</span></span>
+          <a href="/" class="logo" aria-label="NovaTools home">
+            <picture><source srcset="/logo-bird-44.webp" type="image/webp"><img src="/logo-bird.png" alt="" class="header-logo-img" width="44" height="44" decoding="async"></picture>
+            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
           </a>
           <nav class="nav-desktop" aria-label="Main navigation">
-            <a href="https://mc-novatools.com/#finance" class="nav-link" data-i18n="tools.pdf.compress.text.002">Finance</a>
-            <a href="https://mc-novatools.com/#pdf" class="nav-link" data-i18n="tools.pdf.compress.text.003">PDF Tools</a>
-            <a href="https://mc-novatools.com/#image" class="nav-link" data-i18n="tools.pdf.compress.text.004">Images</a>
-            <a href="https://mc-novatools.com/#dev" class="nav-link" data-i18n="tools.pdf.compress.text.005">Developers</a>
+            <a href="/categories/pdf-tools.html" class="nav-link">PDF Tools</a>
+            <a href="/categories/image-tools.html" class="nav-link">Images</a>
+            <a href="/categories/developer-tools.html" class="nav-link">Developers</a>
           </nav>
-          <div class="privacy-badge" title="Your data never leaves your browser" data-i18n-title="tools.pdf.compress.title.001">
-            <span class="privacy-badge-dot"></span>
-            <span data-i18n="tools.pdf.compress.text.006">Privacy First</span>
+          <div class="privacy-badge" title="The PDF file is processed in your browser for this operation">
+            <span class="privacy-badge-dot"></span><span>Browser-local PDF processing</span>
           </div>
-          <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
-            <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-            <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-          </button>
-          <button type="button" id="mobileMenuBtn" class="menu-btn" aria-label="Toggle menu" aria-expanded="false">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-          </button>
         </div>
-        <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
-          <a href="https://mc-novatools.com/#finance" class="mobile-nav-link" data-i18n="tools.pdf.compress.text.007">Finance Tools</a>
-          <a href="https://mc-novatools.com/#pdf" class="mobile-nav-link" data-i18n="tools.pdf.compress.text.008">PDF Tools</a>
-          <a href="https://mc-novatools.com/#image" class="mobile-nav-link" data-i18n="tools.pdf.compress.text.009">Image Tools</a>
-          <a href="https://mc-novatools.com/#dev" class="mobile-nav-link" data-i18n="tools.pdf.compress.text.010">Developer Tools</a>
-        </nav>
       </div>
     </header>
-<main id="main-content" class="main-content">
+
+    <main id="main-content" class="main-content">
       <div class="tool-container">
-        <div class="tool-header">
-          <h1 data-i18n="tools.pdf.compress.text.011">🗜️ PDF Compressor</h1>
-          <p class="tool-updated-note">Last updated: <time class="page-last-updated" datetime="2026-06-03">2026-06-03</time></p>
-          <span class="sr-only" data-i18n="tools.pdf.compress.text.012">Free PDF compressor — free online PDF size reducer tool. Compress PDF files for free without losing quality. No registration, no file uploads to servers. 100% free PDF optimization.</span>
-          <p data-i18n="tools.pdf.compress.text.013">Reduce PDF file size without losing quality. Your files never leave your browser.</p>
-          <p class="hero-note" data-i18n="tools.pdf.compress.text.022">Choose a quality preset based on your size target. Actual reduction depends on your source PDF.</p>
-        </div>
+        <header class="tool-header">
+          <h1>PDF Compressor</h1>
+          <p>Rewrite PDF structure in your browser and compare the output size before downloading.</p>
+          <p class="tool-updated-note">Last updated: <time class="page-last-updated" datetime="2026-08-10">2026-08-10</time></p>
+          <p class="hero-note">This tool uses <code>pdf-lib</code> object streams. It does not downsample page images, so a smaller file is not guaranteed.</p>
+        </header>
 
-        <form data-tool="pdf-compress" data-result=".results-panel">
-          <div id="dropzone" class="dropzone" role="button" tabindex="0" aria-label="Upload PDF file" data-i18n-attr="aria-label:tools.pdf.compress.text.049">
-            <div class="dropzone-icon">📄</div>
-            <div class="dropzone-title" data-i18n="tools.pdf.compress.text.023">Drop PDF file here or click to browse</div>
-            <div class="dropzone-hint" data-i18n="tools.pdf.compress.text.024">Max 50MB • PDF format only</div>
-            <input type="file" name="file" id="fileInput" accept=".pdf,application/pdf" style="display: none;">
-          </div>
-          <p id="compressFormHelp" class="hero-note" data-i18n="tools.pdf.compress.text.025">Upload one PDF, pick a quality mode, then compress.</p>
-
-          <div id="fileInfoCard" class="file-info-card">
-            <div class="file-details">
-              <span class="file-icon-large">📄</span>
-              <div class="file-meta">
-                <div id="fileName" class="file-name-large"></div>
-                <div id="fileSize" class="file-size-large"></div>
-              </div>
+        <section class="tool-workspace" aria-labelledby="workspace-title">
+          <h2 id="workspace-title" class="sr-only">PDF optimization workspace</h2>
+          <form data-tool="pdf-compress" data-result=".results-panel">
+            <div id="dropzone" class="dropzone" role="button" tabindex="0" aria-label="Choose a PDF file">
+              <div class="dropzone-icon" aria-hidden="true">📄</div>
+              <div class="dropzone-title">Drop a PDF here or click to browse</div>
+              <div class="dropzone-hint">One PDF • maximum 50 MB</div>
+              <input type="file" name="file" id="fileInput" accept=".pdf,application/pdf" hidden>
             </div>
-          </div>
+            <p id="compressFormHelp" class="hero-note">Choose one PDF, run structural optimization, then compare and review the output before using it.</p>
 
-          <div id="qualitySelector" class="quality-selector">
-            <label style="font-weight: 600; margin-bottom: 0.5rem; display: block;" data-i18n="tools.pdf.compress.text.014">Select Compression Level</label>
-            <div class="quality-options">
-              <div class="quality-option" data-quality="high">
-                <div class="icon">🏆</div>
-                <div class="label" data-i18n="tools.pdf.compress.text.026">High Quality</div>
-                <div class="desc" data-i18n="tools.pdf.compress.text.027">Best quality • 10-20% smaller</div>
-              </div>
-              <div class="quality-option selected" data-quality="balanced">
-                <div class="icon">⚖️</div>
-                <div class="label" data-i18n="tools.pdf.compress.text.028">Balanced</div>
-                <div class="desc" data-i18n="tools.pdf.compress.text.029">Good quality • 30-50% smaller</div>
-              </div>
-              <div class="quality-option" data-quality="maximum">
-                <div class="icon">🚀</div>
-                <div class="label" data-i18n="tools.pdf.compress.text.030">Maximum</div>
-                <div class="desc" data-i18n="tools.pdf.compress.text.031">Smaller size • 50-80% smaller</div>
-              </div>
-            </div>
-            <input type="hidden" name="quality" id="qualityInput" value="balanced">
-
-            <button type="submit" id="compressBtn" class="btn btn-primary" aria-describedby="compressFormHelp compressStatusRegion">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
-              </svg>
-              <span data-i18n="tools.pdf.compress.text.032">Compress PDF</span>
-            </button>
-          </div>
-        </form>
-
-        <div class="results-panel">
-          <div id="emptyState" class="state-section visible" data-state="empty">
-            <span data-i18n="tools.pdf.compress.text.033">Empty state: waiting for one PDF file.</span>
-          </div>
-
-          <div id="loadingState" class="state-section" data-state="loading">
-            <span data-i18n="tools.pdf.compress.text.034">Loading state: compression is in progress.</span>
-          </div>
-
-          <div id="successState" class="state-section" data-state="success">
-            <span data-i18n="tools.pdf.compress.text.035">Success state: your compressed PDF is ready.</span>
-          </div>
-
-          <div id="compressStatusRegion" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
-
-          <div id="progressSection" class="progress-section">
-            <div class="progress-text" id="progressText" data-i18n="tools.pdf.compress.text.036">Analyzing PDF...</div>
-            <div class="progress-bar">
-              <div id="progressFill" class="progress-fill" style="width: 0%"></div>
-            </div>
-          </div>
-
-          <div id="resultSection" class="result-section">
-            <div style="font-size: 3rem; margin-bottom: 1rem;">✅</div>
-            <h3 style="margin-bottom: 0.5rem;" data-i18n="tools.pdf.compress.text.015">Compression Complete!</h3>
-
-            <div class="compression-stats">
-              <div class="stat-box">
-                <div id="originalSize" class="stat-value"></div>
-                <div class="stat-label" data-i18n="tools.pdf.compress.text.037">Original</div>
-              </div>
-              <div class="stat-box">
-                <div id="compressedSize" class="stat-value"></div>
-                <div class="stat-label" data-i18n="tools.pdf.compress.text.038">Compressed</div>
-              </div>
-              <div class="stat-box">
-                <div id="savingsPercent" class="stat-value savings"></div>
-                <div class="stat-label" data-i18n="tools.pdf.compress.text.039">Saved</div>
+            <div id="fileInfoCard" class="file-info-card" aria-live="polite">
+              <div class="file-details">
+                <span class="file-icon-large" aria-hidden="true">📄</span>
+                <div class="file-meta"><div id="fileName" class="file-name-large"></div><div id="fileSize" class="file-size-large"></div></div>
               </div>
             </div>
 
-            <a id="downloadLink" href="#" class="download-btn" download>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
-              </svg>
-              <span data-i18n="tools.pdf.compress.text.040">Download Compressed PDF</span>
-            </a>
+            <div id="qualitySelector" class="quality-selector">
+              <label style="font-weight:600;display:block">Optimization mode</label>
+              <div class="quality-options">
+                <div class="quality-option selected" data-quality="structural" aria-current="true">
+                  <div class="icon" aria-hidden="true">🧩</div>
+                  <div class="label">Structural optimization</div>
+                  <div class="desc">Rewrites PDF structure with object streams. Page images are not downsampled; the result can be smaller, similar in size, or larger.</div>
+                </div>
+              </div>
+              <input type="hidden" name="quality" id="qualityInput" value="structural">
+              <button type="submit" id="compressBtn" class="btn btn-primary" aria-describedby="compressFormHelp compressStatusRegion" disabled>
+                <span>Optimize PDF</span>
+              </button>
+            </div>
+          </form>
 
-            <button type="button" id="compressAnother" class="btn btn-secondary" style="margin-top: 1rem;" data-i18n="tools.pdf.compress.text.016">
-              Compress Another File
-            </button>
+          <div class="results-panel">
+            <div id="emptyState" class="state-section visible" data-state="empty">Ready for one PDF file.</div>
+            <div id="loadingState" class="state-section" data-state="loading">PDF optimization is in progress.</div>
+            <div id="successState" class="state-section" data-state="success">Optimization finished. Review the output before downloading.</div>
+            <div id="compressStatusRegion" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
+
+            <div id="progressSection" class="progress-section">
+              <div class="progress-text" id="progressText">Preparing...</div>
+              <div class="progress-bar" role="progressbar" aria-label="PDF optimization progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                <div id="progressFill" class="progress-fill" style="width:0%"></div>
+              </div>
+            </div>
+
+            <div id="resultSection" class="result-section">
+              <div style="font-size:3rem;margin-bottom:1rem" aria-hidden="true">✅</div>
+              <h3 style="margin-bottom:.5rem">Optimization finished</h3>
+              <p class="hero-note">Compare the sizes below. A larger output is possible because this operation does not recompress page images.</p>
+              <div class="compression-stats">
+                <div class="stat-box"><div id="originalSize" class="stat-value"></div><div class="stat-label">Original</div></div>
+                <div class="stat-box"><div id="compressedSize" class="stat-value"></div><div class="stat-label">Output</div></div>
+                <div class="stat-box"><div id="savingsPercent" class="stat-value"></div><div class="stat-label">Size change</div></div>
+              </div>
+              <a id="downloadLink" href="#" class="download-btn" download>Download optimized PDF</a>
+              <button type="button" id="compressAnother" class="btn btn-secondary" style="margin-top:1rem">Choose another PDF</button>
+            </div>
           </div>
-        </div>
-
-        <div id="errorSection" class="error-message" role="alert" aria-live="assertive"></div>
-
-      <article class="tool-description" aria-labelledby="toolDescriptionTitle-compress">
-        <h2 id="toolDescriptionTitle-compress">What the PDF Compressor Does and Why It Matters</h2>
-        <p>The PDF Compressor rewrites a PDF with the pdf-lib library to shrink its file size — removing redundant structure and unused objects and streamlining how the document is stored — without downsampling your pages, so text stays sharp.</p>
-        <p>This matters because oversized PDFs bounce off email limits and upload forms. A smaller file is easier to send and store, and doing it in the browser means a sensitive document never has to be uploaded to a compression service.</p>
-        <h2>How to Use PDF Compressor</h2>
-        <ol>
-          <li>Upload the PDF you want to shrink.</li>
-          <li>Run the compressor to rebuild the file more efficiently.</li>
-          <li>Compare the new size against the original.</li>
-          <li>Download the optimized PDF and confirm it still looks correct.</li>
-        </ol>
-        <h2>Supported Inputs and Limitations</h2>
-        <h3>What you provide</h3>
-        <ul><li>A PDF file from your device</li></ul>
-        <h3>What you get</h3>
-        <ul><li>A re-saved PDF with reduced file size where possible</li><li>The same pages, with text quality preserved</li></ul>
-        <h3>Known limitations</h3>
-        <ul><li>Savings vary: PDFs dominated by large embedded images may shrink only modestly because pages are not downsampled.</li><li>Already-optimized files may see little change.</li><li>For very heavy scanned PDFs, image-focused desktop tools can compress more aggressively (at some quality cost).</li></ul>
-        <h2>Privacy and Security</h2>
-        <p>Compression runs entirely in your browser via pdf-lib. Your PDF is processed on your device and is never uploaded to NovaTools or any external server.</p>
-        <h2>Frequently Asked Questions</h2>
-        <h3>Will compression reduce my page quality?</h3>
-        <p>No. Pages are not downsampled, so text and vector content stay crisp. Size savings come from streamlining the file structure rather than degrading content.</p>
-        <h3>Why did my file barely get smaller?</h3>
-        <p>If most of the file is large embedded images or it is already optimized, structural compression yields limited gains. A dedicated image-recompression tool would shrink it further at a quality trade-off.</p>
-        <h3>Is my PDF uploaded to compress it?</h3>
-        <p>No. The work is done locally and the document stays in your browser.</p>
-        <h2>Related Tools</h2>
-        <ul><li><a href="https://mc-novatools.com/tools/pdf/merge/">PDF Merger — Merge multiple PDF files into one.</a></li><li><a href="https://mc-novatools.com/tools/pdf/pdf-ocr/">PDF OCR (Text Recognition) — Extract text from scanned PDFs using OCR</a></li></ul>
-      </article>
-      <aside class="author-bylines" aria-label="Author and review information for PDF Compressor">
-        <p><span class="author-name">Metehan ÇETİN, LPC</span>, <span class="author-title">Founder and editor</span></p>
-        <p>The author profile for PDF Compressor is intended for a practitioner who understands document preparation, PDF conversion, browser file handling, and safe sharing workflows. This byline describes hands-on experience reviewing inputs, outputs, edge cases, accessibility needs, privacy expectations, and user education for browser-based utilities. It is maintained as a verified public review note for MC NovaTools tool pages.</p>
-        <p><a href="https://mc-novatools.com/about-us.html" rel="author">Author and review profile</a></p>
-        <p>Last updated: <time class="last-updated" datetime="2026-06-03">2026-06-03</time></p>
-        <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Metehan ÇETİN, LPC","jobTitle":"Founder and editor","description":"The author profile for PDF Compressor is intended for a practitioner who understands document preparation, PDF conversion, browser file handling, and safe sharing workflows. This byline describes hands-on experience reviewing inputs, outputs, edge cases, accessibility needs, privacy expectations, and user education for browser-based utilities. It is maintained as a verified public review note for MC NovaTools tool pages.","sameAs":"https://mc-novatools.com/about-us.html"}</script>
-      </aside>
-<section class="trust-help" aria-labelledby="compressTrustHeading">
-          <h2 id="compressTrustHeading" data-i18n="tools.pdf.compress.text.041">Trust & Help</h2>
-          <ul>
-            <li data-i18n="tools.pdf.compress.text.042">Compression runs in your browser. Files are not uploaded to our servers.</li>
-            <li data-i18n="tools.pdf.compress.text.043">Compression results vary by PDF content. Image-heavy files usually shrink more than text-only files.</li>
-            <li data-i18n="tools.pdf.compress.text.044">Use High Quality for readability-first documents, Balanced for general sharing, and Maximum for strict size limits.</li>
-          </ul>
+          <div id="errorSection" class="error-message" role="alert" aria-live="assertive"></div>
         </section>
 
-        <section class="related-tools" aria-labelledby="compressRelatedHeading">
-          <h2 id="compressRelatedHeading" data-i18n="tools.pdf.compress.text.045">Related PDF Tools</h2>
-          <div class="related-tools-grid">
-            <a class="related-tool-link" href="https://mc-novatools.com/tools/pdf/merge/" data-i18n="tools.pdf.compress.text.046">PDF Merger</a>
-            <a class="related-tool-link" href="https://mc-novatools.com/tools/pdf/split/" data-i18n="tools.pdf.compress.text.047">PDF Splitter</a>
-            <a class="related-tool-link" href="https://mc-novatools.com/tools/pdf/pdf-ocr/" data-i18n="tools.pdf.compress.text.048">PDF OCR</a>
-          </div>
-        </section>
+        <article class="tool-description" aria-labelledby="how-it-works">
+          <h2 id="how-it-works">What this tool actually does</h2>
+          <p>NovaTools loads the PDF with <code>pdf-lib</code> and saves it again using PDF object streams. The operation runs in your browser and does not intentionally upload the PDF file to NovaTools.</p>
+          <p class="limitation-note"><strong>Important limitation:</strong> this implementation does not rasterize or downsample the document pages. It therefore cannot promise a specific percentage reduction. PDFs that are already efficiently encoded can remain about the same size or become larger.</p>
 
-        <!-- SEO Content Block -->
-        <article class="seo-content" style="margin-top: 3rem; padding: 2rem; background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-default); border-radius: var(--radius-lg);">
-          <h2 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem;" data-i18n="tools.pdf.compress.text.017">Compress PDF Online - Free PDF Optimizer</h2>
-          <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;" data-i18n="tools.pdf.compress.text.061">
-            Need to <strong>compress PDF</strong> files and <strong>reduce PDF size</strong> for email attachments or web uploads?
-            Our free PDF optimizer helps you shrink document sizes without compromising quality. Whether you're dealing with
-            large scanned documents, high-resolution PDFs, or bulky presentations, our <strong>PDF compressor</strong> delivers
-            impressive results. Choose from three compression levels: High Quality (10-20% reduction) for professional documents,
-            Balanced (30-50% reduction) for everyday use, or Maximum (50-80% reduction) when file size is critical. All
-            processing happens securely in your browser - your files are never uploaded to any server. This makes our tool
-            perfect for compressing sensitive business documents, legal contracts, or personal files that require confidentiality.
-            Reduce PDF file size quickly and easily with no registration required.
-          </p>
-
-          <h3 style="font-size: 1.25rem; font-weight: 600; margin: 1.5rem 0 1rem;" data-i18n="tools.pdf.compress.text.018">How to Use Our PDF Compressor</h3>
-          <ol style="color: var(--text-secondary); line-height: 1.8; margin-left: 1.5rem; margin-bottom: 1.5rem;">
-            <li data-i18n="tools.pdf.compress.text.051"><strong>Upload your PDF:</strong> Drag and drop your PDF file into the upload area, or click to browse and select from your device. Maximum file size is 50MB.</li>
-            <li data-i18n="tools.pdf.compress.text.052"><strong>Choose compression level:</strong> Select High Quality for minimal compression, Balanced for a good size-to-quality ratio, or Maximum for the smallest file size.</li>
-            <li data-i18n="tools.pdf.compress.text.053"><strong>Compress:</strong> Click the "Compress PDF" button and let our tool optimize your document instantly.</li>
-            <li data-i18n="tools.pdf.compress.text.054"><strong>Download:</strong> Review the compression statistics showing original size, new size, and percentage saved, then download your optimized PDF.</li>
+          <h2>How to use it</h2>
+          <ol>
+            <li>Choose a PDF up to 50 MB.</li>
+            <li>Select <strong>Optimize PDF</strong>.</li>
+            <li>Compare the original and output sizes.</li>
+            <li>Download the result only if it is useful for your workflow.</li>
+            <li>Open the downloaded PDF and verify important text, pages, links and form content before sharing it.</li>
           </ol>
 
-          <h3 style="font-size: 1.25rem; font-weight: 600; margin: 1.5rem 0 1rem;" data-i18n="tools.pdf.compress.text.019">Frequently Asked Questions</h3>
+          <h2>When this may help</h2>
+          <ul>
+            <li>PDFs containing inefficient internal object structure.</li>
+            <li>Files that benefit from a clean structural rewrite before storage or handoff.</li>
+            <li>Quick local optimization when you do not want to upload the document to a remote compression service.</li>
+          </ul>
 
-          <details style="margin-bottom: 0.75rem; background: var(--surface-default); border-radius: var(--radius-md);">
-            <summary style="padding: 1rem; cursor: pointer; font-weight: 500; color: var(--text-primary);" data-i18n="tools.pdf.compress.text.055">Will compressing my PDF reduce its quality?</summary>
-            <div style="padding: 0 1rem 1rem; color: var(--text-secondary); line-height: 1.6;" data-i18n="tools.pdf.compress.text.056">
-              The quality impact depends on your chosen compression level. "High Quality" mode reduces file size by 10-20% with virtually no visible quality loss. "Balanced" mode (30-50% reduction) maintains good readability, while "Maximum" mode (50-80% reduction) is best for documents where file size matters more than visual fidelity.
-            </div>
-          </details>
+          <h2>When to use another approach</h2>
+          <p>For image-heavy scanned PDFs, the largest savings usually require image downsampling, recompression, OCR-aware processing, or a dedicated PDF optimizer. This NovaTools implementation does not currently perform those operations.</p>
 
-          <details style="margin-bottom: 0.75rem; background: var(--surface-default); border-radius: var(--radius-md);">
-            <summary style="padding: 1rem; cursor: pointer; font-weight: 500; color: var(--text-primary);" data-i18n="tools.pdf.compress.text.057">Is my data safe when compressing PDFs online?</summary>
-            <div style="padding: 0 1rem 1rem; color: var(--text-secondary); line-height: 1.6;" data-i18n="tools.pdf.compress.text.058">
-              Yes, your files are completely secure. Our PDF compressor works entirely in your browser using client-side technology. Your documents are never uploaded to our servers or stored anywhere, ensuring maximum privacy for your sensitive information.
-            </div>
-          </details>
+          <h2>Privacy boundary</h2>
+          <p>The PDF file itself is processed in your browser for this operation. The website may separately load consent-controlled analytics or advertising services and public site assets; those services are not used to process the contents of the selected PDF.</p>
 
-          <details style="margin-bottom: 0.75rem; background: var(--surface-default); border-radius: var(--radius-md);">
-            <summary style="padding: 1rem; cursor: pointer; font-weight: 500; color: var(--text-primary);" data-i18n="tools.pdf.compress.text.059">What is the maximum file size I can compress?</summary>
-            <div style="padding: 0 1rem 1rem; color: var(--text-secondary); line-height: 1.6;" data-i18n="tools.pdf.compress.text.060">
-              You can compress PDF files up to 50MB in size. This limit accommodates most documents including large reports, presentations, and scanned files while ensuring fast processing directly in your browser.
-            </div>
-          </details>
+          <h2>Frequently asked questions</h2>
+          <h3>How much smaller will my PDF become?</h3>
+          <p>There is no guaranteed reduction. The result depends on the source PDF and can be smaller, similar in size, or larger.</p>
+          <h3>Does “maximum compression” lower image quality?</h3>
+          <p>No such preset is offered because the current implementation does not downsample page images. The interface exposes only the structural operation that the code actually performs.</p>
+          <h3>Are my PDF pages uploaded to NovaTools?</h3>
+          <p>Not for this PDF operation. The file is read by browser JavaScript and the output is generated locally.</p>
         </article>
+
+        <aside class="trust-help" aria-labelledby="review-title">
+          <h2 id="review-title">Before you use the output</h2>
+          <ul>
+            <li>Keep the original PDF until you have verified the optimized copy.</li>
+            <li>Check page order, text rendering, links, forms and signatures that matter to your workflow.</li>
+            <li>If the output is larger, keep the original; the tool does not claim that every file can be reduced.</li>
+            <li>Protected or malformed PDFs can fail to load and should not be bypassed by weakening security checks.</li>
+          </ul>
+        </aside>
+
+        <nav class="related-tools" aria-labelledby="related-title">
+          <h2 id="related-title">Related PDF tools</h2>
+          <div class="related-tools-grid">
+            <a class="related-tool-link" href="/tools/pdf/merge/">Merge PDFs</a>
+            <a class="related-tool-link" href="/tools/pdf/split/">Split PDF</a>
+            <a class="related-tool-link" href="/tools/pdf/metadata/">PDF metadata</a>
+          </div>
+        </nav>
       </div>
-
-
-        <section class="tool-support-content" aria-labelledby="toolSupportTitle">
-          <div>
-            <h2 id="toolSupportTitle">PDF compression workflow guide</h2>
-            <p>This tool helps reduce a PDF file size for email, uploads, archiving, or sharing when the original document is larger than needed.</p>
-          </div>
-          <div class="tool-support-grid">
-            <div class="tool-support-card">
-              <h3>How to use it</h3>
-              <ol>
-              <li>Upload one PDF and confirm it is the right file.</li>
-              <li>Choose a quality level based on your size target.</li>
-              <li>Run compression, compare the result, then download the new file.</li>
-              </ol>
-            </div>
-            <div class="tool-support-card">
-              <h3>Privacy and trust note</h3>
-              <p>The page is intended for browser-based file handling. For sensitive contracts, IDs, medical, or legal files, test with a non-sensitive copy first and review the downloaded result before sharing.</p>
-            </div>
-            <div class="tool-support-card">
-              <h3>Common mistakes</h3>
-              <ul>
-              <li>Expecting large scanned PDFs to shrink like text-based PDFs; scanned images may need OCR or image optimization first.</li>
-              <li>Choosing maximum compression when readability matters.</li>
-              <li>Sharing the compressed file without opening it once to check page order and visual quality.</li>
-              </ul>
-            </div>
-          </div>
-          <div class="tool-next-step">
-            <span>Need searchable text next? Try PDF to Text after compression.</span>
-            <a href="https://mc-novatools.com/tools/pdf/pdf-to-text/">Open related tool →</a>
-          </div>
-        </section>
-        <section class="trust-help novatools-tool-reading-path" aria-labelledby="toolReadingPathTitle">
-          <h2 id="toolReadingPathTitle">Recommended next reading</h2>
-          <p>Use these practical guides to understand when this tool is the right choice, what to check before exporting, and which workflow usually comes next.</p>
-          <div class="related-tools-grid"><a class="related-tool-link" href="https://mc-novatools.com/blog/articles/five-minute-pdf-cleanup-workflow.html">PDF cleanup workflow</a><a class="related-tool-link" href="https://mc-novatools.com/blog/articles/compress-pdf-for-email-without-ruining-readability.html">Compress PDF for email</a></div>
-        </section>
     </main>
-
-    <footer class="tool-footer">
-  <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="mailto:psk.dan.metehancetin@mc-novatools.com" data-i18n="tools.pdf.compress.text.020">psk.dan.metehancetin@mc-novatools.com</a></p>
-  <p data-i18n="tools.pdf.compress.text.021">Estimates only &mdash; not financial, legal, or tax advice.</p>
-</footer>
-<style>
-.tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }
-.tool-footer a { color: #00D9FF; text-decoration: none; }
-</style>
   </div>
-<script type="module" src="/src/tools/pdf/compress/logic.mjs"></script>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  var dropzone = document.getElementById('dropzone');
-  var fileInput = document.getElementById('fileInput');
-  var fileInfoCard = document.getElementById('fileInfoCard');
-  var fileName = document.getElementById('fileName');
-  var fileSize = document.getElementById('fileSize');
-  var qualitySelector = document.getElementById('qualitySelector');
-  var compressStatusRegion = document.getElementById('compressStatusRegion');
-  var emptyState = document.getElementById('emptyState');
 
-  function announce(msg) {
-    if (compressStatusRegion) compressStatusRegion.textContent = msg;
-  }
-
-  function formatSize(bytes) {
-    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
-    return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
-  }
-
-  function showSelectedFile(file) {
-    if (!file) return;
-    if (fileName) fileName.textContent = file.name;
-    if (fileSize) fileSize.textContent = formatSize(file.size);
-    if (fileInfoCard) fileInfoCard.classList.add('visible');
-    if (qualitySelector) qualitySelector.classList.add('visible');
-    if (emptyState) emptyState.classList.remove('visible');
-    announce(file.name + ' selected. Choose quality and start compression.');
-  }
-
-  if (dropzone && fileInput) {
-    dropzone.addEventListener('click', function(e) {
-      if (e.target !== fileInput) fileInput.click();
-    });
-    dropzone.addEventListener('keydown', function(e) {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        fileInput.click();
-      }
-    });
-    fileInput.addEventListener('change', function() {
-      if (fileInput.files && fileInput.files[0]) showSelectedFile(fileInput.files[0]);
-    });
-    dropzone.addEventListener('dragover', function(e) { e.preventDefault(); dropzone.classList.add('drag-active'); });
-    dropzone.addEventListener('dragleave', function() { dropzone.classList.remove('drag-active'); });
-    dropzone.addEventListener('drop', function(e) {
-      e.preventDefault();
-      dropzone.classList.remove('drag-active');
-      var dropped = e.dataTransfer && e.dataTransfer.files ? e.dataTransfer.files[0] : null;
-      if (!dropped) return;
-      fileInput.files = e.dataTransfer.files;
-      showSelectedFile(dropped);
-    });
-  }
-
-  var qualityInput = document.getElementById('qualityInput');
-  document.querySelectorAll('.quality-option').forEach(function(option) {
-    option.addEventListener('click', function() {
-      document.querySelectorAll('.quality-option').forEach(function(el) { el.classList.remove('selected'); });
-      option.classList.add('selected');
-      if (qualityInput) qualityInput.value = option.getAttribute('data-quality') || 'balanced';
-    });
-  });
-
-  var menuBtn = document.getElementById('mobileMenuBtn');
-  var mobileMenu = document.getElementById('mobileMenu');
-  if (menuBtn && mobileMenu) {
-    menuBtn.addEventListener('click', function() {
-      var isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
-      menuBtn.setAttribute('aria-expanded', !isExpanded);
-      mobileMenu.hidden = isExpanded;
-      mobileMenu.classList.toggle('active', !isExpanded);
-    });
-  }
-  var themeBtn = document.getElementById('themeToggle');
-  if (themeBtn) {
-    function getTheme() {
-      var s = localStorage.getItem('theme');
-      if (s) return s;
-      return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-    }
-    function updateIcon() {
-      var t = getTheme();
-      themeBtn.querySelector('.icon-sun').style.display = t === 'light' ? 'none' : 'block';
-      themeBtn.querySelector('.icon-moon').style.display = t === 'dark' ? 'none' : 'block';
-    }
-    themeBtn.addEventListener('click', function() {
-      var next = getTheme() === 'dark' ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', next);
-      localStorage.setItem('theme', next);
-      updateIcon();
-    });
-    updateIcon();
-  }
-});
-</script>
-
-  <aside class="topical-authority-links" data-topical-authority-links style="max-width: 900px; margin: 2rem auto; padding: 1rem; border: 1px solid var(--border-default, var(--color-border, #334155)); border-radius: 16px; background: var(--surface-default, var(--color-surface, #101827));">
-    <strong>Plan the full workflow:</strong>
-    <a href="/guides/complete-pdf-workflow">Complete PDF workflow guide</a>
-    <span aria-hidden="true"> · </span>
-    <a href="/guides/articles/reduce-pdf-file-size-without-quality-loss">PDF file size reduction checklist</a>
-  </aside>
+  <script type="module" src="./logic.mjs"></script>
 </body>
 </html>
