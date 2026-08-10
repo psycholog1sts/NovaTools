@@ -45,6 +45,9 @@ jobs:
       - name: Run live-data regression tests
         run: node tests/live-data-regressions.mjs
 
+      - name: Compile Cloudflare Pages Functions
+        run: npx wrangler@latest pages functions build functions --outfile=/tmp/pages-functions-worker.js
+
       - name: Build
         run: npm run build
 
@@ -117,6 +120,9 @@ jobs:
 
       - name: Run live-data regression tests
         run: node tests/live-data-regressions.mjs
+
+      - name: Compile Cloudflare Pages Functions
+        run: npx wrangler@latest pages functions build functions --outfile=/tmp/pages-functions-worker.js
 
       - name: Build
         run: npm run build
