@@ -347,7 +347,7 @@ function renderCategories() {
         </div>
         <h3><a href="${getCategoryHref(category)}">${getCategoryName(category)}</a></h3>
         <p>${getCategoryDescription(category)}</p>
-        <div class="category-nav-card__links" aria-label="${getCategoryName(category)} popular tools">
+        <div class="category-nav-card__links" aria-label="${getCategoryName(category)} ${t('home.popularToolsAriaSuffix', 'popular tools')}">
           ${popularLinks.map((tool) => `<a href="${getToolHref(tool.slug)}">${t(`home.categoryPopularTools.${tool.key}`, tool.label)}</a>`).join('')}
         </div>
       </article>
