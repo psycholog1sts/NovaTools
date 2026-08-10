@@ -189,6 +189,7 @@ for (const locale of ['en', 'tr']) {
 }
 
 const toolEnhancer = read('src/js/tool-page-enhancer.js');
+const seoRuntime = read('src/js/seo.js');
 assert.match(toolEnhancer, /const ENHANCER_COPY = \{/, 'Late tool-page UI must use a shared locale copy dictionary.');
 assert.match(
   toolEnhancer,
@@ -229,6 +230,26 @@ assert.match(
   toolEnhancer,
   /Breadcrumb: 'İçerik yolu'/,
   'Generated breadcrumb accessibility labels must have Turkish copy.'
+);
+assert.match(
+  toolEnhancer,
+  /data-enhancer-category/,
+  'Generated breadcrumb category labels must be refreshable on language changes.'
+);
+assert.match(
+  toolEnhancer,
+  /element\.textContent = categoryName\(element\.dataset\.enhancerCategory\)/,
+  'Language changes must regenerate visible category labels.'
+);
+assert.match(
+  seoRuntime,
+  /Ücretsiz Çevrim İçi \$\{categoryName\} Aracı/,
+  'Tool SEO metadata must use a Turkish title template.'
+);
+assert.match(
+  seoRuntime,
+  /Kayıt gerekmez\./,
+  'Turkish SEO descriptions must avoid English signup copy.'
 );
 assert.match(
   toolEnhancer,
