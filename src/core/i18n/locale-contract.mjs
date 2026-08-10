@@ -9,7 +9,11 @@ export function normalizeLocale(value) {
 }
 
 export function normalizePath(pathname = '/') {
-  const clean = `/${String(pathname || '/').split('?')[0].split('#')[0].replace(/^\/+|\/+$/g, '')}`;
+  const raw = pathname instanceof URL ? pathname.pathname : String(pathname || '/');
+  const pathOnly = /^https?:\/\//i.test(raw)
+    ? new URL(raw).pathname
+    : raw.split('?')[0].split('#')[0];
+  const clean = `/${pathOnly.replace(/^\/+|\/+$/g, '')}`;
   if (clean === '/') return '/';
   return /\.[a-z0-9]+$/i.test(clean) ? clean : `${clean}/`;
 }
