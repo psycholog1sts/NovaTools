@@ -1,6 +1,7 @@
 export const globalFooterLinks = {
   company: [
     { href: '/about-us.html', label: 'About Us' },
+    { href: '/pricing/', label: 'Pricing' },
     { href: '/contact.html', label: 'Contact' },
     { href: '/blog/index.html', label: 'Blog' },
     { href: '/sitemap.xml', label: 'Sitemap' }
