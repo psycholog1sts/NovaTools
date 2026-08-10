@@ -1,0 +1,7 @@
+{
+  "name": "vitest",
+  "version": "0.0.0-node-compat",
+  "private": true,
+  "type": "module",
+  "exports": "./index.mjs"
+}

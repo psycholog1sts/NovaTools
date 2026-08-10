@@ -1,337 +1,212 @@
+# MC NovaTools
 
-# NovaTools MC
+Privacy-first, browser-oriented utility tools for PDF, image, text, developer, finance, conversion, productivity, and related workflows.
 
-> High-CPC Utility Tools Platform. Privacy-first. USD Optimized. AdSense Ready.
+Production site: `https://mc-novatools.com/`
 
-[![Lighthouse](https://img.shields.io/badge/Lighthouse-CI%20local-brightgreen)](./lighthouserc.cjs)
-[![Zero Server](https://img.shields.io/badge/Server-Zero%20Processing-blue)](https://novatools.mc)
-[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
-[![AdSense](https://img.shields.io/badge/AdSense-Optimized-green)](https://novatools.mc)
+## Product principles
 
-## 🎯 Overview
+- **Browser-first processing:** user files and sensitive tool inputs should stay on the device wherever the tool can reasonably operate locally.
+- **No forced signup for Free:** existing public tools remain directly usable without an account.
+- **Utility before monetization:** tools should solve the user task first; advertising or future Pro surfaces must not block the core workflow.
+- **Honest claims:** no fabricated ratings, user counts, revenue/CPC claims, guarantees, or unsupported performance claims.
+- **Stable public routes:** preserve the existing Vite MPA URL, canonical, sitemap, hreflang, and category/tool routing contracts.
+- **Progressive architecture:** do not migrate the site to a SPA/framework rewrite merely to add monetization or account features.
 
-**NovaTools MC** is a high-CPC, privacy-first utility tools platform designed for maximum AdSense revenue. All processing happens in the browser—your data never leaves your device.
+## Current architecture
 
-### Key Features
+```text
+Public site
+  |
+  +-- Vite multi-page application
+  |     +-- static root/category/blog/tool HTML routes
+  |     +-- browser-side JavaScript modules
+  |     +-- browser-local file/tool processing where practical
+  |
+  +-- Cloudflare Pages production deploy
+        +-- dist/ build output
+        +-- public/_headers security/cache policy
+        +-- public/_redirects static rewrite/404 policy
 
-- 💰 **High-CPC Tools** - Mortgage, Insurance, Cloud Cost calculators ($2-8 CPC)
-- 🔒 **Zero Data Transmission** - Everything processes client-side (GDPR compliant)
-- 🎨 **Matrix Theme** - Hacker/cyber aesthetic with neon accents
-- 📱 **PWA Ready** - Works offline
-- ♿ **Accessible** - WCAG 2.1 AA compliant
-- 🌍 **Global English** - USD-focused, AdSense optimized
-
-## 🚀 High-CPC Tool Portfolio
-
-### Finance Tools (Premium CPC: $3-8)
-
-| Tool | CPC (US) | Description |
-|------|----------|-------------|
-| **Mortgage Refinance Calculator** | $5.50 | Compare rates & calculate savings |
-| **Life Insurance Estimator** | $8.50 | Payout & premium calculator |
-| **Cloud Cost Estimator** | $4.50 | AWS/GCP/Azure comparison |
-| **Retirement Planner** | $3.20 | 401k & IRA projections |
-| **Tax Estimator** | $3.80 | Federal & state tax calculator |
-| **Compound Interest** | $2.50 | Investment growth projection |
-
-### PDF Tools (CPC: $2-2.50)
-
-- PDF Merger
-- PDF Compressor
-- PDF Splitter
-
-### Image Tools (CPC: $1.2-1.8)
-
-- Image Compressor (WebP/AVIF)
-- Format Converter
-
-### Developer Tools (CPC: $1-1.50)
-
-- JSON Validator & Formatter
-- Regex Tester & Debugger
-
-## 🎨 Matrix Theme Design
-
-### Color Palette
-
-```css
---matrix-dark: #0a0a0a;        /* Deep black background */
---matrix-green: #00FF41;        /* Primary accent (Matrix Green) */
---matrix-cyan: #00F3FF;         /* Cyber Blue */
---matrix-blue: #0080FF;         /* Electric Blue */
---matrix-purple: #BD00FF;       /* Neon Purple */
---matrix-yellow: #FFD700;       /* Gold */
---matrix-red: #FF0040;          /* Neon Red */
---matrix-gray: #6B7280;         /* Text gray */
+Development / auxiliary delivery
+  +-- Vercel project connected to the same repository
+  +-- api/live-data.js Vercel-style Edge handler
 ```
 
-### Typography
+The authoritative DNS/origin path is operational configuration and must be verified before changing Cloudflare or Vercel production settings. The repository currently has both Cloudflare Pages and Vercel delivery surfaces, so they should not be treated as interchangeable without verification.
 
-- **Primary Font:** JetBrains Mono
-- **Backup:** Roboto Mono, monospace
-- **Style:** Terminal-inspired, code-like aesthetics
+## Privacy boundary
 
-## 📺 Ad Placement Strategy
+NovaTools is not accurately described by a global “no data ever leaves the device” statement.
 
-### Ad Slots
+- File-processing tools are designed to keep user files in the browser where technically practical.
+- Some tools use external/live-data providers and therefore make network requests for the requested public data.
+- Google Analytics/AdSense-related code is consent-controlled where configured.
+- Future account, entitlement, and billing features will necessarily process limited account/billing metadata server-side while keeping user file contents local by default.
 
-| Placement | Size | Device | CPC Optimization |
-|-----------|------|--------|------------------|
-| **Top Banner** | 728x90 / Responsive | All | Finance tools ($3-5) |
-| **Sidebar** | 336x280 | Desktop | All tools (sticky) |
-| **Medium Rectangle** | 300x250 | All | Between tool cards |
-| **Anchor** | 320x50 | Mobile | Fixed bottom |
+Do not log or send file contents, filenames, pasted document content, generated secrets, tokens, passwords, or other sensitive tool inputs to product analytics.
 
-### AdSense Integration
+## Technology
 
-```html
-<!-- Top Banner -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-     data-ad-slot="BANNER_SLOT_ID"
-     data-ad-format="horizontal"
-     data-full-width-responsive="true"></ins>
+- Node.js 22 contract
+- npm
+- Vite 5
+- Vanilla JavaScript / ES modules
+- Multi-page application (MPA)
+- Tailwind/PostCSS
+- `pdf-lib`
+- `decimal.js`
+- `zod`
+- Lighthouse CI
+- custom build, SEO, sitemap, RSS, performance, route, and AdSense-readiness scripts
 
-<!-- Sidebar (336x280) -->
-<ins class="adsbygoogle"
-     style="display:inline-block;width:336px;height:280px"
-     data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-     data-ad-slot="SIDEBAR_SLOT_ID"></ins>
+See `package.json` for the current dependency and script source of truth.
 
-<!-- Anchor (320x50) -->
-<ins class="adsbygoogle"
-     style="display:inline-block;width:320px;height:50px"
-     data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-     data-ad-slot="ANCHOR_SLOT_ID"></ins>
-```
+## Development
 
-## 🚀 Quick Start
+Use Node 22 and the repository npm version contract.
 
 ```bash
-# Install dependencies
-npm install
-
-# Start development server
+npm ci --include=optional
 npm run dev
+```
 
-# Build for production
-npm run build
+Core validation:
 
-# Run tests
+```bash
+npm run lint
 npm test
-
-# Run the same pre-merge validation sequence used by PR checks
-npm run ci:validate
-
-# Lighthouse CI
-npm run lighthouse
-```
-
-## 📁 Project Structure
-
-```
-zero-tools-platform/
-├── src/
-│   ├── components/          # Reusable Web Components
-│   │   └── ui/
-│   │       ├── file-dropzone.mjs
-│   │       └── index.mjs
-│   ├── core/                # Core utilities
-│   │   ├── ads/             # AdSense configuration
-│   │   ├── ai/              # AI & Machine Learning
-│   │   ├── auth/            # WebAuthn & passkeys
-│   │   ├── compute/         # WebGPU acceleration
-│   │   ├── crypto/          # Post-quantum cryptography
-│   │   ├── monetization/    # Header bidding
-│   │   ├── optimization/    # Self-healing
-│   │   ├── router.mjs
-│   │   └── index.mjs
-│   ├── styles/
-│   │   ├── critical.css     # Matrix theme critical CSS
-│   │   └── main.css
-│   └── tools/               # Tool implementations
-│       ├── finance/         # High-CPC finance tools
-│       │   ├── mortgage-refinance/
-│       │   ├── life-insurance/
-│       │   ├── cloud-cost/
-│       │   ├── compound-interest/
-│       │   ├── retirement/
-│       │   └── tax/
-│       ├── pdf/
-│       ├── image/
-│       └── dev/
-├── static/                  # Static assets
-├── dist/                    # Build output
-├── tools-manifest.json      # CPC data, ad config
-├── tailwind.config.js       # Matrix theme colors
-├── vite.config.js           # Build configuration
-└── vercel.json              # Static deployment
-```
-
-## 🏗️ Architecture
-
-### Zero-Server Design
-
-```
-┌─────────────────────────────────────┐
-│           Client Browser            │
-│  ┌─────────────────────────────┐   │
-│  │  Vite-built Static Assets   │   │
-│  │  ├── HTML Entry Points      │   │
-│  │  ├── JS Chunks (vendor/*)   │   │
-│  │  ├── CSS (Matrix Theme)     │   │
-│  │  └── WASM (pdf-lib, etc)    │   │
-│  └─────────────────────────────┘   │
-│              ↓                      │
-│  ┌─────────────────────────────┐   │
-│  │  Service Worker (PWA)       │   │
-│  │  └── Caches assets offline  │   │
-│  └─────────────────────────────┘   │
-└─────────────────────────────────────┘
-              │
-              │ NO DATA TRANSMISSION
-              ▼
-┌─────────────────────────────────────┐
-│         CDN (Vercel/CF)             │
-│  └── Only serves static files       │
-└─────────────────────────────────────┘
-```
-
-## 🎨 Styling
-
-### CSS Architecture
-
-```css
-/* critical.css - Matrix theme, inline in <head> */
-/* 10KB budget - Above-fold only */
-
-/* Component styles - Lazy loaded */
-/* Matrix card glow effects */
-
-/* Tailwind - Purged and minified */
-/* Matrix color utilities */
-```
-
-### Matrix Card Component
-
-```html
-<a href="/tools/finance/mortgage-refinance/" 
-   class="card matrix-card hover:glow-green transition-all">
-  <div class="card-body">
-    <h3 class="font-mono text-white">Mortgage Refinance</h3>
-    <p class="text-matrix-gray">Compare rates & calculate savings</p>
-  </div>
-</a>
-```
-
-## 📊 Performance Budgets
-
-| Metric | Budget | Current |
-|--------|--------|---------|
-| FCP | < 1.2s | ~0.8s |
-| LCP | < 2.5s | ~1.5s |
-| CLS | < 0.1 | ~0.02 |
-| TTI | < 3.5s | ~2.1s |
-| CSS | < 10KB | ~8KB |
-| JS (initial) | < 100KB | ~85KB |
-
-## 🧪 Testing
-
-```bash
-# Unit tests
-npm run test:unit
-
-# Coverage
-npm run test:coverage
-
-# Lighthouse CI
-npm run lighthouse
-
-# Manual testing
-npm run preview
-```
-
-## 📈 Analytics
-
-Privacy-first, cookie-free Fathom Analytics:
-
-- No cookies
-- No personal data
-- GDPR compliant
-- Event tracking only
-
-```html
-<script src="https://cdn.usefathom.com/script.js" data-site="NOVATOOLS" defer></script>
-```
-
-
-## 🔎 Search indexing operations
-
-The public sitemap and one-URL-per-line export are generated from the current route sources:
-
-```bash
-npm run build:sitemap
+npm run build
+npm run audit:public-routes
 npm run lint:site-links
+npm run ci:validate
 ```
 
-- `sitemap.xml` and `public/sitemap.xml` are the XML files to deploy and submit once in Google Search Console.
-- `site-links.txt` is the matching plain-text URL export for audits and controlled batch workflows.
-- `indexing.cjs` can dry-run or submit selected URL chunks to Google Indexing API without storing credentials in the repository.
+Additional checks are available for sitemap, RSS, structured data, media dimensions, blog routes/content, performance budgets, critical CSS, algorithm resilience, and AdSense readiness. Do not remove existing quality gates without a measured replacement.
 
-See [Google Search Console sitemap and Indexing API workflow](./docs/google-search-console-indexing.md) for setup, quota-safe chunking, and the official Indexing API scope warning.
+## Build and routing
 
-## 🚢 Deployment
+The site is a Vite MPA. Static routes are explicit build inputs and are post-processed by repository scripts.
 
-### Vercel (Recommended)
+Important route constraints:
 
-```bash
-# Deploy to Vercel
-vercel --prod
-```
+- Do not convert navigation to a generic client-side SPA router.
+- Do not silently change clean URL behavior.
+- Preserve canonical host and sitemap contracts.
+- Treat locale route behavior as a coordinated SEO/routing concern rather than a runtime-only translation feature.
+
+## Deployment
 
 ### Cloudflare Pages
 
+The GitHub Actions production workflow builds and deploys `dist/` to Cloudflare Pages on `main`.
+
+Relevant files:
+
+```text
+.github/workflows/deploy.yml
+wrangler.toml
+public/_headers
+public/_redirects
+```
+
+Production DNS, SSL/TLS, WAF, cache rules, domain routing, and nameserver changes are operationally sensitive and should be verified in the Cloudflare dashboard before modification.
+
+### Vercel
+
+A Vercel project is also connected to this repository and has production/preview deployments. This is an auxiliary/duplicated delivery surface until the authoritative domain path is explicitly documented.
+
+Do not introduce behavior that works only on Vercel while assuming it also works on Cloudflare Pages. In particular, verify the production execution path of `api/live-data.js` before treating it as a Cloudflare API route.
+
+## Live data
+
+`api/live-data.js` currently contains adapters for public data sourced from providers such as TCMB, CoinGecko, Open-Meteo, and a Yahoo Finance endpoint.
+
+Before expanding this surface, verify:
+
+- provider terms and attribution
+- rate limits
+- explicit upstream timeouts
+- caching/freshness requirements
+- error sanitization
+- production runtime/routing on the actual origin
+
+Finance outputs are informational estimates and are not investment advice.
+
+## SEO and content rules
+
+- Prioritize helpful, accurate user-facing content over keyword volume.
+- Do not create doorway pages or thousands of thin parameter variants.
+- Structured data must match visible, real content.
+- Do not publish `aggregateRating` without real, visible rating data.
+- Claims such as percentages, performance improvements, security guarantees, and tool counts require evidence or a reliable source of truth.
+- Core Web Vitals work should use current metrics: LCP, INP, and CLS. Lighthouse is lab data, not field performance proof.
+
+## Security
+
+Current Cloudflare static header policy is maintained in `public/_headers`; Vite dev/preview also defines security headers.
+
+Security changes should be incremental and tested. In particular, CSP currently relies on inline-script/style allowances, so removing `'unsafe-inline'` requires an inventory and staged migration rather than a blind enforcement change.
+
+Never commit:
+
+- API tokens
+- private keys
+- database passwords
+- service-role credentials
+- billing secrets
+- webhook secrets
+- production `.env` files
+
+## Testing expectations
+
+For changes that touch public routes, SEO, tool behavior, or deployment, run the relevant subset of:
+
 ```bash
-# Build
+npm run lint
+npm test
 npm run build
-
-# Deploy
-cd dist && npx wrangler pages deploy .
+npm run ci:validate
+npm run audit:public-routes
+npm run lint:site-links
+npm run lighthouse:ci
 ```
 
-## 📊 Revenue Optimization
+A change is not considered verified merely because the workflow UI is green when a step is configured with `continue-on-error`. Record the actual result and threshold.
 
-### Header Bidding (Optional)
+## Monetization direction
 
-```javascript
-// Prebid.js integration for higher CPM
-import { initHeaderBidding } from './src/core/monetization/header-bidding.mjs';
+The intended evolution is Free + Pro without breaking the Free product.
 
-initHeaderBidding({
-  bidders: ['appnexus', 'openx', 'rubicon'],
-  timeout: 2000
-});
-```
+Free remains focused on direct single-task utility workflows. Pro should add workflow value such as batch processing, saved presets, workflow chaining, bulk export, practical higher limits, and an ad-free experience.
 
-### Ad Refresh Strategy
+The public Vite MPA should remain isolated from the future authenticated control plane so an auth/billing outage does not take down Free tools.
 
-- Refresh ads every 60 seconds on active tools
-- Higher CPM for finance tool impressions
-- Sticky sidebar for maximum viewability
+Planned control-plane responsibilities may include:
 
-## 📝 License
+- identity verification
+- checkout/portal creation
+- subscription normalization
+- entitlements
+- safe usage counters
+- consent-aware product events
+- health checks
+- webhook ingestion and reconciliation
 
-[MIT License](./LICENSE) © NovaTools MC
+User file contents should not be moved into this control plane by default.
 
-## ⚠️ Disclaimer
+## Documentation
 
-This platform provides calculators for informational purposes only. Results are estimates and should not be considered financial advice. Consult a qualified professional for financial decisions.
+Key repository guidance:
 
----
+- `AGENTS.md` — contributor and stability guardrails
+- `docs/revenue/pro-platform-baseline.md` — monetization/control-plane baseline
+- `docs/` — architecture, SEO, performance, operations, and project plans
 
-<p align="center">
-  <strong>🔒 Your data stays in your browser. Always.</strong><br>
-  <span class="font-mono">$ echo "Privacy is not a feature, it's a foundation."</span>
-</p>
-# Deploy Trigger
+## License
+
+MIT. The repository is currently private; the presence of an MIT license does not by itself mean the source repository is publicly distributed.
+
+## Disclaimer
+
+Calculators and live-data tools provide informational or planning-oriented outputs. Users should independently verify results where financial, legal, medical, or other high-stakes decisions are involved.

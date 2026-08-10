@@ -1,10 +1,12 @@
 import legalContent from './i18n/legal.json';
 import { initConsentManager } from './core/consent-manager.mjs';
+import { sanitizeClaimValue } from './core/trust/public-claim-policy.mjs';
 import { initAnalytics } from './js/analytics.js';
 
 const SUPPORTED_LANGUAGES = ['en', 'tr', 'de', 'fr', 'es', 'pt', 'ru', 'zh', 'ja', 'ko', 'ar', 'hi', 'it', 'pl', 'nl'];
 const PATH_PREFIX_LANGUAGES = [];
 const RTL_LANGUAGES = ['ar'];
+const SAFE_LEGAL_CONTENT = sanitizeClaimValue(legalContent);
 
 const PAGE_FILES = {
   about: 'about-us.html',
@@ -114,7 +116,7 @@ function updateSchema(page, key, lang) {
   const schema = {
     '@context': 'https://schema.org',
     '@graph': [
-      { '@type': 'Organization', '@id': 'https://mc-novatools.com/#organization', name: 'MC NovaTools', url: 'https://mc-novatools.com', email: legalContent.en.common.email, founder: { '@type': 'Person', name: 'Metehan ÇETİN, LPC' } },
+      { '@type': 'Organization', '@id': 'https://mc-novatools.com/#organization', name: 'MC NovaTools', url: 'https://mc-novatools.com', email: SAFE_LEGAL_CONTENT.en.common.email, founder: { '@type': 'Person', name: 'Metehan ÇETİN' } },
       { '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mc-novatools.com/' }, { '@type': 'ListItem', position: 2, name: page.title, item: `https://mc-novatools.com${path}` }] },
       { '@type': key === 'contact' ? 'ContactPage' : 'WebPage', name: page.title, url: `https://mc-novatools.com${path}`, description: page.metaDescription, inLanguage: lang }
     ]
@@ -139,7 +141,7 @@ function setupContactForm(formContent) {
     const data = new FormData(form);
     const subject = encodeURIComponent(`MC NovaTools - ${data.get('subject')}`);
     const body = encodeURIComponent(`Name: ${data.get('name')}\nEmail: ${data.get('email')}\nSubject: ${data.get('subject')}\n\nMessage:\n${data.get('message')}`);
-    window.location.href = `mailto:${legalContent.en.common.email}?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:${SAFE_LEGAL_CONTENT.en.common.email}?subject=${subject}&body=${body}`;
     status.textContent = formContent.success;
   });
 }
@@ -147,7 +149,7 @@ function setupContactForm(formContent) {
 function render() {
   const lang = currentLanguage();
   const key = pageKey();
-  const localized = legalContent[lang] || legalContent.en;
+  const localized = SAFE_LEGAL_CONTENT[lang] || SAFE_LEGAL_CONTENT.en;
   const page = localized.pages[key];
   setMeta(page, lang, key);
   renderBreadcrumb(localized.common, page, key, lang);

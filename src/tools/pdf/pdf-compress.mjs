@@ -1,74 +1,63 @@
 /**
- * PDF Compressor Tool
- * Compresses PDF by optimizing images and structure
+ * PDF structural optimizer used by the shared tool controller.
+ * Rewrites the PDF with object streams; it does not downsample page images.
  */
 
 const PDFLib = window.PDFLib;
 
 /**
- * Compress PDF
+ * Optimize PDF structure.
  * @param {Object} inputs - Tool inputs
- * @returns {Promise<Object>} Compression results
+ * @returns {Promise<Object>} Optimization results
  */
 export async function pdfCompressor(inputs) {
   const file = inputs.file;
-  const quality = inputs.quality || 'medium';
 
-  if (!file) {
-    throw new Error('No PDF file provided');
-  }
+  if (!file) throw new Error('No PDF file provided');
 
   const originalSize = file.size;
   const arrayBuffer = await file.arrayBuffer();
-
-  // Load PDF
-  const pdfDoc = await PDFLib.PDFDocument.load(arrayBuffer, {
-    updateMetadata: false
-  });
-
-  // Compression settings based on quality
-  const compressionSettings = {
-    low: { quality: 0.3, scale: 0.5 },
-    medium: { quality: 0.6, scale: 0.75 },
-    high: { quality: 0.8, scale: 0.9 }
-  };
-
-  const _settings = compressionSettings[quality];
-
-  // Try to compress embedded images
-  // Note: pdf-lib doesn't have direct image compression, so we save with optimization
-  const compressedBytes = await pdfDoc.save({
+  const pdfDoc = await PDFLib.PDFDocument.load(arrayBuffer, { updateMetadata: false });
+  const outputBytes = await pdfDoc.save({
     useObjectStreams: true,
     addDefaultPage: false,
     preserveExistingEncryption: false
   });
 
-  const blob = new Blob([compressedBytes], { type: 'application/pdf' });
-  const compressedSize = blob.size;
-  const savings = ((originalSize - compressedSize) / originalSize) * 100;
+  const blob = new Blob([outputBytes], { type: 'application/pdf' });
+  const outputSize = blob.size;
+  const sizeChangePercent = originalSize > 0
+    ? round(((outputSize - originalSize) / originalSize) * 100)
+    : 0;
+  const legacySavingsPercent = round(-sizeChangePercent);
 
   return {
     file: blob,
-    filename: `compressed_${file.name}`,
+    filename: `optimized_${file.name}`,
     originalSize,
-    compressedSize,
-    savings: Math.max(0, round(savings)),
-    html: formatCompressResult(originalSize, compressedSize, savings, blob)
+    outputSize,
+    sizeChangePercent,
+    // Transitional compatibility aliases for callers of the previous controller contract.
+    // `savings` is intentionally signed: a larger output produces a negative value.
+    compressedSize: outputSize,
+    savings: legacySavingsPercent,
+    html: formatOptimizeResult(originalSize, outputSize, sizeChangePercent, blob)
   };
 }
 
-/**
- * Format result as HTML
- */
-function formatCompressResult(originalSize, compressedSize, savings, blob) {
+function formatOptimizeResult(originalSize, outputSize, sizeChangePercent, blob) {
   const url = URL.createObjectURL(blob);
   const formatBytes = (bytes) => {
-    if (bytes < 1024) return `${bytes  } B`;
-    if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(2)  } KB`;
-    return `${(bytes / (1024 * 1024)).toFixed(2)  } MB`;
+    if (bytes < 1024) return `${bytes} B`;
+    if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(2)} KB`;
+    return `${(bytes / (1024 * 1024)).toFixed(2)} MB`;
   };
 
-  const actualSavings = Math.max(0, savings);
+  const changeLabel = sizeChangePercent < -0.05
+    ? `${Math.abs(sizeChangePercent).toFixed(1)}% smaller`
+    : sizeChangePercent > 0.05
+      ? `${sizeChangePercent.toFixed(1)}% larger`
+      : 'Similar size';
 
   return `
     <div class="pdf-compress-results">
@@ -78,24 +67,22 @@ function formatCompressResult(originalSize, compressedSize, savings, blob) {
           <span class="result-label">Original Size</span>
         </div>
         <div class="result-card">
-          <span class="result-value">${formatBytes(compressedSize)}</span>
-          <span class="result-label">Compressed Size</span>
+          <span class="result-value">${formatBytes(outputSize)}</span>
+          <span class="result-label">Output Size</span>
         </div>
-        <div class="result-card ${actualSavings > 10 ? 'success' : ''}">
-          <span class="result-value">${actualSavings.toFixed(1)}%</span>
-          <span class="result-label">Space Saved</span>
+        <div class="result-card ${sizeChangePercent < -0.05 ? 'success' : ''}">
+          <span class="result-value">${changeLabel}</span>
+          <span class="result-label">Size Change</span>
         </div>
       </div>
-
-      <a href="${url}" download="compressed.pdf" class="btn btn-primary btn-lg">
-        📥 Download Compressed PDF
-      </a>
+      <p class="result-note">This structural rewrite does not downsample page images, so a smaller file is not guaranteed.</p>
+      <a href="${url}" download="optimized.pdf" class="btn btn-primary btn-lg">📥 Download Optimized PDF</a>
     </div>
   `;
 }
 
-function round(n) {
-  return Math.round(n * 100) / 100;
+function round(number) {
+  return Math.round(number * 100) / 100;
 }
 
 export default pdfCompressor;

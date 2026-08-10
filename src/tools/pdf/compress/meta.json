@@ -1,24 +1,20 @@
 {
   "id": "pdf-compress",
-  "name": "PDF Sıkıştırma",
+  "name": "PDF Optimizasyonu",
   "nameEn": "PDF Compressor",
   "category": "pdf",
   "tier": 2,
-  "cpc": {
-    "tr": 1.8,
-    "us": 2.5
-  },
   "keywords": {
     "tr": ["pdf sıkıştırma", "pdf boyut küçültme", "pdf optimizasyon", "compress pdf"],
     "en": ["pdf compression", "reduce pdf size", "optimize pdf", "compress pdf"]
   },
   "description": {
-    "tr": "PDF dosya boyutunu kalite kaybetmeden küçültün. OCR sonrası optimize edin.",
-    "en": "Reduce PDF file size without quality loss. Optimize after OCR."
+    "tr": "PDF yapısını tarayıcınızda pdf-lib ile yeniden yazar ve çıktı boyutunu karşılaştırır. Sayfa görsellerini küçültmez; boyut azalması garanti edilmez.",
+    "en": "Rewrite PDF structure in your browser with pdf-lib and compare the output size. Page images are not downsampled, so size reduction is not guaranteed."
   },
   "schema": {
     "@type": "WebApplication",
-    "applicationCategory": "UtilityApplication",
+    "applicationCategory": "UtilitiesApplication",
     "offers": {
       "@type": "Offer",
       "price": "0"
@@ -37,7 +33,7 @@
   },
   "bundle": {
     "vendor": "pdf-vendor",
-    "wasm": true,
+    "wasm": false,
     "lazyLoad": true
   },
   "relatedTools": [

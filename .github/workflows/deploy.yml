@@ -42,6 +42,12 @@ jobs:
       - name: Run tests
         run: npm test
 
+      - name: Run live-data regression tests
+        run: node tests/live-data-regressions.mjs
+
+      - name: Compile Cloudflare Pages Functions
+        run: npx wrangler@latest pages functions build functions --outfile=/tmp/pages-functions-worker.js
+
       - name: Build
         run: npm run build
 
@@ -68,9 +74,8 @@ jobs:
       - name: Install dependencies
         run: npm ci --include=optional
 
-      - name: Run dependency security audit
-        run: npm audit --audit-level=high --omit=dev
-        continue-on-error: true
+      - name: Audit dependencies
+        run: node scripts/audit-dependencies.mjs
 
   production-deploy:
     name: Build, deploy, and audit production
@@ -112,6 +117,12 @@ jobs:
 
       - name: Run tests
         run: npm test
+
+      - name: Run live-data regression tests
+        run: node tests/live-data-regressions.mjs
+
+      - name: Compile Cloudflare Pages Functions
+        run: npx wrangler@latest pages functions build functions --outfile=/tmp/pages-functions-worker.js
 
       - name: Build
         run: npm run build

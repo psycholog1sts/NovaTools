@@ -7,23 +7,28 @@
   "packageManager": "npm@10.2.4",
   "scripts": {
     "dev": "node ./node_modules/vite/bin/vite.js",
-    "build": "node ./node_modules/vite/bin/vite.js build && npm run build:fix-paths && npm run build:inline-critical-css && npm run build:structured-data",
+    "build": "node ./node_modules/vite/bin/vite.js build && npm run build:fix-paths && npm run build:pricing-route && npm run build:inline-critical-css && npm run build:structured-data && npm run build:trust",
     "build:fix-paths": "node scripts/post-build-fix.mjs",
+    "build:pricing-route": "node scripts/build-pricing-route.mjs",
+    "build:trust": "node scripts/normalize-public-trust.mjs",
     "build:analyze": "node ./node_modules/vite/bin/vite.js build --mode analyze",
     "preview": "node ./node_modules/vite/bin/vite.js preview",
     "lint": "eslint src/",
     "lint:fix": "eslint src/ --fix",
-    "test": "node tests/tool-validation.mjs && node tests/site-regressions.mjs",
-    "ci:validate": "npm run lint && npm run lint:media-dimensions && npm run lint:blog-outlines && npm run lint:blog-seed && npm run build:blog-images && npm run lint:blog-images && npm test && npm run audit:adsense && npm run audit:algorithm-resilience && npm run build && npm run lint:performance-budget && npm run lint:critical-css && npm run lint:rss && npm run lint:site-links && npm run audit:public-routes",
-    "test:unit": "node tests/tool-validation.mjs && node tests/site-regressions.mjs",
-    "test:watch": "node tests/tool-validation.mjs && node tests/site-regressions.mjs",
-    "test:coverage": "node tests/tool-validation.mjs && node tests/site-regressions.mjs",
+    "test": "node tests/tool-validation.mjs && node tests/site-regressions.mjs && node tests/public-claim-policy.mjs && node tests/pdf-compressor-trust.mjs && node tests/product-event-privacy.mjs && node tests/pricing-surface.mjs && node tests/auth-config-contract.mjs && node tests/entitlement-contract.mjs && node tests/cloudflare-entitlement-endpoint.mjs && npm run test:legacy-core",
+    "test:legacy-core": "node --import ./tests/setup.mjs --test src/core/router.test.mjs src/core/analytics.test.mjs src/core/validation/schemas.test.mjs src/core/utils/dom.test.mjs src/core/utils/formatters.test.mjs src/core/utils/validation.test.mjs src/core/calculators/mortgage.test.mjs",
+    "test:control-plane": "node tests/entitlement-contract.mjs && node tests/cloudflare-entitlement-endpoint.mjs",
+    "ci:validate": "npm run lint && npm run lint:media-dimensions && npm run lint:blog-outlines && npm run lint:blog-seed && npm run build:blog-images && npm run lint:blog-images && npm test && npm run audit:client-env && npm run audit:adsense && npm run audit:algorithm-resilience && npm run build && npm run lint:performance-budget && npm run lint:critical-css && npm run lint:rss && npm run lint:site-links && npm run audit:public-routes",
+    "test:unit": "node tests/tool-validation.mjs && node tests/site-regressions.mjs && node tests/public-claim-policy.mjs && node tests/pdf-compressor-trust.mjs && node tests/product-event-privacy.mjs && node tests/pricing-surface.mjs && node tests/auth-config-contract.mjs && node tests/entitlement-contract.mjs && node tests/cloudflare-entitlement-endpoint.mjs && npm run test:legacy-core",
+    "test:watch": "npm run test:unit",
+    "test:coverage": "npm run test:unit",
     "lighthouse": "node ./node_modules/@lhci/cli/src/cli.js autorun --config=./lighthouserc.cjs",
     "lighthouse:local": "node ./node_modules/@lhci/cli/src/cli.js autorun --config=./lighthouserc.cjs && node ./node_modules/@lhci/cli/src/cli.js open --config=./lighthouserc.cjs",
     "prettier": "prettier --write \"src/**/*.{js,mjs,css,html}\"",
     "clean": "rimraf dist node_modules/.vite",
     "postinstall": "node scripts/postinstall.mjs",
-    "prebuild": "npm run lint:i18n && npm run build:blog-outlines && npm run build:blog-images && npm run lint:blog-images && npm run lint:media-dimensions && npm run lint:blog-seed && npm run lint:blog-routes && npm run build:sitemap && npm run build:rss && node scripts/generate-icons.mjs",
+    "prebuild": "npm run audit:client-env && npm run lint:i18n && npm run build:blog-outlines && npm run build:blog-images && npm run lint:blog-images && npm run lint:media-dimensions && npm run lint:blog-seed && npm run lint:blog-routes && npm run build:sitemap && npm run build:rss && node scripts/generate-icons.mjs",
+    "audit:client-env": "node scripts/audit-client-env.mjs",
     "audit:adsense": "node scripts/adsense-readiness-audit.mjs",
     "lint:i18n": "node scripts/lint-i18n.mjs",
     "build:sitemap": "node scripts/generate-localized-sitemap.mjs",
@@ -79,7 +84,7 @@
     "vite": "^5.1.0",
     "vite-plugin-pwa": "^0.19.0",
     "vite-plugin-static-copy": "^1.0.1",
-    "vitest": "^1.2.0"
+    "vitest": "file:tests/vitest-compat"
   },
   "optionalDependencies": {
     "@rollup/rollup-linux-x64-gnu": "^4.59.0"
@@ -99,7 +104,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/zero-tools/platform.git"
+    "url": "https://github.com/psycholog1sts/NovaTools.git"
   },
   "license": "MIT",
   "browserslist": [
