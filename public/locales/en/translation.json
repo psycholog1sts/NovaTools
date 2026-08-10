@@ -418,7 +418,8 @@
         "excerpt": "Understand where Base64 helps, where it adds overhead, and why it is not encryption.",
         "category": "Developer"
       }
-    }
+    },
+    "popularToolsAriaSuffix": "popular tools"
   },
   "footer": {
     "signature": "Metehan ÇETİN, LPC",
