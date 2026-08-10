@@ -6,7 +6,12 @@ import { globSync } from 'glob';
 const root = process.cwd();
 const files = [
   '.env.example',
-  ...globSync(['*.html', 'src/**/*.{js,mjs,ts,tsx,html}', 'public/**/*.{js,mjs,ts,tsx,html}'], {
+  ...globSync([
+    '*.html',
+    'src/**/*.{js,mjs,ts,tsx,html}',
+    'public/**/*.{js,mjs,ts,tsx,html}',
+    'functions/**/*.{js,mjs,ts,tsx}'
+  ], {
     cwd: root,
     nodir: true
   })
