@@ -47,6 +47,7 @@ const ENHANCER_COPY = {
   en: {},
   tr: {
     Home: 'Ana Sayfa',
+    Breadcrumb: 'İçerik yolu',
     Image: 'Görsel',
     Finance: 'Finans',
     Developer: 'Geliştirici',
@@ -132,6 +133,9 @@ function translateEnhancerText(value, language = enhancerLanguage()) {
   if (value.startsWith('How to Use ')) return `Nasıl Kullanılır: ${value.slice('How to Use '.length)}`;
   if (value.startsWith('Is ') && value.endsWith(' free to use?')) {
     return `${value.slice('Is '.length, -' free to use?'.length)} ücretsiz mi?`;
+  }
+  if (value.endsWith(' free to use?')) {
+    return `${value.slice(0, -' free to use?'.length)} ücretsiz mi?`;
   }
   const workflowSentence = 'Use this page as an input → action → result workflow with privacy notes, limitations and related next steps kept visible.';
   if (value.includes(workflowSentence)) {
@@ -278,7 +282,7 @@ function createHero(tool, slug) {
         <div>
           <span class="premium-tool-kicker">Professional utility workflow</span>
           <h1>${name}</h1>
-          <p>${textDescription(tool)} Use this page as an input → action → result workflow with privacy notes, limitations and related next steps kept visible.</p>
+          <p><span data-enhancer-description>${textDescription(tool)}</span> Use this page as an input → action → result workflow with privacy notes, limitations and related next steps kept visible.</p>
           <div class="premium-privacy-badge premium-privacy-badge--client">🔒 Browser-first where practical; review page notes for tools that need live data or external services.</div>
         </div>
       </div>
@@ -490,6 +494,19 @@ function enhanceWorkspace(tool, slug, { augmentContent = true } = {}) {
   });
 }
 
+function refreshLocalizedMetadata() {
+  const slug = activeScript()?.dataset.toolSlug || slugFromPath();
+  if (!slug) return;
+  const tool = findTool(slug) || { id: slug.replace('/', '-'), category: slug.split('/')[0], name: slug.split('/').pop().replace(/-/g, ' '), entry: `/tools/${slug}/` };
+  document.querySelectorAll('[data-enhancer-description]').forEach((element) => {
+    element.textContent = textDescription(tool);
+  });
+  updateMeta(tool, slug);
+  appendSchema(tool, slug);
+  appendFaqSchema(tool, slug);
+  localizeEnhancerSubtree(document);
+}
+
 function init() {
   const slug = activeScript()?.dataset.toolSlug || slugFromPath();
   if (!slug || document.body.dataset.premiumToolReady === 'true') return;
@@ -519,4 +536,4 @@ if (document.readyState === 'loading') {
   init();
 }
 
-window.addEventListener('languageChanged', () => localizeEnhancerSubtree(document));
+window.addEventListener('languageChanged', refreshLocalizedMetadata);
