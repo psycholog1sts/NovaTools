@@ -152,26 +152,9 @@ jobs:
         run: node scripts/smoke-cloudflare-pages.mjs
 
       - name: Diagnose custom-domain edge policy
-        shell: bash
-        run: |
-          set -euo pipefail
-          url="https://mc-novatools.com/api/health"
-          status="$(curl --silent --show-error --location --connect-timeout 5 --max-time 20 --dump-header /tmp/custom-domain.headers --output /tmp/custom-domain.body --write-out '%{http_code}' "$url" || true)"
-
-          if [ "$status" = "200" ]; then
-            node --input-type=module -e "import fs from 'node:fs'; const body = JSON.parse(fs.readFileSync('/tmp/custom-domain.body', 'utf8')); if (body.status !== 'ok' || Object.keys(body).length !== 1) process.exit(1);"
-            grep -Eqi '^x-request-id: [A-Za-z0-9][A-Za-z0-9._:-]{0,63}\r?$' /tmp/custom-domain.headers
-            exit 0
-          fi
-
-          if [ "$status" = "403" ] && grep -Eqi '^cf-mitigated: challenge\r?$' /tmp/custom-domain.headers; then
-            echo '::warning title=Cloudflare custom-domain WAF challenge::mc-novatools.com is serving a Managed Challenge to the CI probe. The deployed Pages origin is healthy; review Cloudflare WAF/Bot settings so health monitoring and intended crawlers are not challenged.'
-            exit 0
-          fi
-
-          echo "Unexpected custom-domain health response: HTTP $status" >&2
-          sed -n '1,40p' /tmp/custom-domain.headers >&2 || true
-          exit 1
+        env:
+          CUSTOM_DOMAIN_HEALTH_URL: https://mc-novatools.com/api/health
+        run: node scripts/diagnose-cloudflare-edge.mjs
 
       - name: Run deterministic local Lighthouse CI
         continue-on-error: true
