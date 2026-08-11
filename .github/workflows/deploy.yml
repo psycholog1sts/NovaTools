@@ -143,17 +143,42 @@ jobs:
         run: test -d dist && test -f dist/index.html
 
       - name: Deploy to Cloudflare Pages
-        run: npx --yes wrangler@4.114.0 pages deploy dist --project-name "$CLOUDFLARE_PROJECT_NAME" --branch main
+        run: npx --yes wrangler@4.114.0 pages deploy dist --project-name "$CLOUDFLARE_PROJECT_NAME" --branch main --commit-hash "$GITHUB_SHA"
 
-      - name: Smoke-test deployed Pages origin
+      - name: Resolve deployed Cloudflare Pages URLs
+        run: node scripts/resolve-cloudflare-pages-deployment.mjs
+
+      - name: Smoke-test deployed Pages origins
         shell: bash
         run: |
           set -euo pipefail
-          origin="https://${CLOUDFLARE_PROJECT_NAME}.pages.dev"
-          curl --silent --show-error --fail-with-body --location --retry 5 --retry-delay 3 --retry-all-errors --connect-timeout 5 --max-time 20 "$origin/" --output /dev/null
-          curl --silent --show-error --fail-with-body --location --retry 5 --retry-delay 3 --retry-all-errors --connect-timeout 5 --max-time 20 --dump-header /tmp/health.headers "$origin/api/health" --output /tmp/health.json
-          node --input-type=module -e "import fs from 'node:fs'; const body = JSON.parse(fs.readFileSync('/tmp/health.json', 'utf8')); if (body.status !== 'ok' || Object.keys(body).length !== 1) process.exit(1);"
-          grep -Eqi '^x-request-id: [A-Za-z0-9][A-Za-z0-9._:-]{0,63}\r?$' /tmp/health.headers
+
+          smoke_origin() {
+            local origin="$1"
+            local label="$2"
+            local prefix="/tmp/cloudflare-smoke-${label}"
+            local root_status
+            local health_status
+
+            root_status="$(curl --silent --show-error --retry 5 --retry-delay 3 --retry-all-errors --connect-timeout 5 --max-time 20 --output /dev/null --write-out '%{http_code}' "$origin/")"
+            if [ "$root_status" != "200" ]; then
+              echo "Unexpected $label root response: HTTP $root_status" >&2
+              exit 1
+            fi
+
+            health_status="$(curl --silent --show-error --retry 5 --retry-delay 3 --retry-all-errors --connect-timeout 5 --max-time 20 --dump-header "${prefix}.headers" --output "${prefix}.json" --write-out '%{http_code}' "$origin/api/health")"
+            if [ "$health_status" != "200" ]; then
+              echo "Unexpected $label health response: HTTP $health_status" >&2
+              sed -n '1,40p' "${prefix}.headers" >&2 || true
+              exit 1
+            fi
+
+            node --input-type=module -e "import fs from 'node:fs'; const body = JSON.parse(fs.readFileSync('${prefix}.json', 'utf8')); if (body.status !== 'ok' || Object.keys(body).length !== 1) process.exit(1);"
+            grep -Eqi '^x-request-id: [A-Za-z0-9][A-Za-z0-9._:-]{0,63}\r?$' "${prefix}.headers"
+          }
+
+          smoke_origin "$CLOUDFLARE_DEPLOYMENT_URL" immutable
+          smoke_origin "$CLOUDFLARE_PAGES_PRODUCTION_ORIGIN" canonical
 
       - name: Diagnose custom-domain edge policy
         shell: bash
