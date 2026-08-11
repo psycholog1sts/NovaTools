@@ -4,6 +4,7 @@ import fs from 'node:fs';
 const workflow = fs.readFileSync(new URL('../.github/workflows/deploy.yml', import.meta.url), 'utf8');
 const resolver = fs.readFileSync(new URL('../scripts/resolve-cloudflare-pages-deployment.mjs', import.meta.url), 'utf8');
 const smoke = fs.readFileSync(new URL('../scripts/smoke-cloudflare-pages.mjs', import.meta.url), 'utf8');
+const edgeDiagnostic = fs.readFileSync(new URL('../scripts/diagnose-cloudflare-edge.mjs', import.meta.url), 'utf8');
 
 assert.match(workflow, /wrangler@4\.114\.0 pages deploy/);
 assert.match(workflow, /--commit-hash "\$GITHUB_SHA"/);
@@ -27,10 +28,16 @@ assert.match(smoke, /body did not match the exact \{\"status\":\"ok\"\} contract
 assert.match(smoke, /X-Request-ID/);
 assert.doesNotMatch(smoke, /Authorization|CLOUDFLARE_API_TOKEN/);
 
-assert.match(workflow, /https:\/\/mc-novatools\.com\/api\/health/);
-assert.match(workflow, /cf-mitigated: challenge/);
-assert.match(workflow, /Cloudflare custom-domain WAF challenge/);
-assert.match(workflow, /Unexpected custom-domain health response/);
-assert.doesNotMatch(workflow, /curl[^\n]*mc-novatools\.com[^\n]*--fail-with-body/);
+assert.match(workflow, /CUSTOM_DOMAIN_HEALTH_URL: https:\/\/mc-novatools\.com\/api\/health/);
+assert.match(workflow, /node scripts\/diagnose-cloudflare-edge\.mjs/);
+assert.match(edgeDiagnostic, /headers\.get\('cf-mitigated'\)/);
+assert.match(edgeDiagnostic, /mitigated === 'challenge'/);
+assert.match(edgeDiagnostic, /contentType\.toLowerCase\(\)\.includes\('text\/html'\)/);
+assert.match(edgeDiagnostic, /firewallEventsAdaptive/);
+assert.match(edgeDiagnostic, /\/bot_management/);
+assert.match(edgeDiagnostic, /Cloudflare custom-domain challenge/);
+assert.match(edgeDiagnostic, /Unexpected custom-domain response/);
+assert.match(edgeDiagnostic, /process\.exitCode = 1/);
+assert.doesNotMatch(edgeDiagnostic, /console\.log\([^\n]*CLOUDFLARE_API_TOKEN|console\.log\([^\n]*token/);
 
 console.log('cloudflare smoke contract: pass');
