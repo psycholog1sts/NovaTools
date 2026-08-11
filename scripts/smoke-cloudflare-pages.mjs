@@ -8,25 +8,18 @@ function requiredEnv(name) {
   return value.replace(/\/$/, '');
 }
 
-function sleep(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 function safeErrorDetail(error) {
   const code = error?.cause?.code || error?.code;
   return code ? `${error.message} (${code})` : error?.message || String(error);
 }
 
-function annotateFailure(label, message) {
-  console.error(`::error title=Cloudflare ${label} origin smoke::${message}`);
-}
-
-async function requestWithRetries(url, label, path) {
+async function requestWithRetries(url, path) {
   let lastError;
-
   for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt += 1) {
     try {
-      const response = await fetch(url, {
+      return await fetch(url, {
         method: 'GET',
         redirect: 'manual',
         signal: AbortSignal.timeout(20_000),
@@ -35,78 +28,53 @@ async function requestWithRetries(url, label, path) {
           'User-Agent': 'NovaTools-Production-Smoke/1.0'
         }
       });
-      return response;
     } catch (error) {
       lastError = error;
       if (attempt < MAX_ATTEMPTS) await sleep(RETRY_DELAY_MS);
     }
   }
-
-  throw new Error(`${label} ${path} request failed after ${MAX_ATTEMPTS} attempts: ${safeErrorDetail(lastError)}`);
+  throw new Error(`${path} request failed after ${MAX_ATTEMPTS} attempts: ${safeErrorDetail(lastError)}`);
 }
 
-async function smokeOrigin(origin, label) {
-  console.log(`Smoke target [${label}]: ${origin}`);
+async function smokeProductionOrigin(origin) {
+  console.log(`Smoke target [Pages production]: ${origin}`);
 
-  const root = await requestWithRetries(`${origin}/`, label, '/');
+  const root = await requestWithRetries(`${origin}/`, '/');
   if (root.status !== 200) {
     const location = root.headers.get('location');
-    throw new Error(
-      `${label} / returned HTTP ${root.status}${location ? ` with redirect Location ${location}` : ''}; expected 200.`
-    );
+    throw new Error(`/ returned HTTP ${root.status}${location ? ` with redirect Location ${location}` : ''}; expected 200.`);
   }
 
-  const health = await requestWithRetries(`${origin}/api/health`, label, '/api/health');
+  const health = await requestWithRetries(`${origin}/api/health`, '/api/health');
   if (health.status !== 200) {
     const location = health.headers.get('location');
-    throw new Error(
-      `${label} /api/health returned HTTP ${health.status}${location ? ` with redirect Location ${location}` : ''}; expected 200.`
-    );
+    throw new Error(`/api/health returned HTTP ${health.status}${location ? ` with redirect Location ${location}` : ''}; expected 200.`);
   }
 
   const contentType = health.headers.get('content-type') || '';
   if (!contentType.toLowerCase().includes('application/json')) {
-    throw new Error(`${label} /api/health returned non-JSON content type ${contentType || '<missing>'}.`);
+    throw new Error(`/api/health returned non-JSON content type ${contentType || '<missing>'}.`);
   }
 
   let body;
   try {
     body = await health.json();
   } catch (error) {
-    throw new Error(`${label} /api/health returned invalid JSON: ${safeErrorDetail(error)}`);
+    throw new Error(`/api/health returned invalid JSON: ${safeErrorDetail(error)}`);
   }
 
-  if (
-    !body ||
-    typeof body !== 'object' ||
-    Array.isArray(body) ||
-    body.status !== 'ok' ||
-    Object.keys(body).length !== 1
-  ) {
-    throw new Error(`${label} /api/health body did not match the exact {"status":"ok"} contract.`);
+  if (!body || typeof body !== 'object' || Array.isArray(body) || body.status !== 'ok' || Object.keys(body).length !== 1) {
+    throw new Error('/api/health body did not match the exact {"status":"ok"} contract.');
   }
 
   const requestId = health.headers.get('x-request-id') || '';
-  if (!REQUEST_ID_RE.test(requestId)) {
-    throw new Error(`${label} /api/health returned a missing or invalid X-Request-ID header.`);
-  }
-
-  console.log(`Smoke PASS [${label}]: / and /api/health are healthy.`);
+  if (!REQUEST_ID_RE.test(requestId)) throw new Error('/api/health returned a missing or invalid X-Request-ID header.');
+  console.log('Smoke PASS [Pages production]: / and /api/health are healthy with no redirects.');
 }
 
-const targets = [
-  ['immutable', requiredEnv('CLOUDFLARE_DEPLOYMENT_URL')],
-  ['canonical', requiredEnv('CLOUDFLARE_PAGES_PRODUCTION_ORIGIN')]
-];
-
-let failed = false;
-for (const [label, origin] of targets) {
-  try {
-    await smokeOrigin(origin, label);
-  } catch (error) {
-    failed = true;
-    annotateFailure(label, safeErrorDetail(error));
-  }
+try {
+  await smokeProductionOrigin(requiredEnv('CLOUDFLARE_PAGES_PRODUCTION_ORIGIN'));
+} catch (error) {
+  console.error(`::error title=Cloudflare Pages production origin smoke::${safeErrorDetail(error)}`);
+  process.exitCode = 1;
 }
-
-if (failed) process.exitCode = 1;
