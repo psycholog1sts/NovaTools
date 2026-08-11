@@ -8,8 +8,9 @@ const BASE_ENV = Object.freeze({
 });
 const TOKEN = 'test-session-token-1234567890';
 
-function request(method = 'GET', token = TOKEN) {
+function request(method = 'GET', token = TOKEN, requestId = null) {
   const headers = token ? { Authorization: `Bearer ${token}` } : {};
+  if (requestId) headers['X-Request-ID'] = requestId;
   return new Request('https://mc-novatools.com/api/account/entitlements', { method, headers });
 }
 
@@ -29,6 +30,28 @@ async function bodyOf(result) {
   const result = await handler(request('POST'), {});
   assert.equal(result.status, 405);
   assert.equal(result.headers.get('Allow'), 'GET');
+  assert.match(result.headers.get('X-Request-ID'), /^[A-Za-z0-9][A-Za-z0-9._:-]{0,63}$/);
+}
+
+{
+  const handler = createEntitlementsHandler({
+    fetchImpl: async () => { throw new Error('must not fetch'); },
+    requestIdFactory: () => { throw new Error('factory must not run for valid caller IDs'); }
+  });
+  const result = await handler(request('POST', TOKEN, 'client-request-123'), {});
+  assert.equal(result.status, 405);
+  assert.equal(result.headers.get('X-Request-ID'), 'client-request-123');
+}
+
+{
+  const handler = createEntitlementsHandler({
+    fetchImpl: async () => { throw new Error('must not fetch'); },
+    requestIdFactory: () => 'generated-request-456'
+  });
+  const result = await handler(request('GET', null, 'invalid request id'), BASE_ENV);
+  assert.equal(result.status, 401);
+  assert.equal(result.headers.get('X-Request-ID'), 'generated-request-456');
+  assert.equal((await result.text()).includes('invalid request id'), false);
 }
 
 {
@@ -85,6 +108,7 @@ async function bodyOf(result) {
   assert.equal(result.status, 200);
   assert.match(result.headers.get('Cache-Control'), /no-store/);
   assert.equal(result.headers.get('Vary'), 'Authorization');
+  assert.match(result.headers.get('X-Request-ID'), /^[A-Za-z0-9][A-Za-z0-9._:-]{0,63}$/);
   const payload = await bodyOf(result);
   assert.equal(payload.entitlement.isPro, true);
   assert.equal(payload.entitlement.planKey, 'pro_monthly');
@@ -176,6 +200,7 @@ async function bodyOf(result) {
   const result = await handler(request(), BASE_ENV);
   assert.equal(result.status, 504);
   assert.deepEqual(await bodyOf(result), { error: 'control_plane_timeout' });
+  assert.match(result.headers.get('X-Request-ID'), /^[A-Za-z0-9][A-Za-z0-9._:-]{0,63}$/);
 }
 
 const migration = fs.readFileSync(new URL('../supabase/migrations/20260810210000_user_entitlements.sql', import.meta.url), 'utf8').toLowerCase();
