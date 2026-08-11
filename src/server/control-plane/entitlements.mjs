@@ -3,6 +3,7 @@ import {
   ENTITLEMENT_SCHEMA_VERSION,
   resolveEntitlementEnvelope
 } from '../../core/billing/entitlement-contract.mjs';
+import { REQUEST_ID_HEADER, resolveRequestId } from '../http/request-id.mjs';
 
 const DEFAULT_TIMEOUT_MS = 4_000;
 const MAX_BEARER_LENGTH = 16_384;
@@ -13,10 +14,10 @@ const JSON_HEADERS = Object.freeze({
   Vary: 'Authorization'
 });
 
-function json(status, body, extraHeaders = {}) {
+function json(status, body, requestId, extraHeaders = {}) {
   return new Response(JSON.stringify(body), {
     status,
-    headers: { ...JSON_HEADERS, ...extraHeaders }
+    headers: { ...JSON_HEADERS, [REQUEST_ID_HEADER]: requestId, ...extraHeaders }
   });
 }
 
@@ -87,26 +88,26 @@ async function readJson(response) {
   }
 }
 
-function mapAuthFailure(response) {
+function mapAuthFailure(response, respond) {
   if (response.status === 401 || response.status === 403) {
-    return json(401, { error: 'invalid_session' });
+    return respond(401, { error: 'invalid_session' });
   }
   if (response.status === 429) {
     const retryAfter = safeRetryAfter(response);
-    return json(503, { error: 'auth_temporarily_unavailable' }, retryAfter ? { 'Retry-After': retryAfter } : {});
+    return respond(503, { error: 'auth_temporarily_unavailable' }, retryAfter ? { 'Retry-After': retryAfter } : {});
   }
-  return json(502, { error: 'auth_upstream_unavailable' });
+  return respond(502, { error: 'auth_upstream_unavailable' });
 }
 
-function mapStoreFailure(response) {
-  if (response.status === 401) return json(401, { error: 'invalid_session' });
-  if (response.status === 403) return json(503, { error: 'entitlement_store_forbidden' });
-  if (response.status === 404) return json(503, { error: 'entitlement_store_not_ready' });
+function mapStoreFailure(response, respond) {
+  if (response.status === 401) return respond(401, { error: 'invalid_session' });
+  if (response.status === 403) return respond(503, { error: 'entitlement_store_forbidden' });
+  if (response.status === 404) return respond(503, { error: 'entitlement_store_not_ready' });
   if (response.status === 429) {
     const retryAfter = safeRetryAfter(response);
-    return json(503, { error: 'entitlement_store_busy' }, retryAfter ? { 'Retry-After': retryAfter } : {});
+    return respond(503, { error: 'entitlement_store_busy' }, retryAfter ? { 'Retry-After': retryAfter } : {});
   }
-  return json(502, { error: 'entitlement_store_unavailable' });
+  return respond(502, { error: 'entitlement_store_unavailable' });
 }
 
 function validSubject(value) {
@@ -136,19 +137,29 @@ function envelopeFromRow(userId, row) {
   };
 }
 
-export function createEntitlementsHandler({ fetchImpl = globalThis.fetch, timeoutMs = DEFAULT_TIMEOUT_MS } = {}) {
+export function createEntitlementsHandler({
+  fetchImpl = globalThis.fetch,
+  timeoutMs = DEFAULT_TIMEOUT_MS,
+  requestIdFactory
+} = {}) {
   if (typeof fetchImpl !== 'function') throw new TypeError('fetchImpl must be a function');
+  if (requestIdFactory !== undefined && typeof requestIdFactory !== 'function') {
+    throw new TypeError('requestIdFactory must be a function');
+  }
 
   return async function handleEntitlements(request, env = {}) {
+    const requestId = resolveRequestId(request, requestIdFactory);
+    const respond = (status, body, extraHeaders = {}) => json(status, body, requestId, extraHeaders);
+
     if (request.method !== 'GET') {
-      return json(405, { error: 'method_not_allowed' }, { Allow: 'GET' });
+      return respond(405, { error: 'method_not_allowed' }, { Allow: 'GET' });
     }
 
     const config = resolveServerConfig(env);
-    if (!config) return json(503, { error: 'control_plane_not_configured' });
+    if (!config) return respond(503, { error: 'control_plane_not_configured' });
 
     const token = bearerToken(request);
-    if (!token) return json(401, { error: 'authorization_required' });
+    if (!token) return respond(401, { error: 'authorization_required' });
 
     try {
       const userUrl = new URL('/auth/v1/user', config.url);
@@ -157,9 +168,9 @@ export function createEntitlementsHandler({ fetchImpl = globalThis.fetch, timeou
         headers: upstreamHeaders(config, token)
       }, timeoutMs);
 
-      if (!userResponse.ok) return mapAuthFailure(userResponse);
+      if (!userResponse.ok) return mapAuthFailure(userResponse, respond);
       const user = await readJson(userResponse);
-      if (!validSubject(user?.id)) return json(502, { error: 'invalid_auth_response' });
+      if (!validSubject(user?.id)) return respond(502, { error: 'invalid_auth_response' });
 
       const entitlementUrl = new URL('/rest/v1/user_entitlements', config.url);
       entitlementUrl.searchParams.set('select', 'plan_key,status,expires_at,features');
@@ -171,15 +182,15 @@ export function createEntitlementsHandler({ fetchImpl = globalThis.fetch, timeou
         headers: upstreamHeaders(config, token)
       }, timeoutMs);
 
-      if (!storeResponse.ok) return mapStoreFailure(storeResponse);
+      if (!storeResponse.ok) return mapStoreFailure(storeResponse, respond);
       const rows = await readJson(storeResponse);
-      if (!Array.isArray(rows)) return json(502, { error: 'invalid_entitlement_response' });
+      if (!Array.isArray(rows)) return respond(502, { error: 'invalid_entitlement_response' });
 
       const entitlement = resolveEntitlementEnvelope(envelopeFromRow(user.id, rows[0] || null));
-      return json(200, { entitlement });
+      return respond(200, { entitlement });
     } catch (error) {
-      if (error?.name === 'AbortError') return json(504, { error: 'control_plane_timeout' });
-      return json(502, { error: 'control_plane_unavailable' });
+      if (error?.name === 'AbortError') return respond(504, { error: 'control_plane_timeout' });
+      return respond(502, { error: 'control_plane_unavailable' });
     }
   };
 }
