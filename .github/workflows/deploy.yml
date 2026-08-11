@@ -46,7 +46,7 @@ jobs:
         run: node tests/live-data-regressions.mjs
 
       - name: Compile Cloudflare Pages Functions
-        run: npx wrangler@latest pages functions build functions --outfile=/tmp/pages-functions-worker.js
+        run: npx --yes wrangler@4.114.0 pages functions build functions --outfile=/tmp/pages-functions-worker.js
 
       - name: Build
         run: npm run build
@@ -122,7 +122,7 @@ jobs:
         run: node tests/live-data-regressions.mjs
 
       - name: Compile Cloudflare Pages Functions
-        run: npx wrangler@latest pages functions build functions --outfile=/tmp/pages-functions-worker.js
+        run: npx --yes wrangler@4.114.0 pages functions build functions --outfile=/tmp/pages-functions-worker.js
 
       - name: Build
         run: npm run build
@@ -137,7 +137,17 @@ jobs:
         run: test -d dist && test -f dist/index.html
 
       - name: Deploy to Cloudflare Pages
-        run: npx wrangler@latest pages deploy dist --project-name "$CLOUDFLARE_PROJECT_NAME" --branch main
+        run: npx --yes wrangler@4.114.0 pages deploy dist --project-name "$CLOUDFLARE_PROJECT_NAME" --branch main
+
+      - name: Smoke-test production origin
+        shell: bash
+        run: |
+          set -euo pipefail
+          origin="https://mc-novatools.com"
+          curl --silent --show-error --fail-with-body --location --retry 5 --retry-delay 3 --retry-all-errors --connect-timeout 5 --max-time 20 "$origin/" --output /dev/null
+          curl --silent --show-error --fail-with-body --location --retry 5 --retry-delay 3 --retry-all-errors --connect-timeout 5 --max-time 20 --dump-header /tmp/health.headers "$origin/api/health" --output /tmp/health.json
+          node --input-type=module -e "import fs from 'node:fs'; const body = JSON.parse(fs.readFileSync('/tmp/health.json', 'utf8')); if (body.status !== 'ok' || Object.keys(body).length !== 1) process.exit(1);"
+          grep -Eqi '^x-request-id: [A-Za-z0-9][A-Za-z0-9._:-]{0,63}\r?$' /tmp/health.headers
 
       - name: Run deterministic local Lighthouse CI
         continue-on-error: true
