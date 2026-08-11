@@ -45,6 +45,9 @@ jobs:
       - name: Run live-data regression tests
         run: node tests/live-data-regressions.mjs
 
+      - name: Validate Cloudflare smoke policy
+        run: node tests/cloudflare-smoke-contract.mjs
+
       - name: Compile Cloudflare Pages Functions
         run: npx --yes wrangler@4.114.0 pages functions build functions --outfile=/tmp/pages-functions-worker.js
 
@@ -120,6 +123,9 @@ jobs:
 
       - name: Run live-data regression tests
         run: node tests/live-data-regressions.mjs
+
+      - name: Validate Cloudflare smoke policy
+        run: node tests/cloudflare-smoke-contract.mjs
 
       - name: Compile Cloudflare Pages Functions
         run: npx --yes wrangler@4.114.0 pages functions build functions --outfile=/tmp/pages-functions-worker.js
