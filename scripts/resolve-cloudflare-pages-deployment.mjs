@@ -71,6 +71,23 @@ function writeGitHubEnv(entries) {
   fs.appendFileSync(envFile, `${body}\n`, 'utf8');
 }
 
+function safeDeploymentSummary(value) {
+  if (!value) return null;
+  return {
+    id: value.id || null,
+    short_id: value.short_id || null,
+    environment: value.environment || null,
+    url: value.url || null,
+    aliases: Array.isArray(value.aliases) ? value.aliases : [],
+    latest_stage: value.latest_stage
+      ? { name: value.latest_stage.name || null, status: value.latest_stage.status || null }
+      : null,
+    uses_functions: value.uses_functions ?? null,
+    branch: value.deployment_trigger?.metadata?.branch || null,
+    commit_hash: value.deployment_trigger?.metadata?.commit_hash || null
+  };
+}
+
 const token = requiredEnv('CLOUDFLARE_API_TOKEN');
 const accountId = requiredEnv('CLOUDFLARE_ACCOUNT_ID');
 const projectName = requiredEnv('CLOUDFLARE_PROJECT_NAME');
@@ -116,6 +133,21 @@ if (!deployment) {
 }
 
 const deploymentUrl = normalizeHttpsUrl(deployment.url, 'deployment URL');
+const canonical = project.canonical_deployment || null;
+const metadata = {
+  project: {
+    name: project.name || projectName,
+    subdomain: project.subdomain || null,
+    production_branch: project.production_branch || null,
+    domains: Array.isArray(project.domains) ? project.domains : [],
+    uses_functions: project.uses_functions ?? null
+  },
+  matched_deployment: safeDeploymentSummary(deployment),
+  canonical_deployment: safeDeploymentSummary(canonical),
+  canonical_matches_matched: Boolean(canonical?.id && canonical.id === deployment.id)
+};
+
+console.log(`::notice title=Cloudflare Pages metadata::${JSON.stringify(metadata)}`);
 
 writeGitHubEnv({
   CLOUDFLARE_DEPLOYMENT_URL: deploymentUrl,
@@ -124,5 +156,5 @@ writeGitHubEnv({
 });
 
 console.log(`Resolved Cloudflare Pages production deployment ${deployment.id}.`);
-console.log(`Immutable deployment URL: ${deploymentUrl}`);
+console.log(`Deployment URL: ${deploymentUrl}`);
 console.log(`Canonical Pages origin: ${productionOrigin}`);
