@@ -183,6 +183,11 @@
   outline: 0;
 }
 
+.home-search__input::placeholder {
+  color: var(--color-text-secondary);
+  opacity: 1;
+}
+
 .home-search__button {
   flex: 0 0 auto;
 }
@@ -486,6 +491,10 @@
   font-size: var(--font-size-xs);
   letter-spacing: .06em;
   text-transform: uppercase;
+}
+
+:root:not([data-theme="dark"]) .workflow-card__steps strong {
+  color: var(--color-accent-800);
 }
 
 .workflow-panel__trust {
