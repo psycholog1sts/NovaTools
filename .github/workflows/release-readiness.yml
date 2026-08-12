@@ -42,5 +42,5 @@ jobs:
       - name: Verify production authority contract
         shell: bash
         run: |
-          node -e "const p=require('./package.json'); if(p.engines?.node && p.engines.node!=='22.x') throw new Error('Node engine must stay 22.x');"
+          node -e "const p=require('./package.json'); const e=p.engines?.node||''; if(!/(^|\\s)(>=?22|22\\.x)/.test(e) || /<22/.test(e)) throw new Error('Node engine must require Node 22');"
           node -e "const v=require('./vercel.json'); if(v.git?.deploymentEnabled?.main!==false) throw new Error('Vercel main deployments must remain disabled');"
