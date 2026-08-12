@@ -11,6 +11,7 @@ if (!fs.existsSync(distDir)) {
 
 const ADSENSE_SCRIPT_RE = /\n?\s*<script\b(?=[^>]*\bsrc\s*=\s*["']https:\/\/pagead2\.googlesyndication\.com\/pagead\/js\/adsbygoogle\.js\?client=ca-pub-[0-9]{16}[^"']*["'])[^>]*>\s*<\/script>\s*/gi;
 const ADSENSE_DNS_RE = /\n?\s*<link\b(?=[^>]*\brel\s*=\s*["']dns-prefetch["'])(?=[^>]*\bhref\s*=\s*["']https:\/\/pagead2\.googlesyndication\.com["'])[^>]*\/?\s*>\s*/gi;
+const STALE_POPULAR_PREFETCH_RE = /\n?\s*<link\b(?=[^>]*\brel\s*=\s*["']prefetch["'])(?=[^>]*\bhref\s*=\s*["']\/tools\/popular["'])[^>]*\/?\s*>\s*/gi;
 const DEFERRED_STYLE_RE = /<link rel="preload" href="([^"]+)" as="style" onload="this\.onload=null;this\.rel='stylesheet'"><noscript><link rel="stylesheet" href="\1"><\/noscript>/g;
 const GOOGLE_FONT_STYLESHEET_RE = /\n?\s*<link\b(?=[^>]*\brel\s*=\s*["']stylesheet["'])(?=[^>]*\bhref\s*=\s*["']https:\/\/fonts\.googleapis\.com\/[^"']+["'])[^>]*\/?\s*>\s*/gi;
 const GOOGLE_FONT_PRECONNECT_RE = /\n?\s*<link\b(?=[^>]*\brel\s*=\s*["']preconnect["'])(?=[^>]*\bhref\s*=\s*["']https:\/\/fonts\.(?:googleapis|gstatic)\.com["'])[^>]*\/?\s*>\s*/gi;
@@ -26,6 +27,7 @@ function listHtmlFiles(dir) {
 }
 
 let strippedAdSenseScripts = 0;
+let strippedStalePrefetches = 0;
 let restoredPdfStyles = 0;
 let strippedPdfWebFonts = 0;
 const htmlFiles = listHtmlFiles(distDir);
@@ -37,6 +39,10 @@ for (const filePath of htmlFiles) {
     return '\n';
   });
   after = after.replace(ADSENSE_DNS_RE, '\n');
+  after = after.replace(STALE_POPULAR_PREFETCH_RE, () => {
+    strippedStalePrefetches += 1;
+    return '\n';
+  });
 
   const relative = path.relative(distDir, filePath).replace(/\\/g, '/');
   if (/(^|\/)tools\/pdf\/compress\/index\.html$/.test(relative)) {
@@ -60,6 +66,11 @@ if (activeAdSense.length) {
   throw new Error(`active pre-consent AdSense script remains in ${activeAdSense.length} built HTML file(s)`);
 }
 
+const stalePrefetches = htmlFiles.filter((filePath) => /<link\b[^>]*\brel=["']prefetch["'][^>]*\bhref=["']\/tools\/popular["']/i.test(fs.readFileSync(filePath, 'utf8')));
+if (stalePrefetches.length) {
+  throw new Error(`stale /tools/popular prefetch remains in ${stalePrefetches.length} built HTML file(s)`);
+}
+
 const pdfCompressor = path.join(distDir, 'tools', 'pdf', 'compress', 'index.html');
 if (!fs.existsSync(pdfCompressor)) throw new Error('built PDF compressor route is missing');
 const pdfHtml = fs.readFileSync(pdfCompressor, 'utf8');
@@ -70,4 +81,23 @@ if (/https:\/\/fonts\.(?:googleapis|gstatic)\.com/i.test(pdfHtml)) {
   throw new Error('PDF compressor still contains an external Google Fonts dependency after finalization');
 }
 
-console.log(`Runtime contracts finalized: removed ${strippedAdSenseScripts} pre-consent AdSense script(s); restored ${restoredPdfStyles} PDF compressor stylesheet link(s); removed ${strippedPdfWebFonts} PDF web-font stylesheet(s).`);
+// The shared i18n runtime adds a large generic workflow panel after DOMContentLoaded
+// on legacy tool pages. PDF Compressor already ships its own complete workflow/help
+// surface, so adding the generic panel is redundant and creates a large measurable CLS.
+const i18nPath = path.join(distDir, 'i18n.js');
+if (!fs.existsSync(i18nPath)) throw new Error('built i18n runtime is missing');
+const qualityGuard = "    if (!/\\/tools\\//.test(window.location.pathname)) return;";
+const pdfStableGuard = "    if (/\\/tools\\/pdf\\/compress\\/?$/.test(window.location.pathname)) return;";
+let i18nSource = fs.readFileSync(i18nPath, 'utf8');
+if (!i18nSource.includes(pdfStableGuard)) {
+  if (!i18nSource.includes(qualityGuard)) {
+    throw new Error('tool quality enhancement guard was not found in built i18n runtime');
+  }
+  i18nSource = i18nSource.replace(qualityGuard, `${qualityGuard}\n${pdfStableGuard}`);
+  fs.writeFileSync(i18nPath, i18nSource);
+}
+if (!fs.readFileSync(i18nPath, 'utf8').includes(pdfStableGuard)) {
+  throw new Error('PDF compressor CLS guard was not applied to built i18n runtime');
+}
+
+console.log(`Runtime contracts finalized: removed ${strippedAdSenseScripts} pre-consent AdSense script(s); removed ${strippedStalePrefetches} stale prefetch(es); restored ${restoredPdfStyles} PDF compressor stylesheet link(s); removed ${strippedPdfWebFonts} PDF web-font stylesheet(s); suppressed redundant PDF quality-panel injection.`);
