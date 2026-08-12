@@ -1,6 +1,6 @@
 /**
  * NovaTools MC - Main Entry Point
- * Production-grade modular architecture with Vercel Speed Insights
+ * Production-grade modular architecture with optional Vercel preview telemetry
  */
 
 /* global __APP_VERSION__ */
@@ -13,8 +13,11 @@ import { initConsentManager, hasConsent } from './core/consent-manager.mjs';
 import { injectHreflangTags } from './i18n/config.mjs';
 import { initCommonUI } from './components/layout/index.mjs';
 
-// Initialize Vercel Speed Insights immediately
-injectSpeedInsights();
+// Vercel is preview-only for this project. Do not inject its telemetry on the
+// Cloudflare production host or deterministic localhost release audits.
+if (/(^|\.)vercel\.app$/i.test(window.location.hostname)) {
+  injectSpeedInsights();
+}
 
 // Configuration
 const PDF_TOOL_THRESHOLDS = {
@@ -258,15 +261,10 @@ document.readyState === 'loading'
   : init();
 
 // Public API
-window.NovaTools = {
-  version: typeof __APP_VERSION__ !== 'undefined' ? __APP_VERSION__ : '2.0.0',
-  native: {
-    fileSystemSupported: 'showOpenFilePicker' in window,
-    backgroundSyncSupported: 'serviceWorker' in navigator && 'SyncManager' in window,
-    protocolHandlerSupported: 'registerProtocolHandler' in navigator
-  },
-  utils: {
-    detectBestPDFTool,
-    getCurrentToolId
-  }
+export const NovaTools = {
+  version: typeof __APP_VERSION__ !== 'undefined' ? __APP_VERSION__ : '1.0.0',
+  detectBestPDFTool,
+  getCurrentToolId
 };
+
+window.NovaTools = NovaTools;

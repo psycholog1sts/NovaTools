@@ -12,6 +12,8 @@ if (!fs.existsSync(distDir)) {
 const ADSENSE_SCRIPT_RE = /\n?\s*<script\b(?=[^>]*\bsrc\s*=\s*["']https:\/\/pagead2\.googlesyndication\.com\/pagead\/js\/adsbygoogle\.js\?client=ca-pub-[0-9]{16}[^"']*["'])[^>]*>\s*<\/script>\s*/gi;
 const ADSENSE_DNS_RE = /\n?\s*<link\b(?=[^>]*\brel\s*=\s*["']dns-prefetch["'])(?=[^>]*\bhref\s*=\s*["']https:\/\/pagead2\.googlesyndication\.com["'])[^>]*\/?\s*>\s*/gi;
 const DEFERRED_STYLE_RE = /<link rel="preload" href="([^"]+)" as="style" onload="this\.onload=null;this\.rel='stylesheet'"><noscript><link rel="stylesheet" href="\1"><\/noscript>/g;
+const GOOGLE_FONT_STYLESHEET_RE = /\n?\s*<link\b(?=[^>]*\brel\s*=\s*["']stylesheet["'])(?=[^>]*\bhref\s*=\s*["']https:\/\/fonts\.googleapis\.com\/[^"']+["'])[^>]*\/?\s*>\s*/gi;
+const GOOGLE_FONT_PRECONNECT_RE = /\n?\s*<link\b(?=[^>]*\brel\s*=\s*["']preconnect["'])(?=[^>]*\bhref\s*=\s*["']https:\/\/fonts\.(?:googleapis|gstatic)\.com["'])[^>]*\/?\s*>\s*/gi;
 
 function listHtmlFiles(dir) {
   const files = [];
@@ -25,6 +27,7 @@ function listHtmlFiles(dir) {
 
 let strippedAdSenseScripts = 0;
 let restoredPdfStyles = 0;
+let strippedPdfWebFonts = 0;
 const htmlFiles = listHtmlFiles(distDir);
 
 for (const filePath of htmlFiles) {
@@ -41,6 +44,11 @@ for (const filePath of htmlFiles) {
       restoredPdfStyles += 1;
       return `<link rel="stylesheet" href="${href}">`;
     });
+    after = after.replace(GOOGLE_FONT_STYLESHEET_RE, () => {
+      strippedPdfWebFonts += 1;
+      return '\n';
+    });
+    after = after.replace(GOOGLE_FONT_PRECONNECT_RE, '\n');
   }
 
   if (after !== before) fs.writeFileSync(filePath, after);
@@ -58,5 +66,8 @@ const pdfHtml = fs.readFileSync(pdfCompressor, 'utf8');
 if (DEFERRED_STYLE_RE.test(pdfHtml)) {
   throw new Error('PDF compressor still contains deferred layout styles after finalization');
 }
+if (/https:\/\/fonts\.(?:googleapis|gstatic)\.com/i.test(pdfHtml)) {
+  throw new Error('PDF compressor still contains an external Google Fonts dependency after finalization');
+}
 
-console.log(`Runtime contracts finalized: removed ${strippedAdSenseScripts} pre-consent AdSense script(s); restored ${restoredPdfStyles} PDF compressor stylesheet link(s).`);
+console.log(`Runtime contracts finalized: removed ${strippedAdSenseScripts} pre-consent AdSense script(s); restored ${restoredPdfStyles} PDF compressor stylesheet link(s); removed ${strippedPdfWebFonts} PDF web-font stylesheet(s).`);

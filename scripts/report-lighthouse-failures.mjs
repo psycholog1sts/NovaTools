@@ -29,6 +29,24 @@ function escapeCommand(value) {
     .replaceAll('\n', '%0A');
 }
 
+function summarizeConsoleErrors(lhr) {
+  const items = lhr.audits?.['errors-in-console']?.details?.items || [];
+  return items.slice(0, 8).map((item) => {
+    const source = item.source || item.sourceLocation?.url || 'console';
+    const description = item.description || item.text || item.message || '';
+    return `${source}: ${description}`.trim();
+  }).filter(Boolean);
+}
+
+function summarizeLayoutShifts(lhr) {
+  const items = lhr.audits?.['layout-shifts']?.details?.items || [];
+  return items.slice(0, 8).map((item) => {
+    const score = item.score ?? item.value ?? '';
+    const node = item.node?.selector || item.node?.snippet || item.node?.nodeLabel || item.node?.path || '';
+    return `${score}${node ? ` ${node}` : ''}`.trim();
+  }).filter(Boolean);
+}
+
 if (!reports.length) {
   console.log('::error title=Lighthouse diagnostics unavailable::No Lighthouse result JSON was found in .lighthouseci or lighthouse-results.');
   process.exit(0);
@@ -59,6 +77,13 @@ for (const { file, lhr } of reports) {
 
   if (typeof cls === 'number' && cls > 0.1) {
     blocking.push(`cumulative-layout-shift=${cls} (>0.1)`);
+  }
+
+  const consoleErrors = summarizeConsoleErrors(lhr);
+  if (consoleErrors.length) blocking.push(`console=${consoleErrors.join(' || ')}`);
+  const layoutShifts = summarizeLayoutShifts(lhr);
+  if (typeof cls === 'number' && cls > 0.1 && layoutShifts.length) {
+    blocking.push(`layout-shifts=${layoutShifts.join(' || ')}`);
   }
 
   if (blocking.length) {
