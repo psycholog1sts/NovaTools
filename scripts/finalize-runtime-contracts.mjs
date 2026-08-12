@@ -11,10 +11,12 @@ if (!fs.existsSync(distDir)) {
 
 const ADSENSE_SCRIPT_RE = /\n?\s*<script\b(?=[^>]*\bsrc\s*=\s*["']https:\/\/pagead2\.googlesyndication\.com\/pagead\/js\/adsbygoogle\.js\?client=ca-pub-[0-9]{16}[^"']*["'])[^>]*>\s*<\/script>\s*/gi;
 const ADSENSE_DNS_RE = /\n?\s*<link\b(?=[^>]*\brel\s*=\s*["']dns-prefetch["'])(?=[^>]*\bhref\s*=\s*["']https:\/\/pagead2\.googlesyndication\.com["'])[^>]*\/?\s*>\s*/gi;
-const STALE_POPULAR_PREFETCH_RE = /\n?\s*<link\b(?=[^>]*\brel\s*=\s*["']prefetch["'])(?=[^>]*\bhref\s*=\s*["']\/tools\/popular["'])[^>]*\/?\s*>\s*/gi;
+const STALE_POPULAR_PREFETCH_RE = /\n?\s*<link\b(?=[^>]*\brel\s*=\s*["']prefetch["'])(?=[^>]*\bhref\s*=\s*["'](?:https:\/\/mc-novatools\.com)?\/tools\/popular(?:\/?)["'])[^>]*\/?\s*>\s*/gi;
 const DEFERRED_STYLE_RE = /<link rel="preload" href="([^"]+)" as="style" onload="this\.onload=null;this\.rel='stylesheet'"><noscript><link rel="stylesheet" href="\1"><\/noscript>/g;
 const GOOGLE_FONT_STYLESHEET_RE = /\n?\s*<link\b(?=[^>]*\brel\s*=\s*["']stylesheet["'])(?=[^>]*\bhref\s*=\s*["']https:\/\/fonts\.googleapis\.com\/[^"']+["'])[^>]*\/?\s*>\s*/gi;
 const GOOGLE_FONT_PRECONNECT_RE = /\n?\s*<link\b(?=[^>]*\brel\s*=\s*["']preconnect["'])(?=[^>]*\bhref\s*=\s*["']https:\/\/fonts\.(?:googleapis|gstatic)\.com["'])[^>]*\/?\s*>\s*/gi;
+const PDF_ENHANCER_SCRIPT_RE = /\n?\s*<script\b(?=[^>]*\bsrc\s*=\s*["'](?:https:\/\/mc-novatools\.com)?\/js\/tool-page-enhancer\.js["'])[^>]*>\s*<\/script>\s*/gi;
+const PDF_WORKFLOW_STYLE_RE = /\n?\s*<link\b(?=[^>]*\brel\s*=\s*["']stylesheet["'])(?=[^>]*\bhref\s*=\s*["'](?:https:\/\/mc-novatools\.com)?\/(?:styles|src\/styles)\/tool-workflow\.css["'])[^>]*\/?\s*>\s*/gi;
 
 function listHtmlFiles(dir) {
   const files = [];
@@ -26,10 +28,37 @@ function listHtmlFiles(dir) {
   return files;
 }
 
+function publishToolMetaContracts() {
+  const toolsRoot = path.join(root, 'src', 'tools');
+  const outputRoot = path.join(distDir, 'meta');
+  let published = 0;
+
+  function walk(dir) {
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      const full = path.join(dir, entry.name);
+      if (entry.isDirectory()) {
+        walk(full);
+        continue;
+      }
+      if (!entry.isFile() || entry.name !== 'meta.json') continue;
+
+      const relativeToolDir = path.relative(toolsRoot, path.dirname(full));
+      const target = path.join(outputRoot, `${relativeToolDir}.json`);
+      fs.mkdirSync(path.dirname(target), { recursive: true });
+      fs.copyFileSync(full, target);
+      published += 1;
+    }
+  }
+
+  walk(toolsRoot);
+  return published;
+}
+
 let strippedAdSenseScripts = 0;
 let strippedStalePrefetches = 0;
 let restoredPdfStyles = 0;
 let strippedPdfWebFonts = 0;
+let strippedPdfEnhancers = 0;
 const htmlFiles = listHtmlFiles(distDir);
 
 for (const filePath of htmlFiles) {
@@ -55,10 +84,17 @@ for (const filePath of htmlFiles) {
       return '\n';
     });
     after = after.replace(GOOGLE_FONT_PRECONNECT_RE, '\n');
+    after = after.replace(PDF_ENHANCER_SCRIPT_RE, () => {
+      strippedPdfEnhancers += 1;
+      return '\n';
+    });
+    after = after.replace(PDF_WORKFLOW_STYLE_RE, '\n');
   }
 
   if (after !== before) fs.writeFileSync(filePath, after);
 }
+
+const publishedMetaContracts = publishToolMetaContracts();
 
 const activeAdSense = htmlFiles.filter((filePath) => ADSENSE_SCRIPT_RE.test(fs.readFileSync(filePath, 'utf8')));
 ADSENSE_SCRIPT_RE.lastIndex = 0;
@@ -66,7 +102,7 @@ if (activeAdSense.length) {
   throw new Error(`active pre-consent AdSense script remains in ${activeAdSense.length} built HTML file(s)`);
 }
 
-const stalePrefetches = htmlFiles.filter((filePath) => /<link\b[^>]*\brel=["']prefetch["'][^>]*\bhref=["']\/tools\/popular["']/i.test(fs.readFileSync(filePath, 'utf8')));
+const stalePrefetches = htmlFiles.filter((filePath) => /<link\b[^>]*\brel=["']prefetch["'][^>]*\bhref=["'](?:https:\/\/mc-novatools\.com)?\/tools\/popular\/?["']/i.test(fs.readFileSync(filePath, 'utf8')));
 if (stalePrefetches.length) {
   throw new Error(`stale /tools/popular prefetch remains in ${stalePrefetches.length} built HTML file(s)`);
 }
@@ -79,6 +115,14 @@ if (DEFERRED_STYLE_RE.test(pdfHtml)) {
 }
 if (/https:\/\/fonts\.(?:googleapis|gstatic)\.com/i.test(pdfHtml)) {
   throw new Error('PDF compressor still contains an external Google Fonts dependency after finalization');
+}
+if (/tool-page-enhancer\.js/i.test(pdfHtml) || /tool-workflow\.css/i.test(pdfHtml)) {
+  throw new Error('PDF compressor still contains the generic tool-page enhancer after finalization');
+}
+
+const pdfMetaContract = path.join(distDir, 'meta', 'pdf', 'compress.json');
+if (!fs.existsSync(pdfMetaContract)) {
+  throw new Error('PDF compressor metadata contract was not published to /meta/pdf/compress.json');
 }
 
 // The shared i18n runtime adds a large generic workflow panel after DOMContentLoaded
@@ -100,4 +144,4 @@ if (!fs.readFileSync(i18nPath, 'utf8').includes(pdfStableGuard)) {
   throw new Error('PDF compressor CLS guard was not applied to built i18n runtime');
 }
 
-console.log(`Runtime contracts finalized: removed ${strippedAdSenseScripts} pre-consent AdSense script(s); removed ${strippedStalePrefetches} stale prefetch(es); restored ${restoredPdfStyles} PDF compressor stylesheet link(s); removed ${strippedPdfWebFonts} PDF web-font stylesheet(s); suppressed redundant PDF quality-panel injection.`);
+console.log(`Runtime contracts finalized: removed ${strippedAdSenseScripts} pre-consent AdSense script(s); removed ${strippedStalePrefetches} stale prefetch(es); restored ${restoredPdfStyles} PDF compressor stylesheet link(s); removed ${strippedPdfWebFonts} PDF web-font stylesheet(s); removed ${strippedPdfEnhancers} generic PDF enhancer script(s); published ${publishedMetaContracts} tool metadata contract(s); suppressed redundant PDF quality-panel injection.`);
