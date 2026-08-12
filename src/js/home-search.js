@@ -84,6 +84,11 @@ export function initHomeSearch({ getToolHref } = {}) {
   if (!form || !input || !resultsContainer || form.dataset.searchReady === 'true') return;
   form.dataset.searchReady = 'true';
 
+  // The input controls a listbox and exposes aria-expanded, so it must use
+  // the combobox role rather than relying on the native searchbox role.
+  input.setAttribute('role', 'combobox');
+  input.setAttribute('aria-autocomplete', 'list');
+
   const tools = [
     ...(manifest.tools || []).map((tool) => toSearchItem(tool, resolveHref)),
     ...(blogPosts || []).map(toBlogSearchItem)
