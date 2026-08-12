@@ -20,7 +20,79 @@ for (const [name, route] of routes) {
     const serious = results.violations.filter((violation) => violation.impact === 'serious');
 
     if (serious.length) {
-      console.log(`::warning::${name}: ${serious.length} serious axe issue(s) remain advisory until remediated.`);
+      const runtime = name === 'home'
+        ? await page.evaluate(() => {
+            const input = document.getElementById('homeSearchInput');
+            if (!input) return { input: null };
+
+            const style = getComputedStyle(input);
+            const placeholder = getComputedStyle(input, '::placeholder');
+            const matchedRules = [];
+
+            for (const sheet of document.styleSheets) {
+              let rules;
+              try {
+                rules = sheet.cssRules;
+              } catch {
+                continue;
+              }
+
+              for (const rule of rules) {
+                if (!(rule instanceof CSSStyleRule)) continue;
+                const selector = rule.selectorText || '';
+                if (
+                  selector.includes('homeSearchInput') ||
+                  selector.includes('home-search__input') ||
+                  selector.includes("input:not([type='checkbox'])")
+                ) {
+                  matchedRules.push({
+                    href: sheet.href,
+                    selector,
+                    cssText: rule.style.cssText
+                  });
+                }
+              }
+            }
+
+            return {
+              theme: document.documentElement.getAttribute('data-theme'),
+              inlineStyle: input.getAttribute('style'),
+              color: style.color,
+              webkitTextFillColor: style.webkitTextFillColor,
+              backgroundColor: style.backgroundColor,
+              borderColor: style.borderColor,
+              padding: style.padding,
+              placeholderColor: placeholder.color,
+              placeholderOpacity: placeholder.opacity,
+              stylesheets: [...document.styleSheets].map((sheet) => sheet.href),
+              matchedRules: matchedRules.slice(0, 20)
+            };
+          })
+        : null;
+
+      const details = serious
+        .map((violation) => {
+          const targets = violation.nodes
+            .slice(0, 5)
+            .map((node) => {
+              const data = node.any
+                .map((check) => check.data)
+                .filter(Boolean)
+                .map((value) => JSON.stringify(value))
+                .join(', ');
+              const summary = node.failureSummary?.replaceAll('\n', ' ') || '';
+              return `${node.target.join(' > ')}${data ? ` data=${data}` : ''}${summary ? ` summary=${summary}` : ''}`;
+            })
+            .join('; ');
+          return `${violation.id}: ${violation.help} (${violation.nodes.length} node(s)) [${targets}]`;
+        })
+        .join(' | ');
+
+      const diagnostic = `${details}${runtime ? ` runtime=${JSON.stringify(runtime)}` : ''}`
+        .replaceAll('%', '%25')
+        .replaceAll('\r', '%0D')
+        .replaceAll('\n', '%0A');
+      console.log(`::warning title=${name} serious axe details::${diagnostic}`);
     }
 
     expect(
