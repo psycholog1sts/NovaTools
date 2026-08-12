@@ -89,6 +89,14 @@ export function initHomeSearch({ getToolHref } = {}) {
   input.setAttribute('role', 'combobox');
   input.setAttribute('aria-autocomplete', 'list');
 
+  // Keep the search purpose available to assistive technology without
+  // relying on placeholder text. The old placeholder rendered with a
+  // browser/theme-dependent foreground that failed WCAG AA contrast.
+  const searchLabel = input.getAttribute('placeholder') || 'Search tools, categories, and workflows';
+  if (!input.getAttribute('aria-label')) input.setAttribute('aria-label', searchLabel);
+  input.removeAttribute('placeholder');
+  input.removeAttribute('data-i18n-placeholder');
+
   const tools = [
     ...(manifest.tools || []).map((tool) => toSearchItem(tool, resolveHref)),
     ...(blogPosts || []).map(toBlogSearchItem)
