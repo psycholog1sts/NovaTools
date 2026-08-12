@@ -35,9 +35,12 @@ export function initAdSense() {
   disableUnconfiguredManualInventory();
   if (shouldBlockAds() || hasDisallowedMobileStickyAds()) return;
 
-  // The connection script is present on every built page so AdSense can verify
-  // the site and Google's certified CMP can produce TCF signals where required.
-  // Manual units remain disabled until real account slot IDs are configured.
+  if (!hasAdvertisingConsent()) {
+    markAdsPendingConsent();
+    waitForAdvertisingConsent();
+    return;
+  }
+
   configureAdPrivacy();
   deferAdSenseLoad();
 }
@@ -80,7 +83,7 @@ function waitForAdvertisingConsent() {
   window.__mcAdSenseConsentListener = true;
 
   const onConsentChanged = () => {
-    if (!hasAdvertisingConsent() || shouldBlockAds() || !hasValidAdSlots()) return;
+    if (!hasAdvertisingConsent() || shouldBlockAds() || hasDisallowedMobileStickyAds()) return;
     configureAdPrivacy();
     deferAdSenseLoad();
   };

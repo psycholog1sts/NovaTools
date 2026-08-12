@@ -7,10 +7,11 @@
   "packageManager": "npm@10.2.4",
   "scripts": {
     "dev": "node ./node_modules/vite/bin/vite.js",
-    "build": "node ./node_modules/vite/bin/vite.js build && npm run build:fix-paths && npm run build:pricing-route && npm run build:inline-critical-css && npm run build:structured-data && npm run build:trust",
+    "build": "node ./node_modules/vite/bin/vite.js build && npm run build:fix-paths && npm run build:pricing-route && npm run build:inline-critical-css && npm run build:structured-data && npm run build:trust && npm run build:runtime-contracts",
     "build:fix-paths": "node scripts/post-build-fix.mjs",
     "build:pricing-route": "node scripts/build-pricing-route.mjs",
     "build:trust": "node scripts/normalize-public-trust.mjs",
+    "build:runtime-contracts": "node scripts/finalize-runtime-contracts.mjs",
     "build:analyze": "node ./node_modules/vite/bin/vite.js build --mode analyze",
     "preview": "node ./node_modules/vite/bin/vite.js preview",
     "lint": "eslint src/",
