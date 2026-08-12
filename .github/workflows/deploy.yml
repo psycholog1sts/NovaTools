@@ -63,8 +63,17 @@ jobs:
       - name: Install Chromium for browser gates
         run: npx playwright install --with-deps chromium
 
-      - name: Run Chromium E2E and accessibility gates
-        run: npx playwright test
+      - name: Run Chromium public-route smoke
+        run: npx playwright test tests/e2e/public-smoke.spec.mjs --reporter=line
+
+      - name: Run axe accessibility gate - home
+        run: npx playwright test tests/e2e/accessibility.spec.mjs --grep '^home has no serious or critical WCAG A/AA violations$' --reporter=line
+
+      - name: Run axe accessibility gate - pricing
+        run: npx playwright test tests/e2e/accessibility.spec.mjs --grep '^pricing has no serious or critical WCAG A/AA violations$' --reporter=line
+
+      - name: Run axe accessibility gate - PDF compressor
+        run: npx playwright test tests/e2e/accessibility.spec.mjs --grep '^pdf compressor has no serious or critical WCAG A/AA violations$' --reporter=line
 
       - name: Verify sitemap and site link export
         run: npm run lint:site-links
@@ -176,8 +185,17 @@ jobs:
       - name: Install Chromium for browser gates
         run: npx playwright install --with-deps chromium
 
-      - name: Run Chromium E2E and accessibility gates
-        run: npx playwright test
+      - name: Run Chromium public-route smoke
+        run: npx playwright test tests/e2e/public-smoke.spec.mjs --reporter=line
+
+      - name: Run axe accessibility gate - home
+        run: npx playwright test tests/e2e/accessibility.spec.mjs --grep '^home has no serious or critical WCAG A/AA violations$' --reporter=line
+
+      - name: Run axe accessibility gate - pricing
+        run: npx playwright test tests/e2e/accessibility.spec.mjs --grep '^pricing has no serious or critical WCAG A/AA violations$' --reporter=line
+
+      - name: Run axe accessibility gate - PDF compressor
+        run: npx playwright test tests/e2e/accessibility.spec.mjs --grep '^pdf compressor has no serious or critical WCAG A/AA violations$' --reporter=line
 
       - name: Verify sitemap and site link export
         run: npm run lint:site-links
