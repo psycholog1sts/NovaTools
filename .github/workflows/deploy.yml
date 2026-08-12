@@ -203,4 +203,14 @@ jobs:
         run: node scripts/diagnose-cloudflare-edge.mjs
 
       - name: Run deterministic local Lighthouse CI
+        id: lighthouse
+        continue-on-error: true
         run: npm run lighthouse:ci
+
+      - name: Report blocking Lighthouse audits
+        if: steps.lighthouse.outcome == 'failure'
+        run: node scripts/report-lighthouse-failures.mjs
+
+      - name: Enforce Lighthouse gate
+        if: steps.lighthouse.outcome == 'failure'
+        run: exit 1
