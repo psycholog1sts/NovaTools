@@ -24,7 +24,15 @@ for (const [name, route] of routes) {
         .map((violation) => {
           const targets = violation.nodes
             .slice(0, 5)
-            .map((node) => node.target.join(' > '))
+            .map((node) => {
+              const data = node.any
+                .map((check) => check.data)
+                .filter(Boolean)
+                .map((value) => JSON.stringify(value))
+                .join(', ');
+              const summary = node.failureSummary?.replaceAll('\n', ' ') || '';
+              return `${node.target.join(' > ')}${data ? ` data=${data}` : ''}${summary ? ` summary=${summary}` : ''}`;
+            })
             .join('; ');
           return `${violation.id}: ${violation.help} (${violation.nodes.length} node(s)) [${targets}]`;
         })
