@@ -18,6 +18,11 @@ const GOOGLE_FONT_PRECONNECT_RE = /\n?\s*<link\b(?=[^>]*\brel\s*=\s*["']preconne
 const PDF_ENHANCER_SCRIPT_RE = /\n?\s*<script\b(?=[^>]*\bsrc\s*=\s*["'](?:https:\/\/mc-novatools\.com)?\/js\/tool-page-enhancer\.js["'])[^>]*>\s*<\/script>\s*/gi;
 const PDF_WORKFLOW_STYLE_RE = /\n?\s*<link\b(?=[^>]*\brel\s*=\s*["']stylesheet["'])(?=[^>]*\bhref\s*=\s*["'](?:https:\/\/mc-novatools\.com)?\/(?:styles|src\/styles)\/tool-workflow\.css["'])[^>]*\/?\s*>\s*/gi;
 const INTERNAL_ASSET_ORIGIN_RE = /https:\/\/mc-novatools\.com\/(?=(?:js|vendor|css|assets|wasm)\/)/gi;
+const SOURCE_TOOL_HREF_RE = /(href\s*=\s*["'])(?:https:\/\/mc-novatools\.com)?\/src\/tools\//gi;
+const LEGACY_THEME_GET_RE = /localStorage\.getItem\((["'])theme\1\)/g;
+const LEGACY_THEME_SET_RE = /localStorage\.setItem\((["'])theme\1\s*,/g;
+const PROFESSIONAL_THEME_HREF = '/styles/theme-professional.css';
+const PROFESSIONAL_THEME_LINK = `<link rel="stylesheet" href="${PROFESSIONAL_THEME_HREF}">`;
 
 function listHtmlFiles(dir) {
   const files = [];
@@ -55,12 +60,24 @@ function publishToolMetaContracts() {
   return published;
 }
 
+function injectProfessionalTheme(html, relativePath) {
+  if (html.includes(`href="${PROFESSIONAL_THEME_HREF}"`) || html.includes(`href='${PROFESSIONAL_THEME_HREF}'`)) return html;
+  if (!/<\/head>/i.test(html)) {
+    throw new Error(`cannot inject professional theme stylesheet: ${relativePath} has no </head>`);
+  }
+  return html.replace(/<\/head>/i, `  ${PROFESSIONAL_THEME_LINK}\n</head>`);
+}
+
 let strippedAdSenseScripts = 0;
 let strippedStalePrefetches = 0;
 let restoredPdfStyles = 0;
 let strippedPdfWebFonts = 0;
 let strippedPdfEnhancers = 0;
 let normalizedPdfAssetOrigins = 0;
+let normalizedSourceToolLinks = 0;
+let normalizedLegacyThemeReads = 0;
+let normalizedLegacyThemeWrites = 0;
+let injectedProfessionalThemes = 0;
 const htmlFiles = listHtmlFiles(distDir);
 
 for (const filePath of htmlFiles) {
@@ -74,8 +91,24 @@ for (const filePath of htmlFiles) {
     strippedStalePrefetches += 1;
     return '\n';
   });
+  after = after.replace(SOURCE_TOOL_HREF_RE, (_match, prefix) => {
+    normalizedSourceToolLinks += 1;
+    return `${prefix}/tools/`;
+  });
+  after = after.replace(LEGACY_THEME_GET_RE, () => {
+    normalizedLegacyThemeReads += 1;
+    return "localStorage.getItem('novatools-theme')";
+  });
+  after = after.replace(LEGACY_THEME_SET_RE, () => {
+    normalizedLegacyThemeWrites += 1;
+    return "localStorage.setItem('novatools-theme',";
+  });
 
   const relative = path.relative(distDir, filePath).replace(/\\/g, '/');
+  const hadProfessionalTheme = after.includes(`href="${PROFESSIONAL_THEME_HREF}"`) || after.includes(`href='${PROFESSIONAL_THEME_HREF}'`);
+  after = injectProfessionalTheme(after, relative);
+  if (!hadProfessionalTheme) injectedProfessionalThemes += 1;
+
   if (/(^|\/)tools\/pdf\/compress\/index\.html$/.test(relative)) {
     after = after.replace(DEFERRED_STYLE_RE, (_match, href) => {
       restoredPdfStyles += 1;
@@ -111,6 +144,26 @@ if (activeAdSense.length) {
 const stalePrefetches = htmlFiles.filter((filePath) => /<link\b[^>]*\brel=["']prefetch["'][^>]*\bhref=["'](?:https:\/\/mc-novatools\.com)?\/tools\/popular\/?["']/i.test(fs.readFileSync(filePath, 'utf8')));
 if (stalePrefetches.length) {
   throw new Error(`stale /tools/popular prefetch remains in ${stalePrefetches.length} built HTML file(s)`);
+}
+
+const sourceToolLinks = htmlFiles.filter((filePath) => /href\s*=\s*["'](?:https:\/\/mc-novatools\.com)?\/src\/tools\//i.test(fs.readFileSync(filePath, 'utf8')));
+if (sourceToolLinks.length) {
+  throw new Error(`source-only /src/tools links remain in ${sourceToolLinks.length} built HTML file(s)`);
+}
+
+const missingProfessionalTheme = htmlFiles.filter((filePath) => !fs.readFileSync(filePath, 'utf8').includes(PROFESSIONAL_THEME_HREF));
+if (missingProfessionalTheme.length) {
+  throw new Error(`professional theme stylesheet is missing from ${missingProfessionalTheme.length} built HTML file(s)`);
+}
+
+const legacyThemeKeyFiles = htmlFiles.filter((filePath) => /localStorage\.(?:getItem|setItem)\((["'])theme\1/.test(fs.readFileSync(filePath, 'utf8')));
+if (legacyThemeKeyFiles.length) {
+  throw new Error(`legacy theme storage key remains in ${legacyThemeKeyFiles.length} built HTML file(s)`);
+}
+
+const themeAsset = path.join(distDir, 'styles', 'theme-professional.css');
+if (!fs.existsSync(themeAsset)) {
+  throw new Error('professional theme stylesheet was not copied to /styles/theme-professional.css');
 }
 
 const pdfCompressor = path.join(distDir, 'tools', 'pdf', 'compress', 'index.html');
@@ -154,4 +207,4 @@ if (!fs.readFileSync(i18nPath, 'utf8').includes(pdfStableGuard)) {
   throw new Error('PDF compressor CLS guard was not applied to built i18n runtime');
 }
 
-console.log(`Runtime contracts finalized: removed ${strippedAdSenseScripts} pre-consent AdSense script(s); removed ${strippedStalePrefetches} stale prefetch(es); restored ${restoredPdfStyles} PDF compressor stylesheet link(s); removed ${strippedPdfWebFonts} PDF web-font stylesheet(s); removed ${strippedPdfEnhancers} generic PDF enhancer script(s); normalized ${normalizedPdfAssetOrigins} PDF internal asset origin(s); published ${publishedMetaContracts} tool metadata contract(s); suppressed redundant PDF quality-panel injection.`);
+console.log(`Runtime contracts finalized: removed ${strippedAdSenseScripts} pre-consent AdSense script(s); removed ${strippedStalePrefetches} stale prefetch(es); normalized ${normalizedSourceToolLinks} source-only tool link(s); normalized ${normalizedLegacyThemeReads} legacy theme read(s) and ${normalizedLegacyThemeWrites} write(s); injected professional theme into ${injectedProfessionalThemes} HTML file(s); restored ${restoredPdfStyles} PDF compressor stylesheet link(s); removed ${strippedPdfWebFonts} PDF web-font stylesheet(s); removed ${strippedPdfEnhancers} generic PDF enhancer script(s); normalized ${normalizedPdfAssetOrigins} PDF internal asset origin(s); published ${publishedMetaContracts} tool metadata contract(s); suppressed redundant PDF quality-panel injection.`);
