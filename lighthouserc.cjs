@@ -1,8 +1,15 @@
 module.exports = {
   ci: {
     collect: {
-      // Deterministic local static audit of the already-built site.
+      // Deterministic local static audit of representative release-critical routes.
+      // Explicit URLs disable staticDistDir's arbitrary first-five HTML autodiscovery,
+      // which otherwise includes intentional noindex pages such as 404.html.
       staticDistDir: './dist',
+      url: [
+        'http://localhost/',
+        'http://localhost/pricing/',
+        'http://localhost/tools/pdf/compress/',
+      ],
       numberOfRuns: 2,
       settings: {
         chromeFlags: '--no-sandbox --headless',
