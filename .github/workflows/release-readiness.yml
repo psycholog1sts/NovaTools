@@ -1,0 +1,46 @@
+name: Release Readiness
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  release-readiness:
+    name: Release readiness
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Lint
+        run: npm run lint --if-present
+      - name: Unit and regression tests
+        run: npm test --if-present
+      - name: Build
+        run: npm run build
+      - name: Verify production contract files
+        shell: bash
+        run: |
+          test -f dist/index.html
+          test -f .github/workflows/deploy.yml
+          test -f scripts/smoke-cloudflare-pages.mjs
+          test -f scripts/resolve-cloudflare-pages-deployment.mjs
+      - name: Verify fail-closed entitlement contract is present
+        shell: bash
+        run: |
+          files=$(grep -RIl --exclude-dir=node_modules --exclude-dir=dist -E 'entitlement|subscription|billing' functions src 2>/dev/null || true)
+          test -n "$files" || { echo 'No billing/entitlement implementation found'; exit 1; }
+          printf '%s\n' "$files"
+      - name: Verify production authority contract
+        shell: bash
+        run: |
+          node -e "const p=require('./package.json'); if(p.engines?.node && p.engines.node!=='22.x') throw new Error('Node engine must stay 22.x');"
+          node -e "const v=require('./vercel.json'); if(v.git?.deploymentEnabled?.main!==false) throw new Error('Vercel main deployments must remain disabled');"
