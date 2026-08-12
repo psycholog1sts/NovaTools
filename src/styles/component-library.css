@@ -110,9 +110,9 @@ textarea,
 select {
   min-height: 44px;
   width: 100%;
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--color-border) !important;
   border-radius: var(--radius-md);
-  background: var(--color-surface);
+  background: var(--color-surface) !important;
   color: var(--color-text-primary);
   padding: var(--space-3) var(--space-4);
   font: var(--text-base);
@@ -244,8 +244,8 @@ select:focus-visible { outline: 2px solid var(--color-primary-500); outline-offs
 /* Homepage search lives inside its own field shell. Override the generic form-control selector
    at id specificity so its borderless appearance and theme contrast are deterministic. */
 #homeSearchInput {
-  border: 0;
-  background: transparent;
+  border: 0 !important;
+  background: transparent !important;
   padding-inline: 0;
 }
 
