@@ -240,3 +240,29 @@ select:focus-visible { outline: 2px solid var(--color-primary-500); outline-offs
 .newsletter-form,
 .nt-footer__newsletter { display: flex; gap: var(--space-2); flex-wrap: wrap; }
 @media (min-width: 768px) { .nt-footer__grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+
+/* Homepage search lives inside its own field shell. Override the generic form-control selector
+   at id specificity so its borderless appearance and theme contrast are deterministic. */
+#homeSearchInput {
+  border: 0;
+  background: transparent;
+  padding-inline: 0;
+}
+
+:root[data-theme='dark'] #homeSearchInput {
+  color: hsl(210 40% 98%);
+}
+
+:root[data-theme='dark'] #homeSearchInput::placeholder {
+  color: hsl(214 28% 82%);
+  opacity: 1;
+}
+
+:root[data-theme='light'] #homeSearchInput {
+  color: hsl(224 32% 11%);
+}
+
+:root[data-theme='light'] #homeSearchInput::placeholder {
+  color: hsl(224 20% 30%);
+  opacity: 1;
+}
