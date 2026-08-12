@@ -32,9 +32,10 @@ function escapeCommand(value) {
 function summarizeConsoleErrors(lhr) {
   const items = lhr.audits?.['errors-in-console']?.details?.items || [];
   return items.slice(0, 8).map((item) => {
-    const source = item.source || item.sourceLocation?.url || 'console';
+    const source = item.source || 'console';
+    const location = item.sourceLocation?.url || item.url || '';
     const description = item.description || item.text || item.message || '';
-    return `${source}: ${description}`.trim();
+    return `${source}${location ? ` ${location}` : ''}: ${description}`.trim();
   }).filter(Boolean);
 }
 
@@ -43,7 +44,11 @@ function summarizeLayoutShifts(lhr) {
   return items.slice(0, 8).map((item) => {
     const score = item.score ?? item.value ?? '';
     const node = item.node?.selector || item.node?.snippet || item.node?.nodeLabel || item.node?.path || '';
-    return `${score}${node ? ` ${node}` : ''}`.trim();
+    const causes = (item.subItems?.items || [])
+      .map((cause) => `${cause.cause || ''}${cause.extra?.value ? ` ${cause.extra.value}` : ''}`.trim())
+      .filter(Boolean)
+      .join(', ');
+    return `${score}${node ? ` ${node}` : ''}${causes ? ` causes=${causes}` : ''}`.trim();
   }).filter(Boolean);
 }
 
