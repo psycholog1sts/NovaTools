@@ -20,7 +20,19 @@ for (const [name, route] of routes) {
     const serious = results.violations.filter((violation) => violation.impact === 'serious');
 
     if (serious.length) {
-      console.log(`::warning::${name}: ${serious.length} serious axe issue(s) remain advisory until remediated.`);
+      const details = serious
+        .map((violation) => {
+          const targets = violation.nodes
+            .slice(0, 5)
+            .map((node) => node.target.join(' > '))
+            .join('; ');
+          return `${violation.id}: ${violation.help} (${violation.nodes.length} node(s)) [${targets}]`;
+        })
+        .join(' | ')
+        .replaceAll('%', '%25')
+        .replaceAll('\r', '%0D')
+        .replaceAll('\n', '%0A');
+      console.log(`::warning title=${name} serious axe details::${details}`);
     }
 
     expect(
