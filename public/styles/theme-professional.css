@@ -17,7 +17,7 @@
   --text-primary: #172033;
   --text-secondary: #475569;
   --text-tertiary: #64748b;
-  --text-muted: #74839a;
+  --text-muted: #64748b;
   --accent-primary: #2563eb;
   --accent-hover: #1d4ed8;
   --accent-secondary: #0f766e;
@@ -57,7 +57,7 @@
   --color-text-primary: #172033;
   --color-text-secondary: #475569;
   --color-text-tertiary: #64748b;
-  --color-text-muted: #74839a;
+  --color-text-muted: #64748b;
   --color-border: rgba(30, 41, 59, 0.13);
   --color-border-hover: rgba(37, 99, 235, 0.34);
   --color-border-strong: rgba(30, 41, 59, 0.24);
