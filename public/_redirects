@@ -12,6 +12,10 @@
 /kullanim-kosullari /kullanim-kosullari.html 200
 /iletisim /iletisim.html 200
 
+# Legacy source-tree tool URLs must never render the 404 shell.
+# Preserve the complete tool suffix and move users to the canonical public namespace.
+/src/tools/* /tools/:splat 301
+
 # Category and blog clean URL rewrites.
 /categories/:page /categories/:page.html 200
 /blog/categories/:page /blog/categories/:page.html 200
