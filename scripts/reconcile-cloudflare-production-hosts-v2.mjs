@@ -53,7 +53,7 @@ async function getDomain(hostname) {
     const payload = await cf(`/accounts/${encodeURIComponent(accountId)}/pages/projects/${encodeURIComponent(projectName)}/domains/${encodeURIComponent(hostname)}`);
     return payload?.result || null;
   } catch (error) {
-    if (/8000007|not found|HTTP 404/i.test(error.message)) return null;
+    if (/8000007|8000021|does not exist|not found|HTTP 404/i.test(error.message)) return null;
     throw error;
   }
 }
