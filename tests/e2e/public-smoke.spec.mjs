@@ -97,6 +97,48 @@ for (const [name, route] of [
   });
 }
 
+test('background remover v2 removes connected background without deleting enclosed foreground color', async ({ page }) => {
+  const response = await page.goto('/tools/image/background-remover/', { waitUntil: 'domcontentloaded' });
+  expect(response?.ok()).toBeTruthy();
+
+  const button = page.locator('#removeBtn');
+  await expect(button).toHaveAttribute('data-engine-version', '2');
+
+  const svg = `
+    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100">
+      <rect width="100" height="100" fill="#ffffff"/>
+      <rect x="20" y="20" width="60" height="60" fill="#2563eb"/>
+      <rect x="40" y="40" width="20" height="20" fill="#ffffff"/>
+    </svg>`;
+
+  await page.locator('#fileInput').setInputFiles({
+    name: 'background-remover-regression.svg',
+    mimeType: 'image/svg+xml',
+    buffer: Buffer.from(svg)
+  });
+
+  await expect(page.locator('#editorSection')).toHaveClass(/visible/);
+  await expect.poll(() => page.locator('#originalPreview').evaluate((img) => img.complete && img.naturalWidth === 100)).toBeTruthy();
+  await button.click();
+  await expect(page.locator('#resultSection')).toHaveClass(/visible/, { timeout: 15_000 });
+  await expect(page.locator('#downloadLink')).toHaveAttribute('href', /^blob:/);
+  await expect(page.locator('#downloadLink')).toHaveAttribute('data-engine-version', '2');
+
+  const pixels = await page.locator('#resultCanvas').evaluate((canvas) => {
+    const ctx = canvas.getContext('2d');
+    const alphaAt = (x, y) => ctx.getImageData(x, y, 1, 1).data[3];
+    return {
+      outside: alphaAt(5, 5),
+      blueRing: alphaAt(25, 25),
+      enclosedWhite: alphaAt(50, 50)
+    };
+  });
+
+  expect(pixels.outside).toBeLessThan(24);
+  expect(pixels.blueRing).toBeGreaterThan(220);
+  expect(pixels.enclosedWhite).toBeGreaterThan(220);
+});
+
 test('homepage exposes a keyboard-focusable primary control', async ({ page }) => {
   await page.goto('/', { waitUntil: 'domcontentloaded' });
   let focused = '';
