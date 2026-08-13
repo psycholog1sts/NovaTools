@@ -25,6 +25,8 @@ assert.doesNotMatch(workflow, /https:\/\/\$\{CLOUDFLARE_PROJECT_NAME\}\.pages\.d
 assert.match(hostReconciler, /pages\/projects\/\$\{encodeURIComponent\(projectName\)\}\/domains/);
 assert.match(hostReconciler, /getDomain/);
 assert.match(hostReconciler, /ensureDomain/);
+assert.match(hostReconciler, /8000021/);
+assert.match(hostReconciler, /does not exist/);
 assert.match(hostReconciler, /zone_tag/);
 assert.match(hostReconciler, /dns_records/);
 assert.match(hostReconciler, /type: 'CNAME'/);
