@@ -351,6 +351,104 @@ textarea::placeholder {
   filter: drop-shadow(0 8px 18px rgba(15, 23, 42, 0.12)) !important;
 }
 
+/* Legacy inline tool pages used hardcoded dark/neon values. The production override
+   deliberately normalizes their common shells without rewriting every tool. */
+:root[data-theme="light"] .tool-hero h1,
+:root[data-theme="light"] .tool-header h1,
+:root[data-theme="light"] .seo-section h2,
+:root[data-theme="light"] .seo-section h3,
+:root[data-theme="light"] .faq-item summary,
+:root[data-theme="light"] .output-label,
+:root[data-theme="light"] .input-label,
+:root[data-theme="light"] .stat-value,
+:root[data-theme="light"] .file-name-large {
+  color: var(--text-primary) !important;
+  -webkit-text-fill-color: currentColor !important;
+}
+
+:root[data-theme="light"] .tool-hero p,
+:root[data-theme="light"] .tool-header p,
+:root[data-theme="light"] .seo-section p,
+:root[data-theme="light"] .seo-section li,
+:root[data-theme="light"] .faq-item p,
+:root[data-theme="light"] .output-placeholder,
+:root[data-theme="light"] .hero-note,
+:root[data-theme="light"] .file-size-large,
+:root[data-theme="light"] .stat-label,
+:root[data-theme="light"] .quality-option .desc {
+  color: var(--text-secondary) !important;
+}
+
+:root[data-theme="light"] .card,
+:root[data-theme="light"] .tool-workspace,
+:root[data-theme="light"] .trust-help,
+:root[data-theme="light"] .related-tools,
+:root[data-theme="light"] .tool-description,
+:root[data-theme="light"] .faq-item,
+:root[data-theme="light"] .output-wrap,
+:root[data-theme="light"] .file-info-card,
+:root[data-theme="light"] .quality-selector,
+:root[data-theme="light"] .quality-option,
+:root[data-theme="light"] .state-section,
+:root[data-theme="light"] .progress-section,
+:root[data-theme="light"] .dropzone {
+  background: var(--bg-elevated) !important;
+  border-color: var(--border-default) !important;
+  box-shadow: var(--shadow-sm) !important;
+}
+
+:root[data-theme="light"] #jsonInput,
+:root[data-theme="light"] #jsonOutput,
+:root[data-theme="light"] pre,
+:root[data-theme="light"] code:not([class]) {
+  background: #f8fafc !important;
+  color: #1e293b !important;
+  border-color: var(--border-default) !important;
+}
+
+:root[data-theme="light"] .json-key { color: #1d4ed8 !important; }
+:root[data-theme="light"] .json-string { color: #047857 !important; }
+:root[data-theme="light"] .json-number { color: #a16207 !important; }
+:root[data-theme="light"] .json-boolean { color: #6d28d9 !important; }
+:root[data-theme="light"] .json-null { color: #b91c1c !important; }
+
+:root[data-theme="light"] .btn-primary,
+:root[data-theme="light"] .download-btn {
+  background: #2563eb !important;
+  border-color: #2563eb !important;
+  color: #ffffff !important;
+  box-shadow: none !important;
+}
+
+:root[data-theme="light"] .btn-primary:hover,
+:root[data-theme="light"] .download-btn:hover {
+  background: #1d4ed8 !important;
+  border-color: #1d4ed8 !important;
+}
+
+:root[data-theme="light"] .btn-secondary,
+:root[data-theme="light"] .btn-ghost {
+  background: #ffffff !important;
+  border-color: var(--border-default) !important;
+  color: #1d4ed8 !important;
+}
+
+:root[data-theme="light"] .btn-danger,
+:root[data-theme="light"] .error-text,
+:root[data-theme="light"] .error-message {
+  color: #b91c1c !important;
+}
+
+:root[data-theme="light"] .stats-badge,
+:root[data-theme="light"] .copy-feedback,
+:root[data-theme="light"] .state-section[data-state="success"] {
+  color: #166534 !important;
+}
+
+:root[data-theme="light"] .progress-fill {
+  background: #2563eb !important;
+}
+
 ::selection {
   background: rgba(37, 99, 235, 0.22);
   color: inherit;
