@@ -12,12 +12,32 @@ const routes = [
 
 for (const [name, route] of routes) {
   test(`${name} public route renders in Chromium`, async ({ page }) => {
+    const pageErrors = [];
+    const failedInternalResponses = [];
+
+    page.on('pageerror', (error) => pageErrors.push(error.message));
+    page.on('response', (response) => {
+      if (response.status() < 400) return;
+      try {
+        const url = new URL(response.url());
+        if (url.origin !== 'http://127.0.0.1:4173') return;
+        if (url.pathname.startsWith('/api/')) return;
+        failedInternalResponses.push(`${response.status()} ${url.pathname}`);
+      } catch {
+        // Ignore malformed or browser-internal URLs.
+      }
+    });
+
     const response = await page.goto(route, { waitUntil: 'domcontentloaded' });
     expect(response, `${route} should return a response`).not.toBeNull();
     expect(response.ok(), `${route} should return a successful status`).toBeTruthy();
     await expect(page.locator('body')).toBeVisible();
     await expect(page.locator('h1').first()).toBeVisible();
     await expect.poll(() => page.title()).not.toBe('');
+    await page.waitForTimeout(250);
+
+    expect(pageErrors, `${route} should not throw runtime page errors`).toEqual([]);
+    expect(failedInternalResponses, `${route} should not request broken same-origin resources`).toEqual([]);
 
     const canonical = page.locator('link[rel="canonical"]').first();
     if (await canonical.count()) {
