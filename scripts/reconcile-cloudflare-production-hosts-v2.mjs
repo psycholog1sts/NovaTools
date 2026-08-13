@@ -48,12 +48,17 @@ async function getProject() {
   return project;
 }
 
+function isMissingPagesDomainError(error) {
+  const message = String(error?.message || '');
+  return /\b8000007\b|\b8000021\b|domain does not exist|\bHTTP 404\b/i.test(message);
+}
+
 async function getDomain(hostname) {
   try {
     const payload = await cf(`/accounts/${encodeURIComponent(accountId)}/pages/projects/${encodeURIComponent(projectName)}/domains/${encodeURIComponent(hostname)}`);
     return payload?.result || null;
   } catch (error) {
-    if (/8000007|not found|HTTP 404/i.test(error.message)) return null;
+    if (isMissingPagesDomainError(error)) return null;
     throw error;
   }
 }
