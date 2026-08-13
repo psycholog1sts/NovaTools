@@ -23,6 +23,8 @@ const LEGACY_THEME_GET_RE = /localStorage\.getItem\((["'])theme\1\)/g;
 const LEGACY_THEME_SET_RE = /localStorage\.setItem\((["'])theme\1\s*,/g;
 const PROFESSIONAL_THEME_HREF = '/styles/theme-professional.css';
 const PROFESSIONAL_THEME_LINK = `<link rel="stylesheet" href="${PROFESSIONAL_THEME_HREF}">`;
+const THEME_BOOTSTRAP_MARKER = 'data-novatools-theme-bootstrap';
+const THEME_BOOTSTRAP_SCRIPT = `<script ${THEME_BOOTSTRAP_MARKER}>(function(){try{var saved=localStorage.getItem('novatools-theme');var theme=saved==='light'||saved==='dark'?saved:(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',theme);document.documentElement.style.colorScheme=theme;}catch(_error){document.documentElement.setAttribute('data-theme','light');document.documentElement.style.colorScheme='light';}})();</script>`;
 const BACKGROUND_REMOVER_V2_HREF = '/js/background-remover-v2.js';
 const BACKGROUND_REMOVER_V2_SCRIPT = `<script src="${BACKGROUND_REMOVER_V2_HREF}" defer></script>`;
 
@@ -63,11 +65,18 @@ function publishToolMetaContracts() {
 }
 
 function injectProfessionalTheme(html, relativePath) {
-  if (html.includes(`href="${PROFESSIONAL_THEME_HREF}"`) || html.includes(`href='${PROFESSIONAL_THEME_HREF}'`)) return html;
   if (!/<\/head>/i.test(html)) {
-    throw new Error(`cannot inject professional theme stylesheet: ${relativePath} has no </head>`);
+    throw new Error(`cannot inject professional theme runtime: ${relativePath} has no </head>`);
   }
-  return html.replace(/<\/head>/i, `  ${PROFESSIONAL_THEME_LINK}\n</head>`);
+
+  let next = html;
+  if (!next.includes(THEME_BOOTSTRAP_MARKER)) {
+    next = next.replace(/<\/head>/i, `  ${THEME_BOOTSTRAP_SCRIPT}\n</head>`);
+  }
+  if (!next.includes(`href="${PROFESSIONAL_THEME_HREF}"`) && !next.includes(`href='${PROFESSIONAL_THEME_HREF}'`)) {
+    next = next.replace(/<\/head>/i, `  ${PROFESSIONAL_THEME_LINK}\n</head>`);
+  }
+  return next;
 }
 
 function injectBackgroundRemoverV2(html, relativePath) {
@@ -117,6 +126,7 @@ let normalizedSourceToolLinks = 0;
 let normalizedLegacyThemeReads = 0;
 let normalizedLegacyThemeWrites = 0;
 let injectedProfessionalThemes = 0;
+let injectedThemeBootstraps = 0;
 let injectedBackgroundRemoverV2 = 0;
 const htmlFiles = listHtmlFiles(distDir);
 
@@ -146,8 +156,10 @@ for (const filePath of htmlFiles) {
 
   const relative = path.relative(distDir, filePath).replace(/\\/g, '/');
   const hadProfessionalTheme = after.includes(`href="${PROFESSIONAL_THEME_HREF}"`) || after.includes(`href='${PROFESSIONAL_THEME_HREF}'`);
+  const hadThemeBootstrap = after.includes(THEME_BOOTSTRAP_MARKER);
   after = injectProfessionalTheme(after, relative);
   if (!hadProfessionalTheme) injectedProfessionalThemes += 1;
+  if (!hadThemeBootstrap) injectedThemeBootstraps += 1;
 
   if (/(^|\/)tools\/image\/background-remover\/index\.html$/.test(relative)) {
     const hadV2 = after.includes(BACKGROUND_REMOVER_V2_HREF);
@@ -201,6 +213,11 @@ if (sourceToolLinks.length) {
 const missingProfessionalTheme = htmlFiles.filter((filePath) => !fs.readFileSync(filePath, 'utf8').includes(PROFESSIONAL_THEME_HREF));
 if (missingProfessionalTheme.length) {
   throw new Error(`professional theme stylesheet is missing from ${missingProfessionalTheme.length} built HTML file(s)`);
+}
+
+const missingThemeBootstrap = htmlFiles.filter((filePath) => !fs.readFileSync(filePath, 'utf8').includes(THEME_BOOTSTRAP_MARKER));
+if (missingThemeBootstrap.length) {
+  throw new Error(`theme bootstrap is missing from ${missingThemeBootstrap.length} built HTML file(s)`);
 }
 
 const legacyThemeKeyFiles = htmlFiles.filter((filePath) => /localStorage\.(?:getItem|setItem)\((["'])theme\1/.test(fs.readFileSync(filePath, 'utf8')));
@@ -263,4 +280,4 @@ if (!fs.readFileSync(i18nPath, 'utf8').includes(pdfStableGuard)) {
   throw new Error('PDF compressor CLS guard was not applied to built i18n runtime');
 }
 
-console.log(`Runtime contracts finalized: removed ${strippedAdSenseScripts} pre-consent AdSense script(s); removed ${strippedStalePrefetches} stale prefetch(es); normalized ${normalizedSourceToolLinks} source-only tool link(s); normalized ${normalizedLegacyThemeReads} legacy theme read(s) and ${normalizedLegacyThemeWrites} write(s); injected professional theme into ${injectedProfessionalThemes} HTML file(s); injected Background Remover v2 into ${injectedBackgroundRemoverV2} public route(s); verified ${verifiedManifestToolRoutes} manifest tool route(s); restored ${restoredPdfStyles} PDF compressor stylesheet link(s); removed ${strippedPdfWebFonts} PDF web-font stylesheet(s); removed ${strippedPdfEnhancers} generic PDF enhancer script(s); normalized ${normalizedPdfAssetOrigins} PDF internal asset origin(s); published ${publishedMetaContracts} tool metadata contract(s); suppressed redundant PDF quality-panel injection.`);
+console.log(`Runtime contracts finalized: removed ${strippedAdSenseScripts} pre-consent AdSense script(s); removed ${strippedStalePrefetches} stale prefetch(es); normalized ${normalizedSourceToolLinks} source-only tool link(s); normalized ${normalizedLegacyThemeReads} legacy theme read(s) and ${normalizedLegacyThemeWrites} write(s); injected professional theme into ${injectedProfessionalThemes} HTML file(s); injected theme bootstrap into ${injectedThemeBootstraps} HTML file(s); injected Background Remover v2 into ${injectedBackgroundRemoverV2} public route(s); verified ${verifiedManifestToolRoutes} manifest tool route(s); restored ${restoredPdfStyles} PDF compressor stylesheet link(s); removed ${strippedPdfWebFonts} PDF web-font stylesheet(s); removed ${strippedPdfEnhancers} generic PDF enhancer script(s); normalized ${normalizedPdfAssetOrigins} PDF internal asset origin(s); published ${publishedMetaContracts} tool metadata contract(s); suppressed redundant PDF quality-panel injection.`);
