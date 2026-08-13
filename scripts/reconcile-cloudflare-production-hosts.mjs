@@ -58,26 +58,6 @@ async function getPagesProject() {
   return project;
 }
 
-async function listProjectDomains(name) {
-  const payload = await cloudflareJson(`/accounts/${encodeURIComponent(accountId)}/pages/projects/${encodeURIComponent(name)}/domains`);
-  return Array.isArray(payload?.result) ? payload.result : [];
-}
-
-async function findPagesDomainOwners(hostname) {
-  const payload = await cloudflareJson(`/accounts/${encodeURIComponent(accountId)}/pages/projects?per_page=100`);
-  const projects = Array.isArray(payload?.result) ? payload.result : [];
-  const owners = [];
-
-  for (const project of projects) {
-    if (!project?.name) continue;
-    const domains = await listProjectDomains(project.name);
-    if (domains.some((domain) => String(domain?.name || '').toLowerCase() === hostname)) {
-      owners.push(project.name);
-    }
-  }
-  return owners;
-}
-
 async function addPagesDomain(hostname) {
   return cloudflareJson(`/accounts/${encodeURIComponent(accountId)}/pages/projects/${encodeURIComponent(projectName)}/domains`, {
     method: 'POST',
@@ -96,17 +76,19 @@ async function getPagesDomain(hostname) {
 }
 
 async function ensurePagesDomain(hostname) {
-  const owners = await findPagesDomainOwners(hostname);
-  const foreignOwners = owners.filter((owner) => owner !== projectName);
-  if (foreignOwners.length) {
-    throw new Error(`${hostname} is already attached to another Cloudflare Pages project: ${foreignOwners.join(', ')}`);
+  let domain = await getPagesDomain(hostname);
+  if (domain) return domain;
+
+  annotation('notice', 'Cloudflare Pages domain attach', `Attaching ${hostname} to the expected Pages project ${projectName}.`);
+  try {
+    await addPagesDomain(hostname);
+  } catch (error) {
+    throw new Error(`Could not attach ${hostname} to expected Pages project ${projectName}: ${error.message}`);
   }
 
-  let domain = await getPagesDomain(hostname);
+  domain = await getPagesDomain(hostname);
   if (!domain) {
-    annotation('notice', 'Cloudflare Pages domain attach', `Attaching ${hostname} to ${projectName}.`);
-    await addPagesDomain(hostname);
-    domain = await getPagesDomain(hostname);
+    throw new Error(`${hostname} was not returned from the expected Pages project after attach`);
   }
   return domain;
 }
@@ -252,7 +234,8 @@ async function main() {
   const canonicalDomain = await ensurePagesDomain(canonicalHost);
   if (!canonicalDomain) throw new Error(`${canonicalHost} could not be attached to the production Pages project`);
 
-  await ensurePagesDomain(secondaryHost);
+  const secondaryDomain = await ensurePagesDomain(secondaryHost);
+  if (!secondaryDomain) throw new Error(`${secondaryHost} could not be attached to the production Pages project`);
 
   const zone = await getZone();
   await ensureSecondaryDns(zone.id, secondaryHost, pagesTarget);
