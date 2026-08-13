@@ -105,6 +105,8 @@ for (const [name, route] of routes) {
 for (const [name, route] of [
   ['home', '/'],
   ['background remover', '/tools/image/background-remover/'],
+  ['image compressor', '/tools/image/compress/'],
+  ['json formatter', '/tools/dev/json-formatter/'],
   ['pdf compressor', '/tools/pdf/compress/']
 ]) {
   test(`${name} light theme has no WCAG color contrast failures`, async ({ page }) => {
