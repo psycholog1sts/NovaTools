@@ -5,7 +5,7 @@ const workflow = fs.readFileSync(new URL('../.github/workflows/deploy.yml', impo
 const resolver = fs.readFileSync(new URL('../scripts/resolve-cloudflare-pages-deployment.mjs', import.meta.url), 'utf8');
 const smoke = fs.readFileSync(new URL('../scripts/smoke-cloudflare-pages.mjs', import.meta.url), 'utf8');
 const edgeDiagnostic = fs.readFileSync(new URL('../scripts/diagnose-cloudflare-edge.mjs', import.meta.url), 'utf8');
-const hostReconciler = fs.readFileSync(new URL('../scripts/reconcile-cloudflare-production-hosts.mjs', import.meta.url), 'utf8');
+const hostReconciler = fs.readFileSync(new URL('../scripts/reconcile-cloudflare-production-hosts-v2.mjs', import.meta.url), 'utf8');
 const outputContract = fs.readFileSync(new URL('../scripts/enforce-production-output-contract.mjs', import.meta.url), 'utf8');
 const themeToggle = fs.readFileSync(new URL('../src/theme-toggle.mjs', import.meta.url), 'utf8');
 const redirects = fs.readFileSync(new URL('../public/_redirects', import.meta.url), 'utf8');
@@ -23,13 +23,13 @@ assert.match(workflow, /node scripts\/smoke-cloudflare-pages\.mjs/);
 assert.doesNotMatch(workflow, /https:\/\/\$\{CLOUDFLARE_PROJECT_NAME\}\.pages\.dev/);
 
 assert.match(hostReconciler, /pages\/projects\/\$\{encodeURIComponent\(projectName\)\}\/domains/);
-assert.match(hostReconciler, /getPagesDomain/);
-assert.match(hostReconciler, /addPagesDomain/);
-assert.match(hostReconciler, /Could not attach \$\{hostname\} to expected Pages project/);
+assert.match(hostReconciler, /getDomain/);
+assert.match(hostReconciler, /ensureDomain/);
+assert.match(hostReconciler, /zone_tag/);
 assert.match(hostReconciler, /dns_records/);
 assert.match(hostReconciler, /type: 'CNAME'/);
 assert.match(hostReconciler, /proxied: true/);
-assert.match(hostReconciler, /waitForActiveDomain/);
+assert.match(hostReconciler, /waitActive/);
 assert.doesNotMatch(hostReconciler, /pages\/projects\?per_page=/);
 assert.doesNotMatch(hostReconciler, /findPagesDomainOwners|foreignOwners/);
 assert.doesNotMatch(hostReconciler, /console\.log\([^\n]*token|console\.log\([^\n]*CLOUDFLARE_API_TOKEN/);
