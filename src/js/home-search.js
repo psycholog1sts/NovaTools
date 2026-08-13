@@ -14,9 +14,25 @@ function getDescription(tool) {
   return tool.description?.tr || tool.description?.en || '';
 }
 
+export function publicToolHref(tool, getToolHref = (slug) => `/tools/${slug}/`) {
+  const entry = String(tool?.entry || '').trim();
+  if (entry.startsWith('/src/tools/')) return entry.replace(/^\/src\//, '/');
+  if (entry.startsWith('/tools/')) return entry;
+
+  const path = String(tool?.path || '')
+    .replace(/^\/+/, '')
+    .replace(/\/+$/, '');
+  if (path) return `/tools/${path}/`;
+
+  const category = String(tool?.category || '').replace(/^\/+|\/+$/g, '');
+  const id = String(tool?.id || '').replace(/^\/+|\/+$/g, '');
+  if (category && id) return `/tools/${category}/${id}/`;
+  if (id) return getToolHref(id);
+  return '/categories/index.html';
+}
+
 function toSearchItem(tool, getToolHref) {
-  const fallbackSlug = tool.entry?.replace(/^\/tools\//, '').replace(/\/$/, '') || tool.path?.replace(/^\//, '');
-  const href = tool.entry || getToolHref(fallbackSlug || tool.id);
+  const href = publicToolHref(tool, getToolHref);
   const keywords = [
     ...(tool.keywords?.tr || []),
     ...(tool.keywords?.en || [])
@@ -37,7 +53,6 @@ function toSearchItem(tool, getToolHref) {
     ].join(' '))
   };
 }
-
 
 function toBlogSearchItem(post) {
   return {
@@ -84,14 +99,9 @@ export function initHomeSearch({ getToolHref } = {}) {
   if (!form || !input || !resultsContainer || form.dataset.searchReady === 'true') return;
   form.dataset.searchReady = 'true';
 
-  // The input controls a listbox and exposes aria-expanded, so it must use
-  // the combobox role rather than relying on the native searchbox role.
   input.setAttribute('role', 'combobox');
   input.setAttribute('aria-autocomplete', 'list');
 
-  // Keep the search purpose available to assistive technology without
-  // relying on placeholder text. The old placeholder rendered with a
-  // browser/theme-dependent foreground that failed WCAG AA contrast.
   const searchLabel = input.getAttribute('placeholder') || 'Search tools, categories, and workflows';
   if (!input.getAttribute('aria-label')) input.setAttribute('aria-label', searchLabel);
   input.removeAttribute('placeholder');

@@ -101,3 +101,32 @@ for (const [name, route] of routes) {
     ).toEqual([]);
   });
 }
+
+for (const [name, route] of [
+  ['home', '/'],
+  ['background remover', '/tools/image/background-remover/'],
+  ['image compressor', '/tools/image/compress/'],
+  ['json formatter', '/tools/dev/json-formatter/'],
+  ['pdf compressor', '/tools/pdf/compress/']
+]) {
+  test(`${name} light theme has no WCAG color contrast failures`, async ({ page }) => {
+    await page.addInitScript(() => {
+      localStorage.setItem('novatools-theme', 'light');
+      localStorage.removeItem('theme');
+    });
+
+    const response = await page.goto(route, { waitUntil: 'domcontentloaded' });
+    expect(response?.ok()).toBeTruthy();
+    await expect(page.locator('html')).toHaveAttribute('data-theme', 'light');
+
+    const results = await new AxeBuilder({ page })
+      .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
+      .analyze();
+
+    const contrast = results.violations.filter((violation) => violation.id === 'color-contrast');
+    expect(
+      contrast,
+      contrast.map((violation) => `${violation.id}: ${violation.nodes.map((node) => node.target.join(' > ')).join('; ')}`).join('\n')
+    ).toEqual([]);
+  });
+}
