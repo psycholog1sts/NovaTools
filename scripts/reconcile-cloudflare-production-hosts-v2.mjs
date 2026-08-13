@@ -147,6 +147,13 @@ async function main() {
   const zoneId = resolveZoneTag(canonical, secondary);
   annotation('notice', 'Cloudflare zone resolved', 'Using Pages custom-domain zone_tag; no account-wide zone enumeration.');
 
+  stage = `read exact ${canonicalHost} DNS and CAA evidence`;
+  const canonicalDns = await getExactDnsRecords(zoneId, canonicalHost);
+  const safeDnsEvidence = canonicalDns
+    .filter((record) => ['A', 'AAAA', 'CNAME', 'CAA'].includes(record?.type))
+    .map((record) => ({ type: record.type, content: record.content, proxied: record.proxied ?? false }));
+  annotation('notice', 'Cloudflare apex DNS and CAA evidence', JSON.stringify({ canonical_dns: safeDnsEvidence }));
+
   stage = `repair exact ${secondaryHost} CNAME`;
   await reconcileSecondaryCname(zoneId, secondaryHost, pagesTarget);
 
@@ -169,6 +176,7 @@ async function main() {
     canonical: summary(activeCanonical),
     secondary: summary(activeSecondary),
     secondary_dns_target: pagesTarget,
+    canonical_dns: safeDnsEvidence,
   }));
 }
 
