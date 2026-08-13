@@ -198,23 +198,39 @@ jobs:
         run: npx --yes wrangler@4.114.0 pages deploy dist --project-name "$CLOUDFLARE_PROJECT_NAME" --branch main --commit-hash "$GITHUB_SHA"
 
       - name: Reconcile production hostnames
+        id: reconcile_hosts
+        continue-on-error: true
         env:
           CLOUDFLARE_CANONICAL_HOST: mc-novatools.com
           CLOUDFLARE_SECONDARY_HOST: www.mc-novatools.com
         run: node scripts/reconcile-cloudflare-production-hosts.mjs
 
       - name: Resolve deployed Cloudflare Pages URLs
+        if: always()
         run: node scripts/resolve-cloudflare-pages-deployment.mjs
 
       - name: Smoke-test deployed Pages origins
+        if: always()
         run: node scripts/smoke-cloudflare-pages.mjs
 
+      - name: Report apex DNS and CAA evidence
+        if: always()
+        env:
+          CLOUDFLARE_CANONICAL_HOST: mc-novatools.com
+        run: node scripts/report-cloudflare-dns-evidence.mjs
+
       - name: Diagnose apex custom-domain edge policy
+        id: apex_edge
+        if: always()
+        continue-on-error: true
         env:
           CUSTOM_DOMAIN_HEALTH_URL: https://mc-novatools.com/api/health
         run: node scripts/diagnose-cloudflare-edge.mjs
 
       - name: Diagnose www custom-domain edge policy
+        id: www_edge
+        if: always()
+        continue-on-error: true
         env:
           CUSTOM_DOMAIN_HEALTH_URL: https://www.mc-novatools.com/api/health
         run: node scripts/diagnose-cloudflare-edge.mjs
@@ -231,3 +247,11 @@ jobs:
       - name: Enforce Lighthouse gate
         if: steps.lighthouse.outcome == 'failure'
         run: exit 1
+
+      - name: Enforce consolidated production diagnostics gate
+        if: always()
+        env:
+          RECONCILE_OUTCOME: ${{ steps.reconcile_hosts.outcome }}
+          APEX_EDGE_OUTCOME: ${{ steps.apex_edge.outcome }}
+          WWW_EDGE_OUTCOME: ${{ steps.www_edge.outcome }}
+        run: node scripts/enforce-production-diagnostics-gate.mjs
