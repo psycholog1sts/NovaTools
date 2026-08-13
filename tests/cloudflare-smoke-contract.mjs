@@ -23,12 +23,15 @@ assert.match(workflow, /node scripts\/smoke-cloudflare-pages\.mjs/);
 assert.doesNotMatch(workflow, /https:\/\/\$\{CLOUDFLARE_PROJECT_NAME\}\.pages\.dev/);
 
 assert.match(hostReconciler, /pages\/projects\/\$\{encodeURIComponent\(projectName\)\}\/domains/);
+assert.match(hostReconciler, /getPagesDomain/);
+assert.match(hostReconciler, /addPagesDomain/);
+assert.match(hostReconciler, /Could not attach \$\{hostname\} to expected Pages project/);
 assert.match(hostReconciler, /dns_records/);
 assert.match(hostReconciler, /type: 'CNAME'/);
 assert.match(hostReconciler, /proxied: true/);
 assert.match(hostReconciler, /waitForActiveDomain/);
-assert.match(hostReconciler, /findPagesDomainOwners/);
-assert.match(hostReconciler, /foreignOwners\.length/);
+assert.doesNotMatch(hostReconciler, /pages\/projects\?per_page=/);
+assert.doesNotMatch(hostReconciler, /findPagesDomainOwners|foreignOwners/);
 assert.doesNotMatch(hostReconciler, /console\.log\([^\n]*token|console\.log\([^\n]*CLOUDFLARE_API_TOKEN/);
 assert.match(redirects, /^\/src\/tools\/\* \/tools\/:splat 301$/m);
 
