@@ -51,6 +51,8 @@ test('homepage search never exposes source-only tool routes', async ({ page }) =
 for (const [name, route] of [
   ['home', '/'],
   ['background remover', '/tools/image/background-remover/'],
+  ['image compressor', '/tools/image/compress/'],
+  ['json formatter', '/tools/dev/json-formatter/'],
   ['pdf compressor', '/tools/pdf/compress/']
 ]) {
   test(`${name} remains readable and visual in light mode`, async ({ page }) => {
