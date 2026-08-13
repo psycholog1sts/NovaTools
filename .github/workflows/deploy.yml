@@ -57,6 +57,9 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Enforce production output contract
+        run: node scripts/enforce-production-output-contract.mjs
+
       - name: Install pinned browser test dependencies
         run: npm install --no-save --package-lock=false @playwright/test@1.55.0 @axe-core/playwright@4.10.2
 
@@ -170,6 +173,9 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Enforce production output contract
+        run: node scripts/enforce-production-output-contract.mjs
+
       - name: Install pinned browser test dependencies
         run: npm install --no-save --package-lock=false @playwright/test@1.55.0 @axe-core/playwright@4.10.2
 
@@ -203,9 +209,14 @@ jobs:
       - name: Smoke-test deployed Pages origins
         run: node scripts/smoke-cloudflare-pages.mjs
 
-      - name: Diagnose custom-domain edge policy
+      - name: Diagnose apex custom-domain edge policy
         env:
           CUSTOM_DOMAIN_HEALTH_URL: https://mc-novatools.com/api/health
+        run: node scripts/diagnose-cloudflare-edge.mjs
+
+      - name: Diagnose www custom-domain edge policy
+        env:
+          CUSTOM_DOMAIN_HEALTH_URL: https://www.mc-novatools.com/api/health
         run: node scripts/diagnose-cloudflare-edge.mjs
 
       - name: Run deterministic local Lighthouse CI
