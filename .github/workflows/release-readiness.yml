@@ -26,6 +26,8 @@ jobs:
         run: npm test --if-present
       - name: Build
         run: npm run build
+      - name: Enforce production output contract
+        run: node scripts/enforce-production-output-contract.mjs
       - name: Verify production contract files
         shell: bash
         run: |
@@ -33,6 +35,8 @@ jobs:
           test -f .github/workflows/deploy.yml
           test -f scripts/smoke-cloudflare-pages.mjs
           test -f scripts/resolve-cloudflare-pages-deployment.mjs
+          test -f scripts/reconcile-cloudflare-production-hosts.mjs
+          test -f scripts/enforce-production-output-contract.mjs
       - name: Verify fail-closed entitlement contract is present
         shell: bash
         run: |

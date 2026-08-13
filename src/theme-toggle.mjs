@@ -1,6 +1,6 @@
 /**
  * Theme Toggle Module
- * Light/dark theme with system preference detection and localStorage persistence.
+ * Light/dark theme with a calm light default and localStorage persistence.
  */
 
 const STORAGE_KEY = 'novatools-theme';
@@ -37,14 +37,17 @@ function getSystemTheme() {
 }
 
 /**
- * Initialize theme on page load. Defaults to system preference unless the user saved a choice.
+ * Initialize theme on page load. First visits intentionally use the light theme;
+ * an explicit user choice remains persistent across all tool pages.
  * @returns {'dark' | 'light'}
  */
 export function initTheme() {
-  const theme = getStoredTheme() || getSystemTheme();
+  const storedTheme = getStoredTheme();
+  const theme = storedTheme || 'light';
 
   document.documentElement.setAttribute('data-theme', theme);
   document.documentElement.style.colorScheme = theme;
+  if (!storedTheme) persistTheme(theme);
   updateMetaThemeColor(theme);
 
   return theme;
@@ -143,7 +146,7 @@ function updateToggleIcon(btn, theme) {
 function updateMetaThemeColor(theme) {
   const metaThemeColor = document.querySelector('meta[name="theme-color"]');
   if (metaThemeColor) {
-    metaThemeColor.setAttribute('content', theme === 'dark' ? '#06070b' : '#f8fafc');
+    metaThemeColor.setAttribute('content', theme === 'dark' ? '#0b1220' : '#f8fafc');
   }
 }
 
@@ -155,7 +158,7 @@ function updateChartsForTheme(theme) {
   });
 }
 
-/** Reset to system preference. */
+/** Reset to the operating-system preference when explicitly requested. */
 export function resetToSystemPreference() {
   removeStoredTheme();
   applySystemTheme(getSystemTheme());
