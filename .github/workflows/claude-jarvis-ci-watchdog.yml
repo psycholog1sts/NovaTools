@@ -1,0 +1,55 @@
+name: Claude Jarvis CI Watchdog
+
+# When Release Readiness or the Cloudflare Pages build fails on a
+# claude-jarvis/* branch, nothing currently asks Claude to look at it again.
+# Reuses the existing @claude mention responder (claude.yml) instead of
+# building a second execution path: this workflow's only job is to post one
+# "@claude fix this" comment on the PR, deduplicated per commit SHA so a
+# branch that keeps failing after a push doesn't get repeated comments for
+# the same commit, and pushing a new commit naturally allows one more.
+
+on:
+  workflow_run:
+    workflows: ["Release Readiness", "Build and Deploy to Cloudflare Pages"]
+    types: [completed]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: claude-jarvis-ci-watchdog-${{ github.event.workflow_run.head_branch }}
+  cancel-in-progress: false
+
+jobs:
+  notify:
+    if: >-
+      github.event.workflow_run.conclusion == 'failure' &&
+      startsWith(github.event.workflow_run.head_branch, 'claude-jarvis/')
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Comment @claude on the failing PR, once per commit
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BRANCH: ${{ github.event.workflow_run.head_branch }}
+          SHA: ${{ github.event.workflow_run.head_sha }}
+          WORKFLOW: ${{ github.event.workflow_run.name }}
+        run: |
+          set -euo pipefail
+          pr_number="$(gh pr list --repo "$GITHUB_REPOSITORY" --head "$BRANCH" --state open --json number --jq '.[0].number // empty')"
+          if [[ -z "$pr_number" ]]; then
+            echo "no open PR for $BRANCH - nothing to do"
+            exit 0
+          fi
+
+          short_sha="${SHA:0:7}"
+          marker="<!-- claude-jarvis-ci-watchdog:$short_sha -->"
+          existing="$(gh pr view "$pr_number" --repo "$GITHUB_REPOSITORY" --json comments --jq ".comments[].body" | grep -F "$marker" || true)"
+          if [[ -n "$existing" ]]; then
+            echo "already asked for a fix on commit $short_sha - not repeating"
+            exit 0
+          fi
+
+          body="$marker"$'\n'"@claude \"$WORKFLOW\" failed on commit $short_sha. Diagnose the root cause and fix it, respecting CLAUDE.md and AGENTS.md exactly as the original cycle had to. Do not touch anything outside what the failure actually requires."
+          gh pr comment "$pr_number" --repo "$GITHUB_REPOSITORY" --body "$body"
