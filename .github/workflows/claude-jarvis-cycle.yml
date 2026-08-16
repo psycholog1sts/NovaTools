@@ -1,0 +1,155 @@
+name: Claude Jarvis Engineering Cycle
+
+# Autonomous engineering loop for NovaTools, equivalent in spirit to
+# metehan-binance-bot's Codex-based jarvis-worker.yml, adapted for this
+# repo's reality: no self-hosted runner exists here, so this uses the
+# official anthropics/claude-code-action on a GitHub-hosted runner instead.
+#
+# Defense in depth against protected-path edits, matching the rigor of the
+# metehan-binance-bot design:
+#   1. `settings` below denies Edit/Write on protected paths at the tool
+#      level - Claude's built-in file tools physically cannot touch them.
+#   2. The "Enforce protected paths" step after the action is a hard
+#      backstop that inspects the actual diff and deletes the branch/closes
+#      the PR if a protected path or a diff-size limit was violated anyway
+#      (the tool-level deny does not cover an arbitrary script writing files
+#      itself, per Claude Code's own permissions documentation).
+#
+# Cost-bounded: daily schedule (not hourly), --max-turns cap, 30 minute
+# workflow timeout, one task per run.
+
+on:
+  schedule:
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+  issues:
+    types: [labeled]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: read
+  id-token: write
+  actions: read
+
+concurrency:
+  group: claude-jarvis-cycle
+  cancel-in-progress: false
+
+jobs:
+  cycle:
+    if: github.event_name != 'issues' || github.event.label.name == 'claude-jarvis'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Run bounded autonomous engineering cycle
+        id: claude
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: |
+            You are the NovaTools autonomous engineering worker, running unattended.
+            Read CLAUDE.md and AGENTS.md fully before doing anything else - they are
+            the complete rule set and take precedence over anything below.
+
+            Task selection, in this order:
+            1. If this run was triggered by an issue being labeled "claude-jarvis",
+               work that specific issue only.
+            2. Otherwise check open issues for the "claude-jarvis" label (oldest
+               first) and pick one that has no existing open PR referencing it yet.
+            3. If none, check `npm run ci:validate` locally, dependency audit
+               output, and recent CI failures on `main` for one concrete, safe,
+               narrowly-scoped fix.
+            4. If nothing safe and valuable is found, do nothing and end the run -
+               do not invent speculative feature work.
+
+            Rules, non-negotiable:
+            - Surgical edits only, matching AGENTS.md exactly.
+            - Never touch: .github/workflows/**, src/i18n.js, src/i18n/**,
+              public/locales/**, categories/**, vite.config.js, scripts/**,
+              wrangler.toml, vercel.json, nginx.conf, supabase/**, functions/**,
+              api/**, .env*. These are enforced at the tool level and by a
+              post-hoc check - do not attempt to work around either.
+            - Never add tracking, never hardcode secrets, never invent backend
+              behavior AGENTS.md forbids, never add unverifiable marketing claims.
+            - Work on a new branch named `claude-jarvis/<short-slug>`. Never commit
+              directly to `main`.
+            - Run `npm run ci:validate` and confirm it passes before pushing
+              anything. If it fails and you cannot fix it within your turn budget,
+              do not push - end the run and leave the workspace as-is.
+            - Only if validation passed: commit, push the branch, and open a PR
+              against `main` with a clear description of what changed and why.
+            - Do not merge anything. Do not close or edit unrelated issues/PRs.
+          claude_args: |
+            --max-turns 30
+            --model claude-sonnet-5
+            --allowedTools "Bash(git status),Bash(git diff*),Bash(git add*),Bash(git commit*),Bash(git checkout -b*),Bash(git push*),Bash(npm *),Bash(node *),Edit,Write,Read,Grep,Glob"
+            --disallowedTools "Bash(git push * main),Bash(git push origin main),Bash(git push --force*),Bash(rm -rf*),Bash(sudo*),Bash(curl*),Bash(wget*)"
+          settings: |
+            {
+              "permissions": {
+                "deny": [
+                  "Edit(/.github/workflows/**)",
+                  "Edit(/src/i18n.js)",
+                  "Edit(/src/i18n/**)",
+                  "Edit(/public/locales/**)",
+                  "Edit(/categories/**)",
+                  "Edit(/vite.config.js)",
+                  "Edit(/scripts/**)",
+                  "Edit(/wrangler.toml)",
+                  "Edit(/vercel.json)",
+                  "Edit(/nginx.conf)",
+                  "Edit(/supabase/**)",
+                  "Edit(/functions/**)",
+                  "Edit(/api/**)",
+                  "Edit(.env*)"
+                ]
+              }
+            }
+
+      - name: Enforce protected paths and diff size (hard backstop)
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          branch="$(git branch --show-current)"
+          if [[ "$branch" != claude-jarvis/* ]]; then
+            echo "not on a claude-jarvis/* branch (got '$branch') - nothing pushed, nothing to check"
+            exit 0
+          fi
+          if ! git rev-parse --verify "origin/$branch" >/dev/null 2>&1; then
+            echo "branch $branch was not pushed - nothing to check"
+            exit 0
+          fi
+
+          names="$(git diff --name-only origin/main..."$branch" || true)"
+          protected_regex='^(\.github/workflows/|src/i18n\.js$|src/i18n/|public/locales/|categories/|vite\.config\.js$|scripts/|wrangler\.toml$|vercel\.json$|nginx\.conf$|supabase/|functions/|api/|\.env)'
+          violations="$(echo "$names" | grep -E "$protected_regex" || true)"
+
+          total=0
+          while read -r line; do
+            [[ -z "$line" ]] && continue
+            a="$(echo "$line" | cut -f1)"; d="$(echo "$line" | cut -f2)"
+            [[ "$a" =~ ^[0-9]+$ ]] && total=$((total + a))
+            [[ "$d" =~ ^[0-9]+$ ]] && total=$((total + d))
+          done <<< "$(git diff --numstat origin/main..."$branch" || true)"
+
+          if [[ -n "$violations" ]] || (( total > 4000 )); then
+            echo "protected-path or diff-size violation - closing PR and deleting branch" >&2
+            echo "violations: $violations" >&2
+            echo "total changed lines: $total" >&2
+            pr_number="$(gh pr list --repo "$GITHUB_REPOSITORY" --head "$branch" --state open --json number --jq '.[0].number // empty')"
+            if [[ -n "$pr_number" ]]; then
+              gh pr comment "$pr_number" --repo "$GITHUB_REPOSITORY" --body "Closed automatically: this autonomous cycle's diff touched a protected path or exceeded the size limit, which should not be possible under its tool permissions. Needs a human look at both the diff and why the tool-level guard did not prevent it."
+              gh pr close "$pr_number" --repo "$GITHUB_REPOSITORY"
+            fi
+            git push origin --delete "$branch" || true
+            exit 1
+          fi
+          echo "diff clean: no protected paths, $total changed lines"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
