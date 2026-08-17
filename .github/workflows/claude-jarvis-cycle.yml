@@ -90,9 +90,16 @@ jobs:
               behavior AGENTS.md forbids, never add unverifiable marketing claims.
             - Work on a new branch named `claude-jarvis/<short-slug>`. Never commit
               directly to `main`.
-            - Run `npm run ci:validate` and confirm it passes before pushing
-              anything. If it fails and you cannot fix it within your turn budget,
-              do not push - end the run and leave the workspace as-is.
+            - Before pushing, run `npm run lint` and any test files directly
+              relevant to what you changed - not the full `npm run ci:validate`
+              chain, which is 16 sequential steps (multiple lints, the full
+              test suite, a full production build, and more) and will not
+              fit in this turn budget alongside real edits. The PR's own CI
+              runs the full suite after you push, and a watchdog will ask
+              you to fix any real CI failure automatically - that is the
+              authoritative gate, not your own turn budget. If your targeted
+              lint/test check fails and you cannot fix it quickly, do not
+              push - end the run and leave the workspace as-is.
             - Only if validation passed: commit, push the branch, and open a PR
               against `main` with a clear description of what changed and why.
             - Do not merge anything. Do not close or edit unrelated issues/PRs.
