@@ -88,6 +88,13 @@ jobs:
               post-hoc check - do not attempt to work around either.
             - Never add tracking, never hardcode secrets, never invent backend
               behavior AGENTS.md forbids, never add unverifiable marketing claims.
+            - Never make a lint/audit/test check pass by hiding what it checks for
+              from it (string-building a tag/pattern so a text scanner cannot see
+              it, disabling or narrowing the check itself, suppressing/ignoring an
+              error instead of resolving it). If a check is flagging something
+              real, fix the actual underlying issue. If you believe a check itself
+              is wrong, say so in the PR description and leave the check and the
+              code as-is - do not make it stop firing.
             - Work on a new branch named `claude-jarvis/<short-slug>`. Never commit
               directly to `main`.
             - Before pushing, run `npm run lint` and any test files directly
