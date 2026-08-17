@@ -84,7 +84,6 @@ jobs:
             - Only if validation passed: commit, push the branch, and open a PR
               against `main` with a clear description of what changed and why.
             - Do not merge anything. Do not close or edit unrelated issues/PRs.
-          show_full_output: "true"
           claude_args: |
             --max-turns 30
             --model claude-sonnet-5
