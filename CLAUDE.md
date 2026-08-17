@@ -39,6 +39,12 @@ behavior, no unverifiable marketing claims, `npm run ci:validate` must pass)
 applies to every autonomous cycle exactly as it applies to a human
 contributor.
 
-Requires the `ANTHROPIC_API_KEY` repository secret and the Claude GitHub App
-to be installed on this repo — until both exist these workflows fail at the
-auth step and do nothing else.
+Authenticates with `CLAUDE_CODE_OAUTH_TOKEN` (a long-lived token generated
+by `claude setup-token`, tied to the account's Claude Pro subscription) and
+the Claude GitHub App — not `ANTHROPIC_API_KEY`, deliberately: no separate
+paid API billing, usage counts against the existing subscription instead.
+Both the secret and the App install must exist before these workflows do
+anything; until then they fail cleanly at the auth step. Because usage
+shares rate limits with the account's own interactive Claude Code/Desktop
+use, `claude-jarvis-cycle.yml`'s schedule is weekly, not daily — favor
+issue-label/manual triggers for on-demand runs over raising that frequency.

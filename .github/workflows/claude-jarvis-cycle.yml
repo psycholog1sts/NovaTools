@@ -15,12 +15,17 @@ name: Claude Jarvis Engineering Cycle
 #      (the tool-level deny does not cover an arbitrary script writing files
 #      itself, per Claude Code's own permissions documentation).
 #
-# Cost-bounded: daily schedule (not hourly), --max-turns cap, 30 minute
-# workflow timeout, one task per run.
+# Authenticates with CLAUDE_CODE_OAUTH_TOKEN (the existing Claude Pro
+# subscription via `claude setup-token`), not ANTHROPIC_API_KEY - no
+# separate paid API billing. This shares rate limits with the account's own
+# interactive Claude Code/Desktop usage, so the schedule below is
+# deliberately conservative (weekly, not daily) to avoid eating into that
+# quota unattended; issue-label and manual triggers remain the primary way
+# to run it on demand.
 
 on:
   schedule:
-    - cron: '0 6 * * *'
+    - cron: '0 6 * * 0'
   workflow_dispatch:
   issues:
     types: [labeled]
@@ -50,7 +55,7 @@ jobs:
         id: claude
         uses: anthropics/claude-code-action@v1
         with:
-          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           prompt: |
             You are the NovaTools autonomous engineering worker, running unattended.
             Read CLAUDE.md and AGENTS.md fully before doing anything else - they are
