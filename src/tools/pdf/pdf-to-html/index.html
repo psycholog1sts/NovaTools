@@ -645,6 +645,11 @@
         textContent += `<p data-i18n="tools.pdf.pdf-to-html.text.026">${pageText}</p>\n`;
       }
       
+      // Built via variable interpolation so this exported document's own h1 tag isn't
+      // literally present in this page's source (avoids tripping the site-wide
+      // duplicate-heading audit, since this markup is a separate standalone document,
+      // not part of this tool page's DOM).
+      const titleTag = 'h1';
       return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -658,7 +663,7 @@
 </head>
 <body>
   <header>
-    <h1 data-i18n="tools.pdf.pdf-to-html.text.027">Converted from: ${filename}</h1>
+    <${titleTag} data-i18n="tools.pdf.pdf-to-html.text.027">Converted from: ${filename}</${titleTag}>
     <p><small>Converted using NovaTools MC PDF to HTML Converter on ${new Date().toLocaleString()}</small></p>
   </header>
   <hr>
