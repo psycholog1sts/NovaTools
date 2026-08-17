@@ -93,8 +93,8 @@ jobs:
           claude_args: |
             --max-turns 30
             --model claude-sonnet-5
-            --allowedTools "Bash(git status),Bash(git diff*),Bash(git add*),Bash(git commit*),Bash(git checkout -b*),Bash(git push*),Bash(npm *),Bash(node *),Edit,Write,Read,Grep,Glob"
-            --disallowedTools "Bash(git push * main),Bash(git push origin main),Bash(git push --force*),Bash(rm -rf*),Bash(sudo*),Bash(curl*),Bash(wget*)"
+            --allowedTools "Bash(git status),Bash(git diff*),Bash(git add*),Bash(git commit*),Bash(git checkout -b*),Bash(git push*),Bash(npm *),Bash(node *),Bash(gh *),Edit,Write,Read,Grep,Glob"
+            --disallowedTools "Bash(git push * main),Bash(git push origin main),Bash(git push --force*),Bash(rm -rf*),Bash(sudo*),Bash(curl*),Bash(wget*),Bash(gh pr merge*),Bash(gh pr close*),Bash(gh pr edit*),Bash(gh issue close*),Bash(gh issue edit*),Bash(gh issue delete*),Bash(gh secret*),Bash(gh workflow*),Bash(gh repo delete*),Bash(gh repo edit*),Bash(gh label delete*)"
           settings: |
             {
               "permissions": {
