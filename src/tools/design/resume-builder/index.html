@@ -123,7 +123,7 @@
     .tool-footer a { color: #00D9FF; text-decoration: none; }
 
     /* Resume styles */
-    .resume-classic h1 { font-size: 2rem; color: #1a1a1a; margin-bottom: 0.5rem; }
+    .resume-classic .resume-name { font-size: 2rem; color: #1a1a1a; margin-bottom: 0.5rem; }
     .resume-classic .contact-info { color: #666; font-size: 0.9rem; margin-bottom: 1.5rem; }
     .resume-classic h2 { font-size: 1.1rem; color: #00D9FF; border-bottom: 2px solid #00D9FF; padding-bottom: 0.25rem; margin: 1.5rem 0 0.75rem; }
     .resume-classic .job { margin-bottom: 1rem; }
@@ -135,7 +135,7 @@
 
     .resume-modern { display: grid; grid-template-columns: 1fr 2fr; gap: 2rem; }
     .resume-modern .sidebar { background: #f8f9fa; padding: 1.5rem; margin: -20mm 0 -20mm -20mm; padding: 20mm 1.5rem 20mm 20mm; }
-    .resume-modern h1 { font-size: 2rem; color: #1a1a1a; margin-bottom: 0.5rem; }
+    .resume-modern .resume-name { font-size: 2rem; color: #1a1a1a; margin-bottom: 0.5rem; }
     .resume-modern .contact-info { color: #666; font-size: 0.85rem; line-height: 1.8; }
     .resume-modern h2 { font-size: 1rem; color: #00D9FF; text-transform: uppercase; letter-spacing: 0.1em; margin: 1.5rem 0 0.75rem; }
     .resume-modern .main-content h2 { border-bottom: 1px solid #e0e0e0; padding-bottom: 0.5rem; }
@@ -143,7 +143,7 @@
     .resume-modern .job-title { font-weight: 600; color: #1a1a1a; }
     .resume-modern .job-date { color: #999; font-size: 0.8rem; }
 
-    .resume-minimal h1 { font-size: 2.5rem; font-weight: 300; color: #1a1a1a; text-align: center; margin-bottom: 0.5rem; }
+    .resume-minimal .resume-name { font-size: 2.5rem; font-weight: 300; color: #1a1a1a; text-align: center; margin-bottom: 0.5rem; }
     .resume-minimal .contact-info { text-align: center; color: #666; font-size: 0.9rem; margin-bottom: 2rem; }
     .resume-minimal h2 { font-size: 0.875rem; color: #999; text-transform: uppercase; letter-spacing: 0.15em; margin: 2rem 0 1rem; }
     .resume-minimal .job { margin-bottom: 1.25rem; }
@@ -389,7 +389,7 @@
     const templates = {
       classic: (data) => `
         <div class="resume-classic">
-          <h1 data-i18n="tools.design.resume-builder.text.049">${data.name}</h1>
+          <h2 class="resume-name" data-i18n="tools.design.resume-builder.text.049">${data.name}</h2>
           <div class="contact-info">${data.title} | ${data.email} | ${data.phone} | ${data.location} | ${data.linkedin}</div>
           
           <h2 data-i18n="tools.design.resume-builder.text.050">Professional Summary</h2>
@@ -416,7 +416,7 @@
       modern: (data) => `
         <div class="resume-modern">
           <div class="sidebar">
-            <h1 data-i18n="tools.design.resume-builder.text.058">${data.name}</h1>
+            <h2 class="resume-name" data-i18n="tools.design.resume-builder.text.058">${data.name}</h2>
             <div class="contact-info">${data.title}<br>${data.email}<br>${data.phone}<br>${data.location}<br>${data.linkedin}</div>
             
             <h2 data-i18n="tools.design.resume-builder.text.059">Education</h2>
@@ -442,7 +442,7 @@
       `,
       minimal: (data) => `
         <div class="resume-minimal">
-          <h1 data-i18n="tools.design.resume-builder.text.065">${data.name}</h1>
+          <h2 class="resume-name" data-i18n="tools.design.resume-builder.text.065">${data.name}</h2>
           <div class="contact-info">${data.title} &nbsp;&bull;&nbsp; ${data.email} &nbsp;&bull;&nbsp; ${data.phone} &nbsp;&bull;&nbsp; ${data.location}</div>
           
           <h2 data-i18n="tools.design.resume-builder.text.066">About</h2>
@@ -504,7 +504,7 @@
               * { box-sizing: border-box; margin: 0; padding: 0; }
               body { font-family: 'Inter', Arial, sans-serif; color: #333; line-height: 1.6; }
               .resume-classic { padding: 40px; max-width: 800px; margin: 0 auto; }
-              .resume-classic h1 { font-size: 2rem; color: #1a1a1a; margin-bottom: 0.5rem; }
+              .resume-classic .resume-name { font-size: 2rem; color: #1a1a1a; margin-bottom: 0.5rem; }
               .resume-classic .contact-info { color: #666; font-size: 0.9rem; margin-bottom: 1.5rem; }
               .resume-classic h2 { font-size: 1.1rem; color: #00D9FF; border-bottom: 2px solid #00D9FF; padding-bottom: 0.25rem; margin: 1.5rem 0 0.75rem; }
               .resume-classic .job { margin-bottom: 1rem; }
@@ -515,14 +515,14 @@
               .resume-classic li { margin-bottom: 0.25rem; }
               .resume-modern { display: grid; grid-template-columns: 1fr 2fr; gap: 2rem; padding: 40px; }
               .resume-modern .sidebar { background: #f8f9fa; padding: 30px; }
-              .resume-modern h1 { font-size: 2rem; color: #1a1a1a; margin-bottom: 0.5rem; }
+              .resume-modern .resume-name { font-size: 2rem; color: #1a1a1a; margin-bottom: 0.5rem; }
               .resume-modern .contact-info { color: #666; font-size: 0.85rem; line-height: 1.8; }
               .resume-modern h2 { font-size: 1rem; color: #00D9FF; text-transform: uppercase; letter-spacing: 0.1em; margin: 1.5rem 0 0.75rem; }
               .resume-modern .job { margin-bottom: 1rem; }
               .resume-modern .job-title { font-weight: 600; color: #1a1a1a; }
               .resume-modern .job-date { color: #999; font-size: 0.8rem; }
               .resume-minimal { padding: 40px; text-align: center; }
-              .resume-minimal h1 { font-size: 2.5rem; font-weight: 300; color: #1a1a1a; margin-bottom: 0.5rem; }
+              .resume-minimal .resume-name { font-size: 2.5rem; font-weight: 300; color: #1a1a1a; margin-bottom: 0.5rem; }
               .resume-minimal .contact-info { color: #666; font-size: 0.9rem; margin-bottom: 2rem; }
               .resume-minimal h2 { font-size: 0.875rem; color: #999; text-transform: uppercase; letter-spacing: 0.15em; margin: 2rem 0 1rem; }
               .resume-minimal .job { margin-bottom: 1.25rem; }
