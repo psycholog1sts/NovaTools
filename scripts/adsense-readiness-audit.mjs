@@ -122,11 +122,16 @@ for (const file of publicHtml) {
   if (!existsSync(file)) continue;
   const html = read(file);
   if (placeholderPattern.test(html)) publicPlaceholders.push(file);
-  const h1Count = (html.match(/<h1\b/gi) || []).length;
+  // Strip <script> blocks before counting <h1> the same way the thin-content
+  // check below already does: markup built inside a template literal (e.g. a
+  // separate downloadable document assembled via Blob/document.write) is never
+  // part of this page's own rendered DOM, so it must not count as a real
+  // duplicate heading on this page.
+  const htmlWithoutScripts = html.replace(/<script\b[\s\S]*?<\/script>/gi, ' ');
+  const h1Count = (htmlWithoutScripts.match(/<h1\b/gi) || []).length;
   if (h1Count > 1) duplicateH1.push(`${file} (${h1Count})`);
   if (toolPages.includes(file)) {
-    const visibleText = html
-      .replace(/<script\b[\s\S]*?<\/script>/gi, ' ')
+    const visibleText = htmlWithoutScripts
       .replace(/<style\b[\s\S]*?<\/style>/gi, ' ')
       .replace(/<[^>]+>/g, ' ')
       .replace(/&[a-z0-9#]+;/gi, ' ')
