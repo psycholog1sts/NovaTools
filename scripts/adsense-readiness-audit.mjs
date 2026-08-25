@@ -30,6 +30,7 @@ const REQUIRED_FILES = [
   'public/manifest.json',
   'public/_headers',
   'public/_redirects',
+  'api/live-data.js',
   'src/core/ads/adsense-config.mjs',
   'src/components/Analytics.mjs',
   'src/core/consent-manager.mjs',
@@ -168,6 +169,21 @@ if (!redirectsSource.includes('/tools/request /request-tool.html 301') ||
 }
 if (!sitemapGenerator.includes('src/tools/request/**')) {
   errors.push('Legacy /tools/request source must stay excluded from sitemap generation.');
+}
+
+// Live Exchange is indexable only because its core conversion is real. Guard
+// against reintroducing synthetic chart data or claiming it is historical.
+const liveDataSource = existsSync('api/live-data.js') ? read('api/live-data.js') : '';
+const financeBatchSource = existsSync('src/tools/finance/p0-batch2.mjs') ? read('src/tools/finance/p0-batch2.mjs') : '';
+const liveExchangePage = existsSync('src/tools/finance/live-exchange/index.html') ? read('src/tools/finance/live-exchange/index.html') : '';
+if (!liveDataSource.includes('https://www.tcmb.gov.tr/kurlar/today.xml') || !liveDataSource.includes("provider: 'tcmb.gov.tr'")) {
+  errors.push('Live Exchange public TCMB source claim no longer matches api/live-data.js.');
+}
+if (financeBatchSource.includes('deterministicSeries(rate, 1.2, 7)') || financeBatchSource.includes('liveExchangeChart')) {
+  errors.push('Live Exchange must not present a deterministic synthetic series as market history.');
+}
+if (/recent[- ]trend|trend chart|trend grafiği|recent movement|mini trend grafiği/i.test(liveExchangePage)) {
+  errors.push('Live Exchange public copy claims a trend/history feature without a historical-rate data contract.');
 }
 
 const nonIndexableSources = new Set([
