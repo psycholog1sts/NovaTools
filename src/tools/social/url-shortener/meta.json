@@ -4,6 +4,9 @@
   "nameEn": "URL Shortener",
   "category": "social",
   "tier": 1,
+  "public": false,
+  "indexable": false,
+  "adsEligible": false,
   "cpc": {
     "tr": 0.5,
     "us": 1.0
