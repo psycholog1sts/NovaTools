@@ -25,6 +25,15 @@ const ADSENSE_CONFIG = {
   }
 };
 
+// Pages in this list are intentionally excluded from monetization until their
+// public product contract is truthful and production-grade. Keep this list in
+// sync with sitemap exclusions and Cloudflare X-Robots-Tag rules.
+const NON_MONETIZABLE_PATH_PREFIXES = Object.freeze([
+  '/tools/news/summarizer/',
+  '/tools/religious/islamic-calendar/',
+  '/tools/social/url-shortener/'
+]);
+
 const CONSENT_EVENT_NAMES = ['novatools:consent-updated', 'mc-novatools:consent-updated', 'cookieConsentChanged'];
 
 export function initAdSense() {
@@ -45,8 +54,14 @@ export function initAdSense() {
   deferAdSenseLoad();
 }
 
+function isNonMonetizablePath(pathname = window.location.pathname) {
+  const normalized = pathname.endsWith('/') ? pathname : `${pathname}/`;
+  return NON_MONETIZABLE_PATH_PREFIXES.some((prefix) => normalized.startsWith(prefix));
+}
+
 function shouldBlockAds() {
   if (!/(^|\.)mc-novatools\.com$/i.test(window.location.hostname)) return true;
+  if (isNonMonetizablePath()) return true;
   if (navigator.doNotTrack === '1') return true;
   if (navigator.globalPrivacyControl) return true;
   try {
