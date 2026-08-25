@@ -12,31 +12,13 @@ const designSystem = readFileSync(designSystemPath, 'utf8');
 const main = readFileSync(mainPath, 'utf8');
 
 for (const token of [
-  '--color-bg-canvas',
-  '--color-bg-surface',
-  '--color-bg-elevated',
-  '--color-text-primary',
-  '--color-text-secondary',
-  '--color-text-muted',
-  '--color-border',
-  '--color-primary',
-  '--color-focus-ring',
-  '--color-success',
-  '--color-warning',
-  '--color-error',
-  '--space-1',
-  '--space-2',
-  '--space-3',
-  '--space-4',
-  '--space-6',
-  '--space-8',
-  '--radius-sm',
-  '--radius-md',
-  '--radius-lg',
-  '--shadow-sm',
-  '--shadow-lg',
-  '--duration-fast',
-  '--duration-normal'
+  '--color-bg-canvas', '--color-bg-surface', '--color-bg-elevated',
+  '--color-text-primary', '--color-text-secondary', '--color-text-muted',
+  '--color-border', '--color-primary', '--color-focus-ring',
+  '--color-success', '--color-warning', '--color-error',
+  '--space-1', '--space-2', '--space-3', '--space-4', '--space-6', '--space-8',
+  '--radius-sm', '--radius-md', '--radius-lg', '--shadow-sm', '--shadow-lg',
+  '--duration-fast', '--duration-normal'
 ]) {
   assert.match(tokens, new RegExp(`${token.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s*:`), `Missing canonical token ${token}`);
 }
