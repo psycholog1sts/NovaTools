@@ -154,7 +154,7 @@ export async function calculateLiveExchange(formData) {
 
   let rate;
   let updatedAt = new Date().toISOString();
-  let provider = 'Frankfurter/NovaTools proxy';
+  let provider = 'NovaTools live-data';
   let warning = '';
   try {
     const response = await getExchangeRates(from);
@@ -163,21 +163,22 @@ export async function calculateLiveExchange(formData) {
     updatedAt = data.fetchedAt || data.date || updatedAt;
     provider = data.provider || provider;
     localStorageSet(`novatools:finance:last-rate:${from}`, data);
-    if (response.stale) warning = 'Kurlar geçici olarak güncellenemiyor, son bilinen kur gösteriliyor.';
+    if (response.stale) warning = 'Kurlar geçici olarak güncellenemiyor, tarayıcı önbelleğindeki son bilinen kur gösteriliyor.';
   } catch {
     const cached = localStorageGet(`novatools:finance:last-rate:${from}`, null);
     rate = from === to ? 1 : cached?.rates?.[to];
     updatedAt = cached?.fetchedAt || updatedAt;
     provider = cached?.provider || 'statik yaklaşık fallback';
-    warning = 'Kurlar geçici olarak güncellenemiyor, lütfen daha sonra tekrar deneyin.';
+    warning = cached && Number.isFinite(rate)
+      ? 'Canlı kur alınamadı; tarayıcı önbelleğindeki son bilinen kur gösteriliyor.'
+      : 'Canlı ve önbelleğe alınmış kur kullanılamıyor; statik yaklaşık fallback gösteriliyor.';
   }
   if (!Number.isFinite(rate)) {
     rate = STATIC_RATES[from]?.[to];
     provider = 'statik yaklaşık fallback';
-    warning = 'Kurlar geçici olarak güncellenemiyor, lütfen daha sonra tekrar deneyin.';
+    warning = 'Canlı ve önbelleğe alınmış kur kullanılamıyor; statik yaklaşık fallback gösteriliyor.';
   }
   const converted = amount * rate;
-  const trend = deterministicSeries(rate, 1.2, 7).map((value, index) => ({ label: `${index + 1}.g`, value }));
   return {
     status: warning || 'Kur başarıyla güncellendi.',
     type: warning ? 'warning' : 'success',
@@ -186,7 +187,7 @@ export async function calculateLiveExchange(formData) {
       { value: formatNumber(rate), label: `1 ${from} = ${to}` },
       { value: new Date(updatedAt).toLocaleString('tr-TR'), label: 'Son güncelleme' },
       { value: escapeHtml(provider), label: 'Veri kaynağı' }
-    ])}<div class="chart-container"><h3>7 noktalı kur trendi</h3>${canvasHtml('liveExchangeChart', 'line', trend, 'Kur trend grafiği')}</div><p class="finance-note">Merkez Bankası/TCMB resmi kurlarına göre hesaplanır, bankalar farklı kurlar uygulayabilir.</p>`
+    ])}<p class="finance-note">Canlı yanıt geldiğinde referans kurlar TCMB kaynağından NovaTools live-data uç noktası üzerinden alınır. Bankalar ve döviz büroları kendi alış/satış marjlarını uygular; önbellek veya statik fallback gösterildiğinde sonuç güncel resmi kur olarak değerlendirilmemelidir.</p>`
   };
 }
 
