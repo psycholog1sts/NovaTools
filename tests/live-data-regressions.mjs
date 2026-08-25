@@ -1,7 +1,10 @@
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 import handler from '../api/live-data.js';
 
 const originalFetch = globalThis.fetch;
+const financeSource = readFileSync(new URL('../src/tools/finance/p0-batch2.mjs', import.meta.url), 'utf8');
+const liveExchangeHtml = readFileSync(new URL('../src/tools/finance/live-exchange/index.html', import.meta.url), 'utf8');
 
 async function readJson(response) {
   return JSON.parse(await response.text());
@@ -41,6 +44,26 @@ async function run() {
       assert.equal(body.base, 'USD');
       assert.equal(body.rates.USD, 1);
       assert.equal(body.rates.TRY, 40);
+      assert.equal(body.rates.EUR, 40 / 45);
+      assert.equal(body.provider, 'tcmb.gov.tr');
+    }
+
+    {
+      assert.equal(
+        financeSource.includes('deterministicSeries(rate, 1.2, 7)'),
+        false,
+        'Live Exchange must not fabricate a historical/trend series from the current rate.'
+      );
+      assert.equal(
+        financeSource.includes('liveExchangeChart'),
+        false,
+        'Live Exchange must not render a chart unless real historical exchange data is supplied.'
+      );
+      assert.doesNotMatch(
+        liveExchangeHtml,
+        /recent[- ]trend|trend chart|trend grafiği|recent movement/i,
+        'Live Exchange public copy must not describe synthetic data as recent/historical trend data.'
+      );
     }
 
     {
