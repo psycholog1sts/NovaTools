@@ -12,6 +12,12 @@
 /kullanim-kosullari /kullanim-kosullari.html 200
 /iletisim /iletisim.html 200
 
+# The old /tools/request/ route contains an unconfigured Formspree placeholder.
+# Canonicalize it to the honest mailto-based request page instead of exposing
+# a form that cannot submit successfully.
+/tools/request /request-tool.html 301
+/tools/request/ /request-tool.html 301
+
 # Legacy source-tree tool URLs must never render the 404 shell.
 # Preserve the complete tool suffix and move users to the canonical public namespace.
 /src/tools/* /tools/:splat 301
