@@ -56,6 +56,13 @@ const categoryPages = [
   ['/tools/finance/', '0.8', 'weekly']
 ];
 
+const nonIndexableToolSources = [
+  'src/tools/request/**',
+  'src/tools/news/summarizer/**',
+  'src/tools/religious/islamic-calendar/**',
+  'src/tools/social/url-shortener/**'
+];
+
 function readJson(relativePath) {
   return JSON.parse(fs.readFileSync(path.join(rootDir, relativePath), 'utf8'));
 }
@@ -121,7 +128,10 @@ function writeSitemapIndex(sitemapNames) {
 const sections = [
   ['Static pages', staticPages.map(([route, priority, changefreq]) => urlEntry(route, priority, changefreq, 'Static pages'))],
   ['Category pages', categoryPages.map(([route, priority, changefreq]) => urlEntry(route, priority, changefreq, 'Category pages'))],
-  ['Individual tool pages', globSync('src/tools/**/index.html', { cwd: rootDir, ignore: ['**/demo-*/**', '**/experimental/**', '**/test/**', 'src/tools/request/**'] })
+  ['Individual tool pages', globSync('src/tools/**/index.html', {
+    cwd: rootDir,
+    ignore: ['**/demo-*/**', '**/experimental/**', '**/test/**', ...nonIndexableToolSources]
+  })
     .sort()
     .map((file) => urlEntry(`/${file.replace(/^src\//, '').replace(/index\.html$/, '')}`, '0.8', 'weekly', 'Individual tool pages'))],
   ['Blog category archive pages', blogCategoryPages.map((route) => urlEntry(route, '0.55', 'weekly', 'Blog category archive pages'))],
