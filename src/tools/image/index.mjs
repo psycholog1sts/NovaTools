@@ -8,6 +8,8 @@ import { imageConverter } from './image-convert.mjs';
 import { imageResizer } from './image-resize.mjs';
 import { imageWatermark } from './image-watermark.mjs';
 
+const IMAGE_COMPRESSOR_MAX_BYTES = 10 * 1024 * 1024;
+
 /**
  * Register all image tools
  * @param {ToolController} controller - Tool controller instance
@@ -20,7 +22,7 @@ export function registerImageTools(controller) {
     icon: '🖼️',
     fileUpload: {
       accept: ['image/jpeg', 'image/png', 'image/webp'],
-      maxSize: 20 * 1024 * 1024,
+      maxSize: IMAGE_COMPRESSOR_MAX_BYTES,
       multiple: false
     },
     inputs: [
@@ -29,7 +31,8 @@ export function registerImageTools(controller) {
         type: 'file',
         label: 'Image File',
         required: true,
-        accept: ['image/jpeg', 'image/png', 'image/webp']
+        accept: ['image/jpeg', 'image/png', 'image/webp'],
+        maxSize: IMAGE_COMPRESSOR_MAX_BYTES
       },
       {
         name: 'quality',
