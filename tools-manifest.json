@@ -53,6 +53,13 @@
         "bmi-calculator",
         "percentage-calculator"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/converters/age-calculator",
       "entry": "/src/tools/converters/age-calculator/"
     },
@@ -108,6 +115,13 @@
         "age-calculator",
         "percentage-calculator"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/converters/bmi-calculator",
       "entry": "/src/tools/converters/bmi-calculator/"
     },
@@ -163,6 +177,13 @@
         "unit-converter",
         "compound-interest"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/converters/currency-converter",
       "entry": "/src/tools/converters/currency-converter/"
     },
@@ -219,6 +240,13 @@
         "unix-timestamp",
         "scientific-calculator"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/converters/number-base-converter",
       "entry": "/src/tools/converters/number-base-converter/"
     },
@@ -273,6 +301,13 @@
         "unit-converter",
         "compound-interest"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/converters/percentage-calculator",
       "entry": "/src/tools/converters/percentage-calculator/"
     },
@@ -328,6 +363,13 @@
         "number-base-converter",
         "scientific-calculator"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/converters/roman-numerals",
       "entry": "/src/tools/converters/roman-numerals/"
     },
@@ -383,6 +425,13 @@
         "number-base-converter",
         "percentage-calculator"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/converters/scientific-calculator",
       "entry": "/src/tools/converters/scientific-calculator/"
     },
@@ -438,6 +487,13 @@
         "unix-timestamp",
         "unit-converter"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/converters/timezone-converter",
       "entry": "/src/tools/converters/timezone-converter/"
     },
@@ -494,6 +550,13 @@
         "currency-converter",
         "percentage-calculator"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/converters/unit-converter",
       "entry": "/src/tools/converters/unit-converter/"
     },
@@ -549,6 +612,13 @@
         "timezone-converter",
         "json-formatter"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/converters/unix-timestamp",
       "entry": "/src/tools/converters/unix-timestamp/"
     },
@@ -605,6 +675,13 @@
         "duplicate-finder",
         "encrypt-decrypt"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/data/checksum-calculator",
       "entry": "/src/tools/data/checksum-calculator/"
     },
@@ -657,6 +734,13 @@
         "json-to-csv",
         "csv-viewer"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/data/csv-to-json",
       "entry": "/src/tools/data/csv-to-json/"
     },
@@ -711,6 +795,13 @@
         "csv-to-json",
         "file-splitter"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/data/csv-viewer",
       "entry": "/src/tools/data/csv-viewer/"
     },
@@ -765,6 +856,13 @@
         "file-organizer",
         "checksum-calculator"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/data/duplicate-finder",
       "entry": "/src/tools/data/duplicate-finder/"
     },
@@ -819,6 +917,13 @@
         "file-splitter",
         "file-organizer"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/data/file-merger",
       "entry": "/src/tools/data/file-merger/"
     },
@@ -873,6 +978,13 @@
         "duplicate-finder",
         "file-renamer"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/data/file-organizer",
       "entry": "/src/tools/data/file-organizer/"
     },
@@ -926,6 +1038,13 @@
         "file-organizer",
         "duplicate-finder"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/data/file-renamer",
       "entry": "/src/tools/data/file-renamer/"
     },
@@ -980,6 +1099,13 @@
         "file-merger",
         "file-organizer"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/data/file-splitter",
       "entry": "/src/tools/data/file-splitter/"
     },
@@ -1032,6 +1158,13 @@
         "csv-to-json",
         "json-formatter"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/data/json-to-csv",
       "entry": "/src/tools/data/json-to-csv/"
     },
@@ -1086,6 +1219,13 @@
         "json-formatter",
         "code-formatter"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/data/sql-formatter",
       "entry": "/src/tools/data/sql-formatter/"
     },
@@ -1132,6 +1272,13 @@
         "lazyLoad": false
       },
       "relatedTools": [],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/data/audio-spectrum",
       "entry": "/src/tools/data/audio-spectrum/"
     },
@@ -1178,6 +1325,13 @@
         "lazyLoad": false
       },
       "relatedTools": [],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/data/chart-builder",
       "entry": "/src/tools/data/chart-builder/"
     },
@@ -1224,6 +1378,13 @@
         "lazyLoad": false
       },
       "relatedTools": [],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/data/csv-json-summarizer",
       "entry": "/src/tools/data/csv-json-summarizer/"
     },
@@ -1279,6 +1440,13 @@
         "csv-to-json",
         "qr-code-designer"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/data/vcf-generator",
       "entry": "/src/tools/data/vcf-generator/"
     },
@@ -1325,6 +1493,13 @@
         "lazyLoad": false
       },
       "relatedTools": [],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/data/weather-lookup",
       "entry": "/src/tools/data/weather-lookup/"
     },
@@ -1380,6 +1555,13 @@
         "qr-code-designer",
         "invoice-generator"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/design/barcode-generator",
       "entry": "/src/tools/design/barcode-generator/"
     },
@@ -1433,6 +1615,13 @@
         "logo-maker",
         "resume-builder"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/design/business-card-maker",
       "entry": "/src/tools/design/business-card-maker/"
     },
@@ -1486,6 +1675,13 @@
         "mind-map-tool",
         "wireframe-tool"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/design/diagram-maker",
       "entry": "/src/tools/design/diagram-maker/"
     },
@@ -1539,6 +1735,13 @@
         "resume-builder",
         "business-card-maker"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/design/invoice-generator",
       "entry": "/src/tools/design/invoice-generator/"
     },
@@ -1592,6 +1795,13 @@
         "business-card-maker",
         "mockup-generator"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/design/logo-maker",
       "entry": "/src/tools/design/logo-maker/"
     },
@@ -1645,6 +1855,13 @@
         "diagram-maker",
         "wireframe-tool"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/design/mind-map-tool",
       "entry": "/src/tools/design/mind-map-tool/"
     },
@@ -1698,6 +1915,13 @@
         "wireframe-tool",
         "logo-maker"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/design/mockup-generator",
       "entry": "/src/tools/design/mockup-generator/"
     },
@@ -1751,6 +1975,13 @@
         "barcode-generator",
         "business-card-maker"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/design/qr-code-designer",
       "entry": "/src/tools/design/qr-code-designer/"
     },
@@ -1804,6 +2035,13 @@
         "business-card-maker",
         "invoice-generator"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/design/resume-builder",
       "entry": "/src/tools/design/resume-builder/"
     },
@@ -1857,6 +2095,13 @@
         "diagram-maker",
         "mockup-generator"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/design/wireframe-tool",
       "entry": "/src/tools/design/wireframe-tool/"
     },
@@ -1910,6 +2155,13 @@
         "url-encoder",
         "code-formatter"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/dev/base64-converter",
       "entry": "/src/tools/dev/base64-converter/"
     },
@@ -1965,6 +2217,13 @@
         "json-validator",
         "base64-converter"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/dev/code-formatter",
       "entry": "/src/tools/dev/code-formatter/"
     },
@@ -2018,6 +2277,13 @@
         "css-minifier",
         "json-formatter"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/dev/color-converter",
       "entry": "/src/tools/dev/color-converter/"
     },
@@ -2071,6 +2337,13 @@
         "js-minifier",
         "code-formatter"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/dev/css-minifier",
       "entry": "/src/tools/dev/css-minifier/"
     },
@@ -2124,6 +2397,13 @@
         "markdown-to-html",
         "code-formatter"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/dev/html-to-markdown",
       "entry": "/src/tools/dev/html-to-markdown/"
     },
@@ -2177,6 +2457,13 @@
         "css-minifier",
         "json-formatter"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/dev/js-minifier",
       "entry": "/src/tools/dev/js-minifier/"
     },
@@ -2230,6 +2517,13 @@
         "regex-tester",
         "base64-encoder"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/dev/json-formatter",
       "entry": "/src/tools/dev/json-formatter/"
     },
@@ -2283,6 +2577,13 @@
         "code-formatter",
         "base64-converter"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/dev/json-validator",
       "entry": "/src/tools/dev/json-validator/"
     },
@@ -2336,6 +2637,13 @@
         "html-to-markdown",
         "markdown-to-html"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/dev/lorem-generator",
       "entry": "/src/tools/dev/lorem-generator/"
     },
@@ -2389,6 +2697,13 @@
         "code-formatter",
         "json-validator"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/dev/markdown-to-html",
       "entry": "/src/tools/dev/markdown-to-html/"
     },
@@ -2444,6 +2759,13 @@
         "robots-txt-generator",
         "xml-formatter"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/dev/meta-tag-generator",
       "entry": "/src/tools/dev/meta-tag-generator/"
     },
@@ -2495,6 +2817,13 @@
       "relatedTools": [
         "dev/json-formatter"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/dev/regex-tester",
       "entry": "/src/tools/dev/regex-tester/"
     },
@@ -2550,6 +2879,13 @@
         "meta-tag-generator",
         "xml-formatter"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/dev/robots-txt-generator",
       "entry": "/src/tools/dev/robots-txt-generator/"
     },
@@ -2605,6 +2941,13 @@
         "meta-tag-generator",
         "sitemap-generator"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/dev/schema-markup-generator",
       "entry": "/src/tools/dev/schema-markup-generator/"
     },
@@ -2660,6 +3003,13 @@
         "robots-txt-generator",
         "schema-markup-generator"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/dev/sitemap-generator",
       "entry": "/src/tools/dev/sitemap-generator/"
     },
@@ -2713,6 +3063,13 @@
         "base64-converter",
         "json-validator"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/dev/url-encoder",
       "entry": "/src/tools/dev/url-encoder/"
     },
@@ -2768,6 +3125,13 @@
         "json-formatter",
         "code-formatter"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/dev/xml-formatter",
       "entry": "/src/tools/dev/xml-formatter/"
     },
@@ -2834,6 +3198,13 @@
       "memoryLimits": {
         "maxResults": 360
       },
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/finance/mortgage-refinance",
       "entry": "/src/tools/finance/mortgage-refinance/"
     },
@@ -2889,6 +3260,13 @@
         "compound-interest",
         "percentage-calculator"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/finance/roi-calculator",
       "entry": "/src/tools/finance/roi-calculator/"
     },
@@ -2939,6 +3317,13 @@
       "relatedTools": [
         "finance/mortgage-tr"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/finance/compound-interest",
       "entry": "/src/tools/finance/compound-interest/"
     },
@@ -2988,6 +3373,13 @@
       "relatedTools": [
         "finance/mortgage-tr"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/finance/cloud-cost",
       "entry": "/src/tools/finance/cloud-cost/"
     },
@@ -3034,6 +3426,13 @@
         "lazyLoad": false
       },
       "relatedTools": [],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/finance/crypto-prices",
       "entry": "/src/tools/finance/crypto-prices/"
     },
@@ -3080,6 +3479,13 @@
         "lazyLoad": false
       },
       "relatedTools": [],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/finance/live-exchange",
       "entry": "/src/tools/finance/live-exchange/"
     },
@@ -3126,6 +3532,13 @@
         "lazyLoad": false
       },
       "relatedTools": [],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/finance/stock-lookup",
       "entry": "/src/tools/finance/stock-lookup/"
     },
@@ -3200,6 +3613,13 @@
         "quickPreview": true,
         "download": true
       },
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/image/image-flipper",
       "entry": "/src/tools/image/image-flipper/"
     },
@@ -3276,6 +3696,13 @@
         "preview": true,
         "download": true
       },
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/image/image-rotator",
       "entry": "/src/tools/image/image-rotator/"
     },
@@ -3358,6 +3785,13 @@
         "preview": true,
         "download": true
       },
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/image/collage-maker",
       "entry": "/src/tools/image/collage-maker/"
     },
@@ -3423,6 +3857,13 @@
         "maxFiles": 50,
         "maxTotalSize": 52428800
       },
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/image/compress",
       "entry": "/src/tools/image/compress/"
     },
@@ -3474,6 +3915,13 @@
       "relatedTools": [
         "image/compress"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/image/convert",
       "entry": "/src/tools/image/convert/"
     },
@@ -3520,6 +3968,13 @@
         "lazyLoad": false
       },
       "relatedTools": [],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/image/exif-viewer",
       "entry": "/src/tools/image/exif-viewer/"
     },
@@ -3599,6 +4054,13 @@
         "preview": true,
         "download": true
       },
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/image/image-cropper",
       "entry": "/src/tools/image/image-cropper/"
     },
@@ -3677,6 +4139,13 @@
           "Standard"
         ]
       },
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/image/image-resizer",
       "entry": "/src/tools/image/image-resizer/"
     },
@@ -3754,6 +4223,13 @@
         ],
         "outputFormat": "avif"
       },
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/image/image-to-avif",
       "entry": "/src/tools/image/image-to-avif/"
     },
@@ -3833,6 +4309,13 @@
         ],
         "outputFormat": "webp"
       },
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/image/image-to-webp",
       "entry": "/src/tools/image/image-to-webp/"
     },
@@ -3910,6 +4393,13 @@
         "preview": true,
         "download": true
       },
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/image/image-watermark",
       "entry": "/src/tools/image/image-watermark/"
     },
@@ -3985,6 +4475,13 @@
         "privacyNotice": true,
         "download": true
       },
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/image/metadata-remover",
       "entry": "/src/tools/image/metadata-remover/"
     },
@@ -4014,8 +4511,8 @@
         ]
       },
       "description": {
-        "tr": "Görsellerin arka planını otomatik olarak kaldırın. Şeffaf PNG oluşturun. Kenar hassasiyeti ayarlı.",
-        "en": "Remove backgrounds from images automatically. Create transparent PNGs with adjustable edge tolerance."
+        "tr": "Görsellerde kenara bağlı düz veya benzer renkli arka plan bölgelerini tarayıcıda kaldırın; geçiş piksellerini yumuşatın ve şeffaf PNG oluşturun.",
+        "en": "Remove edge-connected flat or similar-color background regions in the browser, feather transition pixels, and export a transparent PNG."
       },
       "schema": {
         "@type": "WebApplication",
@@ -4051,11 +4548,20 @@
         "maxTotalSize": 10485760
       },
       "features": {
-        "autoDetectSubject": true,
+        "autoDetectSubject": false,
+        "edgeConnectedBackgroundRemoval": true,
+        "featheredEdges": true,
         "toleranceSlider": true,
         "previewTransparent": true,
         "outputFormat": "png"
       },
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/image/background-remover",
       "entry": "/src/tools/image/background-remover/"
     },
@@ -4131,19 +4637,22 @@
         "maxFiles": 20,
         "chunkSize": 10485760
       },
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/pdf/merge",
       "entry": "/src/tools/pdf/merge/"
     },
     {
       "id": "pdf-compress",
-      "name": "PDF Sıkıştırma",
+      "name": "PDF Optimizasyonu",
       "nameEn": "PDF Compressor",
       "category": "pdf",
       "tier": 2,
-      "cpc": {
-        "tr": 1.8,
-        "us": 2.5
-      },
       "keywords": {
         "tr": [
           "pdf sıkıştırma",
@@ -4159,12 +4668,12 @@
         ]
       },
       "description": {
-        "tr": "PDF dosya boyutunu kalite kaybetmeden küçültün. OCR sonrası optimize edin.",
-        "en": "Reduce PDF file size without quality loss. Optimize after OCR."
+        "tr": "PDF yapısını tarayıcınızda pdf-lib ile yeniden yazar ve çıktı boyutunu karşılaştırır. Sayfa görsellerini küçültmez; boyut azalması garanti edilmez.",
+        "en": "Rewrite PDF structure in your browser with pdf-lib and compare the output size. Page images are not downsampled, so size reduction is not guaranteed."
       },
       "schema": {
         "@type": "WebApplication",
-        "applicationCategory": "UtilityApplication",
+        "applicationCategory": "UtilitiesApplication",
         "offers": {
           "@type": "Offer",
           "price": "0"
@@ -4183,7 +4692,7 @@
       },
       "bundle": {
         "vendor": "pdf-vendor",
-        "wasm": true,
+        "wasm": false,
         "lazyLoad": true
       },
       "relatedTools": [
@@ -4195,6 +4704,13 @@
         "maxFileSize": 52428800,
         "chunkSize": 10485760
       },
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/pdf/compress",
       "entry": "/src/tools/pdf/compress/"
     },
@@ -4248,6 +4764,13 @@
         "pdf/merge",
         "pdf/compress"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/pdf/split",
       "entry": "/src/tools/pdf/split/"
     },
@@ -4274,6 +4797,13 @@
       "author": "NovaTools MC",
       "created": "2026-03-16",
       "updated": "2026-03-16",
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/pdf/pdf-ocr",
       "entry": "/src/tools/pdf/pdf-ocr/"
     },
@@ -4311,6 +4841,13 @@
       "author": "NovaTools MC",
       "created": "2026-03-16",
       "updated": "2026-03-16",
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/pdf/pdf-page-number",
       "entry": "/src/tools/pdf/pdf-page-number/"
     },
@@ -4337,6 +4874,13 @@
       "author": "NovaTools MC",
       "created": "2026-03-16",
       "updated": "2026-03-16",
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/pdf/pdf-to-excel",
       "entry": "/src/tools/pdf/pdf-to-excel/"
     },
@@ -4362,6 +4906,13 @@
       "author": "NovaTools MC",
       "created": "2026-03-16",
       "updated": "2026-03-16",
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/pdf/pdf-to-html",
       "entry": "/src/tools/pdf/pdf-to-html/"
     },
@@ -4387,6 +4938,13 @@
       "author": "NovaTools MC",
       "created": "2026-03-16",
       "updated": "2026-03-16",
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/pdf/pdf-to-jpg",
       "entry": "/src/tools/pdf/pdf-to-jpg/"
     },
@@ -4412,6 +4970,13 @@
       "author": "NovaTools MC",
       "created": "2026-03-16",
       "updated": "2026-03-16",
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/pdf/pdf-to-png",
       "entry": "/src/tools/pdf/pdf-to-png/"
     },
@@ -4437,6 +5002,13 @@
       "author": "NovaTools MC",
       "created": "2026-03-16",
       "updated": "2026-03-16",
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/pdf/pdf-to-powerpoint",
       "entry": "/src/tools/pdf/pdf-to-powerpoint/"
     },
@@ -4462,6 +5034,13 @@
       "author": "NovaTools MC",
       "created": "2026-03-16",
       "updated": "2026-03-16",
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/pdf/pdf-to-text",
       "entry": "/src/tools/pdf/pdf-to-text/"
     },
@@ -4489,6 +5068,13 @@
       "author": "NovaTools MC",
       "created": "2026-03-16",
       "updated": "2026-03-16",
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/pdf/pdf-to-word",
       "entry": "/src/tools/pdf/pdf-to-word/"
     },
@@ -4526,6 +5112,13 @@
       "author": "NovaTools MC",
       "created": "2026-03-16",
       "updated": "2026-03-16",
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/pdf/pdf-watermark",
       "entry": "/src/tools/pdf/pdf-watermark/"
     },
@@ -4582,6 +5175,13 @@
         "stopwatch",
         "world-clock"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/productivity/countdown-timer",
       "entry": "/src/tools/productivity/countdown-timer/"
     },
@@ -4638,6 +5238,13 @@
         "tax",
         "currency-converter"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/productivity/expense-tracker",
       "entry": "/src/tools/productivity/expense-tracker/"
     },
@@ -4694,6 +5301,13 @@
         "time-tracker",
         "notes"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/productivity/habit-tracker",
       "entry": "/src/tools/productivity/habit-tracker/"
     },
@@ -4750,6 +5364,13 @@
         "notes",
         "time-tracker"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/productivity/kanban-board",
       "entry": "/src/tools/productivity/kanban-board/"
     },
@@ -4806,6 +5427,13 @@
         "kanban-board",
         "habit-tracker"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/productivity/notes",
       "entry": "/src/tools/productivity/notes/"
     },
@@ -4863,6 +5491,13 @@
         "countdown-timer",
         "time-tracker"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/productivity/pomodoro-timer",
       "entry": "/src/tools/productivity/pomodoro-timer/"
     },
@@ -4919,6 +5554,13 @@
         "countdown-timer",
         "time-tracker"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/productivity/stopwatch",
       "entry": "/src/tools/productivity/stopwatch/"
     },
@@ -4975,6 +5617,13 @@
         "stopwatch",
         "kanban-board"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/productivity/time-tracker",
       "entry": "/src/tools/productivity/time-tracker/"
     },
@@ -5031,6 +5680,13 @@
         "notes",
         "habit-tracker"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/productivity/todo-list",
       "entry": "/src/tools/productivity/todo-list/"
     },
@@ -5087,6 +5743,13 @@
         "countdown-timer",
         "pomodoro-timer"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/productivity/world-clock",
       "entry": "/src/tools/productivity/world-clock/"
     },
@@ -5141,6 +5804,13 @@
         "ip-lookup",
         "user-agent-parser"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/security/ad-blocker-tester",
       "entry": "/src/tools/security/ad-blocker-tester/"
     },
@@ -5194,6 +5864,13 @@
         "hash-generator",
         "password-generator"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/security/encrypt-decrypt",
       "entry": "/src/tools/security/encrypt-decrypt/"
     },
@@ -5249,6 +5926,13 @@
         "password-generator",
         "encrypt-decrypt"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/security/hash-generator",
       "entry": "/src/tools/security/hash-generator/"
     },
@@ -5303,6 +5987,13 @@
         "ssl-checker",
         "user-agent-parser"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/security/ip-lookup",
       "entry": "/src/tools/security/ip-lookup/"
     },
@@ -5358,6 +6049,13 @@
         "hash-generator",
         "encrypt-decrypt"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/security/jwt-decoder",
       "entry": "/src/tools/security/jwt-decoder/"
     },
@@ -5411,6 +6109,13 @@
         "password-strength",
         "hash-generator"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/security/password-generator",
       "entry": "/src/tools/security/password-generator/"
     },
@@ -5464,6 +6169,13 @@
         "password-generator",
         "hash-generator"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/security/password-strength",
       "entry": "/src/tools/security/password-strength/"
     },
@@ -5519,6 +6231,13 @@
         "ip-lookup",
         "jwt-decoder"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/security/ssl-checker",
       "entry": "/src/tools/security/ssl-checker/"
     },
@@ -5574,6 +6293,13 @@
         "ip-lookup",
         "ssl-checker"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/security/user-agent-parser",
       "entry": "/src/tools/security/user-agent-parser/"
     },
@@ -5627,6 +6353,13 @@
         "password-generator",
         "hash-generator"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/security/uuid-generator",
       "entry": "/src/tools/security/uuid-generator/"
     },
@@ -5683,6 +6416,13 @@
         "social-image-resizer",
         "image-to-png"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/social/app-icon-generator",
       "entry": "/src/tools/social/app-icon-generator/"
     },
@@ -5738,6 +6478,13 @@
         "social-image-resizer",
         "image-convert"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/social/favicon-generator",
       "entry": "/src/tools/social/favicon-generator/"
     },
@@ -5793,6 +6540,13 @@
         "utm-builder",
         "url-shortener"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/social/hashtag-generator",
       "entry": "/src/tools/social/hashtag-generator/"
     },
@@ -5847,6 +6601,13 @@
         "twitter-video",
         "social-image-resizer"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/social/instagram-photo",
       "entry": "/src/tools/social/instagram-photo/"
     },
@@ -5902,6 +6663,13 @@
         "hashtag-generator",
         "favicon-generator"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/social/social-image-resizer",
       "entry": "/src/tools/social/social-image-resizer/"
     },
@@ -5956,6 +6724,13 @@
         "instagram-photo",
         "social-image-resizer"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/social/twitter-video",
       "entry": "/src/tools/social/twitter-video/"
     },
@@ -5965,6 +6740,9 @@
       "nameEn": "URL Shortener",
       "category": "social",
       "tier": 1,
+      "public": false,
+      "indexable": false,
+      "adsEligible": false,
       "cpc": {
         "tr": 0.5,
         "us": 1
@@ -5985,8 +6763,8 @@
         ]
       },
       "description": {
-        "tr": "Uzun bağlantıları kısa ve paylaşılabilir hale getirin. İstemci tarafında hash tabanlı kısaltma.",
-        "en": "Transform long URLs into short, shareable links. Client-side hash-based shortening for privacy."
+        "tr": "Bu eski demo rotası gerçek bir yönlendirme servisine bağlı değildir ve üretim aracı olarak sunulmaz.",
+        "en": "This legacy demo route is not backed by a real redirect service and is not offered as a production URL shortener."
       },
       "schema": {
         "@type": "WebApplication",
@@ -5998,7 +6776,7 @@
       },
       "ads": {
         "sidebar": {
-          "enabled": true,
+          "enabled": false,
           "size": "336x280",
           "minCpm": 0.3
         }
@@ -6011,6 +6789,10 @@
         "hashtag-generator",
         "qr-generator"
       ],
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/social/url-shortener",
       "entry": "/src/tools/social/url-shortener/"
     },
@@ -6066,6 +6848,13 @@
         "hashtag-generator",
         "website-screenshot"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/social/utm-builder",
       "entry": "/src/tools/social/utm-builder/"
     },
@@ -6121,6 +6910,13 @@
         "social-image-resizer",
         "favicon-generator"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/social/website-screenshot",
       "entry": "/src/tools/social/website-screenshot/"
     },
@@ -6175,6 +6971,13 @@
         "twitter-video",
         "social-image-resizer"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/social/youtube-thumbnail",
       "entry": "/src/tools/social/youtube-thumbnail/"
     },
@@ -6234,6 +7037,13 @@
         "character-counter",
         "text-to-slug"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/text/case-converter",
       "entry": "/src/tools/text/case-converter/"
     },
@@ -6290,6 +7100,13 @@
         "case-converter",
         "text-to-slug"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/text/character-counter",
       "entry": "/src/tools/text/character-counter/"
     },
@@ -6345,6 +7162,13 @@
         "character-counter",
         "case-converter"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/text/lorem-ipsum-generator",
       "entry": "/src/tools/text/lorem-ipsum-generator/"
     },
@@ -6402,6 +7226,13 @@
         "character-counter",
         "case-converter"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/text/text-to-slug",
       "entry": "/src/tools/text/text-to-slug/"
     },
@@ -6457,6 +7288,13 @@
         "case-converter",
         "text-to-slug"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/text/word-counter",
       "entry": "/src/tools/text/word-counter/"
     },
@@ -6512,6 +7350,13 @@
         "text-to-ascii",
         "text-diff"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/text/html-entity-encoder",
       "entry": "/src/tools/text/html-entity-encoder/"
     },
@@ -6566,6 +7411,13 @@
         "case-converter",
         "character-counter"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/text/palindrome-checker",
       "entry": "/src/tools/text/palindrome-checker/"
     },
@@ -6612,6 +7464,13 @@
         "lazyLoad": false
       },
       "relatedTools": [],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/text/simple-translator",
       "entry": "/src/tools/text/simple-translator/"
     },
@@ -6658,6 +7517,13 @@
         "lazyLoad": false
       },
       "relatedTools": [],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/text/text-analysis",
       "entry": "/src/tools/text/text-analysis/"
     },
@@ -6713,6 +7579,13 @@
         "html-entity-encoder",
         "url-encoder"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/text/text-diff",
       "entry": "/src/tools/text/text-diff/"
     },
@@ -6759,6 +7632,13 @@
         "lazyLoad": false
       },
       "relatedTools": [],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/text/text-summarizer",
       "entry": "/src/tools/text/text-summarizer/"
     },
@@ -6814,6 +7694,13 @@
         "html-entity-encoder",
         "palindrome-checker"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/text/text-to-ascii",
       "entry": "/src/tools/text/text-to-ascii/"
     },
@@ -6869,6 +7756,13 @@
         "text-to-ascii",
         "case-converter"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "UNREVIEWED",
+      "externalNetwork": "UNREVIEWED",
+      "syntheticData": "UNREVIEWED",
       "path": "/text/url-encoder",
       "entry": "/src/tools/text/url-encoder/"
     }

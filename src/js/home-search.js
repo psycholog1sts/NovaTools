@@ -108,7 +108,7 @@ export function initHomeSearch({ getToolHref } = {}) {
   input.removeAttribute('data-i18n-placeholder');
 
   const tools = [
-    ...(manifest.tools || []).map((tool) => toSearchItem(tool, resolveHref)),
+    ...(manifest.tools || []).filter((tool) => tool.public && tool.certificationStatus === 'CERTIFIED').map((tool) => toSearchItem(tool, resolveHref)),
     ...(blogPosts || []).map(toBlogSearchItem)
   ];
 

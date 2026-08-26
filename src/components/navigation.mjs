@@ -25,7 +25,7 @@ function escapeHtml(value) {
 }
 
 function groupedTools(limitPerCategory = 5) {
-  return Object.entries((manifest.tools || []).reduce((groups, tool) => {
+  return Object.entries((manifest.tools || []).filter((tool) => tool.public && tool.certificationStatus === 'CERTIFIED').reduce((groups, tool) => {
     const key = tool.category || 'tools';
     groups[key] = groups[key] || [];
     groups[key].push(tool);

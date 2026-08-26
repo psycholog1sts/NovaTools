@@ -67,6 +67,10 @@ function readJson(relativePath) {
   return JSON.parse(fs.readFileSync(path.join(rootDir, relativePath), 'utf8'));
 }
 
+const toolTruthBySource = new Map((readJson('tools-manifest.json').tools || []).map((tool) => [
+  String(tool.entry || '').replace(/^\//, '').replace(/\/$/, '') + '/index.html', tool
+]));
+
 function xmlEscape(value) {
   return String(value)
     .replace(/&/g, '&amp;')
@@ -90,6 +94,8 @@ function renderSection(name, entries) {
 }
 
 function toolSourceIsIndexable(file) {
+  const truth = toolTruthBySource.get(file);
+  if (truth && (!truth.public || !truth.indexable || truth.certificationStatus !== 'CERTIFIED')) return false;
   const html = fs.readFileSync(path.join(rootDir, file), 'utf8');
   const robotsMeta = html.match(/<meta[^>]+name=[\"']robots[\"'][^>]*>/i)?.[0]
     || html.match(/<meta[^>]+content=[\"'][^\"']*[\"'][^>]+name=[\"']robots[\"'][^>]*>/i)?.[0]

@@ -47,10 +47,8 @@ function generateManifest() {
       const content = readFileSync(metaPath, 'utf-8');
       const meta = JSON.parse(content);
 
-      // A retained source route can be intentionally unavailable to users
-      // while it is being repaired. Do not leak such entries into search,
-      // category discovery, or other consumers of the public manifest.
-      if (meta.public === false) continue;
+      const publicTool = meta.public !== false;
+      const certificationStatus = meta.certificationStatus || (publicTool ? 'CERTIFIED' : 'UNAVAILABLE');
       
       // Calculate relative path
       const relativePath = metaPath
@@ -61,6 +59,13 @@ function generateManifest() {
       
       tools.push({
         ...meta,
+        public: publicTool,
+        indexable: meta.indexable !== false && certificationStatus === 'CERTIFIED',
+        adsEligible: meta.adsEligible !== false && certificationStatus === 'CERTIFIED' && publicTool,
+        certificationStatus,
+        privacyMode: meta.privacyMode || 'UNREVIEWED',
+        externalNetwork: meta.externalNetwork ?? 'UNREVIEWED',
+        syntheticData: meta.syntheticData ?? 'UNREVIEWED',
         path: relativePath,
         entry: `/src/tools${relativePath}/`
       });
