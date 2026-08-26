@@ -153,6 +153,16 @@ test('homepage SearchAction query opens the real tool search', async ({ page }) 
   await expect(page.locator('#searchResults a')).not.toHaveCount(0);
 });
 
+test('homepage mobile discovery stays concise without hiding category routes', async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 812 });
+  await page.goto('/');
+
+  const categoryLinks = page.locator('#categoriesGrid .category-nav-card h3 a');
+  await expect(categoryLinks).toHaveCount(12);
+  const documentHeight = await page.evaluate(() => document.documentElement.scrollHeight);
+  expect(documentHeight).toBeLessThan(11500);
+});
+
 test('gold-standard PDF page exposes usable mobile navigation', async ({ page }) => {
   await page.setViewportSize({ width: 375, height: 812 });
   await page.goto('/tools/pdf/compress/', { waitUntil: 'domcontentloaded' });

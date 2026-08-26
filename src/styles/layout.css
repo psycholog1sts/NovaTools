@@ -394,6 +394,66 @@
   }
 }
 
+/* Keep the mobile homepage a discovery surface instead of a long card catalogue. */
+@media (max-width: 600px) {
+  .home-popular,
+  .home-private-starter,
+  .home-featured,
+  .home-categories,
+  .home-workflows,
+  .home-blog {
+    padding-block: var(--space-8);
+  }
+
+  .section-header {
+    margin-bottom: var(--space-5);
+  }
+
+  .category-nav-grid {
+    gap: var(--space-3);
+  }
+
+  .category-nav-card {
+    grid-template-columns: 40px minmax(0, 1fr);
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .category-nav-card__icon {
+    width: 40px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+  }
+
+  .category-nav-card__icon svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .category-nav-card p,
+  .category-nav-card__links {
+    display: none;
+  }
+
+  .featured-tool-card p,
+  .home-blog-card p {
+    display: none;
+  }
+
+  .featured-tool-card,
+  .home-blog-card,
+  .workflow-card {
+    gap: var(--space-3);
+    padding: var(--space-4);
+  }
+
+  .workflow-card__steps a {
+    padding: var(--space-2) var(--space-3);
+  }
+}
+
 /* Homepage professionalization pass: visual workflow shell, workflow cards and consent-safe ad space. */
 .home-hero__visual {
   display: block;
