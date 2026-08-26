@@ -1,0 +1,13 @@
+import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+const html = readFileSync('src/tools/image/convert/index.html', 'utf8');
+const certification = JSON.parse(readFileSync('src/data/tool-certification.json', 'utf8'));
+const record = certification.records.find(({ Route }) => Route === '/tools/image/convert/');
+assert.ok(record, 'Image Converter must have a canonical certification record.');
+assert.equal(record.CertificationStatus, 'UNAVAILABLE');
+assert.equal(record.Indexable, false);
+assert.equal(record.AdsEligible, false);
+assert.match(html, /<meta name="robots" content="noindex,nofollow">/i);
+assert.match(html, /currently unavailable/i);
+assert.doesNotMatch(html, /data-tool="image-convert"|id="convertBtn"|pagead2\.googlesyndication/i);
+console.log('image converter unavailable contract: pass');

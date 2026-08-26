@@ -71,6 +71,10 @@ const toolTruthBySource = new Map((readJson('tools-manifest.json').tools || []).
   String(tool.entry || '').replace(/^\//, '').replace(/\/$/, '') + '/index.html', tool
 ]));
 
+function normalizeSourcePath(file) {
+  return String(file).replace(/\\/g, '/');
+}
+
 function xmlEscape(value) {
   return String(value)
     .replace(/&/g, '&amp;')
@@ -94,9 +98,10 @@ function renderSection(name, entries) {
 }
 
 function toolSourceIsIndexable(file) {
-  const truth = toolTruthBySource.get(file);
+  const normalizedFile = normalizeSourcePath(file);
+  const truth = toolTruthBySource.get(normalizedFile);
   if (truth && (!truth.public || !truth.indexable || truth.certificationStatus !== 'CERTIFIED')) return false;
-  const html = fs.readFileSync(path.join(rootDir, file), 'utf8');
+  const html = fs.readFileSync(path.join(rootDir, normalizedFile), 'utf8');
   const robotsMeta = html.match(/<meta[^>]+name=[\"']robots[\"'][^>]*>/i)?.[0]
     || html.match(/<meta[^>]+content=[\"'][^\"']*[\"'][^>]+name=[\"']robots[\"'][^>]*>/i)?.[0]
     || '';
@@ -148,7 +153,7 @@ const sections = [
   })
     .filter(toolSourceIsIndexable)
     .sort()
-    .map((file) => urlEntry(`/${file.replace(/^src\//, '').replace(/index\.html$/, '')}`, '0.8', 'weekly', 'Individual tool pages'))],
+    .map((file) => urlEntry(`/${normalizeSourcePath(file).replace(/^src\//, '').replace(/index\.html$/, '')}`, '0.8', 'weekly', 'Individual tool pages'))],
   ['Blog category archive pages', blogCategoryPages.map((route) => urlEntry(route, '0.55', 'weekly', 'Blog category archive pages'))],
   ['Blog posts', normalizeBlogSlugList([
     ...readJson(`src/i18n/blog/${fallbackBlogLocale}.json`).map((post) => post.slug).filter(Boolean),

@@ -315,6 +315,27 @@
       "UIStatus": "WAVE_2_TRUTH_VERIFIED",
       "Tests": "image flipper truth contract",
       "CertificationStatus": "CERTIFIED"
+    },
+    {
+      "Tool": "Image Converter",
+      "Route": "/tools/image/convert/",
+      "Category": "image",
+      "Indexable": false,
+      "AdsEligible": false,
+      "FunctionalTruth": "FAIL_PUBLIC_CONTRACT",
+      "UniqueUtility": "NOT_PUBLIC",
+      "SpecificContent": "PASS_UNAVAILABLE_NOTICE",
+      "ImplementationEvidence": "FAIL_UNWIRED_PUBLIC_CONTROLS",
+      "NoFiller": "PASS_UNAVAILABLE_NOTICE",
+      "Trust": "PASS_FAIL_CLOSED",
+      "PrivacyTruth": "NO_TOOL_PROCESSING",
+      "ExternalNetwork": false,
+      "DataSource": "None on public unavailable route",
+      "SyntheticData": "NONE",
+      "KnownLimitations": "The prior public page did not bootstrap its separate converter implementation and advertised unsupported format and batch contracts.",
+      "UIStatus": "UNAVAILABLE_NOTICE",
+      "Tests": "image converter unavailable contract",
+      "CertificationStatus": "UNAVAILABLE"
     }
   ]
 }
