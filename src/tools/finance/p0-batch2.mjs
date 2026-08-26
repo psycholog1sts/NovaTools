@@ -259,7 +259,6 @@ export async function calculateCryptoPrices() {
     coins = response.data.coins;
     provider = response.data.provider || provider;
     fetchedAt = response.data.fetchedAt || fetchedAt;
-    if (response.stale) warning = 'Fiyatlar geçici olarak güncellenemiyor; önbellekteki son bilinen CoinGecko yanıtı gösteriliyor.';
   } catch {
     coins = CRYPTO_FALLBACKS;
     provider = 'statik örnek fallback';
@@ -437,8 +436,8 @@ export function calculateRetirement(formData) {
       { value: formatTRY(nominal), label: 'Nominal birikim', className: 'highlight' },
       { value: formatTRY(real), label: 'Enflasyon ayarlı' },
       { value: formatTRY(annualWithdrawal / 12), label: '4% kuralı aylık' },
-      { value: 'Kadın 58 / Erkek 60+', label: 'SGK 4A yaş notu' }
-    ])}<div class="chart-container"><h3>Yaşa göre birikim</h3>${canvasHtml('retirementChart', 'line', series, 'Emeklilik birikim grafiği')}</div><p class="finance-note">SGK yaş/prim günü koşulları statü ve başlangıç tarihine göre değişebilir; 3600/4500/5400 gün seçenekleri için SGK kaydı kontrol edilmelidir. Emeklilik hesaplamaları tahminidir, kesin bilgi için SGK ve mali müşavire danışın.</p>`
+      { value: `${years} yıl`, label: 'Hedefe kalan süre' }
+    ])}<div class="chart-container"><h3>Yaşa göre birikim</h3>${canvasHtml('retirementChart', 'line', series, 'Emeklilik birikim grafiği')}</div><p class="finance-note">Projeksiyon, seçtiğiniz getiri ve enflasyon oranlarının dönem boyunca sabit kaldığını varsayar. Devlet emekliliği/SGK aylığı bu hesaplamaya dahil değildir.</p>`
   };
 }
 
@@ -471,7 +470,7 @@ export function calculateStudentLoan(formData) {
   const base = loanSchedule(balance, rate, monthlyPayment, 0);
   const extra = loanSchedule(balance, rate, monthlyPayment, extraPayment);
   const savings = base.totalInterest - extra.totalInterest;
-  const chart = base.rows.slice(0, Math.max(base.rows.length, extra.rows.length)).filter((_, index) => index % Math.max(1, Math.ceil(base.rows.length / 24)) === 0).map((row, index) => ({ label: String(row.month), current: row.balance, extra: extra.rows[Math.min(index, extra.rows.length - 1)]?.balance || 0 }));
+  const chart = base.rows.slice(0, Math.max(base.rows.length, extra.rows.length)).filter((_, index) => index % Math.max(1, Math.ceil(base.rows.length / 24)) === 0).map((row) => ({ label: String(row.month), current: row.balance, extra: extra.rows[Math.min(row.month - 1, extra.rows.length - 1)]?.balance || 0 }));
   return {
     status: 'Öğrenci kredisi ödeme planı hazır.',
     type: 'success',
@@ -488,7 +487,7 @@ function forms() {
   return {
     'live-exchange': `<div class="form-grid"><label>Tutar<input name="amount" type="number" min="0.01" step="0.01" value="1000" inputmode="decimal" required></label><label>Kaynak<select name="from" required><option>TRY</option><option selected>USD</option><option>EUR</option></select></label><button type="button" class="btn btn-secondary" id="swapCurrencies">⇄ Swap</button><label>Hedef<select name="to" required><option selected>TRY</option><option>USD</option><option>EUR</option></select></label></div><button class="btn" type="submit">Kuru güncelle</button>`,
     'stock-lookup': `<div class="form-grid"><label>Hisse sembolü<input name="symbol" list="stockSymbols" value="AAPL" maxlength="12" required></label><datalist id="stockSymbols"><option value="THYAO"><option value="GARAN"><option value="AAPL"><option value="TSLA"><option value="IBM"></datalist></div><button class="btn" type="submit">Hisseyi getir</button>`,
-    'crypto-prices': `<p class="finance-note">BTC, ETH, SOL, XRP ve ADA fiyatları 30 saniyede bir yenilenir. Canlı istekler NovaTools live-data uç noktası üzerinden CoinGecko kaynağına gider.</p><button class="btn" type="submit">Fiyatları yenile</button>`,
+    'crypto-prices': `<p class="finance-note">BTC, ETH, SOL, XRP ve ADA için CoinGecko snapshot'ı tarayıcıda 5 dakika önbelleğe alınır. Otomatik yenileme de 5 dakikada bir çalışır; sonuçta sağlayıcının veri çekim zamanı gösterilir.</p><button class="btn" type="submit">Fiyatları kontrol et</button>`,
     'cloud-cost': `<div class="form-grid"><label>Provider<select name="provider" id="cloudProvider" required><option value="aws">AWS</option><option value="gcp">GCP</option><option value="azure">Azure</option></select></label><label>Instance<select name="instance" id="cloudInstance" required></select></label><label>Kullanım saati<input name="hours" type="number" min="1" max="744" step="1" value="730" inputmode="numeric" required></label><label>Depolama GB<input name="storage" type="number" min="1" max="100000" step="1" value="100" inputmode="numeric" required></label><label>Network GB<input name="network" type="number" min="0" max="100000" step="1" value="100" inputmode="numeric" required></label><label>Plan<select name="plan" required><option value="onDemand">On-Demand</option><option value="reserved1y">Reserved 1y</option><option value="reserved3y">Reserved 3y</option><option value="spot">Spot</option></select></label></div><button class="btn" type="submit">Maliyeti hesapla</button>`,
     'crypto-tax': `<div class="form-grid"><label>Yıl<input name="year" type="number" min="2020" max="2030" step="1" value="2026" inputmode="numeric" required></label><label>Toplam alım<input name="totalBuy" type="number" min="0" step="0.01" value="100000" inputmode="decimal" required></label><label>Toplam satım<input name="totalSell" type="number" min="0" step="0.01" value="150000" inputmode="decimal" required></label><label>Kazanç/zarar (opsiyonel)<input name="gainLoss" type="number" step="0.01" inputmode="decimal"></label><label>Maliyet bazı<select name="costBasis"><option>FIFO</option><option>LIFO</option></select></label></div><button class="btn" type="submit">Vergiyi hesapla</button>`,
     tax: `<div class="form-grid"><label>Brüt maaş<input name="grossSalary" type="number" min="1" max="5000000" step="0.01" value="75000" inputmode="decimal" required></label><label>Medeni durum<select name="marital"><option>Bekar</option><option>Evli</option></select></label><label>Çocuk sayısı<input name="children" type="number" min="0" max="10" step="1" value="0" inputmode="numeric" required></label><label>Özel sigorta<input name="privateInsurance" type="number" min="0" step="0.01" value="0" inputmode="decimal"></label></div><button class="btn" type="submit">Net maaşı hesapla</button>`,
@@ -683,7 +682,7 @@ export function initP0FinanceTool(tool = document.body.dataset.financeTool) {
   });
 
   if (tool === 'crypto-prices') {
-    cryptoTimer = window.setInterval(run, 30000);
+    cryptoTimer = window.setInterval(run, 5 * 60 * 1000);
     window.addEventListener('pagehide', () => window.clearInterval(cryptoTimer), { once: true });
   }
 }
