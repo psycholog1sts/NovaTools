@@ -24,6 +24,8 @@ jobs:
         run: npm run lint --if-present
       - name: Unit and regression tests
         run: npm test --if-present
+      - name: Audit tool source truth
+        run: node scripts/audit-tool-source-truth.mjs
       - name: Build
         run: npm run build
       - name: Enforce production output contract
