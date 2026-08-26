@@ -1,0 +1,39 @@
+name: Wave 2 normalize tool trust content
+
+on:
+  push:
+    branches:
+      - wave2/site-transformation
+    paths:
+      - scripts/normalize-tool-trust-content.mjs
+      - .github/workflows/wave2-normalize-tool-content.yml
+
+permissions:
+  contents: write
+
+jobs:
+  normalize:
+    if: ${{ !contains(github.event.head_commit.message, '[normalizer-output]') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: wave2/site-transformation
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Normalize tracked tool pages
+        run: node scripts/normalize-tool-trust-content.mjs --write
+      - name: Commit deterministic output when needed
+        shell: bash
+        run: |
+          if git diff --quiet -- src/tools; then
+            echo "No normalization changes required."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/tools
+          git commit -m "content: remove synthetic author boilerplate [normalizer-output]"
+          git push origin HEAD:wave2/site-transformation
