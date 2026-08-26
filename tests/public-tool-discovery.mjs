@@ -30,10 +30,12 @@ assert.deepEqual(grouped.pdf.map((tool) => tool.id), ['merge', 'compress']);
 
 const homepage = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
 const homepageLogic = readFileSync(new URL('../src/main.js', import.meta.url), 'utf8');
+const designSystem = readFileSync(new URL('../src/styles/design-system.css', import.meta.url), 'utf8');
 assert.match(homepage, /class="btn-icon mobile-menu-toggle"[^>]*aria-expanded="false"[^>]*aria-controls="mobileMenu"/);
 assert.match(homepage, /id="mobileMenu"[^>]*hidden/);
 assert.match(homepage, /id="searchModal"[^>]*role="dialog"[^>]*aria-modal="true"[^>]*hidden/);
 assert.match(homepageLogic, /setAttribute\('aria-expanded'/);
 assert.match(homepageLogic, /previouslyFocusedElement/);
+assert.match(designSystem, /@media \(max-width: 479px\)[\s\S]*?\.language-selector\s*\{\s*display:\s*none;/, 'Compact mobile shell must keep search and menu controls in the viewport.');
 
 console.log('public tool discovery contract: pass');
