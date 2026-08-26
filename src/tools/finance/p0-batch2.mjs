@@ -12,11 +12,11 @@ const STATIC_RATES = {
   EUR: { EUR: 1, USD: 1 / 0.92, TRY: STATIC_USD_TRY / 0.92 }
 };
 const STOCK_FALLBACKS = {
-  AAPL: { price: 190.2, currency: 'USD', changePercent: 0.8, volume: 51200000, exchange: 'NASDAQ', series: [184, 186, 185, 188, 189, 190.2] },
-  TSLA: { price: 178.5, currency: 'USD', changePercent: -1.4, volume: 89100000, exchange: 'NASDAQ', series: [185, 182, 180, 181, 179, 178.5] },
-  IBM: { price: 189.9, currency: 'USD', changePercent: 0.3, volume: 4200000, exchange: 'NYSE', series: [187, 188, 188.5, 189, 189.2, 189.9] },
-  THYAO: { price: 300.5, currency: 'TRY', changePercent: 1.1, volume: 52000000, exchange: 'BIST', series: [292, 295, 294, 298, 300, 300.5] },
-  GARAN: { price: 122.4, currency: 'TRY', changePercent: -0.4, volume: 61000000, exchange: 'BIST', series: [124, 123, 122.8, 123.1, 122.9, 122.4] }
+  AAPL: { price: 190.2, currency: 'USD', changePercent: 0.8, volume: 51200000, exchange: 'NASDAQ' },
+  TSLA: { price: 178.5, currency: 'USD', changePercent: -1.4, volume: 89100000, exchange: 'NASDAQ' },
+  IBM: { price: 189.9, currency: 'USD', changePercent: 0.3, volume: 4200000, exchange: 'NYSE' },
+  THYAO: { price: 300.5, currency: 'TRY', changePercent: 1.1, volume: 52000000, exchange: 'BIST' },
+  GARAN: { price: 122.4, currency: 'TRY', changePercent: -0.4, volume: 61000000, exchange: 'BIST' }
 };
 const CRYPTO_IDS = ['bitcoin', 'ethereum', 'solana', 'ripple', 'cardano'];
 const CRYPTO_LABELS = { bitcoin: 'BTC', ethereum: 'ETH', solana: 'SOL', ripple: 'XRP', cardano: 'ADA' };
@@ -111,15 +111,6 @@ function tableHtml(headers, rows) {
 
 function canvasHtml(id, type, data, label) {
   return `<canvas id="${id}" width="760" height="260" data-chart-type="${type}" data-chart='${JSON.stringify(data)}' aria-label="${escapeHtml(label)}" role="img"></canvas>`;
-}
-
-function deterministicSeries(last, changePercent, points = 7) {
-  const start = last / (1 + (changePercent || 0) / 100);
-  return Array.from({ length: points }, (_, index) => {
-    const progress = points === 1 ? 1 : index / (points - 1);
-    const wave = Math.sin(index * 1.7) * Math.abs(last - start) * 0.18;
-    return round(start + (last - start) * progress + wave);
-  });
 }
 
 function localStorageGet(key, fallback) {
@@ -232,16 +223,20 @@ export async function calculateStockLookup(formData) {
       currency: data.currency || meta.currency || (symbol.endsWith('.IS') ? 'TRY' : 'USD'),
       changePercent: previous ? ((price - previous) / previous) * 100 : 0,
       volume: Number(meta.regularMarketVolume || 0),
-      exchange: meta.exchangeName || meta.fullExchangeName || 'Yahoo Finance',
-      series: data.closes?.length ? data.closes : deterministicSeries(price, previous ? ((price - previous) / previous) * 100 : 0, 6)
+      exchange: data.provider || meta.exchangeName || meta.fullExchangeName || 'finance.yahoo.com',
+      series: Array.isArray(data.closes) ? data.closes.filter((value) => Number.isFinite(value)) : []
     };
+    if (response.stale) warning = 'Hisse verisi geçici olarak güncellenemiyor; önbellekteki son bilinen veri gösteriliyor.';
   } catch (error) {
     const fallback = STOCK_FALLBACKS[display];
     if (!fallback) throw new Error(error?.message?.includes('429') ? 'API limit aşıldı, lütfen daha sonra deneyin.' : 'Sembol bulunamadı.');
-    quote = fallback;
-    warning = 'API limit aşıldı veya veri geçici olarak alınamadı, örnek/son bilinen veri gösteriliyor.';
+    quote = { ...fallback, series: [] };
+    warning = 'Canlı hisse verisi alınamadı; açıkça örnek olarak tutulan statik fallback değerleri gösteriliyor.';
   }
   const chart = quote.series.map((value, index) => ({ label: `${index + 1}`, value }));
+  const chartHtml = chart.length >= 2
+    ? `<div class="chart-container"><h3>Sağlayıcının son kapanışları</h3>${canvasHtml('stockSparklineChart', 'line', chart, 'Sağlayıcıdan alınan son kapanış fiyatları')}</div>`
+    : '<p class="finance-note">Bu yanıtta gerçek tarihsel kapanış serisi bulunmadığı için grafik gösterilmiyor.</p>';
   return {
     status: warning || 'Hisse verisi hazır.',
     type: warning ? 'warning' : 'success',
@@ -249,35 +244,40 @@ export async function calculateStockLookup(formData) {
       { value: formatCurrency(quote.price, quote.currency), label: `${display} fiyat`, className: 'highlight' },
       { value: `${round(quote.changePercent)}%`, label: 'Değişim' },
       { value: formatNumber(quote.volume), label: 'Hacim' },
-      { value: escapeHtml(quote.exchange), label: 'Piyasa' }
-    ])}${favoriteToggleHtml('novatools:finance:stock-favorites', display, display)}<div id="favoriteList" class="favorite-list"></div><div class="chart-container"><h3>Mini sparkline</h3>${canvasHtml('stockSparklineChart', 'line', chart, 'Hisse sparkline grafiği')}</div><p class="finance-note">Borsa verileri gecikmeli olabilir, yatırım kararı için aracı kuruma danışın.</p>`
+      { value: escapeHtml(quote.exchange), label: 'Piyasa / veri kaynağı' }
+    ])}${favoriteToggleHtml('novatools:finance:stock-favorites', display, display)}<div id="favoriteList" class="favorite-list"></div>${chartHtml}<p class="finance-note">Canlı veri geldiğinde fiyat ve kapanış serisi NovaTools live-data uç noktası üzerinden Yahoo Finance kaynağından alınır. Borsa verileri gecikmeli olabilir; yatırım kararı için aracı kurum verisini doğrulayın.</p>`
   };
 }
 
 export async function calculateCryptoPrices() {
   let coins;
   let warning = '';
+  let provider = 'coingecko.com';
+  let fetchedAt = new Date().toISOString();
   try {
     const response = await getCryptoPrices(CRYPTO_IDS.join(','));
     coins = response.data.coins;
-    if (response.stale) warning = 'Fiyatlar geçici olarak güncellenemiyor, son bilinen fiyatlar gösteriliyor.';
+    provider = response.data.provider || provider;
+    fetchedAt = response.data.fetchedAt || fetchedAt;
+    if (response.stale) warning = 'Fiyatlar geçici olarak güncellenemiyor; önbellekteki son bilinen CoinGecko yanıtı gösteriliyor.';
   } catch {
     coins = CRYPTO_FALLBACKS;
-    warning = 'Fiyatlar geçici olarak güncellenemiyor, örnek/son bilinen fiyatlar gösteriliyor.';
+    provider = 'statik örnek fallback';
+    warning = `Canlı fiyatlar alınamadı; statik örnek değerler ve yaklaşık ${STATIC_USD_TRY} TRY/USD dönüşümü gösteriliyor.`;
   }
   const rows = CRYPTO_IDS.map((id) => {
     const coin = coins[id] || CRYPTO_FALLBACKS[id];
     const usd = Number(coin.usd || 0);
-    const tryPrice = usd * STATIC_USD_TRY;
+    const tryPrice = Number.isFinite(Number(coin.try)) ? Number(coin.try) : usd * STATIC_USD_TRY;
     const change = Number(coin.usd_24h_change || 0);
-    const marketCap = Number(coin.usd_market_cap || 0) * STATIC_USD_TRY;
-    const volume = Number(coin.usd_24h_vol || 0) * STATIC_USD_TRY;
-    return { id, label: CRYPTO_LABELS[id], usd, tryPrice, change, marketCap, volume, series: deterministicSeries(tryPrice, change, 7) };
+    const marketCap = Number.isFinite(Number(coin.try_market_cap)) ? Number(coin.try_market_cap) : Number(coin.usd_market_cap || 0) * STATIC_USD_TRY;
+    const volume = Number.isFinite(Number(coin.try_24h_vol)) ? Number(coin.try_24h_vol) : Number(coin.usd_24h_vol || 0) * STATIC_USD_TRY;
+    return { id, label: CRYPTO_LABELS[id], usd, tryPrice, change, marketCap, volume };
   });
   return {
     status: warning || 'Kripto fiyatları güncellendi.',
     type: warning ? 'warning' : 'success',
-    html: `${warning ? `<p class="form-error">${warning}</p>` : ''}<div class="crypto-grid">${rows.map((row) => `<article class="result-item"><h3>${row.label}</h3><div class="result-value">${formatTRY(row.tryPrice)}</div><p>${formatUSD(row.usd)} · 24s: ${round(row.change)}%</p><p>Market cap: ${formatTRY(row.marketCap)}</p><p>Hacim: ${formatTRY(row.volume)}</p>${favoriteToggleHtml('novatools:finance:crypto-favorites', row.id, row.label)}</article>`).join('')}</div><div id="favoriteList" class="favorite-list"></div><div class="chart-container"><h3>7 günlük fiyat çizgisi (TRY)</h3>${canvasHtml('cryptoPriceChart', 'multiLine', rows.map((row) => ({ label: row.label, values: row.series })), 'Kripto fiyat grafiği')}</div><p class="finance-note">Kripto para fiyatları yüksek volatilite içerir, yatırım tavsiyesi değildir.</p>`
+    html: `${warning ? `<p class="form-error">${warning}</p>` : ''}<div class="crypto-grid">${rows.map((row) => `<article class="result-item"><h3>${row.label}</h3><div class="result-value">${formatTRY(row.tryPrice)}</div><p>${formatUSD(row.usd)} · 24s: ${round(row.change)}%</p><p>Market cap: ${formatTRY(row.marketCap)}</p><p>Hacim: ${formatTRY(row.volume)}</p>${favoriteToggleHtml('novatools:finance:crypto-favorites', row.id, row.label)}</article>`).join('')}</div><div id="favoriteList" class="favorite-list"></div>${resultCards([{ value: escapeHtml(provider), label: 'Veri kaynağı' }, { value: new Date(fetchedAt).toLocaleString('tr-TR'), label: 'Son veri çekimi' }])}<p class="finance-note">Canlı yanıt geldiğinde USD ve TRY fiyatları, 24 saatlik değişim, market cap ve hacim CoinGecko simple-price verisinden alınır. Bu sayfa tarihsel fiyat serisi üretmez. Kripto para fiyatları yüksek volatilite içerir ve yatırım tavsiyesi değildir.</p>`
   };
 }
 
@@ -488,7 +488,7 @@ function forms() {
   return {
     'live-exchange': `<div class="form-grid"><label>Tutar<input name="amount" type="number" min="0.01" step="0.01" value="1000" inputmode="decimal" required></label><label>Kaynak<select name="from" required><option>TRY</option><option selected>USD</option><option>EUR</option></select></label><button type="button" class="btn btn-secondary" id="swapCurrencies">⇄ Swap</button><label>Hedef<select name="to" required><option selected>TRY</option><option>USD</option><option>EUR</option></select></label></div><button class="btn" type="submit">Kuru güncelle</button>`,
     'stock-lookup': `<div class="form-grid"><label>Hisse sembolü<input name="symbol" list="stockSymbols" value="AAPL" maxlength="12" required></label><datalist id="stockSymbols"><option value="THYAO"><option value="GARAN"><option value="AAPL"><option value="TSLA"><option value="IBM"></datalist></div><button class="btn" type="submit">Hisseyi getir</button>`,
-    'crypto-prices': `<p class="finance-note">BTC, ETH, SOL, XRP ve ADA fiyatları 30 saniyede bir yenilenir. Fiyatlar client-side gösterilir.</p><button class="btn" type="submit">Fiyatları yenile</button>`,
+    'crypto-prices': `<p class="finance-note">BTC, ETH, SOL, XRP ve ADA fiyatları 30 saniyede bir yenilenir. Canlı istekler NovaTools live-data uç noktası üzerinden CoinGecko kaynağına gider.</p><button class="btn" type="submit">Fiyatları yenile</button>`,
     'cloud-cost': `<div class="form-grid"><label>Provider<select name="provider" id="cloudProvider" required><option value="aws">AWS</option><option value="gcp">GCP</option><option value="azure">Azure</option></select></label><label>Instance<select name="instance" id="cloudInstance" required></select></label><label>Kullanım saati<input name="hours" type="number" min="1" max="744" step="1" value="730" inputmode="numeric" required></label><label>Depolama GB<input name="storage" type="number" min="1" max="100000" step="1" value="100" inputmode="numeric" required></label><label>Network GB<input name="network" type="number" min="0" max="100000" step="1" value="100" inputmode="numeric" required></label><label>Plan<select name="plan" required><option value="onDemand">On-Demand</option><option value="reserved1y">Reserved 1y</option><option value="reserved3y">Reserved 3y</option><option value="spot">Spot</option></select></label></div><button class="btn" type="submit">Maliyeti hesapla</button>`,
     'crypto-tax': `<div class="form-grid"><label>Yıl<input name="year" type="number" min="2020" max="2030" step="1" value="2026" inputmode="numeric" required></label><label>Toplam alım<input name="totalBuy" type="number" min="0" step="0.01" value="100000" inputmode="decimal" required></label><label>Toplam satım<input name="totalSell" type="number" min="0" step="0.01" value="150000" inputmode="decimal" required></label><label>Kazanç/zarar (opsiyonel)<input name="gainLoss" type="number" step="0.01" inputmode="decimal"></label><label>Maliyet bazı<select name="costBasis"><option>FIFO</option><option>LIFO</option></select></label></div><button class="btn" type="submit">Vergiyi hesapla</button>`,
     tax: `<div class="form-grid"><label>Brüt maaş<input name="grossSalary" type="number" min="1" max="5000000" step="0.01" value="75000" inputmode="decimal" required></label><label>Medeni durum<select name="marital"><option>Bekar</option><option>Evli</option></select></label><label>Çocuk sayısı<input name="children" type="number" min="0" max="10" step="1" value="0" inputmode="numeric" required></label><label>Özel sigorta<input name="privateInsurance" type="number" min="0" step="0.01" value="0" inputmode="decimal"></label></div><button class="btn" type="submit">Net maaşı hesapla</button>`,
@@ -523,7 +523,6 @@ function drawChart(canvas) {
   ctx.font = '12px Inter, sans-serif';
   if (type === 'pie') return drawPie(ctx, data, width, height);
   if (type === 'bar') return drawBar(ctx, data, width, height, padding);
-  if (type === 'multiLine') return drawMultiLine(ctx, data, width, height, padding);
   if (type === 'dualLine') return drawDualLine(ctx, data, width, height, padding);
   return drawLine(ctx, data, width, height, padding);
 }
@@ -565,17 +564,6 @@ function drawDualLine(ctx, data, width, height, padding) {
   drawLinePath(ctx, extra, width, height, padding, '#22C55E', maxValue);
   ctx.fillStyle = '#F97316'; ctx.fillText('Mevcut', padding + 6, 18);
   ctx.fillStyle = '#22C55E'; ctx.fillText('Ek ödeme', padding + 72, 18);
-}
-
-function drawMultiLine(ctx, data, width, height, padding) {
-  drawAxis(ctx, width, height, padding);
-  const colors = ['#22C55E', '#38BDF8', '#F97316', '#A78BFA', '#F43F5E'];
-  const maxValue = Math.max(...data.flatMap((row) => row.values || []), 1);
-  data.forEach((row, index) => {
-    drawLinePath(ctx, row.values || [], width, height, padding, colors[index % colors.length], maxValue);
-    ctx.fillStyle = colors[index % colors.length];
-    ctx.fillText(row.label, padding + 6 + index * 64, 18);
-  });
 }
 
 function drawBar(ctx, data, width, height, padding) {
