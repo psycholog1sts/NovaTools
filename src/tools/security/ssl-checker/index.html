@@ -768,8 +768,21 @@
     const certStatus = document.getElementById('certStatus');
     const hstsStatus = document.getElementById('hstsStatus');
 
-    function generateRandomSerial() {
-      return Array.from({length: 16}, () => Math.floor(Math.random() * 16).toString(16).toUpperCase()).join(':');
+    function simulationHash(value) {
+      let hash = 2166136261;
+      for (let index = 0; index < value.length; index += 1) {
+        hash ^= value.charCodeAt(index);
+        hash = Math.imul(hash, 16777619);
+      }
+      return hash >>> 0;
+    }
+
+    function generateSimulatedSerial(domain) {
+      let state = simulationHash(domain || 'example.com');
+      return Array.from({length: 16}, () => {
+        state = Math.imul(state ^ (state >>> 15), 2246822519) >>> 0;
+        return (state & 15).toString(16).toUpperCase();
+      }).join(':');
     }
 
     function simulateSSLCheck(domain) {
@@ -793,9 +806,10 @@
         httpsStatus.className = 'result-value good';
         document.querySelector('#httpsStatus').closest('.result-card').className = 'result-card status-good';
 
-        // TLS Version (randomly assign for simulation)
+        // Deterministic illustrative values: this page does not inspect the domain.
         const tlsVersions = ['TLS 1.2', 'TLS 1.3', 'TLS 1.2'];
-        const selectedTls = tlsVersions[Math.floor(Math.random() * tlsVersions.length)];
+        const simulatedHash = simulationHash(cleanDomain);
+        const selectedTls = tlsVersions[simulatedHash % tlsVersions.length];
         tlsVersion.textContent = selectedTls;
         tlsVersion.className = 'result-value good';
         document.querySelector('#tlsVersion').closest('.result-card').className = 'result-card status-good';
@@ -805,8 +819,8 @@
         certStatus.className = 'result-value good';
         document.querySelector('#certStatus').closest('.result-card').className = 'result-card status-good';
 
-        // HSTS Status (randomly assign)
-        const hasHsts = Math.random() > 0.3;
+        // Illustrative, deterministic status rather than a live HSTS lookup.
+        const hasHsts = simulatedHash % 10 > 2;
         hstsStatus.textContent = hasHsts ? 'Enabled' : 'Not Detected';
         hstsStatus.className = hasHsts ? 'result-value good' : 'result-value warning';
         document.querySelector('#hstsStatus').closest('.result-card').className = hasHsts ? 'result-card status-good' : 'result-card status-warning';
@@ -819,7 +833,7 @@
         document.getElementById('certIssuer').textContent = 'DigiCert Inc / Let\'s Encrypt (Simulated)';
         document.getElementById('certFrom').textContent = now.toISOString().split('T')[0];
         document.getElementById('certUntil').textContent = future.toISOString().split('T')[0];
-        document.getElementById('certSerial').textContent = generateRandomSerial();
+        document.getElementById('certSerial').textContent = generateSimulatedSerial(cleanDomain);
 
       }, 800);
     }
