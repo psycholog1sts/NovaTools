@@ -62,6 +62,8 @@ function isNonMonetizablePath(pathname = window.location.pathname) {
 function shouldBlockAds() {
   if (!/(^|\.)mc-novatools\.com$/i.test(window.location.hostname)) return true;
   if (isNonMonetizablePath()) return true;
+  const robotsMeta = document.querySelector('meta[name="robots" i]')?.getAttribute('content') || '';
+  if (/(^|[,\s])noindex([,\s]|$)/i.test(robotsMeta)) return true;
   if (navigator.doNotTrack === '1') return true;
   if (navigator.globalPrivacyControl) return true;
   try {

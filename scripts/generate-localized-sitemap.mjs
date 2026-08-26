@@ -89,6 +89,14 @@ function renderSection(name, entries) {
   return [`  <!-- ${name} -->`, ...entries.map(renderUrlEntry)].join('\n');
 }
 
+function toolSourceIsIndexable(file) {
+  const html = fs.readFileSync(path.join(rootDir, file), 'utf8');
+  const robotsMeta = html.match(/<meta[^>]+name=[\"']robots[\"'][^>]*>/i)?.[0]
+    || html.match(/<meta[^>]+content=[\"'][^\"']*[\"'][^>]+name=[\"']robots[\"'][^>]*>/i)?.[0]
+    || '';
+  return !/content=[\"'][^\"']*noindex/i.test(robotsMeta);
+}
+
 function sourceBlogArticleSlugs() {
   return globSync('src/blog/articles/**/*.html', { cwd: rootDir })
     .map((file) => path.basename(file, '.html'))
@@ -132,6 +140,7 @@ const sections = [
     cwd: rootDir,
     ignore: ['**/demo-*/**', '**/experimental/**', '**/test/**', ...nonIndexableToolSources]
   })
+    .filter(toolSourceIsIndexable)
     .sort()
     .map((file) => urlEntry(`/${file.replace(/^src\//, '').replace(/index\.html$/, '')}`, '0.8', 'weekly', 'Individual tool pages'))],
   ['Blog category archive pages', blogCategoryPages.map((route) => urlEntry(route, '0.55', 'weekly', 'Blog category archive pages'))],
