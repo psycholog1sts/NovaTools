@@ -1,0 +1,201 @@
+/*
+ * NovaTools canonical design tokens
+ * Source of truth for color, typography, spacing, elevation, motion and legacy aliases.
+ * The visual language is intentionally restrained: high-contrast neutral surfaces with a
+ * single blue action color and semantic status colors. No framework-specific tokens live here.
+ */
+
+:root {
+  color-scheme: light;
+
+  /* Color — light */
+  --color-bg-canvas: #f8fafc;
+  --color-bg-surface: #ffffff;
+  --color-bg-elevated: #f1f5f9;
+  --color-bg-subtle: #eaf0f7;
+  --color-bg-hover: #e2e8f0;
+  --color-text-primary: #0f172a;
+  --color-text-secondary: #334155;
+  --color-text-muted: #64748b;
+  --color-border: #cbd5e1;
+  --color-border-strong: #94a3b8;
+  --color-primary: #1d4ed8;
+  --color-primary-hover: #1e40af;
+  --color-primary-soft: #dbeafe;
+  --color-focus-ring: #2563eb;
+  --color-success: #15803d;
+  --color-warning: #b45309;
+  --color-error: #b91c1c;
+  --color-info: #0369a1;
+
+  /* Typography */
+  --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-mono: "JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: clamp(2rem, 5vw, 3rem);
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.55;
+  --line-height-relaxed: 1.7;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Spacing — 4px base rhythm */
+  --space-0: 0;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+
+  /* Radius */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.25rem;
+  --radius-2xl: 1.5rem;
+  --radius-full: 9999px;
+
+  /* Elevation */
+  --shadow-sm: 0 1px 2px rgb(15 23 42 / 0.08), 0 1px 1px rgb(15 23 42 / 0.04);
+  --shadow-md: 0 8px 24px rgb(15 23 42 / 0.10);
+  --shadow-lg: 0 18px 50px rgb(15 23 42 / 0.14);
+  --shadow-focus: 0 0 0 3px rgb(37 99 235 / 0.25);
+
+  /* Layout */
+  --content-width: 78rem;
+  --content-width-reading: 46rem;
+  --container-padding: clamp(1rem, 3vw, 2rem);
+  --control-height: 2.75rem;
+  --touch-target: 2.75rem;
+
+  /* Motion */
+  --duration-fast: 140ms;
+  --duration-normal: 220ms;
+  --duration-slow: 320ms;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-emphasized: cubic-bezier(0.2, 0, 0, 1.2);
+
+  /* Layers */
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-modal: 1050;
+  --z-toast: 1080;
+  --z-tooltip: 1100;
+
+  /* Legacy compatibility aliases. These let old templates adopt the new system without a rewrite. */
+  --color-background: var(--color-bg-canvas);
+  --color-bg-primary: var(--color-bg-canvas);
+  --color-bg-secondary: var(--color-bg-surface);
+  --color-bg-tertiary: var(--color-bg-elevated);
+  --color-surface: var(--color-bg-surface);
+  --color-surface-hover: var(--color-bg-hover);
+  --color-surface-active: var(--color-bg-elevated);
+  --color-surface-elevated: var(--color-bg-elevated);
+  --color-border-hover: var(--color-border-strong);
+  --color-divider: var(--color-border);
+  --color-accent: var(--color-primary);
+  --color-accent-hover: var(--color-primary-hover);
+  --color-accent-subtle: var(--color-primary-soft);
+  --color-accent-secondary: var(--color-primary);
+  --color-accent-warm: var(--color-error);
+  --color-accent-glow: rgb(37 99 235 / 0.14);
+  --color-accent-secondary-glow: rgb(37 99 235 / 0.12);
+  --color-accent-warm-glow: rgb(185 28 28 / 0.12);
+
+  --bg-primary: var(--color-bg-canvas);
+  --bg-secondary: var(--color-bg-surface);
+  --bg-tertiary: var(--color-bg-elevated);
+  --bg-elevated: var(--color-bg-elevated);
+  --bg-hover: var(--color-bg-hover);
+  --surface-default: var(--color-bg-surface);
+  --surface-hover: var(--color-bg-hover);
+  --surface-active: var(--color-bg-elevated);
+  --text-primary: var(--color-text-primary);
+  --text-secondary: var(--color-text-secondary);
+  --text-tertiary: var(--color-text-muted);
+  --text-muted: var(--color-text-muted);
+  --border-default: var(--color-border);
+  --border-hover: var(--color-border-strong);
+  --border-strong: var(--color-border-strong);
+  --divider: var(--color-border);
+  --accent-primary: var(--color-primary);
+  --accent-primary-hover: var(--color-primary-hover);
+  --accent-secondary: var(--color-primary);
+  --success: var(--color-success);
+  --warning: var(--color-warning);
+  --error: var(--color-error);
+
+  --font-family: var(--font-sans);
+  --transition-fast: var(--duration-fast) var(--ease-standard);
+  --transition-base: var(--duration-normal) var(--ease-standard);
+  --transition-slow: var(--duration-slow) var(--ease-standard);
+  --shadow-xl: var(--shadow-lg);
+  --shadow-2xl: var(--shadow-lg);
+  --shadow-glow: 0 0 0 1px rgb(37 99 235 / 0.10), 0 12px 36px rgb(37 99 235 / 0.10);
+  --shadow-glow-strong: 0 0 0 1px rgb(37 99 235 / 0.16), 0 18px 44px rgb(37 99 235 / 0.14);
+  --container-max: var(--content-width);
+  --section-py: clamp(var(--space-12), 7vw, var(--space-20));
+  --grid-gap: var(--space-5);
+}
+
+:root[data-theme="dark"],
+[data-theme="dark"] {
+  color-scheme: dark;
+  --color-bg-canvas: #0b0f14;
+  --color-bg-surface: #111827;
+  --color-bg-elevated: #18212f;
+  --color-bg-subtle: #0f172a;
+  --color-bg-hover: #1f2937;
+  --color-text-primary: #f8fafc;
+  --color-text-secondary: #cbd5e1;
+  --color-text-muted: #94a3b8;
+  --color-border: #334155;
+  --color-border-strong: #475569;
+  --color-primary: #60a5fa;
+  --color-primary-hover: #93c5fd;
+  --color-primary-soft: rgb(96 165 250 / 0.14);
+  --color-focus-ring: #93c5fd;
+  --color-success: #4ade80;
+  --color-warning: #fbbf24;
+  --color-error: #f87171;
+  --color-info: #7dd3fc;
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.32);
+  --shadow-md: 0 10px 30px rgb(0 0 0 / 0.30);
+  --shadow-lg: 0 24px 64px rgb(0 0 0 / 0.36);
+  --shadow-focus: 0 0 0 3px rgb(147 197 253 / 0.28);
+}
+
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0.01ms;
+    --duration-normal: 0.01ms;
+    --duration-slow: 0.01ms;
+  }
+
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
