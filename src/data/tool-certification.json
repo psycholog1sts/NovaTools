@@ -273,6 +273,27 @@
       "UIStatus": "GOLD_STANDARD_WAVE_2",
       "Tests": "pdf compressor trust + accessibility + public smoke",
       "CertificationStatus": "CERTIFIED"
+    },
+    {
+      "Tool": "Image Compressor",
+      "Route": "/tools/image/compress/",
+      "Category": "image",
+      "Indexable": true,
+      "AdsEligible": true,
+      "FunctionalTruth": "PASS",
+      "UniqueUtility": "PASS",
+      "SpecificContent": "PASS",
+      "ImplementationEvidence": "PASS",
+      "NoFiller": "PASS",
+      "Trust": "PASS",
+      "PrivacyTruth": "LOCAL_ONLY",
+      "ExternalNetwork": false,
+      "DataSource": "User-selected JPEG, PNG, or WebP; browser Canvas 2D decode and encoding",
+      "SyntheticData": "NONE",
+      "KnownLimitations": "JPEG and WebP quality encoding is lossy; PNG output may not shrink; JPEG removes alpha transparency; maximum input is 10 MB and high pixel dimensions can exceed browser memory.",
+      "UIStatus": "WAVE_2_TRUTH_VERIFIED",
+      "Tests": "image compressor truth + accessibility + public smoke",
+      "CertificationStatus": "CERTIFIED"
     }
   ]
 }

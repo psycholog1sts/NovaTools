@@ -5,6 +5,7 @@ const html = readFileSync(new URL('../src/tools/image/compress/index.html', impo
 const implementation = readFileSync(new URL('../src/tools/image/image-compress.mjs', import.meta.url), 'utf8');
 const registration = readFileSync(new URL('../src/tools/image/index.mjs', import.meta.url), 'utf8');
 const metadata = readFileSync(new URL('../src/tools/image/compress/meta.json', import.meta.url), 'utf8');
+const certification = JSON.parse(readFileSync(new URL('../src/data/tool-certification.json', import.meta.url), 'utf8'));
 
 const visibleAndMetadata = html
   .replace(/<style\b[\s\S]*?<\/style>/gi, ' ')
@@ -58,5 +59,12 @@ assert.match(implementation, /canvas\.toBlob\([\s\S]*?format\.mime[\s\S]*?qualit
 assert.match(implementation, /compressed_\$\{baseName\}\.\$\{format\.ext\}/, 'Shared download extension must match the selected encoder format.');
 assert.match(implementation, /JPEG and WebP quality settings are lossy/i, 'Shared result copy must disclose lossy JPEG/WebP encoding.');
 assert.match(implementation, /PNG encoding may keep or increase file size/i, 'Shared result copy must disclose PNG size behavior.');
+
+const certificationRecord = certification.records.find(({ Route }) => Route === '/tools/image/compress/');
+assert.ok(certificationRecord, 'Image Compressor must have a canonical certification record.');
+assert.equal(certificationRecord.CertificationStatus, 'CERTIFIED');
+assert.equal(certificationRecord.PrivacyTruth, 'LOCAL_ONLY');
+assert.equal(certificationRecord.ExternalNetwork, false);
+assert.equal(certificationRecord.SyntheticData, 'NONE');
 
 console.log('image compressor truth contract: pass');
