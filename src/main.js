@@ -125,8 +125,19 @@ function toggleSearch(forceOpen) {
 window.toggleSearch = toggleSearch;
 
 document.addEventListener('keydown', (event) => {
+  const searchModal = document.getElementById('searchModal');
+  if (event.key === 'Tab' && searchModal && !searchModal.hidden) {
+    const focusable = [...searchModal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])')]
+      .filter((element) => !element.hidden && !element.hasAttribute('disabled'));
+    const first = focusable[0];
+    const last = focusable.at(-1);
+    if (first && last && (event.shiftKey ? document.activeElement === first : document.activeElement === last)) {
+      event.preventDefault();
+      (event.shiftKey ? last : first).focus();
+    }
+  }
   if (event.key === 'Escape') {
-    if (!document.getElementById('searchModal')?.hidden) toggleSearch(false);
+    if (!searchModal?.hidden) toggleSearch(false);
     const menu = document.getElementById('mobileMenu');
     if (menu && !menu.hidden) toggleMobileMenu();
   }
@@ -478,6 +489,7 @@ function initSearch() {
 
   const allTools = certifiedPublicTools.map((tool) => ({
     name: tool.name || tool.nameEn || tool.id,
+    aliases: [tool.name, tool.nameEn, tool.id].filter(Boolean).map((value) => String(value).toLowerCase()),
     href: canonicalToolPath(tool),
     category: tool.category || 'Tools'
   }));
@@ -491,7 +503,7 @@ function initSearch() {
     }
 
     const results = allTools.filter((tool) =>
-      tool.name.toLowerCase().includes(query) ||
+      tool.aliases.some((alias) => alias.includes(query)) ||
       tool.category.toLowerCase().includes(query)
     ).slice(0, 5);
 
@@ -502,6 +514,13 @@ function initSearch() {
       </a>
     `).join('') || `<div class="search-no-results">${t('home.noResults', 'No tools found')}</div>`;
   };
+
+  const requestedQuery = new URLSearchParams(window.location.search).get('q')?.trim();
+  if (requestedQuery) {
+    searchInput.value = requestedQuery;
+    toggleSearch(true);
+    searchInput.dispatchEvent(new Event('input', { bubbles: true }));
+  }
 }
 
 // ============================================

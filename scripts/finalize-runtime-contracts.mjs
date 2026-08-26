@@ -17,7 +17,7 @@ const GOOGLE_FONT_STYLESHEET_RE = /\n?\s*<link\b(?=[^>]*\brel\s*=\s*["']styleshe
 const GOOGLE_FONT_PRECONNECT_RE = /\n?\s*<link\b(?=[^>]*\brel\s*=\s*["']preconnect["'])(?=[^>]*\bhref\s*=\s*["']https:\/\/fonts\.(?:googleapis|gstatic)\.com["'])[^>]*\/?\s*>\s*/gi;
 const PDF_ENHANCER_SCRIPT_RE = /\n?\s*<script\b(?=[^>]*\bsrc\s*=\s*["'](?:https:\/\/mc-novatools\.com)?\/js\/tool-page-enhancer\.js["'])[^>]*>\s*<\/script>\s*/gi;
 const PDF_WORKFLOW_STYLE_RE = /\n?\s*<link\b(?=[^>]*\brel\s*=\s*["']stylesheet["'])(?=[^>]*\bhref\s*=\s*["'](?:https:\/\/mc-novatools\.com)?\/(?:styles|src\/styles)\/tool-workflow\.css["'])[^>]*\/?\s*>\s*/gi;
-const INTERNAL_ASSET_ORIGIN_RE = /https:\/\/mc-novatools\.com\/(?=(?:js|vendor|css|assets|wasm)\/)/gi;
+const INTERNAL_ASSET_ORIGIN_RE = /https:\/\/mc-novatools\.com\/(?=(?:js|vendor|css|styles|assets|wasm)\/)/gi;
 const SOURCE_TOOL_HREF_RE = /(href\s*=\s*["'])(?:https:\/\/mc-novatools\.com)?\/src\/tools\//gi;
 const LEGACY_THEME_GET_RE = /localStorage\.getItem\((["'])theme\1\)/g;
 const LEGACY_THEME_SET_RE = /localStorage\.setItem\((["'])theme\1\s*,/g;
@@ -119,9 +119,9 @@ function auditManifestToolRoutes() {
 let strippedAdSenseScripts = 0;
 let strippedStalePrefetches = 0;
 let restoredPdfStyles = 0;
-let strippedPdfWebFonts = 0;
+let strippedBlockedWebFonts = 0;
 let strippedPdfEnhancers = 0;
-let normalizedPdfAssetOrigins = 0;
+let normalizedInternalAssetOrigins = 0;
 let normalizedSourceToolLinks = 0;
 let normalizedLegacyThemeReads = 0;
 let normalizedLegacyThemeWrites = 0;
@@ -153,6 +153,15 @@ for (const filePath of htmlFiles) {
     normalizedLegacyThemeWrites += 1;
     return "localStorage.setItem('novatools-theme',";
   });
+  after = after.replace(GOOGLE_FONT_STYLESHEET_RE, () => {
+    strippedBlockedWebFonts += 1;
+    return '\n';
+  });
+  after = after.replace(GOOGLE_FONT_PRECONNECT_RE, '\n');
+  after = after.replace(INTERNAL_ASSET_ORIGIN_RE, () => {
+    normalizedInternalAssetOrigins += 1;
+    return '/';
+  });
 
   const relative = path.relative(distDir, filePath).replace(/\\/g, '/');
   const hadProfessionalTheme = after.includes(`href="${PROFESSIONAL_THEME_HREF}"`) || after.includes(`href='${PROFESSIONAL_THEME_HREF}'`);
@@ -172,20 +181,11 @@ for (const filePath of htmlFiles) {
       restoredPdfStyles += 1;
       return `<link rel="stylesheet" href="${href}">`;
     });
-    after = after.replace(GOOGLE_FONT_STYLESHEET_RE, () => {
-      strippedPdfWebFonts += 1;
-      return '\n';
-    });
-    after = after.replace(GOOGLE_FONT_PRECONNECT_RE, '\n');
     after = after.replace(PDF_ENHANCER_SCRIPT_RE, () => {
       strippedPdfEnhancers += 1;
       return '\n';
     });
     after = after.replace(PDF_WORKFLOW_STYLE_RE, '\n');
-    after = after.replace(INTERNAL_ASSET_ORIGIN_RE, () => {
-      normalizedPdfAssetOrigins += 1;
-      return '/';
-    });
   }
 
   if (after !== before) fs.writeFileSync(filePath, after);
@@ -280,4 +280,4 @@ if (!fs.readFileSync(i18nPath, 'utf8').includes(pdfStableGuard)) {
   throw new Error('PDF compressor CLS guard was not applied to built i18n runtime');
 }
 
-console.log(`Runtime contracts finalized: removed ${strippedAdSenseScripts} pre-consent AdSense script(s); removed ${strippedStalePrefetches} stale prefetch(es); normalized ${normalizedSourceToolLinks} source-only tool link(s); normalized ${normalizedLegacyThemeReads} legacy theme read(s) and ${normalizedLegacyThemeWrites} write(s); injected professional theme into ${injectedProfessionalThemes} HTML file(s); injected theme bootstrap into ${injectedThemeBootstraps} HTML file(s); injected Background Remover v2 into ${injectedBackgroundRemoverV2} public route(s); verified ${verifiedManifestToolRoutes} manifest tool route(s); restored ${restoredPdfStyles} PDF compressor stylesheet link(s); removed ${strippedPdfWebFonts} PDF web-font stylesheet(s); removed ${strippedPdfEnhancers} generic PDF enhancer script(s); normalized ${normalizedPdfAssetOrigins} PDF internal asset origin(s); published ${publishedMetaContracts} tool metadata contract(s); suppressed redundant PDF quality-panel injection.`);
+console.log(`Runtime contracts finalized: removed ${strippedAdSenseScripts} pre-consent AdSense script(s); removed ${strippedStalePrefetches} stale prefetch(es); normalized ${normalizedSourceToolLinks} source-only tool link(s); normalized ${normalizedLegacyThemeReads} legacy theme read(s) and ${normalizedLegacyThemeWrites} write(s); injected professional theme into ${injectedProfessionalThemes} HTML file(s); injected theme bootstrap into ${injectedThemeBootstraps} HTML file(s); injected Background Remover v2 into ${injectedBackgroundRemoverV2} public route(s); verified ${verifiedManifestToolRoutes} manifest tool route(s); restored ${restoredPdfStyles} PDF compressor stylesheet link(s); removed ${strippedBlockedWebFonts} CSP-blocked web-font stylesheet(s); removed ${strippedPdfEnhancers} generic PDF enhancer script(s); normalized ${normalizedInternalAssetOrigins} internal asset origin(s); published ${publishedMetaContracts} tool metadata contract(s); suppressed redundant PDF quality-panel injection.`);

@@ -130,3 +130,46 @@ for (const [name, route] of [
     ).toEqual([]);
   });
 }
+
+test('homepage mobile discovery links resolve and search keeps focus inside the modal', async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 812 });
+  await page.goto('/', { waitUntil: 'domcontentloaded' });
+
+  await page.locator('.mobile-menu-toggle').click();
+  for (const link of await page.locator('#mobileMenu a[href^="#"]').all()) {
+    const target = await link.getAttribute('href');
+    expect(await page.locator(target).count(), `${target} must resolve on the homepage`).toBe(1);
+  }
+
+  await page.locator('#searchToggle').click();
+  for (let step = 0; step < 10; step += 1) await page.keyboard.press('Tab');
+  expect(await page.locator('#searchModal').evaluate((modal) => modal.contains(document.activeElement))).toBe(true);
+});
+
+test('homepage SearchAction query opens the real tool search', async ({ page }) => {
+  await page.goto('/?q=PDF%20Compressor', { waitUntil: 'domcontentloaded' });
+  await expect(page.locator('#searchModal')).toBeVisible();
+  await expect(page.locator('#globalSearch')).toHaveValue('PDF Compressor');
+  await expect(page.locator('#searchResults a')).not.toHaveCount(0);
+});
+
+test('gold-standard PDF page exposes usable mobile navigation', async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 812 });
+  await page.goto('/tools/pdf/compress/', { waitUntil: 'domcontentloaded' });
+  const trigger = page.locator('.mobile-menu-toggle');
+  await expect(trigger).toBeVisible();
+  await trigger.click();
+  await expect(trigger).toHaveAttribute('aria-expanded', 'true');
+  const pdfTarget = page.locator('#mobileMenu a').filter({ hasText: 'PDF tools' });
+  await expect(pdfTarget).toBeVisible();
+  expect(await pdfTarget.evaluate((link) => new URL(link.href).pathname)).toBe('/categories/pdf-tools.html');
+});
+
+test('image compressor navigation resolves to real category routes', async ({ page }) => {
+  await page.goto('/tools/image/compress/', { waitUntil: 'domcontentloaded' });
+  const hrefs = await page.locator('.nav-desktop a').evaluateAll((links) => links.map((link) => new URL(link.href).pathname));
+  expect(hrefs).toContain('/categories/finance-tools.html');
+  expect(hrefs).toContain('/categories/pdf-tools.html');
+  expect(hrefs).toContain('/categories/image-tools.html');
+  expect(hrefs).toContain('/categories/developer-tools.html');
+});

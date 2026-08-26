@@ -450,10 +450,14 @@ export default defineConfig({
           src: 'src/tools/**/meta.json',
           dest: 'meta'
         },
-        {
-          src: 'src/styles/critical.css',
-          dest: 'styles'
-        },
+          {
+            src: 'src/styles/critical.css',
+            dest: 'styles'
+          },
+          {
+            src: 'src/styles/tokens.css',
+            dest: 'styles'
+          },
         {
           src: 'src/styles/design-system.css',
           dest: 'styles'
