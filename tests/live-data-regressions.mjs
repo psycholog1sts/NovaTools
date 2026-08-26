@@ -5,6 +5,7 @@ import handler from '../api/live-data.js';
 const originalFetch = globalThis.fetch;
 const financeSource = readFileSync(new URL('../src/tools/finance/p0-batch2.mjs', import.meta.url), 'utf8');
 const liveExchangeHtml = readFileSync(new URL('../src/tools/finance/live-exchange/index.html', import.meta.url), 'utf8');
+const cryptoPricesHtml = readFileSync(new URL('../src/tools/finance/crypto-prices/index.html', import.meta.url), 'utf8');
 
 async function readJson(response) {
   return JSON.parse(await response.text());
@@ -63,6 +64,19 @@ async function run() {
         liveExchangeHtml,
         /recent[- ]trend|trend chart|trend grafiği|recent movement/i,
         'Live Exchange public copy must not describe synthetic data as recent/historical trend data.'
+      );
+    }
+
+    {
+      assert.equal(
+        financeSource.includes('deterministicSeries(tryPrice, change, 7)'),
+        false,
+        'Crypto Price Tracker must not fabricate seven-day history from a current price and 24-hour change.'
+      );
+      assert.doesNotMatch(
+        cryptoPricesHtml,
+        /7\s*(day|daily|günlük)|historical\s+(price|trend)|price\s+history/i,
+        'Crypto Price Tracker public copy must not promise historical charts without historical provider data.'
       );
     }
 
