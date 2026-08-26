@@ -18,11 +18,15 @@ function rel(path) {
   return relative(process.cwd(), path).split(sep).join('/');
 }
 
-function visibleText(html) {
+function stripEmbeddedCode(html) {
   return html
     .replace(/<script\b[\s\S]*?<\/script>/gi, ' ')
     .replace(/<style\b[\s\S]*?<\/style>/gi, ' ')
-    .replace(/<!--([\s\S]*?)-->/g, ' ')
+    .replace(/<!--([\s\S]*?)-->/g, ' ');
+}
+
+function visibleText(html) {
+  return stripEmbeddedCode(html)
     .replace(/<[^>]+>/g, ' ')
     .replace(/&nbsp;|&#160;/gi, ' ')
     .replace(/\s+/g, ' ')
@@ -54,9 +58,10 @@ const inventory = [];
 
 for (const path of htmlFiles) {
   const html = readFileSync(path, 'utf8');
+  const pageMarkup = stripEmbeddedCode(html);
   const text = visibleText(html);
   const file = rel(path);
-  const h1Count = (html.match(/<h1\b/gi) || []).length;
+  const h1Count = (pageMarkup.match(/<h1\b/gi) || []).length;
   const lastUpdatedCount = (text.match(/\blast updated\s*:/gi) || []).length;
   const hasNoindex = /<meta[^>]+name=["']robots["'][^>]+content=["'][^"']*noindex/i.test(html)
     || /<meta[^>]+content=["'][^"']*noindex[^"']*["'][^>]+name=["']robots["']/i.test(html);
@@ -66,9 +71,9 @@ for (const path of htmlFiles) {
 
   inventory.push({ file, h1Count, lastUpdatedCount, hasNoindex, hasNetworkHint, localOnlyClaim });
 
-  if (h1Count !== 1) hard.push(`${file}: expected exactly one <h1>, found ${h1Count}`);
+  if (h1Count !== 1) hard.push(`${file}: expected exactly one page <h1>, found ${h1Count}`);
   for (const [label, pattern] of hardPatterns) {
-    if (pattern.test(text) || pattern.test(html)) hard.push(`${file}: ${label}`);
+    if (pattern.test(text) || pattern.test(pageMarkup)) hard.push(`${file}: ${label}`);
   }
   for (const [label, pattern] of claimPatterns) {
     if (pattern.test(text)) warnings.push(`${file}: ${label}`);
