@@ -177,17 +177,17 @@
     <header class="main-header">
       <div class="container">
         <div class="header-inner">
-          <a href="https://mc-novatools.com/" class="logo" aria-label="NovaTools MC Home">
+          <a href="/" class="logo" aria-label="NovaTools MC Home">
             <picture><source srcset="/logo-bird-44.webp" type="image/webp"><img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44" decoding="async"></picture>
             <span class="logo-text">NovaTools <span class="logo-mc" data-i18n="tools.image.image-flipper.text.001">MC</span></span>
           </a>
           <nav class="nav-desktop" aria-label="Main navigation">
-            <a href="https://mc-novatools.com/#finance" class="nav-link" data-i18n="tools.image.image-flipper.text.002">Finance</a>
-            <a href="https://mc-novatools.com/#pdf" class="nav-link" data-i18n="tools.image.image-flipper.text.003">PDF Tools</a>
-            <a href="https://mc-novatools.com/#image" class="nav-link" data-i18n="tools.image.image-flipper.text.004">Images</a>
-            <a href="https://mc-novatools.com/#dev" class="nav-link" data-i18n="tools.image.image-flipper.text.005">Developers</a>
+            <a href="/categories/finance-tools" class="nav-link" data-i18n="tools.image.image-flipper.text.002">Finance</a>
+            <a href="/categories/pdf-tools" class="nav-link" data-i18n="tools.image.image-flipper.text.003">PDF Tools</a>
+            <a href="/categories/image-tools" class="nav-link" data-i18n="tools.image.image-flipper.text.004">Images</a>
+            <a href="/categories/developer-tools" class="nav-link" data-i18n="tools.image.image-flipper.text.005">Developers</a>
           </nav>
-          <div class="privacy-badge" title="Your data never leaves your browser" data-i18n-title="tools.image.image-flipper.title.001">
+          <div class="privacy-badge" title="The selected image is processed locally by this tool" data-i18n-title="tools.image.image-flipper.title.001">
             <span class="privacy-badge-dot"></span>
             <span data-i18n="tools.image.image-flipper.text.006">Privacy First</span>
           </div>
@@ -200,10 +200,10 @@
           </button>
         </div>
         <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
-          <a href="https://mc-novatools.com/#finance" class="mobile-nav-link" data-i18n="tools.image.image-flipper.text.007">Finance Tools</a>
-          <a href="https://mc-novatools.com/#pdf" class="mobile-nav-link" data-i18n="tools.image.image-flipper.text.008">PDF Tools</a>
-          <a href="https://mc-novatools.com/#image" class="mobile-nav-link" data-i18n="tools.image.image-flipper.text.009">Image Tools</a>
-          <a href="https://mc-novatools.com/#dev" class="mobile-nav-link" data-i18n="tools.image.image-flipper.text.010">Developer Tools</a>
+          <a href="/categories/finance-tools" class="mobile-nav-link" data-i18n="tools.image.image-flipper.text.007">Finance Tools</a>
+          <a href="/categories/pdf-tools" class="mobile-nav-link" data-i18n="tools.image.image-flipper.text.008">PDF Tools</a>
+          <a href="/categories/image-tools" class="mobile-nav-link" data-i18n="tools.image.image-flipper.text.009">Image Tools</a>
+          <a href="/categories/developer-tools" class="mobile-nav-link" data-i18n="tools.image.image-flipper.text.010">Developer Tools</a>
         </nav>
       </div>
     </header>
@@ -223,11 +223,11 @@
           <aside class="ad-sidebar-left"><div style="width:160px;height:600px;background:var(--surface-default);border:1px solid var(--border-default);display:flex;align-items:center;justify-content:center;color:var(--text-muted);">Ad 160x600</div></aside>
           
           <div class="tool-main">
-            <div id="dropzone" class="dropzone">
+            <div id="dropzone" class="dropzone" role="button" tabindex="0" aria-controls="fileInput">
               <div style="font-size: 3rem; margin-bottom: 1rem;">🔀</div>
               <div style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem;">Drop image here or click to browse</div>
               <div style="font-size: 0.875rem; color: var(--text-muted);">Supports JPG, PNG, WebP • Max 20MB</div>
-              <input type="file" id="fileInput" accept="image/*" style="display: none;">
+              <input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp" style="display: none;">
             </div>
             
             <div id="editorSection" class="editor-section">
@@ -321,7 +321,7 @@
               
               <details class="faq-item">
                 <summary>Is my data secure?</summary>
-                <p data-i18n="tools.image.image-flipper.text.032">Absolutely! All image processing happens entirely in your browser. Your images are never uploaded to any server, ensuring complete privacy and security.</p>
+                <p data-i18n="tools.image.image-flipper.text.032">The selected image is decoded and flipped in your browser; this tool does not upload the image to an application server. Site analytics and advertising, when you consent to them, are separate from image processing.</p>
               </details>
               
               <details class="faq-item">
@@ -347,7 +347,7 @@
           <li>Download the flipped image.</li>
         </ol>
         <h2>What to Know</h2>
-        <ul><li>Flipping rearranges the preview pixels without interpolation; review the downloaded file when output format or quality matters</li><li>If your image has readable text or a logo, a horizontal flip will mirror it too (making text backwards) — check the preview before downloading</li><li>All flipping happens locally in your browser — your image isn't uploaded to a server</li></ul>
+        <ul><li>The downloaded result is re-encoded as PNG, so original metadata and the source file format are not preserved</li><li>If your image has readable text or a logo, a horizontal flip will mirror it too (making text backwards) — check the preview before downloading</li><li>The selected image is processed locally by this tool; consented site analytics or ads are separate from image processing</li></ul>
         <h2>Privacy and Security</h2>
         <p>Your image is flipped locally in your browser and is not uploaded to a server or stored.</p>
         <h2>Frequently Asked Questions</h2>
@@ -427,8 +427,11 @@ document.addEventListener('DOMContentLoaded', function() {
   var originalImage = null;
   var flipH = false;
   var flipV = false;
+  var downloadUrl = null;
+  var allowedTypes = new Set(['image/jpeg', 'image/png', 'image/webp']);
   
   function loadFile(file) {
+    if (!allowedTypes.has(file.type)) { alert('Choose a JPEG, PNG, or WebP image.'); return; }
     if (file.size > 20 * 1024 * 1024) { alert('File exceeds 20MB limit.'); return; }
     var reader = new FileReader();
     reader.onload = function(e) {
@@ -448,6 +451,9 @@ document.addEventListener('DOMContentLoaded', function() {
   
   if (dropzone && fileInput) {
     dropzone.addEventListener('click', function(e) { if (e.target !== fileInput) fileInput.click(); });
+    dropzone.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); fileInput.click(); }
+    });
     fileInput.addEventListener('change', function() { if (fileInput.files[0]) loadFile(fileInput.files[0]); });
     dropzone.addEventListener('dragover', function(e) { e.preventDefault(); dropzone.classList.add('drag-active'); });
     dropzone.addEventListener('dragleave', function() { dropzone.classList.remove('drag-active'); });
@@ -499,8 +505,10 @@ document.addEventListener('DOMContentLoaded', function() {
         progressContainer.classList.remove('visible');
         resultSection.classList.add('visible');
         previewCanvas.toBlob(function(blob) {
-          var url = URL.createObjectURL(blob);
-          downloadLink.href = url;
+          if (!blob) { alert('Your browser could not encode the result.'); return; }
+          if (downloadUrl) URL.revokeObjectURL(downloadUrl);
+          downloadUrl = URL.createObjectURL(blob);
+          downloadLink.href = downloadUrl;
           downloadLink.download = 'flipped-image.png';
         }, 'image/png');
         resultSection.scrollIntoView({ behavior: 'smooth' });
@@ -514,6 +522,9 @@ document.addEventListener('DOMContentLoaded', function() {
     flipVOption.classList.remove('active');
     renderImage();
     resultSection.classList.remove('visible');
+  });
+  window.addEventListener('beforeunload', function() {
+    if (downloadUrl) URL.revokeObjectURL(downloadUrl);
   });
 });
 </script>

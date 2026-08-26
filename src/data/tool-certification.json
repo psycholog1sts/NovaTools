@@ -294,6 +294,27 @@
       "UIStatus": "WAVE_2_TRUTH_VERIFIED",
       "Tests": "image compressor truth + accessibility + public smoke",
       "CertificationStatus": "CERTIFIED"
+    },
+    {
+      "Tool": "Image Flipper",
+      "Route": "/tools/image/image-flipper/",
+      "Category": "image",
+      "Indexable": true,
+      "AdsEligible": true,
+      "FunctionalTruth": "PASS",
+      "UniqueUtility": "PASS",
+      "SpecificContent": "PASS",
+      "ImplementationEvidence": "PASS",
+      "NoFiller": "PASS",
+      "Trust": "PASS",
+      "PrivacyTruth": "LOCAL_ONLY",
+      "ExternalNetwork": false,
+      "DataSource": "User-selected JPEG, PNG, or WebP; browser FileReader, Image decode, and Canvas 2D",
+      "SyntheticData": "NONE",
+      "KnownLimitations": "Maximum input is 20 MB; large pixel dimensions can exceed browser memory; download is re-encoded as PNG and does not preserve source metadata or source format.",
+      "UIStatus": "WAVE_2_TRUTH_VERIFIED",
+      "Tests": "image flipper truth contract",
+      "CertificationStatus": "CERTIFIED"
     }
   ]
 }
