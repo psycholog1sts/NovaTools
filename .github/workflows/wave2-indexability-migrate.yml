@@ -1,0 +1,37 @@
+name: Wave 2 canonical indexability migration
+
+on:
+  push:
+    branches: [wave2/site-transformation]
+    paths:
+      - scripts/apply-indexability-contract.mjs
+      - .github/workflows/wave2-indexability-migrate.yml
+
+permissions:
+  contents: write
+
+jobs:
+  migrate:
+    if: ${{ !contains(github.event.head_commit.message, '[indexability-output]') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: wave2/site-transformation
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node scripts/apply-indexability-contract.mjs --write
+      - name: Commit deterministic output
+        shell: bash
+        run: |
+          if git diff --quiet -- scripts/generate-localized-sitemap.mjs src/core/ads/adsense-config.mjs categories/finance-tools.html; then
+            echo "No indexability migration changes required."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add scripts/generate-localized-sitemap.mjs src/core/ads/adsense-config.mjs categories/finance-tools.html
+          git commit -m "seo: align noindex sitemap ads and finance discovery [indexability-output]"
+          git push origin HEAD:wave2/site-transformation
