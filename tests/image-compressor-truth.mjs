@@ -31,14 +31,17 @@ assert.match(
 );
 
 assert.match(html, /accept="image\/jpeg,image\/png,image\/webp"/i, 'File picker must advertise only the implemented JPEG/PNG/WebP inputs.');
-assert.match(html, /Max\s+10\s*MB/i, 'The public UI must use the canonical 10 MB input limit.');
-assert.doesNotMatch(html, /Max\s+20\s*MB/i, 'The public UI must not advertise a conflicting 20 MB limit.');
+assert.match(html, /(?:maximum|Max)\s+10\s*MB/i, 'The public UI must use the canonical 10 MB input limit.');
+assert.doesNotMatch(html, /(?:maximum|Max)\s+20\s*MB/i, 'The public UI must not advertise a conflicting 20 MB limit.');
+assert.match(html, /MAX_BYTES\s*=\s*10\s*\*\s*1024\s*\*\s*1024/, 'The active page runtime must enforce the canonical 10 MiB limit.');
+assert.match(html, /file\.size\s*>\s*MAX_BYTES/, 'The active page runtime must reject files above the canonical size limit.');
+assert.match(html, /ALLOWED_TYPES\.includes\(file\.type\)/, 'The active page runtime must validate JPEG/PNG/WebP MIME types.');
+assert.match(html, /canvas\.toBlob\([\s\S]*?,type,quality\)/, 'The active page runtime must encode the selected MIME type and quality.');
 
-const tenMiB = /10\s*\*\s*1024\s*\*\s*1024/;
-assert.match(registration, tenMiB, 'Image Compressor registration must enforce the canonical 10 MiB limit.');
+assert.match(registration, /IMAGE_COMPRESSOR_MAX_BYTES\s*=\s*10\s*\*\s*1024\s*\*\s*1024/, 'Image Compressor registration must define the canonical 10 MiB limit.');
 assert.match(
   registration,
-  /name:\s*['"]file['"][\s\S]{0,500}?maxSize:\s*10\s*\*\s*1024\s*\*\s*1024/,
+  /name:\s*['"]file['"][\s\S]{0,500}?maxSize:\s*IMAGE_COMPRESSOR_MAX_BYTES/,
   'The validated file input itself must enforce the canonical 10 MiB limit.'
 );
 assert.doesNotMatch(
@@ -47,10 +50,10 @@ assert.doesNotMatch(
   'Image Compressor must not retain a conflicting 20 MiB registration limit.'
 );
 
-assert.match(implementation, /requestedFormat\(inputs, file\)/, 'Image Compressor must honor the requested output format.');
-assert.match(implementation, /canvas\.toBlob\([\s\S]*?format\.mime[\s\S]*?quality/, 'Canvas encoding must use the selected MIME type and quality.');
-assert.match(implementation, /compressed_\$\{baseName\}\.\$\{format\.ext\}/, 'Download extension must match the selected encoder format.');
-assert.match(implementation, /JPEG and WebP quality settings are lossy/i, 'Result copy must disclose lossy JPEG/WebP encoding.');
-assert.match(implementation, /PNG encoding may keep or increase file size/i, 'Result copy must disclose PNG size behavior.');
+assert.match(implementation, /requestedFormat\(inputs, file\)/, 'Shared Image Compressor implementation must honor the requested output format.');
+assert.match(implementation, /canvas\.toBlob\([\s\S]*?format\.mime[\s\S]*?quality/, 'Shared Canvas encoding must use the selected MIME type and quality.');
+assert.match(implementation, /compressed_\$\{baseName\}\.\$\{format\.ext\}/, 'Shared download extension must match the selected encoder format.');
+assert.match(implementation, /JPEG and WebP quality settings are lossy/i, 'Shared result copy must disclose lossy JPEG/WebP encoding.');
+assert.match(implementation, /PNG encoding may keep or increase file size/i, 'Shared result copy must disclose PNG size behavior.');
 
 console.log('image compressor truth contract: pass');
