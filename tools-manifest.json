@@ -60,6 +60,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/converters/age-calculator",
       "entry": "/src/tools/converters/age-calculator/"
     },
@@ -122,6 +124,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/converters/bmi-calculator",
       "entry": "/src/tools/converters/bmi-calculator/"
     },
@@ -184,6 +188,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/converters/currency-converter",
       "entry": "/src/tools/converters/currency-converter/"
     },
@@ -247,6 +253,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/converters/number-base-converter",
       "entry": "/src/tools/converters/number-base-converter/"
     },
@@ -308,6 +316,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/converters/percentage-calculator",
       "entry": "/src/tools/converters/percentage-calculator/"
     },
@@ -370,6 +380,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/converters/roman-numerals",
       "entry": "/src/tools/converters/roman-numerals/"
     },
@@ -432,6 +444,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/converters/scientific-calculator",
       "entry": "/src/tools/converters/scientific-calculator/"
     },
@@ -494,6 +508,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/converters/timezone-converter",
       "entry": "/src/tools/converters/timezone-converter/"
     },
@@ -557,6 +573,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/converters/unit-converter",
       "entry": "/src/tools/converters/unit-converter/"
     },
@@ -619,6 +637,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/converters/unix-timestamp",
       "entry": "/src/tools/converters/unix-timestamp/"
     },
@@ -682,6 +702,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/data/checksum-calculator",
       "entry": "/src/tools/data/checksum-calculator/"
     },
@@ -741,6 +763,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/data/csv-to-json",
       "entry": "/src/tools/data/csv-to-json/"
     },
@@ -802,6 +826,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/data/csv-viewer",
       "entry": "/src/tools/data/csv-viewer/"
     },
@@ -863,6 +889,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/data/duplicate-finder",
       "entry": "/src/tools/data/duplicate-finder/"
     },
@@ -924,6 +952,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/data/file-merger",
       "entry": "/src/tools/data/file-merger/"
     },
@@ -985,6 +1015,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/data/file-organizer",
       "entry": "/src/tools/data/file-organizer/"
     },
@@ -1045,6 +1077,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/data/file-renamer",
       "entry": "/src/tools/data/file-renamer/"
     },
@@ -1106,6 +1140,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/data/file-splitter",
       "entry": "/src/tools/data/file-splitter/"
     },
@@ -1165,6 +1201,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/data/json-to-csv",
       "entry": "/src/tools/data/json-to-csv/"
     },
@@ -1226,6 +1264,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/data/sql-formatter",
       "entry": "/src/tools/data/sql-formatter/"
     },
@@ -1279,6 +1319,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/data/audio-spectrum",
       "entry": "/src/tools/data/audio-spectrum/"
     },
@@ -1332,6 +1374,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/data/chart-builder",
       "entry": "/src/tools/data/chart-builder/"
     },
@@ -1385,6 +1429,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/data/csv-json-summarizer",
       "entry": "/src/tools/data/csv-json-summarizer/"
     },
@@ -1447,6 +1493,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/data/vcf-generator",
       "entry": "/src/tools/data/vcf-generator/"
     },
@@ -1500,6 +1548,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/data/weather-lookup",
       "entry": "/src/tools/data/weather-lookup/"
     },
@@ -1562,6 +1612,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/design/barcode-generator",
       "entry": "/src/tools/design/barcode-generator/"
     },
@@ -1622,6 +1674,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/design/business-card-maker",
       "entry": "/src/tools/design/business-card-maker/"
     },
@@ -1682,6 +1736,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/design/diagram-maker",
       "entry": "/src/tools/design/diagram-maker/"
     },
@@ -1742,6 +1798,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/design/invoice-generator",
       "entry": "/src/tools/design/invoice-generator/"
     },
@@ -1802,6 +1860,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/design/logo-maker",
       "entry": "/src/tools/design/logo-maker/"
     },
@@ -1862,6 +1922,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/design/mind-map-tool",
       "entry": "/src/tools/design/mind-map-tool/"
     },
@@ -1922,6 +1984,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/design/mockup-generator",
       "entry": "/src/tools/design/mockup-generator/"
     },
@@ -1982,6 +2046,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/design/qr-code-designer",
       "entry": "/src/tools/design/qr-code-designer/"
     },
@@ -2042,6 +2108,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/design/resume-builder",
       "entry": "/src/tools/design/resume-builder/"
     },
@@ -2102,6 +2170,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/design/wireframe-tool",
       "entry": "/src/tools/design/wireframe-tool/"
     },
@@ -2162,6 +2232,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/dev/base64-converter",
       "entry": "/src/tools/dev/base64-converter/"
     },
@@ -2224,6 +2296,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/dev/code-formatter",
       "entry": "/src/tools/dev/code-formatter/"
     },
@@ -2284,6 +2358,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/dev/color-converter",
       "entry": "/src/tools/dev/color-converter/"
     },
@@ -2344,6 +2420,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/dev/css-minifier",
       "entry": "/src/tools/dev/css-minifier/"
     },
@@ -2404,6 +2482,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/dev/html-to-markdown",
       "entry": "/src/tools/dev/html-to-markdown/"
     },
@@ -2464,6 +2544,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/dev/js-minifier",
       "entry": "/src/tools/dev/js-minifier/"
     },
@@ -2524,6 +2606,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/dev/json-formatter",
       "entry": "/src/tools/dev/json-formatter/"
     },
@@ -2584,6 +2668,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/dev/json-validator",
       "entry": "/src/tools/dev/json-validator/"
     },
@@ -2644,6 +2730,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/dev/lorem-generator",
       "entry": "/src/tools/dev/lorem-generator/"
     },
@@ -2704,6 +2792,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/dev/markdown-to-html",
       "entry": "/src/tools/dev/markdown-to-html/"
     },
@@ -2766,6 +2856,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/dev/meta-tag-generator",
       "entry": "/src/tools/dev/meta-tag-generator/"
     },
@@ -2824,6 +2916,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/dev/regex-tester",
       "entry": "/src/tools/dev/regex-tester/"
     },
@@ -2886,6 +2980,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/dev/robots-txt-generator",
       "entry": "/src/tools/dev/robots-txt-generator/"
     },
@@ -2948,6 +3044,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/dev/schema-markup-generator",
       "entry": "/src/tools/dev/schema-markup-generator/"
     },
@@ -3010,6 +3108,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/dev/sitemap-generator",
       "entry": "/src/tools/dev/sitemap-generator/"
     },
@@ -3070,6 +3170,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/dev/url-encoder",
       "entry": "/src/tools/dev/url-encoder/"
     },
@@ -3132,6 +3234,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/dev/xml-formatter",
       "entry": "/src/tools/dev/xml-formatter/"
     },
@@ -3202,9 +3306,11 @@
       "indexable": true,
       "adsEligible": true,
       "certificationStatus": "CERTIFIED",
-      "privacyMode": "UNREVIEWED",
-      "externalNetwork": "UNREVIEWED",
-      "syntheticData": "UNREVIEWED",
+      "privacyMode": "LOCAL_ONLY",
+      "externalNetwork": false,
+      "syntheticData": "NONE",
+      "dataSource": "User-entered loan terms and editable KKDF/BSMV assumptions",
+      "limitations": "Tax/fund applicability varies by loan and borrower; defaults are zero and users must enter assumptions applicable to their offer.",
       "path": "/finance/mortgage-refinance",
       "entry": "/src/tools/finance/mortgage-refinance/"
     },
@@ -3264,9 +3370,11 @@
       "indexable": true,
       "adsEligible": true,
       "certificationStatus": "CERTIFIED",
-      "privacyMode": "UNREVIEWED",
-      "externalNetwork": "UNREVIEWED",
-      "syntheticData": "UNREVIEWED",
+      "privacyMode": "LOCAL_ONLY",
+      "externalNetwork": false,
+      "syntheticData": "NONE",
+      "dataSource": "User inputs; local ROI and CAGR formulas",
+      "limitations": "Does not automatically model taxes, fees, inflation, dividends, or irregular cash flows.",
       "path": "/finance/roi-calculator",
       "entry": "/src/tools/finance/roi-calculator/"
     },
@@ -3321,9 +3429,11 @@
       "indexable": true,
       "adsEligible": true,
       "certificationStatus": "CERTIFIED",
-      "privacyMode": "UNREVIEWED",
-      "externalNetwork": "UNREVIEWED",
-      "syntheticData": "UNREVIEWED",
+      "privacyMode": "LOCAL_ONLY",
+      "externalNetwork": false,
+      "syntheticData": "NONE",
+      "dataSource": "User inputs; local compound-interest formula",
+      "limitations": "Constant-rate projection; non-monthly compounding aggregates the entered monthly contribution into compounding intervals.",
       "path": "/finance/compound-interest",
       "entry": "/src/tools/finance/compound-interest/"
     },
@@ -3374,12 +3484,14 @@
         "finance/mortgage-tr"
       ],
       "public": true,
-      "indexable": true,
-      "adsEligible": true,
-      "certificationStatus": "CERTIFIED",
-      "privacyMode": "UNREVIEWED",
-      "externalNetwork": "UNREVIEWED",
-      "syntheticData": "UNREVIEWED",
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "LOCAL_ONLY",
+      "externalNetwork": false,
+      "syntheticData": "UNSOURCED_STATIC_PRICING_REMOVED_FROM_PUBLIC_SURFACE",
+      "dataSource": "None on public unavailable route",
+      "limitations": "Underlying prototype pricing and plan discounts are not source-dated and the old copy implied a non-existent region control.",
       "path": "/finance/cloud-cost",
       "entry": "/src/tools/finance/cloud-cost/"
     },
@@ -3430,9 +3542,11 @@
       "indexable": true,
       "adsEligible": true,
       "certificationStatus": "CERTIFIED",
-      "privacyMode": "UNREVIEWED",
-      "externalNetwork": "UNREVIEWED",
-      "syntheticData": "UNREVIEWED",
+      "privacyMode": "MIXED",
+      "externalNetwork": true,
+      "syntheticData": "CLEAR_LABELLED_STATIC_FALLBACK_ONLY",
+      "dataSource": "CoinGecko simple-price via /api/live-data; 5-minute browser cache",
+      "limitations": "Snapshot data, not tick-by-tick; on provider failure with no usable cache, explicitly labelled static examples may be shown.",
       "path": "/finance/crypto-prices",
       "entry": "/src/tools/finance/crypto-prices/"
     },
@@ -3483,9 +3597,11 @@
       "indexable": true,
       "adsEligible": true,
       "certificationStatus": "CERTIFIED",
-      "privacyMode": "UNREVIEWED",
-      "externalNetwork": "UNREVIEWED",
-      "syntheticData": "UNREVIEWED",
+      "privacyMode": "MIXED",
+      "externalNetwork": true,
+      "syntheticData": "CLEAR_LABELLED_STATIC_FALLBACK_ONLY",
+      "dataSource": "TCMB daily XML via /api/live-data; one-hour browser cache",
+      "limitations": "Reference rate, not a transaction quote; cached or static fallback is visibly labelled when live TCMB data cannot be refreshed.",
       "path": "/finance/live-exchange",
       "entry": "/src/tools/finance/live-exchange/"
     },
@@ -3536,9 +3652,11 @@
       "indexable": true,
       "adsEligible": true,
       "certificationStatus": "CERTIFIED",
-      "privacyMode": "UNREVIEWED",
-      "externalNetwork": "UNREVIEWED",
-      "syntheticData": "UNREVIEWED",
+      "privacyMode": "MIXED",
+      "externalNetwork": true,
+      "syntheticData": "CLEAR_LABELLED_STATIC_FALLBACK_ONLY",
+      "dataSource": "Yahoo Finance chart endpoint via /api/live-data; 15-minute browser cache",
+      "limitations": "Quotes can be delayed; history chart is shown only when provider closes exist; small built-in symbol fallbacks are labelled and have no fabricated history.",
       "path": "/finance/stock-lookup",
       "entry": "/src/tools/finance/stock-lookup/"
     },
@@ -3620,6 +3738,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/image/image-flipper",
       "entry": "/src/tools/image/image-flipper/"
     },
@@ -3703,6 +3823,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/image/image-rotator",
       "entry": "/src/tools/image/image-rotator/"
     },
@@ -3792,6 +3914,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/image/collage-maker",
       "entry": "/src/tools/image/collage-maker/"
     },
@@ -3864,6 +3988,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/image/compress",
       "entry": "/src/tools/image/compress/"
     },
@@ -3922,6 +4048,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/image/convert",
       "entry": "/src/tools/image/convert/"
     },
@@ -3975,6 +4103,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/image/exif-viewer",
       "entry": "/src/tools/image/exif-viewer/"
     },
@@ -4061,6 +4191,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/image/image-cropper",
       "entry": "/src/tools/image/image-cropper/"
     },
@@ -4146,6 +4278,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/image/image-resizer",
       "entry": "/src/tools/image/image-resizer/"
     },
@@ -4230,6 +4364,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/image/image-to-avif",
       "entry": "/src/tools/image/image-to-avif/"
     },
@@ -4316,6 +4452,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/image/image-to-webp",
       "entry": "/src/tools/image/image-to-webp/"
     },
@@ -4400,6 +4538,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/image/image-watermark",
       "entry": "/src/tools/image/image-watermark/"
     },
@@ -4482,6 +4622,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/image/metadata-remover",
       "entry": "/src/tools/image/metadata-remover/"
     },
@@ -4562,6 +4704,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/image/background-remover",
       "entry": "/src/tools/image/background-remover/"
     },
@@ -4644,6 +4788,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/pdf/merge",
       "entry": "/src/tools/pdf/merge/"
     },
@@ -4711,6 +4857,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/pdf/compress",
       "entry": "/src/tools/pdf/compress/"
     },
@@ -4771,6 +4919,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/pdf/split",
       "entry": "/src/tools/pdf/split/"
     },
@@ -4804,6 +4954,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/pdf/pdf-ocr",
       "entry": "/src/tools/pdf/pdf-ocr/"
     },
@@ -4848,6 +5000,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/pdf/pdf-page-number",
       "entry": "/src/tools/pdf/pdf-page-number/"
     },
@@ -4881,6 +5035,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/pdf/pdf-to-excel",
       "entry": "/src/tools/pdf/pdf-to-excel/"
     },
@@ -4913,6 +5069,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/pdf/pdf-to-html",
       "entry": "/src/tools/pdf/pdf-to-html/"
     },
@@ -4945,6 +5103,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/pdf/pdf-to-jpg",
       "entry": "/src/tools/pdf/pdf-to-jpg/"
     },
@@ -4977,6 +5137,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/pdf/pdf-to-png",
       "entry": "/src/tools/pdf/pdf-to-png/"
     },
@@ -5009,6 +5171,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/pdf/pdf-to-powerpoint",
       "entry": "/src/tools/pdf/pdf-to-powerpoint/"
     },
@@ -5041,6 +5205,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/pdf/pdf-to-text",
       "entry": "/src/tools/pdf/pdf-to-text/"
     },
@@ -5075,6 +5241,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/pdf/pdf-to-word",
       "entry": "/src/tools/pdf/pdf-to-word/"
     },
@@ -5119,6 +5287,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/pdf/pdf-watermark",
       "entry": "/src/tools/pdf/pdf-watermark/"
     },
@@ -5182,6 +5352,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/productivity/countdown-timer",
       "entry": "/src/tools/productivity/countdown-timer/"
     },
@@ -5245,6 +5417,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/productivity/expense-tracker",
       "entry": "/src/tools/productivity/expense-tracker/"
     },
@@ -5308,6 +5482,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/productivity/habit-tracker",
       "entry": "/src/tools/productivity/habit-tracker/"
     },
@@ -5371,6 +5547,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/productivity/kanban-board",
       "entry": "/src/tools/productivity/kanban-board/"
     },
@@ -5434,6 +5612,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/productivity/notes",
       "entry": "/src/tools/productivity/notes/"
     },
@@ -5498,6 +5678,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/productivity/pomodoro-timer",
       "entry": "/src/tools/productivity/pomodoro-timer/"
     },
@@ -5561,6 +5743,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/productivity/stopwatch",
       "entry": "/src/tools/productivity/stopwatch/"
     },
@@ -5624,6 +5808,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/productivity/time-tracker",
       "entry": "/src/tools/productivity/time-tracker/"
     },
@@ -5687,6 +5873,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/productivity/todo-list",
       "entry": "/src/tools/productivity/todo-list/"
     },
@@ -5750,6 +5938,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/productivity/world-clock",
       "entry": "/src/tools/productivity/world-clock/"
     },
@@ -5811,6 +6001,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/security/ad-blocker-tester",
       "entry": "/src/tools/security/ad-blocker-tester/"
     },
@@ -5871,6 +6063,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/security/encrypt-decrypt",
       "entry": "/src/tools/security/encrypt-decrypt/"
     },
@@ -5933,6 +6127,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/security/hash-generator",
       "entry": "/src/tools/security/hash-generator/"
     },
@@ -5994,6 +6190,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/security/ip-lookup",
       "entry": "/src/tools/security/ip-lookup/"
     },
@@ -6056,6 +6254,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/security/jwt-decoder",
       "entry": "/src/tools/security/jwt-decoder/"
     },
@@ -6116,6 +6316,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/security/password-generator",
       "entry": "/src/tools/security/password-generator/"
     },
@@ -6176,6 +6378,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/security/password-strength",
       "entry": "/src/tools/security/password-strength/"
     },
@@ -6238,6 +6442,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/security/ssl-checker",
       "entry": "/src/tools/security/ssl-checker/"
     },
@@ -6300,6 +6506,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/security/user-agent-parser",
       "entry": "/src/tools/security/user-agent-parser/"
     },
@@ -6360,6 +6568,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/security/uuid-generator",
       "entry": "/src/tools/security/uuid-generator/"
     },
@@ -6423,6 +6633,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/social/app-icon-generator",
       "entry": "/src/tools/social/app-icon-generator/"
     },
@@ -6485,6 +6697,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/social/favicon-generator",
       "entry": "/src/tools/social/favicon-generator/"
     },
@@ -6547,6 +6761,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/social/hashtag-generator",
       "entry": "/src/tools/social/hashtag-generator/"
     },
@@ -6608,6 +6824,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/social/instagram-photo",
       "entry": "/src/tools/social/instagram-photo/"
     },
@@ -6670,6 +6888,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/social/social-image-resizer",
       "entry": "/src/tools/social/social-image-resizer/"
     },
@@ -6731,6 +6951,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/social/twitter-video",
       "entry": "/src/tools/social/twitter-video/"
     },
@@ -6793,6 +7015,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/social/url-shortener",
       "entry": "/src/tools/social/url-shortener/"
     },
@@ -6855,6 +7079,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/social/utm-builder",
       "entry": "/src/tools/social/utm-builder/"
     },
@@ -6917,6 +7143,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/social/website-screenshot",
       "entry": "/src/tools/social/website-screenshot/"
     },
@@ -6978,6 +7206,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/social/youtube-thumbnail",
       "entry": "/src/tools/social/youtube-thumbnail/"
     },
@@ -7044,6 +7274,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/text/case-converter",
       "entry": "/src/tools/text/case-converter/"
     },
@@ -7107,6 +7339,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/text/character-counter",
       "entry": "/src/tools/text/character-counter/"
     },
@@ -7169,6 +7403,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/text/lorem-ipsum-generator",
       "entry": "/src/tools/text/lorem-ipsum-generator/"
     },
@@ -7233,6 +7469,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/text/text-to-slug",
       "entry": "/src/tools/text/text-to-slug/"
     },
@@ -7295,6 +7533,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/text/word-counter",
       "entry": "/src/tools/text/word-counter/"
     },
@@ -7357,6 +7597,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/text/html-entity-encoder",
       "entry": "/src/tools/text/html-entity-encoder/"
     },
@@ -7418,6 +7660,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/text/palindrome-checker",
       "entry": "/src/tools/text/palindrome-checker/"
     },
@@ -7471,6 +7715,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/text/simple-translator",
       "entry": "/src/tools/text/simple-translator/"
     },
@@ -7524,6 +7770,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/text/text-analysis",
       "entry": "/src/tools/text/text-analysis/"
     },
@@ -7586,6 +7834,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/text/text-diff",
       "entry": "/src/tools/text/text-diff/"
     },
@@ -7639,6 +7889,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/text/text-summarizer",
       "entry": "/src/tools/text/text-summarizer/"
     },
@@ -7701,6 +7953,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/text/text-to-ascii",
       "entry": "/src/tools/text/text-to-ascii/"
     },
@@ -7763,6 +8017,8 @@
       "privacyMode": "UNREVIEWED",
       "externalNetwork": "UNREVIEWED",
       "syntheticData": "UNREVIEWED",
+      "dataSource": null,
+      "limitations": null,
       "path": "/text/url-encoder",
       "entry": "/src/tools/text/url-encoder/"
     }

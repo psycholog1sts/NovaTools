@@ -39,6 +39,10 @@ function findMetaFiles(dir, files = []) {
 function generateManifest() {
   const toolsDir = join(rootDir, 'src', 'tools');
   const metaFiles = findMetaFiles(toolsDir);
+  const certificationPath = join(rootDir, 'src', 'data', 'tool-certification.json');
+  const certificationByRoute = existsSync(certificationPath)
+    ? new Map(JSON.parse(readFileSync(certificationPath, 'utf8')).records.map((record) => [record.Route, record]))
+    : new Map();
   
   const tools = [];
   
@@ -48,7 +52,6 @@ function generateManifest() {
       const meta = JSON.parse(content);
 
       const publicTool = meta.public !== false;
-      const certificationStatus = meta.certificationStatus || (publicTool ? 'CERTIFIED' : 'UNAVAILABLE');
       
       // Calculate relative path
       const relativePath = metaPath
@@ -56,16 +59,21 @@ function generateManifest() {
         .replace('\\meta.json', '')
         .replace('/meta.json', '')
         .replace(/\\/g, '/');
+      const route = `/tools${relativePath}/`;
+      const certification = certificationByRoute.get(route);
+      const certificationStatus = certification?.CertificationStatus || meta.certificationStatus || (publicTool ? 'CERTIFIED' : 'UNAVAILABLE');
       
       tools.push({
         ...meta,
         public: publicTool,
-        indexable: meta.indexable !== false && certificationStatus === 'CERTIFIED',
-        adsEligible: meta.adsEligible !== false && certificationStatus === 'CERTIFIED' && publicTool,
+        indexable: certification?.Indexable ?? (meta.indexable !== false && certificationStatus === 'CERTIFIED'),
+        adsEligible: certification?.AdsEligible ?? (meta.adsEligible !== false && certificationStatus === 'CERTIFIED' && publicTool),
         certificationStatus,
-        privacyMode: meta.privacyMode || 'UNREVIEWED',
-        externalNetwork: meta.externalNetwork ?? 'UNREVIEWED',
-        syntheticData: meta.syntheticData ?? 'UNREVIEWED',
+        privacyMode: certification?.PrivacyTruth || meta.privacyMode || 'UNREVIEWED',
+        externalNetwork: certification?.ExternalNetwork ?? meta.externalNetwork ?? 'UNREVIEWED',
+        syntheticData: certification?.SyntheticData || meta.syntheticData || 'UNREVIEWED',
+        dataSource: certification?.DataSource || meta.dataSource || null,
+        limitations: certification?.KnownLimitations || meta.limitations || null,
         path: relativePath,
         entry: `/src/tools${relativePath}/`
       });
