@@ -10,6 +10,12 @@ import { initAnalytics } from './js/analytics.js';
 import { applySeo, buildHomeSchema, upsertJsonLd } from './js/seo.js';
 import { initHomeSearch } from './js/home-search.js';
 import { getPopularThisWeek } from './components/engagement-widgets.mjs';
+import manifest from '../tools-manifest.json';
+import { canonicalToolPath, publicCertifiedTools, publicToolsByCategory } from './data/public-tools.mjs';
+
+const certifiedPublicTools = publicCertifiedTools(manifest.tools);
+const certifiedPaths = new Set(certifiedPublicTools.map(canonicalToolPath));
+const certifiedByCategory = publicToolsByCategory(certifiedPublicTools);
 
 // ============================================
 // I18N HELPERS
@@ -82,7 +88,14 @@ function initDesignSystemInteractions() {
 // ============================================
 function toggleMobileMenu() {
   const menu = document.getElementById('mobileMenu');
-  menu?.classList.toggle('active');
+  const trigger = document.querySelector('.mobile-menu-toggle');
+  if (!menu || !trigger) return;
+  const opening = menu.hidden;
+  menu.hidden = !opening;
+  menu.classList.toggle('active', opening);
+  trigger.setAttribute('aria-expanded', String(opening));
+  if (opening) menu.querySelector('a')?.focus();
+  else trigger.focus();
 }
 
 window.toggleMobileMenu = toggleMobileMenu;
@@ -90,12 +103,22 @@ window.toggleMobileMenu = toggleMobileMenu;
 // ============================================
 // SEARCH MODAL
 // ============================================
-function toggleSearch() {
-  const modal = document.getElementById('searchModal');
-  modal?.classList.toggle('active');
+let previouslyFocusedElement = null;
 
-  if (modal?.classList.contains('active')) {
+function toggleSearch(forceOpen) {
+  const modal = document.getElementById('searchModal');
+  const trigger = document.getElementById('searchToggle');
+  if (!modal) return;
+  const opening = typeof forceOpen === 'boolean' ? forceOpen : modal.hidden;
+  if (opening) previouslyFocusedElement = document.activeElement;
+  modal.hidden = !opening;
+  modal.classList.toggle('active', opening);
+  trigger?.setAttribute('aria-expanded', String(opening));
+
+  if (opening) {
     document.getElementById('globalSearch')?.focus();
+  } else if (previouslyFocusedElement instanceof HTMLElement) {
+    previouslyFocusedElement.focus();
   }
 }
 
@@ -103,7 +126,9 @@ window.toggleSearch = toggleSearch;
 
 document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape') {
-    document.getElementById('searchModal')?.classList.remove('active');
+    if (!document.getElementById('searchModal')?.hidden) toggleSearch(false);
+    const menu = document.getElementById('mobileMenu');
+    if (menu && !menu.hidden) toggleMobileMenu();
   }
 });
 
@@ -280,7 +305,7 @@ function renderPopularTasks() {
   const container = document.getElementById('popularTasks');
   if (!container) return;
 
-  container.innerHTML = popularTasks.map((task) => `
+  container.innerHTML = popularTasks.filter((task) => certifiedPaths.has(getToolHref(task.slug))).map((task) => `
     <a class="task-chip" href="${getToolHref(task.slug)}">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
         ${getIconPath(task.icon)}
@@ -312,7 +337,7 @@ function renderFeaturedTools() {
   const container = document.getElementById('featuredTools');
   if (!container) return;
 
-  container.innerHTML = featuredTools.map((tool) => `
+  container.innerHTML = featuredTools.filter((tool) => certifiedPaths.has(getToolHref(tool.slug))).map((tool) => `
     <article class="featured-tool-card">
       <div class="featured-tool-card__icon">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -332,7 +357,16 @@ function renderCategories() {
   if (!container) return;
 
   container.innerHTML = categories.map((category) => {
-    const popularLinks = categoryPopularTools[category.slug] || [];
+    const categoryKey = category.slug.replace(/-tools$/, '').replace('developer', 'dev').replace('text-writing', 'text');
+    const curatedLinks = categoryPopularTools[category.slug] || [];
+    const popularLinks = curatedLinks
+      .filter((tool) => certifiedPaths.has(getToolHref(tool.slug)))
+      .slice(0, 3);
+    if (!popularLinks.length) {
+      for (const tool of (certifiedByCategory[categoryKey] || []).slice(0, 3)) {
+        popularLinks.push({ key: tool.id, label: tool.name || tool.nameEn || tool.id, slug: canonicalToolPath(tool).replace(/^\/tools\//, '').replace(/\/$/, '') });
+      }
+    }
 
     return `
       <article class="category-nav-card">
@@ -442,10 +476,10 @@ function initSearch() {
 
   if (!searchInput || !searchResults) return;
 
-  const allTools = popularTasks.concat(featuredTools).map((tool) => ({
-    name: tool.label || tool.name,
-    slug: tool.slug,
-    category: tool.category || 'Popular'
+  const allTools = certifiedPublicTools.map((tool) => ({
+    name: tool.name || tool.nameEn || tool.id,
+    href: canonicalToolPath(tool),
+    category: tool.category || 'Tools'
   }));
 
   searchInput.oninput = (event) => {
@@ -462,7 +496,7 @@ function initSearch() {
     ).slice(0, 5);
 
     searchResults.innerHTML = results.map((tool) => `
-      <a href="${getToolHref(tool.slug)}" class="search-result-item">
+      <a href="${tool.href}" class="search-result-item">
         <span class="search-result-name">${tool.name}</span>
         <span class="search-result-category">${tool.category}</span>
       </a>

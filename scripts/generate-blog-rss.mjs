@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 import fs from 'node:fs';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const rootDir = path.resolve(new URL('..', import.meta.url).pathname);
+const rootDir = fileURLToPath(new URL('..', import.meta.url));
 const postsPath = path.join(rootDir, 'src', 'i18n', 'blog', 'en.json');
 const outPath = path.join(rootDir, 'public', 'rss.xml');
 const rootOutPath = path.join(rootDir, 'rss.xml');

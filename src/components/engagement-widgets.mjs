@@ -1,5 +1,6 @@
 import manifest from '../../tools-manifest.json';
 import blogPosts from '../i18n/blog/en.json';
+import { publicCertifiedTools } from '../data/public-tools.mjs';
 
 const STORAGE_PREFIX = 'novatools:';
 const MAX_RECENT = 6;
@@ -68,7 +69,7 @@ export function categoryLabel(category) {
 }
 
 export function allTools() {
-  return manifest.tools || [];
+  return publicCertifiedTools(manifest.tools);
 }
 
 export function getSimilarTools(tool, limit = 4) {

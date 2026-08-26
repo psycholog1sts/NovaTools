@@ -252,6 +252,27 @@
       "UIStatus": "UNAVAILABLE_NOTICE",
       "Tests": "finance certification noindex contract",
       "CertificationStatus": "UNAVAILABLE"
+    },
+    {
+      "Tool": "PDF Compressor",
+      "Route": "/tools/pdf/compress/",
+      "Category": "pdf",
+      "Indexable": true,
+      "AdsEligible": true,
+      "FunctionalTruth": "PASS",
+      "UniqueUtility": "PASS",
+      "SpecificContent": "PASS",
+      "ImplementationEvidence": "PASS",
+      "NoFiller": "PASS",
+      "Trust": "PASS",
+      "PrivacyTruth": "LOCAL_ONLY",
+      "ExternalNetwork": false,
+      "DataSource": "User-selected PDF; browser-local pdf-lib structural rewrite",
+      "SyntheticData": "NONE",
+      "KnownLimitations": "Does not rasterize or downsample page images; output can be smaller, similar in size, or larger; maximum input is 50 MB and browser memory varies by device.",
+      "UIStatus": "GOLD_STANDARD_WAVE_2",
+      "Tests": "pdf compressor trust + accessibility + public smoke",
+      "CertificationStatus": "CERTIFIED"
     }
   ]
 }

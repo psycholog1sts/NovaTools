@@ -1,5 +1,6 @@
 import manifest from '../../tools-manifest.json';
 import blogPosts from '../i18n/blog/en.json';
+import { publicCertifiedTools } from '../data/public-tools.mjs';
 
 function normalize(value) {
   return String(value || '')
@@ -108,7 +109,7 @@ export function initHomeSearch({ getToolHref } = {}) {
   input.removeAttribute('data-i18n-placeholder');
 
   const tools = [
-    ...(manifest.tools || []).filter((tool) => tool.public && tool.certificationStatus === 'CERTIFIED').map((tool) => toSearchItem(tool, resolveHref)),
+    ...publicCertifiedTools(manifest.tools).map((tool) => toSearchItem(tool, resolveHref)),
     ...(blogPosts || []).map(toBlogSearchItem)
   ];
 
