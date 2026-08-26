@@ -6,10 +6,10 @@ const toast = read('src/components/toast.mjs');
 const loading = read('src/components/loading.mjs');
 const dropzone = read('src/components/dropzone.mjs');
 
-// Toast: user-facing strings must be assigned as text, never interpolated into HTML or onclick.
+// Toast: user-facing strings must be assigned as text, never interpolated into HTML or inline event attributes.
 assert.match(toast, /textContent\s*=\s*message/, 'Toast messages must be rendered with textContent.');
 assert.match(toast, /setAttribute\(['"]role['"],\s*(?:type\s*===\s*['"]error['"]\s*\?\s*['"]alert['"]\s*:\s*['"]status['"]|role)/, 'Toasts must expose live-region roles.');
-assert.doesNotMatch(toast, /onclick\s*=/i, 'Toast controls must not use inline onclick handlers.');
+assert.doesNotMatch(toast, /<[^>]+\sonclick\s*=|setAttribute\(\s*['"]onclick['"]/i, 'Toast controls must not use inline onclick handlers.');
 assert.doesNotMatch(toast, /innerHTML\s*=\s*`[\s\S]*\$\{message\}/, 'Toast messages must not be interpolated into innerHTML.');
 
 // Loading: progress must be semantic and only reflect caller-provided progress.
