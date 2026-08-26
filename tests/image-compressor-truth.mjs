@@ -4,6 +4,7 @@ import { readFileSync } from 'node:fs';
 const html = readFileSync(new URL('../src/tools/image/compress/index.html', import.meta.url), 'utf8');
 const implementation = readFileSync(new URL('../src/tools/image/image-compress.mjs', import.meta.url), 'utf8');
 const registration = readFileSync(new URL('../src/tools/image/index.mjs', import.meta.url), 'utf8');
+const metadata = readFileSync(new URL('../src/tools/image/compress/meta.json', import.meta.url), 'utf8');
 
 const visibleAndMetadata = html
   .replace(/<style\b[\s\S]*?<\/style>/gi, ' ')
@@ -18,6 +19,8 @@ for (const [label, pattern] of [
 ]) {
   assert.doesNotMatch(visibleAndMetadata, pattern, `Image Compressor must not publish ${label}.`);
 }
+
+assert.doesNotMatch(metadata, /without quality loss|up to 70%/i, 'Image Compressor discovery metadata must not retain disproven quality or reduction guarantees.');
 
 assert.match(
   visibleAndMetadata,

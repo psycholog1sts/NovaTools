@@ -3944,8 +3944,8 @@
         ]
       },
       "description": {
-        "tr": "JPEG/PNG görsellerini WebP/AVIF formatında sıkıştırın. Kalite kaybı olmadan dosya boyutunu %70'e varan oranda küçültün.",
-        "en": "Compress JPEG/PNG to WebP/AVIF. Reduce file size by up to 70% without quality loss."
+        "tr": "JPEG, PNG ve WebP görsellerini tarayıcınızda sıkıştırın. JPEG/WebP kalite ayarı kayıplıdır; PNG boyutu küçülmeyebilir.",
+        "en": "Compress JPEG, PNG, and WebP images in your browser. JPEG/WebP quality encoding is lossy, and PNG output may not be smaller."
       },
       "schema": {
         "@type": "WebApplication",
