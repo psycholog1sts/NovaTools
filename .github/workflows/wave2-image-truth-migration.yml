@@ -1,0 +1,39 @@
+name: Wave 2 image compressor truth migration
+
+on:
+  push:
+    branches:
+      - wave2/site-transformation
+    paths:
+      - scripts/fix-image-compressor-truth.mjs
+      - .github/workflows/wave2-image-truth-migration.yml
+
+permissions:
+  contents: write
+
+jobs:
+  migrate:
+    if: ${{ !contains(github.event.head_commit.message, '[image-truth-output]') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: wave2/site-transformation
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Apply deterministic migration
+        run: node scripts/fix-image-compressor-truth.mjs
+      - name: Commit migration output
+        shell: bash
+        run: |
+          if git diff --quiet -- src/tools/image/compress/index.html; then
+            echo "No migration changes required."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/tools/image/compress/index.html
+          git commit -m "content: align image compressor claims with implementation [image-truth-output]"
+          git push origin HEAD:wave2/site-transformation
