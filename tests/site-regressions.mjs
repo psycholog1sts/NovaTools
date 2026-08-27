@@ -5,6 +5,10 @@ import { fileURLToPath } from 'node:url';
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const read = (relativePath) => readFileSync(path.join(repoRoot, relativePath), 'utf8');
+const toolManifest = JSON.parse(read('tools-manifest.json'));
+const certifiedRoutes = new Set(toolManifest.tools
+  .filter((tool) => tool.public === true && tool.indexable === true && tool.certificationStatus === 'CERTIFIED')
+  .map((tool) => `/tools${tool.path}/`));
 
 const router = read('src/core/router.mjs');
 assert.match(
@@ -110,9 +114,11 @@ for (const workflowRoute of [
   '/tools/security/password-strength/',
   '/tools/converters/unit-converter/'
 ]) {
-  assert.ok(
-    read('public/sitemap.xml').includes(`https://mc-novatools.com${workflowRoute}`),
-    `Workflow route is missing from the sitemap: ${workflowRoute}`
+  const inSitemap = read('public/sitemap.xml').includes(`https://mc-novatools.com${workflowRoute}`);
+  assert.equal(
+    inSitemap,
+    certifiedRoutes.has(workflowRoute),
+    `Workflow sitemap state must match canonical certification: ${workflowRoute}`
   );
 }
 

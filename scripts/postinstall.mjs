@@ -61,7 +61,10 @@ function generateManifest() {
         .replace(/\\/g, '/');
       const route = `/tools${relativePath}/`;
       const certification = certificationByRoute.get(route);
-      const certificationStatus = certification?.CertificationStatus || meta.certificationStatus || (publicTool ? 'CERTIFIED' : 'UNAVAILABLE');
+      // The canonical matrix is the only authority that can promote a tool.
+      // Missing rows fail closed so unfinished tools cannot leak into search,
+      // sitemap or advertising through legacy metadata defaults.
+      const certificationStatus = certification?.CertificationStatus || 'UNAVAILABLE';
       
       tools.push({
         ...meta,

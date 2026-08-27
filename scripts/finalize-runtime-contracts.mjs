@@ -27,6 +27,11 @@ const THEME_BOOTSTRAP_MARKER = 'data-novatools-theme-bootstrap';
 const THEME_BOOTSTRAP_SCRIPT = `<script ${THEME_BOOTSTRAP_MARKER}>(function(){try{var saved=localStorage.getItem('novatools-theme');var theme=saved==='light'||saved==='dark'?saved:(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',theme);document.documentElement.style.colorScheme=theme;}catch(_error){document.documentElement.setAttribute('data-theme','light');document.documentElement.style.colorScheme='light';}})();</script>`;
 const BACKGROUND_REMOVER_V2_HREF = '/js/background-remover-v2.js';
 const BACKGROUND_REMOVER_V2_SCRIPT = `<script src="${BACKGROUND_REMOVER_V2_HREF}" defer></script>`;
+const manifest = JSON.parse(fs.readFileSync(path.join(root, 'tools-manifest.json'), 'utf8'));
+const toolsByBuiltPath = new Map((manifest.tools || []).map((tool) => {
+  const entry = String(tool.entry || '').replace(/^\/src\//, '/').replace(/^\//, '').replace(/\/$/, '/index.html');
+  return [entry, tool];
+}));
 
 function listHtmlFiles(dir) {
   const files = [];
@@ -87,6 +92,15 @@ function injectBackgroundRemoverV2(html, relativePath) {
   return html.replace(/<\/body>/i, `  ${BACKGROUND_REMOVER_V2_SCRIPT}\n</body>`);
 }
 
+function injectUnavailableToolRobots(html, relativePath) {
+  const tool = toolsByBuiltPath.get(relativePath);
+  if (!tool) return html;
+  if (tool.certificationStatus === 'CERTIFIED') return html;
+  const withoutRobots = html.replace(/\s*<meta\b(?=[^>]*\bname=["']robots["'])[^>]*>\s*/gi, '\n');
+  if (!/<\/head>/i.test(withoutRobots)) throw new Error(`cannot apply unavailable robots contract: ${relativePath}`);
+  return withoutRobots.replace(/<\/head>/i, '  <meta name="robots" content="noindex,nofollow">\n</head>');
+}
+
 function auditManifestToolRoutes() {
   const manifestPath = path.join(root, 'tools-manifest.json');
   if (!fs.existsSync(manifestPath)) throw new Error('tools-manifest.json is missing during runtime contract finalization');
@@ -128,6 +142,7 @@ let normalizedLegacyThemeWrites = 0;
 let injectedProfessionalThemes = 0;
 let injectedThemeBootstraps = 0;
 let injectedBackgroundRemoverV2 = 0;
+let injectedUnavailableRobots = 0;
 const htmlFiles = listHtmlFiles(distDir);
 
 for (const filePath of htmlFiles) {
@@ -164,6 +179,9 @@ for (const filePath of htmlFiles) {
   });
 
   const relative = path.relative(distDir, filePath).replace(/\\/g, '/');
+  const beforeRobotsContract = after;
+  after = injectUnavailableToolRobots(after, relative);
+  if (after !== beforeRobotsContract) injectedUnavailableRobots += 1;
   const hadProfessionalTheme = after.includes(`href="${PROFESSIONAL_THEME_HREF}"`) || after.includes(`href='${PROFESSIONAL_THEME_HREF}'`);
   const hadThemeBootstrap = after.includes(THEME_BOOTSTRAP_MARKER);
   after = injectProfessionalTheme(after, relative);
@@ -280,4 +298,4 @@ if (!fs.readFileSync(i18nPath, 'utf8').includes(pdfStableGuard)) {
   throw new Error('PDF compressor CLS guard was not applied to built i18n runtime');
 }
 
-console.log(`Runtime contracts finalized: removed ${strippedAdSenseScripts} pre-consent AdSense script(s); removed ${strippedStalePrefetches} stale prefetch(es); normalized ${normalizedSourceToolLinks} source-only tool link(s); normalized ${normalizedLegacyThemeReads} legacy theme read(s) and ${normalizedLegacyThemeWrites} write(s); injected professional theme into ${injectedProfessionalThemes} HTML file(s); injected theme bootstrap into ${injectedThemeBootstraps} HTML file(s); injected Background Remover v2 into ${injectedBackgroundRemoverV2} public route(s); verified ${verifiedManifestToolRoutes} manifest tool route(s); restored ${restoredPdfStyles} PDF compressor stylesheet link(s); removed ${strippedBlockedWebFonts} CSP-blocked web-font stylesheet(s); removed ${strippedPdfEnhancers} generic PDF enhancer script(s); normalized ${normalizedInternalAssetOrigins} internal asset origin(s); published ${publishedMetaContracts} tool metadata contract(s); suppressed redundant PDF quality-panel injection.`);
+console.log(`Runtime contracts finalized: removed ${strippedAdSenseScripts} pre-consent AdSense script(s); removed ${strippedStalePrefetches} stale prefetch(es); normalized ${normalizedSourceToolLinks} source-only tool link(s); normalized ${normalizedLegacyThemeReads} legacy theme read(s) and ${normalizedLegacyThemeWrites} write(s); injected professional theme into ${injectedProfessionalThemes} HTML file(s); injected theme bootstrap into ${injectedThemeBootstraps} HTML file(s); injected noindex into ${injectedUnavailableRobots} unavailable tool route(s); injected Background Remover v2 into ${injectedBackgroundRemoverV2} public route(s); verified ${verifiedManifestToolRoutes} manifest tool route(s); restored ${restoredPdfStyles} PDF compressor stylesheet link(s); removed ${strippedBlockedWebFonts} CSP-blocked web-font stylesheet(s); removed ${strippedPdfEnhancers} generic PDF enhancer script(s); normalized ${normalizedInternalAssetOrigins} internal asset origin(s); published ${publishedMetaContracts} tool metadata contract(s); suppressed redundant PDF quality-panel injection.`);
