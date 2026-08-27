@@ -22,13 +22,20 @@ async function expectNoHorizontalOverflow(page, width) {
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth + 1)).toBe(true);
 }
 
+async function expectIndexableRobots(page) {
+  const directives = await page.locator('meta[name="robots"]').evaluateAll((nodes) =>
+    nodes.map((node) => node.getAttribute('content') || '')
+  );
+  expect(directives.some((content) => /(?:^|[,\s])noindex(?:$|[,\s])/i.test(content))).toBe(false);
+}
+
 test('Percentage Calculator is a real accessible local utility', async ({ page }) => {
   const errors = [];
   page.on('pageerror', (error) => errors.push(error.message));
 
   const response = await page.goto(routes.percentage, { waitUntil: 'domcontentloaded' });
   expect(response?.ok()).toBeTruthy();
-  await expect(page.locator('meta[name="robots"]')).not.toHaveAttribute('content', /noindex/i);
+  await expectIndexableRobots(page);
   await expect(page.locator('script[src*="tool-page-enhancer"]')).toHaveCount(0);
 
   const percent = page.locator('#wi-percent');
@@ -65,7 +72,7 @@ test('Unit Converter converts real values with labelled controls and responsive 
 
   const response = await page.goto(routes.unit, { waitUntil: 'domcontentloaded' });
   expect(response?.ok()).toBeTruthy();
-  await expect(page.locator('meta[name="robots"]')).not.toHaveAttribute('content', /noindex/i);
+  await expectIndexableRobots(page);
   await expect(page.locator('script[src*="tool-page-enhancer"]')).toHaveCount(0);
 
   await expect(page.locator('#inputValue')).toHaveAccessibleName(/value|from/i);
