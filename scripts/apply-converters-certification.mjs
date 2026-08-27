@@ -108,8 +108,8 @@ edit('src/tools/converters/unit-converter/index.html', (html) => {
 
   next = replaceRequired(
     next,
-    '<div class="result-box">\n            <div class="result-label">Result</div>',
-    '<div class="result-box" role="status" aria-live="polite" aria-atomic="true">\n            <div class="result-label">Result</div>',
+    '<div class="result-box">\n            <div class="result-label">Conversion Result</div>',
+    '<div class="result-box" role="status" aria-live="polite" aria-atomic="true">\n            <div class="result-label">Conversion Result</div>',
     'unit live result region'
   );
 
