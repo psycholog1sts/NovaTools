@@ -19,7 +19,9 @@ for (const tool of manifest.tools) {
 }
 
 assert.match(runtimeFinalizer, /injectUnavailableToolRobots/);
+assert.match(runtimeFinalizer, /injectUnavailableToolSurface/);
 assert.match(runtimeFinalizer, /content="noindex,nofollow"/);
+assert.match(runtimeFinalizer, /This tool is currently unavailable/);
 assert.match(runtimeFinalizer, /certificationStatus\s*===\s*'CERTIFIED'/);
 
 console.log('certification fail-closed contract: pass');

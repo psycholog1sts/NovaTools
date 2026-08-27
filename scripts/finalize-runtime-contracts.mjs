@@ -101,6 +101,14 @@ function injectUnavailableToolRobots(html, relativePath) {
   return withoutRobots.replace(/<\/head>/i, '  <meta name="robots" content="noindex,nofollow">\n</head>');
 }
 
+function injectUnavailableToolSurface(html, relativePath) {
+  const tool = toolsByBuiltPath.get(relativePath);
+  if (!tool || tool.certificationStatus === 'CERTIFIED') return html;
+  const name = String(tool.nameEn || tool.id || 'Tool').replace(/[<>&"']/g, '');
+  const body = `<body><a class="skip-link" href="#main-content">Skip to main content</a><main id="main-content" style="max-width:760px;margin:0 auto;padding:clamp(3rem,10vw,7rem) 1rem"><article style="padding:clamp(1.5rem,5vw,3rem);border:1px solid #cbd5e1;border-radius:1.25rem;background:#fff;color:#172033"><p><strong>Verification in progress</strong></p><h1>${name}</h1><h2>This tool is currently unavailable</h2><p>This route has not completed NovaTools production certification. Its controls are disabled until implementation, privacy, accessibility, and output behavior are verified.</p><p>This page is excluded from normal discovery, search indexing, and advertising.</p><p><a href="/categories/">Browse verified tools</a> · <a href="/">Return home</a></p></article></main></body>`;
+  return html.replace(/<body\b[^>]*>[\s\S]*?<\/body>/i, body);
+}
+
 function auditManifestToolRoutes() {
   const manifestPath = path.join(root, 'tools-manifest.json');
   if (!fs.existsSync(manifestPath)) throw new Error('tools-manifest.json is missing during runtime contract finalization');
@@ -143,6 +151,7 @@ let injectedProfessionalThemes = 0;
 let injectedThemeBootstraps = 0;
 let injectedBackgroundRemoverV2 = 0;
 let injectedUnavailableRobots = 0;
+let injectedUnavailableSurfaces = 0;
 const htmlFiles = listHtmlFiles(distDir);
 
 for (const filePath of htmlFiles) {
@@ -182,13 +191,16 @@ for (const filePath of htmlFiles) {
   const beforeRobotsContract = after;
   after = injectUnavailableToolRobots(after, relative);
   if (after !== beforeRobotsContract) injectedUnavailableRobots += 1;
+  const beforeUnavailableSurface = after;
+  after = injectUnavailableToolSurface(after, relative);
+  if (after !== beforeUnavailableSurface) injectedUnavailableSurfaces += 1;
   const hadProfessionalTheme = after.includes(`href="${PROFESSIONAL_THEME_HREF}"`) || after.includes(`href='${PROFESSIONAL_THEME_HREF}'`);
   const hadThemeBootstrap = after.includes(THEME_BOOTSTRAP_MARKER);
   after = injectProfessionalTheme(after, relative);
   if (!hadProfessionalTheme) injectedProfessionalThemes += 1;
   if (!hadThemeBootstrap) injectedThemeBootstraps += 1;
 
-  if (/(^|\/)tools\/image\/background-remover\/index\.html$/.test(relative)) {
+  if (toolsByBuiltPath.get(relative)?.certificationStatus === 'CERTIFIED' && /(^|\/)tools\/image\/background-remover\/index\.html$/.test(relative)) {
     const hadV2 = after.includes(BACKGROUND_REMOVER_V2_HREF);
     after = injectBackgroundRemoverV2(after, relative);
     if (!hadV2) injectedBackgroundRemoverV2 += 1;
@@ -250,8 +262,13 @@ if (!fs.existsSync(themeAsset)) {
 
 const backgroundRemover = path.join(distDir, 'tools', 'image', 'background-remover', 'index.html');
 if (!fs.existsSync(backgroundRemover)) throw new Error('built Background Remover route is missing');
-if (!fs.readFileSync(backgroundRemover, 'utf8').includes(BACKGROUND_REMOVER_V2_HREF)) {
+const backgroundRemoverCertified = toolsByBuiltPath.get('tools/image/background-remover/index.html')?.certificationStatus === 'CERTIFIED';
+const backgroundRemoverHtml = fs.readFileSync(backgroundRemover, 'utf8');
+if (backgroundRemoverCertified && !backgroundRemoverHtml.includes(BACKGROUND_REMOVER_V2_HREF)) {
   throw new Error('Background Remover v2 runtime was not injected into the public tool page');
+}
+if (!backgroundRemoverCertified && backgroundRemoverHtml.includes(BACKGROUND_REMOVER_V2_HREF)) {
+  throw new Error('Background Remover runtime leaked onto an unavailable tool surface');
 }
 if (!fs.existsSync(path.join(distDir, 'js', 'background-remover-v2.js'))) {
   throw new Error('Background Remover v2 runtime asset is missing from /js/background-remover-v2.js');
@@ -298,4 +315,4 @@ if (!fs.readFileSync(i18nPath, 'utf8').includes(pdfStableGuard)) {
   throw new Error('PDF compressor CLS guard was not applied to built i18n runtime');
 }
 
-console.log(`Runtime contracts finalized: removed ${strippedAdSenseScripts} pre-consent AdSense script(s); removed ${strippedStalePrefetches} stale prefetch(es); normalized ${normalizedSourceToolLinks} source-only tool link(s); normalized ${normalizedLegacyThemeReads} legacy theme read(s) and ${normalizedLegacyThemeWrites} write(s); injected professional theme into ${injectedProfessionalThemes} HTML file(s); injected theme bootstrap into ${injectedThemeBootstraps} HTML file(s); injected noindex into ${injectedUnavailableRobots} unavailable tool route(s); injected Background Remover v2 into ${injectedBackgroundRemoverV2} public route(s); verified ${verifiedManifestToolRoutes} manifest tool route(s); restored ${restoredPdfStyles} PDF compressor stylesheet link(s); removed ${strippedBlockedWebFonts} CSP-blocked web-font stylesheet(s); removed ${strippedPdfEnhancers} generic PDF enhancer script(s); normalized ${normalizedInternalAssetOrigins} internal asset origin(s); published ${publishedMetaContracts} tool metadata contract(s); suppressed redundant PDF quality-panel injection.`);
+console.log(`Runtime contracts finalized: removed ${strippedAdSenseScripts} pre-consent AdSense script(s); removed ${strippedStalePrefetches} stale prefetch(es); normalized ${normalizedSourceToolLinks} source-only tool link(s); normalized ${normalizedLegacyThemeReads} legacy theme read(s) and ${normalizedLegacyThemeWrites} write(s); injected professional theme into ${injectedProfessionalThemes} HTML file(s); injected theme bootstrap into ${injectedThemeBootstraps} HTML file(s); injected noindex into ${injectedUnavailableRobots} unavailable tool route(s); replaced ${injectedUnavailableSurfaces} unavailable tool surface(s); injected Background Remover v2 into ${injectedBackgroundRemoverV2} public route(s); verified ${verifiedManifestToolRoutes} manifest tool route(s); restored ${restoredPdfStyles} PDF compressor stylesheet link(s); removed ${strippedBlockedWebFonts} CSP-blocked web-font stylesheet(s); removed ${strippedPdfEnhancers} generic PDF enhancer script(s); normalized ${normalizedInternalAssetOrigins} internal asset origin(s); published ${publishedMetaContracts} tool metadata contract(s); suppressed redundant PDF quality-panel injection.`);
