@@ -137,3 +137,8 @@ test('homepage exposes a keyboard-focusable primary control', async ({ page }) =
   }
   expect(['A', 'BUTTON', 'INPUT', 'SELECT', 'TEXTAREA']).toContain(focused);
 });
+
+test('an empty category fails closed for search indexing', async ({ page }) => {
+  await page.goto('/categories/developer-tools.html');
+  await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', /noindex/i);
+});

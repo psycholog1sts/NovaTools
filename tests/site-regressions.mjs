@@ -9,6 +9,9 @@ const toolManifest = JSON.parse(read('tools-manifest.json'));
 const certifiedRoutes = new Set(toolManifest.tools
   .filter((tool) => tool.public === true && tool.indexable === true && tool.certificationStatus === 'CERTIFIED')
   .map((tool) => `/tools${tool.path}/`));
+const certifiedCategoryCounts = toolManifest.tools
+  .filter((tool) => tool.public === true && tool.indexable === true && tool.certificationStatus === 'CERTIFIED')
+  .reduce((counts, tool) => counts.set(tool.category, (counts.get(tool.category) || 0) + 1), new Map());
 
 const router = read('src/core/router.mjs');
 assert.match(
@@ -119,6 +122,34 @@ for (const workflowRoute of [
     inSitemap,
     certifiedRoutes.has(workflowRoute),
     `Workflow sitemap state must match canonical certification: ${workflowRoute}`
+  );
+}
+
+const categorySitemapContract = new Map([
+  ['/categories/pdf-tools.html', 'pdf'],
+  ['/categories/image-tools.html', 'image'],
+  ['/categories/finance-tools.html', 'finance'],
+  ['/categories/developer-tools.html', 'dev'],
+  ['/categories/text-writing.html', 'text'],
+  ['/categories/converters.html', 'converters'],
+  ['/categories/calculator-tools.html', 'calculators'],
+  ['/categories/security-tools.html', 'security'],
+  ['/categories/social-media-tools.html', 'social'],
+  ['/categories/productivity-tools.html', 'productivity'],
+  ['/categories/data-tools.html', 'data'],
+  ['/categories/design-tools.html', 'design'],
+  ['/tools/pdf/', 'pdf'],
+  ['/tools/image/', 'image'],
+  ['/tools/developer/', 'dev'],
+  ['/tools/finance/', 'finance']
+]);
+const toolsSitemap = read('public/sitemap-tools.xml');
+for (const [route, category] of categorySitemapContract) {
+  const inSitemap = toolsSitemap.includes(`https://mc-novatools.com${route}`);
+  assert.equal(
+    inSitemap,
+    (certifiedCategoryCounts.get(category) || 0) > 0,
+    `Category sitemap state must match certified public inventory: ${route}`
   );
 }
 

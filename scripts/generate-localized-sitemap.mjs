@@ -38,22 +38,22 @@ const blogCategoryPages = [
 
 const categoryPages = [
   ['/categories/index.html', '0.8', 'weekly'],
-  ['/categories/pdf-tools.html', '0.8', 'weekly'],
-  ['/categories/image-tools.html', '0.8', 'weekly'],
-  ['/categories/finance-tools.html', '0.8', 'weekly'],
-  ['/categories/developer-tools.html', '0.8', 'weekly'],
-  ['/categories/text-writing.html', '0.8', 'weekly'],
-  ['/categories/converters.html', '0.8', 'weekly'],
-  ['/categories/calculator-tools.html', '0.8', 'weekly'],
-  ['/categories/security-tools.html', '0.8', 'weekly'],
-  ['/categories/social-media-tools.html', '0.8', 'weekly'],
-  ['/categories/productivity-tools.html', '0.8', 'weekly'],
-  ['/categories/data-tools.html', '0.8', 'weekly'],
-  ['/categories/design-tools.html', '0.8', 'weekly'],
-  ['/tools/pdf/', '0.8', 'weekly'],
-  ['/tools/image/', '0.8', 'weekly'],
-  ['/tools/developer/', '0.8', 'weekly'],
-  ['/tools/finance/', '0.8', 'weekly']
+  ['/categories/pdf-tools.html', '0.8', 'weekly', 'pdf'],
+  ['/categories/image-tools.html', '0.8', 'weekly', 'image'],
+  ['/categories/finance-tools.html', '0.8', 'weekly', 'finance'],
+  ['/categories/developer-tools.html', '0.8', 'weekly', 'dev'],
+  ['/categories/text-writing.html', '0.8', 'weekly', 'text'],
+  ['/categories/converters.html', '0.8', 'weekly', 'converters'],
+  ['/categories/calculator-tools.html', '0.8', 'weekly', 'calculators'],
+  ['/categories/security-tools.html', '0.8', 'weekly', 'security'],
+  ['/categories/social-media-tools.html', '0.8', 'weekly', 'social'],
+  ['/categories/productivity-tools.html', '0.8', 'weekly', 'productivity'],
+  ['/categories/data-tools.html', '0.8', 'weekly', 'data'],
+  ['/categories/design-tools.html', '0.8', 'weekly', 'design'],
+  ['/tools/pdf/', '0.8', 'weekly', 'pdf'],
+  ['/tools/image/', '0.8', 'weekly', 'image'],
+  ['/tools/developer/', '0.8', 'weekly', 'dev'],
+  ['/tools/finance/', '0.8', 'weekly', 'finance']
 ];
 
 const nonIndexableToolSources = [
@@ -70,6 +70,9 @@ function readJson(relativePath) {
 const toolTruthBySource = new Map((readJson('tools-manifest.json').tools || []).map((tool) => [
   String(tool.entry || '').replace(/^\//, '').replace(/\/$/, '') + '/index.html', tool
 ]));
+const certifiedCategoryCounts = [...toolTruthBySource.values()]
+  .filter((tool) => tool.public === true && tool.indexable === true && tool.certificationStatus === 'CERTIFIED')
+  .reduce((counts, tool) => counts.set(tool.category, (counts.get(tool.category) || 0) + 1), new Map());
 
 function normalizeSourcePath(file) {
   return String(file).replace(/\\/g, '/');
@@ -146,7 +149,9 @@ function writeSitemapIndex(sitemapNames) {
 
 const sections = [
   ['Static pages', staticPages.map(([route, priority, changefreq]) => urlEntry(route, priority, changefreq, 'Static pages'))],
-  ['Category pages', categoryPages.map(([route, priority, changefreq]) => urlEntry(route, priority, changefreq, 'Category pages'))],
+  ['Category pages', categoryPages
+    .filter(([, , , category]) => !category || (certifiedCategoryCounts.get(category) || 0) > 0)
+    .map(([route, priority, changefreq]) => urlEntry(route, priority, changefreq, 'Category pages'))],
   ['Individual tool pages', globSync('src/tools/**/index.html', {
     cwd: rootDir,
     ignore: ['**/demo-*/**', '**/experimental/**', '**/test/**', ...nonIndexableToolSources]

@@ -24,7 +24,7 @@ const LEGACY_THEME_SET_RE = /localStorage\.setItem\((["'])theme\1\s*,/g;
 const PROFESSIONAL_THEME_HREF = '/styles/theme-professional.css';
 const PROFESSIONAL_THEME_LINK = `<link rel="stylesheet" href="${PROFESSIONAL_THEME_HREF}">`;
 const THEME_BOOTSTRAP_MARKER = 'data-novatools-theme-bootstrap';
-const THEME_BOOTSTRAP_SCRIPT = `<script ${THEME_BOOTSTRAP_MARKER}>(function(){try{var saved=localStorage.getItem('novatools-theme');var theme=saved==='light'||saved==='dark'?saved:(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',theme);document.documentElement.style.colorScheme=theme;}catch(_error){document.documentElement.setAttribute('data-theme','light');document.documentElement.style.colorScheme='light';}})();</script>`;
+const THEME_BOOTSTRAP_SCRIPT = `<script ${THEME_BOOTSTRAP_MARKER}>(function(){try{var saved=localStorage.getItem('novatools-theme');var theme=saved==='light'||saved==='dark'?saved:(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');localStorage.setItem('novatools-theme',theme);document.documentElement.setAttribute('data-theme',theme);document.documentElement.style.colorScheme=theme;}catch(_error){document.documentElement.setAttribute('data-theme','light');document.documentElement.style.colorScheme='light';}})();</script>`;
 const BACKGROUND_REMOVER_V2_HREF = '/js/background-remover-v2.js';
 const BACKGROUND_REMOVER_V2_SCRIPT = `<script src="${BACKGROUND_REMOVER_V2_HREF}" defer></script>`;
 const manifest = JSON.parse(fs.readFileSync(path.join(root, 'tools-manifest.json'), 'utf8'));
@@ -32,6 +32,27 @@ const toolsByBuiltPath = new Map((manifest.tools || []).map((tool) => {
   const entry = String(tool.entry || '').replace(/^\/src\//, '/').replace(/^\//, '').replace(/\/$/, '/index.html');
   return [entry, tool];
 }));
+const certifiedCategoryCounts = (manifest.tools || [])
+  .filter((tool) => tool.public === true && tool.indexable === true && tool.certificationStatus === 'CERTIFIED')
+  .reduce((counts, tool) => counts.set(tool.category, (counts.get(tool.category) || 0) + 1), new Map());
+const categoryByBuiltPath = new Map([
+  ['categories/pdf-tools.html', 'pdf'],
+  ['categories/image-tools.html', 'image'],
+  ['categories/finance-tools.html', 'finance'],
+  ['categories/developer-tools.html', 'dev'],
+  ['categories/text-writing.html', 'text'],
+  ['categories/converters.html', 'converters'],
+  ['categories/calculator-tools.html', 'calculators'],
+  ['categories/security-tools.html', 'security'],
+  ['categories/social-media-tools.html', 'social'],
+  ['categories/productivity-tools.html', 'productivity'],
+  ['categories/data-tools.html', 'data'],
+  ['categories/design-tools.html', 'design'],
+  ['tools/pdf/index.html', 'pdf'],
+  ['tools/image/index.html', 'image'],
+  ['tools/developer/index.html', 'dev'],
+  ['tools/finance/index.html', 'finance']
+]);
 
 function listHtmlFiles(dir) {
   const files = [];
@@ -101,12 +122,21 @@ function injectUnavailableToolRobots(html, relativePath) {
   return withoutRobots.replace(/<\/head>/i, '  <meta name="robots" content="noindex,nofollow">\n</head>');
 }
 
+function injectEmptyCategoryRobots(html, relativePath) {
+  const category = categoryByBuiltPath.get(relativePath);
+  if (!category || (certifiedCategoryCounts.get(category) || 0) > 0) return html;
+  const withoutRobots = html.replace(/\s*<meta\b(?=[^>]*\bname=["']robots["'])[^>]*>\s*/gi, '\n');
+  if (!/<\/head>/i.test(withoutRobots)) throw new Error(`cannot apply empty-category robots contract: ${relativePath}`);
+  return withoutRobots.replace(/<\/head>/i, '  <meta name="robots" content="noindex,follow">\n</head>');
+}
+
 function injectUnavailableToolSurface(html, relativePath) {
   const tool = toolsByBuiltPath.get(relativePath);
   if (!tool || tool.certificationStatus === 'CERTIFIED') return html;
   const name = String(tool.nameEn || tool.id || 'Tool').replace(/[<>&"']/g, '');
   const body = `<body><a class="skip-link" href="#main-content">Skip to main content</a><main id="main-content" style="max-width:760px;margin:0 auto;padding:clamp(3rem,10vw,7rem) 1rem"><article style="padding:clamp(1.5rem,5vw,3rem);border:1px solid #cbd5e1;border-radius:1.25rem;background:#fff;color:#172033"><p><strong>Verification in progress</strong></p><h1>${name}</h1><h2>This tool is currently unavailable</h2><p>This route has not completed NovaTools production certification. Its controls are disabled until implementation, privacy, accessibility, and output behavior are verified.</p><p>This page is excluded from normal discovery, search indexing, and advertising.</p><p><a href="/categories/">Browse verified tools</a> · <a href="/">Return home</a></p></article></main></body>`;
-  return html.replace(/<body\b[^>]*>[\s\S]*?<\/body>/i, body);
+  const withoutLegacyRuntime = html.replace(/\s*<script\b[^>]*>[\s\S]*?<\/script>\s*/gi, '\n');
+  return withoutLegacyRuntime.replace(/<body\b[^>]*>[\s\S]*?<\/body>/i, body);
 }
 
 function auditManifestToolRoutes() {
@@ -152,6 +182,7 @@ let injectedThemeBootstraps = 0;
 let injectedBackgroundRemoverV2 = 0;
 let injectedUnavailableRobots = 0;
 let injectedUnavailableSurfaces = 0;
+let injectedEmptyCategoryRobots = 0;
 const htmlFiles = listHtmlFiles(distDir);
 
 for (const filePath of htmlFiles) {
@@ -191,6 +222,9 @@ for (const filePath of htmlFiles) {
   const beforeRobotsContract = after;
   after = injectUnavailableToolRobots(after, relative);
   if (after !== beforeRobotsContract) injectedUnavailableRobots += 1;
+  const beforeCategoryRobotsContract = after;
+  after = injectEmptyCategoryRobots(after, relative);
+  if (after !== beforeCategoryRobotsContract) injectedEmptyCategoryRobots += 1;
   const beforeUnavailableSurface = after;
   after = injectUnavailableToolSurface(after, relative);
   if (after !== beforeUnavailableSurface) injectedUnavailableSurfaces += 1;
@@ -315,4 +349,4 @@ if (!fs.readFileSync(i18nPath, 'utf8').includes(pdfStableGuard)) {
   throw new Error('PDF compressor CLS guard was not applied to built i18n runtime');
 }
 
-console.log(`Runtime contracts finalized: removed ${strippedAdSenseScripts} pre-consent AdSense script(s); removed ${strippedStalePrefetches} stale prefetch(es); normalized ${normalizedSourceToolLinks} source-only tool link(s); normalized ${normalizedLegacyThemeReads} legacy theme read(s) and ${normalizedLegacyThemeWrites} write(s); injected professional theme into ${injectedProfessionalThemes} HTML file(s); injected theme bootstrap into ${injectedThemeBootstraps} HTML file(s); injected noindex into ${injectedUnavailableRobots} unavailable tool route(s); replaced ${injectedUnavailableSurfaces} unavailable tool surface(s); injected Background Remover v2 into ${injectedBackgroundRemoverV2} public route(s); verified ${verifiedManifestToolRoutes} manifest tool route(s); restored ${restoredPdfStyles} PDF compressor stylesheet link(s); removed ${strippedBlockedWebFonts} CSP-blocked web-font stylesheet(s); removed ${strippedPdfEnhancers} generic PDF enhancer script(s); normalized ${normalizedInternalAssetOrigins} internal asset origin(s); published ${publishedMetaContracts} tool metadata contract(s); suppressed redundant PDF quality-panel injection.`);
+console.log(`Runtime contracts finalized: removed ${strippedAdSenseScripts} pre-consent AdSense script(s); removed ${strippedStalePrefetches} stale prefetch(es); normalized ${normalizedSourceToolLinks} source-only tool link(s); normalized ${normalizedLegacyThemeReads} legacy theme read(s) and ${normalizedLegacyThemeWrites} write(s); injected professional theme into ${injectedProfessionalThemes} HTML file(s); injected theme bootstrap into ${injectedThemeBootstraps} HTML file(s); injected noindex into ${injectedUnavailableRobots} unavailable tool route(s) and ${injectedEmptyCategoryRobots} empty category route(s); replaced ${injectedUnavailableSurfaces} unavailable tool surface(s); injected Background Remover v2 into ${injectedBackgroundRemoverV2} public route(s); verified ${verifiedManifestToolRoutes} manifest tool route(s); restored ${restoredPdfStyles} PDF compressor stylesheet link(s); removed ${strippedBlockedWebFonts} CSP-blocked web-font stylesheet(s); removed ${strippedPdfEnhancers} generic PDF enhancer script(s); normalized ${normalizedInternalAssetOrigins} internal asset origin(s); published ${publishedMetaContracts} tool metadata contract(s); suppressed redundant PDF quality-panel injection.`);
