@@ -99,6 +99,10 @@ for (const [name, route] of routes) {
       critical,
       critical.map((violation) => `${violation.id}: ${violation.help} (${violation.nodes.length} node(s))`).join('\n')
     ).toEqual([]);
+    expect(
+      serious,
+      serious.map((violation) => `${violation.id}: ${violation.help} (${violation.nodes.length} node(s))`).join('\n')
+    ).toEqual([]);
   });
 }
 
