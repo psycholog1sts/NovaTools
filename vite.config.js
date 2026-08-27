@@ -38,6 +38,11 @@ function toolSlugFromHtmlPath(pathname = '') {
   return match ? `${match[1]}/${match[2]}` : '';
 }
 
+const specializedToolUxSlugs = new Set([
+  'converters/percentage-calculator',
+  'converters/unit-converter'
+]);
+
 const toolUxEnhancementAssets = {
   name: 'novatools-tool-ux-enhancement-assets',
   enforce: 'pre',
@@ -49,21 +54,23 @@ const toolUxEnhancementAssets = {
     const stylesheetHref = isDev ? '/src/styles/tool-workflow.css' : '/styles/tool-workflow.css';
     const scriptSrc = isDev ? '/src/js/tool-page-enhancer.js' : '/js/tool-page-enhancer.js';
 
-    return {
-      html,
-      tags: [
-        {
-          tag: 'link',
-          attrs: { rel: 'stylesheet', href: stylesheetHref },
-          injectTo: 'head'
-        },
-        {
-          tag: 'script',
-          attrs: { type: 'module', src: scriptSrc, 'data-tool-slug': slug },
-          injectTo: 'body'
-        }
-      ]
-    };
+    const tags = [
+      {
+        tag: 'link',
+        attrs: { rel: 'stylesheet', href: stylesheetHref },
+        injectTo: 'head'
+      }
+    ];
+
+    if (!specializedToolUxSlugs.has(slug)) {
+      tags.push({
+        tag: 'script',
+        attrs: { type: 'module', src: scriptSrc, 'data-tool-slug': slug },
+        injectTo: 'body'
+      });
+    }
+
+    return { html, tags };
   }
 };
 

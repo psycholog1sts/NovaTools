@@ -37,16 +37,16 @@
   <meta name="theme-color" content="#0A0A0C">
 
   <meta property="og:title" content="Free Unit Converter Online | NovaTools MC">
-  <meta property="og:description" content="Convert between length, weight, temperature, volume, and area units instantly. No signup required.">
+  <meta property="og:description" content="Convert length, mass, temperature, volume, area, speed and data units with local formulas. No signup required.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.mc-novatools.com/tools/converters/unit-converter/">
+  <meta property="og:url" content="https://mc-novatools.com/tools/converters/unit-converter/">
   <meta property="og:image" content="https://www.mc-novatools.com/og-image.png">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Free Unit Converter | NovaTools MC">
-  <meta name="twitter:description" content="Convert between different units of measurement instantly.">
+  <meta name="twitter:description" content="Convert supported measurement units locally in your browser.">
 
-  <link rel="canonical" href="https://www.mc-novatools.com/tools/converters/unit-converter/">
+  <link rel="canonical" href="https://mc-novatools.com/tools/converters/unit-converter/">
 
   <script type="application/ld+json">
   {
@@ -54,8 +54,8 @@
     "@graph": [{
       "@type": "WebApplication",
       "name": "Unit Converter",
-      "description": "Free online unit converter. Convert between length, weight, temperature, volume, and area units instantly.",
-      "url": "https://www.mc-novatools.com/tools/converters/unit-converter/",
+      "description": "Free online unit converter. Convert length, mass, temperature, volume, area, speed and data units with local formulas.",
+      "url": "https://mc-novatools.com/tools/converters/unit-converter/",
       "applicationCategory": "UtilityApplication",
       "operatingSystem": "Any",
       "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
@@ -182,7 +182,7 @@
           <div class="tool-hero-icon">&#128207;</div>
           <h1 data-i18n="tools.converters.unit-converter.text.011">Unit Converter</h1>
           <p class="tool-updated-note">Last updated: <time class="page-last-updated" datetime="2026-06-03">2026-06-03</time></p>
-          <p data-i18n="tools.converters.unit-converter.text.012">Convert between different units of measurement instantly. Length, weight, temperature, volume, and area conversions with real-time results.</p>
+          <p data-i18n="tools.converters.unit-converter.text.012">Convert supported measurement units locally in your browser. Length, weight, temperature, volume, and area conversions with real-time results.</p>
         </div>
 
         <div class="card">
@@ -198,8 +198,8 @@
           <div class="converter-grid">
             <div class="input-group">
               <label class="input-label" data-i18n="tools.converters.unit-converter.text.018">From</label>
-              <input type="number" class="input-field" id="inputValue" placeholder="Enter value" data-i18n-placeholder="tools.converters.unit-converter.placeholder.001" step="any">
-              <select class="unit-select" id="fromUnit" style="margin-top: 0.5rem;">
+              <input type="number" class="input-field" id="inputValue" placeholder="Enter value" data-i18n-placeholder="tools.converters.unit-converter.placeholder.001" step="any" aria-label="Value to convert" inputmode="decimal">
+              <select class="unit-select" id="fromUnit" style="margin-top: 0.5rem;" aria-label="From unit">
                 <option value="m">Meters (m)</option>
                 <option value="km">Kilometers (km)</option>
                 <option value="cm">Centimeters (cm)</option>
@@ -215,8 +215,8 @@
             </button>
             <div class="input-group">
               <label class="input-label" data-i18n="tools.converters.unit-converter.text.019">To</label>
-              <input type="number" class="input-field" id="outputValue" placeholder="Result" data-i18n-placeholder="tools.converters.unit-converter.placeholder.002" readonly style="background: rgba(0,217,255,0.05);">
-              <select class="unit-select" id="toUnit" style="margin-top: 0.5rem;">
+              <input type="number" class="input-field" id="outputValue" placeholder="Result" data-i18n-placeholder="tools.converters.unit-converter.placeholder.002" readonly style="background: rgba(0,217,255,0.05);" aria-label="Converted value">
+              <select class="unit-select" id="toUnit" style="margin-top: 0.5rem;" aria-label="To unit">
                 <option value="m">Meters (m)</option>
                 <option value="km" selected>Kilometers (km)</option>
                 <option value="cm">Centimeters (cm)</option>
@@ -229,7 +229,7 @@
             </div>
           </div>
 
-          <div class="result-box">
+          <div class="result-box" role="status" aria-live="polite" aria-atomic="true">
             <div class="result-label">Conversion Result</div>
             <div class="result-value" id="resultText">0 km</div>
             <div class="result-formula" id="formulaText">Enter a value to see the conversion</div>
@@ -286,63 +286,9 @@
         <h3>Which unit system should I use if a recipe or document doesn't specify?</h3>
         <p>Check the source's country of origin as a hint — US sources typically default to imperial/US customary units, while most of the rest of the world defaults to metric. When genuinely ambiguous, look for a secondary clue like an oven temperature in the document, which often reveals the intended system.</p>
         <h2>Related Tools</h2>
-        <ul><li><a href="https://mc-novatools.com/tools/converters/age-calculator/">Age Calculator — Calculate exact age from birthdate.</a></li><li><a href="https://mc-novatools.com/tools/converters/bmi-calculator/">BMI Calculator — Calculate Body Mass Index and health category.</a></li></ul>
+        <ul><li><a href="https://mc-novatools.com/tools/converters/percentage-calculator/">Percentage Calculator — Calculate percentage-of, ratio, increase and decrease locally.</a></li></ul>
       </article>
-<section class="seo-section" aria-label="About this tool">
-        <h2 data-i18n="tools.converters.unit-converter.text.021">About Unit Converter</h2>
-        <p data-i18n="tools.converters.unit-converter.text.022">Our free Unit Converter tool helps you convert between different measurement units instantly. Whether you need to convert length, weight, temperature, volume, or area, this tool provides accurate conversions with real-time results.</p>
-
-        <h3 data-i18n="tools.converters.unit-converter.text.023">How to Use</h3>
-        <ol>
-          <li data-i18n="tools.converters.unit-converter.text.024">Select the conversion category (Length, Weight, Temperature, Volume, or Area).</li>
-          <li data-i18n="tools.converters.unit-converter.text.025">Enter the value you want to convert in the "From" field.</li>
-          <li data-i18n="tools.converters.unit-converter.text.026">Select the source unit from the dropdown menu.</li>
-          <li data-i18n="tools.converters.unit-converter.text.027">Select the target unit you want to convert to.</li>
-          <li data-i18n="tools.converters.unit-converter.text.028">See the result instantly displayed below.</li>
-          <li data-i18n="tools.converters.unit-converter.text.029">Use the Swap button to reverse the conversion direction.</li>
-          <li data-i18n="tools.converters.unit-converter.text.030">Click Copy Result to copy the conversion to your clipboard.</li>
-        </ol>
-
-        <h3 data-i18n="tools.converters.unit-converter.text.031">Supported Unit Categories</h3>
-        <p><strong>Length:</strong> Meters, Kilometers, Centimeters, Millimeters, Miles, Yards, Feet, Inches<br>
-        <strong>Weight:</strong> Kilograms, Grams, Milligrams, Pounds, Ounces, Stones<br>
-        <strong>Temperature:</strong> Celsius, Fahrenheit, Kelvin<br>
-        <strong>Volume:</strong> Liters, Milliliters, Gallons, Quarts, Pints, Cups, Fluid Ounces<br>
-        <strong>Area:</strong> Square Meters, Square Kilometers, Square Feet, Acres, Hectares</p>
-
-        <h3 data-i18n="tools.converters.unit-converter.text.032">Frequently Asked Questions</h3>
-
-        <details class="faq-item">
-          <summary>How accurate are the conversions?</summary>
-          <p data-i18n="tools.converters.unit-converter.text.033">Our conversions use standard international conversion factors and are accurate to multiple decimal places. For most practical purposes, the results are sufficiently precise.</p>
-        </details>
-
-        <details class="faq-item">
-          <summary>Can I convert between different categories?</summary>
-          <p data-i18n="tools.converters.unit-converter.text.034">No, direct conversion between different categories (e.g., length to weight) is not possible as they measure different physical properties.</p>
-        </details>
-
-        <details class="faq-item">
-          <summary>Is my data stored or sent to servers?</summary>
-          <p data-i18n="tools.converters.unit-converter.text.035">No. All calculations happen locally in your browser. No data is transmitted to our servers or stored anywhere.</p>
-        </details>
-
-        <details class="faq-item">
-          <summary>What is the difference between US and UK gallons?</summary>
-          <p data-i18n="tools.converters.unit-converter.text.036">This converter uses US customary units. A US gallon is approximately 3.785 liters, while an imperial (UK) gallon is approximately 4.546 liters.</p>
-        </details>
-
-        <details class="faq-item">
-          <summary>How do temperature conversions work?</summary>
-          <p data-i18n="tools.converters.unit-converter.text.037">Temperature conversions use specific formulas: Celsius to Fahrenheit: (°C × 9/5) + 32 = °F, Fahrenheit to Celsius: (°F − 32) × 5/9 = °C, and Kelvin is Celsius + 273.15.</p>
-        </details>
-      </section>
-        <section class="trust-help novatools-tool-reading-path" aria-labelledby="toolReadingPathTitle">
-          <h2 id="toolReadingPathTitle">Recommended next reading</h2>
-          <p>Use these practical guides to understand when this tool is the right choice, what to check before exporting, and which workflow usually comes next.</p>
-          <div class="related-tools-grid"><a class="related-tool-link" href="https://mc-novatools.com/blog/articles/unit-converter-for-project-planning.html">Converter decision guide</a><a class="related-tool-link" href="https://mc-novatools.com/blog/articles/base64-vs-url-encoding.html">Base64 vs URL encoding</a></div>
-        </section>
-    </main>
+</main>
 
     <footer class="tool-footer">
       <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="mailto:psk.dan.metehancetin@mc-novatools.com" data-i18n="tools.converters.unit-converter.text.038">psk.dan.metehancetin@mc-novatools.com</a></p>
@@ -460,7 +406,7 @@
       fromUnit.innerHTML = units.map(([key, unit]) => `<option value="${key}">${unit.name} (${key})</option>`).join('');
       toUnit.innerHTML = units.map(([key, unit], i) => `<option value="${key}" ${i === 1 ? 'selected' : ''}>${unit.name} (${key})</option>`).join('');
       
-      commonUnits.innerHTML = data.quick.map(q => `<div class="common-unit-item" data-val="${q.val}">${q.text}</div>`).join('');
+      commonUnits.innerHTML = data.quick.map(q => `<button type="button" class="common-unit-item" data-val="${q.val}">${q.text}</button>`).join('');
       
       document.querySelectorAll('.common-unit-item').forEach(item => {
         item.addEventListener('click', () => {
