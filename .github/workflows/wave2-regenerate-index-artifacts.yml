@@ -22,16 +22,64 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - run: node scripts/generate-localized-sitemap.mjs
-      - name: Commit generated discovery artifacts
+      - name: Align converter locale truth
         shell: bash
         run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+
+          const updates = {
+            en: {
+              number: {
+                '012': "Convert signed whole integers between Binary, Decimal, Hexadecimal, and Octal without JavaScript Number precision loss. Fractions and two's-complement bit-width interpretation are intentionally not supported.",
+                '013': 'Integer value',
+                '035': "This converter uses BigInt for all four supported bases, so integer conversion is not limited by JavaScript's Number safe-integer boundary. Extremely large inputs remain subject to browser memory and performance limits.",
+                '036': 'For valid signed whole integers in bases 2, 8, 10, and 16, conversion uses BigInt integer arithmetic and does not round through JavaScript Number.',
+                '037': 'No. Fractional input is rejected rather than truncated. The supported contract is signed whole integers only.'
+              },
+              timezone: {
+                '012': "Convert a local date and time between the listed IANA time zones using your browser's date-specific timezone data. Nonexistent and ambiguous daylight-saving wall times are rejected rather than guessed.",
+                '028': "For listed IANA zones, date-specific offsets come from the browser's Intl timezone data. Ambiguous fall-back times and nonexistent spring-gap times are reported instead of silently choosing an offset.",
+                '030': "You can enter past or future dates supported by the browser. Results use that browser's installed IANA timezone data; they do not guarantee future legislative changes or timezone history missing from the runtime.",
+                '032': "Some time zones use offsets that include minutes (e.g., India is UTC+5:30). The listed zones use their date-specific offsets from the browser timezone database, including supported half-hour offsets."
+              }
+            },
+            tr: {
+              number: {
+                '012': "İkili, Ondalık, Onaltılı ve Sekizli tabanlar arasında işaretli tam sayıları JavaScript Number hassasiyet kaybı olmadan dönüştürün. Kesirler ve sabit bit genişlikli two's-complement yorumları desteklenmez.",
+                '013': 'Tam sayı değeri',
+                '035': "Bu dönüştürücü dört desteklenen tabanın tamamında BigInt kullanır; bu nedenle tam sayı dönüşümü JavaScript'in Number güvenli tam sayı sınırıyla kısıtlı değildir. Çok büyük girdiler tarayıcı belleği ve performans sınırlarına tabidir.",
+                '036': "2, 8, 10 ve 16 tabanlarındaki geçerli işaretli tam sayılar için dönüşüm BigInt tam sayı aritmetiği kullanır ve JavaScript Number üzerinden yuvarlama yapmaz.",
+                '037': 'Hayır. Kesirli girdi kesilmek yerine reddedilir. Desteklenen sözleşme yalnızca işaretli tam sayılardır.'
+              },
+              timezone: {
+                '012': 'Tarayıcınızın tarihe özgü saat dilimi verilerini kullanarak yerel bir tarih ve saati listelenen IANA saat dilimleri arasında dönüştürün. Var olmayan ve belirsiz yaz saati yerel zamanları tahmin edilmek yerine reddedilir.',
+                '028': "Listelenen IANA bölgelerinde tarihe özgü farklar tarayıcının Intl saat dilimi verilerinden alınır. Geri alma sırasında iki kez oluşan ve ileri alma sırasında var olmayan yerel saatler sessizce bir fark seçmek yerine bildirilir.",
+                '030': 'Tarayıcının desteklediği geçmiş veya gelecek tarihleri girebilirsiniz. Sonuçlar tarayıcıda yüklü IANA saat dilimi verilerini kullanır; gelecekteki mevzuat değişikliklerini veya çalışma zamanında bulunmayan saat dilimi geçmişini garanti etmez.',
+                '032': 'Bazı saat dilimleri dakika içeren farklar kullanır (ör. Hindistan UTC+5:30). Listelenen bölgeler, desteklenen yarım saatlik farklar dahil olmak üzere tarayıcı saat dilimi verilerindeki tarihe özgü farklarını kullanır.'
+              }
+            }
+          };
+
+          for (const locale of ['en', 'tr']) {
+            const file = `public/locales/${locale}/translation.json`;
+            const data = JSON.parse(fs.readFileSync(file, 'utf8'));
+            const converters = data.tools?.converters;
+            if (!converters?.['number-base-converter']?.text || !converters?.['timezone-converter']?.text) {
+              throw new Error(`Missing converter locale contract in ${file}`);
+            }
+            Object.assign(converters['number-base-converter'].text, updates[locale].number);
+            Object.assign(converters['timezone-converter'].text, updates[locale].timezone);
+            fs.writeFileSync(file, `${JSON.stringify(data, null, 2)}\n`, 'utf8');
+          }
+          NODE
+      - run: node scripts/generate-localized-sitemap.mjs
+      - name: Restore one-shot workflow and commit source truth artifacts
+        shell: bash
+        run: |
+          git show HEAD^:.github/workflows/wave2-regenerate-index-artifacts.yml > .github/workflows/wave2-regenerate-index-artifacts.yml
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add public/sitemap.xml sitemap.xml sitemap-tools.xml public/sitemap-tools.xml site-links.txt tools-manifest.json
-          if git diff --cached --quiet; then
-            echo "No generated artifact changes."
-            exit 0
-          fi
-          git commit -m "chore: regenerate certified sitemap and discovery artifacts [generated-output]"
+          git add .github/workflows/wave2-regenerate-index-artifacts.yml public/locales/en/translation.json public/locales/tr/translation.json public/sitemap.xml sitemap.xml sitemap-tools.xml public/sitemap-tools.xml site-links.txt tools-manifest.json
+          git commit -m "fix: align converter locale truth [generated-output]"
           git push origin HEAD:wave2/site-transformation
