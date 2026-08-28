@@ -67,7 +67,19 @@ jobs:
         run: npx playwright install --with-deps chromium
 
       - name: Run Chromium E2E and accessibility gates
-        run: npx playwright test
+        run: |
+          set -o pipefail
+          npx playwright test 2>&1 | tee playwright-browser-gate.log
+
+      - name: Upload Playwright failure evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-failure-evidence-${{ github.sha }}
+          path: |
+            playwright-browser-gate.log
+            test-results/
+          if-no-files-found: warn
 
       - name: Verify sitemap and site link export
         run: npm run lint:site-links
