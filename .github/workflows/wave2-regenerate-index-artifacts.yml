@@ -77,7 +77,45 @@ jobs:
       - name: Restore one-shot workflow and commit source truth artifacts
         shell: bash
         run: |
-          git show HEAD^:.github/workflows/wave2-regenerate-index-artifacts.yml > .github/workflows/wave2-regenerate-index-artifacts.yml
+          cat > .github/workflows/wave2-regenerate-index-artifacts.yml <<'YAML'
+          name: Wave 2 regenerate certified discovery artifacts
+
+          on:
+            push:
+              branches: [wave2/site-transformation]
+              paths:
+                - .github/workflows/wave2-regenerate-index-artifacts.yml
+
+          permissions:
+            contents: write
+
+          jobs:
+            regenerate:
+              runs-on: ubuntu-latest
+              timeout-minutes: 10
+              steps:
+                - uses: actions/checkout@v4
+                  with:
+                    ref: wave2/site-transformation
+                - uses: actions/setup-node@v4
+                  with:
+                    node-version: 22
+                    cache: npm
+                - run: npm ci
+                - run: node scripts/generate-localized-sitemap.mjs
+                - name: Commit generated discovery artifacts
+                  shell: bash
+                  run: |
+                    git config user.name "github-actions[bot]"
+                    git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+                    git add public/sitemap.xml sitemap.xml sitemap-tools.xml public/sitemap-tools.xml site-links.txt tools-manifest.json
+                    if git diff --cached --quiet; then
+                      echo "No generated artifact changes."
+                      exit 0
+                    fi
+                    git commit -m "chore: regenerate certified sitemap and discovery artifacts [generated-output]"
+                    git push origin HEAD:wave2/site-transformation
+          YAML
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add .github/workflows/wave2-regenerate-index-artifacts.yml public/locales/en/translation.json public/locales/tr/translation.json public/sitemap.xml sitemap.xml sitemap-tools.xml public/sitemap-tools.xml site-links.txt tools-manifest.json
