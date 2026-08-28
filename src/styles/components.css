@@ -155,6 +155,14 @@
   text-align: center;
 }
 
+/* Converter status colors use semantic tokens so light and dark surfaces retain WCAG contrast. */
+.tool-wrapper .result-card.binary .result-card-label { color: var(--color-success); }
+.tool-wrapper .result-card.decimal .result-card-label { color: var(--color-info); }
+.tool-wrapper .result-card.hex .result-card-label { color: var(--color-error); }
+.tool-wrapper .result-card.octal .result-card-label { color: var(--color-warning); }
+.tool-wrapper .time-diff-label,
+.tool-wrapper .legal-note strong { color: var(--color-warning); }
+
 @keyframes nt-spin { to { rotate: 360deg; } }
 @keyframes nt-pulse { 0%, 100% { opacity: 1; } 50% { opacity: .4; } }
 
