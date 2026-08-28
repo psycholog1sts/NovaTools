@@ -80,12 +80,18 @@ export class ToastManager {
             padding: 0;
             font-size: 18px;
             line-height: 1;
-          " onclick="this.closest('.toast').remove()">×</button>
+          " data-nv-toast-dismiss>×</button>
         ` : ''}
       </div>
     `;
 
     this.container.appendChild(toast);
+    const dismissButton = toast.querySelector('[data-nv-toast-dismiss]');
+    if (dismissButton) {
+      dismissButton.addEventListener('click', () => {
+        toast.remove();
+      });
+    }
     this.toasts.push(toast);
 
     // Animate in

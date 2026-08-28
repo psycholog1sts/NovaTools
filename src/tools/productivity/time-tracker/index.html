@@ -493,8 +493,8 @@
             </div>
             <div class="project-actions">
               ${isActive ? 
-                `<button class="btn btn-danger btn-stop" onclick="stopTimer()" data-i18n="tools.productivity.time-tracker.text.030">Stop</button>` :
-                `<button class="btn btn-success btn-start" onclick="startTimer('${project.id}')" data-i18n="tools.productivity.time-tracker.text.031">Start</button>`
+                `<button type="button" class="btn btn-danger btn-stop" data-nv-click="stopTimer" data-i18n="tools.productivity.time-tracker.text.030">Stop</button>` :
+                `<button type="button" class="btn btn-success btn-start" data-nv-click="startTimer" data-nv-args='["${project.id}"]' data-i18n="tools.productivity.time-tracker.text.031">Start</button>`
               }
             </div>
           </div>

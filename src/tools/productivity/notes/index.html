@@ -363,7 +363,7 @@
               <div class="note-item-preview">${preview || 'No content'}</div>
             </div>
             <span class="note-item-date" data-i18n="tools.productivity.notes.text.030">${dateStr}</span>
-            <button class="note-item-delete" onclick="deleteNote('${note.id}')" aria-label="Delete note">&times;</button>
+            <button type="button" class="note-item-delete" data-nv-click="deleteNote" data-nv-args='["${note.id}"]' aria-label="Delete note">&times;</button>
           </div>
         `;
       }).join('');

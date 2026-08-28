@@ -252,16 +252,16 @@ Client City, ST 67890</textarea>
                   <input type="text" placeholder="Description" data-i18n-placeholder="tools.design.invoice-generator.placeholder.001" class="item-desc" value="Web Design Services">
                   <input type="number" placeholder="Qty" data-i18n-placeholder="tools.design.invoice-generator.placeholder.002" class="item-qty" value="10" min="0">
                   <input type="number" placeholder="Price" data-i18n-placeholder="tools.design.invoice-generator.placeholder.003" class="item-price" value="75" min="0" step="0.01">
-                  <button class="remove-line" onclick="removeLine(this)" data-i18n="tools.design.invoice-generator.text.024">\u00d7</button>
+                  <button type="button" class="remove-line" data-nv-click="removeLine" data-nv-args='["@el"]' data-i18n="tools.design.invoice-generator.text.024">\u00d7</button>
                 </div>
                 <div class="line-item">
                   <input type="text" placeholder="Description" data-i18n-placeholder="tools.design.invoice-generator.placeholder.004" class="item-desc" value="Logo Design">
                   <input type="number" placeholder="Qty" data-i18n-placeholder="tools.design.invoice-generator.placeholder.005" class="item-qty" value="1" min="0">
                   <input type="number" placeholder="Price" data-i18n-placeholder="tools.design.invoice-generator.placeholder.006" class="item-price" value="250" min="0" step="0.01">
-                  <button class="remove-line" onclick="removeLine(this)" data-i18n="tools.design.invoice-generator.text.025">\u00d7</button>
+                  <button type="button" class="remove-line" data-nv-click="removeLine" data-nv-args='["@el"]' data-i18n="tools.design.invoice-generator.text.025">\u00d7</button>
                 </div>
               </div>
-              <button class="add-line-btn" onclick="addLine()" data-i18n="tools.design.invoice-generator.text.026">+ Add Line Item</button>
+              <button type="button" class="add-line-btn" data-nv-click="addLine" data-i18n="tools.design.invoice-generator.text.026">+ Add Line Item</button>
             </div>
             
             <div class="two-col">
@@ -499,7 +499,7 @@ Client City, ST 67890</textarea>
         <input type="text" placeholder="Description" data-i18n-placeholder="tools.design.invoice-generator.placeholder.007" class="item-desc">
         <input type="number" placeholder="Qty" data-i18n-placeholder="tools.design.invoice-generator.placeholder.008" class="item-qty" value="1" min="0">
         <input type="number" placeholder="Price" data-i18n-placeholder="tools.design.invoice-generator.placeholder.009" class="item-price" value="0" min="0" step="0.01">
-        <button class="remove-line" onclick="removeLine(this)" data-i18n="tools.design.invoice-generator.text.061">\u00d7</button>
+        <button type="button" class="remove-line" data-nv-click="removeLine" data-nv-args='["@el"]' data-i18n="tools.design.invoice-generator.text.061">\u00d7</button>
       `;
       container.appendChild(line);
       line.querySelectorAll('input').forEach(input => input.addEventListener('input', updateInvoice));

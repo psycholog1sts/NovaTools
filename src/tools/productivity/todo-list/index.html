@@ -411,7 +411,7 @@
         
         return `
           <div class="task-item ${task.completed ? 'completed' : ''}" data-id="${task.id}">
-            <input type="checkbox" class="task-checkbox" ${task.completed ? 'checked' : ''} onchange="toggleTask('${task.id}')">
+            <input type="checkbox" class="task-checkbox" ${task.completed ? 'checked' : ''} data-nv-change="toggleTask" data-nv-change-args='["${task.id}"]'>
             <div class="task-content">
               <div class="task-text">${task.text}</div>
               <div class="task-meta">
@@ -419,7 +419,7 @@
                 ${dueDisplay ? `<span class="task-due ${overdue ? 'overdue' : ''}" data-i18n="tools.productivity.todo-list.text.036">${overdue ? '&#9888; Overdue: ' : ''}${dueDisplay}</span>` : ''}
               </div>
             </div>
-            <button class="task-delete" onclick="deleteTask('${task.id}')" aria-label="Delete task">&times;</button>
+            <button type="button" class="task-delete" data-nv-click="deleteTask" data-nv-args='["${task.id}"]' aria-label="Delete task">&times;</button>
           </div>
         `;
       }).join('');
