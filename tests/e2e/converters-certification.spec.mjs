@@ -31,12 +31,6 @@ async function expectIndexableRobots(page) {
   expect(directives.some((content) => /(?:^|[,\s])noindex(?:$|[,\s])/i.test(content))).toBe(false);
 }
 
-async function expectUnavailable(page, activeControlSelector) {
-  await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', /noindex/i);
-  await expect(page.getByRole('heading', { name: 'This tool is currently unavailable' })).toBeVisible();
-  await expect(page.locator(activeControlSelector)).toHaveCount(0);
-}
-
 test('Percentage Calculator is a real accessible local utility', async ({ page }) => {
   const errors = [];
   page.on('pageerror', (error) => errors.push(error.message));
@@ -112,93 +106,102 @@ test('Unit Converter converts real values with labelled controls and responsive 
   await expectNoHorizontalOverflow(page, 320);
 });
 
-test('Number Base Converter stays fail-closed while Number precision and signed-input semantics are uncertified', async ({ page }) => {
+test('Number Base Converter preserves arbitrary-size signed integers and rejects unsupported input', async ({ page }) => {
   const errors = [];
   page.on('pageerror', (error) => errors.push(error.message));
 
   const response = await page.goto(routes.numberBase, { waitUntil: 'domcontentloaded' });
   expect(response?.ok()).toBeTruthy();
+  await expectIndexableRobots(page);
 
-  const numberBoundary = await page.evaluate(() => ({
-    maxSafe: Number.MAX_SAFE_INTEGER,
-    parsedUnsafe: Number.parseInt('9007199254740993', 10),
-    parsedFraction: Number.parseInt('10.5', 10)
-  }));
-  expect(numberBoundary.maxSafe).toBe(9007199254740991);
-  expect(numberBoundary.parsedUnsafe).toBe(9007199254740992);
-  expect(numberBoundary.parsedFraction).toBe(10);
+  const base = page.locator('#baseSelect');
+  const input = page.locator('#numberInput');
+  await expect(base).toHaveAccessibleName(/base|number base/i);
+  await expect(input).toHaveAccessibleName(/number|integer|value/i);
+  await expect(base.locator('option')).toHaveCount(4);
+  expect(await base.locator('option').evaluateAll((options) => options.map((option) => option.value))).toEqual(['10', '2', '16', '8']);
 
-  await expectUnavailable(page, '#baseSelect, #numberInput, #btnConvert, .result-card-copy');
-  await expect(page.locator('body')).not.toContainText(/supports all numeral systems|even larger numbers are supported|fractional numbers.*truncated/i);
+  await base.selectOption('10');
+  await input.fill('9007199254740993');
+  await page.getByRole('button', { name: /^convert$/i }).click();
+  await expect(page.locator('#decimalResult')).toHaveText('9007199254740993');
+  await expect(page.locator('#hexResult')).toHaveText('0x20000000000001');
 
+  await input.fill('340282366920938463463374607431768211455');
+  await page.getByRole('button', { name: /^convert$/i }).click();
+  await expect(page.locator('#hexResult')).toHaveText('0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF');
+
+  await input.fill('-255');
+  await page.getByRole('button', { name: /^convert$/i }).click();
+  await expect(page.locator('#decimalResult')).toHaveText('-255');
+  await expect(page.locator('#hexResult')).toHaveText('-0xFF');
+  await expect(page.locator('#octalResult')).toHaveText('-0o377');
+
+  await base.selectOption('2');
+  await input.fill('102');
+  await page.getByRole('button', { name: /^convert$/i }).click();
+  await expect(page.locator('#decimalResult')).toContainText(/invalid characters/i);
+
+  await base.selectOption('10');
+  await input.fill('10.5');
+  await page.getByRole('button', { name: /^convert$/i }).click();
+  await expect(page.locator('#decimalResult')).toContainText(/integer|fraction/i);
+
+  await expect(page.locator('body')).not.toContainText(/safe integer limit|even larger numbers are supported|fractional numbers.*truncated/i);
   expect(errors).toEqual([]);
-  await expectNoSeriousA11y(page, 'Number Base Converter unavailable surface');
+  await expectNoSeriousA11y(page, 'Number Base Converter');
   await expectNoHorizontalOverflow(page, 320);
 });
 
-test('Time Zone Converter stays fail-closed until IANA wall-time, DST gap/overlap, and invalid-zone semantics are certified', async ({ page }) => {
+test('Time Zone Converter uses date-specific IANA rules and rejects invalid or ambiguous wall times', async ({ page }) => {
   const errors = [];
   page.on('pageerror', (error) => errors.push(error.message));
 
   const response = await page.goto(routes.timeZone, { waitUntil: 'domcontentloaded' });
   expect(response?.ok()).toBeTruthy();
+  await expectIndexableRobots(page);
 
-  const intlEvidence = await page.evaluate(() => {
-    const formatter = new Intl.DateTimeFormat('en-CA', {
-      timeZone: 'America/New_York',
-      year: 'numeric', month: '2-digit', day: '2-digit',
-      hour: '2-digit', minute: '2-digit',
-      hourCycle: 'h23'
-    });
-    const partsFor = (instant) => Object.fromEntries(
-      formatter.formatToParts(new Date(instant))
-        .filter((part) => part.type !== 'literal')
-        .map((part) => [part.type, part.value])
-    );
-    const matchesWallTime = (instant, expected) => {
-      const parts = partsFor(instant);
-      return ['year', 'month', 'day', 'hour', 'minute'].every((field) => parts[field] === expected[field]);
-    };
-    const countMatches = (startIso, endIso, expected) => {
-      let count = 0;
-      for (let time = Date.parse(startIso); time <= Date.parse(endIso); time += 30 * 60 * 1000) {
-        if (matchesWallTime(time, expected)) count += 1;
-      }
-      return count;
-    };
+  const fromZone = page.locator('#fromTimezone');
+  const toZone = page.locator('#toTimezone');
+  const input = page.locator('#fromDatetime');
+  await expect(fromZone).toHaveAccessibleName(/from time zone|source time zone/i);
+  await expect(toZone).toHaveAccessibleName(/to time zone|target time zone/i);
+  await expect(input).toHaveAccessibleName(/date|time/i);
 
-    let invalidZoneRejected = false;
-    try {
-      new Intl.DateTimeFormat('en-US', { timeZone: 'Mars/Olympus' });
-    } catch (error) {
-      invalidZoneRejected = error instanceof RangeError;
-    }
+  await fromZone.selectOption('America/New_York');
+  await toZone.selectOption('UTC');
+  await input.fill('2026-01-15T12:00');
+  await page.getByRole('button', { name: /convert time/i }).click();
+  await expect(page.locator('#resultTime')).toHaveText('17:00');
+  await expect(page.locator('#timeDiffValue')).toContainText('+5 hours');
 
-    return {
-      winter: partsFor('2026-01-15T17:00:00Z'),
-      summer: partsFor('2026-07-15T16:00:00Z'),
-      springGapMatches: countMatches('2026-03-08T05:00:00Z', '2026-03-08T09:00:00Z', {
-        year: '2026', month: '03', day: '08', hour: '02', minute: '30'
-      }),
-      fallOverlapMatches: countMatches('2026-11-01T04:00:00Z', '2026-11-01T08:00:00Z', {
-        year: '2026', month: '11', day: '01', hour: '01', minute: '30'
-      }),
-      invalidZoneRejected
-    };
+  await input.fill('2026-07-15T12:00');
+  await page.getByRole('button', { name: /convert time/i }).click();
+  await expect(page.locator('#resultTime')).toHaveText('16:00');
+  await expect(page.locator('#timeDiffValue')).toContainText('+4 hours');
+
+  await input.fill('2026-03-08T02:30');
+  await page.getByRole('button', { name: /convert time/i }).click();
+  await expect(page.locator('#resultDate')).toContainText(/does not exist|invalid local time/i);
+
+  await input.fill('2026-11-01T01:30');
+  await page.getByRole('button', { name: /convert time/i }).click();
+  await expect(page.locator('#resultDate')).toContainText(/ambiguous|occurs twice/i);
+
+  await page.evaluate(() => {
+    const select = document.getElementById('fromTimezone');
+    const option = document.createElement('option');
+    option.value = 'Mars/Olympus';
+    option.textContent = 'Invalid zone';
+    select.append(option);
+    select.value = option.value;
   });
+  await input.fill('2026-01-15T12:00');
+  await page.getByRole('button', { name: /convert time/i }).click();
+  await expect(page.locator('#resultDate')).toContainText(/invalid|unsupported time zone/i);
 
-  expect(intlEvidence.winter.hour).toBe('12');
-  expect(intlEvidence.winter.minute).toBe('00');
-  expect(intlEvidence.summer.hour).toBe('12');
-  expect(intlEvidence.summer.minute).toBe('00');
-  expect(intlEvidence.springGapMatches).toBe(0);
-  expect(intlEvidence.fallOverlapMatches).toBe(2);
-  expect(intlEvidence.invalidZoneRejected).toBe(true);
-
-  await expectUnavailable(page, '#fromTimezone, #toTimezone, #fromDatetime, #btnConvert, #swapBtn');
-  await expect(page.locator('body')).not.toContainText(/daylight saving time is handled automatically|automatic dst adjustments|any timezone instantly/i);
-
+  await expect(page.locator('body')).not.toContainText(/correctly calculate.*future daylight saving time rules|handles all time zone offsets accurately/i);
   expect(errors).toEqual([]);
-  await expectNoSeriousA11y(page, 'Time Zone Converter unavailable surface');
+  await expectNoSeriousA11y(page, 'Time Zone Converter');
   await expectNoHorizontalOverflow(page, 320);
 });
