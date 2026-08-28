@@ -24,7 +24,12 @@ import { chromium } from '@playwright/test';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const distDir = path.join(root, 'dist');
 const headersFile = path.join(distDir, '_headers');
-const port = Number(process.env.CSP_GATE_PORT || 443);
+/**
+ * The server binds an unprivileged local port; Chromium maps the production
+ * hostname's :443 onto it, so page origins are exactly `https://mc-novatools.com`
+ * and absolute asset URLs in the build still resolve as `'self'`.
+ */
+const port = Number(process.env.CSP_GATE_PORT || 4179);
 /**
  * The gate serves the site over HTTPS under the real production hostname and maps
  * that hostname to the local server inside Chromium. Without this, every absolute
@@ -32,7 +37,7 @@ const port = Number(process.env.CSP_GATE_PORT || 443);
  * report a false `'self'` violation.
  */
 const productionHost = 'mc-novatools.com';
-const origin = port === 443 ? `https://${productionHost}` : `https://${productionHost}:${port}`;
+const origin = `https://${productionHost}`;
 
 /** Throwaway TLS material, generated per run into a temp dir — never committed. */
 function createSelfSignedCertificate() {
@@ -177,7 +182,7 @@ async function main() {
   const browser = await chromium.launch({
     ...(executablePath ? { executablePath } : {}),
     args: [
-      `--host-resolver-rules=MAP ${productionHost} 127.0.0.1, MAP www.${productionHost} 127.0.0.1`,
+      `--host-resolver-rules=MAP ${productionHost}:443 127.0.0.1:${port}, MAP www.${productionHost}:443 127.0.0.1:${port}`,
       '--proxy-server=direct://',
       '--proxy-bypass-list=*'
     ]
