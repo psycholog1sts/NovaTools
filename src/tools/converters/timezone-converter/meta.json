@@ -9,12 +9,24 @@
     "us": 0.8
   },
   "keywords": {
-    "tr": ["saat dilimi dönüştürücü", "zaman dönüştürücü", "dünya saati", "saat farkı", "uluslararası saat"],
-    "en": ["timezone converter", "time converter", "world clock", "time difference", "convert time zones"]
+    "tr": [
+      "saat dilimi dönüştürücü",
+      "zaman dönüştürücü",
+      "dünya saati",
+      "saat farkı",
+      "uluslararası saat"
+    ],
+    "en": [
+      "timezone converter",
+      "time converter",
+      "world clock",
+      "time difference",
+      "convert time zones"
+    ]
   },
   "description": {
-    "tr": "Farklı saat dilimleri arasında zaman dönüşümü yapın. Dünyanın herhangi bir yerindeki saati anında öğrenin.",
-    "en": "Convert time between different time zones worldwide. Check current time in any timezone instantly."
+    "tr": "Listelenen IANA saat dilimleri arasında, tarayıcının tarih-özel Intl saat dilimi verilerini kullanarak dönüşüm yapın. Belirsiz veya var olmayan DST yerel saatleri reddedilir.",
+    "en": "Convert between the listed IANA time zones using date-specific browser Intl timezone data. Ambiguous or nonexistent DST wall times are rejected."
   },
   "schema": {
     "@type": "WebApplication",
@@ -37,5 +49,10 @@
   "relatedTools": [
     "unix-timestamp",
     "unit-converter"
-  ]
+  ],
+  "privacyMode": "LOCAL_ONLY",
+  "externalNetwork": false,
+  "syntheticData": "NONE",
+  "dataSource": "Browser Intl/IANA timezone database for the selected date",
+  "limitations": "Supports the 17 listed IANA zones. Historical/future accuracy depends on the browser timezone database; ambiguous and nonexistent DST local times are rejected."
 }

@@ -37,14 +37,14 @@
   <meta name="theme-color" content="#0A0A0C">
 
   <meta property="og:title" content="Free Time Zone Converter Online | NovaTools MC">
-  <meta property="og:description" content="Convert time between different time zones worldwide. Current time in any timezone.">
+  <meta property="og:description" content="Convert dates between the listed IANA time zones using date-specific timezone rules from your browser.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.mc-novatools.com/tools/converters/timezone-converter/">
   <meta property="og:image" content="https://www.mc-novatools.com/og-image.png">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Free Time Zone Converter | NovaTools MC">
-  <meta name="twitter:description" content="Convert time between time zones instantly. No signup required.">
+  <meta name="twitter:description" content="Convert dates between the listed IANA time zones with browser Intl timezone data.">
 
   <link rel="canonical" href="https://www.mc-novatools.com/tools/converters/timezone-converter/">
 
@@ -54,7 +54,7 @@
     "@graph": [{
       "@type": "WebApplication",
       "name": "Time Zone Converter",
-      "description": "Free online time zone converter. Convert time between different time zones worldwide.",
+      "description": "Browser-based converter for the listed IANA time zones using date-specific Intl timezone data.",
       "url": "https://www.mc-novatools.com/tools/converters/timezone-converter/",
       "applicationCategory": "UtilityApplication",
       "operatingSystem": "Any",
@@ -67,16 +67,16 @@
     .tool-wrapper { max-width: 960px; margin: 0 auto; padding: 3rem 1rem 5rem; }
     .tool-hero { text-align: center; margin-bottom: 2.5rem; }
     .tool-hero-icon { font-size: 3.5rem; line-height: 1; margin-bottom: 1rem; }
-    .tool-hero h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; letter-spacing: -0.02em; color: #FAFAFA; margin-bottom: 0.75rem; }
-    .tool-hero p { color: #A1A1AA; font-size: 1.0625rem; max-width: 560px; margin: 0 auto; }
-    .card { background: rgba(15,15,20,0.7); border: 1px solid rgba(0,217,255,0.15); border-radius: 14px; padding: 1.75rem; backdrop-filter: blur(12px); }
+    .tool-hero h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; letter-spacing: -0.02em; color: var(--color-text-primary); margin-bottom: 0.75rem; }
+    .tool-hero p { color: var(--color-text-secondary); font-size: 1.0625rem; max-width: 560px; margin: 0 auto; }
+    .card { background: var(--color-bg-surface); border: 1px solid var(--color-border); border-radius: 14px; padding: 1.75rem; backdrop-filter: blur(12px); }
     
     .timezone-row { display: grid; grid-template-columns: 1fr auto 1fr; gap: 1rem; align-items: end; margin-bottom: 1.5rem; }
     .input-group { display: flex; flex-direction: column; }
-    .input-label { font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #71717A; margin-bottom: 0.5rem; }
-    .timezone-select { height: 48px; padding: 0 1rem; background: #0F0F12; border: 1px solid rgba(0,217,255,0.12); border-radius: 8px; color: #FAFAFA; font-size: 0.9375rem; cursor: pointer; outline: none; }
+    .input-label { font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-text-secondary); margin-bottom: 0.5rem; }
+    .timezone-select { height: 48px; padding: 0 1rem; background: var(--color-bg-elevated); border: 1px solid var(--color-border); border-radius: 8px; color: var(--color-text-primary); font-size: 0.9375rem; cursor: pointer; outline: none; }
     .timezone-select:focus { border-color: rgba(0,217,255,0.45); box-shadow: 0 0 0 3px rgba(0,217,255,0.08); }
-    .datetime-input { height: 48px; padding: 0 1rem; background: #0F0F12; border: 1px solid rgba(0,217,255,0.12); border-radius: 8px; color: #FAFAFA; font-size: 0.9375rem; outline: none; margin-top: 0.5rem; }
+    .datetime-input { height: 48px; padding: 0 1rem; background: var(--color-bg-elevated); border: 1px solid var(--color-border); border-radius: 8px; color: var(--color-text-primary); font-size: 0.9375rem; outline: none; margin-top: 0.5rem; }
     .datetime-input:focus { border-color: rgba(0,217,255,0.45); box-shadow: 0 0 0 3px rgba(0,217,255,0.08); }
     
     .swap-btn { width: 44px; height: 44px; background: rgba(0,217,255,0.1); border: 1px solid rgba(0,217,255,0.25); border-radius: 50%; color: #00D9FF; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
@@ -85,16 +85,16 @@
     .current-time-display { background: rgba(0,217,255,0.05); border: 1px solid rgba(0,217,255,0.15); border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: 1.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
     .current-time-box { text-align: center; }
     .current-time-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #71717A; margin-bottom: 0.25rem; }
-    .current-time-value { font-size: 1.25rem; font-weight: 600; color: #00D9FF; font-family: 'JetBrains Mono', monospace; }
+    .current-time-value { font-size: 1.25rem; font-weight: 600; color: var(--color-primary); font-family: 'JetBrains Mono', monospace; }
     
     .result-box { background: linear-gradient(135deg, rgba(0,217,255,0.1), rgba(0,217,255,0.05)); border: 1px solid rgba(0,217,255,0.2); border-radius: 12px; padding: 1.5rem; text-align: center; margin-bottom: 1.5rem; }
     .result-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #71717A; margin-bottom: 0.5rem; }
-    .result-value { font-size: 2rem; font-weight: 700; color: #00D9FF; font-family: 'JetBrains Mono', monospace; }
-    .result-date { font-size: 0.9375rem; color: #A1A1AA; margin-top: 0.25rem; }
+    .result-value { font-size: 2rem; font-weight: 700; color: var(--color-primary); font-family: 'JetBrains Mono', monospace; }
+    .result-date { font-size: 0.9375rem; color: var(--color-text-secondary); margin-top: 0.25rem; }
     
     .time-diff-box { background: rgba(255,193,7,0.05); border: 1px solid rgba(255,193,7,0.2); border-radius: 10px; padding: 1rem; text-align: center; margin-bottom: 1.5rem; }
     .time-diff-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #FFC107; margin-bottom: 0.25rem; }
-    .time-diff-value { font-size: 1.5rem; font-weight: 700; color: #FAFAFA; }
+    .time-diff-value { font-size: 1.5rem; font-weight: 700; color: var(--color-text-primary); }
     
     .btn-bar { display: flex; flex-wrap: wrap; gap: 0.625rem; margin-bottom: 1.5rem; }
     .btn { display: inline-flex; align-items: center; gap: 0.4rem; height: 44px; padding: 0 1.25rem; border: none; border-radius: 8px; font-size: 0.9375rem; font-weight: 600; cursor: pointer; transition: background 0.18s, transform 0.12s, opacity 0.18s; outline: none; user-select: none; }
@@ -108,13 +108,13 @@
     .copy-feedback.show { opacity: 1; }
     
     .quick-zones { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(0,217,255,0.1); }
-    .quick-zones-title { font-size: 0.875rem; font-weight: 600; color: #A1A1AA; margin-bottom: 0.75rem; }
+    .quick-zones-title { font-size: 0.875rem; font-weight: 600; color: var(--color-text-secondary); margin-bottom: 0.75rem; }
     .quick-zones-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.5rem; }
-    .quick-zone-item { background: rgba(0,217,255,0.05); border: 1px solid rgba(0,217,255,0.1); border-radius: 8px; padding: 0.75rem; font-size: 0.8125rem; color: #A1A1AA; cursor: pointer; transition: all 0.2s; text-align: center; }
+    .quick-zone-item { background: var(--color-bg-elevated); border: 1px solid var(--color-border); border-radius: 8px; padding: 0.75rem; font-size: 0.8125rem; color: var(--color-text-secondary); cursor: pointer; transition: all 0.2s; text-align: center; }
     .quick-zone-item:hover { background: rgba(0,217,255,0.1); border-color: rgba(0,217,255,0.2); color: #FAFAFA; }
-    .quick-zone-time { display: block; color: #00D9FF; font-weight: 600; margin-top: 0.25rem; }
+    .quick-zone-time { display: block; color: var(--color-primary); font-weight: 600; margin-top: 0.25rem; }
     
-    .legal-note { margin-top: 1.5rem; padding: 1rem 1.25rem; background: rgba(255,193,7,0.05); border: 1px solid rgba(255,193,7,0.15); border-radius: 10px; font-size: 0.8125rem; color: #A1A1AA; line-height: 1.6; }
+    .legal-note { margin-top: 1.5rem; padding: 1rem 1.25rem; background: var(--color-bg-elevated); border: 1px solid var(--color-border); border-radius: 10px; font-size: 0.8125rem; color: var(--color-text-secondary); line-height: 1.6; }
     .legal-note strong { color: #FFC107; }
     
     .seo-section { max-width: 960px; margin: 3.5rem auto 0; padding: 0 1rem; }
@@ -185,7 +185,7 @@
           <div class="tool-hero-icon">&#127757;</div>
           <h1 data-i18n="tools.converters.timezone-converter.text.011">Time Zone Converter</h1>
           <p class="tool-updated-note">Last updated: <time class="page-last-updated" datetime="2026-06-03">2026-06-03</time></p>
-          <p data-i18n="tools.converters.timezone-converter.text.012">Convert time between different time zones worldwide. Check current time in any timezone and plan meetings across the globe.</p>
+          <p data-i18n="tools.converters.timezone-converter.text.012">Convert a local date and time between the listed IANA time zones using your browser's date-specific timezone data. Nonexistent and ambiguous daylight-saving wall times are rejected rather than guessed.</p>
         </div>
 
         <div class="card">
@@ -203,8 +203,8 @@
 
           <div class="timezone-row">
             <div class="input-group">
-              <label class="input-label" data-i18n="tools.converters.timezone-converter.text.013">From Time Zone</label>
-              <select class="timezone-select" id="fromTimezone">
+              <label class="input-label" for="fromTimezone" data-i18n="tools.converters.timezone-converter.text.013">From Time Zone</label>
+              <select class="timezone-select" id="fromTimezone" aria-label="From time zone">
                 <option value="UTC">UTC (Universal Time)</option>
                 <option value="America/New_York">New York (EST/EDT)</option>
                 <option value="America/Chicago">Chicago (CST/CDT)</option>
@@ -223,14 +223,14 @@
                 <option value="Pacific/Auckland">Auckland (NZST/NZDT)</option>
                 <option value="Europe/Istanbul" selected>Istanbul (TRT)</option>
               </select>
-              <input type="datetime-local" class="datetime-input" id="fromDatetime">
+              <input type="datetime-local" class="datetime-input" id="fromDatetime" aria-label="Local date and time">
             </div>
             <button class="swap-btn" id="swapBtn" aria-label="Swap timezones">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 16V4M7 4L3 8M7 4l4 4M17 8v12m0 0l4-4m-4 4l-4-4"/></svg>
             </button>
             <div class="input-group">
-              <label class="input-label" data-i18n="tools.converters.timezone-converter.text.014">To Time Zone</label>
-              <select class="timezone-select" id="toTimezone">
+              <label class="input-label" for="toTimezone" data-i18n="tools.converters.timezone-converter.text.014">To Time Zone</label>
+              <select class="timezone-select" id="toTimezone" aria-label="To time zone">
                 <option value="UTC">UTC (Universal Time)</option>
                 <option value="America/New_York" selected>New York (EST/EDT)</option>
                 <option value="America/Chicago">Chicago (CST/CDT)</option>
@@ -260,7 +260,7 @@
           <div class="result-box">
             <div class="result-label">Converted Time</div>
             <div class="result-value" id="resultTime">--:--</div>
-            <div class="result-date" id="resultDate">Select a date and time</div>
+            <div class="result-date" id="resultDate" role="status" aria-live="polite">Select a date and time</div>
           </div>
 
           <div class="btn-bar">
@@ -287,14 +287,14 @@
           </div>
 
           <div class="legal-note">
-            <strong>Legal Disclaimer / Yasal Uyar&#305;:</strong> Time zone conversions are based on standard international time zone data. Daylight saving time changes may affect accuracy. Always verify critical meeting times. / Saat dilimi d&#246;n&#252;&#351;&#252;mleri standart uluslararas&#305; saat dilimi verilerine dayal&#305;d&#305;r. Yaz saati uygulamas&#305; de&#287;i&#351;iklikleri do&#287;rulu&#287;u etkileyebilir.
+            <strong>Legal Disclaimer / Yasal Uyar&#305;:</strong> Conversions use the browser's IANA/Intl timezone data for the selected date. Ambiguous or nonexistent DST wall times are rejected. Future timezone law changes depend on browser data updates; verify critical meeting times. / Saat dilimi d&#246;n&#252;&#351;&#252;mleri standart uluslararas&#305; saat dilimi verilerine dayal&#305;d&#305;r. Yaz saati uygulamas&#305; de&#287;i&#351;iklikleri do&#287;rulu&#287;u etkileyebilir.
           </div>
         </div>
       </div>
 
       <article class="tool-description" aria-labelledby="toolDescriptionTitle-timezone-converter">
         <h2 id="toolDescriptionTitle-timezone-converter">What Time Zone Converter Does and Why It Matters</h2>
-        <p>Time Zone Converter shows what time it is right now in any timezone worldwide, and converts a specific time from one timezone into another — the calculation people usually do in their head and get wrong once daylight saving or an odd UTC offset (like UTC+5:30) is involved.</p>
+        <p>Time Zone Converter shows the current time in its listed IANA zones and converts a specific local date and time from one listed zone into another — the calculation people usually do in their head and get wrong once daylight saving or an odd UTC offset (like UTC+5:30) is involved.</p>
         <p>This matters most for scheduling across locations: setting up a call with people in different countries, checking whether a deadline in another timezone has already passed, or working out what time a live event airs locally. Manual timezone math is a common source of scheduling mistakes, particularly because not every region observes daylight saving time, and the ones that do don't all switch on the same date.</p>
         <h2>How to Use Time Zone Converter</h2>
         <ol>
@@ -304,12 +304,12 @@
           <li>Use the current-time view to check what time it is right now in any listed timezone.</li>
         </ol>
         <h2>What It Accounts For</h2>
-        <ul><li>Standard UTC offsets for each timezone, including non-hour offsets like UTC+5:30 (India) or UTC+9:30 (parts of Australia)</li><li>Daylight saving time transitions, based on current rules for each region</li><li>Converting a specific date and time, not just "now" — useful for checking a future appointment</li></ul>
+        <ul><li>Date-specific UTC offsets from the browser's IANA/Intl timezone data, including non-hour offsets such as India's UTC+5:30</li><li>Daylight-saving transitions represented by that browser timezone database for the selected date</li><li>Explicit rejection of local wall times that do not exist during a DST spring gap or occur twice during a DST fall-back fold</li></ul>
         <h2>Privacy and Security</h2>
         <p>Times and timezones you select are used only to compute the result shown and aren't sent anywhere or stored.</p>
         <h2>Frequently Asked Questions</h2>
         <h3>Does it account for daylight saving time automatically?</h3>
-        <p>Yes, using each region's current DST rules for the date you're converting. If you're converting a date far in the future, be aware that DST rules themselves occasionally change by local legislation, which no converter can predict in advance.</p>
+        <p>For the listed IANA zones, the converter uses the browser's Intl timezone database for the selected date. It rejects ambiguous and nonexistent local times instead of guessing. Historical and future accuracy is therefore limited by the timezone data shipped with the browser, and future legislation cannot be predicted.</p>
         <h3>Why is the offset for some countries not a whole number of hours?</h3>
         <p>A handful of regions (India, parts of Australia, Iran, and others) use a half-hour or 45-minute offset from UTC rather than a whole hour. This is a real, standard part of their timezone definition, not a rounding artifact.</p>
         <h3>What timezone should I use for a fully remote/global meeting invite?</h3>
@@ -343,7 +343,7 @@
 
         <details class="faq-item">
           <summary>How does daylight saving time affect conversions?</summary>
-          <p data-i18n="tools.converters.timezone-converter.text.028">This converter automatically accounts for daylight saving time (DST) where applicable. The current time display shows whether DST is in effect for each time zone.</p>
+          <p data-i18n="tools.converters.timezone-converter.text.028">For listed IANA zones, date-specific offsets come from the browser's Intl timezone data. Ambiguous fall-back times and nonexistent spring-gap times are reported instead of silently choosing an offset.</p>
         </details>
 
         <details class="faq-item">
@@ -353,7 +353,7 @@
 
         <details class="faq-item">
           <summary>Can I convert dates in the past or future?</summary>
-          <p data-i18n="tools.converters.timezone-converter.text.030">Yes, you can enter any date and time for conversion. The tool will correctly calculate the time difference, including historical or future daylight saving time rules.</p>
+          <p data-i18n="tools.converters.timezone-converter.text.030">You can enter past or future dates supported by the browser. Results use that browser's installed IANA timezone data; they do not guarantee future legislative changes or timezone history missing from the runtime.</p>
         </details>
 
         <details class="faq-item">
@@ -363,7 +363,7 @@
 
         <details class="faq-item">
           <summary>Why is the time difference not a whole number of hours?</summary>
-          <p data-i18n="tools.converters.timezone-converter.text.032">Some time zones use offsets that include minutes (e.g., India is UTC+5:30, Nepal is UTC+5:45). This converter handles all time zone offsets accurately.</p>
+          <p data-i18n="tools.converters.timezone-converter.text.032">Some time zones use offsets that include minutes (e.g., India is UTC+5:30, Nepal is UTC+5:45). The listed zones use their date-specific offsets from the browser timezone database, including supported half-hour offsets.</p>
         </details>
       </section>
         <section class="trust-help novatools-tool-reading-path" aria-labelledby="toolReadingPathTitle">
@@ -384,137 +384,202 @@
   </div>
 
   <script type="module">
-    const timezones = [
-      { name: 'UTC', label: 'UTC', offset: 0 },
-      { name: 'America/New_York', label: 'New York', offset: -5 },
-      { name: 'America/Chicago', label: 'Chicago', offset: -6 },
-      { name: 'America/Denver', label: 'Denver', offset: -7 },
-      { name: 'America/Los_Angeles', label: 'Los Angeles', offset: -8 },
-      { name: 'Europe/London', label: 'London', offset: 0 },
-      { name: 'Europe/Paris', label: 'Paris', offset: 1 },
-      { name: 'Europe/Berlin', label: 'Berlin', offset: 1 },
-      { name: 'Europe/Moscow', label: 'Moscow', offset: 3 },
-      { name: 'Asia/Dubai', label: 'Dubai', offset: 4 },
-      { name: 'Asia/Kolkata', label: 'Mumbai', offset: 5.5 },
-      { name: 'Asia/Shanghai', label: 'Shanghai', offset: 8 },
-      { name: 'Asia/Tokyo', label: 'Tokyo', offset: 9 },
-      { name: 'Asia/Seoul', label: 'Seoul', offset: 9 },
-      { name: 'Australia/Sydney', label: 'Sydney', offset: 10 },
-      { name: 'Pacific/Auckland', label: 'Auckland', offset: 12 },
-      { name: 'Europe/Istanbul', label: 'Istanbul', offset: 3 }
+    const zones = [
+      ['UTC', 'UTC'],
+      ['America/New_York', 'New York'],
+      ['America/Chicago', 'Chicago'],
+      ['America/Denver', 'Denver'],
+      ['America/Los_Angeles', 'Los Angeles'],
+      ['Europe/London', 'London'],
+      ['Europe/Paris', 'Paris'],
+      ['Europe/Berlin', 'Berlin'],
+      ['Europe/Moscow', 'Moscow'],
+      ['Asia/Dubai', 'Dubai'],
+      ['Asia/Kolkata', 'Mumbai/Kolkata'],
+      ['Asia/Shanghai', 'Shanghai'],
+      ['Asia/Tokyo', 'Tokyo'],
+      ['Asia/Seoul', 'Seoul'],
+      ['Australia/Sydney', 'Sydney'],
+      ['Pacific/Auckland', 'Auckland'],
+      ['Europe/Istanbul', 'Istanbul']
     ];
-
+    const supportedZones = new Set(zones.map(([name]) => name));
+    const zoneLabels = new Map(zones);
+    const formatterCache = new Map();
     const fromTimezone = document.getElementById('fromTimezone');
     const toTimezone = document.getElementById('toTimezone');
     const fromDatetime = document.getElementById('fromDatetime');
     const resultTime = document.getElementById('resultTime');
     const resultDate = document.getElementById('resultDate');
     const timeDiffValue = document.getElementById('timeDiffValue');
-
     let copyTimer = null;
 
-    function formatDateTimeLocal(date) {
-      const pad = n => n.toString().padStart(2, '0');
-      return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}T${pad(date.getHours())}:${pad(date.getMinutes())}`;
+    function ensureZone(zone) {
+      if (!supportedZones.has(zone)) throw new Error('Unsupported time zone. Choose one of the listed IANA zones.');
+      try {
+        new Intl.DateTimeFormat('en-US', { timeZone: zone }).format(new Date(0));
+      } catch {
+        throw new Error('Unsupported time zone in this browser.');
+      }
+      return zone;
     }
 
-    function getTimezoneOffset(timezone, date) {
+    function formatter(zone, key, options) {
+      ensureZone(zone);
+      const cacheKey = `${zone}|${key}`;
+      if (!formatterCache.has(cacheKey)) {
+        formatterCache.set(cacheKey, new Intl.DateTimeFormat('en-GB', { timeZone: zone, ...options }));
+      }
+      return formatterCache.get(cacheKey);
+    }
+
+    function zonedParts(date, zone) {
+      const parts = formatter(zone, 'parts', {
+        year: 'numeric', month: '2-digit', day: '2-digit',
+        hour: '2-digit', minute: '2-digit', second: '2-digit', hourCycle: 'h23'
+      }).formatToParts(date);
+      const values = Object.fromEntries(parts.filter((part) => part.type !== 'literal').map((part) => [part.type, part.value]));
+      return {
+        year: Number(values.year), month: Number(values.month), day: Number(values.day),
+        hour: Number(values.hour), minute: Number(values.minute), second: Number(values.second)
+      };
+    }
+
+    function offsetMinutes(zone, date) {
+      const parts = zonedParts(date, zone);
+      const asUtc = Date.UTC(parts.year, parts.month - 1, parts.day, parts.hour, parts.minute, parts.second);
+      const instant = Math.trunc(date.getTime() / 1000) * 1000;
+      return Math.round((asUtc - instant) / 60000);
+    }
+
+    function parseWallTime(value) {
+      const match = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})$/.exec(value);
+      if (!match) throw new Error('Enter a valid local date and time.');
+      const wall = {
+        year: Number(match[1]), month: Number(match[2]), day: Number(match[3]),
+        hour: Number(match[4]), minute: Number(match[5]), second: 0
+      };
+      const probe = new Date(Date.UTC(wall.year, wall.month - 1, wall.day, wall.hour, wall.minute));
+      if (probe.getUTCFullYear() !== wall.year || probe.getUTCMonth() + 1 !== wall.month || probe.getUTCDate() !== wall.day || probe.getUTCHours() !== wall.hour || probe.getUTCMinutes() !== wall.minute) {
+        throw new Error('Enter a valid local date and time.');
+      }
+      return wall;
+    }
+
+    function sameWall(a, b) {
+      return a.year === b.year && a.month === b.month && a.day === b.day && a.hour === b.hour && a.minute === b.minute;
+    }
+
+    function resolveWallTime(value, zone) {
+      ensureZone(zone);
+      const wall = parseWallTime(value);
+      const wallMs = Date.UTC(wall.year, wall.month - 1, wall.day, wall.hour, wall.minute);
+      const offsets = new Set();
+      for (const shiftHours of [-48, -24, -12, 0, 12, 24, 48]) {
+        offsets.add(offsetMinutes(zone, new Date(wallMs + shiftHours * 3600000)));
+      }
+      const matches = [];
+      for (const offset of offsets) {
+        const candidate = new Date(wallMs - offset * 60000);
+        if (sameWall(zonedParts(candidate, zone), wall)) matches.push(candidate);
+      }
+      const unique = [...new Map(matches.map((date) => [date.getTime(), date])).values()].sort((a, b) => a - b);
+      if (unique.length === 0) throw new Error('This local time does not exist in the selected time zone because of a daylight-saving transition.');
+      if (unique.length > 1) throw new Error('This local time is ambiguous because it occurs twice during a daylight-saving transition. Choose a different time.');
+      return unique[0];
+    }
+
+    function formatClock(date, zone) {
+      return formatter(zone, 'clock', { hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }).format(date);
+    }
+
+    function formatCalendarDate(date, zone) {
+      return formatter(zone, 'date', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }).format(date);
+    }
+
+    function formatDifference(minutes) {
+      const sign = minutes >= 0 ? '+' : '-';
+      const absolute = Math.abs(minutes);
+      const hours = Math.floor(absolute / 60);
+      const remainder = absolute % 60;
+      let text = `${sign}${hours} hour${hours === 1 ? '' : 's'}`;
+      if (remainder) text += ` ${remainder} min`;
+      return text;
+    }
+
+    function showError(message) {
+      resultTime.textContent = '--:--';
+      resultDate.textContent = message;
+      timeDiffValue.textContent = '--';
+    }
+
+    function convert() {
+      if (!fromDatetime.value) {
+        showError('Select a date and time');
+        return;
+      }
       try {
-        const tzDate = new Date(date.toLocaleString('en-US', { timeZone: timezone }));
-        const utcDate = new Date(date.toLocaleString('en-US', { timeZone: 'UTC' }));
-        return (tzDate - utcDate) / (1000 * 60 * 60);
-      } catch (e) {
-        const tz = timezones.find(t => t.name === timezone);
-        return tz ? tz.offset : 0;
+        const sourceZone = ensureZone(fromTimezone.value);
+        const targetZone = ensureZone(toTimezone.value);
+        const instant = resolveWallTime(fromDatetime.value, sourceZone);
+        const sourceOffset = offsetMinutes(sourceZone, instant);
+        const targetOffset = offsetMinutes(targetZone, instant);
+        resultTime.textContent = formatClock(instant, targetZone);
+        resultDate.textContent = `${formatCalendarDate(instant, targetZone)} — ${zoneLabels.get(targetZone)}`;
+        timeDiffValue.textContent = formatDifference(targetOffset - sourceOffset);
+      } catch (error) {
+        showError(error instanceof Error ? error.message : 'Unable to convert this time.');
       }
     }
 
-    function formatTime(date) {
-      return date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false });
-    }
-
-    function formatDate(date) {
-      return date.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+    function wallValueForInstant(date, zone) {
+      const p = zonedParts(date, zone);
+      const pad = (value) => String(value).padStart(2, '0');
+      return `${p.year}-${pad(p.month)}-${pad(p.day)}T${pad(p.hour)}:${pad(p.minute)}`;
     }
 
     function updateCurrentTimes() {
       const now = new Date();
-      const sourceOffset = getTimezoneOffset(fromTimezone.value, now);
-      const targetOffset = getTimezoneOffset(toTimezone.value, now);
-      
-      const sourceTime = new Date(now.getTime() + sourceOffset * 60 * 60 * 1000);
-      const targetTime = new Date(now.getTime() + targetOffset * 60 * 60 * 1000);
-      
-      document.getElementById('sourceCurrentTime').textContent = formatTime(sourceTime);
-      document.getElementById('targetCurrentTime').textContent = formatTime(targetTime);
-    }
-
-    function calculateTimeDiff() {
-      const now = new Date();
-      const sourceOffset = getTimezoneOffset(fromTimezone.value, now);
-      const targetOffset = getTimezoneOffset(toTimezone.value, now);
-      const diff = targetOffset - sourceOffset;
-      
-      const hours = Math.floor(Math.abs(diff));
-      const minutes = Math.round((Math.abs(diff) - hours) * 60);
-      
-      let diffText = diff >= 0 ? '+' : '-';
-      diffText += `${hours} hour${hours !== 1 ? 's' : ''}`;
-      if (minutes > 0) diffText += ` ${minutes} min`;
-      
-      timeDiffValue.textContent = diffText;
-    }
-
-    function convert() {
-      const inputValue = fromDatetime.value;
-      if (!inputValue) {
-        resultTime.textContent = '--:--';
-        resultDate.textContent = 'Select a date and time';
-        return;
+      try {
+        document.getElementById('sourceCurrentTime').textContent = formatClock(now, fromTimezone.value);
+        document.getElementById('targetCurrentTime').textContent = formatClock(now, toTimezone.value);
+      } catch {
+        document.getElementById('sourceCurrentTime').textContent = '--:--';
+        document.getElementById('targetCurrentTime').textContent = '--:--';
       }
-
-      const inputDate = new Date(inputValue);
-      const sourceOffset = getTimezoneOffset(fromTimezone.value, inputDate);
-      const targetOffset = getTimezoneOffset(toTimezone.value, inputDate);
-      const diff = targetOffset - sourceOffset;
-      
-      const resultDateObj = new Date(inputDate.getTime() + diff * 60 * 60 * 1000);
-      
-      resultTime.textContent = formatTime(resultDateObj);
-      resultDate.textContent = formatDate(resultDateObj);
     }
 
     function setCurrentTime() {
-      const now = new Date();
-      fromDatetime.value = formatDateTimeLocal(now);
-      convert();
+      try {
+        fromDatetime.value = wallValueForInstant(new Date(), ensureZone(fromTimezone.value));
+        convert();
+      } catch (error) {
+        showError(error instanceof Error ? error.message : 'Unable to read current time.');
+      }
     }
 
     function swapTimezones() {
-      const temp = fromTimezone.value;
+      const previous = fromTimezone.value;
       fromTimezone.value = toTimezone.value;
-      toTimezone.value = temp;
+      toTimezone.value = previous;
       updateCurrentTimes();
-      calculateTimeDiff();
       convert();
     }
 
     async function copyResult() {
+      if (resultTime.textContent.includes('--')) return;
       const text = `${resultTime.textContent} - ${resultDate.textContent}`;
-      if (text.includes('--')) return;
-      
       try {
         await navigator.clipboard.writeText(text);
       } catch (_) {
-        const ta = document.createElement('textarea');
-        ta.value = text;
-        ta.style.cssText = 'position:fixed;opacity:0;pointer-events:none;';
-        document.body.appendChild(ta);
-        ta.select();
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.style.cssText = 'position:fixed;opacity:0;pointer-events:none;';
+        document.body.appendChild(textarea);
+        textarea.select();
         document.execCommand('copy');
-        document.body.removeChild(ta);
+        textarea.remove();
       }
-      
       const feedback = document.getElementById('copyFeedback');
       feedback.classList.add('show');
       clearTimeout(copyTimer);
@@ -525,17 +590,11 @@
       const now = new Date();
       const quickZones = ['America/New_York', 'Europe/London', 'Europe/Paris', 'Asia/Tokyo', 'Australia/Sydney'];
       const grid = document.getElementById('quickZonesGrid');
-      
-      grid.innerHTML = quickZones.map(tz => {
-        const offset = getTimezoneOffset(tz, now);
-        const tzTime = new Date(now.getTime() + offset * 60 * 60 * 1000);
-        const label = timezones.find(t => t.name === tz)?.label || tz;
-        return `<div class="quick-zone-item" data-tz="${tz}">${label}<span class="quick-zone-time" data-i18n="tools.converters.timezone-converter.text.035">${formatTime(tzTime)}</span></div>`;
-      }).join('');
-
-      grid.querySelectorAll('.quick-zone-item').forEach(item => {
-        item.addEventListener('click', () => {
-          toTimezone.value = item.dataset.tz;
+      grid.innerHTML = quickZones.map((zone) => `<button type="button" class="quick-zone-item" data-tz="${zone}">${zoneLabels.get(zone)}<span class="quick-zone-time">${formatClock(now, zone)}</span></button>`).join('');
+      grid.querySelectorAll('.quick-zone-item').forEach((button) => {
+        button.addEventListener('click', () => {
+          toTimezone.value = button.dataset.tz;
+          updateCurrentTimes();
           convert();
         });
       });
@@ -545,11 +604,11 @@
     document.getElementById('btnNow').addEventListener('click', setCurrentTime);
     document.getElementById('btnCopy').addEventListener('click', copyResult);
     document.getElementById('swapBtn').addEventListener('click', swapTimezones);
-    fromTimezone.addEventListener('change', () => { updateCurrentTimes(); calculateTimeDiff(); convert(); });
-    toTimezone.addEventListener('change', () => { updateCurrentTimes(); calculateTimeDiff(); convert(); });
+    fromTimezone.addEventListener('change', () => { updateCurrentTimes(); convert(); });
+    toTimezone.addEventListener('change', () => { updateCurrentTimes(); convert(); });
+    fromDatetime.addEventListener('input', convert);
 
     updateCurrentTimes();
-    calculateTimeDiff();
     populateQuickZones();
     setInterval(() => { updateCurrentTimes(); populateQuickZones(); }, 60000);
   </script>

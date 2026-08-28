@@ -221,8 +221,8 @@
         ]
       },
       "description": {
-        "tr": "Binary, Decimal, Hexadecimal ve Octal sayı sistemleri arasında dönüşüm yapın. Tüm sayı tabanlarını destekler.",
-        "en": "Convert between Binary, Decimal, Hexadecimal, and Octal number systems instantly. Supports all numeral systems."
+        "tr": "Binary, Decimal, Hexadecimal ve Octal arasında işaretli tam sayıları BigInt ile tarayıcıda kesin olarak dönüştürün. Kesirli sayılar desteklenmez.",
+        "en": "Convert signed whole integers exactly between Binary, Decimal, Hexadecimal, and Octal using browser BigInt. Fractions are not supported."
       },
       "schema": {
         "@type": "WebApplication",
@@ -246,15 +246,15 @@
         "unix-timestamp",
         "scientific-calculator"
       ],
-      "public": true,
-      "indexable": false,
-      "adsEligible": false,
-      "certificationStatus": "UNAVAILABLE",
-      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "privacyMode": "LOCAL_ONLY",
       "externalNetwork": false,
-      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
-      "dataSource": "None on fail-closed public surface",
-      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
+      "syntheticData": "NONE",
+      "dataSource": "User input; browser BigInt integer arithmetic",
+      "limitations": "Supports signed whole integers in bases 2, 8, 10, and 16 only. Fractions and fixed-width two's-complement representations are not supported; browser BigInt support is required.",
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
       "path": "/converters/number-base-converter",
       "entry": "/src/tools/converters/number-base-converter/"
     },
@@ -476,8 +476,8 @@
         ]
       },
       "description": {
-        "tr": "Farklı saat dilimleri arasında zaman dönüşümü yapın. Dünyanın herhangi bir yerindeki saati anında öğrenin.",
-        "en": "Convert time between different time zones worldwide. Check current time in any timezone instantly."
+        "tr": "Listelenen IANA saat dilimleri arasında, tarayıcının tarih-özel Intl saat dilimi verilerini kullanarak dönüşüm yapın. Belirsiz veya var olmayan DST yerel saatleri reddedilir.",
+        "en": "Convert between the listed IANA time zones using date-specific browser Intl timezone data. Ambiguous or nonexistent DST wall times are rejected."
       },
       "schema": {
         "@type": "WebApplication",
@@ -501,15 +501,15 @@
         "unix-timestamp",
         "unit-converter"
       ],
-      "public": true,
-      "indexable": false,
-      "adsEligible": false,
-      "certificationStatus": "UNAVAILABLE",
-      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "privacyMode": "LOCAL_ONLY",
       "externalNetwork": false,
-      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
-      "dataSource": "None on fail-closed public surface",
-      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
+      "syntheticData": "NONE",
+      "dataSource": "Browser Intl/IANA timezone database for the selected date",
+      "limitations": "Supports the 17 listed IANA zones. Historical and future accuracy depends on the timezone database shipped with the browser. Ambiguous and nonexistent daylight-saving local times are rejected rather than guessed.",
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
       "path": "/converters/timezone-converter",
       "entry": "/src/tools/converters/timezone-converter/"
     },

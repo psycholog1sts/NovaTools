@@ -9,12 +9,25 @@
     "us": 0.6
   },
   "keywords": {
-    "tr": ["binary dönüştürücü", "hex dönüştürücü", "decimal binary", "sayı tabanı", "oktal dönüştürücü"],
-    "en": ["binary converter", "hex converter", "decimal to binary", "number base", "octal converter", "numeral system"]
+    "tr": [
+      "binary dönüştürücü",
+      "hex dönüştürücü",
+      "decimal binary",
+      "sayı tabanı",
+      "oktal dönüştürücü"
+    ],
+    "en": [
+      "binary converter",
+      "hex converter",
+      "decimal to binary",
+      "number base",
+      "octal converter",
+      "numeral system"
+    ]
   },
   "description": {
-    "tr": "Binary, Decimal, Hexadecimal ve Octal sayı sistemleri arasında dönüşüm yapın. Tüm sayı tabanlarını destekler.",
-    "en": "Convert between Binary, Decimal, Hexadecimal, and Octal number systems instantly. Supports all numeral systems."
+    "tr": "Binary, Decimal, Hexadecimal ve Octal arasında işaretli tam sayıları BigInt ile tarayıcıda kesin olarak dönüştürün. Kesirli sayılar desteklenmez.",
+    "en": "Convert signed whole integers exactly between Binary, Decimal, Hexadecimal, and Octal using browser BigInt. Fractions are not supported."
   },
   "schema": {
     "@type": "WebApplication",
@@ -37,5 +50,10 @@
   "relatedTools": [
     "unix-timestamp",
     "scientific-calculator"
-  ]
+  ],
+  "privacyMode": "LOCAL_ONLY",
+  "externalNetwork": false,
+  "syntheticData": "NONE",
+  "dataSource": "User input; browser BigInt integer arithmetic",
+  "limitations": "Supports signed whole integers in bases 2, 8, 10, and 16 only. Fractions and fixed-width two's-complement representations are not supported."
 }
