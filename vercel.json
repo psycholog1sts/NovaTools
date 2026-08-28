@@ -11,108 +11,336 @@
   "framework": "vite",
   "cleanUrls": true,
   "rewrites": [
-    { "source": "/ads.txt", "destination": "/ads.txt" },
-    { "source": "/robots.txt", "destination": "/robots.txt" },
-    { "source": "/sitemap.xml", "destination": "/sitemap.xml" },
-    { "source": "/about-us", "destination": "/about-us.html" },
-    { "source": "/contact", "destination": "/contact.html" },
-    { "source": "/request-tool", "destination": "/request-tool.html" },
-    { "source": "/privacy-policy", "destination": "/privacy-policy.html" },
-    { "source": "/terms-of-service", "destination": "/terms-of-service.html" },
-    { "source": "/cookie-policy", "destination": "/cookie-policy.html" },
-    { "source": "/security", "destination": "/security.html" },
-    { "source": "/gizlilik-politikasi", "destination": "/gizlilik-politikasi.html" },
-    { "source": "/kvkk-aydinlatma-metni", "destination": "/kvkk-aydinlatma-metni.html" },
-    { "source": "/kullanim-kosullari", "destination": "/kullanim-kosullari.html" },
-    { "source": "/iletisim", "destination": "/iletisim.html" },
-    { "source": "/tr/about-us", "destination": "/tr/about-us.html" },
-    { "source": "/tr/contact", "destination": "/tr/contact.html" },
-    { "source": "/tr/request-tool", "destination": "/tr/request-tool.html" },
-    { "source": "/tr/privacy-policy", "destination": "/tr/privacy-policy.html" },
-    { "source": "/tr/terms-of-service", "destination": "/tr/terms-of-service.html" },
-    { "source": "/tr/cookie-policy", "destination": "/tr/cookie-policy.html" },
-    { "source": "/tr/security", "destination": "/tr/security.html" },
-    { "source": "/tr/gizlilik-politikasi", "destination": "/tr/gizlilik-politikasi.html" },
-    { "source": "/tr/kvkk-aydinlatma-metni", "destination": "/tr/kvkk-aydinlatma-metni.html" },
-    { "source": "/tr/kullanim-kosullari", "destination": "/tr/kullanim-kosullari.html" },
-    { "source": "/tr/iletisim", "destination": "/tr/iletisim.html" },
-    { "source": "/ar/about-us", "destination": "/ar/about-us.html" },
-    { "source": "/ar/contact", "destination": "/ar/contact.html" },
-    { "source": "/ar/request-tool", "destination": "/ar/request-tool.html" },
-    { "source": "/ar/privacy-policy", "destination": "/ar/privacy-policy.html" },
-    { "source": "/ar/terms-of-service", "destination": "/ar/terms-of-service.html" },
-    { "source": "/ar/cookie-policy", "destination": "/ar/cookie-policy.html" },
-    { "source": "/ar/security", "destination": "/ar/security.html" },
-    { "source": "/ar/gizlilik-politikasi", "destination": "/ar/gizlilik-politikasi.html" },
-    { "source": "/ar/kvkk-aydinlatma-metni", "destination": "/ar/kvkk-aydinlatma-metni.html" },
-    { "source": "/ar/kullanim-kosullari", "destination": "/ar/kullanim-kosullari.html" },
-    { "source": "/ar/iletisim", "destination": "/ar/iletisim.html" },
-    { "source": "/admin", "destination": "/admin/index.html" },
-    { "source": "/admin/dashboard", "destination": "/admin/dashboard.html" },
-    { "source": "/admin/:path*", "destination": "/admin/index.html" },
-    { "source": "/blog", "destination": "/blog/index.html" },
-    { "source": "/tr/blog", "destination": "/tr/blog/index.html" },
-    { "source": "/ar/blog", "destination": "/ar/blog/index.html" },
-    { "source": "/guides/:guide", "destination": "/guides/:guide.html" },
-    { "source": "/guides/articles/:article", "destination": "/guides/articles/:article.html" },
-    { "source": "/site-map/topical", "destination": "/site-map/topical.html" },
-    { "source": "/categories/:category", "destination": "/categories/:category.html" },
-    { "source": "/tools/:category/:tool", "destination": "/tools/:category/:tool/index.html" },
-    { "source": "/tools/:category/:tool/:path*", "destination": "/tools/:category/:tool/index.html" }
+    {
+      "source": "/ads.txt",
+      "destination": "/ads.txt"
+    },
+    {
+      "source": "/robots.txt",
+      "destination": "/robots.txt"
+    },
+    {
+      "source": "/sitemap.xml",
+      "destination": "/sitemap.xml"
+    },
+    {
+      "source": "/about-us",
+      "destination": "/about-us.html"
+    },
+    {
+      "source": "/contact",
+      "destination": "/contact.html"
+    },
+    {
+      "source": "/request-tool",
+      "destination": "/request-tool.html"
+    },
+    {
+      "source": "/privacy-policy",
+      "destination": "/privacy-policy.html"
+    },
+    {
+      "source": "/terms-of-service",
+      "destination": "/terms-of-service.html"
+    },
+    {
+      "source": "/cookie-policy",
+      "destination": "/cookie-policy.html"
+    },
+    {
+      "source": "/security",
+      "destination": "/security.html"
+    },
+    {
+      "source": "/gizlilik-politikasi",
+      "destination": "/gizlilik-politikasi.html"
+    },
+    {
+      "source": "/kvkk-aydinlatma-metni",
+      "destination": "/kvkk-aydinlatma-metni.html"
+    },
+    {
+      "source": "/kullanim-kosullari",
+      "destination": "/kullanim-kosullari.html"
+    },
+    {
+      "source": "/iletisim",
+      "destination": "/iletisim.html"
+    },
+    {
+      "source": "/tr/about-us",
+      "destination": "/tr/about-us.html"
+    },
+    {
+      "source": "/tr/contact",
+      "destination": "/tr/contact.html"
+    },
+    {
+      "source": "/tr/request-tool",
+      "destination": "/tr/request-tool.html"
+    },
+    {
+      "source": "/tr/privacy-policy",
+      "destination": "/tr/privacy-policy.html"
+    },
+    {
+      "source": "/tr/terms-of-service",
+      "destination": "/tr/terms-of-service.html"
+    },
+    {
+      "source": "/tr/cookie-policy",
+      "destination": "/tr/cookie-policy.html"
+    },
+    {
+      "source": "/tr/security",
+      "destination": "/tr/security.html"
+    },
+    {
+      "source": "/tr/gizlilik-politikasi",
+      "destination": "/tr/gizlilik-politikasi.html"
+    },
+    {
+      "source": "/tr/kvkk-aydinlatma-metni",
+      "destination": "/tr/kvkk-aydinlatma-metni.html"
+    },
+    {
+      "source": "/tr/kullanim-kosullari",
+      "destination": "/tr/kullanim-kosullari.html"
+    },
+    {
+      "source": "/tr/iletisim",
+      "destination": "/tr/iletisim.html"
+    },
+    {
+      "source": "/ar/about-us",
+      "destination": "/ar/about-us.html"
+    },
+    {
+      "source": "/ar/contact",
+      "destination": "/ar/contact.html"
+    },
+    {
+      "source": "/ar/request-tool",
+      "destination": "/ar/request-tool.html"
+    },
+    {
+      "source": "/ar/privacy-policy",
+      "destination": "/ar/privacy-policy.html"
+    },
+    {
+      "source": "/ar/terms-of-service",
+      "destination": "/ar/terms-of-service.html"
+    },
+    {
+      "source": "/ar/cookie-policy",
+      "destination": "/ar/cookie-policy.html"
+    },
+    {
+      "source": "/ar/security",
+      "destination": "/ar/security.html"
+    },
+    {
+      "source": "/ar/gizlilik-politikasi",
+      "destination": "/ar/gizlilik-politikasi.html"
+    },
+    {
+      "source": "/ar/kvkk-aydinlatma-metni",
+      "destination": "/ar/kvkk-aydinlatma-metni.html"
+    },
+    {
+      "source": "/ar/kullanim-kosullari",
+      "destination": "/ar/kullanim-kosullari.html"
+    },
+    {
+      "source": "/ar/iletisim",
+      "destination": "/ar/iletisim.html"
+    },
+    {
+      "source": "/admin",
+      "destination": "/admin/index.html"
+    },
+    {
+      "source": "/admin/dashboard",
+      "destination": "/admin/dashboard.html"
+    },
+    {
+      "source": "/admin/:path*",
+      "destination": "/admin/index.html"
+    },
+    {
+      "source": "/blog",
+      "destination": "/blog/index.html"
+    },
+    {
+      "source": "/tr/blog",
+      "destination": "/tr/blog/index.html"
+    },
+    {
+      "source": "/ar/blog",
+      "destination": "/ar/blog/index.html"
+    },
+    {
+      "source": "/guides/:guide",
+      "destination": "/guides/:guide.html"
+    },
+    {
+      "source": "/guides/articles/:article",
+      "destination": "/guides/articles/:article.html"
+    },
+    {
+      "source": "/site-map/topical",
+      "destination": "/site-map/topical.html"
+    },
+    {
+      "source": "/categories/:category",
+      "destination": "/categories/:category.html"
+    },
+    {
+      "source": "/tools/:category/:tool",
+      "destination": "/tools/:category/:tool/index.html"
+    },
+    {
+      "source": "/tools/:category/:tool/:path*",
+      "destination": "/tools/:category/:tool/index.html"
+    }
   ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "Strict-Transport-Security", "value": "max-age=63072000; includeSubDomains; preload" },
-        { "key": "Content-Security-Policy", "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://pagead2.googlesyndication.com; img-src 'self' data: https:; style-src 'self' 'unsafe-inline';" },
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "DENY" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "Permissions-Policy", "value": "geolocation=(), microphone=(), camera=()" }
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000; includeSubDomains; preload"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' https://formspree.io; script-src 'self' 'wasm-unsafe-eval' 'sha256-2nVi2uPJP+iLmyd1bA2IbX0mtNxlfp/OxKYitpi4SXU=' 'sha256-6YPZdgZm+3JK7YzP3jtjQ+8Su/EdfT8Zf58NpC5W80Q=' 'sha256-BnSg5x5hl7vxRYkM+JYawN+h0UhcDWLLuaFQCIhBxQY=' 'sha256-CoI9aq6FNGIV7iukOrmwVHgEkitWO39RCZMQArV80yk=' 'sha256-Ez1TuqXeODeaB5X3S6OITv7X9tINJv+HIz1yPLhxCzM=' 'sha256-UpIDbg5W4NMMu84WQDsAt7+rmOQwOz8E7nEiRljfIJo=' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://partner.googleadservices.com https://tpc.googlesyndication.com https://googleads.g.doubleclick.net https://www.google-analytics.com https://cdn.jsdelivr.net https://unpkg.com https://esm.sh https://va.vercel-scripts.com https://www.clarity.ms; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; style-src-elem 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: blob: https:; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' blob: https://www.google-analytics.com https://region1.google-analytics.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://cdn.jsdelivr.net https://unpkg.com https://esm.sh https://fonts.googleapis.com https://fonts.gstatic.com https://ipapi.co https://va.vercel-scripts.com https://*.clarity.ms; media-src 'self' blob: data:; worker-src 'self' blob:; frame-src 'self' https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com; manifest-src 'self'; upgrade-insecure-requests;"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "geolocation=(), microphone=(), camera=(), interest-cohort=()"
+        },
+        {
+          "key": "Cross-Origin-Opener-Policy",
+          "value": "same-origin"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "(.*)\\.vercel\\.app"
+        }
+      ],
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
       ]
     },
     {
       "source": "/admin",
       "headers": [
-        { "key": "Cache-Control", "value": "no-store" },
-        { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
+        {
+          "key": "Cache-Control",
+          "value": "no-store"
+        },
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
       ]
     },
     {
       "source": "/admin/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "no-store" },
-        { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
+        {
+          "key": "Cache-Control",
+          "value": "no-store"
+        },
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
       ]
     },
     {
       "source": "/assets/(.*)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
     },
     {
       "source": "/js/(.*)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
     },
     {
       "source": "/css/(.*)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
     },
     {
       "source": "/vendor/(.*)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
     },
     {
       "source": "/images/(.*)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
     },
     {
       "source": "/icons/(.*)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
     },
     {
       "source": "/wasm/(.*)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
     }
   ]
 }

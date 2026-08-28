@@ -1,9 +1,15 @@
+# Content Signals Policy (https://contentsignals.org)
+# Deliberate policy, not an unset default: this site may be indexed for
+# search and used as input for AI answers that reference it, but its
+# content may not be used to train or fine-tune AI models.
 User-agent: *
+Content-signal: search=yes, ai-input=yes, ai-train=no, use=reference
 Allow: /
 Disallow: /api/
 Disallow: /admin/
 Disallow: /test/
 Disallow: /*?*
+
 Sitemap: https://mc-novatools.com/sitemap.xml
 Sitemap: https://mc-novatools.com/sitemap-blog.xml
 Sitemap: https://mc-novatools.com/sitemap-tools.xml

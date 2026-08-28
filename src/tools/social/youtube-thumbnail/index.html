@@ -317,7 +317,7 @@
       const imgUrl = `https://img.youtube.com/vi/${videoId}/${quality.key}.jpg`;
       return `
         <div class="thumbnail-item">
-          <img src="${imgUrl}" alt="${quality.name}" loading="lazy" onerror="this.parentElement.style.display='none'" decoding="async">
+          <img src="${imgUrl}" alt="${quality.name}" loading="lazy" data-nv-onerror="hide-parent" decoding="async">
           <div class="thumbnail-info">
             <div class="thumbnail-quality">${quality.name}</div>
             <div class="thumbnail-dimensions">${quality.dims}</div>

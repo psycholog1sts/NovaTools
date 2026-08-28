@@ -1,6 +1,8 @@
 # Dependencies
 node_modules/
 .pnpm-store/
+# Platform-specific installs must never be committed: a Windows-built
+# node_modules breaks Linux CI (missing @rollup/rollup-linux-x64-gnu, sharp).
 
 # Python environments
 .venv/
@@ -9,7 +11,10 @@ __pycache__/
 *.py[cod]
 
 # Build output
-# dist/  # Temporarily enabled for deployment
+# dist/ is produced by `npm run build` and deployed straight from CI
+# (see .github/workflows/deploy.yml). Committing it let unverified local
+# builds reach production, so it is generated, never tracked.
+dist/
 *.tsbuildinfo
 
 # Environment

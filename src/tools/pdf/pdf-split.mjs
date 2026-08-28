@@ -125,7 +125,7 @@ function formatSplitResult(files, totalPages) {
       </div>
 
       ${files.length > 1 ? `
-        <button class="btn btn-primary" onclick="downloadAllZip()">
+        <button type="button" class="btn btn-primary" data-nv-click="downloadAllZip">
           📦 Download All as ZIP
         </button>
       ` : ''}

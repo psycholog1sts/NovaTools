@@ -428,7 +428,7 @@
           </div>
           <div class="hash-value">${hash}</div>
           <div class="hash-actions">
-            <button class="hash-btn" onclick="copyHash('${hash}', this)" data-i18n="tools.data.checksum-calculator.text.043">Copy</button>
+            <button class="hash-btn" data-nv-click="copyHash" data-nv-args='["${hash}","@el"]' data-i18n="tools.data.checksum-calculator.text.043">Copy</button>
             <span class="copy-feedback" data-i18n="tools.data.checksum-calculator.text.044">Copied!</span>
           </div>
         `;

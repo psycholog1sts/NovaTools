@@ -420,7 +420,7 @@
                 <div class="clock-city">${city.city}</div>
                 <div class="clock-country">${city.country}</div>
               </div>
-              <button class="clock-remove" onclick="removeCity(${index})" aria-label="Remove ${city.city}">&times;</button>
+              <button type="button" class="clock-remove" data-nv-click="removeCity" data-nv-args='[${index}]' aria-label="Remove ${city.city}">&times;</button>
             </div>
             <div class="clock-time" data-timezone="${timezone}">--:--</div>
             <div class="clock-date" data-timezone="${timezone}">---</div>
