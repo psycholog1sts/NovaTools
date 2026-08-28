@@ -116,35 +116,37 @@ test('Number Base Converter preserves arbitrary-size signed integers and rejects
 
   const base = page.locator('#baseSelect');
   const input = page.locator('#numberInput');
+  const convertButton = page.locator('#btnConvert');
   await expect(base).toHaveAccessibleName(/base|number base/i);
   await expect(input).toHaveAccessibleName(/number|integer|value/i);
+  await expect(convertButton).toHaveAccessibleName(/convert/i);
   await expect(base.locator('option')).toHaveCount(4);
   expect(await base.locator('option').evaluateAll((options) => options.map((option) => option.value))).toEqual(['10', '2', '16', '8']);
 
   await base.selectOption('10');
   await input.fill('9007199254740993');
-  await page.getByRole('button', { name: /^convert$/i }).click();
+  await convertButton.click();
   await expect(page.locator('#decimalResult')).toHaveText('9007199254740993');
   await expect(page.locator('#hexResult')).toHaveText('0x20000000000001');
 
   await input.fill('340282366920938463463374607431768211455');
-  await page.getByRole('button', { name: /^convert$/i }).click();
+  await convertButton.click();
   await expect(page.locator('#hexResult')).toHaveText('0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF');
 
   await input.fill('-255');
-  await page.getByRole('button', { name: /^convert$/i }).click();
+  await convertButton.click();
   await expect(page.locator('#decimalResult')).toHaveText('-255');
   await expect(page.locator('#hexResult')).toHaveText('-0xFF');
   await expect(page.locator('#octalResult')).toHaveText('-0o377');
 
   await base.selectOption('2');
   await input.fill('102');
-  await page.getByRole('button', { name: /^convert$/i }).click();
+  await convertButton.click();
   await expect(page.locator('#decimalResult')).toContainText(/invalid characters/i);
 
   await base.selectOption('10');
   await input.fill('10.5');
-  await page.getByRole('button', { name: /^convert$/i }).click();
+  await convertButton.click();
   await expect(page.locator('#decimalResult')).toContainText(/integer|fraction/i);
 
   await expect(page.locator('body')).not.toContainText(/safe integer limit|even larger numbers are supported|fractional numbers.*truncated/i);
@@ -164,28 +166,30 @@ test('Time Zone Converter uses date-specific IANA rules and rejects invalid or a
   const fromZone = page.locator('#fromTimezone');
   const toZone = page.locator('#toTimezone');
   const input = page.locator('#fromDatetime');
+  const convertButton = page.locator('#btnConvert');
   await expect(fromZone).toHaveAccessibleName(/from time zone|source time zone/i);
   await expect(toZone).toHaveAccessibleName(/to time zone|target time zone/i);
   await expect(input).toHaveAccessibleName(/date|time/i);
+  await expect(convertButton).toHaveAccessibleName(/convert/i);
 
   await fromZone.selectOption('America/New_York');
   await toZone.selectOption('UTC');
   await input.fill('2026-01-15T12:00');
-  await page.getByRole('button', { name: /convert time/i }).click();
+  await convertButton.click();
   await expect(page.locator('#resultTime')).toHaveText('17:00');
   await expect(page.locator('#timeDiffValue')).toContainText('+5 hours');
 
   await input.fill('2026-07-15T12:00');
-  await page.getByRole('button', { name: /convert time/i }).click();
+  await convertButton.click();
   await expect(page.locator('#resultTime')).toHaveText('16:00');
   await expect(page.locator('#timeDiffValue')).toContainText('+4 hours');
 
   await input.fill('2026-03-08T02:30');
-  await page.getByRole('button', { name: /convert time/i }).click();
+  await convertButton.click();
   await expect(page.locator('#resultDate')).toContainText(/does not exist|invalid local time/i);
 
   await input.fill('2026-11-01T01:30');
-  await page.getByRole('button', { name: /convert time/i }).click();
+  await convertButton.click();
   await expect(page.locator('#resultDate')).toContainText(/ambiguous|occurs twice/i);
 
   await page.evaluate(() => {
@@ -197,7 +201,7 @@ test('Time Zone Converter uses date-specific IANA rules and rejects invalid or a
     select.value = option.value;
   });
   await input.fill('2026-01-15T12:00');
-  await page.getByRole('button', { name: /convert time/i }).click();
+  await convertButton.click();
   await expect(page.locator('#resultDate')).toContainText(/invalid|unsupported time zone/i);
 
   await expect(page.locator('body')).not.toContainText(/correctly calculate.*future daylight saving time rules|handles all time zone offsets accurately/i);
