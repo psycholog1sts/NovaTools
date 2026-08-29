@@ -103,7 +103,6 @@
           "009": "Görüntü Araçları",
           "010": "Geliştirici Araçları",
           "011": "BMI Hesap Makinesi",
-          "012": "Beden Kitle İndeksinizi (BMI) hesaplayın ve sağlık kategorinizi keşfedin. Boyunuza göre kişiselleştirilmiş sağlık ipuçları ve ideal kilo aralığını alın.",
           "013": "Metrik (kg, cm)",
           "014": "Imperial (lbs, ft/inç)",
           "015": "(santimetre)",
@@ -122,7 +121,6 @@
           "028": "Obez",
           "029": "30.0 ve üzeri",
           "030": "BMI Hesap Makinesi Hakkında",
-          "031": "Vücut Kitle İndeksi (BMI), boyunuza göre sağlıklı bir kiloda olup olmadığınızı belirlemek için boyunuzu ve kilonuzu kullanan basit bir tarama yöntemidir. Ücretsiz BMI Hesaplayıcımız, sağlık kategoriniz ve kişiselleştirilmiş sağlık ipuçlarınızla birlikte anında sonuçlar sağlar.",
           "032": "Nasıl Kullanılır",
           "033": "Tercih ettiğiniz birim sistemini seçin (Metrik veya İngiliz).",
           "034": "Boyunuzu girin (cm veya fit/inç cinsinden).",
@@ -130,7 +128,6 @@
           "036": "Sonuçlarınızı görmek için \"BMI Hesapla\" seçeneğini tıklayın.",
           "037": "BMI değerinizi ve ilgili sağlık kategorinizi görüntüleyin.",
           "038": "Nereye düştüğünüzü görmek için görsel BMI ölçeğini kontrol edin.",
-          "039": "İdeal kilo aralığınızı ve sağlık ipuçlarını gözden geçirin.",
           "040": "BMI Kategoriler",
           "041": "BMI sınırlamaları",
           "042": "BMI doğrudan vücut yağını ölçmez ve kas kütlesi, kemik yoğunluğu, yaş, cinsiyet ve etnik köken gibi faktörleri hesaba katmaz. Sporcuların BMI'leri yağdan ziyade kas kütlesinden dolayı yüksek olabilir. Kapsamlı sağlık değerlendirmeleri için daima sağlık uzmanlarına danışın.",
@@ -142,7 +139,10 @@
           "048": "Evet, çocuklar ve gençler için BMI farklı şekilde yorumlanır ve yaşa ve cinsiyete özel yüzdelikler kullanılır. Bu hesap makinesi 18 yaş ve üzeri yetişkinler için tasarlanmıştır.",
           "049": "psk.dan.metehancetin@mc-novatools.com",
           "050": "Yalnızca tahminler; mali, hukuki veya vergi tavsiyesi değildir.",
-          "051": "${tip}"
+          "051": "${tip}",
+          "012": "Boy ve kilonuzdan Vücut Kitle İndeksinizi (VKİ) hesaplayın, yetişkinler için standart kategori sınırlarını ve boyunuzda VKİ 18,5-24,9 aralığına karşılık gelen kilo aralığını görün.",
+          "031": "Vücut Kitle İndeksi (VKİ), boyunuza göre sağlıklı bir kiloda olup olmadığınızı değerlendirmek için boy ve kiloyu kullanan basit bir tarama yöntemidir. Bu hesaplayıcı oranı tarayıcınızda hesaplar ve sonucun yetişkinler için hangi standart kategoriye düştüğünü gösterir. Yalnızca bir tarama oranıdır ve hiçbir teşhis koymaz.",
+          "039": "Boyunuzda VKİ 18,5-24,9 aralığına karşılık gelen kilo aralığını inceleyin."
         }
       },
       "currency-converter": {

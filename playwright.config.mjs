@@ -10,6 +10,11 @@ export default defineConfig({
     baseURL: 'http://127.0.0.1:4173',
     browserName: 'chromium',
     headless: true,
+    // CI installs its own browsers, so this is normally empty. It lets a sandbox
+    // that already has a Chromium build point at it instead of re-downloading one.
+    launchOptions: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE
+      ? { executablePath: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE }
+      : {},
     trace: 'retain-on-failure',
     screenshot: 'only-on-failure'
   },

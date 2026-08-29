@@ -209,3 +209,73 @@ test('Time Zone Converter uses date-specific IANA rules and rejects invalid or a
   await expectNoSeriousA11y(page, 'Time Zone Converter');
   await expectNoHorizontalOverflow(page, 320);
 });
+
+test('Age Calculator is an accessible, honest, locally-computed calendar utility', async ({ page }) => {
+  const errors = [];
+  page.on('pageerror', (error) => errors.push(error.message));
+  await page.clock.install({ time: new Date('2026-03-15T10:30:00') });
+
+  const response = await page.goto('/tools/converters/age-calculator/', { waitUntil: 'domcontentloaded' });
+  expect(response?.ok()).toBeTruthy();
+  await expectIndexableRobots(page);
+
+  const birthdate = page.locator('#birthdateInput');
+  await expect(birthdate).toHaveAccessibleName(/birth ?date|date of birth/i);
+  await expect(page.locator('#btnCalculate')).toHaveAccessibleName(/calculate/i);
+  await expect(page.locator('#ageStatus')).toHaveAttribute('aria-live', 'polite');
+
+  await birthdate.fill('1990-03-15');
+  await page.locator('#btnCalculate').click();
+  await expect(page.locator('#yearsValue')).toHaveText('36');
+  await expect(page.locator('#monthsValue')).toHaveText('0');
+  await expect(page.locator('#daysValue')).toHaveText('0');
+
+  await birthdate.fill('2026-12-31');
+  await page.locator('#btnCalculate').click();
+  await expect(page.locator('#ageStatus')).toContainText(/future|past|today/i);
+
+  // No unmeasurable claim is presented as a measurement of the visitor.
+  await expect(page.locator('.fun-facts-note')).toContainText(/fixed textbook average/i);
+  await expect(page.locator('body')).not.toContainText(/your heart has beaten|you have slept|life expectancy/i);
+
+  expect(errors).toEqual([]);
+  await expectNoSeriousA11y(page, 'Age Calculator');
+  await expectNoHorizontalOverflow(page, 320);
+});
+
+test('BMI Calculator computes the ratio it claims and makes no health claim it cannot support', async ({ page }) => {
+  const errors = [];
+  page.on('pageerror', (error) => errors.push(error.message));
+
+  const response = await page.goto('/tools/converters/bmi-calculator/', { waitUntil: 'domcontentloaded' });
+  expect(response?.ok()).toBeTruthy();
+  await expectIndexableRobots(page);
+
+  const heightCm = page.locator('#heightCm');
+  const weightKg = page.locator('#weightKg');
+  await expect(heightCm).toHaveAccessibleName(/height/i);
+  await expect(weightKg).toHaveAccessibleName(/weight/i);
+  await expect(page.locator('#bmiStatus')).toHaveAttribute('aria-live', 'polite');
+
+  await heightCm.fill('180');
+  await weightKg.fill('81');
+  await page.locator('#btnCalculate').click();
+  await expect(page.locator('#bmiValue')).toHaveText('25.0');
+  await expect(page.locator('#bmiCategory')).toHaveText(/overweight/i);
+  await expect(page.locator('#idealWeight')).toHaveText(/59\.9 - 80\.7 kg/);
+
+  await weightKg.fill('0');
+  await page.locator('#btnCalculate').click();
+  await expect(page.locator('#bmiStatus')).toContainText(/between|must be/i);
+
+  await page.evaluate(() => { document.getElementById('weightKg').value = 'abc'; });
+  await page.locator('#btnCalculate').click();
+  await expect(page.locator('#bmiStatus')).toContainText(/required|number|between|must be/i);
+
+  await expect(page.locator('.health-tips-note')).toContainText(/not a measurement of body fat|does not diagnose/i);
+  await expect(page.locator('body')).not.toContainText(/you should (?:eat|lose|gain)|recommended diet|consult this tool instead/i);
+
+  expect(errors).toEqual([]);
+  await expectNoSeriousA11y(page, 'BMI Calculator');
+  await expectNoHorizontalOverflow(page, 320);
+});

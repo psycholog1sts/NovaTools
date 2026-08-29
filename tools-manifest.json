@@ -54,9 +54,9 @@
         "percentage-calculator"
       ],
       "public": true,
-      "indexable": false,
+      "indexable": true,
       "adsEligible": false,
-      "certificationStatus": "UNAVAILABLE",
+      "certificationStatus": "CERTIFIED",
       "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
       "externalNetwork": false,
       "syntheticData": "NONE_ON_PUBLIC_SURFACE",
@@ -118,9 +118,9 @@
         "percentage-calculator"
       ],
       "public": true,
-      "indexable": false,
+      "indexable": true,
       "adsEligible": false,
-      "certificationStatus": "UNAVAILABLE",
+      "certificationStatus": "CERTIFIED",
       "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
       "externalNetwork": false,
       "syntheticData": "NONE_ON_PUBLIC_SURFACE",
