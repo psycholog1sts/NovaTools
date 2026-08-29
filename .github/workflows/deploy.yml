@@ -81,6 +81,9 @@ jobs:
             test-results/
           if-no-files-found: warn
 
+      - name: Enforce Content-Security-Policy in a real browser
+        run: node tests/csp-enforcement.mjs
+
       - name: Verify sitemap and site link export
         run: npm run lint:site-links
 
@@ -196,6 +199,9 @@ jobs:
 
       - name: Run Chromium E2E and accessibility gates
         run: npx playwright test
+
+      - name: Enforce Content-Security-Policy in a real browser
+        run: node tests/csp-enforcement.mjs
 
       - name: Verify sitemap and site link export
         run: npm run lint:site-links

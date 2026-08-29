@@ -1,0 +1,7 @@
+# Security contact information for mc-novatools.com (RFC 9116)
+Contact: mailto:support@mc-novatools.com
+Contact: https://mc-novatools.com/contact
+Expires: 2027-08-28T00:00:00.000Z
+Preferred-Languages: tr, en
+Canonical: https://mc-novatools.com/.well-known/security.txt
+Policy: https://mc-novatools.com/security

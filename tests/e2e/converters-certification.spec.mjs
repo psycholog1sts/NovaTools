@@ -209,3 +209,154 @@ test('Time Zone Converter uses date-specific IANA rules and rejects invalid or a
   await expectNoSeriousA11y(page, 'Time Zone Converter');
   await expectNoHorizontalOverflow(page, 320);
 });
+
+test('Age Calculator is an accessible, honest, locally-computed calendar utility', async ({ page }) => {
+  const errors = [];
+  page.on('pageerror', (error) => errors.push(error.message));
+  await page.clock.install({ time: new Date('2026-03-15T10:30:00') });
+
+  const response = await page.goto('/tools/converters/age-calculator/', { waitUntil: 'domcontentloaded' });
+  expect(response?.ok()).toBeTruthy();
+  await expectIndexableRobots(page);
+
+  const birthdate = page.locator('#birthdateInput');
+  await expect(birthdate).toHaveAccessibleName(/birth ?date|date of birth/i);
+  await expect(page.locator('#btnCalculate')).toHaveAccessibleName(/calculate/i);
+  await expect(page.locator('#ageStatus')).toHaveAttribute('aria-live', 'polite');
+
+  await birthdate.fill('1990-03-15');
+  await page.locator('#btnCalculate').click();
+  await expect(page.locator('#yearsValue')).toHaveText('36');
+  await expect(page.locator('#monthsValue')).toHaveText('0');
+  await expect(page.locator('#daysValue')).toHaveText('0');
+
+  await birthdate.fill('2026-12-31');
+  await page.locator('#btnCalculate').click();
+  await expect(page.locator('#ageStatus')).toContainText(/future|past|today/i);
+
+  // No unmeasurable claim is presented as a measurement of the visitor.
+  await expect(page.locator('.fun-facts-note')).toContainText(/fixed textbook average/i);
+  await expect(page.locator('body')).not.toContainText(/your heart has beaten|you have slept|life expectancy/i);
+
+  expect(errors).toEqual([]);
+  await expectNoSeriousA11y(page, 'Age Calculator');
+  await expectNoHorizontalOverflow(page, 320);
+});
+
+test('BMI Calculator computes the ratio it claims and makes no health claim it cannot support', async ({ page }) => {
+  const errors = [];
+  page.on('pageerror', (error) => errors.push(error.message));
+
+  const response = await page.goto('/tools/converters/bmi-calculator/', { waitUntil: 'domcontentloaded' });
+  expect(response?.ok()).toBeTruthy();
+  await expectIndexableRobots(page);
+
+  const heightCm = page.locator('#heightCm');
+  const weightKg = page.locator('#weightKg');
+  await expect(heightCm).toHaveAccessibleName(/height/i);
+  await expect(weightKg).toHaveAccessibleName(/weight/i);
+  await expect(page.locator('#bmiStatus')).toHaveAttribute('aria-live', 'polite');
+
+  await heightCm.fill('180');
+  await weightKg.fill('81');
+  await page.locator('#btnCalculate').click();
+  await expect(page.locator('#bmiValue')).toHaveText('25.0');
+  await expect(page.locator('#bmiCategory')).toHaveText(/overweight/i);
+  await expect(page.locator('#idealWeight')).toHaveText(/59\.9 - 80\.7 kg/);
+
+  await weightKg.fill('0');
+  await page.locator('#btnCalculate').click();
+  await expect(page.locator('#bmiStatus')).toContainText(/between|must be/i);
+
+  await page.evaluate(() => { document.getElementById('weightKg').value = 'abc'; });
+  await page.locator('#btnCalculate').click();
+  await expect(page.locator('#bmiStatus')).toContainText(/required|number|between|must be/i);
+
+  await expect(page.locator('.health-tips-note')).toContainText(/not a measurement of body fat|does not diagnose/i);
+  await expect(page.locator('body')).not.toContainText(/you should (?:eat|lose|gain)|recommended diet|consult this tool instead/i);
+
+  expect(errors).toEqual([]);
+  await expectNoSeriousA11y(page, 'BMI Calculator');
+  await expectNoHorizontalOverflow(page, 320);
+});
+
+test('Roman Numerals Converter is an accessible local converter that refuses non-standard notation', async ({ page }) => {
+  const errors = [];
+  page.on('pageerror', (error) => errors.push(error.message));
+
+  const response = await page.goto('/tools/converters/roman-numerals/', { waitUntil: 'domcontentloaded' });
+  expect(response?.ok()).toBeTruthy();
+  await expectIndexableRobots(page);
+
+  await expect(page.locator('#inputField')).toHaveAccessibleName(/number/i);
+  await expect(page.locator('#btnConvert')).toHaveAccessibleName(/convert/i);
+  await expect(page.locator('#validationMsg')).toHaveAttribute('aria-live', 'polite');
+
+  await page.locator('#inputField').fill('1990');
+  await page.locator('#btnConvert').click();
+  await expect(page.locator('#resultValue')).toHaveText('MCMXC');
+
+  await page.locator('#tabToNumber').click();
+  await page.locator('#inputField').fill('IIII');
+  await page.locator('#btnConvert').click();
+  await expect(page.locator('#validationMsg')).toContainText(/not a valid/i);
+
+  expect(errors).toEqual([]);
+  await expectNoSeriousA11y(page, 'Roman Numerals Converter');
+  await expectNoHorizontalOverflow(page, 320);
+});
+
+test('Scientific Calculator evaluates locally and refuses undefined results', async ({ page }) => {
+  const errors = [];
+  page.on('pageerror', (error) => errors.push(error.message));
+
+  const response = await page.goto('/tools/converters/scientific-calculator/', { waitUntil: 'domcontentloaded' });
+  expect(response?.ok()).toBeTruthy();
+  await expectIndexableRobots(page);
+
+  await expect(page.locator('#calcInput')).toHaveAttribute('aria-live', 'polite');
+  for (const name of ['Divide', 'Multiply', 'Equals', 'Square root', 'Pi']) {
+    await expect(page.getByRole('button', { name, exact: true })).toHaveCount(1);
+  }
+
+  await page.getByRole('button', { name: '9', exact: true }).click();
+  await page.getByRole('button', { name: 'Square root', exact: true }).click();
+  await page.getByRole('button', { name: 'Equals', exact: true }).click();
+  await expect(page.locator('#calcInput')).toHaveText('3');
+
+  await page.getByRole('button', { name: 'All clear', exact: true }).click();
+  await page.getByRole('button', { name: '1', exact: true }).click();
+  await page.getByRole('button', { name: 'Divide', exact: true }).click();
+  await page.getByRole('button', { name: '0', exact: true }).click();
+  await page.getByRole('button', { name: 'Equals', exact: true }).click();
+  await expect(page.locator('#calcInput')).toContainText(/zero/i);
+
+  expect(errors).toEqual([]);
+  await expectNoSeriousA11y(page, 'Scientific Calculator');
+  await expectNoHorizontalOverflow(page, 320);
+});
+
+test('Unix Timestamp Converter is accessible and discloses how it read the input', async ({ page }) => {
+  const errors = [];
+  page.on('pageerror', (error) => errors.push(error.message));
+
+  const response = await page.goto('/tools/converters/unix-timestamp/', { waitUntil: 'domcontentloaded' });
+  expect(response?.ok()).toBeTruthy();
+  await expectIndexableRobots(page);
+
+  await expect(page.locator('#timestampInput')).toHaveAccessibleName(/timestamp/i);
+  await expect(page.locator('#timestampStatus')).toHaveAttribute('aria-live', 'polite');
+
+  await page.locator('#timestampInput').fill('1704067200');
+  await page.locator('#btnConvert').click();
+  await expect(page.locator('#isoFormat')).toHaveText('2024-01-01T00:00:00.000Z');
+  await expect(page.locator('#timestampStatus')).toContainText(/seconds/i);
+
+  await page.locator('#timestampInput').fill('1704067200000');
+  await page.locator('#btnConvert').click();
+  await expect(page.locator('#timestampStatus')).toContainText(/millisecond/i);
+
+  expect(errors).toEqual([]);
+  await expectNoSeriousA11y(page, 'Unix Timestamp Converter');
+  await expectNoHorizontalOverflow(page, 320);
+});

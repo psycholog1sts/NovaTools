@@ -64,9 +64,13 @@ const toolUxEnhancementAssets = {
 
     if (!specializedToolUxSlugs.has(slug)) {
       tags.push({
+        // Injected into <head>, not <body>: Vite's body injection is a regex over
+        // `<body...>` and tools that build export/print documents contain a literal
+        // `<body>` inside a template string, which would swallow the injected tag
+        // and truncate the page's own script. `type="module"` is deferred either way.
         tag: 'script',
         attrs: { type: 'module', src: scriptSrc, 'data-tool-slug': slug },
-        injectTo: 'body'
+        injectTo: 'head'
       });
     }
 
@@ -417,7 +421,6 @@ export default defineConfig({
         }
       }
     },
-
     reportCompressedSize: true,
     chunkSizeWarningLimit: 800,
 

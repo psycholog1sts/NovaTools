@@ -12,7 +12,7 @@ if (!fs.existsSync(distDir)) {
 const ADSENSE_SCRIPT_RE = /\n?\s*<script\b(?=[^>]*\bsrc\s*=\s*["']https:\/\/pagead2\.googlesyndication\.com\/pagead\/js\/adsbygoogle\.js\?client=ca-pub-[0-9]{16}[^"']*["'])[^>]*>\s*<\/script>\s*/gi;
 const ADSENSE_DNS_RE = /\n?\s*<link\b(?=[^>]*\brel\s*=\s*["']dns-prefetch["'])(?=[^>]*\bhref\s*=\s*["']https:\/\/pagead2\.googlesyndication\.com["'])[^>]*\/?\s*>\s*/gi;
 const STALE_POPULAR_PREFETCH_RE = /\n?\s*<link\b(?=[^>]*\brel\s*=\s*["']prefetch["'])(?=[^>]*\bhref\s*=\s*["'](?:https:\/\/mc-novatools\.com)?\/tools\/popular(?:\/?)["'])[^>]*\/?\s*>\s*/gi;
-const DEFERRED_STYLE_RE = /<link rel="preload" href="([^"]+)" as="style" onload="this\.onload=null;this\.rel='stylesheet'"><noscript><link rel="stylesheet" href="\1"><\/noscript>/g;
+const DEFERRED_STYLE_RE = /<link rel="stylesheet" href="([^"]+)" media="print" data-nv-deferred-style><noscript><link rel="stylesheet" href="\1"><\/noscript>/g;
 const GOOGLE_FONT_STYLESHEET_RE = /\n?\s*<link\b(?=[^>]*\brel\s*=\s*["']stylesheet["'])(?=[^>]*\bhref\s*=\s*["']https:\/\/fonts\.googleapis\.com\/[^"']+["'])[^>]*\/?\s*>\s*/gi;
 const GOOGLE_FONT_PRECONNECT_RE = /\n?\s*<link\b(?=[^>]*\brel\s*=\s*["']preconnect["'])(?=[^>]*\bhref\s*=\s*["']https:\/\/fonts\.(?:googleapis|gstatic)\.com["'])[^>]*\/?\s*>\s*/gi;
 const PDF_ENHANCER_SCRIPT_RE = /\n?\s*<script\b(?=[^>]*\bsrc\s*=\s*["'](?:https:\/\/mc-novatools\.com)?\/js\/tool-page-enhancer\.js["'])[^>]*>\s*<\/script>\s*/gi;

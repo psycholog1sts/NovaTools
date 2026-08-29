@@ -499,7 +499,6 @@
           "009": "Image Tools",
           "010": "Developer Tools",
           "011": "BMI Calculator",
-          "012": "Calculate your Body Mass Index (BMI) and discover your health category. Get personalized health tips and ideal weight range based on your height.",
           "013": "Metric (kg, cm)",
           "014": "Imperial (lbs, ft/in)",
           "015": "(cm)",
@@ -518,7 +517,6 @@
           "028": "Obese",
           "029": "30.0 and above",
           "030": "About BMI Calculator",
-          "031": "Body Mass Index (BMI) is a simple screening method that uses your height and weight to determine if you're at a healthy weight for your height. Our free BMI Calculator provides instant results along with your health category and personalized health tips.",
           "032": "How to Use",
           "033": "Select your preferred unit system (Metric or Imperial).",
           "034": "Enter your height (in cm or feet/inches).",
@@ -526,7 +524,6 @@
           "036": "Click \"Calculate BMI\" to see your results.",
           "037": "View your BMI value and corresponding health category.",
           "038": "Check the visual BMI scale to see where you fall.",
-          "039": "Review your ideal weight range and health tips.",
           "040": "BMI Categories",
           "041": "Limitations of BMI",
           "042": "BMI does not directly measure body fat and doesn't account for factors like muscle mass, bone density, age, sex, and ethnicity. Athletes may have high BMIs due to muscle mass rather than fat. Always consult healthcare professionals for comprehensive health assessments.",
@@ -538,7 +535,10 @@
           "048": "Yes, BMI for children and teens is interpreted differently and uses age and sex-specific percentiles. This calculator is designed for adults aged 18 and older.",
           "049": "psk.dan.metehancetin@mc-novatools.com",
           "050": "Estimates only — not financial, legal, or tax advice.",
-          "051": "${tip}"
+          "051": "${tip}",
+          "012": "Calculate your Body Mass Index (BMI) from height and weight, see the standard adult category boundaries, and see the weight range that corresponds to BMI 18.5-24.9 at your height.",
+          "031": "Body Mass Index (BMI) is a simple screening method that uses your height and weight to determine if you're at a healthy weight for your height. This calculator works out the ratio in your browser and shows which standard adult category the result falls into. It is a screening ratio only and does not diagnose anything.",
+          "039": "Review the weight range that corresponds to BMI 18.5-24.9 at your height."
         }
       },
       "currency-converter": {
@@ -942,7 +942,7 @@
           "015": "Enter Unix Timestamp (seconds)",
           "016": "Local Date & Time",
           "017": "UTC Date & Time",
-          "018": "Relative Time",
+          "018": "Relative Time (approximate)",
           "019": "Select Date & Time",
           "020": "Unix Timestamp (seconds)",
           "021": "Unix Timestamp (milliseconds)",

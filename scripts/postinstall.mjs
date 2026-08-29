@@ -14,6 +14,24 @@ const rootDir = resolve(__dirname, '..');
 /**
  * Recursively find all meta.json files
  */
+/**
+ * The certification matrix stores its flags as the strings "True"/"False", but
+ * every consumer of the manifest compares with `=== true`. Passing the string
+ * through would drop every certified tool out of the sitemap and the public
+ * tool list, while "False" would read as truthy in the one place that uses a
+ * bare negation. Normalise once, here, so the generated manifest carries real
+ * booleans.
+ */
+function toBoolean(value, fallback) {
+  if (typeof value === 'boolean') return value;
+  if (typeof value === 'string') {
+    const normalized = value.trim().toLowerCase();
+    if (normalized === 'true' || normalized === 'yes') return true;
+    if (normalized === 'false' || normalized === 'no') return false;
+  }
+  return fallback;
+}
+
 function findMetaFiles(dir, files = []) {
   if (!existsSync(dir)) return files;
   
@@ -69,11 +87,11 @@ function generateManifest() {
       tools.push({
         ...meta,
         public: publicTool,
-        indexable: certification?.Indexable ?? (meta.indexable !== false && certificationStatus === 'CERTIFIED'),
-        adsEligible: certification?.AdsEligible ?? (meta.adsEligible !== false && certificationStatus === 'CERTIFIED' && publicTool),
+        indexable: toBoolean(certification?.Indexable, meta.indexable !== false && certificationStatus === 'CERTIFIED'),
+        adsEligible: toBoolean(certification?.AdsEligible, meta.adsEligible !== false && certificationStatus === 'CERTIFIED' && publicTool),
         certificationStatus,
         privacyMode: certification?.PrivacyTruth || meta.privacyMode || 'UNREVIEWED',
-        externalNetwork: certification?.ExternalNetwork ?? meta.externalNetwork ?? 'UNREVIEWED',
+        externalNetwork: toBoolean(certification?.ExternalNetwork, meta.externalNetwork ?? 'UNREVIEWED'),
         syntheticData: certification?.SyntheticData || meta.syntheticData || 'UNREVIEWED',
         dataSource: certification?.DataSource || meta.dataSource || null,
         limitations: certification?.KnownLimitations || meta.limitations || null,
@@ -107,7 +125,7 @@ function saveManifest(tools) {
     tools
   };
   
-  writeFileSync(outputPath, JSON.stringify(data, null, 2));
+  writeFileSync(outputPath, `${JSON.stringify(data, null, 2)}\n`);
   console.log(`✓ Generated tools-manifest.json with ${tools.length} tools`);
 }
 
