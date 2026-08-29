@@ -769,10 +769,10 @@
     guide.className = 'site-guide-chatbot';
     guide.setAttribute('aria-label', t('surface.chatbot.title', 'NovaTools guide'));
     const recommendations = [
-      { match: 'pdf,merge,compress,split,file', title: 'PDF workflow', href: '/categories/pdf-tools.html', guide: '/blog/articles/five-minute-pdf-cleanup-workflow.html' },
-      { match: 'image,png,jpg,webp,photo,resize', title: 'Image workflow', href: '/categories/image-tools.html', guide: '/blog/articles/compress-images-for-web-quality-checklist.html' },
-      { match: 'json,regex,code,developer,api', title: 'Developer workflow', href: '/categories/developer-tools.html', guide: '/blog/articles/developer-debugging-tool-chain.html' },
-      { match: 'money,finance,tax,loan,mortgage,currency', title: 'Finance workflow', href: '/categories/finance-tools.html', guide: '/blog/articles/monthly-finance-document-routine.html' }
+      { match: 'pdf,merge,compress,split,file', title: 'PDF workflow', href: '/categories/pdf-tools.html', guide: '/blog/articles/edit-pdf-without-adobe-acrobat-free-methods.html' },
+      { match: 'image,png,jpg,webp,photo,resize', title: 'Image workflow', href: '/categories/image-tools.html', guide: '/blog/articles/lazy-loading-images-implementation-guide-2026.html' },
+      { match: 'json,regex,code,developer,api', title: 'Developer workflow', href: '/categories/developer-tools.html', guide: '/blog/articles/understanding-json-web-tokens-structure-security.html' },
+      { match: 'money,finance,tax,loan,mortgage,currency', title: 'Finance workflow', href: '/categories/finance-tools.html', guide: '/blog/articles/rule-of-72-estimate-investment-doubling-time.html' }
     ];
     guide.innerHTML = `
       <button type="button" class="site-guide-chatbot__toggle" aria-expanded="false" aria-controls="site-guide-chatbot-panel">${t('surface.chatbot.open', 'Open site guide')}</button>
@@ -845,15 +845,15 @@
       converters: 'converters', data: 'data-tools', design: 'design-tools', productivity: 'productivity-tools', security: 'security-tools', social: 'social-media-tools'
     };
     const guideByCategory = {
-      pdf: '/blog/articles/five-minute-pdf-cleanup-workflow.html', image: '/blog/articles/compress-images-for-web-quality-checklist.html',
-      finance: '/blog/articles/monthly-finance-document-routine.html', dev: '/blog/articles/developer-debugging-tool-chain.html',
-      text: '/blog/articles/content-review-before-client-delivery.html', converters: '/blog/articles/unit-converter-for-project-planning.html',
-      data: '/blog/articles/data-cleanup-before-dashboard-import.html', design: '/blog/articles/image-alt-text-and-file-names-workflow.html',
-      productivity: '/blog/articles/tool-selection-map-for-new-users.html', security: '/blog/articles/local-processing-vs-upload-tools-comparison.html',
-      social: '/blog/articles/resize-images-for-social-platforms.html'
+      pdf: '/blog/articles/edit-pdf-without-adobe-acrobat-free-methods.html', image: '/blog/articles/lazy-loading-images-implementation-guide-2026.html',
+      finance: '/blog/articles/rule-of-72-estimate-investment-doubling-time.html', dev: '/blog/articles/understanding-json-web-tokens-structure-security.html',
+      text: '/blog/articles/browser-based-tools-vs-desktop-software-privacy-comparison.html', converters: '/blog/articles/rule-of-72-estimate-investment-doubling-time.html',
+      data: '/blog/articles/cloud-cost-comparison.html', design: '/blog/articles/lazy-loading-images-implementation-guide-2026.html',
+      productivity: '/blog/articles/browser-based-tools-vs-desktop-software-privacy-comparison.html', security: '/blog/articles/browser-based-tools-vs-desktop-software-privacy-comparison.html',
+      social: '/blog/articles/lazy-loading-images-implementation-guide-2026.html'
     };
     const categoryRoute = `/categories/${categoryRoutes[category] || 'index'}.html`;
-    const guideRoute = guideByCategory[category] || '/blog/articles/tool-selection-map-for-new-users.html';
+    const guideRoute = guideByCategory[category] || '/blog/articles/browser-based-tools-vs-desktop-software-privacy-comparison.html';
     const workflowByCategory = {
       pdf: [
         ['Combine', '/tools/pdf/merge/'], ['Reduce size', '/tools/pdf/compress/'], ['Add page numbers', '/tools/pdf/pdf-page-number/']

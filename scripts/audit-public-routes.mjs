@@ -1,6 +1,7 @@
 import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import path from 'node:path';
 import { blogArticleRoutes, blogHubPath, fallbackBlogLocale, supportedBlogLocales } from '../src/js/blog-routes.js';
+import { isPublishedBlogSlug } from '../src/js/blog-publication.js';
 
 const repoRoot = process.cwd();
 const distDir = path.join(repoRoot, 'dist');
@@ -197,7 +198,9 @@ function readSourceArticleSlugs() {
   if (!existsSync(articleDir)) return [];
   return readdirSync(articleDir)
     .filter((file) => file.endsWith('.html') && file !== 'index.html')
-    .map((file) => file.replace(/\.html$/, ''));
+    .map((file) => file.replace(/\.html$/, ''))
+    // Withheld articles are deliberately not built, so they have no routes.
+    .filter((slug) => isPublishedBlogSlug(slug));
 }
 
 function auditBlogManifestRoutes() {
@@ -206,7 +209,7 @@ function auditBlogManifestRoutes() {
     const hubRoute = blogHubPath(locale).replace(/^\//, '');
     if (!distExists(hubRoute)) fail(`Blog hub route missing for ${locale}: ${hubRoute}`);
 
-    for (const post of readBlogPosts(locale)) {
+    for (const post of readBlogPosts(locale).filter((entry) => isPublishedBlogSlug(entry.slug))) {
       const routes = blogArticleRoutes(post.slug, locale);
       for (const [routeType, routePath] of Object.entries(routes)) {
         const route = routePath.replace(/^\//, '');
@@ -220,7 +223,9 @@ function auditBlogManifestRoutes() {
 
 
 function auditGeneratedArticleRoutes() {
-  const manifestSlugs = new Set(supportedBlogLocales.flatMap((locale) => readBlogPosts(locale).map((post) => post.slug)));
+  const manifestSlugs = new Set(supportedBlogLocales
+    .flatMap((locale) => readBlogPosts(locale).map((post) => post.slug))
+    .filter((slug) => isPublishedBlogSlug(slug)));
   const sourceSlugs = readSourceArticleSlugs();
   const routeSlugs = [...new Set([...manifestSlugs, ...sourceSlugs])].sort((a, b) => a.localeCompare(b));
   for (const locale of supportedBlogLocales) {

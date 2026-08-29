@@ -258,7 +258,7 @@ const blogPosts = [
     title: 'Tool selection map for new users',
     excerpt: 'Choose the right category and tool quickly when you start a new task.',
     category: 'Workflow',
-    href: '/blog/articles/tool-selection-map-for-new-users.html',
+    href: '/blog/articles/browser-based-tools-vs-desktop-software-privacy-comparison.html',
     image: '/images/blog-covers/workflow-planning.svg',
     minutes: '5 min'
   },
@@ -267,7 +267,7 @@ const blogPosts = [
     title: 'Compress images for web quality checklist',
     excerpt: 'Keep quality, format and page speed checks in view while reducing image size.',
     category: 'Image',
-    href: '/blog/articles/compress-images-for-web-quality-checklist.html',
+    href: '/blog/articles/browser-based-tools-vs-desktop-software-privacy-comparison.html',
     image: '/images/blog-covers/image-workflow.svg',
     minutes: '6 min'
   },
@@ -276,7 +276,7 @@ const blogPosts = [
     title: 'Base64 converter common use cases',
     excerpt: 'Encoding, decoding and pre-share checks for developer workflows.',
     category: 'Developer',
-    href: '/blog/articles/base64-converter-common-use-cases.html',
+    href: '/blog/articles/browser-based-tools-vs-desktop-software-privacy-comparison.html',
     image: '/images/blog-covers/developer-utilities.svg',
     minutes: '4 min'
   }
@@ -288,7 +288,7 @@ const workflowCards = [
     title: 'Prepare a PDF for email',
     description: 'Compress the file, confirm readability, then use the PDF checklist before sending.',
     tool: ['Compress PDF', 'pdf/compress'],
-    guide: ['PDF email checklist', '/blog/articles/compress-pdf-for-email-without-ruining-readability.html'],
+    guide: ['PDF email checklist', '/blog/articles/browser-based-tools-vs-desktop-software-privacy-comparison.html'],
     category: ['PDF tools', '/categories/pdf-tools.html']
   },
   {
@@ -296,7 +296,7 @@ const workflowCards = [
     title: 'Clean developer data',
     description: 'Format JSON, compare text changes and keep shareable snippets readable.',
     tool: ['JSON Formatter', 'dev/json-formatter'],
-    guide: ['Debugging tool chain', '/blog/articles/developer-debugging-tool-chain.html'],
+    guide: ['Debugging tool chain', '/blog/articles/browser-based-tools-vs-desktop-software-privacy-comparison.html'],
     category: ['Developer tools', '/categories/developer-tools.html']
   },
   {
@@ -304,7 +304,7 @@ const workflowCards = [
     title: 'Publish lighter images',
     description: 'Resize, compress and review file names before uploading images to a site or email.',
     tool: ['Image Compressor', 'image/compress'],
-    guide: ['Image quality checklist', '/blog/articles/compress-images-for-web-quality-checklist.html'],
+    guide: ['Image quality checklist', '/blog/articles/browser-based-tools-vs-desktop-software-privacy-comparison.html'],
     category: ['Image tools', '/categories/image-tools.html']
   }
 ];

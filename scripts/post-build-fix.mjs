@@ -10,6 +10,7 @@ import { blogArticleRoutes, blogHubPath, fallbackBlogLocale, normalizeBlogSlug, 
 import { buildBlogArticleSeo, buildBlogIndexSeo } from '../src/js/blog-seo.js';
 import { applySeoHead, removeLegacyAdSenseHead, renderAdSenseHead } from '../src/components/Analytics.mjs';
 import { renderGlobalFooter, renderGlobalFooterStyle } from '../src/components/global-footer.mjs';
+import { isPublishedBlogSlug } from '../src/js/blog-publication.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -284,9 +285,10 @@ if (fs.existsSync(blogSrcDir)) {
         fs.copyFileSync(sourceFile, targetFile);
       }
     }
-    // Copy articles if they exist in src
+    // Copy articles if they exist in src. Articles withheld by the originality
+    // gate are skipped: a template-duplicated page should have no URL at all.
     if (fs.existsSync(blogArticlesSrc) && !fs.existsSync(blogArticlesDst)) {
-      fs.cpSync(blogArticlesSrc, blogArticlesDst, { recursive: true });
+      fs.cpSync(blogArticlesSrc, blogArticlesDst, { recursive: true, filter: publishedArticleFilter });
       console.log('✅ Copied: blog/articles');
     }
     fs.rmSync(blogSrcDir, { recursive: true });
@@ -296,14 +298,34 @@ if (fs.existsSync(blogSrcDir)) {
   console.log('✅ Fixed: dist/src/blog -> dist/blog');
 }
 
+function publishedArticleFilter(source) {
+  if (!source.endsWith('.html')) return true;
+  const slug = path.basename(source, '.html');
+  if (slug === 'index') return true;
+  return isPublishedBlogSlug(slug);
+}
+
 // Ensure blog articles are merged from source and localized manifest routes exist.
 const sourceArticlesDir = path.join(__dirname, '..', 'src', 'blog', 'articles');
 const distBlogArticlesDir = path.join(distDir, 'blog', 'articles');
 
 if (fs.existsSync(sourceArticlesDir)) {
   fs.mkdirSync(distBlogArticlesDir, { recursive: true });
-  fs.cpSync(sourceArticlesDir, distBlogArticlesDir, { recursive: true, force: false });
-  console.log('✅ Merged: src/blog/articles -> dist/blog/articles');
+  fs.cpSync(sourceArticlesDir, distBlogArticlesDir, { recursive: true, force: false, filter: publishedArticleFilter });
+  console.log('✅ Merged: src/blog/articles -> dist/blog/articles (published only)');
+}
+
+// Anything a previous build left behind must go too, or a withheld article
+// would survive in dist as a stale file.
+if (fs.existsSync(distBlogArticlesDir)) {
+  let removed = 0;
+  for (const entry of fs.readdirSync(distBlogArticlesDir)) {
+    if (!entry.endsWith('.html') || entry === 'index.html') continue;
+    if (isPublishedBlogSlug(entry.replace(/\.html$/, ''))) continue;
+    fs.rmSync(path.join(distBlogArticlesDir, entry), { force: true });
+    removed += 1;
+  }
+  if (removed) console.log(`✅ Removed ${removed} withheld blog article(s) from dist`);
 }
 
 const distBlogIndex = path.join(distDir, 'blog', 'index.html');
@@ -318,6 +340,8 @@ const sourceArticleFileBySlug = () => {
   if (!fs.existsSync(sourceArticlesDir)) return new Map();
   return new Map(fs.readdirSync(sourceArticlesDir)
     .filter((file) => file.endsWith('.html') && file !== 'index.html')
+    // Articles withheld by the originality gate get no route materialised.
+    .filter((file) => isPublishedBlogSlug(file.replace(/\.html$/, '')))
     .map((file) => [normalizeBlogSlug(file.replace(/\.html$/, '')), path.join(sourceArticlesDir, file)]));
 };
 
@@ -380,7 +404,8 @@ if (fs.existsSync(distBlogIndex)) {
 if (fs.existsSync(distBlogTemplate)) {
   const sourceArticles = sourceArticleFileBySlug();
   const fallbackPosts = manifestBySlug(fallbackBlogLocale);
-  const routeSlugs = normalizeBlogSlugList([...fallbackPosts.keys(), ...sourceArticles.keys()]);
+  const routeSlugs = normalizeBlogSlugList([...fallbackPosts.keys(), ...sourceArticles.keys()])
+    .filter((slug) => isPublishedBlogSlug(slug));
 
   for (const locale of supportedBlogLocales) {
     const localePosts = manifestBySlug(locale);

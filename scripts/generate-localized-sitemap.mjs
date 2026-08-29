@@ -4,6 +4,7 @@ import path from 'path';
 import { globSync } from 'glob';
 import { fileURLToPath } from 'url';
 import { blogArticlePath, blogHubPath, fallbackBlogLocale, normalizeBlogSlug, normalizeBlogSlugList } from '../src/js/blog-routes.js';
+import { isPublishedBlogSlug } from '../src/js/blog-publication.js';
 
 const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const origin = 'https://mc-novatools.com';
@@ -115,6 +116,7 @@ function sourceBlogArticleSlugs() {
   return globSync('src/blog/articles/**/*.html', { cwd: rootDir })
     .map((file) => path.basename(file, '.html'))
     .filter((slug) => slug !== 'index')
+    .filter((slug) => isPublishedBlogSlug(slug))
     .map((slug) => normalizeBlogSlug(slug));
 }
 
@@ -161,7 +163,7 @@ const sections = [
     .map((file) => urlEntry(`/${normalizeSourcePath(file).replace(/^src\//, '').replace(/index\.html$/, '')}`, '0.8', 'weekly', 'Individual tool pages'))],
   ['Blog category archive pages', blogCategoryPages.map((route) => urlEntry(route, '0.55', 'weekly', 'Blog category archive pages'))],
   ['Blog posts', normalizeBlogSlugList([
-    ...readJson(`src/i18n/blog/${fallbackBlogLocale}.json`).map((post) => post.slug).filter(Boolean),
+    ...readJson(`src/i18n/blog/${fallbackBlogLocale}.json`).map((post) => post.slug).filter(Boolean).filter(isPublishedBlogSlug),
     ...sourceBlogArticleSlugs()
   ]).map((slug) => urlEntry(blogArticlePath(slug, fallbackBlogLocale), '0.6', 'weekly', 'Blog posts'))],
   ['Author pages', readJson('src/data/authors.json')
