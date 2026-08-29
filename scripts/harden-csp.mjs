@@ -20,26 +20,37 @@ function listHtmlFiles(dir) {
 
 function normalizeWave2Actions() {
   const replacements = [
-    [/onclick="toggleSearch\(\)"/g, 'data-nv-click="toggleSearch"'],
-    [/onclick="toggleMobileMenu\(\)"/g, 'data-nv-click="toggleMobileMenu"'],
-    [/onclick="setExample\('what-is',\s*20,\s*100\)"/g, 'data-nv-click="setExample" data-nv-args=\'["what-is",20,100]\''],
-    [/onclick="setExample\('x-is-what',\s*25,\s*200\)"/g, 'data-nv-click="setExample" data-nv-args=\'["x-is-what",25,200]\''],
-    [/onclick="setExample\('increase',\s*100,\s*15\)"/g, 'data-nv-click="setExample" data-nv-args=\'["increase",100,15]\''],
-    [/onclick="setExample\('decrease',\s*100,\s*10\)"/g, 'data-nv-click="setExample" data-nv-args=\'["decrease",100,10]\'']
+    ['onclick="toggleSearch()"', 'data-nv-click="toggleSearch"'],
+    ['onclick="toggleMobileMenu()"', 'data-nv-click="toggleMobileMenu"'],
+    ['onclick="setExample(\'what-is\', 20, 100)"', 'data-nv-click="setExample" data-nv-args=\'["what-is",20,100]\''],
+    ['onclick="setExample(\'x-is-what\', 25, 200)"', 'data-nv-click="setExample" data-nv-args=\'["x-is-what",25,200]\''],
+    ['onclick="setExample(\'increase\', 100, 15)"', 'data-nv-click="setExample" data-nv-args=\'["increase",100,15]\''],
+    ['onclick="setExample(\'decrease\', 100, 10)"', 'data-nv-click="setExample" data-nv-args=\'["decrease",100,10]\'']
   ];
 
-  let rewritten = 0;
   for (const file of listHtmlFiles(distDir)) {
     const before = fs.readFileSync(file, 'utf8');
     let html = before;
-    for (const [pattern, replacement] of replacements) html = html.replace(pattern, replacement);
-    if (html !== before) {
-      fs.writeFileSync(file, html);
-      rewritten += 1;
+    for (const [search, replacement] of replacements) {
+      html = html.split(search).join(replacement);
     }
+    if (html !== before) fs.writeFileSync(file, html);
   }
 
-  return rewritten;
+  const leftovers = [];
+  const inlineHandler = /\son(?:abort|blur|change|click|dblclick|error|focus|input|keydown|keypress|keyup|load|mousedown|mouseover|mouseup|reset|scroll|select|submit|toggle|unload)\s*=\s*(["'])([\s\S]*?)\1/gi;
+  for (const file of listHtmlFiles(distDir)) {
+    const html = fs.readFileSync(file, 'utf8');
+    let match;
+    while ((match = inlineHandler.exec(html)) !== null) {
+      leftovers.push(`${path.relative(distDir, file).replace(/\\/g, '/')}: ${match[0].trim()}`);
+      if (leftovers.length >= 20) break;
+    }
+    if (leftovers.length >= 20) break;
+  }
+  if (leftovers.length) {
+    throw new Error(`Wave2 CSP action normalization left inline handlers:\n  ${leftovers.join('\n  ')}`);
+  }
 }
 
 if (!checkMode) normalizeWave2Actions();
