@@ -279,3 +279,29 @@ test('BMI Calculator computes the ratio it claims and makes no health claim it c
   await expectNoSeriousA11y(page, 'BMI Calculator');
   await expectNoHorizontalOverflow(page, 320);
 });
+
+test('Roman Numerals Converter is an accessible local converter that refuses non-standard notation', async ({ page }) => {
+  const errors = [];
+  page.on('pageerror', (error) => errors.push(error.message));
+
+  const response = await page.goto('/tools/converters/roman-numerals/', { waitUntil: 'domcontentloaded' });
+  expect(response?.ok()).toBeTruthy();
+  await expectIndexableRobots(page);
+
+  await expect(page.locator('#inputField')).toHaveAccessibleName(/number/i);
+  await expect(page.locator('#btnConvert')).toHaveAccessibleName(/convert/i);
+  await expect(page.locator('#validationMsg')).toHaveAttribute('aria-live', 'polite');
+
+  await page.locator('#inputField').fill('1990');
+  await page.locator('#btnConvert').click();
+  await expect(page.locator('#resultValue')).toHaveText('MCMXC');
+
+  await page.locator('#tabToNumber').click();
+  await page.locator('#inputField').fill('IIII');
+  await page.locator('#btnConvert').click();
+  await expect(page.locator('#validationMsg')).toContainText(/not a valid/i);
+
+  expect(errors).toEqual([]);
+  await expectNoSeriousA11y(page, 'Roman Numerals Converter');
+  await expectNoHorizontalOverflow(page, 320);
+});
