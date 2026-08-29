@@ -86,10 +86,8 @@
               <p style="color: var(--text-secondary);" data-i18n="tools.request.text.012">Have an idea for a new tool? We'd love to hear it.</p>
             </header>
 
-            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="space-y-6" id="toolRequestForm">
-              <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display:none">
-              <input type="hidden" name="_subject" value="New Tool Request - NovaTools MC">
-              <input type="hidden" name="_next" value="https://novatools.mc/tools/request/thanks.html">
+            <form class="space-y-6" id="toolRequestForm" novalidate>
+              <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true">
 
               <div class="form-group">
                 <label for="email" class="form-label" data-i18n="tools.request.text.013">Email (Optional)</label>
@@ -121,7 +119,7 @@
               <div class="form-group" style="display: flex; align-items: flex-start; gap: 0.75rem;">
                 <input type="checkbox" id="privacy" name="privacy" style="margin-top: 0.25rem;" required>
                 <label for="privacy" style="font-size: 0.875rem; color: var(--text-secondary);" data-i18n="tools.request.text.015">
-                  I understand this form uses Formspree for submission.
+                  I understand this form opens my email client to send the request to support@mc-novatools.com.
                 </label>
               </div>
 
@@ -224,10 +222,41 @@
 
   <script type="module" src="/src/main.mjs"></script>
   <script>
-    document.getElementById('toolRequestForm').addEventListener('submit', function(e) {
-      const btn = this.querySelector('button[type="submit"]');
+    // The form used to POST to an unconfigured Formspree endpoint
+    // (https://formspree.io/f/YOUR_FORM_ID), so every submission was lost.
+    // It now composes the same request as an email to the routed support
+    // address, matching the behaviour of /request-tool.
+    document.getElementById('toolRequestForm').addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      if (!this.checkValidity()) {
+        this.reportValidity();
+        return;
+      }
+
+      var toolName = document.getElementById('toolName').value.trim();
+      var category = document.getElementById('category').value.trim();
+      var description = document.getElementById('description').value.trim();
+      var email = document.getElementById('email').value.trim();
+
+      var subject = encodeURIComponent('MC NovaTools Tool Request - ' + toolName);
+      var body = encodeURIComponent(
+        'Proposed Tool Name: ' + toolName + '\n' +
+        'Category: ' + (category || 'Not provided') + '\n' +
+        'Your Email: ' + (email || 'Not provided') + '\n\n' +
+        'Description:\n' + description
+      );
+
+      var btn = this.querySelector('button[type="submit"]');
       btn.disabled = true;
-      btn.textContent = 'Sending...';
+      btn.textContent = 'Opening your email client...';
+
+      window.location.href = 'mailto:support@mc-novatools.com?subject=' + subject + '&body=' + body;
+
+      window.setTimeout(function () {
+        btn.disabled = false;
+        btn.textContent = 'Submit Request';
+      }, 4000);
     });
   </script>
 <script>
