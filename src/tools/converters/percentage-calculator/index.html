@@ -39,14 +39,14 @@
   <meta property="og:title" content="Free Percentage Calculator Online | NovaTools MC">
   <meta property="og:description" content="Calculate percentages, increases, decreases, and ratios instantly. No signup required.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.mc-novatools.com/tools/converters/percentage-calculator/">
+  <meta property="og:url" content="https://mc-novatools.com/tools/converters/percentage-calculator/">
   <meta property="og:image" content="https://www.mc-novatools.com/og-image.png">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Free Percentage Calculator | NovaTools MC">
   <meta name="twitter:description" content="Calculate percentages, increases, decreases instantly.">
 
-  <link rel="canonical" href="https://www.mc-novatools.com/tools/converters/percentage-calculator/">
+  <link rel="canonical" href="https://mc-novatools.com/tools/converters/percentage-calculator/">
 
   <script type="application/ld+json">
   {
@@ -55,7 +55,7 @@
       "@type": "WebApplication",
       "name": "Percentage Calculator",
       "description": "Free online percentage calculator. Calculate percentages, percentage increases, decreases, and ratios.",
-      "url": "https://www.mc-novatools.com/tools/converters/percentage-calculator/",
+      "url": "https://mc-novatools.com/tools/converters/percentage-calculator/",
       "applicationCategory": "UtilityApplication",
       "operatingSystem": "Any",
       "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
@@ -72,9 +72,9 @@
     .card { background: rgba(15,15,20,0.7); border: 1px solid rgba(0,217,255,0.15); border-radius: 14px; padding: 1.75rem; backdrop-filter: blur(12px); }
     
     .mode-tabs { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; border-bottom: 1px solid rgba(0,217,255,0.1); padding-bottom: 1rem; }
-    .mode-tab { padding: 0.625rem 1rem; background: transparent; border: 1px solid rgba(0,217,255,0.2); border-radius: 8px; color: #A1A1AA; font-size: 0.875rem; font-weight: 500; cursor: pointer; transition: all 0.2s; }
+    .mode-tab { padding: 0.625rem 1rem; background: transparent; border: 1px solid rgba(0,217,255,0.2); border-radius: 8px; color: var(--color-text-secondary); font-size: 0.875rem; font-weight: 500; cursor: pointer; transition: all 0.2s; }
     .mode-tab:hover { background: rgba(0,217,255,0.05); color: #FAFAFA; }
-    .mode-tab.active { background: rgba(0,217,255,0.15); border-color: rgba(0,217,255,0.4); color: #00D9FF; }
+    .mode-tab.active { background: rgba(0,217,255,0.15); border-color: rgba(0,217,255,0.4); color: var(--color-primary); }
     
     .calc-section { display: none; }
     .calc-section.active { display: block; }
@@ -101,13 +101,13 @@
     .copy-feedback { font-size: 0.8rem; color: #00FF88; opacity: 0; transition: opacity 0.3s; pointer-events: none; margin-left: auto; align-self: center; }
     .copy-feedback.show { opacity: 1; }
     
-    .legal-note { margin-top: 1.5rem; padding: 1rem 1.25rem; background: rgba(255,193,7,0.05); border: 1px solid rgba(255,193,7,0.15); border-radius: 10px; font-size: 0.8125rem; color: #A1A1AA; line-height: 1.6; }
+    .legal-note { margin-top: 1.5rem; padding: 1rem 1.25rem; background: rgba(255,193,7,0.05); border: 1px solid rgba(255,193,7,0.15); border-radius: 10px; font-size: 0.8125rem; color: var(--color-text-secondary); line-height: 1.6; }
     .legal-note strong { color: #FFC107; }
     
     .quick-examples { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(0,217,255,0.1); }
-    .quick-title { font-size: 0.875rem; font-weight: 600; color: #A1A1AA; margin-bottom: 0.75rem; }
+    .quick-title { font-size: 0.875rem; font-weight: 600; color: var(--color-text-secondary); margin-bottom: 0.75rem; }
     .quick-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.5rem; }
-    .quick-item { background: rgba(0,217,255,0.05); border: 1px solid rgba(0,217,255,0.1); border-radius: 8px; padding: 0.75rem; font-size: 0.8125rem; color: #A1A1AA; cursor: pointer; transition: all 0.2s; text-align: center; }
+    .quick-item { background: rgba(0,217,255,0.05); border: 1px solid rgba(0,217,255,0.1); border-radius: 8px; padding: 0.75rem; font-size: 0.8125rem; color: var(--color-text-secondary); cursor: pointer; transition: all 0.2s; text-align: center; }
     .quick-item:hover { background: rgba(0,217,255,0.1); border-color: rgba(0,217,255,0.2); color: #FAFAFA; }
     
     .seo-section { max-width: 960px; margin: 3.5rem auto 0; padding: 0 1rem; }
@@ -193,18 +193,18 @@
           <div class="calc-section active" id="mode-what-is">
             <div class="input-row">
               <span class="input-label" data-i18n="tools.converters.percentage-calculator.text.018">What is</span>
-              <input type="number" class="input-field" id="wi-percent" placeholder="X" data-i18n-placeholder="tools.converters.percentage-calculator.placeholder.001" step="0.01">
+              <input type="number" class="input-field" id="wi-percent" placeholder="X" data-i18n-placeholder="tools.converters.percentage-calculator.placeholder.001" step="0.01" aria-label="Percentage" inputmode="decimal">
               <span class="input-label" data-i18n="tools.converters.percentage-calculator.text.019">% of</span>
-              <input type="number" class="input-field" id="wi-value" placeholder="Y" data-i18n-placeholder="tools.converters.percentage-calculator.placeholder.002" step="0.01">
+              <input type="number" class="input-field" id="wi-value" placeholder="Y" data-i18n-placeholder="tools.converters.percentage-calculator.placeholder.002" step="0.01" aria-label="Base value" inputmode="decimal">
               <span class="input-label">?</span>
             </div>
           </div>
 
           <div class="calc-section" id="mode-x-is-what">
             <div class="input-row">
-              <input type="number" class="input-field" id="xw-value" placeholder="X" data-i18n-placeholder="tools.converters.percentage-calculator.placeholder.003" step="0.01">
+              <input type="number" class="input-field" id="xw-value" placeholder="X" data-i18n-placeholder="tools.converters.percentage-calculator.placeholder.003" step="0.01" aria-label="Part value" inputmode="decimal">
               <span class="input-label" data-i18n="tools.converters.percentage-calculator.text.020">is what % of</span>
-              <input type="number" class="input-field" id="xw-total" placeholder="Y" data-i18n-placeholder="tools.converters.percentage-calculator.placeholder.004" step="0.01">
+              <input type="number" class="input-field" id="xw-total" placeholder="Y" data-i18n-placeholder="tools.converters.percentage-calculator.placeholder.004" step="0.01" aria-label="Total value" inputmode="decimal">
               <span class="input-label">?</span>
             </div>
           </div>
@@ -212,9 +212,9 @@
           <div class="calc-section" id="mode-increase">
             <div class="input-row">
               <span class="input-label" data-i18n="tools.converters.percentage-calculator.text.021">Increase</span>
-              <input type="number" class="input-field" id="inc-value" placeholder="Value" data-i18n-placeholder="tools.converters.percentage-calculator.placeholder.005" step="0.01">
+              <input type="number" class="input-field" id="inc-value" placeholder="Value" data-i18n-placeholder="tools.converters.percentage-calculator.placeholder.005" step="0.01" aria-label="Value to increase" inputmode="decimal">
               <span class="input-label" data-i18n="tools.converters.percentage-calculator.text.022">by</span>
-              <input type="number" class="input-field" id="inc-percent" placeholder="%" step="0.01">
+              <input type="number" class="input-field" id="inc-percent" placeholder="%" step="0.01" aria-label="Increase percentage" inputmode="decimal">
               <span class="input-label">%</span>
             </div>
           </div>
@@ -222,9 +222,9 @@
           <div class="calc-section" id="mode-decrease">
             <div class="input-row">
               <span class="input-label" data-i18n="tools.converters.percentage-calculator.text.023">Decrease</span>
-              <input type="number" class="input-field" id="dec-value" placeholder="Value" data-i18n-placeholder="tools.converters.percentage-calculator.placeholder.006" step="0.01">
+              <input type="number" class="input-field" id="dec-value" placeholder="Value" data-i18n-placeholder="tools.converters.percentage-calculator.placeholder.006" step="0.01" aria-label="Value to decrease" inputmode="decimal">
               <span class="input-label" data-i18n="tools.converters.percentage-calculator.text.024">by</span>
-              <input type="number" class="input-field" id="dec-percent" placeholder="%" step="0.01">
+              <input type="number" class="input-field" id="dec-percent" placeholder="%" step="0.01" aria-label="Decrease percentage" inputmode="decimal">
               <span class="input-label">%</span>
             </div>
           </div>
@@ -239,7 +239,7 @@
             </div>
           </div>
 
-          <div class="result-box">
+          <div class="result-box" role="status" aria-live="polite" aria-atomic="true">
             <div class="result-label">Result</div>
             <div class="result-value" id="resultValue">0</div>
             <div class="result-formula" id="formulaDisplay">Enter values to calculate</div>
@@ -264,10 +264,10 @@
           <div class="quick-examples">
             <div class="quick-title">Quick Examples</div>
             <div class="quick-grid">
-              <div class="quick-item" data-nv-click="setExample" data-nv-args='["what-is",20,100]'>What is 20% of 100?</div>
-              <div class="quick-item" data-nv-click="setExample" data-nv-args='["x-is-what",25,200]'>25 is what % of 200?</div>
-              <div class="quick-item" data-nv-click="setExample" data-nv-args='["increase",100,15]'>Increase 100 by 15%</div>
-              <div class="quick-item" data-nv-click="setExample" data-nv-args='["decrease",100,10]'>Decrease 100 by 10%</div>
+              <button type="button" class="quick-item" onclick="setExample('what-is', 20, 100)">What is 20% of 100?</button>
+              <button type="button" class="quick-item" onclick="setExample('x-is-what', 25, 200)">25 is what % of 200?</button>
+              <button type="button" class="quick-item" onclick="setExample('increase', 100, 15)">Increase 100 by 15%</button>
+              <button type="button" class="quick-item" onclick="setExample('decrease', 100, 10)">Decrease 100 by 10%</button>
             </div>
           </div>
 
@@ -279,100 +279,30 @@
 
       <article class="tool-description" aria-labelledby="toolDescriptionTitle-percentage-calculator">
         <h2 id="toolDescriptionTitle-percentage-calculator">What Percentage Calculator Does and Why It Matters</h2>
-        <p>Percentage Calculator helps people compare assumptions and produce a transparent estimate without turning a simple task into a full software project. In real work, percentage calculator tasks often appear right before a deadline: a document has to be sent, a data file needs to be checked, an image must be prepared for publishing, a calculation needs a second scenario, or a developer has to verify a pasted value before it enters a larger workflow. This page focuses on that practical moment. The interface gives you a direct place to provide the input, review settings, run the operation, and keep the result close enough to inspect before you use it elsewhere. That matters because small preparation mistakes can create oversized attachments, unreadable exports, broken imports, misleading estimates, or accidental exposure of details that should have stayed private.</p>
-        <p>The main value of Percentage Calculator is control. Instead of sending material through an unfamiliar workflow, you can use the browser to perform the job, observe the state of the input, and decide whether the output is ready. Calculate percentages, increases, decreases, and ratios. Multiple calculation modes. The tool is especially useful for teams that need quick utility work between larger applications: support staff preparing evidence, creators publishing assets, finance users comparing planning assumptions, students organizing files, and developers validating snippets before sharing them in tickets or pull requests. It is intentionally focused on one job, so the page can explain what is supported, what should be checked manually, and when a specialist application or professional review is more appropriate.</p>
-        <p>Experience signals on this page are written around common failure points rather than generic marketing. For Percentage Calculator, the important questions are whether the source material is in a supported format, whether the browser has enough memory to complete the action, whether the result keeps the information you expect, and whether any limitation changes how you should use the file or value. Reading these notes before you click the main action can save time because it frames the tool as part of a workflow: prepare the input, run the operation, inspect the output, then keep or discard the result based on evidence.</p>
+        <p>Percentage Calculator covers the handful of percentage questions people actually run into day to day: what a percentage of a number is, what percentage one number is of another, and what percentage increase or decrease happened between two values. Each is a different formula, and it's easy to reach for the wrong one under time pressure — this tool keeps them separate so you pick the calculation that matches your actual question instead of reverse-engineering a formula.</p>
+        <p>These come up constantly: working out a discount or tip, checking how much a price or metric changed, or converting a raw score into a percentage. Getting the increase/decrease direction right in particular trips people up by hand, since a 20% increase and then a 20% decrease don't cancel out to the original number.</p>
         <h2>How to Use Percentage Calculator</h2>
         <ol>
-          <li>Open Percentage Calculator and read the short instructions near the interface so you know which input type the page expects.</li>
-          <li>Upload the supported file, paste the text, or enter the numeric values requested by the form; avoid adding unrelated private information.</li>
-          <li>Review every visible option, such as output format, range, quality, delimiter, units, date, rate, or mode, because these settings shape the final result.</li>
-          <li>Run the tool with the primary action button and wait for the status message, preview, validation result, calculation, or progress indicator to finish.</li>
-          <li>Inspect the displayed result carefully, including file name, page order, dimensions, row count, formatting, estimate assumptions, warnings, and any visible errors.</li>
-          <li>Download the generated file, copy the result, or record the calculation only after the preview matches your intended use case.</li>
-          <li>Clear the page or close the browser tab when finished, especially on a shared device or when the input included confidential material.</li>
+          <li>Pick the calculation mode that matches your question (e.g. "X% of Y", "X is what % of Y", or "% change from X to Y").</li>
+          <li>Enter the numbers into the fields for that mode.</li>
+          <li>The result is calculated and shown immediately.</li>
+          <li>Switch modes at any time to ask a different kind of percentage question.</li>
         </ol>
-        <h2>Supported Formats and Limitations</h2>
-        <h3>Supported input formats</h3>
-        <ul><li>Numbers, dates, times, units, currencies, age values, or measurement assumptions entered by the user</li><li>Optional source and target units, locales, bases, or date settings</li><li>Reference values copied from forms, spreadsheets, or planning documents</li></ul>
-        <h3>Supported output formats</h3>
-        <ul><li>Converted values, calculated results, or readable summaries displayed immediately</li><li>Copy-ready numbers and labels for planning notes or forms</li><li>Context notes that clarify assumptions and rounding behavior</li></ul>
-        <h3>Known limitations and edge cases</h3>
-        <ul><li>Reference rates, daylight saving rules, and local standards can change and should be verified for critical use.</li><li>Rounding may differ from specialized calculators, institutions, or official forms.</li><li>The result is a planning aid, not a substitute for regulated professional advice where applicable.</li></ul>
-        <p>For best results, test Percentage Calculator with a small sample before committing a large batch or an important deadline item. Browser utilities are convenient because they reduce setup and keep the workflow close to the user, but they still depend on device memory, browser permissions, source-file quality, and the exact assumptions entered into the interface. If the output will be used for legal, medical, financial, security, accessibility, or production engineering decisions, treat the result as a preparation aid and verify it with the appropriate system of record.</p>
+        <h2>The Formulas Used</h2>
+        <ul><li><strong>X% of Y:</strong> (X ÷ 100) × Y</li><li><strong>X is what % of Y:</strong> (X ÷ Y) × 100</li><li><strong>Percentage change from X to Y:</strong> ((Y − X) ÷ X) × 100 — positive for an increase, negative for a decrease</li></ul>
         <h2>Privacy and Security</h2>
-        <p>Percentage Calculator is designed around a privacy-first browser workflow. Where possible, files and inputs are processed client-side in your browser, which means the work happens on your device instead of being permanently stored on NovaTools servers. Uploaded data is not stored on servers permanently by this page, and the safest habit is still to avoid uploading or pasting secrets that are not required for the task. Some features may depend on browser APIs, optional public lookups, or third-party libraries loaded by the page, so you should review the interface notes and avoid using confidential production data unless the tool behavior fits your policy.</p>
+        <p>The numbers you enter are used only to calculate the result on the page and are never sent anywhere or stored.</p>
         <h2>Frequently Asked Questions</h2>
-        <h3>Is Percentage Calculator suitable for confidential work?</h3>
-        <p>It can be suitable for many confidential preparation tasks when the operation is completed locally in the browser and your organization allows that workflow. You should still avoid unnecessary sensitive fields, use a trusted device, clear the page afterward, and verify whether any optional lookup or external dependency is involved before using regulated or secret material.</p>
-        <h3>Why should I inspect the output before downloading or copying it?</h3>
-        <p>Inspection is the step that turns a quick utility into a reliable workflow. A file may process successfully while still having the wrong order, dimensions, delimiter, estimate assumption, encoding, or visual quality. Reviewing the preview and status details helps catch those issues before the result reaches a client, upload portal, repository, spreadsheet, or public page.</p>
-        <h3>What should I do if Percentage Calculator does not accept my input?</h3>
-        <p>Start by checking the file type, size, formatting, and any visible error message. Try a smaller sample, remove unsupported characters or corrupted content, and confirm that your browser is current. If the source file uses a proprietary format, encryption, unusual encoding, or a damaged structure, a dedicated desktop application may be needed before this browser tool can help.</p>
+        <h3>Why doesn't a 20% increase followed by a 20% decrease return the original number?</h3>
+        <p>Because each percentage is calculated against a different base value. A 20% increase on 100 gives 120; a 20% decrease is then calculated on 120, not 100, giving 96 — not back to 100. This is a common source of confusion, not a calculation error.</p>
+        <h3>What's the difference between "percentage of" and "percentage change"?</h3>
+        <p>"X% of Y" answers a proportion question (like a tip or discount). "Percentage change" measures how much a value moved between two points and needs both a starting and ending value, not a single number and a percentage.</p>
+        <h3>Can this handle negative numbers or values over 100%?</h3>
+        <p>Yes — percentage change can exceed 100% (more than doubling) or be negative (a decrease), and the calculator handles both correctly.</p>
         <h2>Related Tools</h2>
-        <ul><li><a href="https://mc-novatools.com/tools/converters/age-calculator/">Age Calculator — Calculate exact age from birthdate.</a></li><li><a href="https://mc-novatools.com/tools/converters/bmi-calculator/">BMI Calculator — Calculate Body Mass Index and health category.</a></li></ul>
+        <ul><li><a href="https://mc-novatools.com/tools/converters/unit-converter/">Unit Converter — Convert length, mass, temperature, volume, area, speed and data units.</a></li></ul>
       </article>
-      <aside class="author-bylines" aria-label="Author and review information for Percentage Calculator">
-        <p><span class="author-name">Metehan ÇETİN, LPC</span>, <span class="author-title">Founder and editor</span></p>
-        <p>The author profile for Percentage Calculator is intended for a practitioner who understands measurement conversion, practical calculators, time planning, and numerical review. This byline describes hands-on experience reviewing inputs, outputs, edge cases, accessibility needs, privacy expectations, and user education for browser-based utilities. It is maintained as a verified public review note for MC NovaTools tool pages.</p>
-        <p><a href="https://mc-novatools.com/about-us.html" rel="author">Author and review profile</a></p>
-        <p>Last updated: <time class="last-updated" datetime="2026-06-03">2026-06-03</time></p>
-        <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Metehan ÇETİN, LPC","jobTitle":"Founder and editor","description":"The author profile for Percentage Calculator is intended for a practitioner who understands measurement conversion, practical calculators, time planning, and numerical review. This byline describes hands-on experience reviewing inputs, outputs, edge cases, accessibility needs, privacy expectations, and user education for browser-based utilities. It is maintained as a verified public review note for MC NovaTools tool pages.","sameAs":"https://mc-novatools.com/about-us.html"}</script>
-      </aside>
-<section class="seo-section" aria-label="About this tool">
-        <h2 data-i18n="tools.converters.percentage-calculator.text.028">About Percentage Calculator</h2>
-        <p data-i18n="tools.converters.percentage-calculator.text.029">Our free Percentage Calculator helps you solve various percentage problems quickly and accurately. Whether you need to calculate a percentage of a number, find what percentage one number is of another, or calculate percentage increases and decreases, this tool has you covered.</p>
-
-        <h3 data-i18n="tools.converters.percentage-calculator.text.030">How to Use</h3>
-        <ol>
-          <li data-i18n="tools.converters.percentage-calculator.text.031">Select the calculation mode that matches your needs.</li>
-          <li data-i18n="tools.converters.percentage-calculator.text.032">Enter the required values in the input fields.</li>
-          <li data-i18n="tools.converters.percentage-calculator.text.033">Click Calculate to see the result.</li>
-          <li data-i18n="tools.converters.percentage-calculator.text.034">The formula used for the calculation is displayed below the result.</li>
-          <li data-i18n="tools.converters.percentage-calculator.text.035">Use Clear to reset all fields.</li>
-          <li data-i18n="tools.converters.percentage-calculator.text.036">Click Copy to copy the result to your clipboard.</li>
-        </ol>
-
-        <h3 data-i18n="tools.converters.percentage-calculator.text.037">Calculation Modes</h3>
-        <p><strong>What is X% of Y?</strong> - Calculate a percentage of a number. Example: What is 20% of 100? = 20<br>
-        <strong>X is what % of Y?</strong> - Find what percentage one number is of another. Example: 25 is what % of 200? = 12.5%<br>
-        <strong>% Increase:</strong> Calculate the result after increasing a value by a percentage. Example: Increase 100 by 15% = 115<br>
-        <strong>% Decrease:</strong> Calculate the result after decreasing a value by a percentage. Example: Decrease 100 by 10% = 90<br>
-        <strong>% Change:</strong> Calculate the percentage change between two values. Example: From 50 to 75 = 50% increase</p>
-
-        <h3 data-i18n="tools.converters.percentage-calculator.text.038">Frequently Asked Questions</h3>
-
-        <details class="faq-item">
-          <summary>How do I calculate a percentage?</summary>
-          <p data-i18n="tools.converters.percentage-calculator.text.039">To calculate X% of Y, multiply Y by X and divide by 100. Formula: (X × Y) ÷ 100. Our calculator does this automatically when you select "What is X% of Y?" mode.</p>
-        </details>
-
-        <details class="faq-item">
-          <summary>How do I calculate percentage increase?</summary>
-          <p data-i18n="tools.converters.percentage-calculator.text.040">To increase a number by a percentage, multiply the number by (1 + percentage/100). Example: 100 increased by 20% = 100 × 1.20 = 120.</p>
-        </details>
-
-        <details class="faq-item">
-          <summary>How do I calculate percentage decrease?</summary>
-          <p data-i18n="tools.converters.percentage-calculator.text.041">To decrease a number by a percentage, multiply the number by (1 - percentage/100). Example: 100 decreased by 20% = 100 × 0.80 = 80.</p>
-        </details>
-
-        <details class="faq-item">
-          <summary>How do I find what percentage one number is of another?</summary>
-          <p data-i18n="tools.converters.percentage-calculator.text.042">Divide the first number by the second and multiply by 100. Formula: (X ÷ Y) × 100. Example: 25 is what % of 200? = (25 ÷ 200) × 100 = 12.5%.</p>
-        </details>
-
-        <details class="faq-item">
-          <summary>Can I use this for financial calculations?</summary>
-          <p data-i18n="tools.converters.percentage-calculator.text.043">Yes, this calculator is useful for many financial calculations like discounts, taxes, tips, and interest rates. However, for important financial decisions, always verify with a financial professional.</p>
-        </details>
-      </section>
-        <section class="trust-help novatools-tool-reading-path" aria-labelledby="toolReadingPathTitle">
-          <h2 id="toolReadingPathTitle">Recommended next reading</h2>
-          <p>Use these practical guides to understand when this tool is the right choice, what to check before exporting, and which workflow usually comes next.</p>
-          <div class="related-tools-grid"><a class="related-tool-link" href="https://mc-novatools.com/blog/articles/unit-converter-for-project-planning.html">Converter decision guide</a><a class="related-tool-link" href="https://mc-novatools.com/blog/articles/base64-vs-url-encoding.html">Base64 vs URL encoding</a></div>
-        </section>
-    </main>
+</main>
 
     <footer class="tool-footer">
       <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="mailto:psk.dan.metehancetin@mc-novatools.com" data-i18n="tools.converters.percentage-calculator.text.044">psk.dan.metehancetin@mc-novatools.com</a></p>
@@ -415,7 +345,12 @@
         case 'x-is-what':
           const xwValue = parseFloat(document.getElementById('xw-value').value) || 0;
           const xwTotal = parseFloat(document.getElementById('xw-total').value) || 0;
-          result = xwTotal ? ((xwValue / xwTotal) * 100) : 0;
+          if (xwTotal === 0) {
+            resultValue.textContent = '—';
+            formulaDisplay.textContent = 'Cannot divide by zero. Total must be greater than 0.';
+            return;
+          }
+          result = (xwValue / xwTotal) * 100;
           formula = `Formula: (${xwValue} ÷ ${xwTotal}) × 100 = ${result.toFixed(2)}%`;
           result = result.toFixed(2) + '%';
           break;
