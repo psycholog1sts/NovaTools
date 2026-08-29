@@ -61,6 +61,46 @@ ul, ol {
 }
 
 /* ============================================
+   DESIGN TOKENS - STRUCTURE
+   Container widths, the display end of the type scale, tracking and the
+   shorthand font tokens. These were referenced across layout.css and
+   component-library.css without ever being defined, so every rule that used
+   them was dropped at computed-value time: .container had no max-width and
+   the homepage heading fell back to the inherited 16px, smaller than its own
+   subtitle. scripts/lint-design-tokens.mjs fails the build if an undefined
+   token is used again without a fallback.
+   Note: never write HTML tag syntax in this file. critical.css is inlined into
+   every page head, and the structured-data extractors read the document with
+   regular expressions.
+   ============================================ */
+:root {
+  /* Containers — three widths, nothing off-scale. */
+  --container-sm: 40rem;    /* 640px  — dialogs, single-column forms */
+  --container-md: 48rem;    /* 768px  — prose */
+  --container-lg: 64rem;    /* 1024px — wide prose, category hubs */
+  --container-xl: 75rem;    /* 1200px — the application container */
+
+  /* Display end of the type scale. */
+  --font-size-5xl: clamp(2.5rem, 4.5vw, 3.25rem);
+  --font-size-6xl: clamp(2.75rem, 5.5vw, 4rem);
+
+  /* Tracking is size-dependent: tighter as type gets larger. */
+  --letter-spacing-tighter: -0.03em;
+  --letter-spacing-tight: -0.02em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.05em;
+
+  /* Shorthand font tokens (weight size/line-height family). */
+  --text-base: 400 1rem/1.55 var(--font-sans, Inter, system-ui, sans-serif);
+  --text-sm: 400 0.875rem/1.5 var(--font-sans, Inter, system-ui, sans-serif);
+  --text-lg: 400 1.125rem/1.6 var(--font-sans, Inter, system-ui, sans-serif);
+  --font-h1: 700 var(--font-size-6xl) / 1.06 var(--font-sans, Inter, system-ui, sans-serif);
+
+  /* Alias kept for component-library.css. */
+  --color-error-500: #b91c1c;
+}
+
+/* ============================================
    DESIGN TOKENS - COLORS
    ============================================ */
 :root {
