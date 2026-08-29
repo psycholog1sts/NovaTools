@@ -38,6 +38,11 @@ function toolSlugFromHtmlPath(pathname = '') {
   return match ? `${match[1]}/${match[2]}` : '';
 }
 
+const specializedToolUxSlugs = new Set([
+  'converters/percentage-calculator',
+  'converters/unit-converter'
+]);
+
 const toolUxEnhancementAssets = {
   name: 'novatools-tool-ux-enhancement-assets',
   enforce: 'pre',
@@ -49,25 +54,27 @@ const toolUxEnhancementAssets = {
     const stylesheetHref = isDev ? '/src/styles/tool-workflow.css' : '/styles/tool-workflow.css';
     const scriptSrc = isDev ? '/src/js/tool-page-enhancer.js' : '/js/tool-page-enhancer.js';
 
-    return {
-      html,
-      tags: [
-        {
-          tag: 'link',
-          attrs: { rel: 'stylesheet', href: stylesheetHref },
-          injectTo: 'head'
-        },
-        {
-          // Injected into <head>, not <body>: Vite's body injection is a regex over
-          // `<body...>` and tools that build export/print documents contain a literal
-          // `<body>` inside a template string, which would swallow the injected tag
-          // and truncate the page's own script. `type="module"` is deferred either way.
-          tag: 'script',
-          attrs: { type: 'module', src: scriptSrc, 'data-tool-slug': slug },
-          injectTo: 'head'
-        }
-      ]
-    };
+    const tags = [
+      {
+        tag: 'link',
+        attrs: { rel: 'stylesheet', href: stylesheetHref },
+        injectTo: 'head'
+      }
+    ];
+
+    if (!specializedToolUxSlugs.has(slug)) {
+      tags.push({
+        // Injected into <head>, not <body>: Vite's body injection is a regex over
+        // `<body...>` and tools that build export/print documents contain a literal
+        // `<body>` inside a template string, which would swallow the injected tag
+        // and truncate the page's own script. `type="module"` is deferred either way.
+        tag: 'script',
+        attrs: { type: 'module', src: scriptSrc, 'data-tool-slug': slug },
+        injectTo: 'head'
+      });
+    }
+
+    return { html, tags };
   }
 };
 
@@ -414,7 +421,6 @@ export default defineConfig({
         }
       }
     },
-
     reportCompressedSize: true,
     chunkSizeWarningLimit: 800,
 
@@ -454,10 +460,14 @@ export default defineConfig({
           src: 'src/tools/**/meta.json',
           dest: 'meta'
         },
-        {
-          src: 'src/styles/critical.css',
-          dest: 'styles'
-        },
+          {
+            src: 'src/styles/critical.css',
+            dest: 'styles'
+          },
+          {
+            src: 'src/styles/tokens.css',
+            dest: 'styles'
+          },
         {
           src: 'src/styles/design-system.css',
           dest: 'styles'
