@@ -1,483 +1,337 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<script type="text/plain" data-consent-category="analytics" async src="https://www.googletagmanager.com/gtag/js?id=G-Y896L63239"></script>
-<script type="text/plain" data-consent-category="analytics">
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-Y896L63239', {
-    anonymize_ip: true,
-    cookie_expires: 63072000,
-    cookie_update: true
-  });
-</script>
-  <meta charset="UTF-8">
-  <script>(function(){var t=localStorage.getItem('novatools-theme');if(t)document.documentElement.setAttribute('data-theme',t);else{var d=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',d);document.documentElement.style.colorScheme=d;}})();</script>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>(function(){try{var t=localStorage.getItem('novatools-theme')||localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(_e){}})();</script>
+  <title>Image Compressor — JPEG, PNG & WebP Re-Encoder | NovaTools</title>
+  <meta name="description" content="Re-encode JPEG, PNG and WebP images in your browser. Choose output format and quality, compare file size and visual quality, then download the result.">
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+  <link rel="canonical" href="https://mc-novatools.com/tools/image/compress/">
+  <meta property="og:title" content="Image Compressor — JPEG, PNG & WebP Re-Encoder | NovaTools">
+  <meta property="og:description" content="Re-encode JPEG, PNG and WebP images locally in your browser with adjustable format and quality.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mc-novatools.com/tools/image/compress/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Image Compressor | NovaTools">
+  <meta name="twitter:description" content="Compare image output size and visual quality before downloading JPEG, PNG or WebP.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="stylesheet" href="/src/styles/critical.css">
   <link rel="stylesheet" href="/src/styles/main.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <!-- Favicon - Required by Google Search -->
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <title data-i18n="tools.image.compress.meta.title">Free Image Compressor - Reduce JPG PNG WebP Size Online</title>
-
-  <!-- i18n Script -->
-  <script src="/i18n.js" defer></script>
-  <meta name="description" content="Use Image Compressor for image compress tasks with browser-first processing, clear steps, privacy notes, and practical limits. Review outputs before sharing.">
-  <meta name="keywords" content="free image compressor, compress JPG online, compress PNG online, reduce image size, free image optimizer, WebP compressor">
-  <meta name="theme-color" content="#0A0A0C">
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Free Image Compressor - Reduce JPG PNG WebP Size Online">
-  <meta property="og:description" content="Compress images for free. Reduce JPG, PNG &amp; WebP file sizes up to 80% without quality loss. No signup required.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.mc-novatools.com/tools/image/compress/">
-  <meta property="og:image" content="https://www.mc-novatools.com/og-image.png">
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Free Image Compressor - Reduce Image Size | NovaTools MC">
-  <meta name="twitter:description" content="Compress JPG, PNG &amp; WebP images for free. Up to 80% size reduction, no quality loss.">
-
-  <!-- Canonical -->
-  <link rel="canonical" href="https://www.mc-novatools.com/tools/image/compress/">
-
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@graph": [{
-      "@type": "WebApplication",
-      "name": "Free Image Compressor",
-      "description": "Free online image compressor tool. Reduce JPG, PNG, WebP file sizes without losing quality. Optimize images for websites, social media, and email.",
-      "url": "https://www.mc-novatools.com/tools/image/compress/",
-      "applicationCategory": "UtilityApplication",
-      "operatingSystem": "Any",
-      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
-    }]
+    "@type": "WebApplication",
+    "name": "NovaTools Image Compressor",
+    "url": "https://mc-novatools.com/tools/image/compress/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any modern browser",
+    "description": "Browser-based JPEG, PNG and WebP image re-encoder with adjustable quality and output format.",
+    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
   }
   </script>
   <style>
-    .tool-container { max-width: 900px; margin: 0 auto; padding: 2rem 1rem; }
-    .tool-header { text-align: center; margin-bottom: 2rem; }
-    .tool-header h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; }
-    .dropzone { border: 2px dashed var(--border-default); border-radius: 16px; padding: 3rem 2rem; text-align: center; background: var(--surface-default); transition: all 0.3s ease; cursor: pointer; }
-    .dropzone:hover { border-color: var(--border-accent); background: var(--border-default); }
-    .dropzone.drag-active { border-color: var(--accent-primary); background: var(--accent-subtle); transform: scale(1.02); }
-    .controls { margin-top: 1.5rem; padding: 1.5rem; background: var(--surface-default); border: 1px solid var(--border-default); border-radius: var(--radius-lg); display: none; }
-    .controls.visible { display: block; }
-    .quality-slider { width: 100%; margin: 1rem 0; }
-    .preview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
-    @media (max-width: 640px) { .preview-grid { grid-template-columns: 1fr; } }
-    .preview-box { padding: 1rem; background: var(--surface-default); border-radius: var(--radius-md); text-align: center; }
-    .preview-box img { max-width: 100%; max-height: 200px; border-radius: var(--radius-md); }
-    .result-section { margin-top: 1.5rem; padding: 2rem; background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(34, 197, 94, 0.05)); border: 1px solid rgba(34, 197, 94, 0.3); border-radius: var(--radius-lg); text-align: center; display: none; }
-    .result-section.visible { display: block; }
-    .download-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; background: linear-gradient(135deg, #22C55E, #16A34A); color: white; font-weight: 600; border-radius: var(--radius-md); text-decoration: none; }
-    .seo-content { margin-top: 3rem; padding: 2rem; background: rgba(255, 255, 255, 0.02); border-radius: var(--radius-lg); border: 1px solid var(--surface-default); }
-    .seo-content h2 { font-size: 1.5rem; margin-bottom: 1rem; }
-    .seo-content h3 { font-size: 1.125rem; margin-top: 1.5rem; margin-bottom: 0.75rem; }
-    .seo-content p { line-height: 1.7; margin-bottom: 1rem; color: var(--text-secondary); }
-    .seo-content ol { padding-left: 1.5rem; margin-bottom: 1rem; }
-    .seo-content li { margin-bottom: 0.5rem; color: var(--text-secondary); }
-    .faq-item { margin-bottom: 0.75rem; border: 1px solid var(--border-hover); border-radius: var(--radius-md); overflow: hidden; }
-    .faq-item summary { padding: 1rem; background: var(--surface-default); cursor: pointer; font-weight: 500; }
-    .faq-item summary:hover { background: var(--border-default); }
-    .faq-item p { padding: 1rem; margin: 0; border-top: 1px solid var(--border-hover); }
+    .image-page { max-width: 960px; margin: 0 auto; padding: var(--space-8) var(--container-padding) var(--space-16); }
+    .breadcrumb { display:flex; flex-wrap:wrap; gap:var(--space-2); align-items:center; font-size:var(--font-size-sm); color:var(--text-muted); margin-bottom:var(--space-6); }
+    .breadcrumb a { color:var(--text-secondary); }
+    .tool-heading { margin-bottom:var(--space-6); }
+    .tool-heading h1 { margin:0 0 var(--space-3); font-size:clamp(2rem,5vw,3rem); letter-spacing:-.03em; }
+    .tool-heading > p { max-width:760px; color:var(--text-secondary); }
+    .updated { font-size:var(--font-size-sm); color:var(--text-muted); }
+    .privacy-note { display:flex; gap:var(--space-3); align-items:flex-start; padding:var(--space-4); border:1px solid var(--border-default); border-radius:var(--radius-md); background:var(--surface-default); margin:var(--space-5) 0; }
+    .workspace { border:1px solid var(--border-default); border-radius:var(--radius-lg); background:var(--surface-default); box-shadow:var(--shadow-sm); overflow:hidden; }
+    .workspace-inner { padding:clamp(1rem,3vw,2rem); }
+    .dropzone { border:2px dashed var(--border-strong); border-radius:var(--radius-lg); padding:clamp(2rem,7vw,4rem) var(--space-5); text-align:center; background:var(--bg-elevated); cursor:pointer; }
+    .dropzone:focus-within, .dropzone.drag-active { border-color:var(--accent-primary); box-shadow:var(--shadow-focus); }
+    .dropzone input { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0); clip-path:inset(50%); white-space:nowrap; }
+    .dropzone strong { display:block; font-size:var(--font-size-lg); margin-bottom:var(--space-2); }
+    .dropzone span { color:var(--text-muted); font-size:var(--font-size-sm); }
+    .controls { display:grid; gap:var(--space-5); margin-top:var(--space-6); }
+    .controls-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:var(--space-4); }
+    label { display:grid; gap:var(--space-2); font-weight:var(--font-weight-semibold); }
+    select, input[type="range"] { width:100%; }
+    select { min-height:var(--control-height); padding:0 var(--space-3); border:1px solid var(--border-default); border-radius:var(--radius-md); background:var(--bg-primary); color:var(--text-primary); }
+    .preview-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:var(--space-4); margin-top:var(--space-6); }
+    .preview-card { border:1px solid var(--border-default); border-radius:var(--radius-md); padding:var(--space-4); background:var(--bg-elevated); min-width:0; }
+    .preview-card h2 { font-size:var(--font-size-base); margin:0 0 var(--space-3); }
+    .preview-card img { display:block; width:100%; height:260px; object-fit:contain; background:var(--bg-primary); border-radius:var(--radius-sm); }
+    .preview-meta { margin:var(--space-3) 0 0; color:var(--text-secondary); font-size:var(--font-size-sm); overflow-wrap:anywhere; }
+    .actions { display:flex; flex-wrap:wrap; gap:var(--space-3); margin-top:var(--space-6); }
+    .actions .btn { min-height:var(--touch-target); }
+    .status { margin-top:var(--space-4); padding:var(--space-3) var(--space-4); border-radius:var(--radius-sm); background:var(--bg-elevated); color:var(--text-secondary); }
+    .status[data-state="error"] { color:var(--error); border:1px solid color-mix(in srgb,var(--error) 35%,transparent); }
+    .status[data-state="success"] { color:var(--success); border:1px solid color-mix(in srgb,var(--success) 35%,transparent); }
+    .content-section { margin-top:var(--space-10); max-width:780px; }
+    .content-section h2 { margin-top:var(--space-8); }
+    .content-section li { margin:.45rem 0; color:var(--text-secondary); }
+    .related-list { display:grid; gap:var(--space-3); padding:0; list-style:none; }
+    .related-list a { display:block; padding:var(--space-4); border:1px solid var(--border-default); border-radius:var(--radius-md); background:var(--surface-default); }
+    .tool-footer { border-top:1px solid var(--border-default); padding:var(--space-8) var(--container-padding); color:var(--text-muted); text-align:center; font-size:var(--font-size-sm); }
+    @media (max-width:640px) {
+      .controls-grid, .preview-grid { grid-template-columns:1fr; }
+      .preview-card img { height:210px; }
+      .actions { display:grid; }
+      .actions .btn { width:100%; justify-content:center; }
+    }
   </style>
-  <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
-  <div class="bg-ambient" aria-hidden="true"></div>
-  <div class="noise-overlay" aria-hidden="true"></div>
-
-  <div id="app" class="app">
-        <header class="main-header">
-      <div class="container">
-        <div class="header-inner">
-          <a href="https://mc-novatools.com/" class="logo" aria-label="NovaTools MC Home">
-            <picture><source srcset="/logo-bird-44.webp" type="image/webp"><img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44" decoding="async"></picture>
-            <span class="logo-text">NovaTools <span class="logo-mc" data-i18n="tools.image.compress.text.001">MC</span></span>
-          </a>
-          <nav class="nav-desktop" aria-label="Main navigation">
-            <a href="https://mc-novatools.com/#finance" class="nav-link" data-i18n="tools.image.compress.text.002">Finance</a>
-            <a href="https://mc-novatools.com/#pdf" class="nav-link" data-i18n="tools.image.compress.text.003">PDF Tools</a>
-            <a href="https://mc-novatools.com/#image" class="nav-link" data-i18n="tools.image.compress.text.004">Images</a>
-            <a href="https://mc-novatools.com/#dev" class="nav-link" data-i18n="tools.image.compress.text.005">Developers</a>
-          </nav>
-          <div class="privacy-badge" title="Your data never leaves your browser" data-i18n-title="tools.image.compress.title.001">
-            <span class="privacy-badge-dot"></span>
-            <span data-i18n="tools.image.compress.text.006">Privacy First</span>
-          </div>
-          <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
-            <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-            <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-          </button>
-          <button type="button" id="mobileMenuBtn" class="menu-btn" aria-label="Toggle menu" aria-expanded="false">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-          </button>
-        </div>
-        <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
-          <a href="https://mc-novatools.com/#finance" class="mobile-nav-link" data-i18n="tools.image.compress.text.007">Finance Tools</a>
-          <a href="https://mc-novatools.com/#pdf" class="mobile-nav-link" data-i18n="tools.image.compress.text.008">PDF Tools</a>
-          <a href="https://mc-novatools.com/#image" class="mobile-nav-link" data-i18n="tools.image.compress.text.009">Image Tools</a>
-          <a href="https://mc-novatools.com/#dev" class="mobile-nav-link" data-i18n="tools.image.compress.text.010">Developer Tools</a>
+  <header class="main-header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="/" class="logo" aria-label="NovaTools home">
+          <img src="/logo-bird.png" alt="" class="header-logo-img" width="44" height="44" decoding="async">
+          <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+        </a>
+        <nav class="nav-desktop" aria-label="Main navigation">
+          <a href="/categories/finance-tools.html" class="nav-link">Finance</a>
+          <a href="/categories/pdf-tools.html" class="nav-link">PDF Tools</a>
+          <a href="/categories/image-tools.html" class="nav-link" aria-current="page">Images</a>
+          <a href="/categories/developer-tools.html" class="nav-link">Developers</a>
         </nav>
+        <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle color theme">
+          <span aria-hidden="true">◐</span>
+        </button>
+        <button type="button" id="mobileMenuBtn" class="menu-btn" aria-label="Toggle menu" aria-expanded="false">Menu</button>
+      </div>
+      <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
+        <a href="/categories/finance-tools.html" class="mobile-nav-link">Finance Tools</a>
+        <a href="/categories/pdf-tools.html" class="mobile-nav-link">PDF Tools</a>
+        <a href="/categories/image-tools.html" class="mobile-nav-link">Image Tools</a>
+        <a href="/categories/developer-tools.html" class="mobile-nav-link">Developer Tools</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="image-page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a><span aria-hidden="true">/</span><a href="/categories/image-tools.html">Image tools</a><span aria-hidden="true">/</span><span>Image Compressor</span>
+    </nav>
+
+    <header class="tool-heading">
+      <h1>Image Compressor</h1>
+      <p>Re-encode JPEG, PNG, or WebP in your browser, choose the output format and quality, then compare the generated file before downloading it.</p>
+      <p class="updated">Last updated: <time datetime="2026-08-26">2026-08-26</time></p>
+      <div class="privacy-note" role="note">
+        <span aria-hidden="true">🔒</span>
+        <div><strong>File-processing boundary:</strong> the selected image is decoded and encoded by browser APIs on this device. This compressor does not upload the selected image to a NovaTools image-processing server.</div>
       </div>
     </header>
-<main id="main-content" class="main-content">
-      <div class="tool-container">
-        <div class="tool-header">
-          <h1 data-i18n="tools.image.compress.text.011">Image Compressor — Free Online</h1>
-          <p class="tool-updated-note">Last updated: <time class="page-last-updated" datetime="2026-06-03">2026-06-03</time></p>
-          <span class="sr-only" data-i18n="tools.image.compress.text.012">Free image compressor — free online JPG, PNG and WebP image compression tool. Reduce image file size for free without losing quality. No registration required. 100% free image optimizer.</span>
-          <p data-i18n="tools.image.compress.text.013">Reduce image file size without losing quality. Supports JPEG, PNG, and WebP.</p>
-        </div>
 
-        <form data-tool="image-compress" data-result=".results-panel">
-          <div id="dropzone" class="dropzone">
-            <div style="font-size: 3rem; margin-bottom: 1rem;">🖼️</div>
-            <div style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem;">Drop image here or click to browse</div>
-            <div style="font-size: 0.875rem; color: var(--text-muted);">Supports JPG, PNG, WebP • Max 10MB</div>
-            <input type="file" name="file" id="fileInput" accept="image/*" style="display: none;">
-          </div>
+    <section class="workspace" aria-labelledby="workspaceTitle">
+      <div class="workspace-inner">
+        <h2 id="workspaceTitle">Re-encode an image</h2>
+        <form id="imageCompressForm" novalidate>
+          <label class="dropzone" id="dropzone" for="fileInput">
+            <strong>Choose or drop an image</strong>
+            <span>JPEG, PNG, or WebP · maximum 10 MB</span>
+            <input type="file" name="file" id="fileInput" accept="image/jpeg,image/png,image/webp" required>
+          </label>
 
-          <div id="controls" class="controls">
-            <label style="font-weight: 600;">Quality: <span id="qualityValue">80</span>%</label>
-            <input type="range" name="quality" id="qualitySlider" class="quality-slider" min="1" max="100" value="80">
-
-            <label style="font-weight: 600; margin-top: 1rem; display: block;" data-i18n="tools.image.compress.text.014">Output Format</label>
-            <select name="format" id="formatSelect" style="width: 100%; height: 48px; margin-top: 0.5rem; padding: 0 1rem; background: var(--bg-tertiary); border: 1px solid var(--border-default); border-radius: var(--radius-md); color: var(--text-primary);">
-              <option value="image/jpeg">JPEG</option>
-              <option value="image/png">PNG</option>
-              <option value="image/webp">WebP</option>
-            </select>
-
-            <div class="preview-grid">
-              <div class="preview-box">
-                <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 0.5rem;" data-i18n="tools.image.compress.text.015">Original</p>
-                <img id="originalPreview" src="" alt="Original" width="640" height="360" loading="lazy" decoding="async">
-                <p id="originalSize" style="font-size: 0.875rem; margin-top: 0.5rem;"></p>
-              </div>
-              <div class="preview-box">
-                <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 0.5rem;" data-i18n="tools.image.compress.text.016">Compressed</p>
-                <img id="compressedPreview" src="" alt="Compressed" width="640" height="360" loading="lazy" decoding="async">
-                <p id="compressedSize" style="font-size: 0.875rem; margin-top: 0.5rem;"></p>
-              </div>
+          <div class="controls" id="controls" hidden>
+            <div class="controls-grid">
+              <label for="qualitySlider">Quality <span><output id="qualityValue" for="qualitySlider">80</output>%</span>
+                <input type="range" name="quality" id="qualitySlider" min="1" max="100" value="80">
+              </label>
+              <label for="formatSelect">Output format
+                <select name="format" id="formatSelect">
+                  <option value="image/jpeg">JPEG</option>
+                  <option value="image/png">PNG</option>
+                  <option value="image/webp">WebP</option>
+                </select>
+              </label>
             </div>
 
-            <button type="submit" id="compressBtn" class="btn btn-primary" style="width: 100%; height: 52px;" data-i18n="tools.image.compress.text.017">Compress Image</button>
+            <div class="preview-grid" aria-live="polite">
+              <section class="preview-card" aria-labelledby="originalTitle">
+                <h2 id="originalTitle">Original</h2>
+                <img id="originalPreview" alt="Selected original preview" width="640" height="360">
+                <p class="preview-meta" id="originalSize">No image selected.</p>
+              </section>
+              <section class="preview-card" aria-labelledby="outputTitle">
+                <h2 id="outputTitle">Output preview</h2>
+                <img id="compressedPreview" alt="Re-encoded output preview" width="640" height="360">
+                <p class="preview-meta" id="compressedSize">Generate an output to compare size.</p>
+              </section>
+            </div>
+
+            <div class="actions">
+              <button type="submit" id="compressBtn" class="btn btn-primary">Generate output</button>
+              <a id="downloadLink" class="btn btn-secondary" href="#" download hidden>Download output</a>
+            </div>
+            <p id="toolStatus" class="status" role="status" aria-live="polite">Choose an image to begin.</p>
           </div>
         </form>
-
-        <div class="results-panel">
-          <div id="resultSection" class="result-section">
-            <div style="font-size: 3rem; margin-bottom: 1rem;">✅</div>
-            <h3 style="margin-bottom: 0.5rem;" data-i18n="tools.image.compress.text.018">Image Compressed!</h3>
-            <p id="savingsText" style="color: var(--text-secondary); margin-bottom: 1.5rem;"></p>
-            <a id="downloadLink" href="#" class="download-btn" download data-i18n="tools.image.compress.text.019">Download Compressed Image</a>
-          </div>
-        </div>
-
-        <div class="seo-content">
-          <h2 data-i18n="tools.image.compress.text.020">Free Online Image Compressor Tool</h2>
-          <p>Welcome to our free online image compressor - the fastest way to <strong>compress images</strong> and <strong>reduce image size</strong> without sacrificing visual quality. Whether you need to <strong>optimize images for web</strong> performance or simply free up storage space on your device, our powerful <strong>jpg compressor</strong> and image optimization tool delivers professional results instantly.</p>
-          <p data-i18n="tools.image.compress.text.021">Large image files can significantly slow down your website's loading speed, negatively impact SEO rankings, and consume unnecessary bandwidth. Our browser-based compression technology processes your images locally, ensuring complete privacy while achieving file size reductions of up to 80%. Support for JPEG, PNG, and WebP formats means you can optimize any image for your specific needs.</p>
-
-          <h3 data-i18n="tools.image.compress.text.022">How to Use Our Image Compressor</h3>
-          <ol>
-            <li><strong>Upload your image</strong> - Drag and drop your JPG, PNG, or WebP file into the upload area, or click to browse your device's files. We support images up to 10MB in size.</li>
-            <li><strong>Adjust quality settings</strong> - Use the quality slider to find the perfect balance between file size and image clarity. A setting of 70-80% typically provides excellent results.</li>
-            <li><strong>Choose output format</strong> - Select your preferred format (JPEG for photos, PNG for transparency, or WebP for maximum compression).</li>
-            <li><strong>Preview and compare</strong> - View side-by-side comparisons of the original and compressed versions before downloading.</li>
-            <li><strong>Download your optimized image</strong> - Click the download button to save your compressed image instantly. All processing happens in your browser for complete privacy.</li>
-          </ol>
-
-          <h3 data-i18n="tools.image.compress.text.023">Frequently Asked Questions</h3>
-          <details class="faq-item">
-            <summary>Will compressing images reduce their quality?</summary>
-            <p data-i18n="tools.image.compress.text.024">Our smart compression algorithm minimizes quality loss while dramatically reducing file size. At 80% quality, most images retain visual clarity indistinguishable from the original to the human eye. You can adjust the quality slider to find your preferred balance between size and quality.</p>
-          </details>
-          <details class="faq-item">
-            <summary>Is my data safe when using this tool?</summary>
-            <p data-i18n="tools.image.compress.text.025">Absolutely! All image processing happens entirely within your browser using client-side JavaScript. Your images are never uploaded to any server, ensuring complete privacy and security. Once you close the page, all data is automatically cleared from your browser.</p>
-          </details>
-          <details class="faq-item">
-            <summary>What image formats are supported?</summary>
-            <p data-i18n="tools.image.compress.text.026">Our compressor supports JPG/JPEG, PNG, and WebP formats for both input and output. WebP typically offers the best compression ratios, while PNG preserves transparency. JPEG is ideal for photographs and general use where transparency isn't needed.</p>
-          </details>
-        </div>
       </div>
+    </section>
 
+    <article class="content-section">
+      <h2>How the compressor works</h2>
+      <p>The browser decodes the selected image, draws it to a Canvas 2D surface, and exports a new Blob with <code>canvas.toBlob()</code>. The selected output MIME type controls whether the result is JPEG, PNG, or WebP.</p>
+      <ul>
+        <li><strong>JPEG and WebP quality encoding is lossy.</strong> Lower quality can reduce file size by discarding image detail and can introduce visible artifacts.</li>
+        <li><strong>PNG output may not shrink.</strong> Re-encoding a PNG can keep or increase file size depending on the source image and browser encoder.</li>
+        <li><strong>No reduction percentage is guaranteed.</strong> The result can be smaller, similar in size, or larger. The page reports the measured source and output sizes after encoding.</li>
+        <li><strong>Transparency depends on format.</strong> JPEG does not support alpha transparency; use PNG or WebP when transparency must remain.</li>
+        <li><strong>Input limit is 10 MB.</strong> Very high pixel dimensions can still exhaust browser memory even when the compressed file is under that limit.</li>
+      </ul>
 
-        <section class="tool-support-content" aria-labelledby="toolSupportTitle">
-          <div>
-            <h2 id="toolSupportTitle">Image compression workflow guide</h2>
-            <p>This tool reduces image file size for web publishing, email, CMS uploads, and faster sharing while letting you choose a quality level.</p>
-          </div>
-          <div class="tool-support-grid">
-            <div class="tool-support-card">
-              <h3>How to use it</h3>
-              <ol>
-              <li>Upload a JPG, PNG, or WebP image.</li>
-              <li>Set the quality and output format.</li>
-              <li>Preview the result, compare file size, then download.</li>
-              </ol>
-            </div>
-            <div class="tool-support-card">
-              <h3>Privacy and trust note</h3>
-              <p>Image previews and generated downloads are handled on the current device. Avoid using personal IDs, private screenshots, or client images on shared computers.</p>
-            </div>
-            <div class="tool-support-card">
-              <h3>Common mistakes</h3>
-              <ul>
-              <li>Setting quality too low for images with text.</li>
-              <li>Converting transparency-heavy PNGs to JPG and losing transparent areas.</li>
-              <li>Publishing without checking the downloaded image on the target page.</li>
-              </ul>
-            </div>
-          </div>
-          <div class="tool-next-step">
-            <span>Need exact dimensions too? Resize the image after compression.</span>
-            <a href="https://mc-novatools.com/tools/image/image-resizer/">Open related tool →</a>
-          </div>
-        </section>
+      <h2>When to use another workflow</h2>
+      <p>Use a dedicated batch optimizer or build pipeline when you need automated resizing, responsive variants, deterministic encoder settings, metadata policy, AVIF generation, CDN integration, or many files at once. Keep the original asset when later crops or higher-quality exports may be needed.</p>
 
+      <h2>Related tools</h2>
+      <ul class="related-list">
+        <li><a href="/tools/image/convert/"><strong>Image Converter</strong><br>Change format when compatibility matters more than size tuning.</a></li>
+        <li><a href="/tools/image/image-resizer/"><strong>Image Resizer</strong><br>Reduce pixel dimensions before re-encoding when the source is much larger than its display size.</a></li>
+        <li><a href="/tools/image/metadata-remover/"><strong>Metadata Remover</strong><br>Inspect or remove embedded metadata before sharing when metadata exposure is the concern.</a></li>
+      </ul>
+    </article>
+  </main>
 
-<article class="tool-resource" aria-labelledby="toolDescriptionTitle-image-compress">
-  <h2 id="toolDescriptionTitle-image-compress">Image Compressor — Client-Side Optimization Guide</h2>
-  <p>Use this Image Compressor when you need smaller JPG, PNG, or WebP files before uploading to a website, CMS, email thread, marketplace listing, portfolio, or support ticket. The workflow is intentionally visual: choose an image, preview the original, select the quality and output format, then download a compressed Blob after checking the result. Because the image is decoded and re-encoded in the browser session, you can test compression without handing every draft asset to an external optimizer account.</p>
-  <p>The tool uses standard browser image APIs: the selected File is read by FileReader, drawn into an HTML canvas, then exported with canvas.toBlob using the selected MIME type and quality value. That approach is fast for ordinary web assets and easy to explain to non-design teammates. It also has clear boundaries: animated formats may flatten, metadata is not the goal of this compressor, extremely large photos can hit memory limits, and PNG compression behaves differently from JPEG or WebP because the browser encoder controls the final trade-off.</p>
+  <footer class="tool-footer">
+    <p>NovaTools MC · Browser utility tools · <a href="/about-us.html">About</a> · <a href="/contact.html">Contact</a></p>
+  </footer>
 
-  <figure class="tool-visual">
-    <img src="/images/tool-guides/image-compressor-flow.svg" alt="Image Compressor browser pipeline showing File API loading, canvas drawing, and encoded Blob download" width="960" height="360" loading="lazy" decoding="async">
-    <figcaption>The compressor decodes the image locally, renders it to canvas, and exports the selected output format for download.</figcaption>
-  </figure>
+  <script>
+  (function(){
+    'use strict';
+    var MAX_BYTES = 10 * 1024 * 1024;
+    var ALLOWED_TYPES = ['image/jpeg','image/png','image/webp'];
+    var EXTENSIONS = {'image/jpeg':'jpg','image/png':'png','image/webp':'webp'};
+    var form = document.getElementById('imageCompressForm');
+    var dropzone = document.getElementById('dropzone');
+    var fileInput = document.getElementById('fileInput');
+    var controls = document.getElementById('controls');
+    var qualitySlider = document.getElementById('qualitySlider');
+    var qualityValue = document.getElementById('qualityValue');
+    var formatSelect = document.getElementById('formatSelect');
+    var originalPreview = document.getElementById('originalPreview');
+    var compressedPreview = document.getElementById('compressedPreview');
+    var originalSize = document.getElementById('originalSize');
+    var compressedSize = document.getElementById('compressedSize');
+    var downloadLink = document.getElementById('downloadLink');
+    var status = document.getElementById('toolStatus');
+    var currentFile = null;
+    var sourceUrl = '';
+    var outputUrl = '';
 
-  <h2>How It Works</h2>
-  <ol class="resource-steps">
-    <li><strong>Add an image.</strong> Drag a file into the drop zone or use the file picker. The browser exposes only the file you select, not your entire photo library.</li>
-    <li><strong>Choose a quality level.</strong> JPEG and WebP quality values reduce file size by discarding less visible detail; PNG output may not shrink as predictably because it is generally lossless or palette-dependent.</li>
-    <li><strong>Select the output format.</strong> Use JPEG for photos without transparency, PNG when transparency or sharp interface graphics matter, and WebP when modern web delivery is the target.</li>
-    <li><strong>Preview and download.</strong> Compare original and compressed previews, inspect the file-size savings, and download only after the image still looks acceptable at the intended display size.</li>
-  </ol>
-  <p>Modern Chrome, Edge, Firefox, and Safari support the File API and Canvas 2D workflow used here. WebP export support is strong in current browsers, but older enterprise browsers or embedded webviews can vary, so test the selected output format before building a production image pipeline around it.</p>
-
-  <figure class="tool-visual">
-    <img src="/images/tool-guides/image-compressor-quality.svg" alt="Image compression quality decision guide for photos, transparent graphics, and visual QA before download" width="960" height="360" loading="lazy" decoding="async">
-    <figcaption>Pick the format based on what the image must preserve: photographic detail, transparency, crisp UI edges, or broad compatibility.</figcaption>
-  </figure>
-
-  <h2>Key Features</h2>
-  <ul class="feature-list">
-    <li><strong>Local preview-first workflow:</strong> view the original and compressed versions before you commit to a download.</li>
-    <li><strong>Adjustable quality control:</strong> tune the output instead of accepting a black-box compression preset.</li>
-    <li><strong>JPG, PNG, and WebP export:</strong> choose the format that matches your publishing channel and browser support target.</li>
-    <li><strong>File-size savings display:</strong> compare the source size to the generated Blob so you can decide whether the trade-off is worth it.</li>
-    <li><strong>No forced account upload:</strong> ordinary compression happens in the browser workflow rather than behind a hosted account dashboard.</li>
-    <li><strong>Safe defaults for content teams:</strong> the interface encourages review before download, which helps catch artifacts, banding, blurry text, or lost transparency.</li>
-  </ul>
-
-  <h2>Use Cases and Scenarios</h2>
-  <h3>Blog editors preparing hero images</h3>
-  <p>You can use this when a CMS rejects a large photo or when a hero image hurts page speed. Compress the image, check the preview at the same width your template uses, and keep a higher-quality original in your asset archive for future crops.</p>
-  <h3>Developers optimizing documentation screenshots</h3>
-  <p>You can use this when README images, changelog screenshots, or help-center captures need to stay readable without bloating the repository. Screenshots with text often need higher quality or PNG/WebP output because over-compression makes labels hard to read.</p>
-  <h3>Marketplace sellers shrinking product photos</h3>
-  <p>You can use this when a product listing limits upload size. Try JPEG or WebP for photographic shots, inspect edges and color gradients, and avoid deleting the original because future platforms may require a different crop or resolution.</p>
-  <h3>Support teams sending evidence attachments</h3>
-  <p>You can use this when a ticketing system has attachment limits. Remove unrelated private details before compression, then choose the smallest version that still shows the issue, timestamp, or UI state clearly.</p>
-
-  <h2>Image Compressor Comparison</h2>
-  <p id="imageComparisonNote">Hosted image services can win on bulk automation, CDN integration, and advanced formats. NovaTools is better for one-off private preparation when you need a transparent browser canvas workflow and do not want a draft image uploaded to an optimizer account.</p>
-  <table class="tool-comparison-table" aria-describedby="imageComparisonNote">
-    <thead><tr><th scope="col">Option</th><th scope="col">Best fit</th><th scope="col">Where it wins</th><th scope="col">Privacy trade-off</th></tr></thead>
-    <tbody>
-      <tr><th scope="row">NovaTools Image Compressor</th><td>Manual one-off compression with preview</td><td>Browser canvas flow, no account gate, simple size comparison</td><td>Input stays in the local page workflow</td></tr>
-      <tr><th scope="row">Adobe Express / Acrobat web tools</th><td>Design suite users and branded workflows</td><td>Templates, cloud libraries, account-based asset management</td><td>Usually depends on hosted processing and account storage</td></tr>
-      <tr><th scope="row">Smallpdf image/PDF workflows</th><td>Mixed file compression tasks</td><td>Convenient cross-format workflow collection</td><td>Hosted processing is less appropriate for confidential screenshots</td></tr>
-      <tr><th scope="row">iLoveIMG / iLovePDF</th><td>Batch image tasks</td><td>Many image utilities and bulk convenience</td><td>Files commonly move through a hosted service</td></tr>
-    </tbody>
-  </table>
-
-  <h2>FAQ</h2>
-  <details><summary>Is there a file size limit?</summary><p>The UI recommends ordinary web images up to about 10 MB. Larger images can work on powerful devices, but browser memory grows with pixel dimensions, not just file size. A 40-megapixel photo may be more demanding than a smaller file with heavier compression.</p></details>
-  <details><summary>Will image quality be preserved?</summary><p>Quality is controlled by the selected format and slider. JPEG and WebP can introduce artifacts, especially around text and sharp edges. PNG can preserve clean edges and transparency, but it may produce a larger file than a compressed JPEG photo.</p></details>
-  <details><summary>Can I compress transparent PNGs?</summary><p>Yes, but choose PNG or WebP if transparency must remain. Converting a transparent PNG to JPEG usually replaces transparent areas with a solid background because JPEG does not support alpha transparency.</p></details>
-  <details><summary>Why is this free?</summary><p>The page uses built-in browser APIs instead of a costly hosted image pipeline. That makes it practical to offer a focused one-image workflow for free while keeping advanced batch automation outside this tool’s scope.</p></details>
-  <details><summary>Is it safe for confidential screenshots?</summary><p>It is safer than tools that require upload for many everyday cases because decoding and encoding happen in the browser. Still remove secrets from screenshots first, use a trusted device, and avoid compressing regulated material if your policy requires approved software only.</p></details>
-
-  <h2>Related Tools</h2>
-  <ul class="related-resource-list">
-    <li><a href="/tools/image/convert/">Convert images to PNG, JPG, or WebP</a> when format compatibility matters more than file-size tuning.</li>
-    <li><a href="/tools/image/image-resizer/">Resize an image for exact dimensions</a> before compression if the visual display size is too large.</li>
-    <li><a href="/tools/image/metadata-remover/">Remove image metadata</a> before sharing screenshots or photos that may include device details.</li>
-    <li><a href="/blog/articles/compress-images-for-web-quality-checklist.html">Read the image compression checklist</a> for page-speed and visual QA decisions.</li>
-  </ul>
-
-  <h2>Technical Specifications</h2>
-  <details><summary>Formats, browser requirements, and processing method</summary><p><strong>Input:</strong> images accepted by the browser image decoder, including JPG, PNG, and WebP. <strong>Output:</strong> JPEG, PNG, or WebP Blob download. <strong>Practical size guidance:</strong> 10 MB in the UI; very high pixel counts may require a desktop browser. <strong>Requirements:</strong> JavaScript, FileReader, Canvas 2D, canvas.toBlob, Blob URLs, and download support. External references: <a href="https://developer.mozilla.org/en-US/docs/Web/API/File_API" rel="noopener">MDN File API</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/drawImage" rel="noopener">MDN Canvas drawImage</a>.</p></details>
-
-  <h2>Editorial Review Notes</h2>
-  <p class="rating-note">☆☆☆☆☆ 0 verified public ratings. NovaTools will not publish invented star ratings; add real customer feedback only after consent and source review.</p>
-  <blockquote>“Preview at the final display size; tiny artifacts can become obvious in banners.” <cite>— NovaTools image QA</cite></blockquote>
-  <blockquote>“Use WebP for modern web delivery, but keep a fallback if your audience includes older tools.” <cite>— Publishing workflow review</cite></blockquote>
-
-  <h2>Bookmark and Updates</h2>
-  <p>Bookmark this Image Compressor for quick publishing prep, and subscribe only if you want occasional alerts about new privacy-first image utilities.</p>
-  <p><button type="button" class="btn btn-secondary" data-nv-click="nvBookmarkHint">Bookmark this tool</button> <a class="btn btn-primary" href="/tools/request/">Subscribe for new tool alerts</a></p>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is there a file size limit for the Image Compressor?","acceptedAnswer":{"@type":"Answer","text":"The UI recommends ordinary web images up to about 10 MB, while larger pixel dimensions can be limited by browser memory."}},{"@type":"Question","name":"Can transparent PNGs be compressed?","acceptedAnswer":{"@type":"Answer","text":"Yes, but PNG or WebP should be selected when transparency must remain because JPEG does not support alpha transparency."}}]}</script>
-</article>
-      <aside class="author-bylines" aria-label="Author and review information for Image Compressor">
-        <p><span class="author-name">Metehan ÇETİN, LPC</span>, <span class="author-title">Founder and editor</span></p>
-        <p>The author profile for Image Compressor is intended for a practitioner who understands image optimization, visual asset preparation, publishing QA, and browser canvas workflows. This byline describes hands-on experience reviewing inputs, outputs, edge cases, accessibility needs, privacy expectations, and user education for browser-based utilities. It is maintained as a verified public review note for MC NovaTools tool pages.</p>
-        <p><a href="https://mc-novatools.com/about-us.html" rel="author">Author and review profile</a></p>
-        <p>Last updated: <time class="last-updated" datetime="2026-06-03">2026-06-03</time></p>
-        <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Metehan ÇETİN, LPC","jobTitle":"Founder and editor","description":"The author profile for Image Compressor is intended for a practitioner who understands image optimization, visual asset preparation, publishing QA, and browser canvas workflows. This byline describes hands-on experience reviewing inputs, outputs, edge cases, accessibility needs, privacy expectations, and user education for browser-based utilities. It is maintained as a verified public review note for MC NovaTools tool pages.","sameAs":"https://mc-novatools.com/about-us.html"}</script>
-      </aside>
-<section class="trust-help novatools-tool-reading-path" aria-labelledby="toolReadingPathTitle">
-          <h2 id="toolReadingPathTitle">Recommended next reading</h2>
-          <p>Use these practical guides to understand when this tool is the right choice, what to check before exporting, and which workflow usually comes next.</p>
-          <div class="related-tools-grid"><a class="related-tool-link" href="https://mc-novatools.com/blog/articles/compress-images-for-web-quality-checklist.html">Image compression checklist</a><a class="related-tool-link" href="https://mc-novatools.com/blog/articles/image-compressor-vs-image-resizer.html">Image compressor vs resizer</a></div>
-        </section>
-    </main>
-
-    <footer class="tool-footer">
-  <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="mailto:psk.dan.metehancetin@mc-novatools.com" data-i18n="tools.image.compress.text.027">psk.dan.metehancetin@mc-novatools.com</a></p>
-  <p data-i18n="tools.image.compress.text.028">Estimates only &mdash; not financial, legal, or tax advice.</p>
-</footer>
-<style>
-.tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }
-.tool-footer a { color: #00D9FF; text-decoration: none; }
-</style>
-  </div>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  // ── Image Compress Logic ───────────────────────────────────
-  var dropzone = document.getElementById('dropzone');
-  var fileInput = document.getElementById('fileInput');
-  var qualitySlider = document.getElementById('qualitySlider');
-  var qualityValue = document.getElementById('qualityValue');
-  var compressBtn = document.getElementById('compressBtn');
-  var controls = document.getElementById('controls');
-  var originalPreview = document.getElementById('originalPreview');
-  var compressedPreview = document.getElementById('compressedPreview');
-  var originalSize = document.getElementById('originalSize');
-  var compressedSize = document.getElementById('compressedSize');
-  var downloadLink = document.getElementById('downloadLink');
-  var savingsText = document.getElementById('savingsText');
-  var resultSection = document.getElementById('resultSection');
-  var currentFile = null;
-
-  function fmt(b) { return b < 1048576 ? (b/1024).toFixed(1)+' KB' : (b/1048576).toFixed(1)+' MB'; }
-
-  function loadFile(file) {
-    if (!file || !file.type.startsWith('image/')) return;
-    currentFile = file;
-    var reader = new FileReader();
-    reader.onload = function(e) {
-      if (originalPreview) { originalPreview.src = e.target.result; originalPreview.style.display = 'block'; }
-      if (originalSize) originalSize.textContent = 'Original: ' + fmt(file.size);
-      if (controls) controls.style.display = 'block';
-      updatePreview(e.target.result);
-    };
-    reader.readAsDataURL(file);
-  }
-
-  function updatePreview(src) {
-    var quality = qualitySlider ? qualitySlider.value / 100 : 0.8;
-    var format = document.getElementById('formatSelect') ? document.getElementById('formatSelect').value : 'image/jpeg';
-    var img = new Image();
-    img.onload = function() {
-      var canvas = document.createElement('canvas');
-      canvas.width = img.width; canvas.height = img.height;
-      var ctx = canvas.getContext('2d'); ctx.drawImage(img, 0, 0);
-      canvas.toBlob(function(blob) {
-        if (!blob) return;
-        var url = URL.createObjectURL(blob);
-        if (compressedPreview) { compressedPreview.src = url; compressedPreview.style.display = 'block'; }
-        if (compressedSize) compressedSize.textContent = 'Compressed: ' + fmt(blob.size);
-        if (downloadLink) { downloadLink.href = url; downloadLink.download = 'compressed.' + (format.split('/')[1] || 'jpg'); }
-        if (savingsText && currentFile) {
-          var saved = Math.round((1 - blob.size/currentFile.size)*100);
-          savingsText.textContent = fmt(currentFile.size) + ' \u2192 ' + fmt(blob.size) + ' (' + (saved > 0 ? '-'+saved+'%' : 'no change') + ')';
-        }
-        if (resultSection) resultSection.style.display = 'block';
-      }, format, quality);
-    };
-    img.src = src;
-  }
-
-  if (dropzone && fileInput) {
-    dropzone.addEventListener('click', function(e){ if (e.target !== fileInput) fileInput.click(); });
-    fileInput.addEventListener('change', function(){ if (fileInput.files[0]) loadFile(fileInput.files[0]); });
-    dropzone.addEventListener('dragover', function(e){ e.preventDefault(); dropzone.classList.add('drag-active'); });
-    dropzone.addEventListener('dragleave', function(){ dropzone.classList.remove('drag-active'); });
-    dropzone.addEventListener('drop', function(e){ e.preventDefault(); dropzone.classList.remove('drag-active'); if (e.dataTransfer.files[0]) loadFile(e.dataTransfer.files[0]); });
-  }
-
-  if (qualitySlider && qualityValue) {
-    qualitySlider.addEventListener('input', function(){ qualityValue.textContent = qualitySlider.value; });
-  }
-
-  var form = document.querySelector('form');
-  if (form) {
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      if (!currentFile) return;
-      var reader = new FileReader();
-      reader.onload = function(ev){ updatePreview(ev.target.result); };
-      reader.readAsDataURL(currentFile);
-    });
-  }
-  // ──────────────────────────────────────────────────────────
-
-  var menuBtn = document.getElementById('mobileMenuBtn');
-  var mobileMenu = document.getElementById('mobileMenu');
-  if (menuBtn && mobileMenu) {
-    menuBtn.addEventListener('click', function() {
-      var isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
-      menuBtn.setAttribute('aria-expanded', !isExpanded);
-      mobileMenu.hidden = isExpanded;
-      mobileMenu.classList.toggle('active', !isExpanded);
-    });
-  }
-  var themeBtn = document.getElementById('themeToggle');
-  if (themeBtn) {
-    function getTheme() {
-      var s = localStorage.getItem('theme');
-      if (s) return s;
-      return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    function formatBytes(bytes){
+      if (bytes < 1024) return bytes + ' B';
+      if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+      return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
     }
-    function updateIcon() {
-      var t = getTheme();
-      themeBtn.querySelector('.icon-sun').style.display = t === 'light' ? 'none' : 'block';
-      themeBtn.querySelector('.icon-moon').style.display = t === 'dark' ? 'none' : 'block';
-    }
-    themeBtn.addEventListener('click', function() {
-      var next = getTheme() === 'dark' ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', next);
-      localStorage.setItem('theme', next);
-      updateIcon();
-    });
-    updateIcon();
-  }
-});
-</script>
 
-  <aside class="topical-authority-links" data-topical-authority-links style="max-width: 900px; margin: 2rem auto; padding: 1rem; border: 1px solid var(--border-default, var(--color-border, #334155)); border-radius: 16px; background: var(--surface-default, var(--color-surface, #101827));">
-    <strong>Plan the full workflow:</strong>
-    <a href="/guides/web-image-optimization">Web image optimization guide</a>
-    <span aria-hidden="true"> · </span>
-    <a href="/guides/articles/webp-vs-jpeg-which-format-2026">WebP vs JPEG format guide</a>
-  </aside>
+    function setStatus(message,state){
+      status.textContent = message;
+      status.dataset.state = state || 'info';
+    }
+
+    function clearOutput(){
+      if (outputUrl) URL.revokeObjectURL(outputUrl);
+      outputUrl = '';
+      compressedPreview.removeAttribute('src');
+      compressedSize.textContent = 'Generate an output to compare size.';
+      downloadLink.hidden = true;
+      downloadLink.removeAttribute('href');
+    }
+
+    function validateFile(file){
+      if (!file) return 'Choose a JPEG, PNG, or WebP image.';
+      if (!ALLOWED_TYPES.includes(file.type)) return 'Unsupported image type. Choose JPEG, PNG, or WebP.';
+      if (file.size > MAX_BYTES) return 'Image is larger than the 10 MB input limit.';
+      return '';
+    }
+
+    function loadFile(file){
+      var error = validateFile(file);
+      if (error) {
+        currentFile = null;
+        controls.hidden = true;
+        fileInput.value = '';
+        setStatus(error,'error');
+        return;
+      }
+      currentFile = file;
+      clearOutput();
+      if (sourceUrl) URL.revokeObjectURL(sourceUrl);
+      sourceUrl = URL.createObjectURL(file);
+      originalPreview.src = sourceUrl;
+      originalSize.textContent = file.name + ' · ' + formatBytes(file.size);
+      controls.hidden = false;
+      setStatus('Image ready. Choose output settings, then generate the result.','info');
+    }
+
+    function encodeCurrent(){
+      if (!currentFile) { setStatus('Choose an image first.','error'); return; }
+      var type = formatSelect.value;
+      var quality = Math.min(100,Math.max(1,Number(qualitySlider.value)||80)) / 100;
+      var image = new Image();
+      setStatus('Encoding image…','info');
+      image.onload = function(){
+        var canvas = document.createElement('canvas');
+        canvas.width = image.naturalWidth;
+        canvas.height = image.naturalHeight;
+        var context = canvas.getContext('2d');
+        if (!context) { setStatus('Canvas 2D is unavailable in this browser.','error'); return; }
+        context.drawImage(image,0,0);
+        canvas.toBlob(function(blob){
+          if (!blob) { setStatus('The browser could not encode this image in the selected format.','error'); return; }
+          clearOutput();
+          outputUrl = URL.createObjectURL(blob);
+          compressedPreview.src = outputUrl;
+          var difference = blob.size - currentFile.size;
+          var pct = currentFile.size ? Math.abs(difference / currentFile.size * 100) : 0;
+          var comparison = difference < 0 ? pct.toFixed(1) + '% smaller' : difference > 0 ? pct.toFixed(1) + '% larger' : 'same size';
+          compressedSize.textContent = formatBytes(blob.size) + ' · ' + comparison;
+          var base = (currentFile.name || 'image').replace(/\.[^.]+$/,'') || 'image';
+          downloadLink.download = 'compressed_' + base + '.' + EXTENSIONS[type];
+          downloadLink.href = outputUrl;
+          downloadLink.hidden = false;
+          setStatus('Output generated. Review visual quality and measured size before downloading.','success');
+        },type,quality);
+      };
+      image.onerror = function(){ setStatus('The selected image could not be decoded by this browser.','error'); };
+      image.src = sourceUrl;
+    }
+
+    fileInput.addEventListener('change',function(){ loadFile(fileInput.files && fileInput.files[0]); });
+    qualitySlider.addEventListener('input',function(){ qualityValue.value = qualitySlider.value; });
+    form.addEventListener('submit',function(event){ event.preventDefault(); encodeCurrent(); });
+    dropzone.addEventListener('dragover',function(event){ event.preventDefault(); dropzone.classList.add('drag-active'); });
+    dropzone.addEventListener('dragleave',function(){ dropzone.classList.remove('drag-active'); });
+    dropzone.addEventListener('drop',function(event){
+      event.preventDefault();
+      dropzone.classList.remove('drag-active');
+      var file = event.dataTransfer && event.dataTransfer.files && event.dataTransfer.files[0];
+      if (!file) return;
+      var transfer = new DataTransfer();
+      transfer.items.add(file);
+      fileInput.files = transfer.files;
+      loadFile(file);
+    });
+
+    var menuBtn = document.getElementById('mobileMenuBtn');
+    var mobileMenu = document.getElementById('mobileMenu');
+    if (menuBtn && mobileMenu) menuBtn.addEventListener('click',function(){
+      var open = menuBtn.getAttribute('aria-expanded') === 'true';
+      menuBtn.setAttribute('aria-expanded',String(!open));
+      mobileMenu.hidden = open;
+    });
+
+    var themeToggle = document.getElementById('themeToggle');
+    if (themeToggle) themeToggle.addEventListener('click',function(){
+      var root = document.documentElement;
+      var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme',next);
+      try { localStorage.setItem('novatools-theme',next); } catch(_e) {}
+    });
+
+    window.addEventListener('pagehide',function(){
+      if (sourceUrl) URL.revokeObjectURL(sourceUrl);
+      if (outputUrl) URL.revokeObjectURL(outputUrl);
+    });
+  })();
+  </script>
 </body>
 </html>
