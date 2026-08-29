@@ -305,3 +305,58 @@ test('Roman Numerals Converter is an accessible local converter that refuses non
   await expectNoSeriousA11y(page, 'Roman Numerals Converter');
   await expectNoHorizontalOverflow(page, 320);
 });
+
+test('Scientific Calculator evaluates locally and refuses undefined results', async ({ page }) => {
+  const errors = [];
+  page.on('pageerror', (error) => errors.push(error.message));
+
+  const response = await page.goto('/tools/converters/scientific-calculator/', { waitUntil: 'domcontentloaded' });
+  expect(response?.ok()).toBeTruthy();
+  await expectIndexableRobots(page);
+
+  await expect(page.locator('#calcInput')).toHaveAttribute('aria-live', 'polite');
+  for (const name of ['Divide', 'Multiply', 'Equals', 'Square root', 'Pi']) {
+    await expect(page.getByRole('button', { name, exact: true })).toHaveCount(1);
+  }
+
+  await page.getByRole('button', { name: '9', exact: true }).click();
+  await page.getByRole('button', { name: 'Square root', exact: true }).click();
+  await page.getByRole('button', { name: 'Equals', exact: true }).click();
+  await expect(page.locator('#calcInput')).toHaveText('3');
+
+  await page.getByRole('button', { name: 'All clear', exact: true }).click();
+  await page.getByRole('button', { name: '1', exact: true }).click();
+  await page.getByRole('button', { name: 'Divide', exact: true }).click();
+  await page.getByRole('button', { name: '0', exact: true }).click();
+  await page.getByRole('button', { name: 'Equals', exact: true }).click();
+  await expect(page.locator('#calcInput')).toContainText(/zero/i);
+
+  expect(errors).toEqual([]);
+  await expectNoSeriousA11y(page, 'Scientific Calculator');
+  await expectNoHorizontalOverflow(page, 320);
+});
+
+test('Unix Timestamp Converter is accessible and discloses how it read the input', async ({ page }) => {
+  const errors = [];
+  page.on('pageerror', (error) => errors.push(error.message));
+
+  const response = await page.goto('/tools/converters/unix-timestamp/', { waitUntil: 'domcontentloaded' });
+  expect(response?.ok()).toBeTruthy();
+  await expectIndexableRobots(page);
+
+  await expect(page.locator('#timestampInput')).toHaveAccessibleName(/timestamp/i);
+  await expect(page.locator('#timestampStatus')).toHaveAttribute('aria-live', 'polite');
+
+  await page.locator('#timestampInput').fill('1704067200');
+  await page.locator('#btnConvert').click();
+  await expect(page.locator('#isoFormat')).toHaveText('2024-01-01T00:00:00.000Z');
+  await expect(page.locator('#timestampStatus')).toContainText(/seconds/i);
+
+  await page.locator('#timestampInput').fill('1704067200000');
+  await page.locator('#btnConvert').click();
+  await expect(page.locator('#timestampStatus')).toContainText(/millisecond/i);
+
+  expect(errors).toEqual([]);
+  await expectNoSeriousA11y(page, 'Unix Timestamp Converter');
+  await expectNoHorizontalOverflow(page, 320);
+});

@@ -942,7 +942,7 @@
           "015": "Enter Unix Timestamp (seconds)",
           "016": "Local Date & Time",
           "017": "UTC Date & Time",
-          "018": "Relative Time",
+          "018": "Relative Time (approximate)",
           "019": "Select Date & Time",
           "020": "Unix Timestamp (seconds)",
           "021": "Unix Timestamp (milliseconds)",
