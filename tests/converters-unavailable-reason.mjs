@@ -24,6 +24,17 @@ for (const tool of converters) {
   const record = records.get(route);
   assert.ok(record, `${route} is missing from the master matrix`);
 
+  // Every consumer of the manifest compares these with `=== true`, and one uses
+  // a bare negation where the string "False" would read as truthy. They must be
+  // real booleans, whatever the certification matrix stores them as.
+  for (const flag of ['public', 'indexable', 'adsEligible']) {
+    assert.equal(
+      typeof tool[flag],
+      'boolean',
+      `${route} manifest flag "${flag}" must be a boolean, got ${JSON.stringify(tool[flag])}`
+    );
+  }
+
   if (record.CertificationStatus === 'CERTIFIED') {
     certified += 1;
     assert.doesNotMatch(
