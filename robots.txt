@@ -1,8 +1,9 @@
 User-agent: *
 Allow: /
+Disallow: /api/
 Disallow: /admin/
 Disallow: /test/
-Disallow: /api/
+Disallow: /*?*
 
 Sitemap: https://mc-novatools.com/sitemap.xml
 Sitemap: https://mc-novatools.com/sitemap-blog.xml

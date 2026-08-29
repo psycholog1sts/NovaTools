@@ -413,7 +413,7 @@
             </div>
           </div>
           <div class="expense-amount ${t.type}">${t.type === 'income' ? '+' : '-'}${formatCurrency(t.amount)}</div>
-          <button class="expense-delete" onclick="deleteTransaction('${t.id}')">&times;</button>
+          <button type="button" class="expense-delete" data-nv-click="deleteTransaction" data-nv-args='["${t.id}"]'>&times;</button>
         </div>
       `).join('');
     }

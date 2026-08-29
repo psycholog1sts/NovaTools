@@ -2,9 +2,23 @@
   Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
   X-Content-Type-Options: nosniff
   X-Frame-Options: DENY
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://pagead2.googlesyndication.com; img-src 'self' data: https:; style-src 'self' 'unsafe-inline';
+  Content-Security-Policy: __NOVATOOLS_SCRIPT_SRC_HASHES__
   Referrer-Policy: strict-origin-when-cross-origin
-  Permissions-Policy: geolocation=(), microphone=(), camera=()
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), interest-cohort=()
+  Cross-Origin-Opener-Policy: same-origin
+  X-Robots-Tag: index, follow
+
+/admin
+  Cache-Control: no-store
+  X-Robots-Tag: noindex, nofollow
+
+/admin/*
+  Cache-Control: no-store
+  X-Robots-Tag: noindex, nofollow
+
+/.well-known/security.txt
+  Content-Type: text/plain; charset=utf-8
+  Cache-Control: public, max-age=86400
 
 # These legacy/placeholder utilities are intentionally kept out of search until
 # their product behavior is truthful and production-grade. Defense in depth:
@@ -27,7 +41,16 @@
 /css/*
   Cache-Control: public, max-age=31536000, immutable
 
+/vendor/*
+  Cache-Control: public, max-age=31536000, immutable
+
 /images/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/icons/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/wasm/*
   Cache-Control: public, max-age=31536000, immutable
 
 /*.webp

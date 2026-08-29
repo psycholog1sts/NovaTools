@@ -208,7 +208,7 @@
                   <option value="medium" selected>Medium Priority</option>
                   <option value="high">High Priority</option>
                 </select>
-                <button class="btn btn-primary add-task-btn" onclick="addTask('todo')" data-i18n="tools.productivity.kanban-board.text.014">Add Task</button>
+                <button class="btn btn-primary add-task-btn" data-nv-click="addTask" data-nv-args='["todo"]' data-i18n="tools.productivity.kanban-board.text.014">Add Task</button>
               </div>
             </div>
 
@@ -225,7 +225,7 @@
                   <option value="medium" selected>Medium Priority</option>
                   <option value="high">High Priority</option>
                 </select>
-                <button class="btn btn-primary add-task-btn" onclick="addTask('inprogress')" data-i18n="tools.productivity.kanban-board.text.016">Add Task</button>
+                <button class="btn btn-primary add-task-btn" data-nv-click="addTask" data-nv-args='["inprogress"]' data-i18n="tools.productivity.kanban-board.text.016">Add Task</button>
               </div>
             </div>
 
@@ -242,7 +242,7 @@
                   <option value="medium" selected>Medium Priority</option>
                   <option value="high">High Priority</option>
                 </select>
-                <button class="btn btn-primary add-task-btn" onclick="addTask('done')" data-i18n="tools.productivity.kanban-board.text.018">Add Task</button>
+                <button class="btn btn-primary add-task-btn" data-nv-click="addTask" data-nv-args='["done"]' data-i18n="tools.productivity.kanban-board.text.018">Add Task</button>
               </div>
             </div>
           </div>
@@ -379,7 +379,7 @@
           <div class="kanban-task-title">${task.title}</div>
           <div class="kanban-task-meta">
             <span class="task-tag ${task.priority}" data-i18n="tools.productivity.kanban-board.text.037">${task.priority}</span>
-            <button class="task-delete" onclick="deleteTask('${task.id}')">&times;</button>
+            <button type="button" class="task-delete" data-nv-click="deleteTask" data-nv-args='["${task.id}"]'>&times;</button>
           </div>
         </div>
       `).join('');

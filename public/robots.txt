@@ -4,6 +4,7 @@ Disallow: /api/
 Disallow: /admin/
 Disallow: /test/
 Disallow: /*?*
+
 Sitemap: https://mc-novatools.com/sitemap.xml
 Sitemap: https://mc-novatools.com/sitemap-blog.xml
 Sitemap: https://mc-novatools.com/sitemap-tools.xml

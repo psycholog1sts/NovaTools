@@ -211,10 +211,10 @@ function applyGlobalFooterPass(dir) {
 }
 
 function deferNonCriticalStylesInHtml(html) {
-  return html.replace(/<link\s+rel=["']stylesheet["']\s+href=["']([^"']+)["']\s*\/?>/gi, (tag, href) => {
+  return html.replace(/(?<!<noscript>)<link\s+rel=["']stylesheet["']\s+href=["']([^"']+)["']\s*\/?>/gi, (tag, href) => {
     if (/critical\.css(?:$|[?#])/.test(href) || /fonts\.googleapis\.com/.test(href)) return tag;
     if (/rel=["']preload["']/.test(tag)) return tag;
-    return `<link rel="preload" href="${href}" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="${href}"></noscript>`;
+    return `<link rel="stylesheet" href="${href}" media="print" data-nv-deferred-style><noscript><link rel="stylesheet" href="${href}"></noscript>`;
   });
 }
 

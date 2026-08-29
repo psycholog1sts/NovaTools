@@ -428,10 +428,10 @@
                 </div>
               </div>
               <div class="habit-actions">
-                <button class="btn btn-primary btn-check ${isDoneToday ? 'completed' : ''}" onclick="toggleHabit('${habit.id}')" data-i18n="tools.productivity.habit-tracker.text.032">
+                <button class="btn btn-primary btn-check ${isDoneToday ? 'completed' : ''}" data-nv-click="toggleHabit" data-nv-args='["${habit.id}"]' data-i18n="tools.productivity.habit-tracker.text.032">
                   ${isDoneToday ? '&#10003;' : '&#10003;'}
                 </button>
-                <button class="btn btn-danger btn-delete" onclick="deleteHabit('${habit.id}')">&times;</button>
+                <button type="button" class="btn btn-danger btn-delete" data-nv-click="deleteHabit" data-nv-args='["${habit.id}"]'>&times;</button>
               </div>
             </div>
             <div class="habit-calendar">

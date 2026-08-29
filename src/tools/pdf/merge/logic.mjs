@@ -154,7 +154,7 @@ function renderFileList() {
         <p class="text-sm font-medium text-gray-900 truncate" title="${fileData.name}">${fileData.name}</p>
         <p class="text-xs text-gray-500">${formatBytes(fileData.size)} • ${fileData.pageCount || '?'} sayfa</p>
       </div>
-      <button type="button" class="p-1 text-gray-400 hover:text-red-600" onclick="window.removeFile('${fileData.id}')" aria-label="Kaldır">×</button>
+      <button type="button" class="p-1 text-gray-400 hover:text-red-600" data-nv-click="removeFile" data-nv-args='["${fileData.id}"]' aria-label="Kaldır">×</button>
     </div>
   `).join('');
 }
