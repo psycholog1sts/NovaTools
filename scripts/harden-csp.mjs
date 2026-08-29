@@ -40,7 +40,9 @@ const DEFERRED_STYLE_ACTIVATOR_MARKER = 'data-nv-deferred-style-activator';
 const DEFERRED_STYLE_ACTIVATOR = `<script ${DEFERRED_STYLE_ACTIVATOR_MARKER}>(function(){var l=document.querySelectorAll('link[data-nv-deferred-style]');for(var i=0;i<l.length;i++){(function(n){function a(){n.media='all';n.removeAttribute('data-nv-deferred-style');}if(n.sheet){a();}else{n.addEventListener('load',a);}})(l[i]);}})();</script>`;
 
 const ACTIONS_MARKER = 'data-nv-actions';
-const ACTIONS_SCRIPT = `<script ${ACTIONS_MARKER}>(function(){function g(e,a){var o=[];try{o=JSON.parse(e.getAttribute(a)||'[]');}catch(x){o=[];}if(!Array.isArray(o))o=[];for(var i=0;i<o.length;i++){if(o[i]==='@el')o[i]=e;}return o;}function r(e,n,a){var f=window[e.getAttribute(n)];if(typeof f==='function')f.apply(e,g(e,a));}document.addEventListener('click',function(v){var t=v.target&&v.target.closest?v.target.closest('[data-nv-click]'):null;if(t)r(t,'data-nv-click','data-nv-args');},false);document.addEventListener('change',function(v){var t=v.target&&v.target.closest?v.target.closest('[data-nv-change]'):null;if(t)r(t,'data-nv-change','data-nv-change-args');},false);document.addEventListener('error',function(v){var t=v.target;if(t&&t.getAttribute&&t.getAttribute('data-nv-onerror')==='hide-parent'&&t.parentElement)t.parentElement.style.display='none';},true);window.nvBookmarkHint=function(){window.alert('Press Ctrl+D or Command+D to bookmark this tool.');};})();</script>`;
+// `defer` keeps this off the critical path: it only registers delegated
+// listeners on `document`, so it never needs to run before parsing finishes.
+const ACTIONS_SCRIPT = `<script ${ACTIONS_MARKER} defer>(function(){function g(e,a){var o=[];try{o=JSON.parse(e.getAttribute(a)||'[]');}catch(x){o=[];}if(!Array.isArray(o))o=[];for(var i=0;i<o.length;i++){if(o[i]==='@el')o[i]=e;}return o;}function r(e,n,a){var f=window[e.getAttribute(n)];if(typeof f==='function')f.apply(e,g(e,a));}document.addEventListener('click',function(v){var t=v.target&&v.target.closest?v.target.closest('[data-nv-click]'):null;if(t)r(t,'data-nv-click','data-nv-args');},false);document.addEventListener('change',function(v){var t=v.target&&v.target.closest?v.target.closest('[data-nv-change]'):null;if(t)r(t,'data-nv-change','data-nv-change-args');},false);document.addEventListener('error',function(v){var t=v.target;if(t&&t.getAttribute&&t.getAttribute('data-nv-onerror')==='hide-parent'&&t.parentElement)t.parentElement.style.display='none';},true);window.nvBookmarkHint=function(){window.alert('Press Ctrl+D or Command+D to bookmark this tool.');};})();</script>`;
 
 const ACTION_ATTRIBUTE_PATTERN = /data-nv-(?:click|change|onerror)=/;
 const SCRIPT_PATTERN = /<script\b([^>]*)>([\s\S]*?)<\/script>/gi;
@@ -103,7 +105,7 @@ function buildCsp(hashes) {
     "base-uri 'self'",
     "object-src 'none'",
     "frame-ancestors 'none'",
-    "form-action 'self' https://formspree.io",
+    "form-action 'self'",
     `script-src ${scriptSrc}`,
     "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
     "style-src-elem 'self' 'unsafe-inline' https://fonts.googleapis.com",
