@@ -186,13 +186,13 @@
                 <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
               </svg>
             </button>
-            <button class="btn-icon" id="searchToggle" aria-label="Search" aria-expanded="false" aria-controls="searchModal" onclick="toggleSearch()">
+            <button class="btn-icon" type="button" aria-label="Search" data-nv-click="toggleSearch">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <circle cx="11" cy="11" r="8"/>
                 <path d="m21 21-4.35-4.35"/>
               </svg>
             </button>
-            <button class="btn-icon mobile-menu-toggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Menu" onclick="toggleMobileMenu()">
+            <button class="btn-icon mobile-menu-toggle" type="button" aria-label="Menu" data-nv-click="toggleMobileMenu">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <line x1="3" y1="6" x2="21" y2="6"/>
                 <line x1="3" y1="12" x2="21" y2="12"/>
@@ -205,11 +205,11 @@
     </header>
 
     <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu" hidden>
+    <div class="mobile-menu" id="mobileMenu">
       <nav class="mobile-nav">
         <a href="/categories/index.html" class="mobile-nav-link" data-i18n="tools.categories">Categories</a>
-        <a href="#popular-tasks" class="mobile-nav-link" data-i18n="home.sections.popularTitle">Popular Tools</a>
-        <a href="#featured-tools" class="mobile-nav-link" data-i18n="home.sections.newTitle">New Tools</a>
+        <a href="#popular" class="mobile-nav-link" data-i18n="home.sections.popularTitle">Popular Tools</a>
+        <a href="#new" class="mobile-nav-link" data-i18n="home.sections.newTitle">New Tools</a>
         <a href="/blog/index.html" class="mobile-nav-link" data-i18n="nav.blog">Blog</a>
         <a href="/about-us.html" class="mobile-nav-link" data-i18n="nav.about">About</a>
         <a href="/contact.html" class="mobile-nav-link" data-i18n="nav.contact">Contact</a>
@@ -217,15 +217,15 @@
     </div>
 
     <!-- Search Modal -->
-    <div class="search-modal" id="searchModal" role="dialog" aria-modal="true" aria-label="Tool search" hidden>
-      <div class="search-container" tabindex="-1">
+    <div class="search-modal" id="searchModal">
+      <div class="search-container">
         <div class="search-input-wrapper">
           <svg class="search-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <circle cx="11" cy="11" r="8"/>
             <path d="m21 21-4.35-4.35"/>
           </svg>
           <input type="text" class="search-input" placeholder="Search tools, categories, and workflows..." data-i18n-placeholder="home.searchPlaceholder" aria-label="Search tools, categories, and workflows" id="globalSearch">
-          <button class="search-close" type="button" onclick="toggleSearch()" aria-label="Close search" data-i18n-aria-label="common.close">×</button>
+          <button class="search-close" type="button" data-nv-click="toggleSearch" aria-label="Close search" data-i18n-aria-label="common.close">×</button>
         </div>
         <div class="search-results" id="searchResults"></div>
       </div>
