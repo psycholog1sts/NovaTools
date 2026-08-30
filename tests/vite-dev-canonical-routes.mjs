@@ -1,7 +1,11 @@
 import assert from 'node:assert/strict';
+import { fileURLToPath } from 'node:url';
 import { createServer } from 'vite';
 
+const configFile = fileURLToPath(new URL('../vite.dev.config.js', import.meta.url));
+
 const server = await createServer({
+  configFile,
   logLevel: 'silent',
   server: {
     host: '127.0.0.1',
