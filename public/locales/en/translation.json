@@ -17,7 +17,7 @@
     "converters": "Converters"
   },
   "hero": {
-    "title": "All-in-One Tools for Files, Finance & Code",
+    "title": "Everyday tools that show their work",
     "subtitle": "Use MC NovaTools to convert, calculate, create, and streamline practical workflows with a fast, clear, browser-based toolkit.",
     "cta": "Explore Tools",
     "browse": "Browse Categories",
@@ -187,7 +187,7 @@
     "toolsGeneric": "Tools",
     "viewAllCategories": "View All Categories",
     "viewAllDesc": "Browse our tool collection by category.",
-    "searchPlaceholder": "Search tools...",
+    "searchPlaceholder": "Search tools — try “percent”, “epoch”, “compress pdf”",
     "popularLabel": "Popular:",
     "ads": {
       "eyebrow": "Clean layout",
@@ -209,7 +209,7 @@
       "freeTools": "Free Tools",
       "categories": "Categories",
       "private": "Private",
-      "description": "Use MC NovaTools to convert, calculate, create, and streamline practical workflows with a fast, clear, browser-based toolkit."
+      "description": "Converters, calculators and file utilities that run in your browser. Every tool states what it assumes and where it stops."
     },
     "launcher": {
       "title": "Workflow launcher",
@@ -6063,7 +6063,7 @@
     "edit": "Edit",
     "close": "Close",
     "open": "Open",
-    "search": "Search",
+    "search": "Search tools",
     "download": "Download",
     "upload": "Upload",
     "copy": "Copy",

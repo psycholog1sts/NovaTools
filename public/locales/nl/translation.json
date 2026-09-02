@@ -17,7 +17,6 @@
     "converters": "Converters"
   },
   "hero": {
-    "title": "Alles-in-Één Tools voor Bestanden, Financiën en Code",
     "subtitle": "Gebruik MC NovaTools om praktische workflows te converteren, berekenen, maken en stroomlijnen met een snelle, duidelijke toolkit in de browser.",
     "cta": "Tools Verkennen",
     "browse": "Categorieën Bekijken",
@@ -193,7 +192,6 @@
     "toolsGeneric": "Tools",
     "viewAllCategories": "Alle Categorieën Bekijken",
     "viewAllDesc": "Browse our tool collection by category.",
-    "searchPlaceholder": "Search tools...",
     "popularLabel": "Populair:",
     "newBadge": "Nieuw",
     "ads": {
@@ -208,9 +206,7 @@
       "description": "Practical articles that explain when to use a tool and what to check before exporting.",
       "viewAll": "View All Articles →"
     },
-    "hero": {
-      "description": "Gebruik MC NovaTools om praktische workflows te converteren, berekenen, maken en stroomlijnen met een snelle, duidelijke toolkit in de browser."
-    },
+    "hero": {},
     "launcher": {
       "title": "Workflowstarter",
       "query": "pdf comprimeren voor e-mail",
@@ -5828,7 +5824,6 @@
     "edit": "Bewerken",
     "close": "Sluiten",
     "open": "Openen",
-    "search": "Zoeken",
     "download": "Downloaden",
     "upload": "Uploaden",
     "copy": "Kopiëren",

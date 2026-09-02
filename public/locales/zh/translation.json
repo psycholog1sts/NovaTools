@@ -17,7 +17,6 @@
     "converters": "转换器"
   },
   "hero": {
-    "title": "文件、财务和代码的一体化工具",
     "subtitle": "使用 MC NovaTools，通过快速、清晰、基于浏览器的工具包来转换、计算、创建并简化实用工作流。",
     "cta": "探索工具",
     "browse": "浏览分类",
@@ -193,7 +192,6 @@
     "toolsGeneric": "工具",
     "viewAllCategories": "查看所有类别",
     "viewAllDesc": "Browse our tool collection by category.",
-    "searchPlaceholder": "Search tools...",
     "popularLabel": "热门：",
     "newBadge": "新",
     "ads": {
@@ -208,9 +206,7 @@
       "description": "Practical articles that explain when to use a tool and what to check before exporting.",
       "viewAll": "View All Articles →"
     },
-    "hero": {
-      "description": "使用 MC NovaTools，通过快速、清晰、基于浏览器的工具包来转换、计算、创建并简化实用工作流。"
-    },
+    "hero": {},
     "launcher": {
       "title": "工作流启动器",
       "query": "为电子邮件压缩 pdf",
@@ -5828,7 +5824,6 @@
     "edit": "编辑",
     "close": "关闭",
     "open": "打开",
-    "search": "搜索",
     "download": "下载",
     "upload": "上传",
     "copy": "复制",

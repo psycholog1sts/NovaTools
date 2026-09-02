@@ -17,7 +17,6 @@
     "converters": "Conversores"
   },
   "hero": {
-    "title": "Herramientas Todo en Uno para Archivos, Finanzas y Código",
     "subtitle": "Use MC NovaTools para convertir, calcular, crear y agilizar flujos de trabajo prácticos con un conjunto de herramientas rápido, claro y basado en el navegador.",
     "cta": "Explorar Herramientas",
     "browse": "Explorar Categorías",
@@ -193,7 +192,6 @@
     "toolsGeneric": "Herramientas",
     "viewAllCategories": "Ver Todas las Categorías",
     "viewAllDesc": "Browse our tool collection by category.",
-    "searchPlaceholder": "Search tools...",
     "popularLabel": "Popular:",
     "newBadge": "Nuevo",
     "ads": {
@@ -208,9 +206,7 @@
       "description": "Practical articles that explain when to use a tool and what to check before exporting.",
       "viewAll": "View All Articles →"
     },
-    "hero": {
-      "description": "Use MC NovaTools para convertir, calcular, crear y agilizar flujos de trabajo prácticos con un conjunto de herramientas rápido, claro y basado en el navegador."
-    },
+    "hero": {},
     "launcher": {
       "title": "Lanzador de flujos de trabajo",
       "query": "comprimir pdf para correo electrónico",
@@ -5828,7 +5824,6 @@
     "edit": "Editar",
     "close": "Cerrar",
     "open": "Abrir",
-    "search": "Buscar",
     "download": "Descargar",
     "upload": "Subir",
     "copy": "Copiar",

@@ -27,6 +27,8 @@ const THEME_BOOTSTRAP_MARKER = 'data-novatools-theme-bootstrap';
 const THEME_BOOTSTRAP_SCRIPT = `<script ${THEME_BOOTSTRAP_MARKER}>(function(){try{var saved=localStorage.getItem('novatools-theme');var theme=saved==='light'||saved==='dark'?saved:(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');localStorage.setItem('novatools-theme',theme);document.documentElement.setAttribute('data-theme',theme);document.documentElement.style.colorScheme=theme;}catch(_error){document.documentElement.setAttribute('data-theme','light');document.documentElement.style.colorScheme='light';}})();</script>`;
 const BACKGROUND_REMOVER_V2_HREF = '/js/background-remover-v2.js';
 const BACKGROUND_REMOVER_V2_SCRIPT = `<script src="${BACKGROUND_REMOVER_V2_HREF}" defer></script>`;
+const RECENT_VISIT_HREF = '/js/record-tool-visit.js';
+const RECENT_VISIT_SCRIPT = `<script src="${RECENT_VISIT_HREF}" defer></script>`;
 const manifest = JSON.parse(fs.readFileSync(path.join(root, 'tools-manifest.json'), 'utf8'));
 const toolsByBuiltPath = new Map((manifest.tools || []).map((tool) => {
   const entry = String(tool.entry || '').replace(/^\/src\//, '/').replace(/^\//, '').replace(/\/$/, '/index.html');
@@ -88,6 +90,23 @@ function publishToolMetaContracts() {
 
   walk(toolsRoot);
   return published;
+}
+
+/**
+ * Certified tool pages record their own id locally so the homepage can show a
+ * "Recently used" shortcut. Uncertified routes are never recorded.
+ */
+function injectRecentToolVisit(html, relativePath) {
+  const tool = toolsByBuiltPath.get(relativePath.replace(/^(?:[a-z]{2}\/)/, ''));
+  if (!tool || tool.certificationStatus !== 'CERTIFIED' || tool.public !== true) return html;
+  let next = html;
+  if (!/data-tool-id=/.test(next)) {
+    next = next.replace(/<html\b([^>]*)>/i, (match, attrs) => `<html${attrs} data-tool-id="${tool.id}">`);
+  }
+  if (!next.includes(RECENT_VISIT_HREF)) {
+    next = next.replace(/<\/head>/i, `  ${RECENT_VISIT_SCRIPT}\n</head>`);
+  }
+  return next;
 }
 
 function injectProfessionalTheme(html, relativePath) {
@@ -231,6 +250,7 @@ for (const filePath of htmlFiles) {
   const hadProfessionalTheme = after.includes(`href="${PROFESSIONAL_THEME_HREF}"`) || after.includes(`href='${PROFESSIONAL_THEME_HREF}'`);
   const hadThemeBootstrap = after.includes(THEME_BOOTSTRAP_MARKER);
   after = injectProfessionalTheme(after, relative);
+  after = injectRecentToolVisit(after, relative);
   if (!hadProfessionalTheme) injectedProfessionalThemes += 1;
   if (!hadThemeBootstrap) injectedThemeBootstraps += 1;
 

@@ -17,7 +17,6 @@
     "converters": "محولات"
   },
   "hero": {
-    "title": "أدوات الكل في واحد للملفات والمالية والبرمجة",
     "subtitle": "استخدم MC NovaTools للتحويل والحساب والإنشاء وتبسيط مهام العمل العملية من خلال مجموعة أدوات سريعة وواضحة تعمل في المتصفح.",
     "cta": "استكشف الأدوات",
     "browse": "تصفح الفئات",
@@ -183,7 +182,6 @@
     "toolsGeneric": "أدوات",
     "viewAllCategories": "عرض جميع الفئات",
     "viewAllDesc": "Browse our tool collection by category.",
-    "searchPlaceholder": "Search tools...",
     "popularLabel": "شائع:",
     "newBadge": "جديد",
     "ads": {
@@ -205,8 +203,7 @@
       "browse": "تصفح الفئات",
       "freeTools": "أدوات مجانية",
       "categories": "الفئات",
-      "private": "خاص",
-      "description": "استخدم MC NovaTools للتحويل والحساب والإنشاء وتبسيط مهام العمل العملية من خلال مجموعة أدوات سريعة وواضحة تعمل في المتصفح."
+      "private": "خاص"
     },
     "launcher": {
       "title": "مشغّل سير العمل",
@@ -5928,7 +5925,6 @@
     "edit": "تحرير",
     "close": "إغلاق",
     "open": "فتح",
-    "search": "بحث",
     "download": "تحميل",
     "upload": "رفع",
     "copy": "نسخ",

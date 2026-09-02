@@ -17,7 +17,6 @@
     "converters": "Konwertery"
   },
   "hero": {
-    "title": "Wszystko-w-Jednym Narzędzia dla Plików, Finansów i Kodu",
     "subtitle": "Użyj MC NovaTools, aby konwertować, obliczać, tworzyć i usprawniać praktyczne workflow za pomocą szybkiego, przejrzystego zestawu narzędzi działającego w przeglądarce.",
     "cta": "Przeglądaj Narzędzia",
     "browse": "Przeglądaj Kategorie",
@@ -193,7 +192,6 @@
     "toolsGeneric": "Narzędzia",
     "viewAllCategories": "Zobacz Wszystkie Kategorie",
     "viewAllDesc": "Browse our tool collection by category.",
-    "searchPlaceholder": "Search tools...",
     "popularLabel": "Popularne:",
     "newBadge": "Nowe",
     "ads": {
@@ -208,9 +206,7 @@
       "description": "Practical articles that explain when to use a tool and what to check before exporting.",
       "viewAll": "View All Articles →"
     },
-    "hero": {
-      "description": "Użyj MC NovaTools, aby konwertować, obliczać, tworzyć i usprawniać praktyczne workflow za pomocą szybkiego, przejrzystego zestawu narzędzi działającego w przeglądarce."
-    },
+    "hero": {},
     "launcher": {
       "title": "Uruchamianie workflow",
       "query": "skompresuj pdf do e-maila",
@@ -5828,7 +5824,6 @@
     "edit": "Edytuj",
     "close": "Zamknij",
     "open": "Otwórz",
-    "search": "Szukaj",
     "download": "Pobierz",
     "upload": "Prześlij",
     "copy": "Kopiuj",

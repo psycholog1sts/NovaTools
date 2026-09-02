@@ -17,7 +17,6 @@
     "converters": "変換ツール"
   },
   "hero": {
-    "title": "ファイル、ファイナンス、コードのオールインワンツール",
     "subtitle": "MC NovaTools を使って、変換、計算、作成、実用的なワークフローの効率化を、高速でわかりやすいブラウザベースのツールキットで行えます。",
     "cta": "ツールを探索",
     "browse": "カテゴリーを閲覧",
@@ -193,7 +192,6 @@
     "toolsGeneric": "ツール",
     "viewAllCategories": "全カテゴリーを表示",
     "viewAllDesc": "Browse our tool collection by category.",
-    "searchPlaceholder": "Search tools...",
     "popularLabel": "人気：",
     "newBadge": "新着",
     "ads": {
@@ -208,9 +206,7 @@
       "description": "Practical articles that explain when to use a tool and what to check before exporting.",
       "viewAll": "View All Articles →"
     },
-    "hero": {
-      "description": "MC NovaTools を使って、変換、計算、作成、実用的なワークフローの効率化を、高速でわかりやすいブラウザベースのツールキットで行えます。"
-    },
+    "hero": {},
     "launcher": {
       "title": "ワークフローランチャー",
       "query": "メール用に pdf を圧縮",
@@ -5828,7 +5824,6 @@
     "edit": "編集",
     "close": "閉じる",
     "open": "開く",
-    "search": "検索",
     "download": "ダウンロード",
     "upload": "アップロード",
     "copy": "コピー",

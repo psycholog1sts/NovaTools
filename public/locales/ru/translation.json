@@ -17,7 +17,6 @@
     "converters": "Конвертеры"
   },
   "hero": {
-    "title": "Универсальные Инструменты для Файлов, Финансов и Кода",
     "subtitle": "Используйте MC NovaTools, чтобы конвертировать, рассчитывать, создавать и упрощать практические рабочие процессы с помощью быстрого, понятного набора инструментов в браузере.",
     "cta": "Исследовать Инструменты",
     "browse": "Просмотр Категорий",
@@ -193,7 +192,6 @@
     "toolsGeneric": "Инструменты",
     "viewAllCategories": "Показать Все Категории",
     "viewAllDesc": "Browse our tool collection by category.",
-    "searchPlaceholder": "Search tools...",
     "popularLabel": "Популярное:",
     "newBadge": "Новый",
     "ads": {
@@ -208,9 +206,7 @@
       "description": "Practical articles that explain when to use a tool and what to check before exporting.",
       "viewAll": "View All Articles →"
     },
-    "hero": {
-      "description": "Используйте MC NovaTools, чтобы конвертировать, рассчитывать, создавать и упрощать практические рабочие процессы с помощью быстрого, понятного набора инструментов в браузере."
-    },
+    "hero": {},
     "launcher": {
       "title": "Запуск рабочего процесса",
       "query": "сжать pdf для электронной почты",
@@ -5828,7 +5824,6 @@
     "edit": "Редактировать",
     "close": "Закрыть",
     "open": "Открыть",
-    "search": "Поиск",
     "download": "Скачать",
     "upload": "Загрузить",
     "copy": "Копировать",

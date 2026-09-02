@@ -17,7 +17,6 @@
     "converters": "변환기"
   },
   "hero": {
-    "title": "파일, 금융 및 코드를 위한 올인원 도구",
     "subtitle": "MC NovaTools로 빠르고 명확한 브라우저 기반 도구 모음을 사용해 변환, 계산, 생성 및 실용적인 워크플로를 간소화하세요.",
     "cta": "도구 탐색",
     "browse": "카테고리 탐색",
@@ -193,7 +192,6 @@
     "toolsGeneric": "도구",
     "viewAllCategories": "전체 카테고리 보기",
     "viewAllDesc": "Browse our tool collection by category.",
-    "searchPlaceholder": "Search tools...",
     "popularLabel": "인기:",
     "newBadge": "새로운",
     "ads": {
@@ -208,9 +206,7 @@
       "description": "Practical articles that explain when to use a tool and what to check before exporting.",
       "viewAll": "View All Articles →"
     },
-    "hero": {
-      "description": "MC NovaTools로 빠르고 명확한 브라우저 기반 도구 모음을 사용해 변환, 계산, 생성 및 실용적인 워크플로를 간소화하세요."
-    },
+    "hero": {},
     "launcher": {
       "title": "워크플로 실행기",
       "query": "이메일용 pdf 압축",
@@ -5828,7 +5824,6 @@
     "edit": "편집",
     "close": "닫기",
     "open": "열기",
-    "search": "검색",
     "download": "다운로드",
     "upload": "업로드",
     "copy": "복사",

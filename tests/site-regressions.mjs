@@ -183,22 +183,35 @@ assert.match(
 );
 
 
+// The hero's job is to answer what this site is and let someone start, not to
+// show a decorative animation. Its contract is the working control, not an image.
 assert.match(
   homepage,
-  /home-hero__spin-logo[\s\S]*logo-brand-260\.png/,
-  'Homepage hero must include the transparent PNG brand mark.'
+  /<section class="home-hero"[\s\S]*?id="homeSearchInput"[\s\S]*?<\/section>/,
+  'Homepage hero must contain the tool search control itself, above the fold.'
+);
+assert.doesNotMatch(
+  homepage,
+  /home-hero__spin-logo|home-hero__visual|workflow-panel/,
+  'Homepage hero must not carry a decorative brand animation or a mock product panel.'
+);
+assert.match(
+  homepage,
+  /class="home-hero__proof"[\s\S]{0,600}Limitations documented on every tool page/,
+  'Homepage hero must state checkable properties rather than marketing claims.'
 );
 const layoutCss = read('src/styles/layout.css');
-assert.match(layoutCss, /@keyframes novatools-logo-spin/, 'Homepage brand mark must have a 3D spin animation.');
-assert.match(layoutCss, /rotateY\(360deg\)/, 'Homepage brand animation must rotate sideways around its vertical axis.');
-assert.match(layoutCss, /perspective:\s*700px/, 'Homepage logo stage must provide 3D perspective.');
-assert.match(layoutCss, /transform-style:\s*preserve-3d/, 'Homepage brand animation must preserve its 3D transform context.');
-assert.doesNotMatch(layoutCss, /rotate\(360deg\)/, 'Homepage brand mark must not use the dizzying flat wheel rotation.');
-assert.match(
-  layoutCss,
-  /@media \(prefers-reduced-motion: reduce\)[\s\S]*home-hero__spin-logo/,
-  'Homepage brand animation must respect reduced-motion preferences.'
-);
+assert.doesNotMatch(layoutCss, /@keyframes novatools-logo-spin/, 'The decorative hero spin animation must stay removed.');
+assert.match(layoutCss, /\.home-search__box:focus-within/, 'The hero search control must have a visible focus treatment.');
+assert.doesNotMatch(layoutCss, /rotate\(360deg\)|rotateY\(360deg\)/, 'The homepage must not run a continuous decorative rotation.');
+// Motion that remains is short, transform/opacity only, and never continuous.
+for (const property of ['height', 'width', 'top', 'left']) {
+  assert.doesNotMatch(
+    layoutCss,
+    new RegExp(`transition:[^;]*\\b${property}\\b`),
+    `Homepage layout must not transition ${property}; animate transform and opacity instead.`
+  );
+}
 
 for (const i18nRuntime of [sourceI18n, publicI18n]) {
   assert.match(

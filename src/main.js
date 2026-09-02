@@ -9,6 +9,8 @@ import { initConsentManager } from './core/consent-manager.mjs';
 import { initAnalytics } from './js/analytics.js';
 import { applySeo, buildHomeSchema, upsertJsonLd } from './js/seo.js';
 import { initHomeSearch } from './js/home-search.js';
+import { buildIndex, recentItems, rememberTool, forgetRecentTools } from './js/tool-search.js';
+import blogPostsForSearch from './i18n/blog/en.json';
 import { getPopularThisWeek } from './components/engagement-widgets.mjs';
 import manifest from '../tools-manifest.json';
 import { canonicalToolPath, publicCertifiedTools, publicToolsByCategory } from './data/public-tools.mjs';
@@ -524,6 +526,50 @@ function initSearch() {
 }
 
 // ============================================
+// RECENTLY USED TOOLS (local to this browser)
+// ============================================
+function renderRecentTools() {
+  const section = document.getElementById('recent-tools');
+  const grid = document.getElementById('homeRecentGrid');
+  if (!section || !grid) return;
+
+  const index = buildIndex({ tools: manifest.tools, posts: blogPostsForSearch, getToolHref });
+  const recents = recentItems(index);
+
+  grid.replaceChildren();
+  if (!recents.length) {
+    section.hidden = true;
+    return;
+  }
+
+  for (const item of recents) {
+    const card = document.createElement('a');
+    card.className = 'home-recent__card';
+    card.href = item.href;
+    const name = document.createElement('strong');
+    name.textContent = item.name;
+    const group = document.createElement('span');
+    group.textContent = item.group;
+    card.append(name, group);
+    card.addEventListener('click', () => rememberTool(item.id));
+    grid.append(card);
+  }
+  section.hidden = false;
+}
+
+function initRecentTools() {
+  const clear = document.getElementById('clearRecentTools');
+  if (clear && clear.dataset.ready !== 'true') {
+    clear.dataset.ready = 'true';
+    clear.addEventListener('click', () => {
+      forgetRecentTools();
+      renderRecentTools();
+    });
+  }
+  renderRecentTools();
+}
+
+// ============================================
 // RERENDER ON LANGUAGE CHANGE
 // ============================================
 function rerenderHomepageDynamicParts() {
@@ -535,6 +581,7 @@ function rerenderHomepageDynamicParts() {
   renderWorkflowCards();
   initSearch();
   initHomeSearch({ getToolHref });
+  initRecentTools();
 }
 
 window.addEventListener('languageChanged', () => {
