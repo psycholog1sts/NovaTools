@@ -160,17 +160,32 @@ assert.doesNotMatch(homepage, /rel="prefetch" href="\/tools\/popular"/, 'Homepag
 assert.match(homepage, /href="\/security\.html"[^>]*data-i18n="nav\.security"/, 'Desktop navigation must expose the security page instead of duplicating About.');
 assert.match(homepage, /<input(?=[^>]*id="globalSearch")(?=[^>]*aria-label=)[^>]*>/, 'Global search must have an accessible name.');
 assert.match(homepage, /class="search-close"[^>]*aria-label=/, 'Search close control must have an accessible name.');
-assert.match(homepage, /home\.privateStarter\.title/, 'Device-only discovery must be labeled honestly and localized.');
+// Device-only discovery: the homepage may only offer it if it says where the
+// data lives and gives a way to clear it.
+assert.match(homepage, /id="recent-tools"/, 'Homepage must offer the device-only recent tools section.');
+assert.match(homepage, /id="clearRecentTools"/, 'Device-only recents must expose a clear control.');
+assert.match(
+  homepage,
+  /Kept in this browser only\. Nothing is sent anywhere\./,
+  'Device-only recents must state plainly that nothing leaves the device.'
+);
 
 const homepageMain = read('src/main.js');
-for (const key of [
-  'home.toolLabels.',
-  'home.featuredCards.',
-  'home.privateStarter.localUse',
-  'home.privateStarter.starterTool'
-]) {
+for (const key of ['home.featuredCards.']) {
   assert.ok(homepageMain.includes(key), `Homepage dynamic copy must use i18n key: ${key}`);
 }
+// One storage schema for recents, shared by the tool pages and the homepage.
+assert.match(homepageMain, /forgetRecentTools/, 'Homepage must be able to clear the stored recents.');
+assert.match(
+  read('src/js/tool-search.js'),
+  /RECENTS_KEY = 'novatools:recent-tools'/,
+  'Recents must use the single shared storage key.'
+);
+assert.match(
+  read('public/js/record-tool-visit.js'),
+  /novatools:recent-tools/,
+  'Tool pages must record into the same recents key as the homepage.'
+);
 assert.doesNotMatch(
   sourceI18n,
   /localStorage\.setItem\('novatools_recent_tools'/,
@@ -229,9 +244,6 @@ for (const locale of ['en', 'tr']) {
   const bundle = JSON.parse(read(`public/locales/${locale}/translation.json`));
   for (const key of ['quickStartEyebrow', 'categoriesEyebrow']) {
     assert.ok(bundle.home?.sections?.[key], `${locale} homepage bundle is missing home.sections.${key}`);
-  }
-  for (const key of ['eyebrow', 'title', 'description', 'noscript']) {
-    assert.ok(bundle.home?.privateStarter?.[key], `${locale} homepage bundle is missing home.privateStarter.${key}`);
   }
   for (const key of ['eyebrow', 'title', 'description']) {
     assert.ok(bundle.home?.featured?.[key], `${locale} homepage bundle is missing home.featured.${key}`);

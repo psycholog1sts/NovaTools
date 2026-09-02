@@ -161,8 +161,19 @@ test('homepage mobile discovery stays concise without hiding category routes', a
   await page.setViewportSize({ width: 375, height: 812 });
   await page.goto('/');
 
+  // Only categories that have a certified tool are listed; an empty category
+  // card is a dead end. Every card that is listed must open a real hub.
   const categoryLinks = page.locator('#categoriesGrid .category-nav-card h3 a');
-  await expect(categoryLinks).toHaveCount(12);
+  const count = await categoryLinks.count();
+  expect(count).toBeGreaterThan(0);
+  for (let i = 0; i < count; i += 1) {
+    const href = await categoryLinks.nth(i).getAttribute('href');
+    const response = await page.request.get(href);
+    expect(response.status(), `${href} must exist`).toBe(200);
+    expect(await response.text(), `${href} must list at least one tool`).toMatch(/guide-tool-card/);
+  }
+  await expect(page.locator('#categoriesPending')).toBeVisible();
+
   const documentHeight = await page.evaluate(() => document.documentElement.scrollHeight);
   expect(documentHeight).toBeLessThan(11500);
 });

@@ -75,6 +75,9 @@ ul, ol {
    ============================================ */
 :root {
   /* Containers — three widths, nothing off-scale. */
+  /* 4px ramp completion */
+  --space-7: 1.75rem;
+
   --container-sm: 40rem;    /* 640px  — dialogs, single-column forms */
   --container-md: 48rem;    /* 768px  — prose */
   --container-lg: 64rem;    /* 1024px — wide prose, category hubs */

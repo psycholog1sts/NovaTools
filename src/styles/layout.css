@@ -816,3 +816,36 @@
 
 /* Nav labels are translated at runtime; keep each on one line. */
 .main-nav .nav-link { white-space: nowrap; }
+
+/* Category cards state how much is behind them, and all cards match height. */
+.category-nav-card__count {
+  margin: 0;
+  color: var(--text-tertiary);
+  font-size: 0.8125rem;
+}
+
+.section-note {
+  margin: var(--space-3) 0 0;
+  color: var(--text-tertiary);
+  font-size: 0.875rem;
+}
+
+.section-note[hidden] { display: none; }
+
+.featured-tool-card p,
+.category-nav-card p {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.featured-tool-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.featured-tool-card a {
+  margin-top: auto;
+}

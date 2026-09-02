@@ -6006,9 +6006,9 @@
       "localUses": "bu hafta cihazda {count} kullanım"
     },
     "featured": {
-      "eyebrow": "Öne çıkanlar",
-      "title": "Bugün kullanmaya başlayabileceğiniz araçlar",
-      "description": "PDF, görsel, geliştirici ve finans iş akışları için hızlı başlangıç kartları.",
+      "eyebrow": "Tüm araçlar",
+      "title": "Kullanıma hazır olan her araç",
+      "description": "Sertifikasyondan geçen araçlar bunlar. Hâlâ geliştirilenler listelenmez.",
       "open": "Aç →"
     },
     "toolLabels": {

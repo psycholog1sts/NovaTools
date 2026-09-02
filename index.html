@@ -204,11 +204,15 @@
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu" hidden>
       <nav class="mobile-nav">
-        <a href="/categories/index.html" class="mobile-nav-link" data-i18n="tools.categories">Categories</a>
-        <a href="#popular-tasks" class="mobile-nav-link" data-i18n="home.sections.popularTitle">Popular Tools</a>
-        <a href="#featured-tools" class="mobile-nav-link" data-i18n="home.sections.newTitle">New Tools</a>
-        <a href="/blog/index.html" class="mobile-nav-link" data-i18n="nav.blog">Blog</a>
+        <a href="#featured-tools" class="mobile-nav-link">All tools</a>
+        <a href="#categories" class="mobile-nav-link" data-i18n="home.sections.categoriesTitle">Browse by category</a>
+        <a href="/categories/converters.html" class="mobile-nav-link" data-i18n="nav.converters">Converters</a>
+        <a href="/categories/finance-tools.html" class="mobile-nav-link" data-i18n="nav.finance">Finance</a>
+        <a href="/categories/pdf-tools.html" class="mobile-nav-link" data-i18n="nav.pdf">PDF</a>
+        <a href="/categories/image-tools.html" class="mobile-nav-link" data-i18n="nav.image">Image</a>
+        <a href="/blog/index.html" class="mobile-nav-link" data-i18n="nav.blog">Guides</a>
         <a href="/about-us.html" class="mobile-nav-link" data-i18n="nav.about">About</a>
+        <a href="/security.html" class="mobile-nav-link" data-i18n="nav.security">Security</a>
         <a href="/contact.html" class="mobile-nav-link" data-i18n="nav.contact">Contact</a>
       </nav>
     </div>
@@ -313,33 +317,10 @@
       </section>
 
       <!-- Popular Tasks -->
-      <section class="section home-popular" id="popular-tasks" aria-labelledby="popularTasksTitle">
-        <div class="container">
-          <div class="section-header">
-            <span class="section-eyebrow" data-i18n="home.sections.quickStartEyebrow">Quick start</span>
-            <h2 class="section-title" id="popularTasksTitle" data-i18n="home.sections.popularTitle">Popular Tools</h2>
-            <p class="section-description" data-i18n="home.sections.popularDesc">Most-used tools picked by users.</p>
-          </div>
-          <div class="task-chip-grid" id="popularTasks">
-            <!-- Popular task chips injected by JS -->
-          </div>
-        </div>
-      </section>
 
 
-      <!-- Popular This Week -->
-      <section class="section home-popular-week" aria-labelledby="popularThisWeekTitle">
-        <div class="container">
-          <div class="section-header">
-            <span class="section-eyebrow" data-i18n="home.privateStarter.eyebrow">Private discovery</span>
-            <h2 class="section-title" id="popularThisWeekTitle" data-i18n="home.privateStarter.title">Your private starter set</h2>
-            <p class="section-description" data-i18n="home.privateStarter.description">Uses completed tool activity stored on this device; until then, starter tools are shown. Nothing is sent to a server.</p>
-          </div>
-          <div class="home-popular-week__grid" id="popularThisWeek">
-            <noscript><p data-i18n="home.privateStarter.noscript">Enable JavaScript to show the device-only starter set.</p></noscript>
-          </div>
-        </div>
-      </section>
+
+
 
       <!-- Featured Tools -->
       <section class="section home-featured" id="featured-tools" aria-labelledby="featuredToolsTitle">
@@ -365,6 +346,7 @@
               Organized collections of tools for real work. Click a category to explore.
             </p>
           </div>
+          <p class="section-note" id="categoriesPending" hidden></p>
           <div class="category-nav-grid" id="categoriesGrid">
             <!-- Categories injected by JS -->
           </div>
@@ -388,19 +370,7 @@
         </div>
       </section>
 
-      <!-- Monetization-ready placement -->
-      <section class="home-ad-ready" aria-label="Sponsored placement information">
-        <div class="container">
-          <div class="ad-ready-panel">
-            <div>
-              <span class="section-eyebrow" data-i18n="home.ads.eyebrow">Clean layout</span>
-              <h2 data-i18n="home.ads.title">Helpful content first, ads only in reserved spaces</h2>
-              <p data-i18n="home.ads.description">NovaTools keeps tool controls, guide cards and legal links easy to find. Advertising scripts load only after the appropriate consent and valid production configuration.</p>
-            </div>
-            <a class="btn btn-secondary" href="/kvkk-aydinlatma-metni.html" data-i18n="home.ads.cookieChoices">Cookie choices</a>
-          </div>
-        </div>
-      </section>
+
 
       <!-- Editorial Block -->
       <section class="section home-blog" aria-labelledby="homeBlogTitle">

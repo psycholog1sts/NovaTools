@@ -330,9 +330,9 @@
       "localUses": "{count} uses on this device this week"
     },
     "featured": {
-      "eyebrow": "Featured",
-      "title": "Tools You Can Start With Today",
-      "description": "Quick-start cards for PDF, image, developer and finance workflows.",
+      "eyebrow": "All tools",
+      "title": "Every tool that is ready to use",
+      "description": "These are the tools that passed certification. Anything still in development is not listed.",
       "open": "Open →"
     },
     "toolLabels": {
