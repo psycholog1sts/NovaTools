@@ -164,6 +164,33 @@ const toolEntries = globSync('src/tools/**/index.html', {
   return acc;
 }, {});
 
+// Vite serves the source tree during development, while the post-build step
+// relocates dist/src/tools to dist/tools for production. Keep local canonical
+// /tools/... URLs aligned with production without turning unknown paths into 200s.
+const canonicalToolDevRoutes = {
+  name: 'novatools-canonical-tool-dev-routes',
+  enforce: 'pre',
+  configureServer(server) {
+    server.middlewares.use((request, _response, next) => {
+      const parsedUrl = new URL(request.url || '/', 'http://localhost');
+      const cleanPath = parsedUrl.pathname
+        .replace(/\/index\.html$/, '')
+        .replace(/\/+$/, '');
+      const routeKey = cleanPath
+        .replace(/^\/(?:en|tr|ar)\//, '/')
+        .replace(/^\//, '');
+
+      if (!routeKey.startsWith('tools/') || !toolEntries[routeKey]) {
+        next();
+        return;
+      }
+
+      request.url = `/src/${routeKey}/index.html${parsedUrl.search}`;
+      next();
+    });
+  }
+};
+
 // Root standalone HTML pages
 const rootHtmlEntries = globSync('*.html', {
   ignore: ['index.html']
@@ -448,6 +475,7 @@ export default defineConfig({
   },
 
   plugins: [
+    canonicalToolDevRoutes,
     coreWebVitalsHeadHints,
     optionalHtmlEnv,
     toolUxEnhancementAssets,
