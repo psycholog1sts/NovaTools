@@ -9,7 +9,7 @@
  * The record is generated and enforced by scripts/audit-blog-originality.mjs,
  * which measures the duplication rather than trusting a hand-maintained list.
  */
-import record from '../data/blog-publication.json' with { type: 'json' };
+import record from '../data/blog-publication.js';
 
 const PUBLISHED = new Set(
   record.articles.filter((article) => article.status === 'PUBLISHED').map((article) => article.slug)

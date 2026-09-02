@@ -72,7 +72,7 @@ function destinationFor(file) {
 }
 
 const files = globSync('{src,blog,categories,guides,public,site-map,author}/**/*.{html,js,mjs,json}', {
-  ignore: ['**/node_modules/**', 'src/blog/articles/**', 'src/data/blog-publication.json']
+  ignore: ['**/node_modules/**', 'src/blog/articles/**', 'src/data/blog-publication.js']
 }).concat(['index.html']);
 
 let changedFiles = 0;
