@@ -57,7 +57,24 @@ const server = http.createServer((req, res) => {
 await new Promise((resolve) => server.listen(0, '127.0.0.1', resolve));
 const { port } = server.address();
 
-const browser = await chromium.launch();
+// Where the browser is guaranteed (the GitHub workflows and Cloudflare Pages
+// install Chromium before the build) a failure to launch is a real build
+// failure. The standby Vercel image has no browser, and there the page simply
+// falls back to rendering these grids on the client as it did before, so the
+// deployment is degraded rather than broken.
+const PRERENDER_REQUIRED = process.env.PRERENDER_REQUIRED === '1'
+  || process.env.GITHUB_ACTIONS === 'true'
+  || process.env.CF_PAGES === '1';
+
+let browser;
+try {
+  browser = await chromium.launch();
+} catch (error) {
+  server.close();
+  if (PRERENDER_REQUIRED) throw error;
+  console.warn(`⚠️  Skipping homepage prerender: no browser available (${error.message.split('\n')[0]})`);
+  process.exit(0);
+}
 let rendered;
 try {
   const page = await browser.newPage({ viewport: { width: 1350, height: 940 } });
