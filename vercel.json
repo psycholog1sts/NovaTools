@@ -5,7 +5,7 @@
       "main": false
     }
   },
-  "installCommand": "npm ci --include=optional",
+  "installCommand": "npm ci --include=optional && npx playwright install chromium",
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "framework": "vite",
