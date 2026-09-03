@@ -215,7 +215,10 @@ assert.match(
   /class="home-hero__proof"[\s\S]{0,600}Limitations documented on every tool page/,
   'Homepage hero must state checkable properties rather than marketing claims.'
 );
-const layoutCss = read('src/styles/layout.css');
+// The homepage hero and header rules moved into critical.css so they are inlined
+// and cannot arrive after the first paint. These contracts are about the shipped
+// styling, not about which file holds it, so they read both.
+const layoutCss = `${read('src/styles/layout.css')}\n${read('src/styles/critical.css')}`;
 assert.doesNotMatch(layoutCss, /@keyframes novatools-logo-spin/, 'The decorative hero spin animation must stay removed.');
 assert.match(layoutCss, /\.home-search__box:focus-within/, 'The hero search control must have a visible focus treatment.');
 assert.doesNotMatch(layoutCss, /rotate\(360deg\)|rotateY\(360deg\)/, 'The homepage must not run a continuous decorative rotation.');

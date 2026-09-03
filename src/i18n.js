@@ -30,6 +30,7 @@
   };
 
   let currentLanguage = DEFAULT_LANGUAGE;
+  const documentLanguage = normalizeLanguage(document.documentElement.getAttribute('lang')) || DEFAULT_LANGUAGE;
   const translations = {};
   const originalTextNodes = new WeakMap();
   let originalDocumentTitle = null;
@@ -389,7 +390,6 @@
 
     try {
       const response = await fetch(getTranslationUrl(lang), {
-        cache: 'no-cache',
         credentials: 'same-origin'
       });
 
@@ -745,20 +745,36 @@
     document.body?.classList.toggle('is-rtl', RTL_LANGUAGES.includes(currentLanguage));
     applyLocaleSeo(currentLanguage);
 
-    await Promise.all(getFallbackChain(currentLanguage).map((candidate) => loadTranslations(candidate)));
+    const loaded = Promise.all(getFallbackChain(currentLanguage).map((candidate) => loadTranslations(candidate)));
 
+    // The language selector changes the header's height, so it must be in place
+    // before the first paint or every section below it shifts down.
     if (!setupExistingSelector()) {
       injectLanguageSelector();
     }
-
     const selector = document.getElementById('language-selector');
     if (selector) {
       selector.value = currentLanguage;
     }
 
-    updatePageTranslations();
-    initSiteGuide();
-    isInitialized = true;
+    const finish = async () => {
+      await loaded;
+      updatePageTranslations();
+      initSiteGuide();
+      isInitialized = true;
+    };
+
+    if (documentLanguage === currentLanguage) {
+      // The served markup is already in this language and carries these exact
+      // strings, so the pass rewrites text with identical text. Run it after the
+      // first paint rather than in front of it: awaiting a 375 KB bundle here
+      // was 87% of the homepage LCP.
+      const idle = window.requestIdleCallback || ((fn) => window.setTimeout(fn, 1));
+      idle(() => { finish(); });
+      return;
+    }
+
+    await finish();
   }
 
 

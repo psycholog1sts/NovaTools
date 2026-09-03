@@ -30,6 +30,7 @@
   };
 
   let currentLanguage = DEFAULT_LANGUAGE;
+  const documentLanguage = normalizeLanguage(document.documentElement.getAttribute('lang')) || DEFAULT_LANGUAGE;
   const translations = {};
   const originalTextNodes = new WeakMap();
   let originalDocumentTitle = null;
@@ -387,7 +388,6 @@
 
     try {
       const response = await fetch(getTranslationUrl(lang), {
-        cache: 'no-cache',
         credentials: 'same-origin'
       });
 
@@ -743,20 +743,35 @@
     document.body?.classList.toggle('is-rtl', RTL_LANGUAGES.includes(currentLanguage));
     applyLocaleSeo(currentLanguage);
 
-    await Promise.all(getFallbackChain(currentLanguage).map((candidate) => loadTranslations(candidate)));
+    const loaded = Promise.all(getFallbackChain(currentLanguage).map((candidate) => loadTranslations(candidate)));
 
-    if (!setupExistingSelector()) {
-      injectLanguageSelector();
+    const finish = async () => {
+      await loaded;
+
+      if (!setupExistingSelector()) {
+        injectLanguageSelector();
+      }
+
+      const selector = document.getElementById('language-selector');
+      if (selector) {
+        selector.value = currentLanguage;
+      }
+
+      updatePageTranslations();
+      initSiteGuide();
+      isInitialized = true;
+    };
+
+    if (documentLanguage === currentLanguage) {
+      // Same language as the served markup, so this pass rewrites the text with
+      // the identical strings. Run it after the first paint instead of in front
+      // of it.
+      const idle = window.requestIdleCallback || ((fn) => window.setTimeout(fn, 1));
+      idle(() => { finish(); });
+      return;
     }
 
-    const selector = document.getElementById('language-selector');
-    if (selector) {
-      selector.value = currentLanguage;
-    }
-
-    updatePageTranslations();
-    initSiteGuide();
-    isInitialized = true;
+    await finish();
   }
 
 

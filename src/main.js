@@ -333,6 +333,15 @@ function iconForCategory(category) {
   return icons[category] || 'tool';
 }
 
+// The homepage grids are server-rendered at build time (scripts/prerender-home.mjs).
+// Assigning identical markup would still replace every node, which repaints and
+// shifts the section for no reason, so only write when the markup differs.
+function setGridMarkup(container, markup) {
+  if (!container) return;
+  if (container.innerHTML.trim() === markup.trim()) return;
+  container.innerHTML = markup;
+}
+
 function renderFeaturedTools() {
   const container = document.getElementById('featuredTools');
   if (!container) return;
@@ -353,7 +362,7 @@ function renderFeaturedTools() {
       icon: iconForCategory(tool.category)
     }));
 
-  container.innerHTML = [...curated, ...rest].map((tool) => `
+  setGridMarkup(container, [...curated, ...rest].map((tool) => `
     <article class="featured-tool-card">
       <div class="featured-tool-card__icon">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -365,7 +374,7 @@ function renderFeaturedTools() {
       <p>${t(`home.featuredCards.${tool.key}.description`, tool.description)}</p>
       <a href="${getToolHref(tool.slug)}">${t('home.featured.open', 'Open →')}</a>
     </article>
-  `).join('');
+  `).join(''));
 }
 
 function categoryToolKey(category) {
@@ -390,7 +399,7 @@ function renderCategories() {
     note.hidden = !withheld;
   }
 
-  container.innerHTML = live.map((category) => {
+  setGridMarkup(container, live.map((category) => {
     const categoryKey = categoryToolKey(category);
     const toolCount = (certifiedByCategory[categoryKey] || []).length;
     const curatedLinks = categoryPopularTools[category.slug] || [];
@@ -422,14 +431,14 @@ function renderCategories() {
         </div>
       </article>
     `;
-  }).join('');
+  }).join(''));
 }
 
 function renderBlogCards() {
   const container = document.getElementById('homeBlogCards');
   if (!container) return;
 
-  container.innerHTML = blogPosts.map((post) => {
+  setGridMarkup(container, blogPosts.map((post) => {
     const baseKey = `home.blogCards.${post.key}`;
     const title = t(`${baseKey}.title`, post.title);
     const excerpt = t(`${baseKey}.excerpt`, post.excerpt);
@@ -451,7 +460,7 @@ function renderBlogCards() {
         </div>
       </article>
     `;
-  }).join('');
+  }).join(''));
 }
 
 function renderWorkflowCards() {
