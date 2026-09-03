@@ -164,7 +164,7 @@
     .faq-item summary:hover { background: var(--border-default); }
     .faq-item p { padding: 1rem; margin: 0; border-top: 1px solid var(--border-hover); color: var(--text-secondary); }
     .tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }
-    .tool-footer a { color: #00D9FF; text-decoration: none; }
+    .tool-footer a { color: var(--accent-text); text-decoration: none; }
   </style>
   <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
 </head>
@@ -177,17 +177,17 @@
     <header class="main-header">
       <div class="container">
         <div class="header-inner">
-          <a href="https://mc-novatools.com/" class="logo" aria-label="NovaTools MC Home">
+          <a href="/" class="logo" aria-label="NovaTools MC Home">
             <picture><source srcset="/logo-bird-44.webp" type="image/webp"><img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44" decoding="async"></picture>
             <span class="logo-text">NovaTools <span class="logo-mc" data-i18n="tools.image.image-flipper.text.001">MC</span></span>
           </a>
           <nav class="nav-desktop" aria-label="Main navigation">
-            <a href="https://mc-novatools.com/#finance" class="nav-link" data-i18n="tools.image.image-flipper.text.002">Finance</a>
-            <a href="https://mc-novatools.com/#pdf" class="nav-link" data-i18n="tools.image.image-flipper.text.003">PDF Tools</a>
-            <a href="https://mc-novatools.com/#image" class="nav-link" data-i18n="tools.image.image-flipper.text.004">Images</a>
-            <a href="https://mc-novatools.com/#dev" class="nav-link" data-i18n="tools.image.image-flipper.text.005">Developers</a>
+            <a href="/categories/finance-tools" class="nav-link" data-i18n="tools.image.image-flipper.text.002">Finance</a>
+            <a href="/categories/pdf-tools" class="nav-link" data-i18n="tools.image.image-flipper.text.003">PDF Tools</a>
+            <a href="/categories/image-tools" class="nav-link" data-i18n="tools.image.image-flipper.text.004">Images</a>
+            <a href="/categories/developer-tools" class="nav-link" data-i18n="tools.image.image-flipper.text.005">Developers</a>
           </nav>
-          <div class="privacy-badge" title="Your data never leaves your browser" data-i18n-title="tools.image.image-flipper.title.001">
+          <div class="privacy-badge" title="The selected image is processed locally by this tool" data-i18n-title="tools.image.image-flipper.title.001">
             <span class="privacy-badge-dot"></span>
             <span data-i18n="tools.image.image-flipper.text.006">Privacy First</span>
           </div>
@@ -200,10 +200,10 @@
           </button>
         </div>
         <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
-          <a href="https://mc-novatools.com/#finance" class="mobile-nav-link" data-i18n="tools.image.image-flipper.text.007">Finance Tools</a>
-          <a href="https://mc-novatools.com/#pdf" class="mobile-nav-link" data-i18n="tools.image.image-flipper.text.008">PDF Tools</a>
-          <a href="https://mc-novatools.com/#image" class="mobile-nav-link" data-i18n="tools.image.image-flipper.text.009">Image Tools</a>
-          <a href="https://mc-novatools.com/#dev" class="mobile-nav-link" data-i18n="tools.image.image-flipper.text.010">Developer Tools</a>
+          <a href="/categories/finance-tools" class="mobile-nav-link" data-i18n="tools.image.image-flipper.text.007">Finance Tools</a>
+          <a href="/categories/pdf-tools" class="mobile-nav-link" data-i18n="tools.image.image-flipper.text.008">PDF Tools</a>
+          <a href="/categories/image-tools" class="mobile-nav-link" data-i18n="tools.image.image-flipper.text.009">Image Tools</a>
+          <a href="/categories/developer-tools" class="mobile-nav-link" data-i18n="tools.image.image-flipper.text.010">Developer Tools</a>
         </nav>
       </div>
     </header>
@@ -223,11 +223,11 @@
           <aside class="ad-sidebar-left"><div style="width:160px;height:600px;background:var(--surface-default);border:1px solid var(--border-default);display:flex;align-items:center;justify-content:center;color:var(--text-muted);">Ad 160x600</div></aside>
           
           <div class="tool-main">
-            <div id="dropzone" class="dropzone">
+            <div id="dropzone" class="dropzone" role="button" tabindex="0" aria-controls="fileInput">
               <div style="font-size: 3rem; margin-bottom: 1rem;">🔀</div>
               <div style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem;">Drop image here or click to browse</div>
               <div style="font-size: 0.875rem; color: var(--text-muted);">Supports JPG, PNG, WebP • Max 20MB</div>
-              <input type="file" id="fileInput" accept="image/*" style="display: none;">
+              <input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp" style="display: none;">
             </div>
             
             <div id="editorSection" class="editor-section">
@@ -316,12 +316,12 @@
               
               <details class="faq-item">
                 <summary>Does flipping affect image quality?</summary>
-                <p data-i18n="tools.image.image-flipper.text.031">No! Flipping is a lossless transformation that doesn't reduce image quality or file size. The image is simply mirrored without any interpolation or compression.</p>
+                <p data-i18n="tools.image.image-flipper.text.031">The flip rearranges the preview pixels without interpolation. The downloaded file is encoded by your browser, so verify the result when exact output format or quality matters.</p>
               </details>
               
               <details class="faq-item">
                 <summary>Is my data secure?</summary>
-                <p data-i18n="tools.image.image-flipper.text.032">Absolutely! All image processing happens entirely in your browser. Your images are never uploaded to any server, ensuring complete privacy and security.</p>
+                <p data-i18n="tools.image.image-flipper.text.032">The selected image is decoded and flipped in your browser; this tool does not upload the image to an application server. Site analytics and advertising, when you consent to them, are separate from image processing.</p>
               </details>
               
               <details class="faq-item">
@@ -337,50 +337,33 @@
 
       <article class="tool-description" aria-labelledby="toolDescriptionTitle-image-flipper">
         <h2 id="toolDescriptionTitle-image-flipper">What Image Flipper Does and Why It Matters</h2>
-        <p>Image Flipper helps people compare assumptions and produce a transparent estimate without turning a simple task into a full software project. In real work, image flipper tasks often appear right before a deadline: a document has to be sent, a data file needs to be checked, an image must be prepared for publishing, a calculation needs a second scenario, or a developer has to verify a pasted value before it enters a larger workflow. This page focuses on that practical moment. The interface gives you a direct place to provide the input, review settings, run the operation, and keep the result close enough to inspect before you use it elsewhere. That matters because small preparation mistakes can create oversized attachments, unreadable exports, broken imports, misleading estimates, or accidental exposure of details that should have stayed private.</p>
-        <p>The main value of Image Flipper is control. Instead of sending material through an unfamiliar workflow, you can use the browser to perform the job, observe the state of the input, and decide whether the output is ready. Mirror images horizontally or vertically. Both directions, quick preview and download. The tool is especially useful for teams that need quick utility work between larger applications: support staff preparing evidence, creators publishing assets, finance users comparing planning assumptions, students organizing files, and developers validating snippets before sharing them in tickets or pull requests. It is intentionally focused on one job, so the page can explain what is supported, what should be checked manually, and when a specialist application or professional review is more appropriate.</p>
-        <p>Experience signals on this page are written around common failure points rather than generic marketing. For Image Flipper, the important questions are whether the source material is in a supported format, whether the browser has enough memory to complete the action, whether the result keeps the information you expect, and whether any limitation changes how you should use the file or value. Reading these notes before you click the main action can save time because it frames the tool as part of a workflow: prepare the input, run the operation, inspect the output, then keep or discard the result based on evidence.</p>
+        <p>Image Flipper mirrors an uploaded image horizontally or vertically, entirely in your browser. It's a simple, single-purpose adjustment — useful for correcting a mirrored photo (common with front-facing camera shots), adjusting composition, or preparing an image for a specific layout.</p>
+        <p>Front-facing camera photos are typically captured mirrored compared to how they'll look to someone else viewing them, which is why "flip this photo" comes up more often than people expect — a quick horizontal flip fixes that without needing a full image editor.</p>
         <h2>How to Use Image Flipper</h2>
         <ol>
-          <li>Open Image Flipper and read the short instructions near the interface so you know which input type the page expects.</li>
-          <li>Upload the supported file, paste the text, or enter the numeric values requested by the form; avoid adding unrelated private information.</li>
-          <li>Review every visible option, such as output format, range, quality, delimiter, units, date, rate, or mode, because these settings shape the final result.</li>
-          <li>Run the tool with the primary action button and wait for the status message, preview, validation result, calculation, or progress indicator to finish.</li>
-          <li>Inspect the displayed result carefully, including file name, page order, dimensions, row count, formatting, estimate assumptions, warnings, and any visible errors.</li>
-          <li>Download the generated file, copy the result, or record the calculation only after the preview matches your intended use case.</li>
-          <li>Clear the page or close the browser tab when finished, especially on a shared device or when the input included confidential material.</li>
+          <li>Upload your image.</li>
+          <li>Choose horizontal or vertical flip.</li>
+          <li>Preview the flipped result.</li>
+          <li>Download the flipped image.</li>
         </ol>
-        <h2>Supported Formats and Limitations</h2>
-        <h3>Supported input formats</h3>
-        <ul><li>JPG and JPEG images from cameras, screenshots, and exports</li><li>PNG files including transparency-aware graphics where the tool supports them</li><li>WebP, AVIF, GIF, SVG, or browser-readable image files when accepted by the control</li></ul>
-        <h3>Supported output formats</h3>
-        <ul><li>Downloaded optimized, converted, resized, cropped, or reviewed image files</li><li>Canvas previews and before/after measurements shown in the browser</li><li>Metadata, size, color, or dimension summaries when the tool is an inspector</li></ul>
-        <h3>Known limitations and edge cases</h3>
-        <ul><li>Very large images can exceed device memory, especially on mobile browsers.</li><li>Some formats lose transparency, animation, or embedded metadata during conversion.</li><li>Visual quality should be checked manually before publishing or sending client assets.</li></ul>
-        <p>For best results, test Image Flipper with a small sample before committing a large batch or an important deadline item. Browser utilities are convenient because they reduce setup and keep the workflow close to the user, but they still depend on device memory, browser permissions, source-file quality, and the exact assumptions entered into the interface. If the output will be used for legal, medical, financial, security, accessibility, or production engineering decisions, treat the result as a preparation aid and verify it with the appropriate system of record.</p>
+        <h2>What to Know</h2>
+        <ul><li>The downloaded result is re-encoded as PNG, so original metadata and the source file format are not preserved</li><li>If your image has readable text or a logo, a horizontal flip will mirror it too (making text backwards) — check the preview before downloading</li><li>The selected image is processed locally by this tool; consented site analytics or ads are separate from image processing</li></ul>
         <h2>Privacy and Security</h2>
-        <p>Image Flipper is designed around a privacy-first browser workflow. Where possible, files and inputs are processed client-side in your browser, which means the work happens on your device instead of being permanently stored on NovaTools servers. Uploaded data is not stored on servers permanently by this page, and the safest habit is still to avoid uploading or pasting secrets that are not required for the task. Some features may depend on browser APIs, optional public lookups, or third-party libraries loaded by the page, so you should review the interface notes and avoid using confidential production data unless the tool behavior fits your policy.</p>
+        <p>Your image is flipped locally in your browser and is not uploaded to a server or stored.</p>
         <h2>Frequently Asked Questions</h2>
-        <h3>Is Image Flipper suitable for confidential work?</h3>
-        <p>It can be suitable for many confidential preparation tasks when the operation is completed locally in the browser and your organization allows that workflow. You should still avoid unnecessary sensitive fields, use a trusted device, clear the page afterward, and verify whether any optional lookup or external dependency is involved before using regulated or secret material.</p>
-        <h3>Why should I inspect the output before downloading or copying it?</h3>
-        <p>Inspection is the step that turns a quick utility into a reliable workflow. A file may process successfully while still having the wrong order, dimensions, delimiter, estimate assumption, encoding, or visual quality. Reviewing the preview and status details helps catch those issues before the result reaches a client, upload portal, repository, spreadsheet, or public page.</p>
-        <h3>What should I do if Image Flipper does not accept my input?</h3>
-        <p>Start by checking the file type, size, formatting, and any visible error message. Try a smaller sample, remove unsupported characters or corrupted content, and confirm that your browser is current. If the source file uses a proprietary format, encryption, unusual encoding, or a damaged structure, a dedicated desktop application may be needed before this browser tool can help.</p>
+        <h3>Why does my selfie look mirrored compared to how I remember it?</h3>
+        <p>Front-facing camera apps often display (and sometimes save) a mirrored preview, since that matches what you see in a mirror while framing the shot. A horizontal flip corrects it to how others actually see you.</p>
+        <h3>Does flipping reduce image quality?</h3>
+        <p>The preview flip rearranges existing pixels without interpolation. Downloading creates a browser-encoded output file, so review that file if exact format or quality is important.</p>
+        <h3>What's the difference between flipping and rotating?</h3>
+        <p>Flipping mirrors the image along an axis (left-right or top-bottom); rotating turns the whole image around a center point (like 90° or 180°). They produce different results — use flip to mirror, rotate to turn.</p>
         <h2>Related Tools</h2>
         <ul><li><a href="https://mc-novatools.com/tools/image/background-remover/">Background Remover — Remove backgrounds from images automatically.</a></li><li><a href="https://mc-novatools.com/tools/image/collage-maker/">Collage Maker — Create photo collages from multiple images.</a></li></ul>
       </article>
-      <aside class="author-bylines" aria-label="Author and review information for Image Flipper">
-        <p><span class="author-name">Metehan ÇETİN, LPC</span>, <span class="author-title">Founder and editor</span></p>
-        <p>The author profile for Image Flipper is intended for a practitioner who understands image optimization, visual asset preparation, publishing QA, and browser canvas workflows. This byline describes hands-on experience reviewing inputs, outputs, edge cases, accessibility needs, privacy expectations, and user education for browser-based utilities. It is maintained as a verified public review note for MC NovaTools tool pages.</p>
-        <p><a href="https://mc-novatools.com/about-us.html" rel="author">Author and review profile</a></p>
-        <p>Last updated: <time class="last-updated" datetime="2026-06-03">2026-06-03</time></p>
-        <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Metehan ÇETİN, LPC","jobTitle":"Founder and editor","description":"The author profile for Image Flipper is intended for a practitioner who understands image optimization, visual asset preparation, publishing QA, and browser canvas workflows. This byline describes hands-on experience reviewing inputs, outputs, edge cases, accessibility needs, privacy expectations, and user education for browser-based utilities. It is maintained as a verified public review note for MC NovaTools tool pages.","sameAs":"https://mc-novatools.com/about-us.html"}</script>
-      </aside>
 <section class="trust-help novatools-tool-reading-path" aria-labelledby="toolReadingPathTitle">
           <h2 id="toolReadingPathTitle">Recommended next reading</h2>
           <p>Use these practical guides to understand when this tool is the right choice, what to check before exporting, and which workflow usually comes next.</p>
-          <div class="related-tools-grid"><a class="related-tool-link" href="https://mc-novatools.com/blog/articles/compress-images-for-web-quality-checklist.html">Image compression checklist</a><a class="related-tool-link" href="https://mc-novatools.com/blog/articles/image-compressor-vs-image-resizer.html">Image compressor vs resizer</a></div>
+          <div class="related-tools-grid"><a class="related-tool-link" href="/blog/articles/lazy-loading-images-implementation-guide-2026.html">Lazy Loading Images: Implementation Guide for 2026</a><a class="related-tool-link" href="/blog/articles/lazy-loading-images-implementation-guide-2026.html">Lazy Loading Images: Implementation Guide for 2026</a></div>
         </section>
     </main>
 
@@ -444,8 +427,11 @@ document.addEventListener('DOMContentLoaded', function() {
   var originalImage = null;
   var flipH = false;
   var flipV = false;
+  var downloadUrl = null;
+  var allowedTypes = new Set(['image/jpeg', 'image/png', 'image/webp']);
   
   function loadFile(file) {
+    if (!allowedTypes.has(file.type)) { alert('Choose a JPEG, PNG, or WebP image.'); return; }
     if (file.size > 20 * 1024 * 1024) { alert('File exceeds 20MB limit.'); return; }
     var reader = new FileReader();
     reader.onload = function(e) {
@@ -465,6 +451,9 @@ document.addEventListener('DOMContentLoaded', function() {
   
   if (dropzone && fileInput) {
     dropzone.addEventListener('click', function(e) { if (e.target !== fileInput) fileInput.click(); });
+    dropzone.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); fileInput.click(); }
+    });
     fileInput.addEventListener('change', function() { if (fileInput.files[0]) loadFile(fileInput.files[0]); });
     dropzone.addEventListener('dragover', function(e) { e.preventDefault(); dropzone.classList.add('drag-active'); });
     dropzone.addEventListener('dragleave', function() { dropzone.classList.remove('drag-active'); });
@@ -516,8 +505,10 @@ document.addEventListener('DOMContentLoaded', function() {
         progressContainer.classList.remove('visible');
         resultSection.classList.add('visible');
         previewCanvas.toBlob(function(blob) {
-          var url = URL.createObjectURL(blob);
-          downloadLink.href = url;
+          if (!blob) { alert('Your browser could not encode the result.'); return; }
+          if (downloadUrl) URL.revokeObjectURL(downloadUrl);
+          downloadUrl = URL.createObjectURL(blob);
+          downloadLink.href = downloadUrl;
           downloadLink.download = 'flipped-image.png';
         }, 'image/png');
         resultSection.scrollIntoView({ behavior: 'smooth' });
@@ -531,6 +522,9 @@ document.addEventListener('DOMContentLoaded', function() {
     flipVOption.classList.remove('active');
     renderImage();
     resultSection.classList.remove('visible');
+  });
+  window.addEventListener('beforeunload', function() {
+    if (downloadUrl) URL.revokeObjectURL(downloadUrl);
   });
 });
 </script>

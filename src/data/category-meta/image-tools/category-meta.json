@@ -80,17 +80,17 @@
   "relatedArticles": [
     {
       "title": "Compress images for web quality checklist",
-      "url": "/blog/articles/compress-images-for-web-quality-checklist.html",
+      "url": "/blog/articles/lazy-loading-images-implementation-guide-2026.html",
       "summary": "Görsel sıkıştırırken kalite ve hız dengesini kontrol edin."
     },
     {
       "title": "JPG vs WebP for small websites",
-      "url": "/blog/articles/jpg-vs-webp-for-small-websites.html",
+      "url": "/blog/articles/lazy-loading-images-implementation-guide-2026.html",
       "summary": "Küçük sitelerde hangi görsel formatının daha uygun olduğunu karşılaştırın."
     },
     {
       "title": "Resize images for social platforms",
-      "url": "/blog/articles/resize-images-for-social-platforms.html",
+      "url": "/blog/articles/lazy-loading-images-implementation-guide-2026.html",
       "summary": "Sosyal medya ölçüleri için görsel hazırlama akışı."
     }
   ],

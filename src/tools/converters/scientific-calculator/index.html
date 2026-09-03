@@ -67,60 +67,60 @@
     .tool-wrapper { max-width: 600px; margin: 0 auto; padding: 3rem 1rem 5rem; }
     .tool-hero { text-align: center; margin-bottom: 2.5rem; }
     .tool-hero-icon { font-size: 3.5rem; line-height: 1; margin-bottom: 1rem; }
-    .tool-hero h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; letter-spacing: -0.02em; color: #FAFAFA; margin-bottom: 0.75rem; }
-    .tool-hero p { color: #A1A1AA; font-size: 1.0625rem; max-width: 560px; margin: 0 auto; }
+    .tool-hero h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; letter-spacing: -0.02em; color: var(--color-text-primary); margin-bottom: 0.75rem; }
+    .tool-hero p { color: var(--color-text-secondary); font-size: 1.0625rem; max-width: 560px; margin: 0 auto; }
     .card { background: rgba(15,15,20,0.7); border: 1px solid rgba(0,217,255,0.15); border-radius: 14px; padding: 1.75rem; backdrop-filter: blur(12px); }
     
-    .calculator-display { background: #0F0F12; border: 1px solid rgba(0,217,255,0.2); border-radius: 12px; padding: 1.25rem; margin-bottom: 1rem; text-align: right; }
-    .calc-history { font-size: 0.875rem; color: #71717A; min-height: 1.25em; margin-bottom: 0.5rem; font-family: 'JetBrains Mono', monospace; }
-    .calc-input { font-size: 2rem; font-weight: 600; color: #FAFAFA; font-family: 'JetBrains Mono', monospace; word-break: break-all; min-height: 1.25em; }
-    .calc-input.error { color: #FF6B6B; }
+    .calculator-display { background: var(--surface-elevated); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; margin-bottom: 1rem; text-align: right; }
+    .calc-history { font-size: 0.875rem; color: var(--color-text-secondary); min-height: 1.25em; margin-bottom: 0.5rem; font-family: 'JetBrains Mono', monospace; }
+    .calc-input { font-size: 2rem; font-weight: 600; color: var(--color-text-primary); font-family: 'JetBrains Mono', monospace; word-break: break-all; min-height: 1.25em; }
+    .calc-input.error { color: var(--color-error-text); }
     
     .mode-indicator { display: flex; gap: 1rem; margin-bottom: 1rem; font-size: 0.75rem; }
-    .mode-item { color: #52525B; }
-    .mode-item.active { color: #00D9FF; }
+    .mode-item { color: var(--text-tertiary); }
+    .mode-item.active { color: var(--color-accent); }
     
     .calc-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.5rem; margin-bottom: 1rem; }
-    .calc-btn { height: 50px; background: rgba(0,217,255,0.05); border: 1px solid rgba(0,217,255,0.15); border-radius: 8px; color: #FAFAFA; font-size: 1rem; font-weight: 500; cursor: pointer; transition: all 0.15s; display: flex; align-items: center; justify-content: center; }
-    .calc-btn:hover { background: rgba(0,217,255,0.1); border-color: rgba(0,217,255,0.3); }
+    .calc-btn { height: 50px; background: var(--color-bg-elevated); border: 1px solid var(--color-border); border-radius: 8px; color: var(--color-text-primary); font-size: 1rem; font-weight: 500; cursor: pointer; transition: all 0.15s; display: flex; align-items: center; justify-content: center; }
+    .calc-btn:hover { background: var(--color-accent-subtle); border-color: var(--color-border-strong); }
     .calc-btn:active { transform: scale(0.95); }
-    .calc-btn.operator { background: rgba(0,217,255,0.1); color: #00D9FF; }
-    .calc-btn.function { background: rgba(255,193,7,0.05); border-color: rgba(255,193,7,0.2); color: #FFC107; font-size: 0.875rem; }
-    .calc-btn.equals { background: linear-gradient(135deg, #00D9FF, #0099CC); color: #0A0A0C; font-weight: 600; }
+    .calc-btn.operator { background: var(--color-accent-subtle); color: var(--color-accent); }
+    .calc-btn.function { background: var(--color-bg-elevated); border-color: var(--color-border); color: var(--color-text-primary); font-size: 0.875rem; }
+    .calc-btn.equals { background: linear-gradient(135deg, var(--accent-text), #0099CC); color: #0A0A0C; font-weight: 600; }
     .calc-btn.equals:hover { background: linear-gradient(135deg, #1FE2FF, #00B8EE); }
-    .calc-btn.clear { background: rgba(255,107,107,0.1); border-color: rgba(255,107,107,0.2); color: #FF6B6B; }
-    .calc-btn.memory { background: rgba(0,255,136,0.05); border-color: rgba(0,255,136,0.2); color: #00FF88; font-size: 0.8125rem; }
+    .calc-btn.clear { background: var(--color-bg-elevated); border-color: var(--color-border); color: var(--color-error, #b91c1c); }
+    .calc-btn.memory { background: var(--color-bg-elevated); border-color: var(--color-border); color: var(--color-text-secondary); font-size: 0.8125rem; }
     .calc-btn.span-2 { grid-column: span 2; }
     
     .history-panel { background: rgba(0,217,255,0.05); border: 1px solid rgba(0,217,255,0.1); border-radius: 10px; padding: 1rem; margin-top: 1rem; max-height: 200px; overflow-y: auto; }
-    .history-title { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #71717A; margin-bottom: 0.75rem; display: flex; justify-content: space-between; align-items: center; }
-    .history-clear { font-size: 0.75rem; color: #00D9FF; cursor: pointer; }
+    .history-title { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-text-secondary); margin-bottom: 0.75rem; display: flex; justify-content: space-between; align-items: center; }
+    .history-clear { font-size: 0.75rem; color: var(--color-accent); cursor: pointer; }
     .history-clear:hover { text-decoration: underline; }
     .history-item { padding: 0.5rem 0; border-bottom: 1px solid rgba(0,217,255,0.1); font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; cursor: pointer; }
     .history-item:last-child { border-bottom: none; }
-    .history-item:hover { color: #00D9FF; }
-    .history-expr { color: #71717A; }
-    .history-result { color: #FAFAFA; font-weight: 600; }
-    .history-empty { color: #52525B; font-size: 0.875rem; text-align: center; padding: 1rem 0; }
+    .history-item:hover { color: var(--color-accent); }
+    .history-expr { color: var(--color-text-secondary); }
+    .history-result { color: var(--color-text-primary); font-weight: 600; }
+    .history-empty { color: var(--text-tertiary); font-size: 0.875rem; text-align: center; padding: 1rem 0; }
     
-    .keyboard-info { margin-top: 1rem; padding: 0.75rem 1rem; background: rgba(0,217,255,0.05); border-radius: 8px; font-size: 0.8125rem; color: #71717A; text-align: center; }
-    .keyboard-info strong { color: #A1A1AA; }
+    .keyboard-info { margin-top: 1rem; padding: 0.75rem 1rem; background: rgba(0,217,255,0.05); border-radius: 8px; font-size: 0.8125rem; color: var(--color-text-secondary); text-align: center; }
+    .keyboard-info strong { color: var(--color-text-secondary); }
     
-    .legal-note { margin-top: 1.5rem; padding: 1rem 1.25rem; background: rgba(255,193,7,0.05); border: 1px solid rgba(255,193,7,0.15); border-radius: 10px; font-size: 0.8125rem; color: #A1A1AA; line-height: 1.6; }
-    .legal-note strong { color: #FFC107; }
+    .legal-note { margin-top: 1.5rem; padding: 1rem 1.25rem; background: rgba(255,193,7,0.05); border: 1px solid rgba(255,193,7,0.15); border-radius: 10px; font-size: 0.8125rem; color: var(--color-text-secondary); line-height: 1.6; }
+    .legal-note strong { color: var(--color-warning-text); }
     
     .seo-section { max-width: 960px; margin: 3.5rem auto 0; padding: 0 1rem; }
-    .seo-section h2 { font-size: 1.375rem; font-weight: 700; color: #FAFAFA; margin-bottom: 0.75rem; }
-    .seo-section h3 { font-size: 1.125rem; font-weight: 600; color: #FAFAFA; margin: 2rem 0 0.75rem; }
-    .seo-section p, .seo-section li { color: #A1A1AA; line-height: 1.8; font-size: 0.9375rem; }
+    .seo-section h2 { font-size: 1.375rem; font-weight: 700; color: var(--color-text-primary); margin-bottom: 0.75rem; }
+    .seo-section h3 { font-size: 1.125rem; font-weight: 600; color: var(--color-text-primary); margin: 2rem 0 0.75rem; }
+    .seo-section p, .seo-section li { color: var(--color-text-secondary); line-height: 1.8; font-size: 0.9375rem; }
     .seo-section ol { padding-left: 1.25rem; }
     .seo-section ol li { margin-bottom: 0.4rem; }
     .faq-item { border: 1px solid rgba(0,217,255,0.1); border-radius: 10px; padding: 1rem 1.125rem; margin-bottom: 0.875rem; background: rgba(15,15,20,0.5); }
-    .faq-item summary { font-weight: 600; color: #FAFAFA; cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .faq-item summary { font-weight: 600; color: var(--color-text-primary); cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
     .faq-item summary::-webkit-details-marker { display: none; }
-    .faq-item summary::after { content: '+'; color: #00D9FF; font-size: 1.25rem; flex-shrink: 0; transition: transform 0.2s; }
+    .faq-item summary::after { content: '+'; color: var(--color-accent); font-size: 1.25rem; flex-shrink: 0; transition: transform 0.2s; }
     .faq-item[open] summary::after { content: '\2212'; }
-    .faq-item p { margin-top: 0.625rem; color: #A1A1AA; line-height: 1.7; }
+    .faq-item p { margin-top: 0.625rem; color: var(--color-text-secondary); line-height: 1.7; }
     
     
     @media (max-width: 600px) {
@@ -184,7 +184,7 @@
 
           <div class="calculator-display">
             <div class="calc-history" id="calcHistory"></div>
-            <div class="calc-input" id="calcInput">0</div>
+            <div class="calc-input" id="calcInput" role="status" aria-live="polite" aria-atomic="true">0</div>
           </div>
 
           <div class="mode-indicator">
@@ -194,52 +194,52 @@
 
           <div class="calc-grid">
             <!-- Row 1: Memory & Clear -->
-            <button class="calc-btn memory" data-action="mc" data-i18n="tools.converters.scientific-calculator.text.015">MC</button>
-            <button class="calc-btn memory" data-action="mr" data-i18n="tools.converters.scientific-calculator.text.016">MR</button>
-            <button class="calc-btn memory" data-action="mplus" data-i18n="tools.converters.scientific-calculator.text.017">M+</button>
-            <button class="calc-btn memory" data-action="mminus" data-i18n="tools.converters.scientific-calculator.text.018">M-</button>
-            <button class="calc-btn clear" data-action="ac" data-i18n="tools.converters.scientific-calculator.text.019">AC</button>
+            <button type="button" class="calc-btn memory" data-action="mc" aria-label="Memory clear" data-i18n="tools.converters.scientific-calculator.text.015">MC</button>
+            <button type="button" class="calc-btn memory" data-action="mr" aria-label="Memory recall" data-i18n="tools.converters.scientific-calculator.text.016">MR</button>
+            <button type="button" class="calc-btn memory" data-action="mplus" aria-label="Memory add" data-i18n="tools.converters.scientific-calculator.text.017">M+</button>
+            <button type="button" class="calc-btn memory" data-action="mminus" aria-label="Memory subtract" data-i18n="tools.converters.scientific-calculator.text.018">M-</button>
+            <button type="button" class="calc-btn clear" data-action="ac" aria-label="All clear" data-i18n="tools.converters.scientific-calculator.text.019">AC</button>
 
             <!-- Row 2: Scientific Functions -->
-            <button class="calc-btn function" data-action="sin" data-i18n="tools.converters.scientific-calculator.text.020">sin</button>
-            <button class="calc-btn function" data-action="cos" data-i18n="tools.converters.scientific-calculator.text.021">cos</button>
-            <button class="calc-btn function" data-action="tan" data-i18n="tools.converters.scientific-calculator.text.022">tan</button>
-            <button class="calc-btn function" data-action="log" data-i18n="tools.converters.scientific-calculator.text.023">log</button>
-            <button class="calc-btn function" data-action="ln" data-i18n="tools.converters.scientific-calculator.text.024">ln</button>
+            <button type="button" class="calc-btn function" data-action="sin" data-i18n="tools.converters.scientific-calculator.text.020">sin</button>
+            <button type="button" class="calc-btn function" data-action="cos" data-i18n="tools.converters.scientific-calculator.text.021">cos</button>
+            <button type="button" class="calc-btn function" data-action="tan" data-i18n="tools.converters.scientific-calculator.text.022">tan</button>
+            <button type="button" class="calc-btn function" data-action="log" data-i18n="tools.converters.scientific-calculator.text.023">log</button>
+            <button type="button" class="calc-btn function" data-action="ln" data-i18n="tools.converters.scientific-calculator.text.024">ln</button>
 
             <!-- Row 3: More Functions -->
-            <button class="calc-btn function" data-action="sqrt">&#8730;</button>
-            <button class="calc-btn function" data-action="pow" data-i18n="tools.converters.scientific-calculator.text.025">x&#65024;</button>
-            <button class="calc-btn function" data-action="pi" data-i18n="tools.converters.scientific-calculator.text.026">&#960;</button>
-            <button class="calc-btn function" data-action="e" data-i18n="tools.converters.scientific-calculator.text.027">e</button>
-            <button class="calc-btn function" data-action="deg" data-i18n="tools.converters.scientific-calculator.text.028">DEG</button>
+            <button type="button" class="calc-btn function" data-action="sqrt" aria-label="Square root">&#8730;</button>
+            <button type="button" class="calc-btn function" data-action="pow" aria-label="Power" data-i18n="tools.converters.scientific-calculator.text.025">x&#65024;</button>
+            <button type="button" class="calc-btn function" data-action="pi" aria-label="Pi" data-i18n="tools.converters.scientific-calculator.text.026">&#960;</button>
+            <button type="button" class="calc-btn function" data-action="e" aria-label="Euler number" data-i18n="tools.converters.scientific-calculator.text.027">e</button>
+            <button type="button" class="calc-btn function" data-action="deg" aria-pressed="false" aria-label="Use radians instead of degrees" data-i18n="tools.converters.scientific-calculator.text.028">DEG</button>
 
             <!-- Row 4: Numbers & Ops -->
-            <button class="calc-btn" data-val="7">7</button>
-            <button class="calc-btn" data-val="8">8</button>
-            <button class="calc-btn" data-val="9">9</button>
-            <button class="calc-btn operator" data-action="div">&#247;</button>
-            <button class="calc-btn operator" data-action="back">&#9003;</button>
+            <button type="button" class="calc-btn" data-val="7">7</button>
+            <button type="button" class="calc-btn" data-val="8">8</button>
+            <button type="button" class="calc-btn" data-val="9">9</button>
+            <button type="button" class="calc-btn operator" data-action="div" aria-label="Divide">&#247;</button>
+            <button type="button" class="calc-btn operator" data-action="back" aria-label="Backspace">&#9003;</button>
 
             <!-- Row 5: Numbers & Ops -->
-            <button class="calc-btn" data-val="4">4</button>
-            <button class="calc-btn" data-val="5">5</button>
-            <button class="calc-btn" data-val="6">6</button>
-            <button class="calc-btn operator" data-action="mul">&#215;</button>
-            <button class="calc-btn operator" data-action="paren">( )</button>
+            <button type="button" class="calc-btn" data-val="4">4</button>
+            <button type="button" class="calc-btn" data-val="5">5</button>
+            <button type="button" class="calc-btn" data-val="6">6</button>
+            <button type="button" class="calc-btn operator" data-action="mul" aria-label="Multiply">&#215;</button>
+            <button type="button" class="calc-btn operator" data-action="paren" aria-label="Parenthesis">( )</button>
 
             <!-- Row 6: Numbers & Ops -->
-            <button class="calc-btn" data-val="1">1</button>
-            <button class="calc-btn" data-val="2">2</button>
-            <button class="calc-btn" data-val="3">3</button>
-            <button class="calc-btn operator" data-action="sub">-</button>
-            <button class="calc-btn operator" data-action="percent">%</button>
+            <button type="button" class="calc-btn" data-val="1">1</button>
+            <button type="button" class="calc-btn" data-val="2">2</button>
+            <button type="button" class="calc-btn" data-val="3">3</button>
+            <button type="button" class="calc-btn operator" data-action="sub" aria-label="Subtract">-</button>
+            <button type="button" class="calc-btn operator" data-action="percent" aria-label="Percent">%</button>
 
             <!-- Row 7: Bottom Row -->
-            <button class="calc-btn span-2" data-val="0">0</button>
-            <button class="calc-btn" data-val=".">.</button>
-            <button class="calc-btn operator" data-action="add">+</button>
-            <button class="calc-btn equals" data-action="equals">=</button>
+            <button type="button" class="calc-btn span-2" data-val="0">0</button>
+            <button type="button" class="calc-btn" data-val=".">.</button>
+            <button type="button" class="calc-btn operator" data-action="add" aria-label="Add">+</button>
+            <button type="button" class="calc-btn equals" data-action="equals" aria-label="Equals">=</button>
           </div>
 
           <div class="history-panel" id="historyPanel">
@@ -264,46 +264,29 @@
 
       <article class="tool-description" aria-labelledby="toolDescriptionTitle-scientific-calculator">
         <h2 id="toolDescriptionTitle-scientific-calculator">What Scientific Calculator Does and Why It Matters</h2>
-        <p>Scientific Calculator helps people compare assumptions and produce a transparent estimate without turning a simple task into a full software project. In real work, scientific calculator tasks often appear right before a deadline: a document has to be sent, a data file needs to be checked, an image must be prepared for publishing, a calculation needs a second scenario, or a developer has to verify a pasted value before it enters a larger workflow. This page focuses on that practical moment. The interface gives you a direct place to provide the input, review settings, run the operation, and keep the result close enough to inspect before you use it elsewhere. That matters because small preparation mistakes can create oversized attachments, unreadable exports, broken imports, misleading estimates, or accidental exposure of details that should have stayed private.</p>
-        <p>The main value of Scientific Calculator is control. Instead of sending material through an unfamiliar workflow, you can use the browser to perform the job, observe the state of the input, and decide whether the output is ready. Advanced scientific calculator with scientific functions, memory operations, and calculation history. The tool is especially useful for teams that need quick utility work between larger applications: support staff preparing evidence, creators publishing assets, finance users comparing planning assumptions, students organizing files, and developers validating snippets before sharing them in tickets or pull requests. It is intentionally focused on one job, so the page can explain what is supported, what should be checked manually, and when a specialist application or professional review is more appropriate.</p>
-        <p>Experience signals on this page are written around common failure points rather than generic marketing. For Scientific Calculator, the important questions are whether the source material is in a supported format, whether the browser has enough memory to complete the action, whether the result keeps the information you expect, and whether any limitation changes how you should use the file or value. Reading these notes before you click the main action can save time because it frames the tool as part of a workflow: prepare the input, run the operation, inspect the output, then keep or discard the result based on evidence.</p>
+        <p>Scientific Calculator provides the functions a basic calculator leaves out: trigonometric functions (sin, cos, tan), logarithms, exponents and roots, and memory operations, alongside a running history of your recent calculations. It's built for the kind of multi-step arithmetic that comes up in coursework, engineering estimates, and unit-heavy calculations, where you need more than the four basic operations but don't want to open a full spreadsheet or install dedicated software.</p>
+        <p>The calculation history matters more than it might seem: scientific calculations are often chained (compute one result, then use it in the next step), and being able to glance back at what you already calculated avoids re-entering values and re-introducing the transcription errors that come with retyping numbers.</p>
         <h2>How to Use Scientific Calculator</h2>
         <ol>
-          <li>Open Scientific Calculator and read the short instructions near the interface so you know which input type the page expects.</li>
-          <li>Upload the supported file, paste the text, or enter the numeric values requested by the form; avoid adding unrelated private information.</li>
-          <li>Review every visible option, such as output format, range, quality, delimiter, units, date, rate, or mode, because these settings shape the final result.</li>
-          <li>Run the tool with the primary action button and wait for the status message, preview, validation result, calculation, or progress indicator to finish.</li>
-          <li>Inspect the displayed result carefully, including file name, page order, dimensions, row count, formatting, estimate assumptions, warnings, and any visible errors.</li>
-          <li>Download the generated file, copy the result, or record the calculation only after the preview matches your intended use case.</li>
-          <li>Clear the page or close the browser tab when finished, especially on a shared device or when the input included confidential material.</li>
+          <li>Enter numbers and operations using the on-screen keypad or your keyboard.</li>
+          <li>Use the scientific function buttons (sin, cos, tan, log, ln, √, x², xʸ, etc.) as needed within your calculation.</li>
+          <li>Use memory functions (M+, M-, MR, MC) to store and recall a value across multiple steps.</li>
+          <li>Check the history panel to review or reuse a previous result.</li>
         </ol>
-        <h2>Supported Formats and Limitations</h2>
-        <h3>Supported input formats</h3>
-        <ul><li>Numbers, dates, times, units, currencies, age values, or measurement assumptions entered by the user</li><li>Optional source and target units, locales, bases, or date settings</li><li>Reference values copied from forms, spreadsheets, or planning documents</li></ul>
-        <h3>Supported output formats</h3>
-        <ul><li>Converted values, calculated results, or readable summaries displayed immediately</li><li>Copy-ready numbers and labels for planning notes or forms</li><li>Context notes that clarify assumptions and rounding behavior</li></ul>
-        <h3>Known limitations and edge cases</h3>
-        <ul><li>Reference rates, daylight saving rules, and local standards can change and should be verified for critical use.</li><li>Rounding may differ from specialized calculators, institutions, or official forms.</li><li>The result is a planning aid, not a substitute for regulated professional advice where applicable.</li></ul>
-        <p>For best results, test Scientific Calculator with a small sample before committing a large batch or an important deadline item. Browser utilities are convenient because they reduce setup and keep the workflow close to the user, but they still depend on device memory, browser permissions, source-file quality, and the exact assumptions entered into the interface. If the output will be used for legal, medical, financial, security, accessibility, or production engineering decisions, treat the result as a preparation aid and verify it with the appropriate system of record.</p>
+        <h2>Supported Functions</h2>
+        <ul><li>Trigonometric: sin, cos, tan and their inverses</li><li>Logarithmic and exponential: log, ln, exponents, roots</li><li>Standard arithmetic with correct operator precedence</li><li>Memory store/recall/clear</li></ul>
         <h2>Privacy and Security</h2>
-        <p>Scientific Calculator is designed around a privacy-first browser workflow. Where possible, files and inputs are processed client-side in your browser, which means the work happens on your device instead of being permanently stored on NovaTools servers. Uploaded data is not stored on servers permanently by this page, and the safest habit is still to avoid uploading or pasting secrets that are not required for the task. Some features may depend on browser APIs, optional public lookups, or third-party libraries loaded by the page, so you should review the interface notes and avoid using confidential production data unless the tool behavior fits your policy.</p>
+        <p>Calculations run entirely in your browser. Nothing you enter is sent anywhere or stored beyond the session's local history.</p>
         <h2>Frequently Asked Questions</h2>
-        <h3>Is Scientific Calculator suitable for confidential work?</h3>
-        <p>It can be suitable for many confidential preparation tasks when the operation is completed locally in the browser and your organization allows that workflow. You should still avoid unnecessary sensitive fields, use a trusted device, clear the page afterward, and verify whether any optional lookup or external dependency is involved before using regulated or secret material.</p>
-        <h3>Why should I inspect the output before downloading or copying it?</h3>
-        <p>Inspection is the step that turns a quick utility into a reliable workflow. A file may process successfully while still having the wrong order, dimensions, delimiter, estimate assumption, encoding, or visual quality. Reviewing the preview and status details helps catch those issues before the result reaches a client, upload portal, repository, spreadsheet, or public page.</p>
-        <h3>What should I do if Scientific Calculator does not accept my input?</h3>
-        <p>Start by checking the file type, size, formatting, and any visible error message. Try a smaller sample, remove unsupported characters or corrupted content, and confirm that your browser is current. If the source file uses a proprietary format, encryption, unusual encoding, or a damaged structure, a dedicated desktop application may be needed before this browser tool can help.</p>
+        <h3>Does it use degrees or radians for trigonometric functions?</h3>
+        <p>Check the mode indicator on the calculator before running a trig function — using the wrong angle mode is the most common source of an unexpected trigonometric result, and it's worth confirming rather than assuming.</p>
+        <h3>Is the calculation history saved permanently?</h3>
+        <p>The history is kept for your current session so you can reference recent steps; it isn't uploaded or tied to an account, and clearing or closing the page clears it.</p>
+        <h3>Can it replace a graphing calculator for coursework?</h3>
+        <p>It covers common scientific functions well, but if your course specifically requires graphing, statistical regression, or a particular calculator model, check your instructor's requirements before relying on this instead.</p>
         <h2>Related Tools</h2>
         <ul><li><a href="https://mc-novatools.com/tools/converters/age-calculator/">Age Calculator — Calculate exact age from birthdate.</a></li><li><a href="https://mc-novatools.com/tools/converters/bmi-calculator/">BMI Calculator — Calculate Body Mass Index and health category.</a></li></ul>
       </article>
-      <aside class="author-bylines" aria-label="Author and review information for Scientific Calculator">
-        <p><span class="author-name">Metehan ÇETİN, LPC</span>, <span class="author-title">Founder and editor</span></p>
-        <p>The author profile for Scientific Calculator is intended for a practitioner who understands measurement conversion, practical calculators, time planning, and numerical review. This byline describes hands-on experience reviewing inputs, outputs, edge cases, accessibility needs, privacy expectations, and user education for browser-based utilities. It is maintained as a verified public review note for MC NovaTools tool pages.</p>
-        <p><a href="https://mc-novatools.com/about-us.html" rel="author">Author and review profile</a></p>
-        <p>Last updated: <time class="last-updated" datetime="2026-06-03">2026-06-03</time></p>
-        <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Metehan ÇETİN, LPC","jobTitle":"Founder and editor","description":"The author profile for Scientific Calculator is intended for a practitioner who understands measurement conversion, practical calculators, time planning, and numerical review. This byline describes hands-on experience reviewing inputs, outputs, edge cases, accessibility needs, privacy expectations, and user education for browser-based utilities. It is maintained as a verified public review note for MC NovaTools tool pages.","sameAs":"https://mc-novatools.com/about-us.html"}</script>
-      </aside>
 <section class="seo-section" aria-label="About this tool">
         <h2 data-i18n="tools.converters.scientific-calculator.text.031">About Scientific Calculator</h2>
         <p data-i18n="tools.converters.scientific-calculator.text.032">Our free Scientific Calculator provides advanced mathematical functions beyond basic arithmetic. Whether you're a student, engineer, or anyone who needs to perform complex calculations, this tool offers a comprehensive set of functions in an easy-to-use interface.</p>
@@ -358,7 +341,7 @@
         <section class="trust-help novatools-tool-reading-path" aria-labelledby="toolReadingPathTitle">
           <h2 id="toolReadingPathTitle">Recommended next reading</h2>
           <p>Use these practical guides to understand when this tool is the right choice, what to check before exporting, and which workflow usually comes next.</p>
-          <div class="related-tools-grid"><a class="related-tool-link" href="https://mc-novatools.com/blog/articles/unit-converter-for-project-planning.html">Converter decision guide</a><a class="related-tool-link" href="https://mc-novatools.com/blog/articles/base64-vs-url-encoding.html">Base64 vs URL encoding</a></div>
+          <div class="related-tools-grid"><a class="related-tool-link" href="/blog/articles/rule-of-72-estimate-investment-doubling-time.html">Rule of 72: How to Estimate Investment Doubling Time</a><a class="related-tool-link" href="/blog/articles/rule-of-72-estimate-investment-doubling-time.html">Rule of 72: How to Estimate Investment Doubling Time</a></div>
         </section>
     </main>
 
@@ -368,7 +351,7 @@
     </footer>
     <style>
       .tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }
-      .tool-footer a { color: #00D9FF; text-decoration: none; }
+      .tool-footer a { color: var(--color-accent); text-decoration: none; }
     </style>
   </div>
 
@@ -391,8 +374,13 @@
       calcInput.textContent = currentInput;
       modeDeg.textContent = isRadians ? 'RAD' : 'DEG';
       modeDeg.classList.toggle('active', true);
-      modeMem.textContent = `M: ${memory}`;
+      modeMem.textContent = `M: ${formatResult(memory)}`;
       modeMem.classList.toggle('active', memory !== 0);
+      const degButton = document.querySelector('[data-action="deg"]');
+      if (degButton) {
+        degButton.setAttribute('aria-pressed', isRadians ? 'true' : 'false');
+        degButton.setAttribute('aria-label', isRadians ? 'Use degrees instead of radians' : 'Use radians instead of degrees');
+      }
     }
 
     function updateHistory() {
@@ -401,19 +389,31 @@
         return;
       }
       
-      historyList.innerHTML = history.slice().reverse().map((item, idx) => 
-        `<div class="history-item" data-idx="${history.length - 1 - idx}">
-          <span class="history-expr" data-i18n="tools.converters.scientific-calculator.text.050">${item.expr}</span> = 
-          <span class="history-result" data-i18n="tools.converters.scientific-calculator.text.051">${item.result}</span>
-        </div>`
-      ).join('');
+      // Built as nodes, not markup: the calculation is user text, and the
+      // i18n runtime must not replace it with a translation string.
+      historyList.textContent = '';
+      history.forEach((item, index) => {
+        const row = document.createElement('button');
+        row.type = 'button';
+        row.className = 'history-item';
+        row.dataset.idx = String(index);
+        row.setAttribute('aria-label', `Reuse result ${item.result} from ${item.expr}`);
 
-      historyList.querySelectorAll('.history-item').forEach(item => {
-        item.addEventListener('click', () => {
-          const idx = parseInt(item.dataset.idx);
-          currentInput = history[idx].result.toString();
+        const expression = document.createElement('span');
+        expression.className = 'history-expr';
+        expression.textContent = item.expr;
+
+        const result = document.createElement('span');
+        result.className = 'history-result';
+        result.textContent = item.result;
+
+        row.append(expression, document.createTextNode(' = '), result);
+        row.addEventListener('click', () => {
+          currentInput = history[index].result.toString();
+          shouldResetScreen = true;
           updateDisplay();
         });
+        historyList.prepend(row);
       });
     }
 
@@ -453,9 +453,77 @@
       updateDisplay();
     }
 
+    // "2" then pi must mean 2*pi. Concatenating the digits of pi onto the
+    // display produced 23.14159265, and a truncated literal lost precision.
+    function appendConstant(name) {
+      if (shouldResetScreen) {
+        currentInput = '';
+        shouldResetScreen = false;
+      }
+      if (currentInput === '' || currentInput === '0') {
+        currentInput = name;
+      } else if (/[\d.)]$/.test(currentInput)) {
+        currentInput += '*' + name;
+      } else {
+        currentInput += name;
+      }
+      updateDisplay();
+    }
+
+    // Percent applies to the value of the whole expression, not to whatever
+    // parseFloat could scrape off the front of it.
+    function applyMemory(sign) {
+      try {
+        const value = evaluateExpression(currentInput);
+        if (!Number.isFinite(value)) throw new CalcError('The result is beyond the range this calculator can represent');
+        memory += sign * value;
+        calcInput.classList.remove('error');
+      } catch (error) {
+        calcInput.classList.add('error');
+        currentInput = error instanceof CalcError ? error.message : 'Check the expression';
+        shouldResetScreen = true;
+      }
+      updateDisplay();
+    }
+
+    function applyPercent() {
+      try {
+        const value = evaluateExpression(currentInput);
+        if (!Number.isFinite(value)) throw new CalcError('The result is beyond the range this calculator can represent');
+        currentInput = formatResult(value / 100);
+        shouldResetScreen = true;
+        calcInput.classList.remove('error');
+      } catch (error) {
+        calcInput.classList.add('error');
+        currentInput = error instanceof CalcError ? error.message : 'Check the expression';
+        shouldResetScreen = true;
+      }
+      updateDisplay();
+    }
+
     function appendOperator(op) {
       currentInput += op;
       updateDisplay();
+    }
+
+    class CalcError extends Error {}
+
+    // tan is undefined at 90 deg + k*180 deg. Math.tan returns a huge finite
+    // number there because pi/2 is not exactly representable; reporting that
+    // number as an answer would be a lie.
+    function tangent(argument) {
+      if (isRadians) {
+        const halfTurns = (argument - Math.PI / 2) / Math.PI;
+        if (Math.abs(halfTurns - Math.round(halfTurns)) < 1e-12) {
+          throw new CalcError('tan is undefined at 90 degrees plus multiples of 180 degrees');
+        }
+        return Math.tan(argument);
+      }
+      const normalized = ((argument % 180) + 180) % 180;
+      if (Math.abs(normalized - 90) < 1e-9) {
+        throw new CalcError('tan is undefined at 90 degrees plus multiples of 180 degrees');
+      }
+      return Math.tan(argument * Math.PI / 180);
     }
 
     function tokenizeExpression(expr) {
@@ -463,6 +531,7 @@
         .replace(/&#215;|×/g, '*')
         .replace(/&#247;|÷/g, '/')
         .replace(/&#960;|π/g, 'pi')
+        .replace(/&#8730;/g, 'sqrt')
         .replace(/√/g, 'sqrt');
       const tokens = [];
       let index = 0;
@@ -480,7 +549,7 @@
             index += 1;
           }
           if (!/^\d*\.?\d+$/.test(value)) {
-            throw new Error('Invalid number');
+            throw new CalcError('Check the number format');
           }
           tokens.push({ type: 'number', value: Number(value) });
           continue;
@@ -504,7 +573,7 @@
           index += 1;
           continue;
         }
-        throw new Error('Unsupported character');
+        throw new CalcError('Unsupported character');
       }
 
       return tokens;
@@ -529,7 +598,7 @@
       function parsePrimary() {
         const token = peek();
         if (!token) {
-          throw new Error('Unexpected end');
+          throw new CalcError('Incomplete expression');
         }
         if (token.type === 'number') {
           position += 1;
@@ -540,30 +609,38 @@
           if (token.value === 'pi') return Math.PI;
           if (token.value === 'e') return Math.E;
           if (!consume('(')) {
-            throw new Error('Expected function argument');
+            throw new CalcError('A function needs a parenthesised argument, for example sin(30)');
           }
           const argument = parseAdditive();
           if (!consume(')')) {
-            throw new Error('Expected closing parenthesis');
+            throw new CalcError('Unbalanced parenthesis');
           }
           switch (token.value) {
             case 'sin': return isRadians ? Math.sin(argument) : Math.sin(argument * Math.PI / 180);
             case 'cos': return isRadians ? Math.cos(argument) : Math.cos(argument * Math.PI / 180);
-            case 'tan': return isRadians ? Math.tan(argument) : Math.tan(argument * Math.PI / 180);
-            case 'log': return Math.log10(argument);
-            case 'ln': return Math.log(argument);
-            case 'sqrt': return Math.sqrt(argument);
-            default: throw new Error('Unsupported function');
+            case 'tan': return tangent(argument);
+            case 'log':
+              if (argument < 0) throw new CalcError('log is undefined for negative numbers');
+              if (argument === 0) throw new CalcError('log(0) is undefined');
+              return Math.log10(argument);
+            case 'ln':
+              if (argument < 0) throw new CalcError('ln is undefined for negative numbers');
+              if (argument === 0) throw new CalcError('ln(0) is undefined');
+              return Math.log(argument);
+            case 'sqrt':
+              if (argument < 0) throw new CalcError('No real square root of a negative number');
+              return Math.sqrt(argument);
+            default: throw new CalcError('Unsupported function');
           }
         }
         if (consume('(')) {
           const value = parseAdditive();
           if (!consume(')')) {
-            throw new Error('Expected closing parenthesis');
+            throw new CalcError('Unbalanced parenthesis');
           }
           return value;
         }
-        throw new Error('Unexpected token');
+        throw new CalcError('Check the expression');
       }
 
       function parseUnary() {
@@ -586,6 +663,7 @@
           const operator = peek().value;
           position += 1;
           const right = parsePower();
+          if (operator === '/' && right === 0) throw new CalcError('Division by zero is undefined');
           value = operator === '*' ? value * right : value / right;
         }
         return value;
@@ -604,31 +682,35 @@
 
       const result = parseAdditive();
       if (position !== tokens.length) {
-        throw new Error('Unexpected token');
+        throw new CalcError('Check the expression');
       }
       return result;
+    }
+
+    function formatResult(result) {
+      if (result === 0) return '0';
+      const magnitude = Math.abs(result);
+      if (magnitude < 1e-10 || magnitude >= 1e10) return result.toExponential(6);
+      return parseFloat(result.toFixed(10)).toString();
     }
 
     function calculate() {
       try {
         const result = evaluateExpression(currentInput);
-        
-        if (!isFinite(result) || isNaN(result)) {
-          throw new Error('Invalid result');
-        }
 
-        const formattedResult = Math.abs(result) < 1e-10 || Math.abs(result) > 1e10 
-          ? result.toExponential(6) 
-          : parseFloat(result.toFixed(10)).toString();
+        if (Number.isNaN(result)) throw new CalcError('That expression has no numeric result');
+        if (!Number.isFinite(result)) throw new CalcError('The result is beyond the range this calculator can represent');
+
+        const formattedResult = formatResult(result);
 
         addToHistory(currentInput, formattedResult);
         calcHistory.textContent = currentInput + ' =';
         currentInput = formattedResult;
         shouldResetScreen = true;
         calcInput.classList.remove('error');
-      } catch (e) {
+      } catch (error) {
         calcInput.classList.add('error');
-        currentInput = 'Error';
+        currentInput = error instanceof CalcError ? error.message : 'Check the expression';
         shouldResetScreen = true;
       }
       updateDisplay();
@@ -691,22 +773,19 @@
             case 'ln': currentInput = 'ln(' + currentInput + ')'; updateDisplay(); break;
             case 'sqrt': currentInput = 'sqrt(' + currentInput + ')'; updateDisplay(); break;
             case 'pow': appendOperator('**'); break;
-            case 'pi': currentInput = currentInput === '0' ? '3.14159265' : currentInput + '3.14159265'; updateDisplay(); break;
-            case 'e': currentInput = currentInput === '0' ? '2.71828182' : currentInput + '2.71828182'; updateDisplay(); break;
+            case 'pi': appendConstant('pi'); break;
+            case 'e': appendConstant('e'); break;
             case 'deg': isRadians = !isRadians; updateDisplay(); break;
-            case 'percent': 
-              try { currentInput = (parseFloat(currentInput) / 100).toString(); updateDisplay(); } 
-              catch(e) {}
-              break;
+            case 'percent': applyPercent(); break;
             case 'paren':
               const openCount = (currentInput.match(/\(/g) || []).length;
               const closeCount = (currentInput.match(/\)/g) || []).length;
               appendNumber(openCount > closeCount ? ')' : '(');
               break;
             case 'mc': memory = 0; updateDisplay(); break;
-            case 'mr': currentInput = memory.toString(); updateDisplay(); break;
-            case 'mplus': memory += parseFloat(currentInput) || 0; updateDisplay(); break;
-            case 'mminus': memory -= parseFloat(currentInput) || 0; updateDisplay(); break;
+            case 'mr': currentInput = formatResult(memory); shouldResetScreen = true; updateDisplay(); break;
+            case 'mplus': applyMemory(1); break;
+            case 'mminus': applyMemory(-1); break;
           }
         }
       });

@@ -1,8 +1,10 @@
 #!/usr/bin/env node
 import fs from 'node:fs';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { isPublishedBlogSlug } from '../src/js/blog-publication.js';
 
-const rootDir = path.resolve(new URL('..', import.meta.url).pathname);
+const rootDir = fileURLToPath(new URL('..', import.meta.url));
 const postsPath = path.join(rootDir, 'src', 'i18n', 'blog', 'en.json');
 const outPath = path.join(rootDir, 'public', 'rss.xml');
 const rootOutPath = path.join(rootDir, 'rss.xml');
@@ -26,6 +28,7 @@ function absolute(pathname) {
 function renderRss(posts) {
   const latest = posts
     .filter((post) => post.slug && post.title && post.datePublished)
+    .filter((post) => isPublishedBlogSlug(post.slug))
     .sort((a, b) => new Date(`${b.datePublished}T00:00:00Z`) - new Date(`${a.datePublished}T00:00:00Z`))
     .slice(0, 50);
   const buildDate = latest[0]?.dateModified || latest[0]?.datePublished || '2026-06-03';
@@ -73,5 +76,5 @@ if (mode === 'check') {
 } else {
   fs.writeFileSync(outPath, rss);
   fs.writeFileSync(rootOutPath, rss);
-  console.log(`✅ Generated RSS feed with ${Math.min(posts.length, 50)} items.`);
+  console.log(`✅ Generated RSS feed with ${(rss.match(/<item>/g) || []).length} items.`);
 }

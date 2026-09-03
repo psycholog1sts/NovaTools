@@ -72,6 +72,8 @@ for (const filePath of htmlFiles) {
 const missingBootstrap = [];
 const staleWwwOrigins = [];
 const darkHtmlDefaults = [];
+const crossOriginInternalAssets = [];
+const blockedGoogleFontStyles = [];
 
 for (const filePath of htmlFiles) {
   const relative = path.relative(distDir, filePath).replace(/\\/g, '/');
@@ -79,6 +81,8 @@ for (const filePath of htmlFiles) {
   if (!html.includes(marker)) missingBootstrap.push(relative);
   if (html.includes(legacyWwwOrigin)) staleWwwOrigins.push(relative);
   if (/<html\b[^>]*\bdata-theme=(['"])dark\1[^>]*>/i.test(html)) darkHtmlDefaults.push(relative);
+  if (/<(?:link|script)\b[^>]*(?:href|src)=["']https:\/\/mc-novatools\.com\/(?:css|styles|js|assets|vendor|wasm)\//i.test(html)) crossOriginInternalAssets.push(relative);
+  if (/<link\b[^>]*rel=["']stylesheet["'][^>]*href=["']https:\/\/fonts\.googleapis\.com\//i.test(html)) blockedGoogleFontStyles.push(relative);
 }
 
 if (missingBootstrap.length) {
@@ -89,6 +93,12 @@ if (staleWwwOrigins.length) {
 }
 if (darkHtmlDefaults.length) {
   throw new Error(`dark default remains on <html> in ${darkHtmlDefaults.length} built HTML file(s): ${darkHtmlDefaults.slice(0, 8).join(', ')}`);
+}
+if (crossOriginInternalAssets.length) {
+  throw new Error(`canonical-origin internal assets remain in ${crossOriginInternalAssets.length} built HTML file(s): ${crossOriginInternalAssets.slice(0, 8).join(', ')}`);
+}
+if (blockedGoogleFontStyles.length) {
+  throw new Error(`Google Font styles blocked by the production CSP remain in ${blockedGoogleFontStyles.length} built HTML file(s): ${blockedGoogleFontStyles.slice(0, 8).join(', ')}`);
 }
 
 console.log(JSON.stringify({

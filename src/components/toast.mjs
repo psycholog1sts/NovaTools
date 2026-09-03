@@ -1,204 +1,165 @@
 /**
  * Toast Notification System
- * Centralized toast notifications with auto-dismiss
+ * Accessible, text-safe notifications with optional actions and focus-safe dismissal.
  */
+
+const VALID_TYPES = new Set(['success', 'error', 'warning', 'info']);
 
 export class ToastManager {
   constructor() {
     this.container = null;
-    this.toasts = [];
+    this.toasts = new Set();
+    this.timers = new WeakMap();
     this.init();
   }
 
   init() {
-    // Create container if it doesn't exist
-    if (!document.getElementById('toast-container')) {
-      this.container = document.createElement('div');
-      this.container.id = 'toast-container';
-      this.container.style.cssText = `
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        z-index: 10000;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        pointer-events: none;
-      `;
-      document.body.appendChild(this.container);
-    } else {
-      this.container = document.getElementById('toast-container');
-    }
+    if (typeof document === 'undefined') return;
+    this.container = document.getElementById('toast-container');
+    if (this.container) return;
+
+    this.container = document.createElement('div');
+    this.container.id = 'toast-container';
+    this.container.className = 'toast-region';
+    this.container.setAttribute('aria-label', 'Notifications');
+    this.container.setAttribute('aria-live', 'polite');
+    this.container.setAttribute('aria-relevant', 'additions');
+    document.body.appendChild(this.container);
   }
 
   /**
-   * Show a toast notification
-   * @param {Object} options - Toast options
+   * @param {Object} options
+   * @param {'success'|'error'|'warning'|'info'} [options.type]
+   * @param {string} [options.title]
+   * @param {string} [options.message]
+   * @param {number} [options.duration]
+   * @param {boolean} [options.dismissible]
+   * @param {{label:string,onClick:Function}|null} [options.action]
    */
   show(options = {}) {
+    if (!this.container) this.init();
+    if (!this.container) return null;
+
     const {
-      type = 'info',
+      type: requestedType = 'info',
       title = '',
       message = '',
       duration = 5000,
-      dismissible = true
+      dismissible = true,
+      action = null
     } = options;
+    const type = VALID_TYPES.has(requestedType) ? requestedType : 'info';
 
-    const toast = document.createElement('div');
+    const toast = document.createElement('section');
     toast.className = `toast toast-${type}`;
-    toast.style.cssText = `
-      background: ${this.getBackground(type)};
-      color: white;
-      padding: 16px 20px;
-      border-radius: 12px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-      min-width: 300px;
-      max-width: 400px;
-      pointer-events: auto;
-      transform: translateX(100%);
-      opacity: 0;
-      transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-      border-left: 4px solid ${this.getBorderColor(type)};
-    `;
+    toast.dataset.state = 'entering';
+    toast.setAttribute('role', type === 'error' ? 'alert' : 'status');
+    toast.setAttribute('aria-atomic', 'true');
 
-    const icon = this.getIcon(type);
-    
-    toast.innerHTML = `
-      <div style="display: flex; align-items: flex-start; gap: 12px;">
-        <span style="font-size: 20px; flex-shrink: 0;">${icon}</span>
-        <div style="flex: 1;">
-          ${title ? `<div style="font-weight: 600; margin-bottom: 4px;">${title}</div>` : ''}
-          <div style="opacity: 0.9; font-size: 14px; line-height: 1.4;">${message}</div>
-        </div>
-        ${dismissible ? `
-          <button style="
-            background: none;
-            border: none;
-            color: white;
-            cursor: pointer;
-            opacity: 0.7;
-            padding: 0;
-            font-size: 18px;
-            line-height: 1;
-          " data-nv-toast-dismiss>×</button>
-        ` : ''}
-      </div>
-    `;
+    const icon = document.createElement('span');
+    icon.className = 'toast__icon';
+    icon.setAttribute('aria-hidden', 'true');
+    icon.textContent = this.getIcon(type);
 
-    this.container.appendChild(toast);
-    const dismissButton = toast.querySelector('[data-nv-toast-dismiss]');
-    if (dismissButton) {
-      dismissButton.addEventListener('click', () => {
-        toast.remove();
-      });
+    const copy = document.createElement('div');
+    copy.className = 'toast__copy';
+    if (title) {
+      const heading = document.createElement('strong');
+      heading.className = 'toast__title';
+      heading.textContent = title;
+      copy.appendChild(heading);
     }
-    this.toasts.push(toast);
+    const body = document.createElement('div');
+    body.className = 'toast__message';
+    body.textContent = message;
+    copy.appendChild(body);
 
-    // Animate in
+    const row = document.createElement('div');
+    row.className = 'toast__row';
+    row.append(icon, copy);
+
+    if (action?.label && typeof action.onClick === 'function') {
+      const actionButton = document.createElement('button');
+      actionButton.type = 'button';
+      actionButton.className = 'toast__action';
+      actionButton.textContent = action.label;
+      actionButton.addEventListener('click', (event) => action.onClick(event, toast));
+      copy.appendChild(actionButton);
+    }
+
+    if (dismissible) {
+      const close = document.createElement('button');
+      close.type = 'button';
+      close.className = 'toast__close';
+      close.setAttribute('aria-label', 'Dismiss notification');
+      close.textContent = '×';
+      close.addEventListener('click', () => this.dismiss(toast));
+      row.appendChild(close);
+    }
+
+    toast.appendChild(row);
+    this.container.appendChild(toast);
+    this.toasts.add(toast);
+
     requestAnimationFrame(() => {
-      toast.style.transform = 'translateX(0)';
-      toast.style.opacity = '1';
+      toast.dataset.state = 'visible';
     });
 
-    // Auto dismiss
-    if (duration > 0) {
-      setTimeout(() => this.dismiss(toast), duration);
+    if (Number.isFinite(duration) && duration > 0) {
+      const timer = window.setTimeout(() => this.dismiss(toast), duration);
+      this.timers.set(toast, timer);
+      toast.addEventListener('mouseenter', () => window.clearTimeout(this.timers.get(toast)), { once: true });
     }
 
     return toast;
   }
 
-  /**
-   * Dismiss a toast
-   * @param {HTMLElement} toast - Toast element
-   */
   dismiss(toast) {
-    if (!toast || !toast.parentNode) return;
-    
-    toast.style.transform = 'translateX(100%)';
-    toast.style.opacity = '0';
-    
-    setTimeout(() => {
-      if (toast.parentNode) {
-        toast.parentNode.removeChild(toast);
-      }
-    }, 300);
+    if (!toast?.isConnected) return;
+    const timer = this.timers.get(toast);
+    if (timer) window.clearTimeout(timer);
+    toast.dataset.state = 'leaving';
+    const remove = () => {
+      toast.remove();
+      this.toasts.delete(toast);
+    };
+    if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) remove();
+    else window.setTimeout(remove, 180);
   }
 
-  /**
-   * Show success toast
-   * @param {string} message - Message
-   * @param {string} title - Title
-   */
+  dismissAll() {
+    [...this.toasts].forEach((item) => this.dismiss(item));
+  }
+
   success(message, title = 'Success') {
     return this.show({ type: 'success', title, message });
   }
 
-  /**
-   * Show error toast
-   * @param {string} message - Message
-   * @param {string} title - Title
-   */
   error(message, title = 'Error') {
     return this.show({ type: 'error', title, message, duration: 8000 });
   }
 
-  /**
-   * Show warning toast
-   * @param {string} message - Message
-   * @param {string} title - Title
-   */
   warning(message, title = 'Warning') {
     return this.show({ type: 'warning', title, message });
   }
 
-  /**
-   * Show info toast
-   * @param {string} message - Message
-   * @param {string} title - Title
-   */
   info(message, title = 'Info') {
     return this.show({ type: 'info', title, message });
   }
 
-  getBackground(type) {
-    const colors = {
-      success: 'linear-gradient(135deg, #00C853, #00E676)',
-      error: 'linear-gradient(135deg, #FF1744, #FF5252)',
-      warning: 'linear-gradient(135deg, #FF9100, #FFC400)',
-      info: 'linear-gradient(135deg, #00B0FF, #00E5FF)'
-    };
-    return colors[type] || colors.info;
-  }
-
-  getBorderColor(type) {
-    const colors = {
-      success: '#00FF88',
-      error: '#FF5252',
-      warning: '#FFC400',
-      info: '#00E5FF'
-    };
-    return colors[type] || colors.info;
-  }
-
   getIcon(type) {
-    const icons = {
-      success: '✓',
-      error: '✕',
-      warning: '⚠',
-      info: 'ℹ'
-    };
-    return icons[type] || icons.info;
+    return ({ success: '✓', error: '!', warning: '⚠', info: 'i' })[type] || 'i';
   }
 }
 
-// Singleton instance
-export const toast = new ToastManager();
+export const toast = typeof document !== 'undefined' ? new ToastManager() : null;
 
-// Listen for app errors
-window.addEventListener('app-error', (e) => {
-  const { type, message } = e.detail;
-  toast[type === 'validation' ? 'warning' : 'error'](message);
-});
+if (typeof window !== 'undefined') {
+  window.addEventListener('app-error', (event) => {
+    const { type, message } = event.detail || {};
+    if (!toast || !message) return;
+    toast[type === 'validation' ? 'warning' : 'error'](String(message));
+  });
+}
 
 export default toast;

@@ -45,6 +45,11 @@ lerna-debug.log*
 # Testing
 coverage/
 .nyc_output/
+# Playwright run output (traces, screenshots, videos) is per-run evidence,
+# uploaded as a CI artifact rather than tracked.
+test-results/
+playwright-report/
+blob-report/
 
 # Lighthouse
 .lighthouseci/

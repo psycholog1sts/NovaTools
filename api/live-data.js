@@ -86,7 +86,7 @@ async function crypto(searchParams) {
     .filter(Boolean)
     .slice(0, 12);
   const ids = (requestedIds.length ? requestedIds : ['bitcoin', 'ethereum', 'solana', 'ripple', 'cardano']).join(',');
-  const data = await fetchJson(`https://api.coingecko.com/api/v3/simple/price?ids=${ids}&vs_currencies=usd&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true&include_last_updated_at=true`);
+  const data = await fetchJson(`https://api.coingecko.com/api/v3/simple/price?ids=${ids}&vs_currencies=usd,try&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true&include_last_updated_at=true`);
   return { resource: 'crypto', coins: data, provider: 'coingecko.com' };
 }
 

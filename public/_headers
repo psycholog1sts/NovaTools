@@ -20,6 +20,18 @@
   Content-Type: text/plain; charset=utf-8
   Cache-Control: public, max-age=86400
 
+# These legacy/placeholder utilities are intentionally kept out of search until
+# their product behavior is truthful and production-grade. Defense in depth:
+# the sitemap generator also excludes them, and AdSense bootstrap blocks them.
+/tools/news/summarizer/*
+  X-Robots-Tag: noindex, nofollow, noarchive
+
+/tools/religious/islamic-calendar/*
+  X-Robots-Tag: noindex, nofollow, noarchive
+
+/tools/social/url-shortener/*
+  X-Robots-Tag: noindex, nofollow, noarchive
+
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
 

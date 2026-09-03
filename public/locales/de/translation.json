@@ -17,7 +17,6 @@
     "converters": "Konverter"
   },
   "hero": {
-    "title": "All-in-One Tools für Dateien, Finanzen & Code",
     "subtitle": "Nutzen Sie MC NovaTools, um mit einem schnellen, klaren, browserbasierten Toolkit praktische Workflows zu konvertieren, zu berechnen, zu erstellen und zu vereinfachen.",
     "cta": "Tools Entdecken",
     "browse": "Kategorien Durchsuchen",
@@ -193,7 +192,6 @@
     "toolsGeneric": "Tools",
     "viewAllCategories": "Alle Kategorien anzeigen",
     "viewAllDesc": "Browse our tool collection by category.",
-    "searchPlaceholder": "Search tools...",
     "popularLabel": "Beliebt:",
     "newBadge": "Neu",
     "ads": {
@@ -208,9 +206,7 @@
       "description": "Practical articles that explain when to use a tool and what to check before exporting.",
       "viewAll": "View All Articles →"
     },
-    "hero": {
-      "description": "Nutzen Sie MC NovaTools, um mit einem schnellen, klaren, browserbasierten Toolkit praktische Workflows zu konvertieren, zu berechnen, zu erstellen und zu vereinfachen."
-    },
+    "hero": {},
     "launcher": {
       "title": "Workflow-Starter",
       "query": "pdf für e-mail komprimieren",
@@ -339,7 +335,6 @@
           "009": "Bildwerkzeuge",
           "010": "Entwicklertools",
           "011": "BMI Rechner",
-          "012": "Berechnen Sie Ihren Body-Mass-Index (BMI) und entdecken Sie Ihre Gesundheitskategorie. Erhalten Sie personalisierte Gesundheitstipps und einen idealen Gewichtsbereich basierend auf Ihrer Körpergröße.",
           "013": "Metrisch (kg, cm)",
           "014": "Imperial (lbs, ft/in)",
           "015": "(cm)",
@@ -358,7 +353,6 @@
           "028": "Fettleibig",
           "029": "30,0 und höher",
           "030": "Über den BMI-Rechner",
-          "031": "Der Body-Mass-Index (BMI) ist eine einfache Screening-Methode, die anhand Ihrer Größe und Ihres Gewichts ermittelt, ob Sie ein gesundes Gewicht für Ihre Größe haben. Unser kostenloser BMI-Rechner liefert sofortige Ergebnisse zusammen mit Ihrer Gesundheitskategorie und personalisierten Gesundheitstipps.",
           "032": "Verwendung",
           "033": "Wählen Sie Ihr bevorzugtes Einheitensystem (metrisch oder imperial).",
           "034": "Geben Sie Ihre Körpergröße ein (in cm oder Fuß/Zoll).",
@@ -366,7 +360,6 @@
           "036": "Klicken Sie auf „BMI berechnen“, um Ihre Ergebnisse anzuzeigen.",
           "037": "Sehen Sie sich Ihren BMI-Wert und die entsprechende Gesundheitskategorie an.",
           "038": "Überprüfen Sie die visuelle BMI-Skala, um zu sehen, wo Sie landen.",
-          "039": "Überprüfen Sie Ihren Idealgewichtsbereich und Ihre Gesundheitstipps.",
           "040": "BMI Kategorien",
           "041": "Einschränkungen von BMI",
           "042": "BMI misst das Körperfett nicht direkt und berücksichtigt keine Faktoren wie Muskelmasse, Knochendichte, Alter, Geschlecht und ethnische Zugehörigkeit. Sportler haben möglicherweise hohe BMI-Werte aufgrund der Muskelmasse und nicht aufgrund des Fetts. Wenden Sie sich für eine umfassende Gesundheitsbeurteilung immer an medizinisches Fachpersonal.",
@@ -5831,7 +5824,6 @@
     "edit": "Bearbeiten",
     "close": "Schließen",
     "open": "Öffnen",
-    "search": "Suchen",
     "download": "Herunterladen",
     "upload": "Hochladen",
     "copy": "Kopieren",

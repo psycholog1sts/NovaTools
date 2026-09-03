@@ -28,13 +28,44 @@ const REQUIRED_FILES = [
   'public/robots.txt',
   'public/sitemap.xml',
   'public/manifest.json',
+  'public/_headers',
+  'public/_redirects',
+  'api/live-data.js',
   'src/core/ads/adsense-config.mjs',
   'src/components/Analytics.mjs',
   'src/core/consent-manager.mjs',
   'public/consent-manager.mjs',
+  'scripts/generate-localized-sitemap.mjs',
   'scripts/post-build-fix.mjs',
   'vite.config.js',
   'vercel.json'
+];
+
+// These routes are real files kept for controlled remediation, but they must
+// not be indexed or monetized until their product contract is truthful.
+const NON_INDEXABLE_TOOL_ROUTES = [
+  {
+    source: 'src/tools/news/summarizer/index.html',
+    route: '/tools/news/summarizer/',
+    sitemapIgnore: 'src/tools/news/summarizer/**'
+  },
+  {
+    source: 'src/tools/religious/islamic-calendar/index.html',
+    route: '/tools/religious/islamic-calendar/',
+    sitemapIgnore: 'src/tools/religious/islamic-calendar/**'
+  },
+  {
+    source: 'src/tools/social/url-shortener/index.html',
+    route: '/tools/social/url-shortener/',
+    sitemapIgnore: 'src/tools/social/url-shortener/**'
+  }
+];
+
+const GENERIC_TOOL_COPY_PATTERNS = [
+  /turn a common browser workflow into a clearer, repeatable process/i,
+  /a document has to be sent, a data file needs to be checked/i,
+  /upload the supported file, paste the text, or enter the numeric values/i,
+  /file name, page order, dimensions, row count/i
 ];
 
 const errors = [];
@@ -113,27 +144,70 @@ for (const file of ['src/core/consent-manager.mjs', 'public/consent-manager.mjs'
   }
 }
 
+const headersSource = existsSync('public/_headers') ? read('public/_headers') : '';
+const redirectsSource = existsSync('public/_redirects') ? read('public/_redirects') : '';
+const sitemapGenerator = existsSync('scripts/generate-localized-sitemap.mjs') ? read('scripts/generate-localized-sitemap.mjs') : '';
+
+for (const entry of NON_INDEXABLE_TOOL_ROUTES) {
+  const headerRoute = `${entry.route}*`;
+  const headerPosition = headersSource.indexOf(headerRoute);
+  const robotsPosition = headerPosition >= 0 ? headersSource.indexOf('X-Robots-Tag: noindex, nofollow, noarchive', headerPosition) : -1;
+  if (headerPosition < 0 || robotsPosition < 0 || robotsPosition - headerPosition > 180) {
+    errors.push(`Non-indexable route lacks a nearby X-Robots-Tag rule: ${entry.route}`);
+  }
+  if (!sitemapGenerator.includes(entry.sitemapIgnore)) {
+    errors.push(`Sitemap generator does not exclude non-indexable tool: ${entry.source}`);
+  }
+  if (!adsConfig.includes(entry.route)) {
+    errors.push(`AdSense bootstrap does not block non-monetizable route: ${entry.route}`);
+  }
+}
+
+if (!redirectsSource.includes('/tools/request /request-tool.html 301') ||
+    !redirectsSource.includes('/tools/request/ /request-tool.html 301')) {
+  errors.push('Legacy /tools/request route must redirect to the honest /request-tool.html workflow.');
+}
+if (!sitemapGenerator.includes('src/tools/request/**')) {
+  errors.push('Legacy /tools/request source must stay excluded from sitemap generation.');
+}
+
+// Live Exchange is indexable only because its core conversion is real. Guard
+// against reintroducing synthetic chart data or claiming it is historical.
+const liveDataSource = existsSync('api/live-data.js') ? read('api/live-data.js') : '';
+const financeBatchSource = existsSync('src/tools/finance/p0-batch2.mjs') ? read('src/tools/finance/p0-batch2.mjs') : '';
+const liveExchangePage = existsSync('src/tools/finance/live-exchange/index.html') ? read('src/tools/finance/live-exchange/index.html') : '';
+if (!liveDataSource.includes('https://www.tcmb.gov.tr/kurlar/today.xml') || !liveDataSource.includes("provider: 'tcmb.gov.tr'")) {
+  errors.push('Live Exchange public TCMB source claim no longer matches api/live-data.js.');
+}
+if (financeBatchSource.includes('deterministicSeries(rate, 1.2, 7)') || financeBatchSource.includes('liveExchangeChart')) {
+  errors.push('Live Exchange must not present a deterministic synthetic series as market history.');
+}
+if (/recent[- ]trend|trend chart|trend grafiği|recent movement|mini trend grafiği/i.test(liveExchangePage)) {
+  errors.push('Live Exchange public copy claims a trend/history feature without a historical-rate data contract.');
+}
+
+const nonIndexableSources = new Set([
+  ...NON_INDEXABLE_TOOL_ROUTES.map((entry) => entry.source),
+  'src/tools/request/index.html'
+]);
 const placeholderPattern = /\[(AUTHOR|FOUNDER|BUSINESS_ADDRESS|CONTACT_EMAIL|FORM_ENDPOINT|PHONE_NUMBER|LINKEDIN|TWITTER|GITHUB|LAST_UPDATED|PAGE_LAST_UPDATED|FOUNDING_YEAR|FOUNDER_PHOTO)[A-Z_]*\]/;
 const publicPlaceholders = [];
 const duplicateH1 = [];
-const thinTools = [];
+const genericBoilerplateTools = [];
 
 for (const file of publicHtml) {
   if (!existsSync(file)) continue;
   const html = read(file);
   if (placeholderPattern.test(html)) publicPlaceholders.push(file);
-  const h1Count = (html.match(/<h1\b/gi) || []).length;
+  // Strip <script> blocks before counting <h1>: markup built inside a script
+  // for a separate document/preview is not automatically part of this page DOM.
+  const htmlWithoutScripts = html.replace(/<script\b[\s\S]*?<\/script>/gi, ' ');
+  const h1Count = (htmlWithoutScripts.match(/<h1\b/gi) || []).length;
   if (h1Count > 1) duplicateH1.push(`${file} (${h1Count})`);
-  if (toolPages.includes(file)) {
-    const visibleText = html
-      .replace(/<script\b[\s\S]*?<\/script>/gi, ' ')
-      .replace(/<style\b[\s\S]*?<\/style>/gi, ' ')
-      .replace(/<[^>]+>/g, ' ')
-      .replace(/&[a-z0-9#]+;/gi, ' ')
-      .replace(/\s+/g, ' ')
-      .trim();
-    const words = visibleText ? visibleText.split(' ').length : 0;
-    if (words < 250) thinTools.push(`${file} (${words} words)`);
+
+  if (toolPages.includes(file) && !nonIndexableSources.has(file)) {
+    const matchedPatterns = GENERIC_TOOL_COPY_PATTERNS.filter((pattern) => pattern.test(htmlWithoutScripts));
+    if (matchedPatterns.length) genericBoilerplateTools.push(file);
   }
 }
 
@@ -141,7 +215,9 @@ if (publicPlaceholders.length) {
   errors.push(`Unresolved public E-E-A-T/contact placeholders: ${publicPlaceholders.slice(0, 12).join(', ')}${publicPlaceholders.length > 12 ? '…' : ''}`);
 }
 if (duplicateH1.length) errors.push(`Static pages with duplicate H1: ${duplicateH1.slice(0, 12).join(', ')}`);
-if (thinTools.length) warnings.push(`Potential thin tool pages for editorial review: ${thinTools.slice(0, 12).join(', ')}${thinTools.length > 12 ? '…' : ''}`);
+if (genericBoilerplateTools.length) {
+  errors.push(`Indexable tools still contain generic cross-tool boilerplate: ${genericBoilerplateTools.slice(0, 12).join(', ')}${genericBoilerplateTools.length > 12 ? '…' : ''}`);
+}
 
 const sourceFiles = globSync(['src/**/*.{html,js,mjs}', 'categories/**/*.html', 'docs/**/*.html']);
 for (const file of sourceFiles) {

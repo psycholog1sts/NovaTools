@@ -67,51 +67,51 @@
     .tool-wrapper { max-width: 960px; margin: 0 auto; padding: 3rem 1rem 5rem; }
     .tool-hero { text-align: center; margin-bottom: 2.5rem; }
     .tool-hero-icon { font-size: 3.5rem; line-height: 1; margin-bottom: 1rem; }
-    .tool-hero h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; letter-spacing: -0.02em; color: #FAFAFA; margin-bottom: 0.75rem; }
-    .tool-hero p { color: #A1A1AA; font-size: 1.0625rem; max-width: 560px; margin: 0 auto; }
+    .tool-hero h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; letter-spacing: -0.02em; color: var(--text-primary); margin-bottom: 0.75rem; }
+    .tool-hero p { color: var(--text-secondary); font-size: 1.0625rem; max-width: 560px; margin: 0 auto; }
     .card { background: rgba(15,15,20,0.7); border: 1px solid rgba(0,217,255,0.15); border-radius: 14px; padding: 1.75rem; backdrop-filter: blur(12px); }
     
     .tab-bar { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem; }
-    .tab-btn { padding: 0.5rem 1rem; background: transparent; border: none; color: #71717A; font-size: 0.875rem; font-weight: 600; cursor: pointer; border-radius: 6px; transition: all 0.2s; }
-    .tab-btn:hover { color: #A1A1AA; }
-    .tab-btn.active { color: #00D9FF; background: rgba(0,217,255,0.1); }
+    .tab-btn { padding: 0.5rem 1rem; background: transparent; border: none; color: var(--text-secondary); font-size: 0.875rem; font-weight: 600; cursor: pointer; border-radius: 6px; transition: all 0.2s; }
+    .tab-btn:hover { color: var(--text-secondary); }
+    .tab-btn.active { color: var(--accent-text); background: rgba(0,217,255,0.1); }
     
     .input-group { margin-bottom: 1.25rem; }
-    .input-label { display: block; font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #71717A; margin-bottom: 0.5rem; }
-    .input-field { width: 100%; height: 48px; padding: 0 1rem; background: #0F0F12; border: 1px solid rgba(0,217,255,0.12); border-radius: 8px; color: #FAFAFA; font-size: 0.9375rem; transition: border-color 0.2s, box-shadow 0.2s; outline: none; }
+    .input-label { display: block; font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 0.5rem; }
+    .input-field { width: 100%; height: 48px; padding: 0 1rem; background: var(--field-bg); border: 1px solid var(--field-border); border-radius: 8px; color: var(--text-primary); font-size: 0.9375rem; transition: border-color 0.2s, box-shadow 0.2s; outline: none; }
     .input-field:focus { border-color: rgba(0,217,255,0.45); box-shadow: 0 0 0 3px rgba(0,217,255,0.08); }
-    .input-field::placeholder { color: #52525B; }
+    .input-field::placeholder { color: var(--text-tertiary); }
     
     .btn { display: inline-flex; align-items: center; gap: 0.4rem; height: 44px; padding: 0 1.25rem; border: none; border-radius: 8px; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: background 0.18s, transform 0.12s, opacity 0.18s; outline: none; user-select: none; }
     .btn:active { transform: scale(0.97); }
     .btn-primary { background: linear-gradient(135deg, #E4405F, #C13584); color: #FFFFFF; }
     .btn-primary:hover { background: linear-gradient(135deg, #F56040, #D42C81); }
-    .btn-secondary { background: rgba(0,217,255,0.1); border: 1px solid rgba(0,217,255,0.25); color: #00D9FF; }
+    .btn-secondary { background: rgba(0,217,255,0.1); border: 1px solid rgba(0,217,255,0.25); color: var(--accent-text); }
     .btn-secondary:hover { background: rgba(0,217,255,0.18); }
     
     .result-area { margin-top: 1.5rem; padding: 1.5rem; background: rgba(0,0,0,0.3); border-radius: 10px; text-align: center; display: none; }
     .result-area.show { display: block; }
-    .result-placeholder { color: #52525B; font-style: italic; padding: 2rem; }
+    .result-placeholder { color: var(--text-tertiary); font-style: italic; padding: 2rem; }
     
     .info-box { margin-top: 1rem; padding: 1rem; background: rgba(0,217,255,0.05); border: 1px solid rgba(0,217,255,0.1); border-radius: 8px; }
-    .info-box p { color: #A1A1AA; font-size: 0.875rem; margin: 0; line-height: 1.6; }
-    .info-box strong { color: #00D9FF; }
+    .info-box p { color: var(--text-secondary); font-size: 0.875rem; margin: 0; line-height: 1.6; }
+    .info-box strong { color: var(--accent-text); }
     
-    .legal-note { margin-top: 1.5rem; padding: 1rem 1.25rem; background: rgba(255,193,7,0.05); border: 1px solid rgba(255,193,7,0.15); border-radius: 10px; font-size: 0.8125rem; color: #A1A1AA; line-height: 1.6; }
-    .legal-note strong { color: #FFC107; }
+    .legal-note { margin-top: 1.5rem; padding: 1rem 1.25rem; background: rgba(255,193,7,0.05); border: 1px solid rgba(255,193,7,0.15); border-radius: 10px; font-size: 0.8125rem; color: var(--text-secondary); line-height: 1.6; }
+    .legal-note strong { color: var(--color-warning-text); }
     
     .seo-section { max-width: 960px; margin: 3.5rem auto 0; padding: 0 1rem; }
-    .seo-section h2 { font-size: 1.375rem; font-weight: 700; color: #FAFAFA; margin-bottom: 0.75rem; }
-    .seo-section h3 { font-size: 1.125rem; font-weight: 600; color: #FAFAFA; margin: 2rem 0 0.75rem; }
-    .seo-section p, .seo-section li { color: #A1A1AA; line-height: 1.8; font-size: 0.9375rem; }
+    .seo-section h2 { font-size: 1.375rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.75rem; }
+    .seo-section h3 { font-size: 1.125rem; font-weight: 600; color: var(--text-primary); margin: 2rem 0 0.75rem; }
+    .seo-section p, .seo-section li { color: var(--text-secondary); line-height: 1.8; font-size: 0.9375rem; }
     .seo-section ol { padding-left: 1.25rem; }
     .seo-section ol li { margin-bottom: 0.4rem; }
     .faq-item { border: 1px solid rgba(0,217,255,0.1); border-radius: 10px; padding: 1rem 1.125rem; margin-bottom: 0.875rem; background: rgba(15,15,20,0.5); }
-    .faq-item summary { font-weight: 600; color: #FAFAFA; cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .faq-item summary { font-weight: 600; color: var(--text-primary); cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
     .faq-item summary::-webkit-details-marker { display: none; }
-    .faq-item summary::after { content: '+'; color: #00D9FF; font-size: 1.25rem; flex-shrink: 0; transition: transform 0.2s; }
+    .faq-item summary::after { content: '+'; color: var(--accent-text); font-size: 1.25rem; flex-shrink: 0; transition: transform 0.2s; }
     .faq-item[open] summary::after { content: '\2212'; }
-    .faq-item p { margin-top: 0.625rem; color: #A1A1AA; line-height: 1.7; }
+    .faq-item p { margin-top: 0.625rem; color: var(--text-secondary); line-height: 1.7; }
   </style>
   <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
 </head>
@@ -208,46 +208,28 @@
 
       <article class="tool-description" aria-labelledby="toolDescriptionTitle-instagram-photo">
         <h2 id="toolDescriptionTitle-instagram-photo">What Instagram Photo Downloader Does and Why It Matters</h2>
-        <p>Instagram Photo Downloader helps people translate information from one format into another practical output without turning a simple task into a full software project. In real work, instagram photo tasks often appear right before a deadline: a document has to be sent, a data file needs to be checked, an image must be prepared for publishing, a calculation needs a second scenario, or a developer has to verify a pasted value before it enters a larger workflow. This page focuses on that practical moment. The interface gives you a direct place to provide the input, review settings, run the operation, and keep the result close enough to inspect before you use it elsewhere. That matters because small preparation mistakes can create oversized attachments, unreadable exports, broken imports, misleading estimates, or accidental exposure of details that should have stayed private.</p>
-        <p>The main value of Instagram Photo Downloader is control. Instead of sending material through an unfamiliar workflow, you can use the browser to perform the job, observe the state of the input, and decide whether the output is ready. Download high-quality photos from Instagram posts. Save profile pictures in full resolution. The tool is especially useful for teams that need quick utility work between larger applications: support staff preparing evidence, creators publishing assets, finance users comparing planning assumptions, students organizing files, and developers validating snippets before sharing them in tickets or pull requests. It is intentionally focused on one job, so the page can explain what is supported, what should be checked manually, and when a specialist application or professional review is more appropriate.</p>
-        <p>Experience signals on this page are written around common failure points rather than generic marketing. For Instagram Photo Downloader, the important questions are whether the source material is in a supported format, whether the browser has enough memory to complete the action, whether the result keeps the information you expect, and whether any limitation changes how you should use the file or value. Reading these notes before you click the main action can save time because it frames the tool as part of a workflow: prepare the input, run the operation, inspect the output, then keep or discard the result based on evidence.</p>
+        <p>Instagram doesn't provide a public API for directly downloading post or profile images through a third-party tool, so this page works as a guide rather than a one-click downloader: paste a post URL or username, and it walks you through the manual steps to save the public image yourself — opening the image in a new tab and saving it, or using your browser's developer tools to find the direct image URL.</p>
+        <p>This matters to be upfront about, because plenty of sites claim to auto-download Instagram content and either don't actually work reliably or route your request through a third-party server you have no visibility into. This page doesn't pretend to bypass Instagram's restrictions — it gives you the same manual method reliably, without an extra server in the middle of your request.</p>
         <h2>How to Use Instagram Photo Downloader</h2>
         <ol>
-          <li>Open Instagram Photo Downloader and read the short instructions near the interface so you know which input type the page expects.</li>
-          <li>Upload the supported file, paste the text, or enter the numeric values requested by the form; avoid adding unrelated private information.</li>
-          <li>Review every visible option, such as output format, range, quality, delimiter, units, date, rate, or mode, because these settings shape the final result.</li>
-          <li>Run the tool with the primary action button and wait for the status message, preview, validation result, calculation, or progress indicator to finish.</li>
-          <li>Inspect the displayed result carefully, including file name, page order, dimensions, row count, formatting, estimate assumptions, warnings, and any visible errors.</li>
-          <li>Download the generated file, copy the result, or record the calculation only after the preview matches your intended use case.</li>
-          <li>Clear the page or close the browser tab when finished, especially on a shared device or when the input included confidential material.</li>
+          <li>Paste a public post URL, or enter a username to look up a profile picture.</li>
+          <li>The tool validates the format and shows you the direct manual steps for that case.</li>
+          <li>Follow the steps: open the image in a new tab, then save it from there (or use your browser's Inspect/Network tools for more detail).</li>
         </ol>
-        <h2>Supported Formats and Limitations</h2>
-        <h3>Supported input formats</h3>
-        <ul><li>URLs, campaign parameters, images, thumbnails, captions, tags, icons, or profile-related files</li><li>Platform size choices, output names, and campaign labels</li><li>Local files selected for resizing, icon creation, screenshots, or thumbnail preparation</li></ul>
-        <h3>Supported output formats</h3>
-        <ul><li>Prepared social images, UTM links, icons, hashtags, thumbnails, or campaign-ready text</li><li>Downloadable files and copy-ready campaign strings</li><li>Preview information that helps confirm dimensions, naming, or tracking structure</li></ul>
-        <h3>Known limitations and edge cases</h3>
-        <ul><li>Platform requirements change, so final uploads should be checked against the destination platform.</li><li>Hashtags, thumbnails, and campaign labels still need human review for accuracy and brand safety.</li><li>Some screenshot or video workflows may depend on browser capabilities and public page access.</li></ul>
-        <p>For best results, test Instagram Photo Downloader with a small sample before committing a large batch or an important deadline item. Browser utilities are convenient because they reduce setup and keep the workflow close to the user, but they still depend on device memory, browser permissions, source-file quality, and the exact assumptions entered into the interface. If the output will be used for legal, medical, financial, security, accessibility, or production engineering decisions, treat the result as a preparation aid and verify it with the appropriate system of record.</p>
+        <h2>What to Know</h2>
+        <ul><li>This works only for public content — private accounts and posts aren't accessible this way, by design</li><li>Only download and use images you have the right to use; Instagram content is generally copyrighted by its creator</li><li>No automatic bulk download or video extraction is provided — this covers viewing/saving a single public image manually</li></ul>
         <h2>Privacy and Security</h2>
-        <p>Instagram Photo Downloader is designed around a privacy-first browser workflow. Where possible, files and inputs are processed client-side in your browser, which means the work happens on your device instead of being permanently stored on NovaTools servers. Uploaded data is not stored on servers permanently by this page, and the safest habit is still to avoid uploading or pasting secrets that are not required for the task. Some features may depend on browser APIs, optional public lookups, or third-party libraries loaded by the page, so you should review the interface notes and avoid using confidential production data unless the tool behavior fits your policy.</p>
+        <p>The URL or username you enter is used only in your browser to build the guidance shown on this page — it isn't sent to a server or logged.</p>
         <h2>Frequently Asked Questions</h2>
-        <h3>Is Instagram Photo Downloader suitable for confidential work?</h3>
-        <p>It can be suitable for many confidential preparation tasks when the operation is completed locally in the browser and your organization allows that workflow. You should still avoid unnecessary sensitive fields, use a trusted device, clear the page afterward, and verify whether any optional lookup or external dependency is involved before using regulated or secret material.</p>
-        <h3>Why should I inspect the output before downloading or copying it?</h3>
-        <p>Inspection is the step that turns a quick utility into a reliable workflow. A file may process successfully while still having the wrong order, dimensions, delimiter, estimate assumption, encoding, or visual quality. Reviewing the preview and status details helps catch those issues before the result reaches a client, upload portal, repository, spreadsheet, or public page.</p>
-        <h3>What should I do if Instagram Photo Downloader does not accept my input?</h3>
-        <p>Start by checking the file type, size, formatting, and any visible error message. Try a smaller sample, remove unsupported characters or corrupted content, and confirm that your browser is current. If the source file uses a proprietary format, encryption, unusual encoding, or a damaged structure, a dedicated desktop application may be needed before this browser tool can help.</p>
+        <h3>Why doesn't this download the image automatically?</h3>
+        <p>Instagram doesn't offer a public API for this, and unofficial workarounds are unreliable and often stop working when Instagram changes its site. This tool gives you a manual method that keeps working because it's just guiding you through steps you do yourself.</p>
+        <h3>Can I download private account content?</h3>
+        <p>No — this only works for public posts and profiles, consistent with what's actually visible without logging in.</p>
+        <h3>Am I allowed to use images I save this way?</h3>
+        <p>Saving a public image for personal viewing is generally fine, but reposting or otherwise using someone else's photo needs their permission — Instagram content is protected by copyright like any other photo.</p>
         <h2>Related Tools</h2>
         <ul><li><a href="https://mc-novatools.com/tools/social/app-icon-generator/">App Icon Generator — Generate app icons in all required sizes for iOS and Android.</a></li><li><a href="https://mc-novatools.com/tools/social/favicon-generator/">Favicon Generator — Generate complete favicon sets in all sizes from your images.</a></li></ul>
       </article>
-      <aside class="author-bylines" aria-label="Author and review information for Instagram Photo Downloader">
-        <p><span class="author-name">Metehan ÇETİN, LPC</span>, <span class="author-title">Founder and editor</span></p>
-        <p>The author profile for Instagram Photo Downloader is intended for a practitioner who understands social media production, campaign QA, asset sizing, and privacy-aware publishing. This byline describes hands-on experience reviewing inputs, outputs, edge cases, accessibility needs, privacy expectations, and user education for browser-based utilities. It is maintained as a verified public review note for MC NovaTools tool pages.</p>
-        <p><a href="https://mc-novatools.com/about-us.html" rel="author">Author and review profile</a></p>
-        <p>Last updated: <time class="last-updated" datetime="2026-06-03">2026-06-03</time></p>
-        <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Metehan ÇETİN, LPC","jobTitle":"Founder and editor","description":"The author profile for Instagram Photo Downloader is intended for a practitioner who understands social media production, campaign QA, asset sizing, and privacy-aware publishing. This byline describes hands-on experience reviewing inputs, outputs, edge cases, accessibility needs, privacy expectations, and user education for browser-based utilities. It is maintained as a verified public review note for MC NovaTools tool pages.","sameAs":"https://mc-novatools.com/about-us.html"}</script>
-      </aside>
 <section class="seo-section" aria-label="About this tool">
         <h2 data-i18n="tools.social.instagram-photo.text.017">About Instagram Photo Downloader</h2>
         <p data-i18n="tools.social.instagram-photo.text.018">Instagram Photo Downloader helps you access Instagram content for legitimate personal use. This tool works by analyzing Instagram post URLs and providing guidance on how to save images that are already publicly accessible. Please note that due to Instagram's API restrictions and privacy protections, direct downloading may require additional steps.</p>
@@ -262,7 +244,7 @@
         </ol>
 
         <h3 data-i18n="tools.social.instagram-photo.text.025">Important Notes</h3>
-        <ul style="color: #A1A1AA; line-height: 1.8; font-size: 0.9375rem; padding-left: 1.25rem;">
+        <ul style="color: var(--text-secondary); line-height: 1.8; font-size: 0.9375rem; padding-left: 1.25rem;">
           <li data-i18n="tools.social.instagram-photo.text.026">This tool only works with publicly accessible posts.</li>
           <li data-i18n="tools.social.instagram-photo.text.027">Private account content cannot be accessed.</li>
           <li data-i18n="tools.social.instagram-photo.text.028">Always respect copyright and creator rights.</li>
@@ -300,7 +282,7 @@
         <section class="trust-help novatools-tool-reading-path" aria-labelledby="toolReadingPathTitle">
           <h2 id="toolReadingPathTitle">Recommended next reading</h2>
           <p>Use these practical guides to understand when this tool is the right choice, what to check before exporting, and which workflow usually comes next.</p>
-          <div class="related-tools-grid"><a class="related-tool-link" href="https://mc-novatools.com/blog/articles/resize-images-for-social-platforms.html">Social image resize guide</a><a class="related-tool-link" href="https://mc-novatools.com/blog/articles/public-link-review-workflow.html">Public link review</a></div>
+          <div class="related-tools-grid"><a class="related-tool-link" href="/blog/articles/lazy-loading-images-implementation-guide-2026.html">Lazy Loading Images: Implementation Guide for 2026</a><a class="related-tool-link" href="/blog/articles/lazy-loading-images-implementation-guide-2026.html">Lazy Loading Images: Implementation Guide for 2026</a></div>
         </section>
     </main>
 
@@ -310,7 +292,7 @@
     </footer>
     <style>
       .tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }
-      .tool-footer a { color: #00D9FF; text-decoration: none; }
+      .tool-footer a { color: var(--accent-text); text-decoration: none; }
     </style>
   </div>
 
@@ -349,8 +331,8 @@
       }
 
       resultContent.innerHTML = `
-        <p style="color: #A1A1AA; margin-bottom: 1rem;">Post ID detected: <strong style="color: #00D9FF;">${postId[1]}</strong></p>
-        <p style="color: #A1A1AA; line-height: 1.6;">
+        <p style="color: var(--text-secondary); margin-bottom: 1rem;">Post ID detected: <strong style="color: var(--accent-text);">${postId[1]}</strong></p>
+        <p style="color: var(--text-secondary); line-height: 1.6;">
           Due to Instagram's API restrictions, direct downloading requires browser extensions or manual methods:<br><br>
           <strong>Method 1:</strong> Right-click on the image → "Open image in new tab" → Save from there<br>
           <strong>Method 2:</strong> Use browser's Inspect Element → Find img tag → Copy image URL<br>
@@ -368,10 +350,10 @@
       }
 
       resultContent.innerHTML = `
-        <p style="color: #A1A1AA; margin-bottom: 1rem;">Username: <strong style="color: #00D9FF;">@${username}</strong></p>
-        <p style="color: #A1A1AA; line-height: 1.6;">
+        <p style="color: var(--text-secondary); margin-bottom: 1rem;">Username: <strong style="color: var(--accent-text);">@${username}</strong></p>
+        <p style="color: var(--text-secondary); line-height: 1.6;">
           To view this profile's public picture in full resolution:<br><br>
-          1. Visit: <a href="https://www.instagram.com/${username}/" target="_blank" style="color: #00D9FF;" data-i18n="tools.social.instagram-photo.text.039">instagram.com/${username}</a><br>
+          1. Visit: <a href="https://www.instagram.com/${username}/" target="_blank" style="color: var(--accent-text);" data-i18n="tools.social.instagram-photo.text.039">instagram.com/${username}</a><br>
           2. Right-click on the profile picture<br>
           3. Select "Open image in new tab"<br>
           4. Save the image from the new tab<br><br>

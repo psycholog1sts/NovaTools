@@ -67,62 +67,62 @@
     .tool-wrapper { max-width: 960px; margin: 0 auto; padding: 3rem 1rem 5rem; }
     .tool-hero { text-align: center; margin-bottom: 2.5rem; }
     .tool-hero-icon { font-size: 3.5rem; line-height: 1; margin-bottom: 1rem; }
-    .tool-hero h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; letter-spacing: -0.02em; color: #FAFAFA; margin-bottom: 0.75rem; }
-    .tool-hero p { color: #A1A1AA; font-size: 1.0625rem; max-width: 560px; margin: 0 auto; }
+    .tool-hero h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; letter-spacing: -0.02em; color: var(--text-primary); margin-bottom: 0.75rem; }
+    .tool-hero p { color: var(--text-secondary); font-size: 1.0625rem; max-width: 560px; margin: 0 auto; }
     .card { background: rgba(15,15,20,0.7); border: 1px solid rgba(0,217,255,0.15); border-radius: 14px; padding: 1.75rem; backdrop-filter: blur(12px); }
     
     .date-input-row { display: flex; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
     .date-input-wrapper { flex: 1; min-width: 200px; }
-    .input-label { font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #71717A; margin-bottom: 0.5rem; display: block; }
-    .date-input { width: 100%; height: 48px; padding: 0 1rem; background: #0F0F12; border: 1px solid rgba(0,217,255,0.12); border-radius: 8px; color: #FAFAFA; font-size: 1rem; transition: border-color 0.2s, box-shadow 0.2s; outline: none; box-sizing: border-box; }
+    .input-label { font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 0.5rem; display: block; }
+    .date-input { width: 100%; height: 48px; padding: 0 1rem; background: var(--field-bg); border: 1px solid var(--field-border); border-radius: 8px; color: var(--text-primary); font-size: 1rem; transition: border-color 0.2s, box-shadow 0.2s; outline: none; box-sizing: border-box; }
     .date-input:focus { border-color: rgba(0,217,255,0.45); box-shadow: 0 0 0 3px rgba(0,217,255,0.08); }
     
     .btn-bar { display: flex; flex-wrap: wrap; gap: 0.625rem; margin-bottom: 1.5rem; }
     .btn { display: inline-flex; align-items: center; gap: 0.4rem; height: 44px; padding: 0 1.25rem; border: none; border-radius: 8px; font-size: 0.9375rem; font-weight: 600; cursor: pointer; transition: background 0.18s, transform 0.12s, opacity 0.18s; outline: none; user-select: none; }
     .btn:active { transform: scale(0.97); }
-    .btn-primary { background: linear-gradient(135deg, #00D9FF, #0099CC); color: #0A0A0C; }
+    .btn-primary { background: linear-gradient(135deg, var(--accent-text), #0099CC); color: #0A0A0C; }
     .btn-primary:hover { background: linear-gradient(135deg, #1FE2FF, #00B8EE); }
-    .btn-secondary { background: rgba(0,217,255,0.1); border: 1px solid rgba(0,217,255,0.25); color: #00D9FF; }
+    .btn-secondary { background: rgba(0,217,255,0.1); border: 1px solid rgba(0,217,255,0.25); color: var(--accent-text); }
     .btn-secondary:hover { background: rgba(0,217,255,0.18); }
     
     .age-result { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
     .age-box { background: linear-gradient(135deg, rgba(0,217,255,0.1), rgba(0,217,255,0.05)); border: 1px solid rgba(0,217,255,0.2); border-radius: 12px; padding: 1.5rem; text-align: center; }
-    .age-number { font-size: 2.5rem; font-weight: 700; color: #00D9FF; font-family: 'JetBrains Mono', monospace; }
-    .age-label { font-size: 0.875rem; color: #A1A1AA; margin-top: 0.25rem; }
+    .age-number { font-size: 2.5rem; font-weight: 700; color: var(--accent-text); font-family: 'JetBrains Mono', monospace; }
+    .age-label { font-size: 0.875rem; color: var(--text-secondary); margin-top: 0.25rem; }
     
     .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
     .info-box { background: rgba(0,217,255,0.05); border: 1px solid rgba(0,217,255,0.1); border-radius: 10px; padding: 1rem; }
-    .info-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #71717A; margin-bottom: 0.25rem; }
-    .info-value { font-size: 1.125rem; font-weight: 600; color: #FAFAFA; }
+    .info-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 0.25rem; }
+    .info-value { font-size: 1.125rem; font-weight: 600; color: var(--text-primary); }
     
     .countdown-box { background: linear-gradient(135deg, rgba(255,193,7,0.1), rgba(255,193,7,0.05)); border: 1px solid rgba(255,193,7,0.2); border-radius: 12px; padding: 1.25rem; text-align: center; margin-bottom: 1.5rem; }
-    .countdown-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #FFC107; margin-bottom: 0.5rem; }
-    .countdown-value { font-size: 1.5rem; font-weight: 700; color: #FAFAFA; }
+    .countdown-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-warning-text); margin-bottom: 0.5rem; }
+    .countdown-value { font-size: 1.5rem; font-weight: 700; color: var(--text-primary); }
     
-    .copy-feedback { font-size: 0.8rem; color: #00FF88; opacity: 0; transition: opacity 0.3s; pointer-events: none; margin-left: auto; align-self: center; }
+    .copy-feedback { font-size: 0.8rem; color: var(--color-success-text); opacity: 0; transition: opacity 0.3s; pointer-events: none; margin-left: auto; align-self: center; }
     .copy-feedback.show { opacity: 1; }
     
-    .legal-note { margin-top: 1.5rem; padding: 1rem 1.25rem; background: rgba(255,193,7,0.05); border: 1px solid rgba(255,193,7,0.15); border-radius: 10px; font-size: 0.8125rem; color: #A1A1AA; line-height: 1.6; }
-    .legal-note strong { color: #FFC107; }
+    .legal-note { margin-top: 1.5rem; padding: 1rem 1.25rem; background: rgba(255,193,7,0.05); border: 1px solid rgba(255,193,7,0.15); border-radius: 10px; font-size: 0.8125rem; color: var(--color-text-secondary); line-height: 1.6; }
+    .legal-note strong { color: var(--color-warning-text); }
     
     .fun-facts { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(0,217,255,0.1); }
-    .fun-facts-title { font-size: 0.875rem; font-weight: 600; color: #A1A1AA; margin-bottom: 0.75rem; }
+    .fun-facts-title { font-size: 0.875rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 0.75rem; }
     .fun-facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.5rem; }
-    .fun-fact-item { background: rgba(0,217,255,0.05); border: 1px solid rgba(0,217,255,0.1); border-radius: 8px; padding: 0.75rem; font-size: 0.8125rem; color: #A1A1AA; text-align: center; }
-    .fun-fact-value { display: block; color: #00D9FF; font-weight: 600; font-size: 1rem; margin-top: 0.25rem; }
+    .fun-fact-item { background: rgba(0,217,255,0.05); border: 1px solid rgba(0,217,255,0.1); border-radius: 8px; padding: 0.75rem; font-size: 0.8125rem; color: var(--text-secondary); text-align: center; }
+    .fun-fact-value { display: block; color: var(--accent-text); font-weight: 600; font-size: 1rem; margin-top: 0.25rem; }
     
     .seo-section { max-width: 960px; margin: 3.5rem auto 0; padding: 0 1rem; }
-    .seo-section h2 { font-size: 1.375rem; font-weight: 700; color: #FAFAFA; margin-bottom: 0.75rem; }
-    .seo-section h3 { font-size: 1.125rem; font-weight: 600; color: #FAFAFA; margin: 2rem 0 0.75rem; }
-    .seo-section p, .seo-section li { color: #A1A1AA; line-height: 1.8; font-size: 0.9375rem; }
+    .seo-section h2 { font-size: 1.375rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.75rem; }
+    .seo-section h3 { font-size: 1.125rem; font-weight: 600; color: var(--text-primary); margin: 2rem 0 0.75rem; }
+    .seo-section p, .seo-section li { color: var(--text-secondary); line-height: 1.8; font-size: 0.9375rem; }
     .seo-section ol { padding-left: 1.25rem; }
     .seo-section ol li { margin-bottom: 0.4rem; }
     .faq-item { border: 1px solid rgba(0,217,255,0.1); border-radius: 10px; padding: 1rem 1.125rem; margin-bottom: 0.875rem; background: rgba(15,15,20,0.5); }
-    .faq-item summary { font-weight: 600; color: #FAFAFA; cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .faq-item summary { font-weight: 600; color: var(--text-primary); cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
     .faq-item summary::-webkit-details-marker { display: none; }
-    .faq-item summary::after { content: '+'; color: #00D9FF; font-size: 1.25rem; flex-shrink: 0; transition: transform 0.2s; }
+    .faq-item summary::after { content: '+'; color: var(--accent-text); font-size: 1.25rem; flex-shrink: 0; transition: transform 0.2s; }
     .faq-item[open] summary::after { content: '\2212'; }
-    .faq-item p { margin-top: 0.625rem; color: #A1A1AA; line-height: 1.7; }
+    .faq-item p { margin-top: 0.625rem; color: var(--text-secondary); line-height: 1.7; }
     
     
     @media (max-width: 768px) {
@@ -185,8 +185,8 @@
 
           <div class="date-input-row">
             <div class="date-input-wrapper">
-              <label class="input-label" data-i18n="tools.converters.age-calculator.text.013">Enter Your Birthdate</label>
-              <input type="date" class="date-input" id="birthdateInput" max="">
+              <label class="input-label" for="birthdateInput" data-i18n="tools.converters.age-calculator.text.013">Enter Your Birthdate</label>
+              <input type="date" class="date-input" id="birthdateInput" max="" aria-describedby="ageStatus">
             </div>
           </div>
 
@@ -201,6 +201,8 @@
             </button>
             <span class="copy-feedback" id="copyFeedback" aria-live="polite" data-i18n="tools.converters.age-calculator.text.014">Copied!</span>
           </div>
+
+          <p class="tool-status" id="ageStatus" role="status" aria-live="polite"></p>
 
           <div class="age-result" id="ageResult" style="display: none;">
             <div class="age-box">
@@ -242,11 +244,12 @@
           </div>
 
           <div class="fun-facts" id="funFacts" style="display: none;">
-            <div class="fun-facts-title">Fun Facts About Your Life</div>
+            <div class="fun-facts-title">Rough estimates from fixed averages</div>
+            <p class="fun-facts-note">Only "Weeks lived" is calculated from your dates. The other three multiply your age in days by a fixed textbook average, not by anything measured about you: 80 heartbeats per minute, 16 breaths per minute, and 8 hours of sleep per day.</p>
             <div class="fun-facts-grid">
-              <div class="fun-fact-item">Heartbeats<div class="fun-fact-value" id="heartbeats">-</div></div>
-              <div class="fun-fact-item">Breaths Taken<div class="fun-fact-value" id="breaths">-</div></div>
-              <div class="fun-fact-item">Hours Slept<div class="fun-fact-value" id="sleptHours">-</div></div>
+              <div class="fun-fact-item">Heartbeats at 80/min<div class="fun-fact-value" id="heartbeats">-</div></div>
+              <div class="fun-fact-item">Breaths at 16/min<div class="fun-fact-value" id="breaths">-</div></div>
+              <div class="fun-fact-item">Sleep at 8 h/day<div class="fun-fact-value" id="sleptHours">-</div></div>
               <div class="fun-fact-item">Weeks Lived<div class="fun-fact-value" id="weeksLived">-</div></div>
             </div>
           </div>
@@ -259,46 +262,34 @@
 
       <article class="tool-description" aria-labelledby="toolDescriptionTitle-age-calculator">
         <h2 id="toolDescriptionTitle-age-calculator">What Age Calculator Does and Why It Matters</h2>
-        <p>Age Calculator helps people compare assumptions and produce a transparent estimate without turning a simple task into a full software project. In real work, age calculator tasks often appear right before a deadline: a document has to be sent, a data file needs to be checked, an image must be prepared for publishing, a calculation needs a second scenario, or a developer has to verify a pasted value before it enters a larger workflow. This page focuses on that practical moment. The interface gives you a direct place to provide the input, review settings, run the operation, and keep the result close enough to inspect before you use it elsewhere. That matters because small preparation mistakes can create oversized attachments, unreadable exports, broken imports, misleading estimates, or accidental exposure of details that should have stayed private.</p>
-        <p>The main value of Age Calculator is control. Instead of sending material through an unfamiliar workflow, you can use the browser to perform the job, observe the state of the input, and decide whether the output is ready. Calculate exact age from birthdate. Years, months, days, and next birthday countdown. The tool is especially useful for teams that need quick utility work between larger applications: support staff preparing evidence, creators publishing assets, finance users comparing planning assumptions, students organizing files, and developers validating snippets before sharing them in tickets or pull requests. It is intentionally focused on one job, so the page can explain what is supported, what should be checked manually, and when a specialist application or professional review is more appropriate.</p>
-        <p>Experience signals on this page are written around common failure points rather than generic marketing. For Age Calculator, the important questions are whether the source material is in a supported format, whether the browser has enough memory to complete the action, whether the result keeps the information you expect, and whether any limitation changes how you should use the file or value. Reading these notes before you click the main action can save time because it frames the tool as part of a workflow: prepare the input, run the operation, inspect the output, then keep or discard the result based on evidence.</p>
+        <p>Age Calculator takes a birthdate and compares it with today's date on your device, then works out the exact difference between them in years, months, and days, rather than the rough "years only" figure most people do in their head. The calculation runs in your browser using the actual calendar — it accounts for how many days are in each month between the two dates and for leap years — so it stays correct for people born on February 29, near month boundaries, or a long time ago, cases where a quick mental subtraction usually gets the months or days wrong.</p>
+        <p>The exact figure matters in situations where "years only" isn't precise enough: confirming someone meets an age threshold for a form, benefit, or eligibility rule that's expressed in years and months; working out how much time is actually left until a birthday, anniversary, or age-based deadline; or just settling the everyday question of exactly how old someone is down to the day. The calculation runs locally in your browser when you press Calculate Age, and the birthdate never leaves your device.</p>
         <h2>How to Use Age Calculator</h2>
         <ol>
-          <li>Open Age Calculator and read the short instructions near the interface so you know which input type the page expects.</li>
-          <li>Upload the supported file, paste the text, or enter the numeric values requested by the form; avoid adding unrelated private information.</li>
-          <li>Review every visible option, such as output format, range, quality, delimiter, units, date, rate, or mode, because these settings shape the final result.</li>
-          <li>Run the tool with the primary action button and wait for the status message, preview, validation result, calculation, or progress indicator to finish.</li>
-          <li>Inspect the displayed result carefully, including file name, page order, dimensions, row count, formatting, estimate assumptions, warnings, and any visible errors.</li>
-          <li>Download the generated file, copy the result, or record the calculation only after the preview matches your intended use case.</li>
-          <li>Clear the page or close the browser tab when finished, especially on a shared device or when the input included confidential material.</li>
+          <li>Open the date field and pick the birthdate (or starting date) you want to measure from.</li>
+          <li>The result — years, months, and days — updates as soon as a valid date is selected.</li>
+          <li>Check the extra details shown alongside the main figure: day of the week born and the countdown to the next birthday.</li>
+          <li>Pick a different date to recalculate; there's no need to reload the page or clear anything between calculations.</li>
         </ol>
-        <h2>Supported Formats and Limitations</h2>
-        <h3>Supported input formats</h3>
-        <ul><li>Numbers, dates, times, units, currencies, age values, or measurement assumptions entered by the user</li><li>Optional source and target units, locales, bases, or date settings</li><li>Reference values copied from forms, spreadsheets, or planning documents</li></ul>
-        <h3>Supported output formats</h3>
-        <ul><li>Converted values, calculated results, or readable summaries displayed immediately</li><li>Copy-ready numbers and labels for planning notes or forms</li><li>Context notes that clarify assumptions and rounding behavior</li></ul>
-        <h3>Known limitations and edge cases</h3>
-        <ul><li>Reference rates, daylight saving rules, and local standards can change and should be verified for critical use.</li><li>Rounding may differ from specialized calculators, institutions, or official forms.</li><li>The result is a planning aid, not a substitute for regulated professional advice where applicable.</li></ul>
-        <p>For best results, test Age Calculator with a small sample before committing a large batch or an important deadline item. Browser utilities are convenient because they reduce setup and keep the workflow close to the user, but they still depend on device memory, browser permissions, source-file quality, and the exact assumptions entered into the interface. If the output will be used for legal, medical, financial, security, accessibility, or production engineering decisions, treat the result as a preparation aid and verify it with the appropriate system of record.</p>
+        <h2>How the Calculation Works</h2>
+        <h3>What it accounts for</h3>
+        <ul><li>Calendar-accurate month lengths (28, 29, 30, or 31 days), not a flat 30-day assumption</li><li>Leap years, including birthdates of February 29</li><li>Past dates only: the birthdate field will not accept a date after today on your device</li></ul>
+        <h3>What it assumes</h3>
+        <ul><li>Both dates use your device's local calendar, not a specific timezone or historical calendar system</li><li>The comparison is calendar-based (Gregorian), which covers virtually all everyday use</li></ul>
+        <h3>When to double-check elsewhere</h3>
+        <ul><li>Legal age thresholds that use a specific jurisdiction's counting rule (some count the day before a birthday as the day someone "turns" an age)</li><li>Historical dates recorded in a non-Gregorian calendar</li></ul>
         <h2>Privacy and Security</h2>
-        <p>Age Calculator is designed around a privacy-first browser workflow. Where possible, files and inputs are processed client-side in your browser, which means the work happens on your device instead of being permanently stored on NovaTools servers. Uploaded data is not stored on servers permanently by this page, and the safest habit is still to avoid uploading or pasting secrets that are not required for the task. Some features may depend on browser APIs, optional public lookups, or third-party libraries loaded by the page, so you should review the interface notes and avoid using confidential production data unless the tool behavior fits your policy.</p>
+        <p>The date you enter is used only to compute the result shown on the page — it's processed in your browser and isn't uploaded, logged, or stored anywhere. You can close the tab afterward with nothing left behind.</p>
         <h2>Frequently Asked Questions</h2>
-        <h3>Is Age Calculator suitable for confidential work?</h3>
-        <p>It can be suitable for many confidential preparation tasks when the operation is completed locally in the browser and your organization allows that workflow. You should still avoid unnecessary sensitive fields, use a trusted device, clear the page afterward, and verify whether any optional lookup or external dependency is involved before using regulated or secret material.</p>
-        <h3>Why should I inspect the output before downloading or copying it?</h3>
-        <p>Inspection is the step that turns a quick utility into a reliable workflow. A file may process successfully while still having the wrong order, dimensions, delimiter, estimate assumption, encoding, or visual quality. Reviewing the preview and status details helps catch those issues before the result reaches a client, upload portal, repository, spreadsheet, or public page.</p>
-        <h3>What should I do if Age Calculator does not accept my input?</h3>
-        <p>Start by checking the file type, size, formatting, and any visible error message. Try a smaller sample, remove unsupported characters or corrupted content, and confirm that your browser is current. If the source file uses a proprietary format, encryption, unusual encoding, or a damaged structure, a dedicated desktop application may be needed before this browser tool can help.</p>
+        <h3>Why does the month/day count differ slightly from what I calculated by hand?</h3>
+        <p>Manual "years and months" subtraction usually assumes every month is 30 days, which drifts by a few days depending on which months fall in the range. This tool counts actual calendar days between the two real dates, so it's more accurate, not less — if the numbers differ, this is the correct one.</p>
+        <h3>Does it handle someone born on February 29?</h3>
+        <p>Yes. Leap-year birthdates are calculated the same way as any other date; the age in years still increases every year even though the calendar date only recurs every four years.</p>
+        <h3>Can I use this for a legal or eligibility age check?</h3>
+        <p>It gives you the correct calendar age, which is the right starting point, but some legal rules count the qualifying age from the day before the birthday rather than the birthday itself. For anything where that distinction has real consequences, confirm the exact counting rule that applies in your jurisdiction.</p>
         <h2>Related Tools</h2>
         <ul><li><a href="https://mc-novatools.com/tools/converters/bmi-calculator/">BMI Calculator — Calculate Body Mass Index and health category.</a></li><li><a href="https://mc-novatools.com/tools/converters/currency-converter/">Currency Converter — Convert between currencies with exchange rates.</a></li></ul>
       </article>
-      <aside class="author-bylines" aria-label="Author and review information for Age Calculator">
-        <p><span class="author-name">Metehan ÇETİN, LPC</span>, <span class="author-title">Founder and editor</span></p>
-        <p>The author profile for Age Calculator is intended for a practitioner who understands measurement conversion, practical calculators, time planning, and numerical review. This byline describes hands-on experience reviewing inputs, outputs, edge cases, accessibility needs, privacy expectations, and user education for browser-based utilities. It is maintained as a verified public review note for MC NovaTools tool pages.</p>
-        <p><a href="https://mc-novatools.com/about-us.html" rel="author">Author and review profile</a></p>
-        <p>Last updated: <time class="last-updated" datetime="2026-06-03">2026-06-03</time></p>
-        <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Metehan ÇETİN, LPC","jobTitle":"Founder and editor","description":"The author profile for Age Calculator is intended for a practitioner who understands measurement conversion, practical calculators, time planning, and numerical review. This byline describes hands-on experience reviewing inputs, outputs, edge cases, accessibility needs, privacy expectations, and user education for browser-based utilities. It is maintained as a verified public review note for MC NovaTools tool pages.","sameAs":"https://mc-novatools.com/about-us.html"}</script>
-      </aside>
 <section class="seo-section" aria-label="About this tool">
         <h2 data-i18n="tools.converters.age-calculator.text.015">About Age Calculator</h2>
         <p data-i18n="tools.converters.age-calculator.text.016">Our free Age Calculator helps you determine your exact age in years, months, and days from your birthdate. It also provides additional information like the day of the week you were born, your zodiac sign, and a countdown to your next birthday.</p>
@@ -318,14 +309,14 @@
         <p><strong>Exact Age:</strong> Your age precisely calculated in years, months, and days.<br>
         <strong>Day of Birth:</strong> The day of the week you were born (Monday, Tuesday, etc.).<br>
         <strong>Zodiac Sign:</strong> Your astrological sign based on your birth date.<br>
-        <strong>Life Statistics:</strong> Fun estimates like approximate heartbeats, breaths taken, and hours slept.<br>
+        <strong>Life Statistics:</strong> Rough figures obtained by multiplying your age in days by a fixed average (80 heartbeats/min, 16 breaths/min, 8 h sleep/day). They are illustrative, not measurements.<br>
         <strong>Next Birthday:</strong> Countdown showing days until your next birthday.</p>
 
         <h3 data-i18n="tools.converters.age-calculator.text.026">Frequently Asked Questions</h3>
 
         <details class="faq-item">
           <summary>How accurate is the age calculation?</summary>
-          <p data-i18n="tools.converters.age-calculator.text.027">The age calculation is mathematically accurate based on the dates provided. It accounts for varying month lengths and leap years.</p>
+          <p data-i18n="tools.converters.age-calculator.text.027">The years/months/days breakdown uses your device's local calendar and accounts for varying month lengths and leap years. Total days are counted as whole calendar days, so daylight-saving changes do not shift the result. Total hours are simply those calendar days multiplied by 24, not elapsed civil hours. For a 29 February birthdate, a non-leap year anniversary is treated as 1 March.</p>
         </details>
 
         <details class="faq-item">
@@ -351,7 +342,7 @@
         <section class="trust-help novatools-tool-reading-path" aria-labelledby="toolReadingPathTitle">
           <h2 id="toolReadingPathTitle">Recommended next reading</h2>
           <p>Use these practical guides to understand when this tool is the right choice, what to check before exporting, and which workflow usually comes next.</p>
-          <div class="related-tools-grid"><a class="related-tool-link" href="https://mc-novatools.com/blog/articles/unit-converter-for-project-planning.html">Converter decision guide</a><a class="related-tool-link" href="https://mc-novatools.com/blog/articles/base64-vs-url-encoding.html">Base64 vs URL encoding</a></div>
+          <div class="related-tools-grid"><a class="related-tool-link" href="/blog/articles/rule-of-72-estimate-investment-doubling-time.html">Rule of 72: How to Estimate Investment Doubling Time</a><a class="related-tool-link" href="/blog/articles/rule-of-72-estimate-investment-doubling-time.html">Rule of 72: How to Estimate Investment Doubling Time</a></div>
         </section>
     </main>
 
@@ -361,7 +352,7 @@
     </footer>
     <style>
       .tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }
-      .tool-footer a { color: #00D9FF; text-decoration: none; }
+      .tool-footer a { color: var(--accent-text); text-decoration: none; }
     </style>
   </div>
 
@@ -384,8 +375,72 @@
     ];
 
     const birthdateInput = document.getElementById('birthdateInput');
-    
-    document.getElementById('birthdateInput').max = new Date().toISOString().split('T')[0];
+    const ageStatus = document.getElementById('ageStatus');
+
+    // Local calendar fields, never UTC: toISOString() would report the UTC day,
+    // which is the previous day for anyone west of Greenwich in the evening.
+    function todayParts() {
+      const now = new Date();
+      return { year: now.getFullYear(), month: now.getMonth() + 1, day: now.getDate() };
+    }
+
+    function pad(n) {
+      return String(n).padStart(2, '0');
+    }
+
+    const today = todayParts();
+    birthdateInput.max = today.year + '-' + pad(today.month) + '-' + pad(today.day);
+
+    function setStatus(message) {
+      ageStatus.textContent = message;
+    }
+
+    // Parse the control's YYYY-MM-DD value as plain calendar integers. Passing the
+    // string to `new Date()` would parse it as UTC midnight and then read it back
+    // with local getters, shifting the calendar day in negative UTC offsets.
+    function parseCalendarDate(value) {
+      const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(value || '').trim());
+      if (!match) return null;
+      const year = Number(match[1]);
+      const month = Number(match[2]);
+      const day = Number(match[3]);
+      if (month < 1 || month > 12) return null;
+      if (day < 1 || day > daysInMonth(year, month)) return null;
+      return { year, month, day };
+    }
+
+    function daysInMonth(year, month) {
+      return new Date(Date.UTC(year, month, 0)).getUTCDate();
+    }
+
+    // Whole-day index. Using UTC removes daylight-saving transitions from the
+    // subtraction, which would otherwise make some spans an hour short or long.
+    function dayIndex(parts) {
+      return Math.floor(Date.UTC(parts.year, parts.month - 1, parts.day) / 86400000);
+    }
+
+    function compareParts(a, b) {
+      if (a.year !== b.year) return a.year - b.year;
+      if (a.month !== b.month) return a.month - b.month;
+      return a.day - b.day;
+    }
+
+    function addMonths(parts, count) {
+      const total = (parts.year * 12) + (parts.month - 1) + count;
+      const year = Math.floor(total / 12);
+      const month = (total % 12) + 1;
+      return { year, month, day: Math.min(parts.day, daysInMonth(year, month)) };
+    }
+
+    // 29 February in a non-leap year is treated as 1 March. This is disclosed on
+    // the page; the alternative (28 February) is equally defensible but must not
+    // be left implicit.
+    function anniversaryInYear(year, birth) {
+      if (birth.month === 2 && birth.day === 29 && daysInMonth(year, 2) === 28) {
+        return { year, month: 3, day: 1 };
+      }
+      return { year, month: birth.month, day: birth.day };
+    }
 
     function getZodiacSign(month, day) {
       for (const sign of zodiacSigns) {
@@ -407,46 +462,51 @@
     }
 
     function calculateAge() {
-      const birthdate = new Date(birthdateInput.value);
-      if (isNaN(birthdate.getTime())) {
-        alert('Please enter a valid birthdate');
+      const birth = parseCalendarDate(birthdateInput.value);
+      if (!birth) {
+        hideResults();
+        setStatus('Enter a birthdate as a real calendar date, for example 1990-02-28.');
         return;
       }
 
-      const today = new Date();
-      let years = today.getFullYear() - birthdate.getFullYear();
-      let months = today.getMonth() - birthdate.getMonth();
-      let days = today.getDate() - birthdate.getDate();
-
-      if (days < 0) {
-        months--;
-        const prevMonth = new Date(today.getFullYear(), today.getMonth(), 0);
-        days += prevMonth.getDate();
-      }
-      if (months < 0) {
-        years--;
-        months += 12;
+      const now = todayParts();
+      if (compareParts(birth, now) > 0) {
+        hideResults();
+        setStatus('That date is in the future. Enter a birthdate on or before today.');
+        return;
       }
 
-      const totalDays = Math.floor((today - birthdate) / (1000 * 60 * 60 * 24));
+      // Count whole months by advancing the birth day-of-month and clamping it to
+      // the length of the target month, then measure the remaining days from that
+      // clamped anniversary. Borrowing from the previous month instead would make
+      // 31 Jan -> 15 Mar read as 1 month 12 days rather than 1 month 15 days.
+      let elapsedMonths = (now.year - birth.year) * 12 + (now.month - birth.month);
+      if (compareParts(addMonths(birth, elapsedMonths), now) > 0) elapsedMonths--;
+      const years = Math.floor(elapsedMonths / 12);
+      const months = elapsedMonths % 12;
+      const days = dayIndex(now) - dayIndex(addMonths(birth, elapsedMonths));
+
+      const totalDays = dayIndex(now) - dayIndex(birth);
       const totalHours = totalDays * 24;
       const totalWeeks = Math.floor(totalDays / 7);
+      const bornWeekday = new Date(Date.UTC(birth.year, birth.month - 1, birth.day)).getUTCDay();
 
       document.getElementById('yearsValue').textContent = years;
       document.getElementById('monthsValue').textContent = months;
       document.getElementById('daysValue').textContent = days;
 
-      document.getElementById('dayBorn').textContent = daysOfWeek[birthdate.getDay()];
-      document.getElementById('zodiacSign').textContent = getZodiacSign(birthdate.getMonth() + 1, birthdate.getDate());
+      document.getElementById('dayBorn').textContent = daysOfWeek[bornWeekday];
+      document.getElementById('zodiacSign').textContent = getZodiacSign(birth.month, birth.day);
       document.getElementById('totalDays').textContent = formatNumber(totalDays);
       document.getElementById('totalHours').textContent = formatNumber(totalHours);
 
-      const nextBirthday = new Date(today.getFullYear(), birthdate.getMonth(), birthdate.getDate());
-      if (nextBirthday < today) {
-        nextBirthday.setFullYear(today.getFullYear() + 1);
+      let nextBirthday = anniversaryInYear(now.year, birth);
+      if (compareParts(nextBirthday, now) < 0) {
+        nextBirthday = anniversaryInYear(now.year + 1, birth);
       }
-      const daysUntilBirthday = Math.ceil((nextBirthday - today) / (1000 * 60 * 60 * 24));
-      document.getElementById('countdownValue').textContent = daysUntilBirthday + ' days';
+      const daysUntilBirthday = dayIndex(nextBirthday) - dayIndex(now);
+      document.getElementById('countdownValue').textContent =
+        daysUntilBirthday === 0 ? 'Today' : daysUntilBirthday + (daysUntilBirthday === 1 ? ' day' : ' days');
 
       document.getElementById('heartbeats').textContent = formatNumber(totalDays * 24 * 60 * 80);
       document.getElementById('breaths').textContent = formatNumber(totalDays * 24 * 60 * 16);
@@ -457,14 +517,24 @@
       document.getElementById('infoGrid').style.display = 'grid';
       document.getElementById('countdownBox').style.display = 'block';
       document.getElementById('funFacts').style.display = 'block';
+
+      setStatus(
+        'Age: ' + years + ' years, ' + months + ' months, ' + days + ' days. ' +
+        totalDays.toLocaleString() + ' calendar days lived.'
+      );
     }
 
-    function clear() {
-      birthdateInput.value = '';
+    function hideResults() {
       document.getElementById('ageResult').style.display = 'none';
       document.getElementById('infoGrid').style.display = 'none';
       document.getElementById('countdownBox').style.display = 'none';
       document.getElementById('funFacts').style.display = 'none';
+    }
+
+    function clear() {
+      birthdateInput.value = '';
+      setStatus('');
+      hideResults();
     }
 
     document.getElementById('btnCalculate').addEventListener('click', calculateAge);

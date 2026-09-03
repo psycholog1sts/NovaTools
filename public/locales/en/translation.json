@@ -17,7 +17,7 @@
     "converters": "Converters"
   },
   "hero": {
-    "title": "All-in-One Tools for Files, Finance & Code",
+    "title": "Everyday tools that show their work",
     "subtitle": "Use MC NovaTools to convert, calculate, create, and streamline practical workflows with a fast, clear, browser-based toolkit.",
     "cta": "Explore Tools",
     "browse": "Browse Categories",
@@ -187,7 +187,7 @@
     "toolsGeneric": "Tools",
     "viewAllCategories": "View All Categories",
     "viewAllDesc": "Browse our tool collection by category.",
-    "searchPlaceholder": "Search tools...",
+    "searchPlaceholder": "Search tools — try “percent”, “epoch”, “compress pdf”",
     "popularLabel": "Popular:",
     "ads": {
       "eyebrow": "Clean layout",
@@ -209,7 +209,7 @@
       "freeTools": "Free Tools",
       "categories": "Categories",
       "private": "Private",
-      "description": "Use MC NovaTools to convert, calculate, create, and streamline practical workflows with a fast, clear, browser-based toolkit."
+      "description": "Converters, calculators and file utilities that run in your browser. Every tool states what it assumes and where it stops."
     },
     "launcher": {
       "title": "Workflow launcher",
@@ -330,9 +330,9 @@
       "localUses": "{count} uses on this device this week"
     },
     "featured": {
-      "eyebrow": "Featured",
-      "title": "Tools You Can Start With Today",
-      "description": "Quick-start cards for PDF, image, developer and finance workflows.",
+      "eyebrow": "All tools",
+      "title": "Every tool that is ready to use",
+      "description": "These are the tools that passed certification. Anything still in development is not listed.",
       "open": "Open →"
     },
     "toolLabels": {
@@ -499,7 +499,6 @@
           "009": "Image Tools",
           "010": "Developer Tools",
           "011": "BMI Calculator",
-          "012": "Calculate your Body Mass Index (BMI) and discover your health category. Get personalized health tips and ideal weight range based on your height.",
           "013": "Metric (kg, cm)",
           "014": "Imperial (lbs, ft/in)",
           "015": "(cm)",
@@ -518,7 +517,6 @@
           "028": "Obese",
           "029": "30.0 and above",
           "030": "About BMI Calculator",
-          "031": "Body Mass Index (BMI) is a simple screening method that uses your height and weight to determine if you're at a healthy weight for your height. Our free BMI Calculator provides instant results along with your health category and personalized health tips.",
           "032": "How to Use",
           "033": "Select your preferred unit system (Metric or Imperial).",
           "034": "Enter your height (in cm or feet/inches).",
@@ -526,7 +524,6 @@
           "036": "Click \"Calculate BMI\" to see your results.",
           "037": "View your BMI value and corresponding health category.",
           "038": "Check the visual BMI scale to see where you fall.",
-          "039": "Review your ideal weight range and health tips.",
           "040": "BMI Categories",
           "041": "Limitations of BMI",
           "042": "BMI does not directly measure body fat and doesn't account for factors like muscle mass, bone density, age, sex, and ethnicity. Athletes may have high BMIs due to muscle mass rather than fat. Always consult healthcare professionals for comprehensive health assessments.",
@@ -538,7 +535,10 @@
           "048": "Yes, BMI for children and teens is interpreted differently and uses age and sex-specific percentiles. This calculator is designed for adults aged 18 and older.",
           "049": "psk.dan.metehancetin@mc-novatools.com",
           "050": "Estimates only — not financial, legal, or tax advice.",
-          "051": "${tip}"
+          "051": "${tip}",
+          "012": "Calculate your Body Mass Index (BMI) from height and weight, see the standard adult category boundaries, and see the weight range that corresponds to BMI 18.5-24.9 at your height.",
+          "031": "Body Mass Index (BMI) is a simple screening method that uses your height and weight to determine if you're at a healthy weight for your height. This calculator works out the ratio in your browser and shows which standard adult category the result falls into. It is a screening ratio only and does not diagnose anything.",
+          "039": "Review the weight range that corresponds to BMI 18.5-24.9 at your height."
         }
       },
       "currency-converter": {
@@ -609,8 +609,8 @@
           "009": "Image Tools",
           "010": "Developer Tools",
           "011": "Number Base Converter",
-          "012": "Convert between Binary, Decimal, Hexadecimal, and Octal number systems instantly. Enter a number in any base and see all conversions simultaneously.",
-          "013": "Enter Number & Select Base",
+          "012": "Convert signed whole integers between Binary, Decimal, Hexadecimal, and Octal without JavaScript Number precision loss. Fractions and two's-complement bit-width interpretation are intentionally not supported.",
+          "013": "Integer value",
           "014": "Binary (Base 2)",
           "015": "Copy",
           "016": "Decimal (Base 10)",
@@ -632,9 +632,9 @@
           "032": "Click \"Clear\" to reset the form.",
           "033": "Number Base Systems",
           "034": "Frequently Asked Questions",
-          "035": "This converter handles numbers up to JavaScript's safe integer limit (9,007,199,254,740,991). For binary and hexadecimal representations, even larger numbers are supported.",
-          "036": "Yes, all conversions are mathematically accurate using standard algorithms for base conversion.",
-          "037": "This tool is designed for integer conversions. For fractional numbers, the decimal part will be truncated.",
+          "035": "This converter uses BigInt for all four supported bases, so integer conversion is not limited by JavaScript's Number safe-integer boundary. Extremely large inputs remain subject to browser memory and performance limits.",
+          "036": "For valid signed whole integers in bases 2, 8, 10, and 16, conversion uses BigInt integer arithmetic and does not round through JavaScript Number.",
+          "037": "No. Fractional input is rejected rather than truncated. The supported contract is signed whole integers only.",
           "038": "Hexadecimal is compact (4 bits per digit vs 1 bit per binary digit) and easy to convert to/from binary, making it ideal for representing memory addresses, colors, and binary data.",
           "039": "No. All conversions happen locally in your browser. No data is transmitted to our servers or stored anywhere.",
           "040": "psk.dan.metehancetin@mc-novatools.com",
@@ -835,7 +835,7 @@
           "009": "Image Tools",
           "010": "Developer Tools",
           "011": "Time Zone Converter",
-          "012": "Convert time between different time zones worldwide. Check current time in any timezone and plan meetings across the globe.",
+          "012": "Convert a local date and time between the listed IANA time zones using your browser's date-specific timezone data. Nonexistent and ambiguous daylight-saving wall times are rejected rather than guessed.",
           "013": "From Time Zone",
           "014": "To Time Zone",
           "015": "Copied!",
@@ -851,11 +851,11 @@
           "025": "Click \"Copy Result\" to copy the converted time to your clipboard.",
           "026": "Supported Time Zones",
           "027": "Frequently Asked Questions",
-          "028": "This converter automatically accounts for daylight saving time (DST) where applicable. The current time display shows whether DST is in effect for each time zone.",
+          "028": "For listed IANA zones, date-specific offsets come from the browser's Intl timezone data. Ambiguous fall-back times and nonexistent spring-gap times are reported instead of silently choosing an offset.",
           "029": "UTC (Coordinated Universal Time) is the primary time standard by which the world regulates clocks and time. It does not observe daylight saving time and serves as a reference point for all other time zones.",
-          "030": "Yes, you can enter any date and time for conversion. The tool will correctly calculate the time difference, including historical or future daylight saving time rules.",
+          "030": "You can enter past or future dates supported by the browser. Results use that browser's installed IANA timezone data; they do not guarantee future legislative changes or timezone history missing from the runtime.",
           "031": "No. All conversions happen locally in your browser. No data is transmitted to our servers or stored anywhere.",
-          "032": "Some time zones use offsets that include minutes (e.g., India is UTC+5:30, Nepal is UTC+5:45). This converter handles all time zone offsets accurately.",
+          "032": "Some time zones use offsets that include minutes (e.g., India is UTC+5:30). The listed zones use their date-specific offsets from the browser timezone database, including supported half-hour offsets.",
           "033": "psk.dan.metehancetin@mc-novatools.com",
           "034": "Estimates only — not financial, legal, or tax advice.",
           "035": "${formatTime(tzTime)}"
@@ -942,7 +942,7 @@
           "015": "Enter Unix Timestamp (seconds)",
           "016": "Local Date & Time",
           "017": "UTC Date & Time",
-          "018": "Relative Time",
+          "018": "Relative Time (approximate)",
           "019": "Select Date & Time",
           "020": "Unix Timestamp (seconds)",
           "021": "Unix Timestamp (milliseconds)",
@@ -6063,7 +6063,7 @@
     "edit": "Edit",
     "close": "Close",
     "open": "Open",
-    "search": "Search",
+    "search": "Search tools",
     "download": "Download",
     "upload": "Upload",
     "copy": "Copy",

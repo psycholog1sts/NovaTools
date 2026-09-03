@@ -61,6 +61,69 @@ ul, ol {
 }
 
 /* ============================================
+   DESIGN TOKENS - STRUCTURE
+   Container widths, the display end of the type scale, tracking and the
+   shorthand font tokens. These were referenced across layout.css and
+   component-library.css without ever being defined, so every rule that used
+   them was dropped at computed-value time: .container had no max-width and
+   the homepage heading fell back to the inherited 16px, smaller than its own
+   subtitle. scripts/lint-design-tokens.mjs fails the build if an undefined
+   token is used again without a fallback.
+   Note: never write HTML tag syntax in this file. critical.css is inlined into
+   every page head, and the structured-data extractors read the document with
+   regular expressions.
+   ============================================ */
+:root {
+  /* Containers — three widths, nothing off-scale. */
+  /* 4px ramp completion */
+  --space-7: 1.75rem;
+
+  --container-sm: 40rem;    /* 640px  — dialogs, single-column forms */
+  --container-md: 48rem;    /* 768px  — prose */
+  --container-lg: 64rem;    /* 1024px — wide prose, category hubs */
+  --container-xl: 75rem;    /* 1200px — the application container */
+
+  /* Display end of the type scale. */
+  --font-size-5xl: clamp(2.5rem, 4.5vw, 3.25rem);
+  --font-size-6xl: clamp(2.75rem, 5.5vw, 4rem);
+
+  /* Tracking is size-dependent: tighter as type gets larger. */
+  --letter-spacing-tighter: -0.03em;
+  --letter-spacing-tight: -0.02em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.05em;
+
+  /* Shorthand font tokens (weight size/line-height family). */
+  --text-base: 400 1rem/1.55 var(--font-sans, Inter, system-ui, sans-serif);
+  --text-sm: 400 0.875rem/1.5 var(--font-sans, Inter, system-ui, sans-serif);
+  --text-lg: 400 1.125rem/1.6 var(--font-sans, Inter, system-ui, sans-serif);
+  --font-h1: 700 var(--font-size-6xl) / 1.06 var(--font-sans, Inter, system-ui, sans-serif);
+
+  /* Alias kept for component-library.css. */
+  --color-error-500: #b91c1c;
+}
+
+
+/* ============================================
+   DESIGN TOKENS - LEGACY ALIASES
+   Names that page-level styles and the blog stylesheets read. They existed in
+   older markup but were never declared, so every rule using one was dropped.
+   Each maps to the role token that already carries its meaning.
+   ============================================ */
+:root {
+  --border: var(--border-default);
+  --surface: var(--bg-elevated);
+  --surface-elevated: var(--bg-elevated);
+  --text: var(--text-primary);
+  --muted: var(--text-tertiary);
+  --glow: var(--accent-glow);
+  --container: var(--container-xl);
+  --font-h4: 600 var(--font-size-xl) / 1.3 var(--font-sans, Inter, system-ui, sans-serif);
+  --text-xs: 400 var(--font-size-xs) / 1.5 var(--font-sans, Inter, system-ui, sans-serif);
+  --color-success-600: var(--color-success-text);
+}
+
+/* ============================================
    DESIGN TOKENS - COLORS
    ============================================ */
 :root {
@@ -70,6 +133,8 @@ ul, ol {
   --bg-tertiary: #10172a;
   --bg-elevated: #131c31;
   --bg-hover: #18233d;
+  --field-bg: #0f0f12;
+  --field-border: rgba(0, 217, 255, 0.28);
 
   /* Surfaces */
   --surface-default: rgba(255, 255, 255, 0.04);
@@ -78,6 +143,18 @@ ul, ol {
 
   /* Text */
   --text-primary: #f8fafc;
+  --accent-text: #67e8f9;
+  --color-action: #3b82f6;
+  --color-action-hover: #60a5fa;
+  --color-action-foreground: #06121f;
+  --color-primary-100: #164e63;
+  --color-primary-300: #67e8f9;
+  --color-primary-700: #a5f3fc;
+  --success-subtle: rgb(74 222 128 / 0.14);
+  --warning-subtle: rgb(252 211 77 / 0.14);
+  --color-success-text: #4ade80;
+  --color-error-text: #fca5a5;
+  --color-warning-text: #fcd34d;
   --text-secondary: #cbd5e1;
   --text-tertiary: #94a3b8;
   --text-muted: #64748b;
@@ -123,7 +200,7 @@ ul, ol {
   /* Ad frame */
   --ad-bg: rgba(255, 255, 255, 0.025);
   --ad-border: rgba(255, 255, 255, 0.08);
-  --ad-label-color: #64748b;
+  --ad-label-color: #526070;
 
   /* Header */
   --header-bg: rgba(6, 7, 11, 0.82);
@@ -143,6 +220,8 @@ ul, ol {
   --bg-tertiary: #f1f5f9;
   --bg-elevated: #ffffff;
   --bg-hover: #e2e8f0;
+  --field-bg: #ffffff;
+  --field-border: #94a3b8;
 
   --surface-default: rgba(15, 23, 42, 0.03);
   --surface-hover: rgba(15, 23, 42, 0.06);
@@ -150,8 +229,20 @@ ul, ol {
 
   --text-primary: #0f172a;
   --text-secondary: #334155;
-  --text-tertiary: #64748b;
-  --text-muted: #94a3b8;
+  --text-tertiary: #526070;
+  --accent-text: #1d4ed8;
+  --color-action: #1d4ed8;
+  --color-action-hover: #1e40af;
+  --color-action-foreground: #ffffff;
+  --color-primary-100: #ecfeff;
+  --color-primary-300: #0e7490;
+  --color-primary-700: #155e75;
+  --success-subtle: rgb(20 108 52 / 0.10);
+  --warning-subtle: rgb(146 64 14 / 0.10);
+  --color-success-text: #146c34;
+  --color-error-text: #b91c1c;
+  --color-warning-text: #92400e;
+  --text-muted: #5b6675;
 
   --accent-primary: #0891b2;
   --accent-hover: #06b6d4;
@@ -198,6 +289,8 @@ ul, ol {
     --bg-tertiary: #f1f5f9;
     --bg-elevated: #ffffff;
     --bg-hover: #e2e8f0;
+    --field-bg: #ffffff;
+    --field-border: #94a3b8;
 
     --surface-default: rgba(15, 23, 42, 0.03);
     --surface-hover: rgba(15, 23, 42, 0.06);
@@ -205,8 +298,20 @@ ul, ol {
 
     --text-primary: #0f172a;
     --text-secondary: #334155;
-    --text-tertiary: #64748b;
-    --text-muted: #94a3b8;
+    --text-tertiary: #526070;
+    --text-muted: #5b6675;
+    --accent-text: #1d4ed8;
+  --color-action: #1d4ed8;
+  --color-action-hover: #1e40af;
+  --color-action-foreground: #ffffff;
+  --color-primary-100: #ecfeff;
+  --color-primary-300: #0e7490;
+  --color-primary-700: #155e75;
+  --success-subtle: rgb(20 108 52 / 0.10);
+  --warning-subtle: rgb(146 64 14 / 0.10);
+    --color-success-text: #146c34;
+    --color-error-text: #b91c1c;
+    --color-warning-text: #92400e;
 
     --accent-primary: #0891b2;
     --accent-hover: #06b6d4;
@@ -473,14 +578,23 @@ ul, ol {
   position: absolute;
   bottom: -4px;
   left: 0;
-  width: 0;
+  width: 100%;
   height: 2px;
   background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
-  transition: width 0.2s ease;
+  /* scaleX rather than width: the underline is composited instead of relaying
+     out the nav on every hover. */
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.2s ease;
 }
 
-.nav-link:hover::after {
-  width: 100%;
+.nav-link:hover::after,
+.nav-link:focus-visible::after {
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-link::after { transition: none; }
 }
 
 /* Privacy Badge */
@@ -2025,7 +2139,23 @@ ins.adsbygoogle:not([data-ad-format='leaderboard']):not([data-ad-format='sticky'
    PUBLIC PRODUCT POLISH LAYER - Premium surfaces
    Shared by production home, category, tool, blog, and public pages.
    ============================================ */
+/* These surfaces were defined only in dark values but applied with !important to
+   the home, category, tool, blog and public pages, so on the light default every
+   panel was a dark navy block under dark text - the PDF Compressor hero was
+   unreadable. Each surface now has a value per theme. */
 :root {
+  --surface-panel: linear-gradient(180deg, #ffffff, #ffffff);
+  --surface-panel-soft: linear-gradient(180deg, #ffffff, #f8fafc);
+  --surface-tool: linear-gradient(180deg, #ffffff, #f8fafc);
+  --surface-result: linear-gradient(180deg, rgba(16, 185, 129, 0.10), #ffffff);
+  --surface-warning: linear-gradient(180deg, rgba(245, 158, 11, 0.14), #ffffff);
+  --focus-ring: 0 0 0 4px rgba(29, 78, 216, 0.28);
+  --premium-outline: 1px solid #d3dbe5;
+  --page-canvas: linear-gradient(180deg, #f8fafc 0%, #eef2f8 46%, #f8fafc 100%);
+  --page-grid-line: rgba(15, 23, 42, 0.035);
+}
+
+:root[data-theme="dark"] {
   --surface-panel: linear-gradient(180deg, rgba(18, 27, 46, 0.88), rgba(8, 12, 22, 0.96));
   --surface-panel-soft: linear-gradient(180deg, rgba(15, 23, 42, 0.74), rgba(7, 10, 18, 0.9));
   --surface-tool: linear-gradient(180deg, rgba(10, 18, 32, 0.92), rgba(6, 9, 16, 0.98));
@@ -2033,15 +2163,17 @@ ins.adsbygoogle:not([data-ad-format='leaderboard']):not([data-ad-format='sticky'
   --surface-warning: linear-gradient(180deg, rgba(245, 158, 11, 0.12), rgba(8, 13, 24, 0.92));
   --focus-ring: 0 0 0 4px rgba(34, 211, 238, 0.22);
   --premium-outline: 1px solid rgba(148, 163, 184, 0.16);
+  --page-canvas:
+    radial-gradient(circle at 18% 0%, rgba(34, 211, 238, 0.10), transparent 30rem),
+    radial-gradient(circle at 88% 10%, rgba(139, 92, 246, 0.12), transparent 32rem),
+    radial-gradient(circle at 50% 100%, rgba(239, 68, 68, 0.055), transparent 34rem),
+    linear-gradient(180deg, #05060a 0%, #07101c 46%, #05070c 100%);
+  --page-grid-line: rgba(255, 255, 255, 0.028);
 }
 
 body {
   color: var(--text-primary) !important;
-  background:
-    radial-gradient(circle at 18% 0%, rgba(34, 211, 238, 0.10), transparent 30rem),
-    radial-gradient(circle at 88% 10%, rgba(139, 92, 246, 0.12), transparent 32rem),
-    radial-gradient(circle at 50% 100%, rgba(239, 68, 68, 0.055), transparent 34rem),
-    linear-gradient(180deg, #05060a 0%, #07101c 46%, #05070c 100%) !important;
+  background: var(--page-canvas) !important;
 }
 
 body::before {
@@ -2051,8 +2183,8 @@ body::before {
   pointer-events: none;
   z-index: -2;
   background-image:
-    linear-gradient(rgba(255,255,255,0.028) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+    linear-gradient(var(--page-grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--page-grid-line) 1px, transparent 1px);
   background-size: 72px 72px;
   mask-image: linear-gradient(180deg, rgba(0,0,0,0.86), transparent 78%);
 }
@@ -2119,10 +2251,13 @@ button:disabled,
 textarea,
 select,
 input:not([type="checkbox"]):not([type="radio"]):not([type="file"]) {
-  background: rgba(8, 13, 24, 0.82) !important;
-  border: 1px solid rgba(148, 163, 184, 0.18) !important;
+  /* Was a hard-coded dark navy with an !important, which overrode every field
+     background on the site - including the theme tokens - and left dark text on
+     a dark field in the light theme. */
+  background: var(--field-bg) !important;
+  border: 1px solid var(--field-border) !important;
   border-radius: 14px;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
+  box-shadow: none;
 }
 
 .language-selector:hover,
@@ -2132,7 +2267,7 @@ input:not([type="checkbox"]):not([type="radio"]):not([type="file"]) {
 textarea:hover,
 select:hover,
 input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):hover {
-  border-color: rgba(34, 211, 238, 0.34) !important;
+  border-color: var(--color-action) !important;
 }
 
 .hero-card,
@@ -2244,13 +2379,22 @@ input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):hover {
   transform: translateY(-2px);
 }
 
+/* One solid primary action. The three-stop cyan-violet-rose gradient put white
+   text on a #22d3ee left edge at about 1.9:1, and a rainbow button reads as
+   decoration rather than as the action. */
 .btn-primary,
 .search-box-btn,
 .download-btn {
-  background: linear-gradient(135deg, #22d3ee 0%, #8b5cf6 58%, #f43f5e 120%) !important;
-  color: #ffffff !important;
-  border: 1px solid rgba(255,255,255,0.12) !important;
-  box-shadow: 0 16px 42px rgba(34, 211, 238, 0.16);
+  background: var(--color-action) !important;
+  color: var(--color-action-foreground) !important;
+  border: 1px solid transparent !important;
+  box-shadow: none;
+}
+
+.btn-primary:hover,
+.search-box-btn:hover,
+.download-btn:hover {
+  background: var(--color-action-hover) !important;
 }
 
 .btn-secondary {
@@ -2266,9 +2410,19 @@ input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):hover {
 }
 
 .tool-header {
+  /* design-system.css sets `display: flex` for a header that pairs a .tool-icon
+     with the title. No built tool page has that icon, so all 140 of them laid
+     their title, date and description out as flex columns a few words wide. */
+  display: block;
   max-width: 760px;
   margin-left: auto;
   margin-right: auto;
+}
+
+.tool-header:has(> .tool-icon) {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
 }
 
 .tool-header h1 {
@@ -2408,7 +2562,7 @@ input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):hover {
 .blog-card h3 { font-size: 1.12rem; line-height: 1.35; margin-bottom: 0.65rem; }
 .blog-card-support { color: var(--text-tertiary) !important; font-size: 0.92rem; }
 .blog-meta { display: flex; flex-wrap: wrap; gap: 0.5rem; color: var(--text-muted); font-size: 0.82rem; margin-top: 1rem; }
-.blog-category, .hero-badge, .tag { color: #a5f3fc !important; }
+.blog-category, .hero-badge, .tag { color: var(--accent-text) !important; }
 .featured-card { grid-template-columns: minmax(180px, 0.36fr) 1fr; }
 .category-filter { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; margin: 2rem 0; }
 .filter-btn { padding: 0.7rem 1rem; border-radius: 999px; background: rgba(15,23,42,0.78); border: 1px solid rgba(148,163,184,0.18); color: var(--text-secondary); }
@@ -2831,26 +2985,463 @@ article.tool-resource blockquote {
 }
 
 /* Core Web Vitals safeguards: reserve stable above-the-fold media and tool UI space. */
-.home-hero__image {
-  display: block;
-  width: min(100%, 800px);
-  aspect-ratio: 40 / 21;
-  margin: 0 0 1rem;
-  overflow: hidden;
-  border: 1px solid rgba(148, 163, 184, 0.22);
-  border-radius: var(--radius-xl, 22px);
-  background: #06070b;
-}
 
-.home-hero__image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+
+
 
 .tool-wrapper,
 .tool-container,
 .premium-tool-workspace,
 .nt-tool-workspace {
   min-height: 600px;
+}
+
+/* ============================================
+   LINKS IN PROSE
+   A link inside running text must not be distinguished by colour alone
+   (WCAG 1.4.1). Navigation, cards and buttons are excluded: their shape and
+   position already identify them.
+   ============================================ */
+.tool-description p a,
+.tool-description li a,
+.seo-section p a,
+.seo-section li a,
+.article-body p a,
+.article-body li a,
+.legal-content p a,
+.legal-content li a,
+.guide-section p a,
+.guide-section li a {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+/* ============================================
+   HOME HERO AND SEARCH - ABOVE THE FOLD
+   Moved here from layout.css: layout.css is loaded non-render-blocking,
+   so the hero used to paint unstyled and re-render at its final size,
+   which was 87 percent of the homepage Largest Contentful Paint.
+   Defined only here - do not duplicate these rules in layout.css.
+   ============================================ */
+/* ============================================
+   HOME HERO
+   Three slots and the working control: heading, one line of proof, the search
+   field itself. No decorative preview panel, no competing call-to-action, and
+   the section is capped so the next section is visible above the fold.
+   ============================================ */
+.home-hero {
+  position: relative;
+  padding: clamp(var(--space-10), 7vw, var(--space-20)) 0 clamp(var(--space-8), 4vw, var(--space-12));
+  border-bottom: 1px solid var(--border-default);
+  background: var(--bg-primary);
+}
+
+.home-hero__inner {
+  display: flex;
+  max-width: var(--container-lg);
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.home-hero__title {
+  max-width: 18ch;
+  margin: 0;
+  color: var(--text-primary);
+  font-size: clamp(2.125rem, 5.2vw, 3.5rem);
+  font-weight: 700;
+  letter-spacing: var(--letter-spacing-tighter);
+  line-height: 1.06;
+  text-wrap: balance;
+}
+
+.home-hero__lede {
+  max-width: 52ch;
+  margin: var(--space-5) 0 0;
+  color: var(--text-secondary);
+  font-size: clamp(1rem, 1.6vw, 1.125rem);
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+
+.home-hero__tasks {
+  display: flex;
+  max-width: 46rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: var(--space-6);
+  gap: var(--space-2);
+}
+
+.home-task-chip {
+  display: inline-flex;
+  min-height: 40px;
+  align-items: center;
+  padding: 0 var(--space-4);
+  border: 1px solid var(--border-default);
+  border-radius: 999px;
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 120ms ease-out, border-color 120ms ease-out, color 120ms ease-out;
+}
+
+.home-task-chip:hover,
+.home-task-chip:focus-visible {
+  border-color: var(--border-hover);
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.home-hero__proof {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: var(--space-8) 0 0;
+  gap: var(--space-2) var(--space-5);
+  color: var(--text-tertiary);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+
+.home-hero__proof span {
+  position: relative;
+}
+
+.home-hero__proof span + span::before {
+  position: absolute;
+  left: calc(var(--space-5) / -2);
+  content: "·";
+  transform: translateX(-50%);
+}
+
+/* ------------------------------------------------------------ search field */
+.home-search {
+  position: relative;
+  width: 100%;
+  max-width: 40rem;
+  margin-top: var(--space-7, 1.75rem);
+}
+
+.home-search__box {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: 56px;
+  padding: 0 var(--space-3) 0 var(--space-4);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg, 12px);
+  background: var(--bg-elevated);
+  box-shadow: var(--shadow-sm);
+  transition: border-color 120ms ease-out, box-shadow 120ms ease-out;
+}
+
+.home-search__box:focus-within {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.home-search__icon {
+  flex: 0 0 auto;
+  color: var(--text-tertiary);
+}
+
+.home-search__input {
+  min-width: 0;
+  flex: 1;
+  padding: var(--space-3) 0;
+  border: 0;
+  background: transparent;
+  color: var(--text-primary);
+  font-size: 1rem;
+  outline: 0;
+}
+
+.home-search__input::placeholder {
+  color: var(--text-tertiary);
+  opacity: 1;
+}
+
+.home-search__kbd {
+  flex: 0 0 auto;
+  padding: 2px 8px;
+  border: 1px solid var(--border-default);
+  border-radius: 6px;
+  color: var(--text-tertiary);
+  font-family: var(--font-mono, monospace);
+  font-size: 0.75rem;
+  line-height: 1.4;
+}
+
+@media (max-width: 640px) {
+  .home-search__kbd { display: none; }
+}
+
+/* ---------------------------------------------------------- search results */
+.home-search__results {
+  position: absolute;
+  z-index: 40;
+  top: calc(100% + var(--space-2));
+  right: 0;
+  left: 0;
+  max-height: min(26rem, 60vh);
+  padding: var(--space-2);
+  overflow-y: auto;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg, 12px);
+  background: var(--bg-elevated);
+  box-shadow: var(--shadow-lg);
+  text-align: left;
+}
+
+.home-search__results[hidden] { display: none; }
+
+.home-search__hint,
+.home-search__group-label {
+  margin: var(--space-2) var(--space-2) var(--space-1);
+  color: var(--text-tertiary);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+}
+
+.home-search__result {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  border-radius: 8px;
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.home-search__result:hover,
+.home-search__result.is-active {
+  background: var(--bg-hover);
+}
+
+.home-search__result-main {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.home-search__result strong {
+  overflow: hidden;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.home-search__result small {
+  display: -webkit-box;
+  overflow: hidden;
+  color: var(--text-tertiary);
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.home-search__result em {
+  flex: 0 0 auto;
+  color: var(--text-tertiary);
+  font-size: 0.75rem;
+  font-style: normal;
+}
+
+.home-search__empty {
+  padding: var(--space-4) var(--space-3);
+}
+
+.home-search__empty-title {
+  margin: 0 0 var(--space-2);
+  color: var(--text-primary);
+  font-size: 0.9375rem;
+}
+
+.home-search__empty-actions {
+  margin: 0;
+  color: var(--text-tertiary);
+  font-size: 0.875rem;
+}
+
+.home-search__empty-actions a {
+  color: var(--accent-primary);
+}
+
+/* ============================================
+   SITE HEADER SHELL - ABOVE THE FOLD
+   Moved here from design-system.css for the same reason as the hero:
+   design-system.css is non-render-blocking, so the header used to change
+   height when it arrived and push every section below it down (measured
+   CLS 0.38 on a throttled homepage load).
+   Defined only here - do not duplicate these rules in design-system.css.
+   ============================================ */
+
+/* Shell */
+.app-header {
+  position: sticky;
+  inset-block-start: 0;
+  z-index: var(--z-sticky);
+  background: color-mix(in srgb, var(--color-bg-canvas) 92%, transparent);
+  border-bottom: 1px solid var(--color-border);
+  backdrop-filter: blur(14px);
+}
+
+.header-inner {
+  min-height: 4.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.logo,
+.footer-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  color: var(--color-text-primary);
+  text-decoration: none;
+  font-weight: var(--font-weight-bold);
+}
+
+.logo-icon,
+.footer-logo-icon {
+  display: inline-grid;
+  place-items: center;
+  inline-size: 2.25rem;
+  block-size: 2.25rem;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  flex: none;
+}
+
+.logo-icon img,
+.footer-logo-icon img {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: contain;
+}
+
+.logo-text {
+  display: none;
+}
+
+.main-nav {
+  display: none;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.nav-link,
+.mobile-nav-link {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  font-weight: var(--font-weight-medium);
+}
+
+.nav-link {
+  padding: var(--space-2) var(--space-3);
+}
+
+.nav-link:hover,
+.nav-link.active,
+.nav-link[aria-current='page'] {
+  color: var(--color-text-primary);
+  background: var(--color-bg-elevated);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.btn-icon,
+.theme-toggle,
+.mobile-menu-toggle {
+  inline-size: var(--touch-target);
+  block-size: var(--touch-target);
+  display: inline-grid;
+  place-items: center;
+  padding: 0;
+  color: var(--color-text-secondary);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+}
+
+.btn-icon:hover,
+.theme-toggle:hover,
+.mobile-menu-toggle:hover {
+  color: var(--color-text-primary);
+  background: var(--color-bg-elevated);
+  border-color: var(--color-border);
+}
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  inset: 4.25rem 0 0;
+  z-index: var(--z-modal);
+  padding: var(--space-4);
+  background: var(--color-bg-canvas);
+  border-top: 1px solid var(--color-border);
+  overflow: auto;
+}
+
+.mobile-menu.active,
+.mobile-menu[data-open='true'] {
+  display: block;
+}
+
+.mobile-nav {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.mobile-nav-link {
+  min-height: var(--touch-target);
+  display: flex;
+  align-items: center;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid transparent;
+}
+
+.mobile-nav-link:hover,
+.mobile-nav-link[aria-current='page'] {
+  color: var(--color-text-primary);
+  background: var(--color-bg-elevated);
+  border-color: var(--color-border);
+}
+
+/* The breakpoints that belong with the header shell above. They used to live in
+   design-system.css, which is concatenated before this file, so a plain
+   `display: none` here silently won at every width and the desktop navigation
+   disappeared. */
+@media (min-width: 640px) {
+  .logo-text { display: inline; }
+}
+
+@media (min-width: 1100px) {
+  .main-nav { display: flex; }
+  .mobile-menu-toggle { display: none; }
+}
+
+/* The theme toggle swaps icons with the `hidden` property. `svg { display: block }`
+   above outranks the user-agent `[hidden]` rule, so both icons were painted at
+   once and overflowed the button. */
+.theme-toggle [hidden],
+.btn-icon [hidden] {
+  display: none !important;
 }

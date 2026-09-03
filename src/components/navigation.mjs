@@ -1,6 +1,7 @@
 import manifest from '../../tools-manifest.json';
 import blogPosts from '../i18n/blog/en.json';
 import { categoryLabel, toolHref, toolName } from './engagement-widgets.mjs';
+import { publicCertifiedTools } from '../data/public-tools.mjs';
 
 const CATEGORY_ROUTES = {
   pdf: '/categories/pdf-tools.html',
@@ -25,7 +26,7 @@ function escapeHtml(value) {
 }
 
 function groupedTools(limitPerCategory = 5) {
-  return Object.entries((manifest.tools || []).reduce((groups, tool) => {
+  return Object.entries(publicCertifiedTools(manifest.tools).reduce((groups, tool) => {
     const key = tool.category || 'tools';
     groups[key] = groups[key] || [];
     groups[key].push(tool);

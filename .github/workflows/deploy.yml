@@ -54,20 +54,35 @@ jobs:
       - name: Compile Cloudflare Pages Functions
         run: npx --yes wrangler@4.114.0 pages functions build functions --outfile=/tmp/pages-functions-worker.js
 
+      # The build prerenders the homepage grids in a real browser
+      # (scripts/prerender-home.mjs), so Chromium has to be present before it
+      # runs, not only before the browser gates.
+      - name: Install pinned browser test dependencies
+        run: npm install --no-save --package-lock=false @playwright/test@1.55.0 @axe-core/playwright@4.10.2
+
+      - name: Install Chromium for the build and the browser gates
+        run: npx playwright install --with-deps chromium
+
       - name: Build
         run: npm run build
 
       - name: Enforce production output contract
         run: node scripts/enforce-production-output-contract.mjs
 
-      - name: Install pinned browser test dependencies
-        run: npm install --no-save --package-lock=false @playwright/test@1.55.0 @axe-core/playwright@4.10.2
-
-      - name: Install Chromium for browser gates
-        run: npx playwright install --with-deps chromium
-
       - name: Run Chromium E2E and accessibility gates
-        run: npx playwright test
+        run: |
+          set -o pipefail
+          npx playwright test 2>&1 | tee playwright-browser-gate.log
+
+      - name: Upload Playwright failure evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-failure-evidence-${{ github.sha }}
+          path: |
+            playwright-browser-gate.log
+            test-results/
+          if-no-files-found: warn
 
       - name: Enforce Content-Security-Policy in a real browser
         run: node tests/csp-enforcement.mjs
@@ -173,17 +188,20 @@ jobs:
       - name: Compile Cloudflare Pages Functions
         run: npx --yes wrangler@4.114.0 pages functions build functions --outfile=/tmp/pages-functions-worker.js
 
+      # The build prerenders the homepage grids in a real browser
+      # (scripts/prerender-home.mjs), so Chromium has to be present before it
+      # runs, not only before the browser gates.
+      - name: Install pinned browser test dependencies
+        run: npm install --no-save --package-lock=false @playwright/test@1.55.0 @axe-core/playwright@4.10.2
+
+      - name: Install Chromium for the build and the browser gates
+        run: npx playwright install --with-deps chromium
+
       - name: Build
         run: npm run build
 
       - name: Enforce production output contract
         run: node scripts/enforce-production-output-contract.mjs
-
-      - name: Install pinned browser test dependencies
-        run: npm install --no-save --package-lock=false @playwright/test@1.55.0 @axe-core/playwright@4.10.2
-
-      - name: Install Chromium for browser gates
-        run: npx playwright install --with-deps chromium
 
       - name: Run Chromium E2E and accessibility gates
         run: npx playwright test

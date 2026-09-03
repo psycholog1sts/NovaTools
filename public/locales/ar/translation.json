@@ -17,7 +17,6 @@
     "converters": "محولات"
   },
   "hero": {
-    "title": "أدوات الكل في واحد للملفات والمالية والبرمجة",
     "subtitle": "استخدم MC NovaTools للتحويل والحساب والإنشاء وتبسيط مهام العمل العملية من خلال مجموعة أدوات سريعة وواضحة تعمل في المتصفح.",
     "cta": "استكشف الأدوات",
     "browse": "تصفح الفئات",
@@ -183,7 +182,6 @@
     "toolsGeneric": "أدوات",
     "viewAllCategories": "عرض جميع الفئات",
     "viewAllDesc": "Browse our tool collection by category.",
-    "searchPlaceholder": "Search tools...",
     "popularLabel": "شائع:",
     "newBadge": "جديد",
     "ads": {
@@ -205,8 +203,7 @@
       "browse": "تصفح الفئات",
       "freeTools": "أدوات مجانية",
       "categories": "الفئات",
-      "private": "خاص",
-      "description": "استخدم MC NovaTools للتحويل والحساب والإنشاء وتبسيط مهام العمل العملية من خلال مجموعة أدوات سريعة وواضحة تعمل في المتصفح."
+      "private": "خاص"
     },
     "launcher": {
       "title": "مشغّل سير العمل",
@@ -439,7 +436,6 @@
           "009": "Image Tools",
           "010": "Developer Tools",
           "011": "BMI Calculator",
-          "012": "Calculate your Body Mass Index (BMI) and discover your health category. Get personalized health tips and ideal weight range based on your height.",
           "013": "Metric (kg, cm)",
           "014": "Imperial (lbs, ft/in)",
           "015": "(cm)",
@@ -458,7 +454,6 @@
           "028": "Obese",
           "029": "30.0 and above",
           "030": "About BMI Calculator",
-          "031": "Body Mass Index (BMI) is a simple screening method that uses your height and weight to determine if you're at a healthy weight for your height. Our free BMI Calculator provides instant results along with your health category and personalized health tips.",
           "032": "How to Use",
           "033": "Select your preferred unit system (Metric or Imperial).",
           "034": "Enter your height (in cm or feet/inches).",
@@ -466,7 +461,6 @@
           "036": "Click \"Calculate BMI\" to see your results.",
           "037": "View your BMI value and corresponding health category.",
           "038": "Check the visual BMI scale to see where you fall.",
-          "039": "Review your ideal weight range and health tips.",
           "040": "BMI Categories",
           "041": "Limitations of BMI",
           "042": "BMI does not directly measure body fat and doesn't account for factors like muscle mass, bone density, age, sex, and ethnicity. Athletes may have high BMIs due to muscle mass rather than fat. Always consult healthcare professionals for comprehensive health assessments.",
@@ -5931,7 +5925,6 @@
     "edit": "تحرير",
     "close": "إغلاق",
     "open": "فتح",
-    "search": "بحث",
     "download": "تحميل",
     "upload": "رفع",
     "copy": "نسخ",

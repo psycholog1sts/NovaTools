@@ -67,52 +67,52 @@
     .tool-wrapper { max-width: 1200px; margin: 0 auto; padding: 3rem 1rem 5rem; }
     .tool-hero { text-align: center; margin-bottom: 2.5rem; }
     .tool-hero-icon { font-size: 3.5rem; line-height: 1; margin-bottom: 1rem; }
-    .tool-hero h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; letter-spacing: -0.02em; color: #FAFAFA; margin-bottom: 0.75rem; }
-    .tool-hero p { color: #A1A1AA; font-size: 1.0625rem; max-width: 560px; margin: 0 auto; }
+    .tool-hero h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; letter-spacing: -0.02em; color: var(--text-primary); margin-bottom: 0.75rem; }
+    .tool-hero p { color: var(--text-secondary); font-size: 1.0625rem; max-width: 560px; margin: 0 auto; }
     .card { background: rgba(15,15,20,0.7); border: 1px solid rgba(0,217,255,0.15); border-radius: 14px; padding: 1.25rem; backdrop-filter: blur(12px); }
     
     .mindmap-container { display: grid; grid-template-columns: 160px 1fr; gap: 1rem; }
     @media (max-width: 700px) { .mindmap-container { grid-template-columns: 1fr; } }
     
     .control-panel { display: flex; flex-direction: column; gap: 0.75rem; }
-    .control-btn { padding: 0.75rem; background: rgba(0,217,255,0.1); border: 1px solid rgba(0,217,255,0.2); border-radius: 8px; color: #A1A1AA; cursor: pointer; font-size: 0.875rem; transition: all 0.2s; text-align: left; }
-    .control-btn:hover { border-color: rgba(0,217,255,0.4); color: #FAFAFA; }
+    .control-btn { padding: 0.75rem; background: rgba(0,217,255,0.1); border: 1px solid rgba(0,217,255,0.2); border-radius: 8px; color: var(--text-secondary); cursor: pointer; font-size: 0.875rem; transition: all 0.2s; text-align: left; }
+    .control-btn:hover { border-color: rgba(0,217,255,0.4); color: var(--text-primary); }
     
-    .canvas-wrapper { background: #0F0F12; border: 1px solid rgba(0,217,255,0.15); border-radius: 10px; position: relative; overflow: hidden; }
+    .canvas-wrapper { background: var(--field-bg); border: 1px solid var(--field-border); border-radius: 10px; position: relative; overflow: hidden; }
     #mindmapCanvas { display: block; cursor: grab; }
     #mindmapCanvas:active { cursor: grabbing; }
     
     .toolbar { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(0,217,255,0.1); }
-    .tool-btn { padding: 0.5rem 1rem; background: rgba(0,217,255,0.1); border: 1px solid rgba(0,217,255,0.2); border-radius: 6px; color: #A1A1AA; cursor: pointer; font-size: 0.875rem; transition: all 0.2s; }
-    .tool-btn:hover { border-color: rgba(0,217,255,0.4); color: #FAFAFA; }
+    .tool-btn { padding: 0.5rem 1rem; background: rgba(0,217,255,0.1); border: 1px solid rgba(0,217,255,0.2); border-radius: 6px; color: var(--text-secondary); cursor: pointer; font-size: 0.875rem; transition: all 0.2s; }
+    .tool-btn:hover { border-color: rgba(0,217,255,0.4); color: var(--text-primary); }
     
     .btn-bar { display: flex; flex-wrap: wrap; gap: 0.625rem; margin-top: 1rem; justify-content: center; }
     .btn { display: inline-flex; align-items: center; gap: 0.4rem; height: 40px; padding: 0 1rem; border: none; border-radius: 8px; font-size: 0.875rem; font-weight: 600; cursor: pointer; transition: all 0.18s; outline: none; }
     .btn:active { transform: scale(0.97); }
-    .btn-primary { background: linear-gradient(135deg, #00D9FF, #0099CC); color: #0A0A0C; }
-    .btn-secondary { background: rgba(0,217,255,0.1); border: 1px solid rgba(0,217,255,0.25); color: #00D9FF; }
+    .btn-primary { background: linear-gradient(135deg, var(--accent-text), #0099CC); color: #0A0A0C; }
+    .btn-secondary { background: rgba(0,217,255,0.1); border: 1px solid rgba(0,217,255,0.25); color: var(--accent-text); }
     
-    .help-text { color: #71717A; font-size: 0.8125rem; margin-top: 0.75rem; text-align: center; }
+    .help-text { color: var(--text-secondary); font-size: 0.8125rem; margin-top: 0.75rem; text-align: center; }
     
-    .legal-note { margin-top: 1.5rem; padding: 1rem 1.25rem; background: rgba(255,193,7,0.05); border: 1px solid rgba(255,193,7,0.15); border-radius: 10px; font-size: 0.8125rem; color: #A1A1AA; line-height: 1.6; }
-    .legal-note strong { color: #FFC107; }
+    .legal-note { margin-top: 1.5rem; padding: 1rem 1.25rem; background: rgba(255,193,7,0.05); border: 1px solid rgba(255,193,7,0.15); border-radius: 10px; font-size: 0.8125rem; color: var(--text-secondary); line-height: 1.6; }
+    .legal-note strong { color: var(--color-warning-text); }
     
     .seo-section { max-width: 960px; margin: 3.5rem auto 0; padding: 0 1rem; }
-    .seo-section h2 { font-size: 1.375rem; font-weight: 700; color: #FAFAFA; margin-bottom: 0.75rem; }
-    .seo-section h3 { font-size: 1.125rem; font-weight: 600; color: #FAFAFA; margin: 2rem 0 0.75rem; }
-    .seo-section p, .seo-section li { color: #A1A1AA; line-height: 1.8; font-size: 0.9375rem; }
+    .seo-section h2 { font-size: 1.375rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.75rem; }
+    .seo-section h3 { font-size: 1.125rem; font-weight: 600; color: var(--text-primary); margin: 2rem 0 0.75rem; }
+    .seo-section p, .seo-section li { color: var(--text-secondary); line-height: 1.8; font-size: 0.9375rem; }
     .seo-section ol { padding-left: 1.25rem; }
     .seo-section ol li { margin-bottom: 0.4rem; }
     
     .faq-item { border: 1px solid rgba(0,217,255,0.1); border-radius: 10px; padding: 1rem 1.125rem; margin-bottom: 0.875rem; background: rgba(15,15,20,0.5); }
-    .faq-item summary { font-weight: 600; color: #FAFAFA; cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .faq-item summary { font-weight: 600; color: var(--text-primary); cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
     .faq-item summary::-webkit-details-marker { display: none; }
-    .faq-item summary::after { content: '+'; color: #00D9FF; font-size: 1.25rem; flex-shrink: 0; }
+    .faq-item summary::after { content: '+'; color: var(--accent-text); font-size: 1.25rem; flex-shrink: 0; }
     .faq-item[open] summary::after { content: '\2212'; }
-    .faq-item p { margin-top: 0.625rem; color: #A1A1AA; line-height: 1.7; }
+    .faq-item p { margin-top: 0.625rem; color: var(--text-secondary); line-height: 1.7; }
     
     .tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }
-    .tool-footer a { color: #00D9FF; text-decoration: none; }
+    .tool-footer a { color: var(--accent-text); text-decoration: none; }
   </style>
   <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
 </head>
@@ -202,46 +202,29 @@
 
       <article class="tool-description" aria-labelledby="toolDescriptionTitle-mind-map-tool">
         <h2 id="toolDescriptionTitle-mind-map-tool">What Mind Map Tool Does and Why It Matters</h2>
-        <p>Mind Map Tool helps people turn a common browser workflow into a clearer, repeatable process without turning a simple task into a full software project. In real work, mind map tool tasks often appear right before a deadline: a document has to be sent, a data file needs to be checked, an image must be prepared for publishing, a calculation needs a second scenario, or a developer has to verify a pasted value before it enters a larger workflow. This page focuses on that practical moment. The interface gives you a direct place to provide the input, review settings, run the operation, and keep the result close enough to inspect before you use it elsewhere. That matters because small preparation mistakes can create oversized attachments, unreadable exports, broken imports, misleading estimates, or accidental exposure of details that should have stayed private.</p>
-        <p>The main value of Mind Map Tool is control. Instead of sending material through an unfamiliar workflow, you can use the browser to perform the job, observe the state of the input, and decide whether the output is ready. Visualize and organize your ideas. Brainstorm and plan projects with mind maps. The tool is especially useful for teams that need quick utility work between larger applications: support staff preparing evidence, creators publishing assets, finance users comparing planning assumptions, students organizing files, and developers validating snippets before sharing them in tickets or pull requests. It is intentionally focused on one job, so the page can explain what is supported, what should be checked manually, and when a specialist application or professional review is more appropriate.</p>
-        <p>Experience signals on this page are written around common failure points rather than generic marketing. For Mind Map Tool, the important questions are whether the source material is in a supported format, whether the browser has enough memory to complete the action, whether the result keeps the information you expect, and whether any limitation changes how you should use the file or value. Reading these notes before you click the main action can save time because it frames the tool as part of a workflow: prepare the input, run the operation, inspect the output, then keep or discard the result based on evidence.</p>
+        <p>Mind Map Tool lets you build a branching mind map — a central topic with connected sub-topics radiating outward — directly in your browser, then export it as an image. It's built for brainstorming and organizing ideas visually, where a linear list or outline doesn't capture how ideas actually relate to each other.</p>
+        <p>Mind mapping works because it mirrors how people naturally associate ideas — branching outward from a central concept rather than forcing everything into a strict top-to-bottom order. That makes it useful for brainstorming, planning, studying, or breaking down a broad topic into its parts.</p>
         <h2>How to Use Mind Map Tool</h2>
         <ol>
-          <li>Open Mind Map Tool and read the short instructions near the interface so you know which input type the page expects.</li>
-          <li>Upload the supported file, paste the text, or enter the numeric values requested by the form; avoid adding unrelated private information.</li>
-          <li>Review every visible option, such as output format, range, quality, delimiter, units, date, rate, or mode, because these settings shape the final result.</li>
-          <li>Run the tool with the primary action button and wait for the status message, preview, validation result, calculation, or progress indicator to finish.</li>
-          <li>Inspect the displayed result carefully, including file name, page order, dimensions, row count, formatting, estimate assumptions, warnings, and any visible errors.</li>
-          <li>Download the generated file, copy the result, or record the calculation only after the preview matches your intended use case.</li>
-          <li>Clear the page or close the browser tab when finished, especially on a shared device or when the input included confidential material.</li>
+          <li>Add a central topic node.</li>
+          <li>Add branches for sub-topics connected to the center (or to other branches).</li>
+          <li>Rearrange and rename nodes as your thinking develops.</li>
+          <li>Export the finished mind map as an image.</li>
         </ol>
-        <h2>Supported Formats and Limitations</h2>
-        <h3>Supported input formats</h3>
-        <ul><li>Text, colors, dimensions, brand details, layout notes, or simple visual settings entered by the user</li><li>Uploaded images or icons where the tool supports asset composition</li><li>Template choices, export sizes, and style controls selected in the interface</li></ul>
-        <h3>Supported output formats</h3>
-        <ul><li>Previewed design assets, layouts, mockups, QR visuals, invoices, resumes, or diagrams</li><li>Downloaded image, PDF, SVG, HTML, or text outputs where supported</li><li>Editable browser previews that help users review spacing, copy, and visual hierarchy</li></ul>
-        <h3>Known limitations and edge cases</h3>
-        <ul><li>Browser tools are useful for drafts and lightweight assets, but complex brand systems may need professional design review.</li><li>Print output can vary by printer, paper, and color profile.</li><li>Generated visual assets should be checked for accessibility, contrast, and licensing needs.</li></ul>
-        <p>For best results, test Mind Map Tool with a small sample before committing a large batch or an important deadline item. Browser utilities are convenient because they reduce setup and keep the workflow close to the user, but they still depend on device memory, browser permissions, source-file quality, and the exact assumptions entered into the interface. If the output will be used for legal, medical, financial, security, accessibility, or production engineering decisions, treat the result as a preparation aid and verify it with the appropriate system of record.</p>
+        <h2>What to Know</h2>
+        <ul><li>Built for straightforward brainstorming maps — for very large, deeply nested maps, a dedicated mind-mapping application may offer more organizational features</li><li>Your map is built and held in your browser session — export before closing the tab if you want to keep it</li></ul>
         <h2>Privacy and Security</h2>
-        <p>Mind Map Tool is designed around a privacy-first browser workflow. Where possible, files and inputs are processed client-side in your browser, which means the work happens on your device instead of being permanently stored on NovaTools servers. Uploaded data is not stored on servers permanently by this page, and the safest habit is still to avoid uploading or pasting secrets that are not required for the task. Some features may depend on browser APIs, optional public lookups, or third-party libraries loaded by the page, so you should review the interface notes and avoid using confidential production data unless the tool behavior fits your policy.</p>
+        <p>Your mind map is created and stored locally in your browser. Nothing is uploaded to a server unless you explicitly export or share it.</p>
         <h2>Frequently Asked Questions</h2>
-        <h3>Is Mind Map Tool suitable for confidential work?</h3>
-        <p>It can be suitable for many confidential preparation tasks when the operation is completed locally in the browser and your organization allows that workflow. You should still avoid unnecessary sensitive fields, use a trusted device, clear the page afterward, and verify whether any optional lookup or external dependency is involved before using regulated or secret material.</p>
-        <h3>Why should I inspect the output before downloading or copying it?</h3>
-        <p>Inspection is the step that turns a quick utility into a reliable workflow. A file may process successfully while still having the wrong order, dimensions, delimiter, estimate assumption, encoding, or visual quality. Reviewing the preview and status details helps catch those issues before the result reaches a client, upload portal, repository, spreadsheet, or public page.</p>
-        <h3>What should I do if Mind Map Tool does not accept my input?</h3>
-        <p>Start by checking the file type, size, formatting, and any visible error message. Try a smaller sample, remove unsupported characters or corrupted content, and confirm that your browser is current. If the source file uses a proprietary format, encryption, unusual encoding, or a damaged structure, a dedicated desktop application may be needed before this browser tool can help.</p>
+        <h3>Will my mind map be saved if I close the tab?</h3>
+        <p>Export your map as an image before closing to be safe — check whether the tool also auto-saves locally, but exporting is the reliable way to keep your work.</p>
+        <h3>How many branches or levels can I add?</h3>
+        <p>There's no strict practical limit for typical brainstorming use; for very large or deeply nested maps, keep an eye on readability, since a mind map that's too dense becomes harder to read than a simpler one.</p>
+        <h3>Can I collaborate on a mind map with someone else in real time?</h3>
+        <p>This tool works locally in your own browser without real-time collaboration. For live multi-person editing, a dedicated collaborative mind-mapping tool with shared sessions is the better fit.</p>
         <h2>Related Tools</h2>
         <ul><li><a href="https://mc-novatools.com/tools/design/barcode-generator/">Barcode Generator — Generate free barcodes.</a></li><li><a href="https://mc-novatools.com/tools/design/business-card-maker/">Business Card Maker — Design professional business cards.</a></li></ul>
       </article>
-      <aside class="author-bylines" aria-label="Author and review information for Mind Map Tool">
-        <p><span class="author-name">Metehan ÇETİN, LPC</span>, <span class="author-title">Founder and editor</span></p>
-        <p>The author profile for Mind Map Tool is intended for a practitioner who understands design production, brand asset drafting, layout review, and accessible visual preparation. This byline describes hands-on experience reviewing inputs, outputs, edge cases, accessibility needs, privacy expectations, and user education for browser-based utilities. It is maintained as a verified public review note for MC NovaTools tool pages.</p>
-        <p><a href="https://mc-novatools.com/about-us.html" rel="author">Author and review profile</a></p>
-        <p>Last updated: <time class="last-updated" datetime="2026-06-03">2026-06-03</time></p>
-        <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Metehan ÇETİN, LPC","jobTitle":"Founder and editor","description":"The author profile for Mind Map Tool is intended for a practitioner who understands design production, brand asset drafting, layout review, and accessible visual preparation. This byline describes hands-on experience reviewing inputs, outputs, edge cases, accessibility needs, privacy expectations, and user education for browser-based utilities. It is maintained as a verified public review note for MC NovaTools tool pages.","sameAs":"https://mc-novatools.com/about-us.html"}</script>
-      </aside>
 <section class="seo-section" aria-label="About this tool">
         <h2 data-i18n="tools.design.mind-map-tool.text.019">About Mind Map Tool</h2>
         <p data-i18n="tools.design.mind-map-tool.text.020">Mind mapping is a powerful technique for visualizing ideas, organizing information, and generating creative solutions. Our free Mind Map Tool lets you create beautiful radial diagrams with a central topic and branching subtopics. Perfect for brainstorming sessions, project planning, note-taking, and studying.</p>
@@ -296,7 +279,7 @@
         <section class="trust-help novatools-tool-reading-path" aria-labelledby="toolReadingPathTitle">
           <h2 id="toolReadingPathTitle">Recommended next reading</h2>
           <p>Use these practical guides to understand when this tool is the right choice, what to check before exporting, and which workflow usually comes next.</p>
-          <div class="related-tools-grid"><a class="related-tool-link" href="https://mc-novatools.com/blog/articles/blog-publishing-tool-workflow.html">Blog publishing workflow</a><a class="related-tool-link" href="https://mc-novatools.com/blog/articles/content-review-before-client-delivery.html">Content review delivery</a></div>
+          <div class="related-tools-grid"><a class="related-tool-link" href="/blog/articles/browser-based-tools-vs-desktop-software-privacy-comparison.html">Browser-Based Tools vs Desktop Software: Privacy Comparison</a><a class="related-tool-link" href="/blog/articles/browser-based-tools-vs-desktop-software-privacy-comparison.html">Browser-Based Tools vs Desktop Software: Privacy Comparison</a></div>
         </section>
     </main>
 
@@ -317,7 +300,7 @@
     let offset = { x: 0, y: 0 };
     let nodeIdCounter = 0;
 
-    const colors = ['#00D9FF', '#FF6B6B', '#4ECDC4', '#FFE66D', '#95E1D3', '#F38181', '#AA96DA', '#FCBAD3'];
+    const colors = ['var(--accent-text)', 'var(--color-error-text)', '#4ECDC4', '#FFE66D', '#95E1D3', '#F38181', '#AA96DA', '#FCBAD3'];
 
     function resizeCanvas() {
       const wrapper = canvas.parentElement;
@@ -335,7 +318,7 @@
         width: Math.max(100, text.length * 8 + 20),
         height: 36,
         parent: parent,
-        color: parent ? colors[parent.id % colors.length] : '#00D9FF'
+        color: parent ? colors[parent.id % colors.length] : 'var(--accent-text)'
       };
     }
 
@@ -370,7 +353,7 @@
       ctx.stroke();
 
       // Draw text
-      ctx.fillStyle = '#FAFAFA';
+      ctx.fillStyle = 'var(--text-primary)';
       ctx.font = `${14 * scale}px Inter, Arial`;
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
@@ -499,7 +482,7 @@
 
     document.getElementById('downloadSvg').addEventListener('click', () => {
       let svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${canvas.width}" height="${canvas.height}" viewBox="0 0 ${canvas.width} ${canvas.height}">`;
-      svg += `<rect width="100%" height="100%" fill="#0F0F12"/>`;
+      svg += `<rect width="100%" height="100%" fill="var(--field-bg)"/>`;
       
       nodes.forEach(n => {
         if (n.parent) {
@@ -509,7 +492,7 @@
       
       nodes.forEach(n => {
         svg += `<rect x="${n.x + offset.x}" y="${n.y + offset.y}" width="${n.width}" height="${n.height}" rx="8" fill="#1a1a2e" stroke="${n.color}" stroke-width="2"/>`;
-        svg += `<text x="${n.x + offset.x + n.width/2}" y="${n.y + offset.y + n.height/2}" text-anchor="middle" dominant-baseline="middle" fill="#FAFAFA" font-family="Inter, Arial" font-size="14">${n.text}</text>`;
+        svg += `<text x="${n.x + offset.x + n.width/2}" y="${n.y + offset.y + n.height/2}" text-anchor="middle" dominant-baseline="middle" fill="var(--text-primary)" font-family="Inter, Arial" font-size="14">${n.text}</text>`;
       });
       
       svg += '</svg>';

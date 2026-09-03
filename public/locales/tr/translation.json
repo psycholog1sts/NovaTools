@@ -17,7 +17,7 @@
     "converters": "Dönüştürücüler"
   },
   "hero": {
-    "title": "Dosyalar, Finans ve Kod için Her Şey Dahil Araçlar",
+    "title": "Ne varsaydığını açıkça gösteren günlük araçlar",
     "subtitle": "MC NovaTools’u hızlı, anlaşılır ve tarayıcı tabanlı bir araç setiyle pratik iş akışlarını dönüştürmek, hesaplamak ve oluşturmak için kullanın.",
     "cta": "Araçları Keşfet",
     "browse": "Kategorileri Görüntüle",
@@ -103,7 +103,6 @@
           "009": "Görüntü Araçları",
           "010": "Geliştirici Araçları",
           "011": "BMI Hesap Makinesi",
-          "012": "Beden Kitle İndeksinizi (BMI) hesaplayın ve sağlık kategorinizi keşfedin. Boyunuza göre kişiselleştirilmiş sağlık ipuçları ve ideal kilo aralığını alın.",
           "013": "Metrik (kg, cm)",
           "014": "Imperial (lbs, ft/inç)",
           "015": "(santimetre)",
@@ -122,7 +121,6 @@
           "028": "Obez",
           "029": "30.0 ve üzeri",
           "030": "BMI Hesap Makinesi Hakkında",
-          "031": "Vücut Kitle İndeksi (BMI), boyunuza göre sağlıklı bir kiloda olup olmadığınızı belirlemek için boyunuzu ve kilonuzu kullanan basit bir tarama yöntemidir. Ücretsiz BMI Hesaplayıcımız, sağlık kategoriniz ve kişiselleştirilmiş sağlık ipuçlarınızla birlikte anında sonuçlar sağlar.",
           "032": "Nasıl Kullanılır",
           "033": "Tercih ettiğiniz birim sistemini seçin (Metrik veya İngiliz).",
           "034": "Boyunuzu girin (cm veya fit/inç cinsinden).",
@@ -130,7 +128,6 @@
           "036": "Sonuçlarınızı görmek için \"BMI Hesapla\" seçeneğini tıklayın.",
           "037": "BMI değerinizi ve ilgili sağlık kategorinizi görüntüleyin.",
           "038": "Nereye düştüğünüzü görmek için görsel BMI ölçeğini kontrol edin.",
-          "039": "İdeal kilo aralığınızı ve sağlık ipuçlarını gözden geçirin.",
           "040": "BMI Kategoriler",
           "041": "BMI sınırlamaları",
           "042": "BMI doğrudan vücut yağını ölçmez ve kas kütlesi, kemik yoğunluğu, yaş, cinsiyet ve etnik köken gibi faktörleri hesaba katmaz. Sporcuların BMI'leri yağdan ziyade kas kütlesinden dolayı yüksek olabilir. Kapsamlı sağlık değerlendirmeleri için daima sağlık uzmanlarına danışın.",
@@ -142,7 +139,10 @@
           "048": "Evet, çocuklar ve gençler için BMI farklı şekilde yorumlanır ve yaşa ve cinsiyete özel yüzdelikler kullanılır. Bu hesap makinesi 18 yaş ve üzeri yetişkinler için tasarlanmıştır.",
           "049": "psk.dan.metehancetin@mc-novatools.com",
           "050": "Yalnızca tahminler; mali, hukuki veya vergi tavsiyesi değildir.",
-          "051": "${tip}"
+          "051": "${tip}",
+          "012": "Boy ve kilonuzdan Vücut Kitle İndeksinizi (VKİ) hesaplayın, yetişkinler için standart kategori sınırlarını ve boyunuzda VKİ 18,5-24,9 aralığına karşılık gelen kilo aralığını görün.",
+          "031": "Vücut Kitle İndeksi (VKİ), boyunuza göre sağlıklı bir kiloda olup olmadığınızı değerlendirmek için boy ve kiloyu kullanan basit bir tarama yöntemidir. Bu hesaplayıcı oranı tarayıcınızda hesaplar ve sonucun yetişkinler için hangi standart kategoriye düştüğünü gösterir. Yalnızca bir tarama oranıdır ve hiçbir teşhis koymaz.",
+          "039": "Boyunuzda VKİ 18,5-24,9 aralığına karşılık gelen kilo aralığını inceleyin."
         }
       },
       "currency-converter": {
@@ -213,8 +213,8 @@
           "009": "Görüntü Araçları",
           "010": "Geliştirici Araçları",
           "011": "Sayı Tabanı Dönüştürücü",
-          "012": "İkili, Ondalık, Onaltılı ve Sekizli sayı sistemleri arasında anında dönüşüm yapın. Herhangi bir tabana bir sayı girin ve tüm dönüşümleri aynı anda görün.",
-          "013": "Numarayı Girin ve Baz Seçin",
+          "012": "İkili, Ondalık, Onaltılı ve Sekizli tabanlar arasında işaretli tam sayıları JavaScript Number hassasiyet kaybı olmadan dönüştürün. Kesirler ve sabit bit genişlikli two's-complement yorumları desteklenmez.",
+          "013": "Tam sayı değeri",
           "014": "İkili (Taban 2)",
           "015": "Kopyala",
           "016": "Ondalık (10 Tabanı)",
@@ -236,9 +236,9 @@
           "032": "Formu sıfırlamak için \"Temizle\"ye tıklayın.",
           "033": "Sayı Tabanlı Sistemler",
           "034": "Sıkça Sorulan Sorular",
-          "035": "Bu dönüştürücü, JavaScript'nin güvenli tamsayı sınırına (9,007,199,254,740,991) kadar olan sayıları işler. İkili ve onaltılı gösterimler için daha büyük sayılar da desteklenir.",
-          "036": "Evet, temel dönüşüm için standart algoritmalar kullanıldığında tüm dönüşümler matematiksel olarak doğrudur.",
-          "037": "Bu araç tamsayı dönüşümleri için tasarlanmıştır. Kesirli sayılarda ondalık kısım kesilecektir.",
+          "035": "Bu dönüştürücü dört desteklenen tabanın tamamında BigInt kullanır; bu nedenle tam sayı dönüşümü JavaScript'in Number güvenli tam sayı sınırıyla kısıtlı değildir. Çok büyük girdiler tarayıcı belleği ve performans sınırlarına tabidir.",
+          "036": "2, 8, 10 ve 16 tabanlarındaki geçerli işaretli tam sayılar için dönüşüm BigInt tam sayı aritmetiği kullanır ve JavaScript Number üzerinden yuvarlama yapmaz.",
+          "037": "Hayır. Kesirli girdi kesilmek yerine reddedilir. Desteklenen sözleşme yalnızca işaretli tam sayılardır.",
           "038": "Onaltılık kompakttır (rakam başına 4 bit, ikili rakam başına 1 bit) ve ikili sisteme/ikili sistemden dönüştürülmesi kolaydır, bu da onu bellek adreslerini, renkleri ve ikili verileri temsil etmek için ideal kılar.",
           "039": "Hayır. Tüm dönüşümler tarayıcınızda yerel olarak gerçekleşir. Sunucularımıza hiçbir veri aktarılmaz veya herhangi bir yerde saklanmaz.",
           "040": "psk.dan.metehancetin@mc-novatools.com",
@@ -439,7 +439,7 @@
           "009": "Görüntü Araçları",
           "010": "Geliştirici Araçları",
           "011": "Saat Dilimi Dönüştürücü",
-          "012": "Dünya çapında farklı saat dilimleri arasında zamanı dönüştürün. Herhangi bir saat dilimindeki geçerli saati kontrol edin ve dünya çapında toplantılar planlayın.",
+          "012": "Tarayıcınızın tarihe özgü saat dilimi verilerini kullanarak yerel bir tarih ve saati listelenen IANA saat dilimleri arasında dönüştürün. Var olmayan ve belirsiz yaz saati yerel zamanları tahmin edilmek yerine reddedilir.",
           "013": "Saat Dilimi'nden",
           "014": "Saat Dilimi'ne",
           "015": "Kopyalandı!",
@@ -455,11 +455,11 @@
           "025": "Dönüştürülen zamanı panonuza kopyalamak için \"Sonucu Kopyala\"ya tıklayın.",
           "026": "Desteklenen Saat Dilimleri",
           "027": "Sıkça Sorulan Sorular",
-          "028": "Bu dönüştürücü, uygun olduğu durumlarda yaz saati uygulamasını (DST) otomatik olarak hesaba katar. Geçerli saat ekranı, her saat dilimi için DST'nin etkin olup olmadığını gösterir.",
+          "028": "Listelenen IANA bölgelerinde tarihe özgü farklar tarayıcının Intl saat dilimi verilerinden alınır. Geri alma sırasında iki kez oluşan ve ileri alma sırasında var olmayan yerel saatler sessizce bir fark seçmek yerine bildirilir.",
           "029": "UTC (Koordineli Evrensel Zaman), dünyanın saatleri ve zamanı düzenlediği birincil zaman standardıdır. Yaz saati uygulamasına uymaz ve diğer tüm zaman dilimleri için referans noktası görevi görür.",
-          "030": "Evet, dönüşüm için istediğiniz tarih ve saati girebilirsiniz. Araç, geçmiş veya gelecekteki yaz saati uygulaması kuralları da dahil olmak üzere saat farkını doğru şekilde hesaplayacaktır.",
+          "030": "Tarayıcının desteklediği geçmiş veya gelecek tarihleri girebilirsiniz. Sonuçlar tarayıcıda yüklü IANA saat dilimi verilerini kullanır; gelecekteki mevzuat değişikliklerini veya çalışma zamanında bulunmayan saat dilimi geçmişini garanti etmez.",
           "031": "Hayır. Tüm dönüşümler tarayıcınızda yerel olarak gerçekleşir. Sunucularımıza hiçbir veri aktarılmaz veya herhangi bir yerde saklanmaz.",
-          "032": "Bazı zaman dilimleri dakikaları içeren farkları kullanır (örneğin, Hindistan UTC+5:30, Nepal UTC+5:45). Bu dönüştürücü, tüm zaman dilimi farklarını doğru bir şekilde işler.",
+          "032": "Bazı saat dilimleri dakika içeren farklar kullanır (ör. Hindistan UTC+5:30). Listelenen bölgeler, desteklenen yarım saatlik farklar dahil olmak üzere tarayıcı saat dilimi verilerindeki tarihe özgü farklarını kullanır.",
           "033": "psk.dan.metehancetin@mc-novatools.com",
           "034": "Yalnızca tahminler; mali, hukuki veya vergi tavsiyesi değildir.",
           "035": "${formatTime(tzTime)}"
@@ -546,7 +546,7 @@
           "015": "Unix Zaman Damgasını (saniye) girin",
           "016": "Yerel Tarih ve Saat",
           "017": "UTC Tarihi ve Saati",
-          "018": "Bağıl Zaman",
+          "018": "Göreli Zaman (yaklaşık)",
           "019": "Tarih ve Saati Seçin",
           "020": "Unix Zaman Damgası (saniye)",
           "021": "Unix Zaman Damgası (milisaniye)",
@@ -5680,7 +5680,7 @@
     "edit": "Düzenle",
     "close": "Kapat",
     "open": "Aç",
-    "search": "Ara",
+    "search": "Araçlarda ara",
     "download": "İndir",
     "upload": "Yükle",
     "copy": "Kopyala",
@@ -5863,7 +5863,7 @@
     "toolsGeneric": "Aletler",
     "viewAllCategories": "Tüm Kategorileri Gör",
     "viewAllDesc": "Browse our tool collection by category.",
-    "searchPlaceholder": "Search tools...",
+    "searchPlaceholder": "Araçlarda ara — “yüzde”, “zaman damgası”, “pdf sıkıştır”",
     "popularLabel": "Popüler:",
     "ads": {
       "eyebrow": "Temiz yerleşim",
@@ -5885,7 +5885,7 @@
       "freeTools": "Ücretsiz Araçlar",
       "categories": "Kategoriler",
       "private": "Gizli",
-      "description": "MC NovaTools’u hızlı, anlaşılır ve tarayıcı tabanlı bir araç setiyle pratik iş akışlarını dönüştürmek, hesaplamak ve oluşturmak için kullanın."
+      "description": "Tarayıcınızda çalışan dönüştürücüler, hesaplayıcılar ve dosya araçları. Her araç neyi varsaydığını ve nerede durduğunu yazar."
     },
     "launcher": {
       "title": "İş akışı başlatıcı",
@@ -6006,9 +6006,9 @@
       "localUses": "bu hafta cihazda {count} kullanım"
     },
     "featured": {
-      "eyebrow": "Öne çıkanlar",
-      "title": "Bugün kullanmaya başlayabileceğiniz araçlar",
-      "description": "PDF, görsel, geliştirici ve finans iş akışları için hızlı başlangıç kartları.",
+      "eyebrow": "Tüm araçlar",
+      "title": "Kullanıma hazır olan her araç",
+      "description": "Sertifikasyondan geçen araçlar bunlar. Hâlâ geliştirilenler listelenmez.",
       "open": "Aç →"
     },
     "toolLabels": {

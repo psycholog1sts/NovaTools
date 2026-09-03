@@ -12,11 +12,11 @@ const STATIC_RATES = {
   EUR: { EUR: 1, USD: 1 / 0.92, TRY: STATIC_USD_TRY / 0.92 }
 };
 const STOCK_FALLBACKS = {
-  AAPL: { price: 190.2, currency: 'USD', changePercent: 0.8, volume: 51200000, exchange: 'NASDAQ', series: [184, 186, 185, 188, 189, 190.2] },
-  TSLA: { price: 178.5, currency: 'USD', changePercent: -1.4, volume: 89100000, exchange: 'NASDAQ', series: [185, 182, 180, 181, 179, 178.5] },
-  IBM: { price: 189.9, currency: 'USD', changePercent: 0.3, volume: 4200000, exchange: 'NYSE', series: [187, 188, 188.5, 189, 189.2, 189.9] },
-  THYAO: { price: 300.5, currency: 'TRY', changePercent: 1.1, volume: 52000000, exchange: 'BIST', series: [292, 295, 294, 298, 300, 300.5] },
-  GARAN: { price: 122.4, currency: 'TRY', changePercent: -0.4, volume: 61000000, exchange: 'BIST', series: [124, 123, 122.8, 123.1, 122.9, 122.4] }
+  AAPL: { price: 190.2, currency: 'USD', changePercent: 0.8, volume: 51200000, exchange: 'NASDAQ' },
+  TSLA: { price: 178.5, currency: 'USD', changePercent: -1.4, volume: 89100000, exchange: 'NASDAQ' },
+  IBM: { price: 189.9, currency: 'USD', changePercent: 0.3, volume: 4200000, exchange: 'NYSE' },
+  THYAO: { price: 300.5, currency: 'TRY', changePercent: 1.1, volume: 52000000, exchange: 'BIST' },
+  GARAN: { price: 122.4, currency: 'TRY', changePercent: -0.4, volume: 61000000, exchange: 'BIST' }
 };
 const CRYPTO_IDS = ['bitcoin', 'ethereum', 'solana', 'ripple', 'cardano'];
 const CRYPTO_LABELS = { bitcoin: 'BTC', ethereum: 'ETH', solana: 'SOL', ripple: 'XRP', cardano: 'ADA' };
@@ -113,15 +113,6 @@ function canvasHtml(id, type, data, label) {
   return `<canvas id="${id}" width="760" height="260" data-chart-type="${type}" data-chart='${JSON.stringify(data)}' aria-label="${escapeHtml(label)}" role="img"></canvas>`;
 }
 
-function deterministicSeries(last, changePercent, points = 7) {
-  const start = last / (1 + (changePercent || 0) / 100);
-  return Array.from({ length: points }, (_, index) => {
-    const progress = points === 1 ? 1 : index / (points - 1);
-    const wave = Math.sin(index * 1.7) * Math.abs(last - start) * 0.18;
-    return round(start + (last - start) * progress + wave);
-  });
-}
-
 function localStorageGet(key, fallback) {
   try {
     return JSON.parse(window.localStorage.getItem(key) || 'null') ?? fallback;
@@ -154,7 +145,7 @@ export async function calculateLiveExchange(formData) {
 
   let rate;
   let updatedAt = new Date().toISOString();
-  let provider = 'Frankfurter/NovaTools proxy';
+  let provider = 'NovaTools live-data';
   let warning = '';
   try {
     const response = await getExchangeRates(from);
@@ -163,21 +154,22 @@ export async function calculateLiveExchange(formData) {
     updatedAt = data.fetchedAt || data.date || updatedAt;
     provider = data.provider || provider;
     localStorageSet(`novatools:finance:last-rate:${from}`, data);
-    if (response.stale) warning = 'Kurlar geçici olarak güncellenemiyor, son bilinen kur gösteriliyor.';
+    if (response.stale) warning = 'Kurlar geçici olarak güncellenemiyor, tarayıcı önbelleğindeki son bilinen kur gösteriliyor.';
   } catch {
     const cached = localStorageGet(`novatools:finance:last-rate:${from}`, null);
     rate = from === to ? 1 : cached?.rates?.[to];
     updatedAt = cached?.fetchedAt || updatedAt;
     provider = cached?.provider || 'statik yaklaşık fallback';
-    warning = 'Kurlar geçici olarak güncellenemiyor, lütfen daha sonra tekrar deneyin.';
+    warning = cached && Number.isFinite(rate)
+      ? 'Canlı kur alınamadı; tarayıcı önbelleğindeki son bilinen kur gösteriliyor.'
+      : 'Canlı ve önbelleğe alınmış kur kullanılamıyor; statik yaklaşık fallback gösteriliyor.';
   }
   if (!Number.isFinite(rate)) {
     rate = STATIC_RATES[from]?.[to];
     provider = 'statik yaklaşık fallback';
-    warning = 'Kurlar geçici olarak güncellenemiyor, lütfen daha sonra tekrar deneyin.';
+    warning = 'Canlı ve önbelleğe alınmış kur kullanılamıyor; statik yaklaşık fallback gösteriliyor.';
   }
   const converted = amount * rate;
-  const trend = deterministicSeries(rate, 1.2, 7).map((value, index) => ({ label: `${index + 1}.g`, value }));
   return {
     status: warning || 'Kur başarıyla güncellendi.',
     type: warning ? 'warning' : 'success',
@@ -186,7 +178,7 @@ export async function calculateLiveExchange(formData) {
       { value: formatNumber(rate), label: `1 ${from} = ${to}` },
       { value: new Date(updatedAt).toLocaleString('tr-TR'), label: 'Son güncelleme' },
       { value: escapeHtml(provider), label: 'Veri kaynağı' }
-    ])}<div class="chart-container"><h3>7 noktalı kur trendi</h3>${canvasHtml('liveExchangeChart', 'line', trend, 'Kur trend grafiği')}</div><p class="finance-note">Merkez Bankası/TCMB resmi kurlarına göre hesaplanır, bankalar farklı kurlar uygulayabilir.</p>`
+    ])}<p class="finance-note">Canlı yanıt geldiğinde referans kurlar TCMB kaynağından NovaTools live-data uç noktası üzerinden alınır. Bankalar ve döviz büroları kendi alış/satış marjlarını uygular; önbellek veya statik fallback gösterildiğinde sonuç güncel resmi kur olarak değerlendirilmemelidir.</p>`
   };
 }
 
@@ -231,16 +223,20 @@ export async function calculateStockLookup(formData) {
       currency: data.currency || meta.currency || (symbol.endsWith('.IS') ? 'TRY' : 'USD'),
       changePercent: previous ? ((price - previous) / previous) * 100 : 0,
       volume: Number(meta.regularMarketVolume || 0),
-      exchange: meta.exchangeName || meta.fullExchangeName || 'Yahoo Finance',
-      series: data.closes?.length ? data.closes : deterministicSeries(price, previous ? ((price - previous) / previous) * 100 : 0, 6)
+      exchange: data.provider || meta.exchangeName || meta.fullExchangeName || 'finance.yahoo.com',
+      series: Array.isArray(data.closes) ? data.closes.filter((value) => Number.isFinite(value)) : []
     };
+    if (response.stale) warning = 'Hisse verisi geçici olarak güncellenemiyor; önbellekteki son bilinen veri gösteriliyor.';
   } catch (error) {
     const fallback = STOCK_FALLBACKS[display];
     if (!fallback) throw new Error(error?.message?.includes('429') ? 'API limit aşıldı, lütfen daha sonra deneyin.' : 'Sembol bulunamadı.');
-    quote = fallback;
-    warning = 'API limit aşıldı veya veri geçici olarak alınamadı, örnek/son bilinen veri gösteriliyor.';
+    quote = { ...fallback, series: [] };
+    warning = 'Canlı hisse verisi alınamadı; açıkça örnek olarak tutulan statik fallback değerleri gösteriliyor.';
   }
   const chart = quote.series.map((value, index) => ({ label: `${index + 1}`, value }));
+  const chartHtml = chart.length >= 2
+    ? `<div class="chart-container"><h3>Sağlayıcının son kapanışları</h3>${canvasHtml('stockSparklineChart', 'line', chart, 'Sağlayıcıdan alınan son kapanış fiyatları')}</div>`
+    : '<p class="finance-note">Bu yanıtta gerçek tarihsel kapanış serisi bulunmadığı için grafik gösterilmiyor.</p>';
   return {
     status: warning || 'Hisse verisi hazır.',
     type: warning ? 'warning' : 'success',
@@ -248,35 +244,39 @@ export async function calculateStockLookup(formData) {
       { value: formatCurrency(quote.price, quote.currency), label: `${display} fiyat`, className: 'highlight' },
       { value: `${round(quote.changePercent)}%`, label: 'Değişim' },
       { value: formatNumber(quote.volume), label: 'Hacim' },
-      { value: escapeHtml(quote.exchange), label: 'Piyasa' }
-    ])}${favoriteToggleHtml('novatools:finance:stock-favorites', display, display)}<div id="favoriteList" class="favorite-list"></div><div class="chart-container"><h3>Mini sparkline</h3>${canvasHtml('stockSparklineChart', 'line', chart, 'Hisse sparkline grafiği')}</div><p class="finance-note">Borsa verileri gecikmeli olabilir, yatırım kararı için aracı kuruma danışın.</p>`
+      { value: escapeHtml(quote.exchange), label: 'Piyasa / veri kaynağı' }
+    ])}${favoriteToggleHtml('novatools:finance:stock-favorites', display, display)}<div id="favoriteList" class="favorite-list"></div>${chartHtml}<p class="finance-note">Canlı veri geldiğinde fiyat ve kapanış serisi NovaTools live-data uç noktası üzerinden Yahoo Finance kaynağından alınır. Borsa verileri gecikmeli olabilir; yatırım kararı için aracı kurum verisini doğrulayın.</p>`
   };
 }
 
 export async function calculateCryptoPrices() {
   let coins;
   let warning = '';
+  let provider = 'coingecko.com';
+  let fetchedAt = new Date().toISOString();
   try {
     const response = await getCryptoPrices(CRYPTO_IDS.join(','));
     coins = response.data.coins;
-    if (response.stale) warning = 'Fiyatlar geçici olarak güncellenemiyor, son bilinen fiyatlar gösteriliyor.';
+    provider = response.data.provider || provider;
+    fetchedAt = response.data.fetchedAt || fetchedAt;
   } catch {
     coins = CRYPTO_FALLBACKS;
-    warning = 'Fiyatlar geçici olarak güncellenemiyor, örnek/son bilinen fiyatlar gösteriliyor.';
+    provider = 'statik örnek fallback';
+    warning = `Canlı fiyatlar alınamadı; statik örnek değerler ve yaklaşık ${STATIC_USD_TRY} TRY/USD dönüşümü gösteriliyor.`;
   }
   const rows = CRYPTO_IDS.map((id) => {
     const coin = coins[id] || CRYPTO_FALLBACKS[id];
     const usd = Number(coin.usd || 0);
-    const tryPrice = usd * STATIC_USD_TRY;
+    const tryPrice = Number.isFinite(Number(coin.try)) ? Number(coin.try) : usd * STATIC_USD_TRY;
     const change = Number(coin.usd_24h_change || 0);
-    const marketCap = Number(coin.usd_market_cap || 0) * STATIC_USD_TRY;
-    const volume = Number(coin.usd_24h_vol || 0) * STATIC_USD_TRY;
-    return { id, label: CRYPTO_LABELS[id], usd, tryPrice, change, marketCap, volume, series: deterministicSeries(tryPrice, change, 7) };
+    const marketCap = Number.isFinite(Number(coin.try_market_cap)) ? Number(coin.try_market_cap) : Number(coin.usd_market_cap || 0) * STATIC_USD_TRY;
+    const volume = Number.isFinite(Number(coin.try_24h_vol)) ? Number(coin.try_24h_vol) : Number(coin.usd_24h_vol || 0) * STATIC_USD_TRY;
+    return { id, label: CRYPTO_LABELS[id], usd, tryPrice, change, marketCap, volume };
   });
   return {
     status: warning || 'Kripto fiyatları güncellendi.',
     type: warning ? 'warning' : 'success',
-    html: `${warning ? `<p class="form-error">${warning}</p>` : ''}<div class="crypto-grid">${rows.map((row) => `<article class="result-item"><h3>${row.label}</h3><div class="result-value">${formatTRY(row.tryPrice)}</div><p>${formatUSD(row.usd)} · 24s: ${round(row.change)}%</p><p>Market cap: ${formatTRY(row.marketCap)}</p><p>Hacim: ${formatTRY(row.volume)}</p>${favoriteToggleHtml('novatools:finance:crypto-favorites', row.id, row.label)}</article>`).join('')}</div><div id="favoriteList" class="favorite-list"></div><div class="chart-container"><h3>7 günlük fiyat çizgisi (TRY)</h3>${canvasHtml('cryptoPriceChart', 'multiLine', rows.map((row) => ({ label: row.label, values: row.series })), 'Kripto fiyat grafiği')}</div><p class="finance-note">Kripto para fiyatları yüksek volatilite içerir, yatırım tavsiyesi değildir.</p>`
+    html: `${warning ? `<p class="form-error">${warning}</p>` : ''}<div class="crypto-grid">${rows.map((row) => `<article class="result-item"><h3>${row.label}</h3><div class="result-value">${formatTRY(row.tryPrice)}</div><p>${formatUSD(row.usd)} · 24s: ${round(row.change)}%</p><p>Market cap: ${formatTRY(row.marketCap)}</p><p>Hacim: ${formatTRY(row.volume)}</p>${favoriteToggleHtml('novatools:finance:crypto-favorites', row.id, row.label)}</article>`).join('')}</div><div id="favoriteList" class="favorite-list"></div>${resultCards([{ value: escapeHtml(provider), label: 'Veri kaynağı' }, { value: new Date(fetchedAt).toLocaleString('tr-TR'), label: 'Son veri çekimi' }])}<p class="finance-note">Canlı yanıt geldiğinde USD ve TRY fiyatları, 24 saatlik değişim, market cap ve hacim CoinGecko simple-price verisinden alınır. Bu sayfa tarihsel fiyat serisi üretmez. Kripto para fiyatları yüksek volatilite içerir ve yatırım tavsiyesi değildir.</p>`
   };
 }
 
@@ -436,8 +436,8 @@ export function calculateRetirement(formData) {
       { value: formatTRY(nominal), label: 'Nominal birikim', className: 'highlight' },
       { value: formatTRY(real), label: 'Enflasyon ayarlı' },
       { value: formatTRY(annualWithdrawal / 12), label: '4% kuralı aylık' },
-      { value: 'Kadın 58 / Erkek 60+', label: 'SGK 4A yaş notu' }
-    ])}<div class="chart-container"><h3>Yaşa göre birikim</h3>${canvasHtml('retirementChart', 'line', series, 'Emeklilik birikim grafiği')}</div><p class="finance-note">SGK yaş/prim günü koşulları statü ve başlangıç tarihine göre değişebilir; 3600/4500/5400 gün seçenekleri için SGK kaydı kontrol edilmelidir. Emeklilik hesaplamaları tahminidir, kesin bilgi için SGK ve mali müşavire danışın.</p>`
+      { value: `${years} yıl`, label: 'Hedefe kalan süre' }
+    ])}<div class="chart-container"><h3>Yaşa göre birikim</h3>${canvasHtml('retirementChart', 'line', series, 'Emeklilik birikim grafiği')}</div><p class="finance-note">Projeksiyon, seçtiğiniz getiri ve enflasyon oranlarının dönem boyunca sabit kaldığını varsayar. Devlet emekliliği/SGK aylığı bu hesaplamaya dahil değildir.</p>`
   };
 }
 
@@ -470,7 +470,7 @@ export function calculateStudentLoan(formData) {
   const base = loanSchedule(balance, rate, monthlyPayment, 0);
   const extra = loanSchedule(balance, rate, monthlyPayment, extraPayment);
   const savings = base.totalInterest - extra.totalInterest;
-  const chart = base.rows.slice(0, Math.max(base.rows.length, extra.rows.length)).filter((_, index) => index % Math.max(1, Math.ceil(base.rows.length / 24)) === 0).map((row, index) => ({ label: String(row.month), current: row.balance, extra: extra.rows[Math.min(index, extra.rows.length - 1)]?.balance || 0 }));
+  const chart = base.rows.slice(0, Math.max(base.rows.length, extra.rows.length)).filter((_, index) => index % Math.max(1, Math.ceil(base.rows.length / 24)) === 0).map((row) => ({ label: String(row.month), current: row.balance, extra: extra.rows[Math.min(row.month - 1, extra.rows.length - 1)]?.balance || 0 }));
   return {
     status: 'Öğrenci kredisi ödeme planı hazır.',
     type: 'success',
@@ -487,7 +487,7 @@ function forms() {
   return {
     'live-exchange': `<div class="form-grid"><label>Tutar<input name="amount" type="number" min="0.01" step="0.01" value="1000" inputmode="decimal" required></label><label>Kaynak<select name="from" required><option>TRY</option><option selected>USD</option><option>EUR</option></select></label><button type="button" class="btn btn-secondary" id="swapCurrencies">⇄ Swap</button><label>Hedef<select name="to" required><option selected>TRY</option><option>USD</option><option>EUR</option></select></label></div><button class="btn" type="submit">Kuru güncelle</button>`,
     'stock-lookup': `<div class="form-grid"><label>Hisse sembolü<input name="symbol" list="stockSymbols" value="AAPL" maxlength="12" required></label><datalist id="stockSymbols"><option value="THYAO"><option value="GARAN"><option value="AAPL"><option value="TSLA"><option value="IBM"></datalist></div><button class="btn" type="submit">Hisseyi getir</button>`,
-    'crypto-prices': `<p class="finance-note">BTC, ETH, SOL, XRP ve ADA fiyatları 30 saniyede bir yenilenir. Fiyatlar client-side gösterilir.</p><button class="btn" type="submit">Fiyatları yenile</button>`,
+    'crypto-prices': `<p class="finance-note">BTC, ETH, SOL, XRP ve ADA için CoinGecko snapshot'ı tarayıcıda 5 dakika önbelleğe alınır. Otomatik yenileme de 5 dakikada bir çalışır; sonuçta sağlayıcının veri çekim zamanı gösterilir.</p><button class="btn" type="submit">Fiyatları kontrol et</button>`,
     'cloud-cost': `<div class="form-grid"><label>Provider<select name="provider" id="cloudProvider" required><option value="aws">AWS</option><option value="gcp">GCP</option><option value="azure">Azure</option></select></label><label>Instance<select name="instance" id="cloudInstance" required></select></label><label>Kullanım saati<input name="hours" type="number" min="1" max="744" step="1" value="730" inputmode="numeric" required></label><label>Depolama GB<input name="storage" type="number" min="1" max="100000" step="1" value="100" inputmode="numeric" required></label><label>Network GB<input name="network" type="number" min="0" max="100000" step="1" value="100" inputmode="numeric" required></label><label>Plan<select name="plan" required><option value="onDemand">On-Demand</option><option value="reserved1y">Reserved 1y</option><option value="reserved3y">Reserved 3y</option><option value="spot">Spot</option></select></label></div><button class="btn" type="submit">Maliyeti hesapla</button>`,
     'crypto-tax': `<div class="form-grid"><label>Yıl<input name="year" type="number" min="2020" max="2030" step="1" value="2026" inputmode="numeric" required></label><label>Toplam alım<input name="totalBuy" type="number" min="0" step="0.01" value="100000" inputmode="decimal" required></label><label>Toplam satım<input name="totalSell" type="number" min="0" step="0.01" value="150000" inputmode="decimal" required></label><label>Kazanç/zarar (opsiyonel)<input name="gainLoss" type="number" step="0.01" inputmode="decimal"></label><label>Maliyet bazı<select name="costBasis"><option>FIFO</option><option>LIFO</option></select></label></div><button class="btn" type="submit">Vergiyi hesapla</button>`,
     tax: `<div class="form-grid"><label>Brüt maaş<input name="grossSalary" type="number" min="1" max="5000000" step="0.01" value="75000" inputmode="decimal" required></label><label>Medeni durum<select name="marital"><option>Bekar</option><option>Evli</option></select></label><label>Çocuk sayısı<input name="children" type="number" min="0" max="10" step="1" value="0" inputmode="numeric" required></label><label>Özel sigorta<input name="privateInsurance" type="number" min="0" step="0.01" value="0" inputmode="decimal"></label></div><button class="btn" type="submit">Net maaşı hesapla</button>`,
@@ -522,7 +522,6 @@ function drawChart(canvas) {
   ctx.font = '12px Inter, sans-serif';
   if (type === 'pie') return drawPie(ctx, data, width, height);
   if (type === 'bar') return drawBar(ctx, data, width, height, padding);
-  if (type === 'multiLine') return drawMultiLine(ctx, data, width, height, padding);
   if (type === 'dualLine') return drawDualLine(ctx, data, width, height, padding);
   return drawLine(ctx, data, width, height, padding);
 }
@@ -564,17 +563,6 @@ function drawDualLine(ctx, data, width, height, padding) {
   drawLinePath(ctx, extra, width, height, padding, '#22C55E', maxValue);
   ctx.fillStyle = '#F97316'; ctx.fillText('Mevcut', padding + 6, 18);
   ctx.fillStyle = '#22C55E'; ctx.fillText('Ek ödeme', padding + 72, 18);
-}
-
-function drawMultiLine(ctx, data, width, height, padding) {
-  drawAxis(ctx, width, height, padding);
-  const colors = ['#22C55E', '#38BDF8', '#F97316', '#A78BFA', '#F43F5E'];
-  const maxValue = Math.max(...data.flatMap((row) => row.values || []), 1);
-  data.forEach((row, index) => {
-    drawLinePath(ctx, row.values || [], width, height, padding, colors[index % colors.length], maxValue);
-    ctx.fillStyle = colors[index % colors.length];
-    ctx.fillText(row.label, padding + 6 + index * 64, 18);
-  });
 }
 
 function drawBar(ctx, data, width, height, padding) {
@@ -694,7 +682,7 @@ export function initP0FinanceTool(tool = document.body.dataset.financeTool) {
   });
 
   if (tool === 'crypto-prices') {
-    cryptoTimer = window.setInterval(run, 30000);
+    cryptoTimer = window.setInterval(run, 5 * 60 * 1000);
     window.addEventListener('pagehide', () => window.clearInterval(cryptoTimer), { once: true });
   }
 }

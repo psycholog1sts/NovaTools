@@ -37,7 +37,7 @@
   <link rel="stylesheet" href="/src/styles/layout.css">
   
   <!-- INP guard: coalesce input handlers to at least one frame. -->
-  <script src="/input-performance.js"></script>
+  <script src="/input-performance.js" defer></script>
 
   <!-- i18n Script -->
   <script src="/i18n.js" defer></script>
@@ -145,15 +145,12 @@
           
           <!-- Desktop Nav -->
           <nav class="main-nav" aria-label="Main navigation">
-            <a href="/categories/index.html" class="nav-link" data-i18n="tools.categories">Categories</a>
+            <a href="/categories/converters.html" class="nav-link">Convert</a>
+            <a href="/categories/finance-tools.html" class="nav-link" data-i18n="nav.finance">Finance</a>
             <a href="/categories/pdf-tools.html" class="nav-link" data-i18n="nav.pdf">PDF</a>
             <a href="/categories/image-tools.html" class="nav-link" data-i18n="nav.image">Image</a>
-            <a href="/categories/finance-tools.html" class="nav-link" data-i18n="nav.finance">Finance</a>
-            <a href="/categories/developer-tools.html" class="nav-link" data-i18n="nav.developer">Dev</a>
-            <a href="/blog/index.html" class="nav-link" data-i18n="nav.blog">Blog</a>
-            <a href="/about-us.html" class="nav-link" data-i18n="nav.about">About</a>
-            <a href="/security.html" class="nav-link" data-i18n="nav.security">Security</a>
-            <a href="/contact.html" class="nav-link" data-i18n="nav.contact">Contact</a>
+            <a href="/categories/index.html" class="nav-link">All tools</a>
+            <a href="/blog/index.html" class="nav-link" data-i18n="nav.blog">Guides</a>
           </nav>
           
           <!-- Actions -->
@@ -186,13 +183,13 @@
                 <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
               </svg>
             </button>
-            <button class="btn-icon" type="button" aria-label="Search" data-nv-click="toggleSearch">
+            <button type="button" class="btn-icon" id="searchToggle" aria-label="Search" aria-expanded="false" aria-controls="searchModal" data-nv-click="toggleSearch">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <circle cx="11" cy="11" r="8"/>
                 <path d="m21 21-4.35-4.35"/>
               </svg>
             </button>
-            <button class="btn-icon mobile-menu-toggle" type="button" aria-label="Menu" data-nv-click="toggleMobileMenu">
+            <button type="button" class="btn-icon mobile-menu-toggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Menu" data-nv-click="toggleMobileMenu">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <line x1="3" y1="6" x2="21" y2="6"/>
                 <line x1="3" y1="12" x2="21" y2="12"/>
@@ -205,20 +202,24 @@
     </header>
 
     <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu" id="mobileMenu" hidden>
       <nav class="mobile-nav">
-        <a href="/categories/index.html" class="mobile-nav-link" data-i18n="tools.categories">Categories</a>
-        <a href="#popular" class="mobile-nav-link" data-i18n="home.sections.popularTitle">Popular Tools</a>
-        <a href="#new" class="mobile-nav-link" data-i18n="home.sections.newTitle">New Tools</a>
-        <a href="/blog/index.html" class="mobile-nav-link" data-i18n="nav.blog">Blog</a>
+        <a href="#featured-tools" class="mobile-nav-link">All tools</a>
+        <a href="#categories" class="mobile-nav-link" data-i18n="home.sections.categoriesTitle">Browse by category</a>
+        <a href="/categories/converters.html" class="mobile-nav-link" data-i18n="nav.converters">Converters</a>
+        <a href="/categories/finance-tools.html" class="mobile-nav-link" data-i18n="nav.finance">Finance</a>
+        <a href="/categories/pdf-tools.html" class="mobile-nav-link" data-i18n="nav.pdf">PDF</a>
+        <a href="/categories/image-tools.html" class="mobile-nav-link" data-i18n="nav.image">Image</a>
+        <a href="/blog/index.html" class="mobile-nav-link" data-i18n="nav.blog">Guides</a>
         <a href="/about-us.html" class="mobile-nav-link" data-i18n="nav.about">About</a>
+        <a href="/security.html" class="mobile-nav-link" data-i18n="nav.security">Security</a>
         <a href="/contact.html" class="mobile-nav-link" data-i18n="nav.contact">Contact</a>
       </nav>
     </div>
 
     <!-- Search Modal -->
-    <div class="search-modal" id="searchModal">
-      <div class="search-container">
+    <div class="search-modal" id="searchModal" role="dialog" aria-modal="true" aria-label="Tool search" hidden>
+      <div class="search-container" tabindex="-1">
         <div class="search-input-wrapper">
           <svg class="search-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <circle cx="11" cy="11" r="8"/>
@@ -235,119 +236,91 @@
     <main id="main-content">
       <!-- Hero Section -->
       <section class="home-hero" aria-labelledby="homeHeroTitle">
-        <div class="home-hero__pattern" aria-hidden="true"></div>
-        <div class="container home-hero__container">
-          <div class="home-hero__content">
-            <div class="home-hero__spin-logo" aria-hidden="true">
-              <img src="/logo-brand-260.png" alt="" width="260" height="260" decoding="async" fetchpriority="high">
-            </div>
-            <span class="home-eyebrow">MC NovaTools</span>
-            <h1 class="home-hero__title" id="homeHeroTitle" data-i18n="hero.title">
-              All-in-One Tools for Files, Finance & Code
-            </h1>
-            <p class="home-hero__subtitle" data-i18n="home.hero.description">
-              Use MC NovaTools to convert, calculate, create, and streamline practical workflows with a fast, clear, browser-based toolkit.
-            </p>
+        <div class="container home-hero__inner">
+          <h1 class="home-hero__title" id="homeHeroTitle" data-i18n="hero.title">
+            Everyday tools that show their work
+          </h1>
+          <p class="home-hero__lede" data-i18n="home.hero.description">
+            Converters, calculators and file utilities that run in your browser. Every tool states what it assumes and where it stops.
+          </p>
 
-            <form class="home-search" id="homeSearchForm" role="search" autocomplete="off">
-              <label class="sr-only" for="homeSearchInput" data-i18n="common.search">Search</label>
-              <div class="home-search__box">
-                <svg class="home-search__icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                  <circle cx="11" cy="11" r="8"/>
-                  <path d="m21 21-4.35-4.35"/>
-                </svg>
-                <input id="homeSearchInput" class="home-search__input" type="search" placeholder="Search tools, categories, and workflows..." data-i18n-placeholder="home.searchPlaceholder" aria-controls="homeSearchResults" aria-expanded="false">
-                <button class="btn btn-primary home-search__button" type="submit" data-i18n="common.search">Search</button>
-              </div>
-              <div class="home-search__results" id="homeSearchResults" role="listbox" aria-label="Search suggestions"></div>
-            </form>
-
-            <div class="home-hero__actions" aria-label="Ana eylemler">
-              <a href="/categories/index.html" class="btn btn-primary btn-lg" data-i18n="hero.cta">Explore Tools</a>
-              <a href="#popular-tasks" class="btn btn-secondary btn-lg" data-i18n="home.sections.popularTitle">Popular Tools</a>
+          <form class="home-search" id="homeSearchForm" role="search" autocomplete="off">
+            <label class="sr-only" for="homeSearchInput" data-i18n="common.search">Search tools</label>
+            <div class="home-search__box">
+              <svg class="home-search__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <circle cx="11" cy="11" r="8"/>
+                <path d="m21 21-4.35-4.35"/>
+              </svg>
+              <input id="homeSearchInput" class="home-search__input" type="search"
+                     placeholder="Search tools — try “percent”, “epoch”, “compress pdf”"
+                     data-i18n-placeholder="home.searchPlaceholder"
+                     aria-controls="homeSearchResults" aria-expanded="false">
+              <kbd class="home-search__kbd" data-search-shortcut aria-hidden="true">/</kbd>
             </div>
-          </div>
+            <p class="sr-only" id="homeSearchStatus" role="status" aria-live="polite"></p>
+            <div class="home-search__results" id="homeSearchResults" role="listbox" aria-label="Search results" hidden></div>
+          </form>
 
-          <aside class="home-hero__visual" aria-label="NovaTools workflow preview">
-            <picture class="home-hero__image">
-              <img src="/hero.svg" alt="MC NovaTools workflow dashboard preview" width="800" height="420" decoding="async" fetchpriority="high">
-            </picture>
-            <div class="workflow-panel">
-              <div class="workflow-panel__header">
-                <span class="workflow-panel__dot"></span>
-                <span class="workflow-panel__dot"></span>
-                <span class="workflow-panel__dot"></span>
-                <strong data-i18n="home.launcher.title">Workflow launcher</strong>
-              </div>
-              <div class="workflow-panel__search" data-i18n="home.launcher.query">compress pdf for email</div>
-              <div class="workflow-panel__stack">
-                <a href="/tools/pdf/compress/"><span data-i18n="home.launcher.compressPdf">Compress PDF</span> <span data-i18n="home.launcher.badges.pdf">PDF</span></a>
-                <a href="/blog/articles/compress-pdf-for-email-without-ruining-readability.html"><span data-i18n="home.launcher.readabilityChecklist">Readability checklist</span> <span data-i18n="home.launcher.badges.guide">Guide</span></a>
-                <a href="/categories/pdf-tools.html"><span data-i18n="home.launcher.browsePdfTools">Browse PDF tools</span> <span data-i18n="home.launcher.badges.category">Category</span></a>
-              </div>
-              <div class="workflow-panel__trust">
-                <span data-i18n="home.launcher.browserFirst">Browser-first where practical</span>
-                <span data-i18n="home.launcher.noSignup">No forced signup</span>
-              </div>
-            </div>
-          </aside>
+          <nav class="home-hero__tasks" aria-label="Common tasks">
+            <a class="home-task-chip" href="/tools/converters/percentage-calculator/">Work out a percentage</a>
+            <a class="home-task-chip" href="/tools/converters/unit-converter/">Convert units</a>
+            <a class="home-task-chip" href="/tools/pdf/compress/">Compress a PDF</a>
+            <a class="home-task-chip" href="/tools/image/compress/">Compress an image</a>
+            <a class="home-task-chip" href="/tools/converters/unix-timestamp/">Read a timestamp</a>
+            <a class="home-task-chip" href="/tools/converters/timezone-converter/">Compare time zones</a>
+          </nav>
+
+          <p class="home-hero__proof">
+            <span>No sign-up for any published tool</span>
+            <span>Most tools process input in your browser</span>
+            <span>Limitations documented on every tool page</span>
+          </p>
         </div>
       </section>
 
       <!-- Trust Bar -->
-      <section class="home-trust" aria-label="NovaTools trust and access features">
-        <div class="container home-trust__grid">
-          <div class="home-trust__item">
-            <span class="home-trust__icon" aria-hidden="true">🔒</span>
-            <span data-i18n="home.features.privateDesc">Your files and inputs stay on your device whenever possible.</span>
+      <section class="home-trust" aria-labelledby="homeTrustTitle">
+        <div class="container">
+          <h2 class="sr-only" id="homeTrustTitle">How NovaTools works</h2>
+          <ul class="home-trust__grid">
+            <li class="home-trust__item">
+              <strong>Nothing uploaded for local tools</strong>
+              <span>Converters and calculators run in your browser. Tools that need a network source say so on the page.</span>
+            </li>
+            <li class="home-trust__item">
+              <strong>Limits written down</strong>
+              <span>Every published tool lists what it assumes, the range it accepts and what it will not do.</span>
+            </li>
+            <li class="home-trust__item">
+              <strong>Refuses rather than guesses</strong>
+              <span>Out-of-range or undefined input returns the reason, not a plausible-looking number.</span>
+            </li>
+            <li class="home-trust__item">
+              <strong>No account, no paywall</strong>
+              <span>Every tool listed here is usable without signing in. Nothing is gated.</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section home-recent" id="recent-tools" hidden aria-labelledby="homeRecentTitle">
+        <div class="container">
+          <div class="section-header section-header--split">
+            <div>
+              <h2 class="section-title" id="homeRecentTitle">Recently used</h2>
+              <p class="section-description">Kept in this browser only. Nothing is sent anywhere.</p>
+            </div>
+            <button type="button" class="btn btn-secondary" id="clearRecentTools">Clear</button>
           </div>
-          <div class="home-trust__item">
-            <span class="home-trust__icon" aria-hidden="true">⚡</span>
-            <span data-i18n="home.features.fastTitle">Lightning Fast</span>
-          </div>
-          <div class="home-trust__item">
-            <span class="home-trust__icon" aria-hidden="true">🌍</span>
-            <span data-i18n="home.features.multiLangTitle">Multi-Language</span>
-          </div>
-          <div class="home-trust__item">
-            <span class="home-trust__icon" aria-hidden="true">📱</span>
-            <span>Mobile friendly</span>
-          </div>
-          <div class="home-trust__item">
-            <span class="home-trust__icon" aria-hidden="true">🆓</span>
-            <span data-i18n="home.features.freeTitle">Completely Free</span>
-          </div>
+          <div class="home-recent__grid" id="homeRecentGrid"></div>
         </div>
       </section>
 
       <!-- Popular Tasks -->
-      <section class="section home-popular" id="popular-tasks" aria-labelledby="popularTasksTitle">
-        <div class="container">
-          <div class="section-header">
-            <span class="section-eyebrow" data-i18n="home.sections.quickStartEyebrow">Quick start</span>
-            <h2 class="section-title" id="popularTasksTitle" data-i18n="home.sections.popularTitle">Popular Tools</h2>
-            <p class="section-description" data-i18n="home.sections.popularDesc">Most-used tools picked by users.</p>
-          </div>
-          <div class="task-chip-grid" id="popularTasks">
-            <!-- Popular task chips injected by JS -->
-          </div>
-        </div>
-      </section>
 
 
-      <!-- Popular This Week -->
-      <section class="section home-popular-week" aria-labelledby="popularThisWeekTitle">
-        <div class="container">
-          <div class="section-header">
-            <span class="section-eyebrow" data-i18n="home.privateStarter.eyebrow">Private discovery</span>
-            <h2 class="section-title" id="popularThisWeekTitle" data-i18n="home.privateStarter.title">Your private starter set</h2>
-            <p class="section-description" data-i18n="home.privateStarter.description">Uses completed tool activity stored on this device; until then, starter tools are shown. Nothing is sent to a server.</p>
-          </div>
-          <div class="home-popular-week__grid" id="popularThisWeek">
-            <noscript><p data-i18n="home.privateStarter.noscript">Enable JavaScript to show the device-only starter set.</p></noscript>
-          </div>
-        </div>
-      </section>
+
+
 
       <!-- Featured Tools -->
       <section class="section home-featured" id="featured-tools" aria-labelledby="featuredToolsTitle">
@@ -373,6 +346,7 @@
               Organized collections of tools for real work. Click a category to explore.
             </p>
           </div>
+          <p class="section-note" id="categoriesPending" hidden></p>
           <div class="category-nav-grid" id="categoriesGrid">
             <!-- Categories injected by JS -->
           </div>
@@ -388,7 +362,7 @@
               <h2 class="section-title" id="homeWorkflowsTitle" data-i18n="home.workflows.title">Start with a task, not a menu</h2>
               <p class="section-description" data-i18n="home.workflows.description">Use guided entry points that connect a tool, a checklist, and the next useful step.</p>
             </div>
-            <a class="section-link" href="/blog/articles/tool-selection-map-for-new-users.html" data-i18n="home.workflows.chooseLink">How to choose →</a>
+            <a class="section-link" href="/blog/articles/browser-based-tools-vs-desktop-software-privacy-comparison.html" data-i18n="home.workflows.chooseLink">Browser-Based Tools vs Desktop Software: Privacy Comparison</a>
           </div>
           <div class="workflow-card-grid" id="workflowCards">
             <!-- Workflow cards injected by JS -->
@@ -396,19 +370,7 @@
         </div>
       </section>
 
-      <!-- Monetization-ready placement -->
-      <section class="home-ad-ready" aria-label="Sponsored placement information">
-        <div class="container">
-          <div class="ad-ready-panel">
-            <div>
-              <span class="section-eyebrow" data-i18n="home.ads.eyebrow">Clean layout</span>
-              <h2 data-i18n="home.ads.title">Helpful content first, ads only in reserved spaces</h2>
-              <p data-i18n="home.ads.description">NovaTools keeps tool controls, guide cards and legal links easy to find. Advertising scripts load only after the appropriate consent and valid production configuration.</p>
-            </div>
-            <a class="btn btn-secondary" href="/kvkk-aydinlatma-metni.html" data-i18n="home.ads.cookieChoices">Cookie choices</a>
-          </div>
-        </div>
-      </section>
+
 
       <!-- Editorial Block -->
       <section class="section home-blog" aria-labelledby="homeBlogTitle">
@@ -455,12 +417,11 @@
           <nav class="home-footer__column" aria-label="Categories">
             <h2 class="footer-column-title" data-i18n="home.footer.toolCategoriesTitle">Tool Categories</h2>
             <ul class="footer-column-list">
+              <li><a href="/categories/converters.html" data-i18n="nav.converters">Converters</a></li>
+              <li><a href="/categories/finance-tools.html" data-i18n="nav.finance">Finance</a></li>
               <li><a href="/categories/pdf-tools.html" data-i18n="nav.pdf">PDF Tools</a></li>
               <li><a href="/categories/image-tools.html" data-i18n="nav.image">Image Tools</a></li>
-              <li><a href="/categories/finance-tools.html" data-i18n="nav.finance">Finance</a></li>
-              <li><a href="/categories/developer-tools.html" data-i18n="nav.developer">Developer</a></li>
-              <li><a href="/categories/text-writing.html" data-i18n="nav.text">Text</a></li>
-              <li><a href="/categories/converters.html" data-i18n="nav.converters">Converters</a></li>
+              <li><a href="/categories/index.html">All categories</a></li>
             </ul>
           </nav>
 
@@ -468,6 +429,7 @@
             <h2 class="footer-column-title" data-i18n="home.footer.legalTitle">Legal & Privacy</h2>
             <ul class="footer-column-list">
               <li><a href="/about-us.html">About</a></li>
+              <li><a href="/security.html" data-i18n="nav.security">Security</a></li>
               <li><a href="/contact.html">Contact</a></li>
               <li><a href="/privacy-policy.html">Privacy Policy</a></li>
               <li><a href="/terms-of-service.html">Terms of Service</a></li>

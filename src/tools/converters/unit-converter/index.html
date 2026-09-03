@@ -37,16 +37,16 @@
   <meta name="theme-color" content="#0A0A0C">
 
   <meta property="og:title" content="Free Unit Converter Online | NovaTools MC">
-  <meta property="og:description" content="Convert between length, weight, temperature, volume, and area units instantly. No signup required.">
+  <meta property="og:description" content="Convert length, mass, temperature, volume, area, speed and data units with local formulas. No signup required.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.mc-novatools.com/tools/converters/unit-converter/">
+  <meta property="og:url" content="https://mc-novatools.com/tools/converters/unit-converter/">
   <meta property="og:image" content="https://www.mc-novatools.com/og-image.png">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Free Unit Converter | NovaTools MC">
-  <meta name="twitter:description" content="Convert between different units of measurement instantly.">
+  <meta name="twitter:description" content="Convert supported measurement units locally in your browser.">
 
-  <link rel="canonical" href="https://www.mc-novatools.com/tools/converters/unit-converter/">
+  <link rel="canonical" href="https://mc-novatools.com/tools/converters/unit-converter/">
 
   <script type="application/ld+json">
   {
@@ -54,8 +54,8 @@
     "@graph": [{
       "@type": "WebApplication",
       "name": "Unit Converter",
-      "description": "Free online unit converter. Convert between length, weight, temperature, volume, and area units instantly.",
-      "url": "https://www.mc-novatools.com/tools/converters/unit-converter/",
+      "description": "Free online unit converter. Convert length, mass, temperature, volume, area, speed and data units with local formulas.",
+      "url": "https://mc-novatools.com/tools/converters/unit-converter/",
       "applicationCategory": "UtilityApplication",
       "operatingSystem": "Any",
       "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
@@ -67,65 +67,65 @@
     .tool-wrapper { max-width: 960px; margin: 0 auto; padding: 3rem 1rem 5rem; }
     .tool-hero { text-align: center; margin-bottom: 2.5rem; }
     .tool-hero-icon { font-size: 3.5rem; line-height: 1; margin-bottom: 1rem; }
-    .tool-hero h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; letter-spacing: -0.02em; color: #FAFAFA; margin-bottom: 0.75rem; }
-    .tool-hero p { color: #A1A1AA; font-size: 1.0625rem; max-width: 560px; margin: 0 auto; }
+    .tool-hero h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; letter-spacing: -0.02em; color: var(--text-primary); margin-bottom: 0.75rem; }
+    .tool-hero p { color: var(--text-secondary); font-size: 1.0625rem; max-width: 560px; margin: 0 auto; }
     .card { background: rgba(15,15,20,0.7); border: 1px solid rgba(0,217,255,0.15); border-radius: 14px; padding: 1.75rem; backdrop-filter: blur(12px); }
     
     .category-tabs { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; border-bottom: 1px solid rgba(0,217,255,0.1); padding-bottom: 1rem; }
-    .category-tab { padding: 0.5rem 1rem; background: transparent; border: 1px solid rgba(0,217,255,0.2); border-radius: 8px; color: #A1A1AA; font-size: 0.875rem; font-weight: 500; cursor: pointer; transition: all 0.2s; }
-    .category-tab:hover { background: rgba(0,217,255,0.05); color: #FAFAFA; }
-    .category-tab.active { background: rgba(0,217,255,0.15); border-color: rgba(0,217,255,0.4); color: #00D9FF; }
+    .category-tab { padding: 0.5rem 1rem; background: transparent; border: 1px solid rgba(0,217,255,0.2); border-radius: 8px; color: var(--color-text-secondary); font-size: 0.875rem; font-weight: 500; cursor: pointer; transition: all 0.2s; }
+    .category-tab:hover { background: rgba(0,217,255,0.05); color: var(--text-primary); }
+    .category-tab.active { background: rgba(0,217,255,0.15); border-color: rgba(0,217,255,0.4); color: var(--color-primary); }
     
     .converter-grid { display: grid; grid-template-columns: 1fr auto 1fr; gap: 1rem; align-items: end; margin-bottom: 1.5rem; }
     .input-group { display: flex; flex-direction: column; }
-    .input-label { font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #71717A; margin-bottom: 0.5rem; }
-    .input-field { height: 44px; padding: 0 1rem; background: #0F0F12; border: 1px solid rgba(0,217,255,0.12); border-radius: 8px; color: #FAFAFA; font-size: 1rem; transition: border-color 0.2s, box-shadow 0.2s; outline: none; }
+    .input-label { font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 0.5rem; }
+    .input-field { height: 44px; padding: 0 1rem; background: var(--field-bg); border: 1px solid var(--field-border); border-radius: 8px; color: var(--text-primary); font-size: 1rem; transition: border-color 0.2s, box-shadow 0.2s; outline: none; }
     .input-field:focus { border-color: rgba(0,217,255,0.45); box-shadow: 0 0 0 3px rgba(0,217,255,0.08); }
-    .input-field::placeholder { color: #52525B; }
+    .input-field::placeholder { color: var(--text-tertiary); }
     
-    .unit-select { height: 44px; padding: 0 0.75rem; background: #0F0F12; border: 1px solid rgba(0,217,255,0.12); border-radius: 8px; color: #FAFAFA; font-size: 0.9375rem; cursor: pointer; outline: none; }
+    .unit-select { height: 44px; padding: 0 0.75rem; background: var(--field-bg); border: 1px solid var(--field-border); border-radius: 8px; color: var(--text-primary); font-size: 0.9375rem; cursor: pointer; outline: none; }
     .unit-select:focus { border-color: rgba(0,217,255,0.45); box-shadow: 0 0 0 3px rgba(0,217,255,0.08); }
     
-    .swap-btn { width: 44px; height: 44px; background: rgba(0,217,255,0.1); border: 1px solid rgba(0,217,255,0.25); border-radius: 8px; color: #00D9FF; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+    .swap-btn { width: 44px; height: 44px; background: rgba(0,217,255,0.1); border: 1px solid rgba(0,217,255,0.25); border-radius: 8px; color: var(--accent-text); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
     .swap-btn:hover { background: rgba(0,217,255,0.2); transform: rotate(180deg); }
     
     .result-box { background: rgba(0,217,255,0.05); border: 1px solid rgba(0,217,255,0.15); border-radius: 10px; padding: 1.25rem; text-align: center; margin-bottom: 1.5rem; }
-    .result-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #71717A; margin-bottom: 0.5rem; }
-    .result-value { font-size: 2rem; font-weight: 700; color: #00D9FF; font-family: 'JetBrains Mono', monospace; }
-    .result-formula { font-size: 0.875rem; color: #52525B; margin-top: 0.5rem; }
+    .result-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 0.5rem; }
+    .result-value { font-size: 2rem; font-weight: 700; color: var(--color-primary); font-family: 'JetBrains Mono', monospace; }
+    .result-formula { font-size: 0.875rem; color: var(--text-tertiary); margin-top: 0.5rem; }
     
     .btn-bar { display: flex; flex-wrap: wrap; gap: 0.625rem; }
     .btn { display: inline-flex; align-items: center; gap: 0.4rem; height: 40px; padding: 0 1.125rem; border: none; border-radius: 8px; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: background 0.18s, transform 0.12s, opacity 0.18s; outline: none; user-select: none; }
     .btn:active { transform: scale(0.97); }
-    .btn-primary { background: linear-gradient(135deg, #00D9FF, #0099CC); color: #0A0A0C; }
+    .btn-primary { background: linear-gradient(135deg, var(--accent-text), #0099CC); color: #0A0A0C; }
     .btn-primary:hover { background: linear-gradient(135deg, #1FE2FF, #00B8EE); }
-    .btn-secondary { background: rgba(0,217,255,0.1); border: 1px solid rgba(0,217,255,0.25); color: #00D9FF; }
+    .btn-secondary { background: rgba(0,217,255,0.1); border: 1px solid rgba(0,217,255,0.25); color: var(--accent-text); }
     .btn-secondary:hover { background: rgba(0,217,255,0.18); }
     
-    .copy-feedback { font-size: 0.8rem; color: #00FF88; opacity: 0; transition: opacity 0.3s; pointer-events: none; margin-left: auto; align-self: center; }
+    .copy-feedback { font-size: 0.8rem; color: var(--color-success-text); opacity: 0; transition: opacity 0.3s; pointer-events: none; margin-left: auto; align-self: center; }
     .copy-feedback.show { opacity: 1; }
     
-    .legal-note { margin-top: 1.5rem; padding: 1rem 1.25rem; background: rgba(255,193,7,0.05); border: 1px solid rgba(255,193,7,0.15); border-radius: 10px; font-size: 0.8125rem; color: #A1A1AA; line-height: 1.6; }
-    .legal-note strong { color: #FFC107; }
+    .legal-note { margin-top: 1.5rem; padding: 1rem 1.25rem; background: rgba(255,193,7,0.05); border: 1px solid rgba(255,193,7,0.15); border-radius: 10px; font-size: 0.8125rem; color: var(--color-text-secondary); line-height: 1.6; }
+    .legal-note strong { color: var(--color-warning-text); }
     
     .common-units { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(0,217,255,0.1); }
-    .common-units-title { font-size: 0.875rem; font-weight: 600; color: #A1A1AA; margin-bottom: 0.75rem; }
+    .common-units-title { font-size: 0.875rem; font-weight: 600; color: var(--color-text-secondary); margin-bottom: 0.75rem; }
     .common-units-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.5rem; }
-    .common-unit-item { background: rgba(0,217,255,0.05); border: 1px solid rgba(0,217,255,0.1); border-radius: 6px; padding: 0.5rem 0.75rem; font-size: 0.8125rem; color: #A1A1AA; cursor: pointer; transition: all 0.2s; }
-    .common-unit-item:hover { background: rgba(0,217,255,0.1); border-color: rgba(0,217,255,0.2); color: #FAFAFA; }
+    .common-unit-item { background: rgba(0,217,255,0.05); border: 1px solid rgba(0,217,255,0.1); border-radius: 6px; padding: 0.5rem 0.75rem; font-size: 0.8125rem; color: var(--color-text-secondary); cursor: pointer; transition: all 0.2s; }
+    .common-unit-item:hover { background: rgba(0,217,255,0.1); border-color: rgba(0,217,255,0.2); color: var(--text-primary); }
     
     .seo-section { max-width: 960px; margin: 3.5rem auto 0; padding: 0 1rem; }
-    .seo-section h2 { font-size: 1.375rem; font-weight: 700; color: #FAFAFA; margin-bottom: 0.75rem; }
-    .seo-section h3 { font-size: 1.125rem; font-weight: 600; color: #FAFAFA; margin: 2rem 0 0.75rem; }
-    .seo-section p, .seo-section li { color: #A1A1AA; line-height: 1.8; font-size: 0.9375rem; }
+    .seo-section h2 { font-size: 1.375rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.75rem; }
+    .seo-section h3 { font-size: 1.125rem; font-weight: 600; color: var(--text-primary); margin: 2rem 0 0.75rem; }
+    .seo-section p, .seo-section li { color: var(--text-secondary); line-height: 1.8; font-size: 0.9375rem; }
     .seo-section ol { padding-left: 1.25rem; }
     .seo-section ol li { margin-bottom: 0.4rem; }
     .faq-item { border: 1px solid rgba(0,217,255,0.1); border-radius: 10px; padding: 1rem 1.125rem; margin-bottom: 0.875rem; background: rgba(15,15,20,0.5); }
-    .faq-item summary { font-weight: 600; color: #FAFAFA; cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .faq-item summary { font-weight: 600; color: var(--text-primary); cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
     .faq-item summary::-webkit-details-marker { display: none; }
-    .faq-item summary::after { content: '+'; color: #00D9FF; font-size: 1.25rem; flex-shrink: 0; transition: transform 0.2s; }
+    .faq-item summary::after { content: '+'; color: var(--accent-text); font-size: 1.25rem; flex-shrink: 0; transition: transform 0.2s; }
     .faq-item[open] summary::after { content: '\2212'; }
-    .faq-item p { margin-top: 0.625rem; color: #A1A1AA; line-height: 1.7; }
+    .faq-item p { margin-top: 0.625rem; color: var(--text-secondary); line-height: 1.7; }
     
     
     @media (max-width: 768px) {
@@ -182,7 +182,7 @@
           <div class="tool-hero-icon">&#128207;</div>
           <h1 data-i18n="tools.converters.unit-converter.text.011">Unit Converter</h1>
           <p class="tool-updated-note">Last updated: <time class="page-last-updated" datetime="2026-06-03">2026-06-03</time></p>
-          <p data-i18n="tools.converters.unit-converter.text.012">Convert between different units of measurement instantly. Length, weight, temperature, volume, and area conversions with real-time results.</p>
+          <p data-i18n="tools.converters.unit-converter.text.012">Convert supported measurement units locally in your browser. Length, weight, temperature, volume, and area conversions with real-time results.</p>
         </div>
 
         <div class="card">
@@ -198,8 +198,8 @@
           <div class="converter-grid">
             <div class="input-group">
               <label class="input-label" data-i18n="tools.converters.unit-converter.text.018">From</label>
-              <input type="number" class="input-field" id="inputValue" placeholder="Enter value" data-i18n-placeholder="tools.converters.unit-converter.placeholder.001" step="any">
-              <select class="unit-select" id="fromUnit" style="margin-top: 0.5rem;">
+              <input type="number" class="input-field" id="inputValue" placeholder="Enter value" data-i18n-placeholder="tools.converters.unit-converter.placeholder.001" step="any" aria-label="Value to convert" inputmode="decimal">
+              <select class="unit-select" id="fromUnit" style="margin-top: 0.5rem;" aria-label="From unit">
                 <option value="m">Meters (m)</option>
                 <option value="km">Kilometers (km)</option>
                 <option value="cm">Centimeters (cm)</option>
@@ -215,8 +215,8 @@
             </button>
             <div class="input-group">
               <label class="input-label" data-i18n="tools.converters.unit-converter.text.019">To</label>
-              <input type="number" class="input-field" id="outputValue" placeholder="Result" data-i18n-placeholder="tools.converters.unit-converter.placeholder.002" readonly style="background: rgba(0,217,255,0.05);">
-              <select class="unit-select" id="toUnit" style="margin-top: 0.5rem;">
+              <input type="number" class="input-field" id="outputValue" placeholder="Result" data-i18n-placeholder="tools.converters.unit-converter.placeholder.002" readonly style="background: rgba(0,217,255,0.05);" aria-label="Converted value">
+              <select class="unit-select" id="toUnit" style="margin-top: 0.5rem;" aria-label="To unit">
                 <option value="m">Meters (m)</option>
                 <option value="km" selected>Kilometers (km)</option>
                 <option value="cm">Centimeters (cm)</option>
@@ -229,7 +229,7 @@
             </div>
           </div>
 
-          <div class="result-box">
+          <div class="result-box" role="status" aria-live="polite" aria-atomic="true">
             <div class="result-label">Conversion Result</div>
             <div class="result-value" id="resultText">0 km</div>
             <div class="result-formula" id="formulaText">Enter a value to see the conversion</div>
@@ -265,101 +265,30 @@
 
       <article class="tool-description" aria-labelledby="toolDescriptionTitle-unit-converter">
         <h2 id="toolDescriptionTitle-unit-converter">What Unit Converter Does and Why It Matters</h2>
-        <p>Unit Converter helps people translate information from one format into another practical output without turning a simple task into a full software project. In real work, unit converter tasks often appear right before a deadline: a document has to be sent, a data file needs to be checked, an image must be prepared for publishing, a calculation needs a second scenario, or a developer has to verify a pasted value before it enters a larger workflow. This page focuses on that practical moment. The interface gives you a direct place to provide the input, review settings, run the operation, and keep the result close enough to inspect before you use it elsewhere. That matters because small preparation mistakes can create oversized attachments, unreadable exports, broken imports, misleading estimates, or accidental exposure of details that should have stayed private.</p>
-        <p>The main value of Unit Converter is control. Instead of sending material through an unfamiliar workflow, you can use the browser to perform the job, observe the state of the input, and decide whether the output is ready. Convert between different units of measurement. Length, weight, temperature, volume, and area units. The tool is especially useful for teams that need quick utility work between larger applications: support staff preparing evidence, creators publishing assets, finance users comparing planning assumptions, students organizing files, and developers validating snippets before sharing them in tickets or pull requests. It is intentionally focused on one job, so the page can explain what is supported, what should be checked manually, and when a specialist application or professional review is more appropriate.</p>
-        <p>Experience signals on this page are written around common failure points rather than generic marketing. For Unit Converter, the important questions are whether the source material is in a supported format, whether the browser has enough memory to complete the action, whether the result keeps the information you expect, and whether any limitation changes how you should use the file or value. Reading these notes before you click the main action can save time because it frames the tool as part of a workflow: prepare the input, run the operation, inspect the output, then keep or discard the result based on evidence.</p>
+        <p>Unit Converter converts a value between different units within the same category — length, weight, temperature, volume, and area — using standard, fixed conversion factors (for example, 1 inch = 2.54 centimeters exactly). Enter a value in one unit and the equivalent in other units of the same category is calculated instantly.</p>
+        <p>This comes up constantly when working across measurement systems: following a recipe that uses a different unit system than you're used to, converting a product's listed dimensions or weight before buying, or checking a measurement from a document, form, or another country's specification. Metric-to-imperial conversion in particular is easy to get wrong by hand because the conversion factors aren't round numbers.</p>
         <h2>How to Use Unit Converter</h2>
         <ol>
-          <li>Open Unit Converter and read the short instructions near the interface so you know which input type the page expects.</li>
-          <li>Upload the supported file, paste the text, or enter the numeric values requested by the form; avoid adding unrelated private information.</li>
-          <li>Review every visible option, such as output format, range, quality, delimiter, units, date, rate, or mode, because these settings shape the final result.</li>
-          <li>Run the tool with the primary action button and wait for the status message, preview, validation result, calculation, or progress indicator to finish.</li>
-          <li>Inspect the displayed result carefully, including file name, page order, dimensions, row count, formatting, estimate assumptions, warnings, and any visible errors.</li>
-          <li>Download the generated file, copy the result, or record the calculation only after the preview matches your intended use case.</li>
-          <li>Clear the page or close the browser tab when finished, especially on a shared device or when the input included confidential material.</li>
+          <li>Choose the measurement category (length, weight, temperature, volume, or area).</li>
+          <li>Select the unit you're converting from and enter the value.</li>
+          <li>Select the unit you're converting to — the result is calculated immediately.</li>
+          <li>Switch categories or units at any time to run a different conversion.</li>
         </ol>
-        <h2>Supported Formats and Limitations</h2>
-        <h3>Supported input formats</h3>
-        <ul><li>Numbers, dates, times, units, currencies, age values, or measurement assumptions entered by the user</li><li>Optional source and target units, locales, bases, or date settings</li><li>Reference values copied from forms, spreadsheets, or planning documents</li></ul>
-        <h3>Supported output formats</h3>
-        <ul><li>Converted values, calculated results, or readable summaries displayed immediately</li><li>Copy-ready numbers and labels for planning notes or forms</li><li>Context notes that clarify assumptions and rounding behavior</li></ul>
-        <h3>Known limitations and edge cases</h3>
-        <ul><li>Reference rates, daylight saving rules, and local standards can change and should be verified for critical use.</li><li>Rounding may differ from specialized calculators, institutions, or official forms.</li><li>The result is a planning aid, not a substitute for regulated professional advice where applicable.</li></ul>
-        <p>For best results, test Unit Converter with a small sample before committing a large batch or an important deadline item. Browser utilities are convenient because they reduce setup and keep the workflow close to the user, but they still depend on device memory, browser permissions, source-file quality, and the exact assumptions entered into the interface. If the output will be used for legal, medical, financial, security, accessibility, or production engineering decisions, treat the result as a preparation aid and verify it with the appropriate system of record.</p>
+        <h2>What's Covered</h2>
+        <ul><li>Length: metric (mm, cm, m, km) and imperial (in, ft, yd, mi)</li><li>Weight/mass: metric (g, kg) and imperial (oz, lb)</li><li>Temperature: Celsius, Fahrenheit, and Kelvin, using their exact conversion formulas rather than a linear approximation</li><li>Volume and area: standard metric and imperial units for each</li></ul>
         <h2>Privacy and Security</h2>
-        <p>Unit Converter is designed around a privacy-first browser workflow. Where possible, files and inputs are processed client-side in your browser, which means the work happens on your device instead of being permanently stored on NovaTools servers. Uploaded data is not stored on servers permanently by this page, and the safest habit is still to avoid uploading or pasting secrets that are not required for the task. Some features may depend on browser APIs, optional public lookups, or third-party libraries loaded by the page, so you should review the interface notes and avoid using confidential production data unless the tool behavior fits your policy.</p>
+        <p>Values you enter are converted directly in your browser and are never sent anywhere or stored.</p>
         <h2>Frequently Asked Questions</h2>
-        <h3>Is Unit Converter suitable for confidential work?</h3>
-        <p>It can be suitable for many confidential preparation tasks when the operation is completed locally in the browser and your organization allows that workflow. You should still avoid unnecessary sensitive fields, use a trusted device, clear the page afterward, and verify whether any optional lookup or external dependency is involved before using regulated or secret material.</p>
-        <h3>Why should I inspect the output before downloading or copying it?</h3>
-        <p>Inspection is the step that turns a quick utility into a reliable workflow. A file may process successfully while still having the wrong order, dimensions, delimiter, estimate assumption, encoding, or visual quality. Reviewing the preview and status details helps catch those issues before the result reaches a client, upload portal, repository, spreadsheet, or public page.</p>
-        <h3>What should I do if Unit Converter does not accept my input?</h3>
-        <p>Start by checking the file type, size, formatting, and any visible error message. Try a smaller sample, remove unsupported characters or corrupted content, and confirm that your browser is current. If the source file uses a proprietary format, encryption, unusual encoding, or a damaged structure, a dedicated desktop application may be needed before this browser tool can help.</p>
+        <h3>Are the conversion factors exact or approximated?</h3>
+        <p>Standard, internationally defined conversion factors are used (for example, the inch is defined as exactly 2.54 cm). Displayed results may be rounded for readability, but the underlying calculation uses the exact factor, not a rounded shortcut.</p>
+        <h3>Why is temperature conversion different from the others?</h3>
+        <p>Length, weight, and volume conversions are simple multiplication (a fixed ratio between units). Temperature scales have different zero points as well as different scale sizes, so converting between Celsius, Fahrenheit, and Kelvin needs a formula with an offset, not just a multiplier.</p>
+        <h3>Which unit system should I use if a recipe or document doesn't specify?</h3>
+        <p>Check the source's country of origin as a hint — US sources typically default to imperial/US customary units, while most of the rest of the world defaults to metric. When genuinely ambiguous, look for a secondary clue like an oven temperature in the document, which often reveals the intended system.</p>
         <h2>Related Tools</h2>
-        <ul><li><a href="https://mc-novatools.com/tools/converters/age-calculator/">Age Calculator — Calculate exact age from birthdate.</a></li><li><a href="https://mc-novatools.com/tools/converters/bmi-calculator/">BMI Calculator — Calculate Body Mass Index and health category.</a></li></ul>
+        <ul><li><a href="https://mc-novatools.com/tools/converters/percentage-calculator/">Percentage Calculator — Calculate percentage-of, ratio, increase and decrease locally.</a></li></ul>
       </article>
-      <aside class="author-bylines" aria-label="Author and review information for Unit Converter">
-        <p><span class="author-name">Metehan ÇETİN, LPC</span>, <span class="author-title">Founder and editor</span></p>
-        <p>The author profile for Unit Converter is intended for a practitioner who understands measurement conversion, practical calculators, time planning, and numerical review. This byline describes hands-on experience reviewing inputs, outputs, edge cases, accessibility needs, privacy expectations, and user education for browser-based utilities. It is maintained as a verified public review note for MC NovaTools tool pages.</p>
-        <p><a href="https://mc-novatools.com/about-us.html" rel="author">Author and review profile</a></p>
-        <p>Last updated: <time class="last-updated" datetime="2026-06-03">2026-06-03</time></p>
-        <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Metehan ÇETİN, LPC","jobTitle":"Founder and editor","description":"The author profile for Unit Converter is intended for a practitioner who understands measurement conversion, practical calculators, time planning, and numerical review. This byline describes hands-on experience reviewing inputs, outputs, edge cases, accessibility needs, privacy expectations, and user education for browser-based utilities. It is maintained as a verified public review note for MC NovaTools tool pages.","sameAs":"https://mc-novatools.com/about-us.html"}</script>
-      </aside>
-<section class="seo-section" aria-label="About this tool">
-        <h2 data-i18n="tools.converters.unit-converter.text.021">About Unit Converter</h2>
-        <p data-i18n="tools.converters.unit-converter.text.022">Our free Unit Converter tool helps you convert between different measurement units instantly. Whether you need to convert length, weight, temperature, volume, or area, this tool provides accurate conversions with real-time results.</p>
-
-        <h3 data-i18n="tools.converters.unit-converter.text.023">How to Use</h3>
-        <ol>
-          <li data-i18n="tools.converters.unit-converter.text.024">Select the conversion category (Length, Weight, Temperature, Volume, or Area).</li>
-          <li data-i18n="tools.converters.unit-converter.text.025">Enter the value you want to convert in the "From" field.</li>
-          <li data-i18n="tools.converters.unit-converter.text.026">Select the source unit from the dropdown menu.</li>
-          <li data-i18n="tools.converters.unit-converter.text.027">Select the target unit you want to convert to.</li>
-          <li data-i18n="tools.converters.unit-converter.text.028">See the result instantly displayed below.</li>
-          <li data-i18n="tools.converters.unit-converter.text.029">Use the Swap button to reverse the conversion direction.</li>
-          <li data-i18n="tools.converters.unit-converter.text.030">Click Copy Result to copy the conversion to your clipboard.</li>
-        </ol>
-
-        <h3 data-i18n="tools.converters.unit-converter.text.031">Supported Unit Categories</h3>
-        <p><strong>Length:</strong> Meters, Kilometers, Centimeters, Millimeters, Miles, Yards, Feet, Inches<br>
-        <strong>Weight:</strong> Kilograms, Grams, Milligrams, Pounds, Ounces, Stones<br>
-        <strong>Temperature:</strong> Celsius, Fahrenheit, Kelvin<br>
-        <strong>Volume:</strong> Liters, Milliliters, Gallons, Quarts, Pints, Cups, Fluid Ounces<br>
-        <strong>Area:</strong> Square Meters, Square Kilometers, Square Feet, Acres, Hectares</p>
-
-        <h3 data-i18n="tools.converters.unit-converter.text.032">Frequently Asked Questions</h3>
-
-        <details class="faq-item">
-          <summary>How accurate are the conversions?</summary>
-          <p data-i18n="tools.converters.unit-converter.text.033">Our conversions use standard international conversion factors and are accurate to multiple decimal places. For most practical purposes, the results are sufficiently precise.</p>
-        </details>
-
-        <details class="faq-item">
-          <summary>Can I convert between different categories?</summary>
-          <p data-i18n="tools.converters.unit-converter.text.034">No, direct conversion between different categories (e.g., length to weight) is not possible as they measure different physical properties.</p>
-        </details>
-
-        <details class="faq-item">
-          <summary>Is my data stored or sent to servers?</summary>
-          <p data-i18n="tools.converters.unit-converter.text.035">No. All calculations happen locally in your browser. No data is transmitted to our servers or stored anywhere.</p>
-        </details>
-
-        <details class="faq-item">
-          <summary>What is the difference between US and UK gallons?</summary>
-          <p data-i18n="tools.converters.unit-converter.text.036">This converter uses US customary units. A US gallon is approximately 3.785 liters, while an imperial (UK) gallon is approximately 4.546 liters.</p>
-        </details>
-
-        <details class="faq-item">
-          <summary>How do temperature conversions work?</summary>
-          <p data-i18n="tools.converters.unit-converter.text.037">Temperature conversions use specific formulas: Celsius to Fahrenheit: (°C × 9/5) + 32 = °F, Fahrenheit to Celsius: (°F − 32) × 5/9 = °C, and Kelvin is Celsius + 273.15.</p>
-        </details>
-      </section>
-        <section class="trust-help novatools-tool-reading-path" aria-labelledby="toolReadingPathTitle">
-          <h2 id="toolReadingPathTitle">Recommended next reading</h2>
-          <p>Use these practical guides to understand when this tool is the right choice, what to check before exporting, and which workflow usually comes next.</p>
-          <div class="related-tools-grid"><a class="related-tool-link" href="https://mc-novatools.com/blog/articles/unit-converter-for-project-planning.html">Converter decision guide</a><a class="related-tool-link" href="https://mc-novatools.com/blog/articles/base64-vs-url-encoding.html">Base64 vs URL encoding</a></div>
-        </section>
-    </main>
+</main>
 
     <footer class="tool-footer">
       <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="mailto:psk.dan.metehancetin@mc-novatools.com" data-i18n="tools.converters.unit-converter.text.038">psk.dan.metehancetin@mc-novatools.com</a></p>
@@ -367,7 +296,7 @@
     </footer>
     <style>
       .tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }
-      .tool-footer a { color: #00D9FF; text-decoration: none; }
+      .tool-footer a { color: var(--accent-text); text-decoration: none; }
     </style>
   </div>
 
@@ -477,7 +406,7 @@
       fromUnit.innerHTML = units.map(([key, unit]) => `<option value="${key}">${unit.name} (${key})</option>`).join('');
       toUnit.innerHTML = units.map(([key, unit], i) => `<option value="${key}" ${i === 1 ? 'selected' : ''}>${unit.name} (${key})</option>`).join('');
       
-      commonUnits.innerHTML = data.quick.map(q => `<div class="common-unit-item" data-val="${q.val}">${q.text}</div>`).join('');
+      commonUnits.innerHTML = data.quick.map(q => `<button type="button" class="common-unit-item" data-val="${q.val}">${q.text}</button>`).join('');
       
       document.querySelectorAll('.common-unit-item').forEach(item => {
         item.addEventListener('click', () => {

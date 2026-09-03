@@ -53,6 +53,15 @@
         "bmi-calculator",
         "percentage-calculator"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "LOCAL_ONLY",
+      "externalNetwork": false,
+      "syntheticData": "NONE",
+      "dataSource": "User birthdate plus the device local calendar date; local calendar arithmetic",
+      "limitations": "Compares the birthdate with the device local calendar date only; there is no second-date input. Total days are whole calendar days computed from UTC day indexes, so daylight-saving changes do not shift them. Total hours are those calendar days multiplied by 24, not elapsed civil hours. For a 29 February birthdate, the anniversary in a non-leap year is treated as 1 March. Heartbeats, breaths and hours slept are fixed textbook averages (80/min, 16/min, 8 h/day), not measurements.",
       "path": "/converters/age-calculator",
       "entry": "/src/tools/converters/age-calculator/"
     },
@@ -108,6 +117,15 @@
         "age-calculator",
         "percentage-calculator"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "LOCAL_ONLY",
+      "externalNetwork": false,
+      "syntheticData": "NONE",
+      "dataSource": "User height and weight; local BMI arithmetic",
+      "limitations": "Adult screening ratio only; not valid for children or teenagers and not a diagnosis. Does not account for muscle mass, build, age, sex, pregnancy or ethnicity. Metric height 50-300 cm and weight 2-500 kg; imperial height 1-9 ft plus 0-11 in and weight 5-1000 lbs, enforced in script rather than by the input attributes alone. Category is decided on the unrounded ratio; the displayed value is rounded to one decimal, so a value shown as 25.0 can still be classified Normal.",
       "path": "/converters/bmi-calculator",
       "entry": "/src/tools/converters/bmi-calculator/"
     },
@@ -163,6 +181,15 @@
         "unit-converter",
         "compound-interest"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/converters/currency-converter",
       "entry": "/src/tools/converters/currency-converter/"
     },
@@ -194,8 +221,8 @@
         ]
       },
       "description": {
-        "tr": "Binary, Decimal, Hexadecimal ve Octal sayı sistemleri arasında dönüşüm yapın. Tüm sayı tabanlarını destekler.",
-        "en": "Convert between Binary, Decimal, Hexadecimal, and Octal number systems instantly. Supports all numeral systems."
+        "tr": "Binary, Decimal, Hexadecimal ve Octal arasında işaretli tam sayıları BigInt ile tarayıcıda kesin olarak dönüştürün. Kesirli sayılar desteklenmez.",
+        "en": "Convert signed whole integers exactly between Binary, Decimal, Hexadecimal, and Octal using browser BigInt. Fractions are not supported."
       },
       "schema": {
         "@type": "WebApplication",
@@ -219,6 +246,15 @@
         "unix-timestamp",
         "scientific-calculator"
       ],
+      "privacyMode": "LOCAL_ONLY",
+      "externalNetwork": false,
+      "syntheticData": "NONE",
+      "dataSource": "User input; browser BigInt integer arithmetic",
+      "limitations": "Supports signed whole integers in bases 2, 8, 10, and 16 only. Fractions and fixed-width two's-complement representations are not supported; browser BigInt support is required.",
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
       "path": "/converters/number-base-converter",
       "entry": "/src/tools/converters/number-base-converter/"
     },
@@ -273,6 +309,15 @@
         "unit-converter",
         "compound-interest"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "LOCAL_ONLY",
+      "externalNetwork": false,
+      "syntheticData": "NONE",
+      "dataSource": "User inputs; local percentage arithmetic",
+      "limitations": "Division-based ratio mode rejects a zero total. Displayed decimal results are rounded to two places.",
       "path": "/converters/percentage-calculator",
       "entry": "/src/tools/converters/percentage-calculator/"
     },
@@ -328,6 +373,15 @@
         "number-base-converter",
         "scientific-calculator"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "LOCAL_ONLY",
+      "externalNetwork": false,
+      "syntheticData": "NONE",
+      "dataSource": "User input; local Roman numeral arithmetic",
+      "limitations": "Standard notation only: 1-3999 in both directions. Numbers must be entered as digits with no separators, signs or decimal part. Roman input must be in canonical subtractive form (IV, not IIII); non-canonical spellings such as IIII or IC are refused rather than guessed. Vinculum (overbar) notation for 4000 and above is not supported.",
       "path": "/converters/roman-numerals",
       "entry": "/src/tools/converters/roman-numerals/"
     },
@@ -383,6 +437,15 @@
         "number-base-converter",
         "percentage-calculator"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "LOCAL_ONLY",
+      "externalNetwork": false,
+      "syntheticData": "NONE",
+      "dataSource": "User keystrokes; local expression evaluation",
+      "limitations": "Double-precision floating point: results are rounded for display and very large or very small values are shown in exponential form. Functions are sin, cos, tan, log (base 10), ln, sqrt and power, with pi and e as constants. Angles follow the DEG/RAD toggle. Domain errors are refused rather than approximated: tan at 90 degrees plus multiples of 180, log or ln of zero or a negative number, the square root of a negative number, and division by zero all report the reason instead of a number. There is no complex-number, matrix, statistics or equation-solving support, and history holds the last 50 calculations for the current page visit only.",
       "path": "/converters/scientific-calculator",
       "entry": "/src/tools/converters/scientific-calculator/"
     },
@@ -413,8 +476,8 @@
         ]
       },
       "description": {
-        "tr": "Farklı saat dilimleri arasında zaman dönüşümü yapın. Dünyanın herhangi bir yerindeki saati anında öğrenin.",
-        "en": "Convert time between different time zones worldwide. Check current time in any timezone instantly."
+        "tr": "Listelenen IANA saat dilimleri arasında, tarayıcının tarih-özel Intl saat dilimi verilerini kullanarak dönüşüm yapın. Belirsiz veya var olmayan DST yerel saatleri reddedilir.",
+        "en": "Convert between the listed IANA time zones using date-specific browser Intl timezone data. Ambiguous or nonexistent DST wall times are rejected."
       },
       "schema": {
         "@type": "WebApplication",
@@ -438,6 +501,15 @@
         "unix-timestamp",
         "unit-converter"
       ],
+      "privacyMode": "LOCAL_ONLY",
+      "externalNetwork": false,
+      "syntheticData": "NONE",
+      "dataSource": "Browser Intl/IANA timezone database for the selected date",
+      "limitations": "Supports the 17 listed IANA zones. Historical and future accuracy depends on the timezone database shipped with the browser. Ambiguous and nonexistent daylight-saving local times are rejected rather than guessed.",
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
       "path": "/converters/timezone-converter",
       "entry": "/src/tools/converters/timezone-converter/"
     },
@@ -494,6 +566,15 @@
         "currency-converter",
         "percentage-calculator"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "LOCAL_ONLY",
+      "externalNetwork": false,
+      "syntheticData": "NONE",
+      "dataSource": "User inputs; local conversion constants and temperature formulas",
+      "limitations": "Displayed results are rounded to six decimal places; the tool covers its listed units only and performs no external lookup.",
       "path": "/converters/unit-converter",
       "entry": "/src/tools/converters/unit-converter/"
     },
@@ -549,6 +630,15 @@
         "timezone-converter",
         "json-formatter"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "LOCAL_ONLY",
+      "externalNetwork": false,
+      "syntheticData": "NONE",
+      "dataSource": "User input plus the device clock and time zone; local date arithmetic",
+      "limitations": "Seconds and milliseconds only: a magnitude above 9,999,999,999 is read as milliseconds and the reinterpretation is stated on screen; any remainder below one second is dropped. Input must be a whole number, so decimals and trailing characters are refused rather than truncated. Timestamps outside the ECMAScript date range (about 275,760 years either side of 1970) are refused. Date-to-timestamp reads the picker value as a local time on the visitor's device, using that device's current time zone and daylight-saving rules. The relative time uses fixed 30-day months and 365-day years and is labelled approximate; leap seconds are not modelled, as Unix time does not include them.",
       "path": "/converters/unix-timestamp",
       "entry": "/src/tools/converters/unix-timestamp/"
     },
@@ -605,6 +695,15 @@
         "duplicate-finder",
         "encrypt-decrypt"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/data/checksum-calculator",
       "entry": "/src/tools/data/checksum-calculator/"
     },
@@ -657,6 +756,15 @@
         "json-to-csv",
         "csv-viewer"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/data/csv-to-json",
       "entry": "/src/tools/data/csv-to-json/"
     },
@@ -711,6 +819,15 @@
         "csv-to-json",
         "file-splitter"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/data/csv-viewer",
       "entry": "/src/tools/data/csv-viewer/"
     },
@@ -765,6 +882,15 @@
         "file-organizer",
         "checksum-calculator"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/data/duplicate-finder",
       "entry": "/src/tools/data/duplicate-finder/"
     },
@@ -819,6 +945,15 @@
         "file-splitter",
         "file-organizer"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/data/file-merger",
       "entry": "/src/tools/data/file-merger/"
     },
@@ -873,6 +1008,15 @@
         "duplicate-finder",
         "file-renamer"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/data/file-organizer",
       "entry": "/src/tools/data/file-organizer/"
     },
@@ -926,6 +1070,15 @@
         "file-organizer",
         "duplicate-finder"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/data/file-renamer",
       "entry": "/src/tools/data/file-renamer/"
     },
@@ -980,6 +1133,15 @@
         "file-merger",
         "file-organizer"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/data/file-splitter",
       "entry": "/src/tools/data/file-splitter/"
     },
@@ -1032,6 +1194,15 @@
         "csv-to-json",
         "json-formatter"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/data/json-to-csv",
       "entry": "/src/tools/data/json-to-csv/"
     },
@@ -1086,6 +1257,15 @@
         "json-formatter",
         "code-formatter"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/data/sql-formatter",
       "entry": "/src/tools/data/sql-formatter/"
     },
@@ -1132,6 +1312,15 @@
         "lazyLoad": false
       },
       "relatedTools": [],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/data/audio-spectrum",
       "entry": "/src/tools/data/audio-spectrum/"
     },
@@ -1178,6 +1367,15 @@
         "lazyLoad": false
       },
       "relatedTools": [],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/data/chart-builder",
       "entry": "/src/tools/data/chart-builder/"
     },
@@ -1224,6 +1422,15 @@
         "lazyLoad": false
       },
       "relatedTools": [],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/data/csv-json-summarizer",
       "entry": "/src/tools/data/csv-json-summarizer/"
     },
@@ -1279,6 +1486,15 @@
         "csv-to-json",
         "qr-code-designer"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/data/vcf-generator",
       "entry": "/src/tools/data/vcf-generator/"
     },
@@ -1325,6 +1541,15 @@
         "lazyLoad": false
       },
       "relatedTools": [],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/data/weather-lookup",
       "entry": "/src/tools/data/weather-lookup/"
     },
@@ -1380,6 +1605,15 @@
         "qr-code-designer",
         "invoice-generator"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/design/barcode-generator",
       "entry": "/src/tools/design/barcode-generator/"
     },
@@ -1433,6 +1667,15 @@
         "logo-maker",
         "resume-builder"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/design/business-card-maker",
       "entry": "/src/tools/design/business-card-maker/"
     },
@@ -1486,6 +1729,15 @@
         "mind-map-tool",
         "wireframe-tool"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/design/diagram-maker",
       "entry": "/src/tools/design/diagram-maker/"
     },
@@ -1539,6 +1791,15 @@
         "resume-builder",
         "business-card-maker"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/design/invoice-generator",
       "entry": "/src/tools/design/invoice-generator/"
     },
@@ -1592,6 +1853,15 @@
         "business-card-maker",
         "mockup-generator"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/design/logo-maker",
       "entry": "/src/tools/design/logo-maker/"
     },
@@ -1645,6 +1915,15 @@
         "diagram-maker",
         "wireframe-tool"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/design/mind-map-tool",
       "entry": "/src/tools/design/mind-map-tool/"
     },
@@ -1698,6 +1977,15 @@
         "wireframe-tool",
         "logo-maker"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/design/mockup-generator",
       "entry": "/src/tools/design/mockup-generator/"
     },
@@ -1751,6 +2039,15 @@
         "barcode-generator",
         "business-card-maker"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/design/qr-code-designer",
       "entry": "/src/tools/design/qr-code-designer/"
     },
@@ -1804,6 +2101,15 @@
         "business-card-maker",
         "invoice-generator"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/design/resume-builder",
       "entry": "/src/tools/design/resume-builder/"
     },
@@ -1857,6 +2163,15 @@
         "diagram-maker",
         "mockup-generator"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/design/wireframe-tool",
       "entry": "/src/tools/design/wireframe-tool/"
     },
@@ -1910,6 +2225,15 @@
         "url-encoder",
         "code-formatter"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/dev/base64-converter",
       "entry": "/src/tools/dev/base64-converter/"
     },
@@ -1965,6 +2289,15 @@
         "json-validator",
         "base64-converter"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/dev/code-formatter",
       "entry": "/src/tools/dev/code-formatter/"
     },
@@ -2018,6 +2351,15 @@
         "css-minifier",
         "json-formatter"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/dev/color-converter",
       "entry": "/src/tools/dev/color-converter/"
     },
@@ -2071,6 +2413,15 @@
         "js-minifier",
         "code-formatter"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/dev/css-minifier",
       "entry": "/src/tools/dev/css-minifier/"
     },
@@ -2124,6 +2475,15 @@
         "markdown-to-html",
         "code-formatter"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/dev/html-to-markdown",
       "entry": "/src/tools/dev/html-to-markdown/"
     },
@@ -2177,6 +2537,15 @@
         "css-minifier",
         "json-formatter"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/dev/js-minifier",
       "entry": "/src/tools/dev/js-minifier/"
     },
@@ -2230,6 +2599,15 @@
         "regex-tester",
         "base64-encoder"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/dev/json-formatter",
       "entry": "/src/tools/dev/json-formatter/"
     },
@@ -2283,6 +2661,15 @@
         "code-formatter",
         "base64-converter"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/dev/json-validator",
       "entry": "/src/tools/dev/json-validator/"
     },
@@ -2336,6 +2723,15 @@
         "html-to-markdown",
         "markdown-to-html"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/dev/lorem-generator",
       "entry": "/src/tools/dev/lorem-generator/"
     },
@@ -2389,6 +2785,15 @@
         "code-formatter",
         "json-validator"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/dev/markdown-to-html",
       "entry": "/src/tools/dev/markdown-to-html/"
     },
@@ -2444,6 +2849,15 @@
         "robots-txt-generator",
         "xml-formatter"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/dev/meta-tag-generator",
       "entry": "/src/tools/dev/meta-tag-generator/"
     },
@@ -2495,6 +2909,15 @@
       "relatedTools": [
         "dev/json-formatter"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/dev/regex-tester",
       "entry": "/src/tools/dev/regex-tester/"
     },
@@ -2550,6 +2973,15 @@
         "meta-tag-generator",
         "xml-formatter"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/dev/robots-txt-generator",
       "entry": "/src/tools/dev/robots-txt-generator/"
     },
@@ -2605,6 +3037,15 @@
         "meta-tag-generator",
         "sitemap-generator"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/dev/schema-markup-generator",
       "entry": "/src/tools/dev/schema-markup-generator/"
     },
@@ -2660,6 +3101,15 @@
         "robots-txt-generator",
         "schema-markup-generator"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/dev/sitemap-generator",
       "entry": "/src/tools/dev/sitemap-generator/"
     },
@@ -2713,6 +3163,15 @@
         "base64-converter",
         "json-validator"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/dev/url-encoder",
       "entry": "/src/tools/dev/url-encoder/"
     },
@@ -2768,6 +3227,15 @@
         "json-formatter",
         "code-formatter"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/dev/xml-formatter",
       "entry": "/src/tools/dev/xml-formatter/"
     },
@@ -2834,6 +3302,15 @@
       "memoryLimits": {
         "maxResults": 360
       },
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "LOCAL_ONLY",
+      "externalNetwork": false,
+      "syntheticData": "NONE",
+      "dataSource": "User-entered loan terms and editable KKDF/BSMV assumptions",
+      "limitations": "Tax/fund applicability varies by loan and borrower; defaults are zero and users must enter assumptions applicable to their offer.",
       "path": "/finance/mortgage-refinance",
       "entry": "/src/tools/finance/mortgage-refinance/"
     },
@@ -2889,6 +3366,15 @@
         "compound-interest",
         "percentage-calculator"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "LOCAL_ONLY",
+      "externalNetwork": false,
+      "syntheticData": "NONE",
+      "dataSource": "User inputs; local ROI and CAGR formulas",
+      "limitations": "Does not automatically model taxes, fees, inflation, dividends, or irregular cash flows.",
       "path": "/finance/roi-calculator",
       "entry": "/src/tools/finance/roi-calculator/"
     },
@@ -2939,6 +3425,15 @@
       "relatedTools": [
         "finance/mortgage-tr"
       ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "LOCAL_ONLY",
+      "externalNetwork": false,
+      "syntheticData": "NONE",
+      "dataSource": "User inputs; local compound-interest formula",
+      "limitations": "Constant-rate projection; non-monthly compounding aggregates the entered monthly contribution into compounding intervals.",
       "path": "/finance/compound-interest",
       "entry": "/src/tools/finance/compound-interest/"
     },
@@ -2988,6 +3483,15 @@
       "relatedTools": [
         "finance/mortgage-tr"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "LOCAL_ONLY",
+      "externalNetwork": false,
+      "syntheticData": "UNSOURCED_STATIC_PRICING_REMOVED_FROM_PUBLIC_SURFACE",
+      "dataSource": "None on public unavailable route",
+      "limitations": "Underlying prototype pricing and plan discounts are not source-dated and the old copy implied a non-existent region control.",
       "path": "/finance/cloud-cost",
       "entry": "/src/tools/finance/cloud-cost/"
     },
@@ -3034,6 +3538,15 @@
         "lazyLoad": false
       },
       "relatedTools": [],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "MIXED",
+      "externalNetwork": true,
+      "syntheticData": "CLEAR_LABELLED_STATIC_FALLBACK_ONLY",
+      "dataSource": "CoinGecko simple-price via /api/live-data; 5-minute browser cache",
+      "limitations": "Snapshot data, not tick-by-tick; on provider failure with no usable cache, explicitly labelled static examples may be shown.",
       "path": "/finance/crypto-prices",
       "entry": "/src/tools/finance/crypto-prices/"
     },
@@ -3080,6 +3593,15 @@
         "lazyLoad": false
       },
       "relatedTools": [],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "MIXED",
+      "externalNetwork": true,
+      "syntheticData": "CLEAR_LABELLED_STATIC_FALLBACK_ONLY",
+      "dataSource": "TCMB daily XML via /api/live-data; one-hour browser cache",
+      "limitations": "Reference rate, not a transaction quote; cached or static fallback is visibly labelled when live TCMB data cannot be refreshed.",
       "path": "/finance/live-exchange",
       "entry": "/src/tools/finance/live-exchange/"
     },
@@ -3126,6 +3648,15 @@
         "lazyLoad": false
       },
       "relatedTools": [],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "MIXED",
+      "externalNetwork": true,
+      "syntheticData": "CLEAR_LABELLED_STATIC_FALLBACK_ONLY",
+      "dataSource": "Yahoo Finance chart endpoint via /api/live-data; 15-minute browser cache",
+      "limitations": "Quotes can be delayed; history chart is shown only when provider closes exist; small built-in symbol fallbacks are labelled and have no fabricated history.",
       "path": "/finance/stock-lookup",
       "entry": "/src/tools/finance/stock-lookup/"
     },
@@ -3200,6 +3731,15 @@
         "quickPreview": true,
         "download": true
       },
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "LOCAL_ONLY",
+      "externalNetwork": false,
+      "syntheticData": "NONE",
+      "dataSource": "User-selected JPEG, PNG, or WebP; browser FileReader, Image decode, and Canvas 2D",
+      "limitations": "Maximum input is 20 MB; large pixel dimensions can exceed browser memory; download is re-encoded as PNG and does not preserve source metadata or source format.",
       "path": "/image/image-flipper",
       "entry": "/src/tools/image/image-flipper/"
     },
@@ -3276,6 +3816,15 @@
         "preview": true,
         "download": true
       },
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/image/image-rotator",
       "entry": "/src/tools/image/image-rotator/"
     },
@@ -3358,6 +3907,15 @@
         "preview": true,
         "download": true
       },
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/image/collage-maker",
       "entry": "/src/tools/image/collage-maker/"
     },
@@ -3386,8 +3944,8 @@
         ]
       },
       "description": {
-        "tr": "JPEG/PNG görsellerini WebP/AVIF formatında sıkıştırın. Kalite kaybı olmadan dosya boyutunu %70'e varan oranda küçültün.",
-        "en": "Compress JPEG/PNG to WebP/AVIF. Reduce file size by up to 70% without quality loss."
+        "tr": "JPEG, PNG ve WebP görsellerini tarayıcınızda sıkıştırın. JPEG/WebP kalite ayarı kayıplıdır; PNG boyutu küçülmeyebilir.",
+        "en": "Compress JPEG, PNG, and WebP images in your browser. JPEG/WebP quality encoding is lossy, and PNG output may not be smaller."
       },
       "schema": {
         "@type": "WebApplication",
@@ -3423,6 +3981,15 @@
         "maxFiles": 50,
         "maxTotalSize": 52428800
       },
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "LOCAL_ONLY",
+      "externalNetwork": false,
+      "syntheticData": "NONE",
+      "dataSource": "User-selected JPEG, PNG, or WebP; browser Canvas 2D decode and encoding",
+      "limitations": "JPEG and WebP quality encoding is lossy; PNG output may not shrink; JPEG removes alpha transparency; maximum input is 10 MB and high pixel dimensions can exceed browser memory.",
       "path": "/image/compress",
       "entry": "/src/tools/image/compress/"
     },
@@ -3474,6 +4041,15 @@
       "relatedTools": [
         "image/compress"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING",
+      "externalNetwork": false,
+      "syntheticData": "NONE",
+      "dataSource": "None on public unavailable route",
+      "limitations": "The prior public page did not bootstrap its separate converter implementation and advertised unsupported format and batch contracts.",
       "path": "/image/convert",
       "entry": "/src/tools/image/convert/"
     },
@@ -3520,6 +4096,15 @@
         "lazyLoad": false
       },
       "relatedTools": [],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/image/exif-viewer",
       "entry": "/src/tools/image/exif-viewer/"
     },
@@ -3599,6 +4184,15 @@
         "preview": true,
         "download": true
       },
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/image/image-cropper",
       "entry": "/src/tools/image/image-cropper/"
     },
@@ -3677,6 +4271,15 @@
           "Standard"
         ]
       },
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/image/image-resizer",
       "entry": "/src/tools/image/image-resizer/"
     },
@@ -3754,6 +4357,15 @@
         ],
         "outputFormat": "avif"
       },
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/image/image-to-avif",
       "entry": "/src/tools/image/image-to-avif/"
     },
@@ -3833,6 +4445,15 @@
         ],
         "outputFormat": "webp"
       },
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/image/image-to-webp",
       "entry": "/src/tools/image/image-to-webp/"
     },
@@ -3910,6 +4531,15 @@
         "preview": true,
         "download": true
       },
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/image/image-watermark",
       "entry": "/src/tools/image/image-watermark/"
     },
@@ -3985,6 +4615,15 @@
         "privacyNotice": true,
         "download": true
       },
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/image/metadata-remover",
       "entry": "/src/tools/image/metadata-remover/"
     },
@@ -4014,8 +4653,8 @@
         ]
       },
       "description": {
-        "tr": "Görsellerin arka planını otomatik olarak kaldırın. Şeffaf PNG oluşturun. Kenar hassasiyeti ayarlı.",
-        "en": "Remove backgrounds from images automatically. Create transparent PNGs with adjustable edge tolerance."
+        "tr": "Görsellerde kenara bağlı düz veya benzer renkli arka plan bölgelerini tarayıcıda kaldırın; geçiş piksellerini yumuşatın ve şeffaf PNG oluşturun.",
+        "en": "Remove edge-connected flat or similar-color background regions in the browser, feather transition pixels, and export a transparent PNG."
       },
       "schema": {
         "@type": "WebApplication",
@@ -4051,11 +4690,22 @@
         "maxTotalSize": 10485760
       },
       "features": {
-        "autoDetectSubject": true,
+        "autoDetectSubject": false,
+        "edgeConnectedBackgroundRemoval": true,
+        "featheredEdges": true,
         "toleranceSlider": true,
         "previewTransparent": true,
         "outputFormat": "png"
       },
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/image/background-remover",
       "entry": "/src/tools/image/background-remover/"
     },
@@ -4131,19 +4781,24 @@
         "maxFiles": 20,
         "chunkSize": 10485760
       },
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/pdf/merge",
       "entry": "/src/tools/pdf/merge/"
     },
     {
       "id": "pdf-compress",
-      "name": "PDF Sıkıştırma",
+      "name": "PDF Optimizasyonu",
       "nameEn": "PDF Compressor",
       "category": "pdf",
       "tier": 2,
-      "cpc": {
-        "tr": 1.8,
-        "us": 2.5
-      },
       "keywords": {
         "tr": [
           "pdf sıkıştırma",
@@ -4159,12 +4814,12 @@
         ]
       },
       "description": {
-        "tr": "PDF dosya boyutunu kalite kaybetmeden küçültün. OCR sonrası optimize edin.",
-        "en": "Reduce PDF file size without quality loss. Optimize after OCR."
+        "tr": "PDF yapısını tarayıcınızda pdf-lib ile yeniden yazar ve çıktı boyutunu karşılaştırır. Sayfa görsellerini küçültmez; boyut azalması garanti edilmez.",
+        "en": "Rewrite PDF structure in your browser with pdf-lib and compare the output size. Page images are not downsampled, so size reduction is not guaranteed."
       },
       "schema": {
         "@type": "WebApplication",
-        "applicationCategory": "UtilityApplication",
+        "applicationCategory": "UtilitiesApplication",
         "offers": {
           "@type": "Offer",
           "price": "0"
@@ -4183,7 +4838,7 @@
       },
       "bundle": {
         "vendor": "pdf-vendor",
-        "wasm": true,
+        "wasm": false,
         "lazyLoad": true
       },
       "relatedTools": [
@@ -4195,6 +4850,15 @@
         "maxFileSize": 52428800,
         "chunkSize": 10485760
       },
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "LOCAL_ONLY",
+      "externalNetwork": false,
+      "syntheticData": "NONE",
+      "dataSource": "User-selected PDF; browser-local pdf-lib structural rewrite",
+      "limitations": "Does not rasterize or downsample page images; output can be smaller, similar in size, or larger; maximum input is 50 MB and browser memory varies by device.",
       "path": "/pdf/compress",
       "entry": "/src/tools/pdf/compress/"
     },
@@ -4248,6 +4912,15 @@
         "pdf/merge",
         "pdf/compress"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/pdf/split",
       "entry": "/src/tools/pdf/split/"
     },
@@ -4274,6 +4947,15 @@
       "author": "NovaTools MC",
       "created": "2026-03-16",
       "updated": "2026-03-16",
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/pdf/pdf-ocr",
       "entry": "/src/tools/pdf/pdf-ocr/"
     },
@@ -4311,6 +4993,15 @@
       "author": "NovaTools MC",
       "created": "2026-03-16",
       "updated": "2026-03-16",
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/pdf/pdf-page-number",
       "entry": "/src/tools/pdf/pdf-page-number/"
     },
@@ -4337,6 +5028,15 @@
       "author": "NovaTools MC",
       "created": "2026-03-16",
       "updated": "2026-03-16",
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/pdf/pdf-to-excel",
       "entry": "/src/tools/pdf/pdf-to-excel/"
     },
@@ -4362,6 +5062,15 @@
       "author": "NovaTools MC",
       "created": "2026-03-16",
       "updated": "2026-03-16",
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/pdf/pdf-to-html",
       "entry": "/src/tools/pdf/pdf-to-html/"
     },
@@ -4387,6 +5096,15 @@
       "author": "NovaTools MC",
       "created": "2026-03-16",
       "updated": "2026-03-16",
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/pdf/pdf-to-jpg",
       "entry": "/src/tools/pdf/pdf-to-jpg/"
     },
@@ -4412,6 +5130,15 @@
       "author": "NovaTools MC",
       "created": "2026-03-16",
       "updated": "2026-03-16",
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/pdf/pdf-to-png",
       "entry": "/src/tools/pdf/pdf-to-png/"
     },
@@ -4437,6 +5164,15 @@
       "author": "NovaTools MC",
       "created": "2026-03-16",
       "updated": "2026-03-16",
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/pdf/pdf-to-powerpoint",
       "entry": "/src/tools/pdf/pdf-to-powerpoint/"
     },
@@ -4462,6 +5198,15 @@
       "author": "NovaTools MC",
       "created": "2026-03-16",
       "updated": "2026-03-16",
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/pdf/pdf-to-text",
       "entry": "/src/tools/pdf/pdf-to-text/"
     },
@@ -4489,6 +5234,15 @@
       "author": "NovaTools MC",
       "created": "2026-03-16",
       "updated": "2026-03-16",
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/pdf/pdf-to-word",
       "entry": "/src/tools/pdf/pdf-to-word/"
     },
@@ -4526,6 +5280,15 @@
       "author": "NovaTools MC",
       "created": "2026-03-16",
       "updated": "2026-03-16",
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/pdf/pdf-watermark",
       "entry": "/src/tools/pdf/pdf-watermark/"
     },
@@ -4582,6 +5345,15 @@
         "stopwatch",
         "world-clock"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/productivity/countdown-timer",
       "entry": "/src/tools/productivity/countdown-timer/"
     },
@@ -4638,6 +5410,15 @@
         "tax",
         "currency-converter"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/productivity/expense-tracker",
       "entry": "/src/tools/productivity/expense-tracker/"
     },
@@ -4694,6 +5475,15 @@
         "time-tracker",
         "notes"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/productivity/habit-tracker",
       "entry": "/src/tools/productivity/habit-tracker/"
     },
@@ -4750,6 +5540,15 @@
         "notes",
         "time-tracker"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/productivity/kanban-board",
       "entry": "/src/tools/productivity/kanban-board/"
     },
@@ -4806,6 +5605,15 @@
         "kanban-board",
         "habit-tracker"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/productivity/notes",
       "entry": "/src/tools/productivity/notes/"
     },
@@ -4863,6 +5671,15 @@
         "countdown-timer",
         "time-tracker"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/productivity/pomodoro-timer",
       "entry": "/src/tools/productivity/pomodoro-timer/"
     },
@@ -4919,6 +5736,15 @@
         "countdown-timer",
         "time-tracker"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/productivity/stopwatch",
       "entry": "/src/tools/productivity/stopwatch/"
     },
@@ -4975,6 +5801,15 @@
         "stopwatch",
         "kanban-board"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/productivity/time-tracker",
       "entry": "/src/tools/productivity/time-tracker/"
     },
@@ -5031,6 +5866,15 @@
         "notes",
         "habit-tracker"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/productivity/todo-list",
       "entry": "/src/tools/productivity/todo-list/"
     },
@@ -5087,6 +5931,15 @@
         "countdown-timer",
         "pomodoro-timer"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/productivity/world-clock",
       "entry": "/src/tools/productivity/world-clock/"
     },
@@ -5141,6 +5994,15 @@
         "ip-lookup",
         "user-agent-parser"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/security/ad-blocker-tester",
       "entry": "/src/tools/security/ad-blocker-tester/"
     },
@@ -5194,6 +6056,15 @@
         "hash-generator",
         "password-generator"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/security/encrypt-decrypt",
       "entry": "/src/tools/security/encrypt-decrypt/"
     },
@@ -5249,6 +6120,15 @@
         "password-generator",
         "encrypt-decrypt"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/security/hash-generator",
       "entry": "/src/tools/security/hash-generator/"
     },
@@ -5303,6 +6183,15 @@
         "ssl-checker",
         "user-agent-parser"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/security/ip-lookup",
       "entry": "/src/tools/security/ip-lookup/"
     },
@@ -5358,6 +6247,15 @@
         "hash-generator",
         "encrypt-decrypt"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/security/jwt-decoder",
       "entry": "/src/tools/security/jwt-decoder/"
     },
@@ -5411,6 +6309,15 @@
         "password-strength",
         "hash-generator"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/security/password-generator",
       "entry": "/src/tools/security/password-generator/"
     },
@@ -5464,6 +6371,15 @@
         "password-generator",
         "hash-generator"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/security/password-strength",
       "entry": "/src/tools/security/password-strength/"
     },
@@ -5519,6 +6435,15 @@
         "ip-lookup",
         "jwt-decoder"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/security/ssl-checker",
       "entry": "/src/tools/security/ssl-checker/"
     },
@@ -5574,6 +6499,15 @@
         "ip-lookup",
         "ssl-checker"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/security/user-agent-parser",
       "entry": "/src/tools/security/user-agent-parser/"
     },
@@ -5627,6 +6561,15 @@
         "password-generator",
         "hash-generator"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/security/uuid-generator",
       "entry": "/src/tools/security/uuid-generator/"
     },
@@ -5683,6 +6626,15 @@
         "social-image-resizer",
         "image-to-png"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/social/app-icon-generator",
       "entry": "/src/tools/social/app-icon-generator/"
     },
@@ -5738,6 +6690,15 @@
         "social-image-resizer",
         "image-convert"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/social/favicon-generator",
       "entry": "/src/tools/social/favicon-generator/"
     },
@@ -5793,6 +6754,15 @@
         "utm-builder",
         "url-shortener"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/social/hashtag-generator",
       "entry": "/src/tools/social/hashtag-generator/"
     },
@@ -5847,6 +6817,15 @@
         "twitter-video",
         "social-image-resizer"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/social/instagram-photo",
       "entry": "/src/tools/social/instagram-photo/"
     },
@@ -5902,6 +6881,15 @@
         "hashtag-generator",
         "favicon-generator"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/social/social-image-resizer",
       "entry": "/src/tools/social/social-image-resizer/"
     },
@@ -5956,6 +6944,15 @@
         "instagram-photo",
         "social-image-resizer"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/social/twitter-video",
       "entry": "/src/tools/social/twitter-video/"
     },
@@ -5965,6 +6962,9 @@
       "nameEn": "URL Shortener",
       "category": "social",
       "tier": 1,
+      "public": false,
+      "indexable": false,
+      "adsEligible": false,
       "cpc": {
         "tr": 0.5,
         "us": 1
@@ -5985,8 +6985,8 @@
         ]
       },
       "description": {
-        "tr": "Uzun bağlantıları kısa ve paylaşılabilir hale getirin. İstemci tarafında hash tabanlı kısaltma.",
-        "en": "Transform long URLs into short, shareable links. Client-side hash-based shortening for privacy."
+        "tr": "Bu eski demo rotası gerçek bir yönlendirme servisine bağlı değildir ve üretim aracı olarak sunulmaz.",
+        "en": "This legacy demo route is not backed by a real redirect service and is not offered as a production URL shortener."
       },
       "schema": {
         "@type": "WebApplication",
@@ -5998,7 +6998,7 @@
       },
       "ads": {
         "sidebar": {
-          "enabled": true,
+          "enabled": false,
           "size": "336x280",
           "minCpm": 0.3
         }
@@ -6011,6 +7011,12 @@
         "hashtag-generator",
         "qr-generator"
       ],
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/social/url-shortener",
       "entry": "/src/tools/social/url-shortener/"
     },
@@ -6066,6 +7072,15 @@
         "hashtag-generator",
         "website-screenshot"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/social/utm-builder",
       "entry": "/src/tools/social/utm-builder/"
     },
@@ -6121,6 +7136,15 @@
         "social-image-resizer",
         "favicon-generator"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/social/website-screenshot",
       "entry": "/src/tools/social/website-screenshot/"
     },
@@ -6175,6 +7199,15 @@
         "twitter-video",
         "social-image-resizer"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/social/youtube-thumbnail",
       "entry": "/src/tools/social/youtube-thumbnail/"
     },
@@ -6234,6 +7267,15 @@
         "character-counter",
         "text-to-slug"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/text/case-converter",
       "entry": "/src/tools/text/case-converter/"
     },
@@ -6290,6 +7332,15 @@
         "case-converter",
         "text-to-slug"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/text/character-counter",
       "entry": "/src/tools/text/character-counter/"
     },
@@ -6345,6 +7396,15 @@
         "character-counter",
         "case-converter"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/text/lorem-ipsum-generator",
       "entry": "/src/tools/text/lorem-ipsum-generator/"
     },
@@ -6402,6 +7462,15 @@
         "character-counter",
         "case-converter"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/text/text-to-slug",
       "entry": "/src/tools/text/text-to-slug/"
     },
@@ -6457,6 +7526,15 @@
         "case-converter",
         "text-to-slug"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/text/word-counter",
       "entry": "/src/tools/text/word-counter/"
     },
@@ -6512,6 +7590,15 @@
         "text-to-ascii",
         "text-diff"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/text/html-entity-encoder",
       "entry": "/src/tools/text/html-entity-encoder/"
     },
@@ -6566,6 +7653,15 @@
         "case-converter",
         "character-counter"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/text/palindrome-checker",
       "entry": "/src/tools/text/palindrome-checker/"
     },
@@ -6612,6 +7708,15 @@
         "lazyLoad": false
       },
       "relatedTools": [],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/text/simple-translator",
       "entry": "/src/tools/text/simple-translator/"
     },
@@ -6658,6 +7763,15 @@
         "lazyLoad": false
       },
       "relatedTools": [],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/text/text-analysis",
       "entry": "/src/tools/text/text-analysis/"
     },
@@ -6713,6 +7827,15 @@
         "html-entity-encoder",
         "url-encoder"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/text/text-diff",
       "entry": "/src/tools/text/text-diff/"
     },
@@ -6759,6 +7882,15 @@
         "lazyLoad": false
       },
       "relatedTools": [],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/text/text-summarizer",
       "entry": "/src/tools/text/text-summarizer/"
     },
@@ -6814,6 +7946,15 @@
         "html-entity-encoder",
         "palindrome-checker"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/text/text-to-ascii",
       "entry": "/src/tools/text/text-to-ascii/"
     },
@@ -6869,6 +8010,15 @@
         "text-to-ascii",
         "case-converter"
       ],
+      "public": true,
+      "indexable": false,
+      "adsEligible": false,
+      "certificationStatus": "UNAVAILABLE",
+      "privacyMode": "NO_TOOL_PROCESSING_ON_PUBLIC_SURFACE",
+      "externalNetwork": false,
+      "syntheticData": "NONE_ON_PUBLIC_SURFACE",
+      "dataSource": "None on fail-closed public surface",
+      "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/text/url-encoder",
       "entry": "/src/tools/text/url-encoder/"
     }

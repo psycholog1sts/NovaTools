@@ -47,5 +47,8 @@ assert.equal(/trackEvent\([^\n]+compressedSize:\s*result\.bytes\.length/.test(ro
 assert.equal((html.match(/<h1\b/gi) || []).length, 1, 'PDF Compressor must have exactly one H1.');
 assert.equal((html.match(/Last updated:/gi) || []).length, 1, 'PDF Compressor must expose one Last updated marker.');
 assert.equal((html.match(/class="quality-option selected"/g) || []).length, 1, 'Only one truthful optimization mode should be visible.');
+assert.match(html, /aria-label="Breadcrumb"/i, 'PDF Compressor must expose a breadcrumb.');
+assert.match(html, /<footer\b[^>]*role="contentinfo"/i, 'PDF Compressor must use the shared trust footer contract.');
+assert.doesNotMatch(html, /\/tools\/pdf\/metadata\//, 'Related tools must not link to the removed PDF metadata route.');
 
 console.log('pdf compressor trust contract: pass');

@@ -8,21 +8,21 @@ import { imageConverter } from './image-convert.mjs';
 import { imageResizer } from './image-resize.mjs';
 import { imageWatermark } from './image-watermark.mjs';
 
+const IMAGE_COMPRESSOR_MAX_BYTES = 10 * 1024 * 1024;
+
 /**
  * Register all image tools
  * @param {ToolController} controller - Tool controller instance
  */
 export function registerImageTools(controller) {
-  
-  // Image Compressor
   controller.registerTool('image-compress', {
     name: 'Image Compressor',
-    description: 'Compress images while maintaining visual quality',
+    description: 'Re-encode images in the browser with adjustable quality and output format',
     category: 'image',
     icon: '🖼️',
     fileUpload: {
-      accept: ['image/jpeg', 'image/png', 'image/webp', 'image/gif'],
-      maxSize: 20 * 1024 * 1024,
+      accept: ['image/jpeg', 'image/png', 'image/webp'],
+      maxSize: IMAGE_COMPRESSOR_MAX_BYTES,
       multiple: false
     },
     inputs: [
@@ -31,7 +31,8 @@ export function registerImageTools(controller) {
         type: 'file',
         label: 'Image File',
         required: true,
-        accept: ['image/jpeg', 'image/png', 'image/webp']
+        accept: ['image/jpeg', 'image/png', 'image/webp'],
+        maxSize: IMAGE_COMPRESSOR_MAX_BYTES
       },
       {
         name: 'quality',
@@ -41,6 +42,14 @@ export function registerImageTools(controller) {
         min: 1,
         max: 100,
         default: 80
+      },
+      {
+        name: 'format',
+        type: 'select',
+        label: 'Output Format',
+        required: true,
+        options: ['image/jpeg', 'image/png', 'image/webp'],
+        default: 'image/jpeg'
       },
       {
         name: 'maxWidth',
@@ -63,13 +72,13 @@ export function registerImageTools(controller) {
     ],
     outputs: [
       { name: 'file', type: 'blob' },
+      { name: 'format', type: 'string' },
       { name: 'originalSize', type: 'integer' },
       { name: 'compressedSize', type: 'integer' },
       { name: 'savings', type: 'percentage' }
     ]
   }, imageCompressor);
 
-  // Image Converter
   controller.registerTool('image-convert', {
     name: 'Image Converter',
     description: 'Convert images between different formats',
@@ -113,7 +122,6 @@ export function registerImageTools(controller) {
     ]
   }, imageConverter);
 
-  // Image Resizer
   controller.registerTool('image-resize', {
     name: 'Image Resizer',
     description: 'Resize images to specific dimensions',
@@ -163,7 +171,6 @@ export function registerImageTools(controller) {
     ]
   }, imageResizer);
 
-  // Image Watermark
   controller.registerTool('image-watermark', {
     name: 'Image Watermark',
     description: 'Add text or image watermarks to images',
@@ -220,8 +227,6 @@ export function registerImageTools(controller) {
       { name: 'file', type: 'blob' }
     ]
   }, imageWatermark);
-
-
 }
 
 export default registerImageTools;

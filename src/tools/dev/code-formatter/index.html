@@ -70,31 +70,31 @@
     .tool-wrapper { max-width: 960px; margin: 0 auto; padding: 3rem 1rem 5rem; }
     .tool-hero { text-align: center; margin-bottom: 2.5rem; }
     .tool-hero-icon { font-size: 3.5rem; line-height: 1; margin-bottom: 1rem; }
-    .tool-hero h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; letter-spacing: -0.02em; color: #FAFAFA; margin-bottom: 0.75rem; }
-    .tool-hero p { color: #A1A1AA; font-size: 1.0625rem; max-width: 560px; margin: 0 auto; }
+    .tool-hero h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; letter-spacing: -0.02em; color: var(--text-primary); margin-bottom: 0.75rem; }
+    .tool-hero p { color: var(--text-secondary); font-size: 1.0625rem; max-width: 560px; margin: 0 auto; }
     .card { background: rgba(15,15,20,0.7); border: 1px solid rgba(0,217,255,0.15); border-radius: 14px; padding: 1.75rem; backdrop-filter: blur(12px); }
     
     .options-row { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.25rem; align-items: center; }
     .option-group { display: flex; align-items: center; gap: 0.5rem; }
-    .option-label { font-size: 0.8125rem; font-weight: 600; color: #71717A; letter-spacing: 0.05em; text-transform: uppercase; }
-    .option-select { padding: 0.5rem 0.75rem; background: #0F0F12; border: 1px solid rgba(0,217,255,0.2); border-radius: 8px; color: #FAFAFA; font-size: 0.875rem; cursor: pointer; outline: none; }
+    .option-label { font-size: 0.8125rem; font-weight: 600; color: var(--text-secondary); letter-spacing: 0.05em; text-transform: uppercase; }
+    .option-select { padding: 0.5rem 0.75rem; background: var(--field-bg); border: 1px solid var(--field-border); border-radius: 8px; color: var(--text-primary); font-size: 0.875rem; cursor: pointer; outline: none; }
     .option-select:focus { border-color: rgba(0,217,255,0.45); }
     
     .input-section { margin-bottom: 1.25rem; }
-    .input-label { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #71717A; margin-bottom: 0.625rem; }
-    #codeInput { width: 100%; min-height: 220px; padding: 1rem 1.125rem; background: #0F0F12; border: 1px solid rgba(0,217,255,0.12); border-radius: 10px; color: #FAFAFA; font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.875rem; line-height: 1.7; resize: vertical; transition: border-color 0.2s, box-shadow 0.2s; outline: none; box-sizing: border-box; }
-    #codeInput::placeholder { color: #52525B; }
+    .input-label { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 0.625rem; }
+    #codeInput { width: 100%; min-height: 220px; padding: 1rem 1.125rem; background: var(--field-bg); border: 1px solid var(--field-border); border-radius: 10px; color: var(--text-primary); font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.875rem; line-height: 1.7; resize: vertical; transition: border-color 0.2s, box-shadow 0.2s; outline: none; box-sizing: border-box; }
+    #codeInput::placeholder { color: var(--text-tertiary); }
     #codeInput:focus { border-color: rgba(0,217,255,0.45); box-shadow: 0 0 0 3px rgba(0,217,255,0.08); }
     
     .btn-bar { display: flex; flex-wrap: wrap; gap: 0.625rem; margin-bottom: 1.5rem; }
     .btn { display: inline-flex; align-items: center; gap: 0.4rem; height: 40px; padding: 0 1.125rem; border: none; border-radius: 8px; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: background 0.18s, transform 0.12s, opacity 0.18s; outline: none; user-select: none; }
     .btn:active { transform: scale(0.97); }
-    .btn-primary { background: linear-gradient(135deg, #00D9FF, #0099CC); color: #0A0A0C; }
+    .btn-primary { background: linear-gradient(135deg, var(--accent-text), #0099CC); color: #0A0A0C; }
     .btn-primary:hover { background: linear-gradient(135deg, #1FE2FF, #00B8EE); }
-    .btn-secondary { background: rgba(0,217,255,0.1); border: 1px solid rgba(0,217,255,0.25); color: #00D9FF; }
+    .btn-secondary { background: rgba(0,217,255,0.1); border: 1px solid rgba(0,217,255,0.25); color: var(--accent-text); }
     .btn-secondary:hover { background: rgba(0,217,255,0.18); }
-    .btn-ghost { background: var(--surface-default); border: 1px solid var(--border-hover); color: #A1A1AA; }
-    .btn-ghost:hover { background: rgba(255,255,255,0.09); color: #FAFAFA; }
+    .btn-ghost { background: var(--surface-default); border: 1px solid var(--border-hover); color: var(--text-secondary); }
+    .btn-ghost:hover { background: rgba(255,255,255,0.09); color: var(--text-primary); }
     .btn-danger { background: rgba(255,85,85,0.1); border: 1px solid rgba(255,85,85,0.25); color: #FF5555; }
     .btn-danger:hover { background: rgba(255,85,85,0.18); }
     
@@ -105,29 +105,29 @@
     @keyframes fadeSlideIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
     
     .output-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.625rem; }
-    .output-label { font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #71717A; }
+    .output-label { font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-secondary); }
     .output-wrap { position: relative; background: #08080A; border: 1px solid rgba(0,217,255,0.1); border-radius: 10px; overflow: hidden; }
-    .output-placeholder { padding: 2rem 1.5rem; text-align: center; color: #52525B; font-size: 0.9375rem; }
-    #codeOutput { display: none; width: 100%; min-height: 180px; margin: 0; padding: 1.125rem 1.25rem; background: transparent; border: none; color: #FAFAFA; font-family: 'JetBrains Mono', monospace; font-size: 0.8125rem; line-height: 1.75; resize: vertical; outline: none; box-sizing: border-box; }
+    .output-placeholder { padding: 2rem 1.5rem; text-align: center; color: var(--text-tertiary); font-size: 0.9375rem; }
+    #codeOutput { display: none; width: 100%; min-height: 180px; margin: 0; padding: 1.125rem 1.25rem; background: transparent; border: none; color: var(--text-primary); font-family: 'JetBrains Mono', monospace; font-size: 0.8125rem; line-height: 1.75; resize: vertical; outline: none; box-sizing: border-box; }
     
-    .copy-feedback { font-size: 0.8rem; color: #00FF88; opacity: 0; transition: opacity 0.3s; pointer-events: none; }
+    .copy-feedback { font-size: 0.8rem; color: var(--color-success-text); opacity: 0; transition: opacity 0.3s; pointer-events: none; }
     .copy-feedback.show { opacity: 1; }
     
-    .legal-note { margin-top: 1.5rem; padding: 1rem 1.25rem; background: rgba(255,193,7,0.05); border: 1px solid rgba(255,193,7,0.15); border-radius: 10px; font-size: 0.8125rem; color: #A1A1AA; line-height: 1.6; }
-    .legal-note strong { color: #FFC107; }
+    .legal-note { margin-top: 1.5rem; padding: 1rem 1.25rem; background: rgba(255,193,7,0.05); border: 1px solid rgba(255,193,7,0.15); border-radius: 10px; font-size: 0.8125rem; color: var(--text-secondary); line-height: 1.6; }
+    .legal-note strong { color: var(--color-warning-text); }
     
     .seo-section { max-width: 960px; margin: 3.5rem auto 0; padding: 0 1rem; }
-    .seo-section h2 { font-size: 1.375rem; font-weight: 700; color: #FAFAFA; margin-bottom: 0.75rem; }
-    .seo-section h3 { font-size: 1.125rem; font-weight: 600; color: #FAFAFA; margin: 2rem 0 0.75rem; }
-    .seo-section p, .seo-section li { color: #A1A1AA; line-height: 1.8; font-size: 0.9375rem; }
+    .seo-section h2 { font-size: 1.375rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.75rem; }
+    .seo-section h3 { font-size: 1.125rem; font-weight: 600; color: var(--text-primary); margin: 2rem 0 0.75rem; }
+    .seo-section p, .seo-section li { color: var(--text-secondary); line-height: 1.8; font-size: 0.9375rem; }
     .seo-section ol { padding-left: 1.25rem; }
     .seo-section ol li { margin-bottom: 0.4rem; }
     .faq-item { border: 1px solid rgba(0,217,255,0.1); border-radius: 10px; padding: 1rem 1.125rem; margin-bottom: 0.875rem; background: rgba(15,15,20,0.5); }
-    .faq-item summary { font-weight: 600; color: #FAFAFA; cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .faq-item summary { font-weight: 600; color: var(--text-primary); cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
     .faq-item summary::-webkit-details-marker { display: none; }
-    .faq-item summary::after { content: '+'; color: #00D9FF; font-size: 1.25rem; flex-shrink: 0; transition: transform 0.2s; }
+    .faq-item summary::after { content: '+'; color: var(--accent-text); font-size: 1.25rem; flex-shrink: 0; transition: transform 0.2s; }
     .faq-item[open] summary::after { content: '\2212'; }
-    .faq-item p { margin-top: 0.625rem; color: #A1A1AA; line-height: 1.7; }
+    .faq-item p { margin-top: 0.625rem; color: var(--text-secondary); line-height: 1.7; }
     
     @media (max-width: 600px) {
       .btn-bar { gap: 0.5rem; }
@@ -291,13 +291,6 @@
         <h2>Related Tools</h2>
         <ul><li><a href="https://mc-novatools.com/tools/dev/base64-converter/">Base64 Encoder/Decoder — Encode and decode text and files to Base64.</a></li><li><a href="https://mc-novatools.com/tools/dev/color-converter/">Color Converter — Convert between HEX, RGB, HSL, and HSV color formats.</a></li></ul>
       </article>
-      <aside class="author-bylines" aria-label="Author and review information for Code Formatter">
-        <p><span class="author-name">Metehan ÇETİN, LPC</span>, <span class="author-title">Founder and editor</span></p>
-        <p>The author profile for Code Formatter is intended for a practitioner who understands web development, data validation, code review, API debugging, and safe text transformation. This byline describes hands-on experience reviewing inputs, outputs, edge cases, accessibility needs, privacy expectations, and user education for browser-based utilities. It is maintained as a verified public review note for MC NovaTools tool pages.</p>
-        <p><a href="https://mc-novatools.com/about-us.html" rel="author">Author and review profile</a></p>
-        <p>Last updated: <time class="last-updated" datetime="2026-06-03">2026-06-03</time></p>
-        <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Metehan ÇETİN, LPC","jobTitle":"Founder and editor","description":"The author profile for Code Formatter is intended for a practitioner who understands web development, data validation, code review, API debugging, and safe text transformation. This byline describes hands-on experience reviewing inputs, outputs, edge cases, accessibility needs, privacy expectations, and user education for browser-based utilities. It is maintained as a verified public review note for MC NovaTools tool pages.","sameAs":"https://mc-novatools.com/about-us.html"}</script>
-      </aside>
 <section class="seo-section" aria-label="About this tool">
         <h2 data-i18n="tools.dev.code-formatter.text.017">About Code Formatter</h2>
         <p data-i18n="tools.dev.code-formatter.text.018">Code formatting is essential for maintaining readable and maintainable code. This free online tool beautifies your HTML, CSS, and JavaScript code by applying consistent indentation and formatting rules. Whether you're cleaning up minified code or standardizing your project's style, this formatter helps you achieve professional-looking code instantly.</p>
@@ -341,7 +334,7 @@
         <section class="trust-help novatools-tool-reading-path" aria-labelledby="toolReadingPathTitle">
           <h2 id="toolReadingPathTitle">Recommended next reading</h2>
           <p>Use these practical guides to understand when this tool is the right choice, what to check before exporting, and which workflow usually comes next.</p>
-          <div class="related-tools-grid"><a class="related-tool-link" href="https://mc-novatools.com/blog/articles/developer-debugging-tool-chain.html">Developer debugging chain</a><a class="related-tool-link" href="https://mc-novatools.com/blog/articles/json-formatter-debugging-api-responses.html">JSON formatter guide</a></div>
+          <div class="related-tools-grid"><a class="related-tool-link" href="/blog/articles/understanding-json-web-tokens-structure-security.html">Understanding JSON Web Tokens (JWT): Structure and Security</a><a class="related-tool-link" href="/blog/articles/understanding-json-web-tokens-structure-security.html">Understanding JSON Web Tokens (JWT): Structure and Security</a></div>
         </section>
     </main>
 
@@ -351,7 +344,7 @@
     </footer>
     <style>
       .tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }
-      .tool-footer a { color: #00D9FF; text-decoration: none; }
+      .tool-footer a { color: var(--accent-text); text-decoration: none; }
     </style>
   </div>
 

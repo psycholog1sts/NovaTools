@@ -24,6 +24,16 @@ jobs:
         run: npm run lint --if-present
       - name: Unit and regression tests
         run: npm test --if-present
+      - name: Image Compressor source-truth contract
+        run: node tests/image-compressor-truth.mjs
+      - name: Audit tool source truth
+        run: node scripts/audit-tool-source-truth.mjs
+      # scripts/prerender-home.mjs renders the homepage grids in a real browser
+      # during the build, so Chromium must exist before it runs.
+      - name: Install pinned browser build dependency
+        run: npm install --no-save --package-lock=false @playwright/test@1.55.0
+      - name: Install Chromium for the build
+        run: npx playwright install --with-deps chromium
       - name: Build
         run: npm run build
       - name: Enforce production output contract

@@ -1,12 +1,12 @@
 /**
  * Mortgage Refinance Calculator
  * Calculates refinance savings and break-even analysis.
- * Turkey mode applies KKDF and BSMV to the periodic interest rate so the
+ * Optional KKDF and BSMV assumptions are applied to the periodic interest rate so the
  * installment, totals, table, and chart all use the same audited formula.
  */
 
-const DEFAULT_KKDF_RATE = 15;
-const DEFAULT_BSMV_RATE = 5;
+const DEFAULT_KKDF_RATE = 0;
+const DEFAULT_BSMV_RATE = 0;
 const MAX_TERM_YEARS = 30;
 const MAX_SCHEDULE_ROWS = 360;
 

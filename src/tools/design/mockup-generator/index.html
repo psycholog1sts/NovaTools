@@ -67,59 +67,59 @@
     .tool-wrapper { max-width: 1200px; margin: 0 auto; padding: 3rem 1rem 5rem; }
     .tool-hero { text-align: center; margin-bottom: 2.5rem; }
     .tool-hero-icon { font-size: 3.5rem; line-height: 1; margin-bottom: 1rem; }
-    .tool-hero h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; letter-spacing: -0.02em; color: #FAFAFA; margin-bottom: 0.75rem; }
-    .tool-hero p { color: #A1A1AA; font-size: 1.0625rem; max-width: 560px; margin: 0 auto; }
+    .tool-hero h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; letter-spacing: -0.02em; color: var(--text-primary); margin-bottom: 0.75rem; }
+    .tool-hero p { color: var(--text-secondary); font-size: 1.0625rem; max-width: 560px; margin: 0 auto; }
     .card { background: rgba(15,15,20,0.7); border: 1px solid rgba(0,217,255,0.15); border-radius: 14px; padding: 1.75rem; backdrop-filter: blur(12px); }
     
     .mockup-grid { display: grid; grid-template-columns: 280px 1fr; gap: 1.5rem; }
     @media (max-width: 900px) { .mockup-grid { grid-template-columns: 1fr; } }
     
     .device-selector { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; margin-bottom: 1.5rem; }
-    .device-btn { aspect-ratio: 1; background: rgba(0,217,255,0.1); border: 2px solid rgba(0,217,255,0.2); border-radius: 12px; cursor: pointer; transition: all 0.2s; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; color: #A1A1AA; font-size: 0.875rem; }
+    .device-btn { aspect-ratio: 1; background: rgba(0,217,255,0.1); border: 2px solid rgba(0,217,255,0.2); border-radius: 12px; cursor: pointer; transition: all 0.2s; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; color: var(--text-secondary); font-size: 0.875rem; }
     .device-btn:hover { border-color: rgba(0,217,255,0.4); }
-    .device-btn.active { border-color: #00D9FF; background: rgba(0,217,255,0.2); color: #00D9FF; }
+    .device-btn.active { border-color: var(--accent-text); background: rgba(0,217,255,0.2); color: var(--accent-text); }
     .device-icon { font-size: 2rem; }
     
     .upload-area { border: 2px dashed rgba(0,217,255,0.3); border-radius: 12px; padding: 2rem; text-align: center; background: rgba(0,217,255,0.05); cursor: pointer; transition: all 0.2s; margin-bottom: 1rem; }
     .upload-area:hover { border-color: rgba(0,217,255,0.5); background: rgba(0,217,255,0.08); }
     .upload-area input { display: none; }
-    .upload-text { color: #71717A; font-size: 0.9375rem; }
+    .upload-text { color: var(--text-secondary); font-size: 0.9375rem; }
     
     .control-group { margin-bottom: 1rem; }
-    .control-group label { display: block; font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #71717A; margin-bottom: 0.5rem; }
+    .control-group label { display: block; font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 0.5rem; }
     .control-group input[type="color"] { width: 100%; height: 44px; border: none; border-radius: 8px; cursor: pointer; }
-    .control-group select { width: 100%; height: 44px; padding: 0 1rem; background: #0F0F12; border: 1px solid rgba(0,217,255,0.12); border-radius: 8px; color: #FAFAFA; font-size: 0.9375rem; }
+    .control-group select { width: 100%; height: 44px; padding: 0 1rem; background: var(--field-bg); border: 1px solid var(--field-border); border-radius: 8px; color: var(--text-primary); font-size: 0.9375rem; }
     
-    .preview-panel { background: linear-gradient(135deg, #1a1a2e, #0F0F12); border: 1px solid rgba(0,217,255,0.15); border-radius: 14px; padding: 2rem; display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+    .preview-panel { background: linear-gradient(135deg, #1a1a2e, var(--field-bg)); border: 1px solid rgba(0,217,255,0.15); border-radius: 14px; padding: 2rem; display: flex; flex-direction: column; align-items: center; gap: 1rem; }
     #mockupCanvas { max-width: 100%; border-radius: 8px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
     
     .btn-bar { display: flex; flex-wrap: wrap; gap: 0.625rem; justify-content: center; }
     .btn { display: inline-flex; align-items: center; gap: 0.4rem; height: 44px; padding: 0 1.25rem; border: none; border-radius: 8px; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: all 0.18s; outline: none; }
     .btn:active { transform: scale(0.97); }
-    .btn-primary { background: linear-gradient(135deg, #00D9FF, #0099CC); color: #0A0A0C; }
+    .btn-primary { background: linear-gradient(135deg, var(--accent-text), #0099CC); color: #0A0A0C; }
     .btn-primary:hover { background: linear-gradient(135deg, #1FE2FF, #00B8EE); }
-    .btn-secondary { background: rgba(0,217,255,0.1); border: 1px solid rgba(0,217,255,0.25); color: #00D9FF; }
+    .btn-secondary { background: rgba(0,217,255,0.1); border: 1px solid rgba(0,217,255,0.25); color: var(--accent-text); }
     .btn-secondary:hover { background: rgba(0,217,255,0.18); }
     
-    .legal-note { margin-top: 1.5rem; padding: 1rem 1.25rem; background: rgba(255,193,7,0.05); border: 1px solid rgba(255,193,7,0.15); border-radius: 10px; font-size: 0.8125rem; color: #A1A1AA; line-height: 1.6; }
-    .legal-note strong { color: #FFC107; }
+    .legal-note { margin-top: 1.5rem; padding: 1rem 1.25rem; background: rgba(255,193,7,0.05); border: 1px solid rgba(255,193,7,0.15); border-radius: 10px; font-size: 0.8125rem; color: var(--text-secondary); line-height: 1.6; }
+    .legal-note strong { color: var(--color-warning-text); }
     
     .seo-section { max-width: 960px; margin: 3.5rem auto 0; padding: 0 1rem; }
-    .seo-section h2 { font-size: 1.375rem; font-weight: 700; color: #FAFAFA; margin-bottom: 0.75rem; }
-    .seo-section h3 { font-size: 1.125rem; font-weight: 600; color: #FAFAFA; margin: 2rem 0 0.75rem; }
-    .seo-section p, .seo-section li { color: #A1A1AA; line-height: 1.8; font-size: 0.9375rem; }
+    .seo-section h2 { font-size: 1.375rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.75rem; }
+    .seo-section h3 { font-size: 1.125rem; font-weight: 600; color: var(--text-primary); margin: 2rem 0 0.75rem; }
+    .seo-section p, .seo-section li { color: var(--text-secondary); line-height: 1.8; font-size: 0.9375rem; }
     .seo-section ol { padding-left: 1.25rem; }
     .seo-section ol li { margin-bottom: 0.4rem; }
     
     .faq-item { border: 1px solid rgba(0,217,255,0.1); border-radius: 10px; padding: 1rem 1.125rem; margin-bottom: 0.875rem; background: rgba(15,15,20,0.5); }
-    .faq-item summary { font-weight: 600; color: #FAFAFA; cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .faq-item summary { font-weight: 600; color: var(--text-primary); cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
     .faq-item summary::-webkit-details-marker { display: none; }
-    .faq-item summary::after { content: '+'; color: #00D9FF; font-size: 1.25rem; flex-shrink: 0; }
+    .faq-item summary::after { content: '+'; color: var(--accent-text); font-size: 1.25rem; flex-shrink: 0; }
     .faq-item[open] summary::after { content: '\2212'; }
-    .faq-item p { margin-top: 0.625rem; color: #A1A1AA; line-height: 1.7; }
+    .faq-item p { margin-top: 0.625rem; color: var(--text-secondary); line-height: 1.7; }
     
     .tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }
-    .tool-footer a { color: #00D9FF; text-decoration: none; }
+    .tool-footer a { color: var(--accent-text); text-decoration: none; }
   </style>
   <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
 </head>
@@ -203,7 +203,7 @@
                 <div class="upload-text">
                   <div style="font-size: 2rem; margin-bottom: 0.5rem;">&#128444;</div>
                   <div>Click or drag screenshot here</div>
-                  <div style="font-size: 0.8125rem; margin-top: 0.5rem; color: #52525B;">Recommended: 1920x1080 or higher</div>
+                  <div style="font-size: 0.8125rem; margin-top: 0.5rem; color: var(--text-tertiary);">Recommended: 1920x1080 or higher</div>
                 </div>
               </label>
               
@@ -240,46 +240,29 @@
 
       <article class="tool-description" aria-labelledby="toolDescriptionTitle-mockup-generator">
         <h2 id="toolDescriptionTitle-mockup-generator">What Mockup Generator Does and Why It Matters</h2>
-        <p>Mockup Generator helps people create a useful draft or asset from settings you control without turning a simple task into a full software project. In real work, mockup generator tasks often appear right before a deadline: a document has to be sent, a data file needs to be checked, an image must be prepared for publishing, a calculation needs a second scenario, or a developer has to verify a pasted value before it enters a larger workflow. This page focuses on that practical moment. The interface gives you a direct place to provide the input, review settings, run the operation, and keep the result close enough to inspect before you use it elsewhere. That matters because small preparation mistakes can create oversized attachments, unreadable exports, broken imports, misleading estimates, or accidental exposure of details that should have stayed private.</p>
-        <p>The main value of Mockup Generator is control. Instead of sending material through an unfamiliar workflow, you can use the browser to perform the job, observe the state of the input, and decide whether the output is ready. Create device mockups with your screenshots. Laptop, phone, tablet, and desktop frames. The tool is especially useful for teams that need quick utility work between larger applications: support staff preparing evidence, creators publishing assets, finance users comparing planning assumptions, students organizing files, and developers validating snippets before sharing them in tickets or pull requests. It is intentionally focused on one job, so the page can explain what is supported, what should be checked manually, and when a specialist application or professional review is more appropriate.</p>
-        <p>Experience signals on this page are written around common failure points rather than generic marketing. For Mockup Generator, the important questions are whether the source material is in a supported format, whether the browser has enough memory to complete the action, whether the result keeps the information you expect, and whether any limitation changes how you should use the file or value. Reading these notes before you click the main action can save time because it frames the tool as part of a workflow: prepare the input, run the operation, inspect the output, then keep or discard the result based on evidence.</p>
+        <p>Mockup Generator places an uploaded image (like a screenshot or design) into a realistic device or product frame — a phone, laptop, browser window, or similar — so you can present your work in context rather than as a flat, standalone image.</p>
+        <p>A screenshot dropped into a realistic device frame reads as more polished and professional for portfolios, presentations, App/Play Store listings, and social sharing than the same image shown bare. This does that composition automatically, in your browser.</p>
         <h2>How to Use Mockup Generator</h2>
         <ol>
-          <li>Open Mockup Generator and read the short instructions near the interface so you know which input type the page expects.</li>
-          <li>Upload the supported file, paste the text, or enter the numeric values requested by the form; avoid adding unrelated private information.</li>
-          <li>Review every visible option, such as output format, range, quality, delimiter, units, date, rate, or mode, because these settings shape the final result.</li>
-          <li>Run the tool with the primary action button and wait for the status message, preview, validation result, calculation, or progress indicator to finish.</li>
-          <li>Inspect the displayed result carefully, including file name, page order, dimensions, row count, formatting, estimate assumptions, warnings, and any visible errors.</li>
-          <li>Download the generated file, copy the result, or record the calculation only after the preview matches your intended use case.</li>
-          <li>Clear the page or close the browser tab when finished, especially on a shared device or when the input included confidential material.</li>
+          <li>Upload your image (screenshot, design, or artwork).</li>
+          <li>Choose a device or frame template.</li>
+          <li>Adjust positioning if the tool allows fine-tuning.</li>
+          <li>Download the finished mockup image.</li>
         </ol>
-        <h2>Supported Formats and Limitations</h2>
-        <h3>Supported input formats</h3>
-        <ul><li>Text, colors, dimensions, brand details, layout notes, or simple visual settings entered by the user</li><li>Uploaded images or icons where the tool supports asset composition</li><li>Template choices, export sizes, and style controls selected in the interface</li></ul>
-        <h3>Supported output formats</h3>
-        <ul><li>Previewed design assets, layouts, mockups, QR visuals, invoices, resumes, or diagrams</li><li>Downloaded image, PDF, SVG, HTML, or text outputs where supported</li><li>Editable browser previews that help users review spacing, copy, and visual hierarchy</li></ul>
-        <h3>Known limitations and edge cases</h3>
-        <ul><li>Browser tools are useful for drafts and lightweight assets, but complex brand systems may need professional design review.</li><li>Print output can vary by printer, paper, and color profile.</li><li>Generated visual assets should be checked for accessibility, contrast, and licensing needs.</li></ul>
-        <p>For best results, test Mockup Generator with a small sample before committing a large batch or an important deadline item. Browser utilities are convenient because they reduce setup and keep the workflow close to the user, but they still depend on device memory, browser permissions, source-file quality, and the exact assumptions entered into the interface. If the output will be used for legal, medical, financial, security, accessibility, or production engineering decisions, treat the result as a preparation aid and verify it with the appropriate system of record.</p>
+        <h2>What to Know</h2>
+        <ul><li>Start with a high-resolution source image for a crisp result — the frame templates are typically high resolution, and a low-quality source image will look soft by comparison</li><li>Match your image's aspect ratio to the frame's screen area where possible, to avoid unwanted stretching or cropping</li><li>All composition happens locally in your browser — your image isn't uploaded to a server</li></ul>
         <h2>Privacy and Security</h2>
-        <p>Mockup Generator is designed around a privacy-first browser workflow. Where possible, files and inputs are processed client-side in your browser, which means the work happens on your device instead of being permanently stored on NovaTools servers. Uploaded data is not stored on servers permanently by this page, and the safest habit is still to avoid uploading or pasting secrets that are not required for the task. Some features may depend on browser APIs, optional public lookups, or third-party libraries loaded by the page, so you should review the interface notes and avoid using confidential production data unless the tool behavior fits your policy.</p>
+        <p>Your uploaded image is processed locally in your browser and is not uploaded to a server or stored.</p>
         <h2>Frequently Asked Questions</h2>
-        <h3>Is Mockup Generator suitable for confidential work?</h3>
-        <p>It can be suitable for many confidential preparation tasks when the operation is completed locally in the browser and your organization allows that workflow. You should still avoid unnecessary sensitive fields, use a trusted device, clear the page afterward, and verify whether any optional lookup or external dependency is involved before using regulated or secret material.</p>
-        <h3>Why should I inspect the output before downloading or copying it?</h3>
-        <p>Inspection is the step that turns a quick utility into a reliable workflow. A file may process successfully while still having the wrong order, dimensions, delimiter, estimate assumption, encoding, or visual quality. Reviewing the preview and status details helps catch those issues before the result reaches a client, upload portal, repository, spreadsheet, or public page.</p>
-        <h3>What should I do if Mockup Generator does not accept my input?</h3>
-        <p>Start by checking the file type, size, formatting, and any visible error message. Try a smaller sample, remove unsupported characters or corrupted content, and confirm that your browser is current. If the source file uses a proprietary format, encryption, unusual encoding, or a damaged structure, a dedicated desktop application may be needed before this browser tool can help.</p>
+        <h3>Why does my image look stretched or cropped in the mockup?</h3>
+        <p>This usually means your source image's aspect ratio doesn't match the frame's screen area. Check the frame's expected dimensions and crop or resize your source image to match before uploading, if the tool doesn't do this automatically.</p>
+        <h3>Can I use the mockup for App Store or Play Store listings?</h3>
+        <p>Check each store's current image requirements (exact dimensions, allowed content) before submitting — a realistic device mockup is popular for marketing screenshots, but formal store listing images often have specific size rules.</p>
+        <h3>What resolution should my source image be?</h3>
+        <p>As high as practical — the frame templates are generally high resolution, so a small or low-quality source image will be the limiting factor on how sharp the final mockup looks.</p>
         <h2>Related Tools</h2>
         <ul><li><a href="https://mc-novatools.com/tools/design/barcode-generator/">Barcode Generator — Generate free barcodes.</a></li><li><a href="https://mc-novatools.com/tools/design/business-card-maker/">Business Card Maker — Design professional business cards.</a></li></ul>
       </article>
-      <aside class="author-bylines" aria-label="Author and review information for Mockup Generator">
-        <p><span class="author-name">Metehan ÇETİN, LPC</span>, <span class="author-title">Founder and editor</span></p>
-        <p>The author profile for Mockup Generator is intended for a practitioner who understands design production, brand asset drafting, layout review, and accessible visual preparation. This byline describes hands-on experience reviewing inputs, outputs, edge cases, accessibility needs, privacy expectations, and user education for browser-based utilities. It is maintained as a verified public review note for MC NovaTools tool pages.</p>
-        <p><a href="https://mc-novatools.com/about-us.html" rel="author">Author and review profile</a></p>
-        <p>Last updated: <time class="last-updated" datetime="2026-06-03">2026-06-03</time></p>
-        <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Metehan ÇETİN, LPC","jobTitle":"Founder and editor","description":"The author profile for Mockup Generator is intended for a practitioner who understands design production, brand asset drafting, layout review, and accessible visual preparation. This byline describes hands-on experience reviewing inputs, outputs, edge cases, accessibility needs, privacy expectations, and user education for browser-based utilities. It is maintained as a verified public review note for MC NovaTools tool pages.","sameAs":"https://mc-novatools.com/about-us.html"}</script>
-      </aside>
 <section class="seo-section" aria-label="About this tool">
         <h2 data-i18n="tools.design.mockup-generator.text.023">About Mockup Generator</h2>
         <p data-i18n="tools.design.mockup-generator.text.024">Create professional device mockups to showcase your websites, apps, and designs. Simply upload a screenshot and place it within realistic device frames including laptops, phones, tablets, and desktop monitors. Perfect for portfolios, presentations, marketing materials, and app store screenshots.</p>
@@ -332,7 +315,7 @@
         <section class="trust-help novatools-tool-reading-path" aria-labelledby="toolReadingPathTitle">
           <h2 id="toolReadingPathTitle">Recommended next reading</h2>
           <p>Use these practical guides to understand when this tool is the right choice, what to check before exporting, and which workflow usually comes next.</p>
-          <div class="related-tools-grid"><a class="related-tool-link" href="https://mc-novatools.com/blog/articles/blog-publishing-tool-workflow.html">Blog publishing workflow</a><a class="related-tool-link" href="https://mc-novatools.com/blog/articles/content-review-before-client-delivery.html">Content review delivery</a></div>
+          <div class="related-tools-grid"><a class="related-tool-link" href="/blog/articles/browser-based-tools-vs-desktop-software-privacy-comparison.html">Browser-Based Tools vs Desktop Software: Privacy Comparison</a><a class="related-tool-link" href="/blog/articles/browser-based-tools-vs-desktop-software-privacy-comparison.html">Browser-Based Tools vs Desktop Software: Privacy Comparison</a></div>
         </section>
     </main>
 
@@ -524,7 +507,7 @@
       sampleCanvas.height = 600;
       const sctx = sampleCanvas.getContext('2d');
       const grad = sctx.createLinearGradient(0, 0, 800, 600);
-      grad.addColorStop(0, '#00D9FF');
+      grad.addColorStop(0, 'var(--accent-text)');
       grad.addColorStop(1, '#0099CC');
       sctx.fillStyle = grad;
       sctx.fillRect(0, 0, 800, 600);

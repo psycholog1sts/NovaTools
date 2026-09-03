@@ -4,6 +4,9 @@
   "nameEn": "URL Shortener",
   "category": "social",
   "tier": 1,
+  "public": false,
+  "indexable": false,
+  "adsEligible": false,
   "cpc": {
     "tr": 0.5,
     "us": 1.0
@@ -13,8 +16,8 @@
     "en": ["url shortener", "link shortener", "short url generator", "compact links", "url shrink"]
   },
   "description": {
-    "tr": "Uzun bağlantıları kısa ve paylaşılabilir hale getirin. İstemci tarafında hash tabanlı kısaltma.",
-    "en": "Transform long URLs into short, shareable links. Client-side hash-based shortening for privacy."
+    "tr": "Bu eski demo rotası gerçek bir yönlendirme servisine bağlı değildir ve üretim aracı olarak sunulmaz.",
+    "en": "This legacy demo route is not backed by a real redirect service and is not offered as a production URL shortener."
   },
   "schema": {
     "@type": "WebApplication",
@@ -26,7 +29,7 @@
   },
   "ads": {
     "sidebar": {
-      "enabled": true,
+      "enabled": false,
       "size": "336x280",
       "minCpm": 0.3
     }

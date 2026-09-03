@@ -3,6 +3,7 @@ import { dirname, resolve } from 'path';
 import { fileURLToPath } from 'url';
 import { readFileSync, statSync } from 'fs';
 import { globSync } from 'glob';
+import { isPublishedBlogSlug } from './src/js/blog-publication.js';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
 import tailwindcss from 'tailwindcss';
 import autoprefixer from 'autoprefixer';
@@ -38,6 +39,11 @@ function toolSlugFromHtmlPath(pathname = '') {
   return match ? `${match[1]}/${match[2]}` : '';
 }
 
+const specializedToolUxSlugs = new Set([
+  'converters/percentage-calculator',
+  'converters/unit-converter'
+]);
+
 const toolUxEnhancementAssets = {
   name: 'novatools-tool-ux-enhancement-assets',
   enforce: 'pre',
@@ -49,25 +55,27 @@ const toolUxEnhancementAssets = {
     const stylesheetHref = isDev ? '/src/styles/tool-workflow.css' : '/styles/tool-workflow.css';
     const scriptSrc = isDev ? '/src/js/tool-page-enhancer.js' : '/js/tool-page-enhancer.js';
 
-    return {
-      html,
-      tags: [
-        {
-          tag: 'link',
-          attrs: { rel: 'stylesheet', href: stylesheetHref },
-          injectTo: 'head'
-        },
-        {
-          // Injected into <head>, not <body>: Vite's body injection is a regex over
-          // `<body...>` and tools that build export/print documents contain a literal
-          // `<body>` inside a template string, which would swallow the injected tag
-          // and truncate the page's own script. `type="module"` is deferred either way.
-          tag: 'script',
-          attrs: { type: 'module', src: scriptSrc, 'data-tool-slug': slug },
-          injectTo: 'head'
-        }
-      ]
-    };
+    const tags = [
+      {
+        tag: 'link',
+        attrs: { rel: 'stylesheet', href: stylesheetHref },
+        injectTo: 'head'
+      }
+    ];
+
+    if (!specializedToolUxSlugs.has(slug)) {
+      tags.push({
+        // Injected into <head>, not <body>: Vite's body injection is a regex over
+        // `<body...>` and tools that build export/print documents contain a literal
+        // `<body>` inside a template string, which would swallow the injected tag
+        // and truncate the page's own script. `type="module"` is deferred either way.
+        tag: 'script',
+        attrs: { type: 'module', src: scriptSrc, 'data-tool-slug': slug },
+        injectTo: 'head'
+      });
+    }
+
+    return { html, tags };
   }
 };
 
@@ -156,6 +164,33 @@ const toolEntries = globSync('src/tools/**/index.html', {
   return acc;
 }, {});
 
+// Vite serves the source tree during development, while the post-build step
+// relocates dist/src/tools to dist/tools for production. Keep local canonical
+// /tools/... URLs aligned with production without turning unknown paths into 200s.
+const canonicalToolDevRoutes = {
+  name: 'novatools-canonical-tool-dev-routes',
+  enforce: 'pre',
+  configureServer(server) {
+    server.middlewares.use((request, _response, next) => {
+      const parsedUrl = new URL(request.url || '/', 'http://localhost');
+      const cleanPath = parsedUrl.pathname
+        .replace(/\/index\.html$/, '')
+        .replace(/\/+$/, '');
+      const routeKey = cleanPath
+        .replace(/^\/(?:en|tr|ar)\//, '/')
+        .replace(/^\//, '');
+
+      if (!routeKey.startsWith('tools/') || !toolEntries[routeKey]) {
+        next();
+        return;
+      }
+
+      request.url = `/src/${routeKey}/index.html${parsedUrl.search}`;
+      next();
+    });
+  }
+};
+
 // Root standalone HTML pages
 const rootHtmlEntries = globSync('*.html', {
   ignore: ['index.html']
@@ -196,19 +231,22 @@ const localizedRootHtmlEntries = ['en', 'tr', 'ar'].reduce((acc, locale) => {
 }, {});
 
 
+// Articles withheld by the originality gate are not built at all, so a
+// template-duplicated page has no URL rather than a noindexed one.
 const sourceBlogArticleSlugs = globSync('src/blog/articles/**/*.html')
   .map((file) => file.replace(/\\/g, '/').split('/').pop().replace(/\.html$/, ''))
   .filter((slug) => slug !== 'index')
+  .filter((slug) => isPublishedBlogSlug(slug))
   .map((slug) => normalizeBlogSlug(slug));
 
 const blogSlugsByLocale = (() => {
   const fallbackPosts = JSON.parse(readFileSync(resolve(__dirname, `src/i18n/blog/${fallbackBlogLocale}.json`), 'utf8'));
-  const fallbackSlugs = fallbackPosts.map((post) => post.slug).filter(Boolean);
+  const fallbackSlugs = fallbackPosts.map((post) => post.slug).filter(Boolean).filter(isPublishedBlogSlug);
 
   const manifestSlugsByLocale = supportedBlogLocales.reduce((acc, locale) => {
     try {
       const posts = JSON.parse(readFileSync(resolve(__dirname, `src/i18n/blog/${locale}.json`), 'utf8'));
-      acc[locale] = posts.map((post) => post.slug).filter(Boolean);
+      acc[locale] = posts.map((post) => post.slug).filter(Boolean).filter(isPublishedBlogSlug);
     } catch {
       acc[locale] = fallbackSlugs;
     }
@@ -244,15 +282,17 @@ const blogCategoryArchiveEntries = globSync('blog/categories/**/*.html').reduce(
 }, {});
 
 
-const blogArticleEntries = globSync('src/blog/articles/**/*.html').reduce((acc, file) => {
-  const name = file
-    .replace(/^src[/\\]/, '')
-    .replace(/\.html$/, '')
-    .replace(/\\/g, '/');
+const blogArticleEntries = globSync('src/blog/articles/**/*.html')
+  .filter((file) => isPublishedBlogSlug(file.replace(/\\/g, '/').split('/').pop().replace(/\.html$/, '')))
+  .reduce((acc, file) => {
+    const name = file
+      .replace(/^src[/\\]/, '')
+      .replace(/\.html$/, '')
+      .replace(/\\/g, '/');
 
-  acc[name] = resolveHtmlEntry(file);
-  return acc;
-}, {});
+    acc[name] = resolveHtmlEntry(file);
+    return acc;
+  }, {});
 
 
 const localizedAuthorEntries = ['en', 'tr'].reduce((acc, locale) => {
@@ -414,7 +454,6 @@ export default defineConfig({
         }
       }
     },
-
     reportCompressedSize: true,
     chunkSizeWarningLimit: 800,
 
@@ -436,6 +475,7 @@ export default defineConfig({
   },
 
   plugins: [
+    canonicalToolDevRoutes,
     coreWebVitalsHeadHints,
     optionalHtmlEnv,
     toolUxEnhancementAssets,
@@ -454,10 +494,14 @@ export default defineConfig({
           src: 'src/tools/**/meta.json',
           dest: 'meta'
         },
-        {
-          src: 'src/styles/critical.css',
-          dest: 'styles'
-        },
+          {
+            src: 'src/styles/critical.css',
+            dest: 'styles'
+          },
+          {
+            src: 'src/styles/tokens.css',
+            dest: 'styles'
+          },
         {
           src: 'src/styles/design-system.css',
           dest: 'styles'

@@ -17,16 +17,52 @@ const GOOGLE_FONT_STYLESHEET_RE = /\n?\s*<link\b(?=[^>]*\brel\s*=\s*["']styleshe
 const GOOGLE_FONT_PRECONNECT_RE = /\n?\s*<link\b(?=[^>]*\brel\s*=\s*["']preconnect["'])(?=[^>]*\bhref\s*=\s*["']https:\/\/fonts\.(?:googleapis|gstatic)\.com["'])[^>]*\/?\s*>\s*/gi;
 const PDF_ENHANCER_SCRIPT_RE = /\n?\s*<script\b(?=[^>]*\bsrc\s*=\s*["'](?:https:\/\/mc-novatools\.com)?\/js\/tool-page-enhancer\.js["'])[^>]*>\s*<\/script>\s*/gi;
 const PDF_WORKFLOW_STYLE_RE = /\n?\s*<link\b(?=[^>]*\brel\s*=\s*["']stylesheet["'])(?=[^>]*\bhref\s*=\s*["'](?:https:\/\/mc-novatools\.com)?\/(?:styles|src\/styles)\/tool-workflow\.css["'])[^>]*\/?\s*>\s*/gi;
-const INTERNAL_ASSET_ORIGIN_RE = /https:\/\/mc-novatools\.com\/(?=(?:js|vendor|css|assets|wasm)\/)/gi;
+const INTERNAL_ASSET_ORIGIN_RE = /https:\/\/mc-novatools\.com\/(?=(?:js|vendor|css|styles|assets|wasm)\/)/gi;
 const SOURCE_TOOL_HREF_RE = /(href\s*=\s*["'])(?:https:\/\/mc-novatools\.com)?\/src\/tools\//gi;
 const LEGACY_THEME_GET_RE = /localStorage\.getItem\((["'])theme\1\)/g;
 const LEGACY_THEME_SET_RE = /localStorage\.setItem\((["'])theme\1\s*,/g;
 const PROFESSIONAL_THEME_HREF = '/styles/theme-professional.css';
-const PROFESSIONAL_THEME_LINK = `<link rel="stylesheet" href="${PROFESSIONAL_THEME_HREF}">`;
+const PROFESSIONAL_THEME_MARKER = 'data-novatools-professional-theme';
+// Inlined rather than linked: as a <link> in <head> it was the last render-blocking
+// request on every page, and deferring it instead would flash unthemed colours.
+const PROFESSIONAL_THEME_CSS = fs
+  .readFileSync(path.join(root, 'public', 'styles', 'theme-professional.css'), 'utf8')
+  .replace(/\/\*[\s\S]*?\*\//g, '')
+  .replace(/\s*\n\s*/g, '\n')
+  .trim();
+const PROFESSIONAL_THEME_STYLE = `<style ${PROFESSIONAL_THEME_MARKER}>${PROFESSIONAL_THEME_CSS}</style>`;
 const THEME_BOOTSTRAP_MARKER = 'data-novatools-theme-bootstrap';
-const THEME_BOOTSTRAP_SCRIPT = `<script ${THEME_BOOTSTRAP_MARKER}>(function(){try{var saved=localStorage.getItem('novatools-theme');var theme=saved==='light'||saved==='dark'?saved:(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',theme);document.documentElement.style.colorScheme=theme;}catch(_error){document.documentElement.setAttribute('data-theme','light');document.documentElement.style.colorScheme='light';}})();</script>`;
+const THEME_BOOTSTRAP_SCRIPT = `<script ${THEME_BOOTSTRAP_MARKER}>(function(){try{var saved=localStorage.getItem('novatools-theme');var theme=saved==='light'||saved==='dark'?saved:(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');localStorage.setItem('novatools-theme',theme);document.documentElement.setAttribute('data-theme',theme);document.documentElement.style.colorScheme=theme;}catch(_error){document.documentElement.setAttribute('data-theme','light');document.documentElement.style.colorScheme='light';}})();</script>`;
 const BACKGROUND_REMOVER_V2_HREF = '/js/background-remover-v2.js';
 const BACKGROUND_REMOVER_V2_SCRIPT = `<script src="${BACKGROUND_REMOVER_V2_HREF}" defer></script>`;
+const RECENT_VISIT_HREF = '/js/record-tool-visit.js';
+const RECENT_VISIT_SCRIPT = `<script src="${RECENT_VISIT_HREF}" defer></script>`;
+const manifest = JSON.parse(fs.readFileSync(path.join(root, 'tools-manifest.json'), 'utf8'));
+const toolsByBuiltPath = new Map((manifest.tools || []).map((tool) => {
+  const entry = String(tool.entry || '').replace(/^\/src\//, '/').replace(/^\//, '').replace(/\/$/, '/index.html');
+  return [entry, tool];
+}));
+const certifiedCategoryCounts = (manifest.tools || [])
+  .filter((tool) => tool.public === true && tool.indexable === true && tool.certificationStatus === 'CERTIFIED')
+  .reduce((counts, tool) => counts.set(tool.category, (counts.get(tool.category) || 0) + 1), new Map());
+const categoryByBuiltPath = new Map([
+  ['categories/pdf-tools.html', 'pdf'],
+  ['categories/image-tools.html', 'image'],
+  ['categories/finance-tools.html', 'finance'],
+  ['categories/developer-tools.html', 'dev'],
+  ['categories/text-writing.html', 'text'],
+  ['categories/converters.html', 'converters'],
+  ['categories/calculator-tools.html', 'calculators'],
+  ['categories/security-tools.html', 'security'],
+  ['categories/social-media-tools.html', 'social'],
+  ['categories/productivity-tools.html', 'productivity'],
+  ['categories/data-tools.html', 'data'],
+  ['categories/design-tools.html', 'design'],
+  ['tools/pdf/index.html', 'pdf'],
+  ['tools/image/index.html', 'image'],
+  ['tools/developer/index.html', 'dev'],
+  ['tools/finance/index.html', 'finance']
+]);
 
 function listHtmlFiles(dir) {
   const files = [];
@@ -64,6 +100,23 @@ function publishToolMetaContracts() {
   return published;
 }
 
+/**
+ * Certified tool pages record their own id locally so the homepage can show a
+ * "Recently used" shortcut. Uncertified routes are never recorded.
+ */
+function injectRecentToolVisit(html, relativePath) {
+  const tool = toolsByBuiltPath.get(relativePath.replace(/^(?:[a-z]{2}\/)/, ''));
+  if (!tool || tool.certificationStatus !== 'CERTIFIED' || tool.public !== true) return html;
+  let next = html;
+  if (!/data-tool-id=/.test(next)) {
+    next = next.replace(/<html\b([^>]*)>/i, (match, attrs) => `<html${attrs} data-tool-id="${tool.id}">`);
+  }
+  if (!next.includes(RECENT_VISIT_HREF)) {
+    next = next.replace(/<\/head>/i, `  ${RECENT_VISIT_SCRIPT}\n</head>`);
+  }
+  return next;
+}
+
 function injectProfessionalTheme(html, relativePath) {
   if (!/<\/head>/i.test(html)) {
     throw new Error(`cannot inject professional theme runtime: ${relativePath} has no </head>`);
@@ -73,8 +126,12 @@ function injectProfessionalTheme(html, relativePath) {
   if (!next.includes(THEME_BOOTSTRAP_MARKER)) {
     next = next.replace(/<\/head>/i, `  ${THEME_BOOTSTRAP_SCRIPT}\n</head>`);
   }
-  if (!next.includes(`href="${PROFESSIONAL_THEME_HREF}"`) && !next.includes(`href='${PROFESSIONAL_THEME_HREF}'`)) {
-    next = next.replace(/<\/head>/i, `  ${PROFESSIONAL_THEME_LINK}\n</head>`);
+  next = next.replace(
+    /\n?\s*<link\b(?=[^>]*\brel\s*=\s*["']stylesheet["'])(?=[^>]*\bhref\s*=\s*["'][^"']*\/styles\/theme-professional\.css["'])[^>]*\/?>\s*/gi,
+    '\n'
+  );
+  if (!next.includes(PROFESSIONAL_THEME_MARKER)) {
+    next = next.replace(/<\/head>/i, `  ${PROFESSIONAL_THEME_STYLE}\n</head>`);
   }
   return next;
 }
@@ -85,6 +142,32 @@ function injectBackgroundRemoverV2(html, relativePath) {
     throw new Error(`cannot inject Background Remover v2: ${relativePath} has no </body>`);
   }
   return html.replace(/<\/body>/i, `  ${BACKGROUND_REMOVER_V2_SCRIPT}\n</body>`);
+}
+
+function injectUnavailableToolRobots(html, relativePath) {
+  const tool = toolsByBuiltPath.get(relativePath);
+  if (!tool) return html;
+  if (tool.certificationStatus === 'CERTIFIED') return html;
+  const withoutRobots = html.replace(/\s*<meta\b(?=[^>]*\bname=["']robots["'])[^>]*>\s*/gi, '\n');
+  if (!/<\/head>/i.test(withoutRobots)) throw new Error(`cannot apply unavailable robots contract: ${relativePath}`);
+  return withoutRobots.replace(/<\/head>/i, '  <meta name="robots" content="noindex,nofollow">\n</head>');
+}
+
+function injectEmptyCategoryRobots(html, relativePath) {
+  const category = categoryByBuiltPath.get(relativePath);
+  if (!category || (certifiedCategoryCounts.get(category) || 0) > 0) return html;
+  const withoutRobots = html.replace(/\s*<meta\b(?=[^>]*\bname=["']robots["'])[^>]*>\s*/gi, '\n');
+  if (!/<\/head>/i.test(withoutRobots)) throw new Error(`cannot apply empty-category robots contract: ${relativePath}`);
+  return withoutRobots.replace(/<\/head>/i, '  <meta name="robots" content="noindex,follow">\n</head>');
+}
+
+function injectUnavailableToolSurface(html, relativePath) {
+  const tool = toolsByBuiltPath.get(relativePath);
+  if (!tool || tool.certificationStatus === 'CERTIFIED') return html;
+  const name = String(tool.nameEn || tool.id || 'Tool').replace(/[<>&"']/g, '');
+  const body = `<body><a class="skip-link" href="#main-content">Skip to main content</a><main id="main-content" style="max-width:760px;margin:0 auto;padding:clamp(3rem,10vw,7rem) 1rem"><article style="padding:clamp(1.5rem,5vw,3rem);border:1px solid #cbd5e1;border-radius:1.25rem;background:#fff;color:#172033"><p><strong>Verification in progress</strong></p><h1>${name}</h1><h2>This tool is currently unavailable</h2><p>This route has not completed NovaTools production certification. Its controls are disabled until implementation, privacy, accessibility, and output behavior are verified.</p><p>This page is excluded from normal discovery, search indexing, and advertising.</p><p><a href="/categories/">Browse verified tools</a> · <a href="/">Return home</a></p></article></main></body>`;
+  const withoutLegacyRuntime = html.replace(/\s*<script\b[^>]*>[\s\S]*?<\/script>\s*/gi, '\n');
+  return withoutLegacyRuntime.replace(/<body\b[^>]*>[\s\S]*?<\/body>/i, body);
 }
 
 function auditManifestToolRoutes() {
@@ -119,15 +202,18 @@ function auditManifestToolRoutes() {
 let strippedAdSenseScripts = 0;
 let strippedStalePrefetches = 0;
 let restoredPdfStyles = 0;
-let strippedPdfWebFonts = 0;
+let strippedBlockedWebFonts = 0;
 let strippedPdfEnhancers = 0;
-let normalizedPdfAssetOrigins = 0;
+let normalizedInternalAssetOrigins = 0;
 let normalizedSourceToolLinks = 0;
 let normalizedLegacyThemeReads = 0;
 let normalizedLegacyThemeWrites = 0;
 let injectedProfessionalThemes = 0;
 let injectedThemeBootstraps = 0;
 let injectedBackgroundRemoverV2 = 0;
+let injectedUnavailableRobots = 0;
+let injectedUnavailableSurfaces = 0;
+let injectedEmptyCategoryRobots = 0;
 const htmlFiles = listHtmlFiles(distDir);
 
 for (const filePath of htmlFiles) {
@@ -153,15 +239,34 @@ for (const filePath of htmlFiles) {
     normalizedLegacyThemeWrites += 1;
     return "localStorage.setItem('novatools-theme',";
   });
+  after = after.replace(GOOGLE_FONT_STYLESHEET_RE, () => {
+    strippedBlockedWebFonts += 1;
+    return '\n';
+  });
+  after = after.replace(GOOGLE_FONT_PRECONNECT_RE, '\n');
+  after = after.replace(INTERNAL_ASSET_ORIGIN_RE, () => {
+    normalizedInternalAssetOrigins += 1;
+    return '/';
+  });
 
   const relative = path.relative(distDir, filePath).replace(/\\/g, '/');
+  const beforeRobotsContract = after;
+  after = injectUnavailableToolRobots(after, relative);
+  if (after !== beforeRobotsContract) injectedUnavailableRobots += 1;
+  const beforeCategoryRobotsContract = after;
+  after = injectEmptyCategoryRobots(after, relative);
+  if (after !== beforeCategoryRobotsContract) injectedEmptyCategoryRobots += 1;
+  const beforeUnavailableSurface = after;
+  after = injectUnavailableToolSurface(after, relative);
+  if (after !== beforeUnavailableSurface) injectedUnavailableSurfaces += 1;
   const hadProfessionalTheme = after.includes(`href="${PROFESSIONAL_THEME_HREF}"`) || after.includes(`href='${PROFESSIONAL_THEME_HREF}'`);
   const hadThemeBootstrap = after.includes(THEME_BOOTSTRAP_MARKER);
   after = injectProfessionalTheme(after, relative);
+  after = injectRecentToolVisit(after, relative);
   if (!hadProfessionalTheme) injectedProfessionalThemes += 1;
   if (!hadThemeBootstrap) injectedThemeBootstraps += 1;
 
-  if (/(^|\/)tools\/image\/background-remover\/index\.html$/.test(relative)) {
+  if (toolsByBuiltPath.get(relative)?.certificationStatus === 'CERTIFIED' && /(^|\/)tools\/image\/background-remover\/index\.html$/.test(relative)) {
     const hadV2 = after.includes(BACKGROUND_REMOVER_V2_HREF);
     after = injectBackgroundRemoverV2(after, relative);
     if (!hadV2) injectedBackgroundRemoverV2 += 1;
@@ -172,20 +277,11 @@ for (const filePath of htmlFiles) {
       restoredPdfStyles += 1;
       return `<link rel="stylesheet" href="${href}">`;
     });
-    after = after.replace(GOOGLE_FONT_STYLESHEET_RE, () => {
-      strippedPdfWebFonts += 1;
-      return '\n';
-    });
-    after = after.replace(GOOGLE_FONT_PRECONNECT_RE, '\n');
     after = after.replace(PDF_ENHANCER_SCRIPT_RE, () => {
       strippedPdfEnhancers += 1;
       return '\n';
     });
     after = after.replace(PDF_WORKFLOW_STYLE_RE, '\n');
-    after = after.replace(INTERNAL_ASSET_ORIGIN_RE, () => {
-      normalizedPdfAssetOrigins += 1;
-      return '/';
-    });
   }
 
   if (after !== before) fs.writeFileSync(filePath, after);
@@ -210,9 +306,14 @@ if (sourceToolLinks.length) {
   throw new Error(`source-only /src/tools links remain in ${sourceToolLinks.length} built HTML file(s)`);
 }
 
-const missingProfessionalTheme = htmlFiles.filter((filePath) => !fs.readFileSync(filePath, 'utf8').includes(PROFESSIONAL_THEME_HREF));
+const missingProfessionalTheme = htmlFiles.filter((filePath) => !fs.readFileSync(filePath, 'utf8').includes(PROFESSIONAL_THEME_MARKER));
 if (missingProfessionalTheme.length) {
-  throw new Error(`professional theme stylesheet is missing from ${missingProfessionalTheme.length} built HTML file(s)`);
+  throw new Error(`professional theme is missing from ${missingProfessionalTheme.length} built HTML file(s)`);
+}
+
+const blockingProfessionalTheme = htmlFiles.filter((filePath) => /<link\b[^>]*theme-professional\.css/i.test(fs.readFileSync(filePath, 'utf8')));
+if (blockingProfessionalTheme.length) {
+  throw new Error(`professional theme is still linked (render-blocking) in ${blockingProfessionalTheme.length} built HTML file(s)`);
 }
 
 const missingThemeBootstrap = htmlFiles.filter((filePath) => !fs.readFileSync(filePath, 'utf8').includes(THEME_BOOTSTRAP_MARKER));
@@ -232,8 +333,13 @@ if (!fs.existsSync(themeAsset)) {
 
 const backgroundRemover = path.join(distDir, 'tools', 'image', 'background-remover', 'index.html');
 if (!fs.existsSync(backgroundRemover)) throw new Error('built Background Remover route is missing');
-if (!fs.readFileSync(backgroundRemover, 'utf8').includes(BACKGROUND_REMOVER_V2_HREF)) {
+const backgroundRemoverCertified = toolsByBuiltPath.get('tools/image/background-remover/index.html')?.certificationStatus === 'CERTIFIED';
+const backgroundRemoverHtml = fs.readFileSync(backgroundRemover, 'utf8');
+if (backgroundRemoverCertified && !backgroundRemoverHtml.includes(BACKGROUND_REMOVER_V2_HREF)) {
   throw new Error('Background Remover v2 runtime was not injected into the public tool page');
+}
+if (!backgroundRemoverCertified && backgroundRemoverHtml.includes(BACKGROUND_REMOVER_V2_HREF)) {
+  throw new Error('Background Remover runtime leaked onto an unavailable tool surface');
 }
 if (!fs.existsSync(path.join(distDir, 'js', 'background-remover-v2.js'))) {
   throw new Error('Background Remover v2 runtime asset is missing from /js/background-remover-v2.js');
@@ -280,4 +386,4 @@ if (!fs.readFileSync(i18nPath, 'utf8').includes(pdfStableGuard)) {
   throw new Error('PDF compressor CLS guard was not applied to built i18n runtime');
 }
 
-console.log(`Runtime contracts finalized: removed ${strippedAdSenseScripts} pre-consent AdSense script(s); removed ${strippedStalePrefetches} stale prefetch(es); normalized ${normalizedSourceToolLinks} source-only tool link(s); normalized ${normalizedLegacyThemeReads} legacy theme read(s) and ${normalizedLegacyThemeWrites} write(s); injected professional theme into ${injectedProfessionalThemes} HTML file(s); injected theme bootstrap into ${injectedThemeBootstraps} HTML file(s); injected Background Remover v2 into ${injectedBackgroundRemoverV2} public route(s); verified ${verifiedManifestToolRoutes} manifest tool route(s); restored ${restoredPdfStyles} PDF compressor stylesheet link(s); removed ${strippedPdfWebFonts} PDF web-font stylesheet(s); removed ${strippedPdfEnhancers} generic PDF enhancer script(s); normalized ${normalizedPdfAssetOrigins} PDF internal asset origin(s); published ${publishedMetaContracts} tool metadata contract(s); suppressed redundant PDF quality-panel injection.`);
+console.log(`Runtime contracts finalized: removed ${strippedAdSenseScripts} pre-consent AdSense script(s); removed ${strippedStalePrefetches} stale prefetch(es); normalized ${normalizedSourceToolLinks} source-only tool link(s); normalized ${normalizedLegacyThemeReads} legacy theme read(s) and ${normalizedLegacyThemeWrites} write(s); injected professional theme into ${injectedProfessionalThemes} HTML file(s); injected theme bootstrap into ${injectedThemeBootstraps} HTML file(s); injected noindex into ${injectedUnavailableRobots} unavailable tool route(s) and ${injectedEmptyCategoryRobots} empty category route(s); replaced ${injectedUnavailableSurfaces} unavailable tool surface(s); injected Background Remover v2 into ${injectedBackgroundRemoverV2} public route(s); verified ${verifiedManifestToolRoutes} manifest tool route(s); restored ${restoredPdfStyles} PDF compressor stylesheet link(s); removed ${strippedBlockedWebFonts} CSP-blocked web-font stylesheet(s); removed ${strippedPdfEnhancers} generic PDF enhancer script(s); normalized ${normalizedInternalAssetOrigins} internal asset origin(s); published ${publishedMetaContracts} tool metadata contract(s); suppressed redundant PDF quality-panel injection.`);

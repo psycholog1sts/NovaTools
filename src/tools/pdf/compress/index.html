@@ -41,17 +41,20 @@
   </script>
 
   <style>
-    .tool-container{max-width:900px;margin:0 auto;padding:2rem 1rem 4rem}.tool-header{text-align:center;margin-bottom:2rem}.tool-header h1{font-size:clamp(1.8rem,5vw,2.4rem);font-weight:700;margin-bottom:.6rem}.tool-header p{color:var(--text-secondary);line-height:1.65}.tool-updated-note,.hero-note{font-size:.875rem;color:var(--text-muted)}
+    .tool-container{max-width:900px;margin:0 auto;padding:1.25rem 1rem 4rem}.tool-header{text-align:left;margin:1.5rem 0 2rem}.tool-header h1{font-size:clamp(2rem,5vw,3rem);font-weight:700;letter-spacing:-.035em;margin-bottom:.6rem}.tool-header p{max-width:68ch;color:var(--text-secondary);line-height:1.65}.tool-updated-note,.hero-note{font-size:.875rem;color:var(--text-muted)}
+    .tool-breadcrumb{display:flex;align-items:center;gap:.5rem;font-size:.875rem;color:var(--text-muted)}.tool-breadcrumb a{color:var(--text-secondary);text-decoration:none}.tool-breadcrumb a:hover,.tool-breadcrumb a:focus-visible{color:var(--text-primary);text-decoration:underline}
     .tool-workspace,.trust-help,.related-tools,.tool-description{margin-top:1.5rem;padding:1.5rem;background:var(--surface-default);border:1px solid var(--border-default);border-radius:var(--radius-lg)}
     .dropzone{border:2px dashed var(--border-default);border-radius:16px;padding:3rem 2rem;text-align:center;background:var(--surface-default);transition:border-color .2s,background .2s;cursor:pointer}.dropzone:hover,.dropzone:focus-visible,.dropzone.drag-active{border-color:var(--accent-primary);background:var(--accent-subtle)}.dropzone-icon{font-size:3rem;margin-bottom:1rem}.dropzone-title{font-size:1.125rem;font-weight:600;margin-bottom:.5rem}.dropzone-hint{font-size:.875rem;color:var(--text-muted)}
     .file-info-card{display:none;margin-top:1.25rem;padding:1.25rem;background:var(--surface-default);border:1px solid var(--border-default);border-radius:var(--radius-lg)}.file-info-card.visible{display:block}.file-details{display:flex;align-items:center;gap:1rem}.file-icon-large{font-size:2.5rem}.file-meta{min-width:0;flex:1}.file-name-large{font-weight:600;font-size:1.05rem;overflow-wrap:anywhere}.file-size-large{color:var(--text-muted)}
     .quality-selector{margin-top:1.25rem;padding:1.25rem;background:var(--surface-default);border:1px solid var(--border-default);border-radius:var(--radius-lg)}.quality-options{margin-top:.75rem}.quality-option{padding:1rem;background:var(--surface-default);border:2px solid var(--accent-primary);border-radius:var(--radius-md)}.quality-option .icon{font-size:1.5rem;margin-bottom:.4rem}.quality-option .label{font-weight:600}.quality-option .desc{font-size:.85rem;color:var(--text-muted);margin-top:.35rem;line-height:1.55}
     .btn-primary{width:100%;min-height:52px;margin-top:1.25rem}.btn-primary:disabled{opacity:.5;cursor:not-allowed}.state-section{margin-top:1rem;padding:1rem 1.25rem;border-radius:var(--radius-md);border:1px solid var(--border-default);background:var(--surface-default);font-size:.9375rem;color:var(--text-secondary);display:none}.state-section.visible{display:block}.state-section[data-state="loading"]{border-color:rgba(99,102,241,.45);background:rgba(99,102,241,.08)}.state-section[data-state="success"]{border-color:rgba(34,197,94,.35);background:rgba(34,197,94,.08);color:#4ade80;font-weight:600}
-    .progress-section{margin-top:1.25rem;padding:1.25rem;background:var(--surface-default);border:1px solid var(--border-default);border-radius:var(--radius-lg);display:none}.progress-section.visible{display:block}.progress-bar{height:8px;background:var(--border-hover);border-radius:4px;overflow:hidden;margin:1rem 0}.progress-fill{height:100%;background:linear-gradient(90deg,#6366F1,#8B5CF6);border-radius:4px;transition:width .3s ease}
-    .result-section{margin-top:1.25rem;padding:2rem;background:linear-gradient(135deg,rgba(34,197,94,.1),rgba(34,197,94,.05));border:1px solid rgba(34,197,94,.3);border-radius:var(--radius-lg);text-align:center;display:none}.result-section.visible{display:block}.compression-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1.5rem 0}.stat-box{padding:1rem;background:var(--border-hover);border-radius:var(--radius-md)}.stat-value{font-size:1.15rem;font-weight:700;overflow-wrap:anywhere}.stat-label{font-size:.75rem;color:var(--text-muted)}.stat-value.savings{color:#22C55E}.download-btn{display:inline-flex;align-items:center;gap:.5rem;padding:1rem 2rem;background:linear-gradient(135deg,#22C55E,#16A34A);color:#fff;font-weight:600;border-radius:var(--radius-md);text-decoration:none}.error-message{margin-top:1rem;padding:1rem;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);border-radius:var(--radius-md);color:#ef4444;display:none}.error-message.visible{display:block}
+    .progress-section{margin-top:1.25rem;padding:1.25rem;background:var(--surface-default);border:1px solid var(--border-default);border-radius:var(--radius-lg);display:none}.progress-section.visible{display:block}.progress-bar{height:8px;background:var(--border-hover);border-radius:4px;overflow:hidden;margin:1rem 0}.progress-fill{height:100%;background:var(--accent-primary);border-radius:4px;transition:width .3s ease}
+    .result-section{margin-top:1.25rem;padding:2rem;background:var(--surface-default);border:1px solid rgba(34,197,94,.3);border-radius:var(--radius-lg);text-align:center;display:none}.result-section.visible{display:block}.compression-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1.5rem 0}.stat-box{padding:1rem;background:var(--border-hover);border-radius:var(--radius-md)}.stat-value{font-size:1.15rem;font-weight:700;overflow-wrap:anywhere}.stat-label{font-size:.75rem;color:var(--text-muted)}.stat-value.savings{color:#22C55E}.download-btn{display:inline-flex;align-items:center;gap:.5rem;padding:1rem 2rem;background:#15803d;color:#fff;font-weight:600;border-radius:var(--radius-md);text-decoration:none}.error-message{margin-top:1rem;padding:1rem;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);border-radius:var(--radius-md);color:#ef4444;display:none}.error-message.visible{display:block}
+    .tool-footer{border-top:1px solid var(--border-default);padding:2rem 1rem;color:var(--text-muted)}.tool-footer__inner{max-width:900px;margin:0 auto;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}.tool-footer nav{display:flex;gap:1rem;flex-wrap:wrap}.tool-footer a{color:var(--text-secondary)}
     .tool-description{line-height:1.75}.tool-description h2,.trust-help h2,.related-tools h2{margin:1.5rem 0 .75rem;font-size:1.25rem}.tool-description h2:first-child,.trust-help h2:first-child,.related-tools h2:first-child{margin-top:0}.tool-description h3{margin:1.1rem 0 .5rem;font-size:1.05rem}.tool-description ul,.tool-description ol,.trust-help ul{padding-left:1.25rem}.related-tools-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.75rem}.related-tool-link{display:block;padding:.85rem 1rem;border:1px solid var(--border-default);border-radius:var(--radius-md);color:var(--text-primary);text-decoration:none;font-weight:500}.related-tool-link:hover,.related-tool-link:focus-visible{border-color:var(--border-accent)}
     .limitation-note{padding:1rem;border-left:4px solid #f59e0b;background:rgba(245,158,11,.08);border-radius:0 var(--radius-md) var(--radius-md) 0;color:var(--text-secondary)}
-    @media(max-width:768px){.compression-stats,.related-tools-grid{grid-template-columns:1fr}.download-btn{width:100%;justify-content:center}.dropzone{padding:2rem 1rem}}
+    .pdf-mobile-menu-toggle{display:none}.pdf-mobile-menu{display:none;padding:.75rem 0 1rem}.pdf-mobile-menu.active{display:grid;gap:.25rem}.pdf-mobile-menu a{padding:.75rem;color:var(--text-primary);text-decoration:none;border-radius:var(--radius-md)}
+    @media(max-width:767px){.nav-desktop,.privacy-badge{display:none}.pdf-mobile-menu-toggle{display:inline-grid}.compression-stats,.related-tools-grid{grid-template-columns:1fr}.download-btn{width:100%;justify-content:center}.dropzone{padding:2rem 1rem}}
   </style>
 </head>
 <body>
@@ -75,12 +78,21 @@
           <div class="privacy-badge" title="The PDF file is processed in your browser for this operation">
             <span class="privacy-badge-dot"></span><span>Browser-local PDF processing</span>
           </div>
+          <button type="button" class="menu-btn mobile-menu-toggle pdf-mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileMenu">Menu</button>
         </div>
+        <nav id="mobileMenu" class="pdf-mobile-menu" aria-label="Mobile navigation" hidden>
+          <a href="/categories/pdf-tools.html">PDF tools</a>
+          <a href="/categories/image-tools.html">Image tools</a>
+          <a href="/categories/developer-tools.html">Developer tools</a>
+        </nav>
       </div>
     </header>
 
     <main id="main-content" class="main-content">
       <div class="tool-container">
+        <nav class="tool-breadcrumb" aria-label="Breadcrumb">
+          <a href="/">Home</a><span aria-hidden="true">/</span><a href="/categories/pdf-tools.html">PDF tools</a><span aria-hidden="true">/</span><span aria-current="page">Compressor</span>
+        </nav>
         <header class="tool-header">
           <h1>PDF Compressor</h1>
           <p>Rewrite PDF structure in your browser and compare the output size before downloading.</p>
@@ -202,13 +214,33 @@
           <div class="related-tools-grid">
             <a class="related-tool-link" href="/tools/pdf/merge/">Merge PDFs</a>
             <a class="related-tool-link" href="/tools/pdf/split/">Split PDF</a>
-            <a class="related-tool-link" href="/tools/pdf/metadata/">PDF metadata</a>
+            <a class="related-tool-link" href="/tools/pdf/pdf-ocr/">PDF OCR</a>
           </div>
         </nav>
       </div>
     </main>
+    <footer class="tool-footer" role="contentinfo">
+      <div class="tool-footer__inner">
+        <span>NovaTools — practical browser utilities with explicit limitations.</span>
+        <nav aria-label="Footer"><a href="/privacy-policy.html">Privacy</a><a href="/security.html">Security</a><a href="/contact.html">Contact</a></nav>
+      </div>
+    </footer>
   </div>
 
+  <script>
+    (function(){
+      var trigger=document.querySelector('.pdf-mobile-menu-toggle');
+      var menu=document.getElementById('mobileMenu');
+      if(!trigger||!menu)return;
+      trigger.addEventListener('click',function(){
+        var opening=menu.hidden;
+        menu.hidden=!opening;
+        menu.classList.toggle('active',opening);
+        trigger.setAttribute('aria-expanded',String(opening));
+        if(opening)menu.querySelector('a').focus();
+      });
+    })();
+  </script>
   <script type="module" src="./logic.mjs"></script>
 </body>
 </html>

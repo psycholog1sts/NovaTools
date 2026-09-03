@@ -14,6 +14,24 @@ const rootDir = resolve(__dirname, '..');
 /**
  * Recursively find all meta.json files
  */
+/**
+ * The certification matrix stores its flags as the strings "True"/"False", but
+ * every consumer of the manifest compares with `=== true`. Passing the string
+ * through would drop every certified tool out of the sitemap and the public
+ * tool list, while "False" would read as truthy in the one place that uses a
+ * bare negation. Normalise once, here, so the generated manifest carries real
+ * booleans.
+ */
+function toBoolean(value, fallback) {
+  if (typeof value === 'boolean') return value;
+  if (typeof value === 'string') {
+    const normalized = value.trim().toLowerCase();
+    if (normalized === 'true' || normalized === 'yes') return true;
+    if (normalized === 'false' || normalized === 'no') return false;
+  }
+  return fallback;
+}
+
 function findMetaFiles(dir, files = []) {
   if (!existsSync(dir)) return files;
   
@@ -39,6 +57,10 @@ function findMetaFiles(dir, files = []) {
 function generateManifest() {
   const toolsDir = join(rootDir, 'src', 'tools');
   const metaFiles = findMetaFiles(toolsDir);
+  const certificationPath = join(rootDir, 'src', 'data', 'tool-certification.json');
+  const certificationByRoute = existsSync(certificationPath)
+    ? new Map(JSON.parse(readFileSync(certificationPath, 'utf8')).records.map((record) => [record.Route, record]))
+    : new Map();
   
   const tools = [];
   
@@ -46,6 +68,8 @@ function generateManifest() {
     try {
       const content = readFileSync(metaPath, 'utf-8');
       const meta = JSON.parse(content);
+
+      const publicTool = meta.public !== false;
       
       // Calculate relative path
       const relativePath = metaPath
@@ -53,9 +77,24 @@ function generateManifest() {
         .replace('\\meta.json', '')
         .replace('/meta.json', '')
         .replace(/\\/g, '/');
+      const route = `/tools${relativePath}/`;
+      const certification = certificationByRoute.get(route);
+      // The canonical matrix is the only authority that can promote a tool.
+      // Missing rows fail closed so unfinished tools cannot leak into search,
+      // sitemap or advertising through legacy metadata defaults.
+      const certificationStatus = certification?.CertificationStatus || 'UNAVAILABLE';
       
       tools.push({
         ...meta,
+        public: publicTool,
+        indexable: toBoolean(certification?.Indexable, meta.indexable !== false && certificationStatus === 'CERTIFIED'),
+        adsEligible: toBoolean(certification?.AdsEligible, meta.adsEligible !== false && certificationStatus === 'CERTIFIED' && publicTool),
+        certificationStatus,
+        privacyMode: certification?.PrivacyTruth || meta.privacyMode || 'UNREVIEWED',
+        externalNetwork: toBoolean(certification?.ExternalNetwork, meta.externalNetwork ?? 'UNREVIEWED'),
+        syntheticData: certification?.SyntheticData || meta.syntheticData || 'UNREVIEWED',
+        dataSource: certification?.DataSource || meta.dataSource || null,
+        limitations: certification?.KnownLimitations || meta.limitations || null,
         path: relativePath,
         entry: `/src/tools${relativePath}/`
       });
@@ -86,7 +125,7 @@ function saveManifest(tools) {
     tools
   };
   
-  writeFileSync(outputPath, JSON.stringify(data, null, 2));
+  writeFileSync(outputPath, `${JSON.stringify(data, null, 2)}\n`);
   console.log(`✓ Generated tools-manifest.json with ${tools.length} tools`);
 }
 

@@ -17,7 +17,6 @@
     "converters": "Convertisseurs"
   },
   "hero": {
-    "title": "Outils Tout-en-Un pour Fichiers, Finance & Code",
     "subtitle": "Utilisez MC NovaTools pour convertir, calculer, créer et simplifier des workflows pratiques avec une boîte à outils rapide, claire et basée sur le navigateur.",
     "cta": "Découvrir les Outils",
     "browse": "Parcourir les Catégories",
@@ -193,7 +192,6 @@
     "toolsGeneric": "Outils",
     "viewAllCategories": "Voir Toutes les Catégories",
     "viewAllDesc": "Browse our tool collection by category.",
-    "searchPlaceholder": "Search tools...",
     "popularLabel": "Populaire :",
     "newBadge": "Nouveau",
     "ads": {
@@ -208,9 +206,7 @@
       "description": "Practical articles that explain when to use a tool and what to check before exporting.",
       "viewAll": "View All Articles →"
     },
-    "hero": {
-      "description": "Utilisez MC NovaTools pour convertir, calculer, créer et simplifier des workflows pratiques avec une boîte à outils rapide, claire et basée sur le navigateur."
-    },
+    "hero": {},
     "launcher": {
       "title": "Lanceur de workflow",
       "query": "compresser un pdf pour e-mail",
@@ -339,7 +335,6 @@
           "009": "Outils d'images",
           "010": "Outils de développement",
           "011": "BMI Calculatrice",
-          "012": "Calculez votre indice de masse corporelle (BMI) et découvrez votre catégorie de santé. Obtenez des conseils de santé personnalisés et une fourchette de poids idéale en fonction de votre taille.",
           "013": "Métrique (kg, cm)",
           "014": "Impérial (lbs, pi/po)",
           "015": "(cm)",
@@ -358,7 +353,6 @@
           "028": "Obèse",
           "029": "30,0 et plus",
           "030": "À propos de la calculatrice BMI",
-          "031": "L'indice de masse corporelle (BMI) est une méthode de dépistage simple qui utilise votre taille et votre poids pour déterminer si vous avez un poids santé pour votre taille. Notre calculatrice BMI gratuite fournit des résultats instantanés ainsi que votre catégorie de santé et des conseils de santé personnalisés.",
           "032": "Comment utiliser",
           "033": "Sélectionnez votre système d'unité préféré (métrique ou impérial).",
           "034": "Entrez votre taille (en cm ou pieds/pouces).",
@@ -366,7 +360,6 @@
           "036": "Cliquez sur \"Calculer BMI\" pour voir vos résultats.",
           "037": "Affichez votre valeur BMI et la catégorie de santé correspondante.",
           "038": "Vérifiez l'échelle visuelle BMI pour voir où vous vous situez.",
-          "039": "Passez en revue votre fourchette de poids idéale et vos conseils de santé.",
           "040": "BMI Catégories",
           "041": "Limites de BMI",
           "042": "BMI ne mesure pas directement la graisse corporelle et ne tient pas compte de facteurs tels que la masse musculaire, la densité osseuse, l'âge, le sexe et l'origine ethnique. Les athlètes peuvent avoir des BMI élevés en raison de leur masse musculaire plutôt que de leur graisse. Consultez toujours des professionnels de la santé pour des évaluations de santé complètes.",
@@ -5831,7 +5824,6 @@
     "edit": "Modifier",
     "close": "Fermer",
     "open": "Ouvrir",
-    "search": "Rechercher",
     "download": "Télécharger",
     "upload": "Téléverser",
     "copy": "Copier",

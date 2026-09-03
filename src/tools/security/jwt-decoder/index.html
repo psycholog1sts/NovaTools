@@ -83,11 +83,11 @@
       font-size: clamp(1.75rem, 4vw, 2.5rem);
       font-weight: 700;
       letter-spacing: -0.02em;
-      color: #FAFAFA;
+      color: var(--text-primary);
       margin-bottom: 0.75rem;
     }
     .tool-hero p {
-      color: #A1A1AA;
+      color: var(--text-secondary);
       font-size: 1.0625rem;
       max-width: 560px;
       margin: 0 auto;
@@ -113,7 +113,7 @@
       font-weight: 600;
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: #71717A;
+      color: var(--text-secondary);
       margin-bottom: 0.625rem;
     }
 
@@ -121,10 +121,10 @@
       width: 100%;
       min-height: 120px;
       padding: 1rem 1.125rem;
-      background: #0F0F12;
-      border: 1px solid rgba(0, 217, 255, 0.12);
+      background: var(--field-bg);
+      border: 1px solid var(--field-border);
       border-radius: 10px;
-      color: #FAFAFA;
+      color: var(--text-primary);
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.875rem;
       line-height: 1.7;
@@ -162,22 +162,22 @@
     }
     .btn:active { transform: scale(0.97); }
     .btn-primary {
-      background: linear-gradient(135deg, #00D9FF, #0099CC);
+      background: linear-gradient(135deg, var(--accent-text), #0099CC);
       color: #0A0A0C;
     }
     .btn-primary:hover { background: linear-gradient(135deg, #1FE2FF, #00B8EE); }
     .btn-secondary {
       background: rgba(0, 217, 255, 0.1);
       border: 1px solid rgba(0, 217, 255, 0.25);
-      color: #00D9FF;
+      color: var(--accent-text);
     }
     .btn-secondary:hover { background: rgba(0, 217, 255, 0.18); }
     .btn-ghost {
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(255, 255, 255, 0.1);
-      color: #A1A1AA;
+      color: var(--text-secondary);
     }
-    .btn-ghost:hover { background: rgba(255, 255, 255, 0.1); color: #FAFAFA; }
+    .btn-ghost:hover { background: rgba(255, 255, 255, 0.1); color: var(--text-primary); }
 
     .output-grid {
       display: grid;
@@ -204,7 +204,7 @@
     .output-label {
       font-size: 0.8125rem;
       font-weight: 600;
-      color: #71717A;
+      color: var(--text-secondary);
       display: flex;
       align-items: center;
       gap: 0.5rem;
@@ -218,7 +218,7 @@
     .output-display {
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.8rem;
-      color: #FAFAFA;
+      color: var(--text-primary);
       word-break: break-all;
       line-height: 1.6;
       min-height: 3rem;
@@ -231,7 +231,7 @@
     }
 
     .output-display.placeholder {
-      color: #52525B;
+      color: var(--text-tertiary);
       font-style: italic;
     }
 
@@ -249,7 +249,7 @@
     .token-status.valid {
       background: rgba(0, 255, 136, 0.1);
       border: 1px solid rgba(0, 255, 136, 0.3);
-      color: #00FF88;
+      color: var(--color-success-text);
     }
 
     .token-status.expired {
@@ -261,7 +261,7 @@
     .token-status.warning {
       background: rgba(255, 193, 7, 0.1);
       border: 1px solid rgba(255, 193, 7, 0.3);
-      color: #FFC107;
+      color: var(--color-warning-text);
     }
 
     .token-status.hidden {
@@ -275,11 +275,11 @@
     }
 
     .json-key {
-      color: #00D9FF;
+      color: var(--accent-text);
     }
 
     .json-string {
-      color: #00FF88;
+      color: var(--color-success-text);
     }
 
     .json-number {
@@ -291,7 +291,7 @@
     }
 
     .json-null {
-      color: #71717A;
+      color: var(--text-secondary);
     }
 
     .signature-section {
@@ -308,14 +308,14 @@
       gap: 0.5rem;
       font-size: 0.8125rem;
       font-weight: 600;
-      color: #FFC107;
+      color: var(--color-warning-text);
       margin-bottom: 0.75rem;
     }
 
     .signature-text {
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.8rem;
-      color: #A1A1AA;
+      color: var(--text-secondary);
       word-break: break-all;
       line-height: 1.6;
     }
@@ -331,20 +331,20 @@
     }
 
     .disclaimer-icon {
-      color: #00D9FF;
+      color: var(--accent-text);
       font-size: 1.125rem;
       flex-shrink: 0;
     }
 
     .disclaimer-text {
       font-size: 0.8125rem;
-      color: #A1A1AA;
+      color: var(--text-secondary);
       line-height: 1.6;
     }
 
     .copy-feedback {
       font-size: 0.8rem;
-      color: #00FF88;
+      color: var(--color-success-text);
       opacity: 0;
       transition: opacity 0.3s;
     }
@@ -365,7 +365,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #52525B;
+      color: var(--text-tertiary);
       font-size: 0.75rem;
     }
 
@@ -377,17 +377,17 @@
     .seo-section h2 {
       font-size: 1.375rem;
       font-weight: 700;
-      color: #FAFAFA;
+      color: var(--text-primary);
       margin-bottom: 0.75rem;
     }
     .seo-section h3 {
       font-size: 1.125rem;
       font-weight: 600;
-      color: #FAFAFA;
+      color: var(--text-primary);
       margin: 2rem 0 0.75rem;
     }
     .seo-section p, .seo-section li {
-      color: #A1A1AA;
+      color: var(--text-secondary);
       line-height: 1.8;
       font-size: 0.9375rem;
     }
@@ -402,7 +402,7 @@
     }
     .faq-item summary {
       font-weight: 600;
-      color: #FAFAFA;
+      color: var(--text-primary);
       cursor: pointer;
       list-style: none;
       display: flex;
@@ -413,7 +413,7 @@
     .faq-item summary::-webkit-details-marker { display: none; }
     .faq-item summary::after {
       content: '+';
-      color: #00D9FF;
+      color: var(--accent-text);
       font-size: 1.25rem;
       flex-shrink: 0;
       transition: transform 0.2s;
@@ -421,7 +421,7 @@
     .faq-item[open] summary::after { content: '\2212'; }
     .faq-item p {
       margin-top: 0.625rem;
-      color: #A1A1AA;
+      color: var(--text-secondary);
       line-height: 1.7;
     }
 
@@ -554,7 +554,7 @@
               Signature
             </div>
             <div class="signature-text" id="signatureOutput">Signature will appear here (Base64 encoded)</div>
-            <div style="margin-top: 0.75rem; font-size: 0.75rem; color: #71717A;">
+            <div style="margin-top: 0.75rem; font-size: 0.75rem; color: var(--text-secondary);">
               <strong>Note:</strong> The signature is used to verify the token's authenticity. This tool cannot verify the signature without the secret key, but you can see its structure.
             </div>
           </div>
@@ -598,13 +598,6 @@
         <h2>Related Tools</h2>
         <ul><li><a href="https://mc-novatools.com/tools/security/ad-blocker-tester/">Ad Blocker Tester — Test if your ad blocker is working properly.</a></li><li><a href="https://mc-novatools.com/tools/security/encrypt-decrypt/">Encryption/Decryption Tool — Encrypt and decrypt text using AES encryption.</a></li></ul>
       </article>
-      <aside class="author-bylines" aria-label="Author and review information for JWT Decoder">
-        <p><span class="author-name">Metehan ÇETİN, LPC</span>, <span class="author-title">Founder and editor</span></p>
-        <p>The author profile for JWT Decoder is intended for a practitioner who understands security hygiene, token inspection, password generation, hashing, and browser diagnostics. This byline describes hands-on experience reviewing inputs, outputs, edge cases, accessibility needs, privacy expectations, and user education for browser-based utilities. It is maintained as a verified public review note for MC NovaTools tool pages.</p>
-        <p><a href="https://mc-novatools.com/about-us.html" rel="author">Author and review profile</a></p>
-        <p>Last updated: <time class="last-updated" datetime="2026-06-03">2026-06-03</time></p>
-        <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Metehan ÇETİN, LPC","jobTitle":"Founder and editor","description":"The author profile for JWT Decoder is intended for a practitioner who understands security hygiene, token inspection, password generation, hashing, and browser diagnostics. This byline describes hands-on experience reviewing inputs, outputs, edge cases, accessibility needs, privacy expectations, and user education for browser-based utilities. It is maintained as a verified public review note for MC NovaTools tool pages.","sameAs":"https://mc-novatools.com/about-us.html"}</script>
-      </aside>
 <section class="seo-section" aria-label="About this tool">
         <h2 data-i18n="tools.security.jwt-decoder.text.013">About JWT Decoder</h2>
         <p data-i18n="tools.security.jwt-decoder.text.014">
@@ -657,7 +650,7 @@
     </footer>
     <style>
     .tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }
-    .tool-footer a { color: #00D9FF; text-decoration: none; }
+    .tool-footer a { color: var(--accent-text); text-decoration: none; }
     </style>
   </div>
 

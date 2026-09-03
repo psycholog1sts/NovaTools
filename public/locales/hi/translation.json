@@ -17,7 +17,6 @@
     "converters": "कनवर्टर"
   },
   "hero": {
-    "title": "फाइलों, वित्त और कोड के लिए ऑल-इन-वन टूल्स",
     "subtitle": "MC NovaTools का उपयोग तेज़, स्पष्ट, ब्राउज़र-आधारित टूलकिट के साथ व्यावहारिक वर्कफ़्लो को बदलने, गणना करने, बनाने और सरल बनाने के लिए करें।",
     "cta": "टूल्स देखें",
     "browse": "श्रेणियाँ देखें",
@@ -193,7 +192,6 @@
     "toolsGeneric": "उपकरण",
     "viewAllCategories": "सभी श्रेणियाँ देखें",
     "viewAllDesc": "Browse our tool collection by category.",
-    "searchPlaceholder": "Search tools...",
     "popularLabel": "लोकप्रिय:",
     "newBadge": "नया",
     "ads": {
@@ -208,9 +206,7 @@
       "description": "Practical articles that explain when to use a tool and what to check before exporting.",
       "viewAll": "View All Articles →"
     },
-    "hero": {
-      "description": "MC NovaTools का उपयोग तेज़, स्पष्ट, ब्राउज़र-आधारित टूलकिट के साथ व्यावहारिक वर्कफ़्लो को बदलने, गणना करने, बनाने और सरल बनाने के लिए करें।"
-    },
+    "hero": {},
     "launcher": {
       "title": "वर्कफ़्लो लॉन्चर",
       "query": "ईमेल के लिए pdf संपीड़ित करें",
@@ -339,7 +335,6 @@
           "009": "Image Tools",
           "010": "Developer Tools",
           "011": "BMI Calculator",
-          "012": "Calculate your Body Mass Index (BMI) and discover your health category. Get personalized health tips and ideal weight range based on your height.",
           "013": "Metric (kg, cm)",
           "014": "Imperial (lbs, ft/in)",
           "015": "(cm)",
@@ -358,7 +353,6 @@
           "028": "Obese",
           "029": "30.0 and above",
           "030": "About BMI Calculator",
-          "031": "Body Mass Index (BMI) is a simple screening method that uses your height and weight to determine if you're at a healthy weight for your height. Our free BMI Calculator provides instant results along with your health category and personalized health tips.",
           "032": "How to Use",
           "033": "Select your preferred unit system (Metric or Imperial).",
           "034": "Enter your height (in cm or feet/inches).",
@@ -366,7 +360,6 @@
           "036": "Click \"Calculate BMI\" to see your results.",
           "037": "View your BMI value and corresponding health category.",
           "038": "Check the visual BMI scale to see where you fall.",
-          "039": "Review your ideal weight range and health tips.",
           "040": "BMI Categories",
           "041": "Limitations of BMI",
           "042": "BMI does not directly measure body fat and doesn't account for factors like muscle mass, bone density, age, sex, and ethnicity. Athletes may have high BMIs due to muscle mass rather than fat. Always consult healthcare professionals for comprehensive health assessments.",
@@ -5831,7 +5824,6 @@
     "edit": "संपादित करें",
     "close": "बंद करें",
     "open": "खोलें",
-    "search": "खोजें",
     "download": "डाउनलोड",
     "upload": "अपलोड",
     "copy": "कॉपी",
