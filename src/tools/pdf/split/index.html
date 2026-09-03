@@ -85,6 +85,7 @@
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
   </style>
   <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+  <script type="module" src="./pdf-runtime.mjs"></script>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -152,6 +153,7 @@
             </div>
           </div>
           
+          <p id="splitStatus" class="hero-note" role="status" aria-live="polite"></p>
           <div id="pageSelector" class="page-selector">
             <label style="font-weight: 600; margin-bottom: 0.5rem; display: block;" data-i18n="tools.pdf.split.text.014">Select Pages to Extract</label>
             <div class="form-group" style="margin-top: 1rem;">
@@ -287,6 +289,11 @@ document.addEventListener('DOMContentLoaded', function() {
   var fileSizeEl = document.getElementById('fileSize');
   var pageSelector = document.getElementById('pageSelector');
   var pageRangeInput = document.getElementById('pageRange');
+  var statusEl = document.getElementById('splitStatus');
+
+  // Refusals belong on the page. alert() blocks the tab, is invisible to a
+  // screen reader until it steals focus, and leaves nothing to read afterwards.
+  function say(message) { if (statusEl) statusEl.textContent = message || ''; }
   var splitBtn = document.getElementById('splitBtn');
   var resultSection = document.getElementById('resultSection');
   var resultInfo = document.getElementById('resultInfo');
@@ -310,19 +317,17 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   async function loadJSZip() {
-    var sources = ['https://cdn.jsdelivr.net/npm/jszip@3.10.1/+esm', 'https://esm.sh/jszip@3.10.1'];
-    for (var i = 0; i < sources.length; i++) {
-      try { var m = await import(sources[i]); return m.default || m; } catch (e) { /* try next */ }
-    }
-    throw new Error('ZIP library failed to load');
+    if (typeof window.novatoolsLoadJsZip !== 'function') throw new Error('ZIP library failed to load');
+    return window.novatoolsLoadJsZip();
   }
 
   function selectFile(file) {
     if (!file) return;
     if (file.type && file.type !== 'application/pdf' && !/\.pdf$/i.test(file.name)) {
-      alert('Please choose a PDF file.');
+      say('Not a PDF, so it was not opened: ' + file.name + '. Choose a .pdf file.');
       return;
     }
+    say('');
     currentFile = file;
     if (fileNameEl) fileNameEl.textContent = file.name;
     if (fileSizeEl) fileSizeEl.textContent = fmtSize(file.size);
@@ -364,25 +369,10 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   function ensurePdfLib() {
+    // pdf-lib and JSZip ship with the site and load on demand (pdf-runtime.mjs).
     if (typeof window.PDFLib !== 'undefined') return Promise.resolve(window.PDFLib);
-    if (pdfLibPromise) return pdfLibPromise;
-    var sources = [
-      'https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js',
-      'https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js'
-    ];
-    pdfLibPromise = new Promise(function(resolve, reject) {
-      function loadFrom(index) {
-        if (index >= sources.length) { reject(new Error('PDF library failed to load')); return; }
-        var s = document.createElement('script');
-        s.src = sources[index];
-        s.async = true;
-        s.onload = function() { typeof window.PDFLib !== 'undefined' ? resolve(window.PDFLib) : loadFrom(index + 1); };
-        s.onerror = function() { loadFrom(index + 1); };
-        document.head.appendChild(s);
-      }
-      loadFrom(0);
-    }).catch(function(err) { pdfLibPromise = null; throw err; });
-    return pdfLibPromise;
+    if (typeof window.novatoolsLoadPdfLib === 'function') return window.novatoolsLoadPdfLib();
+    return Promise.reject(new Error('PDF library failed to load'));
   }
 
   async function runSplit() {
@@ -425,12 +415,13 @@ document.addEventListener('DOMContentLoaded', function() {
   if (splitForm) {
     splitForm.addEventListener('submit', function(e) {
       e.preventDefault();
-      if (!currentFile) { alert('Please choose a PDF file first.'); return; }
+      if (!currentFile) { say('Choose a PDF file first.'); return; }
       if (splitBtn) splitBtn.disabled = true;
-      runSplit().catch(function(err) {
-        alert(err && err.message === 'PDF library failed to load'
-          ? 'The PDF library could not be loaded. Please check your connection and try again.'
-          : (err && err.message) || 'Could not split this PDF. Please make sure it is a valid PDF and try again.');
+      say('Working on it...');
+      runSplit().then(function() { say(''); }).catch(function(err) {
+        say(err && err.message === 'PDF library failed to load'
+          ? 'The PDF library could not be loaded. Reload the page and try again.'
+          : (err && err.message) || 'Could not split this PDF. Make sure it is a valid PDF and try again.');
       }).finally(function() { if (splitBtn) splitBtn.disabled = false; });
     });
   }

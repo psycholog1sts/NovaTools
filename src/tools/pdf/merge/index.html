@@ -722,30 +722,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
   var form = document.querySelector('form');
   function ensurePdfLib() {
-    // pdf-lib ships with the site (pdf-lib-runtime.mjs). It used to be fetched
-    // from jsdelivr with unpkg as a fallback, which put a third-party origin on
-    // the critical path of a tool that says the file stays in the browser.
+    // pdf-lib ships with the site and is fetched on demand (pdf-lib-runtime.mjs).
     if (typeof window.PDFLib !== 'undefined') return Promise.resolve(window.PDFLib);
-    if (pdfLibPromise) return pdfLibPromise;
-
-    pdfLibPromise = new Promise(function(resolve, reject) {
-      var timer = window.setTimeout(function() {
-        window.removeEventListener('novatools:pdflib-ready', onReady);
-        pdfLibPromise = null;
-        reject(new Error('PDF library failed to load'));
-      }, 15000);
-
-      function onReady() {
-        window.clearTimeout(timer);
-        window.removeEventListener('novatools:pdflib-ready', onReady);
-        resolve(window.PDFLib);
-      }
-
-      window.addEventListener('novatools:pdflib-ready', onReady);
-      if (typeof window.PDFLib !== 'undefined') onReady();
-    });
-
-    return pdfLibPromise;
+    if (typeof window.novatoolsLoadPdfLib === 'function') return window.novatoolsLoadPdfLib();
+    return Promise.reject(new Error('PDF library failed to load'));
   }
 
   if (form) {
