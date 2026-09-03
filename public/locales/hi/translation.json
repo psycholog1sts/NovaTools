@@ -17,7 +17,6 @@
     "converters": "कनवर्टर"
   },
   "hero": {
-    "title": "फाइलों, वित्त और कोड के लिए ऑल-इन-वन टूल्स",
     "subtitle": "MC NovaTools का उपयोग तेज़, स्पष्ट, ब्राउज़र-आधारित टूलकिट के साथ व्यावहारिक वर्कफ़्लो को बदलने, गणना करने, बनाने और सरल बनाने के लिए करें।",
     "cta": "टूल्स देखें",
     "browse": "श्रेणियाँ देखें",
@@ -193,7 +192,6 @@
     "toolsGeneric": "उपकरण",
     "viewAllCategories": "सभी श्रेणियाँ देखें",
     "viewAllDesc": "Browse our tool collection by category.",
-    "searchPlaceholder": "Search tools...",
     "popularLabel": "लोकप्रिय:",
     "newBadge": "नया",
     "ads": {
@@ -208,9 +206,7 @@
       "description": "Practical articles that explain when to use a tool and what to check before exporting.",
       "viewAll": "View All Articles →"
     },
-    "hero": {
-      "description": "MC NovaTools का उपयोग तेज़, स्पष्ट, ब्राउज़र-आधारित टूलकिट के साथ व्यावहारिक वर्कफ़्लो को बदलने, गणना करने, बनाने और सरल बनाने के लिए करें।"
-    },
+    "hero": {},
     "launcher": {
       "title": "वर्कफ़्लो लॉन्चर",
       "query": "ईमेल के लिए pdf संपीड़ित करें",
@@ -5828,7 +5824,6 @@
     "edit": "संपादित करें",
     "close": "बंद करें",
     "open": "खोलें",
-    "search": "खोजें",
     "download": "डाउनलोड",
     "upload": "अपलोड",
     "copy": "कॉपी",

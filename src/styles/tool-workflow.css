@@ -273,7 +273,7 @@ li {
 .nt-related-card:focus-visible,
 .nt-blog-suggestions a:focus-visible,
 .nt-compare-tools a:focus-visible {
-  outline: 3px solid var(--color-accent, #67e8f9);
+  outline: 3px solid var(--color-accent, var(--accent-text));
   outline-offset: 3px;
 }
 
@@ -283,7 +283,7 @@ li {
   z-index: 80;
   border-bottom: 1px solid var(--color-border, #334155);
   background: color-mix(in srgb, var(--color-bg-primary, #07080b) 92%, transparent);
-  color: var(--color-text-primary, #f8fafc);
+  color: var(--color-text-primary, var(--text-primary));
   backdrop-filter: blur(12px);
 }
 
@@ -330,7 +330,7 @@ li {
   border: 1px solid var(--color-border, #334155);
   border-radius: var(--radius-xl, 16px);
   background: var(--color-surface, #101827);
-  color: var(--color-text-primary, #f8fafc);
+  color: var(--color-text-primary, var(--text-primary));
 }
 
 .nt-howto summary {
@@ -414,7 +414,7 @@ li {
   place-items: center;
   border-radius: 999px;
   background: var(--color-accent-subtle, rgba(34, 211, 238, .14));
-  color: var(--color-accent, #67e8f9);
+  color: var(--color-accent, var(--accent-text));
   font-weight: 700;
 }
 
@@ -429,7 +429,7 @@ li {
   display: block;
   width: 0;
   height: 100%;
-  background: linear-gradient(90deg, var(--color-primary-500, #6366f1), var(--color-accent, #67e8f9));
+  background: linear-gradient(90deg, var(--color-primary-500, #6366f1), var(--color-accent, var(--accent-text)));
   transition: width .3s ease;
 }
 
@@ -465,7 +465,7 @@ li {
 
 .nt-section-heading span,
 .nt-engagement-header span {
-  color: var(--color-accent, #67e8f9);
+  color: var(--color-accent, var(--accent-text));
   font-size: .8rem;
   font-weight: 700;
   letter-spacing: .08em;
@@ -514,7 +514,7 @@ li {
   place-items: center;
   border-radius: var(--radius-md, 8px);
   background: var(--color-accent-subtle, rgba(34, 211, 238, .14));
-  color: var(--color-accent, #67e8f9);
+  color: var(--color-accent, var(--accent-text));
   font-weight: 800;
 }
 
@@ -535,7 +535,7 @@ li {
   border: 1px solid var(--color-border-strong, #475569);
   border-radius: var(--radius-md, 8px);
   background: var(--color-surface, #101827);
-  color: var(--color-text-primary, #f8fafc);
+  color: var(--color-text-primary, var(--text-primary));
   cursor: pointer;
 }
 
@@ -568,7 +568,7 @@ li {
 
 .nt-feedback button[aria-pressed='true'],
 .nt-favorite-button[aria-pressed='true'] {
-  border-color: var(--color-accent, #67e8f9);
+  border-color: var(--color-accent, var(--accent-text));
   background: var(--color-accent-subtle, rgba(34, 211, 238, .14));
 }
 

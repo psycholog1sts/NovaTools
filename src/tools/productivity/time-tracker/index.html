@@ -67,74 +67,74 @@
     .tool-wrapper { max-width: 960px; margin: 0 auto; padding: 3rem 1rem 5rem; }
     .tool-hero { text-align: center; margin-bottom: 2.5rem; }
     .tool-hero-icon { font-size: 3.5rem; line-height: 1; margin-bottom: 1rem; }
-    .tool-hero h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; letter-spacing: -0.02em; color: #FAFAFA; margin-bottom: 0.75rem; }
-    .tool-hero p { color: #A1A1AA; font-size: 1.0625rem; max-width: 560px; margin: 0 auto; }
+    .tool-hero h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; letter-spacing: -0.02em; color: var(--text-primary); margin-bottom: 0.75rem; }
+    .tool-hero p { color: var(--text-secondary); font-size: 1.0625rem; max-width: 560px; margin: 0 auto; }
     .card { background: rgba(15,15,20,0.7); border: 1px solid rgba(0,217,255,0.15); border-radius: 14px; padding: 1.75rem; backdrop-filter: blur(12px); }
     
     .active-timer { text-align: center; margin-bottom: 1.5rem; padding: 1.5rem; background: linear-gradient(135deg, rgba(0,217,255,0.1), rgba(0,217,255,0.05)); border: 1px solid rgba(0,217,255,0.2); border-radius: 12px; }
-    .active-timer-label { font-size: 0.875rem; color: #71717A; text-transform: uppercase; letter-spacing: 0.1em; }
-    .active-timer-project { font-size: 1.25rem; font-weight: 600; color: #FAFAFA; margin-top: 0.5rem; }
-    .active-timer-display { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 700; color: #00D9FF; font-family: 'JetBrains Mono', monospace; margin-top: 0.5rem; }
+    .active-timer-label { font-size: 0.875rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.1em; }
+    .active-timer-project { font-size: 1.25rem; font-weight: 600; color: var(--text-primary); margin-top: 0.5rem; }
+    .active-timer-display { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 700; color: var(--accent-text); font-family: 'JetBrains Mono', monospace; margin-top: 0.5rem; }
     
     .timer-controls { display: flex; justify-content: center; gap: 0.75rem; margin-top: 1rem; }
     .btn { display: inline-flex; align-items: center; gap: 0.4rem; height: 48px; padding: 0 1.5rem; border: none; border-radius: 8px; font-size: 0.9375rem; font-weight: 600; cursor: pointer; transition: all 0.2s; outline: none; }
     .btn:active { transform: scale(0.97); }
-    .btn-primary { background: linear-gradient(135deg, #00D9FF, #0099CC); color: #0A0A0C; }
+    .btn-primary { background: linear-gradient(135deg, var(--accent-text), #0099CC); color: #0A0A0C; }
     .btn-primary:hover { background: linear-gradient(135deg, #1FE2FF, #00B8EE); }
-    .btn-secondary { background: rgba(0,217,255,0.1); border: 1px solid rgba(0,217,255,0.25); color: #00D9FF; }
+    .btn-secondary { background: rgba(0,217,255,0.1); border: 1px solid rgba(0,217,255,0.25); color: var(--accent-text); }
     .btn-secondary:hover { background: rgba(0,217,255,0.18); }
     .btn-danger { background: rgba(255,85,85,0.1); border: 1px solid rgba(255,85,85,0.25); color: #FF5555; }
     .btn-danger:hover { background: rgba(255,85,85,0.18); }
-    .btn-success { background: rgba(0,255,136,0.1); border: 1px solid rgba(0,255,136,0.25); color: #00FF88; }
+    .btn-success { background: rgba(0,255,136,0.1); border: 1px solid rgba(0,255,136,0.25); color: var(--color-success-text); }
     .btn-success:hover { background: rgba(0,255,136,0.18); }
     
     .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
     .stat-box { background: rgba(0,217,255,0.05); border: 1px solid rgba(0,217,255,0.1); border-radius: 10px; padding: 1rem; text-align: center; }
-    .stat-value { font-size: 1.5rem; font-weight: 700; color: #00D9FF; font-family: 'JetBrains Mono', monospace; }
-    .stat-label { font-size: 0.75rem; color: #71717A; text-transform: uppercase; letter-spacing: 0.06em; margin-top: 0.25rem; }
+    .stat-value { font-size: 1.5rem; font-weight: 700; color: var(--accent-text); font-family: 'JetBrains Mono', monospace; }
+    .stat-label { font-size: 0.75rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 0.25rem; }
     
     .add-project-form { display: flex; gap: 0.75rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
-    .project-input { flex: 1; min-width: 200px; height: 48px; padding: 0 1rem; background: #0F0F12; border: 1px solid rgba(0,217,255,0.2); border-radius: 8px; color: #FAFAFA; font-size: 1rem; }
-    .project-input:focus { outline: none; border-color: #00D9FF; }
+    .project-input { flex: 1; min-width: 200px; height: 48px; padding: 0 1rem; background: var(--field-bg); border: 1px solid var(--field-border); border-radius: 8px; color: var(--text-primary); font-size: 1rem; }
+    .project-input:focus { outline: none; border-color: var(--accent-text); }
     
     .projects-list { margin-bottom: 1.5rem; }
     .projects-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
-    .projects-title { font-size: 1rem; font-weight: 600; color: #FAFAFA; }
+    .projects-title { font-size: 1rem; font-weight: 600; color: var(--text-primary); }
     .project-item { display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: rgba(0,217,255,0.03); border: 1px solid rgba(0,217,255,0.1); border-radius: 10px; margin-bottom: 0.75rem; }
     .project-item:hover { background: rgba(0,217,255,0.05); }
     .project-info { flex: 1; min-width: 0; }
-    .project-name { font-size: 1rem; font-weight: 600; color: #FAFAFA; }
-    .project-time { font-size: 0.875rem; color: #71717A; margin-top: 0.25rem; }
+    .project-name { font-size: 1rem; font-weight: 600; color: var(--text-primary); }
+    .project-time { font-size: 0.875rem; color: var(--text-secondary); margin-top: 0.25rem; }
     .project-actions { display: flex; gap: 0.5rem; }
     .btn-start { padding: 0 1rem; height: 36px; font-size: 0.875rem; }
     .btn-stop { padding: 0 1rem; height: 36px; font-size: 0.875rem; }
-    .no-projects { text-align: center; padding: 1.5rem; color: #52525B; font-size: 0.9375rem; }
+    .no-projects { text-align: center; padding: 1.5rem; color: var(--text-tertiary); font-size: 0.9375rem; }
     
     .entries-section { margin-top: 1.5rem; }
     .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
-    .section-title { font-size: 1rem; font-weight: 600; color: #FAFAFA; }
+    .section-title { font-size: 1rem; font-weight: 600; color: var(--text-primary); }
     .entries-list { display: flex; flex-direction: column; gap: 0.5rem; }
     .entry-item { display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 1rem; background: rgba(0,217,255,0.03); border: 1px solid rgba(0,217,255,0.1); border-radius: 8px; }
-    .entry-project { font-size: 0.9375rem; color: #FAFAFA; }
-    .entry-date { font-size: 0.75rem; color: #71717A; }
-    .entry-duration { font-size: 0.937rem; font-weight: 600; color: #00D9FF; font-family: 'JetBrains Mono', monospace; }
-    .no-entries { text-align: center; padding: 1.5rem; color: #52525B; font-size: 0.875rem; }
+    .entry-project { font-size: 0.9375rem; color: var(--text-primary); }
+    .entry-date { font-size: 0.75rem; color: var(--text-secondary); }
+    .entry-duration { font-size: 0.937rem; font-weight: 600; color: var(--accent-text); font-family: 'JetBrains Mono', monospace; }
+    .no-entries { text-align: center; padding: 1.5rem; color: var(--text-tertiary); font-size: 0.875rem; }
     
-    .legal-note { margin-top: 1.5rem; padding: 1rem 1.25rem; background: rgba(255,193,7,0.05); border: 1px solid rgba(255,193,7,0.15); border-radius: 10px; font-size: 0.8125rem; color: #A1A1AA; line-height: 1.6; }
-    .legal-note strong { color: #FFC107; }
+    .legal-note { margin-top: 1.5rem; padding: 1rem 1.25rem; background: rgba(255,193,7,0.05); border: 1px solid rgba(255,193,7,0.15); border-radius: 10px; font-size: 0.8125rem; color: var(--text-secondary); line-height: 1.6; }
+    .legal-note strong { color: var(--color-warning-text); }
     
     .seo-section { max-width: 960px; margin: 3.5rem auto 0; padding: 0 1rem; }
-    .seo-section h2 { font-size: 1.375rem; font-weight: 700; color: #FAFAFA; margin-bottom: 0.75rem; }
-    .seo-section h3 { font-size: 1.125rem; font-weight: 600; color: #FAFAFA; margin: 2rem 0 0.75rem; }
-    .seo-section p, .seo-section li { color: #A1A1AA; line-height: 1.8; font-size: 0.9375rem; }
+    .seo-section h2 { font-size: 1.375rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.75rem; }
+    .seo-section h3 { font-size: 1.125rem; font-weight: 600; color: var(--text-primary); margin: 2rem 0 0.75rem; }
+    .seo-section p, .seo-section li { color: var(--text-secondary); line-height: 1.8; font-size: 0.9375rem; }
     .seo-section ol { padding-left: 1.25rem; }
     .seo-section ol li { margin-bottom: 0.4rem; }
     .faq-item { border: 1px solid rgba(0,217,255,0.1); border-radius: 10px; padding: 1rem 1.125rem; margin-bottom: 0.875rem; background: rgba(15,15,20,0.5); }
-    .faq-item summary { font-weight: 600; color: #FAFAFA; cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .faq-item summary { font-weight: 600; color: var(--text-primary); cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
     .faq-item summary::-webkit-details-marker { display: none; }
-    .faq-item summary::after { content: '+'; color: #00D9FF; font-size: 1.25rem; flex-shrink: 0; transition: transform 0.2s; }
+    .faq-item summary::after { content: '+'; color: var(--accent-text); font-size: 1.25rem; flex-shrink: 0; transition: transform 0.2s; }
     .faq-item[open] summary::after { content: '\2212'; }
-    .faq-item p { margin-top: 0.625rem; color: #A1A1AA; line-height: 1.7; }
+    .faq-item p { margin-top: 0.625rem; color: var(--text-secondary); line-height: 1.7; }
     
     @media (max-width: 768px) {
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
@@ -330,7 +330,7 @@
         <section class="trust-help novatools-tool-reading-path" aria-labelledby="toolReadingPathTitle">
           <h2 id="toolReadingPathTitle">Recommended next reading</h2>
           <p>Use these practical guides to understand when this tool is the right choice, what to check before exporting, and which workflow usually comes next.</p>
-          <div class="related-tools-grid"><a class="related-tool-link" href="https://mc-novatools.com/blog/articles/remote-team-meeting-and-file-workflow.html">Remote team workflow</a><a class="related-tool-link" href="https://mc-novatools.com/blog/articles/tool-selection-map-for-new-users.html">Tool selection map</a></div>
+          <div class="related-tools-grid"><a class="related-tool-link" href="/blog/articles/browser-based-tools-vs-desktop-software-privacy-comparison.html">Browser-Based Tools vs Desktop Software: Privacy Comparison</a><a class="related-tool-link" href="/blog/articles/browser-based-tools-vs-desktop-software-privacy-comparison.html">Browser-Based Tools vs Desktop Software: Privacy Comparison</a></div>
         </section>
     </main>
 
@@ -340,7 +340,7 @@
     </footer>
     <style>
       .tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }
-      .tool-footer a { color: #00D9FF; text-decoration: none; }
+      .tool-footer a { color: var(--accent-text); text-decoration: none; }
     </style>
   </div>
 

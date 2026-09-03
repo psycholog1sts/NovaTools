@@ -1,6 +1,7 @@
 import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import path from 'node:path';
 import { blogArticleRoutes, blogHubPath, fallbackBlogLocale, supportedBlogLocales } from '../src/js/blog-routes.js';
+import { isPublishedBlogSlug } from '../src/js/blog-publication.js';
 
 const repoRoot = process.cwd();
 const distDir = path.join(repoRoot, 'dist');
@@ -178,9 +179,20 @@ function auditPublicSurfaceRoutes() {
 
 function auditHomeShell() {
   const html = readDist('index.html');
-  for (const marker of ['id="popularTasks"', 'class="task-chip-grid"', 'id="categoriesGrid"', 'class="category-nav-grid"']) {
+  // The homepage's discovery shell: the search control, the task shortcuts in
+  // the hero, the tool grid and the category grid. The old "popular tasks"
+  // section was removed because its "most-used" claim was not backed by data;
+  // the hero chips carry that job now.
+  for (const marker of [
+    'id="homeSearchInput"',
+    'class="home-hero__tasks"',
+    'id="featuredTools"',
+    'id="categoriesGrid"',
+    'class="category-nav-grid"'
+  ]) {
     if (!html.includes(marker)) fail(`Home shell missing ${marker}`);
   }
+  if (!html.includes('id="recent-tools"')) fail('Home shell missing the device-only recent tools section');
   for (const mixedWord of ['Günlük İşlerinizi', 'En Sık Yapılan İşlemler', 'Kategoriler</span>']) {
     if (html.includes(mixedWord)) fail(`Home shell still contains Turkish source copy: ${mixedWord}`);
   }
@@ -197,7 +209,9 @@ function readSourceArticleSlugs() {
   if (!existsSync(articleDir)) return [];
   return readdirSync(articleDir)
     .filter((file) => file.endsWith('.html') && file !== 'index.html')
-    .map((file) => file.replace(/\.html$/, ''));
+    .map((file) => file.replace(/\.html$/, ''))
+    // Withheld articles are deliberately not built, so they have no routes.
+    .filter((slug) => isPublishedBlogSlug(slug));
 }
 
 function auditBlogManifestRoutes() {
@@ -206,7 +220,7 @@ function auditBlogManifestRoutes() {
     const hubRoute = blogHubPath(locale).replace(/^\//, '');
     if (!distExists(hubRoute)) fail(`Blog hub route missing for ${locale}: ${hubRoute}`);
 
-    for (const post of readBlogPosts(locale)) {
+    for (const post of readBlogPosts(locale).filter((entry) => isPublishedBlogSlug(entry.slug))) {
       const routes = blogArticleRoutes(post.slug, locale);
       for (const [routeType, routePath] of Object.entries(routes)) {
         const route = routePath.replace(/^\//, '');
@@ -220,7 +234,9 @@ function auditBlogManifestRoutes() {
 
 
 function auditGeneratedArticleRoutes() {
-  const manifestSlugs = new Set(supportedBlogLocales.flatMap((locale) => readBlogPosts(locale).map((post) => post.slug)));
+  const manifestSlugs = new Set(supportedBlogLocales
+    .flatMap((locale) => readBlogPosts(locale).map((post) => post.slug))
+    .filter((slug) => isPublishedBlogSlug(slug)));
   const sourceSlugs = readSourceArticleSlugs();
   const routeSlugs = [...new Set([...manifestSlugs, ...sourceSlugs])].sort((a, b) => a.localeCompare(b));
   for (const locale of supportedBlogLocales) {
@@ -238,8 +254,19 @@ function auditCategoryShells() {
   if (categories.length < 12) warn(`Expected 12+ category pages; found ${categories.length}`);
   for (const file of categories) {
     const html = readDist(file);
-    if (!html.includes('guide-tools-grid') || !html.includes('guide-tool-card')) {
-      fail(`${file} is missing normalized category tool card wrappers`);
+    if (!html.includes('guide-tools-grid')) {
+      fail(`${file} is missing the normalized category tool grid`);
+      continue;
+    }
+    // A hub only carries tool cards for tools that passed certification.
+    // A hub with none must say so rather than present an empty grid.
+    const hasCards = html.includes('guide-tool-card');
+    const declaresPending = html.includes('guide-availability-note');
+    if (!hasCards && !declaresPending) {
+      fail(`${file} lists no certified tool and does not say the category is still in development`);
+    }
+    if (hasCards && !/guide-tool-card[\s\S]{0,4000}?href="[^"]*\/tools\//.test(html)) {
+      fail(`${file} has tool cards that do not link to a tool route`);
     }
   }
 }

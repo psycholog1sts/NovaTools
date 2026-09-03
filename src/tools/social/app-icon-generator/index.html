@@ -67,59 +67,59 @@
     .tool-wrapper { max-width: 960px; margin: 0 auto; padding: 3rem 1rem 5rem; }
     .tool-hero { text-align: center; margin-bottom: 2.5rem; }
     .tool-hero-icon { font-size: 3.5rem; line-height: 1; margin-bottom: 1rem; }
-    .tool-hero h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; letter-spacing: -0.02em; color: #FAFAFA; margin-bottom: 0.75rem; }
-    .tool-hero p { color: #A1A1AA; font-size: 1.0625rem; max-width: 560px; margin: 0 auto; }
+    .tool-hero h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; letter-spacing: -0.02em; color: var(--text-primary); margin-bottom: 0.75rem; }
+    .tool-hero p { color: var(--text-secondary); font-size: 1.0625rem; max-width: 560px; margin: 0 auto; }
     .card { background: rgba(15,15,20,0.7); border: 1px solid rgba(0,217,255,0.15); border-radius: 14px; padding: 1.75rem; backdrop-filter: blur(12px); }
     
     .upload-area { border: 2px dashed rgba(0,217,255,0.3); border-radius: 12px; padding: 2.5rem; text-align: center; transition: all 0.3s; cursor: pointer; margin-bottom: 1.5rem; }
     .upload-area:hover { border-color: rgba(0,217,255,0.6); background: rgba(0,217,255,0.05); }
     .upload-icon { font-size: 3rem; margin-bottom: 1rem; }
-    .upload-text { color: #A1A1AA; font-size: 0.9375rem; }
-    .upload-text strong { color: #00D9FF; }
+    .upload-text { color: var(--text-secondary); font-size: 0.9375rem; }
+    .upload-text strong { color: var(--accent-text); }
     #fileInput { display: none; }
     
     .platform-tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
-    .platform-tab { padding: 0.75rem 1.5rem; background: transparent; border: none; color: #71717A; font-size: 0.875rem; font-weight: 600; cursor: pointer; border-bottom: 2px solid transparent; transition: all 0.2s; }
-    .platform-tab:hover { color: #A1A1AA; }
-    .platform-tab.active { color: #00D9FF; border-bottom-color: #00D9FF; }
+    .platform-tab { padding: 0.75rem 1.5rem; background: transparent; border: none; color: var(--text-secondary); font-size: 0.875rem; font-weight: 600; cursor: pointer; border-bottom: 2px solid transparent; transition: all 0.2s; }
+    .platform-tab:hover { color: var(--text-secondary); }
+    .platform-tab.active { color: var(--accent-text); border-bottom-color: var(--accent-text); }
     
     .icons-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 0.75rem; margin: 1.5rem 0; }
     .icon-item { text-align: center; padding: 0.75rem; background: rgba(255,255,255,0.03); border-radius: 10px; border: 1px solid rgba(255,255,255,0.05); }
     .icon-item img { width: 60px; height: 60px; object-fit: contain; margin-bottom: 0.5rem; border-radius: 12px; }
-    .icon-size { font-size: 0.6875rem; color: #71717A; }
-    .icon-label { font-size: 0.625rem; color: #52525B; margin-top: 0.125rem; }
+    .icon-size { font-size: 0.6875rem; color: var(--text-secondary); }
+    .icon-label { font-size: 0.625rem; color: var(--text-tertiary); margin-top: 0.125rem; }
     
     .btn { display: inline-flex; align-items: center; gap: 0.4rem; height: 44px; padding: 0 1.25rem; border: none; border-radius: 8px; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: background 0.18s, transform 0.12s, opacity 0.18s; outline: none; user-select: none; }
     .btn:active { transform: scale(0.97); }
-    .btn-primary { background: linear-gradient(135deg, #00D9FF, #0099CC); color: #0A0A0C; }
+    .btn-primary { background: linear-gradient(135deg, var(--accent-text), #0099CC); color: #0A0A0C; }
     .btn-primary:hover { background: linear-gradient(135deg, #1FE2FF, #00B8EE); }
-    .btn-secondary { background: rgba(0,217,255,0.1); border: 1px solid rgba(0,217,255,0.25); color: #00D9FF; }
+    .btn-secondary { background: rgba(0,217,255,0.1); border: 1px solid rgba(0,217,255,0.25); color: var(--accent-text); }
     .btn-secondary:hover { background: rgba(0,217,255,0.18); }
     
     .info-box { margin-top: 1rem; padding: 1rem; background: rgba(0,217,255,0.05); border: 1px solid rgba(0,217,255,0.1); border-radius: 8px; }
-    .info-box p { color: #A1A1AA; font-size: 0.8125rem; margin: 0; line-height: 1.6; }
-    .info-box strong { color: #00D9FF; }
+    .info-box p { color: var(--text-secondary); font-size: 0.8125rem; margin: 0; line-height: 1.6; }
+    .info-box strong { color: var(--accent-text); }
     
-    .legal-note { margin-top: 1.5rem; padding: 1rem 1.25rem; background: rgba(255,193,7,0.05); border: 1px solid rgba(255,193,7,0.15); border-radius: 10px; font-size: 0.8125rem; color: #A1A1AA; line-height: 1.6; }
-    .legal-note strong { color: #FFC107; }
+    .legal-note { margin-top: 1.5rem; padding: 1rem 1.25rem; background: rgba(255,193,7,0.05); border: 1px solid rgba(255,193,7,0.15); border-radius: 10px; font-size: 0.8125rem; color: var(--text-secondary); line-height: 1.6; }
+    .legal-note strong { color: var(--color-warning-text); }
     
     .seo-section { max-width: 960px; margin: 3.5rem auto 0; padding: 0 1rem; }
-    .seo-section h2 { font-size: 1.375rem; font-weight: 700; color: #FAFAFA; margin-bottom: 0.75rem; }
-    .seo-section h3 { font-size: 1.125rem; font-weight: 600; color: #FAFAFA; margin: 2rem 0 0.75rem; }
-    .seo-section p, .seo-section li { color: #A1A1AA; line-height: 1.8; font-size: 0.9375rem; }
+    .seo-section h2 { font-size: 1.375rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.75rem; }
+    .seo-section h3 { font-size: 1.125rem; font-weight: 600; color: var(--text-primary); margin: 2rem 0 0.75rem; }
+    .seo-section p, .seo-section li { color: var(--text-secondary); line-height: 1.8; font-size: 0.9375rem; }
     .seo-section ol { padding-left: 1.25rem; }
     .seo-section ol li { margin-bottom: 0.4rem; }
     .faq-item { border: 1px solid rgba(0,217,255,0.1); border-radius: 10px; padding: 1rem 1.125rem; margin-bottom: 0.875rem; background: rgba(15,15,20,0.5); }
-    .faq-item summary { font-weight: 600; color: #FAFAFA; cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .faq-item summary { font-weight: 600; color: var(--text-primary); cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
     .faq-item summary::-webkit-details-marker { display: none; }
-    .faq-item summary::after { content: '+'; color: #00D9FF; font-size: 1.25rem; flex-shrink: 0; transition: transform 0.2s; }
+    .faq-item summary::after { content: '+'; color: var(--accent-text); font-size: 1.25rem; flex-shrink: 0; transition: transform 0.2s; }
     .faq-item[open] summary::after { content: '\2212'; }
-    .faq-item p { margin-top: 0.625rem; color: #A1A1AA; line-height: 1.7; }
+    .faq-item p { margin-top: 0.625rem; color: var(--text-secondary); line-height: 1.7; }
     
     .sizes-table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.875rem; }
     .sizes-table th, .sizes-table td { padding: 0.75rem; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1); }
-    .sizes-table th { color: #00D9FF; font-weight: 600; }
-    .sizes-table td { color: #A1A1AA; }
+    .sizes-table th { color: var(--accent-text); font-weight: 600; }
+    .sizes-table td { color: var(--text-secondary); }
   </style>
   <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
 </head>
@@ -302,7 +302,7 @@
         <section class="trust-help novatools-tool-reading-path" aria-labelledby="toolReadingPathTitle">
           <h2 id="toolReadingPathTitle">Recommended next reading</h2>
           <p>Use these practical guides to understand when this tool is the right choice, what to check before exporting, and which workflow usually comes next.</p>
-          <div class="related-tools-grid"><a class="related-tool-link" href="https://mc-novatools.com/blog/articles/resize-images-for-social-platforms.html">Social image resize guide</a><a class="related-tool-link" href="https://mc-novatools.com/blog/articles/public-link-review-workflow.html">Public link review</a></div>
+          <div class="related-tools-grid"><a class="related-tool-link" href="/blog/articles/lazy-loading-images-implementation-guide-2026.html">Lazy Loading Images: Implementation Guide for 2026</a><a class="related-tool-link" href="/blog/articles/lazy-loading-images-implementation-guide-2026.html">Lazy Loading Images: Implementation Guide for 2026</a></div>
         </section>
     </main>
 
@@ -312,7 +312,7 @@
     </footer>
     <style>
       .tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }
-      .tool-footer a { color: #00D9FF; text-decoration: none; }
+      .tool-footer a { color: var(--accent-text); text-decoration: none; }
     </style>
   </div>
 

@@ -9,14 +9,14 @@
   color-scheme: light;
 
   /* Color — light */
-  --color-bg-canvas: #f8fafc;
+  --color-bg-canvas: var(--text-primary);
   --color-bg-surface: #ffffff;
   --color-bg-elevated: #f1f5f9;
   --color-bg-subtle: #eaf0f7;
   --color-bg-hover: #e2e8f0;
   --color-text-primary: #0f172a;
   --color-text-secondary: #334155;
-  --color-text-muted: #64748b;
+  --color-text-muted: #526070;
   --color-border: #cbd5e1;
   --color-border-strong: #94a3b8;
   --color-primary: #1d4ed8;
@@ -161,7 +161,7 @@
   --color-bg-elevated: #18212f;
   --color-bg-subtle: #0f172a;
   --color-bg-hover: #1f2937;
-  --color-text-primary: #f8fafc;
+  --color-text-primary: var(--text-primary);
   --color-text-secondary: #cbd5e1;
   --color-text-muted: #94a3b8;
   --color-border: #334155;

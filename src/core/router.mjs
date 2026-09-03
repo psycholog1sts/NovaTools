@@ -288,12 +288,6 @@ class Router {
     window.history.back();
   }
 
-  /**
-   * Go forward in history
-   */
-  forward() {
-    window.history.forward();
-  }
 }
 
 // Singleton instance

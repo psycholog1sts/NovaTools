@@ -10,6 +10,7 @@ import { blogArticleRoutes, blogHubPath, fallbackBlogLocale, normalizeBlogSlug, 
 import { buildBlogArticleSeo, buildBlogIndexSeo } from '../src/js/blog-seo.js';
 import { applySeoHead, removeLegacyAdSenseHead, renderAdSenseHead } from '../src/components/Analytics.mjs';
 import { renderGlobalFooter, renderGlobalFooterStyle } from '../src/components/global-footer.mjs';
+import { isPublishedBlogSlug } from '../src/js/blog-publication.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -211,15 +212,24 @@ function applyGlobalFooterPass(dir) {
 }
 
 function deferNonCriticalStylesInHtml(html) {
-  return html.replace(/(?<!<noscript>)<link\s+rel=["']stylesheet["']\s+href=["']([^"']+)["']\s*\/?>/gi, (tag, href) => {
+  // Matches a stylesheet <link> whatever the attribute order. Vite emits
+  // `<link rel="stylesheet" crossorigin href="...">`, which an href-must-follow-rel
+  // pattern silently skips, leaving the bundled CSS render-blocking.
+  return html.replace(/(?<!<noscript>)<link\b[^>]*>/gi, (tag) => {
+    if (!/\brel\s*=\s*["']stylesheet["']/i.test(tag)) return tag;
+    if (/data-nv-deferred-style/i.test(tag)) return tag;
+    if (/\bmedia\s*=/i.test(tag)) return tag;
+    const hrefMatch = tag.match(/\bhref\s*=\s*["']([^"']+)["']/i);
+    if (!hrefMatch) return tag;
+    const href = hrefMatch[1];
     if (/critical\.css(?:$|[?#])/.test(href) || /fonts\.googleapis\.com/.test(href)) return tag;
-    if (/rel=["']preload["']/.test(tag)) return tag;
+    if (/^https?:/i.test(href)) return tag;
     return `<link rel="stylesheet" href="${href}" media="print" data-nv-deferred-style><noscript><link rel="stylesheet" href="${href}"></noscript>`;
   });
 }
 
 function renderPhase6CriticalHead() {
-  return `<style data-critical-inline="phase6">html{max-width:100%;overflow-x:clip}body{margin:0;background:#0a0a0c;color:#fafafa;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.app-header,.main-header{position:sticky;top:0;z-index:40;background:rgba(10,10,12,.92);backdrop-filter:blur(16px)}.container{width:min(1120px,calc(100% - 32px));margin-inline:auto}.hero,.tool-hero{padding-block:clamp(2rem,6vw,4rem);text-align:center}img{max-width:100%;height:auto}button,a,input,select,textarea{font:inherit}:focus-visible{outline:3px solid #00d9ff;outline-offset:3px}</style>
+  return `<style data-critical-inline="phase6">html{max-width:100%;overflow-x:clip}body{margin:0;background:#f8fafc;color:#0f172a;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.app-header,.main-header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdrop-filter:blur(16px)}[data-theme=\"dark\"] body{background:#0a0a0c;color:#fafafa}[data-theme=\"dark\"] .app-header,[data-theme=\"dark\"] .main-header{background:rgba(10,10,12,.92)}.container{width:min(1120px,calc(100% - 32px));margin-inline:auto}.hero,.tool-hero{padding-block:clamp(2rem,6vw,4rem);text-align:center}img{max-width:100%;height:auto}button,a,input,select,textarea{font:inherit}:focus-visible{outline:3px solid #0e7490;outline-offset:3px}[data-theme=\"dark\"] :focus-visible{outline-color:#00d9ff}</style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>`;
 }
@@ -239,7 +249,13 @@ function applyPerformanceHtmlPass(dir) {
       next = next.replace(/<\/head>/i, `  ${renderPhase6CriticalHead()}
 </head>`);
     }
-    next = deferNonCriticalStylesInHtml(next);
+    // Page-specific stylesheets stay render-blocking on purpose. The shared
+    // bundle is inlined (scripts/extract-critical-css.mjs), so each page has at
+    // most one stylesheet request left, and it sizes that page's above-the-fold
+    // content: deferring it traded a ~150 ms request for a layout shift once the
+    // rules landed (measured 0.6 on /pricing/). deferNonCriticalStylesInHtml is
+    // kept for routes that opt in explicitly.
+    void deferNonCriticalStylesInHtml;
     if (next !== html) fs.writeFileSync(filePath, next);
   }
 }
@@ -284,9 +300,10 @@ if (fs.existsSync(blogSrcDir)) {
         fs.copyFileSync(sourceFile, targetFile);
       }
     }
-    // Copy articles if they exist in src
+    // Copy articles if they exist in src. Articles withheld by the originality
+    // gate are skipped: a template-duplicated page should have no URL at all.
     if (fs.existsSync(blogArticlesSrc) && !fs.existsSync(blogArticlesDst)) {
-      fs.cpSync(blogArticlesSrc, blogArticlesDst, { recursive: true });
+      fs.cpSync(blogArticlesSrc, blogArticlesDst, { recursive: true, filter: publishedArticleFilter });
       console.log('✅ Copied: blog/articles');
     }
     fs.rmSync(blogSrcDir, { recursive: true });
@@ -296,14 +313,34 @@ if (fs.existsSync(blogSrcDir)) {
   console.log('✅ Fixed: dist/src/blog -> dist/blog');
 }
 
+function publishedArticleFilter(source) {
+  if (!source.endsWith('.html')) return true;
+  const slug = path.basename(source, '.html');
+  if (slug === 'index') return true;
+  return isPublishedBlogSlug(slug);
+}
+
 // Ensure blog articles are merged from source and localized manifest routes exist.
 const sourceArticlesDir = path.join(__dirname, '..', 'src', 'blog', 'articles');
 const distBlogArticlesDir = path.join(distDir, 'blog', 'articles');
 
 if (fs.existsSync(sourceArticlesDir)) {
   fs.mkdirSync(distBlogArticlesDir, { recursive: true });
-  fs.cpSync(sourceArticlesDir, distBlogArticlesDir, { recursive: true, force: false });
-  console.log('✅ Merged: src/blog/articles -> dist/blog/articles');
+  fs.cpSync(sourceArticlesDir, distBlogArticlesDir, { recursive: true, force: false, filter: publishedArticleFilter });
+  console.log('✅ Merged: src/blog/articles -> dist/blog/articles (published only)');
+}
+
+// Anything a previous build left behind must go too, or a withheld article
+// would survive in dist as a stale file.
+if (fs.existsSync(distBlogArticlesDir)) {
+  let removed = 0;
+  for (const entry of fs.readdirSync(distBlogArticlesDir)) {
+    if (!entry.endsWith('.html') || entry === 'index.html') continue;
+    if (isPublishedBlogSlug(entry.replace(/\.html$/, ''))) continue;
+    fs.rmSync(path.join(distBlogArticlesDir, entry), { force: true });
+    removed += 1;
+  }
+  if (removed) console.log(`✅ Removed ${removed} withheld blog article(s) from dist`);
 }
 
 const distBlogIndex = path.join(distDir, 'blog', 'index.html');
@@ -318,6 +355,8 @@ const sourceArticleFileBySlug = () => {
   if (!fs.existsSync(sourceArticlesDir)) return new Map();
   return new Map(fs.readdirSync(sourceArticlesDir)
     .filter((file) => file.endsWith('.html') && file !== 'index.html')
+    // Articles withheld by the originality gate get no route materialised.
+    .filter((file) => isPublishedBlogSlug(file.replace(/\.html$/, '')))
     .map((file) => [normalizeBlogSlug(file.replace(/\.html$/, '')), path.join(sourceArticlesDir, file)]));
 };
 
@@ -380,7 +419,8 @@ if (fs.existsSync(distBlogIndex)) {
 if (fs.existsSync(distBlogTemplate)) {
   const sourceArticles = sourceArticleFileBySlug();
   const fallbackPosts = manifestBySlug(fallbackBlogLocale);
-  const routeSlugs = normalizeBlogSlugList([...fallbackPosts.keys(), ...sourceArticles.keys()]);
+  const routeSlugs = normalizeBlogSlugList([...fallbackPosts.keys(), ...sourceArticles.keys()])
+    .filter((slug) => isPublishedBlogSlug(slug));
 
   for (const locale of supportedBlogLocales) {
     const localePosts = manifestBySlug(locale);
@@ -689,8 +729,14 @@ function stampToolHelpfulContent() {
     // article + i18n seo-section), so this duplicated template section is removed.
     let next = html.replace(/<section\b[^>]*data-phase4-eeat="true"[\s\S]*?<\/section>/i, '');
     next = next.replace(/<meta name="description" content="[^"]*"\s*\/?>/i, `<meta name="description" content="${escapeAttr(uniqueDescription(title, item.category, item.slug, item.relative))}">`);
-    const updatedLine = `<p class="tool-last-updated" data-phase4-updated="true">Last updated: <time datetime="2026-06-03">2026-06-03</time></p>`;
-    if (!next.includes('data-phase4-updated="true"')) {
+    // Only add a last-updated line to pages that do not already state one.
+    // This used to inject a fixed 2026-06-03 unconditionally, so pages that
+    // carried their own date showed two "Last updated" lines with two different
+    // dates - a contradiction on a page search engines read.
+    const statesOwnDate = /class="[^"]*(?:tool-updated-note|page-last-updated)[^"]*"/i.test(next)
+      || next.includes('data-phase4-updated="true"');
+    if (!statesOwnDate) {
+      const updatedLine = `<p class="tool-last-updated" data-phase4-updated="true">Last updated: <time datetime="2026-06-03">2026-06-03</time></p>`;
       next = next.replace(/(<h1\b[^>]*>[\s\S]*?<\/h1>)/i, `$1\n${updatedLine}`);
     }
     next = next.replace(/\shref="\/(?!\/|#|mailto:|tel:)([^"]*)"/g, ' href="https://mc-novatools.com/$1"');

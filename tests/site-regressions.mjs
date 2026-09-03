@@ -160,17 +160,32 @@ assert.doesNotMatch(homepage, /rel="prefetch" href="\/tools\/popular"/, 'Homepag
 assert.match(homepage, /href="\/security\.html"[^>]*data-i18n="nav\.security"/, 'Desktop navigation must expose the security page instead of duplicating About.');
 assert.match(homepage, /<input(?=[^>]*id="globalSearch")(?=[^>]*aria-label=)[^>]*>/, 'Global search must have an accessible name.');
 assert.match(homepage, /class="search-close"[^>]*aria-label=/, 'Search close control must have an accessible name.');
-assert.match(homepage, /home\.privateStarter\.title/, 'Device-only discovery must be labeled honestly and localized.');
+// Device-only discovery: the homepage may only offer it if it says where the
+// data lives and gives a way to clear it.
+assert.match(homepage, /id="recent-tools"/, 'Homepage must offer the device-only recent tools section.');
+assert.match(homepage, /id="clearRecentTools"/, 'Device-only recents must expose a clear control.');
+assert.match(
+  homepage,
+  /Kept in this browser only\. Nothing is sent anywhere\./,
+  'Device-only recents must state plainly that nothing leaves the device.'
+);
 
 const homepageMain = read('src/main.js');
-for (const key of [
-  'home.toolLabels.',
-  'home.featuredCards.',
-  'home.privateStarter.localUse',
-  'home.privateStarter.starterTool'
-]) {
+for (const key of ['home.featuredCards.']) {
   assert.ok(homepageMain.includes(key), `Homepage dynamic copy must use i18n key: ${key}`);
 }
+// One storage schema for recents, shared by the tool pages and the homepage.
+assert.match(homepageMain, /forgetRecentTools/, 'Homepage must be able to clear the stored recents.');
+assert.match(
+  read('src/js/tool-search.js'),
+  /RECENTS_KEY = 'novatools:recent-tools'/,
+  'Recents must use the single shared storage key.'
+);
+assert.match(
+  read('public/js/record-tool-visit.js'),
+  /novatools:recent-tools/,
+  'Tool pages must record into the same recents key as the homepage.'
+);
 assert.doesNotMatch(
   sourceI18n,
   /localStorage\.setItem\('novatools_recent_tools'/,
@@ -183,22 +198,38 @@ assert.match(
 );
 
 
+// The hero's job is to answer what this site is and let someone start, not to
+// show a decorative animation. Its contract is the working control, not an image.
 assert.match(
   homepage,
-  /home-hero__spin-logo[\s\S]*logo-brand-260\.png/,
-  'Homepage hero must include the transparent PNG brand mark.'
+  /<section class="home-hero"[\s\S]*?id="homeSearchInput"[\s\S]*?<\/section>/,
+  'Homepage hero must contain the tool search control itself, above the fold.'
 );
-const layoutCss = read('src/styles/layout.css');
-assert.match(layoutCss, /@keyframes novatools-logo-spin/, 'Homepage brand mark must have a 3D spin animation.');
-assert.match(layoutCss, /rotateY\(360deg\)/, 'Homepage brand animation must rotate sideways around its vertical axis.');
-assert.match(layoutCss, /perspective:\s*700px/, 'Homepage logo stage must provide 3D perspective.');
-assert.match(layoutCss, /transform-style:\s*preserve-3d/, 'Homepage brand animation must preserve its 3D transform context.');
-assert.doesNotMatch(layoutCss, /rotate\(360deg\)/, 'Homepage brand mark must not use the dizzying flat wheel rotation.');
+assert.doesNotMatch(
+  homepage,
+  /home-hero__spin-logo|home-hero__visual|workflow-panel/,
+  'Homepage hero must not carry a decorative brand animation or a mock product panel.'
+);
 assert.match(
-  layoutCss,
-  /@media \(prefers-reduced-motion: reduce\)[\s\S]*home-hero__spin-logo/,
-  'Homepage brand animation must respect reduced-motion preferences.'
+  homepage,
+  /class="home-hero__proof"[\s\S]{0,600}Limitations documented on every tool page/,
+  'Homepage hero must state checkable properties rather than marketing claims.'
 );
+// The homepage hero and header rules moved into critical.css so they are inlined
+// and cannot arrive after the first paint. These contracts are about the shipped
+// styling, not about which file holds it, so they read both.
+const layoutCss = `${read('src/styles/layout.css')}\n${read('src/styles/critical.css')}`;
+assert.doesNotMatch(layoutCss, /@keyframes novatools-logo-spin/, 'The decorative hero spin animation must stay removed.');
+assert.match(layoutCss, /\.home-search__box:focus-within/, 'The hero search control must have a visible focus treatment.');
+assert.doesNotMatch(layoutCss, /rotate\(360deg\)|rotateY\(360deg\)/, 'The homepage must not run a continuous decorative rotation.');
+// Motion that remains is short, transform/opacity only, and never continuous.
+for (const property of ['height', 'width', 'top', 'left']) {
+  assert.doesNotMatch(
+    layoutCss,
+    new RegExp(`transition:[^;]*\\b${property}\\b`),
+    `Homepage layout must not transition ${property}; animate transform and opacity instead.`
+  );
+}
 
 for (const i18nRuntime of [sourceI18n, publicI18n]) {
   assert.match(
@@ -216,9 +247,6 @@ for (const locale of ['en', 'tr']) {
   const bundle = JSON.parse(read(`public/locales/${locale}/translation.json`));
   for (const key of ['quickStartEyebrow', 'categoriesEyebrow']) {
     assert.ok(bundle.home?.sections?.[key], `${locale} homepage bundle is missing home.sections.${key}`);
-  }
-  for (const key of ['eyebrow', 'title', 'description', 'noscript']) {
-    assert.ok(bundle.home?.privateStarter?.[key], `${locale} homepage bundle is missing home.privateStarter.${key}`);
   }
   for (const key of ['eyebrow', 'title', 'description']) {
     assert.ok(bundle.home?.featured?.[key], `${locale} homepage bundle is missing home.featured.${key}`);

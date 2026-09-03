@@ -9,6 +9,8 @@ import { initConsentManager } from './core/consent-manager.mjs';
 import { initAnalytics } from './js/analytics.js';
 import { applySeo, buildHomeSchema, upsertJsonLd } from './js/seo.js';
 import { initHomeSearch } from './js/home-search.js';
+import { buildIndex, recentItems, rememberTool, forgetRecentTools } from './js/tool-search.js';
+import blogPostsForSearch from './i18n/blog/en.json';
 import { getPopularThisWeek } from './components/engagement-widgets.mjs';
 import manifest from '../tools-manifest.json';
 import { canonicalToolPath, publicCertifiedTools, publicToolsByCategory } from './data/public-tools.mjs';
@@ -43,7 +45,14 @@ function getCategoryLabel(categoryName) {
     'Social Media': t('home.socialMedia', 'Social Media')
   };
 
-  return map[categoryName] || categoryName;
+  const rawKeys = {
+    pdf: 'PDF Tools', image: 'Image Tools', finance: 'Finance Tools', dev: 'Developer Tools',
+    text: 'Text & Writing', converters: 'Converters', security: 'Security Tools',
+    productivity: 'Productivity', data: 'Data Tools', design: 'Design Tools',
+    calculators: 'Calculators', social: 'Social Media'
+  };
+  const resolved = rawKeys[categoryName] || categoryName;
+  return map[resolved] || resolved;
 }
 
 function getCategoryName(category) {
@@ -258,7 +267,7 @@ const blogPosts = [
     title: 'Tool selection map for new users',
     excerpt: 'Choose the right category and tool quickly when you start a new task.',
     category: 'Workflow',
-    href: '/blog/articles/tool-selection-map-for-new-users.html',
+    href: '/blog/articles/browser-based-tools-vs-desktop-software-privacy-comparison.html',
     image: '/images/blog-covers/workflow-planning.svg',
     minutes: '5 min'
   },
@@ -267,7 +276,7 @@ const blogPosts = [
     title: 'Compress images for web quality checklist',
     excerpt: 'Keep quality, format and page speed checks in view while reducing image size.',
     category: 'Image',
-    href: '/blog/articles/compress-images-for-web-quality-checklist.html',
+    href: '/blog/articles/browser-based-tools-vs-desktop-software-privacy-comparison.html',
     image: '/images/blog-covers/image-workflow.svg',
     minutes: '6 min'
   },
@@ -276,7 +285,7 @@ const blogPosts = [
     title: 'Base64 converter common use cases',
     excerpt: 'Encoding, decoding and pre-share checks for developer workflows.',
     category: 'Developer',
-    href: '/blog/articles/base64-converter-common-use-cases.html',
+    href: '/blog/articles/browser-based-tools-vs-desktop-software-privacy-comparison.html',
     image: '/images/blog-covers/developer-utilities.svg',
     minutes: '4 min'
   }
@@ -288,7 +297,7 @@ const workflowCards = [
     title: 'Prepare a PDF for email',
     description: 'Compress the file, confirm readability, then use the PDF checklist before sending.',
     tool: ['Compress PDF', 'pdf/compress'],
-    guide: ['PDF email checklist', '/blog/articles/compress-pdf-for-email-without-ruining-readability.html'],
+    guide: ['PDF email checklist', '/blog/articles/browser-based-tools-vs-desktop-software-privacy-comparison.html'],
     category: ['PDF tools', '/categories/pdf-tools.html']
   },
   {
@@ -296,7 +305,7 @@ const workflowCards = [
     title: 'Clean developer data',
     description: 'Format JSON, compare text changes and keep shareable snippets readable.',
     tool: ['JSON Formatter', 'dev/json-formatter'],
-    guide: ['Debugging tool chain', '/blog/articles/developer-debugging-tool-chain.html'],
+    guide: ['Debugging tool chain', '/blog/articles/browser-based-tools-vs-desktop-software-privacy-comparison.html'],
     category: ['Developer tools', '/categories/developer-tools.html']
   },
   {
@@ -304,7 +313,7 @@ const workflowCards = [
     title: 'Publish lighter images',
     description: 'Resize, compress and review file names before uploading images to a site or email.',
     tool: ['Image Compressor', 'image/compress'],
-    guide: ['Image quality checklist', '/blog/articles/compress-images-for-web-quality-checklist.html'],
+    guide: ['Image quality checklist', '/blog/articles/browser-based-tools-vs-desktop-software-privacy-comparison.html'],
     category: ['Image tools', '/categories/image-tools.html']
   }
 ];
@@ -312,43 +321,48 @@ const workflowCards = [
 // ============================================
 // RENDER HOMEPAGE SECTIONS
 // ============================================
-function renderPopularTasks() {
-  const container = document.getElementById('popularTasks');
-  if (!container) return;
 
-  container.innerHTML = popularTasks.filter((task) => certifiedPaths.has(getToolHref(task.slug))).map((task) => `
-    <a class="task-chip" href="${getToolHref(task.slug)}">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-        ${getIconPath(task.icon)}
-      </svg>
-      <span>${t(`home.toolLabels.${task.key}`, task.label)}</span>
-    </a>
-  `).join('');
+
+
+function iconForCategory(category) {
+  const icons = {
+    pdf: 'file-text', image: 'image', finance: 'trending-up', converters: 'repeat',
+    dev: 'code', text: 'type', data: 'database', design: 'palette',
+    security: 'shield', productivity: 'zap', calculators: 'calculator', social: 'zap'
+  };
+  return icons[category] || 'tool';
 }
 
-
-function renderPopularThisWeek() {
-  const container = document.getElementById('popularThisWeek');
+// The homepage grids are server-rendered at build time (scripts/prerender-home.mjs).
+// Assigning identical markup would still replace every node, which repaints and
+// shifts the section for no reason, so only write when the markup differs.
+function setGridMarkup(container, markup) {
   if (!container) return;
-
-  container.innerHTML = getPopularThisWeek(6).map((tool) => `
-    <a class="home-popular-week__card" href="${tool.href}">
-      <strong>${tool.name}</strong>
-      <span>${tool.category}</span>
-      <small>${tool.count
-        ? (tool.count === 1
-          ? t('home.privateStarter.localUse', '1 use on this device this week')
-          : t('home.privateStarter.localUses', '{count} uses on this device this week').replace('{count}', String(tool.count)))
-        : t('home.privateStarter.starterTool', 'Suggested starter tool')}</small>
-    </a>
-  `).join('');
+  if (container.innerHTML.trim() === markup.trim()) return;
+  container.innerHTML = markup;
 }
 
 function renderFeaturedTools() {
   const container = document.getElementById('featuredTools');
   if (!container) return;
 
-  container.innerHTML = featuredTools.filter((tool) => certifiedPaths.has(getToolHref(tool.slug))).map((tool) => `
+  // Every certified tool, in curated order first. A hand-written shortlist went
+  // stale as soon as certification changed and left the section with two cards
+  // and an empty half-screen underneath.
+  const curated = featuredTools.filter((tool) => certifiedPaths.has(getToolHref(tool.slug)));
+  const curatedPaths = new Set(curated.map((tool) => getToolHref(tool.slug)));
+  const rest = certifiedPublicTools
+    .filter((tool) => !curatedPaths.has(canonicalToolPath(tool)))
+    .map((tool) => ({
+      key: tool.id,
+      slug: canonicalToolPath(tool).replace(/^\/tools\//, '').replace(/\/$/, ''),
+      name: tool.nameEn || tool.name || tool.id,
+      description: (typeof tool.description === 'string' ? tool.description : tool.description?.en || tool.description?.tr) || '',
+      category: getCategoryLabel(tool.category) || 'Tools',
+      icon: iconForCategory(tool.category)
+    }));
+
+  setGridMarkup(container, [...curated, ...rest].map((tool) => `
     <article class="featured-tool-card">
       <div class="featured-tool-card__icon">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -360,15 +374,34 @@ function renderFeaturedTools() {
       <p>${t(`home.featuredCards.${tool.key}.description`, tool.description)}</p>
       <a href="${getToolHref(tool.slug)}">${t('home.featured.open', 'Open →')}</a>
     </article>
-  `).join('');
+  `).join(''));
+}
+
+function categoryToolKey(category) {
+  return category.slug.replace(/-tools$/, '').replace('developer', 'dev').replace('text-writing', 'text');
 }
 
 function renderCategories() {
   const container = document.getElementById('categoriesGrid');
   if (!container) return;
 
-  container.innerHTML = categories.map((category) => {
-    const categoryKey = category.slug.replace(/-tools$/, '').replace('developer', 'dev').replace('text-writing', 'text');
+  // A category with no certified tool is a dead end: the card, its description
+  // and its link all promise something the hub cannot deliver. Show only
+  // categories that have something to open, and say how many are still coming.
+  const live = categories.filter((category) => (certifiedByCategory[categoryToolKey(category)] || []).length > 0);
+  const withheld = categories.length - live.length;
+
+  const note = document.getElementById('categoriesPending');
+  if (note) {
+    note.textContent = withheld
+      ? `${withheld} more categories are in development and are not listed until their tools pass certification.`
+      : '';
+    note.hidden = !withheld;
+  }
+
+  setGridMarkup(container, live.map((category) => {
+    const categoryKey = categoryToolKey(category);
+    const toolCount = (certifiedByCategory[categoryKey] || []).length;
     const curatedLinks = categoryPopularTools[category.slug] || [];
     const popularLinks = curatedLinks
       .filter((tool) => certifiedPaths.has(getToolHref(tool.slug)))
@@ -392,19 +425,20 @@ function renderCategories() {
         </div>
         <h3><a href="${getCategoryHref(category)}">${getCategoryName(category)}</a></h3>
         <p>${getCategoryDescription(category)}</p>
+        <p class="category-nav-card__count">${toolCount} ${toolCount === 1 ? 'tool' : 'tools'}</p>
         <div class="category-nav-card__links" role="group" aria-label="${getCategoryName(category)} ${t('home.popularToolsAriaSuffix', 'popular tools')}">
           ${popularLinks.map((tool) => `<a href="${getToolHref(tool.slug)}">${t(`home.categoryPopularTools.${tool.key}`, tool.label)}</a>`).join('')}
         </div>
       </article>
     `;
-  }).join('');
+  }).join(''));
 }
 
 function renderBlogCards() {
   const container = document.getElementById('homeBlogCards');
   if (!container) return;
 
-  container.innerHTML = blogPosts.map((post) => {
+  setGridMarkup(container, blogPosts.map((post) => {
     const baseKey = `home.blogCards.${post.key}`;
     const title = t(`${baseKey}.title`, post.title);
     const excerpt = t(`${baseKey}.excerpt`, post.excerpt);
@@ -426,14 +460,16 @@ function renderBlogCards() {
         </div>
       </article>
     `;
-  }).join('');
+  }).join(''));
 }
 
 function renderWorkflowCards() {
   const container = document.getElementById('workflowCards');
   if (!container) return;
 
-  container.innerHTML = workflowCards.map((workflow) => {
+  container.innerHTML = workflowCards
+    .filter((workflow) => certifiedPaths.has(getToolHref(workflow.tool[1])))
+    .map((workflow) => {
     const baseKey = `home.workflows.cards.${workflow.key}`;
     const title = t(`${baseKey}.title`, workflow.title);
     const description = t(`${baseKey}.description`, workflow.description);
@@ -466,6 +502,7 @@ function getIconPath(name) {
     'trending-up': '<polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/>',
     type: '<polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/>',
     code: '<polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>',
+    tool: '<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>',
     repeat: '<polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/>',
     calculator: '<rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="16" y1="14" x2="16" y2="14"/><line x1="12" y1="14" x2="12" y2="14"/><line x1="8" y1="14" x2="8" y2="14"/><line x1="12" y1="18" x2="12" y2="18"/><line x1="8" y1="18" x2="8" y2="18"/><line x1="16" y1="18" x2="16" y2="18"/>',
     shield: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
@@ -524,17 +561,60 @@ function initSearch() {
 }
 
 // ============================================
+// RECENTLY USED TOOLS (local to this browser)
+// ============================================
+function renderRecentTools() {
+  const section = document.getElementById('recent-tools');
+  const grid = document.getElementById('homeRecentGrid');
+  if (!section || !grid) return;
+
+  const index = buildIndex({ tools: manifest.tools, posts: blogPostsForSearch, getToolHref });
+  const recents = recentItems(index);
+
+  grid.replaceChildren();
+  if (!recents.length) {
+    section.hidden = true;
+    return;
+  }
+
+  for (const item of recents) {
+    const card = document.createElement('a');
+    card.className = 'home-recent__card';
+    card.href = item.href;
+    const name = document.createElement('strong');
+    name.textContent = item.name;
+    const group = document.createElement('span');
+    group.textContent = item.group;
+    card.append(name, group);
+    card.addEventListener('click', () => rememberTool(item.id));
+    grid.append(card);
+  }
+  section.hidden = false;
+}
+
+function initRecentTools() {
+  const clear = document.getElementById('clearRecentTools');
+  if (clear && clear.dataset.ready !== 'true') {
+    clear.dataset.ready = 'true';
+    clear.addEventListener('click', () => {
+      forgetRecentTools();
+      renderRecentTools();
+    });
+  }
+  renderRecentTools();
+}
+
+// ============================================
 // RERENDER ON LANGUAGE CHANGE
 // ============================================
 function rerenderHomepageDynamicParts() {
-  renderPopularTasks();
   renderFeaturedTools();
-  renderPopularThisWeek();
   renderCategories();
   renderBlogCards();
   renderWorkflowCards();
   initSearch();
   initHomeSearch({ getToolHref });
+  initRecentTools();
 }
 
 window.addEventListener('languageChanged', () => {

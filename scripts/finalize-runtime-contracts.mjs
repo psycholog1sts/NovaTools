@@ -22,11 +22,21 @@ const SOURCE_TOOL_HREF_RE = /(href\s*=\s*["'])(?:https:\/\/mc-novatools\.com)?\/
 const LEGACY_THEME_GET_RE = /localStorage\.getItem\((["'])theme\1\)/g;
 const LEGACY_THEME_SET_RE = /localStorage\.setItem\((["'])theme\1\s*,/g;
 const PROFESSIONAL_THEME_HREF = '/styles/theme-professional.css';
-const PROFESSIONAL_THEME_LINK = `<link rel="stylesheet" href="${PROFESSIONAL_THEME_HREF}">`;
+const PROFESSIONAL_THEME_MARKER = 'data-novatools-professional-theme';
+// Inlined rather than linked: as a <link> in <head> it was the last render-blocking
+// request on every page, and deferring it instead would flash unthemed colours.
+const PROFESSIONAL_THEME_CSS = fs
+  .readFileSync(path.join(root, 'public', 'styles', 'theme-professional.css'), 'utf8')
+  .replace(/\/\*[\s\S]*?\*\//g, '')
+  .replace(/\s*\n\s*/g, '\n')
+  .trim();
+const PROFESSIONAL_THEME_STYLE = `<style ${PROFESSIONAL_THEME_MARKER}>${PROFESSIONAL_THEME_CSS}</style>`;
 const THEME_BOOTSTRAP_MARKER = 'data-novatools-theme-bootstrap';
 const THEME_BOOTSTRAP_SCRIPT = `<script ${THEME_BOOTSTRAP_MARKER}>(function(){try{var saved=localStorage.getItem('novatools-theme');var theme=saved==='light'||saved==='dark'?saved:(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');localStorage.setItem('novatools-theme',theme);document.documentElement.setAttribute('data-theme',theme);document.documentElement.style.colorScheme=theme;}catch(_error){document.documentElement.setAttribute('data-theme','light');document.documentElement.style.colorScheme='light';}})();</script>`;
 const BACKGROUND_REMOVER_V2_HREF = '/js/background-remover-v2.js';
 const BACKGROUND_REMOVER_V2_SCRIPT = `<script src="${BACKGROUND_REMOVER_V2_HREF}" defer></script>`;
+const RECENT_VISIT_HREF = '/js/record-tool-visit.js';
+const RECENT_VISIT_SCRIPT = `<script src="${RECENT_VISIT_HREF}" defer></script>`;
 const manifest = JSON.parse(fs.readFileSync(path.join(root, 'tools-manifest.json'), 'utf8'));
 const toolsByBuiltPath = new Map((manifest.tools || []).map((tool) => {
   const entry = String(tool.entry || '').replace(/^\/src\//, '/').replace(/^\//, '').replace(/\/$/, '/index.html');
@@ -90,6 +100,23 @@ function publishToolMetaContracts() {
   return published;
 }
 
+/**
+ * Certified tool pages record their own id locally so the homepage can show a
+ * "Recently used" shortcut. Uncertified routes are never recorded.
+ */
+function injectRecentToolVisit(html, relativePath) {
+  const tool = toolsByBuiltPath.get(relativePath.replace(/^(?:[a-z]{2}\/)/, ''));
+  if (!tool || tool.certificationStatus !== 'CERTIFIED' || tool.public !== true) return html;
+  let next = html;
+  if (!/data-tool-id=/.test(next)) {
+    next = next.replace(/<html\b([^>]*)>/i, (match, attrs) => `<html${attrs} data-tool-id="${tool.id}">`);
+  }
+  if (!next.includes(RECENT_VISIT_HREF)) {
+    next = next.replace(/<\/head>/i, `  ${RECENT_VISIT_SCRIPT}\n</head>`);
+  }
+  return next;
+}
+
 function injectProfessionalTheme(html, relativePath) {
   if (!/<\/head>/i.test(html)) {
     throw new Error(`cannot inject professional theme runtime: ${relativePath} has no </head>`);
@@ -99,8 +126,12 @@ function injectProfessionalTheme(html, relativePath) {
   if (!next.includes(THEME_BOOTSTRAP_MARKER)) {
     next = next.replace(/<\/head>/i, `  ${THEME_BOOTSTRAP_SCRIPT}\n</head>`);
   }
-  if (!next.includes(`href="${PROFESSIONAL_THEME_HREF}"`) && !next.includes(`href='${PROFESSIONAL_THEME_HREF}'`)) {
-    next = next.replace(/<\/head>/i, `  ${PROFESSIONAL_THEME_LINK}\n</head>`);
+  next = next.replace(
+    /\n?\s*<link\b(?=[^>]*\brel\s*=\s*["']stylesheet["'])(?=[^>]*\bhref\s*=\s*["'][^"']*\/styles\/theme-professional\.css["'])[^>]*\/?>\s*/gi,
+    '\n'
+  );
+  if (!next.includes(PROFESSIONAL_THEME_MARKER)) {
+    next = next.replace(/<\/head>/i, `  ${PROFESSIONAL_THEME_STYLE}\n</head>`);
   }
   return next;
 }
@@ -231,6 +262,7 @@ for (const filePath of htmlFiles) {
   const hadProfessionalTheme = after.includes(`href="${PROFESSIONAL_THEME_HREF}"`) || after.includes(`href='${PROFESSIONAL_THEME_HREF}'`);
   const hadThemeBootstrap = after.includes(THEME_BOOTSTRAP_MARKER);
   after = injectProfessionalTheme(after, relative);
+  after = injectRecentToolVisit(after, relative);
   if (!hadProfessionalTheme) injectedProfessionalThemes += 1;
   if (!hadThemeBootstrap) injectedThemeBootstraps += 1;
 
@@ -274,9 +306,14 @@ if (sourceToolLinks.length) {
   throw new Error(`source-only /src/tools links remain in ${sourceToolLinks.length} built HTML file(s)`);
 }
 
-const missingProfessionalTheme = htmlFiles.filter((filePath) => !fs.readFileSync(filePath, 'utf8').includes(PROFESSIONAL_THEME_HREF));
+const missingProfessionalTheme = htmlFiles.filter((filePath) => !fs.readFileSync(filePath, 'utf8').includes(PROFESSIONAL_THEME_MARKER));
 if (missingProfessionalTheme.length) {
-  throw new Error(`professional theme stylesheet is missing from ${missingProfessionalTheme.length} built HTML file(s)`);
+  throw new Error(`professional theme is missing from ${missingProfessionalTheme.length} built HTML file(s)`);
+}
+
+const blockingProfessionalTheme = htmlFiles.filter((filePath) => /<link\b[^>]*theme-professional\.css/i.test(fs.readFileSync(filePath, 'utf8')));
+if (blockingProfessionalTheme.length) {
+  throw new Error(`professional theme is still linked (render-blocking) in ${blockingProfessionalTheme.length} built HTML file(s)`);
 }
 
 const missingThemeBootstrap = htmlFiles.filter((filePath) => !fs.readFileSync(filePath, 'utf8').includes(THEME_BOOTSTRAP_MARKER));

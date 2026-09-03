@@ -83,11 +83,11 @@
       font-size: clamp(1.75rem, 4vw, 2.5rem);
       font-weight: 700;
       letter-spacing: -0.02em;
-      color: #FAFAFA;
+      color: var(--text-primary);
       margin-bottom: 0.75rem;
     }
     .tool-hero p {
-      color: #A1A1AA;
+      color: var(--text-secondary);
       font-size: 1.0625rem;
       max-width: 560px;
       margin: 0 auto;
@@ -122,15 +122,15 @@
       font-weight: 600;
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: #71717A;
+      color: var(--text-secondary);
     }
 
     .option-select, .option-input {
       padding: 0.75rem 1rem;
-      background: #0F0F12;
-      border: 1px solid rgba(0, 217, 255, 0.12);
+      background: var(--field-bg);
+      border: 1px solid var(--field-border);
       border-radius: 8px;
-      color: #FAFAFA;
+      color: var(--text-primary);
       font-size: 0.9rem;
       outline: none;
       transition: border-color 0.2s, box-shadow 0.2s;
@@ -167,13 +167,13 @@
     .checkbox-option input[type="checkbox"] {
       width: 18px;
       height: 18px;
-      accent-color: #00D9FF;
+      accent-color: var(--accent-text);
       cursor: pointer;
     }
 
     .checkbox-option span {
       font-size: 0.875rem;
-      color: #FAFAFA;
+      color: var(--text-primary);
     }
 
     .btn-bar {
@@ -201,22 +201,22 @@
 
     .btn:active { transform: scale(0.97); }
     .btn-primary {
-      background: linear-gradient(135deg, #00D9FF, #0099CC);
+      background: linear-gradient(135deg, var(--accent-text), #0099CC);
       color: #0A0A0C;
     }
     .btn-primary:hover { background: linear-gradient(135deg, #1FE2FF, #00B8EE); }
     .btn-secondary {
       background: rgba(0, 217, 255, 0.1);
       border: 1px solid rgba(0, 217, 255, 0.25);
-      color: #00D9FF;
+      color: var(--accent-text);
     }
     .btn-secondary:hover { background: rgba(0, 217, 255, 0.18); }
     .btn-ghost {
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(255, 255, 255, 0.1);
-      color: #A1A1AA;
+      color: var(--text-secondary);
     }
-    .btn-ghost:hover { background: rgba(255, 255, 255, 0.1); color: #FAFAFA; }
+    .btn-ghost:hover { background: rgba(255, 255, 255, 0.1); color: var(--text-primary); }
 
     .output-section {
       background: #08080A;
@@ -237,12 +237,12 @@
     .output-label {
       font-size: 0.8125rem;
       font-weight: 600;
-      color: #71717A;
+      color: var(--text-secondary);
     }
 
     .output-stats {
       font-size: 0.75rem;
-      color: #52525B;
+      color: var(--text-tertiary);
     }
 
     .uuid-list {
@@ -254,7 +254,7 @@
 
     .uuid-item {
       padding: 0.5rem 0.75rem;
-      color: #00FF88;
+      color: var(--color-success-text);
       border-bottom: 1px solid rgba(255, 255, 255, 0.05);
       display: flex;
       align-items: center;
@@ -266,7 +266,7 @@
     }
 
     .uuid-number {
-      color: #71717A;
+      color: var(--text-secondary);
       font-size: 0.75rem;
       min-width: 2rem;
     }
@@ -278,7 +278,7 @@
     .uuid-copy-btn {
       background: none;
       border: none;
-      color: #52525B;
+      color: var(--text-tertiary);
       cursor: pointer;
       padding: 0.25rem;
       display: flex;
@@ -293,12 +293,12 @@
     }
 
     .uuid-copy-btn:hover {
-      color: #00D9FF;
+      color: var(--accent-text);
     }
 
     .uuid-placeholder {
       text-align: center;
-      color: #52525B;
+      color: var(--text-tertiary);
       font-style: italic;
       padding: 2rem;
     }
@@ -310,7 +310,7 @@
 
     .copy-feedback {
       font-size: 0.8rem;
-      color: #00FF88;
+      color: var(--color-success-text);
       opacity: 0;
       transition: opacity 0.3s;
     }
@@ -327,7 +327,7 @@
 
     .info-title {
       font-weight: 600;
-      color: #00D9FF;
+      color: var(--accent-text);
       font-size: 0.875rem;
       margin-bottom: 0.5rem;
       display: flex;
@@ -337,7 +337,7 @@
 
     .info-text {
       font-size: 0.8125rem;
-      color: #A1A1AA;
+      color: var(--text-secondary);
       line-height: 1.6;
     }
 
@@ -353,14 +353,14 @@
     }
 
     .disclaimer-icon {
-      color: #00D9FF;
+      color: var(--accent-text);
       font-size: 1.125rem;
       flex-shrink: 0;
     }
 
     .disclaimer-text {
       font-size: 0.8125rem;
-      color: #A1A1AA;
+      color: var(--text-secondary);
       line-height: 1.6;
     }
 
@@ -372,17 +372,17 @@
     .seo-section h2 {
       font-size: 1.375rem;
       font-weight: 700;
-      color: #FAFAFA;
+      color: var(--text-primary);
       margin-bottom: 0.75rem;
     }
     .seo-section h3 {
       font-size: 1.125rem;
       font-weight: 600;
-      color: #FAFAFA;
+      color: var(--text-primary);
       margin: 2rem 0 0.75rem;
     }
     .seo-section p, .seo-section li {
-      color: #A1A1AA;
+      color: var(--text-secondary);
       line-height: 1.8;
       font-size: 0.9375rem;
     }
@@ -397,7 +397,7 @@
     }
     .faq-item summary {
       font-weight: 600;
-      color: #FAFAFA;
+      color: var(--text-primary);
       cursor: pointer;
       list-style: none;
       display: flex;
@@ -408,7 +408,7 @@
     .faq-item summary::-webkit-details-marker { display: none; }
     .faq-item summary::after {
       content: '+';
-      color: #00D9FF;
+      color: var(--accent-text);
       font-size: 1.25rem;
       flex-shrink: 0;
       transition: transform 0.2s;
@@ -416,7 +416,7 @@
     .faq-item[open] summary::after { content: '\2212'; }
     .faq-item p {
       margin-top: 0.625rem;
-      color: #A1A1AA;
+      color: var(--text-secondary);
       line-height: 1.7;
     }
 
@@ -640,7 +640,7 @@
     </footer>
     <style>
     .tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }
-    .tool-footer a { color: #00D9FF; text-decoration: none; }
+    .tool-footer a { color: var(--accent-text); text-decoration: none; }
     </style>
   </div>
 

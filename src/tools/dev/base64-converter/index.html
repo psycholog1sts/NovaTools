@@ -70,44 +70,44 @@
     .tool-wrapper { max-width: 960px; margin: 0 auto; padding: 3rem 1rem 5rem; }
     .tool-hero { text-align: center; margin-bottom: 2.5rem; }
     .tool-hero-icon { font-size: 3.5rem; line-height: 1; margin-bottom: 1rem; }
-    .tool-hero h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; letter-spacing: -0.02em; color: #FAFAFA; margin-bottom: 0.75rem; }
-    .tool-hero p { color: #A1A1AA; font-size: 1.0625rem; max-width: 560px; margin: 0 auto; }
+    .tool-hero h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; letter-spacing: -0.02em; color: var(--text-primary); margin-bottom: 0.75rem; }
+    .tool-hero p { color: var(--text-secondary); font-size: 1.0625rem; max-width: 560px; margin: 0 auto; }
     .card { background: rgba(15,15,20,0.7); border: 1px solid rgba(0,217,255,0.15); border-radius: 14px; padding: 1.75rem; backdrop-filter: blur(12px); margin-bottom: 1.5rem; }
     
     .mode-toggle { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; background: rgba(0,0,0,0.2); padding: 0.375rem; border-radius: 10px; }
-    .mode-btn { flex: 1; height: 40px; border: none; border-radius: 8px; font-size: 0.875rem; font-weight: 600; cursor: pointer; background: transparent; color: #71717A; transition: all 0.2s; }
-    .mode-btn.active { background: rgba(0,217,255,0.15); color: #00D9FF; }
-    .mode-btn:hover:not(.active) { color: #A1A1AA; }
+    .mode-btn { flex: 1; height: 40px; border: none; border-radius: 8px; font-size: 0.875rem; font-weight: 600; cursor: pointer; background: transparent; color: var(--text-secondary); transition: all 0.2s; }
+    .mode-btn.active { background: rgba(0,217,255,0.15); color: var(--accent-text); }
+    .mode-btn:hover:not(.active) { color: var(--text-secondary); }
     
     .input-section { margin-bottom: 1.25rem; }
-    .input-label { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #71717A; margin-bottom: 0.625rem; }
-    #textInput { width: 100%; min-height: 150px; padding: 1rem 1.125rem; background: #0F0F12; border: 1px solid rgba(0,217,255,0.12); border-radius: 10px; color: #FAFAFA; font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.875rem; line-height: 1.7; resize: vertical; transition: border-color 0.2s, box-shadow 0.2s; outline: none; box-sizing: border-box; }
-    #textInput::placeholder { color: #52525B; }
+    .input-label { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 0.625rem; }
+    #textInput { width: 100%; min-height: 150px; padding: 1rem 1.125rem; background: var(--field-bg); border: 1px solid var(--field-border); border-radius: 10px; color: var(--text-primary); font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.875rem; line-height: 1.7; resize: vertical; transition: border-color 0.2s, box-shadow 0.2s; outline: none; box-sizing: border-box; }
+    #textInput::placeholder { color: var(--text-tertiary); }
     #textInput:focus { border-color: rgba(0,217,255,0.45); box-shadow: 0 0 0 3px rgba(0,217,255,0.08); }
     
     .file-section { margin-bottom: 1.25rem; }
     .file-dropzone { border: 2px dashed rgba(0,217,255,0.25); border-radius: 10px; padding: 2rem; text-align: center; cursor: pointer; transition: all 0.2s; background: rgba(0,217,255,0.02); }
     .file-dropzone:hover { border-color: rgba(0,217,255,0.5); background: rgba(0,217,255,0.05); }
-    .file-dropzone.dragover { border-color: #00D9FF; background: rgba(0,217,255,0.1); }
+    .file-dropzone.dragover { border-color: var(--accent-text); background: rgba(0,217,255,0.1); }
     .file-dropzone-icon { font-size: 2rem; margin-bottom: 0.5rem; }
-    .file-dropzone-text { color: #A1A1AA; font-size: 0.9375rem; }
-    .file-dropzone-hint { color: #52525B; font-size: 0.8125rem; margin-top: 0.25rem; }
+    .file-dropzone-text { color: var(--text-secondary); font-size: 0.9375rem; }
+    .file-dropzone-hint { color: var(--text-tertiary); font-size: 0.8125rem; margin-top: 0.25rem; }
     #fileInput { display: none; }
     .file-info { display: none; align-items: center; gap: 0.75rem; padding: 0.875rem 1rem; background: rgba(0,217,255,0.08); border: 1px solid rgba(0,217,255,0.2); border-radius: 10px; margin-top: 0.75rem; }
     .file-info.visible { display: flex; }
-    .file-info-name { flex: 1; font-size: 0.875rem; color: #FAFAFA; }
-    .file-info-size { font-size: 0.75rem; color: #71717A; }
+    .file-info-name { flex: 1; font-size: 0.875rem; color: var(--text-primary); }
+    .file-info-size { font-size: 0.75rem; color: var(--text-secondary); }
     .file-info-remove { background: none; border: none; color: #FF5555; cursor: pointer; font-size: 1.25rem; line-height: 1; padding: 0; }
     
     .btn-bar { display: flex; flex-wrap: wrap; gap: 0.625rem; margin-bottom: 1.5rem; }
     .btn { display: inline-flex; align-items: center; gap: 0.4rem; height: 40px; padding: 0 1.125rem; border: none; border-radius: 8px; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: background 0.18s, transform 0.12s, opacity 0.18s; outline: none; user-select: none; }
     .btn:active { transform: scale(0.97); }
-    .btn-primary { background: linear-gradient(135deg, #00D9FF, #0099CC); color: #0A0A0C; }
+    .btn-primary { background: linear-gradient(135deg, var(--accent-text), #0099CC); color: #0A0A0C; }
     .btn-primary:hover { background: linear-gradient(135deg, #1FE2FF, #00B8EE); }
-    .btn-secondary { background: rgba(0,217,255,0.1); border: 1px solid rgba(0,217,255,0.25); color: #00D9FF; }
+    .btn-secondary { background: rgba(0,217,255,0.1); border: 1px solid rgba(0,217,255,0.25); color: var(--accent-text); }
     .btn-secondary:hover { background: rgba(0,217,255,0.18); }
-    .btn-ghost { background: var(--surface-default); border: 1px solid var(--border-hover); color: #A1A1AA; }
-    .btn-ghost:hover { background: rgba(255,255,255,0.09); color: #FAFAFA; }
+    .btn-ghost { background: var(--surface-default); border: 1px solid var(--border-hover); color: var(--text-secondary); }
+    .btn-ghost:hover { background: rgba(255,255,255,0.09); color: var(--text-primary); }
     .btn-danger { background: rgba(255,85,85,0.1); border: 1px solid rgba(255,85,85,0.25); color: #FF5555; }
     .btn-danger:hover { background: rgba(255,85,85,0.18); }
     
@@ -118,29 +118,29 @@
     @keyframes fadeSlideIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
     
     .output-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.625rem; }
-    .output-label { font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #71717A; }
+    .output-label { font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-secondary); }
     .output-wrap { position: relative; background: #08080A; border: 1px solid rgba(0,217,255,0.1); border-radius: 10px; overflow: hidden; }
-    .output-placeholder { padding: 2rem 1.5rem; text-align: center; color: #52525B; font-size: 0.9375rem; }
-    #textOutput { display: none; width: 100%; min-height: 150px; margin: 0; padding: 1.125rem 1.25rem; background: transparent; border: none; color: #FAFAFA; font-family: 'JetBrains Mono', monospace; font-size: 0.8125rem; line-height: 1.75; resize: vertical; outline: none; box-sizing: border-box; }
+    .output-placeholder { padding: 2rem 1.5rem; text-align: center; color: var(--text-tertiary); font-size: 0.9375rem; }
+    #textOutput { display: none; width: 100%; min-height: 150px; margin: 0; padding: 1.125rem 1.25rem; background: transparent; border: none; color: var(--text-primary); font-family: 'JetBrains Mono', monospace; font-size: 0.8125rem; line-height: 1.75; resize: vertical; outline: none; box-sizing: border-box; }
     
-    .copy-feedback { font-size: 0.8rem; color: #00FF88; opacity: 0; transition: opacity 0.3s; pointer-events: none; }
+    .copy-feedback { font-size: 0.8rem; color: var(--color-success-text); opacity: 0; transition: opacity 0.3s; pointer-events: none; }
     .copy-feedback.show { opacity: 1; }
     
-    .legal-note { margin-top: 1.5rem; padding: 1rem 1.25rem; background: rgba(255,193,7,0.05); border: 1px solid rgba(255,193,7,0.15); border-radius: 10px; font-size: 0.8125rem; color: #A1A1AA; line-height: 1.6; }
-    .legal-note strong { color: #FFC107; }
+    .legal-note { margin-top: 1.5rem; padding: 1rem 1.25rem; background: rgba(255,193,7,0.05); border: 1px solid rgba(255,193,7,0.15); border-radius: 10px; font-size: 0.8125rem; color: var(--text-secondary); line-height: 1.6; }
+    .legal-note strong { color: var(--color-warning-text); }
     
     .seo-section { max-width: 960px; margin: 3.5rem auto 0; padding: 0 1rem; }
-    .seo-section h2 { font-size: 1.375rem; font-weight: 700; color: #FAFAFA; margin-bottom: 0.75rem; }
-    .seo-section h3 { font-size: 1.125rem; font-weight: 600; color: #FAFAFA; margin: 2rem 0 0.75rem; }
-    .seo-section p, .seo-section li { color: #A1A1AA; line-height: 1.8; font-size: 0.9375rem; }
+    .seo-section h2 { font-size: 1.375rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.75rem; }
+    .seo-section h3 { font-size: 1.125rem; font-weight: 600; color: var(--text-primary); margin: 2rem 0 0.75rem; }
+    .seo-section p, .seo-section li { color: var(--text-secondary); line-height: 1.8; font-size: 0.9375rem; }
     .seo-section ol { padding-left: 1.25rem; }
     .seo-section ol li { margin-bottom: 0.4rem; }
     .faq-item { border: 1px solid rgba(0,217,255,0.1); border-radius: 10px; padding: 1rem 1.125rem; margin-bottom: 0.875rem; background: rgba(15,15,20,0.5); }
-    .faq-item summary { font-weight: 600; color: #FAFAFA; cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .faq-item summary { font-weight: 600; color: var(--text-primary); cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
     .faq-item summary::-webkit-details-marker { display: none; }
-    .faq-item summary::after { content: '+'; color: #00D9FF; font-size: 1.25rem; flex-shrink: 0; transition: transform 0.2s; }
+    .faq-item summary::after { content: '+'; color: var(--accent-text); font-size: 1.25rem; flex-shrink: 0; transition: transform 0.2s; }
     .faq-item[open] summary::after { content: '\2212'; }
-    .faq-item p { margin-top: 0.625rem; color: #A1A1AA; line-height: 1.7; }
+    .faq-item p { margin-top: 0.625rem; color: var(--text-secondary); line-height: 1.7; }
     
     @media (max-width: 600px) {
       .btn-bar { gap: 0.5rem; }
@@ -342,7 +342,7 @@
         <section class="trust-help novatools-tool-reading-path" aria-labelledby="toolReadingPathTitle">
           <h2 id="toolReadingPathTitle">Recommended next reading</h2>
           <p>Use these practical guides to understand when this tool is the right choice, what to check before exporting, and which workflow usually comes next.</p>
-          <div class="related-tools-grid"><a class="related-tool-link" href="https://mc-novatools.com/blog/articles/developer-debugging-tool-chain.html">Developer debugging chain</a><a class="related-tool-link" href="https://mc-novatools.com/blog/articles/json-formatter-debugging-api-responses.html">JSON formatter guide</a></div>
+          <div class="related-tools-grid"><a class="related-tool-link" href="/blog/articles/understanding-json-web-tokens-structure-security.html">Understanding JSON Web Tokens (JWT): Structure and Security</a><a class="related-tool-link" href="/blog/articles/understanding-json-web-tokens-structure-security.html">Understanding JSON Web Tokens (JWT): Structure and Security</a></div>
         </section>
     </main>
 
@@ -352,7 +352,7 @@
     </footer>
     <style>
       .tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }
-      .tool-footer a { color: #00D9FF; text-decoration: none; }
+      .tool-footer a { color: var(--accent-text); text-decoration: none; }
     </style>
   </div>
 

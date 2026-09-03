@@ -17,7 +17,7 @@
     "converters": "Dönüştürücüler"
   },
   "hero": {
-    "title": "Dosyalar, Finans ve Kod için Her Şey Dahil Araçlar",
+    "title": "Ne varsaydığını açıkça gösteren günlük araçlar",
     "subtitle": "MC NovaTools’u hızlı, anlaşılır ve tarayıcı tabanlı bir araç setiyle pratik iş akışlarını dönüştürmek, hesaplamak ve oluşturmak için kullanın.",
     "cta": "Araçları Keşfet",
     "browse": "Kategorileri Görüntüle",
@@ -5680,7 +5680,7 @@
     "edit": "Düzenle",
     "close": "Kapat",
     "open": "Aç",
-    "search": "Ara",
+    "search": "Araçlarda ara",
     "download": "İndir",
     "upload": "Yükle",
     "copy": "Kopyala",
@@ -5863,7 +5863,7 @@
     "toolsGeneric": "Aletler",
     "viewAllCategories": "Tüm Kategorileri Gör",
     "viewAllDesc": "Browse our tool collection by category.",
-    "searchPlaceholder": "Search tools...",
+    "searchPlaceholder": "Araçlarda ara — “yüzde”, “zaman damgası”, “pdf sıkıştır”",
     "popularLabel": "Popüler:",
     "ads": {
       "eyebrow": "Temiz yerleşim",
@@ -5885,7 +5885,7 @@
       "freeTools": "Ücretsiz Araçlar",
       "categories": "Kategoriler",
       "private": "Gizli",
-      "description": "MC NovaTools’u hızlı, anlaşılır ve tarayıcı tabanlı bir araç setiyle pratik iş akışlarını dönüştürmek, hesaplamak ve oluşturmak için kullanın."
+      "description": "Tarayıcınızda çalışan dönüştürücüler, hesaplayıcılar ve dosya araçları. Her araç neyi varsaydığını ve nerede durduğunu yazar."
     },
     "launcher": {
       "title": "İş akışı başlatıcı",
@@ -6006,9 +6006,9 @@
       "localUses": "bu hafta cihazda {count} kullanım"
     },
     "featured": {
-      "eyebrow": "Öne çıkanlar",
-      "title": "Bugün kullanmaya başlayabileceğiniz araçlar",
-      "description": "PDF, görsel, geliştirici ve finans iş akışları için hızlı başlangıç kartları.",
+      "eyebrow": "Tüm araçlar",
+      "title": "Kullanıma hazır olan her araç",
+      "description": "Sertifikasyondan geçen araçlar bunlar. Hâlâ geliştirilenler listelenmez.",
       "open": "Aç →"
     },
     "toolLabels": {

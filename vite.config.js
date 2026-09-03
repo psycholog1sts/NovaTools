@@ -3,6 +3,7 @@ import { dirname, resolve } from 'path';
 import { fileURLToPath } from 'url';
 import { readFileSync, statSync } from 'fs';
 import { globSync } from 'glob';
+import { isPublishedBlogSlug } from './src/js/blog-publication.js';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
 import tailwindcss from 'tailwindcss';
 import autoprefixer from 'autoprefixer';
@@ -230,19 +231,22 @@ const localizedRootHtmlEntries = ['en', 'tr', 'ar'].reduce((acc, locale) => {
 }, {});
 
 
+// Articles withheld by the originality gate are not built at all, so a
+// template-duplicated page has no URL rather than a noindexed one.
 const sourceBlogArticleSlugs = globSync('src/blog/articles/**/*.html')
   .map((file) => file.replace(/\\/g, '/').split('/').pop().replace(/\.html$/, ''))
   .filter((slug) => slug !== 'index')
+  .filter((slug) => isPublishedBlogSlug(slug))
   .map((slug) => normalizeBlogSlug(slug));
 
 const blogSlugsByLocale = (() => {
   const fallbackPosts = JSON.parse(readFileSync(resolve(__dirname, `src/i18n/blog/${fallbackBlogLocale}.json`), 'utf8'));
-  const fallbackSlugs = fallbackPosts.map((post) => post.slug).filter(Boolean);
+  const fallbackSlugs = fallbackPosts.map((post) => post.slug).filter(Boolean).filter(isPublishedBlogSlug);
 
   const manifestSlugsByLocale = supportedBlogLocales.reduce((acc, locale) => {
     try {
       const posts = JSON.parse(readFileSync(resolve(__dirname, `src/i18n/blog/${locale}.json`), 'utf8'));
-      acc[locale] = posts.map((post) => post.slug).filter(Boolean);
+      acc[locale] = posts.map((post) => post.slug).filter(Boolean).filter(isPublishedBlogSlug);
     } catch {
       acc[locale] = fallbackSlugs;
     }
@@ -278,15 +282,17 @@ const blogCategoryArchiveEntries = globSync('blog/categories/**/*.html').reduce(
 }, {});
 
 
-const blogArticleEntries = globSync('src/blog/articles/**/*.html').reduce((acc, file) => {
-  const name = file
-    .replace(/^src[/\\]/, '')
-    .replace(/\.html$/, '')
-    .replace(/\\/g, '/');
+const blogArticleEntries = globSync('src/blog/articles/**/*.html')
+  .filter((file) => isPublishedBlogSlug(file.replace(/\\/g, '/').split('/').pop().replace(/\.html$/, '')))
+  .reduce((acc, file) => {
+    const name = file
+      .replace(/^src[/\\]/, '')
+      .replace(/\.html$/, '')
+      .replace(/\\/g, '/');
 
-  acc[name] = resolveHtmlEntry(file);
-  return acc;
-}, {});
+    acc[name] = resolveHtmlEntry(file);
+    return acc;
+  }, {});
 
 
 const localizedAuthorEntries = ['en', 'tr'].reduce((acc, locale) => {

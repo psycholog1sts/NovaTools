@@ -88,11 +88,11 @@
       font-size: clamp(1.75rem, 4vw, 2.5rem);
       font-weight: 700;
       letter-spacing: -0.02em;
-      color: #FAFAFA;
+      color: var(--text-primary);
       margin-bottom: 0.75rem;
     }
     .tool-hero p {
-      color: #A1A1AA;
+      color: var(--text-secondary);
       font-size: 1.0625rem;
       max-width: 560px;
       margin: 0 auto;
@@ -119,17 +119,17 @@
       font-weight: 600;
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: #71717A;
+      color: var(--text-secondary);
       margin-bottom: 0.625rem;
     }
     #jsonInput {
       width: 100%;
       min-height: 220px;
       padding: 1rem 1.125rem;
-      background: #0F0F12;
-      border: 1px solid rgba(0, 217, 255, 0.12);
+      background: var(--field-bg);
+      border: 1px solid var(--field-border);
       border-radius: 10px;
-      color: #FAFAFA;
+      color: var(--text-primary);
       font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
       font-size: 0.875rem;
       line-height: 1.7;
@@ -137,7 +137,7 @@
       transition: border-color 0.2s, box-shadow 0.2s;
       outline: none;
     }
-    #jsonInput::placeholder { color: #52525B; }
+    #jsonInput::placeholder { color: var(--text-tertiary); }
     #jsonInput:focus {
       border-color: rgba(0, 217, 255, 0.45);
       box-shadow: 0 0 0 3px rgba(0, 217, 255, 0.08);
@@ -167,22 +167,22 @@
     }
     .btn:active { transform: scale(0.97); }
     .btn-primary {
-      background: linear-gradient(135deg, #00D9FF, #0099CC);
+      background: linear-gradient(135deg, var(--accent-text), #0099CC);
       color: #0A0A0C;
     }
     .btn-primary:hover { background: linear-gradient(135deg, #1FE2FF, #00B8EE); }
     .btn-secondary {
       background: rgba(0, 217, 255, 0.1);
       border: 1px solid rgba(0, 217, 255, 0.25);
-      color: #00D9FF;
+      color: var(--accent-text);
     }
     .btn-secondary:hover { background: rgba(0, 217, 255, 0.18); }
     .btn-ghost {
       background: var(--surface-default);
       border: 1px solid var(--border-hover);
-      color: #A1A1AA;
+      color: var(--text-secondary);
     }
-    .btn-ghost:hover { background: rgba(255, 255, 255, 0.09); color: #FAFAFA; }
+    .btn-ghost:hover { background: rgba(255, 255, 255, 0.09); color: var(--text-primary); }
     .btn-danger {
       background: rgba(255, 85, 85, 0.1);
       border: 1px solid rgba(255, 85, 85, 0.25);
@@ -220,7 +220,7 @@
       border-radius: 999px;
       font-size: 0.8125rem;
       font-weight: 600;
-      color: #00FF88;
+      color: var(--color-success-text);
       animation: fadeSlideIn 0.25s ease;
     }
     @keyframes fadeSlideIn {
@@ -274,7 +274,7 @@
       font-weight: 600;
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: #71717A;
+      color: var(--text-secondary);
     }
     .output-wrap {
       position: relative;
@@ -286,7 +286,7 @@
     .output-placeholder {
       padding: 2rem 1.5rem;
       text-align: center;
-      color: #52525B;
+      color: var(--text-tertiary);
       font-size: 0.9375rem;
     }
     #jsonOutput {
@@ -297,14 +297,14 @@
       font-family: 'JetBrains Mono', 'Fira Code', monospace;
       font-size: 0.8125rem;
       line-height: 1.75;
-      color: #FAFAFA;
+      color: var(--text-primary);
       white-space: pre;
       tab-size: 2;
     }
 
     /* ─── Syntax highlight colours ───────────────── */
-    .json-key     { color: #00D9FF; }
-    .json-string  { color: #00FF88; }
+    .json-key     { color: var(--accent-text); }
+    .json-string  { color: var(--color-success-text); }
     .json-number  { color: #FF9500; }
     .json-boolean { color: #BD93F9; }
     .json-null    { color: #FF5555; }
@@ -312,7 +312,7 @@
     /* ─── Copy feedback ──────────────────────────── */
     .copy-feedback {
       font-size: 0.8rem;
-      color: #00FF88;
+      color: var(--color-success-text);
       opacity: 0;
       transition: opacity 0.3s;
       pointer-events: none;
@@ -328,17 +328,17 @@
     .seo-section h2 {
       font-size: 1.375rem;
       font-weight: 700;
-      color: #FAFAFA;
+      color: var(--text-primary);
       margin-bottom: 0.75rem;
     }
     .seo-section h3 {
       font-size: 1.125rem;
       font-weight: 600;
-      color: #FAFAFA;
+      color: var(--text-primary);
       margin: 2rem 0 0.75rem;
     }
     .seo-section p, .seo-section li {
-      color: #A1A1AA;
+      color: var(--text-secondary);
       line-height: 1.8;
       font-size: 0.9375rem;
     }
@@ -353,7 +353,7 @@
     }
     .faq-item summary {
       font-weight: 600;
-      color: #FAFAFA;
+      color: var(--text-primary);
       cursor: pointer;
       list-style: none;
       display: flex;
@@ -364,7 +364,7 @@
     .faq-item summary::-webkit-details-marker { display: none; }
     .faq-item summary::after {
       content: '+';
-      color: #00D9FF;
+      color: var(--accent-text);
       font-size: 1.25rem;
       flex-shrink: 0;
       transition: transform 0.2s;
@@ -372,7 +372,7 @@
     .faq-item[open] summary::after { content: '\2212'; }
     .faq-item p {
       margin-top: 0.625rem;
-      color: #A1A1AA;
+      color: var(--text-secondary);
       line-height: 1.7;
     }
 
@@ -642,7 +642,7 @@
         <section class="trust-help novatools-tool-reading-path" aria-labelledby="toolReadingPathTitle">
           <h2 id="toolReadingPathTitle">Recommended next reading</h2>
           <p>Use these practical guides to understand when this tool is the right choice, what to check before exporting, and which workflow usually comes next.</p>
-          <div class="related-tools-grid"><a class="related-tool-link" href="https://mc-novatools.com/blog/articles/developer-debugging-tool-chain.html">Developer debugging chain</a><a class="related-tool-link" href="https://mc-novatools.com/blog/articles/json-formatter-debugging-api-responses.html">JSON formatter guide</a></div>
+          <div class="related-tools-grid"><a class="related-tool-link" href="/blog/articles/understanding-json-web-tokens-structure-security.html">Understanding JSON Web Tokens (JWT): Structure and Security</a><a class="related-tool-link" href="/blog/articles/understanding-json-web-tokens-structure-security.html">Understanding JSON Web Tokens (JWT): Structure and Security</a></div>
         </section>
     </main>
 
@@ -652,7 +652,7 @@
 </footer>
 <style>
 .tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }
-.tool-footer a { color: #00D9FF; text-decoration: none; }
+.tool-footer a { color: var(--accent-text); text-decoration: none; }
 </style>
   </div><!-- /#app -->
 
