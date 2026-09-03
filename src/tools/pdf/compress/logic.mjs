@@ -4,7 +4,14 @@
  * This does not downsample page images or guarantee a smaller output.
  */
 
-import { PDFDocument } from 'pdf-lib';
+// Imported on demand: pdf-lib is larger than everything else this route ships,
+// and it is not needed until a file is chosen. Eagerly bundled it put the page
+// over the 200 KB first-load JS budget.
+let pdfLibPromise = null;
+function loadPdfLib() {
+  pdfLibPromise = pdfLibPromise || import('pdf-lib').catch((error) => { pdfLibPromise = null; throw error; });
+  return pdfLibPromise;
+}
 import { loadToolMeta } from '../../../core/router.mjs';
 import { generateToolPageSchemas, injectMultipleSchemas } from '../../../core/seo/schema-generator.mjs';
 import { formatBytes, trackEvent, preventDefaults } from '../../../core/utils/index.mjs';
@@ -231,6 +238,7 @@ async function compressPDF() {
   const arrayBuffer = await state.file.arrayBuffer();
 
   updateProgress(15, 'Parsing PDF...', '');
+  const { PDFDocument } = await loadPdfLib();
   const pdfDoc = await PDFDocument.load(arrayBuffer, { updateMetadata: false, ignoreEncryption: true });
   const pageCount = pdfDoc.getPageCount();
 

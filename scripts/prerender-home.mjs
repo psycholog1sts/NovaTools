@@ -15,7 +15,6 @@
  * still runs on the client and skips the assignment when it would produce the
  * markup that is already there.
  */
-import { chromium } from '@playwright/test';
 import http from 'node:http';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -68,6 +67,9 @@ const PRERENDER_REQUIRED = process.env.PRERENDER_REQUIRED === '1'
 
 let browser;
 try {
+  // Imported dynamically for the same reason the launch is guarded: on an image
+  // without the browser package this must degrade, not abort the build.
+  const { chromium } = await import('@playwright/test');
   browser = await chromium.launch();
 } catch (error) {
   server.close();
