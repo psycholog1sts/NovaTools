@@ -310,6 +310,7 @@
     }
   </style>
   <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+  <script type="module" src="./pdf-lib-runtime.mjs"></script>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -661,11 +662,45 @@ document.addEventListener('DOMContentLoaded', function() {
     hideError();
   }
 
+  var MAX_FILES = 20;
+  var MAX_TOTAL_BYTES = 50 * 1024 * 1024;
+
+  function totalBytes(list) {
+    return list.reduce(function(sum, f) { return sum + f.size; }, 0);
+  }
+
+  // Anything refused is named. This used to drop non-PDFs, the 21st file and
+  // everything past 50 MB without a word, so the page promised limits it never
+  // enforced and silently merged less than the visitor selected.
   function addFiles(list) {
+    var refusedType = [];
+    var refusedCount = [];
+    var refusedSize = [];
+
     Array.from(list).forEach(function(f) {
-      if ((f.type === 'application/pdf' || f.name.endsWith('.pdf')) && files.length < 20) files.push(f);
+      var isPdf = f.type === 'application/pdf' || /\.pdf$/i.test(f.name);
+      if (!isPdf) { refusedType.push(f.name); return; }
+      if (files.length >= MAX_FILES) { refusedCount.push(f.name); return; }
+      if (totalBytes(files) + f.size > MAX_TOTAL_BYTES) { refusedSize.push(f.name); return; }
+      files.push(f);
     });
+
     renderList();
+
+    var reasons = [];
+    if (refusedType.length) {
+      reasons.push(t('tools.pdf.merge.text.070', 'Not a PDF, so not added: {{names}}')
+        .replace('{{names}}', refusedType.join(', ')));
+    }
+    if (refusedCount.length) {
+      reasons.push(t('tools.pdf.merge.text.071', 'Over the {{max}}-file limit, so not added: {{names}}')
+        .replace('{{max}}', String(MAX_FILES)).replace('{{names}}', refusedCount.join(', ')));
+    }
+    if (refusedSize.length) {
+      reasons.push(t('tools.pdf.merge.text.072', 'Over the 50 MB total, so not added: {{names}}')
+        .replace('{{names}}', refusedSize.join(', ')));
+    }
+    if (reasons.length) showErr(reasons.join(' ')); else hideError();
   }
 
   if (dropzone && fileInput) {
@@ -687,39 +722,27 @@ document.addEventListener('DOMContentLoaded', function() {
 
   var form = document.querySelector('form');
   function ensurePdfLib() {
+    // pdf-lib ships with the site (pdf-lib-runtime.mjs). It used to be fetched
+    // from jsdelivr with unpkg as a fallback, which put a third-party origin on
+    // the critical path of a tool that says the file stays in the browser.
     if (typeof window.PDFLib !== 'undefined') return Promise.resolve(window.PDFLib);
     if (pdfLibPromise) return pdfLibPromise;
 
-    var sources = [
-      'https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js',
-      'https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js'
-    ];
-
     pdfLibPromise = new Promise(function(resolve, reject) {
-      function loadFrom(index) {
-        if (index >= sources.length) {
-          reject(new Error('PDF library failed to load'));
-          return;
-        }
-        var s = document.createElement('script');
-        s.src = sources[index];
-        s.async = true;
-        s.onload = function() {
-          if (typeof window.PDFLib !== 'undefined') {
-            resolve(window.PDFLib);
-          } else {
-            loadFrom(index + 1);
-          }
-        };
-        s.onerror = function() {
-          loadFrom(index + 1);
-        };
-        document.head.appendChild(s);
+      var timer = window.setTimeout(function() {
+        window.removeEventListener('novatools:pdflib-ready', onReady);
+        pdfLibPromise = null;
+        reject(new Error('PDF library failed to load'));
+      }, 15000);
+
+      function onReady() {
+        window.clearTimeout(timer);
+        window.removeEventListener('novatools:pdflib-ready', onReady);
+        resolve(window.PDFLib);
       }
-      loadFrom(0);
-    }).catch(function(err) {
-      pdfLibPromise = null;
-      throw err;
+
+      window.addEventListener('novatools:pdflib-ready', onReady);
+      if (typeof window.PDFLib !== 'undefined') onReady();
     });
 
     return pdfLibPromise;
