@@ -12,7 +12,7 @@
   top: 0;
   z-index: var(--z-sticky);
   border-bottom: 1px solid var(--color-border);
-  background: hsl(228 38% 4% / 0.82);
+  background: var(--header-bg, var(--bg-elevated));
   backdrop-filter: blur(16px);
 }
 

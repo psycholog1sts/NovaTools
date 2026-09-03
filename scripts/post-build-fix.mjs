@@ -729,8 +729,14 @@ function stampToolHelpfulContent() {
     // article + i18n seo-section), so this duplicated template section is removed.
     let next = html.replace(/<section\b[^>]*data-phase4-eeat="true"[\s\S]*?<\/section>/i, '');
     next = next.replace(/<meta name="description" content="[^"]*"\s*\/?>/i, `<meta name="description" content="${escapeAttr(uniqueDescription(title, item.category, item.slug, item.relative))}">`);
-    const updatedLine = `<p class="tool-last-updated" data-phase4-updated="true">Last updated: <time datetime="2026-06-03">2026-06-03</time></p>`;
-    if (!next.includes('data-phase4-updated="true"')) {
+    // Only add a last-updated line to pages that do not already state one.
+    // This used to inject a fixed 2026-06-03 unconditionally, so pages that
+    // carried their own date showed two "Last updated" lines with two different
+    // dates - a contradiction on a page search engines read.
+    const statesOwnDate = /class="[^"]*(?:tool-updated-note|page-last-updated)[^"]*"/i.test(next)
+      || next.includes('data-phase4-updated="true"');
+    if (!statesOwnDate) {
+      const updatedLine = `<p class="tool-last-updated" data-phase4-updated="true">Last updated: <time datetime="2026-06-03">2026-06-03</time></p>`;
       next = next.replace(/(<h1\b[^>]*>[\s\S]*?<\/h1>)/i, `$1\n${updatedLine}`);
     }
     next = next.replace(/\shref="\/(?!\/|#|mailto:|tel:)([^"]*)"/g, ' href="https://mc-novatools.com/$1"');

@@ -144,9 +144,9 @@ ul, ol {
   /* Text */
   --text-primary: #f8fafc;
   --accent-text: #67e8f9;
-  --color-action: #0e7490;
-  --color-action-hover: #0f7f9e;
-  --color-action-foreground: #ffffff;
+  --color-action: #3b82f6;
+  --color-action-hover: #60a5fa;
+  --color-action-foreground: #06121f;
   --color-primary-100: #164e63;
   --color-primary-300: #67e8f9;
   --color-primary-700: #a5f3fc;
@@ -230,9 +230,9 @@ ul, ol {
   --text-primary: #0f172a;
   --text-secondary: #334155;
   --text-tertiary: #526070;
-  --accent-text: #0e7490;
-  --color-action: #0e7490;
-  --color-action-hover: #155e75;
+  --accent-text: #1d4ed8;
+  --color-action: #1d4ed8;
+  --color-action-hover: #1e40af;
   --color-action-foreground: #ffffff;
   --color-primary-100: #ecfeff;
   --color-primary-300: #0e7490;
@@ -300,9 +300,9 @@ ul, ol {
     --text-secondary: #334155;
     --text-tertiary: #526070;
     --text-muted: #5b6675;
-    --accent-text: #0e7490;
-  --color-action: #0e7490;
-  --color-action-hover: #155e75;
+    --accent-text: #1d4ed8;
+  --color-action: #1d4ed8;
+  --color-action-hover: #1e40af;
   --color-action-foreground: #ffffff;
   --color-primary-100: #ecfeff;
   --color-primary-300: #0e7490;
@@ -2139,7 +2139,23 @@ ins.adsbygoogle:not([data-ad-format='leaderboard']):not([data-ad-format='sticky'
    PUBLIC PRODUCT POLISH LAYER - Premium surfaces
    Shared by production home, category, tool, blog, and public pages.
    ============================================ */
+/* These surfaces were defined only in dark values but applied with !important to
+   the home, category, tool, blog and public pages, so on the light default every
+   panel was a dark navy block under dark text - the PDF Compressor hero was
+   unreadable. Each surface now has a value per theme. */
 :root {
+  --surface-panel: linear-gradient(180deg, #ffffff, #ffffff);
+  --surface-panel-soft: linear-gradient(180deg, #ffffff, #f8fafc);
+  --surface-tool: linear-gradient(180deg, #ffffff, #f8fafc);
+  --surface-result: linear-gradient(180deg, rgba(16, 185, 129, 0.10), #ffffff);
+  --surface-warning: linear-gradient(180deg, rgba(245, 158, 11, 0.14), #ffffff);
+  --focus-ring: 0 0 0 4px rgba(29, 78, 216, 0.28);
+  --premium-outline: 1px solid #d3dbe5;
+  --page-canvas: linear-gradient(180deg, #f8fafc 0%, #eef2f8 46%, #f8fafc 100%);
+  --page-grid-line: rgba(15, 23, 42, 0.035);
+}
+
+:root[data-theme="dark"] {
   --surface-panel: linear-gradient(180deg, rgba(18, 27, 46, 0.88), rgba(8, 12, 22, 0.96));
   --surface-panel-soft: linear-gradient(180deg, rgba(15, 23, 42, 0.74), rgba(7, 10, 18, 0.9));
   --surface-tool: linear-gradient(180deg, rgba(10, 18, 32, 0.92), rgba(6, 9, 16, 0.98));
@@ -2147,15 +2163,17 @@ ins.adsbygoogle:not([data-ad-format='leaderboard']):not([data-ad-format='sticky'
   --surface-warning: linear-gradient(180deg, rgba(245, 158, 11, 0.12), rgba(8, 13, 24, 0.92));
   --focus-ring: 0 0 0 4px rgba(34, 211, 238, 0.22);
   --premium-outline: 1px solid rgba(148, 163, 184, 0.16);
+  --page-canvas:
+    radial-gradient(circle at 18% 0%, rgba(34, 211, 238, 0.10), transparent 30rem),
+    radial-gradient(circle at 88% 10%, rgba(139, 92, 246, 0.12), transparent 32rem),
+    radial-gradient(circle at 50% 100%, rgba(239, 68, 68, 0.055), transparent 34rem),
+    linear-gradient(180deg, #05060a 0%, #07101c 46%, #05070c 100%);
+  --page-grid-line: rgba(255, 255, 255, 0.028);
 }
 
 body {
   color: var(--text-primary) !important;
-  background:
-    radial-gradient(circle at 18% 0%, rgba(34, 211, 238, 0.10), transparent 30rem),
-    radial-gradient(circle at 88% 10%, rgba(139, 92, 246, 0.12), transparent 32rem),
-    radial-gradient(circle at 50% 100%, rgba(239, 68, 68, 0.055), transparent 34rem),
-    linear-gradient(180deg, #05060a 0%, #07101c 46%, #05070c 100%) !important;
+  background: var(--page-canvas) !important;
 }
 
 body::before {
@@ -2165,8 +2183,8 @@ body::before {
   pointer-events: none;
   z-index: -2;
   background-image:
-    linear-gradient(rgba(255,255,255,0.028) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+    linear-gradient(var(--page-grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--page-grid-line) 1px, transparent 1px);
   background-size: 72px 72px;
   mask-image: linear-gradient(180deg, rgba(0,0,0,0.86), transparent 78%);
 }
@@ -2233,10 +2251,13 @@ button:disabled,
 textarea,
 select,
 input:not([type="checkbox"]):not([type="radio"]):not([type="file"]) {
-  background: rgba(8, 13, 24, 0.82) !important;
-  border: 1px solid rgba(148, 163, 184, 0.18) !important;
+  /* Was a hard-coded dark navy with an !important, which overrode every field
+     background on the site - including the theme tokens - and left dark text on
+     a dark field in the light theme. */
+  background: var(--field-bg) !important;
+  border: 1px solid var(--field-border) !important;
   border-radius: 14px;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
+  box-shadow: none;
 }
 
 .language-selector:hover,
@@ -2246,7 +2267,7 @@ input:not([type="checkbox"]):not([type="radio"]):not([type="file"]) {
 textarea:hover,
 select:hover,
 input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):hover {
-  border-color: rgba(34, 211, 238, 0.34) !important;
+  border-color: var(--color-action) !important;
 }
 
 .hero-card,
@@ -2389,9 +2410,19 @@ input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):hover {
 }
 
 .tool-header {
+  /* design-system.css sets `display: flex` for a header that pairs a .tool-icon
+     with the title. No built tool page has that icon, so all 140 of them laid
+     their title, date and description out as flex columns a few words wide. */
+  display: block;
   max-width: 760px;
   margin-left: auto;
   margin-right: auto;
+}
+
+.tool-header:has(> .tool-icon) {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
 }
 
 .tool-header h1 {
@@ -3392,4 +3423,25 @@ article.tool-resource blockquote {
   color: var(--color-text-primary);
   background: var(--color-bg-elevated);
   border-color: var(--color-border);
+}
+
+/* The breakpoints that belong with the header shell above. They used to live in
+   design-system.css, which is concatenated before this file, so a plain
+   `display: none` here silently won at every width and the desktop navigation
+   disappeared. */
+@media (min-width: 640px) {
+  .logo-text { display: inline; }
+}
+
+@media (min-width: 1100px) {
+  .main-nav { display: flex; }
+  .mobile-menu-toggle { display: none; }
+}
+
+/* The theme toggle swaps icons with the `hidden` property. `svg { display: block }`
+   above outranks the user-agent `[hidden]` rule, so both icons were painted at
+   once and overflowed the button. */
+.theme-toggle [hidden],
+.btn-icon [hidden] {
+  display: none !important;
 }

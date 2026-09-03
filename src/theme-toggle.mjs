@@ -135,8 +135,11 @@ function updateToggleIcon(btn, theme) {
 
   if (sunIcon && moonIcon) {
     const isDark = theme === 'dark';
-    sunIcon.hidden = !isDark;
-    moonIcon.hidden = isDark;
+    // `hidden` is an HTMLElement property; assigning it on an <svg> only sets a
+    // JS expando, so the attribute never lands and both icons stayed painted.
+    // Toggle the content attribute instead, which works on any element.
+    sunIcon.toggleAttribute('hidden', !isDark);
+    moonIcon.toggleAttribute('hidden', isDark);
     btn.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
   }
 
