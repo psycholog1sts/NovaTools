@@ -37,7 +37,39 @@ for (const sheet of SHEETS) {
   }
 }
 
+// An inline <style> block can also read an undefined token. Where it supplies
+// a fallback the rule survives, but a dark-palette fallback then renders on the
+// light theme — which is how a table header ended up #172033 on #1e293b.
+const INLINE_HTML = globSync('{src,blog,categories,guides}/**/*.html').concat(['index.html']);
+const darkFallbacks = [];
+for (const file of INLINE_HTML) {
+  let html;
+  try {
+    html = readFileSync(file, 'utf8');
+  } catch {
+    continue;
+  }
+  for (const style of html.matchAll(/<style[^>]*>([\s\S]*?)<\/style>/gi)) {
+    for (const match of style[1].matchAll(/var\(\s*(--[a-zA-Z0-9-]+)\s*\)/g)) {
+      if (!defined.has(match[1])) {
+        if (!used.has(match[1])) used.set(match[1], new Set());
+        used.get(match[1]).add(file);
+      }
+    }
+    for (const match of style[1].matchAll(/var\(\s*(--[a-zA-Z0-9-]+)\s*,\s*(#[0-9a-fA-F]{3,8})\s*\)/g)) {
+      if (!defined.has(match[1])) darkFallbacks.push(`${file}: var(${match[1]}, ${match[2]})`);
+    }
+  }
+}
+
 const missing = [...used.keys()].filter((name) => !defined.has(name)).sort();
+
+if (darkFallbacks.length) {
+  console.error('❌ inline styles fall back to a hard-coded colour for a token that does not exist:');
+  for (const entry of darkFallbacks) console.error(`  - ${entry}`);
+  console.error('\nThe fallback wins in every theme, so a dark value renders on the light theme.');
+  process.exit(1);
+}
 
 if (missing.length) {
   console.error('❌ design tokens used without a definition or fallback:');

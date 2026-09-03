@@ -84,9 +84,9 @@
     .input-group { margin-bottom: 1.5rem; }
     .tool-status { min-height: 1.25rem; margin: 0 0 1rem; font-size: 0.875rem; color: var(--color-text-secondary); line-height: 1.5; }
     .input-label { font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-text-secondary); margin-bottom: 0.5rem; display: block; }
-    .timestamp-input { width: 100%; height: 56px; padding: 0 1rem; background: #0F0F12; border: 1px solid rgba(0,217,255,0.12); border-radius: 8px; color: var(--color-text-primary); font-size: 1.25rem; font-family: 'JetBrains Mono', monospace; outline: none; box-sizing: border-box; }
+    .timestamp-input { width: 100%; height: 56px; padding: 0 1rem; background: var(--field-bg); border: 1px solid var(--field-border); border-radius: 8px; color: var(--color-text-primary); font-size: 1.25rem; font-family: 'JetBrains Mono', monospace; outline: none; box-sizing: border-box; }
     .timestamp-input:focus { border-color: rgba(0,217,255,0.45); box-shadow: 0 0 0 3px rgba(0,217,255,0.08); }
-    .datetime-input { width: 100%; height: 56px; padding: 0 1rem; background: #0F0F12; border: 1px solid rgba(0,217,255,0.12); border-radius: 8px; color: var(--color-text-primary); font-size: 1rem; outline: none; box-sizing: border-box; }
+    .datetime-input { width: 100%; height: 56px; padding: 0 1rem; background: var(--field-bg); border: 1px solid var(--field-border); border-radius: 8px; color: var(--color-text-primary); font-size: 1rem; outline: none; box-sizing: border-box; }
     .datetime-input:focus { border-color: rgba(0,217,255,0.45); box-shadow: 0 0 0 3px rgba(0,217,255,0.08); }
     
     .result-box { background: rgba(0,217,255,0.05); border: 1px solid rgba(0,217,255,0.15); border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; }
@@ -98,12 +98,12 @@
     .btn-bar { display: flex; flex-wrap: wrap; gap: 0.625rem; margin-bottom: 1.5rem; }
     .btn { display: inline-flex; align-items: center; gap: 0.4rem; height: 44px; padding: 0 1.25rem; border: none; border-radius: 8px; font-size: 0.9375rem; font-weight: 600; cursor: pointer; transition: background 0.18s, transform 0.12s, opacity 0.18s; outline: none; user-select: none; }
     .btn:active { transform: scale(0.97); }
-    .btn-primary { background: linear-gradient(135deg, #00D9FF, #0099CC); color: #0A0A0C; }
+    .btn-primary { background: linear-gradient(135deg, var(--accent-text), #0099CC); color: #0A0A0C; }
     .btn-primary:hover { background: linear-gradient(135deg, #1FE2FF, #00B8EE); }
     .btn-secondary { background: rgba(0,217,255,0.1); border: 1px solid rgba(0,217,255,0.25); color: var(--color-accent); }
     .btn-secondary:hover { background: rgba(0,217,255,0.18); }
     
-    .copy-feedback { font-size: 0.8rem; color: #00FF88; opacity: 0; transition: opacity 0.3s; pointer-events: none; margin-left: auto; align-self: center; }
+    .copy-feedback { font-size: 0.8rem; color: var(--color-success-text); opacity: 0; transition: opacity 0.3s; pointer-events: none; margin-left: auto; align-self: center; }
     .copy-feedback.show { opacity: 1; }
     
     .formats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
@@ -112,7 +112,7 @@
     .format-value { font-size: 0.9375rem; font-weight: 600; color: var(--color-accent); font-family: 'JetBrains Mono', monospace; word-break: break-all; }
     
     .legal-note { margin-top: 1.5rem; padding: 1rem 1.25rem; background: rgba(255,193,7,0.05); border: 1px solid rgba(255,193,7,0.15); border-radius: 10px; font-size: 0.8125rem; color: var(--color-text-secondary); line-height: 1.6; }
-    .legal-note strong { color: #FFC107; }
+    .legal-note strong { color: var(--color-warning-text); }
     
     .seo-section { max-width: 960px; margin: 3.5rem auto 0; padding: 0 1rem; }
     .seo-section h2 { font-size: 1.375rem; font-weight: 700; color: var(--color-text-primary); margin-bottom: 0.75rem; }

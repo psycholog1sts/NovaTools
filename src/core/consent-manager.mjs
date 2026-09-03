@@ -9,7 +9,7 @@ const DEFAULT_CONSENT = Object.freeze({
 const COPY = {
   en: {
     title: 'Cookie choices',
-    body: 'Necessary storage keeps the site working. Analytics and convenience storage are optional and off until you choose.',
+    body: 'Necessary storage keeps the site working. Analytics and convenience storage are optional and off until you choose. Google shows a separate certified consent message for advertising where that is required.',
     settings: 'Cookie Settings',
     accept: 'Accept all',
     reject: 'Reject non-essential',
@@ -23,7 +23,7 @@ const COPY = {
   },
   tr: {
     title: 'Çerez tercihleri',
-    body: 'Zorunlu depolama sitenin çalışması içindir. Analiz ve kolaylık depolaması isteğe bağlıdır ve siz seçene kadar kapalıdır.',
+    body: 'Zorunlu depolama sitenin çalışması içindir. Analiz ve kolaylık depolaması isteğe bağlıdır ve siz seçene kadar kapalıdır. Google, gerekli olduğu yerlerde reklamlar için ayrı ve sertifikalı bir onay mesajı gösterir.',
     settings: 'Çerez Ayarları',
     accept: 'Tümünü kabul et',
     reject: 'Zorunlu olmayanları reddet',
