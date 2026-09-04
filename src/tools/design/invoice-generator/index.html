@@ -32,6 +32,7 @@
   
   <!-- i18n Script -->
   <script src="/i18n.js" defer></script>
+  <script type="module" src="./pdf-runtime.mjs"></script>
   <meta name="description" content="Use Invoice Generator for design invoice generator tasks with browser-first processing, clear steps, privacy notes, and practical limits. Use safely with checks">
   <meta name="keywords" content="invoice generator, free invoice maker, PDF invoice, online invoicing">
   <meta name="theme-color" content="#0A0A0C">
@@ -90,11 +91,22 @@
     .add-line-btn { width: 100%; height: 40px; background: rgba(0,217,255,0.1); border: 1px dashed rgba(0,217,255,0.3); border-radius: 8px; color: var(--accent-text); cursor: pointer; margin-top: 0.5rem; }
     .add-line-btn:hover { background: rgba(0,217,255,0.15); }
     
-    .preview-panel { background: #f5f5f5; border: 1px solid rgba(0,217,255,0.15); border-radius: 14px; padding: 1.5rem; display: flex; flex-direction: column; align-items: center; gap: 1rem; }
-    
-    #invoicePreview { background: white; width: 210mm; min-height: 297mm; padding: 20mm; box-shadow: 0 4px 20px rgba(0,0,0,0.15); font-family: 'Inter', Arial, sans-serif; color: #333; }
+    .preview-panel { background: #f5f5f5; border: 1px solid rgba(0,217,255,0.15); border-radius: 14px; padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem; min-inline-size: 0; }
+    .preview-actions { display: flex; flex-direction: column; align-items: center; gap: 0.25rem; }
+
+    #invoicePreview { background: white; inline-size: min(210mm, 100%); min-block-size: 40rem; margin-inline: auto; padding: clamp(1rem, 4%, 20mm); box-shadow: 0 4px 20px rgba(0,0,0,0.15); font-family: 'Inter', Arial, sans-serif; color: #333; overflow-wrap: anywhere; }
+    #invoicePreview table { inline-size: 100%; border-collapse: collapse; }
     
     .btn-bar { display: flex; flex-wrap: wrap; gap: 0.625rem; justify-content: center; }
+    .invoice-math-note { margin: 0.75rem 0 0; font-size: 0.8125rem; line-height: 1.55; color: var(--text-secondary); }
+    .invoice-status { margin: 0.5rem 0 0; min-height: 1.2em; font-size: 0.8125rem; line-height: 1.55; color: var(--text-secondary); }
+    .invoice-status:empty { min-height: 0; }
+    @media print {
+      .site-header, .mobile-menu, .controls-panel, .btn-bar, .invoice-math-note,
+      .invoice-status, .tool-description, .seo-section, .trust-help,
+      .related-tools, footer, .legal-note, .preview-actions { display: none !important; }
+      .preview-panel, #invoicePreview { box-shadow: none; border: 0; padding: 0; }
+    }
     .btn { display: inline-flex; align-items: center; gap: 0.4rem; height: 44px; padding: 0 1.25rem; border: none; border-radius: 8px; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: all 0.18s; outline: none; }
     .btn:active { transform: scale(0.97); }
     .btn-primary { background: linear-gradient(135deg, var(--accent-text), #0099CC); color: #0A0A0C; }
@@ -197,50 +209,51 @@
         <div class="editor-grid">
           <div class="card">
             <div class="control-group">
-              <label data-i18n="tools.design.invoice-generator.text.014">Your Company</label>
+              <label for="invCompany" data-i18n="tools.design.invoice-generator.text.014">Your Company</label>
               <input type="text" id="invCompany" value="Your Company Name">
             </div>
             <div class="control-group">
-              <label data-i18n="tools.design.invoice-generator.text.015">Your Email</label>
+              <label for="invEmail" data-i18n="tools.design.invoice-generator.text.015">Your Email</label>
               <input type="email" id="invEmail" value="billing@yourcompany.com">
             </div>
             <div class="control-group">
-              <label data-i18n="tools.design.invoice-generator.text.016">Your Address</label>
+              <label for="invAddress" data-i18n="tools.design.invoice-generator.text.016">Your Address</label>
               <textarea id="invAddress">123 Business Street
 City, State 12345</textarea>
             </div>
             
             <div class="control-group">
-              <label data-i18n="tools.design.invoice-generator.text.017">Client Name</label>
+              <label for="invClient" data-i18n="tools.design.invoice-generator.text.017">Client Name</label>
               <input type="text" id="invClient" value="Client Company Inc.">
             </div>
             <div class="control-group">
-              <label data-i18n="tools.design.invoice-generator.text.018">Client Address</label>
+              <label for="invClientAddress" data-i18n="tools.design.invoice-generator.text.018">Client Address</label>
               <textarea id="invClientAddress">456 Client Avenue
 Client City, ST 67890</textarea>
             </div>
             
             <div class="two-col">
               <div class="control-group">
-                <label data-i18n="tools.design.invoice-generator.text.019">Invoice #</label>
+                <label for="invNumber" data-i18n="tools.design.invoice-generator.text.019">Invoice #</label>
                 <input type="text" id="invNumber" value="INV-001">
               </div>
               <div class="control-group">
-                <label data-i18n="tools.design.invoice-generator.text.020">Date</label>
+                <label for="invDate" data-i18n="tools.design.invoice-generator.text.020">Date</label>
                 <input type="date" id="invDate">
               </div>
             </div>
             <div class="two-col">
               <div class="control-group">
-                <label data-i18n="tools.design.invoice-generator.text.021">Due Date</label>
+                <label for="invDueDate" data-i18n="tools.design.invoice-generator.text.021">Due Date</label>
                 <input type="date" id="invDueDate">
               </div>
               <div class="control-group">
-                <label data-i18n="tools.design.invoice-generator.text.022">Currency</label>
+                <label for="invCurrency" data-i18n="tools.design.invoice-generator.text.022">Currency</label>
                 <select id="invCurrency">
-                  <option value="$">USD ($)</option>
-                  <option value="\u20ac">EUR (\u20ac)</option>
-                  <option value="\u00a3">GBP (\u00a3)</option>
+                  <option value="USD">USD ($)</option>
+                  <option value="EUR">EUR (€)</option>
+                  <option value="GBP">GBP (£)</option>
+                  <option value="TRY">TRY (₺)</option>
                 </select>
               </div>
             </div>
@@ -249,44 +262,48 @@ Client City, ST 67890</textarea>
               <label data-i18n="tools.design.invoice-generator.text.023">Line Items</label>
               <div id="lineItems">
                 <div class="line-item">
-                  <input type="text" placeholder="Description" data-i18n-placeholder="tools.design.invoice-generator.placeholder.001" class="item-desc" value="Web Design Services">
-                  <input type="number" placeholder="Qty" data-i18n-placeholder="tools.design.invoice-generator.placeholder.002" class="item-qty" value="10" min="0">
-                  <input type="number" placeholder="Price" data-i18n-placeholder="tools.design.invoice-generator.placeholder.003" class="item-price" value="75" min="0" step="0.01">
-                  <button type="button" class="remove-line" data-nv-click="removeLine" data-nv-args='["@el"]' data-i18n="tools.design.invoice-generator.text.024">\u00d7</button>
+                  <input type="text" placeholder="Description" data-i18n-placeholder="tools.design.invoice-generator.placeholder.001" class="item-desc" aria-label="Line item description" value="Web Design Services">
+                  <input type="number" placeholder="Qty" data-i18n-placeholder="tools.design.invoice-generator.placeholder.002" class="item-qty" aria-label="Line item quantity" value="10" min="0">
+                  <input type="number" placeholder="Price" data-i18n-placeholder="tools.design.invoice-generator.placeholder.003" class="item-price" aria-label="Line item unit price" value="75" min="0" step="0.01">
+                  <button type="button" class="remove-line" aria-label="Remove this line item">×</button>
                 </div>
                 <div class="line-item">
-                  <input type="text" placeholder="Description" data-i18n-placeholder="tools.design.invoice-generator.placeholder.004" class="item-desc" value="Logo Design">
-                  <input type="number" placeholder="Qty" data-i18n-placeholder="tools.design.invoice-generator.placeholder.005" class="item-qty" value="1" min="0">
-                  <input type="number" placeholder="Price" data-i18n-placeholder="tools.design.invoice-generator.placeholder.006" class="item-price" value="250" min="0" step="0.01">
-                  <button type="button" class="remove-line" data-nv-click="removeLine" data-nv-args='["@el"]' data-i18n="tools.design.invoice-generator.text.025">\u00d7</button>
+                  <input type="text" placeholder="Description" data-i18n-placeholder="tools.design.invoice-generator.placeholder.004" class="item-desc" aria-label="Line item description" value="Logo Design">
+                  <input type="number" placeholder="Qty" data-i18n-placeholder="tools.design.invoice-generator.placeholder.005" class="item-qty" aria-label="Line item quantity" value="1" min="0">
+                  <input type="number" placeholder="Price" data-i18n-placeholder="tools.design.invoice-generator.placeholder.006" class="item-price" aria-label="Line item unit price" value="250" min="0" step="0.01">
+                  <button type="button" class="remove-line" aria-label="Remove this line item">×</button>
                 </div>
               </div>
-              <button type="button" class="add-line-btn" data-nv-click="addLine" data-i18n="tools.design.invoice-generator.text.026">+ Add Line Item</button>
+              <button type="button" id="addLine" class="add-line-btn" data-i18n="tools.design.invoice-generator.text.026">+ Add Line Item</button>
             </div>
             
             <div class="two-col">
               <div class="control-group">
-                <label data-i18n="tools.design.invoice-generator.text.027">Tax Rate (%)</label>
+                <label for="invTax" data-i18n="tools.design.invoice-generator.text.027">Tax Rate (%)</label>
                 <input type="number" id="invTax" value="10" min="0" max="100" step="0.01">
               </div>
               <div class="control-group">
-                <label data-i18n="tools.design.invoice-generator.text.028">Discount (%)</label>
+                <label for="invDiscount" data-i18n="tools.design.invoice-generator.text.028">Discount (%)</label>
                 <input type="number" id="invDiscount" value="0" min="0" max="100" step="0.01">
               </div>
             </div>
             
             <div class="control-group">
-              <label data-i18n="tools.design.invoice-generator.text.029">Notes / Terms</label>
+              <label for="invNotes" data-i18n="tools.design.invoice-generator.text.029">Notes / Terms</label>
               <textarea id="invNotes">Payment due within 30 days. Thank you for your business!</textarea>
             </div>
           </div>
 
           <div class="preview-panel">
-            <div id="invoicePreview" class="invoice"></div>
-            <div class="btn-bar">
-              <button class="btn btn-primary" id="downloadPdf" data-i18n="tools.design.invoice-generator.text.030">Download PDF</button>
-              <button class="btn btn-secondary" id="printInvoice" data-i18n="tools.design.invoice-generator.text.031">Print</button>
+            <div class="preview-actions">
+              <div class="btn-bar">
+                <button type="button" class="btn btn-primary" id="downloadPdf" aria-describedby="invoiceMathNote">Download PDF</button>
+                <button type="button" class="btn btn-secondary" id="printInvoice">Print</button>
+              </div>
+              <p id="invoiceMathNote" class="invoice-math-note">The discount is taken off the subtotal first, and the tax is worked out after the discount, on the reduced amount. Change either rate to see both lines move.</p>
+              <p id="invoiceStatus" class="invoice-status" role="status" aria-live="polite" aria-atomic="true"></p>
             </div>
+            <div id="invoicePreview" class="invoice"></div>
           </div>
         </div>
 
@@ -307,16 +324,30 @@ Client City, ST 67890</textarea>
           <li>Download the finished invoice as a PDF.</li>
         </ol>
         <h2>What to Know</h2>
-        <ul><li>Check your local tax/invoicing requirements (required fields, tax registration numbers, sequential invoice numbering rules) before relying on this for formal business invoicing — requirements vary by country and business type</li><li>This creates the document; it doesn't handle payment collection, recurring billing, or accounting records — for that, dedicated invoicing/accounting software is a better fit</li><li>All entered details are used only to build the invoice you're generating, not stored on a server</li></ul>
+        <ul>
+          <li><strong>The order of operations is fixed and stated:</strong> the discount comes off the subtotal, and the tax is worked out on what is left. A jurisdiction that taxes the pre-discount subtotal is not supported by this tool, and no setting changes it. Both intermediate figures are printed on the invoice, so the arithmetic can be checked rather than trusted.</li>
+          <li><strong>Rates are clamped:</strong> tax and discount are read as 0–100 percent, and a negative quantity or price is read as zero. Nothing is silently rounded away — every line shows the quantity, unit price and amount it contributed.</li>
+          <li><strong>The PDF uses the standard Helvetica faces,</strong> which cover Latin-1 only. Turkish letters such as ş, ğ and ı, and anything outside Latin-1, are transliterated to the nearest Latin letter or replaced with a question mark. The tool says so in the status line after every export, rather than leaving you to discover it in the file.</li>
+          <li><strong>Currency is a label, not a conversion.</strong> Picking EUR changes the symbol on the invoice. No exchange rate is applied and no tax rule is looked up for that currency.</li>
+          <li><strong>No logo, no saved clients, no numbering sequence.</strong> Nothing is kept between visits; every invoice starts from the defaults on this page.</li>
+          <li>Check your local invoicing requirements — required fields, tax registration numbers and sequential numbering rules vary by country and business type. This produces a clean document, not jurisdiction-specific compliance.</li>
+          <li>This creates the document. It does not collect payment, handle recurring billing, or keep accounting records.</li>
+        </ul>
         <h2>Privacy and Security</h2>
-        <p>The business and client details you enter are used only to build the invoice document and aren't uploaded to a server or stored.</p>
+        <p>The invoice is drawn in your browser with pdf-lib, which ships with this site. Nothing you type is sent to NovaTools or to anyone else, there is no upload step, and the file lands in your downloads folder directly from the page. Because nothing is stored, closing the tab discards the invoice: save the PDF before you leave.</p>
         <h2>Frequently Asked Questions</h2>
+        <h3>Does the Download button really produce a PDF?</h3>
+        <p>Yes. The document is built page by page with pdf-lib and handed over as a real PDF file with selectable text, not a screenshot and not a print dialog. Its title and creator fields name this tool, and the invoice number becomes the file name.</p>
+        <h3>Is the tax worked out before or after the discount?</h3>
+        <p>After. The subtotal is reduced by the discount first, then the tax rate is applied to the reduced amount. When a discount is set, the invoice prints an "After discount" line so both steps are visible.</p>
+        <h3>Why did my Turkish characters change in the PDF?</h3>
+        <p>The built-in PDF fonts cover Latin-1, which has no ş, ğ or ı. Rather than failing halfway through the document, the tool transliterates those letters and tells you it did. Accented Latin-1 letters such as ç, ö and ü come through unchanged.</p>
         <h3>Is this compliant with my country's formal invoicing requirements?</h3>
-        <p>Check your local requirements yourself — formal invoicing rules (required fields, sequential numbering, tax details) vary by country and business type, and this tool provides a clean template rather than jurisdiction-specific compliance guarantees.</p>
+        <p>Check your local requirements yourself. Formal invoicing rules — required fields, sequential numbering, tax details — vary by country and business type, and this tool provides a clean template rather than a compliance guarantee.</p>
         <h3>Can I track whether an invoice has been paid?</h3>
-        <p>No — this generates the document itself. For tracking payment status across multiple invoices, use dedicated invoicing or accounting software.</p>
+        <p>No. This generates the document itself. For payment status across many invoices, use dedicated invoicing or accounting software.</p>
         <h3>Can I reuse client details for future invoices?</h3>
-        <p>Since nothing is stored on a server, check whether the tool keeps a local copy in your browser between sessions, or plan to re-enter recurring client details each time.</p>
+        <p>Not yet. Nothing is kept between sessions, so recurring client details have to be entered each time. Keeping the finished PDF and re-typing from it is the current workaround.</p>
         <h2>Related Tools</h2>
         <ul><li><a href="https://mc-novatools.com/tools/design/barcode-generator/">Barcode Generator — Generate free barcodes.</a></li><li><a href="https://mc-novatools.com/tools/design/business-card-maker/">Business Card Maker — Design professional business cards.</a></li></ul>
       </article>
@@ -376,172 +407,516 @@ Client City, ST 67890</textarea>
   </div>
 
   <script>
-    document.getElementById('invDate').valueAsDate = new Date();
-    const dueDate = new Date();
-    dueDate.setDate(dueDate.getDate() + 30);
-    document.getElementById('invDueDate').valueAsDate = dueDate;
+    /**
+     * Invoice Generator.
+     *
+     * Three things this file is careful about:
+     *   1. The preview is built from DOM nodes and textContent, never from a
+     *      template string. A description that reads "<img src=x onerror=...>"
+     *      is a description, not markup, and it has to survive as text into the
+     *      PDF too.
+     *   2. The order of operations is fixed and stated on the page: discount
+     *      comes off the subtotal, and the tax is worked out on what is left.
+     *      Two tools can disagree about this; a tool that will not say which one
+     *      it does is the one that cannot be checked.
+     *   3. "Download PDF" produces a PDF. It is drawn with pdf-lib in the
+     *      browser and handed over as a Blob, so nothing is uploaded and no
+     *      popup has to survive a blocker.
+     */
+    (function () {
+      'use strict';
 
-    function formatCurrency(amount, symbol) {
-      return symbol + amount.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-    }
+      var CURRENCIES = {
+        USD: { symbol: '$', locale: 'en-US' },
+        EUR: { symbol: '€', locale: 'de-DE' },
+        GBP: { symbol: '£', locale: 'en-GB' },
+        TRY: { symbol: '₺', locale: 'tr-TR' }
+      };
 
-    function calculateTotals() {
-      let subtotal = 0;
-      document.querySelectorAll('.line-item').forEach(line => {
-        const qty = parseFloat(line.querySelector('.item-qty').value) || 0;
-        const price = parseFloat(line.querySelector('.item-price').value) || 0;
-        subtotal += qty * price;
-      });
-      
-      const taxRate = parseFloat(document.getElementById('invTax').value) || 0;
-      const discountRate = parseFloat(document.getElementById('invDiscount').value) || 0;
-      
-      const tax = subtotal * (taxRate / 100);
-      const discount = subtotal * (discountRate / 100);
-      const total = subtotal + tax - discount;
-      
-      return { subtotal, tax, discount, total };
-    }
+      /* pdf-lib draws with WinAnsi, which has no room for several letters that
+         are perfectly ordinary in Turkish and elsewhere. Rather than throwing on
+         export, transliterate what has an obvious Latin equivalent and say so. */
+      var TRANSLITERATE = {
+        'ş': 's', 'Ş': 'S', 'ğ': 'g', 'Ğ': 'G',
+        'ı': 'i', 'İ': 'I', 'ć': 'c', 'Ć': 'C',
+        'ł': 'l', 'Ł': 'L', 'ř': 'r', 'Ř': 'R',
+        '–': '-', '—': '-', '‘': "'", '’': "'",
+        '“': '"', '”': '"', '…': '...', '₺': 'TRY '
+      };
 
-    function updateInvoice() {
-      const currency = document.getElementById('invCurrency').value;
-      const totals = calculateTotals();
-      
-      let lineItemsHtml = '';
-      document.querySelectorAll('.line-item').forEach(line => {
-        const desc = line.querySelector('.item-desc').value;
-        const qty = parseFloat(line.querySelector('.item-qty').value) || 0;
-        const price = parseFloat(line.querySelector('.item-price').value) || 0;
-        const amount = qty * price;
-        
-        lineItemsHtml += `
-          <tr>
-            <td>${desc}</td>
-            <td class="text-right">${qty}</td>
-            <td class="text-right">${formatCurrency(price, currency)}</td>
-            <td class="text-right">${formatCurrency(amount, currency)}</td>
-          </tr>
-        `;
-      });
-      
-      document.getElementById('invoicePreview').innerHTML = `
-        <div class="invoice">
-          <div class="invoice-header">
-            <div class="invoice-title">INVOICE</div>
-            <div class="invoice-details">
-              <div><strong>Invoice #:</strong> ${document.getElementById('invNumber').value}</div>
-              <div><strong>Date:</strong> ${document.getElementById('invDate').value}</div>
-              <div><strong>Due Date:</strong> ${document.getElementById('invDueDate').value}</div>
-            </div>
-          </div>
-          
-          <div class="company-info">
-            <h3 data-i18n="tools.design.invoice-generator.text.050">${document.getElementById('invCompany').value}</h3>
-            <div>${document.getElementById('invAddress').value.replace(/\n/g, '<br>')}</div>
-            <div>${document.getElementById('invEmail').value}</div>
-          </div>
-          
-          <div class="client-info">
-            <h4 data-i18n="tools.design.invoice-generator.text.051">Bill To:</h4>
-            <div><strong>${document.getElementById('invClient').value}</strong></div>
-            <div>${document.getElementById('invClientAddress').value.replace(/\n/g, '<br>')}</div>
-          </div>
-          
-          <table class="invoice-table">
-            <thead>
-              <tr>
-                <th>Description</th>
-                <th class="text-right">Quantity</th>
-                <th class="text-right">Unit Price</th>
-                <th class="text-right">Amount</th>
-              </tr>
-            </thead>
-            <tbody>${lineItemsHtml}</tbody>
-          </table>
-          
-          <div class="invoice-totals">
-            <div class="row"><span data-i18n="tools.design.invoice-generator.text.052">Subtotal:</span><span data-i18n="tools.design.invoice-generator.text.053">${formatCurrency(totals.subtotal, currency)}</span></div>
-            ${totals.tax > 0 ? `<div class="row"><span data-i18n="tools.design.invoice-generator.text.054">Tax:</span><span data-i18n="tools.design.invoice-generator.text.055">${formatCurrency(totals.tax, currency)}</span></div>` : ''}
-            ${totals.discount > 0 ? `<div class="row"><span data-i18n="tools.design.invoice-generator.text.056">Discount:</span><span data-i18n="tools.design.invoice-generator.text.057">-${formatCurrency(totals.discount, currency)}</span></div>` : ''}
-            <div class="row total"><span data-i18n="tools.design.invoice-generator.text.058">Total:</span><span data-i18n="tools.design.invoice-generator.text.059">${formatCurrency(totals.total, currency)}</span></div>
-          </div>
-          
-          <div class="invoice-notes">
-            <h4 data-i18n="tools.design.invoice-generator.text.060">Notes / Terms</h4>
-            <div>${document.getElementById('invNotes').value.replace(/\n/g, '<br>')}</div>
-          </div>
-        </div>
-      `;
-    }
+      var el = function (id) { return document.getElementById(id); };
+      var lostCharacters = false;
 
-    function addLine() {
-      const container = document.getElementById('lineItems');
-      const line = document.createElement('div');
-      line.className = 'line-item';
-      line.innerHTML = `
-        <input type="text" placeholder="Description" data-i18n-placeholder="tools.design.invoice-generator.placeholder.007" class="item-desc">
-        <input type="number" placeholder="Qty" data-i18n-placeholder="tools.design.invoice-generator.placeholder.008" class="item-qty" value="1" min="0">
-        <input type="number" placeholder="Price" data-i18n-placeholder="tools.design.invoice-generator.placeholder.009" class="item-price" value="0" min="0" step="0.01">
-        <button type="button" class="remove-line" data-nv-click="removeLine" data-nv-args='["@el"]' data-i18n="tools.design.invoice-generator.text.061">\u00d7</button>
-      `;
-      container.appendChild(line);
-      line.querySelectorAll('input').forEach(input => input.addEventListener('input', updateInvoice));
-      updateInvoice();
-    }
-
-    function removeLine(btn) {
-      if (document.querySelectorAll('.line-item').length > 1) {
-        btn.closest('.line-item').remove();
-        updateInvoice();
+      function pdfSafe(text) {
+        var out = '';
+        for (var i = 0; i < text.length; i += 1) {
+          var ch = text[i];
+          if (Object.prototype.hasOwnProperty.call(TRANSLITERATE, ch)) {
+            out += TRANSLITERATE[ch];
+            lostCharacters = true;
+            continue;
+          }
+          var code = ch.charCodeAt(0);
+          /* WinAnsi covers ASCII and most of Latin-1; anything above that we
+             cannot promise, so it becomes a visible placeholder rather than a
+             thrown error halfway through the document. */
+          if (code === 10 || code === 13 || (code >= 32 && code <= 126) || (code >= 160 && code <= 255)) {
+            out += ch;
+          } else {
+            out += '?';
+            lostCharacters = true;
+          }
+        }
+        return out;
       }
-    }
 
-    function downloadPdf() {
-      const printWindow = window.open('', '_blank');
-      const content = document.getElementById('invoicePreview').innerHTML;
-      printWindow.document.write(`
-        <html>
-          <head>
-            <title>Invoice ${document.getElementById('invNumber').value}</title>
-            <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-            <style>
-              * { box-sizing: border-box; margin: 0; padding: 0; }
-              body { font-family: 'Inter', Arial, sans-serif; color: #333; line-height: 1.6; padding: 40px; }
-              .invoice { max-width: 800px; margin: 0 auto; }
-              .invoice-header { display: flex; justify-content: space-between; margin-bottom: 2rem; }
-              .invoice-title { font-size: 2.5rem; font-weight: 700; color: var(--accent-text); }
-              .invoice-details { text-align: right; }
-              .invoice-details div { margin-bottom: 0.25rem; }
-              .company-info { margin-bottom: 2rem; }
-              .company-info h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; }
-              .client-info { margin-bottom: 2rem; padding: 1rem; background: #f8f9fa; border-radius: 8px; }
-              .client-info h4 { font-size: 0.875rem; color: #666; margin-bottom: 0.25rem; }
-              .invoice-table { width: 100%; border-collapse: collapse; margin-bottom: 2rem; }
-              .invoice-table th { background: var(--accent-text); color: white; padding: 0.75rem; text-align: left; font-weight: 600; }
-              .invoice-table td { padding: 0.75rem; border-bottom: 1px solid #e0e0e0; }
-              .text-right { text-align: right; }
-              .invoice-totals { width: 300px; margin-left: auto; }
-              .row { display: flex; justify-content: space-between; padding: 0.5rem 0; }
-              .total { font-size: 1.25rem; font-weight: 700; border-top: 2px solid var(--accent-text); padding-top: 0.75rem; margin-top: 0.5rem; }
-              .invoice-notes { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #e0e0e0; }
-              @media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
-            </style>
-          </head>
-          <body>${content}</body>
-        </html>
-      `);
-      printWindow.document.close();
-      setTimeout(() => printWindow.print(), 500);
-    }
+      function money(amount, code) {
+        var currency = CURRENCIES[code] || CURRENCIES.USD;
+        var body = Math.abs(amount).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        return (amount < 0 ? '-' : '') + currency.symbol + body;
+      }
 
-    document.querySelectorAll('input, textarea, select').forEach(el => {
-      el.addEventListener('input', updateInvoice);
-    });
+      function lines() {
+        return Array.prototype.slice.call(document.querySelectorAll('.line-item'));
+      }
 
-    document.getElementById('downloadPdf').addEventListener('click', downloadPdf);
-    document.getElementById('printInvoice').addEventListener('click', downloadPdf);
+      function readLine(node) {
+        var qty = parseFloat(node.querySelector('.item-qty').value);
+        var price = parseFloat(node.querySelector('.item-price').value);
+        if (!isFinite(qty) || qty < 0) qty = 0;
+        if (!isFinite(price) || price < 0) price = 0;
+        return {
+          description: node.querySelector('.item-desc').value,
+          quantity: qty,
+          unitPrice: price,
+          amount: qty * price
+        };
+      }
 
-    updateInvoice();
+      function rate(id) {
+        var value = parseFloat(el(id).value);
+        if (!isFinite(value) || value < 0) return 0;
+        return Math.min(value, 100);
+      }
+
+      /**
+       * Subtotal, then discount, then tax on what is left. Stated on the page
+       * next to the button so the visitor can check it rather than trust it.
+       */
+      function totals(items) {
+        var subtotal = items.reduce(function (sum, item) { return sum + item.amount; }, 0);
+        var discountRate = rate('invDiscount');
+        var taxRate = rate('invTax');
+        var discount = subtotal * (discountRate / 100);
+        var taxable = subtotal - discount;
+        var tax = taxable * (taxRate / 100);
+        return {
+          subtotal: subtotal,
+          discountRate: discountRate,
+          discount: discount,
+          taxable: taxable,
+          taxRate: taxRate,
+          tax: tax,
+          total: taxable + tax
+        };
+      }
+
+      function invoice() {
+        var items = lines().map(readLine);
+        return {
+          currency: el('invCurrency').value,
+          number: el('invNumber').value,
+          date: el('invDate').value,
+          dueDate: el('invDueDate').value,
+          company: el('invCompany').value,
+          email: el('invEmail').value,
+          address: el('invAddress').value,
+          client: el('invClient').value,
+          clientAddress: el('invClientAddress').value,
+          notes: el('invNotes').value,
+          items: items,
+          totals: totals(items)
+        };
+      }
+
+      /* ---- preview: nodes and textContent only ---- */
+
+      function node(tag, className, text) {
+        var element = document.createElement(tag);
+        if (className) element.className = className;
+        if (text !== undefined && text !== null) element.textContent = String(text);
+        return element;
+      }
+
+      function multiline(text) {
+        var wrapper = document.createElement('div');
+        String(text).split('\n').forEach(function (part, index) {
+          if (index > 0) wrapper.appendChild(document.createElement('br'));
+          wrapper.appendChild(document.createTextNode(part));
+        });
+        return wrapper;
+      }
+
+      function totalsRow(label, value, className) {
+        var row = node('div', className ? 'row ' + className : 'row');
+        row.appendChild(node('span', null, label));
+        row.appendChild(node('span', null, value));
+        return row;
+      }
+
+      function renderPreview() {
+        var data = invoice();
+        var root = node('div', 'invoice');
+
+        var header = node('div', 'invoice-header');
+        header.appendChild(node('div', 'invoice-title', 'INVOICE'));
+        var meta = node('div', 'invoice-details');
+        meta.appendChild(node('div', null, 'Invoice #: ' + data.number));
+        meta.appendChild(node('div', null, 'Date: ' + data.date));
+        meta.appendChild(node('div', null, 'Due date: ' + data.dueDate));
+        header.appendChild(meta);
+        root.appendChild(header);
+
+        var from = node('div', 'company-info');
+        from.appendChild(node('h3', null, data.company));
+        from.appendChild(multiline(data.address));
+        from.appendChild(node('div', null, data.email));
+        root.appendChild(from);
+
+        var to = node('div', 'client-info');
+        to.appendChild(node('h4', null, 'Bill to'));
+        var clientName = node('div');
+        clientName.appendChild(node('strong', null, data.client));
+        to.appendChild(clientName);
+        to.appendChild(multiline(data.clientAddress));
+        root.appendChild(to);
+
+        var table = node('table', 'invoice-table');
+        var thead = document.createElement('thead');
+        var headRow = document.createElement('tr');
+        ['Description', 'Quantity', 'Unit price', 'Amount'].forEach(function (label, index) {
+          var cell = node('th', index === 0 ? null : 'text-right', label);
+          headRow.appendChild(cell);
+        });
+        thead.appendChild(headRow);
+        table.appendChild(thead);
+
+        var tbody = document.createElement('tbody');
+        data.items.forEach(function (item) {
+          var row = document.createElement('tr');
+          row.appendChild(node('td', null, item.description));
+          row.appendChild(node('td', 'text-right', String(item.quantity)));
+          row.appendChild(node('td', 'text-right', money(item.unitPrice, data.currency)));
+          row.appendChild(node('td', 'text-right', money(item.amount, data.currency)));
+          tbody.appendChild(row);
+        });
+        table.appendChild(tbody);
+        root.appendChild(table);
+
+        var sums = node('div', 'invoice-totals');
+        sums.appendChild(totalsRow('Subtotal', money(data.totals.subtotal, data.currency)));
+        if (data.totals.discount > 0) {
+          sums.appendChild(totalsRow(
+            'Discount (' + data.totals.discountRate + '% of subtotal)',
+            '-' + money(data.totals.discount, data.currency)
+          ));
+          sums.appendChild(totalsRow('After discount', money(data.totals.taxable, data.currency)));
+        }
+        if (data.totals.tax > 0) {
+          sums.appendChild(totalsRow(
+            'Tax (' + data.totals.taxRate + '% of ' + money(data.totals.taxable, data.currency) + ')',
+            money(data.totals.tax, data.currency)
+          ));
+        }
+        sums.appendChild(totalsRow('Total', money(data.totals.total, data.currency), 'total'));
+        root.appendChild(sums);
+
+        var notes = node('div', 'invoice-notes');
+        notes.appendChild(node('h4', null, 'Notes / terms'));
+        notes.appendChild(multiline(data.notes));
+        root.appendChild(notes);
+
+        var preview = el('invoicePreview');
+        preview.textContent = '';
+        preview.appendChild(root);
+      }
+
+      /* ---- the PDF ---- */
+
+      function loadPdfLib() {
+        if (typeof window.novatoolsLoadPdfLib === 'function') return window.novatoolsLoadPdfLib();
+        return Promise.reject(new Error('The PDF engine did not load. Reload the page and try again.'));
+      }
+
+      function wrap(text, font, size, maxWidth) {
+        var out = [];
+        String(text).split('\n').forEach(function (paragraph) {
+          var words = paragraph.split(/\s+/).filter(Boolean);
+          if (!words.length) { out.push(''); return; }
+          var line = words.shift();
+          words.forEach(function (word) {
+            var candidate = line + ' ' + word;
+            if (font.widthOfTextAtSize(candidate, size) <= maxWidth) {
+              line = candidate;
+            } else {
+              out.push(line);
+              line = word;
+            }
+          });
+          out.push(line);
+        });
+        return out;
+      }
+
+      async function buildPdf(data) {
+        var lib = await loadPdfLib();
+        var doc = await lib.PDFDocument.create();
+        var regular = await doc.embedFont(lib.StandardFonts.Helvetica);
+        var bold = await doc.embedFont(lib.StandardFonts.HelveticaBold);
+        var ink = lib.rgb(0.09, 0.11, 0.15);
+        var faint = lib.rgb(0.45, 0.48, 0.54);
+        var rule = lib.rgb(0.82, 0.84, 0.88);
+
+        var page = doc.addPage([595.28, 841.89]);
+        var width = page.getWidth();
+        var left = 56;
+        var right = width - 56;
+        var y = page.getHeight() - 64;
+
+        function text(value, options) {
+          page.drawText(pdfSafe(String(value)), options);
+        }
+
+        function rightText(value, options) {
+          var safe = pdfSafe(String(value));
+          var w = options.font.widthOfTextAtSize(safe, options.size);
+          page.drawText(safe, Object.assign({}, options, { x: options.x - w }));
+        }
+
+        function newPageIfNeeded(space) {
+          if (y - space > 64) return;
+          page = doc.addPage([595.28, 841.89]);
+          y = page.getHeight() - 64;
+        }
+
+        text('INVOICE', { x: left, y: y - 4, size: 26, font: bold, color: ink });
+        [
+          'Invoice #: ' + data.number,
+          'Date: ' + data.date,
+          'Due date: ' + data.dueDate
+        ].forEach(function (line, index) {
+          rightText(line, { x: right, y: y + 4 - index * 14, size: 10, font: regular, color: faint });
+        });
+        y -= 46;
+
+        text('From', { x: left, y: y, size: 9, font: bold, color: faint });
+        text('Bill to', { x: left + 260, y: y, size: 9, font: bold, color: faint });
+        y -= 15;
+        text(data.company, { x: left, y: y, size: 12, font: bold, color: ink });
+        text(data.client, { x: left + 260, y: y, size: 12, font: bold, color: ink });
+        y -= 14;
+
+        var fromLines = wrap(data.address, regular, 10, 230).concat([data.email]);
+        var toLines = wrap(data.clientAddress, regular, 10, 230);
+        var blockHeight = Math.max(fromLines.length, toLines.length) * 13;
+        fromLines.forEach(function (line, index) {
+          text(line, { x: left, y: y - index * 13, size: 10, font: regular, color: faint });
+        });
+        toLines.forEach(function (line, index) {
+          text(line, { x: left + 260, y: y - index * 13, size: 10, font: regular, color: faint });
+        });
+        y -= blockHeight + 22;
+
+        var columns = { description: left, quantity: left + 300, unit: left + 380, amount: right };
+        text('Description', { x: columns.description, y: y, size: 9, font: bold, color: faint });
+        rightText('Qty', { x: columns.quantity, y: y, size: 9, font: bold, color: faint });
+        rightText('Unit price', { x: columns.unit, y: y, size: 9, font: bold, color: faint });
+        rightText('Amount', { x: columns.amount, y: y, size: 9, font: bold, color: faint });
+        y -= 8;
+        page.drawLine({ start: { x: left, y: y }, end: { x: right, y: y }, thickness: 0.7, color: rule });
+        y -= 18;
+
+        data.items.forEach(function (item) {
+          var descriptionLines = wrap(item.description, regular, 10, 280);
+          newPageIfNeeded(descriptionLines.length * 13 + 12);
+          descriptionLines.forEach(function (line, index) {
+            text(line, { x: columns.description, y: y - index * 13, size: 10, font: regular, color: ink });
+          });
+          rightText(String(item.quantity), { x: columns.quantity, y: y, size: 10, font: regular, color: ink });
+          rightText(money(item.unitPrice, data.currency), { x: columns.unit, y: y, size: 10, font: regular, color: ink });
+          rightText(money(item.amount, data.currency), { x: columns.amount, y: y, size: 10, font: regular, color: ink });
+          y -= Math.max(descriptionLines.length, 1) * 13 + 8;
+        });
+
+        y -= 4;
+        page.drawLine({ start: { x: left + 300, y: y }, end: { x: right, y: y }, thickness: 0.7, color: rule });
+        y -= 18;
+
+        var rows = [['Subtotal', money(data.totals.subtotal, data.currency)]];
+        if (data.totals.discount > 0) {
+          rows.push(['Discount (' + data.totals.discountRate + '% of subtotal)', '-' + money(data.totals.discount, data.currency)]);
+          rows.push(['After discount', money(data.totals.taxable, data.currency)]);
+        }
+        if (data.totals.tax > 0) {
+          rows.push(['Tax (' + data.totals.taxRate + '% after discount)', money(data.totals.tax, data.currency)]);
+        }
+        rows.forEach(function (row) {
+          newPageIfNeeded(20);
+          text(row[0], { x: left + 300, y: y, size: 10, font: regular, color: faint });
+          rightText(row[1], { x: right, y: y, size: 10, font: regular, color: ink });
+          y -= 15;
+        });
+        newPageIfNeeded(28);
+        y -= 4;
+        text('Total', { x: left + 300, y: y, size: 12, font: bold, color: ink });
+        rightText(money(data.totals.total, data.currency), { x: right, y: y, size: 12, font: bold, color: ink });
+        y -= 34;
+
+        var noteLines = wrap(data.notes, regular, 10, right - left);
+        newPageIfNeeded(noteLines.length * 13 + 26);
+        text('Notes / terms', { x: left, y: y, size: 9, font: bold, color: faint });
+        y -= 15;
+        noteLines.forEach(function (line, index) {
+          text(line, { x: left, y: y - index * 13, size: 10, font: regular, color: ink });
+        });
+
+        doc.setTitle('Invoice ' + pdfSafe(data.number));
+        doc.setCreator('NovaTools MC Invoice Generator');
+        doc.setCreationDate(new Date());
+        doc.setModificationDate(new Date());
+        /* updateMetadata would overwrite the producer with pdf-lib's own name; an
+           invoice should say what made it. */
+        return doc.save({ useObjectStreams: false, updateMetadata: false });
+      }
+
+      function safeFileName(value) {
+        var cleaned = String(value).replace(/[^A-Za-z0-9._-]+/g, '-').replace(/^-+|-+$/g, '');
+        return (cleaned || 'invoice') + '.pdf';
+      }
+
+      function say(message) {
+        el('invoiceStatus').textContent = message;
+      }
+
+      var busy = false;
+
+      async function downloadPdf() {
+        if (busy) return;
+        busy = true;
+        lostCharacters = false;
+        var button = el('downloadPdf');
+        button.disabled = true;
+        say('Building the PDF in this browser…');
+        try {
+          var data = invoice();
+          var bytes = await buildPdf(data);
+          var blob = new Blob([bytes], { type: 'application/pdf' });
+          var url = URL.createObjectURL(blob);
+          var link = document.createElement('a');
+          link.href = url;
+          link.download = safeFileName(data.number);
+          document.body.appendChild(link);
+          link.click();
+          link.remove();
+          setTimeout(function () { URL.revokeObjectURL(url); }, 4000);
+          say(
+            'Saved ' + safeFileName(data.number) + '. Nothing was uploaded.' +
+            (lostCharacters
+              ? ' Some letters were replaced: the built-in PDF fonts cover Latin-1 only, so characters outside it are transliterated or shown as "?".'
+              : '')
+          );
+        } catch (error) {
+          say('The PDF could not be built: ' + (error && error.message ? error.message : 'unknown error') + '. Nothing was uploaded.');
+        } finally {
+          busy = false;
+          button.disabled = false;
+        }
+      }
+
+      function addLine() {
+        var container = el('lineItems');
+        var line = document.createElement('div');
+        line.className = 'line-item';
+
+        var description = document.createElement('input');
+        description.type = 'text';
+        description.className = 'item-desc';
+        description.placeholder = 'Description';
+        description.setAttribute('aria-label', 'Line item description');
+
+        var quantity = document.createElement('input');
+        quantity.type = 'number';
+        quantity.className = 'item-qty';
+        quantity.value = '1';
+        quantity.min = '0';
+        quantity.placeholder = 'Qty';
+        quantity.setAttribute('aria-label', 'Line item quantity');
+
+        var price = document.createElement('input');
+        price.type = 'number';
+        price.className = 'item-price';
+        price.value = '0';
+        price.min = '0';
+        price.step = '0.01';
+        price.placeholder = 'Price';
+        price.setAttribute('aria-label', 'Line item unit price');
+
+        var remove = document.createElement('button');
+        remove.type = 'button';
+        remove.className = 'remove-line';
+        remove.setAttribute('aria-label', 'Remove this line item');
+        remove.textContent = '×';
+        remove.addEventListener('click', function () { removeLine(remove); });
+
+        [description, quantity, price, remove].forEach(function (child) { line.appendChild(child); });
+        container.appendChild(line);
+        [description, quantity, price].forEach(function (input) {
+          input.addEventListener('input', renderPreview);
+        });
+        renderPreview();
+        description.focus();
+      }
+
+      function removeLine(button) {
+        if (lines().length <= 1) {
+          say('An invoice needs at least one line, so this one was kept.');
+          return;
+        }
+        button.closest('.line-item').remove();
+        renderPreview();
+      }
+
+      function start() {
+        var today = new Date();
+        var due = new Date();
+        due.setDate(due.getDate() + 30);
+        el('invDate').valueAsDate = today;
+        el('invDueDate').valueAsDate = due;
+
+        document.querySelectorAll('#invoiceForm input, #invoiceForm textarea, #invoiceForm select, .controls-panel input, .controls-panel textarea, .controls-panel select').forEach(function (field) {
+          field.addEventListener('input', renderPreview);
+          field.addEventListener('change', renderPreview);
+        });
+        document.querySelectorAll('input, textarea, select').forEach(function (field) {
+          field.addEventListener('input', renderPreview);
+          field.addEventListener('change', renderPreview);
+        });
+        document.querySelectorAll('.remove-line').forEach(function (button) {
+          button.addEventListener('click', function () { removeLine(button); });
+        });
+        var add = el('addLine');
+        if (add) add.addEventListener('click', addLine);
+        el('downloadPdf').addEventListener('click', downloadPdf);
+        el('printInvoice').addEventListener('click', function () { window.print(); });
+        renderPreview();
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', start);
+      } else {
+        start();
+      }
+    }());
 
     document.addEventListener('DOMContentLoaded', function() {
       var menuBtn = document.getElementById('mobileMenuBtn');
@@ -563,8 +938,8 @@ Client City, ST 67890</textarea>
         }
         function updateIcon() {
           var t = getTheme();
-          themeBtn.querySelector('.icon-sun').style.display = t === 'light' ? 'none' : 'block';
-          themeBtn.querySelector('.icon-moon').style.display = t === 'dark' ? 'none' : 'block';
+          themeBtn.querySelector('.icon-sun').toggleAttribute('hidden', t !== 'dark');
+          themeBtn.querySelector('.icon-moon').toggleAttribute('hidden', t === 'dark');
         }
         themeBtn.addEventListener('click', function() {
           var next = getTheme() === 'dark' ? 'light' : 'dark';
