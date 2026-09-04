@@ -135,6 +135,8 @@ ul, ol {
   --bg-hover: #18233d;
   --field-bg: #0f0f12;
   --field-border: rgba(0, 217, 255, 0.28);
+  --hero-grid-line: rgba(255, 255, 255, 0.05);
+  --hero-glow: rgba(59, 130, 246, 0.16);
 
   /* Surfaces */
   --surface-default: rgba(255, 255, 255, 0.04);
@@ -222,6 +224,8 @@ ul, ol {
   --bg-hover: #e2e8f0;
   --field-bg: #ffffff;
   --field-border: #94a3b8;
+  --hero-grid-line: rgba(15, 23, 42, 0.05);
+  --hero-glow: rgba(29, 78, 216, 0.10);
 
   --surface-default: rgba(15, 23, 42, 0.03);
   --surface-hover: rgba(15, 23, 42, 0.06);
@@ -291,6 +295,8 @@ ul, ol {
     --bg-hover: #e2e8f0;
     --field-bg: #ffffff;
     --field-border: #94a3b8;
+    --hero-grid-line: rgba(15, 23, 42, 0.05);
+    --hero-glow: rgba(29, 78, 216, 0.10);
 
     --surface-default: rgba(15, 23, 42, 0.03);
     --surface-hover: rgba(15, 23, 42, 0.06);
@@ -3031,10 +3037,66 @@ article.tool-resource blockquote {
    ============================================ */
 .home-hero {
   position: relative;
+  isolation: isolate;
   padding: clamp(var(--space-10), 7vw, var(--space-20)) 0 clamp(var(--space-8), 4vw, var(--space-12));
   border-bottom: 1px solid var(--border-default);
   background: var(--bg-primary);
+  overflow: hidden;
 }
+
+/* Depth without weight: a faint grid that fades out before the text, and one
+   soft wash of the action colour behind the heading. Both are painted by
+   pseudo-elements at negative z-index, so they cost no layout and cannot move
+   anything. */
+.home-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    linear-gradient(var(--hero-grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--hero-grid-line) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 20%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 20%, transparent 75%);
+  pointer-events: none;
+}
+
+.home-hero::after {
+  content: '';
+  position: absolute;
+  inset-block-start: -30%;
+  inset-inline: 10%;
+  block-size: 70%;
+  z-index: -1;
+  background: radial-gradient(ellipse at 50% 50%, var(--hero-glow), transparent 68%);
+  pointer-events: none;
+}
+
+.home-hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin: 0 0 var(--space-5);
+  padding: 0.3rem 0.85rem;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-full);
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.home-hero__badge::before {
+  content: '';
+  inline-size: 0.45rem;
+  block-size: 0.45rem;
+  border-radius: 50%;
+  background: var(--color-success-text);
+}
+
+.home-hero__badge[hidden] { display: none; }
 
 .home-hero__inner {
   display: flex;

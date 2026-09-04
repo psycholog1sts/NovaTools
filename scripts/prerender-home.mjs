@@ -89,8 +89,10 @@ try {
       const el = document.getElementById(id);
       out[id] = el ? el.innerHTML : null;
     }
-    const note = document.getElementById('categoriesPending');
+      const note = document.getElementById('categoriesPending');
     out.__note = note ? { text: note.textContent || '', hidden: note.hidden } : null;
+    const badge = document.getElementById('homeHeroBadge');
+    out.__badge = badge ? { text: badge.textContent || '', hidden: badge.hidden } : null;
     return out;
   }, CONTAINERS.map((c) => c.id));
 } finally {
@@ -111,6 +113,14 @@ for (const { id, required } of CONTAINERS) {
   if (!open.test(html)) throw new Error(`prerender target #${id} was not found in dist/index.html`);
   html = html.replace(open, (_m, start, _inner, end) => `${start}${markup}${end}`);
   filled += 1;
+}
+
+if (rendered.__badge && rendered.__badge.text.trim() && !rendered.__badge.hidden) {
+  const badge = rendered.__badge;
+  html = html.replace(
+    /(<p\b[^>]*\bid="homeHeroBadge"[^>]*>)([\s\S]*?)(<\/p>)/i,
+    (match, start, _inner, end) => `${start.replace(/\s+hidden(?==|\b)/gi, '')}${badge.text}${end}`
+  );
 }
 
 if (rendered.__note) {
