@@ -236,6 +236,7 @@
     <main id="main-content">
       <!-- Hero Section -->
       <section class="home-hero" aria-labelledby="homeHeroTitle">
+        <div class="home-hero__aurora" aria-hidden="true"></div>
         <div class="container home-hero__inner">
           <p class="home-hero__badge" id="homeHeroBadge" hidden></p>
           <h1 class="home-hero__title" id="homeHeroTitle" data-i18n="hero.title">
@@ -262,19 +263,19 @@
             <div class="home-search__results" id="homeSearchResults" role="listbox" aria-label="Search results" hidden></div>
           </form>
 
-          <nav class="home-hero__tasks" aria-label="Common tasks">
-            <a class="home-task-chip" href="/tools/converters/percentage-calculator/">Work out a percentage</a>
-            <a class="home-task-chip" href="/tools/converters/unit-converter/">Convert units</a>
-            <a class="home-task-chip" href="/tools/pdf/compress/">Compress a PDF</a>
-            <a class="home-task-chip" href="/tools/image/compress/">Compress an image</a>
-            <a class="home-task-chip" href="/tools/converters/unix-timestamp/">Read a timestamp</a>
-            <a class="home-task-chip" href="/tools/converters/timezone-converter/">Compare time zones</a>
+          <nav class="home-hero__tasks" aria-label="Common tasks" data-i18n-aria-label="home.tasks.ariaLabel">
+            <a class="home-task-chip" href="/tools/converters/percentage-calculator/" data-i18n="home.tasks.percentage">Work out a percentage</a>
+            <a class="home-task-chip" href="/tools/converters/unit-converter/" data-i18n="home.tasks.units">Convert units</a>
+            <a class="home-task-chip" href="/tools/pdf/compress/" data-i18n="home.tasks.compressPdf">Compress a PDF</a>
+            <a class="home-task-chip" href="/tools/image/compress/" data-i18n="home.tasks.compressImage">Compress an image</a>
+            <a class="home-task-chip" href="/tools/converters/unix-timestamp/" data-i18n="home.tasks.timestamp">Read a timestamp</a>
+            <a class="home-task-chip" href="/tools/converters/timezone-converter/" data-i18n="home.tasks.timezones">Compare time zones</a>
           </nav>
 
           <p class="home-hero__proof">
-            <span>No sign-up for any published tool</span>
-            <span>Most tools process input in your browser</span>
-            <span>Limitations documented on every tool page</span>
+            <span data-i18n="home.proof.noSignup">No sign-up for any published tool</span>
+            <span data-i18n="home.proof.inBrowser">Most tools process input in your browser</span>
+            <span data-i18n="home.proof.limitations">Limitations documented on every tool page</span>
           </p>
         </div>
       </section>

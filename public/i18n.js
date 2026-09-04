@@ -760,6 +760,13 @@
       updatePageTranslations();
       initSiteGuide();
       isInitialized = true;
+
+      // The first pass never announced itself, only later language switches did.
+      // Anything rendered from translations before the bundle arrived — the hero
+      // badge, for one — stayed in its English fallback for the whole visit.
+      window.dispatchEvent(new CustomEvent('languageChanged', {
+        detail: { language: currentLanguage, initial: true }
+      }));
     };
 
     if (documentLanguage === currentLanguage) {

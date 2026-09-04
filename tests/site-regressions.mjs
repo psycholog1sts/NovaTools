@@ -231,6 +231,19 @@ for (const property of ['height', 'width', 'top', 'left']) {
   );
 }
 
+// Two copies of the i18n runtime ship in this repo and only one of them is
+// served. They drifted once already: the first-pass announcement landed in the
+// source copy while the built site ran the public one, so anything rendered
+// from translations before the bundle arrived stayed in English. Assert the
+// behaviour in both rather than trusting which file wins.
+for (const i18nRuntime of [sourceI18n, publicI18n]) {
+  assert.match(
+    i18nRuntime,
+    /isInitialized = true;[\s\S]{0,400}dispatchEvent\(new CustomEvent\('languageChanged'/,
+    'The first translation pass must announce itself, so code that renders from translations can re-render.'
+  );
+}
+
 for (const i18nRuntime of [sourceI18n, publicI18n]) {
   assert.match(
     i18nRuntime,

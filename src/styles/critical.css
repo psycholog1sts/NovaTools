@@ -137,6 +137,7 @@ ul, ol {
   --field-border: rgba(0, 217, 255, 0.28);
   --hero-grid-line: rgba(255, 255, 255, 0.05);
   --hero-glow: rgba(59, 130, 246, 0.16);
+  --hero-glow-2: rgba(103, 232, 249, 0.12);
 
   /* Surfaces */
   --surface-default: rgba(255, 255, 255, 0.04);
@@ -226,6 +227,7 @@ ul, ol {
   --field-border: #94a3b8;
   --hero-grid-line: rgba(15, 23, 42, 0.05);
   --hero-glow: rgba(29, 78, 216, 0.10);
+  --hero-glow-2: rgba(14, 165, 233, 0.10);
 
   --surface-default: rgba(15, 23, 42, 0.03);
   --surface-hover: rgba(15, 23, 42, 0.06);
@@ -297,6 +299,7 @@ ul, ol {
     --field-border: #94a3b8;
     --hero-grid-line: rgba(15, 23, 42, 0.05);
     --hero-glow: rgba(29, 78, 216, 0.10);
+    --hero-glow-2: rgba(14, 165, 233, 0.10);
 
     --surface-default: rgba(15, 23, 42, 0.03);
     --surface-hover: rgba(15, 23, 42, 0.06);
@@ -3062,15 +3065,51 @@ article.tool-resource blockquote {
   pointer-events: none;
 }
 
-.home-hero::after {
+/* Two slow lights that drift behind the heading. They animate transform and
+   opacity only, so the browser composites them and nothing above ever reflows;
+   the cycle is long enough to read as ambient rather than as motion competing
+   with the text. Anyone who asks for less motion gets the still version. */
+.home-hero::after,
+.home-hero__aurora {
   content: '';
   position: absolute;
-  inset-block-start: -30%;
-  inset-inline: 10%;
-  block-size: 70%;
+  inset-block-start: -34%;
+  inset-inline: 6%;
+  block-size: 78%;
   z-index: -1;
+  border-radius: 50%;
   background: radial-gradient(ellipse at 50% 50%, var(--hero-glow), transparent 68%);
+  filter: blur(6px);
   pointer-events: none;
+  will-change: transform, opacity;
+  animation: novatools-hero-drift 22s ease-in-out infinite alternate;
+}
+
+.home-hero__aurora {
+  inset-inline: 22% -8%;
+  inset-block-start: -18%;
+  block-size: 66%;
+  background: radial-gradient(ellipse at 50% 50%, var(--hero-glow-2), transparent 70%);
+  animation: novatools-hero-drift-2 28s ease-in-out infinite alternate;
+}
+
+@keyframes novatools-hero-drift {
+  from { transform: translate3d(-4%, 0, 0) scale(0.94); opacity: 0.75; }
+  to   { transform: translate3d(6%, 3%, 0) scale(1.12); opacity: 1; }
+}
+
+@keyframes novatools-hero-drift-2 {
+  from { transform: translate3d(5%, 2%, 0) scale(1.08); opacity: 0.6; }
+  to   { transform: translate3d(-7%, -3%, 0) scale(0.9); opacity: 0.95; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-hero::after,
+  .home-hero__aurora {
+    animation: none;
+    transform: none;
+    opacity: 0.9;
+  }
 }
 
 .home-hero__badge {

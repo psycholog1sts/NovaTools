@@ -209,7 +209,8 @@
       "freeTools": "Free Tools",
       "categories": "Categories",
       "private": "Private",
-      "description": "Converters, calculators and file utilities that run in your browser. Every tool states what it assumes and where it stops."
+      "description": "Converters, calculators and file utilities that run in your browser. Every tool states what it assumes and where it stops.",
+      "badge": "{{tools}} verified tools across {{categories}} categories"
     },
     "launcher": {
       "title": "Workflow launcher",
@@ -419,7 +420,21 @@
         "category": "Developer"
       }
     },
-    "popularToolsAriaSuffix": "popular tools"
+    "popularToolsAriaSuffix": "popular tools",
+    "tasks": {
+      "ariaLabel": "Common tasks",
+      "percentage": "Work out a percentage",
+      "units": "Convert units",
+      "compressPdf": "Compress a PDF",
+      "compressImage": "Compress an image",
+      "timestamp": "Read a timestamp",
+      "timezones": "Compare time zones"
+    },
+    "proof": {
+      "noSignup": "No sign-up for any published tool",
+      "inBrowser": "Most tools process input in your browser",
+      "limitations": "Limitations documented on every tool page"
+    }
   },
   "footer": {
     "signature": "Metehan ÇETİN, LPC",

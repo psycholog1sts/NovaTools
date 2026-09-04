@@ -762,6 +762,14 @@
       updatePageTranslations();
       initSiteGuide();
       isInitialized = true;
+
+      // The first pass never announced itself, only later language switches did.
+      // Anything rendered from translations before the bundle arrived — the hero
+      // badge, for one — was left in its English fallback for the rest of the
+      // visit. Same event, so listeners need no special case for first load.
+      window.dispatchEvent(new CustomEvent('languageChanged', {
+        detail: { language: currentLanguage, initial: true }
+      }));
     };
 
     if (documentLanguage === currentLanguage) {
