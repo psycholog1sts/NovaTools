@@ -9,6 +9,7 @@ import { initConsentManager } from './core/consent-manager.mjs';
 import { initAnalytics } from './js/analytics.js';
 import { applySeo, buildHomeSchema, upsertJsonLd } from './js/seo.js';
 import { initHomeSearch } from './js/home-search.js';
+import { initHeroMotion } from './js/hero-motion.js';
 import { buildIndex, recentItems, rememberTool, forgetRecentTools } from './js/tool-search.js';
 import blogPostsForSearch from './i18n/blog/en.json';
 import { getPopularThisWeek } from './components/engagement-widgets.mjs';
@@ -654,4 +655,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initAnalytics();
   initDesignSystemInteractions();
   rerenderHomepageDynamicParts();
+  initHeroMotion();
 });

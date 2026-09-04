@@ -138,6 +138,14 @@ ul, ol {
   --hero-grid-line: rgba(255, 255, 255, 0.05);
   --hero-glow: rgba(59, 130, 246, 0.16);
   --hero-glow-2: rgba(103, 232, 249, 0.12);
+  --hero-follower-core: rgba(59, 130, 246, 0.26);
+  --hero-orb-bg: rgba(255, 255, 255, 0.06);
+  --hero-orb-border: rgba(255, 255, 255, 0.14);
+  --hero-orb-shadow: rgba(0, 0, 0, 0.75);
+  --hero-mascot-bg: rgba(59, 130, 246, 0.18);
+  --hero-mascot-border: rgba(147, 197, 253, 0.38);
+  --hero-mascot-eye: rgba(255, 255, 255, 0.92);
+  --hero-mascot-pupil: #0b1020;
 
   /* Surfaces */
   --surface-default: rgba(255, 255, 255, 0.04);
@@ -228,6 +236,14 @@ ul, ol {
   --hero-grid-line: rgba(15, 23, 42, 0.05);
   --hero-glow: rgba(29, 78, 216, 0.10);
   --hero-glow-2: rgba(14, 165, 233, 0.10);
+  --hero-follower-core: rgba(29, 78, 216, 0.16);
+  --hero-orb-bg: rgba(255, 255, 255, 0.9);
+  --hero-orb-border: rgba(15, 23, 42, 0.10);
+  --hero-orb-shadow: rgba(15, 23, 42, 0.35);
+  --hero-mascot-bg: rgba(219, 234, 254, 0.95);
+  --hero-mascot-border: rgba(29, 78, 216, 0.22);
+  --hero-mascot-eye: #ffffff;
+  --hero-mascot-pupil: #1d4ed8;
 
   --surface-default: rgba(15, 23, 42, 0.03);
   --surface-hover: rgba(15, 23, 42, 0.06);
@@ -300,6 +316,14 @@ ul, ol {
     --hero-grid-line: rgba(15, 23, 42, 0.05);
     --hero-glow: rgba(29, 78, 216, 0.10);
     --hero-glow-2: rgba(14, 165, 233, 0.10);
+    --hero-follower-core: rgba(29, 78, 216, 0.16);
+    --hero-orb-bg: rgba(255, 255, 255, 0.9);
+    --hero-orb-border: rgba(15, 23, 42, 0.10);
+    --hero-orb-shadow: rgba(15, 23, 42, 0.35);
+    --hero-mascot-bg: rgba(219, 234, 254, 0.95);
+    --hero-mascot-border: rgba(29, 78, 216, 0.22);
+    --hero-mascot-eye: #ffffff;
+    --hero-mascot-pupil: #1d4ed8;
 
     --surface-default: rgba(15, 23, 42, 0.03);
     --surface-hover: rgba(15, 23, 42, 0.06);
@@ -3110,6 +3134,121 @@ article.tool-resource blockquote {
     transform: none;
     opacity: 0.9;
   }
+}
+
+/* ============================================
+   HERO MOTION FIELD
+   The hero is the first thing anyone sees, so it has to look alive rather than
+   merely rendered. Three things move here: tool glyphs that float on their own,
+   a soft light that follows the pointer, and a small face that looks where the
+   pointer is. Everything lives in one absolutely-positioned layer at negative
+   z-index with pointer-events off, so it participates in no layout, catches no
+   clicks, and cannot shift the heading. Positions come from custom properties
+   set per element, and the drift is a compositor-only transform.
+   ============================================ */
+.hero-field {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  contain: layout paint style;
+}
+
+.hero-field__follower {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  inline-size: 460px;
+  block-size: 460px;
+  margin-block-start: -230px;
+  margin-inline-start: -230px;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(circle at 50% 50%, var(--hero-follower-core), transparent 65%);
+  transform: translate3d(50vw, 40%, 0) scale(0.85);
+  transition: opacity 420ms ease;
+  will-change: transform, opacity;
+}
+
+.hero-field[data-hero-active] .hero-field__follower { opacity: 1; }
+
+.hero-orb {
+  position: absolute;
+  inset-block-start: var(--orb-y, 50%);
+  inset-inline-start: var(--orb-x, 50%);
+  inline-size: var(--orb-size, 56px);
+  block-size: var(--orb-size, 56px);
+  margin-block-start: calc(var(--orb-size, 56px) / -2);
+  margin-inline-start: calc(var(--orb-size, 56px) / -2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  border: 1px solid var(--hero-orb-border);
+  background: var(--hero-orb-bg);
+  box-shadow: 0 12px 30px -14px var(--hero-orb-shadow);
+  color: var(--color-action);
+  pointer-events: none;
+  will-change: transform;
+  animation: novatools-orb-float var(--orb-float, 7s) ease-in-out var(--orb-delay, 0s) infinite alternate;
+}
+
+.hero-orb svg {
+  inline-size: 50%;
+  block-size: 50%;
+  display: block;
+}
+
+/* The pointer parallax is applied as a wrapper translate by script, so the
+   keyframe below is free to own the idle drift on its own axis. */
+@keyframes novatools-orb-float {
+  from { transform: translate3d(0, -13px, 0) rotate(-4deg); }
+  to   { transform: translate3d(0, 13px, 0) rotate(4deg); }
+}
+
+.hero-mascot {
+  gap: 8px;
+  border-radius: 50% 50% 46% 46%;
+  background: var(--hero-mascot-bg);
+  border-color: var(--hero-mascot-border);
+}
+
+.hero-mascot__eye {
+  position: relative;
+  inline-size: 22%;
+  block-size: 22%;
+  border-radius: 50%;
+  background: var(--hero-mascot-eye);
+  display: block;
+}
+
+.hero-mascot__pupil {
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  inline-size: 52%;
+  block-size: 52%;
+  margin-block-start: -26%;
+  margin-inline-start: -26%;
+  border-radius: 50%;
+  background: var(--hero-mascot-pupil);
+  will-change: transform;
+}
+
+/* Narrow screens keep only the orbs that sit clear of the text column. */
+@media (max-width: 860px) {
+  .hero-orb--5,
+  .hero-orb--6,
+  .hero-mascot { display: none; }
+  .hero-orb { --orb-size: 42px; opacity: 0.7; }
+  .hero-field__follower { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-orb { animation: none; transform: none; }
+  .hero-field__follower { display: none; }
 }
 
 .home-hero__badge {
