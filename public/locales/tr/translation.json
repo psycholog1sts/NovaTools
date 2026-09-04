@@ -5885,7 +5885,8 @@
       "freeTools": "Ücretsiz Araçlar",
       "categories": "Kategoriler",
       "private": "Gizli",
-      "description": "Tarayıcınızda çalışan dönüştürücüler, hesaplayıcılar ve dosya araçları. Her araç neyi varsaydığını ve nerede durduğunu yazar."
+      "description": "Tarayıcınızda çalışan dönüştürücüler, hesaplayıcılar ve dosya araçları. Her araç neyi varsaydığını ve nerede durduğunu yazar.",
+      "badge": "{{categories}} kategoride {{tools}} doğrulanmış araç"
     },
     "launcher": {
       "title": "İş akışı başlatıcı",
@@ -6095,7 +6096,21 @@
         "category": "Geliştirici"
       }
     },
-    "popularToolsAriaSuffix": "popüler araçları"
+    "popularToolsAriaSuffix": "popüler araçları",
+    "tasks": {
+      "ariaLabel": "Sık yapılan işler",
+      "percentage": "Yüzde hesapla",
+      "units": "Birim çevir",
+      "compressPdf": "PDF sıkıştır",
+      "compressImage": "Görsel sıkıştır",
+      "timestamp": "Zaman damgası oku",
+      "timezones": "Saat dilimi karşılaştır"
+    },
+    "proof": {
+      "noSignup": "Yayındaki hiçbir araç için kayıt gerekmez",
+      "inBrowser": "Araçların çoğu girdiyi tarayıcınızda işler",
+      "limitations": "Her araç sayfasında sınırlar yazılıdır"
+    }
   },
   "categories": {
     "pdf": {
