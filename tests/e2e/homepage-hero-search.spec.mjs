@@ -137,4 +137,19 @@ test.describe('Homepage hero and tool search', () => {
     await page.setViewportSize({ width: 320, height: 740 });
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth + 1)).toBe(true);
   });
+
+  test('the hero badge counts only what the site can actually open', async ({ page }) => {
+    await page.goto('/');
+    const badge = page.locator('#homeHeroBadge');
+    await expect(badge).toBeVisible();
+
+    const text = (await badge.innerText()).trim();
+    const claimed = Number((text.match(/(\d+)\s+verified tools/i) || [])[1]);
+    expect(Number.isFinite(claimed)).toBe(true);
+
+    // The number has to match the tools the homepage is willing to link to.
+    const openable = await page.evaluate(() =>
+      document.querySelectorAll('#featuredTools .featured-tool-card').length);
+    expect(claimed).toBe(openable);
+  });
 });

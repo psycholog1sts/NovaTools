@@ -607,7 +607,30 @@ function initRecentTools() {
 // ============================================
 // RERENDER ON LANGUAGE CHANGE
 // ============================================
+// The hero badge counts what the site can actually open right now. It is filled
+// from the manifest rather than typed into the markup, so it cannot drift away
+// from certification the way a hand-written number would, and it stays hidden
+// while there is nothing true to say.
+function renderHeroBadge() {
+  const badge = document.getElementById('homeHeroBadge');
+  if (!badge) return;
+  const toolCount = certifiedPublicTools.length;
+  const categoryCount = Object.keys(certifiedByCategory)
+    .filter((key) => (certifiedByCategory[key] || []).length > 0).length;
+  if (!toolCount || !categoryCount) {
+    badge.textContent = '';
+    badge.hidden = true;
+    return;
+  }
+  const text = t('home.hero.badge', '{{tools}} verified tools across {{categories}} categories')
+    .replace('{{tools}}', String(toolCount))
+    .replace('{{categories}}', String(categoryCount));
+  if (badge.textContent !== text) badge.textContent = text;
+  badge.hidden = false;
+}
+
 function rerenderHomepageDynamicParts() {
+  renderHeroBadge();
   renderFeaturedTools();
   renderCategories();
   renderBlogCards();
