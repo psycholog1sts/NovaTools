@@ -184,7 +184,7 @@
         <div class="tool-hero">
           <div class="tool-hero-icon">&#9989;</div>
           <h1 data-i18n="tools.productivity.todo-list.text.011">Todo List</h1>
-          <p class="tool-updated-note">Last updated: <time class="page-last-updated" datetime="2026-06-03">2026-06-03</time></p>
+          <p class="tool-updated-note">Last updated: <time class="page-last-updated" datetime="2026-09-07">2026-09-07</time></p>
           <p data-i18n="tools.productivity.todo-list.text.012">Organize your tasks with priorities and due dates. Track your progress and stay productive with this simple, privacy-focused todo list.</p>
         </div>
 
@@ -209,7 +209,7 @@
           </div>
 
           <div class="add-task-form">
-            <input type="text" class="task-input" id="taskInput" placeholder="What needs to be done?" data-i18n-placeholder="tools.productivity.todo-list.placeholder.001">
+            <input type="text" class="task-input" id="taskInput" maxlength="500" autocomplete="off" placeholder="What needs to be done?" data-i18n-placeholder="tools.productivity.todo-list.placeholder.001">
             <div class="form-row">
               <select class="priority-select" id="prioritySelect">
                 <option value="low">Low Priority</option>
@@ -217,7 +217,7 @@
                 <option value="high">High Priority</option>
               </select>
               <input type="date" class="date-input" id="dueDateInput">
-              <button class="btn btn-primary" id="btnAddTask">
+              <button type="button" class="btn btn-primary" id="btnAddTask">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/></svg>
                 Add Task
               </button>
@@ -225,10 +225,10 @@
           </div>
 
           <div class="filter-tabs">
-            <button class="filter-tab active" data-filter="all" data-i18n="tools.productivity.todo-list.text.013">All Tasks</button>
-            <button class="filter-tab" data-filter="active" data-i18n="tools.productivity.todo-list.text.014">Active</button>
-            <button class="filter-tab" data-filter="completed" data-i18n="tools.productivity.todo-list.text.015">Completed</button>
-            <button class="filter-tab" data-filter="high" data-i18n="tools.productivity.todo-list.text.016">High Priority</button>
+            <button type="button" class="filter-tab active" data-filter="all" data-i18n="tools.productivity.todo-list.text.013">All Tasks</button>
+            <button type="button" class="filter-tab" data-filter="active" data-i18n="tools.productivity.todo-list.text.014">Active</button>
+            <button type="button" class="filter-tab" data-filter="completed" data-i18n="tools.productivity.todo-list.text.015">Completed</button>
+            <button type="button" class="filter-tab" data-filter="high" data-i18n="tools.productivity.todo-list.text.016">High Priority</button>
           </div>
 
           <div class="task-list" id="taskList">
@@ -243,24 +243,25 @@
 
       <article class="tool-description" aria-labelledby="toolDescriptionTitle-todo-list">
         <h2 id="toolDescriptionTitle-todo-list">What Todo List Does and Why It Matters</h2>
-        <p>Todo List lets you add tasks, mark them done, and remove them — the basic checklist function, available instantly without an account or app install. Tasks are saved locally in your browser, so your list is still there the next time you open the page.</p>
-        <p>It's built for quick, personal task tracking: capturing something before you forget it, and checking it off once it's done. For task management with due dates, reminders, sharing, or team assignment, a dedicated task-management app is a better fit — this is intentionally the simple version.</p>
+        <p>Todo List lets you add tasks, assign a priority and optional due date, mark tasks done, filter the list, and remove items. Tasks are saved locally in your browser, so your list is still there the next time you open the page.</p>
+        <p>It's built for quick, personal task tracking. It does not provide reminders, cross-device sync, sharing, or team assignment; use a dedicated task-management service when you need those features.</p>
         <h2>How to Use Todo List</h2>
         <ol>
-          <li>Type a task and add it to the list.</li>
+          <li>Type a task, choose its priority, and optionally choose a due date.</li>
           <li>Check it off when it's done.</li>
+          <li>Use the filters to focus on active, completed, or high-priority work.</li>
           <li>Remove tasks you no longer need to track.</li>
           <li>Your list persists locally between visits in this browser.</li>
         </ol>
         <h2>What to Know</h2>
-        <ul><li>Data is stored locally in your browser, not synced across devices or tied to an account</li><li>Clearing your browser's site data will remove your saved list</li><li>There's no reminder or notification system built in — this is a list, not a scheduler</li></ul>
+        <ul><li>Data is stored locally in your browser, not synced across devices or tied to an account</li><li>Clearing your browser's site data will remove your saved list</li><li>Due dates are visual only; there is no reminder or notification system</li></ul>
         <h2>Privacy and Security</h2>
-        <p>Your tasks are stored locally in your browser. Nothing is uploaded to a server, and no account is required.</p>
+        <p>Your tasks are stored locally in your browser. Nothing is uploaded to a server, and no account is required. Persisted task records are validated before display and task text is rendered as text rather than interpreted as HTML.</p>
         <h2>Frequently Asked Questions</h2>
         <h3>Will my list be there if I open this on my phone?</h3>
         <p>No — since the list is stored locally in one browser, a different device or browser starts with an empty list.</p>
         <h3>Can I set due dates or reminders?</h3>
-        <p>Check the interface for whether due dates are supported; reminders/notifications generally aren't part of a lightweight local list like this one. For that, a dedicated task app is the better tool.</p>
+        <p>You can set an optional due date and overdue items are highlighted. The tool does not send reminders or notifications.</p>
         <h3>What happens to my list if I clear my browser data?</h3>
         <p>It will be removed, since that's where it's stored. If your list matters, note down anything important before clearing site data.</p>
         <h2>Related Tools</h2>
@@ -327,9 +328,11 @@
   </div>
 
   <script type="module">
-    let tasks = JSON.parse(localStorage.getItem('todo_tasks') || '[]');
+    const VALID_PRIORITIES = new Set(['low', 'medium', 'high']);
+    const MAX_TASK_LENGTH = 500;
+    let generatedTaskCounter = 0;
     let currentFilter = 'all';
-    
+
     const taskInput = document.getElementById('taskInput');
     const prioritySelect = document.getElementById('prioritySelect');
     const dueDateInput = document.getElementById('dueDateInput');
@@ -340,122 +343,220 @@
     const statActive = document.getElementById('statActive');
     const statCompleted = document.getElementById('statCompleted');
     const statHigh = document.getElementById('statHigh');
-    
+
+    function createTaskId() {
+      if (globalThis.crypto && typeof globalThis.crypto.randomUUID === 'function') {
+        return globalThis.crypto.randomUUID();
+      }
+      generatedTaskCounter += 1;
+      return `task-${Date.now()}-${generatedTaskCounter}`;
+    }
+
+    function parseLocalDate(value) {
+      if (typeof value !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(value)) return null;
+      const [year, month, day] = value.split('-').map(Number);
+      const date = new Date(year, month - 1, day);
+      if (date.getFullYear() !== year || date.getMonth() !== month - 1 || date.getDate() !== day) return null;
+      date.setHours(0, 0, 0, 0);
+      return date;
+    }
+
+    function normalizeTask(value) {
+      if (!value || typeof value !== 'object') return null;
+      const text = typeof value.text === 'string' ? value.text.trim().slice(0, MAX_TASK_LENGTH) : '';
+      if (!text) return null;
+
+      const priority = VALID_PRIORITIES.has(value.priority) ? value.priority : 'medium';
+      const dueDate = parseLocalDate(value.dueDate) ? value.dueDate : '';
+      const rawId = typeof value.id === 'string' ? value.id : '';
+      const id = /^[A-Za-z0-9_-]{1,80}$/.test(rawId) ? rawId : createTaskId();
+      const createdAt = typeof value.createdAt === 'string' && Number.isFinite(Date.parse(value.createdAt))
+        ? value.createdAt
+        : new Date().toISOString();
+
+      return {
+        id,
+        text,
+        priority,
+        dueDate,
+        completed: value.completed === true,
+        createdAt
+      };
+    }
+
+    function loadTasks() {
+      try {
+        const parsed = JSON.parse(localStorage.getItem('todo_tasks') || '[]');
+        if (!Array.isArray(parsed)) return [];
+        return parsed.map(normalizeTask).filter(Boolean);
+      } catch {
+        return [];
+      }
+    }
+
+    let tasks = loadTasks();
+
     function saveTasks() {
-      localStorage.setItem('todo_tasks', JSON.stringify(tasks));
+      try {
+        localStorage.setItem('todo_tasks', JSON.stringify(tasks));
+      } catch {
+        // Storage may be unavailable or full; the in-memory list still works.
+      }
       updateStats();
       renderTasks();
     }
-    
+
     function updateStats() {
       const total = tasks.length;
-      const completed = tasks.filter(t => t.completed).length;
+      const completed = tasks.filter((task) => task.completed).length;
       const active = total - completed;
-      const high = tasks.filter(t => t.priority === 'high' && !t.completed).length;
-      
+      const high = tasks.filter((task) => task.priority === 'high' && !task.completed).length;
+
       statTotal.textContent = total;
       statActive.textContent = active;
       statCompleted.textContent = completed;
       statHigh.textContent = high;
     }
-    
+
     function isOverdue(dueDate) {
-      if (!dueDate) return false;
+      const due = parseLocalDate(dueDate);
+      if (!due) return false;
       const today = new Date();
       today.setHours(0, 0, 0, 0);
-      return new Date(dueDate) < today;
+      return due < today;
     }
-    
-    function renderTasks() {
-      let filteredTasks = tasks;
-      
-      if (currentFilter === 'active') {
-        filteredTasks = tasks.filter(t => !t.completed);
-      } else if (currentFilter === 'completed') {
-        filteredTasks = tasks.filter(t => t.completed);
-      } else if (currentFilter === 'high') {
-        filteredTasks = tasks.filter(t => t.priority === 'high');
+
+    function toggleTask(id) {
+      const task = tasks.find((item) => item.id === id);
+      if (!task) return;
+      task.completed = !task.completed;
+      saveTasks();
+    }
+
+    function deleteTask(id) {
+      if (!confirm('Are you sure you want to delete this task?')) return;
+      tasks = tasks.filter((item) => item.id !== id);
+      saveTasks();
+    }
+
+    function createTaskElement(task) {
+      const overdue = !task.completed && isOverdue(task.dueDate);
+      const due = parseLocalDate(task.dueDate);
+
+      const item = document.createElement('div');
+      item.className = `task-item${task.completed ? ' completed' : ''}`;
+      item.dataset.id = task.id;
+
+      const checkbox = document.createElement('input');
+      checkbox.type = 'checkbox';
+      checkbox.className = 'task-checkbox';
+      checkbox.checked = task.completed;
+      checkbox.setAttribute('aria-label', task.completed ? 'Mark task active' : 'Mark task completed');
+      checkbox.addEventListener('change', () => toggleTask(task.id));
+
+      const content = document.createElement('div');
+      content.className = 'task-content';
+
+      const taskText = document.createElement('div');
+      taskText.className = 'task-text';
+      taskText.textContent = task.text;
+
+      const meta = document.createElement('div');
+      meta.className = 'task-meta';
+
+      const priority = document.createElement('span');
+      priority.className = 'task-priority';
+      priority.classList.add(task.priority);
+      priority.textContent = task.priority;
+      meta.append(priority);
+
+      if (due) {
+        const dueElement = document.createElement('span');
+        dueElement.className = 'task-due';
+        if (overdue) dueElement.classList.add('overdue');
+        const dueDisplay = due.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+        dueElement.textContent = `${overdue ? '⚠ Overdue: ' : ''}${dueDisplay}`;
+        meta.append(dueElement);
       }
-      
+
+      content.append(taskText, meta);
+
+      const deleteButton = document.createElement('button');
+      deleteButton.type = 'button';
+      deleteButton.className = 'task-delete';
+      deleteButton.setAttribute('aria-label', `Delete task: ${task.text.slice(0, 80)}`);
+      deleteButton.textContent = '×';
+      deleteButton.addEventListener('click', () => deleteTask(task.id));
+
+      item.append(checkbox, content, deleteButton);
+      return item;
+    }
+
+    function renderTasks() {
+      let filteredTasks = [...tasks];
+
+      if (currentFilter === 'active') {
+        filteredTasks = filteredTasks.filter((task) => !task.completed);
+      } else if (currentFilter === 'completed') {
+        filteredTasks = filteredTasks.filter((task) => task.completed);
+      } else if (currentFilter === 'high') {
+        filteredTasks = filteredTasks.filter((task) => task.priority === 'high');
+      }
+
+      const priorityOrder = { high: 0, medium: 1, low: 2 };
       filteredTasks.sort((a, b) => {
         if (a.completed !== b.completed) return a.completed ? 1 : -1;
-        const priorityOrder = { high: 0, medium: 1, low: 2 };
         return priorityOrder[a.priority] - priorityOrder[b.priority];
       });
-      
+
+      taskList.replaceChildren();
       if (filteredTasks.length === 0) {
-        taskList.innerHTML = '<div class="no-tasks">No tasks found. Add a new task to get started!</div>';
+        const empty = document.createElement('div');
+        empty.className = 'no-tasks';
+        empty.textContent = 'No tasks found. Add a new task to get started!';
+        taskList.append(empty);
         return;
       }
-      
-      taskList.innerHTML = filteredTasks.map(task => {
-        const overdue = !task.completed && isOverdue(task.dueDate);
-        const dueDisplay = task.dueDate ? new Date(task.dueDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) : '';
-        
-        return `
-          <div class="task-item ${task.completed ? 'completed' : ''}" data-id="${task.id}">
-            <input type="checkbox" class="task-checkbox" ${task.completed ? 'checked' : ''} data-nv-change="toggleTask" data-nv-change-args='["${task.id}"]'>
-            <div class="task-content">
-              <div class="task-text">${task.text}</div>
-              <div class="task-meta">
-                <span class="task-priority ${task.priority}" data-i18n="tools.productivity.todo-list.text.035">${task.priority}</span>
-                ${dueDisplay ? `<span class="task-due ${overdue ? 'overdue' : ''}" data-i18n="tools.productivity.todo-list.text.036">${overdue ? '&#9888; Overdue: ' : ''}${dueDisplay}</span>` : ''}
-              </div>
-            </div>
-            <button type="button" class="task-delete" data-nv-click="deleteTask" data-nv-args='["${task.id}"]' aria-label="Delete task">&times;</button>
-          </div>
-        `;
-      }).join('');
+
+      const fragment = document.createDocumentFragment();
+      filteredTasks.forEach((task) => fragment.append(createTaskElement(task)));
+      taskList.append(fragment);
     }
-    
+
     function addTask() {
-      const text = taskInput.value.trim();
+      const text = taskInput.value.trim().slice(0, MAX_TASK_LENGTH);
       if (!text) return;
-      
-      const task = {
-        id: Date.now().toString(),
-        text: text,
+
+      const task = normalizeTask({
+        id: createTaskId(),
+        text,
         priority: prioritySelect.value,
         dueDate: dueDateInput.value,
         completed: false,
         createdAt: new Date().toISOString()
-      };
-      
+      });
+      if (!task) return;
+
       tasks.push(task);
       taskInput.value = '';
       dueDateInput.value = '';
       saveTasks();
     }
-    
-    window.toggleTask = function(id) {
-      const task = tasks.find(t => t.id === id);
-      if (task) {
-        task.completed = !task.completed;
-        saveTasks();
-      }
-    };
-    
-    window.deleteTask = function(id) {
-      if (confirm('Are you sure you want to delete this task?')) {
-        tasks = tasks.filter(t => t.id !== id);
-        saveTasks();
-      }
-    };
-    
+
     btnAddTask.addEventListener('click', addTask);
-    taskInput.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') addTask();
+    taskInput.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') addTask();
     });
-    
-    filterTabs.forEach(tab => {
+
+    filterTabs.forEach((tab) => {
       tab.addEventListener('click', () => {
-        filterTabs.forEach(t => t.classList.remove('active'));
+        filterTabs.forEach((item) => item.classList.remove('active'));
         tab.classList.add('active');
         currentFilter = tab.dataset.filter;
         renderTasks();
       });
     });
-    
+
     updateStats();
     renderTasks();
   </script>

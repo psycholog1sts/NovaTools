@@ -1,5 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
+import './todo-list-source-contract.mjs';
+import './tool-runtime-source-contract.mjs';
 
 const manifest = JSON.parse(readFileSync('tools-manifest.json', 'utf8'));
 const matrix = JSON.parse(readFileSync('src/data/tool-certification.json', 'utf8'));
