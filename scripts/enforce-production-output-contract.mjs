@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { normalizeGeneralLocaleSeoHtml, normalizeI18nRuntimeSource } from '../src/js/locale-seo-normalizer.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const distDir = path.join(root, 'dist');
@@ -42,6 +43,7 @@ let changedFiles = 0;
 let normalizedWwwOrigins = 0;
 let normalizedDefaultThemes = 0;
 let injectedBootstraps = 0;
+let normalizedLocaleSeoFiles = 0;
 
 for (const filePath of htmlFiles) {
   const relative = path.relative(distDir, filePath).replace(/\\/g, '/');
@@ -58,6 +60,10 @@ for (const filePath of htmlFiles) {
   after = normalizeHtmlDefaultTheme(after);
   if (after !== themeBefore) normalizedDefaultThemes += 1;
 
+  const localeSeoBefore = after;
+  after = normalizeGeneralLocaleSeoHtml(after);
+  if (after !== localeSeoBefore) normalizedLocaleSeoFiles += 1;
+
   if (!after.includes(marker)) {
     after = injectBootstrap(after, relative);
     injectedBootstraps += 1;
@@ -69,11 +75,21 @@ for (const filePath of htmlFiles) {
   }
 }
 
+const runtimeI18nPath = path.join(distDir, 'i18n.js');
+if (!fs.existsSync(runtimeI18nPath)) {
+  throw new Error('dist/i18n.js is missing; locale SEO runtime contract cannot be enforced');
+}
+const runtimeI18nBefore = fs.readFileSync(runtimeI18nPath, 'utf8');
+const runtimeI18nAfter = normalizeI18nRuntimeSource(runtimeI18nBefore);
+const normalizedRuntimeI18n = runtimeI18nAfter !== runtimeI18nBefore;
+if (normalizedRuntimeI18n) fs.writeFileSync(runtimeI18nPath, runtimeI18nAfter);
+
 const missingBootstrap = [];
 const staleWwwOrigins = [];
 const darkHtmlDefaults = [];
 const crossOriginInternalAssets = [];
 const blockedGoogleFontStyles = [];
+const staleLocaleSeoHtml = [];
 
 for (const filePath of htmlFiles) {
   const relative = path.relative(distDir, filePath).replace(/\\/g, '/');
@@ -83,6 +99,12 @@ for (const filePath of htmlFiles) {
   if (/<html\b[^>]*\bdata-theme=(['"])dark\1[^>]*>/i.test(html)) darkHtmlDefaults.push(relative);
   if (/<(?:link|script)\b[^>]*(?:href|src)=["']https:\/\/mc-novatools\.com\/(?:css|styles|js|assets|vendor|wasm)\//i.test(html)) crossOriginInternalAssets.push(relative);
   if (/<link\b[^>]*rel=["']stylesheet["'][^>]*href=["']https:\/\/fonts\.googleapis\.com\//i.test(html)) blockedGoogleFontStyles.push(relative);
+  if (normalizeGeneralLocaleSeoHtml(html) !== html) staleLocaleSeoHtml.push(relative);
+}
+
+const finalRuntimeI18n = fs.readFileSync(runtimeI18nPath, 'utf8');
+if (normalizeI18nRuntimeSource(finalRuntimeI18n) !== finalRuntimeI18n) {
+  throw new Error('dist/i18n.js still contains non-deterministic canonical/hreflang query state after normalization');
 }
 
 if (missingBootstrap.length) {
@@ -100,12 +122,17 @@ if (crossOriginInternalAssets.length) {
 if (blockedGoogleFontStyles.length) {
   throw new Error(`Google Font styles blocked by the production CSP remain in ${blockedGoogleFontStyles.length} built HTML file(s): ${blockedGoogleFontStyles.slice(0, 8).join(', ')}`);
 }
+if (staleLocaleSeoHtml.length) {
+  throw new Error(`locale SEO normalization is not idempotent for ${staleLocaleSeoHtml.length} built HTML file(s): ${staleLocaleSeoHtml.slice(0, 8).join(', ')}`);
+}
 
 console.log(JSON.stringify({
   html_files: htmlFiles.length,
   changed_files: changedFiles,
   normalized_www_origins: normalizedWwwOrigins,
   normalized_default_themes: normalizedDefaultThemes,
+  normalized_locale_seo_files: normalizedLocaleSeoFiles,
+  normalized_runtime_i18n: normalizedRuntimeI18n,
   injected_first_visit_bootstraps: injectedBootstraps,
   canonical_origin: canonicalOrigin,
   default_theme: 'light'
