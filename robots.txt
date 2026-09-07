@@ -1,5 +1,8 @@
 User-agent: *
 Allow: /
+# Turkish is currently exposed as the canonical ?lang=tr locale URL.
+# Keep that exact shape crawlable while preventing arbitrary query-state crawl space.
+Allow: /*?lang=tr$
 Disallow: /api/
 Disallow: /admin/
 Disallow: /test/
