@@ -91,3 +91,14 @@ test('invalid JSON restore fails closed without replacing the current list', asy
   await expect(page.locator('#toolStatus')).toHaveText('Backup is not valid JSON.');
   await expect(page.locator('.task-text')).toHaveText('Keep me');
 });
+
+test('theme toggle uses the shared NovaTools theme key and changes the page theme', async ({ page }) => {
+  const initialTheme = await page.locator('html').getAttribute('data-theme');
+  expect(['light', 'dark']).toContain(initialTheme);
+
+  await page.locator('#themeToggle').click();
+
+  const nextTheme = initialTheme === 'dark' ? 'light' : 'dark';
+  await expect(page.locator('html')).toHaveAttribute('data-theme', nextTheme);
+  expect(await page.evaluate(() => localStorage.getItem('novatools-theme'))).toBe(nextTheme);
+});
