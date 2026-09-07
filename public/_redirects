@@ -66,6 +66,4 @@
 # Arabic blog pages have dedicated content manifests and built routes, so no
 # blanket /ar redirect is declared here. This prevents a valid Arabic article
 # from being intercepted before Cloudflare Pages can serve its static asset.
-
-# Explicit 404 fallback for unmatched static routes.
-/* /404.html 404
+# Missing routes are handled natively by Cloudflare Pages using the built 404.html.
