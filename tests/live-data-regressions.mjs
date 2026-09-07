@@ -1,11 +1,13 @@
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import handler from '../api/live-data.js';
 
 const originalFetch = globalThis.fetch;
 const financeSource = readFileSync(new URL('../src/tools/finance/p0-batch2.mjs', import.meta.url), 'utf8');
 const liveExchangeHtml = readFileSync(new URL('../src/tools/finance/live-exchange/index.html', import.meta.url), 'utf8');
+const stockLookupHtml = readFileSync(new URL('../src/tools/finance/stock-lookup/index.html', import.meta.url), 'utf8');
 const cryptoPricesHtml = readFileSync(new URL('../src/tools/finance/crypto-prices/index.html', import.meta.url), 'utf8');
+const liveMarketUrl = new URL('../src/tools/finance/live-market-tools.mjs', import.meta.url);
 
 async function readJson(response) {
   return JSON.parse(await response.text());
@@ -83,13 +85,22 @@ async function run() {
     }
 
     {
-      assert.doesNotMatch(financeSource, /const\s+STATIC_RATES\s*=/, 'Live Exchange must not keep hard-coded current-rate fallbacks.');
-      assert.doesNotMatch(financeSource, /const\s+STOCK_FALLBACKS\s*=/, 'Stock Lookup must not keep hard-coded current-quote fallbacks.');
-      assert.doesNotMatch(financeSource, /const\s+CRYPTO_FALLBACKS\s*=/, 'Crypto Prices must not keep hard-coded current-price fallbacks.');
-      assert.doesNotMatch(financeSource, /statik yaklaşık fallback|Statik örnek fallback|statik örnek değerler/i, 'Live market tools must not present static numbers as fallback market data.');
-      assert.match(financeSource, /Canlı kur verisi şu anda kullanılamıyor/, 'Exchange failure must surface an unavailable state.');
-      assert.match(financeSource, /Canlı hisse verisi şu anda kullanılamıyor/, 'Stock failure must surface an unavailable state.');
-      assert.match(financeSource, /Canlı kripto verisi şu anda kullanılamıyor/, 'Crypto failure must surface an unavailable state.');
+      for (const [name, html] of [
+        ['Live Exchange', liveExchangeHtml],
+        ['Stock Lookup', stockLookupHtml],
+        ['Crypto Prices', cryptoPricesHtml]
+      ]) {
+        assert.match(html, /<script type="module" src="\.\.\/live-market-tools\.mjs"><\/script>/, `${name} must use the dedicated fail-closed live-market runtime.`);
+        assert.doesNotMatch(html, /src="\.\.\/p0-batch2\.mjs"/, `${name} must not execute the legacy static-fallback runtime.`);
+      }
+
+      assert.equal(existsSync(liveMarketUrl), true, 'Dedicated live-market runtime must exist.');
+      const liveMarketSource = readFileSync(liveMarketUrl, 'utf8');
+      assert.doesNotMatch(liveMarketSource, /STATIC_RATES|STOCK_FALLBACKS|CRYPTO_FALLBACKS/, 'Live market runtime must not contain hard-coded market fallbacks.');
+      assert.doesNotMatch(liveMarketSource, /statik yaklaşık fallback|statik örnek fallback|statik örnek değerler/i, 'Live market runtime must not present static values as market data.');
+      assert.match(liveMarketSource, /Canlı kur verisi şu anda kullanılamıyor/, 'Exchange failure must surface an unavailable state.');
+      assert.match(liveMarketSource, /Canlı hisse verisi şu anda kullanılamıyor/, 'Stock failure must surface an unavailable state.');
+      assert.match(liveMarketSource, /Canlı kripto verisi şu anda kullanılamıyor/, 'Crypto failure must surface an unavailable state.');
     }
 
     {
