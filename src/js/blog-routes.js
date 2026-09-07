@@ -1,6 +1,6 @@
 export const SITE_ORIGIN = 'https://mc-novatools.com';
 export const fallbackBlogLocale = 'en';
-export const supportedBlogLocales = ['en', 'tr', 'de', 'fr', 'es', 'pt', 'ru', 'zh', 'ja', 'ko', 'ar', 'hi', 'it', 'pl', 'nl'];
+export const supportedBlogLocales = ['en', 'tr', 'ar'];
 export const BLOG_ARTICLE_SEGMENT = 'articles';
 
 const BLOG_SLUG_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;

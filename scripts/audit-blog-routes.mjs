@@ -29,6 +29,15 @@ function readPosts(locale) {
   return readJson(`src/i18n/blog/${fallbackBlogLocale}.json`);
 }
 
+function readManifestLocales() {
+  const manifestDir = path.join(repoRoot, 'src', 'i18n', 'blog');
+  if (!fs.existsSync(manifestDir)) return [];
+  return fs.readdirSync(manifestDir)
+    .filter((file) => file.endsWith('.json'))
+    .map((file) => file.replace(/\.json$/, ''))
+    .sort((a, b) => a.localeCompare(b));
+}
+
 function addRouteKey(key, owner) {
   const existing = routeKeys.get(key);
   if (existing) fail(`Duplicate blog route key ${key} for ${existing} and ${owner}`);
@@ -43,8 +52,13 @@ function readSourceArticleSlugs() {
     .map((file) => normalizeBlogSlug(file.replace(/\.html$/, '')));
 }
 
-if (supportedBlogLocales.length !== 15) {
-  fail(`Expected 15 supported blog locales, found ${supportedBlogLocales.length}`);
+const manifestLocales = readManifestLocales();
+const supportedLocalesSorted = [...supportedBlogLocales].sort((a, b) => a.localeCompare(b));
+if (JSON.stringify(supportedLocalesSorted) !== JSON.stringify(manifestLocales)) {
+  fail(`supportedBlogLocales must match dedicated blog manifests exactly; supported=${supportedLocalesSorted.join(',') || '(none)'}, manifests=${manifestLocales.join(',') || '(none)'}`);
+}
+if (!manifestLocales.includes(fallbackBlogLocale)) {
+  fail(`Fallback blog locale ${fallbackBlogLocale} must have a dedicated manifest`);
 }
 
 if (!fs.existsSync(path.join(repoRoot, 'src/blog/article-template.html'))) {
@@ -101,4 +115,4 @@ if (failures.length > 0) {
   process.exit(1);
 }
 
-console.log(`✅ Blog route contract verified for ${supportedBlogLocales.length} locales, ${contractSlugs.length} article slugs, and ${routeKeys.size} article route keys.`);
+console.log(`✅ Blog route contract verified for ${supportedBlogLocales.length} manifest-backed locales, ${contractSlugs.length} article slugs, and ${routeKeys.size} article route keys.`);

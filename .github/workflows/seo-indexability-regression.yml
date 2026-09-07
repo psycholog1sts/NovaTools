@@ -1,0 +1,38 @@
+name: SEO Indexability Regression
+
+on:
+  pull_request:
+    paths:
+      - 'robots.txt'
+      - 'public/robots.txt'
+      - 'public/_redirects'
+      - 'src/js/blog-routes.js'
+      - 'scripts/audit-blog-routes.mjs'
+      - 'scripts/generate-localized-sitemap.mjs'
+      - 'tests/seo-indexability-regressions.mjs'
+      - '.github/workflows/seo-indexability-regression.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'robots.txt'
+      - 'public/robots.txt'
+      - 'public/_redirects'
+      - 'src/js/blog-routes.js'
+      - 'scripts/audit-blog-routes.mjs'
+      - 'scripts/generate-localized-sitemap.mjs'
+      - 'tests/seo-indexability-regressions.mjs'
+      - '.github/workflows/seo-indexability-regression.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  indexability-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node tests/seo-indexability-regressions.mjs
