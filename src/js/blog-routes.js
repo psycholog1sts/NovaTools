@@ -1,6 +1,6 @@
 export const SITE_ORIGIN = 'https://mc-novatools.com';
 export const fallbackBlogLocale = 'en';
-export const supportedBlogLocales = ['en', 'tr', 'de', 'fr', 'es', 'pt', 'ru', 'zh', 'ja', 'ko', 'ar', 'hi', 'it', 'pl', 'nl'];
+export const supportedBlogLocales = ['en', 'tr', 'ar'];
 export const BLOG_ARTICLE_SEGMENT = 'articles';
 
 const BLOG_SLUG_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
@@ -118,26 +118,9 @@ export function resolveBlogRoute(pathname = '/') {
   return {
     type: 'article',
     locale,
-    slug,
-    isLegacy,
     path,
+    slug,
     canonicalPath: blogArticlePath(slug, locale),
-    legacyPath: legacyBlogArticlePath(slug, locale)
+    isLegacy
   };
-}
-
-export function buildBlogArticleRouteEntries(slugsByLocale, resolveHtmlEntry) {
-  return Object.entries(slugsByLocale).reduce((acc, [locale, slugs]) => {
-    slugs.forEach((slug) => {
-      const { canonicalKey, legacyKey } = blogArticleRouteKeys(slug, locale);
-      acc[canonicalKey] = resolveHtmlEntry('src/blog/article-template.html');
-      acc[legacyKey] = resolveHtmlEntry('src/blog/article-template.html');
-    });
-    return acc;
-  }, {});
-}
-
-export function absoluteBlogUrl(pathOrSlug, locale = fallbackBlogLocale) {
-  const path = String(pathOrSlug || '').startsWith('/') ? pathOrSlug : blogArticlePath(pathOrSlug, locale);
-  return `${SITE_ORIGIN}${path}`;
 }
