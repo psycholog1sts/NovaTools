@@ -21,7 +21,7 @@ function syllables(word) {
 }
 
 function escapeHtml(value) {
-  return String(value).replace(/[&<>"]/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[char]);
+  return String(value).replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]);
 }
 
 function setStatus(message, type = 'info') {
@@ -102,19 +102,34 @@ function initTranslator() {
     const input = $('#mainInput').value.trim().toLowerCase();
     if (!input) return setStatus('Enter a short phrase first.', 'error');
     const translated = dictionary.get(input) || input.split(/\s+/).map((part) => dictionary.get(part) || `[${part}]`).join(' ');
-    $('#result').innerHTML = `<h3>Simple dictionary result</h3><p>${escapeHtml(translated)}</p><small>For production-grade translation, connect LibreTranslate through the same server-side proxy pattern documented for Phase 10.</small>`;
-    setStatus('Dictionary translation completed locally.', 'success');
+    $('#result').innerHTML = `<h3>Simple dictionary result</h3><p>${escapeHtml(translated)}</p><small>This is a small built-in English–Turkish phrasebook, not a general machine-translation service. Unknown words are shown in brackets.</small>`;
+    setStatus('Dictionary lookup completed locally.', 'success');
   });
 }
 
 function readExifLite(buffer) {
+  if (!(buffer instanceof ArrayBuffer) || buffer.byteLength < 4) {
+    throw new Error('Please choose a valid JPEG image.');
+  }
+
   const view = new DataView(buffer);
-  if (view.getUint16(0) !== 0xffd8) return 'No JPEG EXIF header detected.';
+  if (view.getUint16(0, false) !== 0xffd8) {
+    throw new Error('Please choose a valid JPEG image.');
+  }
+
   let offset = 2;
-  while (offset < view.byteLength) {
-    const marker = view.getUint16(offset);
-    const size = view.getUint16(offset + 2);
-    if (marker === 0xffe1) return `JPEG EXIF segment detected (${size} bytes). For privacy, remove location metadata before sharing images.`;
+  while (offset + 4 <= view.byteLength) {
+    const marker = view.getUint16(offset, false);
+    if (marker === 0xffd9 || marker === 0xffda) break;
+
+    const size = view.getUint16(offset + 2, false);
+    if (size < 2 || offset + 2 + size > view.byteLength) {
+      throw new Error('The JPEG metadata segment is truncated or invalid.');
+    }
+
+    if (marker === 0xffe1) {
+      return `JPEG EXIF segment detected (${size} bytes). For privacy, remove location metadata before sharing images.`;
+    }
     offset += 2 + size;
   }
   return 'JPEG loaded, but no EXIF segment was found.';
@@ -124,9 +139,15 @@ function initExifViewer() {
   $('#fileInput')?.addEventListener('change', async (event) => {
     const file = event.target.files?.[0];
     if (!file) return;
-    const buffer = await file.arrayBuffer();
-    $('#result').innerHTML = `<h3>${escapeHtml(file.name)}</h3><p>Type: ${escapeHtml(file.type || 'unknown')}</p><p>Size: ${(file.size / 1024).toFixed(1)} KB</p><p>${escapeHtml(readExifLite(buffer))}</p>`;
-    setStatus('Image metadata inspected locally.', 'success');
+    try {
+      const buffer = await file.arrayBuffer();
+      const metadataResult = readExifLite(buffer);
+      $('#result').innerHTML = `<h3>${escapeHtml(file.name)}</h3><p>Type: ${escapeHtml(file.type || 'unknown')}</p><p>Size: ${(file.size / 1024).toFixed(1)} KB</p><p>${escapeHtml(metadataResult)}</p>`;
+      setStatus('JPEG metadata inspected locally.', 'success');
+    } catch (error) {
+      $('#result').textContent = '';
+      setStatus(error?.message || 'Unable to inspect this JPEG image.', 'error');
+    }
   });
 }
 
@@ -135,18 +156,23 @@ function initAudioSpectrum() {
   $('#fileInput')?.addEventListener('change', async (event) => {
     const file = event.target.files?.[0];
     if (!file) return;
-    audioContext = audioContext || new AudioContext();
-    const buffer = await audioContext.decodeAudioData(await file.arrayBuffer());
-    const channel = buffer.getChannelData(0);
-    const buckets = Array.from({ length: 48 }, (_, i) => {
-      const start = Math.floor((i / 48) * channel.length);
-      const end = Math.floor(((i + 1) / 48) * channel.length);
-      let peak = 0;
-      for (let index = start; index < end; index += 1) peak = Math.max(peak, Math.abs(channel[index]));
-      return peak;
-    });
-    $('#result').innerHTML = `<h3>Waveform preview</h3><div class="bars">${buckets.map((value) => `<span style="height:${Math.max(4, value * 120)}px"></span>`).join('')}</div><p>Duration: ${buffer.duration.toFixed(2)} seconds · Sample rate: ${buffer.sampleRate} Hz</p>`;
-    setStatus('Audio preview generated locally.', 'success');
+    try {
+      audioContext = audioContext || new AudioContext();
+      const buffer = await audioContext.decodeAudioData(await file.arrayBuffer());
+      const channel = buffer.getChannelData(0);
+      const buckets = Array.from({ length: 48 }, (_, i) => {
+        const start = Math.floor((i / 48) * channel.length);
+        const end = Math.floor(((i + 1) / 48) * channel.length);
+        let peak = 0;
+        for (let index = start; index < end; index += 1) peak = Math.max(peak, Math.abs(channel[index]));
+        return peak;
+      });
+      $('#result').innerHTML = `<h3>Waveform preview</h3><div class="bars">${buckets.map((value) => `<span style="height:${Math.max(4, value * 120)}px"></span>`).join('')}</div><p>Duration: ${buffer.duration.toFixed(2)} seconds · Sample rate: ${buffer.sampleRate} Hz</p>`;
+      setStatus('Audio preview generated locally.', 'success');
+    } catch {
+      $('#result').textContent = '';
+      setStatus('Unable to decode this audio file. Choose a valid browser-supported audio file.', 'error');
+    }
   });
 }
 
@@ -232,7 +258,14 @@ function initCsvJsonSummarizer() {
 
 function initChartBuilder() {
   $('#runTool')?.addEventListener('click', () => {
-    const rows = parseDelimited($('#mainInput').value).map(([label, value]) => [label, Number(value)]).filter(([, value]) => Number.isFinite(value));
+    const input = $('#mainInput').value.trim();
+    if (!input) return setStatus('Enter chart data as label,value rows first.', 'error');
+
+    const rows = parseDelimited(input)
+      .map(([label, value]) => [label, Number(value)])
+      .filter(([label, value]) => Boolean(label) && Number.isFinite(value));
+    if (!rows.length) return setStatus('No valid chart rows found. Use label,value rows with numeric values.', 'error');
+
     const max = Math.max(...rows.map(([, value]) => value), 1);
     $('#result').innerHTML = `<h3>Bar chart</h3><div class="chart-bars">${rows.map(([label, value]) => `<div><span>${escapeHtml(label)}</span><strong style="width:${(value / max) * 100}%">${value}</strong></div>`).join('')}</div>`;
     setStatus('Chart rendered locally.', 'success');
