@@ -35,33 +35,37 @@
 /guides/articles/:article /guides/articles/:article.html 200
 /site-map/topical /site-map/topical.html 200
 
-# Legacy locale-folder URLs are redirected to the canonical ?lang= locale standard.
-/de /?lang=de 301
-/de/* /:splat?lang=de 301
-/fr /?lang=fr 301
-/fr/* /:splat?lang=fr 301
-/es /?lang=es 301
-/es/* /:splat?lang=es 301
-/pt /?lang=pt 301
-/pt/* /:splat?lang=pt 301
-/ru /?lang=ru 301
-/ru/* /:splat?lang=ru 301
-/zh /?lang=zh 301
-/zh/* /:splat?lang=zh 301
-/ja /?lang=ja 301
-/ja/* /:splat?lang=ja 301
-/ko /?lang=ko 301
-/ko/* /:splat?lang=ko 301
-/ar /?lang=ar 301
-/ar/* /:splat?lang=ar 301
-/hi /?lang=hi 301
-/hi/* /:splat?lang=hi 301
-/it /?lang=it 301
-/it/* /:splat?lang=it 301
-/pl /?lang=pl 301
-/pl/* /:splat?lang=pl 301
-/nl /?lang=nl 301
-/nl/* /:splat?lang=nl 301
+# Unsupported legacy locale-folder URLs fall back to the equivalent clean
+# English route instead of creating query-locale URLs that the runtime does
+# not support. Preserve the suffix so valid tools/articles keep their target.
+/de / 301
+/de/* /:splat 301
+/fr / 301
+/fr/* /:splat 301
+/es / 301
+/es/* /:splat 301
+/pt / 301
+/pt/* /:splat 301
+/ru / 301
+/ru/* /:splat 301
+/zh / 301
+/zh/* /:splat 301
+/ja / 301
+/ja/* /:splat 301
+/ko / 301
+/ko/* /:splat 301
+/hi / 301
+/hi/* /:splat 301
+/it / 301
+/it/* /:splat 301
+/pl / 301
+/pl/* /:splat 301
+/nl / 301
+/nl/* /:splat 301
+
+# Arabic blog pages have dedicated content manifests and built routes, so no
+# blanket /ar redirect is declared here. This prevents a valid Arabic article
+# from being intercepted before Cloudflare Pages can serve its static asset.
 
 # Explicit 404 fallback for unmatched static routes.
 /* /404.html 404
