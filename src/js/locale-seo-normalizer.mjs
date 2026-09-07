@@ -32,7 +32,7 @@ function canonicalBaseUrl(href) {
 }
 
 function stripGeneralAlternateLinks(html) {
-  return String(html || '').replace(/[ \t]*<link\b[^>]*>\s*\n?/gi, (tag) => {
+  return String(html || '').replace(/[ \t]*<link\b[^>]*>[ \t]*\r?\n?/gi, (tag) => {
     if (attr(tag, 'rel').toLowerCase() !== 'alternate' || !attr(tag, 'hreflang')) return tag;
     if (/\bdata-blog-seo\s*=\s*["']hreflang["']/i.test(tag)) return tag;
     return '';
