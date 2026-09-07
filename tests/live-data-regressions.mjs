@@ -1,10 +1,17 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import handler from '../api/live-data.js';
+import {
+  calculateCryptoPrices,
+  calculateLiveExchange,
+  calculateStockLookup
+} from '../src/tools/finance/live-market-tools.mjs';
 
 const originalFetch = globalThis.fetch;
 const financeSource = readFileSync(new URL('../src/tools/finance/p0-batch2.mjs', import.meta.url), 'utf8');
+const liveMarketSource = readFileSync(new URL('../src/tools/finance/live-market-tools.mjs', import.meta.url), 'utf8');
 const liveExchangeHtml = readFileSync(new URL('../src/tools/finance/live-exchange/index.html', import.meta.url), 'utf8');
+const stockLookupHtml = readFileSync(new URL('../src/tools/finance/stock-lookup/index.html', import.meta.url), 'utf8');
 const cryptoPricesHtml = readFileSync(new URL('../src/tools/finance/crypto-prices/index.html', import.meta.url), 'utf8');
 
 async function readJson(response) {
@@ -78,8 +85,67 @@ async function run() {
         /7\s*(day|daily|günlük)|historical\s+(price|trend)|price\s+history/i,
         'Crypto Price Tracker public copy must not promise historical charts without historical provider data.'
       );
-      assert.match(financeSource, /data\.closes\?\.?|Array\.isArray\(data\.closes\)/, 'Stock charts must be based on provider close data.');
-      assert.match(financeSource, /real historical|gerçek tarihsel|gerçek.*kapanış|Son kapanışları|son kapanışları/i, 'Stock UI must explain when real history is unavailable or used.');
+      assert.match(financeSource, /data\.closes\?\.?|Array\.isArray\(data\.closes\)/, 'Stock charts in the legacy non-public path must still be based on provider close data.');
+    }
+
+    {
+      for (const [name, html] of [
+        ['Live Exchange', liveExchangeHtml],
+        ['Stock Lookup', stockLookupHtml],
+        ['Crypto Prices', cryptoPricesHtml]
+      ]) {
+        assert.match(html, /<script type="module" src="\.\.\/live-market-tools\.mjs"><\/script>/, `${name} must use the dedicated fail-closed live-market runtime.`);
+        assert.doesNotMatch(html, /src="\.\.\/p0-batch2\.mjs"/, `${name} must not execute the legacy static-fallback runtime.`);
+      }
+
+      assert.doesNotMatch(liveMarketSource, /STATIC_RATES|STOCK_FALLBACKS|CRYPTO_FALLBACKS|STATIC_USD_TRY/, 'Live market runtime must not contain hard-coded current-market fallbacks.');
+      assert.doesNotMatch(liveMarketSource, /statik yaklaşık fallback|statik örnek fallback|statik örnek değerler/i, 'Live market runtime must not present static values as current market data.');
+    }
+
+    {
+      const providerFailure = async () => { throw new Error('provider unavailable'); };
+      await assert.rejects(
+        calculateLiveExchange({ amount: 100, from: 'USD', to: 'TRY' }, { getExchangeRates: providerFailure }),
+        /provider unavailable/,
+        'Exchange conversion must fail closed when no provider/cache value exists.'
+      );
+      await assert.rejects(
+        calculateStockLookup({ symbol: 'AAPL' }, { getStockQuote: providerFailure }),
+        /provider unavailable/,
+        'Stock lookup must fail closed when no provider/cache value exists.'
+      );
+      await assert.rejects(
+        calculateCryptoPrices({}, { getCryptoPrices: providerFailure }),
+        /provider unavailable/,
+        'Crypto prices must fail closed when no provider/cache value exists.'
+      );
+    }
+
+    {
+      const exchange = await calculateLiveExchange(
+        { amount: 100, from: 'USD', to: 'TRY' },
+        { getExchangeRates: async () => ({ source: 'cache', data: { rates: { TRY: 42 }, provider: 'tcmb.gov.tr', fetchedAt: '2026-09-07T12:00:00Z' } }) }
+      );
+      assert.equal(exchange.type, 'warning');
+      assert.match(exchange.html, /tcmb\.gov\.tr/);
+      assert.doesNotMatch(exchange.html, /fallback/i);
+
+      const stock = await calculateStockLookup(
+        { symbol: 'AAPL' },
+        { getStockQuote: async () => ({ source: 'network', data: { provider: 'finance.yahoo.com', currency: 'USD', closes: [100, 101], meta: { regularMarketPrice: 101, previousClose: 100, regularMarketVolume: 1234 } } }) }
+      );
+      assert.equal(stock.type, 'success');
+      assert.match(stock.html, /finance\.yahoo\.com/);
+      assert.match(stock.html, /stockSparklineChart/);
+
+      const crypto = await calculateCryptoPrices(
+        {},
+        { getCryptoPrices: async () => ({ source: 'network', data: { provider: 'coingecko.com', coins: { bitcoin: { usd: 65000, try: 2730000, usd_24h_change: 1.2, try_market_cap: 100, try_24h_vol: 10 } } } }) }
+      );
+      assert.equal(crypto.type, 'warning');
+      assert.match(crypto.status, /1\/5/);
+      assert.match(crypto.html, /coingecko\.com/);
+      assert.doesNotMatch(crypto.html, /ETH|SOL|XRP|ADA/);
     }
 
     {
