@@ -118,9 +118,26 @@ export function resolveBlogRoute(pathname = '/') {
   return {
     type: 'article',
     locale,
-    path,
     slug,
+    isLegacy,
+    path,
     canonicalPath: blogArticlePath(slug, locale),
-    isLegacy
+    legacyPath: legacyBlogArticlePath(slug, locale)
   };
+}
+
+export function buildBlogArticleRouteEntries(slugsByLocale, resolveHtmlEntry) {
+  return Object.entries(slugsByLocale).reduce((acc, [locale, slugs]) => {
+    slugs.forEach((slug) => {
+      const { canonicalKey, legacyKey } = blogArticleRouteKeys(slug, locale);
+      acc[canonicalKey] = resolveHtmlEntry('src/blog/article-template.html');
+      acc[legacyKey] = resolveHtmlEntry('src/blog/article-template.html');
+    });
+    return acc;
+  }, {});
+}
+
+export function absoluteBlogUrl(pathOrSlug, locale = fallbackBlogLocale) {
+  const path = String(pathOrSlug || '').startsWith('/') ? pathOrSlug : blogArticlePath(pathOrSlug, locale);
+  return `${SITE_ORIGIN}${path}`;
 }
