@@ -6,10 +6,13 @@ on:
       - 'robots.txt'
       - 'public/robots.txt'
       - 'public/_redirects'
+      - 'public/i18n.js'
+      - 'src/i18n.js'
       - 'src/js/blog-routes.js'
       - 'scripts/audit-blog-routes.mjs'
       - 'scripts/generate-localized-sitemap.mjs'
       - 'tests/seo-indexability-regressions.mjs'
+      - 'tests/gsc-canonical-query-regressions.mjs'
       - '.github/workflows/seo-indexability-regression.yml'
   push:
     branches: [main]
@@ -17,10 +20,13 @@ on:
       - 'robots.txt'
       - 'public/robots.txt'
       - 'public/_redirects'
+      - 'public/i18n.js'
+      - 'src/i18n.js'
       - 'src/js/blog-routes.js'
       - 'scripts/audit-blog-routes.mjs'
       - 'scripts/generate-localized-sitemap.mjs'
       - 'tests/seo-indexability-regressions.mjs'
+      - 'tests/gsc-canonical-query-regressions.mjs'
       - '.github/workflows/seo-indexability-regression.yml'
 
 permissions:
@@ -36,3 +42,4 @@ jobs:
         with:
           node-version: '22'
       - run: node tests/seo-indexability-regressions.mjs
+      - run: node tests/gsc-canonical-query-regressions.mjs
