@@ -5,6 +5,7 @@ const manifest = JSON.parse(readFileSync('tools-manifest.json', 'utf8'));
 const matrix = JSON.parse(readFileSync('src/data/tool-certification.json', 'utf8'));
 const runtimeFinalizer = readFileSync('scripts/finalize-runtime-contracts.mjs', 'utf8');
 const todoSource = readFileSync('src/tools/productivity/todo-list/index.html', 'utf8');
+const phase10Source = readFileSync('src/js/phase10-tools.js', 'utf8');
 const records = new Map(matrix.records.map((record) => [record.Route, record]));
 assert.ok(records.size >= manifest.tools.length, 'Master certification matrix must contain every manifest tool.');
 
@@ -34,5 +35,20 @@ assert.match(todoSource, /document\.createElement\(['"]div['"]\)/);
 assert.match(todoSource, /\.textContent\s*=\s*task\.text/);
 assert.match(todoSource, /const VALID_PRIORITIES = new Set\(\['low', 'medium', 'high'\]\)/);
 assert.match(todoSource, /function normalizeTask\(/);
+assert.match(todoSource, /function loadTasks\(/);
+
+// Phase-10 source remains unreachable while these routes are uncertified, but
+// its latent implementations must already fail safely before any future
+// certification can expose them.
+assert.match(phase10Source, /buffer\.byteLength < 4/);
+assert.match(phase10Source, /JPEG metadata segment is truncated or invalid/);
+assert.match(phase10Source, /Unable to inspect this JPEG image/);
+assert.match(phase10Source, /audioContext\.decodeAudioData/);
+assert.match(phase10Source, /Unable to decode this audio file/);
+assert.match(phase10Source, /Enter chart data as label,value rows first/);
+assert.match(phase10Source, /No valid chart rows found\. Use label,value rows with numeric values/);
+assert.match(phase10Source, /small built-in English–Turkish phrasebook/);
+assert.doesNotMatch(phase10Source, /production-grade translation/);
+assert.doesNotMatch(phase10Source, /Phase 10/);
 
 console.log('certification fail-closed contract: pass');
