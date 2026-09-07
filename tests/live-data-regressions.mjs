@@ -83,6 +83,16 @@ async function run() {
     }
 
     {
+      assert.doesNotMatch(financeSource, /const\s+STATIC_RATES\s*=/, 'Live Exchange must not keep hard-coded current-rate fallbacks.');
+      assert.doesNotMatch(financeSource, /const\s+STOCK_FALLBACKS\s*=/, 'Stock Lookup must not keep hard-coded current-quote fallbacks.');
+      assert.doesNotMatch(financeSource, /const\s+CRYPTO_FALLBACKS\s*=/, 'Crypto Prices must not keep hard-coded current-price fallbacks.');
+      assert.doesNotMatch(financeSource, /statik yaklaşık fallback|Statik örnek fallback|statik örnek değerler/i, 'Live market tools must not present static numbers as fallback market data.');
+      assert.match(financeSource, /Canlı kur verisi şu anda kullanılamıyor/, 'Exchange failure must surface an unavailable state.');
+      assert.match(financeSource, /Canlı hisse verisi şu anda kullanılamıyor/, 'Stock failure must surface an unavailable state.');
+      assert.match(financeSource, /Canlı kripto verisi şu anda kullanılamıyor/, 'Crypto failure must surface an unavailable state.');
+    }
+
+    {
       globalThis.fetch = async () => new Response('provider failure details', { status: 500 });
       const response = await handler(new Request('https://example.test/api/live-data?resource=crypto'));
       const body = await readJson(response);
