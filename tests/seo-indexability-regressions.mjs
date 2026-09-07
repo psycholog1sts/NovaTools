@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
+import { spawnSync } from 'node:child_process';
 
 const read = (path) => readFileSync(new URL(`../${path}`, import.meta.url), 'utf8').replace(/\r\n/g, '\n');
 
@@ -44,6 +45,16 @@ assert.match(
   blogRoutes,
   /export const supportedBlogLocales = \['en', 'tr', 'ar'\];/,
   'blog routes must only materialize locales that have dedicated content manifests'
+);
+
+const blogRouteAudit = spawnSync(process.execPath, ['scripts/audit-blog-routes.mjs'], {
+  cwd: new URL('..', import.meta.url),
+  encoding: 'utf8'
+});
+assert.equal(
+  blogRouteAudit.status,
+  0,
+  `blog route audit must accept the manifest-backed locale set:\n${blogRouteAudit.stdout}${blogRouteAudit.stderr}`
 );
 
 assert.doesNotMatch(sitemapGenerator, /<loc>[^<]*\?lang=/, 'generated sitemap source must not publish query-locale URLs');
