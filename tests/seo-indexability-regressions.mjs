@@ -34,6 +34,12 @@ assert.doesNotMatch(
   'Arabic blog routes must not be intercepted and rewritten to an unsupported global ?lang=ar URL'
 );
 
+assert.doesNotMatch(
+  redirects,
+  /^\/\*\s+\/404\.html\s+404\s*$/m,
+  'Cloudflare Pages _redirects must not declare an unsupported 404 status; native 404.html handling owns missing routes'
+);
+
 assert.match(
   blogRoutes,
   /export const supportedBlogLocales = \['en', 'tr', 'ar'\];/,
