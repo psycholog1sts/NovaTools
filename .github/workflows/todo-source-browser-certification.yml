@@ -25,14 +25,16 @@ jobs:
     timeout-minutes: 15
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: 22
+          node-version-file: .node-version
           cache: npm
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --include=optional
+      - name: Install pinned Playwright test dependency
+        run: npm install --no-save --package-lock=false @playwright/test@1.55.0
       - name: Install Chromium
         run: npx playwright install --with-deps chromium
       - name: Run Todo source browser certification
