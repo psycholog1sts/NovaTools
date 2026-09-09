@@ -1,0 +1,42 @@
+{
+  "id": "timesheet-calculator",
+  "name": "Puantaj Hesaplayıcı",
+  "nameEn": "Timesheet Calculator",
+  "category": "productivity",
+  "tier": 1,
+  "cpc": {
+    "tr": 0.8,
+    "us": 2.3
+  },
+  "keywords": {
+    "tr": ["puantaj hesaplama", "mesai hesaplama", "çalışma saati hesaplama", "haftalık mesai", "fazla mesai hesaplama"],
+    "en": ["timesheet calculator", "timecard calculator", "work hours calculator", "weekly hours calculator", "overtime calculator", "hours and minutes calculator"]
+  },
+  "description": {
+    "tr": "Bir haftalık giriş-çıkış saatlerini toplayın: mola düşümü, gece vardiyası, fazla mesai eşiği ve ücret. Tarayıcınızda çalışır.",
+    "en": "Add up a week of clock-in and clock-out times: unpaid breaks, overnight shifts, a weekly overtime threshold and pay. Runs in your browser."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "BusinessApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.5
+    }
+  },
+  "bundle": {
+    "lazyLoad": false
+  },
+  "relatedTools": [
+    "invoice-generator",
+    "timezone-converter",
+    "unix-timestamp"
+  ]
+}

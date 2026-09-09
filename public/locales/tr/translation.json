@@ -4185,6 +4185,28 @@
           "027": "psk.dan.metehancetin@mc-novatools.com",
           "028": "Yalnızca tahminler; mali, hukuki veya vergi tavsiyesi değildir."
         }
+      },
+      "timesheet-calculator": {
+        "text": {
+          "001": "MC",
+          "002": "Finans",
+          "003": "PDF Araçlar",
+          "004": "Görseller",
+          "005": "Geliştiriciler",
+          "006": "Önce Gizlilik",
+          "007": "Finans Araçları",
+          "008": "PDF Araçlar",
+          "009": "Görüntü Araçları",
+          "010": "Geliştirici Araçları",
+          "048": "psk.dan.metehancetin@mc-novatools.com",
+          "049": "Yalnızca tahminler; profesyonel vergi veya muhasebe tavsiyesi değildir."
+        },
+        "title": {
+          "001": "Verileriniz tarayıcınızdan asla ayrılmaz"
+        },
+        "meta": {
+          "title": "Puantaj Hesaplayıcı — Haftalık Saat, Fazla Mesai ve Ücret | NovaTools MC"
+        }
       }
     },
     "religious": {
