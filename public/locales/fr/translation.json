@@ -4329,6 +4329,25 @@
           "027": "psk.dan.metehancetin@mc-novatools.com",
           "028": "Estimations uniquement – ​​pas de conseils financiers, juridiques ou fiscaux."
         }
+      },
+      "timesheet-calculator": {
+        "text": {
+          "001": "MC",
+          "002": "Finance",
+          "003": "PDF Outils",
+          "004": "Images",
+          "005": "Développeurs",
+          "006": "La confidentialité d'abord",
+          "007": "Outils financiers",
+          "008": "PDF Outils",
+          "009": "Outils d'images",
+          "010": "Outils de développement",
+          "048": "psk.dan.metehancetin@mc-novatools.com",
+          "049": "Estimations uniquement – ​​pas de conseils professionnels en fiscalité ou en comptabilité."
+        },
+        "title": {
+          "001": "Vos données ne quittent jamais votre navigateur"
+        }
       }
     },
     "religious": {

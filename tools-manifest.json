@@ -1,6 +1,6 @@
 {
   "generated": "postinstall",
-  "count": 128,
+  "count": 129,
   "tools": [
     {
       "id": "age-calculator",
@@ -5812,6 +5812,72 @@
       "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/productivity/time-tracker",
       "entry": "/src/tools/productivity/time-tracker/"
+    },
+    {
+      "id": "timesheet-calculator",
+      "name": "Puantaj Hesaplayıcı",
+      "nameEn": "Timesheet Calculator",
+      "category": "productivity",
+      "tier": 1,
+      "cpc": {
+        "tr": 0.8,
+        "us": 2.3
+      },
+      "keywords": {
+        "tr": [
+          "puantaj hesaplama",
+          "mesai hesaplama",
+          "çalışma saati hesaplama",
+          "haftalık mesai",
+          "fazla mesai hesaplama"
+        ],
+        "en": [
+          "timesheet calculator",
+          "timecard calculator",
+          "work hours calculator",
+          "weekly hours calculator",
+          "overtime calculator",
+          "hours and minutes calculator"
+        ]
+      },
+      "description": {
+        "tr": "Bir haftalık giriş-çıkış saatlerini toplayın: mola düşümü, gece vardiyası, fazla mesai eşiği ve ücret. Tarayıcınızda çalışır.",
+        "en": "Add up a week of clock-in and clock-out times: unpaid breaks, overnight shifts, a weekly overtime threshold and pay. Runs in your browser."
+      },
+      "schema": {
+        "@type": "WebApplication",
+        "applicationCategory": "BusinessApplication",
+        "offers": {
+          "@type": "Offer",
+          "price": "0"
+        }
+      },
+      "ads": {
+        "sidebar": {
+          "enabled": true,
+          "size": "336x280",
+          "minCpm": 0.5
+        }
+      },
+      "bundle": {
+        "lazyLoad": false
+      },
+      "relatedTools": [
+        "invoice-generator",
+        "timezone-converter",
+        "unix-timestamp"
+      ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "LOCAL_ONLY",
+      "externalNetwork": false,
+      "syntheticData": "NONE",
+      "dataSource": "The times, rate and thresholds the visitor types; every figure is computed in the browser",
+      "limitations": "Three rules decide every number and all three are stated on the page: an end time earlier than its start is read as a shift crossing midnight; overtime is worked out once on the weekly total, not per day; and rounding is applied to each day before the week is summed. Jurisdictions that pay daily overtime, banded multipliers, night premiums or holiday pay are not supported, and the tool will produce a confident wrong number for them. No timezone or daylight-saving handling: a week containing a DST change is off by an hour on that day. A break longer than its shift is refused by name and counted as zero rather than as negative time. Rates are multiplied as typed; no minimum wage, tax or deduction is applied and this is not payroll or legal advice. Nothing is stored between visits and nothing is uploaded.",
+      "path": "/productivity/timesheet-calculator",
+      "entry": "/src/tools/productivity/timesheet-calculator/"
     },
     {
       "id": "todo-list",

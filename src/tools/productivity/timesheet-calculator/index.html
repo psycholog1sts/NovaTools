@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script type="text/plain" data-consent-category="analytics" async src="https://www.googletagmanager.com/gtag/js?id=G-Y896L63239"></script>
+  <script type="text/plain" data-consent-category="analytics">
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Y896L63239', {
+    anonymize_ip: true,
+    cookie_expires: 63072000,
+    cookie_update: true
+  });
+  </script>
+  <meta charset="UTF-8">
+  <script>(function(){var t=localStorage.getItem('novatools-theme');if(t)document.documentElement.setAttribute('data-theme',t);else{var d=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',d);document.documentElement.style.colorScheme=d;}})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/src/styles/critical.css">
+  <link rel="stylesheet" href="/src/styles/main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <title data-i18n="tools.productivity.timesheet-calculator.meta.title">Timesheet Calculator — Weekly Hours, Overtime and Pay | NovaTools MC</title>
+  
+  <!-- i18n Script -->
+  <script src="/i18n.js" defer></script>
+  <meta name="description" content="Add up a week of clock-in and clock-out times, with unpaid breaks, overnight shifts, overtime over a threshold you set, and pay at your own rate. Runs in your browser; the rounding rule and the overtime rule are both written on the page.">
+  <meta name="keywords" content="timesheet calculator, timecard calculator, work hours calculator, weekly hours calculator, overtime calculator">
+  <meta name="theme-color" content="#0A0A0C">
+
+  <meta property="og:title" content="Timesheet Calculator | NovaTools MC">
+  <meta property="og:description" content="Weekly hours, unpaid breaks, overnight shifts, overtime and pay — worked out in your browser, with every rule stated.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.mc-novatools.com/tools/productivity/timesheet-calculator/">
+  <meta property="og:image" content="https://www.mc-novatools.com/og-image.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Timesheet Calculator | NovaTools MC">
+  <meta name="twitter:description" content="Weekly hours, overtime and pay. CSV export. Nothing uploaded.">
+
+  <link rel="canonical" href="https://www.mc-novatools.com/tools/productivity/timesheet-calculator/">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [{
+      "@type": "WebApplication",
+      "name": "Timesheet Calculator",
+      "description": "Weekly timesheet calculator: clock-in and clock-out times, unpaid breaks, overnight shifts, overtime over a threshold you set, and pay at your own rate.",
+      "url": "https://www.mc-novatools.com/tools/productivity/timesheet-calculator/",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Any",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+    }]
+  }
+  </script>
+
+  <style>
+    .tool-wrapper { max-width: 1080px; margin: 0 auto; padding: 3rem 1rem 5rem; }
+    .tool-hero { text-align: center; margin-bottom: 2.5rem; }
+    .tool-hero h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; letter-spacing: -0.02em; color: var(--text-primary); margin-bottom: 0.75rem; }
+    .tool-hero p { color: var(--text-secondary); font-size: 1.0625rem; max-width: 620px; margin: 0 auto; }
+
+    .sheet-card { background: var(--surface-panel, var(--bg-secondary)); border: 1px solid var(--border-default); border-radius: 14px; padding: 1.5rem; }
+    .sheet-settings { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+    .field label { display: block; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 0.35rem; }
+    .field input, .field select { inline-size: 100%; block-size: 40px; padding: 0 0.75rem; background: var(--field-bg); border: 1px solid var(--field-border); border-radius: 8px; color: var(--text-primary); font-size: 0.9rem; }
+
+    .sheet-table-wrap { overflow-x: auto; }
+    .sheet-table { inline-size: 100%; border-collapse: collapse; min-inline-size: 640px; }
+    .sheet-table th { text-align: start; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-secondary); padding: 0 0.5rem 0.6rem; }
+    .sheet-table th.num, .sheet-table td.num { text-align: end; }
+    .day-row td { padding: 0.3rem 0.5rem; border-block-start: 1px solid var(--border-default); }
+    .day-row .day-name { font-weight: 600; color: var(--text-primary); white-space: nowrap; }
+    .day-row input { inline-size: 100%; block-size: 36px; padding: 0 0.5rem; background: var(--field-bg); border: 1px solid var(--field-border); border-radius: 6px; color: var(--text-primary); font-size: 0.875rem; }
+    .day-row .day-total { font-variant-numeric: tabular-nums; font-weight: 600; color: var(--text-primary); }
+    .day-row.is-invalid .day-total { color: var(--color-error-text); }
+
+    .sheet-summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-block-start: 1.5rem; }
+    .summary-cell { background: var(--surface-tool, var(--bg-tertiary)); border: 1px solid var(--border-default); border-radius: 10px; padding: 0.9rem 1rem; }
+    .summary-cell dt { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-secondary); margin: 0 0 0.3rem; }
+    .summary-cell dd { margin: 0; font-size: 1.35rem; font-weight: 700; font-variant-numeric: tabular-nums; color: var(--text-primary); }
+
+    .sheet-actions { display: flex; flex-wrap: wrap; gap: 0.625rem; margin-block-start: 1.25rem; }
+    .btn { display: inline-flex; align-items: center; gap: 0.4rem; block-size: 44px; padding: 0 1.25rem; border: 1px solid transparent; border-radius: 8px; font-size: 0.9rem; font-weight: 600; cursor: pointer; }
+    .btn-primary { background: var(--color-action); color: #fff; }
+    .btn-secondary { background: transparent; border-color: var(--border-default); color: var(--text-primary); }
+    .sheet-note { margin: 1rem 0 0; font-size: 0.8125rem; line-height: 1.6; color: var(--text-secondary); }
+    .sheet-status { margin: 0.5rem 0 0; min-block-size: 1.2em; font-size: 0.8125rem; line-height: 1.6; color: var(--text-secondary); }
+    .sheet-status:empty { min-block-size: 0; }
+
+    @media print {
+      .site-header, .mobile-menu, .sheet-actions, .tool-description, .seo-section,
+      .trust-help, .related-tools, .tool-footer { display: none !important; }
+      .sheet-card { border: 0; padding: 0; }
+    }
+  </style>
+  <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div class="bg-ambient" aria-hidden="true"></div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <div id="app" class="app">
+    <header class="main-header">
+      <div class="container">
+        <div class="header-inner">
+          <a href="https://mc-novatools.com/" class="logo" aria-label="NovaTools MC Home">
+            <picture><source srcset="/logo-bird-44.webp" type="image/webp"><img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44" decoding="async"></picture>
+            <span class="logo-text">NovaTools <span class="logo-mc" data-i18n="tools.productivity.timesheet-calculator.text.001">MC</span></span>
+          </a>
+          <nav class="nav-desktop" aria-label="Main navigation">
+            <a href="https://mc-novatools.com/#finance" class="nav-link" data-i18n="tools.productivity.timesheet-calculator.text.002">Finance</a>
+            <a href="https://mc-novatools.com/#pdf" class="nav-link" data-i18n="tools.productivity.timesheet-calculator.text.003">PDF Tools</a>
+            <a href="https://mc-novatools.com/#image" class="nav-link" data-i18n="tools.productivity.timesheet-calculator.text.004">Images</a>
+            <a href="https://mc-novatools.com/#dev" class="nav-link" data-i18n="tools.productivity.timesheet-calculator.text.005">Developers</a>
+          </nav>
+          <div class="privacy-badge" title="Your data never leaves your browser" data-i18n-title="tools.productivity.timesheet-calculator.title.001">
+            <span class="privacy-badge-dot"></span>
+            <span data-i18n="tools.productivity.timesheet-calculator.text.006">Privacy First</span>
+          </div>
+          <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+            <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+          <button type="button" id="mobileMenuBtn" class="menu-btn" aria-label="Toggle menu" aria-expanded="false">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+        </div>
+        <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
+          <a href="https://mc-novatools.com/#finance" class="mobile-nav-link" data-i18n="tools.productivity.timesheet-calculator.text.007">Finance Tools</a>
+          <a href="https://mc-novatools.com/#pdf" class="mobile-nav-link" data-i18n="tools.productivity.timesheet-calculator.text.008">PDF Tools</a>
+          <a href="https://mc-novatools.com/#image" class="mobile-nav-link" data-i18n="tools.productivity.timesheet-calculator.text.009">Image Tools</a>
+          <a href="https://mc-novatools.com/#dev" class="mobile-nav-link" data-i18n="tools.productivity.timesheet-calculator.text.010">Developer Tools</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content" class="main-content">
+      <div class="tool-wrapper">
+        <header class="tool-hero">
+          <h1>Timesheet Calculator</h1>
+          <p>Type a week of clock-in and clock-out times. This adds up the hours, takes off unpaid breaks, splits regular from overtime at a threshold you set, and works out the pay — in your browser, with every rule written down rather than assumed.</p>
+        </header>
+
+        <div class="sheet-card">
+          <div class="sheet-settings">
+            <div class="field">
+              <label for="overtimeThreshold">Overtime after (hours per week)</label>
+              <input type="number" id="overtimeThreshold" value="40" min="0" max="168" step="0.25">
+            </div>
+            <div class="field">
+              <label for="hourlyRate">Hourly rate</label>
+              <input type="number" id="hourlyRate" value="0" min="0" step="0.01">
+            </div>
+            <div class="field">
+              <label for="overtimeMultiplier">Overtime multiplier</label>
+              <input type="number" id="overtimeMultiplier" value="1.5" min="1" max="10" step="0.1">
+            </div>
+            <div class="field">
+              <label for="roundingRule">Round each day to</label>
+              <select id="roundingRule">
+                <option value="0">Exact minutes</option>
+                <option value="5">Nearest 5 minutes</option>
+                <option value="6">Nearest 6 minutes (tenth of an hour)</option>
+                <option value="15">Nearest 15 minutes</option>
+                <option value="30">Nearest 30 minutes</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="displayFormat">Show hours as</label>
+              <select id="displayFormat">
+                <option value="hm">Hours and minutes (8:30)</option>
+                <option value="decimal">Decimal hours (8.50)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="sheet-table-wrap">
+            <table class="sheet-table">
+              <caption class="sr-only">Weekly timesheet: start time, end time, unpaid break and total for each day</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Day</th>
+                  <th scope="col">Start</th>
+                  <th scope="col">End</th>
+                  <th scope="col">Unpaid break (min)</th>
+                  <th scope="col" class="num">Total</th>
+                </tr>
+              </thead>
+              <tbody id="dayRows"></tbody>
+            </table>
+          </div>
+
+          <dl class="sheet-summary">
+            <div class="summary-cell">
+              <dt>Week total</dt>
+              <dd id="weekTotal">0:00</dd>
+            </div>
+            <div class="summary-cell">
+              <dt>Regular</dt>
+              <dd id="regularHours">0:00</dd>
+            </div>
+            <div class="summary-cell">
+              <dt>Overtime</dt>
+              <dd id="overtimeHours">0:00</dd>
+            </div>
+            <div class="summary-cell">
+              <dt>Total pay</dt>
+              <dd id="totalPay">0.00</dd>
+            </div>
+          </dl>
+
+          <div class="sheet-actions">
+            <button type="button" class="btn btn-primary" id="exportCsv">Download CSV</button>
+            <button type="button" class="btn btn-secondary" id="printSheet">Print</button>
+            <button type="button" class="btn btn-secondary" id="clearSheet">Clear the week</button>
+          </div>
+
+          <p class="sheet-note" id="sheetRules">
+            <strong>The three rules that decide the answer, stated:</strong>
+            an end time earlier than its start time is read as a shift that crosses <strong>midnight</strong>, so 22:00 to 06:00 is eight hours, not minus sixteen;
+            overtime is counted on the <strong>weekly total</strong>, not per day, so five nine-hour days at a 40-hour threshold give 40 regular and 5 overtime;
+            and rounding is applied to each day separately, to the nearest step you choose, before the week is added up.
+          </p>
+          <p class="sheet-status" id="timesheetStatus" role="status" aria-live="polite" aria-atomic="true"></p>
+        </div>
+
+      <article class="tool-description" aria-labelledby="toolDescriptionTitle-timesheet-calculator">
+        <h2 id="toolDescriptionTitle-timesheet-calculator">What the Timesheet Calculator Does and Why It Matters</h2>
+        <p>Adding up a week of hours by hand is where small errors turn into a wrong paycheque. Seven pairs of times, seven break deductions, a carry across midnight for anyone on nights, and one overtime split — it is not hard arithmetic, but it is exactly the kind of arithmetic people get wrong at the end of a long week. This does it in the browser and shows the working: every day gets its own total, the week total is the sum of those totals, and the regular/overtime split comes from a threshold you can see and change.</p>
+        <p>It is aimed at the person who needs the number, not at a payroll department: a shift worker checking a paycheque, a freelancer invoicing a client for hours, a small employer working out what to pay before the month closes. Nothing is stored on a server, so the times you type stay on your machine.</p>
+
+        <h2>How to Use It</h2>
+        <ol>
+          <li>Fill in the start and end times for the days you worked. Leave a day blank and it counts as zero.</li>
+          <li>Put unpaid break time, in minutes, in the break column. It comes off that day only.</li>
+          <li>Set the overtime threshold to whatever applies to you. Set it to 0 to treat every hour as overtime, or to something higher than your week to treat none of it as overtime.</li>
+          <li>Add an hourly rate and a multiplier if you want the pay figures. Leave the rate at 0 and the tool just counts hours.</li>
+          <li>Choose a rounding rule if your employer uses one. "Exact minutes" is the default, because it is the only one that does not change the answer.</li>
+          <li>Download the CSV to keep it, attach it to an invoice, or paste it into a spreadsheet.</li>
+        </ol>
+
+        <h2>Two Worked Examples</h2>
+        <p><strong>A day shift with a lunch break.</strong> 09:00 to 17:30 with a 30-minute unpaid break is 8 hours 30 minutes of clock time minus 30 minutes, so the day total is 8:00. Five of those is 40:00 for the week, which at a 40-hour threshold is all regular and no overtime.</p>
+        <p><strong>A night shift across midnight.</strong> 22:00 to 06:00 with no break is 8:00. The end time is earlier than the start time, so the tool reads it as the next morning rather than as a negative day. If you actually meant a shift that ended before it began, that is not a shift, and no tool can tell the difference — check the column before you trust the total.</p>
+
+        <h2>What to Know</h2>
+        <ul>
+          <li><strong>Overtime here is weekly, not daily, and not jurisdictional.</strong> Some places pay overtime after 8 hours in a day, some after 40 in a week, some both, some at different multipliers for different bands. This tool implements one rule: everything over the weekly threshold, at one multiplier. If your rule is different, this will give you the wrong number, and it will give it to you confidently.</li>
+          <li><strong>It is not a legal or payroll authority.</strong> It does not know your jurisdiction's minimum wage, rest-break law, holiday pay, night premiums, or tax. It multiplies hours by a rate you typed.</li>
+          <li><strong>No timezone or daylight-saving handling.</strong> Times are read as clock times on a single day. A week containing a DST change will be off by an hour on that day, and you should correct that day by hand.</li>
+          <li><strong>A break longer than the shift is refused,</strong> not carried as negative time: the day shows 0:00 and the status line says which day was rejected.</li>
+          <li><strong>Rounding is applied per day, before the week is summed.</strong> Rounding the week instead would give a different answer; if your employer rounds the weekly total rather than each day, this is not the tool for that.</li>
+          <li><strong>Nothing is stored between visits,</strong> and nothing is uploaded. Closing the tab discards the week — download the CSV first.</li>
+        </ul>
+
+        <h2>Privacy and Security</h2>
+        <p>Every calculation runs in your browser. The times, the rate and the totals are never sent to NovaTools or anywhere else, and the CSV is built in the page and handed straight to your downloads folder. There is no account, no upload step, and nothing kept after you close the tab.</p>
+
+        <h2>Frequently Asked Questions</h2>
+        <h3>Is overtime worked out per day or per week?</h3>
+        <p>Per week. The daily totals are added up first, then everything above the threshold you set is overtime. Five nine-hour days at a 40-hour threshold give 40 regular hours and 5 overtime hours, not 5 hours of daily overtime.</p>
+        <h3>How does it handle a shift that ends after midnight?</h3>
+        <p>An end time earlier than the start time is read as the next morning, so 22:00 to 06:00 is 8:00. That is an assumption, and it is the only reasonable one a calculator can make from two clock times — but it does mean a genuinely mistyped pair of times will produce a plausible-looking number.</p>
+        <h3>Why is my total different from my employer's?</h3>
+        <p>Almost always rounding or the overtime rule. Employers commonly round each punch to the nearest 6 or 15 minutes, and some count overtime daily. Set the rounding rule to match theirs and check whether their overtime is daily; if it is, this tool cannot reproduce it.</p>
+        <h3>Does it convert between hours and decimal?</h3>
+        <p>Yes — the "Show hours as" control switches every figure on the page and in the CSV between 8:30 and 8.50. Payroll systems usually want decimal.</p>
+        <h3>Can I save my week?</h3>
+        <p>Not on this site. Download the CSV — it carries every day, both totals and the settings that produced them, so the week can be reconstructed or checked later.</p>
+
+        <h2>Related Tools</h2>
+        <ul>
+          <li><a href="https://mc-novatools.com/tools/converters/timezone-converter/">Time Zone Converter</a> — for hours worked across zones.</li>
+          <li><a href="https://mc-novatools.com/tools/design/invoice-generator/">Invoice Generator</a> — turn the hours into a PDF invoice.</li>
+          <li><a href="https://mc-novatools.com/tools/converters/unix-timestamp/">Unix Timestamp Converter</a> — for timestamps out of a logging system.</li>
+        </ul>
+      </article>
+      </div>
+    </main>
+
+
+    <footer class="tool-footer">
+      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="mailto:psk.dan.metehancetin@mc-novatools.com" data-i18n="tools.productivity.timesheet-calculator.text.048">psk.dan.metehancetin@mc-novatools.com</a></p>
+      <p data-i18n="tools.productivity.timesheet-calculator.text.049">Estimates only &mdash; not professional tax or accounting advice.</p>
+    </footer>
+  </div>
+
+  <script>
+    /**
+     * Timesheet Calculator.
+     *
+     * Three decisions determine every number on this page, and all three are
+     * stated in the markup next to the table rather than buried here:
+     *
+     *   1. An end time earlier than its start time means the shift crossed
+     *      midnight. 22:00–06:00 is eight hours, not minus sixteen.
+     *   2. Overtime is worked out on the WEEKLY total, once, not per day.
+     *      Daily-overtime jurisdictions are not supported and the page says so.
+     *   3. Rounding is applied to each day before the week is summed. Rounding
+     *      the week instead gives a different answer.
+     *
+     * Everything runs here; nothing is uploaded and nothing is kept.
+     */
+    (function () {
+      'use strict';
+
+      var DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+      var el = function (id) { return document.getElementById(id); };
+
+      /** "09:30" → 570. Returns null for anything that is not a clock time. */
+      function minutesOfDay(value) {
+        var match = /^(\d{1,2}):(\d{2})$/.exec(String(value).trim());
+        if (!match) return null;
+        var hours = Number(match[1]);
+        var minutes = Number(match[2]);
+        if (hours > 23 || minutes > 59) return null;
+        return hours * 60 + minutes;
+      }
+
+      function number(value, fallback, min, max) {
+        var parsed = parseFloat(value);
+        if (!isFinite(parsed)) return fallback;
+        if (typeof min === 'number' && parsed < min) return min;
+        if (typeof max === 'number' && parsed > max) return max;
+        return parsed;
+      }
+
+      function roundMinutes(minutes, step) {
+        if (!step) return minutes;
+        return Math.round(minutes / step) * step;
+      }
+
+      function formatMinutes(minutes) {
+        if (el('displayFormat').value === 'decimal') return (minutes / 60).toFixed(2);
+        var sign = minutes < 0 ? '-' : '';
+        var whole = Math.abs(Math.round(minutes));
+        return sign + Math.floor(whole / 60) + ':' + String(whole % 60).padStart(2, '0');
+      }
+
+      function buildRows() {
+        var body = el('dayRows');
+        DAYS.forEach(function (day, index) {
+          var row = document.createElement('tr');
+          row.className = 'day-row';
+
+          var name = document.createElement('td');
+          name.className = 'day-name';
+          name.textContent = day;
+          row.appendChild(name);
+
+          ['start', 'end'].forEach(function (which) {
+            var cell = document.createElement('td');
+            var input = document.createElement('input');
+            input.type = 'time';
+            input.className = 'day-' + which;
+            input.setAttribute('aria-label', day + ' ' + which + ' time');
+            cell.appendChild(input);
+            row.appendChild(cell);
+          });
+
+          var breakCell = document.createElement('td');
+          var breakInput = document.createElement('input');
+          breakInput.type = 'number';
+          breakInput.className = 'day-break';
+          breakInput.min = '0';
+          breakInput.step = '1';
+          breakInput.value = '0';
+          breakInput.setAttribute('aria-label', day + ' unpaid break in minutes');
+          breakCell.appendChild(breakInput);
+          row.appendChild(breakCell);
+
+          var total = document.createElement('td');
+          total.className = 'day-total num';
+          total.textContent = '0:00';
+          row.appendChild(total);
+
+          body.appendChild(row);
+          row.querySelectorAll('input').forEach(function (input) {
+            input.addEventListener('input', recalculate);
+            input.addEventListener('change', recalculate);
+          });
+        });
+      }
+
+      /** Worked minutes for one row, or a named refusal. */
+      function readDay(row, step) {
+        var start = minutesOfDay(row.querySelector('.day-start').value);
+        var end = minutesOfDay(row.querySelector('.day-end').value);
+        var unpaid = Math.max(0, number(row.querySelector('.day-break').value, 0, 0));
+
+        if (start === null || end === null) {
+          return { minutes: 0, filled: start !== null || end !== null, problem: null };
+        }
+        /* Rule 1: an end before its start is the next morning, not a negative day. */
+        var span = end >= start ? end - start : (24 * 60 - start) + end;
+        if (unpaid > span) {
+          return { minutes: 0, filled: true, problem: 'break' };
+        }
+        /* Rule 3: round the day, then let the week be the sum of rounded days. */
+        return { minutes: Math.max(0, roundMinutes(span - unpaid, step)), filled: true, problem: null };
+      }
+
+      function recalculate() {
+        var step = number(el('roundingRule').value, 0, 0);
+        var rows = Array.prototype.slice.call(document.querySelectorAll('.day-row'));
+        var week = 0;
+        var refused = [];
+
+        rows.forEach(function (row, index) {
+          var day = readDay(row, step);
+          week += day.minutes;
+          row.classList.toggle('is-invalid', day.problem !== null);
+          row.querySelector('.day-total').textContent = formatMinutes(day.minutes);
+          if (day.problem === 'break') refused.push(DAYS[index]);
+        });
+
+        /* Rule 2: one weekly split, at the threshold on the page. */
+        var thresholdMinutes = number(el('overtimeThreshold').value, 40, 0, 168) * 60;
+        var regular = Math.min(week, thresholdMinutes);
+        var overtime = Math.max(0, week - thresholdMinutes);
+
+        var rate = number(el('hourlyRate').value, 0, 0);
+        var multiplier = number(el('overtimeMultiplier').value, 1.5, 1, 10);
+        var pay = (regular / 60) * rate + (overtime / 60) * rate * multiplier;
+
+        el('weekTotal').textContent = formatMinutes(week);
+        el('regularHours').textContent = formatMinutes(regular);
+        el('overtimeHours').textContent = formatMinutes(overtime);
+        el('totalPay').textContent = pay.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+
+        el('timesheetStatus').textContent = refused.length
+          ? 'The unpaid break is longer than the shift on ' + refused.join(', ') +
+            ', so ' + (refused.length === 1 ? 'that day was' : 'those days were') +
+            ' counted as zero rather than as negative time.'
+          : '';
+      }
+
+      function csvCell(value) {
+        var text = String(value);
+        return /[",\n]/.test(text) ? '"' + text.replace(/"/g, '""') + '"' : text;
+      }
+
+      function exportCsv() {
+        var step = number(el('roundingRule').value, 0, 0);
+        var rows = Array.prototype.slice.call(document.querySelectorAll('.day-row'));
+        var lines = [['Day', 'Start', 'End', 'Unpaid break (min)', 'Total'].map(csvCell).join(',')];
+
+        rows.forEach(function (row, index) {
+          var day = readDay(row, step);
+          lines.push([
+            DAYS[index],
+            row.querySelector('.day-start').value,
+            row.querySelector('.day-end').value,
+            row.querySelector('.day-break').value,
+            formatMinutes(day.minutes)
+          ].map(csvCell).join(','));
+        });
+
+        lines.push('');
+        lines.push(['Week total', el('weekTotal').textContent].map(csvCell).join(','));
+        lines.push(['Regular', el('regularHours').textContent].map(csvCell).join(','));
+        lines.push(['Overtime', el('overtimeHours').textContent].map(csvCell).join(','));
+        lines.push(['Total pay', el('totalPay').textContent].map(csvCell).join(','));
+        lines.push('');
+        lines.push(['Overtime threshold (hours/week)', el('overtimeThreshold').value].map(csvCell).join(','));
+        lines.push(['Hourly rate', el('hourlyRate').value].map(csvCell).join(','));
+        lines.push(['Overtime multiplier', el('overtimeMultiplier').value].map(csvCell).join(','));
+        lines.push(['Rounding (minutes, 0 = exact)', el('roundingRule').value].map(csvCell).join(','));
+        lines.push(['Overtime rule', 'Weekly total over the threshold; not daily'].map(csvCell).join(','));
+
+        /* The BOM is what makes Excel read the file as UTF-8 rather than as the
+           machine's legacy code page. */
+        var blob = new Blob(['﻿' + lines.join('\r\n')], { type: 'text/csv;charset=utf-8' });
+        var url = URL.createObjectURL(blob);
+        var link = document.createElement('a');
+        link.href = url;
+        link.download = 'timesheet.csv';
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        setTimeout(function () { URL.revokeObjectURL(url); }, 4000);
+        el('timesheetStatus').textContent = 'Saved timesheet.csv, including the settings that produced these totals. Nothing was uploaded.';
+      }
+
+      function clearSheet() {
+        document.querySelectorAll('.day-row').forEach(function (row) {
+          row.querySelector('.day-start').value = '';
+          row.querySelector('.day-end').value = '';
+          row.querySelector('.day-break').value = '0';
+        });
+        recalculate();
+        el('timesheetStatus').textContent = 'The week was cleared. The settings above were kept.';
+      }
+
+      function start() {
+        buildRows();
+        ['overtimeThreshold', 'hourlyRate', 'overtimeMultiplier', 'roundingRule', 'displayFormat']
+          .forEach(function (id) {
+            el(id).addEventListener('input', recalculate);
+            el(id).addEventListener('change', recalculate);
+          });
+        el('exportCsv').addEventListener('click', exportCsv);
+        el('printSheet').addEventListener('click', function () { window.print(); });
+        el('clearSheet').addEventListener('click', clearSheet);
+        recalculate();
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', start);
+      } else {
+        start();
+      }
+    }());
+
+    document.addEventListener('DOMContentLoaded', function () {
+      var menuBtn = document.getElementById('mobileMenuBtn');
+      var mobileMenu = document.getElementById('mobileMenu');
+      if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener('click', function () {
+          var isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+          menuBtn.setAttribute('aria-expanded', String(!isExpanded));
+          mobileMenu.hidden = isExpanded;
+          mobileMenu.classList.toggle('active', !isExpanded);
+        });
+      }
+      var themeBtn = document.getElementById('themeToggle');
+      if (themeBtn) {
+        var getTheme = function () {
+          var saved = localStorage.getItem('theme');
+          if (saved) return saved;
+          return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        };
+        var updateIcon = function () {
+          var theme = getTheme();
+          themeBtn.querySelector('.icon-sun').toggleAttribute('hidden', theme !== 'dark');
+          themeBtn.querySelector('.icon-moon').toggleAttribute('hidden', theme === 'dark');
+        };
+        themeBtn.addEventListener('click', function () {
+          var next = getTheme() === 'dark' ? 'light' : 'dark';
+          document.documentElement.setAttribute('data-theme', next);
+          localStorage.setItem('theme', next);
+          updateIcon();
+        });
+        updateIcon();
+      }
+    });
+  </script>
+</body>
+</html>
