@@ -31,7 +31,8 @@ assert.match(html, /href=["']\/contact\.html["']/i);
 assert.match(html, /href=["']\/security\.html["']/i);
 assert.match(html, /href=["']\/refund-policy\.html["']/i);
 assert.doesNotMatch(html, /aggregateRating|ratingValue|reviewCount/i);
-assert.doesNotMatch(html, /security certification|certified secure|100% secure|100% private/i);
+assert.match(html, /not a security certification/i);
+assert.doesNotMatch(html, /(?:is|provides|offers)\s+(?:a\s+)?security certification|certified secure|100% secure|100% private/i);
 assert.doesNotMatch(html, /type=["']password["'][^>]*(?:token|github)/i);
 
 assert.match(cspSource, /connect-src[^\n]*https:\/\/api\.github\.com/);
