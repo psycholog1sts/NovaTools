@@ -1,0 +1,41 @@
+name: rlsproof-one-time-sitemap-refresh
+
+on:
+  push:
+    branches:
+      - integrate-rlsproof-20260911
+    paths:
+      - '.github/workflows/rlsproof-one-time-sitemap-refresh.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: integrate-rlsproof-20260911
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: .node-version
+          cache: npm
+      - name: Install dependencies and regenerate canonical sitemap artifacts
+        run: |
+          npm ci --include=optional
+          npm run build:sitemap
+          node tests/site-regressions.mjs
+      - name: Commit generated sitemap state and remove one-time workflow
+        run: |
+          rm .github/workflows/rlsproof-one-time-sitemap-refresh.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add public/sitemap*.xml sitemap*.xml site-links.txt .github/workflows/rlsproof-one-time-sitemap-refresh.yml
+          if git diff --cached --quiet; then
+            echo 'No generated sitemap changes to commit.'
+          else
+            git commit -m 'fix: refresh sitemap for RLSProof certification state'
+            git push origin HEAD:integrate-rlsproof-20260911
+          fi
