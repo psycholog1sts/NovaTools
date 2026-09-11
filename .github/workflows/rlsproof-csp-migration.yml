@@ -1,0 +1,66 @@
+name: rlsproof-one-time-csp-migration
+
+on:
+  push:
+    branches:
+      - integrate-rlsproof-20260911
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - name: Allow the public GitHub REST API in all CSP sources
+        shell: bash
+        run: |
+          node <<'NODE'
+          const fs = require('node:fs');
+          const api = 'https://api.github.com';
+          const oldConnect = "connect-src 'self' blob: https://www.google-analytics.com https://region1.google-analytics.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://fonts.googleapis.com https://fonts.gstatic.com https://ipapi.co https://va.vercel-scripts.com https://*.clarity.ms";
+          const newConnect = `connect-src 'self' blob: https://www.google-analytics.com https://region1.google-analytics.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://fonts.googleapis.com https://fonts.gstatic.com ${api} https://ipapi.co https://va.vercel-scripts.com https://*.clarity.ms`;
+
+          for (const path of ['scripts/harden-csp.mjs', 'scripts/harden-csp-core.mjs']) {
+            let text = fs.readFileSync(path, 'utf8');
+            if (!text.includes(api)) {
+              if (!text.includes(oldConnect)) throw new Error(`${path}: connect-src anchor missing`);
+              text = text.replace(oldConnect, newConnect);
+              fs.writeFileSync(path, text);
+            }
+          }
+
+          const vercelPath = 'vercel.json';
+          const vercel = JSON.parse(fs.readFileSync(vercelPath, 'utf8'));
+          const header = vercel.headers?.flatMap((entry) => entry.headers || []).find((entry) => entry.key === 'Content-Security-Policy');
+          if (!header) throw new Error('vercel CSP header missing');
+          if (!header.value.includes(api)) {
+            if (!header.value.includes(oldConnect)) throw new Error('vercel connect-src anchor missing');
+            header.value = header.value.replace(oldConnect, newConnect);
+          }
+          fs.writeFileSync(vercelPath, `${JSON.stringify(vercel, null, 2)}\n`);
+
+          const vitePath = 'vite.config.js';
+          let vite = fs.readFileSync(vitePath, 'utf8');
+          const oldVite = "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://pagead2.googlesyndication.com; img-src 'self' data: https:; style-src 'self' 'unsafe-inline';";
+          const newVite = "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://pagead2.googlesyndication.com; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; connect-src 'self' https://api.github.com;";
+          if (!vite.includes(api)) {
+            if (!vite.includes(oldVite)) throw new Error('vite CSP anchor missing');
+            vite = vite.replace(oldVite, newVite);
+            fs.writeFileSync(vitePath, vite);
+          }
+          NODE
+      - name: Remove migration workflow and commit
+        shell: bash
+        run: |
+          git rm .github/workflows/rlsproof-csp-migration.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add scripts/harden-csp.mjs scripts/harden-csp-core.mjs vercel.json vite.config.js
+          git commit -m "fix(csp): allow bounded GitHub API Quick Scan"
+          git push origin HEAD:integrate-rlsproof-20260911
