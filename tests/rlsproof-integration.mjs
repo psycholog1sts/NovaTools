@@ -10,6 +10,8 @@ const html = readFileSync(htmlPath, 'utf8');
 const meta = JSON.parse(readFileSync(metaPath, 'utf8'));
 const certification = JSON.parse(readFileSync(certificationPath, 'utf8'));
 const record = certification.records.find((item) => item.Route === route);
+const cspSource = readFileSync('scripts/harden-csp-core.mjs', 'utf8');
+const vercelConfig = readFileSync('vercel.json', 'utf8');
 
 assert.equal(meta.id, 'rlsproof');
 assert.equal(meta.category, 'security');
@@ -31,6 +33,9 @@ assert.match(html, /href=["']\/refund-policy\.html["']/i);
 assert.doesNotMatch(html, /aggregateRating|ratingValue|reviewCount/i);
 assert.doesNotMatch(html, /security certification|certified secure|100% secure|100% private/i);
 assert.doesNotMatch(html, /type=["']password["'][^>]*(?:token|github)/i);
+
+assert.match(cspSource, /connect-src[^\n]*https:\/\/api\.github\.com/);
+assert.match(vercelConfig, /connect-src[^\n]*https:\/\/api\.github\.com/);
 
 assert.ok(record, 'RLSProof must have a canonical certification record.');
 assert.equal(record.CertificationStatus, 'CERTIFIED');
