@@ -120,3 +120,9 @@
 - [ ] Review diff for unrelated changes.
 - [ ] Open PR only when branch verification is green; merge only after exact-head CI succeeds.
 - [ ] Verify the production Cloudflare route and then use `https://mc-novatools.com/tools/security/rlsproof/` as the Paddle product/domain review URL.
+
+## Verification checkpoints
+
+- 2026-09-11: RLSProof focused integration contract is GREEN in CI; the remaining full-suite failure was traced to stale committed sitemap artifacts after the security category gained its first certified public tool.
+- 2026-09-11: Canonical sitemap artifacts were regenerated from `tools-manifest.json`; `/categories/security-tools.html` and `/tools/security/rlsproof/` are now derived from the certification state instead of being manually whitelisted.
+- Exact-head full CI remains the merge gate; no production merge is allowed until the current user-authored head completes the normal release-readiness and Cloudflare validation workflows successfully.
