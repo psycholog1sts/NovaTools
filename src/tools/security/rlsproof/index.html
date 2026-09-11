@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RLSProof — Supabase RLS & Authorization Quick Scan | MC NovaTools</title>
+  <meta name="description" content="Scan a public GitHub repository for bounded Supabase RLS and authorization risks, review deterministic findings, and understand what still requires full verification.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#0A0A0C">
+  <link rel="canonical" href="https://mc-novatools.com/tools/security/rlsproof/">
+  <meta property="og:title" content="RLSProof — Supabase RLS & Authorization Quick Scan | MC NovaTools">
+  <meta property="og:description" content="Bounded browser Quick Scan for public GitHub repositories with explicit coverage limits and deterministic Supabase authorization findings.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mc-novatools.com/tools/security/rlsproof/">
+  <meta property="og:site_name" content="MC NovaTools">
+  <meta property="og:image" content="https://mc-novatools.com/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="RLSProof — Supabase RLS & Authorization Quick Scan">
+  <meta name="twitter:description" content="Bounded browser checks for public Supabase repositories with explicit evidence and limitations.">
+  <meta name="twitter:image" content="https://mc-novatools.com/og-image.svg">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/src/styles/critical.css">
+  <link rel="stylesheet" href="/src/styles/main.css">
+  <link rel="stylesheet" href="/src/tools/security/rlsproof/rlsproof.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "RLSProof Quick Scan",
+    "url": "https://mc-novatools.com/tools/security/rlsproof/",
+    "description": "Bounded browser-based static checks for Supabase RLS and authorization risks in public GitHub repositories.",
+    "applicationCategory": "SecurityApplication",
+    "operatingSystem": "Web",
+    "isAccessibleForFree": true,
+    "offers": {"@type":"Offer","price":"0","priceCurrency":"USD"}
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="app-header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="/" class="logo" aria-label="MC NovaTools home">
+          <span class="logo-icon"><img src="/logo-brand-260.webp" alt="MC NovaTools logo" width="36" height="36" decoding="async"></span>
+          <span class="logo-text">MC NovaTools</span>
+        </a>
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="/" class="nav-link">Home</a>
+          <a href="/categories/security-tools.html" class="nav-link">Security tools</a>
+          <a href="/pricing/" class="nav-link">Pricing</a>
+          <a href="/about.html" class="nav-link">About</a>
+          <a href="/contact.html" class="nav-link">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content" class="rlsproof-shell">
+    <section class="rlsproof-hero" aria-labelledby="rlsproof-title">
+      <div>
+        <p class="rlsproof-eyebrow">Security tool · Supabase authorization</p>
+        <h1 id="rlsproof-title">Prove your Supabase data boundaries before release.</h1>
+        <p class="rlsproof-lead">RLSProof looks for concrete authorization risks in a bounded set of files from a public GitHub repository. It reports what it found, what it did not cover, and never turns skipped or unavailable coverage into a PASS.</p>
+        <div class="rlsproof-trust" aria-label="Quick Scan boundaries">
+          <span class="rlsproof-chip">Public GitHub repositories only</span>
+          <span class="rlsproof-chip">No GitHub token</span>
+          <span class="rlsproof-chip">Browser-side evaluation</span>
+          <span class="rlsproof-chip">Coverage stays explicit</span>
+        </div>
+      </div>
+      <aside class="rlsproof-panel" aria-label="What Quick Scan checks">
+        <h2>Native checks</h2>
+        <p>Quick Scan inspects selected JavaScript, TypeScript and SQL files for Supabase-specific authorization hazards such as public tables without RLS, exposed service-role usage, risky policy metadata, public SECURITY DEFINER functions, public views without security invoker, and dynamic code execution.</p>
+        <p class="rlsproof-disclaimer">This is a security-development aid, not a security certification, penetration test, compliance attestation, or guarantee that an application is secure.</p>
+      </aside>
+    </section>
+
+    <section class="rlsproof-panel rlsproof-scan" aria-labelledby="scan-title">
+      <p class="rlsproof-eyebrow">Free Quick Scan</p>
+      <h2 id="scan-title">Scan a public repository</h2>
+      <p>Enter <strong>owner/repo</strong> or a normal <strong>https://github.com/owner/repo</strong> URL. The browser requests public repository metadata and selected public blobs directly from <strong>api.github.com</strong>; repository contents are not uploaded to a NovaTools server.</p>
+      <form class="rlsproof-form" data-rlsproof-form>
+        <label for="rlsproof-repository">Public GitHub repository</label>
+        <input id="rlsproof-repository" data-rlsproof-repository type="text" inputmode="url" autocomplete="off" spellcheck="false" placeholder="supabase/supabase" required aria-describedby="rlsproof-help">
+        <button type="submit" data-rlsproof-submit>Run Quick Scan</button>
+      </form>
+      <p id="rlsproof-help" class="rlsproof-helper">Limits: 18 selected files · 128 KiB/file · 1 MiB total · 5,000 tree entries · 50,000 KiB repository size. Unauthenticated GitHub API rate limits apply.</p>
+      <div class="rlsproof-status" role="status" aria-live="polite" data-rlsproof-status>Ready. No repository has been scanned yet.</div>
+
+      <div data-rlsproof-results hidden>
+        <div class="rlsproof-summary" aria-label="Scan summary">
+          <div class="rlsproof-metric"><span>Readiness score</span><strong data-rlsproof-score>—</strong></div>
+          <div class="rlsproof-metric"><span>Release gate</span><strong data-rlsproof-gate>—</strong></div>
+          <div class="rlsproof-metric"><span>Files scanned</span><strong data-rlsproof-files>—</strong></div>
+          <div class="rlsproof-metric"><span>Coverage</span><strong data-rlsproof-coverage>—</strong></div>
+        </div>
+        <div class="rlsproof-findings" data-rlsproof-findings></div>
+      </div>
+    </section>
+
+    <section class="rlsproof-panel rlsproof-section" aria-labelledby="coverage-title">
+      <p class="rlsproof-eyebrow">Coverage boundary</p>
+      <h2 id="coverage-title">Quick Scan is intentionally incomplete.</h2>
+      <p>The free browser surface runs bounded native static checks only. It does not run Gitleaks, OSV-Scanner, Opengrep, database authorization fixtures, private-repository analysis, or full tenant-isolation proof. A clean bounded result therefore remains <strong>incomplete</strong>, not PASS.</p>
+      <p>For full repository coverage, the open-source RLSProof GitHub Action can run pinned external scanners in your own CI runner, while database proof remains a separate isolated test layer.</p>
+      <div class="rlsproof-links">
+        <a href="https://github.com/psycholog1sts/personal-app" rel="noreferrer">Inspect RLSProof source</a>
+        <a href="https://github.com/psycholog1sts/personal-app#github-action" rel="noreferrer">GitHub Action documentation</a>
+        <a href="/security.html">NovaTools security</a>
+      </div>
+    </section>
+
+    <section class="rlsproof-panel rlsproof-section" aria-labelledby="launch-title">
+      <p class="rlsproof-eyebrow">Human-reviewed service</p>
+      <h2 id="launch-title">Launch Verification</h2>
+      <p class="rlsproof-price">$149 USD <small>one-time</small></p>
+      <span class="rlsproof-pending">Payment activation pending</span>
+      <p>Full scanner coverage, reviewed findings, remediation guidance, and a fix → re-test evidence report before launch. Payment checkout is not presented as active until the payment provider has approved and enabled the live flow.</p>
+      <p class="rlsproof-disclaimer">Launch Verification is not a security certification, compliance attestation, penetration test, or guarantee of security.</p>
+      <div class="rlsproof-links">
+        <a href="/contact.html">Contact about Launch Verification</a>
+        <a href="/refund-policy.html">Refund Policy</a>
+        <a href="/privacy-policy.html">Privacy Policy</a>
+        <a href="/terms-of-service.html">Terms of Service</a>
+      </div>
+    </section>
+
+    <section class="rlsproof-section" aria-labelledby="method-title">
+      <h2 id="method-title">Why the result stays auditable</h2>
+      <p>RLSProof uses deterministic rules rather than an AI model to decide security findings or release-gate status. Evidence is redacted for common secret formats before it is displayed, and high or critical unresolved findings block the gate. API errors, repository-size limits, truncated trees and rate limits produce an error instead of a successful result.</p>
+    </section>
+  </main>
+
+  <footer class="app-footer home-footer">
+    <div class="container">
+      <div class="home-footer__grid">
+        <div class="home-footer__brand">
+          <a href="/" class="footer-logo"><span class="footer-logo-text">MC NovaTools</span></a>
+          <p class="footer-description">Browser-based tools for files, finance, code, security, and everyday workflows. Built for clarity and inspectable limits.</p>
+        </div>
+        <nav class="home-footer__column" aria-label="Company">
+          <h2 class="footer-column-title">Company</h2>
+          <ul class="footer-column-list"><li><a href="/about.html">About</a></li><li><a href="/contact.html">Contact</a></li><li><a href="/blog/index.html">Blog</a></li></ul>
+        </nav>
+        <nav class="home-footer__column" aria-label="Legal">
+          <h2 class="footer-column-title">Legal</h2>
+          <ul class="footer-column-list"><li><a href="/privacy-policy.html">Privacy Policy</a></li><li><a href="/terms-of-service.html">Terms of Service</a></li><li><a href="/refund-policy.html">Refund Policy</a></li><li><a href="/cookie-policy.html">Cookie Policy</a></li><li><a href="/disclaimer.html">Disclaimer</a></li></ul>
+        </nav>
+      </div>
+      <div class="home-footer__bottom"><p>© MC NovaTools. RLSProof is an independent software product surface within NovaTools.</p></div>
+    </div>
+  </footer>
+  <script type="module" src="/src/tools/security/rlsproof/logic.mjs"></script>
+</body>
+</html>
