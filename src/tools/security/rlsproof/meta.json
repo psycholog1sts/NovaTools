@@ -6,7 +6,7 @@
   "tier": 1,
   "public": true,
   "indexable": true,
-  "adsEligible": true,
+  "adsEligible": false,
   "privacyMode": "EXTERNAL_API",
   "externalNetwork": true,
   "syntheticData": "NONE",
@@ -36,7 +36,7 @@
   },
   "ads": {
     "sidebar": {
-      "enabled": true,
+      "enabled": false,
       "size": "336x280",
       "minCpm": 0.5
     }
