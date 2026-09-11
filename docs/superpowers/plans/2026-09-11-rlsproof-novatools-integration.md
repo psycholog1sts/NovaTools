@@ -88,7 +88,7 @@
 - Produces: one certified security tool record.
 
 - [ ] Add a full certification record for `/tools/security/rlsproof/` with all required fields.
-- [ ] Set `CertificationStatus: CERTIFIED`, `Indexable: true`, `AdsEligible: true`, `PrivacyTruth: EXTERNAL_API`, `ExternalNetwork: true`, `SyntheticData: NONE`.
+- [ ] Set `CertificationStatus: CERTIFIED`, `Indexable: true`, `AdsEligible: false`, `PrivacyTruth: EXTERNAL_API`, `ExternalNetwork: true`, `SyntheticData: NONE`.
 - [ ] State the GitHub REST API as the data source and enumerate rate-limit/bounded-scope limitations.
 - [ ] Ensure search/category/sitemap discovery derives from the generated manifest instead of hard-coded duplicates where possible.
 - [ ] Regenerate manifest and run the focused contract.
