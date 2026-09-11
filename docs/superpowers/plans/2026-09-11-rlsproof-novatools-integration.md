@@ -125,4 +125,5 @@
 
 - 2026-09-11: RLSProof focused integration contract is GREEN in CI; the remaining full-suite failure was traced to stale committed sitemap artifacts after the security category gained its first certified public tool.
 - 2026-09-11: Canonical sitemap artifacts were regenerated from `tools-manifest.json`; `/categories/security-tools.html` and `/tools/security/rlsproof/` are now derived from the certification state instead of being manually whitelisted.
+- 2026-09-12: NovaTools-native About navigation, footer legal markup, Refund Policy sitemap registration, and generated sitemap state were corrected; the migration regression suite passed before commit.
 - Exact-head full CI remains the merge gate; no production merge is allowed until the current user-authored head completes the normal release-readiness and Cloudflare validation workflows successfully.
