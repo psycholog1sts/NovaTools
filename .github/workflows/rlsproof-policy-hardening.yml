@@ -1,0 +1,96 @@
+name: rlsproof-one-time-policy-hardening
+
+on:
+  push:
+    branches:
+      - integrate-rlsproof-20260911
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Harden RLSProof certification and legal disclosure
+        shell: bash
+        run: |
+          node <<'NODE'
+          const fs = require('node:fs');
+
+          const matrixPath = 'src/data/tool-certification.json';
+          const matrix = JSON.parse(fs.readFileSync(matrixPath, 'utf8'));
+          const record = matrix.records.find((item) => item.Route === '/tools/security/rlsproof/');
+          if (!record) throw new Error('RLSProof certification record missing');
+          record.AdsEligible = false;
+          fs.writeFileSync(matrixPath, `${JSON.stringify(matrix, null, 2)}\n`);
+
+          function patchFile(path, patches) {
+            let text = fs.readFileSync(path, 'utf8');
+            for (const patch of patches) {
+              if (patch.guard && text.includes(patch.guard)) continue;
+              if (!text.includes(patch.search)) throw new Error(`${path}: patch anchor not found: ${patch.search.slice(0, 80)}`);
+              text = text.replace(patch.search, patch.replace);
+            }
+            fs.writeFileSync(path, text);
+          }
+
+          const refundTopNav = {
+            guard: 'href="/refund-policy.html">Refunds</a>',
+            search: '<a href="/terms-of-service.html">Terms</a>\n        <a href="/contact.html">Contact</a>',
+            replace: '<a href="/terms-of-service.html">Terms</a>\n        <a href="/refund-policy.html">Refunds</a>\n        <a href="/contact.html">Contact</a>'
+          };
+          const refundFooter = {
+            guard: '<li><a href="/refund-policy.html">Refund Policy</a></li>',
+            search: '<li><a href="/terms-of-service.html">Terms</a></li><li><a href="/disclaimer.html">Disclaimer</a></li>',
+            replace: '<li><a href="/terms-of-service.html">Terms</a></li><li><a href="/refund-policy.html">Refund Policy</a></li><li><a href="/disclaimer.html">Disclaimer</a></li>'
+          };
+
+          patchFile('terms-of-service.html', [
+            refundTopNav,
+            {
+              guard: 'id="paid-services"',
+              search: '</section></article>',
+              replace: '</section><section class="legal-section" aria-labelledby="paid-services"><h2 id="paid-services"><a href="#paid-services" aria-label="Link to Paid services and RLSProof">Paid services and RLSProof</a></h2><p>RLSProof is a security-development product surface within MC NovaTools. Its free Quick Scan is intentionally bounded and does not represent a security certification, penetration test, compliance attestation, or guarantee of security. The separate Launch Verification service is a one-time human-reviewed engagement currently published at $149 USD and includes reviewed findings, remediation guidance, and fix → re-test evidence.</p><p>Payment activation is pending. No live checkout is represented as available until a payment provider has approved and enabled it. If a paid transaction becomes available, the <a href="/refund-policy.html">Refund Policy</a> applies together with these Terms and any mandatory buyer rights or transaction-specific merchant-of-record terms displayed at checkout.</p></section></article>'
+            },
+            refundFooter,
+          ]);
+
+          patchFile('privacy-policy.html', [
+            refundTopNav,
+            {
+              guard: 'id="rlsproof-github"',
+              search: '</section><section class="legal-section" aria-labelledby="localstorage">',
+              replace: '</section><section class="legal-section" aria-labelledby="rlsproof-github"><h2 id="rlsproof-github">RLSProof Quick Scan and GitHub</h2><p>RLSProof Quick Scan accepts only a public GitHub repository identifier or normal public repository URL. The visitor browser requests public repository metadata, tree entries, and selected public blobs directly from the GitHub REST API at api.github.com. Those selected public repository contents are evaluated in the browser and are not intentionally uploaded to a NovaTools server by the Quick Scan workflow.</p><p>GitHub receives the network request and may process technical information under GitHub\'s own terms and privacy practices. Quick Scan does not accept a GitHub access token or private repository credentials. Unauthenticated API rate limits, repository-size limits, and bounded file-selection limits apply, and a clean bounded result is not represented as a complete security assessment.</p></section><section class="legal-section" aria-labelledby="localstorage">'
+            },
+            refundFooter,
+          ]);
+
+          // Keep the root-domain legal navigation explicit for payment-domain reviewers.
+          if (fs.existsSync('index.html')) {
+            let home = fs.readFileSync('index.html', 'utf8');
+            const marker = '<a href="/terms-of-service.html"';
+            if (!home.includes('/refund-policy.html') && home.includes(marker)) {
+              const termsLink = /<a href="\/terms-of-service\.html"[^>]*>[^<]*<\/a>/;
+              home = home.replace(termsLink, (match) => `${match}\n              <a href="/refund-policy.html">Refund Policy</a>`);
+              fs.writeFileSync('index.html', home);
+            }
+          }
+          NODE
+      - name: Remove migration workflow and commit policy changes
+        shell: bash
+        run: |
+          git rm .github/workflows/rlsproof-policy-hardening.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data/tool-certification.json terms-of-service.html privacy-policy.html index.html
+          git commit -m "fix: align RLSProof trust and policy surfaces"
+          git push origin HEAD:integrate-rlsproof-20260911
