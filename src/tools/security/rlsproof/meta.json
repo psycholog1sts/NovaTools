@@ -1,0 +1,52 @@
+{
+  "id": "rlsproof",
+  "name": "RLSProof",
+  "nameEn": "RLSProof",
+  "category": "security",
+  "tier": 1,
+  "public": true,
+  "indexable": true,
+  "adsEligible": true,
+  "privacyMode": "EXTERNAL_API",
+  "externalNetwork": true,
+  "syntheticData": "NONE",
+  "dataSource": "User-supplied public GitHub repository plus the public GitHub REST API",
+  "limitations": "Quick Scan is intentionally bounded to public repositories, native static checks, at most 18 selected files, 128 KiB per file, 1 MiB total scanned content, 5,000 tree entries and repositories up to 50,000 KiB. Unauthenticated GitHub API rate limits apply; private repositories and full external-scanner coverage are not supported in the browser Quick Scan.",
+  "cpc": {
+    "tr": 1.2,
+    "us": 3.5
+  },
+  "keywords": {
+    "tr": ["supabase rls kontrol", "supabase güvenlik taraması", "row level security test", "tenant isolation"],
+    "en": ["supabase rls checker", "supabase security scan", "row level security test", "tenant isolation", "authorization release gate"]
+  },
+  "description": {
+    "tr": "Herkese açık GitHub depolarında Supabase RLS ve yetkilendirme risklerini sınırlı tarayıcı tabanlı kontrollerle inceleyin.",
+    "en": "Scan public GitHub repositories for bounded Supabase RLS and authorization risks with deterministic browser-side checks."
+  },
+  "schema": {
+    "@type": "SoftwareApplication",
+    "applicationCategory": "SecurityApplication",
+    "operatingSystem": "Web",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.5
+    }
+  },
+  "bundle": {
+    "lazyLoad": false
+  },
+  "relatedTools": [
+    "ssl-checker",
+    "jwt-decoder",
+    "hash-generator"
+  ]
+}
