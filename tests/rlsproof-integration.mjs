@@ -12,6 +12,9 @@ const certification = JSON.parse(readFileSync(certificationPath, 'utf8'));
 const record = certification.records.find((item) => item.Route === route);
 const cspSource = readFileSync('scripts/harden-csp-core.mjs', 'utf8');
 const vercelConfig = readFileSync('vercel.json', 'utf8');
+const viteConfig = readFileSync('vite.config.js', 'utf8');
+const homepage = readFileSync('index.html', 'utf8');
+const sitemapGenerator = readFileSync('scripts/generate-localized-sitemap.mjs', 'utf8');
 
 assert.equal(meta.id, 'rlsproof');
 assert.equal(meta.category, 'security');
@@ -25,6 +28,8 @@ assert.match(html, /Payment activation pending/i);
 assert.match(html, /public GitHub repositories only/i);
 assert.match(html, /bounded native static checks/i);
 assert.match(html, /api\.github\.com/i);
+assert.match(html, /href=["']\/about-us\.html["']/i);
+assert.doesNotMatch(html, /href=["']\/about\.html["']/i);
 assert.match(html, /href=["']\/privacy-policy\.html["']/i);
 assert.match(html, /href=["']\/terms-of-service\.html["']/i);
 assert.match(html, /href=["']\/contact\.html["']/i);
@@ -37,6 +42,12 @@ assert.doesNotMatch(html, /type=["']password["'][^>]*(?:token|github)/i);
 
 assert.match(cspSource, /connect-src[^\n]*https:\/\/api\.github\.com/);
 assert.match(vercelConfig, /connect-src[^\n]*https:\/\/api\.github\.com/);
+assert.match(viteConfig, /Content-Security-Policy[^\n]*https:\/\/api\.github\.com/);
+
+assert.match(homepage, /<li><a href="\/terms-of-service\.html">Terms of Service<\/a><\/li>/);
+assert.match(homepage, /<li><a href="\/refund-policy\.html">Refund Policy<\/a><\/li>/);
+assert.doesNotMatch(homepage, /Terms of Service<\/a>\s*<a href="\/refund-policy\.html">/);
+assert.match(sitemapGenerator, /\['\/refund-policy\.html',\s*'0\.4',\s*'monthly'\]/);
 
 assert.ok(record, 'RLSProof must have a canonical certification record.');
 assert.equal(record.CertificationStatus, 'CERTIFIED');
