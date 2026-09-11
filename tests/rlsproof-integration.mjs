@@ -14,6 +14,7 @@ const record = certification.records.find((item) => item.Route === route);
 assert.equal(meta.id, 'rlsproof');
 assert.equal(meta.category, 'security');
 assert.equal(meta.public, true);
+assert.equal(meta.adsEligible, false);
 assert.equal(meta.externalNetwork, true);
 assert.match(html, /<link[^>]+rel=["']canonical["'][^>]+href=["']https:\/\/mc-novatools\.com\/tools\/security\/rlsproof\/["']/i);
 assert.match(html, /RLSProof/i);
@@ -34,7 +35,7 @@ assert.doesNotMatch(html, /type=["']password["'][^>]*(?:token|github)/i);
 assert.ok(record, 'RLSProof must have a canonical certification record.');
 assert.equal(record.CertificationStatus, 'CERTIFIED');
 assert.equal(record.Indexable, true);
-assert.equal(record.AdsEligible, true);
+assert.equal(record.AdsEligible, false);
 assert.equal(record.PrivacyTruth, 'EXTERNAL_API');
 assert.equal(record.ExternalNetwork, true);
 assert.equal(record.SyntheticData, 'NONE');
@@ -42,7 +43,7 @@ for (const gate of ['FunctionalTruth', 'UniqueUtility', 'SpecificContent', 'Impl
   assert.equal(record[gate], 'PASS', `RLSProof certification must pass ${gate}`);
 }
 
-const refund = readFileSync('public/refund-policy.html', 'utf8');
+const refund = readFileSync('refund-policy.html', 'utf8');
 assert.match(refund, /<link[^>]+rel=["']canonical["'][^>]+href=["']https:\/\/mc-novatools\.com\/refund-policy\.html["']/i);
 assert.match(refund, /Launch Verification/i);
 assert.match(refund, /mandatory consumer rights|applicable law/i);
