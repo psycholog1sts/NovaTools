@@ -3606,7 +3606,7 @@
       "Route": "/tools/security/rlsproof/",
       "Category": "security",
       "Indexable": true,
-      "AdsEligible": true,
+      "AdsEligible": false,
       "FunctionalTruth": "PASS",
       "UniqueUtility": "PASS",
       "SpecificContent": "PASS",
