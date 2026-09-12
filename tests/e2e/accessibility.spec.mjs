@@ -174,8 +174,11 @@ test('homepage mobile discovery stays concise without hiding category routes', a
   }
   await expect(page.locator('#categoriesPending')).toBeVisible();
 
+  // Budget bumped when the "Developer Tools" category card started appearing here
+  // (its first certified tool shipped), which legitimately added ~400px. Keep some
+  // margin above the current real height so this still catches actual bloat.
   const documentHeight = await page.evaluate(() => document.documentElement.scrollHeight);
-  expect(documentHeight).toBeLessThan(11500);
+  expect(documentHeight).toBeLessThan(12100);
 });
 
 test('gold-standard PDF page exposes usable mobile navigation', async ({ page }) => {
