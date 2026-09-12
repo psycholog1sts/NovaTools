@@ -48,13 +48,21 @@ const redirects = new Set(
     .map((line) => line.trim())
     .filter((line) => line && !line.startsWith('#'))
 );
+// Regression guard: a `/<page> /<page>.html 200` rewrite rule for a page that
+// already has a same-named `.html` file collides with Cloudflare Pages' own
+// native clean-URL handling and produces an infinite self-redirect
+// (`/about-us` -> 308 -> `/about-us`). These rules were reported live in
+// production as broken about-us/privacy/category/blog links and must not
+// return.
 for (const rule of [
   '/disclaimer /disclaimer.html 200',
+  '/about-us /about-us.html 200',
+  '/privacy-policy /privacy-policy.html 200',
   '/categories/:page /categories/:page.html 200',
   '/blog/categories/:page /blog/categories/:page.html 200',
   '/blog/articles/:article /blog/articles/:article.html 200'
 ]) {
-  assert.ok(redirects.has(rule), `Missing clean-route rule: ${rule}`);
+  assert.ok(!redirects.has(rule), `Regressed self-redirect-loop rule must stay removed: ${rule}`);
 }
 
 const sitemapGenerator = read('scripts/generate-localized-sitemap.mjs');

@@ -1,16 +1,14 @@
-# Clean URL rewrites for Cloudflare Pages static HTML routes.
-/about-us /about-us.html 200
-/contact /contact.html 200
-/request-tool /request-tool.html 200
-/privacy-policy /privacy-policy.html 200
-/terms-of-service /terms-of-service.html 200
-/disclaimer /disclaimer.html 200
-/cookie-policy /cookie-policy.html 200
-/security /security.html 200
-/gizlilik-politikasi /gizlilik-politikasi.html 200
-/kvkk-aydinlatma-metni /kvkk-aydinlatma-metni.html 200
-/kullanim-kosullari /kullanim-kosullari.html 200
-/iletisim /iletisim.html 200
+# NOTE: root-level pages (about-us, contact, request-tool, privacy-policy,
+# terms-of-service, disclaimer, cookie-policy, security, gizlilik-politikasi,
+# kvkk-aydinlatma-metni, kullanim-kosullari, iletisim) intentionally have NO
+# clean-URL rewrite rule here. Cloudflare Pages already serves `/about-us`
+# from `about-us.html` natively, and already 308-redirects `/about-us.html`
+# to `/about-us`. A custom rule rewriting the clean path back to the same
+# `.html` file collides with that native handling and produces an infinite
+# self-redirect (`/about-us` -> 308 -> `/about-us`), which is exactly the
+# 404/redirect-loop bug reported on these pages in production. Do not
+# reintroduce a `/<page> /<page>.html 200` rule for a page that already has
+# a same-named `.html` file — see tests/site-regressions.mjs for the guard.
 
 # The old /tools/request/ route contains an unconfigured Formspree placeholder.
 # Canonicalize it to the honest mailto-based request page instead of exposing
@@ -22,18 +20,9 @@
 # Preserve the complete tool suffix and move users to the canonical public namespace.
 /src/tools/* /tools/:splat 301
 
-# Category and blog clean URL rewrites.
-/categories/:page /categories/:page.html 200
-/blog/categories/:page /blog/categories/:page.html 200
-/blog/articles/:article /blog/articles/:article.html 200
-
-# Topical authority clean URL rewrites.
-/guides/complete-pdf-workflow /guides/complete-pdf-workflow.html 200
-/guides/web-image-optimization /guides/web-image-optimization.html 200
-/guides/developer-productivity-tools /guides/developer-productivity-tools.html 200
-/guides/personal-finance-calculations /guides/personal-finance-calculations.html 200
-/guides/articles/:article /guides/articles/:article.html 200
-/site-map/topical /site-map/topical.html 200
+# NOTE: category, blog, and guides clean URLs are likewise handled by
+# Cloudflare's native `.html`-stripping behavior and intentionally have no
+# rewrite rule here, for the same self-redirect-loop reason described above.
 
 # Legacy locale-folder URLs are redirected to the canonical ?lang= locale standard.
 /de /?lang=de 301
