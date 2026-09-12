@@ -60,8 +60,22 @@ for (const filePath of htmlFiles) {
   after = normalizeHtmlDefaultTheme(after);
   if (after !== themeBefore) normalizedDefaultThemes += 1;
 
+  // normalizeGeneralLocaleSeoHtml can mix CRLF/LF line endings at the
+  // splice point on its first pass (the source file's original line
+  // endings around the stripped <link rel="alternate"> block vs. the
+  // bare "\n" join used to rebuild it), so a single application does not
+  // always reach a fixed point. Apply it to convergence here so the
+  // shipped file is genuinely stable, rather than relying on exactly one
+  // pass and letting the later idempotency check catch the drift.
   const localeSeoBefore = after;
-  after = normalizeGeneralLocaleSeoHtml(after);
+  for (let pass = 0; pass < 5; pass += 1) {
+    const next = normalizeGeneralLocaleSeoHtml(after);
+    if (next === after) break;
+    after = next;
+    if (pass === 4) {
+      throw new Error(`${relative}: locale SEO normalization did not converge after 5 passes`);
+    }
+  }
   if (after !== localeSeoBefore) normalizedLocaleSeoFiles += 1;
 
   if (!after.includes(marker)) {
