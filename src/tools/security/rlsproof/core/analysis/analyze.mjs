@@ -19,11 +19,23 @@ function normalizedFiles(files) {
     .map((file) => ({ path: normalizePath(file.path), text: typeof file.text === 'string' ? file.text : '' }));
 }
 
+function findingKey(finding) {
+  if (typeof finding?.fingerprint === 'string' && finding.fingerprint) {
+    return `fingerprint:${finding.fingerprint}`;
+  }
+  return `fallback:${[
+    finding?.rule ?? '',
+    finding?.path ?? '',
+    finding?.line ?? '',
+    finding?.title ?? '',
+  ].join('\u0000')}`;
+}
+
 function dedupeFindings(findings) {
   const seen = new Set();
   const result = [];
   for (const finding of findings) {
-    const key = [finding.rule, finding.path ?? '', finding.line ?? '', finding.title].join('\u0000');
+    const key = findingKey(finding);
     if (seen.has(key)) continue;
     seen.add(key);
     result.push(finding);
