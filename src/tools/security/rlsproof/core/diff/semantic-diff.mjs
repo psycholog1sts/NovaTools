@@ -93,6 +93,22 @@ function predicateClassification(before, after) {
   return 'requires_review';
 }
 
+function effectivePolicyPredicates(policy) {
+  const command = String(policy?.command ?? 'all').toLowerCase();
+  const usingApplicable = command !== 'insert';
+  const checkApplicable = command !== 'select' && command !== 'delete';
+  const using = usingApplicable ? (policy?.using ?? 'true') : null;
+
+  let withCheck = null;
+  if (checkApplicable) {
+    if (policy?.withCheck != null) withCheck = policy.withCheck;
+    else if (command === 'all' || command === 'update') withCheck = policy?.using ?? 'true';
+    else withCheck = 'true';
+  }
+
+  return { using, withCheck };
+}
+
 function compareTables(baseState, headState, changes) {
   const baseTables = liveTables(baseState);
   const headTables = liveTables(headState);
@@ -152,8 +168,37 @@ function compareTables(baseState, headState, changes) {
   }
 }
 
-function roleSet(policy) {
-  return new Set((policy?.roles ?? []).map((role) => String(role).toLowerCase()));
+function semanticRoleSet(policy) {
+  const roles = (policy?.roles ?? []).map((role) => String(role).toLowerCase());
+  if (roles.length === 0 || roles.includes('public')) return new Set(['public']);
+  return new Set(roles);
+}
+
+function comparePolicyRoles(before, after) {
+  const beforeRoles = semanticRoleSet(before);
+  const afterRoles = semanticRoleSet(after);
+  const beforePublic = beforeRoles.has('public');
+  const afterPublic = afterRoles.has('public');
+
+  if (beforePublic && afterPublic) return null;
+  if (beforePublic && !afterPublic) {
+    return { classification: 'breaking', note: `roles narrowed from PUBLIC to ${[...afterRoles].join(', ')}` };
+  }
+  if (!beforePublic && afterPublic) {
+    return { classification: 'dangerous', note: `roles broadened from ${[...beforeRoles].join(', ')} to PUBLIC` };
+  }
+
+  const addedRoles = [...afterRoles].filter((role) => !beforeRoles.has(role));
+  const removedRoles = [...beforeRoles].filter((role) => !afterRoles.has(role));
+  if (addedRoles.length === 0 && removedRoles.length === 0) return null;
+
+  const classifications = [];
+  if (addedRoles.length) classifications.push(addedRoles.some((role) => CLIENT_ROLES.has(role)) ? 'dangerous' : 'requires_review');
+  if (removedRoles.length) classifications.push('breaking');
+  const notes = [];
+  if (addedRoles.length) notes.push(`roles added: ${addedRoles.join(', ')}`);
+  if (removedRoles.length) notes.push(`roles removed: ${removedRoles.join(', ')}`);
+  return { classification: worstClassification(...classifications), note: notes.join('; ') };
 }
 
 function comparePolicyShape(before, after) {
@@ -172,17 +217,10 @@ function comparePolicyShape(before, after) {
     notes.push(`command ${before.command} -> ${after.command}`);
   }
 
-  const beforeRoles = roleSet(before);
-  const afterRoles = roleSet(after);
-  const addedRoles = [...afterRoles].filter((role) => !beforeRoles.has(role));
-  const removedRoles = [...beforeRoles].filter((role) => !afterRoles.has(role));
-  if (addedRoles.length) {
-    classifications.push(addedRoles.some((role) => CLIENT_ROLES.has(role)) ? 'dangerous' : 'requires_review');
-    notes.push(`roles added: ${addedRoles.join(', ')}`);
-  }
-  if (removedRoles.length) {
-    classifications.push('breaking');
-    notes.push(`roles removed: ${removedRoles.join(', ')}`);
+  const roleChange = comparePolicyRoles(before, after);
+  if (roleChange) {
+    classifications.push(roleChange.classification);
+    notes.push(roleChange.note);
   }
 
   return classifications.length
@@ -234,8 +272,11 @@ function comparePolicies(baseState, headState, changes) {
       ));
     }
 
-    const usingClassification = predicateClassification(before.using, after.using);
-    const checkClassification = predicateClassification(before.withCheck, after.withCheck);
+    if (before.command !== after.command) continue;
+    const beforeEffective = effectivePolicyPredicates(before);
+    const afterEffective = effectivePolicyPredicates(after);
+    const usingClassification = predicateClassification(beforeEffective.using, afterEffective.using);
+    const checkClassification = predicateClassification(beforeEffective.withCheck, afterEffective.withCheck);
     if (usingClassification || checkClassification) {
       const classification = worstClassification(usingClassification, checkClassification);
       changes.push(change(
@@ -243,8 +284,18 @@ function comparePolicies(baseState, headState, changes) {
         classification,
         key,
         `Policy ${key} predicate changed; classification is ${classification}.`,
-        { using: before.using, withCheck: before.withCheck },
-        { using: after.using, withCheck: after.withCheck },
+        {
+          using: before.using,
+          withCheck: before.withCheck,
+          effectiveUsing: beforeEffective.using,
+          effectiveWithCheck: beforeEffective.withCheck,
+        },
+        {
+          using: after.using,
+          withCheck: after.withCheck,
+          effectiveUsing: afterEffective.using,
+          effectiveWithCheck: afterEffective.withCheck,
+        },
       ));
     }
   }
