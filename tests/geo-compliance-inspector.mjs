@@ -7,6 +7,7 @@ import { readFileSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { assertPublicHttpUrl, extractMeta, extractJsonLd, analyzePage, PublicRequestError } from '../src/tools/dev/geo-compliance-inspector/analyzer.mjs';
+import { isPublicIPv4, isPublicIPv6, isPublicAddress } from '../src/tools/dev/geo-compliance-inspector/ip-guard.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const rootDir = join(__dirname, '..');
@@ -173,6 +174,47 @@ runner.test('analyzePage flags noindex as a critical, score-blocking issue', () 
   const result = analyzePage(html);
   assert(result.meta.isNoindex === true, 'isNoindex should be true');
   assert(result.recommendations[0].severity === 'critical' && result.recommendations[0].title.toLowerCase().includes('noindex'), 'noindex should be the first, critical recommendation');
+});
+
+// --- IP-range validation (the DNS-rebinding defense layer) ---
+
+runner.test('isPublicIPv4 accepts well-known public addresses', () => {
+  for (const ip of ['8.8.8.8', '1.1.1.1', '93.184.216.34']) {
+    assert(isPublicIPv4(ip) === true, `${ip} should be public`);
+  }
+});
+
+runner.test('isPublicIPv4 rejects loopback, RFC1918, link-local/metadata, and CGNAT', () => {
+  for (const ip of ['127.0.0.1', '10.1.2.3', '172.16.0.1', '172.31.255.255', '192.168.1.1', '169.254.169.254', '100.64.0.1', '0.0.0.0']) {
+    assert(isPublicIPv4(ip) === false, `${ip} should be rejected`);
+  }
+});
+
+runner.test('isPublicIPv4 rejects malformed input (fail closed)', () => {
+  assert(isPublicIPv4('not-an-ip') === false, 'malformed input should be rejected');
+  assert(isPublicIPv4('999.999.999.999') === false, 'out-of-range octets should be rejected');
+});
+
+runner.test('isPublicIPv6 accepts a well-known public address', () => {
+  assert(isPublicIPv6('2606:4700:4700::1111') === true, 'Cloudflare DNS should be public');
+});
+
+runner.test('isPublicIPv6 rejects loopback, link-local, and unique-local ranges', () => {
+  for (const ip of ['::1', 'fe80::1', 'fc00::1', 'fd12:3456:789a::1']) {
+    assert(isPublicIPv6(ip) === false, `${ip} should be rejected`);
+  }
+});
+
+runner.test('isPublicIPv6 rejects an IPv4-mapped private address', () => {
+  assert(isPublicIPv6('::ffff:127.0.0.1') === false, 'IPv4-mapped loopback should be rejected');
+  assert(isPublicIPv6('::ffff:8.8.8.8') === true, 'IPv4-mapped public address should be accepted');
+});
+
+runner.test('isPublicAddress dispatches by family and fails closed on unknown family', () => {
+  assert(isPublicAddress('8.8.8.8', 4) === true, 'family 4 public address should be accepted');
+  assert(isPublicAddress('127.0.0.1', 4) === false, 'family 4 private address should be rejected');
+  assert(isPublicAddress('::1', 6) === false, 'family 6 private address should be rejected');
+  assert(isPublicAddress('8.8.8.8', 5) === false, 'unrecognized family should be rejected');
 });
 
 // --- static file contracts ---

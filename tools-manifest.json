@@ -2486,7 +2486,7 @@
       "externalNetwork": true,
       "syntheticData": "NONE",
       "dataSource": "User-supplied public URL; fetched server-side by NovaTools' own /api/geo-scan edge function (not sent to any third-party API); the fetched page is not stored",
-      "limitations": "Analyzes the raw HTML response only; it does not execute JavaScript, so client-side-rendered schema or content is invisible to it. It does not query Google, ChatGPT, or any AI system, so a high score is not a guarantee of AI Overviews citation, only of the technical readiness signals checked. Scans are capped at 2 MB and an 8-second fetch timeout, and localhost/private/internal targets are rejected outright.",
+      "limitations": "Analyzes the raw HTML response only; it does not execute JavaScript, so client-side-rendered schema or content is invisible to it. It does not query Google, ChatGPT, or any AI system, so a high score is not a guarantee of AI Overviews citation, only of the technical readiness signals checked. Scans are capped at 2 MB and an 8-second fetch timeout. SSRF defenses: the target hostname's resolved DNS addresses (not just the URL string) are validated against private/loopback/link-local/reserved IPv4 and IPv6 ranges, the outbound connection is pinned to those validated addresses to prevent a DNS-rebinding race, and redirects are followed manually (max 3 hops) with the same validation re-applied to every hop rather than trusting the HTTP client's automatic redirect handling. Scan responses are not cached (private, no-store).",
       "path": "/dev/geo-compliance-inspector",
       "entry": "/src/tools/dev/geo-compliance-inspector/"
     },
