@@ -135,6 +135,44 @@ create policy "docs_owner" on public.docs for select to authenticated, anon usin
 assert.equal(roleNarrowed.verdict, 'BREAKING');
 assert.equal(findChange(roleNarrowed, 'policy-shape-changed', 'public.docs::docs_owner')?.classification, 'breaking');
 
+const implicitPublicToAuthenticated = analyzeSecurityDiff(sql(`
+create table public.docs (id uuid, owner_id uuid);
+alter table public.docs enable row level security;
+create policy "docs_owner" on public.docs for select using (auth.uid() = owner_id);
+`), baseProtected);
+assert.equal(implicitPublicToAuthenticated.verdict, 'BREAKING');
+assert.equal(findChange(implicitPublicToAuthenticated, 'policy-shape-changed', 'public.docs::docs_owner')?.classification, 'breaking');
+
+const authenticatedToImplicitPublic = analyzeSecurityDiff(baseProtected, sql(`
+create table public.docs (id uuid, owner_id uuid);
+alter table public.docs enable row level security;
+create policy "docs_owner" on public.docs for select using (auth.uid() = owner_id);
+`));
+assert.equal(authenticatedToImplicitPublic.verdict, 'DANGEROUS');
+assert.equal(findChange(authenticatedToImplicitPublic, 'policy-shape-changed', 'public.docs::docs_owner')?.classification, 'dangerous');
+
+const implicitPublicEqualsExplicitPublic = analyzeSecurityDiff(sql(`
+create table public.docs (id uuid);
+alter table public.docs enable row level security;
+create policy "public_read" on public.docs for select using (true);
+`), sql(`
+create table public.docs (id uuid);
+alter table public.docs enable row level security;
+create policy "public_read" on public.docs for select to public using (true);
+`));
+assert.equal(findChange(implicitPublicEqualsExplicitPublic, 'policy-shape-changed', 'public.docs::public_read'), undefined);
+
+const implicitTrueEqualsExplicitTrue = analyzeSecurityDiff(sql(`
+create table public.docs (id uuid);
+alter table public.docs enable row level security;
+create policy "public_read" on public.docs for select to authenticated;
+`), sql(`
+create table public.docs (id uuid);
+alter table public.docs enable row level security;
+create policy "public_read" on public.docs for select to authenticated using (true);
+`));
+assert.equal(findChange(implicitTrueEqualsExplicitTrue, 'policy-predicate-changed', 'public.docs::public_read'), undefined);
+
 const modeLoosened = analyzeSecurityDiff(sql(`
 create table public.docs (id uuid, owner_id uuid);
 alter table public.docs enable row level security;
