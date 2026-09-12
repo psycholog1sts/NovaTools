@@ -3627,6 +3627,33 @@
       "DiscoveryStatus": "ELIGIBLE",
       "SitemapStatus": "INCLUDED",
       "TestStatus": "SOURCE_AND_BROWSER_CORE_CERTIFIED"
+    },
+    {
+      "Tool": "GEO & Schema Compliance Inspector",
+      "Route": "/tools/dev/geo-compliance-inspector/",
+      "Category": "dev",
+      "Indexable": true,
+      "AdsEligible": true,
+      "FunctionalTruth": "PASS",
+      "UniqueUtility": "PASS",
+      "SpecificContent": "PASS",
+      "ImplementationEvidence": "PASS",
+      "NoFiller": "PASS",
+      "Trust": "PASS",
+      "PrivacyTruth": "EXTERNAL_API",
+      "ExternalNetwork": true,
+      "DataSource": "User-supplied public URL; fetched server-side by NovaTools' own /api/geo-scan edge function (not sent to any third-party API); the fetched page is not stored",
+      "SyntheticData": "NONE",
+      "KnownLimitations": "Analyzes the raw HTML response only; it does not execute JavaScript, so client-side-rendered schema or content is invisible to it. It does not query Google, ChatGPT, or any AI system, so a high score is not a guarantee of AI Overviews citation, only of the technical readiness signals checked. Scans are capped at 2 MB and an 8-second fetch timeout, and localhost/private/internal targets are rejected outright.",
+      "UIStatus": "SPECIALIZED_VERIFIED",
+      "Tests": "geo-compliance-inspector integration contract (SSRF allowlist, extraction, and scoring unit tests)",
+      "CertificationStatus": "CERTIFIED",
+      "ImplementationStatus": "PRODUCTION_CERTIFIED",
+      "RuntimeStatus": "ENABLED",
+      "SEOStatus": "INDEXABLE",
+      "DiscoveryStatus": "ELIGIBLE",
+      "SitemapStatus": "INCLUDED",
+      "TestStatus": "SOURCE_AND_UNIT_TEST_CERTIFIED"
     }
   ]
 }

@@ -1,6 +1,6 @@
 {
   "generated": "postinstall",
-  "count": 128,
+  "count": 130,
   "tools": [
     {
       "id": "age-calculator",
@@ -2424,6 +2424,71 @@
       "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/dev/css-minifier",
       "entry": "/src/tools/dev/css-minifier/"
+    },
+    {
+      "id": "geo-compliance-inspector",
+      "name": "GEO & Schema Compliance Inspector",
+      "nameEn": "GEO & Schema Compliance Inspector",
+      "category": "dev",
+      "tier": 1,
+      "cpc": {
+        "tr": 0.8,
+        "us": 2.6
+      },
+      "keywords": {
+        "tr": [
+          "ai overviews uyumluluk denetimi",
+          "schema.org doğrulayıcı",
+          "google ai overviews",
+          "yapılandırılmış veri denetimi",
+          "seo teknik denetim"
+        ],
+        "en": [
+          "ai overviews compliance checker",
+          "schema.org validator",
+          "google ai overviews audit",
+          "structured data checker",
+          "geo optimization checker"
+        ]
+      },
+      "description": {
+        "tr": "Bir URL'nin Schema.org JSON-LD verisini, robots/indexlenebilirlik durumunu ve anlamsal HTML yapısını canlı olarak tarayıp 0-100 arası bir uyumluluk skoru ve somut düzeltme önerileri verir.",
+        "en": "Live-scans a URL's Schema.org JSON-LD data, indexability, and semantic HTML structure, then returns a 0-100 compliance score with concrete, actionable fixes."
+      },
+      "schema": {
+        "@type": "WebApplication",
+        "applicationCategory": "DeveloperApplication",
+        "offers": {
+          "@type": "Offer",
+          "price": "0"
+        }
+      },
+      "ads": {
+        "sidebar": {
+          "enabled": true,
+          "size": "336x280",
+          "minCpm": 0.5
+        }
+      },
+      "bundle": {
+        "lazyLoad": false
+      },
+      "relatedTools": [
+        "schema-markup-generator",
+        "meta-tag-generator",
+        "robots-txt-generator"
+      ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "EXTERNAL_API",
+      "externalNetwork": true,
+      "syntheticData": "NONE",
+      "dataSource": "User-supplied public URL; fetched server-side by NovaTools' own /api/geo-scan edge function (not sent to any third-party API); the fetched page is not stored",
+      "limitations": "Analyzes the raw HTML response only; it does not execute JavaScript, so client-side-rendered schema or content is invisible to it. It does not query Google, ChatGPT, or any AI system, so a high score is not a guarantee of AI Overviews citation, only of the technical readiness signals checked. Scans are capped at 2 MB and an 8-second fetch timeout, and localhost/private/internal targets are rejected outright.",
+      "path": "/dev/geo-compliance-inspector",
+      "entry": "/src/tools/dev/geo-compliance-inspector/"
     },
     {
       "id": "html-to-markdown",
@@ -6382,6 +6447,72 @@
       "limitations": "The route remains disabled until implementation, runtime, privacy, accessibility, and output behavior complete production certification.",
       "path": "/security/password-strength",
       "entry": "/src/tools/security/password-strength/"
+    },
+    {
+      "id": "rlsproof",
+      "name": "RLSProof",
+      "nameEn": "RLSProof",
+      "category": "security",
+      "tier": 1,
+      "public": true,
+      "indexable": true,
+      "adsEligible": false,
+      "privacyMode": "EXTERNAL_API",
+      "externalNetwork": true,
+      "syntheticData": "NONE",
+      "dataSource": "User-supplied public GitHub repository plus the public GitHub REST API; selected public metadata, tree and blob requests originate in the visitor browser",
+      "limitations": "Quick Scan supports public repositories only and bounded native static checks: at most 18 selected files, 128 KiB per file, 1 MiB total content, 5,000 tree entries and repositories up to 50,000 KiB. Unauthenticated GitHub API rate limits apply. It does not run Gitleaks, OSV-Scanner, Opengrep, database proof or private-repository analysis, so clean results remain incomplete rather than PASS.",
+      "cpc": {
+        "tr": 1.2,
+        "us": 3.5
+      },
+      "keywords": {
+        "tr": [
+          "supabase rls kontrol",
+          "supabase güvenlik taraması",
+          "row level security test",
+          "tenant isolation"
+        ],
+        "en": [
+          "supabase rls checker",
+          "supabase security scan",
+          "row level security test",
+          "tenant isolation",
+          "authorization release gate"
+        ]
+      },
+      "description": {
+        "tr": "Herkese açık GitHub depolarında Supabase RLS ve yetkilendirme risklerini sınırlı tarayıcı tabanlı kontrollerle inceleyin.",
+        "en": "Scan public GitHub repositories for bounded Supabase RLS and authorization risks with deterministic browser-side checks."
+      },
+      "schema": {
+        "@type": "SoftwareApplication",
+        "applicationCategory": "SecurityApplication",
+        "operatingSystem": "Web",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      "ads": {
+        "sidebar": {
+          "enabled": false,
+          "size": "336x280",
+          "minCpm": 0.5
+        }
+      },
+      "bundle": {
+        "lazyLoad": false
+      },
+      "relatedTools": [
+        "ssl-checker",
+        "jwt-decoder",
+        "hash-generator"
+      ],
+      "certificationStatus": "CERTIFIED",
+      "path": "/security/rlsproof",
+      "entry": "/src/tools/security/rlsproof/"
     },
     {
       "id": "ssl-checker",

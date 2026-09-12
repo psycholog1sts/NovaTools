@@ -1,0 +1,42 @@
+{
+  "id": "geo-compliance-inspector",
+  "name": "GEO & Schema Compliance Inspector",
+  "nameEn": "GEO & Schema Compliance Inspector",
+  "category": "dev",
+  "tier": 1,
+  "cpc": {
+    "tr": 0.8,
+    "us": 2.6
+  },
+  "keywords": {
+    "tr": ["ai overviews uyumluluk denetimi", "schema.org doğrulayıcı", "google ai overviews", "yapılandırılmış veri denetimi", "seo teknik denetim"],
+    "en": ["ai overviews compliance checker", "schema.org validator", "google ai overviews audit", "structured data checker", "geo optimization checker"]
+  },
+  "description": {
+    "tr": "Bir URL'nin Schema.org JSON-LD verisini, robots/indexlenebilirlik durumunu ve anlamsal HTML yapısını canlı olarak tarayıp 0-100 arası bir uyumluluk skoru ve somut düzeltme önerileri verir.",
+    "en": "Live-scans a URL's Schema.org JSON-LD data, indexability, and semantic HTML structure, then returns a 0-100 compliance score with concrete, actionable fixes."
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "DeveloperApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.5
+    }
+  },
+  "bundle": {
+    "lazyLoad": false
+  },
+  "relatedTools": [
+    "schema-markup-generator",
+    "meta-tag-generator",
+    "robots-txt-generator"
+  ]
+}

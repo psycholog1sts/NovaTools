@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script type="text/plain" data-consent-category="analytics" async src="https://www.googletagmanager.com/gtag/js?id=G-Y896L63239"></script>
+  <script type="text/plain" data-consent-category="analytics">
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Y896L63239', {
+    anonymize_ip: true,
+    cookie_expires: 63072000,
+    cookie_update: true
+  });
+  </script>
+  <meta charset="UTF-8">
+  <script>(function(){var t=localStorage.getItem('novatools-theme');if(t)document.documentElement.setAttribute('data-theme',t);else{var d=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',d);document.documentElement.style.colorScheme=d;}})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/src/styles/critical.css">
+  <link rel="stylesheet" href="/src/styles/main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <title>GEO & Schema Compliance Inspector - AI Overviews Readiness Checker | NovaTools MC</title>
+
+  <script src="/i18n.js" defer></script>
+  <meta name="description" content="Free live GEO & Schema.org compliance checker: scan any public URL for JSON-LD validity, indexability, and semantic HTML structure, with a 0-100 score and concrete fixes.">
+  <meta name="keywords" content="ai overviews compliance checker, schema.org validator, structured data checker, geo optimization checker, google ai overviews audit">
+  <meta name="theme-color" content="#0A0A0C">
+
+  <meta property="og:title" content="GEO & Schema Compliance Inspector - AI Overviews Readiness Checker | NovaTools MC">
+  <meta property="og:description" content="Scan any public URL for Schema.org validity, indexability, and semantic structure. Free, instant, no signup.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.mc-novatools.com/tools/dev/geo-compliance-inspector/">
+  <meta property="og:image" content="https://www.mc-novatools.com/og-image.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="GEO & Schema Compliance Inspector | NovaTools MC">
+  <meta name="twitter:description" content="Scan any public URL for Schema.org validity, indexability, and semantic structure.">
+
+  <link rel="canonical" href="https://www.mc-novatools.com/tools/dev/geo-compliance-inspector/">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [{
+      "@type": "WebApplication",
+      "name": "GEO & Schema Compliance Inspector",
+      "description": "Free tool that scans a public URL for Schema.org JSON-LD validity, indexability, and semantic HTML structure, producing a 0-100 compliance score with fixes.",
+      "url": "https://www.mc-novatools.com/tools/dev/geo-compliance-inspector/",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+    }]
+  }
+  </script>
+
+  <style>
+    .tool-wrapper { max-width: 1080px; margin: 0 auto; padding: 3rem 1rem 5rem; }
+    .tool-hero { text-align: center; margin-bottom: 2.5rem; }
+    .tool-hero-icon { font-size: 3.5rem; line-height: 1; margin-bottom: 1rem; }
+    .tool-hero h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; letter-spacing: -0.02em; color: var(--text-primary); margin-bottom: 0.75rem; }
+    .tool-hero p { color: var(--text-secondary); font-size: 1.0625rem; max-width: 640px; margin: 0 auto; }
+    .tool-updated-note { font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 0.5rem; }
+    .scan-bar { display: flex; gap: 0.625rem; max-width: 720px; margin: 0 auto 2.5rem; }
+    .scan-bar input { flex: 1; padding: 0.85rem 1rem; background: var(--field-bg); border: 1px solid var(--field-border); border-radius: 10px; color: var(--text-primary); font-family: inherit; font-size: 0.95rem; outline: none; }
+    .scan-bar input:focus { border-color: rgba(0,217,255,0.45); box-shadow: 0 0 0 3px rgba(0,217,255,0.08); }
+    .scan-bar button { height: 48px; padding: 0 1.5rem; border: none; border-radius: 10px; font-size: 0.95rem; font-weight: 700; cursor: pointer; background: linear-gradient(135deg, var(--accent-text), #0099CC); color: #0A0A0C; white-space: nowrap; }
+    .scan-bar button:disabled { opacity: 0.6; cursor: not-allowed; }
+    .scan-note { text-align: center; font-size: 0.8125rem; color: var(--text-secondary); margin-top: -1.75rem; margin-bottom: 2.5rem; }
+    #resultArea { display: none; }
+    #resultArea.show { display: block; }
+    .score-card { display: flex; align-items: center; gap: 1.5rem; background: rgba(15,15,20,0.7); border: 1px solid rgba(0,217,255,0.15); border-radius: 14px; padding: 1.75rem; backdrop-filter: blur(12px); margin-bottom: 1.5rem; flex-wrap: wrap; }
+    .score-ring { width: 88px; height: 88px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.75rem; font-weight: 800; border: 6px solid; }
+    .score-ring.good { border-color: #34D399; color: #34D399; }
+    .score-ring.mid { border-color: #FBBF24; color: #FBBF24; }
+    .score-ring.bad { border-color: #FF7777; color: #FF7777; }
+    .score-meta { flex: 1; min-width: 200px; }
+    .score-meta h2 { font-size: 1.125rem; font-weight: 700; color: var(--text-primary); margin: 0 0 0.35rem; word-break: break-all; }
+    .score-meta p { color: var(--text-secondary); font-size: 0.85rem; margin: 0; }
+    .metric-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.75rem; margin-bottom: 1.5rem; }
+    .metric-tile { background: rgba(15,15,20,0.5); border: 1px solid rgba(0,217,255,0.1); border-radius: 10px; padding: 0.9rem 1rem; }
+    .metric-tile .label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); margin-bottom: 0.3rem; }
+    .metric-tile .value { font-size: 1.05rem; font-weight: 700; color: var(--text-primary); }
+    .rec-list { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1.5rem; }
+    .rec-item { border-radius: 10px; padding: 0.9rem 1.125rem; border: 1px solid; }
+    .rec-item.critical { border-color: rgba(255,85,85,0.35); background: rgba(255,85,85,0.06); }
+    .rec-item.warning { border-color: rgba(251,191,36,0.35); background: rgba(251,191,36,0.06); }
+    .rec-item.info { border-color: rgba(0,217,255,0.25); background: rgba(0,217,255,0.05); }
+    .rec-item .rec-head { display: flex; justify-content: space-between; align-items: center; gap: 0.75rem; }
+    .rec-item .rec-title { font-weight: 700; color: var(--text-primary); font-size: 0.92rem; }
+    .rec-item .rec-badge { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 5px; }
+    .rec-item.critical .rec-badge { color: #FF7777; background: rgba(255,85,85,0.12); }
+    .rec-item.warning .rec-badge { color: #FBBF24; background: rgba(251,191,36,0.12); }
+    .rec-item.info .rec-badge { color: var(--accent-text); background: rgba(0,217,255,0.1); }
+    .rec-item p { color: var(--text-secondary); font-size: 0.85rem; margin: 0.5rem 0 0; line-height: 1.6; }
+    .rec-item .rec-fix { margin-top: 0.4rem; font-size: 0.85rem; color: var(--text-primary); }
+    .rec-item .rec-fix strong { color: var(--accent-text); }
+    .schema-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.5rem; }
+    .schema-list li { display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: var(--text-secondary); }
+    .schema-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .schema-dot.ok { background: #34D399; }
+    .schema-dot.bad { background: #FF7777; }
+    .error-box { border: 1px solid rgba(255,85,85,0.35); background: rgba(255,85,85,0.06); border-radius: 10px; padding: 1rem 1.25rem; color: #FF9999; font-size: 0.9rem; margin-bottom: 1.5rem; }
+    .card { background: rgba(15,15,20,0.7); border: 1px solid rgba(0,217,255,0.15); border-radius: 14px; padding: 1.75rem; backdrop-filter: blur(12px); }
+    .tool-description { max-width: 960px; margin: 3.5rem auto 0; padding: 0 1rem; }
+    .tool-description h2 { font-size: 1.375rem; font-weight: 700; color: var(--text-primary); margin: 2.25rem 0 0.75rem; }
+    .tool-description p, .tool-description li { color: var(--text-secondary); line-height: 1.8; font-size: 0.9375rem; }
+    .tool-description ul, .tool-description ol { padding-left: 1.25rem; }
+    .tool-description li { margin-bottom: 0.4rem; }
+    .tool-description code { background: rgba(0,217,255,0.08); padding: 0.1rem 0.35rem; border-radius: 5px; font-size: 0.85em; }
+    .faq-item { border: 1px solid rgba(0,217,255,0.1); border-radius: 10px; padding: 1rem 1.125rem; margin-bottom: 0.875rem; background: rgba(15,15,20,0.5); }
+    .faq-item summary { font-weight: 600; color: var(--text-primary); cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: '+'; color: var(--accent-text); font-size: 1.25rem; }
+    .faq-item[open] summary::after { content: '\2212'; }
+    .faq-item p { margin-top: 0.625rem; color: var(--text-secondary); line-height: 1.7; }
+    .related-list { list-style: none; padding: 0; display: grid; gap: 0.5rem; }
+    .related-list a { color: var(--accent-text); text-decoration: none; }
+    .tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }
+    .tool-footer a { color: var(--accent-text); text-decoration: none; }
+  </style>
+  <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div class="bg-ambient" aria-hidden="true"></div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <div id="app" class="app">
+    <header class="main-header">
+      <div class="container">
+        <div class="header-inner">
+          <a href="https://mc-novatools.com/" class="logo" aria-label="NovaTools MC Home">
+            <picture><source srcset="/logo-bird-44.webp" type="image/webp"><img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44" decoding="async"></picture>
+            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+          </a>
+          <nav class="nav-desktop" aria-label="Main navigation">
+            <a href="https://mc-novatools.com/#finance" class="nav-link">Finance</a>
+            <a href="https://mc-novatools.com/#pdf" class="nav-link">PDF Tools</a>
+            <a href="https://mc-novatools.com/#image" class="nav-link">Images</a>
+            <a href="https://mc-novatools.com/#dev" class="nav-link">Developers</a>
+          </nav>
+          <div class="privacy-badge" title="We fetch the URL you enter server-side to scan it - see the notice below">
+            <span class="privacy-badge-dot"></span>
+            <span>No Signup Required</span>
+          </div>
+          <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+            <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+          <button type="button" id="mobileMenuBtn" class="menu-btn" aria-label="Toggle menu" aria-expanded="false">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+        </div>
+        <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
+          <a href="https://mc-novatools.com/#finance" class="mobile-nav-link">Finance Tools</a>
+          <a href="https://mc-novatools.com/#pdf" class="mobile-nav-link">PDF Tools</a>
+          <a href="https://mc-novatools.com/#image" class="mobile-nav-link">Image Tools</a>
+          <a href="https://mc-novatools.com/#dev" class="mobile-nav-link">Developer Tools</a>
+        </nav>
+      </div>
+    </header>
+
+    <nav class="guide-breadcrumb" aria-label="Breadcrumb">
+      <div class="container">
+        <ol>
+          <li><a href="https://mc-novatools.com/">Home</a></li>
+          <li><a href="https://mc-novatools.com/categories/developer-tools.html">Developer Tools</a></li>
+          <li aria-current="page">GEO & Schema Compliance Inspector</li>
+        </ol>
+      </div>
+    </nav>
+
+    <main id="main-content" class="main-content">
+      <div class="tool-wrapper">
+        <div class="tool-hero">
+          <div class="tool-hero-icon">&#128269;</div>
+          <h1>GEO & Schema Compliance Inspector</h1>
+          <p class="tool-updated-note">Last updated: <time class="page-last-updated" datetime="2026-09-12">2026-09-12</time></p>
+          <p>Enter any public URL to check its Schema.org JSON-LD validity, indexability, and semantic HTML structure. You get a 0-100 score, plus a list of concrete, specific fixes &mdash; not a vague grade.</p>
+        </div>
+
+        <form id="scanForm" class="scan-bar" novalidate>
+          <input type="url" id="targetUrl" placeholder="https://example.com/your-page" required aria-label="URL to scan">
+          <button type="submit" id="scanBtn">Scan Page</button>
+        </form>
+        <p class="scan-note">The URL is fetched by our server to read its HTML &mdash; it is not stored, and nothing about the page is shared with third parties.</p>
+
+        <div id="errorBox" class="error-box" role="alert" style="display:none;"></div>
+
+        <div id="resultArea">
+          <div class="score-card">
+            <div class="score-ring" id="scoreRing">&mdash;</div>
+            <div class="score-meta">
+              <h2 id="resultUrl"></h2>
+              <p id="resultMeta"></p>
+            </div>
+          </div>
+
+          <div class="metric-grid" id="metricGrid"></div>
+
+          <div class="card" style="margin-bottom:1.5rem;">
+            <div class="output-label" style="font-size:0.8125rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:0.75rem;">Structured data found</div>
+            <ul class="schema-list" id="schemaList"></ul>
+          </div>
+
+          <div class="output-label" style="font-size:0.8125rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:0.75rem;">Recommendations</div>
+          <div class="rec-list" id="recList"></div>
+        </div>
+      </div>
+
+      <article class="tool-description">
+        <h2>What this tool actually checks</h2>
+        <p>This inspector runs a fixed set of deterministic, rule-based checks against the live HTML of the URL you provide: whether valid Schema.org JSON-LD is present, whether the page is blocked from indexing by a <code>noindex</code> robots tag, whether title/description/canonical tags exist, and whether the page uses semantic structure (a single <code>&lt;h1&gt;</code>, <code>&lt;h2&gt;</code> sections, real <code>&lt;table&gt;</code> markup for comparable data) that both search engines and AI answer engines can parse cleanly.</p>
+        <p>It does <strong>not</strong> call Google, ChatGPT, or any AI model to check whether your specific page currently appears in AI Overviews or any other answer engine &mdash; no tool can guarantee that, and a high score here is not a promise of citation. What it measures are the structural signals that Google's own documentation associates with machine-readability and eligibility for rich results and AI summarization.</p>
+
+        <h2>How to use it</h2>
+        <ol>
+          <li>Paste the full URL of a public page (must start with <code>http://</code> or <code>https://</code>).</li>
+          <li>Press <strong>Scan Page</strong>. The page is fetched once, server-side, and analyzed &mdash; nothing is stored.</li>
+          <li>Read the score breakdown and the recommendation list, ordered from critical to informational.</li>
+          <li>Fix the critical items first (missing schema, <code>noindex</code>, missing title) &mdash; those block visibility outright.</li>
+        </ol>
+
+        <h2>Score breakdown</h2>
+        <ul>
+          <li><strong>Structured data (up to 30 pts)</strong> &mdash; presence and completeness of JSON-LD Schema.org blocks.</li>
+          <li><strong>Meta essentials (up to 20 pts)</strong> &mdash; title, meta description, canonical link.</li>
+          <li><strong>Indexability (10 pts)</strong> &mdash; the page is not set to <code>noindex</code>.</li>
+          <li><strong>Semantic structure (up to 20 pts)</strong> &mdash; a single <code>&lt;h1&gt;</code>, real <code>&lt;h2&gt;</code> sections, and semantic <code>&lt;table&gt;</code> markup where relevant.</li>
+          <li><strong>Content signals (up to 20 pts)</strong> &mdash; an FAQ-style section and a visible author byline.</li>
+        </ul>
+
+        <h2>Frequently asked questions</h2>
+        <details class="faq-item"><summary>Does my URL or its content get stored anywhere?</summary><p>No. The page is fetched once to run the checks and the response is returned to your browser; nothing about the scanned page is written to a database.</p></details>
+        <details class="faq-item"><summary>Does a 100 score guarantee my page will appear in Google AI Overviews?</summary><p>No. This tool checks technical readiness signals only. Whether any specific page is cited by an AI answer engine also depends on relevance, ranking, and factors outside any single page's control.</p></details>
+        <details class="faq-item"><summary>Why does this need to fetch the page on a server instead of in my browser?</summary><p>Browsers block cross-origin page reads for security (CORS), so a client-side script generally cannot read another site's raw HTML directly. Fetching it server-side is the only reliable way to read arbitrary public pages.</p></details>
+        <details class="faq-item"><summary>What URLs are rejected?</summary><p>Non-http(s) URLs, localhost/internal hostnames, and private IP ranges are rejected outright, since scanning those would not test a real public page.</p></details>
+
+        <h2>Related SEO tools</h2>
+        <ul class="related-list">
+          <li><a href="https://mc-novatools.com/tools/dev/schema-markup-generator/">Schema Markup Generator</a> &mdash; build the JSON-LD this tool checks for.</li>
+          <li><a href="https://mc-novatools.com/tools/dev/meta-tag-generator/">Meta Tag Generator</a> &mdash; SEO, Open Graph and Twitter Card tags with live previews.</li>
+          <li><a href="https://mc-novatools.com/tools/dev/robots-txt-generator/">Robots.txt Generator</a> &mdash; control how crawlers access your site.</li>
+        </ul>
+      </article>
+</main>
+
+    <footer class="tool-footer">
+      <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="mailto:psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
+      <p>Pages are fetched server-side to run this scan and are not stored.</p>
+    </footer>
+  </div>
+
+  <script type="module">
+    const $ = (id) => document.getElementById(id);
+    const form = $('scanForm');
+    const input = $('targetUrl');
+    const btn = $('scanBtn');
+    const errorBox = $('errorBox');
+    const resultArea = $('resultArea');
+    const scoreRing = $('scoreRing');
+    const resultUrl = $('resultUrl');
+    const resultMeta = $('resultMeta');
+    const metricGrid = $('metricGrid');
+    const schemaList = $('schemaList');
+    const recList = $('recList');
+
+    function escapeHtml(str) {
+      return String(str ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+    }
+
+    function scoreClass(score) {
+      if (score >= 80) return 'good';
+      if (score >= 50) return 'mid';
+      return 'bad';
+    }
+
+    function renderMetric(label, value) {
+      return `<div class="metric-tile"><div class="label">${escapeHtml(label)}</div><div class="value">${escapeHtml(value)}</div></div>`;
+    }
+
+    function renderRecommendation(rec) {
+      return `<div class="rec-item ${rec.severity}">
+        <div class="rec-head"><span class="rec-title">${escapeHtml(rec.title)}</span><span class="rec-badge">${escapeHtml(rec.severity)}</span></div>
+        <p>${escapeHtml(rec.description)}</p>
+        <p class="rec-fix"><strong>Fix:</strong> ${escapeHtml(rec.fix)}</p>
+      </div>`;
+    }
+
+    function renderSchema(schema) {
+      const dotClass = schema.isValid ? 'ok' : 'bad';
+      const status = schema.isValid ? 'valid' : `missing: ${schema.missingProperties.join(', ') || 'unparseable'}`;
+      return `<li><span class="schema-dot ${dotClass}"></span><span>${escapeHtml(schema.type)} &mdash; ${escapeHtml(status)}</span></li>`;
+    }
+
+    function showError(message) {
+      errorBox.textContent = message;
+      errorBox.style.display = 'block';
+      resultArea.classList.remove('show');
+    }
+
+    function renderResult(data) {
+      errorBox.style.display = 'none';
+      scoreRing.textContent = String(data.score);
+      scoreRing.className = 'score-ring ' + scoreClass(data.score);
+      resultUrl.textContent = data.targetUrl;
+      resultMeta.textContent = `HTTP ${data.httpStatus} · fetched in ${data.fetchTimeMs}ms · scanned ${new Date(data.scannedAt).toLocaleString()}`;
+
+      metricGrid.innerHTML = [
+        renderMetric('Title', data.meta.title ? 'Present' : 'Missing'),
+        renderMetric('Meta description', data.meta.description ? 'Present' : 'Missing'),
+        renderMetric('Canonical link', data.meta.canonical ? 'Present' : 'Missing'),
+        renderMetric('Indexable', data.meta.isNoindex ? 'Blocked (noindex)' : 'Yes'),
+        renderMetric('Word count', data.metrics.wordCount),
+        renderMetric('<h1> / <h2> count', `${data.metrics.h1Count} / ${data.metrics.h2Count}`),
+        renderMetric('Tables found', data.metrics.tableCount),
+        renderMetric('Author byline', data.metrics.hasAuthorSignal ? 'Detected' : 'Not detected')
+      ].join('');
+
+      schemaList.innerHTML = data.schemas.length
+        ? data.schemas.map(renderSchema).join('')
+        : '<li><span class="schema-dot bad"></span><span>No JSON-LD structured data found</span></li>';
+
+      recList.innerHTML = data.recommendations.length
+        ? data.recommendations.map(renderRecommendation).join('')
+        : '<p style="color:var(--text-secondary);font-size:0.9rem;">No issues found against the checks this tool runs.</p>';
+
+      resultArea.classList.add('show');
+    }
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const url = input.value.trim();
+      if (!url) return;
+
+      btn.disabled = true;
+      btn.textContent = 'Scanning...';
+      errorBox.style.display = 'none';
+
+      try {
+        const response = await fetch(`/api/geo-scan?url=${encodeURIComponent(url)}`);
+        const data = await response.json();
+        if (!response.ok) {
+          showError(data.message || 'The scan could not be completed.');
+          return;
+        }
+        renderResult(data);
+      } catch {
+        showError('Network error while scanning. Please try again.');
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Scan Page';
+      }
+    });
+  </script>
+</body>
+</html>
