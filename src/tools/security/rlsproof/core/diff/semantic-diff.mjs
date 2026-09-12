@@ -1,3 +1,4 @@
+import { sha256Hex } from '../sha256.mjs';
 import { buildMigrationState, stateSummary } from '../sql/migration-state.mjs';
 
 const CLIENT_ROLES = new Set(['anon', 'authenticated', 'public']);
@@ -44,8 +45,33 @@ function isAlwaysTrue(value) {
   return normalized === 'true' || normalized === '1 = 1' || normalized === '1=1';
 }
 
+function canonicalize(value) {
+  if (Array.isArray(value)) return value.map(canonicalize);
+  if (value && typeof value === 'object') {
+    return Object.fromEntries(
+      Object.keys(value)
+        .sort()
+        .map((key) => [key, canonicalize(value[key])]),
+    );
+  }
+  return value;
+}
+
+function stableJson(value) {
+  return JSON.stringify(canonicalize(value));
+}
+
 function change(kind, classification, object, message, before = null, after = null) {
-  return { kind, classification, object, message, before, after };
+  const identity = [kind, object, stableJson(before), stableJson(after)].join('\u0000');
+  return {
+    id: `rdc_${sha256Hex(identity).slice(0, 24)}`,
+    kind,
+    classification,
+    object,
+    message,
+    before,
+    after,
+  };
 }
 
 function worstClassification(...values) {
@@ -245,7 +271,7 @@ function grantKeys(state) {
 function addedGrantClassification(grant) {
   if (!CLIENT_ROLES.has(grant.grantee)) return 'requires_review';
   if (WRITE_PRIVILEGES.has(grant.privilege)) return 'dangerous';
-  return grant.privilege === 'select' ? 'requires_review' : 'requires_review';
+  return 'requires_review';
 }
 
 function compareGrants(baseState, headState, changes) {
