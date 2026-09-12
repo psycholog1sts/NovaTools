@@ -139,6 +139,10 @@ test('homepage exposes a keyboard-focusable primary control', async ({ page }) =
 });
 
 test('an empty category fails closed for search indexing', async ({ page }) => {
-  await page.goto('/categories/developer-tools.html');
+  // data-tools.html has zero certified tools as of this writing. developer-tools.html
+  // used to be the fixture for this, but it stopped being empty once the GEO & Schema
+  // Compliance Inspector shipped as the category's first certified tool — pick whichever
+  // category is still genuinely empty rather than re-pointing this at another tool launch.
+  await page.goto('/categories/data-tools.html');
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', /noindex/i);
 });
