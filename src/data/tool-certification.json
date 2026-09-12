@@ -3600,6 +3600,33 @@
       "DiscoveryStatus": "EXCLUDED",
       "SitemapStatus": "EXCLUDED",
       "TestStatus": "finance certification noindex contract"
+    },
+    {
+      "Tool": "RLSProof",
+      "Route": "/tools/security/rlsproof/",
+      "Category": "security",
+      "Indexable": true,
+      "AdsEligible": false,
+      "FunctionalTruth": "PASS",
+      "UniqueUtility": "PASS",
+      "SpecificContent": "PASS",
+      "ImplementationEvidence": "PASS",
+      "NoFiller": "PASS",
+      "Trust": "PASS",
+      "PrivacyTruth": "EXTERNAL_API",
+      "ExternalNetwork": true,
+      "DataSource": "User-supplied public GitHub repository plus the public GitHub REST API; selected public metadata, tree and blob requests originate in the visitor browser",
+      "SyntheticData": "NONE",
+      "KnownLimitations": "Quick Scan supports public repositories only and bounded native static checks: at most 18 selected files, 128 KiB per file, 1 MiB total content, 5,000 tree entries and repositories up to 50,000 KiB. Unauthenticated GitHub API rate limits apply. It does not run Gitleaks, OSV-Scanner, Opengrep, database proof or private-repository analysis, so clean results remain incomplete rather than PASS.",
+      "UIStatus": "SPECIALIZED_VERIFIED",
+      "Tests": "RLSProof integration contract + browser core fail-closed contract + canonical/public-route/build verification",
+      "CertificationStatus": "CERTIFIED",
+      "ImplementationStatus": "PRODUCTION_CERTIFIED",
+      "RuntimeStatus": "ENABLED",
+      "SEOStatus": "INDEXABLE",
+      "DiscoveryStatus": "ELIGIBLE",
+      "SitemapStatus": "INCLUDED",
+      "TestStatus": "SOURCE_AND_BROWSER_CORE_CERTIFIED"
     }
   ]
 }

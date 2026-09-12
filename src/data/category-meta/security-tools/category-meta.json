@@ -1,12 +1,13 @@
 {
   "slug": "security-tools",
   "name": "Güvenlik Araçları",
-  "description": "Şifre, hash, UUID, SSL, JWT ve güvenlik kontrol araçlarını karar tablosu, SSS, persona kartları ve doğrudan kullanım linkleriyle inceleyin.",
+  "description": "Şifre, hash, UUID, SSL, JWT ve Supabase yetkilendirme kontrol araçlarını karar tablosu, SSS, persona kartları ve doğrudan kullanım linkleriyle inceleyin.",
   "targetAudience": [
     {
       "title": "Geliştiriciler için",
-      "description": "JWT, UUID, hash ve şifre üretimi gibi kontrolleri hızlıca test eder.",
+      "description": "JWT, UUID ve hash kontrollerinin yanında Supabase RLS ve yetkilendirme risklerini incelemeye yardımcı olur.",
       "tools": [
+        "security/rlsproof",
         "security/jwt-decoder",
         "security/uuid-generator"
       ]
@@ -30,6 +31,11 @@
   ],
   "commonTasks": [
     {
+      "name": "Supabase yetkilendirme sınırlarını hızlıca incelemek",
+      "description": "Herkese açık GitHub deposunda sınırlı RLS ve yetkilendirme risklerini RLSProof Quick Scan ile kontrol eder.",
+      "tool": "security/rlsproof"
+    },
+    {
       "name": "Security Tools içinde hızlı başlangıç",
       "description": "En sık kullanılan aracı seçip doğrudan ilgili iş akışına geçmenizi sağlar.",
       "tool": "security/jwt-decoder"
@@ -46,6 +52,11 @@
     }
   ],
   "decisionTable": [
+    {
+      "need": "Supabase RLS veya tenant isolation riski kontrol edilecekse",
+      "recommendedTool": "RLSProof",
+      "why": "Herkese açık depolarda sınırlı ve açık kapsamlı Supabase yetkilendirme kontrolleri yapar."
+    },
     {
       "need": "Hızlı tek adımlı işlem gerekiyorsa",
       "recommendedTool": "Security Tools",
@@ -77,7 +88,7 @@
   "faq": [
     {
       "question": "Security Araçları ücretsiz mi?",
-      "answer": "Evet. Bu kategori sayfası NovaTools içinde yer alan ilgili online araçlara doğrudan bağlantı verir ve hızlı başlangıç için hazırlanmıştır."
+      "answer": "Kategori içindeki ücretsiz araçlar doğrudan kullanılabilir. RLSProof Quick Scan ücretsizdir; ayrı insan incelemeli Launch Verification hizmetinin fiyatı kendi sayfasında açıkça belirtilir."
     },
     {
       "question": "Hangi aracı seçmem gerektiğini nasıl anlarım?",
