@@ -1,4 +1,6 @@
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import JSZip from 'jszip';
 
 async function mustImport(specifier, contractName) {
   try {
@@ -28,6 +30,18 @@ const filePolicy = await mustImport(
   '../src/tools/security/rlsproof/core/ingestion/file-policy.mjs',
   'local file policy',
 );
+const localFiles = await mustImport(
+  '../src/tools/security/rlsproof/core/ingestion/local-files.mjs',
+  'local folder ingestion',
+);
+const zipIngestion = await mustImport(
+  '../src/tools/security/rlsproof/core/ingestion/zip.mjs',
+  'local ZIP ingestion',
+);
+const browserScan = await mustImport(
+  '../src/tools/security/rlsproof/core/browser-quick-scan.mjs',
+  'browser GitHub scan',
+);
 
 assert.equal(typeof splitter.splitSqlStatements, 'function');
 assert.equal(typeof migrationState.buildMigrationState, 'function');
@@ -35,6 +49,8 @@ assert.equal(typeof rules.runRules, 'function');
 assert.ok(Array.isArray(rules.RULES));
 assert.equal(typeof analysis.analyzeVirtualFiles, 'function');
 assert.equal(typeof filePolicy.safeRelativePath, 'function');
+assert.equal(typeof localFiles.virtualFilesFromFileList, 'function');
+assert.equal(typeof zipIngestion.virtualFilesFromZipBytes, 'function');
 
 const functionSql = `
 create or replace function public.demo()
@@ -132,6 +148,88 @@ assert.equal(filePolicy.safeRelativePath('supabase/migrations/001.sql'), true);
 assert.equal(filePolicy.isCandidatePath('supabase/migrations/001.sql'), true);
 assert.equal(filePolicy.isCandidatePath('node_modules/pkg/index.js'), false);
 assert.equal(filePolicy.isCandidatePath('.env.production'), true, '.env files must be visible to the security engine as existence-only findings');
+
+const folderResult = await localFiles.virtualFilesFromFileList([
+  {
+    name: '001.sql',
+    webkitRelativePath: 'private-project/supabase/migrations/001.sql',
+    size: 48,
+    text: async () => 'create table public.local_demo (id uuid);',
+  },
+  {
+    name: '.env',
+    webkitRelativePath: 'private-project/.env',
+    size: 30,
+    text: async () => 'SHOULD_NOT_BE_READ=secret',
+  },
+  {
+    name: 'index.js',
+    webkitRelativePath: 'private-project/node_modules/pkg/index.js',
+    size: 10,
+    text: async () => 'ignored',
+  },
+]);
+assert.deepEqual(folderResult.files.map((file) => file.path), [
+  'private-project/.env',
+  'private-project/supabase/migrations/001.sql',
+]);
+assert.equal(folderResult.files.find((file) => file.path.endsWith('/.env'))?.text, '', 'environment file contents must not be read into analysis evidence');
+assert.equal(folderResult.scope.skippedFiles, 1);
+
+const zip = new JSZip();
+zip.file('private-project/supabase/migrations/001.sql', 'create table public.zip_demo (id uuid);');
+zip.file('private-project/.env.production', 'SHOULD_NOT_BE_READ=secret');
+zip.file('private-project/node_modules/pkg/index.js', 'ignored');
+const zipBytes = await zip.generateAsync({ type: 'uint8array' });
+const zipResult = await zipIngestion.virtualFilesFromZipBytes(zipBytes);
+assert.ok(zipResult.files.some((file) => file.path.endsWith('/supabase/migrations/001.sql')));
+assert.equal(zipResult.files.find((file) => file.path.endsWith('/.env.production'))?.text, '', 'ZIP environment files must be represented without reading secret contents');
+assert.equal(zipResult.files.some((file) => file.path.includes('/node_modules/')), false);
+
+function response(status, body, headers = {}) {
+  return {
+    status,
+    ok: status >= 200 && status < 300,
+    headers: { get: (name) => headers[name.toLowerCase()] ?? null },
+    json: async () => body,
+  };
+}
+
+await assert.rejects(
+  () => browserScan.browserQuickScanGithubRepo('acme/private-or-missing', {
+    fetchImpl: async () => response(404, {}),
+  }),
+  (error) => error instanceof browserScan.BrowserQuickScanError
+    && error.code === 'github_not_found'
+    && /private/i.test(error.message)
+    && /local|zip|folder/i.test(error.message),
+  'GitHub 404 must explain private-repository ambiguity and point to local scanning',
+);
+
+const remoteResult = await browserScan.browserQuickScanGithubRepo('acme/demo', {
+  fetchImpl: async (url) => {
+    if (url.endsWith('/repos/acme/demo')) {
+      return response(200, { private: false, default_branch: 'main', size: 1, html_url: 'https://github.com/acme/demo' });
+    }
+    if (url.includes('/git/trees/')) return response(200, { truncated: false, tree: [] });
+    throw new Error(`unexpected URL ${url}`);
+  },
+});
+assert.equal(remoteResult.schemaVersion, 2, 'remote Quick Scan must use the unified versioned analysis contract');
+assert.equal(remoteResult.coverage.complete, false);
+assert.equal(remoteResult.releaseGate, 'incomplete');
+assert.equal(remoteResult.scope.mode, 'remote-quick');
+assert.deepEqual(remoteResult.scope.requestedEngines, ['native']);
+assert.ok(remoteResult.state && typeof remoteResult.state === 'object');
+
+const toolHtml = readFileSync('src/tools/security/rlsproof/index.html', 'utf8');
+const toolLogic = readFileSync('src/tools/security/rlsproof/logic.mjs', 'utf8');
+assert.match(toolHtml, /data-rlsproof-local-zip/i, 'RLSProof UI must expose a local ZIP control for private repositories');
+assert.match(toolHtml, /data-rlsproof-local-folder/i, 'RLSProof UI must expose a local folder control for private repositories');
+assert.match(toolHtml, /stay(?:s)? in (?:your )?browser|never (?:leave|upload)/i, 'local scan copy must clearly state the privacy boundary');
+assert.match(toolLogic, /virtualFilesFromZip/i);
+assert.match(toolLogic, /virtualFilesFromFileList/i);
+assert.match(toolLogic, /analyzeVirtualFiles/i);
 
 const legacy = await import('../src/tools/security/rlsproof/core/content-scan.mjs');
 const legacyFindings = legacy.scanVirtualFiles([
