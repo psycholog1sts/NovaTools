@@ -112,7 +112,7 @@ function buildCsp(hashes) {
     "style-src-elem 'self' 'unsafe-inline' https://fonts.googleapis.com",
     "img-src 'self' data: blob: https:",
     "font-src 'self' data: https://fonts.gstatic.com",
-    "connect-src 'self' blob: https://www.google-analytics.com https://region1.google-analytics.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://fonts.googleapis.com https://fonts.gstatic.com https://ipapi.co https://va.vercel-scripts.com https://*.clarity.ms",
+    "connect-src 'self' blob: https://www.google-analytics.com https://region1.google-analytics.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://fonts.googleapis.com https://fonts.gstatic.com https://api.github.com https://ipapi.co https://va.vercel-scripts.com https://*.clarity.ms",
     "media-src 'self' blob: data:",
     "worker-src 'self' blob:",
     "frame-src 'self' https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com",

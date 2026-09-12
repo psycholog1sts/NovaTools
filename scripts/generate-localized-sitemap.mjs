@@ -19,6 +19,7 @@ const staticPages = [
   ['/request-tool.html', '0.5', 'monthly'],
   ['/privacy-policy.html', '0.4', 'monthly'],
   ['/terms-of-service.html', '0.4', 'monthly'],
+  ['/refund-policy.html', '0.4', 'monthly'],
   ['/disclaimer.html', '0.4', 'monthly'],
   ['/cookie-policy.html', '0.4', 'monthly'],
   ['/security.html', '0.4', 'monthly'],

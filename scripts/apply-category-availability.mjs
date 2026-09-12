@@ -1,28 +1,26 @@
 #!/usr/bin/env node
 /**
- * Category hubs must only offer tools that actually work.
+ * Keep category hubs aligned with the certification manifest.
  *
- * The committed hub pages list every tool in a category, including the ~110
- * routes that fail closed. That produced a "Use tool" button per uncertified
- * tool — well over a hundred controls that look interactive and land on an
- * "unavailable" page. It also made a hub look full while none of it worked.
- *
- * This pass runs over the built hubs and:
- *  - removes tool cards, task steps and decision rows for tools that are not
- *    CERTIFIED, replacing them with one honest count,
- *  - de-duplicates the related-guides list,
- *  - leaves certified cards untouched.
+ * Built hubs may still contain cards and shortcuts for routes that are not
+ * production certified. This pass removes those entries, de-duplicates guide
+ * cards, and ensures that a hub with a certified referenced tool does not end
+ * up as an empty shell after pruning.
  */
-import { readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, readFileSync, writeFileSync } from 'node:fs';
+import { basename, join } from 'node:path';
 import { globSync } from 'glob';
 
 const manifest = JSON.parse(readFileSync('tools-manifest.json', 'utf8'));
-
 const certifiedHrefs = new Set();
+const certifiedByRelativePath = new Map();
+
 for (const tool of manifest.tools) {
   if (tool.public !== true || tool.indexable !== true || tool.certificationStatus !== 'CERTIFIED') continue;
   const path = String(tool.path || '').replace(/^\/+|\/+$/g, '');
-  if (path) certifiedHrefs.add(`/tools/${path}/`);
+  if (!path) continue;
+  certifiedHrefs.add(`/tools/${path}/`);
+  certifiedByRelativePath.set(path, tool);
 }
 
 function hrefPath(href) {
@@ -35,11 +33,10 @@ function hrefPath(href) {
 
 function isCertifiedToolHref(href) {
   const path = hrefPath(href);
-  if (!/^\/tools\/[^/]+\/[^/]+\/$/.test(path)) return true; // not a tool route
+  if (!/^\/tools\/[^/]+\/[^/]+\/$/.test(path)) return true;
   return certifiedHrefs.has(path);
 }
 
-/** Split a container's direct children by a top-level tag, without a parser. */
 function splitElements(html, tag) {
   const open = new RegExp(`<${tag}\\b`, 'gi');
   const parts = [];
@@ -81,6 +78,50 @@ function firstToolHref(fragment) {
   return match ? match[1] : null;
 }
 
+function escapeHtml(value) {
+  return String(value ?? '')
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#39;');
+}
+
+function referencedToolPaths(meta) {
+  const paths = [];
+  for (const audience of meta.targetAudience || []) {
+    for (const tool of audience.tools || []) paths.push(tool);
+  }
+  for (const task of meta.commonTasks || []) {
+    if (task.tool) paths.push(task.tool);
+  }
+  return [...new Set(paths.map((value) => String(value).replace(/^\/+|\/+$/g, '')))];
+}
+
+function ensureCertifiedCard(html, file) {
+  if (html.includes('guide-tool-card')) return html;
+  const slug = basename(file, '.html');
+  const metaPath = join('src', 'data', 'category-meta', slug, 'category-meta.json');
+  if (!existsSync(metaPath)) return html;
+
+  const meta = JSON.parse(readFileSync(metaPath, 'utf8'));
+  const tool = referencedToolPaths(meta)
+    .map((path) => certifiedByRelativePath.get(path))
+    .find(Boolean);
+  if (!tool) return html;
+
+  const relativePath = String(tool.path || '').replace(/^\/+|\/+$/g, '');
+  const href = `/tools/${relativePath}/`;
+  const name = escapeHtml(tool.nameEn || tool.name || tool.id);
+  const description = escapeHtml(
+    typeof tool.description === 'string'
+      ? tool.description
+      : tool.description?.en || tool.description?.tr || 'Open the certified tool.'
+  );
+  const card = `<article class="guide-tool-card nt-card nt-card--tool"><div class="guide-tool-card__body"><h3><a href="${href}">${name}</a></h3><p>${description}</p></div><a class="btn btn-primary" href="${href}">Use tool</a></article>`;
+  return html.replace('<div class="guide-tools-grid">', `<div class="guide-tools-grid">${card}`);
+}
+
 const files = globSync('dist/**/categories/*.html');
 let changedFiles = 0;
 let removedCards = 0;
@@ -90,7 +131,6 @@ for (const file of files) {
   const before = html;
   let removedHere = 0;
 
-  // 1. Tool cards
   html = filterBlock(
     html,
     '<div class="guide-tools-grid">',
@@ -103,7 +143,6 @@ for (const file of files) {
     (n) => { removedHere += n; }
   );
 
-  // 2. Task shortcuts that open an unavailable tool
   html = filterBlock(
     html,
     '<ol class="task-steps">',
@@ -116,7 +155,6 @@ for (const file of files) {
     () => {}
   );
 
-  // 3. Related guides repeated three times over the same article
   html = html.replace(
     /(<div class="related-article-grid">)([\s\S]*?)(<\/div><\/div><\/section>)/,
     (match, open, inner, close) => {
@@ -133,7 +171,8 @@ for (const file of files) {
     }
   );
 
-  // 4. State the withheld count instead of pretending the tools are missing.
+  html = ensureCertifiedCard(html, file);
+
   if (removedHere) {
     const note = `<p class="guide-availability-note">${removedHere} further tool${removedHere === 1 ? '' : 's'} in this category ${removedHere === 1 ? 'is' : 'are'} still in development and not published yet. Only tools that passed certification are listed here.</p>`;
     html = html.replace('<div class="guide-tools-grid">', `${note}<div class="guide-tools-grid">`);
