@@ -115,6 +115,70 @@ create policy "read_docs" on public.docs for select to authenticated using (true
 assert.equal(grantRemoved.verdict, 'BREAKING');
 assert.equal(findChange(grantRemoved, 'grant-removed', 'public.docs::anon::insert')?.classification, 'breaking');
 
+const roleBroadened = analyzeSecurityDiff(sql(`
+create table public.docs (id uuid, owner_id uuid);
+alter table public.docs enable row level security;
+create policy "docs_owner" on public.docs for select to authenticated using (auth.uid() = owner_id);
+`), sql(`
+create table public.docs (id uuid, owner_id uuid);
+alter table public.docs enable row level security;
+create policy "docs_owner" on public.docs for select to authenticated, anon using (auth.uid() = owner_id);
+`));
+assert.equal(roleBroadened.verdict, 'DANGEROUS');
+assert.equal(findChange(roleBroadened, 'policy-shape-changed', 'public.docs::docs_owner')?.classification, 'dangerous');
+
+const roleNarrowed = analyzeSecurityDiff(sql(`
+create table public.docs (id uuid, owner_id uuid);
+alter table public.docs enable row level security;
+create policy "docs_owner" on public.docs for select to authenticated, anon using (auth.uid() = owner_id);
+`), baseProtected);
+assert.equal(roleNarrowed.verdict, 'BREAKING');
+assert.equal(findChange(roleNarrowed, 'policy-shape-changed', 'public.docs::docs_owner')?.classification, 'breaking');
+
+const modeLoosened = analyzeSecurityDiff(sql(`
+create table public.docs (id uuid, owner_id uuid);
+alter table public.docs enable row level security;
+create policy "docs_owner" on public.docs as restrictive for select to authenticated using (auth.uid() = owner_id);
+`), baseProtected);
+assert.equal(modeLoosened.verdict, 'DANGEROUS');
+assert.equal(findChange(modeLoosened, 'policy-shape-changed', 'public.docs::docs_owner')?.classification, 'dangerous');
+
+const forceRemoved = analyzeSecurityDiff(sql(`
+create table public.docs (id uuid, owner_id uuid);
+alter table public.docs enable row level security;
+alter table public.docs force row level security;
+create policy "docs_owner" on public.docs for select to authenticated using (auth.uid() = owner_id);
+`), baseProtected);
+assert.equal(forceRemoved.verdict, 'REQUIRES_REVIEW');
+assert.equal(findChange(forceRemoved, 'rls-force-removed', 'public.docs')?.classification, 'requires_review');
+
+const parserUncertainty = analyzeSecurityDiff(baseProtected, sql(`
+create table public.docs (id uuid, owner_id uuid);
+alter table public.docs enable row level security;
+create policy "docs_owner" on public.docs for select to authenticated using (auth.uid() = owner_id);
+alter policy "docs_owner" on public.docs rename to "docs_owner_v2";
+`));
+assert.equal(parserUncertainty.verdict, 'REQUIRES_REVIEW');
+assert.equal(findChange(parserUncertainty, 'parser-uncertainty', 'analysis')?.classification, 'requires_review');
+
+const fingerprintRunA = analyzeSecurityDiff(baseProtected, sql(`
+create table public.docs (id uuid, owner_id uuid);
+alter table public.docs enable row level security;
+create policy "docs_owner" on public.docs for select to authenticated using (true);
+`));
+const fingerprintRunB = analyzeSecurityDiff(baseProtected, sql(`
+create table public.docs (id uuid, owner_id uuid);
+alter table public.docs enable row level security;
+create policy "docs_owner" on public.docs for select to authenticated using (true);
+`));
+assert.ok(fingerprintRunA.changes.length > 0);
+assert.ok(fingerprintRunA.changes.every((item) => /^rdc_[a-f0-9]{24}$/.test(item.id)), 'every semantic diff change must have a stable id');
+assert.deepEqual(
+  fingerprintRunA.changes.map((item) => item.id),
+  fingerprintRunB.changes.map((item) => item.id),
+  'semantic diff change ids must be stable across runs with identical inputs',
+);
+
 const unchanged = analyzeSecurityDiff(baseProtected, baseProtected);
 assert.equal(unchanged.verdict, 'SAFE');
 assert.deepEqual(unchanged.changes, []);
