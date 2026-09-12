@@ -10,6 +10,7 @@ export const DEFAULT_LOCAL_LIMITS = Object.freeze({
   maxFileBytes: 512 * 1024,
   maxTotalBytes: 8 * 1024 * 1024,
   maxArchiveBytes: 32 * 1024 * 1024,
+  maxArchiveEntries: 4096,
 });
 
 export function normalizeRelativePath(value) {
