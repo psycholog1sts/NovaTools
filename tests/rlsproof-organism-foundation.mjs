@@ -141,6 +141,46 @@ const safeReport = analysis.analyzeVirtualFiles([
 assert.equal(safeReport.releaseGate, 'incomplete', 'a clean bounded static result must remain incomplete, never PASS');
 assert.equal(safeReport.findings.some((finding) => ['critical', 'high'].includes(finding.severity)), false);
 
+const duplicateReport = analysis.analyzeVirtualFiles([
+  { path: 'supabase/migrations/001.sql', text: 'create table public.duplicate_demo (id uuid);' },
+]);
+const duplicateFingerprints = duplicateReport.findings.map((finding) => finding.fingerprint);
+assert.equal(
+  new Set(duplicateFingerprints).size,
+  duplicateFingerprints.length,
+  'unified analysis must deduplicate the same underlying finding emitted by compatibility and registry engines',
+);
+
+const fixtureSafeReport = analysis.analyzeVirtualFiles([
+  {
+    path: 'supabase/migrations/001_schema.sql',
+    text: readFileSync('tests/fixtures/rlsproof/safe/001_schema.sql', 'utf8'),
+  },
+]);
+assert.equal(fixtureSafeReport.findings.some((finding) => ['critical', 'high'].includes(finding.severity)), false, 'safe fixture must not emit blocking findings');
+
+const fixtureBrokenReport = analysis.analyzeVirtualFiles([
+  {
+    path: 'supabase/migrations/001_schema.sql',
+    text: readFileSync('tests/fixtures/rlsproof/broken/001_schema.sql', 'utf8'),
+  },
+  {
+    path: 'supabase/migrations/002_regression.sql',
+    text: readFileSync('tests/fixtures/rlsproof/broken/002_regression.sql', 'utf8'),
+  },
+]);
+assert.equal(fixtureBrokenReport.releaseGate, 'blocked');
+for (const expectedRule of [
+  'supabase-rls-explicitly-disabled',
+  'supabase-policy-using-true',
+  'supabase-anon-write-grant',
+  'supabase-public-security-definer',
+  'supabase-public-view-auth-users',
+  'supabase-public-materialized-view',
+]) {
+  assert.ok(fixtureBrokenReport.findings.some((finding) => finding.rule === expectedRule), `broken fixture must trigger ${expectedRule}`);
+}
+
 assert.equal(filePolicy.safeRelativePath('../private.sql'), false);
 assert.equal(filePolicy.safeRelativePath('/absolute/private.sql'), false);
 assert.equal(filePolicy.safeRelativePath('src/../private.sql'), false);
