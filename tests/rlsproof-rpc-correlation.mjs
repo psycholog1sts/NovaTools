@@ -14,6 +14,8 @@ await supabase.rpc("admin_rpc");
 await supabase.rpc(\`unsafe_rpc\`);
 await supabase.rpc('missing_rpc');
 await supabase.rpc(rpcName);
+// await supabase.rpc('commented_rpc');
+const note = "supabase.rpc('string_rpc')";
 ` }];
 
 const report = correlateAppCode(state, files);
@@ -30,6 +32,8 @@ assert.equal(byObject.get('unsafe_rpc')?.boundary, 'security-definer-unsafe');
 
 assert.equal(byObject.get('missing_rpc')?.graphNodeId, null);
 assert.equal(byObject.get('missing_rpc')?.boundary, 'unresolved-rpc');
+assert.equal(byObject.has('commented_rpc'), false);
+assert.equal(byObject.has('string_rpc'), false);
 
 const dynamic = report.calls.find((call) => call.kind === 'dynamic-rpc');
 assert.equal(dynamic?.object, 'rpcName');
