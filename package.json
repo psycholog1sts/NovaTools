@@ -81,7 +81,7 @@
     "@types/node": "^20.0.0",
     "autoprefixer": "^10.4.17",
     "cssnano": "^6.0.3",
-    "eslint": "^8.56.0",
+    "eslint": "^10.10.0",
     "glob": "^10.3.10",
     "globals": "^14.0.0",
     "jsdom": "^24.0.0",
