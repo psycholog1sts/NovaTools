@@ -1,0 +1,22 @@
+name: RLSProof Runtime Target Gate Contract
+
+on:
+  pull_request:
+    paths:
+      - 'src/tools/security/rlsproof/core/runtime/**'
+      - 'tests/rlsproof-runtime-target-gate.mjs'
+      - '.github/workflows/rlsproof-runtime-target-gate-contract.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node tests/rlsproof-runtime-target-gate.mjs
