@@ -1,0 +1,23 @@
+name: RLSProof RPC Correlation Contract
+
+on:
+  pull_request:
+    paths:
+      - 'src/tools/security/rlsproof/core/correlation/**'
+      - 'src/tools/security/rlsproof/core/graph/**'
+      - 'tests/rlsproof-rpc-correlation.mjs'
+      - '.github/workflows/rlsproof-rpc-correlation-contract.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node tests/rlsproof-rpc-correlation.mjs
