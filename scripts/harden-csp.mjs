@@ -93,6 +93,12 @@ function buildCsp(hashes) {
     'https://tpc.googlesyndication.com',
     'https://googleads.g.doubleclick.net',
     'https://www.google-analytics.com',
+    // Google's certified ad-consent CMP (Funding Choices). Our own consent-manager.mjs
+    // banner explicitly defers advertising consent to it ("Google shows a separate
+    // certified consent message for advertising where that is required") — without this
+    // domain allowlisted, that promise is false: the CSP silently blocks the message
+    // from ever loading, regardless of what's configured in the AdSense dashboard.
+    'https://fundingchoicesmessages.google.com',
     // jsdelivr, unpkg and esm.sh were allowlisted for PDF tools that are all
     // fail-closed (UNAVAILABLE, noindex), so nothing that runs needs them. Any
     // route that is certified later vendors its library locally, as the working
@@ -112,10 +118,10 @@ function buildCsp(hashes) {
     "style-src-elem 'self' 'unsafe-inline' https://fonts.googleapis.com",
     "img-src 'self' data: blob: https:",
     "font-src 'self' data: https://fonts.gstatic.com",
-    "connect-src 'self' blob: https://www.google-analytics.com https://region1.google-analytics.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://fonts.googleapis.com https://fonts.gstatic.com https://api.github.com https://ipapi.co https://va.vercel-scripts.com https://*.clarity.ms",
+    "connect-src 'self' blob: https://www.google-analytics.com https://region1.google-analytics.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://fonts.googleapis.com https://fonts.gstatic.com https://api.github.com https://ipapi.co https://va.vercel-scripts.com https://*.clarity.ms https://fundingchoicesmessages.google.com",
     "media-src 'self' blob: data:",
     "worker-src 'self' blob:",
-    "frame-src 'self' https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com",
+    "frame-src 'self' https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com https://fundingchoicesmessages.google.com",
     "manifest-src 'self'",
     'upgrade-insecure-requests'
   ].join('; ') + ';';
