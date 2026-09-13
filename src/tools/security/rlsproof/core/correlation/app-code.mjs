@@ -16,16 +16,72 @@ function appFiles(files) {
     .sort((a, b) => a.path.localeCompare(b.path));
 }
 
+function ignoredRanges(text) {
+  const ranges = [];
+  let index = 0;
+
+  while (index < text.length) {
+    const char = text[index];
+    const next = text[index + 1];
+
+    if (char === '/' && next === '/') {
+      const start = index;
+      index += 2;
+      while (index < text.length && text[index] !== '\n') index += 1;
+      ranges.push([start, index]);
+      continue;
+    }
+
+    if (char === '/' && next === '*') {
+      const start = index;
+      index += 2;
+      while (index < text.length && !(text[index] === '*' && text[index + 1] === '/')) index += 1;
+      index = Math.min(text.length, index + 2);
+      ranges.push([start, index]);
+      continue;
+    }
+
+    if (char === "'" || char === '"' || char === '`') {
+      const quote = char;
+      const start = index;
+      index += 1;
+      while (index < text.length) {
+        if (text[index] === '\\') {
+          index += 2;
+          continue;
+        }
+        if (text[index] === quote) {
+          index += 1;
+          break;
+        }
+        index += 1;
+      }
+      ranges.push([start, index]);
+      continue;
+    }
+
+    index += 1;
+  }
+
+  return ranges;
+}
+
+function isIgnoredMatch(index, ranges) {
+  return ranges.some(([start, end]) => index >= start && index < end);
+}
+
 function extractCalls(files) {
   const calls = [];
 
   for (const file of appFiles(files)) {
+    const ignored = ignoredRanges(file.text);
     const direct = new RegExp(`\\.from\\(\\s*(['"\\x60])([^'"\\x60]+)\\1\\s*\\)\\s*\\.\\s*${TABLE_METHOD}\\s*\\(`, 'gi');
     const dynamic = new RegExp(`\\.from\\(\\s*([A-Za-z_$][A-Za-z0-9_$]*)\\s*\\)\\s*\\.\\s*${TABLE_METHOD}\\s*\\(`, 'gi');
     const rpc = /\.rpc\(\s*(['"`])([^'"`]+)\1/gi;
 
     let match;
     while ((match = direct.exec(file.text))) {
+      if (isIgnoredMatch(match.index, ignored)) continue;
       calls.push({
         path: file.path,
         index: match.index,
@@ -35,6 +91,7 @@ function extractCalls(files) {
       });
     }
     while ((match = rpc.exec(file.text))) {
+      if (isIgnoredMatch(match.index, ignored)) continue;
       calls.push({
         path: file.path,
         index: match.index,
@@ -44,6 +101,7 @@ function extractCalls(files) {
       });
     }
     while ((match = dynamic.exec(file.text))) {
+      if (isIgnoredMatch(match.index, ignored)) continue;
       calls.push({
         path: file.path,
         index: match.index,
