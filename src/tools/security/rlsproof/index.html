@@ -4,19 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RLSProof — Supabase RLS & Authorization Quick Scan | MC NovaTools</title>
-  <meta name="description" content="Scan a public GitHub repository for bounded Supabase RLS and authorization risks, review deterministic findings, and understand what still requires full verification.">
+  <meta name="description" content="Scan public GitHub repositories or private source locally in your browser for deterministic Supabase RLS and authorization risks with explicit coverage limits.">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="theme-color" content="#0A0A0C">
   <link rel="canonical" href="https://mc-novatools.com/tools/security/rlsproof/">
   <meta property="og:title" content="RLSProof — Supabase RLS & Authorization Quick Scan | MC NovaTools">
-  <meta property="og:description" content="Bounded browser Quick Scan for public GitHub repositories with explicit coverage limits and deterministic Supabase authorization findings.">
+  <meta property="og:description" content="Deterministic Supabase authorization checks for public GitHub repositories and private source scanned locally in the browser.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://mc-novatools.com/tools/security/rlsproof/">
   <meta property="og:site_name" content="MC NovaTools">
   <meta property="og:image" content="https://mc-novatools.com/og-image.svg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="RLSProof — Supabase RLS & Authorization Quick Scan">
-  <meta name="twitter:description" content="Bounded browser checks for public Supabase repositories with explicit evidence and limitations.">
+  <meta name="twitter:description" content="Deterministic Supabase authorization checks with explicit evidence, coverage and local private-source scanning.">
   <meta name="twitter:image" content="https://mc-novatools.com/og-image.svg">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="stylesheet" href="/src/styles/critical.css">
@@ -28,7 +28,7 @@
     "@type": "SoftwareApplication",
     "name": "RLSProof Quick Scan",
     "url": "https://mc-novatools.com/tools/security/rlsproof/",
-    "description": "Bounded browser-based static checks for Supabase RLS and authorization risks in public GitHub repositories.",
+    "description": "Deterministic browser-based static checks for Supabase RLS and authorization risks in public GitHub repositories or locally selected private source files.",
     "applicationCategory": "SecurityApplication",
     "operatingSystem": "Web",
     "isAccessibleForFree": true,
@@ -61,32 +61,60 @@
       <div>
         <p class="rlsproof-eyebrow">Security tool · Supabase authorization</p>
         <h1 id="rlsproof-title">Prove your Supabase data boundaries before release.</h1>
-        <p class="rlsproof-lead">RLSProof looks for concrete authorization risks in a bounded set of files from a public GitHub repository. It reports what it found, what it did not cover, and never turns skipped or unavailable coverage into a PASS.</p>
+        <p class="rlsproof-lead">RLSProof builds an ordered migration state and runs deterministic authorization checks across selected SQL and application files. It reports what it found, what it could not prove, and never turns incomplete coverage into a PASS.</p>
         <div class="rlsproof-trust" aria-label="Quick Scan boundaries">
-          <span class="rlsproof-chip">Public GitHub repositories only</span>
+          <span class="rlsproof-chip">Public GitHub repositories only for URL mode</span>
+          <span class="rlsproof-chip">Private ZIP / folder scan</span>
           <span class="rlsproof-chip">No GitHub token</span>
-          <span class="rlsproof-chip">Browser-side evaluation</span>
+          <span class="rlsproof-chip">Local files stay in your browser</span>
           <span class="rlsproof-chip">Coverage stays explicit</span>
         </div>
       </div>
       <aside class="rlsproof-panel" aria-label="What Quick Scan checks">
-        <h2>Native checks</h2>
-        <p>Quick Scan inspects selected JavaScript, TypeScript and SQL files for Supabase-specific authorization hazards such as public tables without RLS, exposed service-role usage, risky policy metadata, public SECURITY DEFINER functions, public views without security invoker, and dynamic code execution.</p>
+        <h2>Deterministic authorization engine</h2>
+        <p>Quick Scan evaluates cumulative migration state, RLS transitions, policy shape, direct grants, privileged functions, exposed views and selected application-code hazards. High-confidence evidence stays tied to a file and line whenever possible.</p>
         <p class="rlsproof-disclaimer">This is a security-development aid, not a security certification, penetration test, compliance attestation, or guarantee that an application is secure.</p>
       </aside>
     </section>
 
     <section class="rlsproof-panel rlsproof-scan" aria-labelledby="scan-title">
       <p class="rlsproof-eyebrow">Free Quick Scan</p>
-      <h2 id="scan-title">Scan a public repository</h2>
-      <p>Enter <strong>owner/repo</strong> or a normal <strong>https://github.com/owner/repo</strong> URL. The browser requests public repository metadata and selected public blobs directly from <strong>api.github.com</strong>; repository contents are not uploaded to a NovaTools server.</p>
-      <form class="rlsproof-form" data-rlsproof-form>
-        <label for="rlsproof-repository">Public GitHub repository</label>
-        <input id="rlsproof-repository" data-rlsproof-repository type="text" inputmode="url" autocomplete="off" spellcheck="false" placeholder="supabase/supabase" required aria-describedby="rlsproof-help">
-        <button type="submit" data-rlsproof-submit>Run Quick Scan</button>
-      </form>
-      <p id="rlsproof-help" class="rlsproof-helper">Limits: 18 selected files · 128 KiB/file · 1 MiB total · 5,000 tree entries · 50,000 KiB repository size. Unauthenticated GitHub API rate limits apply.</p>
-      <div class="rlsproof-status" role="status" aria-live="polite" data-rlsproof-status>Ready. No repository has been scanned yet.</div>
+      <h2 id="scan-title">Choose a source</h2>
+
+      <div class="rlsproof-source-grid">
+        <section class="rlsproof-source-card" aria-labelledby="github-scan-title">
+          <p class="rlsproof-source-label">Public repository</p>
+          <h3 id="github-scan-title">Scan from GitHub</h3>
+          <p>Enter <strong>owner/repo</strong> or a normal <strong>https://github.com/owner/repo</strong> URL. The browser requests selected public files directly from <strong>api.github.com</strong>; repository contents are not uploaded to a NovaTools server.</p>
+          <form class="rlsproof-form" data-rlsproof-form>
+            <label for="rlsproof-repository">Public GitHub repository</label>
+            <input id="rlsproof-repository" data-rlsproof-repository type="text" inputmode="url" autocomplete="off" spellcheck="false" placeholder="supabase/supabase" required aria-describedby="rlsproof-help">
+            <button type="submit" data-rlsproof-submit>Run GitHub Scan</button>
+          </form>
+          <p id="rlsproof-help" class="rlsproof-helper">URL mode supports public GitHub repositories only. Limits: 18 selected files · 128 KiB/file · 1 MiB total · 5,000 tree entries · 50,000 KiB repository size. Unauthenticated GitHub API rate limits apply.</p>
+        </section>
+
+        <section class="rlsproof-source-card rlsproof-source-card--local" aria-labelledby="local-scan-title">
+          <p class="rlsproof-source-label">Private / local source</p>
+          <h3 id="local-scan-title">Scan locally in this browser</h3>
+          <p>Select a repository ZIP or folder. Source files stay in your browser and are never uploaded to MC NovaTools by this scan. RLSProof does not ask for a GitHub personal access token.</p>
+          <div class="rlsproof-local-controls">
+            <label class="rlsproof-file-control">
+              <span>Repository ZIP</span>
+              <input data-rlsproof-local-zip type="file" accept=".zip,application/zip">
+              <small>Best option for a private GitHub repository downloaded as ZIP.</small>
+            </label>
+            <label class="rlsproof-file-control">
+              <span>Repository folder</span>
+              <input data-rlsproof-local-folder type="file" webkitdirectory directory multiple>
+              <small>Select the project directory directly when your browser supports folder selection.</small>
+            </label>
+          </div>
+          <p class="rlsproof-helper">Local limits: up to 512 selected source files · 512 KiB/file · 8 MiB analyzed text · 32 MiB ZIP. Unsupported/build/vendor paths are skipped and surfaced as coverage limits when relevant. Environment-file contents are not loaded into findings.</p>
+        </section>
+      </div>
+
+      <div class="rlsproof-status" role="status" aria-live="polite" data-rlsproof-status>Ready. Choose a public GitHub repository, private ZIP, or local folder.</div>
 
       <div data-rlsproof-results hidden>
         <div class="rlsproof-summary" aria-label="Scan summary">
@@ -95,6 +123,7 @@
           <div class="rlsproof-metric"><span>Files scanned</span><strong data-rlsproof-files>—</strong></div>
           <div class="rlsproof-metric"><span>Coverage</span><strong data-rlsproof-coverage>—</strong></div>
         </div>
+        <div class="rlsproof-coverage-note" data-rlsproof-coverage-reasons></div>
         <div class="rlsproof-findings" data-rlsproof-findings></div>
       </div>
     </section>
@@ -102,12 +131,11 @@
     <section class="rlsproof-panel rlsproof-section" aria-labelledby="coverage-title">
       <p class="rlsproof-eyebrow">Coverage boundary</p>
       <h2 id="coverage-title">Quick Scan is intentionally incomplete.</h2>
-      <p>The free browser surface runs bounded native static checks only. It does not run Gitleaks, OSV-Scanner, Opengrep, database authorization fixtures, private-repository analysis, or full tenant-isolation proof. A clean bounded result therefore remains <strong>incomplete</strong>, not PASS.</p>
-      <p>For full repository coverage, the open-source RLSProof GitHub Action can run pinned external scanners in your own CI runner, while database proof remains a separate isolated test layer.</p>
+      <p>The free browser surface runs bounded native static checks only. Private repositories can now be analyzed from a local ZIP or folder without sending their source to NovaTools, but Quick Scan still does not perform live database catalog introspection, full external scanner coverage, dynamic authorization fixtures, or symbolic tenant-isolation proof. A clean bounded result therefore remains <strong>incomplete</strong>, not PASS.</p>
+      <p>RLSProof's architecture separates ingestion, ordered migration state, deterministic rules, coverage accounting and release gating so deeper correlation, semantic diff, proof and CI layers can be added without weakening existing findings.</p>
       <div class="rlsproof-links">
-        <a href="https://github.com/psycholog1sts/personal-app" rel="noreferrer">Inspect RLSProof source</a>
-        <a href="https://github.com/psycholog1sts/personal-app#github-action" rel="noreferrer">GitHub Action documentation</a>
         <a href="/security.html">NovaTools security</a>
+        <a href="/contact.html">Report a RLSProof issue</a>
       </div>
     </section>
 
@@ -128,7 +156,7 @@
 
     <section class="rlsproof-section" aria-labelledby="method-title">
       <h2 id="method-title">Why the result stays auditable</h2>
-      <p>RLSProof uses deterministic rules rather than an AI model to decide security findings or release-gate status. Evidence is redacted for common secret formats before it is displayed, and high or critical unresolved findings block the gate. API errors, repository-size limits, truncated trees and rate limits produce an error instead of a successful result.</p>
+      <p>RLSProof uses deterministic rules rather than an AI model to decide security findings or release-gate status. Evidence is redacted for common secret formats before it is displayed, high or critical unresolved findings block the gate, and parser uncertainty or skipped coverage remains visible instead of being converted into success.</p>
     </section>
   </main>
 

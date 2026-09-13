@@ -1,5 +1,5 @@
+import { analyzeVirtualFiles } from './analysis/analyze.mjs';
 import { scoreFindings } from './score.mjs';
-import { scanVirtualFiles } from './content-scan.mjs';
 import { parseGitHubRepository, selectCandidateFiles } from './github.mjs';
 
 const DEFAULT_LIMITS = Object.freeze({
@@ -34,7 +34,13 @@ async function fetchJson(url, fetchImpl) {
     throw new BrowserQuickScanError(`GitHub request failed: ${error?.message ?? error}`, 502, 'github_unreachable');
   }
 
-  if (response.status === 404) throw new BrowserQuickScanError('GitHub repository or object was not found.', 404, 'github_not_found');
+  if (response.status === 404) {
+    throw new BrowserQuickScanError(
+      'GitHub could not expose this repository or object. It may not exist or it may be private. Private repositories can be scanned locally with the ZIP or folder option without sharing repository credentials.',
+      404,
+      'github_not_found',
+    );
+  }
   const remaining = response.headers?.get?.('x-ratelimit-remaining');
   if ((response.status === 403 || response.status === 429) && remaining === '0') {
     throw new BrowserQuickScanError('GitHub API rate limit reached. Try again later.', 429, 'github_rate_limited');
@@ -64,11 +70,6 @@ function decodeBase64Utf8(value, filePath, limits, actualBytes) {
   return { text: new TextDecoder('utf-8', { fatal: false }).decode(bytes), bytes: bytes.length };
 }
 
-function releaseGate(findings) {
-  const unresolved = findings.filter((finding) => finding?.verification !== 'resolved');
-  return unresolved.some((finding) => finding.severity === 'critical' || finding.severity === 'high') ? 'blocked' : 'incomplete';
-}
-
 export async function browserQuickScanGithubRepo(input, options = {}) {
   const { owner, repo } = parseGitHubRepository(input);
   const fetchImpl = options.fetchImpl ?? globalThis.fetch;
@@ -77,7 +78,13 @@ export async function browserQuickScanGithubRepo(input, options = {}) {
   const limits = effectiveLimits(options.limits);
   const repoApi = `https://api.github.com/repos/${owner}/${repo}`;
   const metadata = await fetchJson(repoApi, fetchImpl);
-  if (metadata?.private === true) throw new BrowserQuickScanError('Quick scan supports public GitHub repositories only.', 403, 'private_repository');
+  if (metadata?.private === true) {
+    throw new BrowserQuickScanError(
+      'This repository is private. Use the local ZIP or folder scan to analyze it in your browser without giving RLSProof a GitHub token.',
+      403,
+      'private_repository',
+    );
+  }
   if (!metadata?.default_branch || typeof metadata.default_branch !== 'string') throw new BrowserQuickScanError('GitHub repository has no readable default branch.', 422, 'missing_default_branch');
   if (Number.isFinite(metadata.size) && metadata.size > limits.maxRepositoryKb) throw new BrowserQuickScanError('Repository is too large for the free quick scan.', 413, 'repository_too_large');
 
@@ -99,23 +106,39 @@ export async function browserQuickScanGithubRepo(input, options = {}) {
     virtualFiles.push({ path: entry.path, text: decoded.text });
   }
 
-  const findings = scanVirtualFiles(virtualFiles);
-  const readiness = scoreFindings(findings);
   const canonicalUrl = `https://github.com/${owner}/${repo}`;
-  return {
-    schemaVersion: 1,
-    generatedAt: new Date().toISOString(),
+  const report = analyzeVirtualFiles(virtualFiles, {
+    mode: 'remote-quick',
+    source: 'github-public',
     target: canonicalUrl,
+    scope: {
+      mode: 'remote-quick',
+      requestedEngines: ['native'],
+      filesScanned: virtualFiles.length,
+      bytesScanned: actualBytes,
+      selectionTruncated: selected.truncated,
+      truncated: selected.truncated,
+      reasons: selected.truncated ? ['github-selection-truncated'] : [],
+    },
+  });
+
+  return {
+    ...report,
     repository: { owner, name: repo, defaultBranch: branch, htmlUrl: metadata.html_url ?? canonicalUrl },
-    scope: { mode: 'remote-quick', requestedEngines: ['native'], filesScanned: virtualFiles.length, bytesScanned: actualBytes, selectionTruncated: selected.truncated },
+    scope: {
+      ...report.scope,
+      mode: 'remote-quick',
+      requestedEngines: ['native'],
+      filesScanned: virtualFiles.length,
+      bytesScanned: actualBytes,
+      selectionTruncated: selected.truncated,
+    },
     coverage: {
-      complete: false,
-      reason: 'Free quick scan is intentionally limited to bounded native static checks; full Gitleaks, OSV-Scanner and Opengrep coverage requires a full audit.',
+      ...report.coverage,
+      reason: 'Quick Scan is intentionally limited to bounded deterministic static checks; live database introspection, symbolic proof and full external scanner coverage are separate layers.',
       capabilities: [{ engine: 'native', available: true, ok: true }],
       limits: { maxFiles: limits.maxFiles, maxFileBytes: limits.maxFileBytes, maxTotalBytes: limits.maxTotalBytes, maxTreeEntries: limits.maxTreeEntries, maxRepositoryKb: limits.maxRepositoryKb },
     },
-    readiness,
-    releaseGate: releaseGate(findings),
-    findings,
+    readiness: scoreFindings(report.findings),
   };
 }
