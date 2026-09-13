@@ -12,7 +12,6 @@ import { initHomeSearch } from './js/home-search.js';
 import { initHeroMotion } from './js/hero-motion.js';
 import { buildIndex, recentItems, rememberTool, forgetRecentTools } from './js/tool-search.js';
 import blogPostsForSearch from './i18n/blog/en.json';
-import { getPopularThisWeek } from './components/engagement-widgets.mjs';
 import manifest from '../tools-manifest.json';
 import { canonicalToolPath, publicCertifiedTools, publicToolsByCategory } from './data/public-tools.mjs';
 
@@ -152,17 +151,6 @@ document.addEventListener('keydown', (event) => {
     if (menu && !menu.hidden) toggleMobileMenu();
   }
 });
-
-const popularTasks = [
-  { key: 'mergePdf', label: 'Merge PDF', slug: 'pdf/merge', icon: 'file-text' },
-  { key: 'compressPdf', label: 'Compress PDF', slug: 'pdf/compress', icon: 'file-text' },
-  { key: 'compressImage', label: 'Compress Image', slug: 'image/compress', icon: 'image' },
-  { key: 'jsonFormatter', label: 'JSON Formatter', slug: 'dev/json-formatter', icon: 'code' },
-  { key: 'liveExchange', label: 'Live Exchange', slug: 'finance/live-exchange', icon: 'repeat' },
-  { key: 'textAnalysis', label: 'Text Analysis', slug: 'text/text-analysis', icon: 'type' },
-  { key: 'mortgageCalculator', label: 'Mortgage Calculator', slug: 'finance/mortgage-refinance', icon: 'trending-up' },
-  { key: 'passwordGenerator', label: 'Password Generator', slug: 'security/password-generator', icon: 'shield' }
-];
 
 const featuredTools = [
   {
