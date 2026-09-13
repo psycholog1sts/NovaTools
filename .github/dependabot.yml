@@ -1,0 +1,27 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      minor-and-patch:
+        update-types:
+          - minor
+          - patch
+    # Major bumps still open individually rather than being grouped away,
+    # since this repo pins an exact Node range (>=22 <23) and exact CI tool
+    # versions (@playwright/test, @axe-core/playwright) that a silent major
+    # bump could break; the existing PR pipeline (lint/test/build/security)
+    # still has to pass before any of these get merged.
+    commit-message:
+      prefix: "chore(deps)"
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "chore(ci)"
