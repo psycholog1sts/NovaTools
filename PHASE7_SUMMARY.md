@@ -1,10 +1,35 @@
-# Phase 7: The Singularity Tier - Implementation Summary
+# Phase 7: prototypes, not shipped features
 
-## 🚀 Overview
+**Correction (see `docs/research-implementation-ledger.md` REQ-036):** this
+document originally claimed "✅ Phase 7 Complete" and described every module
+below as an implemented, shipped feature. That was not accurate. A
+repo-wide reference search found that none of the modules this document
+lists are imported by any HTML entry point, Cloudflare Function, or build
+config — none of them run in production. Some of the file paths named
+below (`middleware.mjs`, `api/geo-suggestions.mjs`, `api/esi-render.mjs`)
+don't even exist on disk.
+
+The demo route this document points to (`src/tools/demo-phase7/`) has
+separately already been corrected to an honest "Engineering demonstration
+unavailable... not a supported NovaTools tool" page, noindexed and excluded
+from the production build (`vite.config.js`'s tool-entry glob explicitly
+ignores `demo-*` paths) — so nothing here has ever been visible to a real
+visitor. The gap was only in this internal document's own status claim.
+
+The modules themselves describe real, legitimate browser technologies
+(WebAuthn/passkeys, CRDT sync, Background Sync, etc.) rather than fictional
+ones, so — unlike the "Phase 8" cluster this document's sibling described —
+they were left in place rather than deleted in this pass; whether to
+finish integrating any of them or remove them as unused prototype code is
+a separate decision for later, not resolved here. What follows below is
+the original description, kept for reference, with the "Implemented" /
+"Complete" framing understood to mean "written," not "shipped."
+
+## 🚀 Overview (original claim, not accurate — see correction above)
 
 Phase 7 implements the "Autonomous Edge-Native Architecture" - a comprehensive suite of cutting-edge browser technologies that push the boundaries of what's possible in a zero-server web application.
 
-## 📦 Implemented Components
+## 📦 Implemented Components (original claim, not accurate — see correction above)
 
 ### 1. Edge Compute & Zero-Latency Personalization
 **Files:**
@@ -275,6 +300,6 @@ MIT License - See LICENSE for details
 
 ---
 
-**Status:** ✅ Phase 7 Complete
+**Status:** Prototype code only — not integrated into the production build (see correction at the top of this document)
 **Date:** 2026-03-11
 **Build:** Compatible with Vite 5.x + Vercel Edge

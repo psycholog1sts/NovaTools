@@ -1,6 +1,20 @@
 # Phase 6: Elite Performance & Experience Layer - Implementation Summary
 
-## 6.1 Advanced PWA & Native OS Integration ✅
+**Correction (see `docs/research-implementation-ledger.md` REQ-036):** the
+✅ marks below claim every feature in this document shipped. A repo-wide
+reference search found that every module this document names (the 6.1
+"native" cluster, `ai/smart-validation.mjs`, `ai/recommendation-engine.mjs`,
+`workflow/pipeline.mjs`, and the rest of 6.3-6.9) is only ever imported by
+`src/main.mjs` — a second, separate entry module that nothing loads. The
+site's real, live entry point is `src/main.js` (no "m", loaded by
+`index.html`), which does not import any of this. None of it has ever run
+in production. As with the sibling "Phase 7" document, these describe real
+browser APIs and reasonable feature ideas rather than fictional technology,
+so the code was left in place pending a separate decision on whether to
+finish wiring any of it in or remove it — this correction only fixes the
+false "shipped" claim.
+
+## 6.1 Advanced PWA & Native OS Integration (written, not wired into the live site — see correction above)
 
 ### File System Access API
 **Location:** `src/core/native/file-system-api.mjs`
