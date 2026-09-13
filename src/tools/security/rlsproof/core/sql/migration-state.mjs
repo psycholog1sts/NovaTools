@@ -178,11 +178,11 @@ function parseFunction(statement, location) {
   if (!match) return null;
   const name = qualifiedFromMatch(match[1], match[2]);
   const securityDefiner = /\bsecurity\s+definer\b/i.test(statement);
-  const searchPathMatch = /\bset\s+(?:local\s+)?search_path\s*(?:=|to)\s*([^;\n]+)/i.exec(statement);
+  const searchPathMatch = /\bset\s+(?:local\s+)?search_path\s*(?:=|to)\s*((?:"(?:[^"]|"")*"|[A-Za-z_][A-Za-z0-9_$]*)(?:\s*,\s*(?:"(?:[^"]|"")*"|[A-Za-z_][A-Za-z0-9_$]*))*)/i.exec(statement);
   return {
     name,
     securityDefiner,
-    searchPath: searchPathMatch?.[1]?.trim() ?? null,
+    searchPath: searchPathMatch?.[1]?.trim().replace(/\s*,\s*/g, ', ') ?? null,
     path: location.path,
     line: location.line,
     raw: statement,
