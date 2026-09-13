@@ -1,4 +1,9 @@
 name = "novatools"
 pages_build_output_dir = "dist"
+compatibility_date = "2026-09-01"
+compatibility_flags = ["nodejs_compat"]
 
 # Cloudflare Pages build output for direct uploads and Wrangler deploys.
+# nodejs_compat is required by functions/api/geo-scan.js and functions/api/live-data.js,
+# which use node:dns to validate resolved addresses before fetching a user- or
+# provider-supplied URL (see the SSRF notes in those files).

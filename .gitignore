@@ -17,6 +17,9 @@ __pycache__/
 dist/
 *.tsbuildinfo
 
+# Local wrangler pages dev state/cache
+.wrangler/
+
 # Environment
 .env
 .env.local
