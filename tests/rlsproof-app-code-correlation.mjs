@@ -52,4 +52,14 @@ const deterministic = correlateAppCode(state, js('src/data.mjs', `await supabase
 const deterministicAgain = correlateAppCode(state, js('src/data.mjs', `await supabase.from('docs').select('*');`));
 assert.deepEqual(deterministic.calls, deterministicAgain.calls);
 
+const ignoredText = correlateAppCode(state, js('src/ignored.mjs', `
+// await supabase.from('audit_log').select('*');
+/* await supabase.from('audit_log').insert({}); */
+const sample = "await supabase.from('audit_log').delete().eq('id', id)";
+const rpcExample = 'await supabase.rpc("admin_task")';
+`));
+assert.deepEqual(ignoredText.calls, [], 'commented-out and quoted examples must not create authorization findings');
+assert.deepEqual(ignoredText.summary, { guarded: 0, weak: 0, requiresReview: 0 });
+assert.equal(ignoredText.verdict, 'SAFE');
+
 console.log('RLSProof app-code correlation contract: PASS');
