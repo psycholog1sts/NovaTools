@@ -16,6 +16,14 @@ function normalizePrivilege(value) {
   return privilege === 'all privileges' ? 'all' : privilege;
 }
 
+function normalizeSearchPath(value) {
+  if (value == null) return null;
+  const text = String(value).trim();
+  const boundary = /\s+(?:as\s+\$(?:[A-Za-z_][A-Za-z0-9_]*)?\$|language\b|security\b|set\b|immutable\b|stable\b|volatile\b|parallel\b|cost\b|rows\b|support\b|transform\b|window\b|leakproof\b)/i.exec(text);
+  const path = (boundary ? text.slice(0, boundary.index) : text).trim();
+  return path ? path.replace(/\s*,\s*/g, ', ') : null;
+}
+
 function edgeKey(edge) {
   return `${edge.from}|${edge.type}|${edge.to}|${edge.operation ?? ''}`;
 }
@@ -98,7 +106,7 @@ export function buildAuthorizationGraph(state) {
         type: 'function',
         name: fn.name,
         securityDefiner: Boolean(fn.securityDefiner),
-        searchPath: fn.searchPath ?? null,
+        searchPath: normalizeSearchPath(fn.searchPath),
       });
     }
   }
