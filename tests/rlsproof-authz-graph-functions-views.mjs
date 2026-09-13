@@ -15,11 +15,18 @@ const nodes = new Map(graph.nodes.map((node) => [node.id, node]));
 
 assert.equal(nodes.get('function:public.admin_task')?.type, 'function');
 assert.equal(nodes.get('function:public.admin_task')?.securityDefiner, true);
-assert.equal(nodes.get('function:public.admin_task')?.searchPath, 'public as $$ select 1');
+assert.equal(nodes.get('function:public.admin_task')?.searchPath, 'public');
 
 assert.equal(nodes.get('view:public.docs_view')?.type, 'view');
 assert.equal(nodes.get('view:public.docs_view')?.securityInvoker, false);
 assert.equal(nodes.get('materialized-view:public.docs_rollup')?.type, 'materialized-view');
+
+const multiPathState = buildMigrationState([{ path: 'supabase/migrations/002.sql', text: `
+create function public.lookup_task() returns void language sql security definer set search_path to pg_catalog, public as $$ select 1; $$;
+` }]);
+const multiPathGraph = buildAuthorizationGraph(multiPathState);
+const multiPathNodes = new Map(multiPathGraph.nodes.map((node) => [node.id, node]));
+assert.equal(multiPathNodes.get('function:public.lookup_task')?.searchPath, 'pg_catalog, public');
 
 const again = buildAuthorizationGraph(state);
 assert.deepEqual(graph, again, 'authorization graph must remain deterministic');
