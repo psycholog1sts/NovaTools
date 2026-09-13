@@ -1,0 +1,21 @@
+name: RLSProof Graph Functions and Views Contract
+
+on:
+  pull_request:
+    paths:
+      - 'src/tools/security/rlsproof/core/graph/**'
+      - 'tests/rlsproof-authz-graph-functions-views.mjs'
+      - '.github/workflows/rlsproof-authz-graph-functions-views-contract.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node tests/rlsproof-authz-graph-functions-views.mjs

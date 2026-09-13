@@ -16,6 +16,14 @@ function normalizePrivilege(value) {
   return privilege === 'all privileges' ? 'all' : privilege;
 }
 
+function normalizeSearchPath(value) {
+  if (value == null) return null;
+  const text = String(value).trim();
+  const boundary = /\s+(?:as\s+\$(?:[A-Za-z_][A-Za-z0-9_]*)?\$|language\b|security\b|set\b|immutable\b|stable\b|volatile\b|parallel\b|cost\b|rows\b|support\b|transform\b|window\b|leakproof\b)/i.exec(text);
+  const path = (boundary ? text.slice(0, boundary.index) : text).trim();
+  return path ? path.replace(/\s*,\s*/g, ', ') : null;
+}
+
 function edgeKey(edge) {
   return `${edge.from}|${edge.type}|${edge.to}|${edge.operation ?? ''}`;
 }
@@ -88,6 +96,42 @@ export function buildAuthorizationGraph(state) {
         operation: normalizePrivilege(privilege),
       };
       edges.set(edgeKey(edge), edge);
+    }
+  }
+
+  if (state.functions instanceof Map) {
+    for (const fn of state.functions.values()) {
+      addNode(nodes, {
+        id: nodeId('function', fn.name),
+        type: 'function',
+        name: fn.name,
+        securityDefiner: Boolean(fn.securityDefiner),
+        searchPath: normalizeSearchPath(fn.searchPath),
+      });
+    }
+  }
+
+  if (state.views instanceof Map) {
+    for (const view of state.views.values()) {
+      addNode(nodes, {
+        id: nodeId('view', view.name),
+        type: 'view',
+        name: view.name,
+        securityInvoker: Boolean(view.securityInvoker),
+        referencesAuthUsers: Boolean(view.referencesAuthUsers),
+      });
+    }
+  }
+
+  if (state.materializedViews instanceof Map) {
+    for (const view of state.materializedViews.values()) {
+      addNode(nodes, {
+        id: nodeId('materialized-view', view.name),
+        type: 'materialized-view',
+        name: view.name,
+        securityInvoker: Boolean(view.securityInvoker),
+        referencesAuthUsers: Boolean(view.referencesAuthUsers),
+      });
     }
   }
 
