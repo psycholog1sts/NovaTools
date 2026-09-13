@@ -20,7 +20,7 @@ function extractCalls(files) {
   const calls = [];
 
   for (const file of appFiles(files)) {
-    const direct = new RegExp(`\\.from\\(\\s*(['\"\\\`])([^'\"\\\`]+)\\1\\s*\\)\\s*\\.\\s*${TABLE_METHOD}\\s*\\(`, 'gi');
+    const direct = new RegExp(`\\.from\\(\\s*(['"\\x60])([^'"\\x60]+)\\1\\s*\\)\\s*\\.\\s*${TABLE_METHOD}\\s*\\(`, 'gi');
     const dynamic = new RegExp(`\\.from\\(\\s*([A-Za-z_$][A-Za-z0-9_$]*)\\s*\\)\\s*\\.\\s*${TABLE_METHOD}\\s*\\(`, 'gi');
     const rpc = /\.rpc\(\s*(['"`])([^'"`]+)\1/gi;
 
