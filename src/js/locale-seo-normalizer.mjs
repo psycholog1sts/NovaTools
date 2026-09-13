@@ -57,7 +57,7 @@ export function normalizeGeneralLocaleSeoHtml(html) {
   const canonical = canonicalBaseUrl(canonicalHref(source));
   if (!canonical) return source;
 
-  let next = stripGeneralAlternateLinks(source);
+  const next = stripGeneralAlternateLinks(source);
   if (isNoindexHtml(next)) return next;
 
   const canonicalTag = (next.match(/<link\b[^>]*>/gi) || []).find((tag) => attr(tag, 'rel').toLowerCase() === 'canonical');
