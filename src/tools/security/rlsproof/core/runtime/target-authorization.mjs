@@ -51,7 +51,7 @@ function normalizedAttestedHosts(values) {
 
 function targetDescriptor(url) {
   return {
-    href: url.href,
+    href: `${url.origin}${url.pathname}`,
     origin: url.origin,
     protocol: url.protocol,
     hostname: normalizeHostname(url.hostname),
