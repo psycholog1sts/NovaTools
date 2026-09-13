@@ -91,6 +91,42 @@ export function buildAuthorizationGraph(state) {
     }
   }
 
+  if (state.functions instanceof Map) {
+    for (const fn of state.functions.values()) {
+      addNode(nodes, {
+        id: nodeId('function', fn.name),
+        type: 'function',
+        name: fn.name,
+        securityDefiner: Boolean(fn.securityDefiner),
+        searchPath: fn.searchPath ?? null,
+      });
+    }
+  }
+
+  if (state.views instanceof Map) {
+    for (const view of state.views.values()) {
+      addNode(nodes, {
+        id: nodeId('view', view.name),
+        type: 'view',
+        name: view.name,
+        securityInvoker: Boolean(view.securityInvoker),
+        referencesAuthUsers: Boolean(view.referencesAuthUsers),
+      });
+    }
+  }
+
+  if (state.materializedViews instanceof Map) {
+    for (const view of state.materializedViews.values()) {
+      addNode(nodes, {
+        id: nodeId('materialized-view', view.name),
+        type: 'materialized-view',
+        name: view.name,
+        securityInvoker: Boolean(view.securityInvoker),
+        referencesAuthUsers: Boolean(view.referencesAuthUsers),
+      });
+    }
+  }
+
   return {
     schemaVersion: 1,
     nodes: [...nodes.values()].sort((a, b) => a.id.localeCompare(b.id)),
