@@ -21,6 +21,14 @@ assert.equal(attested.authorized, true);
 assert.equal(attested.reason, 'owned-target-attested');
 assert.equal(attested.target.hostname, 'project.example.com');
 
+const sensitiveQuery = authorizeRuntimeTarget('https://project.example.com/rest/v1/docs?apikey=do-not-report#secret', {
+  attestedOwnedHosts: ['project.example.com'],
+});
+assert.equal(sensitiveQuery.authorized, true);
+assert.equal(sensitiveQuery.target.href, 'https://project.example.com/rest/v1/docs');
+assert.equal('search' in sensitiveQuery.target, false);
+assert.equal('hash' in sensitiveQuery.target, false);
+
 const wrongHost = authorizeRuntimeTarget('https://other.example.com/', {
   attestedOwnedHosts: ['project.example.com'],
 });
