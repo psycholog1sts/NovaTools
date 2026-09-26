@@ -368,13 +368,6 @@ export function generateSchemaJsonLd(pageType, pageData = {}, route = '/') {
   return schemas.map((schema) => `<script type="application/ld+json">${jsonLdEscape(schema)}</script>`).join('\n');
 }
 
-function breadcrumbSchemaForRoute(route, pageTitle) {
-  const itemListElement = breadcrumbItemsForRoute(route, pageTitle);
-  if (itemListElement.length < 2) return '';
-  return `<script type="application/ld+json">${jsonLdEscape({ '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement })}</script>`;
-}
-
-
 function removePhase5Schema(html) {
   return html.replace(/\n?\s*<script\b(?=[^>]*\btype\s*=\s*["']application\/ld\+json["'])[^>]*>[\s\S]*?<\/script>\s*/gi, '\n');
 }

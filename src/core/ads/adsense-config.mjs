@@ -170,13 +170,6 @@ function disableUnconfiguredManualInventory() {
   });
 }
 
-function hasValidAdSlots() {
-  return Array.from(document.querySelectorAll('ins.adsbygoogle')).some((el) => {
-    const slot = el.getAttribute('data-ad-slot') || '';
-    return /^\d{8,20}$/.test(slot.trim());
-  });
-}
-
 function reserveAdSlotSpace() {
   document.querySelectorAll('ins.adsbygoogle').forEach((el) => {
     el.classList.add('ad-slot-reserved');
