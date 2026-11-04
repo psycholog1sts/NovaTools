@@ -27,9 +27,9 @@ async function fetchWithTimeout(url, options = {}) {
   }
 }
 
-async function fetchJson(url) {
+async function fetchJson(url, extraHeaders = {}) {
   const response = await fetchWithTimeout(url, {
-    headers: { accept: 'application/json', 'user-agent': 'NovaTools/1.0' }
+    headers: { accept: 'application/json', 'user-agent': 'NovaTools/1.0', ...extraHeaders }
   });
   if (!response.ok) throw new Error('upstream_unavailable');
   return response.json();
@@ -79,14 +79,47 @@ async function exchange(searchParams) {
   return { resource: 'exchange', base, date: new Date().toISOString().slice(0, 10), rates: table[base], provider: 'tcmb.gov.tr' };
 }
 
-async function crypto(searchParams) {
+async function crypto(searchParams, env = {}) {
   const requestedIds = (searchParams.get('ids') || 'bitcoin,ethereum,solana,ripple,cardano').split(',')
     .map((id) => id.trim().toLowerCase().replace(/[^a-z0-9-]/g, ''))
     .filter(Boolean)
     .slice(0, 12);
   const ids = (requestedIds.length ? requestedIds : ['bitcoin', 'ethereum', 'solana', 'ripple', 'cardano']).join(',');
-  const data = await fetchJson(`https://api.coingecko.com/api/v3/simple/price?ids=${ids}&vs_currencies=usd,try&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true&include_last_updated_at=true`);
-  return { resource: 'crypto', coins: data, provider: 'coingecko.com' };
+  // CoinGecko's keyless API rejects Cloudflare's shared egress IPs; a free Demo key
+  // (Cloudflare Pages env COINGECKO_DEMO_API_KEY) lifts that.
+  const demoKey = String(env.COINGECKO_DEMO_API_KEY || '').trim();
+  try {
+    const data = await fetchJson(
+      `https://api.coingecko.com/api/v3/simple/price?ids=${ids}&vs_currencies=usd,try&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true&include_last_updated_at=true`,
+      demoKey ? { 'x-cg-demo-api-key': demoKey } : {}
+    );
+    return { resource: 'crypto', coins: data, provider: 'coingecko.com' };
+  } catch {
+    return coinbaseSpotPrices(ids.split(','));
+  }
+}
+
+// Keyless fallback: Coinbase public exchange rates (spot USD/TRY only). Market cap,
+// volume and 24h change are not available there and are left absent, not estimated.
+const COINBASE_SYMBOLS = {
+  bitcoin: 'BTC', ethereum: 'ETH', solana: 'SOL', ripple: 'XRP', cardano: 'ADA',
+  dogecoin: 'DOGE', polkadot: 'DOT', litecoin: 'LTC', chainlink: 'LINK', 'avalanche-2': 'AVAX', tether: 'USDT'
+};
+
+async function coinbaseSpotPrices(ids) {
+  const coins = {};
+  await Promise.all(ids.filter((id) => COINBASE_SYMBOLS[id]).map(async (id) => {
+    try {
+      const { data } = await fetchJson(`https://api.coinbase.com/v2/exchange-rates?currency=${COINBASE_SYMBOLS[id]}`);
+      const usd = Number(data?.rates?.USD);
+      const tryPrice = Number(data?.rates?.TRY);
+      if (Number.isFinite(usd) && usd > 0 && Number.isFinite(tryPrice) && tryPrice > 0) coins[id] = { usd, try: tryPrice };
+    } catch {
+      // A coin the fallback cannot price is omitted; the client reports partial data.
+    }
+  }));
+  if (!Object.keys(coins).length) throw new Error('upstream_unavailable');
+  return { resource: 'crypto', coins, provider: 'coinbase.com' };
 }
 
 async function weather(searchParams) {
@@ -117,16 +150,17 @@ const handlers = { exchange, crypto, weather, stocks };
 
 /**
  * @param {URLSearchParams} searchParams
+ * @param {Record<string, string>} [env] runtime bindings (Cloudflare `context.env`, Vercel `process.env`)
  * @returns {Promise<{status: number, body: object}>}
  */
-export async function handleLiveData(searchParams) {
+export async function handleLiveData(searchParams, env = {}) {
   const resource = searchParams.get('resource');
   if (!handlers[resource]) {
     return { status: 400, body: { error: 'unknown_resource', message: 'Unknown live-data resource.' } };
   }
 
   try {
-    const body = await handlers[resource](searchParams);
+    const body = await handlers[resource](searchParams, env);
     return { status: 200, body: { ...body, fetchedAt: new Date().toISOString() } };
   } catch (error) {
     if (error instanceof PublicRequestError) {

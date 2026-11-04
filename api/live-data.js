@@ -7,7 +7,7 @@ const ERROR_CACHE_CONTROL = 'no-store, max-age=0';
 
 export default async function handler(request) {
   const { searchParams } = new URL(request.url);
-  const { status, body } = await handleLiveData(searchParams);
+  const { status, body } = await handleLiveData(searchParams, typeof process !== 'undefined' ? process.env : {});
   return new Response(JSON.stringify(body), {
     status,
     headers: {
