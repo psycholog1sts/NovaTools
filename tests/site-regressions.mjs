@@ -300,6 +300,11 @@ assert.match(
 );
 assert.match(
   toolEnhancer,
+  /function displayToolName[^}]*enhancerLanguage\(\) !== 'tr' && tool\?\.nameEn\) return tool\.nameEn/,
+  'English tool pages must title the tool with nameEn, not the Turkish manifest name.'
+);
+assert.match(
+  toolEnhancer,
   /value\.includes\(workflowSentence\)/,
   'Combined hero description text must translate the appended workflow sentence.'
 );
