@@ -1,7 +1,7 @@
 const CATEGORY_CONFIG = {
   pdf: {
     label: 'PDF tools', route: '/categories/pdf-tools.html', guide: '/blog/articles/browser-based-tools-vs-desktop-software-privacy-comparison.html',
-    tools: [['Compress PDF', '/tools/pdf/compress/'], ['Merge PDF', '/tools/pdf/merge/'], ['Split PDF', '/tools/pdf/split/']],
+    tools: [['Compress PDF', '/tools/pdf/compress/'], ['Merge PDF', '/tools/pdf/merge/'], ['Split PDF', '/tools/pdf/split/'], ['Redact PDF', '/tools/pdf/redact/']],
     helper: 'Review page order, readability, file size and sensitive pages before sharing a document.'
   },
   image: {

@@ -1,6 +1,6 @@
 {
   "generated": "postinstall",
-  "count": 130,
+  "count": 131,
   "tools": [
     {
       "id": "age-calculator",
@@ -4926,6 +4926,70 @@
       "limitations": "Does not rasterize or downsample page images; output can be smaller, similar in size, or larger; maximum input is 50 MB and browser memory varies by device.",
       "path": "/pdf/compress",
       "entry": "/src/tools/pdf/compress/"
+    },
+    {
+      "id": "pdf-redact",
+      "name": "PDF Karartma ve Kişisel Veri Kontrolü",
+      "nameEn": "PDF Redact & PII Check",
+      "category": "pdf",
+      "tier": 2,
+      "cpc": {
+        "tr": 1.3,
+        "us": 2
+      },
+      "keywords": {
+        "tr": [
+          "pdf karartma",
+          "pdf kişisel veri gizleme",
+          "tc kimlik gizleme",
+          "iban gizleme pdf",
+          "kvkk pdf"
+        ],
+        "en": [
+          "redact pdf",
+          "pdf redaction tool",
+          "remove personal data from pdf",
+          "check pdf redaction",
+          "black out text in pdf"
+        ]
+      },
+      "description": {
+        "tr": "PDF'teki TC kimlik, IBAN, kart, telefon ve e-postaları bulun, karartın ve metnin gerçekten silindiğini doğrulayın. Dosya tarayıcıdan çıkmaz.",
+        "en": "Find ID numbers, IBANs, card numbers, phones and emails in a PDF, black them out, and verify the text is really gone. The file stays in your browser."
+      },
+      "schema": {
+        "@type": "WebApplication",
+        "applicationCategory": "UtilityApplication",
+        "offers": {
+          "@type": "Offer",
+          "price": "0"
+        }
+      },
+      "ads": {
+        "sidebar": {
+          "enabled": true,
+          "size": "336x280"
+        }
+      },
+      "bundle": {
+        "vendor": "pdf-vendor",
+        "wasm": true
+      },
+      "relatedTools": [
+        "pdf/split",
+        "pdf/compress"
+      ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "LOCAL_ONLY",
+      "externalNetwork": false,
+      "syntheticData": "NONE",
+      "dataSource": "The PDF the visitor selects; its text layer is read and its pages rendered with pdf.js (served from mc-novatools.com), and the redacted copy is assembled with pdf-lib in the browser",
+      "limitations": "Detection is pattern-based: Turkish ID numbers (both check digits), IBANs (mod-97), Luhn-valid card numbers, Turkish phone formats, email addresses and words the visitor types. Names, addresses and other free text are found only when typed as search words or covered with drawn boxes. Scanned PDFs have no text layer, so nothing is detected automatically and there is no OCR. Box positions inside a line are estimated proportionally from the text layer and padded. The output is rebuilt from JPEG page images at the chosen DPI, so it has no selectable or searchable text, is not screen-reader accessible, and is usually larger than the input; links, bookmarks, form fields, comments, digital signatures and tags are not carried over. The output is re-opened and checked for remaining text and annotations before download. Password-protected PDFs are refused; limits are 50 MB and 100 pages. Nothing is uploaded to NovaTools.",
+      "path": "/pdf/redact",
+      "entry": "/src/tools/pdf/redact/"
     },
     {
       "id": "pdf-split",

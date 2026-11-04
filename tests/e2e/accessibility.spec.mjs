@@ -177,8 +177,10 @@ test('homepage mobile discovery stays concise without hiding category routes', a
   // Budget bumped when the "Developer Tools" category card started appearing here
   // (its first certified tool shipped), which legitimately added ~400px. Keep some
   // margin above the current real height so this still catches actual bloat.
+  // Bumped again when PDF Redact became the fourth certified PDF tool listed on the
+  // homepage (+61px, measured 12161 in CI).
   const documentHeight = await page.evaluate(() => document.documentElement.scrollHeight);
-  expect(documentHeight).toBeLessThan(12100);
+  expect(documentHeight).toBeLessThan(12300);
 });
 
 test('gold-standard PDF page exposes usable mobile navigation', async ({ page }) => {
