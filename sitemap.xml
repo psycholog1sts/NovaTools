@@ -15,7 +15,7 @@
   </url>
   <url>
     <loc>https://mc-novatools.com/about-us.html</loc>
-    <lastmod>2026-08-10T20:37:58Z</lastmod>
+    <lastmod>2026-11-04T20:30:12+03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -203,7 +203,7 @@
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/design/invoice-generator/</loc>
-    <lastmod>2026-09-04T15:10:26+03:00</lastmod>
+    <lastmod>2026-11-04T20:20:51+03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -269,7 +269,7 @@
   </url>
   <url>
     <loc>https://mc-novatools.com/tools/image/image-flipper/</loc>
-    <lastmod>2026-11-04T04:13:51+03:00</lastmod>
+    <lastmod>2026-11-04T20:20:51+03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -306,31 +306,31 @@
   <!-- Blog category archive pages -->
   <url>
     <loc>https://mc-novatools.com/blog/categories/pdf-document-management.html</loc>
-    <lastmod>2026-06-17T16:51:15+03:00</lastmod>
+    <lastmod>2026-11-04T20:28:49+03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.55</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/categories/image-processing-web-performance.html</loc>
-    <lastmod>2026-06-17T16:51:15+03:00</lastmod>
+    <lastmod>2026-11-04T20:28:49+03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.55</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/categories/developer-tools-coding.html</loc>
-    <lastmod>2026-06-17T16:51:15+03:00</lastmod>
+    <lastmod>2026-11-04T20:28:49+03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.55</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/categories/finance-calculators.html</loc>
-    <lastmod>2026-06-17T16:51:15+03:00</lastmod>
+    <lastmod>2026-11-04T20:28:49+03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.55</priority>
   </url>
   <url>
     <loc>https://mc-novatools.com/blog/categories/productivity-tool-guides.html</loc>
-    <lastmod>2026-06-17T16:51:15+03:00</lastmod>
+    <lastmod>2026-11-04T20:28:49+03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.55</priority>
   </url>
