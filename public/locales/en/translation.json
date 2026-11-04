@@ -1695,7 +1695,8 @@
           "059": "${formatCurrency(totals.total, currency)}",
           "060": "Notes / Terms",
           "061": "\\u00d7"
-        }
+        },
+        "disclaimer": "<strong>Disclaimer:</strong> This tool creates invoices for record keeping, entirely in your browser. Check that the tax calculations follow your local rules, and ask a tax professional before issuing official invoices."
       },
       "logo-maker": {
         "meta": {
@@ -3311,7 +3312,9 @@
           "033": "Yes! Clicking the same flip option again will return the image to its original orientation. You can toggle between flipped and original states as many times as you like.",
           "034": "psk.dan.metehancetin@mc-novatools.com",
           "035": "Estimates only — not professional image processing advice."
-        }
+        },
+        "privacyNote": "<strong>Privacy:</strong> The image is flipped in your browser and is never uploaded to a server.",
+        "outputNote": "<strong>Note:</strong> The flip itself moves pixels without interpolation, but the downloaded file is re-encoded by your browser, so its file size and metadata can differ from the original."
       },
       "image-resizer": {
         "meta": {

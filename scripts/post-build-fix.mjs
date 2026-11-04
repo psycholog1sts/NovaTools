@@ -436,7 +436,16 @@ function prerenderTemplateArticle(filePath, post, locale) {
       .replace(/<a href="\/blog\/\?category=[^"]*">[^<]*<\/a>/, `<a href="/blog/?category=${escapeAttr(post.category)}">${escapeHtml(categoryLabel)}</a>`);
   }
   next = next.replace(/(<nav class="article-breadcrumb"[\s\S]*?<li aria-current="page">)[^<]*(<\/li>)/i, `$1${escapeHtml(post.title)}$2`);
-  if (locale !== 'tr') next = next.replace(/<a href="\/">Ana Sayfa<\/a>/, '<a href="/">Home</a>');
+  if (locale !== 'tr') {
+    // Static template chrome is Turkish; the client script relabels it, crawlers read this.
+    next = next
+      .replace(/<a href="\/">Ana Sayfa<\/a>/, '<a href="/">Home</a>')
+      .replace('<h2 id="toc-title">İçindekiler</h2>', '<h2 id="toc-title">On this page</h2>')
+      .replace('aria-label="Sosyal paylaşım"', 'aria-label="Share"')
+      .replace('aria-label="Yazıya git"', 'aria-label="Back to top"')
+      .replace('>Kopyalandı!<', '>Copied!<')
+      .replace(/<span class="updated-badge">Güncellendi: /, '<span class="updated-badge">Updated: ');
+  }
   if (next === html) return false;
   fs.writeFileSync(filePath, next);
   return true;

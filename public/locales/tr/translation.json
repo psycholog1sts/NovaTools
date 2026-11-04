@@ -1284,7 +1284,8 @@
           "059": "${formatCurrency(totals.total, currency)}",
           "060": "Notlar / Şartlar",
           "061": "\\u00d7"
-        }
+        },
+        "disclaimer": "<strong>Uyarı:</strong> Bu araç kayıt tutmak için fatura oluşturur; işlemler tamamen tarayıcınızda yapılır. Vergi hesaplamalarının yerel mevzuata uygun olduğunu kontrol edin ve resmî fatura düzenlemeden önce bir vergi uzmanına danışın."
       },
       "logo-maker": {
         "meta": {
@@ -2900,7 +2901,9 @@
           "033": "Evet! Aynı çevirme seçeneğine tekrar tıklamak görüntüyü orijinal yönüne döndürecektir. Ters çevrilmiş ve orijinal durumlar arasında istediğiniz kadar geçiş yapabilirsiniz.",
           "034": "psk.dan.metehancetin@mc-novatools.com",
           "035": "Yalnızca tahminler; profesyonel görüntü işleme tavsiyesi değildir."
-        }
+        },
+        "privacyNote": "<strong>Gizlilik:</strong> Görsel tarayıcınızda çevrilir ve hiçbir sunucuya yüklenmez.",
+        "outputNote": "<strong>Not:</strong> Çevirme işlemi pikselleri enterpolasyon olmadan yer değiştirir; ancak indirilen dosyayı tarayıcınız yeniden kodlar, bu yüzden dosya boyutu ve meta verileri orijinalden farklı olabilir."
       },
       "image-resizer": {
         "meta": {
