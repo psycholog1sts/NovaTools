@@ -197,6 +197,8 @@ function categoryRoute(category) {
 }
 
 function displayToolName(tool, slug) {
+  // `name` is the Turkish label; English pages must not build "<Turkish name> – Free Online … Tool".
+  if (enhancerLanguage() !== 'tr' && tool?.nameEn) return tool.nameEn;
   return toolName(tool) || slug.split('/').pop().replace(/-/g, ' ');
 }
 
