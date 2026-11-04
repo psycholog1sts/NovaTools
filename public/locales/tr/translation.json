@@ -78,7 +78,8 @@
           "031": "Burç, Koç'tan (21 Mart - 19 Nisan) Balık'a (19 Şubat - 20 Mart) kadar her burç için standart astrolojik tarih aralıklarına göre belirlenir.",
           "032": "psk.dan.metehancetin@mc-novatools.com",
           "033": "Yalnızca tahminler; mali, hukuki veya vergi tavsiyesi değildir."
-        }
+        },
+        "disclaimer": "<strong>Uyarı:</strong> Yaş, girdiğiniz iki tarihten tamamen tarayıcınızda hesaplanır. Resmî formlarda, resmî kayıttaki doğum tarihini esas alın."
       },
       "bmi-calculator": {
         "meta": {
@@ -143,7 +144,8 @@
           "012": "Boy ve kilonuzdan Vücut Kitle İndeksinizi (VKİ) hesaplayın, yetişkinler için standart kategori sınırlarını ve boyunuzda VKİ 18,5-24,9 aralığına karşılık gelen kilo aralığını görün.",
           "031": "Vücut Kitle İndeksi (VKİ), boyunuza göre sağlıklı bir kiloda olup olmadığınızı değerlendirmek için boy ve kiloyu kullanan basit bir tarama yöntemidir. Bu hesaplayıcı oranı tarayıcınızda hesaplar ve sonucun yetişkinler için hangi standart kategoriye düştüğünü gösterir. Yalnızca bir tarama oranıdır ve hiçbir teşhis koymaz.",
           "039": "Boyunuzda VKİ 18,5-24,9 aralığına karşılık gelen kilo aralığını inceleyin."
-        }
+        },
+        "disclaimer": "<strong>Uyarı:</strong> BMI bir tarama ölçüsüdür; vücut yağı ya da sağlık durumu için teşhis değildir. Doğru bir değerlendirme için bir sağlık uzmanına danışın."
       },
       "currency-converter": {
         "meta": {
@@ -189,7 +191,8 @@
           "034": "Hayır. Tüm hesaplamalar tarayıcınızda yerel olarak gerçekleşir. Sunucularımıza hiçbir veri aktarılmaz veya herhangi bir yerde saklanmaz.",
           "035": "psk.dan.metehancetin@mc-novatools.com",
           "036": "Yalnızca tahminler; mali, hukuki veya vergi tavsiyesi değildir."
-        }
+        },
+        "disclaimer": "<strong>Uyarı:</strong> Döviz kurları yalnızca bilgi amaçlıdır ve anlık piyasa kurlarıyla aynı olmayabilir. Gerçek bir işlem için bankanızın veya döviz sağlayıcınızın verdiği kuru kullanın."
       },
       "number-base-converter": {
         "meta": {
@@ -243,7 +246,8 @@
           "039": "Hayır. Tüm dönüşümler tarayıcınızda yerel olarak gerçekleşir. Sunucularımıza hiçbir veri aktarılmaz veya herhangi bir yerde saklanmaz.",
           "040": "psk.dan.metehancetin@mc-novatools.com",
           "041": "Yalnızca tahminler; mali, hukuki veya vergi tavsiyesi değildir."
-        }
+        },
+        "disclaimer": "<strong>Uyarı:</strong> 2, 8, 10 ve 16 tabanları arasındaki dönüşümler, aracın kabul ettiği işaretli tam sayılar için kesindir. Kesirli sayılar desteklenmez."
       },
       "percentage-calculator": {
         "meta": {
@@ -308,7 +312,8 @@
           "043": "Evet, bu hesap makinesi indirimler, vergiler, bahşişler ve faiz oranları gibi birçok finansal hesaplama için kullanışlıdır. Ancak önemli finansal kararlar için daima bir finans uzmanıyla görüşün.",
           "044": "psk.dan.metehancetin@mc-novatools.com",
           "045": "Yalnızca tahminler; mali, hukuki veya vergi tavsiyesi değildir."
-        }
+        },
+        "disclaimer": "<strong>Uyarı:</strong> Sonuçlar girdiğiniz sayılar üzerinde yapılan basit aritmetiktir. Sözleşme, fatura veya beyanname için kullanacağınız rakamları ayrıca kontrol edin."
       },
       "roman-numerals": {
         "meta": {
@@ -357,7 +362,8 @@
           "034": "Hayır. Tüm dönüşümler tarayıcınızda yerel olarak gerçekleşir. Sunucularımıza hiçbir veri aktarılmaz veya herhangi bir yerde saklanmaz.",
           "035": "psk.dan.metehancetin@mc-novatools.com",
           "036": "Yalnızca tahminler; mali, hukuki veya vergi tavsiyesi değildir."
-        }
+        },
+        "disclaimer": "<strong>Uyarı:</strong> Dönüştürücü standart Roma rakamı kurallarını izler; bu yüzden geçerli aralık 1 ile 3999 arasıdır."
       },
       "scientific-calculator": {
         "meta": {
@@ -418,7 +424,8 @@
           "049": "Yalnızca tahminler; mali, hukuki veya vergi tavsiyesi değildir.",
           "050": "${item.expr}",
           "051": "${item.result}"
-        }
+        },
+        "disclaimer": "<strong>Uyarı:</strong> Sonuçlar standart kayan nokta aritmetiğiyle hesaplanır ve referans amaçlıdır. Kritik hesaplamaları ayrıca doğrulayın."
       },
       "timezone-converter": {
         "meta": {
@@ -463,7 +470,8 @@
           "033": "psk.dan.metehancetin@mc-novatools.com",
           "034": "Yalnızca tahminler; mali, hukuki veya vergi tavsiyesi değildir.",
           "035": "${formatTime(tzTime)}"
-        }
+        },
+        "disclaimer": "<strong>Uyarı:</strong> Dönüşümler, seçilen tarih için tarayıcınızın IANA/Intl saat dilimi verisini kullanır. Yaz saati geçişinde belirsiz olan ya da hiç oluşmayan yerel saatler reddedilir. İleride değişecek saat dilimi kuralları tarayıcı güncellemelerine bağlıdır; kritik toplantı saatlerini ayrıca doğrulayın."
       },
       "unit-converter": {
         "meta": {
@@ -516,7 +524,8 @@
           "037": "Sıcaklık dönüşümleri özel formüller kullanır: Celsius'tan Fahrenheit'e: (°C × 9/5) + 32 = °F, Fahrenheit'ten Celsius'a: (°F − 32) × 5/9 = °C ve Kelvin, Celsius + 273,15'tir.",
           "038": "psk.dan.metehancetin@mc-novatools.com",
           "039": "Yalnızca tahminler; mali, hukuki veya vergi tavsiyesi değildir."
-        }
+        },
+        "disclaimer": "<strong>Uyarı:</strong> Dönüşümler standart çevirme katsayılarını kullanır ve genel referans amaçlıdır. Kritik ölçümleri resmî standarda göre kontrol edin."
       },
       "unix-timestamp": {
         "meta": {
@@ -571,7 +580,8 @@
           "040": "Unix zaman damgaları artık saniyeleri hesaba katmaz. Artık saniye ayarlamalarını göz ardı ederek, Epoch'tan bu yana geçen saniye sayısını temsil ederler.",
           "041": "psk.dan.metehancetin@mc-novatools.com",
           "042": "Yalnızca tahminler; mali, hukuki veya vergi tavsiyesi değildir."
-        }
+        },
+        "disclaimer": "<strong>Uyarı:</strong> Unix zaman damgası kendi saat dilimi olmayan, UTC tabanlı bir sayıdır; gösterilen yerel tarih cihazınızın saat dilimi ayarını kullanır. Geliştirme ve hata ayıklama amaçlıdır."
       }
     },
     "data": {

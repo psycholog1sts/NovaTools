@@ -489,7 +489,8 @@
           "031": "The zodiac sign is determined based on standard astrological date ranges for each sign, from Aries (March 21 - April 19) to Pisces (February 19 - March 20).",
           "032": "psk.dan.metehancetin@mc-novatools.com",
           "033": "Estimates only — not financial, legal, or tax advice."
-        }
+        },
+        "disclaimer": "<strong>Disclaimer:</strong> Age is worked out from the two dates you enter, entirely in your browser. For official forms, go by the date of birth on the official record."
       },
       "bmi-calculator": {
         "meta": {
@@ -554,7 +555,8 @@
           "012": "Calculate your Body Mass Index (BMI) from height and weight, see the standard adult category boundaries, and see the weight range that corresponds to BMI 18.5-24.9 at your height.",
           "031": "Body Mass Index (BMI) is a simple screening method that uses your height and weight to determine if you're at a healthy weight for your height. This calculator works out the ratio in your browser and shows which standard adult category the result falls into. It is a screening ratio only and does not diagnose anything.",
           "039": "Review the weight range that corresponds to BMI 18.5-24.9 at your height."
-        }
+        },
+        "disclaimer": "<strong>Disclaimer:</strong> BMI is a screening measure, not a diagnosis of body fat or health. Ask a healthcare provider for a proper assessment."
       },
       "currency-converter": {
         "meta": {
@@ -600,7 +602,8 @@
           "034": "No. All calculations happen locally in your browser. No data is transmitted to our servers or stored anywhere.",
           "035": "psk.dan.metehancetin@mc-novatools.com",
           "036": "Estimates only — not financial, legal, or tax advice."
-        }
+        },
+        "disclaimer": "<strong>Disclaimer:</strong> Exchange rates are for information only and may not match live market rates. For an actual transaction, use the rate your bank or exchange provider quotes."
       },
       "number-base-converter": {
         "meta": {
@@ -654,7 +657,8 @@
           "039": "No. All conversions happen locally in your browser. No data is transmitted to our servers or stored anywhere.",
           "040": "psk.dan.metehancetin@mc-novatools.com",
           "041": "Estimates only — not financial, legal, or tax advice."
-        }
+        },
+        "disclaimer": "<strong>Disclaimer:</strong> Conversions between bases 2, 8, 10 and 16 are exact for the signed whole numbers the tool accepts. Fractions are not supported."
       },
       "percentage-calculator": {
         "meta": {
@@ -719,7 +723,8 @@
           "043": "Yes, this calculator is useful for many financial calculations like discounts, taxes, tips, and interest rates. However, for important financial decisions, always verify with a financial professional.",
           "044": "psk.dan.metehancetin@mc-novatools.com",
           "045": "Estimates only — not financial, legal, or tax advice."
-        }
+        },
+        "disclaimer": "<strong>Disclaimer:</strong> Results are plain arithmetic on the numbers you enter. Check figures that feed a contract, invoice or tax return independently."
       },
       "roman-numerals": {
         "meta": {
@@ -768,7 +773,8 @@
           "034": "No. All conversions happen locally in your browser. No data is transmitted to our servers or stored anywhere.",
           "035": "psk.dan.metehancetin@mc-novatools.com",
           "036": "Estimates only — not financial, legal, or tax advice."
-        }
+        },
+        "disclaimer": "<strong>Disclaimer:</strong> The converter follows standard Roman numeral rules, so the valid range is 1 to 3999."
       },
       "scientific-calculator": {
         "meta": {
@@ -829,7 +835,8 @@
           "049": "Estimates only — not financial, legal, or tax advice.",
           "050": "${item.expr}",
           "051": "${item.result}"
-        }
+        },
+        "disclaimer": "<strong>Disclaimer:</strong> Results use standard floating-point arithmetic and are for reference. Verify critical calculations independently."
       },
       "timezone-converter": {
         "meta": {
@@ -874,7 +881,8 @@
           "033": "psk.dan.metehancetin@mc-novatools.com",
           "034": "Estimates only — not financial, legal, or tax advice.",
           "035": "${formatTime(tzTime)}"
-        }
+        },
+        "disclaimer": "<strong>Disclaimer:</strong> Conversions use your browser's IANA/Intl time zone data for the selected date. Ambiguous or nonexistent daylight-saving wall times are rejected. Future time zone rule changes depend on browser updates, so double-check critical meeting times."
       },
       "unit-converter": {
         "meta": {
@@ -927,7 +935,8 @@
           "037": "Temperature conversions use specific formulas: Celsius to Fahrenheit: (°C × 9/5) + 32 = °F, Fahrenheit to Celsius: (°F − 32) × 5/9 = °C, and Kelvin is Celsius + 273.15.",
           "038": "psk.dan.metehancetin@mc-novatools.com",
           "039": "Estimates only — not financial, legal, or tax advice."
-        }
+        },
+        "disclaimer": "<strong>Disclaimer:</strong> Conversions use standard conversion factors and are for general reference. Check critical measurements against the official standard."
       },
       "unix-timestamp": {
         "meta": {
@@ -982,7 +991,8 @@
           "040": "Unix timestamps do not account for leap seconds. They represent the number of seconds since the Epoch, ignoring leap second adjustments.",
           "041": "psk.dan.metehancetin@mc-novatools.com",
           "042": "Estimates only — not financial, legal, or tax advice."
-        }
+        },
+        "disclaimer": "<strong>Disclaimer:</strong> A Unix timestamp is a UTC-based count with no time zone of its own; the local date shown uses your device's time zone setting. Intended for development and debugging."
       }
     },
     "data": {
