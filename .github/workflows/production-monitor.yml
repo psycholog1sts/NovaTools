@@ -1,0 +1,51 @@
+name: Production Monitor
+
+# Daily check of what users and Google actually get from production: live-data
+# providers behind certified tools and every sitemap URL (200, self canonical,
+# indexable, clean URL). Weekly: dependency audit, so new advisories surface
+# without waiting for the next pull request. Free GitHub-hosted runners only.
+on:
+  schedule:
+    - cron: '17 5 * * *'
+    - cron: '41 5 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: production-monitor
+  cancel-in-progress: false
+
+jobs:
+  monitor:
+    name: Live data and sitemap URLs
+    if: github.event.schedule != '41 5 * * 1'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+      - name: Monitor production
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_PROJECT_NAME: ${{ secrets.CLOUDFLARE_PROJECT_NAME }}
+        run: node scripts/monitor-production.mjs
+
+  dependency-audit:
+    name: Weekly dependency audit
+    if: github.event_name == 'workflow_dispatch' || github.event.schedule == '41 5 * * 1'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --include=optional
+      - name: Audit dependencies
+        run: node scripts/audit-dependencies.mjs
