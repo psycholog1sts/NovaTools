@@ -191,9 +191,10 @@ test('gold-standard PDF page exposes usable mobile navigation', async ({ page })
   const pdfTarget = page.locator('#mobileMenu a').filter({ hasText: 'PDF tools' });
   await expect(pdfTarget).toBeVisible();
   // Production serves extensionless URLs and 308-redirects `.html`, so links name the served route.
-  const pdfHref = await pdfTarget.evaluate((link) => link.href);
-  expect(new URL(pdfHref).pathname).toBe('/categories/pdf-tools');
-  const response = await page.request.get(pdfHref);
+  const pdfPath = await pdfTarget.evaluate((link) => new URL(link.href).pathname);
+  expect(pdfPath).toBe('/categories/pdf-tools');
+  // Resolve against the build under test, not the absolute production origin the link may name.
+  const response = await page.request.get(pdfPath);
   expect(response.status()).toBe(200);
   expect(await response.text()).toContain('<title>PDF Tools');
 });
