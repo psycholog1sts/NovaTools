@@ -72,8 +72,8 @@
     "decimal.js": "^10.4.3",
     "jszip": "^3.10.1",
     "pdf-lib": "^1.17.1",
-    "undici": "^8.10.2",
-    "zod": "^3.22.4"
+    "undici": "^8.12.3",
+    "zod": "^4.6.7"
   },
   "devDependencies": {
     "@eslint/js": "^8.57.0",
