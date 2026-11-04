@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script type="text/plain" data-consent-category="analytics" async src="https://www.googletagmanager.com/gtag/js?id=G-Y896L63239"></script>
+<script type="text/plain" data-consent-category="analytics">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Y896L63239', {
+    anonymize_ip: true,
+    cookie_expires: 63072000,
+    cookie_update: true
+  });
+</script>
+  <meta charset="UTF-8">
+  <script>(function(){var t=localStorage.getItem('novatools-theme');if(t)document.documentElement.setAttribute('data-theme',t);else{var d=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',d);document.documentElement.style.colorScheme=d;}})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/src/styles/critical.css">
+  <link rel="stylesheet" href="/src/styles/main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Favicon - Required by Google Search -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <title>Redact PDF Online — Remove ID Numbers, IBANs &amp; Personal Data</title>
+  <meta name="description" content="Find Turkish ID numbers, IBANs, card numbers, phones and emails in a PDF, black them out, and check that the text is really removed. Runs in your browser; nothing is uploaded.">
+  <meta name="theme-color" content="#0A0A0C">
+  <meta property="og:title" content="Redact PDF Online — Remove ID Numbers, IBANs &amp; Personal Data">
+  <meta property="og:description" content="Find Turkish ID numbers, IBANs, card numbers, phones and emails in a PDF, black them out, and check that the text is really removed. Runs in your browser; nothing is uploaded.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mc-novatools.com/tools/pdf/redact/">
+  <meta property="og:image" content="https://mc-novatools.com/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Redact PDF Online — Remove ID Numbers, IBANs &amp; Personal Data">
+  <meta name="twitter:description" content="Find Turkish ID numbers, IBANs, card numbers, phones and emails in a PDF, black them out, and check that the text is really removed. Runs in your browser; nothing is uploaded.">
+  <link rel="canonical" href="https://mc-novatools.com/tools/pdf/redact/">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [{
+      "@type": "WebApplication",
+      "name": "PDF Redact & PII Check",
+      "description": "Detects personal data in a PDF's text layer, blacks out the selected areas and rebuilds the PDF from page images so the hidden text is removed, then re-checks the output for remaining text.",
+      "url": "https://mc-novatools.com/tools/pdf/redact/",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "Any",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+    }]
+  }
+  </script>
+  <style>
+    .tool-container { max-width: 960px; margin: 0 auto; padding: 2rem 1rem; }
+    /* The shared two-column workspace grid would squeeze the page previews into a side
+       column; boxes are drawn on those previews, so every block here takes the full width. */
+    .tool-container > * { grid-column: 1 / -1; }
+    .tool-header { text-align: center; margin-bottom: 2rem; }
+    .tool-header h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .tool-header p { color: var(--text-secondary); }
+    .dropzone { border: 2px dashed var(--border-default); border-radius: 16px; padding: 2.5rem 1.5rem; text-align: center; background: var(--surface-default); cursor: pointer; }
+    .dropzone:hover, .dropzone:focus-visible { border-color: var(--border-accent); }
+    .dropzone.drag-active { border-color: var(--accent-primary); background: var(--accent-subtle); }
+    .redact-panel { margin-top: 1.5rem; padding: 1.25rem; background: var(--surface-default); border: 1px solid var(--border-default); border-radius: var(--radius-lg); }
+    .redact-panel h2 { font-size: 1.15rem; margin: 0 0 0.75rem; }
+    .redact-panel fieldset { border: 0; padding: 0; margin: 0 0 1rem; display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; }
+    .redact-panel legend { font-weight: 600; margin-bottom: 0.5rem; }
+    .redact-panel textarea { width: 100%; min-height: 70px; padding: 0.6rem 0.75rem; background: var(--bg-tertiary); border: 1px solid var(--border-default); border-radius: var(--radius-md); color: var(--text-primary); font: inherit; }
+    .redact-panel select { height: 40px; padding: 0 0.5rem; background: var(--bg-tertiary); border: 1px solid var(--border-default); border-radius: var(--radius-md); color: var(--text-primary); }
+    .redact-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; margin-top: 0.75rem; }
+    .findings-list { list-style: none; margin: 0.75rem 0 0; padding: 0; max-height: 280px; overflow: auto; }
+    .findings-list li { display: flex; gap: 0.6rem; align-items: center; padding: 0.4rem 0; border-bottom: 1px solid var(--border-default); }
+    .findings-list label { display: flex; flex-wrap: wrap; gap: 0.25rem 0.75rem; cursor: pointer; }
+    .finding-page { font-weight: 600; min-width: 4.5rem; }
+    .finding-type { color: var(--text-secondary); }
+    .page-card { margin-top: 1.25rem; }
+    .page-card__head { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.5rem; }
+    .page-stage { position: relative; width: 100%; border: 1px solid var(--border-default); background: #fff; }
+    .page-stage canvas { display: block; width: 100%; height: auto; }
+    .page-overlay { position: absolute; inset: 0; cursor: crosshair; touch-action: none; }
+    .manual-list { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 0; margin: 0.5rem 0 0; }
+    .result-section { margin-top: 1.5rem; padding: 1.5rem; border: 1px solid rgba(34, 197, 94, 0.4); border-radius: var(--radius-lg); background: rgba(34, 197, 94, 0.08); }
+    .result-section[data-verified="false"] { border-color: rgba(220, 38, 38, 0.5); background: rgba(220, 38, 38, 0.08); }
+    .download-btn { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1rem; padding: 0.9rem 1.6rem; background: #15803D; color: #fff; font-weight: 600; border-radius: var(--radius-md); text-decoration: none; }
+    .tool-description { max-width: 960px; margin: 0 auto; padding: 0 1rem 2rem; }
+    .tool-description h2 { margin-top: 2rem; }
+  </style>
+  <script type="module" src="./redact-app.mjs"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div class="bg-ambient" aria-hidden="true"></div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+  
+  <div id="app" class="app">
+        <header class="main-header">
+      <div class="container">
+        <div class="header-inner">
+          <a href="https://mc-novatools.com/" class="logo" aria-label="NovaTools MC Home">
+            <picture><source srcset="/logo-bird-44.webp" type="image/webp"><img src="/logo-bird.png" alt="NovaTools MC" class="header-logo-img" width="44" height="44" decoding="async"></picture>
+            <span class="logo-text">NovaTools <span class="logo-mc">MC</span></span>
+          </a>
+          <nav class="nav-desktop" aria-label="Main navigation">
+            <a href="https://mc-novatools.com/#finance" class="nav-link">Finance</a>
+            <a href="https://mc-novatools.com/#pdf" class="nav-link">PDF Tools</a>
+            <a href="https://mc-novatools.com/#image" class="nav-link">Images</a>
+            <a href="https://mc-novatools.com/#dev" class="nav-link">Developers</a>
+          </nav>
+          <div class="privacy-badge" title="Your data never leaves your browser">
+            <span class="privacy-badge-dot"></span>
+            <span>Privacy First</span>
+          </div>
+          <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+            <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+          <button type="button" id="mobileMenuBtn" class="menu-btn" aria-label="Toggle menu" aria-expanded="false">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+        </div>
+        <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
+          <a href="https://mc-novatools.com/#finance" class="mobile-nav-link">Finance Tools</a>
+          <a href="https://mc-novatools.com/#pdf" class="mobile-nav-link">PDF Tools</a>
+          <a href="https://mc-novatools.com/#image" class="mobile-nav-link">Image Tools</a>
+          <a href="https://mc-novatools.com/#dev" class="mobile-nav-link">Developer Tools</a>
+        </nav>
+      </div>
+    </header>
+<main id="main-content" class="main-content">
+      <div class="tool-container">
+        <div class="tool-header">
+          <h1>PDF Redact &amp; PII Check</h1>
+          <p class="tool-updated-note">Last updated: <time class="page-last-updated" datetime="2026-11-04">2026-11-04</time></p>
+          <p>Find personal data in a PDF, black it out, and get a copy in which the hidden text is actually gone — checked before you download it.</p>
+        </div>
+
+        <div id="dropzone" class="dropzone" role="button" tabindex="0" aria-describedby="dropzoneHint">
+          <div style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem;">Drop a PDF here or click to choose one</div>
+          <div id="dropzoneHint" style="font-size: 0.875rem; color: var(--text-muted);">Up to 50 MB and 100 pages · the file is processed in this browser tab and not uploaded</div>
+          <input type="file" id="fileInput" accept=".pdf,application/pdf" hidden>
+        </div>
+        <p id="redactStatus" class="hero-note" role="status" aria-live="polite"></p>
+
+        <div id="workArea" hidden>
+          <section class="redact-panel" aria-labelledby="scanTitle">
+            <h2 id="scanTitle">1. What this PDF exposes</h2>
+            <p id="fileName" style="color: var(--text-muted);"></p>
+            <p id="scanSummary"></p>
+            <ul id="findingsList" class="findings-list" aria-label="Detected items; unticked items are left visible"></ul>
+          </section>
+
+          <section class="redact-panel" aria-labelledby="optionsTitle">
+            <h2 id="optionsTitle">2. Choose what to hide</h2>
+            <fieldset>
+              <legend>Detect automatically</legend>
+              <label><input type="checkbox" name="piiType" value="tckn" checked> Turkish ID (TC Kimlik)</label>
+              <label><input type="checkbox" name="piiType" value="iban" checked> IBAN</label>
+              <label><input type="checkbox" name="piiType" value="card" checked> Card numbers</label>
+              <label><input type="checkbox" name="piiType" value="phone" checked> Phone numbers</label>
+              <label><input type="checkbox" name="piiType" value="email" checked> Email addresses</label>
+            </fieldset>
+            <label for="redactTerms" style="font-weight: 600; display: block; margin-bottom: 0.4rem;">Also hide these words (names, addresses, case numbers — one per line or comma-separated)</label>
+            <textarea id="redactTerms" placeholder="Ayşe Yılmaz&#10;Kadıköy"></textarea>
+            <div class="redact-actions">
+              <button type="button" id="rescanBtn" class="btn btn-secondary">Search again</button>
+            </div>
+            <p style="margin-top: 1rem; color: var(--text-secondary);">Signatures, photos, stamps or scanned text: drag a box over them on the page previews below, or tick “Black out this whole page”.</p>
+          </section>
+
+          <section class="redact-panel" aria-labelledby="exportTitle">
+            <h2 id="exportTitle">3. Create the redacted copy</h2>
+            <p id="redactCount"></p>
+            <div class="redact-actions">
+              <label for="redactDpi">Output quality</label>
+              <select id="redactDpi">
+                <option value="150" selected>Standard (150 DPI)</option>
+                <option value="220">High (220 DPI, larger file)</option>
+                <option value="110">Small (110 DPI)</option>
+              </select>
+              <button type="button" id="redactBtn" class="btn btn-primary" disabled>Redact and check</button>
+            </div>
+          </section>
+
+          <div id="resultSection" class="result-section" hidden>
+            <p id="verifyResult" style="margin: 0;"></p>
+            <a id="downloadLink" href="#" class="download-btn" download>Download redacted PDF</a>
+          </div>
+
+          <div id="pagesContainer" aria-label="Page previews"></div>
+        </div>
+      </div>
+
+      <article class="tool-description" aria-labelledby="toolDescriptionTitle-redact">
+        <h2 id="toolDescriptionTitle-redact">Why a black box is not enough</h2>
+        <p>Most PDF editors “redact” by drawing a black rectangle on top of the page. The text underneath is still in the file: anyone can select it, copy it, search for it or extract it with a PDF-to-text tool. Court filings, CVs and bank statements regularly leak personal data this way.</p>
+        <p>This tool works differently. It renders each page to an image, paints the black boxes into that image, and builds a new PDF from the images only. The original text layer, links, form fields, document metadata and attachments are not copied into the result. It then opens the result again and reports how many text characters and annotations remain — for a correctly redacted file that number is zero.</p>
+        <p>You can also use step 1 on its own as a redaction checker: open a PDF someone else “redacted” and see whether the supposedly hidden text, ID numbers or IBANs are still readable in its text layer.</p>
+
+        <h2>What it detects</h2>
+        <ul>
+          <li><strong>Turkish ID numbers (TC Kimlik No)</strong> — 11 digits, accepted only when both check digits are correct, so invoice and order numbers are not flagged.</li>
+          <li><strong>IBANs</strong> — validated with the ISO 13616 mod-97 checksum, with or without spaces; Turkish IBANs must be 26 characters.</li>
+          <li><strong>Payment card numbers</strong> — 13 to 19 digits that pass the Luhn check.</li>
+          <li><strong>Phone numbers</strong> — Turkish formats such as 0532 123 45 67 and +90 212 123 45 67.</li>
+          <li><strong>Email addresses</strong>, and any <strong>words you type</strong>, matched case-insensitively including Turkish İ/ı.</li>
+        </ul>
+        <p>Names, addresses, dates of birth and health details have no fixed pattern, so they are not found automatically: add them as search words or draw boxes over them.</p>
+
+        <h2>How to use it</h2>
+        <ol>
+          <li>Choose the PDF. The tool reads its text layer and lists every match with the page number; values are shown partly masked.</li>
+          <li>Untick anything that should stay visible, add extra words, and drag boxes over signatures, photos or scanned areas.</li>
+          <li>Pick the output quality and select <em>Redact and check</em>.</li>
+          <li>Read the check result, download the copy, and look through every page before sharing it.</li>
+        </ol>
+
+        <h2>Known limitations</h2>
+        <ul>
+          <li>The output is made of page images: its text cannot be selected or searched, and screen readers cannot read it. Keep the original for your own records.</li>
+          <li>Scanned PDFs usually have no text layer, so automatic detection finds nothing; use drawn boxes or whole-page blackout. There is no OCR.</li>
+          <li>Box positions inside a line are estimated from the text layer and padded; check that each box fully covers its value in the preview.</li>
+          <li>Links, bookmarks, form fields, comments, digital signatures and accessibility tags are not carried over. A signed PDF becomes unsigned.</li>
+          <li>The file is usually larger than the original, depending on the quality setting.</li>
+          <li>Password-protected PDFs must be unlocked first. Up to 50 MB and 100 pages per run.</li>
+        </ul>
+
+        <h2>Privacy</h2>
+        <p>The PDF is read, rendered and rebuilt inside your browser tab with pdf.js and pdf-lib, both served from mc-novatools.com. The file and the detected values are not uploaded, logged or stored by NovaTools; closing the tab discards them.</p>
+        <p>This tool helps you remove information; it does not decide what you are legally required to remove. Under KVKK, GDPR or court rules, the person sharing the document remains responsible for checking the result.</p>
+
+        <h2>Frequently asked questions</h2>
+        <h3>Can I check whether a PDF was redacted properly?</h3>
+        <p>Yes. Open it here and look at step 1: if it reports a selectable text layer containing the values that were supposed to be hidden, the redaction did not remove them.</p>
+        <h3>Why is my redacted PDF not searchable?</h3>
+        <p>Because it is rebuilt from images. Keeping a text layer is exactly what lets hidden text leak, so the tool removes it entirely.</p>
+        <h3>Does it work offline?</h3>
+        <p>After the page and its PDF reader have loaded, processing does not need the network.</p>
+
+        <h2>Related tools</h2>
+        <ul>
+          <li><a href="https://mc-novatools.com/tools/pdf/split/">PDF Splitter — share only the pages that are needed.</a></li>
+          <li><a href="https://mc-novatools.com/tools/pdf/compress/">PDF Compressor — reduce the size of the redacted copy.</a></li>
+        </ul>
+      </article>
+    </main>
+
+    <footer class="tool-footer">
+  <p>&copy; 2026 NovaTools MC &mdash; Metehan ÇETİN, LPC | <a href="mailto:psk.dan.metehancetin@mc-novatools.com">psk.dan.metehancetin@mc-novatools.com</a></p>
+  <p>A redaction aid, not legal advice: check every page of the output before you share it.</p>
+</footer>
+<style>
+.tool-footer { margin-top: 3rem; padding: 1.5rem 1rem; border-top: 1px solid var(--border-default); text-align: center; color: #718096; font-size: 0.8rem; line-height: 1.8; }
+.tool-footer a { color: var(--accent-text); text-decoration: none; }
+</style>
+  </div>
+
+</body>
+</html>

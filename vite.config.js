@@ -494,6 +494,17 @@ export default defineConfig({
           src: 'src/tools/**/meta.json',
           dest: 'meta'
         },
+        // PDF Redact loads pdf.js on demand from /vendor/pdfjs/ (same origin, so the
+        // CSP needs no new script source); copied verbatim rather than bundled so
+        // it stays out of the shared vendor-pdf chunk used by the other PDF tools.
+        ...['pdf.min.mjs', 'pdf.worker.min.mjs'].map((file) => ({
+          src: `node_modules/pdfjs-dist/build/${file}`,
+          dest: 'vendor/pdfjs'
+        })),
+        ...['cmaps', 'standard_fonts', 'wasm', 'iccs'].map((dir) => ({
+          src: `node_modules/pdfjs-dist/${dir}/*`,
+          dest: `vendor/pdfjs/${dir}`
+        })),
           {
             src: 'src/styles/critical.css',
             dest: 'styles'
