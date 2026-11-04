@@ -574,7 +574,9 @@ const financeToolSlugs = [
   'retirement',
   'student-loan'
 ];
-const financeDisclaimer = '⚠️ Yasal Uyarı: Bu hesaplamalar tahmini değerlerdir. Kesin bilgi için lütfen yetkili bir mali müşavir veya kuruma danışın.';
+// English source text for the English pages; the Turkish version is common.financeEstimateNotice
+// in public/locales/tr (the old Turkish-only constant showed on every English finance page).
+const financeDisclaimer = '⚠️ These figures are estimates, not financial advice. Check exact amounts with a qualified adviser or the institution concerned.';
 
 function rewriteFinanceCanonicalHtml(html, slug) {
   const canonical = `https://mc-novatools.com/finance/${slug}/`;
@@ -598,7 +600,7 @@ function rewriteFinanceCanonicalHtml(html, slug) {
   }
 
   if (!next.includes(financeDisclaimer)) {
-    const block = `<aside class="finance-disclaimer" role="note" style="margin:1.5rem auto;max-width:980px;padding:1rem 1.25rem;border:1px solid rgba(245,158,11,.28);border-radius:12px;background:rgba(245,158,11,.08);color:var(--text-secondary,#cbd5e1);line-height:1.6;"><strong>${financeDisclaimer}</strong></aside>`;
+    const block = `<aside class="finance-disclaimer" role="note" style="margin:1.5rem auto;max-width:980px;padding:1rem 1.25rem;border:1px solid rgba(245,158,11,.28);border-radius:12px;background:rgba(245,158,11,.08);color:var(--text-secondary,#cbd5e1);line-height:1.6;"><strong data-i18n="common.financeEstimateNotice">${financeDisclaimer}</strong></aside>`;
     if (/<\/main>/i.test(next)) next = next.replace(/<\/main>/i, `${block}
     </main>`);
     else next = next.replace(/<\/body>/i, `${block}

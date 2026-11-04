@@ -5,10 +5,81 @@
  * installment, totals, table, and chart all use the same audited formula.
  */
 
+import { numberLocale, strings } from './finance-i18n.mjs';
+
 const DEFAULT_KKDF_RATE = 0;
 const DEFAULT_BSMV_RATE = 0;
 const MAX_TERM_YEARS = 30;
 const MAX_SCHEDULE_ROWS = 360;
+
+const T = {
+  en: {
+    balance: 'The loan balance must be greater than 0.',
+    rates: 'Interest rates must be greater than 0.',
+    term: (max) => `Terms must be between 1 and ${max} years.`,
+    costs: 'Closing costs cannot be negative.',
+    taxes: 'KKDF and BSMV rates must be between 0 and 100.',
+    recNegative: 'On these terms, refinancing may not lower your total cost.',
+    recLong: 'The break-even period is long. Consider whether you will keep the loan long enough.',
+    recPositive: 'On these estimates, refinancing looks worthwhile.',
+    assessment: 'Assessment',
+    currentPayment: 'Current monthly payment',
+    newPayment: 'New monthly payment',
+    perMonth: '/mo',
+    monthlyDiff: 'Monthly difference',
+    totalSavings: 'Estimated total savings',
+    months: (n) => `${n} months`,
+    none: 'None',
+    breakEven: 'Break-even period',
+    interestDiff: 'Interest + tax difference',
+    metric: 'Metric',
+    currentLoan: 'Current loan',
+    newLoan: 'New loan',
+    difference: 'Difference',
+    monthlyRow: 'Monthly payment',
+    totalRow: 'Total repayment',
+    inFormula: 'Included in formula',
+    chartTitle: 'Remaining balance',
+    chartLabel: 'Remaining balance by month for both loans',
+    scheduleTitle: 'New loan amortization schedule (first 24 months)',
+    scheduleHead: ['Month', 'Payment', 'Principal', 'Interest', 'KKDF', 'BSMV', 'Balance'],
+    disclaimer: '⚠️ These figures are estimates. Confirm the exact terms with your lender or a qualified adviser.',
+    currency: 'USD'
+  },
+  tr: {
+    balance: 'Kredi tutarı 0’dan büyük olmalıdır.',
+    rates: 'Faiz oranları 0’dan büyük olmalıdır.',
+    term: (max) => `Vade 1 ile ${max} yıl arasında olmalıdır.`,
+    costs: 'Masraflar negatif olamaz.',
+    taxes: 'KKDF ve BSMV oranları 0 ile 100 arasında olmalıdır.',
+    recNegative: 'Bu koşullarda refinansman toplam maliyeti düşürmeyebilir.',
+    recLong: 'Başabaş süresi uzun. Krediyi yeterince uzun tutup tutmayacağınızı değerlendirin.',
+    recPositive: 'Refinansman tahmini olarak avantajlı görünüyor.',
+    assessment: 'Değerlendirme',
+    currentPayment: 'Mevcut Aylık Taksit',
+    newPayment: 'Yeni Aylık Taksit',
+    perMonth: '/ay',
+    monthlyDiff: 'Aylık Fark',
+    totalSavings: 'Toplam Tahmini Tasarruf',
+    months: (n) => `${n} ay`,
+    none: 'Yok',
+    breakEven: 'Başabaş Süresi',
+    interestDiff: 'Faiz + Vergi Farkı',
+    metric: 'Metrik',
+    currentLoan: 'Mevcut Kredi',
+    newLoan: 'Yeni Kredi',
+    difference: 'Fark',
+    monthlyRow: 'Aylık taksit',
+    totalRow: 'Toplam geri ödeme',
+    inFormula: 'Formüle dahil',
+    chartTitle: 'Kalan Borç Grafiği',
+    chartLabel: 'Kalan borç ödeme planı grafiği',
+    scheduleTitle: 'Yeni Kredi Amortisman Tablosu (ilk 24 ay)',
+    scheduleHead: ['Ay', 'Taksit', 'Anapara', 'Faiz', 'KKDF', 'BSMV', 'Kalan Borç'],
+    disclaimer: '⚠️ Yasal Uyarı: Bu hesaplamalar tahmini değerlerdir. Kesin bilgi için yetkili bir mali müşavir, banka veya kuruma danışın.',
+    currency: 'TRY'
+  }
+};
 
 /**
  * Calculate refinance analysis
@@ -63,6 +134,10 @@ export function refinanceCalculator(inputs) {
 
 export function parseMoneyInput(value) {
   if (typeof value === 'number') return Number.isFinite(value) ? value : 0;
+  // Number inputs hand over plain dot-decimal strings ("3500.75"); only Turkish-formatted text
+  // such as "1.250.000,50" uses dots as thousands separators.
+  const plain = String(value ?? '').trim();
+  if (/^-?\d+(\.\d+)?$/.test(plain)) return Number.parseFloat(plain);
   const normalized = String(value ?? '')
     .trim()
     .replace(/\s/g, '')
@@ -84,14 +159,15 @@ function parseInteger(value) {
 }
 
 function validateInputs({ balance, currentRate, yearsRemaining, newRate, newTerm, closingCosts, kkdfRate, bsmvRate }) {
-  if (balance <= 0) throw new Error('Kredi tutarı 0’dan büyük olmalıdır.');
-  if (currentRate <= 0 || newRate <= 0) throw new Error('Faiz oranları 0’dan büyük olmalıdır.');
+  const t = strings(T);
+  if (balance <= 0) throw new Error(t.balance);
+  if (currentRate <= 0 || newRate <= 0) throw new Error(t.rates);
   if (yearsRemaining < 1 || yearsRemaining > MAX_TERM_YEARS || newTerm < 1 || newTerm > MAX_TERM_YEARS) {
-    throw new Error(`Vade 1 ile ${MAX_TERM_YEARS} yıl arasında olmalıdır.`);
+    throw new Error(t.term(MAX_TERM_YEARS));
   }
-  if (closingCosts < 0) throw new Error('Masraflar negatif olamaz.');
+  if (closingCosts < 0) throw new Error(t.costs);
   if (kkdfRate < 0 || bsmvRate < 0 || kkdfRate > 100 || bsmvRate > 100) {
-    throw new Error('KKDF ve BSMV oranları 0 ile 100 arasında olmalıdır.');
+    throw new Error(t.taxes);
   }
 }
 
@@ -173,9 +249,10 @@ function buildChartData(currentSchedule, newSchedule) {
  * Generate recommendation based on calculations
  */
 function generateRecommendation(monthlySavings, breakEvenMonths, totalSavings) {
+  const t = strings(T);
   if (monthlySavings <= 0 || totalSavings <= 0) {
     return {
-      text: 'Bu koşullarda refinansman toplam maliyeti düşürmeyebilir.',
+      text: t.recNegative,
       type: 'negative',
       color: 'var(--error)'
     };
@@ -183,14 +260,14 @@ function generateRecommendation(monthlySavings, breakEvenMonths, totalSavings) {
 
   if (breakEvenMonths > 60) {
     return {
-      text: 'Başabaş süresi uzun. Krediyi yeterince uzun tutup tutmayacağınızı değerlendirin.',
+      text: t.recLong,
       type: 'warning',
       color: 'var(--warning)'
     };
   }
 
   return {
-    text: 'Refinansman tahmini olarak avantajlı görünüyor.',
+    text: t.recPositive,
     type: 'positive',
     color: 'var(--success)'
   };
@@ -200,6 +277,7 @@ function generateRecommendation(monthlySavings, breakEvenMonths, totalSavings) {
  * Format result as HTML
  */
 function formatRefinanceResult(data) {
+  const t = strings(T);
   const savingsClass = data.monthlySavings > 0 ? 'positive' : 'negative';
   const totalSavingsClass = data.totalSavings > 0 ? 'positive' : 'negative';
   const rows = data.newSchedule.slice(0, 24).map((row) => `
@@ -217,7 +295,7 @@ function formatRefinanceResult(data) {
   return `
     <div class="refinance-results">
       <div class="result-highlight ${data.recommendation.type}">
-        <div class="result-label">Değerlendirme</div>
+        <div class="result-label">${t.assessment}</div>
         <div class="recommendation-text" style="color: ${data.recommendation.color}; font-size: 1.125rem; font-weight: 500; margin-top: 0.5rem;">
           ${data.recommendation.text}
         </div>
@@ -226,27 +304,27 @@ function formatRefinanceResult(data) {
       <div class="result-grid">
         <div class="result-item">
           <div class="result-value">${formatCurrency(data.currentPayment)}</div>
-          <div class="result-label">Mevcut Aylık Taksit</div>
+          <div class="result-label">${t.currentPayment}</div>
         </div>
         <div class="result-item">
           <div class="result-value">${formatCurrency(data.newPayment)}</div>
-          <div class="result-label">Yeni Aylık Taksit</div>
+          <div class="result-label">${t.newPayment}</div>
         </div>
         <div class="result-item ${savingsClass}">
-          <div class="result-value">${formatCurrency(data.monthlySavings)}/ay</div>
-          <div class="result-label">Aylık Fark</div>
+          <div class="result-value">${formatCurrency(data.monthlySavings)}${t.perMonth}</div>
+          <div class="result-label">${t.monthlyDiff}</div>
         </div>
         <div class="result-item ${totalSavingsClass}">
           <div class="result-value">${formatCurrency(data.totalSavings)}</div>
-          <div class="result-label">Toplam Tahmini Tasarruf</div>
+          <div class="result-label">${t.totalSavings}</div>
         </div>
         <div class="result-item">
-          <div class="result-value">${data.breakEvenMonths ? `${data.breakEvenMonths} ay` : 'Yok'}</div>
-          <div class="result-label">Başabaş Süresi</div>
+          <div class="result-value">${data.breakEvenMonths ? t.months(data.breakEvenMonths) : t.none}</div>
+          <div class="result-label">${t.breakEven}</div>
         </div>
         <div class="result-item positive">
           <div class="result-value">${formatCurrency(data.interestSaved)}</div>
-          <div class="result-label">Faiz + Vergi Farkı</div>
+          <div class="result-label">${t.interestDiff}</div>
         </div>
       </div>
 
@@ -254,21 +332,21 @@ function formatRefinanceResult(data) {
         <table style="width: 100%; min-width: 680px; border-collapse: collapse;">
           <thead>
             <tr style="border-bottom: 1px solid var(--border-default);">
-              <th style="text-align: left; padding: 0.75rem;">Metrik</th>
-              <th style="text-align: right; padding: 0.75rem;">Mevcut Kredi</th>
-              <th style="text-align: right; padding: 0.75rem;">Yeni Kredi</th>
-              <th style="text-align: right; padding: 0.75rem;">Fark</th>
+              <th style="text-align: left; padding: 0.75rem;">${t.metric}</th>
+              <th style="text-align: right; padding: 0.75rem;">${t.currentLoan}</th>
+              <th style="text-align: right; padding: 0.75rem;">${t.newLoan}</th>
+              <th style="text-align: right; padding: 0.75rem;">${t.difference}</th>
             </tr>
           </thead>
           <tbody>
             <tr style="border-bottom: 1px solid var(--border-default);">
-              <td style="padding: 0.75rem;">Aylık taksit</td>
+              <td style="padding: 0.75rem;">${t.monthlyRow}</td>
               <td style="text-align: right; padding: 0.75rem;">${formatCurrency(data.currentPayment)}</td>
               <td style="text-align: right; padding: 0.75rem;">${formatCurrency(data.newPayment)}</td>
               <td style="text-align: right; padding: 0.75rem; color: ${data.monthlySavings > 0 ? 'var(--success)' : 'var(--error)'};">${formatCurrency(data.monthlySavings)}</td>
             </tr>
             <tr style="border-bottom: 1px solid var(--border-default);">
-              <td style="padding: 0.75rem;">Toplam geri ödeme</td>
+              <td style="padding: 0.75rem;">${t.totalRow}</td>
               <td style="text-align: right; padding: 0.75rem;">${formatCurrency(data.currentTotalPayment)}</td>
               <td style="text-align: right; padding: 0.75rem;">${formatCurrency(data.newTotalPayment + data.closingCosts)}</td>
               <td style="text-align: right; padding: 0.75rem; color: ${data.totalSavings > 0 ? 'var(--success)' : 'var(--error)'};">${formatCurrency(data.totalSavings)}</td>
@@ -277,23 +355,23 @@ function formatRefinanceResult(data) {
               <td style="padding: 0.75rem;">KKDF / BSMV</td>
               <td style="text-align: right; padding: 0.75rem;">%${data.kkdfRate} / %${data.bsmvRate}</td>
               <td style="text-align: right; padding: 0.75rem;">%${data.kkdfRate} / %${data.bsmvRate}</td>
-              <td style="text-align: right; padding: 0.75rem;">Formüle dahil</td>
+              <td style="text-align: right; padding: 0.75rem;">${t.inFormula}</td>
             </tr>
           </tbody>
         </table>
       </div>
 
       <div class="chart-container" style="margin-top: 2rem;">
-        <h3 style="font-size: 1rem; margin-bottom: 0.75rem;">Kalan Borç Grafiği</h3>
-        <canvas id="mortgageScheduleChart" width="760" height="260" data-chart='${JSON.stringify(data.chartData)}' aria-label="Kalan borç ödeme planı grafiği" role="img"></canvas>
+        <h3 style="font-size: 1rem; margin-bottom: 0.75rem;">${t.chartTitle}</h3>
+        <canvas id="mortgageScheduleChart" width="760" height="260" data-chart='${JSON.stringify(data.chartData)}' aria-label="${t.chartLabel}" role="img"></canvas>
       </div>
 
       <div class="comparison-table" style="margin-top: 2rem; overflow-x: auto; -webkit-overflow-scrolling: touch;">
-        <h3 style="font-size: 1rem; margin-bottom: 0.75rem;">Yeni Kredi Amortisman Tablosu (ilk 24 ay)</h3>
+        <h3 style="font-size: 1rem; margin-bottom: 0.75rem;">${t.scheduleTitle}</h3>
         <table style="width: 100%; min-width: 760px; border-collapse: collapse;">
           <thead>
             <tr style="border-bottom: 1px solid var(--border-default);">
-              <th>Ay</th><th>Taksit</th><th>Anapara</th><th>Faiz</th><th>KKDF</th><th>BSMV</th><th>Kalan Borç</th>
+              ${t.scheduleHead.map((head) => `<th>${head}</th>`).join('')}
             </tr>
           </thead>
           <tbody>${rows}</tbody>
@@ -301,7 +379,7 @@ function formatRefinanceResult(data) {
       </div>
 
       <p style="margin-top:1.5rem;font-size:0.8125rem;color:#71717A;border-top:1px solid rgba(255,255,255,0.06);padding-top:1rem;">
-        ⚠️ Yasal Uyarı: Bu hesaplamalar tahmini değerlerdir. Kesin bilgi için yetkili bir mali müşavir, banka veya kuruma danışın.
+        ${t.disclaimer}
       </p>
     </div>
   `;
@@ -309,9 +387,9 @@ function formatRefinanceResult(data) {
 
 function formatCurrency(num) {
   const sign = num < 0 ? '-' : '';
-  return `${sign}${new Intl.NumberFormat('tr-TR', {
+  return `${sign}${new Intl.NumberFormat(numberLocale(), {
     style: 'currency',
-    currency: 'TRY',
+    currency: strings(T).currency,
     minimumFractionDigits: 2,
     maximumFractionDigits: 2
   }).format(Math.abs(num))}`;

@@ -2466,7 +2466,7 @@
           "010": "Geliştirici Araçları",
           "011": "İpotek Yeniden Finansmanı Hesaplayıcı",
           "012": "Ücretsiz ipotek yeniden finansmanı hesaplayıcısı — %100 ücretsiz çevrimiçi araç, kayıt gerektirmez. İpotekinizi yeniden finanse ederek ne kadar tasarruf edeceğinizi hesaplayın. Ücretsiz başabaş noktası hesaplayıcısı, ücretsiz aylık ödeme karşılaştırması.",
-          "013": "İpotekinizi yeniden finanse ederek potansiyel tasarruflarınızı hesaplayın. Oranları karşılaştırın ve başabaş noktanızı bulun.",
+          "013": "Tahmini taksit, toplam geri ödeme, refinansman farkı ve amortisman planını hesaplayın; isterseniz KKDF ve BSMV oranlarını da ekleyin.",
           "014": "Mevcut Kredi",
           "015": "Cari Bakiye ($)",
           "016": "Güncel Faiz Oranı (%)",
@@ -2490,6 +2490,9 @@
           "034": "psk.dan.metehancetin@mc-novatools.com",
           "035": "Yalnızca tahminler; mali, hukuki veya vergi tavsiyesi değildir.",
           "036": "Hata: ' + err.message + '"
+        },
+        "copy": {
+          "kkdfNote": "KKDF ve BSMV oranları, girerseniz aylık faiz üzerinden formüle dahil edilir; Türkiye dışındaki krediler için 0 bırakın. Bankanız farklı masraf veya istisna uygulayabilir."
         }
       },
       "retirement": {
@@ -2523,6 +2526,14 @@
           "021": "Emeklilik Projeksiyonu",
           "022": "psk.dan.metehancetin@mc-novatools.com",
           "023": "Yalnızca tahminler; mali, hukuki veya vergi tavsiyesi değildir."
+        },
+        "copy": {
+          "intro": "Mevcut yaş, hedef emeklilik yaşı, aylık birikim, getiri ve enflasyonla emeklilik birikiminizi hesaplayın.",
+          "dataNote": "Tüm hesaplamalar tarayıcıda yapılır; girdiğiniz rakamlar sunucuya gönderilmez.",
+          "howTitle": "Projeksiyon nasıl hesaplanır?",
+          "howText": "Bakiye her ay yıllık getirinin on ikide biri kadar büyür ve aylık birikiminiz eklenir. Enflasyona göre düzeltilmiş tutar, son bakiyenin her yıl için bir kez (1 + enflasyon) ile bölünmesiyle bulunur. %4 rakamı ilk yıl çekim tutarı için yaygın bir pratik kuraldır, garanti değildir.",
+          "noteTitle": "Yasal ve veri notu",
+          "noteText": "Emeklilik hesaplamaları tahminidir. SGK aylığı gibi devlet emekliliği dahil değildir; kesin bilgi için SGK ve bir mali müşavire danışın."
         }
       },
       "student-loan": {
@@ -2558,6 +2569,14 @@
           "023": "Ödeme Planı (İlk 12 Ay)",
           "024": "psk.dan.metehancetin@mc-novatools.com",
           "025": "Yalnızca tahminler; mali, hukuki veya vergi tavsiyesi değildir."
+        },
+        "copy": {
+          "intro": "Kredi tutarı, faiz, aylık ödeme ve ek ödeme ile öğrenci kredisi kapatma süresi, faiz tasarrufu ve ödeme planı çıkarın.",
+          "dataNote": "Tüm hesaplamalar tarayıcıda yapılır; girdiğiniz rakamlar sunucuya gönderilmez.",
+          "howTitle": "Geri ödeme nasıl hesaplanır?",
+          "howText": "Her ay faiz, kalan bakiyenin yıllık faizin on ikide biriyle çarpımıdır; ödemenin geri kalanı bakiyeyi azaltır. Hesaplayıcı bunu ek ödemeli ve ek ödemesiz olarak iki kez yapar; ay sayısını ve toplam faizi karşılaştırır.",
+          "noteTitle": "Yasal ve veri notu",
+          "noteText": "Sonuçlar tahminidir. Faiz, ödemesiz dönem ve erteleme kuralları kredi sözleşmenize (KYK veya banka) göre değişir; kesin bilgi için KYK veya bankanıza danışın."
         }
       },
       "tax": {
@@ -2589,6 +2608,36 @@
           "019": "Vergi Tahmini",
           "020": "psk.dan.metehancetin@mc-novatools.com",
           "021": "Yalnızca tahminler; mali, hukuki veya vergi tavsiyesi değildir."
+        }
+      },
+      "live-exchange": {
+        "copy": {
+          "intro": "TRY↔USD, TRY↔EUR ve USD↔EUR dönüşümlerini TCMB referans kuru, kaynak bilgisi ve güncelleme zamanı ile hesaplayın.",
+          "dataNote": "Tutar hesabı tarayıcıda yapılır. Kur verisi gerektiğinde yalnızca para birimi isteği NovaTools live-data uç noktasına gider; girdiğiniz tutar bu istekle gönderilmez.",
+          "howTitle": "Canlı döviz çevirici nasıl çalışır?",
+          "howText": "TRY, USD ve EUR referans kurları TCMB'nin günlük XML verisinden NovaTools live-data uç noktası üzerinden alınır. Ne sağlayıcıda ne de süresi dolmamış tarayıcı önbelleğinde kur yoksa araç uydurma bir kur göstermek yerine hesaplamayı durdurur.",
+          "noteTitle": "Yasal ve veri notu",
+          "noteText": "TCMB referans kurları ile bankaların veya döviz bürolarının işlem kurları farklı olabilir. Gerçek işlem öncesinde sağlayıcınızın teklifini kontrol edin."
+        }
+      },
+      "stock-lookup": {
+        "copy": {
+          "intro": "BIST, NASDAQ ve NYSE sembollerini arayın; sağlayıcı fiyatını, değişimi ve hacmi görün; gerçek kapanış serisi mevcutsa kısa bir grafik alın.",
+          "dataNote": "Sembol isteği NovaTools live-data uç noktasına gider. Favoriler yalnızca tarayıcınızda tutulur; sağlayıcı/cache verisi yoksa fiyat uydurulmaz.",
+          "howTitle": "Hisse fiyatı sorgulama nasıl çalışır?",
+          "howText": "Hisse sembolü NovaTools live-data üzerinden sağlayıcıya gönderilir; fiyat, hacim ve varsa gerçek kapanış serisi döner. Sağlayıcı veya önbellek verisi yoksa sabit bir piyasa fiyatı gösterilmez.",
+          "noteTitle": "Yasal ve veri notu",
+          "noteText": "Borsa verileri gecikmeli olabilir. Yatırım veya emir kararı vermeden önce aracı kurumunuzdaki güncel fiyatı doğrulayın."
+        }
+      },
+      "crypto-prices": {
+        "copy": {
+          "intro": "BTC, ETH, SOL, XRP ve ADA için TRY ve USD karşılığını görün. CoinGecko verisi geldiğinde 24 saat değişim, market cap ve hacim de gösterilir; CoinGecko erişilemezse yalnızca Coinbase spot kuru kullanılır.",
+          "dataNote": "Fiyat isteği NovaTools live-data uç noktasına gider. Favoriler yalnızca tarayıcınızda tutulur; sağlayıcı/cache verisi yoksa fiyat uydurulmaz.",
+          "howTitle": "Kripto fiyat takibi nasıl çalışır?",
+          "howText": "BTC, ETH, SOL, XRP ve ADA verisi NovaTools live-data üzerinden CoinGecko kaynağından alınır. Geçerli sağlayıcı/cache verisi bulunmayan coin için tahmini veya sabit piyasa fiyatı üretilmez.",
+          "noteTitle": "Yasal ve veri notu",
+          "noteText": "Kripto para fiyatları yüksek volatilite içerir ve yatırım tavsiyesi değildir. İşlem öncesinde kullandığınız borsadaki güncel fiyatı doğrulayın."
         }
       }
     },
@@ -5709,7 +5758,8 @@
     "browserBased": "Tarayıcı tabanlı",
     "aboutUs": "Hakkımızda",
     "allRightsReserved": "Tüm hakları saklıdır.",
-    "emailAddress": "E-posta adresi"
+    "emailAddress": "E-posta adresi",
+    "financeEstimateNotice": "⚠️ Yasal Uyarı: Bu hesaplamalar tahmini değerlerdir ve finansal tavsiye değildir. Kesin bilgi için yetkili bir mali müşavire veya ilgili kuruma danışın."
   },
   "home": {
     "sections": {
