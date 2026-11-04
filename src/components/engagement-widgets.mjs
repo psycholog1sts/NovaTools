@@ -60,7 +60,11 @@ export function toolHref(tool) {
   return path ? `/tools/${path}/` : '/categories/index.html';
 }
 
+// The manifest `name` is the Turkish label; English pages list tools by `nameEn` so related-tool
+// links, recents and titles do not show Turkish names on an English page.
 export function toolName(tool) {
+  const english = typeof document !== 'undefined' && document.documentElement?.lang !== 'tr';
+  if (english && tool?.nameEn) return tool.nameEn;
   return tool?.name || tool?.nameEn || tool?.id || 'Tool';
 }
 

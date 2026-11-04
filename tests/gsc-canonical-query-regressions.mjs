@@ -99,3 +99,13 @@ console.log('GSC canonical query normalization regression contract passed.');
   }
   console.log('turkish-only hreflang: pass');
 }
+
+{
+  // Pages without the i18n runtime get their alternates from applySeoHead; a Turkish-only page
+  // must label itself hreflang="tr" there too.
+  const { applySeoHead } = await import('../src/components/Analytics.mjs');
+  const out = applySeoHead('<html lang="tr"><head><title>İletişim</title></head><body><h1>İletişim</h1></body></html>', '/iletisim.html');
+  const tags = out.match(/hreflang="[^"]*"/g) || [];
+  if (tags.join() !== 'hreflang="tr"') throw new Error(`Turkish-only page alternates: ${tags.join()}`);
+  console.log('turkish-only applySeoHead hreflang: pass');
+}
