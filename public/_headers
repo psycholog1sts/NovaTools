@@ -38,6 +38,21 @@
 /js/*
   Cache-Control: public, max-age=31536000, immutable
 
+# These three keep a fixed, unhashed name across deploys, so `immutable` pinned
+# returning visitors to an old copy that imports hashed chunks the next deploy
+# deletes (404 -> the tool page enhancer fails to load). Revalidate them instead.
+/js/tool-page-enhancer.js
+  ! Cache-Control
+  Cache-Control: public, max-age=0, must-revalidate
+
+/js/record-tool-visit.js
+  ! Cache-Control
+  Cache-Control: public, max-age=0, must-revalidate
+
+/js/background-remover-v2.js
+  ! Cache-Control
+  Cache-Control: public, max-age=0, must-revalidate
+
 /css/*
   Cache-Control: public, max-age=31536000, immutable
 
