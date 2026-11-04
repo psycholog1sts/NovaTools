@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { normalizeGeneralLocaleSeoHtml, normalizeI18nRuntimeSource } from '../src/js/locale-seo-normalizer.mjs';
+import { normalizeCleanUrlSeoHtml, normalizeCleanUrlSitemapXml, pruneUnservableAlternates } from '../src/js/clean-url-seo.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const distDir = path.join(root, 'dist');
@@ -24,6 +25,12 @@ function listHtmlFiles(dir) {
   return files;
 }
 
+// Cloudflare Pages serves `/x/` from x/index.html and `/x` from x.html.
+function isServablePath(pathname) {
+  if (pathname.endsWith('/')) return fs.existsSync(path.join(distDir, pathname, 'index.html'));
+  return fs.existsSync(path.join(distDir, `${pathname}.html`));
+}
+
 function normalizeHtmlDefaultTheme(html) {
   return html.replace(/<html\b([^>]*?)\bdata-theme=(['"])dark\2([^>]*)>/i, '<html$1data-theme="light"$3>');
 }
@@ -44,6 +51,8 @@ let normalizedWwwOrigins = 0;
 let normalizedDefaultThemes = 0;
 let injectedBootstraps = 0;
 let normalizedLocaleSeoFiles = 0;
+let normalizedCleanUrlFiles = 0;
+let prunedAlternateFiles = 0;
 
 for (const filePath of htmlFiles) {
   const relative = path.relative(distDir, filePath).replace(/\\/g, '/');
@@ -59,6 +68,12 @@ for (const filePath of htmlFiles) {
   const themeBefore = after;
   after = normalizeHtmlDefaultTheme(after);
   if (after !== themeBefore) normalizedDefaultThemes += 1;
+
+  // Must run before locale normalization: hreflang alternates are derived
+  // from the canonical, so a clean canonical yields clean alternates.
+  const cleanUrlBefore = after;
+  after = normalizeCleanUrlSeoHtml(after);
+  if (after !== cleanUrlBefore) normalizedCleanUrlFiles += 1;
 
   // normalizeGeneralLocaleSeoHtml can mix CRLF/LF line endings at the
   // splice point on its first pass (the source file's original line
@@ -78,6 +93,10 @@ for (const filePath of htmlFiles) {
   }
   if (after !== localeSeoBefore) normalizedLocaleSeoFiles += 1;
 
+  const alternatesBefore = after;
+  after = pruneUnservableAlternates(after, isServablePath);
+  if (after !== alternatesBefore) prunedAlternateFiles += 1;
+
   if (!after.includes(marker)) {
     after = injectBootstrap(after, relative);
     injectedBootstraps += 1;
@@ -86,6 +105,17 @@ for (const filePath of htmlFiles) {
   if (after !== before) {
     fs.writeFileSync(filePath, after);
     changedFiles += 1;
+  }
+}
+
+const sitemapFiles = fs.readdirSync(distDir).filter((name) => /^sitemap[^/]*\.xml$/.test(name)).map((name) => path.join(distDir, name));
+let normalizedSitemaps = 0;
+for (const filePath of sitemapFiles) {
+  const before = fs.readFileSync(filePath, 'utf8');
+  const after = normalizeCleanUrlSitemapXml(before);
+  if (after !== before) {
+    fs.writeFileSync(filePath, after);
+    normalizedSitemaps += 1;
   }
 }
 
@@ -104,6 +134,7 @@ const darkHtmlDefaults = [];
 const crossOriginInternalAssets = [];
 const blockedGoogleFontStyles = [];
 const staleLocaleSeoHtml = [];
+const staleCleanUrlHtml = [];
 
 for (const filePath of htmlFiles) {
   const relative = path.relative(distDir, filePath).replace(/\\/g, '/');
@@ -114,7 +145,11 @@ for (const filePath of htmlFiles) {
   if (/<(?:link|script)\b[^>]*(?:href|src)=["']https:\/\/mc-novatools\.com\/(?:css|styles|js|assets|vendor|wasm)\//i.test(html)) crossOriginInternalAssets.push(relative);
   if (/<link\b[^>]*rel=["']stylesheet["'][^>]*href=["']https:\/\/fonts\.googleapis\.com\//i.test(html)) blockedGoogleFontStyles.push(relative);
   if (normalizeGeneralLocaleSeoHtml(html) !== html) staleLocaleSeoHtml.push(relative);
+  if (normalizeCleanUrlSeoHtml(html) !== html || pruneUnservableAlternates(html, isServablePath) !== html) staleCleanUrlHtml.push(relative);
 }
+const staleCleanUrlSitemaps = sitemapFiles
+  .filter((filePath) => { const xml = fs.readFileSync(filePath, 'utf8'); return normalizeCleanUrlSitemapXml(xml) !== xml; })
+  .map((filePath) => path.basename(filePath));
 
 const finalRuntimeI18n = fs.readFileSync(runtimeI18nPath, 'utf8');
 if (normalizeI18nRuntimeSource(finalRuntimeI18n) !== finalRuntimeI18n) {
@@ -139,6 +174,9 @@ if (blockedGoogleFontStyles.length) {
 if (staleLocaleSeoHtml.length) {
   throw new Error(`locale SEO normalization is not idempotent for ${staleLocaleSeoHtml.length} built HTML file(s): ${staleLocaleSeoHtml.slice(0, 8).join(', ')}`);
 }
+if (staleCleanUrlHtml.length || staleCleanUrlSitemaps.length) {
+  throw new Error(`redirected .html SEO URLs or unservable hreflang alternates remain in ${staleCleanUrlHtml.length + staleCleanUrlSitemaps.length} built file(s): ${[...staleCleanUrlHtml, ...staleCleanUrlSitemaps].slice(0, 8).join(', ')}`);
+}
 
 console.log(JSON.stringify({
   html_files: htmlFiles.length,
@@ -146,6 +184,9 @@ console.log(JSON.stringify({
   normalized_www_origins: normalizedWwwOrigins,
   normalized_default_themes: normalizedDefaultThemes,
   normalized_locale_seo_files: normalizedLocaleSeoFiles,
+  normalized_clean_url_files: normalizedCleanUrlFiles,
+  normalized_sitemaps: normalizedSitemaps,
+  pruned_alternate_files: prunedAlternateFiles,
   normalized_runtime_i18n: normalizedRuntimeI18n,
   injected_first_visit_bootstraps: injectedBootstraps,
   canonical_origin: canonicalOrigin,
