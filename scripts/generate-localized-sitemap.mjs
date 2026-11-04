@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import fs from 'fs';
 import path from 'path';
+import { execFileSync } from 'child_process';
 import { globSync } from 'glob';
 import { fileURLToPath } from 'url';
 import { blogArticlePath, blogHubPath, fallbackBlogLocale, normalizeBlogSlug, normalizeBlogSlugList } from '../src/js/blog-routes.js';
@@ -8,7 +9,44 @@ import { isPublishedBlogSlug } from '../src/js/blog-publication.js';
 
 const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const origin = 'https://mc-novatools.com';
+// The sitemap index itself changes whenever a build runs.
 const lastmod = new Date().toISOString().replace(/\.\d{3}Z$/, '+00:00');
+
+// Per-URL <lastmod> is the last commit that touched the page's source file. Stamping every URL
+// with the build time told crawlers that all pages changed on every deploy, which they did not.
+// When no source file (or no git history) is found the field is omitted rather than guessed.
+const sourceDateCache = new Map();
+function gitLastModified(relativeFile) {
+  if (sourceDateCache.has(relativeFile)) return sourceDateCache.get(relativeFile);
+  let value = '';
+  if (fs.existsSync(path.join(rootDir, relativeFile))) {
+    try {
+      value = execFileSync('git', ['log', '-1', '--format=%cI', '--', relativeFile], { cwd: rootDir, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim();
+    } catch {
+      value = '';
+    }
+  }
+  sourceDateCache.set(relativeFile, value);
+  return value;
+}
+
+function sourceFilesForRoute(route) {
+  const clean = route.replace(/^\//, '');
+  if (!clean) return ['index.html'];
+  const blogArticle = clean.match(/^blog\/articles\/([^/]+?)(?:\.html)?\/?$/);
+  if (blogArticle) return [`src/blog/articles/${blogArticle[1]}.html`, `src/i18n/blog/${fallbackBlogLocale}.json`];
+  if (clean.endsWith('.html')) return [clean];
+  const dir = clean.replace(/\/$/, '');
+  return [`src/${dir}/index.html`, `${dir}/index.html`, `${dir}.html`];
+}
+
+function routeLastModified(route) {
+  for (const file of sourceFilesForRoute(route)) {
+    const date = gitLastModified(file);
+    if (date) return date;
+  }
+  return '';
+}
 const maxUrlsPerSitemap = 50000;
 
 const staticPages = [
@@ -51,11 +89,9 @@ const categoryPages = [
   ['/categories/social-media-tools.html', '0.8', 'weekly', 'social'],
   ['/categories/productivity-tools.html', '0.8', 'weekly', 'productivity'],
   ['/categories/data-tools.html', '0.8', 'weekly', 'data'],
-  ['/categories/design-tools.html', '0.8', 'weekly', 'design'],
-  ['/tools/pdf/', '0.8', 'weekly', 'pdf'],
-  ['/tools/image/', '0.8', 'weekly', 'image'],
-  ['/tools/developer/', '0.8', 'weekly', 'dev'],
-  ['/tools/finance/', '0.8', 'weekly', 'finance']
+  ['/categories/design-tools.html', '0.8', 'weekly', 'design']
+  // /tools/{pdf,image,developer,finance}/ are copies of the hubs above that name the hub as
+  // canonical (scripts/post-build-fix.mjs), so they are not listed separately.
 ];
 
 const nonIndexableToolSources = [
@@ -91,11 +127,12 @@ function xmlEscape(value) {
 
 function urlEntry(route, priority = '0.7', changefreq = 'monthly', section = 'Other') {
   const cleanRoute = route.startsWith('/') ? route : `/${route}`;
-  return { loc: `${origin}${cleanRoute}`, priority, changefreq, section };
+  return { loc: `${origin}${cleanRoute}`, priority, changefreq, section, modified: routeLastModified(cleanRoute) };
 }
 
-function renderUrlEntry({ loc, priority, changefreq }) {
-  return `  <url>\n    <loc>${xmlEscape(loc)}</loc>\n    <lastmod>${lastmod}</lastmod>\n    <changefreq>${changefreq}</changefreq>\n    <priority>${priority}</priority>\n  </url>`;
+function renderUrlEntry({ loc, priority, changefreq, modified }) {
+  const lastmodLine = modified ? `\n    <lastmod>${modified}</lastmod>` : '';
+  return `  <url>\n    <loc>${xmlEscape(loc)}</loc>${lastmodLine}\n    <changefreq>${changefreq}</changefreq>\n    <priority>${priority}</priority>\n  </url>`;
 }
 
 function renderSection(name, entries) {
@@ -167,10 +204,11 @@ const sections = [
     ...readJson(`src/i18n/blog/${fallbackBlogLocale}.json`).map((post) => post.slug).filter(Boolean).filter(isPublishedBlogSlug),
     ...sourceBlogArticleSlugs()
   ]).map((slug) => urlEntry(blogArticlePath(slug, fallbackBlogLocale), '0.6', 'weekly', 'Blog posts'))],
+  // List the full profile each author's articles link to, not the short /author/<id>/ stub.
   ['Author pages', readJson('src/data/authors.json')
-    .map(authorSlug)
+    .map((author) => author.profileUrl || (authorSlug(author) ? `/author/${authorSlug(author)}/` : ''))
     .filter(Boolean)
-    .map((slug) => urlEntry(`/author/${slug}/`, '0.5', 'monthly', 'Author pages'))]
+    .map((route) => urlEntry(route, '0.5', 'monthly', 'Author pages'))]
 ];
 
 function dedupeEntries(entries) {

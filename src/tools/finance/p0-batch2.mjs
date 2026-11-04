@@ -1,6 +1,72 @@
 import { getExchangeRates } from '../../js/api/exchange.js';
 import { getStockQuote } from '../../js/api/stocks.js';
 import { getCryptoPrices } from '../../js/api/crypto.js';
+import { onLanguageChange, pageLanguage, strings } from './finance-i18n.mjs';
+
+// Strings for the two calculators that back public pages (retirement, student-loan) and the shared
+// form runner. Turkish stays the output outside a browser, so Node tests see the original text.
+const UI = {
+  en: {
+    ready: 'Ready.',
+    working: 'Calculating...',
+    failed: 'Something went wrong.',
+    genericError: 'The calculation could not be completed.',
+    mustBePositive: (label) => `${label} must be greater than 0.`,
+    mustBeBetween: (label, min, max) => `${label} must be between ${min} and ${max}.`,
+    paymentTooLow: 'The monthly payment must be higher than the monthly interest.',
+    years: (n) => `${n} years`,
+    months: (n) => `${n} months`,
+    currentLine: 'Current',
+    extraLine: 'With extra payment',
+    retirement: {
+      currentAge: 'Current age', retirementAge: 'Retirement age', negative: 'Savings cannot be negative.',
+      status: 'Retirement projection ready.', nominal: 'Projected savings', real: 'Inflation-adjusted',
+      withdrawal: '4% rule, per month', remaining: 'Years to target', chartTitle: 'Savings by age', chartLabel: 'Projected savings by age',
+      note: 'The projection assumes the return and inflation rates you chose stay constant for the whole period. State pensions are not included.',
+      form: ['Current age', 'Retirement age', 'Monthly saving', 'Current savings', 'Expected return %', 'Inflation %'], submit: 'Calculate retirement savings'
+    },
+    studentLoan: {
+      balance: 'Loan balance', rate: 'Interest rate', payment: 'Monthly payment', negative: 'The extra payment cannot be negative.',
+      status: 'Payoff schedule ready.', newTerm: 'New payoff time', shortened: 'Time saved', saved: 'Interest saved', totalInterest: 'Total interest',
+      head: ['Month', 'Payment', 'Principal', 'Interest', 'Balance'], chartTitle: 'Remaining balance', chartLabel: 'Remaining student loan balance with and without the extra payment',
+      note: 'Interest, grace-period and deferment rules depend on your loan agreement. These figures are estimates; confirm them with your lender.',
+      form: ['Loan balance', 'Interest rate %', 'Monthly payment', 'Extra payment'], submit: 'Calculate payoff plan'
+    }
+  },
+  tr: {
+    ready: 'Hazır.',
+    working: 'Hesaplanıyor...',
+    failed: 'Hata oluştu.',
+    genericError: 'Hesaplama sırasında bir hata oluştu.',
+    mustBePositive: (label) => `${label} 0’dan büyük olmalıdır.`,
+    mustBeBetween: (label, min, max) => `${label} ${min} ile ${max} arasında olmalıdır.`,
+    paymentTooLow: 'Aylık ödeme, aylık faizden yüksek olmalıdır.',
+    years: (n) => `${n} yıl`,
+    months: (n) => `${n} ay`,
+    currentLine: 'Mevcut',
+    extraLine: 'Ek ödeme',
+    retirement: {
+      currentAge: 'Mevcut yaş', retirementAge: 'Emeklilik yaşı', negative: 'Birikimler negatif olamaz.',
+      status: 'Emeklilik tahmini hazır.', nominal: 'Nominal birikim', real: 'Enflasyon ayarlı',
+      withdrawal: '4% kuralı aylık', remaining: 'Hedefe kalan süre', chartTitle: 'Yaşa göre birikim', chartLabel: 'Emeklilik birikim grafiği',
+      note: 'Projeksiyon, seçtiğiniz getiri ve enflasyon oranlarının dönem boyunca sabit kaldığını varsayar. Devlet emekliliği/SGK aylığı bu hesaplamaya dahil değildir.',
+      form: ['Mevcut yaş', 'Emeklilik yaşı', 'Aylık birikim', 'Mevcut birikim', 'Beklenen getiri %', 'Enflasyon %'], submit: 'Emekliliği hesapla'
+    },
+    studentLoan: {
+      balance: 'Kredi tutarı', rate: 'Faiz oranı', payment: 'Aylık ödeme', negative: 'Ek ödeme negatif olamaz.',
+      status: 'Öğrenci kredisi ödeme planı hazır.', newTerm: 'Yeni vade', shortened: 'Kısalan süre', saved: 'Faiz tasarrufu', totalInterest: 'Toplam faiz',
+      head: ['Ay', 'Ödeme', 'Anapara', 'Faiz', 'Kalan'], chartTitle: 'Kalan borç grafiği', chartLabel: 'Öğrenci kredisi kalan borç grafiği',
+      note: 'KYK ve banka kredilerinde faiz/erteleme kuralları sözleşmeye göre değişebilir. Öğrenci kredisi hesaplamaları tahminidir, kesin bilgi için KYK veya bankaya danışın.',
+      form: ['Kredi tutarı', 'Faiz oranı %', 'Aylık ödeme', 'Ek ödeme'], submit: 'Ödeme planını hesapla'
+    }
+  }
+};
+
+// English pages do not assume a currency (the inputs have none); Turkish keeps lira formatting.
+const PLAIN_EN_FORMATTER = new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+function formatMoney(value) {
+  return pageLanguage() === 'tr' ? formatTRY(value) : PLAIN_EN_FORMATTER.format(value);
+}
 
 const TRY_FORMATTER = new Intl.NumberFormat('tr-TR', { style: 'currency', currency: 'TRY', minimumFractionDigits: 2, maximumFractionDigits: 2 });
 const USD_FORMATTER = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 2, maximumFractionDigits: 2 });
@@ -94,11 +160,11 @@ function escapeHtml(value) {
 }
 
 function assertPositive(value, label) {
-  if (!Number.isFinite(value) || value <= 0) throw new Error(`${label} 0’dan büyük olmalıdır.`);
+  if (!Number.isFinite(value) || value <= 0) throw new Error(strings(UI).mustBePositive(label));
 }
 
 function assertRange(value, label, min, max) {
-  if (!Number.isFinite(value) || value < min || value > max) throw new Error(`${label} ${formatNumber(min)} ile ${formatNumber(max)} arasında olmalıdır.`);
+  if (!Number.isFinite(value) || value < min || value > max) throw new Error(strings(UI).mustBeBetween(label, formatNumber(min), formatNumber(max)));
 }
 
 function resultCards(cards) {
@@ -417,9 +483,11 @@ export function calculateRetirement(formData) {
   const currentSavings = parseMoneyInput(formData.currentSavings || 0);
   const returnRate = parsePercent(formData.returnRate || 8) / 100;
   const inflationRate = parsePercent(formData.inflationRate || 3) / 100;
-  assertRange(currentAge, 'Mevcut yaş', 18, 75);
-  assertRange(retirementAge, 'Emeklilik yaşı', currentAge + 1, 80);
-  if (monthlySaving < 0 || currentSavings < 0) throw new Error('Birikimler negatif olamaz.');
+  const ui = strings(UI);
+  const t = ui.retirement;
+  assertRange(currentAge, t.currentAge, 18, 75);
+  assertRange(retirementAge, t.retirementAge, currentAge + 1, 80);
+  if (monthlySaving < 0 || currentSavings < 0) throw new Error(t.negative);
   const years = retirementAge - currentAge;
   let nominal = currentSavings;
   const series = [];
@@ -430,14 +498,14 @@ export function calculateRetirement(formData) {
   const real = nominal / Math.pow(1 + inflationRate, years);
   const annualWithdrawal = nominal * 0.04;
   return {
-    status: 'Emeklilik tahmini hazır.',
+    status: t.status,
     type: 'success',
     html: `${resultCards([
-      { value: formatTRY(nominal), label: 'Nominal birikim', className: 'highlight' },
-      { value: formatTRY(real), label: 'Enflasyon ayarlı' },
-      { value: formatTRY(annualWithdrawal / 12), label: '4% kuralı aylık' },
-      { value: `${years} yıl`, label: 'Hedefe kalan süre' }
-    ])}<div class="chart-container"><h3>Yaşa göre birikim</h3>${canvasHtml('retirementChart', 'line', series, 'Emeklilik birikim grafiği')}</div><p class="finance-note">Projeksiyon, seçtiğiniz getiri ve enflasyon oranlarının dönem boyunca sabit kaldığını varsayar. Devlet emekliliği/SGK aylığı bu hesaplamaya dahil değildir.</p>`
+      { value: formatMoney(nominal), label: t.nominal, className: 'highlight' },
+      { value: formatMoney(real), label: t.real },
+      { value: formatMoney(annualWithdrawal / 12), label: t.withdrawal },
+      { value: ui.years(years), label: t.remaining }
+    ])}<div class="chart-container"><h3>${t.chartTitle}</h3>${canvasHtml('retirementChart', 'line', series, t.chartLabel)}</div><p class="finance-note">${t.note}</p>`
   };
 }
 
@@ -449,7 +517,7 @@ function loanSchedule(balance, annualRate, monthlyPayment, extraPayment = 0) {
   for (let month = 1; month <= 600 && remaining > 0.01; month++) {
     const interest = remaining * monthlyRate;
     const payment = Math.min(remaining + interest, monthlyPayment + extraPayment);
-    if (payment <= interest) throw new Error('Aylık ödeme, aylık faizden yüksek olmalıdır.');
+    if (payment <= interest) throw new Error(strings(UI).paymentTooLow);
     const principal = payment - interest;
     remaining = Math.max(0, remaining - principal);
     totalInterest += interest;
@@ -463,24 +531,36 @@ export function calculateStudentLoan(formData) {
   const rate = parsePercent(formData.interestRate) / 100;
   const monthlyPayment = parseMoneyInput(formData.monthlyPayment);
   const extraPayment = parseMoneyInput(formData.extraPayment || 0);
-  assertPositive(balance, 'Kredi tutarı');
-  assertRange(rate * 100, 'Faiz oranı', 0, 100);
-  assertPositive(monthlyPayment, 'Aylık ödeme');
-  if (extraPayment < 0) throw new Error('Ek ödeme negatif olamaz.');
+  const ui = strings(UI);
+  const t = ui.studentLoan;
+  assertPositive(balance, t.balance);
+  assertRange(rate * 100, t.rate, 0, 100);
+  assertPositive(monthlyPayment, t.payment);
+  if (extraPayment < 0) throw new Error(t.negative);
   const base = loanSchedule(balance, rate, monthlyPayment, 0);
   const extra = loanSchedule(balance, rate, monthlyPayment, extraPayment);
   const savings = base.totalInterest - extra.totalInterest;
   const chart = base.rows.slice(0, Math.max(base.rows.length, extra.rows.length)).filter((_, index) => index % Math.max(1, Math.ceil(base.rows.length / 24)) === 0).map((row) => ({ label: String(row.month), current: row.balance, extra: extra.rows[Math.min(row.month - 1, extra.rows.length - 1)]?.balance || 0 }));
   return {
-    status: 'Öğrenci kredisi ödeme planı hazır.',
+    status: t.status,
     type: 'success',
     html: `${resultCards([
-      { value: `${extra.months} ay`, label: 'Yeni vade', className: 'highlight' },
-      { value: `${Math.max(0, base.months - extra.months)} ay`, label: 'Kısalan süre' },
-      { value: formatTRY(savings), label: 'Faiz tasarrufu' },
-      { value: formatTRY(extra.totalInterest), label: 'Toplam faiz' }
-    ])}${tableHtml(['Ay', 'Ödeme', 'Anapara', 'Faiz', 'Kalan'], extra.rows.slice(0, 24).map((row) => [row.month, formatTRY(row.payment), formatTRY(row.principal), formatTRY(row.interest), formatTRY(row.balance)]).concat(extra.rows.length > 24 ? [['...', '...', '...', '...', '...']] : []))}<div class="chart-container"><h3>Kalan borç grafiği</h3>${canvasHtml('studentLoanChart', 'dualLine', chart, 'Öğrenci kredisi kalan borç grafiği')}</div><p class="finance-note">KYK ve banka kredilerinde faiz/erteleme kuralları sözleşmeye göre değişebilir. Öğrenci kredisi hesaplamaları tahminidir, kesin bilgi için KYK veya bankaya danışın.</p>`
+      { value: ui.months(extra.months), label: t.newTerm, className: 'highlight' },
+      { value: ui.months(Math.max(0, base.months - extra.months)), label: t.shortened },
+      { value: formatMoney(savings), label: t.saved },
+      { value: formatMoney(extra.totalInterest), label: t.totalInterest }
+    ])}${tableHtml(t.head, extra.rows.slice(0, 24).map((row) => [row.month, formatMoney(row.payment), formatMoney(row.principal), formatMoney(row.interest), formatMoney(row.balance)]).concat(extra.rows.length > 24 ? [['...', '...', '...', '...', '...']] : []))}<div class="chart-container"><h3>${t.chartTitle}</h3>${canvasHtml('studentLoanChart', 'dualLine', chart, t.chartLabel)}</div><p class="finance-note">${t.note}</p>`
   };
+}
+
+function retirementForm() {
+  const [age, target, saving, current, ret, inflation] = strings(UI).retirement.form;
+  return `<div class="form-grid"><label>${age}<input name="currentAge" type="number" min="18" max="75" step="1" value="35" inputmode="numeric" required></label><label>${target}<input name="retirementAge" type="number" min="19" max="80" step="1" value="60" inputmode="numeric" required></label><label>${saving}<input name="monthlySaving" type="number" min="0" step="0.01" value="5000" inputmode="decimal" required></label><label>${current}<input name="currentSavings" type="number" min="0" step="0.01" value="100000" inputmode="decimal"></label><label>${ret}<input name="returnRate" type="number" min="0" max="100" step="0.1" value="8" inputmode="decimal" required></label><label>${inflation}<input name="inflationRate" type="number" min="0" max="100" step="0.1" value="3" inputmode="decimal"></label></div><button class="btn" type="submit">${strings(UI).retirement.submit}</button>`;
+}
+
+function studentLoanForm() {
+  const [balance, rate, payment, extra] = strings(UI).studentLoan.form;
+  return `<div class="form-grid"><label>${balance}<input name="balance" type="number" min="1" step="0.01" value="100000" inputmode="decimal" required></label><label>${rate}<input name="interestRate" type="number" min="0" max="100" step="0.1" value="4.5" inputmode="decimal" required></label><label>${payment}<input name="monthlyPayment" type="number" min="1" step="0.01" value="3500" inputmode="decimal" required></label><label>${extra}<input name="extraPayment" type="number" min="0" step="0.01" value="500" inputmode="decimal"></label></div><button class="btn" type="submit">${strings(UI).studentLoan.submit}</button>`;
 }
 
 function forms() {
@@ -492,8 +572,8 @@ function forms() {
     'crypto-tax': `<div class="form-grid"><label>Yıl<input name="year" type="number" min="2020" max="2030" step="1" value="2026" inputmode="numeric" required></label><label>Toplam alım<input name="totalBuy" type="number" min="0" step="0.01" value="100000" inputmode="decimal" required></label><label>Toplam satım<input name="totalSell" type="number" min="0" step="0.01" value="150000" inputmode="decimal" required></label><label>Kazanç/zarar (opsiyonel)<input name="gainLoss" type="number" step="0.01" inputmode="decimal"></label><label>Maliyet bazı<select name="costBasis"><option>FIFO</option><option>LIFO</option></select></label></div><button class="btn" type="submit">Vergiyi hesapla</button>`,
     tax: `<div class="form-grid"><label>Brüt maaş<input name="grossSalary" type="number" min="1" max="5000000" step="0.01" value="75000" inputmode="decimal" required></label><label>Medeni durum<select name="marital"><option>Bekar</option><option>Evli</option></select></label><label>Çocuk sayısı<input name="children" type="number" min="0" max="10" step="1" value="0" inputmode="numeric" required></label><label>Özel sigorta<input name="privateInsurance" type="number" min="0" step="0.01" value="0" inputmode="decimal"></label></div><button class="btn" type="submit">Net maaşı hesapla</button>`,
     'life-insurance': `<div class="form-grid"><label>Yaş<input name="age" type="number" min="18" max="75" step="1" value="35" inputmode="numeric" required></label><label>Cinsiyet<select name="gender"><option value="female">Kadın</option><option value="male">Erkek</option></select></label><label>Sigorta tutarı<input name="coverage" type="number" min="100000" max="5000000" step="10000" value="1000000" inputmode="decimal" required></label><label>Vade<input name="term" type="number" min="5" max="30" step="1" value="20" inputmode="numeric" required></label><label>Gösterim<select name="paymentMode"><option value="monthly">Aylık</option><option value="annual">Yıllık</option></select></label></div><button class="btn" type="submit">Primi hesapla</button>`,
-    retirement: `<div class="form-grid"><label>Mevcut yaş<input name="currentAge" type="number" min="18" max="75" step="1" value="35" inputmode="numeric" required></label><label>Emeklilik yaşı<input name="retirementAge" type="number" min="19" max="80" step="1" value="60" inputmode="numeric" required></label><label>Aylık birikim<input name="monthlySaving" type="number" min="0" step="0.01" value="5000" inputmode="decimal" required></label><label>Mevcut birikim<input name="currentSavings" type="number" min="0" step="0.01" value="100000" inputmode="decimal"></label><label>Beklenen getiri %<input name="returnRate" type="number" min="0" max="100" step="0.1" value="8" inputmode="decimal" required></label><label>Enflasyon %<input name="inflationRate" type="number" min="0" max="100" step="0.1" value="3" inputmode="decimal"></label></div><button class="btn" type="submit">Emekliliği hesapla</button>`,
-    'student-loan': `<div class="form-grid"><label>Kredi tutarı<input name="balance" type="number" min="1" step="0.01" value="100000" inputmode="decimal" required></label><label>Faiz oranı %<input name="interestRate" type="number" min="0" max="100" step="0.1" value="4.5" inputmode="decimal" required></label><label>Aylık ödeme<input name="monthlyPayment" type="number" min="1" step="0.01" value="3500" inputmode="decimal" required></label><label>Ek ödeme<input name="extraPayment" type="number" min="0" step="0.01" value="500" inputmode="decimal"></label></div><button class="btn" type="submit">Ödeme planını hesapla</button>`
+    retirement: retirementForm(),
+    'student-loan': studentLoanForm()
   };
 }
 
@@ -561,8 +641,9 @@ function drawDualLine(ctx, data, width, height, padding) {
   const maxValue = Math.max(...current, ...extra, 1);
   drawLinePath(ctx, current, width, height, padding, '#F97316', maxValue);
   drawLinePath(ctx, extra, width, height, padding, '#22C55E', maxValue);
-  ctx.fillStyle = '#F97316'; ctx.fillText('Mevcut', padding + 6, 18);
-  ctx.fillStyle = '#22C55E'; ctx.fillText('Ek ödeme', padding + 72, 18);
+  const ui = strings(UI);
+  ctx.fillStyle = '#F97316'; ctx.fillText(ui.currentLine, padding + 6, 18);
+  ctx.fillStyle = '#22C55E'; ctx.fillText(ui.extraLine, padding + 6 + ctx.measureText(ui.currentLine).width + 18, 18);
 }
 
 function drawBar(ctx, data, width, height, padding) {
@@ -652,11 +733,12 @@ export function initP0FinanceTool(tool = document.body.dataset.financeTool) {
   form.innerHTML = markup;
   setupCloudInstances(form);
   setupSwap(form);
+  status.textContent = strings(UI).ready;
 
   let cryptoTimer;
   async function run() {
     try {
-      status.textContent = 'Hesaplanıyor...';
+      status.textContent = strings(UI).working;
       status.dataset.type = 'info';
       const calculator = CALCULATORS[tool];
       const output = await calculator(Object.fromEntries(new FormData(form)));
@@ -668,9 +750,9 @@ export function initP0FinanceTool(tool = document.body.dataset.financeTool) {
       bindFavoriteButtons(results);
       results.scrollIntoView({ behavior: 'smooth', block: 'start' });
     } catch (error) {
-      results.innerHTML = `<p class="form-error">${escapeHtml(error.message || 'Hesaplama sırasında bir hata oluştu.')}</p>`;
+      results.innerHTML = `<p class="form-error">${escapeHtml(error.message || strings(UI).genericError)}</p>`;
       results.classList.add('visible');
-      status.textContent = 'Hata oluştu.';
+      status.textContent = strings(UI).failed;
       status.dataset.type = 'error';
       results.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
@@ -679,6 +761,21 @@ export function initP0FinanceTool(tool = document.body.dataset.financeTool) {
   form.addEventListener('submit', (event) => {
     event.preventDefault();
     run();
+  });
+
+  // Re-render the form (keeping the entered values) and any result in the new language.
+  onLanguageChange(() => {
+    const nextMarkup = forms()[tool];
+    if (!nextMarkup) return;
+    const values = Object.fromEntries(new FormData(form));
+    form.innerHTML = nextMarkup;
+    setupCloudInstances(form);
+    setupSwap(form);
+    for (const [name, value] of Object.entries(values)) {
+      if (form.elements[name]) form.elements[name].value = value;
+    }
+    if (results.classList.contains('visible')) run();
+    else status.textContent = strings(UI).ready;
   });
 
   if (tool === 'crypto-prices') {

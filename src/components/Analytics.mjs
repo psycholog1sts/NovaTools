@@ -149,8 +149,10 @@ function localizedRoute(route, locale) {
   return `${SITE_ORIGIN}/${locale}${normalized}`;
 }
 
-function renderHreflangTags(route) {
+function renderHreflangTags(route, turkishOnly = false) {
   const normalized = normalizeRoute(route).replace(/^\/(?:en|tr)(?=\/|$)/, '') || '/';
+  // Turkish-only pages (iletisim, gizlilik-politikasi, ...) have no English or ?lang=tr variant.
+  if (turkishOnly) return `<link rel="alternate" hreflang="tr" href="${SITE_ORIGIN}${normalized}">`;
   const tags = HREFLANG_LOCALES.map((locale) => `<link rel="alternate" hreflang="${locale}" href="${localizedRoute(normalized, locale)}">`);
   tags.push(`<link rel="alternate" hreflang="x-default" href="${SITE_ORIGIN}${normalized}">`);
   return tags.join('\n');
@@ -464,7 +466,8 @@ export function applySeoHead(html, route, { gaId = '', gscId = '', adsenseClient
   nextHtml = upsertTag(nextHtml, /<meta name="description" content="[^"]*"\s*\/?>/i, `<meta name="description" content="${escapedDescription}">`);
   nextHtml = upsertTag(nextHtml, /<link rel="canonical" href="[^"]*"\s*\/?>/i, `<link rel="canonical" href="${canonical}">`);
   nextHtml = nextHtml.replace(/\n?\s*<link\b(?=[^>]*\brel=["']alternate["'])(?=[^>]*\bhreflang=)[^>]*>\s*/gi, '\n');
-  nextHtml = nextHtml.replace(/<\/head>/i, `${renderHreflangTags(route)}\n</head>`);
+  const turkishOnly = /<html\b[^>]*\blang\s*=\s*["']tr["']/i.test(nextHtml) && !/^\/tr(?:\/|$)/.test(normalizeRoute(route));
+  nextHtml = nextHtml.replace(/<\/head>/i, `${renderHreflangTags(route, turkishOnly)}\n</head>`);
   nextHtml = upsertTag(nextHtml, /<meta property="og:title" content="[^"]*"\s*\/?>/i, `<meta property="og:title" content="${escapedTitle}">`);
   nextHtml = upsertTag(nextHtml, /<meta property="og:description" content="[^"]*"\s*\/?>/i, `<meta property="og:description" content="${escapedDescription}">`);
   nextHtml = upsertTag(nextHtml, /<meta property="og:type" content="[^"]*"\s*\/?>/i, `<meta property="og:type" content="${ogType}">`);

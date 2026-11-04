@@ -20,6 +20,13 @@
 # Preserve the complete tool suffix and move users to the canonical public namespace.
 /src/tools/* /tools/:splat 301
 
+# Two-sentence author stubs duplicated the full profiles that every article links to.
+# Different target names, so this cannot loop with the native .html handling.
+/author/metehan /author/metehan-cetin 301
+/author/metehan/ /author/metehan-cetin 301
+/author/editorial /author/novatools-editorial 301
+/author/editorial/ /author/novatools-editorial 301
+
 # NOTE: category, blog, and guides clean URLs are likewise handled by
 # Cloudflare's native `.html`-stripping behavior and intentionally have no
 # rewrite rule here, for the same self-redirect-loop reason described above.

@@ -1,0 +1,49 @@
+{
+  "id": "retirement",
+  "name": "Emeklilik Birikimi Hesaplayıcı",
+  "nameEn": "Retirement Calculator",
+  "category": "finance",
+  "tier": 3,
+  "cpc": {
+    "tr": 1.2,
+    "us": 3
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "UtilityApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.3
+    }
+  },
+  "bundle": {
+    "lazyLoad": false
+  },
+  "keywords": {
+    "tr": [
+      "emeklilik hesaplama",
+      "emeklilik birikimi",
+      "bireysel emeklilik hesaplama"
+    ],
+    "en": [
+      "retirement calculator",
+      "retirement savings projection",
+      "4% rule calculator"
+    ]
+  },
+  "description": {
+    "tr": "Mevcut yaş, emeklilik yaşı, aylık birikim, getiri ve enflasyonla emeklilik birikiminizi tarayıcıda tahmin edin.",
+    "en": "Project retirement savings from your age, target retirement age, monthly saving, expected return and inflation, in your browser."
+  },
+  "relatedTools": [
+    "compound-interest",
+    "roi-calculator"
+  ]
+}

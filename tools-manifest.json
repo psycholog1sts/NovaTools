@@ -1,6 +1,6 @@
 {
   "generated": "postinstall",
-  "count": 131,
+  "count": 133,
   "tools": [
     {
       "id": "age-calculator",
@@ -3671,6 +3671,66 @@
       "entry": "/src/tools/finance/live-exchange/"
     },
     {
+      "id": "retirement",
+      "name": "Emeklilik Birikimi Hesaplayıcı",
+      "nameEn": "Retirement Calculator",
+      "category": "finance",
+      "tier": 3,
+      "cpc": {
+        "tr": 1.2,
+        "us": 3
+      },
+      "schema": {
+        "@type": "WebApplication",
+        "applicationCategory": "UtilityApplication",
+        "offers": {
+          "@type": "Offer",
+          "price": "0"
+        }
+      },
+      "ads": {
+        "sidebar": {
+          "enabled": true,
+          "size": "336x280",
+          "minCpm": 0.3
+        }
+      },
+      "bundle": {
+        "lazyLoad": false
+      },
+      "keywords": {
+        "tr": [
+          "emeklilik hesaplama",
+          "emeklilik birikimi",
+          "bireysel emeklilik hesaplama"
+        ],
+        "en": [
+          "retirement calculator",
+          "retirement savings projection",
+          "4% rule calculator"
+        ]
+      },
+      "description": {
+        "tr": "Mevcut yaş, emeklilik yaşı, aylık birikim, getiri ve enflasyonla emeklilik birikiminizi tarayıcıda tahmin edin.",
+        "en": "Project retirement savings from your age, target retirement age, monthly saving, expected return and inflation, in your browser."
+      },
+      "relatedTools": [
+        "compound-interest",
+        "roi-calculator"
+      ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "LOCAL_ONLY",
+      "externalNetwork": false,
+      "syntheticData": "NONE",
+      "dataSource": "User inputs; local monthly savings projection",
+      "limitations": "Assumes constant return and inflation; does not calculate an SGK/state pension entitlement.",
+      "path": "/finance/retirement",
+      "entry": "/src/tools/finance/retirement/"
+    },
+    {
       "id": "stock-lookup",
       "name": "Stock Quote Lookup",
       "nameEn": "Stock Quote Lookup",
@@ -3724,6 +3784,66 @@
       "limitations": "Quotes can be delayed; history chart is shown only when provider closes exist; small built-in symbol fallbacks are labelled and have no fabricated history.",
       "path": "/finance/stock-lookup",
       "entry": "/src/tools/finance/stock-lookup/"
+    },
+    {
+      "id": "student-loan",
+      "name": "Öğrenci Kredisi Geri Ödeme Hesaplayıcı",
+      "nameEn": "Student Loan Payoff Calculator",
+      "category": "finance",
+      "tier": 3,
+      "cpc": {
+        "tr": 1.2,
+        "us": 3
+      },
+      "schema": {
+        "@type": "WebApplication",
+        "applicationCategory": "UtilityApplication",
+        "offers": {
+          "@type": "Offer",
+          "price": "0"
+        }
+      },
+      "ads": {
+        "sidebar": {
+          "enabled": true,
+          "size": "336x280",
+          "minCpm": 0.3
+        }
+      },
+      "bundle": {
+        "lazyLoad": false
+      },
+      "keywords": {
+        "tr": [
+          "öğrenci kredisi hesaplama",
+          "kyk geri ödeme hesaplama",
+          "erken ödeme faiz tasarrufu"
+        ],
+        "en": [
+          "student loan payoff calculator",
+          "extra payment calculator",
+          "student loan interest savings"
+        ]
+      },
+      "description": {
+        "tr": "Bakiye, faiz, aylık ödeme ve ek ödemeyle öğrenci kredisinin kapanma süresini ve faiz tasarrufunu tarayıcıda hesaplayın.",
+        "en": "Work out a student loan payoff date and the interest an extra payment saves, from the balance, rate and monthly payment, in your browser."
+      },
+      "relatedTools": [
+        "compound-interest",
+        "roi-calculator"
+      ],
+      "public": true,
+      "indexable": true,
+      "adsEligible": true,
+      "certificationStatus": "CERTIFIED",
+      "privacyMode": "LOCAL_ONLY",
+      "externalNetwork": false,
+      "syntheticData": "NONE",
+      "dataSource": "User inputs; local fixed-rate amortization model",
+      "limitations": "General fixed-rate amortization model; does not implement KYK-specific or variable-rate rules.",
+      "path": "/finance/student-loan",
+      "entry": "/src/tools/finance/student-loan/"
     },
     {
       "id": "image-flipper",

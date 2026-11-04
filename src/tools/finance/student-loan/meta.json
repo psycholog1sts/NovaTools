@@ -1,0 +1,49 @@
+{
+  "id": "student-loan",
+  "name": "Öğrenci Kredisi Geri Ödeme Hesaplayıcı",
+  "nameEn": "Student Loan Payoff Calculator",
+  "category": "finance",
+  "tier": 3,
+  "cpc": {
+    "tr": 1.2,
+    "us": 3
+  },
+  "schema": {
+    "@type": "WebApplication",
+    "applicationCategory": "UtilityApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  },
+  "ads": {
+    "sidebar": {
+      "enabled": true,
+      "size": "336x280",
+      "minCpm": 0.3
+    }
+  },
+  "bundle": {
+    "lazyLoad": false
+  },
+  "keywords": {
+    "tr": [
+      "öğrenci kredisi hesaplama",
+      "kyk geri ödeme hesaplama",
+      "erken ödeme faiz tasarrufu"
+    ],
+    "en": [
+      "student loan payoff calculator",
+      "extra payment calculator",
+      "student loan interest savings"
+    ]
+  },
+  "description": {
+    "tr": "Bakiye, faiz, aylık ödeme ve ek ödemeyle öğrenci kredisinin kapanma süresini ve faiz tasarrufunu tarayıcıda hesaplayın.",
+    "en": "Work out a student loan payoff date and the interest an extra payment saves, from the balance, rate and monthly payment, in your browser."
+  },
+  "relatedTools": [
+    "compound-interest",
+    "roi-calculator"
+  ]
+}

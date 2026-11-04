@@ -132,7 +132,7 @@
           <p data-blog-ui="heroDescription">In-depth guides on AI, data privacy, fintech, education technology, developer automation, and remote productivity.</p>
           <form class="blog-search" role="search">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m21 21-4.35-4.35m1.35-5.65a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-            <label class="sr-only" for="blogSearch">Blog yazılarında ara</label>
+            <label class="sr-only" for="blogSearch">Search blog articles</label>
             <input id="blogSearch" type="search" placeholder="Search blog articles..." autocomplete="off">
           </form>
         </div>
@@ -267,6 +267,8 @@
         if (ui[key]) element.textContent = ui[key];
       });
       searchInput.placeholder = ui.searchPlaceholder;
+      const searchLabel = document.querySelector('label[for="blogSearch"]');
+      if (searchLabel) searchLabel.textContent = ui.searchPlaceholder.replace(/[.…]+$/, '');
       emptyState.querySelector('h2').textContent = ui.emptyTitle;
       emptyState.querySelector('p').textContent = ui.emptyText;
       resetFilters.textContent = ui.emptyButton;

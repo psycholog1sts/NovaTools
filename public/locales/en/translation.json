@@ -489,7 +489,8 @@
           "031": "The zodiac sign is determined based on standard astrological date ranges for each sign, from Aries (March 21 - April 19) to Pisces (February 19 - March 20).",
           "032": "psk.dan.metehancetin@mc-novatools.com",
           "033": "Estimates only — not financial, legal, or tax advice."
-        }
+        },
+        "disclaimer": "<strong>Disclaimer:</strong> Age is worked out from the two dates you enter, entirely in your browser. For official forms, go by the date of birth on the official record."
       },
       "bmi-calculator": {
         "meta": {
@@ -554,7 +555,8 @@
           "012": "Calculate your Body Mass Index (BMI) from height and weight, see the standard adult category boundaries, and see the weight range that corresponds to BMI 18.5-24.9 at your height.",
           "031": "Body Mass Index (BMI) is a simple screening method that uses your height and weight to determine if you're at a healthy weight for your height. This calculator works out the ratio in your browser and shows which standard adult category the result falls into. It is a screening ratio only and does not diagnose anything.",
           "039": "Review the weight range that corresponds to BMI 18.5-24.9 at your height."
-        }
+        },
+        "disclaimer": "<strong>Disclaimer:</strong> BMI is a screening measure, not a diagnosis of body fat or health. Ask a healthcare provider for a proper assessment."
       },
       "currency-converter": {
         "meta": {
@@ -600,7 +602,8 @@
           "034": "No. All calculations happen locally in your browser. No data is transmitted to our servers or stored anywhere.",
           "035": "psk.dan.metehancetin@mc-novatools.com",
           "036": "Estimates only — not financial, legal, or tax advice."
-        }
+        },
+        "disclaimer": "<strong>Disclaimer:</strong> Exchange rates are for information only and may not match live market rates. For an actual transaction, use the rate your bank or exchange provider quotes."
       },
       "number-base-converter": {
         "meta": {
@@ -654,7 +657,8 @@
           "039": "No. All conversions happen locally in your browser. No data is transmitted to our servers or stored anywhere.",
           "040": "psk.dan.metehancetin@mc-novatools.com",
           "041": "Estimates only — not financial, legal, or tax advice."
-        }
+        },
+        "disclaimer": "<strong>Disclaimer:</strong> Conversions between bases 2, 8, 10 and 16 are exact for the signed whole numbers the tool accepts. Fractions are not supported."
       },
       "percentage-calculator": {
         "meta": {
@@ -719,7 +723,8 @@
           "043": "Yes, this calculator is useful for many financial calculations like discounts, taxes, tips, and interest rates. However, for important financial decisions, always verify with a financial professional.",
           "044": "psk.dan.metehancetin@mc-novatools.com",
           "045": "Estimates only — not financial, legal, or tax advice."
-        }
+        },
+        "disclaimer": "<strong>Disclaimer:</strong> Results are plain arithmetic on the numbers you enter. Check figures that feed a contract, invoice or tax return independently."
       },
       "roman-numerals": {
         "meta": {
@@ -768,7 +773,8 @@
           "034": "No. All conversions happen locally in your browser. No data is transmitted to our servers or stored anywhere.",
           "035": "psk.dan.metehancetin@mc-novatools.com",
           "036": "Estimates only — not financial, legal, or tax advice."
-        }
+        },
+        "disclaimer": "<strong>Disclaimer:</strong> The converter follows standard Roman numeral rules, so the valid range is 1 to 3999."
       },
       "scientific-calculator": {
         "meta": {
@@ -829,7 +835,8 @@
           "049": "Estimates only — not financial, legal, or tax advice.",
           "050": "${item.expr}",
           "051": "${item.result}"
-        }
+        },
+        "disclaimer": "<strong>Disclaimer:</strong> Results use standard floating-point arithmetic and are for reference. Verify critical calculations independently."
       },
       "timezone-converter": {
         "meta": {
@@ -874,7 +881,8 @@
           "033": "psk.dan.metehancetin@mc-novatools.com",
           "034": "Estimates only — not financial, legal, or tax advice.",
           "035": "${formatTime(tzTime)}"
-        }
+        },
+        "disclaimer": "<strong>Disclaimer:</strong> Conversions use your browser's IANA/Intl time zone data for the selected date. Ambiguous or nonexistent daylight-saving wall times are rejected. Future time zone rule changes depend on browser updates, so double-check critical meeting times."
       },
       "unit-converter": {
         "meta": {
@@ -927,7 +935,8 @@
           "037": "Temperature conversions use specific formulas: Celsius to Fahrenheit: (°C × 9/5) + 32 = °F, Fahrenheit to Celsius: (°F − 32) × 5/9 = °C, and Kelvin is Celsius + 273.15.",
           "038": "psk.dan.metehancetin@mc-novatools.com",
           "039": "Estimates only — not financial, legal, or tax advice."
-        }
+        },
+        "disclaimer": "<strong>Disclaimer:</strong> Conversions use standard conversion factors and are for general reference. Check critical measurements against the official standard."
       },
       "unix-timestamp": {
         "meta": {
@@ -982,7 +991,8 @@
           "040": "Unix timestamps do not account for leap seconds. They represent the number of seconds since the Epoch, ignoring leap second adjustments.",
           "041": "psk.dan.metehancetin@mc-novatools.com",
           "042": "Estimates only — not financial, legal, or tax advice."
-        }
+        },
+        "disclaimer": "<strong>Disclaimer:</strong> A Unix timestamp is a UTC-based count with no time zone of its own; the local date shown uses your device's time zone setting. Intended for development and debugging."
       }
     },
     "data": {
@@ -1685,7 +1695,8 @@
           "059": "${formatCurrency(totals.total, currency)}",
           "060": "Notes / Terms",
           "061": "\\u00d7"
-        }
+        },
+        "disclaimer": "<strong>Disclaimer:</strong> This tool creates invoices for record keeping, entirely in your browser. Check that the tax calculations follow your local rules, and ask a tax professional before issuing official invoices."
       },
       "logo-maker": {
         "meta": {
@@ -2891,6 +2902,9 @@
           "034": "psk.dan.metehancetin@mc-novatools.com",
           "035": "Estimates only — not financial, legal, or tax advice.",
           "036": "Error: ' + err.message + '"
+        },
+        "copy": {
+          "kkdfNote": "KKDF and BSMV are Turkish taxes on loan interest. Leave them at 0 for loans outside Türkiye; when entered, they are applied to the monthly interest. Your bank may apply other fees or exemptions."
         }
       },
       "retirement": {
@@ -2924,6 +2938,14 @@
           "021": "Retirement Projection",
           "022": "psk.dan.metehancetin@mc-novatools.com",
           "023": "Estimates only — not financial, legal, or tax advice."
+        },
+        "copy": {
+          "intro": "Project your retirement savings from your current age, target retirement age, monthly savings, expected return and inflation.",
+          "dataNote": "All calculations run in your browser; the figures you enter are not sent to a server.",
+          "howTitle": "How the projection is calculated",
+          "howText": "Each month the balance grows by one twelfth of the annual return and your monthly saving is added. The inflation-adjusted figure divides the final balance by (1 + inflation) once for every year. The 4% figure is a common rule of thumb for a first-year withdrawal, not a guarantee.",
+          "noteTitle": "Legal and data note",
+          "noteText": "Retirement projections are estimates. State pensions (SGK in Türkiye, Social Security in the US) are not included; check your figures with a qualified adviser."
         }
       },
       "student-loan": {
@@ -2959,6 +2981,14 @@
           "023": "Payment Schedule (First 12 Months)",
           "024": "psk.dan.metehancetin@mc-novatools.com",
           "025": "Estimates only — not financial, legal, or tax advice."
+        },
+        "copy": {
+          "intro": "Work out your student loan payoff date, interest saved and payment schedule from the balance, interest rate, monthly payment and an optional extra payment.",
+          "dataNote": "All calculations run in your browser; the figures you enter are not sent to a server.",
+          "howTitle": "How the payoff is calculated",
+          "howText": "Each month, interest is the remaining balance times one twelfth of the annual rate; the rest of your payment reduces the balance. The calculator runs this twice, with and without the extra payment, and compares the number of months and the total interest.",
+          "noteTitle": "Legal and data note",
+          "noteText": "Results are estimates. Interest, grace-period and deferment rules depend on your loan agreement (KYK, a bank, or a federal or private lender), so confirm the figures with your lender."
         }
       },
       "tax": {
@@ -2990,6 +3020,36 @@
           "019": "Tax Estimate",
           "020": "psk.dan.metehancetin@mc-novatools.com",
           "021": "Estimates only — not financial, legal, or tax advice."
+        }
+      },
+      "live-exchange": {
+        "copy": {
+          "intro": "Convert between TRY, USD and EUR at the Central Bank of the Republic of Türkiye (TCMB) reference rate, with the source and update time shown.",
+          "dataNote": "The conversion is calculated in your browser. When a rate is needed, only the currency code is requested from the NovaTools live-data endpoint; the amount you enter is not sent.",
+          "howTitle": "How the Live Exchange Converter works",
+          "howText": "TRY, USD and EUR reference rates come from the TCMB daily XML feed through the NovaTools live-data endpoint. If neither the provider nor a still-valid browser cache has a rate, the tool stops instead of showing a made-up rate.",
+          "noteTitle": "Legal and data note",
+          "noteText": "Banks and exchange offices trade at their own rates, which differ from TCMB reference rates. Check your provider's quote before an actual transaction."
+        }
+      },
+      "stock-lookup": {
+        "copy": {
+          "intro": "Look up BIST, NASDAQ and NYSE symbols to see the provider's price, change and volume, plus a short chart when the provider returns real closing prices.",
+          "dataNote": "The symbol is sent to the NovaTools live-data endpoint. Favorites stay in your browser only. Without provider or cached data, no price is shown.",
+          "howTitle": "How Stock Quote Lookup works",
+          "howText": "The symbol is passed to the market-data provider through NovaTools live-data, which returns the price, volume and, when available, real closing prices. Without provider or cached data, no static price is shown.",
+          "noteTitle": "Legal and data note",
+          "noteText": "Market data may be delayed. Confirm the current price with your broker before making an investment or placing an order."
+        }
+      },
+      "crypto-prices": {
+        "copy": {
+          "intro": "See BTC, ETH, SOL, XRP and ADA prices in TRY and USD. When CoinGecko data is available, the 24-hour change, market cap and volume are shown too; if CoinGecko cannot be reached, only the Coinbase spot price is used.",
+          "dataNote": "Prices are requested from the NovaTools live-data endpoint. Favorites stay in your browser only. Without provider or cached data, no price is shown.",
+          "howTitle": "How the Crypto Price Tracker works",
+          "howText": "BTC, ETH, SOL, XRP and ADA data comes from CoinGecko through NovaTools live-data. A coin with no valid provider or cached data is left out rather than given an estimated or fixed price.",
+          "noteTitle": "Legal and data note",
+          "noteText": "Crypto prices are highly volatile and this is not investment advice. Confirm the current price on your exchange before trading."
         }
       }
     },
@@ -3252,7 +3312,9 @@
           "033": "Yes! Clicking the same flip option again will return the image to its original orientation. You can toggle between flipped and original states as many times as you like.",
           "034": "psk.dan.metehancetin@mc-novatools.com",
           "035": "Estimates only — not professional image processing advice."
-        }
+        },
+        "privacyNote": "<strong>Privacy:</strong> The image is flipped in your browser and is never uploaded to a server.",
+        "outputNote": "<strong>Note:</strong> The flip itself moves pixels without interpolation, but the downloaded file is re-encoded by your browser, so its file size and metadata can differ from the original."
       },
       "image-resizer": {
         "meta": {
@@ -6097,7 +6159,8 @@
     "browserBased": "Browser-based",
     "aboutUs": "About Us",
     "allRightsReserved": "All rights reserved.",
-    "emailAddress": "Email address"
+    "emailAddress": "Email address",
+    "financeEstimateNotice": "⚠️ These figures are estimates, not financial advice. Check exact amounts with a qualified adviser or the institution concerned."
   },
   "categories": {
     "pdf": {

@@ -142,13 +142,35 @@ function stampBlogFile(filePath, block, locale) {
 
 
 
-function visibleBlogAuthorshipBlock() {
+// Dates and reading time come from the article itself (its Article JSON-LD and its text).
+// This block used to stamp the same publish date, modified date, "11 min read" and reviewer on
+// every article, which contradicted each article's own metadata.
+function articleDateFromJsonLd(html, field) {
+  const match = html.match(new RegExp(`"${field}"\\s*:\\s*"(\\d{4}-\\d{2}-\\d{2})`));
+  return match ? match[1] : '';
+}
+
+function articleReadingMinutes(html) {
+  const article = html.match(/<article\b[\s\S]*?<\/article>/i)?.[0] || html.match(/<main\b[\s\S]*?<\/main>/i)?.[0] || '';
+  const words = article
+    .replace(/<script[\s\S]*?<\/script>/gi, ' ')
+    .replace(/<style[\s\S]*?<\/style>/gi, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .split(/\s+/)
+    .filter(Boolean).length;
+  return words >= 150 ? Math.max(1, Math.round(words / 220)) : 0;
+}
+
+function visibleBlogAuthorshipBlock(html) {
+  const published = articleDateFromJsonLd(html, 'datePublished');
+  const modified = articleDateFromJsonLd(html, 'dateModified');
+  const minutes = articleReadingMinutes(html);
+  const parts = ['<span>Written by <a href="/author/novatools-editorial.html">NovaTools Editorial</a></span>'];
+  if (published) parts.push(`<span>Published <time datetime="${published}">${published}</time></span>`);
+  if (modified && modified !== published) parts.push(`<span>Last modified <time datetime="${modified}">${modified}</time></span>`);
+  if (minutes) parts.push(`<span>${minutes} min read</span>`);
   return `<div class="article-trust-meta" data-visible-authorship="true" style="margin:1rem 0 1.5rem;color:var(--text-secondary,#cbd5e1);font-size:.95rem;line-height:1.6;display:flex;flex-wrap:wrap;gap:.75rem 1rem;">
-    <span>Written by <a href="/author/novatools-editorial.html">NovaTools Editorial Review</a></span>
-    <span>Published <time datetime="2026-04-17">2026-04-17</time></span>
-    <span>Last modified <time datetime="2026-06-03">2026-06-03</time></span>
-    <span>11 min read</span>
-    <span>Reviewed by <a href="/author/metehan-cetin.html">Metehan Çetin, LPC</a></span>
+    ${parts.join('\n    ')}
   </div>`;
 }
 
@@ -163,11 +185,14 @@ function applyVisibleBlogAuthorship(dir) {
       if (!entry.isFile() || !entry.name.endsWith('.html')) continue;
       const html = fs.readFileSync(filePath, 'utf8');
       if (html.includes('data-visible-authorship="true"') || !/(?:<article\b|article-meta|blog-seo-article-jsonld)/i.test(html)) continue;
+      // Pages that already show their own byline with dates (the shared article template) need no second one.
+      if (/<div class="article-meta">[\s\S]{0,1200}?itemprop="datePublished"/i.test(html)) continue;
       let next = html;
+      const block = visibleBlogAuthorshipBlock(html);
       if (/<h1\b[^>]*>[\s\S]*?<\/h1>/i.test(next)) next = next.replace(/(<h1\b[^>]*>[\s\S]*?<\/h1>)/i, `$1
-${visibleBlogAuthorshipBlock()}`);
+${block}`);
       else next = next.replace(/<main\b[^>]*>/i, (m) => `${m}
-${visibleBlogAuthorshipBlock()}`);
+${block}`);
       if (next !== html) { fs.writeFileSync(filePath, next); count += 1; }
     }
   };
@@ -360,6 +385,72 @@ const sourceArticleFileBySlug = () => {
     .map((file) => [normalizeBlogSlug(file.replace(/\.html$/, '')), path.join(sourceArticlesDir, file)]));
 };
 
+// Articles that only exist in the blog manifest are served from the shared template, whose
+// static H1, standfirst, dates and empty body are a Turkish placeholder until the client
+// script runs. A crawler or reader without JavaScript saw that placeholder on every such URL,
+// and the later SEO pass derived the <title> from the placeholder H1. Write the article's own
+// heading, dates and content blocks into the HTML; the client script re-renders the same data.
+const TEMPLATE_READ_TIME = { en: (n) => `⏱ ${n} min read`, tr: (n) => `⏱ ${n} dk okuma` };
+// Same labels as blogUi.categories in src/js/i18n-blog.js (which needs Vite's import.meta.glob).
+const TEMPLATE_CATEGORY_LABELS = {
+  en: {
+    'artificial-intelligence': 'Artificial Intelligence', 'data-privacy': 'Data Privacy', 'remote-productivity': 'Remote Productivity',
+    'fintech-personal-finance': 'Fintech', 'education-technology': 'Education Technology', 'developer-automation': 'Developer Tools',
+    'pdf-document-management': 'PDF & Document Management', 'image-processing-web-performance': 'Image Processing & Web Performance',
+    'developer-tools-coding': 'Developer Tools & Coding', 'finance-calculators': 'Finance & Calculators', 'productivity-tool-guides': 'Productivity & Tool Guides'
+  },
+  tr: {
+    'artificial-intelligence': 'Yapay Zeka', 'data-privacy': 'Veri Güvenliği', 'remote-productivity': 'Üretkenlik',
+    'fintech-personal-finance': 'Fintech', 'education-technology': 'Eğitim Teknolojileri', 'developer-automation': 'Geliştirici Araçları',
+    'pdf-document-management': 'PDF ve Doküman Yönetimi', 'image-processing-web-performance': 'Görsel İşleme ve Web Performansı',
+    'developer-tools-coding': 'Geliştirici Araçları ve Kodlama', 'finance-calculators': 'Finans ve Hesaplayıcılar', 'productivity-tool-guides': 'Üretkenlik ve Araç Rehberleri'
+  }
+};
+
+function renderManifestContentBlock(block) {
+  if (block.type === 'table') return `<figure class="table-wrapper">${block.html}</figure>`;
+  if (block.type === 'code') return `<div class="code-panel"><pre><code class="language-${escapeAttr(block.language || 'text')}">${escapeHtml(block.code || '')}</code></pre></div>`;
+  if (block.type === 'image') return `<figure class="article-figure"><img src="${escapeAttr(block.src)}" alt="${escapeAttr(block.alt || '')}" loading="lazy" width="1280" height="720"><figcaption>${escapeHtml(block.caption || '')}</figcaption></figure>`;
+  return block.html || '';
+}
+
+function prerenderTemplateArticle(filePath, post, locale) {
+  if (!post || !Array.isArray(post.contentBlocks) || !post.contentBlocks.length) return false;
+  const html = fs.readFileSync(filePath, 'utf8');
+  if (!html.includes('<div class="article-body" itemprop="articleBody"></div>')) return false;
+  const published = String(post.datePublished || '').slice(0, 10);
+  const modified = String(post.dateModified || post.datePublished || '').slice(0, 10);
+  const readTime = (TEMPLATE_READ_TIME[locale] || TEMPLATE_READ_TIME.en)(Number(post.readTime) || 1);
+  let next = html
+    .replace(/(<h1 itemprop="headline">)[\s\S]*?(<\/h1>)/i, `$1${escapeHtml(post.title)}$2`)
+    .replace(/(<p class="article-dek" itemprop="description">)[\s\S]*?(<\/p>)/i, `$1${escapeHtml(post.excerpt || '')}$2`)
+    .replace(/<time datetime="[^"]*" itemprop="datePublished">[\s\S]*?<\/time>/i, `<time datetime="${published}" itemprop="datePublished">${published}</time>`)
+    .replace(/<time datetime="[^"]*" itemprop="dateModified">[\s\S]*?<\/time>/i, `<time datetime="${modified}" itemprop="dateModified">${modified}</time>`)
+    .replace(/<span>⏱ [^<]*<\/span>/, `<span>${escapeHtml(readTime)}</span>`)
+    .replace(/(<figure class="article-hero__media" itemprop="image"><img\b[^>]*\balt=")[^"]*(")/i, `$1${escapeAttr(`${post.title} cover image`)}$2`)
+    .replace('<div class="article-body" itemprop="articleBody"></div>', `<div class="article-body" itemprop="articleBody"><div class="article-prose">${post.contentBlocks.map(renderManifestContentBlock).join('')}</div></div>`);
+  const categoryLabel = (TEMPLATE_CATEGORY_LABELS[locale] || TEMPLATE_CATEGORY_LABELS.en)[post.category] || '';
+  if (categoryLabel) {
+    next = next
+      .replace(/(<span class="article-badge" itemprop="articleSection">)[\s\S]*?(<\/span>)/i, `$1${escapeHtml(categoryLabel)}$2`)
+      .replace(/<a href="\/blog\/\?category=[^"]*">[^<]*<\/a>/, `<a href="/blog/?category=${escapeAttr(post.category)}">${escapeHtml(categoryLabel)}</a>`);
+  }
+  next = next.replace(/(<nav class="article-breadcrumb"[\s\S]*?<li aria-current="page">)[^<]*(<\/li>)/i, `$1${escapeHtml(post.title)}$2`);
+  if (locale !== 'tr') {
+    // Static template chrome is Turkish; the client script relabels it, crawlers read this.
+    next = next
+      .replace(/<a href="\/">Ana Sayfa<\/a>/, '<a href="/">Home</a>')
+      .replace('<h2 id="toc-title">İçindekiler</h2>', '<h2 id="toc-title">On this page</h2>')
+      .replace('aria-label="Sosyal paylaşım"', 'aria-label="Share"')
+      .replace('aria-label="Yazıya git"', 'aria-label="Back to top"')
+      .replace('>Kopyalandı!<', '>Copied!<')
+      .replace(/<span class="updated-badge">Güncellendi: /, '<span class="updated-badge">Updated: ');
+  }
+  if (next === html) return false;
+  fs.writeFileSync(filePath, next);
+  return true;
+}
+
 const sourceArticlePostCache = new Map();
 
 function textFromHtml(html, selectorPattern) {
@@ -432,6 +523,7 @@ if (fs.existsSync(distBlogTemplate)) {
         const target = path.join(distDir, route.replace(/^\//, ''));
         fs.mkdirSync(path.dirname(target), { recursive: true });
         if (!fs.existsSync(target)) fs.copyFileSync(distBlogTemplate, target);
+        prerenderTemplateArticle(target, post, locale);
         stampBlogFile(target, blogArticleHeadBlock(post, locale), locale);
       }
     }
@@ -491,7 +583,9 @@ const financeToolSlugs = [
   'retirement',
   'student-loan'
 ];
-const financeDisclaimer = '⚠️ Yasal Uyarı: Bu hesaplamalar tahmini değerlerdir. Kesin bilgi için lütfen yetkili bir mali müşavir veya kuruma danışın.';
+// English source text for the English pages; the Turkish version is common.financeEstimateNotice
+// in public/locales/tr (the old Turkish-only constant showed on every English finance page).
+const financeDisclaimer = '⚠️ These figures are estimates, not financial advice. Check exact amounts with a qualified adviser or the institution concerned.';
 
 function rewriteFinanceCanonicalHtml(html, slug) {
   const canonical = `https://mc-novatools.com/finance/${slug}/`;
@@ -515,7 +609,7 @@ function rewriteFinanceCanonicalHtml(html, slug) {
   }
 
   if (!next.includes(financeDisclaimer)) {
-    const block = `<aside class="finance-disclaimer" role="note" style="margin:1.5rem auto;max-width:980px;padding:1rem 1.25rem;border:1px solid rgba(245,158,11,.28);border-radius:12px;background:rgba(245,158,11,.08);color:var(--text-secondary,#cbd5e1);line-height:1.6;"><strong>${financeDisclaimer}</strong></aside>`;
+    const block = `<aside class="finance-disclaimer" role="note" style="margin:1.5rem auto;max-width:980px;padding:1rem 1.25rem;border:1px solid rgba(245,158,11,.28);border-radius:12px;background:rgba(245,158,11,.08);color:var(--text-secondary,#cbd5e1);line-height:1.6;"><strong data-i18n="common.financeEstimateNotice">${financeDisclaimer}</strong></aside>`;
     if (/<\/main>/i.test(next)) next = next.replace(/<\/main>/i, `${block}
     </main>`);
     else next = next.replace(/<\/body>/i, `${block}
@@ -763,8 +857,10 @@ function publishCleanCategoryAliases() {
       if (!fs.existsSync(source)) continue;
       const target = path.join(distDir, prefix, 'tools', aliasSlug, 'index.html');
       fs.mkdirSync(path.dirname(target), { recursive: true });
-      const route = `/${[prefix, 'tools', aliasSlug, 'index.html'].filter(Boolean).join('/')}`;
-      const stamped = applySeoHead(fs.readFileSync(source, 'utf8'), route);
+      // The alias is a byte-for-byte copy of the category hub, so it must name the hub as
+      // canonical; a self-canonical alias publishes the same page twice.
+      const canonicalRoute = `/${[prefix, 'categories', sourceFile].filter(Boolean).join('/')}`;
+      const stamped = applySeoHead(fs.readFileSync(source, 'utf8'), canonicalRoute);
       fs.writeFileSync(target, stamped);
       count += 1;
     }
