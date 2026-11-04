@@ -190,14 +190,21 @@ test('gold-standard PDF page exposes usable mobile navigation', async ({ page })
   await expect(trigger).toHaveAttribute('aria-expanded', 'true');
   const pdfTarget = page.locator('#mobileMenu a').filter({ hasText: 'PDF tools' });
   await expect(pdfTarget).toBeVisible();
-  expect(await pdfTarget.evaluate((link) => new URL(link.href).pathname)).toBe('/categories/pdf-tools.html');
+  // Production serves extensionless URLs and 308-redirects `.html`, so links name the served route.
+  const pdfPath = await pdfTarget.evaluate((link) => new URL(link.href).pathname);
+  expect(pdfPath).toBe('/categories/pdf-tools');
+  // Resolve against the build under test, not the absolute production origin the link may name.
+  const response = await page.request.get(pdfPath);
+  expect(response.status()).toBe(200);
+  expect(await response.text()).toContain('<title>PDF Tools');
 });
 
 test('image compressor navigation resolves to real category routes', async ({ page }) => {
   await page.goto('/tools/image/compress/', { waitUntil: 'domcontentloaded' });
   const hrefs = await page.locator('.nav-desktop a').evaluateAll((links) => links.map((link) => new URL(link.href).pathname));
-  expect(hrefs).toContain('/categories/finance-tools.html');
-  expect(hrefs).toContain('/categories/pdf-tools.html');
-  expect(hrefs).toContain('/categories/image-tools.html');
-  expect(hrefs).toContain('/categories/developer-tools.html');
+  const categoryRoutes = ['/categories/finance-tools', '/categories/pdf-tools', '/categories/image-tools', '/categories/developer-tools'];
+  for (const route of categoryRoutes) {
+    expect(hrefs).toContain(route);
+    expect((await page.request.get(route)).status()).toBe(200);
+  }
 });

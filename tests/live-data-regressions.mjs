@@ -6,6 +6,7 @@ import {
   calculateLiveExchange,
   calculateStockLookup
 } from '../src/tools/finance/live-market-tools.mjs';
+import { handleLiveData } from '../src/server/control-plane/live-data.mjs';
 
 const originalFetch = globalThis.fetch;
 const financeSource = readFileSync(new URL('../src/tools/finance/p0-batch2.mjs', import.meta.url), 'utf8');
@@ -179,6 +180,42 @@ async function run() {
       assert.match(requestedUrl, /vs_currencies=usd,try/);
       assert.equal(body.provider, 'coingecko.com');
       assert.equal(body.coins.bitcoin.try, 40);
+    }
+
+    {
+      // Production regression (2026-11-04): CoinGecko's keyless API rejects requests from
+      // Cloudflare's shared egress IPs, so /api/live-data?resource=crypto returned 502 on every
+      // call. A keyless fallback must serve real spot prices without inventing market data.
+      const requested = [];
+      globalThis.fetch = async (url) => {
+        requested.push(String(url));
+        if (String(url).includes('api.coingecko.com')) return new Response('rate limited', { status: 429 });
+        const currency = new URL(String(url)).searchParams.get('currency');
+        const rates = { BTC: { USD: '76934.97', TRY: '3846286.76' }, ETH: { USD: '2263.57', TRY: '113309.01' } }[currency];
+        if (!rates) return new Response('not found', { status: 404 });
+        return new Response(JSON.stringify({ data: { currency, rates } }), { status: 200, headers: { 'content-type': 'application/json' } });
+      };
+
+      const response = await handler(new Request('https://example.test/api/live-data?resource=crypto&ids=bitcoin,ethereum,not-a-coin'));
+      const body = await readJson(response);
+      assert.equal(response.status, 200);
+      assert.equal(body.provider, 'coinbase.com');
+      assert.deepEqual(body.coins.bitcoin, { usd: 76934.97, try: 3846286.76 });
+      assert.deepEqual(body.coins.ethereum, { usd: 2263.57, try: 113309.01 });
+      assert.equal('not-a-coin' in body.coins, false, 'unmapped ids are omitted, never estimated');
+      assert.ok(requested.some((url) => url.startsWith('https://api.coinbase.com/v2/exchange-rates?currency=BTC')));
+    }
+
+    {
+      let coingeckoHeaders = null;
+      globalThis.fetch = async (url, options = {}) => {
+        coingeckoHeaders = new Headers(options.headers);
+        return new Response(JSON.stringify({ bitcoin: { usd: 1, try: 40 } }), { status: 200, headers: { 'content-type': 'application/json' } });
+      };
+      const { status, body } = await handleLiveData(new URLSearchParams('resource=crypto&ids=bitcoin'), { COINGECKO_DEMO_API_KEY: 'demo-test-key' });
+      assert.equal(status, 200);
+      assert.equal(body.provider, 'coingecko.com');
+      assert.equal(coingeckoHeaders.get('x-cg-demo-api-key'), 'demo-test-key');
     }
 
     console.log('live-data regressions: pass');
