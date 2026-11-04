@@ -143,6 +143,8 @@ function categoryApplicationName(category) {
 
 function localizedRoute(route, locale) {
   const normalized = normalizeRoute(route).replace(/^\/(?:en|tr)(?=\/|$)/, '') || '/';
+  // English is the unprefixed default locale (see blog-routes.js); `/en/...` is never built.
+  if (locale === 'en') return `${SITE_ORIGIN}${normalized}`;
   if (normalized === '/') return `${SITE_ORIGIN}/${locale}/`;
   return `${SITE_ORIGIN}/${locale}${normalized}`;
 }
