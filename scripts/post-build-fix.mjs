@@ -763,8 +763,10 @@ function publishCleanCategoryAliases() {
       if (!fs.existsSync(source)) continue;
       const target = path.join(distDir, prefix, 'tools', aliasSlug, 'index.html');
       fs.mkdirSync(path.dirname(target), { recursive: true });
-      const route = `/${[prefix, 'tools', aliasSlug, 'index.html'].filter(Boolean).join('/')}`;
-      const stamped = applySeoHead(fs.readFileSync(source, 'utf8'), route);
+      // The alias is a byte-for-byte copy of the category hub, so it must name the hub as
+      // canonical; a self-canonical alias publishes the same page twice.
+      const canonicalRoute = `/${[prefix, 'categories', sourceFile].filter(Boolean).join('/')}`;
+      const stamped = applySeoHead(fs.readFileSync(source, 'utf8'), canonicalRoute);
       fs.writeFileSync(target, stamped);
       count += 1;
     }

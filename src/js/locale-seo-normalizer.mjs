@@ -62,6 +62,11 @@ export function normalizeGeneralLocaleSeoHtml(html) {
 
   const canonicalTag = (next.match(/<link\b[^>]*>/gi) || []).find((tag) => attr(tag, 'rel').toLowerCase() === 'canonical');
   if (!canonicalTag) return next;
+  // Turkish-only pages (iletisim, gizlilik-politikasi, ...) are written in Turkish and have no
+  // ?lang=tr variant; labelling them hreflang="en" told search engines the opposite language.
+  if (/<html\b[^>]*\blang\s*=\s*["']tr["']/i.test(next)) {
+    return next.replace(canonicalTag, `${canonicalTag}\n  <link rel="alternate" hreflang="tr" href="${canonical}">`);
+  }
   return next.replace(canonicalTag, `${canonicalTag}\n  ${localeAlternates(canonical)}`);
 }
 

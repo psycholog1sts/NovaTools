@@ -145,11 +145,7 @@ const categorySitemapContract = new Map([
   ['/categories/social-media-tools.html', 'social'],
   ['/categories/productivity-tools.html', 'productivity'],
   ['/categories/data-tools.html', 'data'],
-  ['/categories/design-tools.html', 'design'],
-  ['/tools/pdf/', 'pdf'],
-  ['/tools/image/', 'image'],
-  ['/tools/developer/', 'dev'],
-  ['/tools/finance/', 'finance']
+  ['/categories/design-tools.html', 'design']
 ]);
 const toolsSitemap = read('public/sitemap-tools.xml');
 for (const [route, category] of categorySitemapContract) {
@@ -160,6 +156,15 @@ for (const [route, category] of categorySitemapContract) {
     `Category sitemap state must match certified public inventory: ${route}`
   );
 }
+// The /tools/<category>/ aliases are copies of the hubs; listing them would publish each hub twice.
+for (const alias of ['/tools/pdf/', '/tools/image/', '/tools/developer/', '/tools/finance/']) {
+  assert.ok(!toolsSitemap.includes(`https://mc-novatools.com${alias}<`), `${alias} duplicates its category hub and must not be in the sitemap`);
+}
+assert.match(
+  read('scripts/post-build-fix.mjs'),
+  /canonicalRoute = `\/\$\{\[prefix, 'categories', sourceFile\]/,
+  'Category aliases must name the category hub as canonical.'
+);
 
 
 const homepage = read('index.html');

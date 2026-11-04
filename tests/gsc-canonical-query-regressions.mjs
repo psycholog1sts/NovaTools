@@ -88,3 +88,14 @@ assert.equal(
 );
 
 console.log('GSC canonical query normalization regression contract passed.');
+
+{
+  // Turkish-only legal pages must not be labelled as English alternates of themselves.
+  const { normalizeGeneralLocaleSeoHtml } = await import('../src/js/locale-seo-normalizer.mjs');
+  const trPage = '<html lang="tr"><head><link rel="canonical" href="https://mc-novatools.com/iletisim"><script src="/i18n.js"></script></head><body></body></html>';
+  const out = normalizeGeneralLocaleSeoHtml(trPage);
+  if (/hreflang="en"/.test(out) || !/hreflang="tr" href="https:\/\/mc-novatools\.com\/iletisim"/.test(out)) {
+    throw new Error(`Turkish-only page got wrong hreflang: ${out}`);
+  }
+  console.log('turkish-only hreflang: pass');
+}
