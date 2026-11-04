@@ -241,14 +241,14 @@
                   <div class="control-group">
                     <label data-i18n="tools.image.image-flipper.text.015">Flip Direction</label>
                     <div class="flip-options">
-                      <div class="flip-option" id="flipHOption">
+                      <div class="flip-option" id="flipHOption" role="button" tabindex="0" aria-pressed="false">
                         <span class="icon">↔️</span>
                         <div class="text">
                           <strong>Horizontal Flip</strong>
                           <span data-i18n="tools.image.image-flipper.text.016">Mirror left to right</span>
                         </div>
                       </div>
-                      <div class="flip-option" id="flipVOption">
+                      <div class="flip-option" id="flipVOption" role="button" tabindex="0" aria-pressed="false">
                         <span class="icon">↕️</span>
                         <div class="text">
                           <strong>Vertical Flip</strong>
@@ -256,7 +256,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="both-option" id="flipBothOption">
+                    <div class="both-option" id="flipBothOption" role="button" tabindex="0">
                       <div class="icon">🔃</div>
                       <strong>Flip Both</strong>
                       <span data-i18n="tools.image.image-flipper.text.018">Apply both directions</span>
@@ -438,8 +438,7 @@ document.addEventListener('DOMContentLoaded', function() {
       originalImage = new Image();
       originalImage.onload = function() {
         flipH = false; flipV = false;
-        flipHOption.classList.remove('active');
-        flipVOption.classList.remove('active');
+        syncFlipOptions();
         renderImage();
         editorSection.classList.add('visible');
         resultSection.classList.remove('visible');
@@ -474,24 +473,36 @@ document.addEventListener('DOMContentLoaded', function() {
     ctx.restore();
   }
   
+  function syncFlipOptions() {
+    flipHOption.classList.toggle('active', flipH);
+    flipVOption.classList.toggle('active', flipV);
+    flipHOption.setAttribute('aria-pressed', String(flipH));
+    flipVOption.setAttribute('aria-pressed', String(flipV));
+  }
+
   flipHOption.addEventListener('click', function() {
     flipH = !flipH;
-    this.classList.toggle('active', flipH);
+    syncFlipOptions();
     renderImage();
   });
-  
+
   flipVOption.addEventListener('click', function() {
     flipV = !flipV;
-    this.classList.toggle('active', flipV);
+    syncFlipOptions();
     renderImage();
   });
-  
+
   flipBothOption.addEventListener('click', function() {
     flipH = !flipH;
     flipV = !flipV;
-    flipHOption.classList.toggle('active', flipH);
-    flipVOption.classList.toggle('active', flipV);
+    syncFlipOptions();
     renderImage();
+  });
+
+  [flipHOption, flipVOption, flipBothOption].forEach(function(option) {
+    option.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); option.click(); }
+    });
   });
   
   downloadBtn.addEventListener('click', function() {
@@ -518,8 +529,7 @@ document.addEventListener('DOMContentLoaded', function() {
   
   resetBtn.addEventListener('click', function() {
     flipH = false; flipV = false;
-    flipHOption.classList.remove('active');
-    flipVOption.classList.remove('active');
+    syncFlipOptions();
     renderImage();
     resultSection.classList.remove('visible');
   });
