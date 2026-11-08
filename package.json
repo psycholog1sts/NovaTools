@@ -70,30 +70,30 @@
   "dependencies": {
     "@vercel/speed-insights": "^2.0.0",
     "decimal.js": "^10.4.3",
-    "jszip": "^3.10.1",
+    "jszip": "^3.10.2",
     "pdf-lib": "^1.17.1",
-    "pdfjs-dist": "^6.4.299",
+    "pdfjs-dist": "^6.5.438",
     "undici": "^8.12.3",
     "zod": "^4.6.7"
   },
   "devDependencies": {
     "@eslint/js": "^8.57.0",
-    "@lhci/cli": "^0.13.0",
+    "@lhci/cli": "^0.16.0",
     "@types/node": "^20.0.0",
-    "autoprefixer": "^10.4.17",
+    "autoprefixer": "^10.6.2",
     "cssnano": "^6.0.3",
     "eslint": "^8.56.0",
     "glob": "^10.3.10",
     "globals": "^14.0.0",
     "jsdom": "^24.0.0",
-    "lightningcss": "^1.24.0",
-    "postcss": "^8.4.35",
+    "lightningcss": "^1.33.0",
+    "postcss": "^8.5.32",
     "postcss-import": "^16.0.0",
-    "prettier": "^3.2.5",
+    "prettier": "^3.9.10",
     "rimraf": "^5.0.5",
-    "sharp": "^0.34.5",
+    "sharp": "^0.35.5",
     "tailwindcss": "^3.4.1",
-    "terser": "^5.27.0",
+    "terser": "^5.51.2",
     "typescript": "^5.3.3",
     "vite": "^5.1.0",
     "vite-plugin-pwa": "^0.19.0",
@@ -101,7 +101,7 @@
     "vitest": "file:tests/vitest-compat"
   },
   "optionalDependencies": {
-    "@rollup/rollup-linux-x64-gnu": "^4.59.0"
+    "@rollup/rollup-linux-x64-gnu": "^4.67.5"
   },
   "engines": {
     "node": ">=22 <23",
